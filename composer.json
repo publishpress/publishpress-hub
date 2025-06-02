@@ -29,38 +29,11 @@
         "php": ">=7.4",
         "ext-json": "*"
     },
-    "require-dev": {
-        "lucatume/wp-browser": "^4",
-        "codeception/module-asserts": "^3",
-        "codeception/module-phpbrowser": "^3",
-        "codeception/module-webdriver": "^3",
-        "codeception/module-db": "^3",
-        "codeception/module-filesystem": "^3",
-        "codeception/module-cli": "^2",
-        "codeception/util-universalframework": "^1",
-        "codeception/module-rest": "^3",
-        "codeception/module-sequence": "^3",
-        "dealerdirect/phpcodesniffer-composer-installer": "^1",
-        "phpcompatibility/php-compatibility": "^9.3",
-        "wp-coding-standards/wpcs": "^3",
-        "phpmd/phpmd": "^2.15",
-        "squizlabs/php_codesniffer": "^3.8",
-        "overtrue/phplint": "^9.1",
-        "wp-cli/i18n-command": "^2.6",
-        "wp-cli/wp-cli-bundle": "^2.10",
-        "friendsofphp/php-cs-fixer": "^3.49",
-        "phpstan/phpstan": "^1.10",
-        "szepeviktor/phpstan-wordpress": "^1.3",
-        "phpstan/extension-installer": "^1.3",
-        "behat/behat": "^3.14",
-        "automattic/vipwpcs": "^3",
-        "publishpress/publishpress-phpcs-standards": "dev-main",
-        "spatie/ray": "^1.41",
-        "phpunit/phpunit": "^10",
-        "symfony/process": "^6.4",
-        "knplabs/github-api": "^3.16",
-        "symfony/http-client": "^7.1",
-        "nyholm/psr7": "^1.8"
+    "extra": {
+        "plugin-slug": "publishpress-hub",
+        "plugin-name": "PublishPress Hub",
+        "plugin-folder": "publishpress-hub",
+        "version-constant": "PUBLISHPRESS_HUB_VERSION"
     },
     "scripts": {
         "check": [
@@ -95,6 +68,34 @@
             "php-cs-fixer fix .",
             "@fix:cs"
         ],
+        "test:driver": "source ./.env && $CHROMEDRIVER_BINARY --port=$CHROMEDRIVER_PORT",
+        "up": [
+            "@test:up",
+            "@dev:up",
+            "@dev:info",
+            "@test:info"
+        ],
+        "down": [
+            "@test:down",
+            "@dev:down"
+        ],
+        "wp:tests": "bash dev-workspace/scripts/tests-wp-cli.sh wp_test_cli $@",
+        "wp:dev": "bash dev-workspace/scripts/tests-wp-cli.sh wp_dev_cli $@",
+        "dev:up": [
+            "bash dev-workspace/scripts/env.sh up dev",
+            "@dev:info"
+        ],
+        "dev:stop": "bash dev-workspace/scripts/env.sh stop dev",
+        "dev:down": "bash dev-workspace/scripts/env.sh down dev",
+        "dev:restart": "bash dev-workspace/scripts/env.sh restart dev",
+        "dev:clean": [
+            "bash dev-workspace/scripts/env.sh cleanup dev",
+            "@dev:clean-cache"
+        ],
+        "dev:clean-logs": "rm -f dev-workspace/.cache/logs/db_dev/",
+        "dev:clean-cache": "rm -rf dev-workspace/.cache/wp_dev && rm -rf dev-workspace/.cache/db_dev",
+        "dev:refresh": "bash dev-workspace/scripts/env.sh refresh dev",
+        "dev:info": "bash dev-workspace/scripts/env.sh info dev",
         "config:phpcs": "phpcs --config-set installed_paths \"../../phpcsstandards/phpcsutils,../../phpcsstandards/phpcsextra,../../automattic/vipwpcs,../../phpcompatibility/php-compatibility,../../sirbrillig/phpcs-variable-analysis,../../publishpress/publishpress-phpcs-standards/standards,../../wp-coding-standards/wpcs\"",
         "post-install-cmd": [
             "@config:phpcs"
@@ -106,10 +107,37 @@
         "pre-update-cmd": "@composer update --working-dir=./lib",
         "pre-install-cmd": "@composer install --working-dir=./lib"
     },
-    "extra": {
-        "plugin-slug": "publishpress-hub",
-        "plugin-name": "PublishPress Hub",
-        "plugin-folder": "publishpress-hub",
-        "version-constant": "PUBLISHPRESS_HUB_VERSION"
+    "require-dev": {
+        "lucatume/wp-browser": "^4",
+        "codeception/module-asserts": "^3",
+        "codeception/module-phpbrowser": "^3",
+        "codeception/module-webdriver": "^3",
+        "codeception/module-db": "^3",
+        "codeception/module-filesystem": "^3",
+        "codeception/module-cli": "^2",
+        "codeception/util-universalframework": "^1",
+        "codeception/module-rest": "^3",
+        "codeception/module-sequence": "^3",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "wp-coding-standards/wpcs": "^3",
+        "phpmd/phpmd": "^2.15",
+        "squizlabs/php_codesniffer": "^3.8",
+        "overtrue/phplint": "^9.1",
+        "wp-cli/i18n-command": "^2.6",
+        "wp-cli/wp-cli-bundle": "^2.10",
+        "friendsofphp/php-cs-fixer": "^3.49",
+        "phpstan/phpstan": "^1.10",
+        "szepeviktor/phpstan-wordpress": "^1.3",
+        "phpstan/extension-installer": "^1.3",
+        "behat/behat": "^3.14",
+        "automattic/vipwpcs": "^3",
+        "publishpress/publishpress-phpcs-standards": "dev-main",
+        "spatie/ray": "^1.41",
+        "phpunit/phpunit": "^10",
+        "symfony/process": "^6.4",
+        "knplabs/github-api": "^3.16",
+        "symfony/http-client": "^7.1",
+        "nyholm/psr7": "^1.8"
     }
 }

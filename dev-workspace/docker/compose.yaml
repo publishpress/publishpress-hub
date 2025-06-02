@@ -1,0 +1,228 @@
+name: ${CONTAINER_NAME}
+
+services:
+    ##############################################################################
+    # Terminal
+    ##############################################################################
+    terminal:
+        build: ./terminal/
+        profiles: ["dev", "term", "test"]
+        container_name: ${CONTAINER_NAME}_env_term
+        image: ${TERMINAL_IMAGE_NAME}
+        command: ["zsh"]
+        stdin_open: true
+        tty: true
+        working_dir: "/project"
+        volumes:
+            - ../../:/project
+            - ../.cache/.zsh_history:/root/.zsh_history
+            - ../.cache/.bash_history:/root/.bash_history
+            - ../.cache/.npm/_cacache:/root/.npm/_cacache
+            - ../.cache/.npm/_logs:/root/.npm/_logs
+            - ../.cache/.oh-my-zsh/log:/root/.oh-my-zsh/log
+            - ../.cache/.composer/cache:/root/.composer/cache
+            - ../.cache/.composer/auth.json:/root/.composer/auth.json
+    ##############################################################################
+    # Tests
+    ##############################################################################
+    db_test:
+        image: mariadb:latest
+        profiles: ["test"]
+        container_name: ${CONTAINER_NAME}_env_db_test
+        restart: always
+        environment:
+            MARIADB_DATABASE: wordpress
+            MARIADB_USER: wordpress
+            MARIADB_PASSWORD: wordpress
+            MARIADB_ROOT_PASSWORD: root
+        ports:
+          - "3331:3306"
+        volumes:
+            - ../.cache/db_test:/var/lib/mysql
+            - ../.cache/logs/db_test:/var/log/mysql
+            - ./wp/db/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf
+        healthcheck:
+            test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+            start_period: 10s
+            retries: 3
+    wp_test:
+        build: ./wp/wordpress
+        profiles: ["test"]
+        image: ${WP_IMAGE_NAME}
+        container_name: ${CONTAINER_NAME}_env_wp_test
+        restart: always
+        environment:
+            WORDPRESS_DB_HOST: db_test
+            WORDPRESS_DB_USER: wordpress
+            WORDPRESS_DB_PASSWORD: wordpress
+            WORDPRESS_DB_NAME: wordpress
+            WORDPRESS_DEBUG: true
+        ports:
+            - "8031:80"
+        volumes:
+          - ../.cache/wp_test:/var/www/html/
+          - ../../tests/plugins/dummy-hub-1:/var/www/html/wp-content/plugins/dummy-hub-1
+          - ../../tests/plugins/dummy-hub-2:/var/www/html/wp-content/plugins/dummy-hub-2
+          - ./wp/wordpress/conf.d/98-xdebug.ini:/usr/local/etc/php/conf.d/98-xdebug.ini
+          - ./wp/wordpress/conf.d/99-custom.ini:/usr/local/etc/php/conf.d/99-custom.ini
+          - ./wp/wordpress/mu-plugins/load-spatie-ray.php:/var/www/html/wp-content/mu-plugins/load-spatie-ray.php
+          - ./wp/wordpress/mu-plugins/pp-mailhog.php:/var/www/html/wp-content/mu-plugins/pp-mailhog.php
+          - ./wp/wordpress/ray.php:/var/www/html/ray.php
+        depends_on:
+            db_test:
+                condition: service_healthy
+            mailhog:
+                condition: service_started
+        links:
+            - db_test
+            - mailhog
+        healthcheck:
+            test: ["CMD", "test", "-f", "/var/www/html/wp-config.php"]
+            retries: 3
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+    wp_test_cli:
+        build: ./wp/wpcli
+        image: ${WPCLI_IMAGE_NAME}
+        profiles: ["test"]
+        container_name: ${CONTAINER_NAME}_env_wp_test_cli
+        environment:
+            WORDPRESS_DB_HOST: db_test
+            WORDPRESS_DB_USER: wordpress
+            WORDPRESS_DB_PASSWORD: wordpress
+            WORDPRESS_DB_NAME: wordpress
+        volumes:
+            - ../.cache/wp_test:/var/www/html/
+            - ../../tests/plugins/dummy-hub-1:/var/www/html/wp-content/plugins/dummy-hub-1
+            - ../../tests/plugins/dummy-hub-2:/var/www/html/wp-content/plugins/dummy-hub-2
+            - ./wp/wpcli/prepare-wp.sh:/tmp/prepare-wp.sh
+            - ./wp/wpcli/conf.d/my.cnf:/tmp/my.cnf
+            - ./wp/wordpress/conf.d/98-xdebug.ini:/usr/local/etc/php/conf.d/98-xdebug.ini
+            - ./wp/wordpress/conf.d/99-custom.ini:/usr/local/etc/php/conf.d/99-custom.ini
+        depends_on:
+            wp_test:
+                condition: service_healthy
+            db_test:
+                condition: service_healthy
+            mailhog:
+                condition: service_started
+        links:
+            - wp_test
+            - db_test
+            - mailhog
+        working_dir: /var/www/html
+        command: ["/bin/sh", "-c", "sh /tmp/prepare-wp.sh http://localhost:8031 publishpress-hub"]
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+    ##############################################################################
+    # Development
+    ##############################################################################
+    db_dev:
+        image: mariadb:latest
+        profiles: ["dev"]
+        container_name: ${CONTAINER_NAME}_env_db_dev
+        restart: always
+        environment:
+            MARIADB_DATABASE: wordpress
+            MARIADB_USER: wordpress
+            MARIADB_PASSWORD: wordpress
+            MARIADB_ROOT_PASSWORD: root
+        ports:
+          - "3332:3306"
+        volumes:
+            - ../.cache/db_dev:/var/lib/mysql
+            - ../.cache/logs/db_dev:/var/log/mysql
+            - ./wp/db/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf
+        healthcheck:
+            test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+            start_period: 10s
+            retries: 3
+    wp_dev:
+        build: ./wp/wordpress
+        profiles: ["dev"]
+        image: ${WP_IMAGE_NAME}
+        container_name: ${CONTAINER_NAME}_env_wp_dev
+        restart: always
+        environment:
+            WORDPRESS_DB_HOST: db_dev
+            WORDPRESS_DB_USER: wordpress
+            WORDPRESS_DB_PASSWORD: wordpress
+            WORDPRESS_DB_NAME: wordpress
+            WORDPRESS_DEBUG: true
+        ports:
+            - "8032:80"
+        volumes:
+          - ../.cache/wp_dev:/var/www/html/
+          - ../../tests/plugins/dummy-hub-1:/var/www/html/wp-content/plugins/dummy-hub-1
+          - ../../tests/plugins/dummy-hub-2:/var/www/html/wp-content/plugins/dummy-hub-2
+          - ./wp/wordpress/conf.d/98-xdebug.ini:/usr/local/etc/php/conf.d/98-xdebug.ini
+          - ./wp/wordpress/conf.d/99-custom.ini:/usr/local/etc/php/conf.d/99-custom.ini
+          - ./wp/wordpress/mu-plugins/load-spatie-ray.php:/var/www/html/wp-content/mu-plugins/load-spatie-ray.php
+          - ./wp/wordpress/mu-plugins/pp-mailhog.php:/var/www/html/wp-content/mu-plugins/pp-mailhog.php
+          - ./wp/wordpress/ray.php:/var/www/html/ray.php
+        depends_on:
+            db_dev:
+                condition: service_healthy
+            mailhog:
+                condition: service_started
+        links:
+            - db_dev
+            - mailhog
+        healthcheck:
+            test: ["CMD", "test", "-f", "/var/www/html/wp-config.php"]
+            retries: 3
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+    wp_dev_cli:
+        build: ./wp/wpcli
+        image: ${WPCLI_IMAGE_NAME}
+        profiles: ["dev"]
+        container_name: ${CONTAINER_NAME}_env_wp_dev_cli
+        environment:
+            WORDPRESS_DB_HOST: db_dev
+            WORDPRESS_DB_USER: wordpress
+            WORDPRESS_DB_PASSWORD: wordpress
+            WORDPRESS_DB_NAME: wordpress
+        volumes:
+            - ../.cache/wp_dev:/var/www/html/
+            - ../../tests/plugins/dummy-hub-1:/var/www/html/wp-content/plugins/dummy-hub-1
+            - ../../tests/plugins/dummy-hub-2:/var/www/html/wp-content/plugins/dummy-hub-2
+            - ./wp/wpcli/prepare-wp.sh:/tmp/prepare-wp.sh
+            - ./wp/wpcli/conf.d/my.cnf:/tmp/my.cnf
+            - ./wp/wordpress/conf.d/98-xdebug.ini:/usr/local/etc/php/conf.d/98-xdebug.ini
+            - ./wp/wordpress/conf.d/99-custom.ini:/usr/local/etc/php/conf.d/99-custom.ini
+        depends_on:
+            wp_dev:
+                condition: service_healthy
+            db_dev:
+                condition: service_healthy
+            mailhog:
+                condition: service_started
+        links:
+            - wp_dev
+            - db_dev
+            - mailhog
+        working_dir: /var/www/html
+        command: ["/bin/sh", "-c", "sh /tmp/prepare-wp.sh http://localhost:8032 publishpress-hub"]
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+
+    ##############################################################################
+    # Mailhog
+    ##############################################################################
+    mailhog:
+        image: mailhog/mailhog:latest
+        profiles: ["dev", "test"]
+        container_name: ${CONTAINER_NAME}_env_mailhog
+        ports:
+            - "8033:8025" # Web UI
+            - "8034:1025" # SMTP server
+        environment:
+            - MH_STORAGE=maildir
+            - MH_MAILDIR_PATH=/maildir
+        volumes:
+            - ../.cache/mailhog/maildir:/maildir
+        restart: always
+        user: root
+
+
