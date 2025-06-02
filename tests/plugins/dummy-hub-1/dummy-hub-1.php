@@ -47,6 +47,7 @@ class DummyHub1 {
      * Initialize hooks
      */
     private function initHooks() {
+        add_action('admin_menu', [$this, 'addMenuPage']);
         add_action('init', [$this, 'init']);
     }
 
@@ -55,6 +56,20 @@ class DummyHub1 {
      */
     public function init() {
         // Plugin initialization code here
+    }
+
+    /**
+     * Add menu page
+     */
+    public function addMenuPage() {
+        add_menu_page('Dummy Hub 1', 'Dummy Hub 1', 'manage_options', 'dummy-hub-1', [$this, 'renderMenuPage']);
+    }
+
+    /**
+     * Render menu page
+     */
+    public function renderMenuPage() {
+        echo '<div>Dummy Hub 1</div>';
     }
 }
 

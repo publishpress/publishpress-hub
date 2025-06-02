@@ -2,9 +2,22 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "../publishpress-hub-prototype"
 		}
-	]
+	],
+	"launch": {
+        "configurations": [
+            {
+                "name": "Xdebug on wp_dev (dev-workspace)",
+                "type": "php",
+                "request": "launch",
+                "port": 9003,
+                "pathMappings": {
+                    "/var/www/html": "${workspaceFolder}/dev-workspace/.cache/wp_dev",
+                    "/var/www/html/wp-content/plugins/dummy-hub-1": "${workspaceFolder}/tests/plugins/dummy-hub-1",
+					"/var/www/html/wp-content/plugins/dummy-hub-2": "${workspaceFolder}/tests/plugins/dummy-hub-2"
+                },
+                "hostname": "0.0.0.0"
+            }
+        ]
+    }
 }
