@@ -1,0 +1,27 @@
+{
+  "name": "publishpress-hub",
+  "version": "1.0.0",
+  "description": "PublishPress Hub",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/publishpress/publishpress-hub.git"
+  },
+  "keywords": [
+    "wordpress-plugin"
+  ],
+  "license": "GPL-3.0+",
+  "pot": {
+    "languageteam": "PublishPress Hub Translate Team",
+    "lasttranslator": "PublishPress Hub Translate Team"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-select": "^5.7.0"
+  }
+}

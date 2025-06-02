@@ -1,0 +1,23 @@
+parameters:
+    level: 8
+    paths:
+    	- src
+    excludePaths:
+        - lib
+        - vendor
+        - .github
+        - .vscode
+        - .idea
+        - tests
+        - tests-old
+        - .wordpress-org
+        - bin
+        - vendor
+        - dist
+        - languages
+        - node_modules
+        - dev-workspace
+        - cache
+        - .cache
+rules:
+    - Spatie\Ray\PHPStan\RemainingRayCallRule
