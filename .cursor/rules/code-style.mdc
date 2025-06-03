@@ -1,0 +1,218 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# Code Style Guidelines
+
+## PSR-12 PHP Coding Style
+
+- Follow PSR-12 Extended Coding Style Guide for all PHP code
+- Use 4 spaces for indentation, never tabs
+- Opening braces for classes, methods, and functions must go on the next line
+- Control structure keywords must be followed by one space
+- Opening parentheses for control structures must not have a space after them
+- Closing parentheses for control structures must not have a space before them
+- There must be one space after control structure closing parentheses and before braces
+- Class constants must be declared in all upper case with underscore separators
+- Method names must be declared in camelCase
+- Property names should be declared in camelCase
+- Lines should not exceed 120 characters (soft limit)
+- Use strict types declaration at the top of PHP files: `<?php declare(strict_types=1);`
+- Import statements must be grouped and ordered alphabetically within each group
+- There must not be trailing whitespace at the end of lines
+- Files must end with a single blank line
+- PHP closing tags must be omitted from files containing only PHP
+- Use type declarations for all parameters, return types, and properties where possible (minimum PHP 7.4 compatibility)
+
+## Domain Driven Development (DDD)
+
+### Core Concepts
+- **Ubiquitous Language**: Use domain terminology consistently across code, documentation, and conversations
+- **Bounded Context**: Define clear boundaries for domain models and their responsibilities
+- **Domain Model**: Focus on business logic and rules, not technical implementation details
+- **Value Objects**: Create immutable objects for concepts without identity (e.g., Money, Email, Address)
+- **Entities**: Objects with identity that can change over time (e.g., User, Order, Product)
+- **Domain Services**: Business logic that doesn't naturally fit in entities or value objects
+- **Repositories**: Abstract data access behind domain-focused interfaces
+- **Aggregates**: Group related entities and value objects with clear consistency boundaries
+
+### Directory Structure
+```
+src/
+├── Domain/
+│   ├── Entity/
+│   ├── ValueObject/
+│   ├── Service/
+│   └── Contracts/          # Interfaces
+├── Application/
+│   ├── UseCase/
+│   ├── Service/
+│   └── Contracts/          # Interfaces
+├── Infrastructure/
+│   ├── WordPress/          # WordPress-specific implementations
+│   ├── Database/           # Custom database operations
+│   ├── External/           # Third-party integrations
+│   └── Contracts/          # Interfaces
+└── Presentation/
+    ├── Admin/              # WordPress admin interfaces
+    ├── Frontend/           # Public-facing functionality
+    ├── Api/                # REST API endpoints
+│   └── Contracts/          # Interfaces
+```
+
+### Naming Conventions
+- Use domain-specific terminology in class and method names
+- Avoid technical jargon in domain layer (no "Manager", "Helper", "Util" suffixes)
+- Express business operations clearly: `publishPost()`, `calculateTax()`, `approveOrder()`
+
+## Clean Code Principles
+
+### Functions and Methods
+- **Single Responsibility**: Each function should do one thing well
+- **Small Functions**: Keep functions under 20 lines when possible
+- **Descriptive Names**: Use intention-revealing names (`calculateMonthlyRevenue()` not `calc()`)
+- **Minimize Parameters**: Limit to 3 parameters; use objects for more complex data
+- **No Side Effects**: Functions should be predictable and not modify external state unexpectedly
+- **Command Query Separation**: Methods either do something or return something, not both
+
+### Variables and Constants
+- Use descriptive variable names (`$userEmail` not `$e`)
+- Avoid mental mapping (`$i`, `$j`, `$k` in nested loops)
+- Use constants for magic numbers and strings
+- Prefer intention-revealing boolean variables (`$isUserActive` not `$flag`)
+
+### Comments and Documentation
+- Write self-documenting code; comments should explain "why", not "what"
+- Update comments when code changes
+- Use PHPDoc blocks for all public methods and classes
+- Avoid redundant comments that restate the code
+
+### Error Handling
+- Use exceptions for exceptional cases, not control flow
+- Create custom exception classes for domain-specific errors
+- Fail fast: validate inputs early and clearly
+- Don't return null; use Optional pattern or throw exceptions
+
+## SOLID Principles
+
+### Single Responsibility Principle (SRP)
+- Each class should have only one reason to change
+- Separate concerns: data access, business logic, presentation
+- Use composition over inheritance to combine responsibilities
+
+### Open/Closed Principle (OCP)
+- Classes should be open for extension, closed for modification
+- Use interfaces and abstract classes for extensibility
+- Leverage Strategy, Decorator, and Template Method patterns
+
+### Liskov Substitution Principle (LSP)
+- Derived classes must be substitutable for their base classes
+- Maintain behavioral contracts in inheritance hierarchies
+- Avoid strengthening preconditions or weakening postconditions
+
+### Interface Segregation Principle (ISP)
+- Clients shouldn't depend on interfaces they don't use
+- Create specific, focused interfaces rather than large, general ones
+- Use composition to combine multiple interfaces when needed
+
+### Dependency Inversion Principle (DIP)
+- High-level modules shouldn't depend on low-level modules
+- Both should depend on abstractions (interfaces)
+- Use dependency injection containers and constructor injection
+
+## Object Calisthenics
+
+### The 9 Rules
+
+1. **Only One Level of Indentation Per Method**
+   - Extract nested logic into private methods
+   - Improves readability and testability
+
+2. **Don't Use the ELSE Keyword**
+   - Use early returns and guard clauses
+   - Reduces cyclomatic complexity
+
+3. **Wrap All Primitives and Strings**
+   - Create value objects for domain concepts
+   - Example: `Email`, `Money`, `UserId` instead of raw strings/integers
+
+4. **First Class Collections**
+   - Wrap collections in domain-specific classes
+   - Add behavior to collection classes (filtering, transformation)
+
+5. **One Dot Per Line**
+   - Avoid method chaining that violates Law of Demeter
+   - `$user->getProfile()->getEmail()` → use delegation
+
+6. **Don't Abbreviate**
+   - Use full, descriptive names for variables, methods, and classes
+   - `$userRepository` not `$userRepo`
+
+7. **Keep All Entities Small**
+   - Classes should be under 50 lines
+   - Methods should be under 10 lines
+   - Split large classes using composition
+
+8. **No Classes with More Than Two Instance Variables**
+   - Forces high cohesion and single responsibility
+   - Use value objects and composition
+
+9. **No Getters/Setters/Properties**
+   - Tell objects what to do, don't ask for their data
+   - Implement behavior instead of exposing internal state
+
+## Design Patterns (Recommended)
+
+### Creational Patterns
+- **Factory Method**: Create objects without specifying exact classes
+- **Builder**: Construct complex objects step by step
+- **Dependency Injection**: Provide dependencies from external sources
+
+### Behavioral Patterns
+- **Strategy**: Encapsulate algorithms and make them interchangeable
+- **Command**: Encapsulate requests as objects
+- **Observer**: Define one-to-many dependency between objects
+- **State**: Allow object to alter behavior when internal state changes
+
+### Structural Patterns
+- **Adapter**: Allow incompatible interfaces to work together
+- **Decorator**: Add behavior to objects dynamically
+- **Facade**: Provide simplified interface to complex subsystem
+
+## Testing Guidelines
+
+### Unit Testing
+- Test behavior, not implementation details
+- Use descriptive test method names: `test_should_calculate_tax_correctly_for_premium_users()`
+- Follow AAA pattern: Arrange, Act, Assert
+- Mock external dependencies and infrastructure concerns
+- Aim for high test coverage in domain layer (80%+)
+
+### Integration Testing
+- Test the interaction between components
+- Focus on critical business workflows
+- Use test databases and external service mocks
+
+### Test Organization
+```
+tests/
+├── Unit/
+│   ├── Domain/
+│   └── Application/
+├── Integration/
+└── Acceptance/
+```
+
+## Code Review Checklist
+
+- [ ] Follows PSR-12 coding standards
+- [ ] Uses domain language consistently
+- [ ] Classes have single responsibility
+- [ ] Methods are small and focused
+- [ ] No code smells (long parameter lists, feature envy, etc.)
+- [ ] Proper error handling with exceptions
+- [ ] Adequate test coverage
+- [ ] Clear, self-documenting code
+- [ ] Dependencies are injected, not hardcoded
+- [ ] Follows established architectural patterns
