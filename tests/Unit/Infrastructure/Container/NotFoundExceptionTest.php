@@ -9,7 +9,7 @@ use PublishPress\Hub\Infrastructure\Container\ServiceContainer;
 /**
  * Unit tests for ServiceContainer class.
  *
- * @coversDefaultClass \PublishPress\Hub\Infrastructure\Container\ServiceContainer
+ * @coversDefaultClass \PublishPress\Hub\Infrastructure\Container\NotFoundException
  */
 class NotFoundExceptionTest extends Unit
 {

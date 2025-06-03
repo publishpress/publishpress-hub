@@ -20,23 +20,23 @@ namespace PublishPress\Hub\Infrastructure\Autoloader;
  *
  * @since 1.0.0
  */
-class Autoloader
+abstract class Autoloader
 {
     /**
-     * The namespace prefix for the classes.
+     * The namespace prefix and base directory map for the classes.
      *
      * @since 1.0.0
-     * @var string
+     * @var array
      */
-    private static string $namespacePrefix;
+    private static array $namespaceBaseDirs = [];
 
     /**
-     * The base directory for the classes.
+     * Flag to track if autoloader is already registered
      *
      * @since 1.0.0
-     * @var string
+     * @var bool
      */
-    private static string $baseDir;
+    private static bool $registered = false;
 
     /**
      * Register the autoloader with spl_autoload_register
@@ -48,10 +48,28 @@ class Autoloader
      */
     public static function register(string $namespacePrefix, string $baseDir): void
     {
-        self::$namespacePrefix = $namespacePrefix;
-        self::$baseDir = rtrim($baseDir, '/') . '/';
+        self::$namespaceBaseDirs[$namespacePrefix] = rtrim($baseDir, '/') . '/';
 
-        spl_autoload_register([self::class, 'autoload']);
+        // Only register the autoloader once
+        if (!self::$registered) {
+            spl_autoload_register([self::class, 'autoload']);
+            self::$registered = true;
+        }
+    }
+
+    /**
+     * Unregister the autoloader and clear all namespace mappings
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    public static function unregister(): void
+    {
+        if (self::$registered) {
+            spl_autoload_unregister([self::class, 'autoload']);
+            self::$registered = false;
+        }
+        self::$namespaceBaseDirs = [];
     }
 
     /**
@@ -63,19 +81,23 @@ class Autoloader
      */
     public static function autoload(string $class): void
     {
-        $len = strlen(self::$namespacePrefix);
+        foreach (self::$namespaceBaseDirs as $namespacePrefix => $baseDir) {
+            $len = strlen($namespacePrefix);
 
-        if (strncmp(self::$namespacePrefix, $class, $len) !== 0) {
-            return;
-        }
+            if (strncmp($namespacePrefix, $class, $len) !== 0) {
+                continue;
+            }
 
-        $relativeClass = substr($class, $len);
+            $relativeClass = substr($class, $len);
 
-        $file = self::$baseDir . str_replace('\\', '/', $relativeClass) . '.php';
+            $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
 
-        // If the file exists, require it
-        if (file_exists($file)) {
-            require $file;
+            // If the file exists, require it
+            if (file_exists($file)) {
+                require $file;
+
+                return;
+            }
         }
     }
 }
