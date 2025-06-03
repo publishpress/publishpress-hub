@@ -36,6 +36,16 @@
         "version-constant": "PUBLISHPRESS_HUB_VERSION"
     },
     "scripts": {
+        "build:lang-pot": "wp i18n make-pot . ./languages/publishpress-hub.pot --domain=publishpress-hub --exclude=dev-workspace,.wordpress-org,.github,dist,tests,lib,tmp,doc,*.js,*.js.map --allow-root",
+        "build:lang-mo": "wp i18n make-mo ./languages ./languages --allow-root",
+        "build:lang-json": "bash ./dev-workspace/scripts/lang-make-json.sh",
+        "build:lang-php": "wp i18n make-php ./languages --allow-root",
+        "build:lang": [
+            "@build:lang-pot",
+            "@build:lang-mo",
+            "@build:lang-json",
+            "@build:lang-php"
+        ],
         "check": [
             "@check:php",
             "@check:lint",
