@@ -340,6 +340,8 @@ class ThrowableErrorLoggerTest extends Unit
 
     /**
      * Test edge case with null throwable and trace flag.
+     *
+     * @covers ::log
      */
     public function testLogWithNullThrowableAndTrace(): void
     {
@@ -355,6 +357,8 @@ class ThrowableErrorLoggerTest extends Unit
 
     /**
      * Test logger with different exception types.
+     *
+     * @covers ::log
      */
     public function testLogWithDifferentExceptionTypes(): void
     {
@@ -386,6 +390,8 @@ class ThrowableErrorLoggerTest extends Unit
 
     /**
      * Test empty message handling.
+     *
+     * @covers ::log
      */
     public function testEmptyMessageHandling(): void
     {
@@ -404,6 +410,8 @@ class ThrowableErrorLoggerTest extends Unit
 
     /**
      * Test very long message handling.
+     *
+     * @covers ::log
      */
     public function testLongMessageHandling(): void
     {
