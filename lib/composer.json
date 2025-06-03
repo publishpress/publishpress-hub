@@ -1,0 +1,17 @@
+{
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "vendor-dir": "vendor",
+        "preferred-install": {
+            "*": "dist"
+        },
+        "platform-check": false,
+        "autoloader-suffix": "PublishPressHub"
+    },
+    "require": {
+        "php": ">=7.4",
+        "ext-json": "*",
+        "publishpress/psr-container": "^2.0"
+    }
+}
