@@ -1,0 +1,8 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+- Tests should follow good practices.
+- This project uses Codeception and has Unit and Integration tests. It can also have Acceptance or EndToEnd tests.
+- Tests run inside a docker container defined on dev-workspace/docker/compose.yaml, as the services db_test, wp_test, wp_test_cli
