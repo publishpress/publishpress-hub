@@ -102,6 +102,15 @@ class ThrowableErrorLoggerTest extends Unit
         $this->assertFalse($logger->canLog());
     }
 
+    public function testLogWhenErrorLogAvailable(): void
+    {
+        $logger = new ThrowableErrorLogger([
+            'error_log_function' => 'non_existent_function',
+        ]);
+        $result = $logger->log('Test message');
+        $this->assertFalse($result);
+    }
+
     /**
      * Test setConfig and getConfig methods.
      *
