@@ -6,7 +6,7 @@ if [[ ! $(pwd) =~ .*dev-workspace$ ]]; then
 fi
 
 set -a
-source /project/.env
+source ../.env
 set +a
 
 SERVICE_NAME=$1

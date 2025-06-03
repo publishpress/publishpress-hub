@@ -11,6 +11,12 @@
             "role": "Developer"
         }
     ],
+    "extra": {
+        "plugin-slug": "publishpress-hub",
+        "plugin-name": "PublishPress Hub",
+        "plugin-folder": "publishpress-hub",
+        "version-constant": "PUBLISHPRESS_HUB_VERSION"
+    },
     "config": {
         "preferred-install": {
             "*": "dist"
@@ -29,11 +35,38 @@
         "php": ">=7.4",
         "ext-json": "*"
     },
-    "extra": {
-        "plugin-slug": "publishpress-hub",
-        "plugin-name": "PublishPress Hub",
-        "plugin-folder": "publishpress-hub",
-        "version-constant": "PUBLISHPRESS_HUB_VERSION"
+    "require-dev": {
+        "lucatume/wp-browser": "^4",
+        "codeception/module-asserts": "^3",
+        "codeception/module-phpbrowser": "^3",
+        "codeception/module-webdriver": "^3",
+        "codeception/module-db": "^3",
+        "codeception/module-filesystem": "^3",
+        "codeception/module-cli": "^2",
+        "codeception/util-universalframework": "^1",
+        "codeception/module-rest": "^3",
+        "codeception/module-sequence": "^3",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "wp-coding-standards/wpcs": "^3",
+        "phpmd/phpmd": "^2.15",
+        "squizlabs/php_codesniffer": "^3.8",
+        "overtrue/phplint": "^9.1",
+        "wp-cli/i18n-command": "^2.6",
+        "wp-cli/wp-cli-bundle": "^2.10",
+        "friendsofphp/php-cs-fixer": "^3.49",
+        "phpstan/phpstan": "^1.10",
+        "szepeviktor/phpstan-wordpress": "^1.3",
+        "phpstan/extension-installer": "^1.3",
+        "behat/behat": "^3.14",
+        "automattic/vipwpcs": "^3",
+        "publishpress/publishpress-phpcs-standards": "dev-main",
+        "spatie/ray": "^1.41",
+        "phpunit/phpunit": "^10",
+        "symfony/process": "^6.4",
+        "knplabs/github-api": "^3.16",
+        "symfony/http-client": "^7.1",
+        "nyholm/psr7": "^1.8"
     },
     "scripts": {
         "build:lang-pot": "wp i18n make-pot . ./languages/publishpress-hub.pot --domain=publishpress-hub --exclude=dev-workspace,.wordpress-org,.github,dist,tests,lib,tmp,doc,*.js,*.js.map --allow-root",
@@ -106,6 +139,35 @@
         "dev:clean-cache": "rm -rf dev-workspace/.cache/wp_dev && rm -rf dev-workspace/.cache/db_dev",
         "dev:refresh": "bash dev-workspace/scripts/env.sh refresh dev",
         "dev:info": "bash dev-workspace/scripts/env.sh info dev",
+        "test:db-export": "bash dev-workspace/scripts/tests-db-export.sh $@",
+        "test:db-import": "bash dev-workspace/scripts/tests-db-import.sh $@",
+        "test:up": [
+            "bash dev-workspace/scripts/env.sh up test",
+            "@test:info"
+        ],
+        "test:down": "bash dev-workspace/scripts/env.sh down test",
+        "test:restart": "bash dev-workspace/scripts/env.sh restart test",
+        "test:stop": "bash dev-workspace/scripts/env.sh stop test",
+        "test:clean": [
+            "bash dev-workspace/scripts/env.sh cleanup test",
+            "@test:clean-cache",
+            "composer codecept clean"
+        ],
+        "test:clean-logs": "rm -f dev-workspace/.cache/logs/db_test/",
+        "test:clean-cache": "rm -rf dev-workspace/.cache/wp_test && rm -rf dev-workspace/.cache/db_test",
+        "test:db-logs": "bash dev-workspace/scripts/tests-db-logs.sh $@",
+        "test:info": "bash dev-workspace/scripts/env.sh info test",
+        "test:refresh": "bash dev-workspace/scripts/env.sh refresh test",
+        "test:snippets": "composer codecept gherkin:snippets $@",
+        "test:steps": "composer codecept gherkin:steps $@",
+        "test": "vendor/bin/codecept run $@",
+        "test:all": [
+            "vendor/bin/codecept run Unit",
+            "vendor/bin/codecept run Integration"
+        ],
+        "test:debug": "php -d xdebug.mode=debug -d xdebug.start_with_request=yes vendor/bin/codecept run $@",
+        "codecept": "./vendor/bin/codecept $@",
+        "docker:cleanup": "docker system prune -f",
         "config:phpcs": "phpcs --config-set installed_paths \"../../phpcsstandards/phpcsutils,../../phpcsstandards/phpcsextra,../../automattic/vipwpcs,../../phpcompatibility/php-compatibility,../../sirbrillig/phpcs-variable-analysis,../../publishpress/publishpress-phpcs-standards/standards,../../wp-coding-standards/wpcs\"",
         "post-install-cmd": [
             "@config:phpcs"
@@ -116,38 +178,5 @@
         "pre-autoload-dump": "@composer dumpautoload --working-dir=./lib",
         "pre-update-cmd": "@composer update --working-dir=./lib",
         "pre-install-cmd": "@composer install --working-dir=./lib"
-    },
-    "require-dev": {
-        "lucatume/wp-browser": "^4",
-        "codeception/module-asserts": "^3",
-        "codeception/module-phpbrowser": "^3",
-        "codeception/module-webdriver": "^3",
-        "codeception/module-db": "^3",
-        "codeception/module-filesystem": "^3",
-        "codeception/module-cli": "^2",
-        "codeception/util-universalframework": "^1",
-        "codeception/module-rest": "^3",
-        "codeception/module-sequence": "^3",
-        "dealerdirect/phpcodesniffer-composer-installer": "^1",
-        "phpcompatibility/php-compatibility": "^9.3",
-        "wp-coding-standards/wpcs": "^3",
-        "phpmd/phpmd": "^2.15",
-        "squizlabs/php_codesniffer": "^3.8",
-        "overtrue/phplint": "^9.1",
-        "wp-cli/i18n-command": "^2.6",
-        "wp-cli/wp-cli-bundle": "^2.10",
-        "friendsofphp/php-cs-fixer": "^3.49",
-        "phpstan/phpstan": "^1.10",
-        "szepeviktor/phpstan-wordpress": "^1.3",
-        "phpstan/extension-installer": "^1.3",
-        "behat/behat": "^3.14",
-        "automattic/vipwpcs": "^3",
-        "publishpress/publishpress-phpcs-standards": "dev-main",
-        "spatie/ray": "^1.41",
-        "phpunit/phpunit": "^10",
-        "symfony/process": "^6.4",
-        "knplabs/github-api": "^3.16",
-        "symfony/http-client": "^7.1",
-        "nyholm/psr7": "^1.8"
     }
 }
