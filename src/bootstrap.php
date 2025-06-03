@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Bootstrap file for the PublishPress Hub library.
  *
@@ -11,8 +11,6 @@
 
 namespace PublishPress\Hub;
 
-defined('ABSPATH') or die('Direct access not allowed.');
-
 /*
  * Check if the PHP and WP versions are compatible.
  */
@@ -20,6 +18,10 @@ global $wp_version;
 
 $minPHPVersion = '7.4';
 $minWPVersion  = '6.7';
+
+if (empty($wp_version)) {
+    return;
+}
 
 // If the PHP or WP version is not compatible, terminate the plugin execution.
 $invalidPHPVersion = version_compare(phpversion(), $minPHPVersion, '<');
@@ -29,12 +31,4 @@ if ($invalidPHPVersion || $invalidWPVersion) {
     return;
 }
 
-/*
- * Load the library.
- */
-require_once __DIR__ . '/Hub.php';
-
-$publishpressHub = new \PublishPress\Hub\Hub();
-$publishpressHub->init();
-
-return $publishpressHub;
+require_once __DIR__ . '/include.php';

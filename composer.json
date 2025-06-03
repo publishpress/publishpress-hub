@@ -1,5 +1,6 @@
 {
     "name": "publishpress/publishpress-hub",
+    "version": "1.0.0",
     "type": "library",
     "license": "GPL-3.0-or-later",
     "description": "PublishPress Hub",
@@ -12,10 +13,20 @@
         }
     ],
     "extra": {
-        "plugin-slug": "publishpress-hub",
-        "plugin-name": "PublishPress Hub",
-        "plugin-folder": "publishpress-hub",
-        "version-constant": "PUBLISHPRESS_HUB_VERSION"
+        "version-constant": "PUBLISHPRESS_HUB_VERSION",
+        "generator":{
+            "namespace": "PublishPress\\Hub",
+            "lib-class-test": "class_exists('PublishPress\\Hub\\Infrastructure\\Container\\ServiceContainer')",
+            "action-initialize-priority": "-190",
+            "action-register-priority": "-200",
+            "src-dir": "src",
+            "generate-test-file": false
+        }
+    },
+    "autoload": {
+        "files": [
+            "src/bootstrap.php"
+        ]
     },
     "config": {
         "preferred-install": {
@@ -66,9 +77,11 @@
         "symfony/process": "^6.4",
         "knplabs/github-api": "^3.16",
         "symfony/http-client": "^7.1",
-        "nyholm/psr7": "^1.8"
+        "nyholm/psr7": "^1.8",
+        "publishpress/version-loader-generator": "^1.0"
     },
     "scripts": {
+        "build": "vendor/bin/version-loader-generator",
         "build:lang-pot": "wp i18n make-pot . ./languages/publishpress-hub.pot --domain=publishpress-hub --exclude=dev-workspace,.wordpress-org,.github,dist,tests,lib,tmp,doc,*.js,*.js.map --allow-root",
         "build:lang-mo": "wp i18n make-mo ./languages ./languages --allow-root",
         "build:lang-json": "bash ./dev-workspace/scripts/lang-make-json.sh",
