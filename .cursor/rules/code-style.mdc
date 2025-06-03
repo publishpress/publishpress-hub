@@ -1,7 +1,7 @@
 ---
-description:
+description: Code Style and Project Structure Guidelines for PHP Projects
 globs:
-alwaysApply: true
+alwaysApply: false
 ---
 # Code Style Guidelines
 
@@ -44,21 +44,37 @@ src/
 │   ├── Entity/
 │   ├── ValueObject/
 │   ├── Service/
-│   └── Contracts/          # Interfaces
+│   ├── Contracts/                   # Domain-specific interfaces
+│   ├── HooksList.php                # Abstract list of domain hooks
+│   └── ServicesList.php             # Abstract list of domain service names
 ├── Application/
 │   ├── UseCase/
+│   ├── Contracts/                   # Application-specific interfaces
 │   ├── Service/
-│   └── Contracts/          # Interfaces
+│   │   └── HubService.php           # Clean business logic
+│   ├── HooksList.php                # Abstract list of application hooks
+│   └── ServicesList.php             # Abstract list of application service names
 ├── Infrastructure/
-│   ├── WordPress/          # WordPress-specific implementations
-│   ├── Database/           # Custom database operations
-│   ├── External/           # Third-party integrations
-│   └── Contracts/          # Interfaces
-└── Presentation/
-    ├── Admin/              # WordPress admin interfaces
-    ├── Frontend/           # Public-facing functionality
-    ├── Api/                # REST API endpoints
-│   └── Contracts/          # Interfaces
+│   ├── WordPress/
+│   │   └── Logger/
+│   │       └── ThrowableErrorLogger.php  # WordPress implementation
+│   ├── Database/
+│   ├── External/
+│   ├── Container/
+│   │   └── ServiceContainer.php     # DI Container
+│   ├── Contracts/
+│   │   └── LoggerInterface.php      # Infrastructure contracts
+│   ├── HooksList.php                # Abstract list of infrastructure hooks
+│   └── ServicesList.php             # Abstract list of infrastructure service names
+├── Presentation/
+│   ├── Admin/
+│   ├── Frontend/
+│   ├── Api/
+│   ├── Contracts/                   # Presentation-specific interfaces
+│   ├── HooksList.php                # Abstract list of presentation hooks
+│   └── ServicesList.php             # Abstract list of presentation service names
+├── services.php                     # Service bindings
+└── bootstrap.php                    # Entry point
 ```
 
 ### Naming Conventions
