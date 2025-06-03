@@ -6,7 +6,7 @@ services:
     ##############################################################################
     terminal:
         build: ./terminal/
-        profiles: ["dev", "term", "test"]
+        profiles: ["term"]
         container_name: ${CONTAINER_NAME}_env_term
         image: ${TERMINAL_IMAGE_NAME}
         command: ["zsh"]
