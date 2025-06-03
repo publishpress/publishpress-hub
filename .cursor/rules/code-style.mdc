@@ -23,7 +23,18 @@ alwaysApply: false
 - There must not be trailing whitespace at the end of lines
 - Files must end with a single blank line
 - PHP closing tags must be omitted from files containing only PHP
+- All methods should have a docblock comment above it with a @since tag indicating the version it was introduced
 - Use type declarations for all parameters, return types, and properties where possible (minimum PHP 7.4 compatibility)
+- All files must have the following comment at the top:
+
+/**
+ * <file purpose description>
+ *
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
 
 ## Domain Driven Development (DDD)
 
@@ -44,16 +55,12 @@ src/
 │   ├── Entity/
 │   ├── ValueObject/
 │   ├── Service/
-│   ├── Contracts/                   # Domain-specific interfaces
-│   ├── HooksList.php                # Abstract list of domain hooks
-│   └── ServicesList.php             # Abstract list of domain service names
+│   └── Contracts/                   # Domain-specific interfaces
 ├── Application/
 │   ├── UseCase/
 │   ├── Contracts/                   # Application-specific interfaces
-│   ├── Service/
-│   │   └── HubService.php           # Clean business logic
-│   ├── HooksList.php                # Abstract list of application hooks
-│   └── ServicesList.php             # Abstract list of application service names
+│   └── Service/
+│       └── HubService.php           # Clean business logic
 ├── Infrastructure/
 │   ├── WordPress/
 │   │   └── Logger/
@@ -62,18 +69,17 @@ src/
 │   ├── External/
 │   ├── Container/
 │   │   └── ServiceContainer.php     # DI Container
-│   ├── Contracts/
-│   │   └── LoggerInterface.php      # Infrastructure contracts
-│   ├── HooksList.php                # Abstract list of infrastructure hooks
-│   └── ServicesList.php             # Abstract list of infrastructure service names
+│   └── Contracts/
+│       └── LoggerInterface.php      # Infrastructure contracts
 ├── Presentation/
 │   ├── Admin/
 │   ├── Frontend/
 │   ├── Api/
-│   ├── Contracts/                   # Presentation-specific interfaces
-│   ├── HooksList.php                # Abstract list of presentation hooks
-│   └── ServicesList.php             # Abstract list of presentation service names
+│   └── Contracts/                   # Presentation-specific interfaces
 ├── services.php                     # Service bindings
+├── ServicesList.php                 # List of service names
+├── HooksList.php                    # List of hook names
+├── Hub.php                          # Facade with DI
 └── bootstrap.php                    # Entry point
 ```
 
