@@ -9,6 +9,12 @@ paths:
 actor_suffix: Tester
 params:
     - .env
+coverage:
+    enabled: true
+    include:
+        - src/**
+    path: tests/_output/coverage
+    memoryLimit: 1024M
 extensions:
     enabled:
         - Codeception\Extension\RunFailed

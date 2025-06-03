@@ -161,6 +161,7 @@
         "test:snippets": "composer codecept gherkin:snippets $@",
         "test:steps": "composer codecept gherkin:steps $@",
         "test": "vendor/bin/codecept run $@",
+        "test:coverage": "vendor/bin/codecept run --coverage --coverage-html",
         "test:all": [
             "vendor/bin/codecept run Unit",
             "vendor/bin/codecept run Integration"
