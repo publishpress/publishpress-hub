@@ -31,6 +31,6 @@ gh_token.txt
 # VS Code user-specific settings
 .vscode/
 
-publishpress-future.code-workspace
+publishpress-hub.code-workspace
 
 .phpactor.json
