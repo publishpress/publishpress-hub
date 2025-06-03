@@ -1,17 +1,16 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Throwable error logger for the PublishPress Hub library.
  *
- * @package PublishPress\Hub\Logger
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
 
-namespace PublishPress\Hub\Logger;
+namespace PublishPress\Hub\Infrastructure\WordPress\Logger;
 
-use PublishPress\Hub\Contracts\LoggerInterface;
+use PublishPress\Hub\Infrastructure\Contracts\LoggerInterface;
 use Throwable;
 
 defined('ABSPATH') or die('No direct script access allowed.');
@@ -27,14 +26,6 @@ defined('ABSPATH') or die('No direct script access allowed.');
 class ThrowableErrorLogger implements LoggerInterface
 {
     /**
-     * The singleton instance.
-     *
-     * @since 1.0.0
-     * @var ThrowableErrorLogger|null
-     */
-    private static $instance = null;
-
-    /**
      * Configuration options for the logger.
      *
      * @since 1.0.0
@@ -49,86 +40,22 @@ class ThrowableErrorLogger implements LoggerInterface
      * @var array
      */
     private const DEFAULT_CONFIG = [
-        'enable_debug_check' => true,
         'include_class_name' => true,
         'include_file_path' => true,
         'trace_separator' => ' > ',
         'message_prefix' => '',
+        'error_log_function' => 'error_log',
     ];
 
     /**
-     * Private constructor to prevent direct instantiation.
+     * Constructor.
      *
      * @since 1.0.0
      * @param array $config Optional configuration array.
      */
-    private function __construct(array $config = [])
+    public function __construct(array $config = [])
     {
         $this->config = array_merge(self::DEFAULT_CONFIG, $config);
-    }
-
-    /**
-     * Prevent cloning of the instance.
-     *
-     * @since 1.0.0
-     * @return void
-     */
-    private function __clone()
-    {
-        // Prevent cloning
-    }
-
-    /**
-     * Prevent unserialization of the instance.
-     *
-     * @since 1.0.0
-     * @return void
-     */
-    public function __wakeup()
-    {
-        throw new \Exception('Cannot unserialize singleton');
-    }
-
-    /**
-     * Get the singleton instance.
-     *
-     * @since 1.0.0
-     * @param array $config Optional configuration array (only used on first call).
-     * @return ThrowableErrorLogger
-     */
-    public static function getInstance(array $config = []): self
-    {
-        if (self::$instance === null) {
-            self::$instance = new self($config);
-        }
-
-        return self::$instance;
-    }
-
-    /**
-     * Reset the singleton instance (primarily for testing).
-     *
-     * @since 1.0.0
-     * @return void
-     */
-    public static function resetInstance(): void
-    {
-        self::$instance = null;
-    }
-
-    /**
-     * Create a new logger instance with custom configuration.
-     *
-     * This bypasses the singleton pattern for cases where you need
-     * multiple loggers with different configurations.
-     *
-     * @since 1.0.0
-     * @param array $config Configuration array.
-     * @return ThrowableErrorLogger
-     */
-    public static function createInstance(array $config = []): self
-    {
-        return new self($config);
     }
 
     /**
@@ -146,6 +73,8 @@ class ThrowableErrorLogger implements LoggerInterface
             return false;
         }
 
+        $message = trim($message);
+
         $logMessage = $this->buildLogMessage($message, $throwable, $includeTrace);
         $sanitizedMessage = $this->sanitizeMessage($logMessage);
 
@@ -160,12 +89,8 @@ class ThrowableErrorLogger implements LoggerInterface
      */
     public function canLog(): bool
     {
-        if (! function_exists('error_log')) {
+        if (! is_callable($this->config['error_log_function'])) {
             return false;
-        }
-
-        if ($this->config['enable_debug_check']) {
-            return defined('WP_DEBUG') && WP_DEBUG;
         }
 
         return true;
@@ -324,7 +249,12 @@ class ThrowableErrorLogger implements LoggerInterface
      */
     private function writeLog(string $message): bool
     {
-        // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-        return error_log($message) !== false;
+        $errorLogFunction = $this->config['error_log_function'];
+
+        if (! is_callable($errorLogFunction)) {
+            return false;
+        }
+
+        return $errorLogFunction($message) !== false;
     }
 }
