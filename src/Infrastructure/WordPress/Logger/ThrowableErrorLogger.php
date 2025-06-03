@@ -13,8 +13,6 @@ namespace PublishPress\Hub\Infrastructure\WordPress\Logger;
 use PublishPress\Hub\Infrastructure\Contracts\LoggerInterface;
 use Throwable;
 
-defined('ABSPATH') or die('No direct script access allowed.');
-
 /**
  * Logger for throwable errors with configurable formatting and output.
  *
