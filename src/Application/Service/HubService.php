@@ -10,6 +10,9 @@
 
 namespace PublishPress\Hub\Application\Service;
 
+use PublishPress\Hub\Domain\Plugin\Contracts\PluginRepositoryInterface;
+use PublishPress\Hub\Domain\Plugin\Plugin;
+
 /**
  * Application service for managing the PublishPress Hub library.
  *
@@ -29,13 +32,22 @@ class HubService
     private bool $initialized = false;
 
     /**
+     * The plugin repository.
+     *
+     * @since 1.0.0
+     * @var PluginRepositoryInterface
+     */
+    private PluginRepositoryInterface $pluginRepository;
+
+    /**
      * Constructor.
      *
      * @since 1.0.0
      */
-    public function __construct()
-    {
-
+    public function __construct(
+        PluginRepositoryInterface $pluginRepository
+    ) {
+        $this->pluginRepository = $pluginRepository;
     }
 
     /**
@@ -53,6 +65,8 @@ class HubService
         // Merge additional config
         $this->initialized = true;
 
+        $this->registerHooks();
+
         return $this;
     }
 
@@ -65,5 +79,41 @@ class HubService
     public function isInitialized(): bool
     {
         return $this->initialized;
+    }
+
+    /**
+     * Register the hooks.
+     *
+     * @since 1.0.0
+     */
+    private function registerHooks(): void
+    {
+        add_action('publishpress_hub_register_plugin', [$this, 'registerPlugin']);
+    }
+
+    /**
+     * Register a plugin.
+     *
+     * @since 1.0.0
+     * @param string $name
+     * @param string $slug
+     * @param string $version
+     * @param string $path
+     */
+    public function registerPlugin(string $name, string $slug, string $version, string $path): void
+    {
+        $plugin = new Plugin($name, $slug, $version, $path);
+        $this->pluginRepository->register($plugin);
+    }
+
+    /**
+     * Get the plugins.
+     *
+     * @since 1.0.0
+     * @return array
+     */
+    public function getPlugins(): array
+    {
+        return $this->pluginRepository->getAllPlugins();
     }
 }

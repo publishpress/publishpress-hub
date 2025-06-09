@@ -3,6 +3,7 @@
 namespace PublishPress\Hub\Infrastructure\Container;
 
 use PublishPress\Hub\Application\Service\HubService;
+use PublishPress\Hub\Domain\Plugin\PluginRepository;
 use PublishPress\Hub\Infrastructure\Container\Contracts\ServiceContainerInterface;
 use PublishPress\Hub\Infrastructure\WordPress\Logger\Logger;
 
@@ -24,6 +25,12 @@ return [
     },
 
     Services::HUB_SERVICE => function (ServiceContainerInterface $container) {
-        return new HubService();
+        return new HubService(
+            $container->get(Services::PLUGIN_REPOSITORY)
+        );
+    },
+
+    Services::PLUGIN_REPOSITORY => function (ServiceContainerInterface $container) {
+        return new PluginRepository();
     },
 ];
