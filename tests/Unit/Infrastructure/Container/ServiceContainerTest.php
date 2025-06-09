@@ -3,10 +3,9 @@
 namespace Tests\Unit\Infrastructure\Container;
 
 use Codeception\Test\Unit;
+use PublishPress\Hub\Infrastructure\Container\Contracts\ServiceContainerInterface;
 use PublishPress\Hub\Infrastructure\Container\NotFoundException;
 use PublishPress\Hub\Infrastructure\Container\ServiceContainer;
-use PublishPress\Hub\Infrastructure\Contracts\ServiceContainerInterface;
-use PublishPress\Psr\Container\NotFoundExceptionInterface;
 use ReflectionClass;
 
 /**

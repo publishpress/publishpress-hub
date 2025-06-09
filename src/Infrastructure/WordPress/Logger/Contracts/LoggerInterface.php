@@ -8,7 +8,7 @@
  * @since 1.0.0
  */
 
-namespace PublishPress\Hub\Infrastructure\Contracts;
+namespace PublishPress\Hub\Infrastructure\WordPress\Logger\Contracts;
 
 use Throwable;
 

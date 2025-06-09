@@ -12,9 +12,9 @@
  * @since 1.0.0
  */
 
-namespace PublishPress\Hub;
+namespace PublishPress\Hub\Infrastructure;
 
-abstract class HooksList
+abstract class Hooks
 {
     public const ACTION_INIT = 'init';
 }

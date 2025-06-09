@@ -12,11 +12,11 @@
  * @since 1.0.0
  */
 
-namespace PublishPress\Hub;
+namespace PublishPress\Hub\Infrastructure\Container;
 
-abstract class ServicesList
+abstract class Services
 {
-    public const ERROR_LOGGER = 'publishpress-hub/error-logger';
+    public const LOGGER = 'publishpress-hub/logger';
 
     public const HUB_SERVICE = 'publishpress-hub/hub-service';
 }

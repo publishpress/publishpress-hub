@@ -5,16 +5,15 @@ namespace Tests\Unit\Infrastructure\WordPress\Logger;
 use Codeception\Test\Unit;
 use CustomException;
 use Exception;
-use PublishPress\Hub\Infrastructure\WordPress\Logger\ThrowableErrorLogger;
+use PublishPress\Hub\Infrastructure\WordPress\Logger\Logger;
 use RuntimeException;
-use Throwable;
 
 /**
- * Unit tests for ThrowableErrorLogger class.
+ * Unit tests for Logger class.
  *
- * @coversDefaultClass \PublishPress\Hub\Infrastructure\WordPress\Logger\ThrowableErrorLogger
+ * @coversDefaultClass \PublishPress\Hub\Infrastructure\WordPress\Logger\Logger
  */
-class ThrowableErrorLoggerTest extends Unit
+class LoggerTest extends Unit
 {
     private $logOutput = '';
 
@@ -42,7 +41,7 @@ class ThrowableErrorLoggerTest extends Unit
      */
     public function testConstructorWithDefaultConfig(): void
     {
-        $logger = new ThrowableErrorLogger();
+        $logger = new Logger();
 
         $this->assertTrue($logger->getConfig('include_class_name'));
         $this->assertTrue($logger->getConfig('include_file_path'));
@@ -65,7 +64,7 @@ class ThrowableErrorLoggerTest extends Unit
             'error_log_function' => 'var_dump',
         ];
 
-        $logger = new ThrowableErrorLogger($config);
+        $logger = new Logger($config);
 
         $this->assertFalse($logger->getConfig('include_class_name'));
         $this->assertEquals('TEST: ', $logger->getConfig('message_prefix'));
@@ -81,7 +80,7 @@ class ThrowableErrorLoggerTest extends Unit
      */
     public function testCanLogWhenErrorLogAvailable(): void
     {
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
 
@@ -95,7 +94,7 @@ class ThrowableErrorLoggerTest extends Unit
      */
     public function testCanLogWhenErrorLogNotAvailable(): void
     {
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'error_log_function' => null,
         ]);
 
@@ -104,7 +103,7 @@ class ThrowableErrorLoggerTest extends Unit
 
     public function testLogWhenErrorLogAvailable(): void
     {
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'error_log_function' => 'non_existent_function',
         ]);
         $result = $logger->log('Test message');
@@ -119,7 +118,7 @@ class ThrowableErrorLoggerTest extends Unit
      */
     public function testSetAndGetConfig(): void
     {
-        $logger = new ThrowableErrorLogger();
+        $logger = new Logger();
 
         $logger->setConfig('test_key', 'test_value');
         $this->assertEquals('test_value', $logger->getConfig('test_key'));
@@ -141,7 +140,7 @@ class ThrowableErrorLoggerTest extends Unit
     public function testLogWithSimpleMessage(): void
     {
         $message = 'Test error message';
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
 
@@ -159,7 +158,7 @@ class ThrowableErrorLoggerTest extends Unit
     public function testLogWithThrowableNoTrace(): void
     {
         $exception = new Exception('Test exception message');
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
 
@@ -177,7 +176,7 @@ class ThrowableErrorLoggerTest extends Unit
     public function testLogWithThrowableAndTrace(): void
     {
         $exception = new RuntimeException('Runtime error');
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
 
@@ -194,7 +193,7 @@ class ThrowableErrorLoggerTest extends Unit
      */
     public function testLogWithMessagePrefix(): void
     {
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'message_prefix' => '[CUSTOM] ',
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
@@ -212,7 +211,7 @@ class ThrowableErrorLoggerTest extends Unit
      */
     public function testLogWithClassNameEnabled(): void
     {
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'include_class_name' => true,
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
@@ -232,7 +231,7 @@ class ThrowableErrorLoggerTest extends Unit
      */
     public function testLogWithClassNameDisabled(): void
     {
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'include_class_name' => false,
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
@@ -253,7 +252,7 @@ class ThrowableErrorLoggerTest extends Unit
      */
     public function testLogWithFilePathEnabled(): void
     {
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'include_file_path' => true,
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
@@ -273,7 +272,7 @@ class ThrowableErrorLoggerTest extends Unit
      */
     public function testLogWithFilePathDisabled(): void
     {
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'include_file_path' => false,
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
@@ -293,7 +292,7 @@ class ThrowableErrorLoggerTest extends Unit
      */
     public function testLogWithCustomTraceSeparator(): void
     {
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'trace_separator' => ' | ',
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
@@ -315,7 +314,7 @@ class ThrowableErrorLoggerTest extends Unit
      */
     public function testLogWithTraceFlagDisabled(): void
     {
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
 
@@ -337,7 +336,7 @@ class ThrowableErrorLoggerTest extends Unit
     public function testLogMessageSanitization(): void
     {
         $messageWithSpecialChars = "Test message with \x000null\x002\x004 chars";
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
 
@@ -354,7 +353,7 @@ class ThrowableErrorLoggerTest extends Unit
      */
     public function testLogWithNullThrowableAndTrace(): void
     {
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
 
@@ -371,7 +370,7 @@ class ThrowableErrorLoggerTest extends Unit
      */
     public function testLogWithDifferentExceptionTypes(): void
     {
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
 
@@ -404,7 +403,7 @@ class ThrowableErrorLoggerTest extends Unit
      */
     public function testEmptyMessageHandling(): void
     {
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
 
@@ -424,7 +423,7 @@ class ThrowableErrorLoggerTest extends Unit
      */
     public function testLongMessageHandling(): void
     {
-        $logger = new ThrowableErrorLogger([
+        $logger = new Logger([
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
 

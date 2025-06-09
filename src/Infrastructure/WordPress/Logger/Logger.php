@@ -10,7 +10,7 @@
 
 namespace PublishPress\Hub\Infrastructure\WordPress\Logger;
 
-use PublishPress\Hub\Infrastructure\Contracts\LoggerInterface;
+use PublishPress\Hub\Infrastructure\WordPress\Logger\Contracts\LoggerInterface;
 use Throwable;
 
 /**
@@ -21,7 +21,7 @@ use Throwable;
  *
  * @since 1.0.0
  */
-class ThrowableErrorLogger implements LoggerInterface
+class Logger implements LoggerInterface
 {
     /**
      * Configuration options for the logger.

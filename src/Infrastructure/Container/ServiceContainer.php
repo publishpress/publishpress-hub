@@ -12,7 +12,7 @@
 namespace PublishPress\Hub\Infrastructure\Container;
 
 use Closure;
-use PublishPress\Hub\Infrastructure\Contracts\ServiceContainerInterface;
+use PublishPress\Hub\Infrastructure\Container\Contracts\ServiceContainerInterface;
 
 /**
  * PHP Dependency Injection Container PSR-11.

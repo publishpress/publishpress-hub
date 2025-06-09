@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace PublishPress\Hub\Infrastructure\Contracts;
+namespace PublishPress\Hub\Infrastructure\Container\Contracts;
 
 /**
  * Service container interface.

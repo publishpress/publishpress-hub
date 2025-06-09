@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 
+namespace PublishPress\Hub\Infrastructure\Container;
+
 use PublishPress\Hub\Application\Service\HubService;
-use PublishPress\Hub\Infrastructure\Contracts\ServiceContainerInterface;
-use PublishPress\Hub\Infrastructure\WordPress\Logger\ThrowableErrorLogger;
-use PublishPress\Hub\ServicesList;
+use PublishPress\Hub\Infrastructure\Container\Contracts\ServiceContainerInterface;
+use PublishPress\Hub\Infrastructure\WordPress\Logger\Logger;
 
 /**
  * Service definitions for the PublishPress Hub library.
@@ -18,11 +19,11 @@ use PublishPress\Hub\ServicesList;
  */
 
 return [
-    ServicesList::ERROR_LOGGER => function (ServiceContainerInterface $container) {
-        return new ThrowableErrorLogger();
+    Services::LOGGER => function (ServiceContainerInterface $container) {
+        return new Logger();
     },
 
-    ServicesList::HUB_SERVICE => function (ServiceContainerInterface $container) {
+    Services::HUB_SERVICE => function (ServiceContainerInterface $container) {
         return new HubService();
     },
 ];
