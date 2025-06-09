@@ -16,6 +16,8 @@ if (! function_exists('add_action')) {
     return;
 }
 
+// TODO: Convert this into a class to be reusable.
+
 if (! function_exists(__NAMESPACE__ . '\register1Dot0Dot0')) {
     if (! defined('PUBLISHPRESS_HUB_INCLUDED')) {
         define('PUBLISHPRESS_HUB_INCLUDED', __DIR__);

@@ -10,6 +10,7 @@
 
 namespace PublishPress\Hub;
 
+// Can we reuse this class for other libraries?
 if (! class_exists('PublishPress\\Hub\\Versions')) {
     /**
      * Based on the ActionScheduler_Versions class from Action Scheduler library.
