@@ -14,6 +14,10 @@
 
 use PublishPress\Hub\Infrastructure\Autoloader\Autoloader;
 
+if (! class_exists('Tests\WPTestCase')) {
+    require_once __DIR__ . '/WPTestCase.php';
+}
+
 if (! class_exists('Tests\NoTransactionWPTestCase')) {
     require_once __DIR__ . '/NoTransactionWPTestCase.php';
 }
