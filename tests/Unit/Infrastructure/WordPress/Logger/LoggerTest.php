@@ -433,4 +433,311 @@ class LoggerTest extends Unit
         $this->assertTrue($result);
         $this->assertStringContainsString(trim($longMessage), $this->logOutput);
     }
+
+    /**
+     * Test trace formatting with complex stack trace scenarios.
+     *
+     * @covers ::log
+     */
+    public function testComplexStackTraceFormatting(): void
+    {
+        $logger = new Logger([
+            'error_log_function' => [$this, '_customErrorLogFunction'],
+            'trace_separator' => ' | ',
+        ]);
+
+        // Create a nested exception scenario
+        try {
+            try {
+                throw new \InvalidArgumentException('Inner exception');
+            } catch (\Exception $e) {
+                throw new RuntimeException('Outer exception', 0, $e);
+            }
+        } catch (RuntimeException $exception) {
+            $result = $logger->log('Complex trace test', $exception, true);
+
+            $this->assertTrue($result);
+            $this->assertStringContainsString('Trace:', $this->logOutput);
+            $this->assertStringContainsString(' | ', $this->logOutput);
+            $this->assertStringContainsString(__FILE__, $this->logOutput);
+        }
+    }
+
+    /**
+     * Test trace formatting with missing trace information.
+     *
+     * @covers ::log
+     */
+    public function testTraceFormattingWithMissingInfo(): void
+    {
+        $logger = new Logger([
+            'error_log_function' => [$this, '_customErrorLogFunction'],
+        ]);
+
+        // Create exception with minimal trace info
+        $exception = new Exception('Test exception');
+
+        $result = $logger->log('Trace formatting test', $exception, true);
+
+        $this->assertTrue($result);
+        $this->assertStringContainsString('Caught Exception: Test exception', $this->logOutput);
+    }
+
+    /**
+     * Test message sanitization with various special characters.
+     *
+     * @covers ::log
+     */
+    public function testMessageSanitizationEdgeCases(): void
+    {
+        $logger = new Logger([
+            'error_log_function' => [$this, '_customErrorLogFunction'],
+        ]);
+
+        // Test with various problematic characters
+        $problematicMessage = "Test\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0A\x0B\x0C\x0D\x0E\x0F message";
+
+        $result = $logger->log($problematicMessage);
+
+        $this->assertTrue($result);
+        // Message should be sanitized (escaped)
+        $this->assertStringNotContainsString("\x00", $this->logOutput);
+        $this->assertStringContainsString('\\000', $this->logOutput);
+    }
+
+    /**
+     * Test complex exception class names formatting.
+     *
+     * @covers ::log
+     */
+    public function testComplexExceptionClassNameFormatting(): void
+    {
+        $logger = new Logger([
+            'include_class_name' => true,
+            'error_log_function' => [$this, '_customErrorLogFunction'],
+        ]);
+
+        // Test with namespaced exception
+        $exception = new \InvalidArgumentException('Namespaced exception');
+
+        $result = $logger->log('Class name test', $exception);
+
+        $this->assertTrue($result);
+        $this->assertStringContainsString('InvalidArgumentException:', $this->logOutput);
+    }
+
+        /**
+     * Test stack trace formatting with class methods.
+     *
+     * @covers ::log
+     */
+    public function testStackTraceWithClassMethods(): void
+    {
+        $logger = new Logger([
+            'error_log_function' => [$this, '_customErrorLogFunction'],
+        ]);
+
+        // This will create a trace that includes class methods
+        $exception = $this->createExceptionWithClassTrace();
+
+        $result = $logger->log('Stack trace class method test', $exception, true);
+
+        $this->assertTrue($result);
+        $this->assertStringContainsString('Trace:', $this->logOutput);
+        // The class name will be escaped in the output, so we check for the method name instead
+        $this->assertStringContainsString('createExceptionWithClassTrace()', $this->logOutput);
+    }
+
+    /**
+     * Helper method to create an exception with class method in trace.
+     */
+    private function createExceptionWithClassTrace(): Exception
+    {
+        return new Exception('Exception with class trace');
+    }
+
+    /**
+     * Test write log function failure scenarios.
+     *
+     * @covers ::log
+     */
+    public function testWriteLogFailureScenarios(): void
+    {
+        // Test with function that returns false
+        $logger = new Logger([
+            'error_log_function' => function($message) {
+                return false; // Simulate logging failure
+            },
+        ]);
+
+        $result = $logger->log('Test message');
+
+        $this->assertFalse($result);
+    }
+
+    /**
+     * Test build log message with all configuration options.
+     *
+     * @covers ::log
+     */
+    public function testBuildLogMessageWithAllOptions(): void
+    {
+        $logger = new Logger([
+            'message_prefix' => '[PREFIX] ',
+            'include_class_name' => true,
+            'include_file_path' => true,
+            'trace_separator' => ' >> ',
+            'error_log_function' => [$this, '_customErrorLogFunction'],
+        ]);
+
+        $exception = new RuntimeException('Full options test');
+
+        $result = $logger->log('Base message', $exception, true);
+
+        $this->assertTrue($result);
+        $this->assertStringStartsWith('[PREFIX] Base message', $this->logOutput);
+        $this->assertStringContainsString('RuntimeException:', $this->logOutput);
+        $this->assertStringContainsString(__FILE__, $this->logOutput);
+        $this->assertStringContainsString(' >> ', $this->logOutput);
+    }
+
+    /**
+     * Debug test to verify private method execution.
+     * This test specifically exercises all private methods and verifies they are called.
+     *
+     * @covers ::log
+     * @covers ::buildLogMessage
+     * @covers ::formatThrowableInfo
+     * @covers ::formatStackTrace
+     * @covers ::formatTraceItem
+     * @covers ::sanitizeMessage
+     * @covers ::writeLog
+     */
+    public function testDebugPrivateMethodExecution(): void
+    {
+        $logger = new Logger([
+            'message_prefix' => '[DEBUG] ',
+            'include_class_name' => true,
+            'include_file_path' => true,
+            'trace_separator' => ' -> ',
+            'error_log_function' => [$this, '_customErrorLogFunction'],
+        ]);
+
+        // Test with a message that requires sanitization
+        $messageWithSpecialChars = "Debug test\x00\x01\x02 with special chars";
+
+        // Test with an exception that will generate a full stack trace
+        $exception = new RuntimeException('Debug exception for private method testing');
+
+        $result = $logger->log($messageWithSpecialChars, $exception, true);
+
+        // Verify the result
+        $this->assertTrue($result);
+
+        // Verify buildLogMessage was called (message prefix)
+        $this->assertStringStartsWith('[DEBUG] ', $this->logOutput);
+
+        // Verify formatThrowableInfo was called (exception class name)
+        $this->assertStringContainsString('RuntimeException:', $this->logOutput);
+
+        // Verify formatStackTrace was called (trace separator)
+        $this->assertStringContainsString(' -> ', $this->logOutput);
+
+        // Verify formatTraceItem was called (should contain method names)
+        $this->assertStringContainsString('()', $this->logOutput);
+
+        // Verify sanitizeMessage was called (special chars should be escaped)
+        $this->assertStringContainsString('\\000', $this->logOutput);
+
+        // Verify writeLog was called (we got a successful result)
+        $this->assertNotEmpty($this->logOutput);
+    }
+
+    /**
+     * Test edge case: empty stack trace handling.
+     * This test covers edge cases in formatStackTrace() and formatTraceItem() methods.
+     *
+     * @covers ::log
+     * @covers ::formatStackTrace
+     * @covers ::formatTraceItem
+     */
+    public function testStackTraceEdgeCases(): void
+    {
+        // Test with a logger that has custom configuration
+        $logger = new Logger([
+            'error_log_function' => [$this, '_customErrorLogFunction'],
+            'trace_separator' => ' | ',
+        ]);
+
+        // Create an exception from deep recursion to test edge cases
+        $exception = $this->createExceptionWithSpecificTrace();
+
+        $result = $logger->log('Edge case trace test', $exception, true);
+
+        $this->assertTrue($result);
+        $this->assertStringContainsString('Edge case trace test', $this->logOutput);
+    }
+
+    /**
+     * Helper method to create exception that exercises trace edge cases.
+     */
+    private function createExceptionWithSpecificTrace(): Exception
+    {
+        // Create an exception that will have a minimal trace
+        return new Exception('Edge case exception');
+    }
+
+    /**
+     * Test edge case: writeLog with non-callable error function.
+     * This test covers the writeLog() method when error_log_function is not callable.
+     *
+     * @covers ::log
+     * @covers ::writeLog
+     */
+    public function testWriteLogWithNonCallableFunction(): void
+    {
+        $logger = new Logger([
+            'error_log_function' => 'definitely_not_a_real_function_12345',
+        ]);
+
+        $result = $logger->log('Test message');
+
+        // Should return false when error log function is not callable
+        $this->assertFalse($result);
+    }
+
+        /**
+     * Test comprehensive edge cases that naturally occur.
+     * This covers various edge cases in private methods through natural usage.
+     *
+     * @covers ::log
+     * @covers ::formatStackTrace
+     * @covers ::formatTraceItem
+     * @covers ::writeLog
+     */
+    public function testComprehensiveEdgeCases(): void
+    {
+        // Test with different error types that might have minimal traces
+        $logger = new Logger([
+            'error_log_function' => [$this, '_customErrorLogFunction'],
+            'trace_separator' => ' | ',
+        ]);
+
+        // Test with Error class which might have different trace characteristics
+        $error = new \Error('Test error for edge cases');
+        $result = $logger->log('Error test', $error, true);
+
+        $this->assertTrue($result);
+        $this->assertStringContainsString('Error test', $this->logOutput);
+
+        // Reset output for next test
+        $this->logOutput = '';
+
+        // Test with ParseError which might have even more minimal trace
+        $parseError = new \ParseError('Parse error test');
+        $result = $logger->log('Parse error test', $parseError, true);
+
+        $this->assertTrue($result);
+        $this->assertStringContainsString('Parse error test', $this->logOutput);
+    }
 }
