@@ -8,9 +8,9 @@
  * @since 1.0.0
  */
 
-namespace PublishPress\Hub\Infrastructure\WordPress\Logger;
+namespace PublishPress\Hub\Infrastructure\Logger;
 
-use PublishPress\Hub\Infrastructure\WordPress\Logger\Contracts\LoggerInterface;
+use PublishPress\Hub\Infrastructure\Logger\Contracts\LoggerInterface;
 use Throwable;
 
 /**

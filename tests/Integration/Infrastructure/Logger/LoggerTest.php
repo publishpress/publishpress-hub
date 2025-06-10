@@ -3,12 +3,11 @@
 declare(strict_types=1);
 
 
-namespace Tests\Integration\Infrastructure\WordPress\Logger;
+namespace Tests\Integration\Infrastructure\Logger;
 
-use Tests\NoTransactionWPTestCase;
 use Tests\Support\IntegrationTester;
 
-class WorkflowScheduledStepsSchemaTest extends \lucatume\WPBrowser\TestCase\WPTestCase
+class LoggerTest extends \lucatume\WPBrowser\TestCase\WPTestCase
 {
     /**
      * @var \IntegrationTester

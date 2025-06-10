@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Tests\Unit\Infrastructure\WordPress\Logger;
+namespace Tests\Unit\Infrastructure\Logger;
 
 use Codeception\Test\Unit;
 use CustomException;
 use Exception;
-use PublishPress\Hub\Infrastructure\WordPress\Logger\Logger;
+use PublishPress\Hub\Infrastructure\Logger\Logger;
 use RuntimeException;
 
 /**
  * Unit tests for Logger class.
  *
- * @coversDefaultClass \PublishPress\Hub\Infrastructure\WordPress\Logger\Logger
+ * @coversDefaultClass \PublishPress\Hub\Infrastructure\Logger\Logger
  */
 class LoggerTest extends Unit
 {

@@ -65,4 +65,14 @@ class PluginRepository implements PluginRepositoryInterface
     {
         return array_values($this->plugins);
     }
+
+    /**
+     * Reset the plugin repository.
+     *
+     * @since 1.0.0
+     */
+    public function reset(): void
+    {
+        $this->plugins = [];
+    }
 }

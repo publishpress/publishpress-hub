@@ -39,4 +39,11 @@ interface PluginRepositoryInterface
      * @return Plugin[]
      */
     public function getAllPlugins(): array;
+
+    /**
+     * Reset the plugin repository.
+     *
+     * @since 1.0.0
+     */
+    public function reset(): void;
 }

@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 /**
- * Hooks list for the PublishPress Hub library.
+ * Infrastructure hooks for the PublishPress Hub library.
  *
- * This file defines all service bindings and dependency injection configurations
- * following Domain Driven Development principles.
+ * This class defines all infrastructure-specific hooks that deal with
+ * WordPress internals and technical infrastructure following Domain Driven Development principles.
  *
- * @package PublishPress\Hub
+ * @package PublishPress\Hub\Infrastructure
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -14,7 +14,15 @@
 
 namespace PublishPress\Hub\Infrastructure;
 
+/**
+ * Infrastructure hooks container.
+ *
+ * Contains hooks that deal with WordPress infrastructure, persistence,
+ * external services, and technical concerns.
+ *
+ * @since 1.0.0
+ */
 abstract class Hooks
 {
-    public const ACTION_INIT = 'init';
+
 }

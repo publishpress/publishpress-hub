@@ -299,4 +299,19 @@ class PluginRepositoryTest extends Unit
         $this->assertFalse($this->repository->isRegistered(''));
         $this->assertNull($this->repository->findBySlug(''));
     }
+
+    /**
+     * Test reset method.
+     */
+    public function testResetMethod(): void
+    {
+        $this->repository->register(new Plugin('Test Plugin', 'test-plugin', '1.0.0', '/path/to/plugin'));
+        $this->assertTrue($this->repository->isRegistered('test-plugin'));
+
+        $this->repository->reset();
+
+        $this->assertEmpty($this->repository->getAllPlugins());
+        $this->assertFalse($this->repository->isRegistered('test-plugin'));
+        $this->assertNull($this->repository->findBySlug('test-plugin'));
+    }
 }

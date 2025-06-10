@@ -2,8 +2,11 @@
 
 namespace Tests;
 
+use Tests\Support\_generated\IntegrationTesterActions;
+
 class NoTransactionWPTestCase extends \lucatume\WPBrowser\TestCase\WPTestCase
 {
+    use IntegrationTesterActions;
     protected static $ignore_files;
     protected static $hooks_saved = array();
 

@@ -23,7 +23,20 @@ class UnitTester extends \Codeception\Actor
 {
     use _generated\UnitTesterActions;
 
-    /**
-     * Define custom actions here
-     */
+    public function seeHookAction(string $hookName, ?string $message = null): void
+    {
+        $this->assertTrue(
+            has_action($hookName),
+            $message ?? "Hook {$hookName} not called"
+        );
+    }
+
+    public function seeHookCalledTimes(string $hookName, int $expectedCount, ?string $message = null): void
+    {
+        $this->assertAction(
+            $expectedCount,
+            did_action($hookName),
+            $message
+        );
+    }
 }

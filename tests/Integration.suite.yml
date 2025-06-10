@@ -8,6 +8,7 @@ modules:
     enabled:
         - lucatume\WPBrowser\Module\WPLoader
         - Sequence
+        - Tests\Support\Helper\WPHooks
     config:
         lucatume\WPBrowser\Module\WPLoader:
             wpRootFolder: "%WP_TESTS_ROOT_DIR%"

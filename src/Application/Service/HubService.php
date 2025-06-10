@@ -10,8 +10,11 @@
 
 namespace PublishPress\Hub\Application\Service;
 
+use PublishPress\Hub\Application\Hooks;
+use PublishPress\Hub\Domain\Hooks as DomainHooks;
 use PublishPress\Hub\Domain\Plugin\Contracts\PluginRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Plugin;
+use PublishPress\Hub\Infrastructure\Event\Contracts\EventDispatcherInterface;
 
 /**
  * Application service for managing the PublishPress Hub library.
@@ -40,14 +43,24 @@ class HubService
     private PluginRepositoryInterface $pluginRepository;
 
     /**
+     * The event dispatcher.
+     *
+     * @since 1.0.0
+     * @var EventDispatcherInterface
+     */
+    private EventDispatcherInterface $eventDispatcher;
+
+    /**
      * Constructor.
      *
      * @since 1.0.0
      */
     public function __construct(
-        PluginRepositoryInterface $pluginRepository
+        PluginRepositoryInterface $pluginRepository,
+        EventDispatcherInterface $eventDispatcher
     ) {
         $this->pluginRepository = $pluginRepository;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     /**
@@ -88,7 +101,7 @@ class HubService
      */
     private function registerHooks(): void
     {
-        add_action('publishpress_hub_register_plugin', [$this, 'registerPlugin']);
+        $this->eventDispatcher->addAction(Hooks::ACTION_REGISTER_PLUGIN, [$this, 'registerPlugin'], 10, 4);
     }
 
     /**
@@ -102,8 +115,21 @@ class HubService
      */
     public function registerPlugin(string $name, string $slug, string $version, string $path): void
     {
-        $plugin = new Plugin($name, $slug, $version, $path);
-        $this->pluginRepository->register($plugin);
+        // Fire before registration hook
+        $this->eventDispatcher->doAction(DomainHooks::ACTION_BEFORE_PLUGIN_REGISTER, $name, $slug, $version, $path);
+
+        try {
+            $plugin = new Plugin($name, $slug, $version, $path);
+
+            $this->pluginRepository->register($plugin);
+
+            // Fire after successful registration hook
+            $this->eventDispatcher->doAction(DomainHooks::ACTION_PLUGIN_REGISTERED, $plugin);
+        } catch (\Exception $e) {
+            // Fire registration failed hook
+            $this->eventDispatcher->doAction(DomainHooks::ACTION_PLUGIN_REGISTRATION_FAILED, $name, $slug, $version, $path, $e);
+            throw $e;
+        }
     }
 
     /**
