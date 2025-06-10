@@ -128,19 +128,51 @@ class AutoloaderTest extends Unit
         Autoloader::register('DummyClasses\\Root2', $this->testBaseDir . '/root2');
 
         // Use unique class names that won't be loaded by other tests
-        $this->assertFalse(class_exists('DummyClasses\\Root1\\TestClassMultiple1', false), 'First class should not be loaded yet');
-        $this->assertFalse(class_exists('DummyClasses\\Root2\\TestClassMultiple2', false), 'Second class should not be loaded yet');
+        $this->assertFalse(
+            class_exists('DummyClasses\\Root1\\TestClassMultiple1', false),
+            'First class should not be loaded yet'
+        );
 
-        $this->assertTrue(class_exists('DummyClasses\\Root1\\TestClassMultiple1'), 'First autoloader should work');
-        $this->assertTrue(class_exists('DummyClasses\\Root2\\TestClassMultiple2'), 'Second autoloader should work');
+        $this->assertFalse(
+            class_exists('DummyClasses\\Root2\\TestClassMultiple2', false),
+            'Second class should not be loaded yet'
+        );
+
+        $this->assertTrue(
+            class_exists('DummyClasses\\Root1\\TestClassMultiple1'),
+            'First autoloader should work'
+        );
+
+        $this->assertTrue(
+            class_exists('DummyClasses\\Root2\\TestClassMultiple2'),
+            'Second autoloader should work'
+        );
     }
 
-    /**
-     * Helper method to clear registered autoloaders for clean test state
-     */
-    private function clearAutoloaders(): void
+    public function testUnregister(): void
     {
+        Autoloader::register('DummyClasses\\Root1', $this->testBaseDir . '/root1');
+
+        // Load a class to verify the autoloader is working
+        $this->assertTrue(
+            class_exists('DummyClasses\\Root1\\TestClass1'),
+            'Class should be loaded before unregister'
+        );
+
+        // Unregister the autoloader
         Autoloader::unregister();
+
+        // The already loaded class should still exist (PHP doesn't unload classes)
+        $this->assertTrue(
+            class_exists('DummyClasses\\Root1\\TestClass1', false),
+            'Already loaded class should still exist after unregister'
+        );
+
+        // But new classes should not be autoloadable
+        $this->assertFalse(
+            class_exists('DummyClasses\\Root2\\TestClass2'),
+            'New classes should not be autoloadable after unregister'
+        );
     }
 
     /**

@@ -69,6 +69,7 @@ abstract class Autoloader
             spl_autoload_unregister([self::class, 'autoload']);
             self::$registered = false;
         }
+
         self::$namespaceBaseDirs = [];
     }
 
