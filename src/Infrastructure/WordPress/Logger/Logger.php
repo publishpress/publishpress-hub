@@ -249,10 +249,6 @@ class Logger implements LoggerInterface
     {
         $errorLogFunction = $this->config['error_log_function'];
 
-        if (! is_callable($errorLogFunction)) {
-            return false;
-        }
-
         return $errorLogFunction($message) !== false;
     }
 }

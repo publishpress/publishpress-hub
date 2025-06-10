@@ -104,7 +104,7 @@ class LoggerTest extends Unit
     public function testLogWhenErrorLogAvailable(): void
     {
         $logger = new Logger([
-            'error_log_function' => 'non_existent_function',
+            'error_log_function' => 'non_existent_function_12345',
         ]);
         $result = $logger->log('Test message');
         $this->assertFalse($result);
@@ -739,5 +739,16 @@ class LoggerTest extends Unit
 
         $this->assertTrue($result);
         $this->assertStringContainsString('Parse error test', $this->logOutput);
+    }
+
+    public function testWriteLogWithInvalidErrorLogFunction(): void
+    {
+        $logger = new Logger([
+            'error_log_function' => 'definitely_not_a_real_function_12345',
+        ]);
+
+        $result = $logger->log('Test message');
+
+        $this->assertFalse($result);
     }
 }
