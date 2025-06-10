@@ -4,7 +4,6 @@ namespace Tests\Unit\Infrastructure\Autoloader;
 
 use Codeception\Test\Unit;
 use PublishPress\Hub\Infrastructure\Autoloader\Autoloader;
-use TypeError;
 
 /**
  * Unit tests for Autoloader class.

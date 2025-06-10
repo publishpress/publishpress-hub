@@ -131,7 +131,7 @@ class Plugin
      */
     private function validateSlug(string $slug): void
     {
-        if (empty($slug) || !preg_match('/^[a-z0-9-]+$/', $slug)) {
+        if (empty($slug) || !preg_match('/^[a-z][a-z0-9-]*$/', $slug)) {
             throw new \InvalidArgumentException('Invalid plugin slug');
         }
     }
