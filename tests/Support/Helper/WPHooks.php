@@ -60,6 +60,30 @@ class WPHooks extends Module
     }
 
     /**
+     * Assert that a hook filter is registered.
+     *
+     * @param string $hookName The hook name to check
+     * @param string|null $message Optional assertion message
+     */
+    public function seeHookFilter(string $hookName, ?string $message = null): void
+    {
+        $message = $message ?: "Hook filter '{$hookName}' is not registered";
+        \PHPUnit\Framework\Assert::assertTrue(has_filter($hookName), $message);
+    }
+
+    /**
+     * Assert that a hook filter is not registered.
+     *
+     * @param string $hookName The hook name to check
+     * @param string|null $message Optional assertion message
+     */
+    public function dontSeeHookFilter(string $hookName, ?string $message = null): void
+    {
+        $message = $message ?: "Hook filter '{$hookName}' should not be registered";
+        \PHPUnit\Framework\Assert::assertFalse(has_filter($hookName), $message);
+    }
+
+    /**
      * Assert that a hook has been called a specific number of times.
      *
      * @param string $hookName
@@ -85,6 +109,6 @@ class WPHooks extends Module
     public function seeHookCalled(string $hookName, ?string $message = null): void
     {
         $message = $message ?: "Hook {$hookName} was not called";
-        \PHPUnit\Framework\Assert::assertTrue(did_action($hookName), $message);
+        \PHPUnit\Framework\Assert::assertGreaterThan(0, did_action($hookName), $message);
     }
 }

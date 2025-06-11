@@ -38,6 +38,14 @@ class WordPressEventDispatcherTest extends WPTestCase
             return 'test_result';
         });
 
-        $this->seeHookAction('test_filter');
+        $this->seeHookFilter('test_filter');
+    }
+
+    public function testDoAction(): void
+    {
+        $dispatcher = new WordPressEventDispatcher();
+        $dispatcher->doAction('test_action', 'test_arg');
+
+        $this->seeHookCalled('test_action');
     }
 }
