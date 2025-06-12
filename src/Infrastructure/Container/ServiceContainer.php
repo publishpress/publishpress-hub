@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * Service container for dependency injection.
  *
@@ -11,6 +9,8 @@ declare(strict_types=1);
  * @license GPL v2 or later
  * @since 1.0.0
  */
+
+declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container;
 
@@ -94,7 +94,12 @@ class ServiceContainer implements ServiceContainerInterface
     public function get(string $serviceId)
     {
         if (! $this->has($serviceId)) {
-            throw new NotFoundException(sprintf('Service "%s" not found in container.', $serviceId));
+            throw new NotFoundException(
+                sprintf(
+                    esc_html__('Service "%s" not found in container.', 'publishpress-hub'),
+                    esc_html($serviceId)
+                )
+            );
         }
 
         if (array_key_exists($serviceId, $this->resolvedEntries)) {
