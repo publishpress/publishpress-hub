@@ -9,68 +9,20 @@
  * License: GPL2
  */
 
+declare(strict_types=1);
+
+namespace PublishPress\Hub\DummyPlugin2;
+
 // Exit if accessed directly
 if (!defined('ABSPATH')) {
     exit;
 }
 
 // Define plugin constants
-define('DUMMY_HUB_2_VERSION', '1.0.0');
-define('DUMMY_HUB_2_PLUGIN_DIR', plugin_dir_path(__FILE__));
-define('DUMMY_HUB_2_PLUGIN_URL', plugin_dir_url(__FILE__));
+define('DUMMY_PLUGIN_2_VERSION', '1.0.0');
+define('DUMMY_PLUGIN_2_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('DUMMY_PLUGIN_2_PLUGIN_URL', plugin_dir_url(__FILE__));
 
-// Main plugin class
-class DummyHub2 {
-    /**
-     * Instance of this class
-     */
-    private static $instance = null;
+require_once __DIR__ . '/Plugin.php';
 
-    /**
-     * Get the singleton instance
-     */
-    public static function getInstance() {
-        if (null === self::$instance) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
-
-    /**
-     * Constructor
-     */
-    private function __construct() {
-        $this->initHooks();
-    }
-
-    /**
-     * Initialize hooks
-     */
-    private function initHooks() {
-        add_action('init', [$this, 'init']);
-        add_action('admin_menu', [$this, 'addMenuPage']);
-    }
-
-    /**
-     * Initialize plugin
-     */
-    public function init() {
-        // Plugin initialization code here
-    }
-
-    /**
-     * Add menu page
-     */
-    public function addMenuPage() {
-        add_menu_page('Dummy Plugin 2', 'Dummy Plugin 2', 'manage_options', 'dummy-plugin-2', [$this, 'renderMenuPage']);
-    }
-
-    /**
-     * Render menu page
-     */
-    public function renderMenuPage() {
-        echo '<div>Dummy Plugin 2</div>';
-    }
-}
-
-DummyHub2::getInstance();
+DummyPlugin2::getInstance();
