@@ -127,7 +127,14 @@ class HubService
             $this->eventDispatcher->doAction(DomainHooks::ACTION_PLUGIN_REGISTERED, $plugin);
         } catch (\Exception $e) {
             // Fire registration failed hook
-            $this->eventDispatcher->doAction(DomainHooks::ACTION_PLUGIN_REGISTRATION_FAILED, $name, $slug, $version, $path, $e);
+            $this->eventDispatcher->doAction(
+                DomainHooks::ACTION_PLUGIN_REGISTRATION_FAILED,
+                $name,
+                $slug,
+                $version,
+                $path,
+                $e
+            );
             throw $e;
         }
     }
