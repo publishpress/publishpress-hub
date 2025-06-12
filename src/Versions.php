@@ -1,5 +1,6 @@
 <?php
 
+
 /*****************************************************************
  * This file is generated on composer update command by
  * a custom script.
@@ -9,7 +10,6 @@
 
 namespace PublishPress\Hub;
 
-// Can we reuse this class for other libraries?
 if (! class_exists('PublishPress\\Hub\\Versions')) {
     /**
      * Based on the ActionScheduler_Versions class from Action Scheduler library.
@@ -23,13 +23,13 @@ if (! class_exists('PublishPress\\Hub\\Versions')) {
 
         private $versions = array();
 
-        public function register($versionString, $initCallback): bool
+        public function register($versionString, $initializationCallback): bool
         {
             if (isset($this->versions[$versionString])) {
                 return false;
             }
 
-            $this->versions[$versionString] = $initCallback;
+            $this->versions[$versionString] = $initializationCallback;
 
             return true;
         }

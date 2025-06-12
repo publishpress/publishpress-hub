@@ -16,11 +16,6 @@ if (! function_exists('add_action')) {
     return;
 }
 
-// TODO: Convert this into a class to be reusable.
-
-/**
- * @SuppressWarnings(PHPMD.StaticAccess)
- */
 if (! function_exists(__NAMESPACE__ . '\register1Dot0Dot0')) {
     if (! defined('PUBLISHPRESS_HUB_INCLUDED')) {
         define('PUBLISHPRESS_HUB_INCLUDED', __DIR__);
@@ -34,7 +29,7 @@ if (! function_exists(__NAMESPACE__ . '\register1Dot0Dot0')) {
 
     add_action('plugins_loaded', __NAMESPACE__ . '\register1Dot0Dot0', -200, 0);
 
-    function register1Dot0Dot0(): void
+    function register1Dot0Dot0()
     {
         if (! class_exists('PublishPress\Hub\Infrastructure\Container\ServiceContainer')) {
             $versions = Versions::getInstance();
@@ -42,7 +37,7 @@ if (! function_exists(__NAMESPACE__ . '\register1Dot0Dot0')) {
         }
     }
 
-    function initialize1Dot0Dot0(): void
+    function initialize1Dot0Dot0()
     {
         require_once __DIR__ . '/autoload.php';
 
