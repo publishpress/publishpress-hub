@@ -56,5 +56,11 @@ class DummyPlugin2 {
     public function renderMenuPage() {
         echo '<h1>Dummy Plugin 2</h1>';
         echo '<p>This is a dummy plugin used for testing the PublishPress Hub functionality.</p>';
+
+        if (class_exists('PublishPress\Hub\Infrastructure\Hooks')) {
+            echo '<p>PublishPress Hub is loaded.</p>';
+        } else {
+            echo '<p style="color: red;">PublishPress Hub is not loaded.</p>';
+        }
     }
 }
