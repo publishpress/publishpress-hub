@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container\Contracts;
 
+use PublishPress\Psr\Container\ContainerInterface;
+
 /**
  * Service container interface.
  */
-interface ServiceContainerInterface extends \PublishPress\Psr\Container\ContainerInterface
+interface ServiceContainerInterface extends ContainerInterface
 {
     /**
      * Register services with the container.

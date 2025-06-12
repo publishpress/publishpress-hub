@@ -6,7 +6,6 @@ declare(strict_types=1);
 namespace Tests\Integration\Infrastructure\Event;
 
 use PublishPress\Hub\Infrastructure\Event\WordPressEventDispatcher;
-use Tests\Support\IntegrationTester;
 use Tests\WPTestCase;
 
 class WordPressEventDispatcherTest extends WPTestCase

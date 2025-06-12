@@ -22,6 +22,10 @@ if (! class_exists('Tests\NoTransactionWPTestCase')) {
     require_once __DIR__ . '/NoTransactionWPTestCase.php';
 }
 
+require_once __DIR__ . '/../../lib/vendor/publishpress/psr-container/lib/psr/container/src/ContainerExceptionInterface.php';
+require_once __DIR__ . '/../../lib/vendor/publishpress/psr-container/lib/psr/container/src/ContainerInterface.php';
+require_once __DIR__ . '/../../lib/vendor/publishpress/psr-container/lib/psr/container/src/NotFoundExceptionInterface.php';
+
 require_once __DIR__ . '/../../src/Infrastructure/Autoloader/Autoloader.php';
 
 Autoloader::register('PublishPress\Hub', __DIR__ . '/../../src');

@@ -3,18 +3,18 @@
 declare(strict_types=1);
 
 
-namespace Tests\Unit\Infrastructure\Container;
+namespace Tests\Integration\Infrastructure\Container;
 
-use Codeception\Test\Unit;
 use PublishPress\Hub\Infrastructure\Container\NotFoundException;
 use PublishPress\Hub\Infrastructure\Container\ServiceContainer;
+use Tests\WPTestCase;
 
 /**
  * Unit tests for ServiceContainer class.
  *
  * @coversDefaultClass \PublishPress\Hub\Infrastructure\Container\NotFoundException
  */
-class NotFoundExceptionTest extends Unit
+class NotFoundExceptionTest extends WPTestCase
 {
     /**
      * @var ServiceContainer
