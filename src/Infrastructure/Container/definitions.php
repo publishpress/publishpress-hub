@@ -1,11 +1,4 @@
-<?php declare(strict_types=1);
-
-namespace PublishPress\Hub\Infrastructure\Container;
-
-use PublishPress\Hub\Application\Service\HubService;
-use PublishPress\Hub\Domain\Plugin\PluginRepository;
-use PublishPress\Hub\Infrastructure\Container\Contracts\ServiceContainerInterface;
-use PublishPress\Hub\Infrastructure\WordPress\Logger\Logger;
+<?php
 
 /**
  * Service definitions for the PublishPress Hub library.
@@ -18,6 +11,15 @@ use PublishPress\Hub\Infrastructure\WordPress\Logger\Logger;
  * @license GPL v2 or later
  * @since 1.0.0
  */
+
+declare(strict_types=1);
+
+namespace PublishPress\Hub\Infrastructure\Container;
+
+use PublishPress\Hub\Application\Service\HubService;
+use PublishPress\Hub\Domain\Plugin\PluginRepository;
+use PublishPress\Hub\Infrastructure\Container\Contracts\ServiceContainerInterface;
+use PublishPress\Hub\Infrastructure\WordPress\Logger\Logger;
 
 return [
     Services::LOGGER => function (ServiceContainerInterface $container) {

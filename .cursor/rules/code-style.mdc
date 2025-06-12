@@ -18,7 +18,10 @@ alwaysApply: false
 - Method names must be declared in camelCase
 - Property names should be declared in camelCase
 - Lines should not exceed 120 characters (soft limit)
-- Use strict types declaration at the top of PHP files: `<?php declare(strict_types=1);`
+- Use strict types declaration at the top of PHP files: `<?php
+
+declare(strict_types=1);
+`
 - Import statements must be grouped and ordered alphabetically within each group
 - There must not be trailing whitespace at the end of lines
 - Files must end with a single blank line

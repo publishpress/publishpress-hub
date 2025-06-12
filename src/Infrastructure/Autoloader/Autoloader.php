@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+
 /**
  * Autoloader for the PublishPress Hub library.
  *
@@ -10,6 +11,8 @@
  * @license GPL v2 or later
  * @since 1.0.0
  */
+
+declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Autoloader;
 
