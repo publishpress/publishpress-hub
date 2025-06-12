@@ -11,7 +11,7 @@
     <arg name="parallel" value="20"/>
     <arg value="ps"/>
 
-    <file>/src</file>
+    <file>src/</file>
 
     <rule ref="PSR12">
         <exclude name="Generic.Files.LineLength.TooLong" />
