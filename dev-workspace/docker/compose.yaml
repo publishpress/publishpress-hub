@@ -61,8 +61,9 @@ services:
             - "8031:80"
         volumes:
           - ../.cache/wp_test:/var/www/html/
-          - ../../tests/Support/Data/Plugins/dummy-hub-1:/var/www/html/wp-content/plugins/dummy-hub-1
-          - ../../tests/Support/Data/Plugins/dummy-hub-2:/var/www/html/wp-content/plugins/dummy-hub-2
+          - ../../tests/Support/Data/Plugins/dummy-plugin-1:/var/www/html/wp-content/plugins/dummy-plugin-1
+          - ../../tests/Support/Data/Plugins/dummy-plugin-2:/var/www/html/wp-content/plugins/dummy-plugin-2
+          - ../../:/var/www/html/wp-content/plugins/publishpress-hub
           - ./wp/wordpress/conf.d/98-xdebug.ini:/usr/local/etc/php/conf.d/98-xdebug.ini
           - ./wp/wordpress/conf.d/99-custom.ini:/usr/local/etc/php/conf.d/99-custom.ini
           - ./wp/wordpress/mu-plugins/load-spatie-ray.php:/var/www/html/wp-content/mu-plugins/load-spatie-ray.php
@@ -94,8 +95,9 @@ services:
             WORDPRESS_DB_NAME: wordpress
         volumes:
             - ../.cache/wp_test:/var/www/html/
-            - ../../tests/Support/Data/Plugins/dummy-hub-1:/var/www/html/wp-content/plugins/dummy-hub-1
-            - ../../tests/Support/Data/Plugins/dummy-hub-2:/var/www/html/wp-content/plugins/dummy-hub-2
+            - ../../tests/Support/Data/Plugins/dummy-plugin-1:/var/www/html/wp-content/plugins/dummy-plugin-1
+            - ../../tests/Support/Data/Plugins/dummy-plugin-2:/var/www/html/wp-content/plugins/dummy-plugin-2
+            - ../../:/var/www/html/wp-content/plugins/publishpress-hub
             - ./wp/wpcli/prepare-wp.sh:/tmp/prepare-wp.sh
             - ./wp/wpcli/conf.d/my.cnf:/tmp/my.cnf
             - ./wp/wordpress/conf.d/98-xdebug.ini:/usr/local/etc/php/conf.d/98-xdebug.ini
@@ -155,8 +157,9 @@ services:
             - "8032:80"
         volumes:
           - ../.cache/wp_dev:/var/www/html/
-          - ../../tests/Support/Data/Plugins/dummy-hub-1:/var/www/html/wp-content/plugins/dummy-hub-1
-          - ../../tests/Support/Data/Plugins/dummy-hub-2:/var/www/html/wp-content/plugins/dummy-hub-2
+          - ../../tests/Support/Data/Plugins/dummy-plugin-1:/var/www/html/wp-content/plugins/dummy-plugin-1
+          - ../../tests/Support/Data/Plugins/dummy-plugin-2:/var/www/html/wp-content/plugins/dummy-plugin-2
+          - ../../:/var/www/html/wp-content/plugins/publishpress-hub
           - ./wp/wordpress/conf.d/98-xdebug.ini:/usr/local/etc/php/conf.d/98-xdebug.ini
           - ./wp/wordpress/conf.d/99-custom.ini:/usr/local/etc/php/conf.d/99-custom.ini
           - ./wp/wordpress/mu-plugins/load-spatie-ray.php:/var/www/html/wp-content/mu-plugins/load-spatie-ray.php
@@ -188,8 +191,9 @@ services:
             WORDPRESS_DB_NAME: wordpress
         volumes:
             - ../.cache/wp_dev:/var/www/html/
-            - ../../tests/Support/Data/Plugins/dummy-hub-1:/var/www/html/wp-content/plugins/dummy-hub-1
-            - ../../tests/Support/Data/Plugins/dummy-hub-2:/var/www/html/wp-content/plugins/dummy-hub-2
+            - ../../tests/Support/Data/Plugins/dummy-plugin-1:/var/www/html/wp-content/plugins/dummy-plugin-1
+            - ../../tests/Support/Data/Plugins/dummy-plugin-2:/var/www/html/wp-content/plugins/dummy-plugin-2
+            - ../../:/var/www/html/wp-content/plugins/publishpress-hub
             - ./wp/wpcli/prepare-wp.sh:/tmp/prepare-wp.sh
             - ./wp/wpcli/conf.d/my.cnf:/tmp/my.cnf
             - ./wp/wordpress/conf.d/98-xdebug.ini:/usr/local/etc/php/conf.d/98-xdebug.ini

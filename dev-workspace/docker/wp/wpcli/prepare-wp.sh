@@ -105,15 +105,15 @@ wp config set WP_DEBUG_DISPLAY false --raw
 wp config set SCRIPT_DEBUG true --raw
 show_status "Debug configuration completed"
 
-# Activate dummy-hub-1
-show_header "Activating dummy-hub-1"
-wp plugin activate dummy-hub-1
-show_status "dummy-hub-1 activated successfully"
+# Activate dummy-plugin-1
+show_header "Activating dummy-plugin-1"
+wp plugin activate dummy-plugin-1
+show_status "dummy-plugin-1 activated successfully"
 
-# Activate dummy-hub-2
-show_header "Activating dummy-hub-2"
-wp plugin activate dummy-hub-2
-show_status "dummy-hub-2 activated successfully"
+# Activate dummy-plugin-2
+show_header "Activating dummy-plugin-2"
+wp plugin activate dummy-plugin-2
+show_status "dummy-plugin-2 activated successfully"
 
 echo -e "\n${GREEN}================================================================"
 echo -e "✨ WordPress environment setup completed successfully!"

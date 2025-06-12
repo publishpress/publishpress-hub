@@ -12,6 +12,8 @@
 
 namespace PublishPress\Hub;
 
+ray(__LINE__);
+
 /*
  * Check if the PHP and WP versions are compatible.
  */

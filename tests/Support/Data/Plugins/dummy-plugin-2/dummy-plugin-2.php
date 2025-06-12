@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Dummy Hub 2
+ * Plugin Name: Dummy Plugin 2
  * Plugin URI: https://publishpress.com
  * Description: A dummy plugin for testing purposes
  * Version: 1.0.0
@@ -62,14 +62,14 @@ class DummyHub2 {
      * Add menu page
      */
     public function addMenuPage() {
-        add_menu_page('Dummy Hub 2', 'Dummy Hub 2', 'manage_options', 'dummy-hub-2', [$this, 'renderMenuPage']);
+        add_menu_page('Dummy Plugin 2', 'Dummy Plugin 2', 'manage_options', 'dummy-plugin-2', [$this, 'renderMenuPage']);
     }
 
     /**
      * Render menu page
      */
     public function renderMenuPage() {
-        echo '<div>Dummy Hub 2</div>';
+        echo '<div>Dummy Plugin 2</div>';
     }
 }
 
