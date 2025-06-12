@@ -24,4 +24,6 @@ abstract class Services
     public const HUB_SERVICE = 'publishpress-hub/hub-service';
 
     public const PLUGIN_REPOSITORY = 'publishpress-hub/plugin-repository';
+
+    public const EVENT_DISPATCHER = 'publishpress-hub/event-dispatcher';
 }

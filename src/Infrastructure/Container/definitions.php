@@ -19,7 +19,8 @@ namespace PublishPress\Hub\Infrastructure\Container;
 use PublishPress\Hub\Application\Service\HubService;
 use PublishPress\Hub\Domain\Plugin\PluginRepository;
 use PublishPress\Hub\Infrastructure\Container\Contracts\ServiceContainerInterface;
-use PublishPress\Hub\Infrastructure\WordPress\Logger\Logger;
+use PublishPress\Hub\Infrastructure\Event\WordPressEventDispatcher;
+use PublishPress\Hub\Infrastructure\Logger\Logger;
 
 return [
     Services::LOGGER => function (ServiceContainerInterface $container) {
@@ -28,11 +29,16 @@ return [
 
     Services::HUB_SERVICE => function (ServiceContainerInterface $container) {
         return new HubService(
-            $container->get(Services::PLUGIN_REPOSITORY)
+            $container->get(Services::PLUGIN_REPOSITORY),
+            $container->get(Services::EVENT_DISPATCHER)
         );
     },
 
     Services::PLUGIN_REPOSITORY => function (ServiceContainerInterface $container) {
         return new PluginRepository();
+    },
+
+    Services::EVENT_DISPATCHER => function (ServiceContainerInterface $container) {
+        return new WordPressEventDispatcher();
     },
 ];
