@@ -32,8 +32,8 @@ class DummyPlugin2 {
      * Initialize hooks
      */
     private function initHooks() {
-        add_action('init', [$this, 'init']);
         add_action('admin_menu', [$this, 'addMenuPage']);
+        add_action('init', [$this, 'init']);
     }
 
     /**
@@ -55,5 +55,6 @@ class DummyPlugin2 {
      */
     public function renderMenuPage() {
         echo '<h1>Dummy Plugin 2</h1>';
+        echo '<p>This is a dummy plugin used for testing the PublishPress Hub functionality.</p>';
     }
 }

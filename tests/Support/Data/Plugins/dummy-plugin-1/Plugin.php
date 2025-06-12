@@ -55,5 +55,6 @@ class DummyPlugin1 {
      */
     public function renderMenuPage() {
         echo '<h1>Dummy Plugin 1</h1>';
+        echo '<p>This is a dummy plugin used for testing the PublishPress Hub functionality.</p>';
     }
 }
