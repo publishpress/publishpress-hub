@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /**
  * Bootstrap file for the PublishPress Hub library.
  *
