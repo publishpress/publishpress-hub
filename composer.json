@@ -118,6 +118,7 @@
         "check:lint": "phplint --no-cache",
         "check:cs": "phpcs",
         "check:stan": "phpstan",
+        "check:phpmd": "phpmd src ansi phpmd.ruleset.xml",
         "check:longpath": "bash -c \"if [ ! -d 'dist/post-expirator' ]; then composer build:dir; fi && longpath dist/post-expirator/\"",
         "fix:cs": "phpcbf --standard=.phpcs.xml",
         "fix:php": [

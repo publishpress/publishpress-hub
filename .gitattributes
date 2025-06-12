@@ -49,3 +49,4 @@ phpstan.neon export-ignore
 CHANGELOG.md export-ignore
 codeception.yml export-ignore
 /.cursor export-ignore
+phpmd.ruleset.xml export-ignore
