@@ -25,4 +25,6 @@ define('DUMMY_PLUGIN_2_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 require_once __DIR__ . '/Plugin.php';
 
+require_once __DIR__ . '/../publishpress-hub/src/bootstrap.php';
+
 DummyPlugin2::getInstance();
