@@ -24,13 +24,13 @@ if (! class_exists('PublishPress\\Hub\\Versions')) {
 
         private $versions = array();
 
-        public function register($versionString, $initializationCallback): bool
+        public function register($versionString, $initCallback): bool
         {
             if (isset($this->versions[$versionString])) {
                 return false;
             }
 
-            $this->versions[$versionString] = $initializationCallback;
+            $this->versions[$versionString] = $initCallback;
 
             return true;
         }
