@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * Infrastructure hooks for the PublishPress Hub library.
  *
@@ -15,6 +13,8 @@ declare(strict_types=1);
  * @since 1.0.0
  */
 
+declare(strict_types=1);
+
 namespace PublishPress\Hub\Infrastructure;
 
 /**
@@ -27,5 +27,4 @@ namespace PublishPress\Hub\Infrastructure;
  */
 abstract class Hooks
 {
-
 }

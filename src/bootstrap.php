@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Bootstrap file for the PublishPress Hub library.
  *

@@ -1,6 +1,5 @@
 <?php
 
-
 /*****************************************************************
  * This file is generated on composer update command by
  * a custom script.

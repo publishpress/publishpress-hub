@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * Container NotFoundException for PSR-11 compliance.
  *
@@ -11,6 +9,8 @@ declare(strict_types=1);
  * @license GPL v2 or later
  * @since 1.0.0
  */
+
+declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container;
 
