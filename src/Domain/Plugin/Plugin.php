@@ -2,6 +2,8 @@
 
 namespace PublishPress\Hub\Domain\Plugin;
 
+use InvalidArgumentException;
+
 /**
  * Plugin entity representing a registered plugin in the hub.
  */
@@ -132,7 +134,7 @@ class Plugin
     private function validateSlug(string $slug): void
     {
         if (empty($slug) || !preg_match('/^[a-z][a-z0-9-]*$/', $slug)) {
-            throw new \InvalidArgumentException('Invalid plugin slug');
+            throw new InvalidArgumentException('Invalid plugin slug');
         }
     }
 
@@ -145,7 +147,7 @@ class Plugin
     private function validateVersion(string $version): void
     {
         if (empty($version)) {
-            throw new \InvalidArgumentException('Version cannot be empty');
+            throw new InvalidArgumentException('Version cannot be empty');
         }
     }
 }
