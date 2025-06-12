@@ -12,23 +12,17 @@
 
 namespace PublishPress\Hub;
 
-ray(__LINE__);
-
 /*
  * Check if the PHP and WP versions are compatible.
  */
-global $wp_version;
-
 $minPHPVersion = '7.4';
 $minWPVersion  = '6.7';
 
-if (empty($wp_version)) {
-    return;
-}
+global $wp_version;
 
 // If the PHP or WP version is not compatible, terminate the plugin execution.
 $invalidPHPVersion = version_compare(phpversion(), $minPHPVersion, '<');
-$invalidWPVersion = version_compare($wp_version, $minWPVersion, '<');
+$invalidWPVersion = empty($wp_version) || version_compare($wp_version, $minWPVersion, '<');
 
 if ($invalidPHPVersion || $invalidWPVersion) {
     return;
