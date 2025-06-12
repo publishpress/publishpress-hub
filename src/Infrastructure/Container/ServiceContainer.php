@@ -88,23 +88,23 @@ class ServiceContainer implements ServiceContainerInterface
      * @return mixed Service entry.
      * @since 1.0.0
      */
-    public function get(string $id)
+    public function get(string $serviceId)
     {
-        if (! $this->has($id)) {
-            throw new NotFoundException(sprintf('Service "%s" not found in container.', $id));
+        if (! $this->has($serviceId)) {
+            throw new NotFoundException(sprintf('Service "%s" not found in container.', $serviceId));
         }
 
-        if (array_key_exists($id, $this->resolvedEntries)) {
-            return $this->resolvedEntries[$id];
+        if (array_key_exists($serviceId, $this->resolvedEntries)) {
+            return $this->resolvedEntries[$serviceId];
         }
 
-        $service = $this->services[$id];
+        $service = $this->services[$serviceId];
 
         if ($service instanceof Closure) {
             $service = $service($this);
         }
 
-        $this->resolvedEntries[$id] = $service;
+        $this->resolvedEntries[$serviceId] = $service;
 
         return $service;
     }
@@ -113,14 +113,14 @@ class ServiceContainer implements ServiceContainerInterface
      * Returns true if the container can return an entry for the given identifier.
      * Returns false otherwise.
      *
-     * `has($id)` returning true does not mean that `get($id)` will not throw an exception.
-     * It does however mean that `get($id)` will not throw a `NotFoundExceptionInterface`.
+     * `has($serviceId)` returning true does not mean that `get($serviceId)` will not throw an exception.
+     * It does however mean that `get($serviceId)` will not throw a `NotFoundExceptionInterface`.
      *
      * @since 1.0.0
      */
-    public function has(string $id): bool
+    public function has(string $serviceId): bool
     {
-        return array_key_exists($id, $this->services)
-               || array_key_exists($id, $this->resolvedEntries);
+        return array_key_exists($serviceId, $this->services)
+               || array_key_exists($serviceId, $this->resolvedEntries);
     }
 }
