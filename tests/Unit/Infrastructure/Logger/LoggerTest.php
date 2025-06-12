@@ -288,7 +288,7 @@ class LoggerTest extends Unit
     /**
      * Test log method with custom trace separator.
      *
-     * @covers ::log
+     * @covers ::logWithTrace
      */
     public function testLogWithCustomTraceSeparator(): void
     {
@@ -299,7 +299,7 @@ class LoggerTest extends Unit
 
         $exception = new RuntimeException('Runtime error'); $line = __LINE__;
 
-        $result = $logger->log('Error occurred', $exception, true);
+        $result = $logger->logWithTrace('Error occurred', $exception);
 
         $this->assertTrue($result);
         $this->assertStringContainsString(__FILE__ . ':' . $line . ' Trace: ', $this->logOutput);
@@ -320,7 +320,7 @@ class LoggerTest extends Unit
 
         $exception = new RuntimeException('Runtime error');
 
-        $result = $logger->log('Error occurred', $exception, false);
+        $result = $logger->log('Error occurred', $exception);
 
         $this->assertTrue($result);
         $this->assertStringNotContainsString(' Trace: ', $this->logOutput);
@@ -349,7 +349,7 @@ class LoggerTest extends Unit
     /**
      * Test edge case with null throwable and trace flag.
      *
-     * @covers ::log
+     * @covers ::logWithTrace
      */
     public function testLogWithNullThrowableAndTrace(): void
     {
@@ -357,7 +357,7 @@ class LoggerTest extends Unit
             'error_log_function' => [$this, '_customErrorLogFunction'],
         ]);
 
-        $result = $logger->log('Test message', null, true);
+        $result = $logger->logWithTrace('Test message', null);
 
         $this->assertTrue($result);
         $this->assertEquals('Test message', $this->logOutput);
@@ -366,7 +366,7 @@ class LoggerTest extends Unit
     /**
      * Test logger with different exception types.
      *
-     * @covers ::log
+     * @covers ::logWithTrace
      */
     public function testLogWithDifferentExceptionTypes(): void
     {
@@ -375,7 +375,7 @@ class LoggerTest extends Unit
         ]);
 
         $exception = new Exception('Standard exception');
-        $result = $logger->log('Test with different exception types', $exception, true);
+        $result = $logger->logWithTrace('Test with different exception types', $exception);
 
         $this->assertTrue($result);
         $this->assertStringContainsString('Caught Exception: Standard exception', $this->logOutput);
@@ -383,14 +383,14 @@ class LoggerTest extends Unit
 
         $this->logOutput = '';
         $exception = new RuntimeException('Runtime exception');
-        $result = $logger->log('Test with different exception types', $exception, true);
+        $result = $logger->logWithTrace('Test with different exception types', $exception);
 
         $this->assertTrue($result);
         $this->assertStringContainsString('Caught RuntimeException: Runtime exception', $this->logOutput);
 
         $this->logOutput = '';
         $exception = new \InvalidArgumentException('Invalid argument');
-        $result = $logger->log('Test with different exception types', $exception, true);
+        $result = $logger->logWithTrace('Test with different exception types', $exception);
 
         $this->assertTrue($result);
         $this->assertStringContainsString('Caught InvalidArgumentException: Invalid argument', $this->logOutput);
@@ -454,7 +454,7 @@ class LoggerTest extends Unit
                 throw new RuntimeException('Outer exception', 0, $e);
             }
         } catch (RuntimeException $exception) {
-            $result = $logger->log('Complex trace test', $exception, true);
+            $result = $logger->logWithTrace('Complex trace test', $exception);
 
             $this->assertTrue($result);
             $this->assertStringContainsString('Trace:', $this->logOutput);
@@ -466,7 +466,7 @@ class LoggerTest extends Unit
     /**
      * Test trace formatting with missing trace information.
      *
-     * @covers ::log
+     * @covers ::logWithTrace
      */
     public function testTraceFormattingWithMissingInfo(): void
     {
@@ -477,7 +477,7 @@ class LoggerTest extends Unit
         // Create exception with minimal trace info
         $exception = new Exception('Test exception');
 
-        $result = $logger->log('Trace formatting test', $exception, true);
+        $result = $logger->logWithTrace('Trace formatting test', $exception);
 
         $this->assertTrue($result);
         $this->assertStringContainsString('Caught Exception: Test exception', $this->logOutput);
@@ -529,7 +529,7 @@ class LoggerTest extends Unit
         /**
      * Test stack trace formatting with class methods.
      *
-     * @covers ::log
+     * @covers ::logWithTrace
      */
     public function testStackTraceWithClassMethods(): void
     {
@@ -540,7 +540,7 @@ class LoggerTest extends Unit
         // This will create a trace that includes class methods
         $exception = $this->createExceptionWithClassTrace();
 
-        $result = $logger->log('Stack trace class method test', $exception, true);
+        $result = $logger->logWithTrace('Stack trace class method test', $exception);
 
         $this->assertTrue($result);
         $this->assertStringContainsString('Trace:', $this->logOutput);
@@ -578,7 +578,7 @@ class LoggerTest extends Unit
     /**
      * Test build log message with all configuration options.
      *
-     * @covers ::log
+     * @covers ::logWithTrace
      */
     public function testBuildLogMessageWithAllOptions(): void
     {
@@ -592,7 +592,7 @@ class LoggerTest extends Unit
 
         $exception = new RuntimeException('Full options test');
 
-        $result = $logger->log('Base message', $exception, true);
+        $result = $logger->logWithTrace('Base message', $exception);
 
         $this->assertTrue($result);
         $this->assertStringStartsWith('[PREFIX] Base message', $this->logOutput);
@@ -605,7 +605,7 @@ class LoggerTest extends Unit
      * Debug test to verify private method execution.
      * This test specifically exercises all private methods and verifies they are called.
      *
-     * @covers ::log
+     * @covers ::logWithTrace
      * @covers ::buildLogMessage
      * @covers ::formatThrowableInfo
      * @covers ::formatStackTrace
@@ -629,7 +629,7 @@ class LoggerTest extends Unit
         // Test with an exception that will generate a full stack trace
         $exception = new RuntimeException('Debug exception for private method testing');
 
-        $result = $logger->log($messageWithSpecialChars, $exception, true);
+        $result = $logger->logWithTrace($messageWithSpecialChars, $exception);
 
         // Verify the result
         $this->assertTrue($result);
@@ -710,7 +710,7 @@ class LoggerTest extends Unit
      * Test comprehensive edge cases that naturally occur.
      * This covers various edge cases in private methods through natural usage.
      *
-     * @covers ::log
+     * @covers ::logWithTrace
      * @covers ::formatStackTrace
      * @covers ::formatTraceItem
      * @covers ::writeLog
@@ -725,7 +725,7 @@ class LoggerTest extends Unit
 
         // Test with Error class which might have different trace characteristics
         $error = new \Error('Test error for edge cases');
-        $result = $logger->log('Error test', $error, true);
+        $result = $logger->logWithTrace('Error test', $error);
 
         $this->assertTrue($result);
         $this->assertStringContainsString('Error test', $this->logOutput);
@@ -735,7 +735,7 @@ class LoggerTest extends Unit
 
         // Test with ParseError which might have even more minimal trace
         $parseError = new \ParseError('Parse error test');
-        $result = $logger->log('Parse error test', $parseError, true);
+        $result = $logger->logWithTrace('Parse error test', $parseError);
 
         $this->assertTrue($result);
         $this->assertStringContainsString('Parse error test', $this->logOutput);
