@@ -57,15 +57,14 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * Log a throwable error with optional context and trace information.
+     * Log a throwable error with basic information.
      *
      * @since 1.0.0
      * @param string $message The error message to log.
      * @param Throwable|null $throwable The exception/error object to log.
-     * @param bool $includeTrace Whether to include the stack trace in the log.
      * @return bool True if logged successfully, false otherwise.
      */
-    public function log(string $message, ?Throwable $throwable = null, bool $includeTrace = false): bool
+    public function log(string $message, ?Throwable $throwable = null): bool
     {
         if (! $this->canLog()) {
             return false;
@@ -73,7 +72,29 @@ class Logger implements LoggerInterface
 
         $message = trim($message);
 
-        $logMessage = $this->buildLogMessage($message, $throwable, $includeTrace);
+        $logMessage = $this->buildLogMessage($message, $throwable, false);
+        $sanitizedMessage = $this->sanitizeMessage($logMessage);
+
+        return $this->writeLog($sanitizedMessage);
+    }
+
+    /**
+     * Log a throwable error with stack trace information.
+     *
+     * @since 1.0.0
+     * @param string $message The error message to log.
+     * @param Throwable|null $throwable The exception/error object to log.
+     * @return bool True if logged successfully, false otherwise.
+     */
+    public function logWithTrace(string $message, ?Throwable $throwable = null): bool
+    {
+        if (! $this->canLog()) {
+            return false;
+        }
+
+        $message = trim($message);
+
+        $logMessage = $this->buildLogMessage($message, $throwable, true);
         $sanitizedMessage = $this->sanitizeMessage($logMessage);
 
         return $this->writeLog($sanitizedMessage);
