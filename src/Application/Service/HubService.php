@@ -13,11 +13,12 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service;
 
-use PublishPress\Hub\Application\Hooks;
+use PublishPress\Hub\Application\Hooks as ApplicationHooks;
 use PublishPress\Hub\Domain\Hooks as DomainHooks;
 use PublishPress\Hub\Domain\Plugin\Contracts\PluginRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Plugin;
-use PublishPress\Hub\Infrastructure\Event\Contracts\EventDispatcherInterface;
+use PublishPress\Hub\Application\Service\AdminMenuService;
+use PublishPress\Hub\Application\Service\Contracts\ServiceInterface;
 
 /**
  * Application service for managing the PublishPress Hub library.
@@ -27,7 +28,7 @@ use PublishPress\Hub\Infrastructure\Event\Contracts\EventDispatcherInterface;
  *
  * @since 1.0.0
  */
-class HubService
+class HubService implements ServiceInterface
 {
     /**
      * Whether the service has been initialized.
@@ -46,12 +47,12 @@ class HubService
     private PluginRepositoryInterface $pluginRepository;
 
     /**
-     * The event dispatcher.
+     * The admin menu service.
      *
      * @since 1.0.0
-     * @var EventDispatcherInterface
+     * @var ServiceInterface
      */
-    private EventDispatcherInterface $eventDispatcher;
+    private ServiceInterface $adminMenuService;
 
     /**
      * Constructor.
@@ -60,10 +61,10 @@ class HubService
      */
     public function __construct(
         PluginRepositoryInterface $pluginRepository,
-        EventDispatcherInterface $eventDispatcher
+        ServiceInterface $adminMenuService
     ) {
         $this->pluginRepository = $pluginRepository;
-        $this->eventDispatcher = $eventDispatcher;
+        $this->adminMenuService = $adminMenuService;
     }
 
     /**
@@ -78,10 +79,10 @@ class HubService
             return $this;
         }
 
-        // Merge additional config
         $this->initialized = true;
 
         $this->registerHooks();
+        $this->adminMenuService->initialize();
 
         return $this;
     }
@@ -104,7 +105,18 @@ class HubService
      */
     private function registerHooks(): void
     {
-        $this->eventDispatcher->addAction(Hooks::ACTION_REGISTER_PLUGIN, [$this, 'registerPlugin'], 10, 4);
+        add_action(ApplicationHooks::ACTION_INIT, [$this->adminMenuService, 'start']);
+        add_action(ApplicationHooks::ACTION_REGISTER_PLUGIN, [$this, 'registerPlugin'], 10, 4);
+    }
+
+    /**
+     * Start the service.
+     *
+     * @since 1.0.0
+     */
+    public function start(): void
+    {
+        ray('start');
     }
 
     /**
@@ -119,7 +131,7 @@ class HubService
     public function registerPlugin(string $name, string $slug, string $version, string $path): void
     {
         // Fire before registration hook
-        $this->eventDispatcher->doAction(DomainHooks::ACTION_BEFORE_PLUGIN_REGISTER, $name, $slug, $version, $path);
+        do_action(DomainHooks::ACTION_BEFORE_PLUGIN_REGISTER, $name, $slug, $version, $path);
 
         try {
             $plugin = new Plugin($name, $slug, $version, $path);
@@ -127,10 +139,10 @@ class HubService
             $this->pluginRepository->register($plugin);
 
             // Fire after successful registration hook
-            $this->eventDispatcher->doAction(DomainHooks::ACTION_PLUGIN_REGISTERED, $plugin);
+            do_action(DomainHooks::ACTION_PLUGIN_REGISTERED, $plugin);
         } catch (\Exception $e) {
             // Fire registration failed hook
-            $this->eventDispatcher->doAction(
+            do_action(
                 DomainHooks::ACTION_PLUGIN_REGISTRATION_FAILED,
                 $name,
                 $slug,

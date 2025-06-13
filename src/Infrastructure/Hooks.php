@@ -27,4 +27,5 @@ namespace PublishPress\Hub\Infrastructure;
  */
 abstract class Hooks
 {
+    public const ACTION_PLUGINS_LOADED = 'plugins_loaded';
 }

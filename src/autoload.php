@@ -13,9 +13,49 @@
 namespace PublishPress\Hub;
 
 use PublishPress\Hub\Infrastructure\Autoloader\Autoloader;
+use PublishPress\Hub\Infrastructure\Container\ServiceContainer;
+use PublishPress\Hub\Infrastructure\Container\Services;
+use PublishPress\Hub\Infrastructure\Hooks as InfrastructureHooks;
 
-if (! class_exists('PublishPress\Hub\Infrastructure\Autoloader\Autoloader')) {
-    require_once __DIR__ . '/Infrastructure/Autoloader/Autoloader.php';
+/*
+ * Check if the PHP and WP versions are compatible.
+ */
+$minPHPVersion = '7.4';
+$minWPVersion  = '6.7';
+
+global $wp_version;
+
+// If the PHP or WP version is not compatible, terminate the plugin execution.
+$invalidPHPVersion = version_compare(phpversion(), $minPHPVersion, '<');
+$invalidWPVersion = empty($wp_version) || version_compare($wp_version, $minWPVersion, '<');
+
+if ($invalidPHPVersion || $invalidWPVersion) {
+    return;
 }
 
-Autoloader::register('PublishPress\Hub', __DIR__);
+if (defined('PUBLISHPRESS_HUB_PATH')) {
+    return;
+}
+
+define('PUBLISHPRESS_HUB_PATH', __DIR__ . '/');
+define('PUBLISHPRESS_HUB_URL', plugin_dir_url(__FILE__));
+define('PUBLISHPRESS_HUB_VERSION', '1.0.0');
+define('PUBLISHPRESS_HUB_VENDOR_PATH', __DIR__ . '/../lib/vendor/');
+define('PUBLISHPRESS_HUB_SRC_PATH', __DIR__ . '/');
+
+require_once PUBLISHPRESS_HUB_VENDOR_PATH . 'autoload.php';
+
+if (! class_exists(__NAMESPACE__ . '\\Infrastructure\\Autoloader\\Autoloader')) {
+    require_once PUBLISHPRESS_HUB_SRC_PATH . 'Infrastructure/Autoloader/Autoloader.php';
+}
+
+Autoloader::register(__NAMESPACE__, PUBLISHPRESS_HUB_SRC_PATH);
+
+add_action(InfrastructureHooks::ACTION_PLUGINS_LOADED, function () {
+    // var_dump(class_exists('PublishPress\\Psr\\Container\\ContainerInterface')); die;
+
+    // $container = ServiceContainer::getInstance();
+    // $hubService = $container->get(Services::HUB_SERVICE);
+
+    // $hubService->initialize();
+});

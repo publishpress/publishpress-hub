@@ -6,11 +6,9 @@ declare(strict_types=1);
 namespace Tests\Integration\Application\Service;
 
 use PublishPress\Hub\Application\Service\HubService;
-use PublishPress\Hub\Domain\Plugin\Contracts\PluginRepositoryInterface;
-use PublishPress\Hub\Domain\Plugin\Plugin;
-use PublishPress\Hub\Infrastructure\Event\WordPressEventDispatcher;
 use PublishPress\Hub\Domain\Hooks as DomainHooks;
 use PublishPress\Hub\Application\Hooks;
+use PublishPress\Hub\Application\Service\AdminMenuService;
 use PublishPress\Hub\Domain\Plugin\PluginRepository;
 use Tests\NoTransactionWPTestCase;
 
@@ -37,8 +35,8 @@ class HubServiceTest extends NoTransactionWPTestCase
     public function testServiceInitializes(): void
     {
         $pluginRepository = new PluginRepository();
-        $eventDispatcher = new WordPressEventDispatcher();
-        $hubService = new HubService($pluginRepository, $eventDispatcher);
+        $adminMenuService = new AdminMenuService();
+        $hubService = new HubService($pluginRepository, $adminMenuService);
 
         $this->assertFalse($hubService->isInitialized());
 
@@ -53,8 +51,8 @@ class HubServiceTest extends NoTransactionWPTestCase
     public function testRegisterPluginViaAction(): void
     {
         $pluginRepository = new PluginRepository();
-        $eventDispatcher = new WordPressEventDispatcher();
-        $hubService = new HubService($pluginRepository, $eventDispatcher);
+        $adminMenuService = new AdminMenuService();
+        $hubService = new HubService($pluginRepository, $adminMenuService);
         $hubService->initialize();
 
         // Trigger the action like external plugins would
@@ -77,8 +75,8 @@ class HubServiceTest extends NoTransactionWPTestCase
     public function testRegisterPluginWithException(): void
     {
         $pluginRepository = new PluginRepository();
-        $eventDispatcher = new WordPressEventDispatcher();
-        $hubService = new HubService($pluginRepository, $eventDispatcher);
+        $adminMenuService = new AdminMenuService();
+        $hubService = new HubService($pluginRepository, $adminMenuService);
         $hubService->initialize();
 
         add_action(DomainHooks::ACTION_BEFORE_PLUGIN_REGISTER, function () {

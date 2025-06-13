@@ -17,15 +17,15 @@
         "generator":{
             "namespace": "PublishPress\\Hub",
             "lib-class-test": "class_exists('PublishPress\\Hub\\Infrastructure\\Container\\ServiceContainer')",
-            "action-initialize-priority": "-190",
-            "action-register-priority": "-200",
+            "action-initialize-priority": "-240",
+            "action-register-priority": "-250",
             "src-dir": "src",
             "generate-test-file": false
         }
     },
     "autoload": {
         "files": [
-            "src/bootstrap.php"
+            "src/include.php"
         ]
     },
     "config": {

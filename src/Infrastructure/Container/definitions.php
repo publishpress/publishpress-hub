@@ -16,10 +16,10 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container;
 
+use PublishPress\Hub\Application\Service\AdminMenuService;
 use PublishPress\Hub\Application\Service\HubService;
 use PublishPress\Hub\Domain\Plugin\PluginRepository;
 use PublishPress\Hub\Infrastructure\Container\Contracts\ServiceContainerInterface;
-use PublishPress\Hub\Infrastructure\Event\WordPressEventDispatcher;
 use PublishPress\Hub\Infrastructure\Logger\Logger;
 
 return [
@@ -30,7 +30,7 @@ return [
     Services::HUB_SERVICE => function (ServiceContainerInterface $container) {
         return new HubService(
             $container->get(Services::PLUGIN_REPOSITORY),
-            $container->get(Services::EVENT_DISPATCHER)
+            $container->get(Services::ADMIN_MENU_SERVICE)
         );
     },
 
@@ -38,7 +38,7 @@ return [
         return new PluginRepository();
     },
 
-    Services::EVENT_DISPATCHER => function (ServiceContainerInterface $container) {
-        return new WordPressEventDispatcher();
+    Services::ADMIN_MENU_SERVICE => function (ServiceContainerInterface $container) {
+        return new AdminMenuService();
     },
 ];

@@ -224,7 +224,7 @@ class ServiceContainerTest extends WPTestCase
         $container = new ServiceContainer();
 
         $this->expectException(NotFoundException::class);
-        $this->expectExceptionMessage('Service "non_existent" not found in container.');
+        $this->expectExceptionMessage('Service &quot;non_existent&quot; not found in container.');
 
         $container->get('non_existent');
     }

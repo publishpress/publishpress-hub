@@ -55,4 +55,18 @@ abstract class Hooks
      * @since 1.0.0
      */
     public const FILTER_HUB_SERVICE_CONFIG = 'publishpress_hub_service_config';
+
+    /**
+     * Hook used to register the admin menu.
+     *
+     * @since 1.0.0
+     */
+    public const ACTION_ADMIN_MENU = 'admin_menu';
+
+    /**
+     * Hook used to start the hub service.
+     *
+     * @since 1.0.0
+     */
+    public const ACTION_INIT = 'init';
 }
