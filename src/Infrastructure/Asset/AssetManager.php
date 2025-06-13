@@ -39,7 +39,7 @@ class AssetManager implements AssetManagerInterface
      */
     public function getAssetUrl(string $path): string
     {
-        return PUBLISHPRESS_HUB_URL . $path;
+        return PUBLISHPRESS_HUB_ASSETS_URL . $path;
     }
 
     /**
@@ -62,7 +62,7 @@ class AssetManager implements AssetManagerInterface
 
         wp_enqueue_script(
             $handle,
-            self::getAssetUrl($scriptPath),
+            $this->getAssetUrl($scriptPath),
             $dependencies,
             PUBLISHPRESS_HUB_VERSION,
             $inFooter

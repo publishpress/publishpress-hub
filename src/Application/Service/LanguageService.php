@@ -108,7 +108,7 @@ class LanguageService implements ServiceInterface
     {
         $this->assetManager->enqueueScript(
             'publishpress-hub-i18n',
-            'assets/dist/js/i18n',
+            'dist/js/i18n',
             [
                 'wp-i18n',
             ],
