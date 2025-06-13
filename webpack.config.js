@@ -6,7 +6,7 @@ module.exports = {
     mode: NODE_ENV,
     devtool: NODE_ENV === 'development' ? 'source-map' : false,
     entry: {
-        "hub-dashboard": "./assets/src/jsx/dashboard.jsx",
+        "hub-dashboard": "./assets/src/jsx/hub-dashboard.jsx",
     },
     output: {
         path: path.join(__dirname, "assets", "dist", "js"),
