@@ -37,7 +37,7 @@ if (defined('PUBLISHPRESS_HUB_PATH')) {
     return;
 }
 
-define('PUBLISHPRESS_HUB_PATH', __DIR__ . '/');
+define('PUBLISHPRESS_HUB_PATH', realpath(__DIR__ . '/../') . '/');
 define('PUBLISHPRESS_HUB_URL', plugin_dir_url(__FILE__));
 define('PUBLISHPRESS_HUB_VERSION', '1.0.0');
 define('PUBLISHPRESS_HUB_VENDOR_PATH', __DIR__ . '/../lib/vendor/');
