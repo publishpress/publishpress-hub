@@ -19,7 +19,9 @@ namespace PublishPress\Hub\Infrastructure\Container;
 use PublishPress\Hub\Application\Service\AdminMenuService;
 use PublishPress\Hub\Application\Service\HubService;
 use PublishPress\Hub\Application\Service\LanguageService;
+use PublishPress\Hub\Application\View\Admin\DashboardView;
 use PublishPress\Hub\Domain\Plugin\PluginRepository;
+use PublishPress\Hub\Infrastructure\Asset\AssetManager;
 use PublishPress\Hub\Infrastructure\Container\Contracts\ServiceContainerInterface;
 use PublishPress\Hub\Infrastructure\Logger\Logger;
 use PublishPress\Hub\Infrastructure\Container\HubServiceCollectionProvider;
@@ -45,10 +47,21 @@ return [
     },
 
     Services::ADMIN_MENU_SERVICE => function (ServiceContainerInterface $container) {
-        return new AdminMenuService();
+        return new AdminMenuService(
+            $container->get(Services::HUB_DASHBOARD_VIEW),
+            $container->get(Services::ASSET_MANAGER)
+        );
     },
 
     Services::LANGUAGE_SERVICE => function (ServiceContainerInterface $container) {
         return new LanguageService();
+    },
+
+    Services::HUB_DASHBOARD_VIEW => function (ServiceContainerInterface $container) {
+        return new DashboardView();
+    },
+
+    Services::ASSET_MANAGER => function (ServiceContainerInterface $container) {
+        return new AssetManager();
     },
 ];

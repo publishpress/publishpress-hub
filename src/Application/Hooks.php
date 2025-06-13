@@ -69,4 +69,11 @@ abstract class Hooks
      * @since 1.0.0
      */
     public const ACTION_INIT = 'init';
+
+    /**
+     * Hook used to enqueue the scripts.
+     *
+     * @since 1.0.0
+     */
+    public const ACTION_ENQUEUE_SCRIPTS = 'admin_enqueue_scripts';
 }

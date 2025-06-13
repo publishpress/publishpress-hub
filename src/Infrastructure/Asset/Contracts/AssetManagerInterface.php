@@ -1,0 +1,65 @@
+<?php
+
+declare(strict_types=1);
+
+namespace PublishPress\Hub\Infrastructure\Asset\Contracts;
+
+interface AssetManagerInterface
+{
+    /**
+     * Get the appropriate file extension based on the environment.
+     *
+     * @since 1.0.0
+     * @return string
+     */
+    public function getScriptFileExtension(): string;
+
+    /**
+     * Get the appropriate file extension based on the environment.
+     *
+     * @since 1.0.0
+     * @return string
+     */
+    public function getStyleFileExtension(): string;
+
+    /**
+     * Get the full asset URL.
+     *
+     * @since 1.0.0
+     * @param string $path The relative path to the asset.
+     * @return string
+     */
+    public function getAssetUrl(string $path): string;
+
+    /**
+     * Enqueue a script.
+     *
+     * @since 1.0.0
+     * @param string $handle The script handle.
+     * @param string $path The relative path to the script file (without extension).
+     * @param array $dependencies The script dependencies.
+     * @param bool $inFooter Whether to enqueue the script in the footer.
+     * @return void
+     */
+    public function enqueueScript(
+        string $handle,
+        string $path,
+        array $dependencies = [],
+        bool $inFooter = true
+    ): void;
+
+    /**
+     * Enqueue a style.
+     *
+     * @since 1.0.0
+     * @param string $handle The style handle.
+     * @param string $path The relative path to the style file (without extension).
+     * @param array $dependencies The style dependencies.
+     * @return void
+     */
+    public function enqueueStyle(
+        string $handle,
+        string $path,
+        array $dependencies = []
+    ): void;
+}

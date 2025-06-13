@@ -6,6 +6,8 @@ namespace PublishPress\Hub\Application\Service;
 
 use PublishPress\Hub\Application\Hooks as ApplicationHooks;
 use PublishPress\Hub\Application\Service\Contracts\ServiceInterface;
+use PublishPress\Hub\Application\View\Contracts\ViewInterface;
+use PublishPress\Hub\Infrastructure\Asset\AssetManager;
 
 /**
  * Admin menu service.
@@ -14,7 +16,37 @@ use PublishPress\Hub\Application\Service\Contracts\ServiceInterface;
  */
 class AdminMenuService implements ServiceInterface
 {
+    /**
+     * Whether the service is initialized.
+     *
+     * @since 1.0.0
+     */
     private bool $initialized = false;
+
+    /**
+     * The dashboard view.
+     *
+     * @since 1.0.0
+     */
+    private ViewInterface $dashboardView;
+
+    /**
+     * The asset manager.
+     *
+     * @since 1.0.0
+     */
+    private AssetManager $assetManager;
+
+    /**
+     * The constructor.
+     *
+     * @since 1.0.0
+     */
+    public function __construct(ViewInterface $dashboardView, AssetManager $assetManager    )
+    {
+        $this->dashboardView = $dashboardView;
+        $this->assetManager = $assetManager;
+    }
 
     /**
      * Initialize the service.
@@ -54,6 +86,7 @@ class AdminMenuService implements ServiceInterface
     private function registerHooks(): void
     {
         add_action(ApplicationHooks::ACTION_ADMIN_MENU, [$this, 'registerAdminMenu']);
+        add_action(ApplicationHooks::ACTION_ENQUEUE_SCRIPTS, [$this, 'enqueueScripts']);
     }
 
     /**
@@ -68,10 +101,31 @@ class AdminMenuService implements ServiceInterface
             'PublishPress Hub',
             $this->getAdminMenuCapability(),
             'publishpress-hub',
-            function () {
-                require_once PUBLISHPRESS_HUB_SRC_PATH . 'templates/admin/dashboard.php';
-            },
+            [$this, 'renderDashboardView'],
             $this->getAdminMenuIcon()
+        );
+    }
+
+    /**
+     * Enqueue the scripts.
+     *
+     * @since 1.0.0
+     * @param string $hookSuffix The hook suffix.
+     */
+    public function enqueueScripts(string $hookSuffix): void
+    {
+        if ('toplevel_page_publishpress-hub' !== $hookSuffix) {
+            return;
+        }
+
+        $this->assetManager->enqueueScript(
+            'publishpress-hub-dashboard',
+            'assets/dist/js/hub-dashboard',
+            [
+                'wp-i18n',
+                'wp-element',
+                'wp-components',
+            ]
         );
     }
 
@@ -96,5 +150,15 @@ class AdminMenuService implements ServiceInterface
         return 'data:image/svg+xml;base64,' . base64_encode(
             file_get_contents(PUBLISHPRESS_HUB_PATH . 'assets/images/penguin-icon.svg')
         );
+    }
+
+    /**
+     * Render the dashboard view.
+     *
+     * @since 1.0.0
+     */
+    public function renderDashboardView(): void
+    {
+        $this->dashboardView->render();
     }
 }

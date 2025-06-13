@@ -30,4 +30,8 @@ abstract class Services
     public const HUB_SERVICE_COLLECTION = 'publishpress-hub/hub-service-collection';
 
     public const LANGUAGE_SERVICE = 'publishpress-hub/language-service';
+
+    public const HUB_DASHBOARD_VIEW = 'publishpress-hub/hub-dashboard-view';
+
+    public const ASSET_MANAGER = 'publishpress-hub/asset-manager';
 }
