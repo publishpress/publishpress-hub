@@ -116,7 +116,7 @@ class HubService implements ServiceInterface
      */
     public function start(): void
     {
-        ray('start');
+
     }
 
     /**
