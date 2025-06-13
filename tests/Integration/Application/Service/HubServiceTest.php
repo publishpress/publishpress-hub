@@ -8,8 +8,8 @@ namespace Tests\Integration\Application\Service;
 use PublishPress\Hub\Application\Service\HubService;
 use PublishPress\Hub\Domain\Hooks as DomainHooks;
 use PublishPress\Hub\Application\Hooks;
-use PublishPress\Hub\Application\Service\AdminMenuService;
 use PublishPress\Hub\Domain\Plugin\PluginRepository;
+use PublishPress\Hub\Infrastructure\Container\ServiceCollection;
 use Tests\NoTransactionWPTestCase;
 
 /**
@@ -35,8 +35,8 @@ class HubServiceTest extends NoTransactionWPTestCase
     public function testServiceInitializes(): void
     {
         $pluginRepository = new PluginRepository();
-        $adminMenuService = new AdminMenuService();
-        $hubService = new HubService($pluginRepository, $adminMenuService);
+        $serviceCollection = new ServiceCollection();
+        $hubService = new HubService($pluginRepository, $serviceCollection);
 
         $this->assertFalse($hubService->isInitialized());
 
@@ -51,8 +51,8 @@ class HubServiceTest extends NoTransactionWPTestCase
     public function testRegisterPluginViaAction(): void
     {
         $pluginRepository = new PluginRepository();
-        $adminMenuService = new AdminMenuService();
-        $hubService = new HubService($pluginRepository, $adminMenuService);
+        $serviceCollection = new ServiceCollection();
+        $hubService = new HubService($pluginRepository, $serviceCollection);
         $hubService->initialize();
 
         // Trigger the action like external plugins would
@@ -75,8 +75,8 @@ class HubServiceTest extends NoTransactionWPTestCase
     public function testRegisterPluginWithException(): void
     {
         $pluginRepository = new PluginRepository();
-        $adminMenuService = new AdminMenuService();
-        $hubService = new HubService($pluginRepository, $adminMenuService);
+        $serviceCollection = new ServiceCollection();
+        $hubService = new HubService($pluginRepository, $serviceCollection);
         $hubService->initialize();
 
         add_action(DomainHooks::ACTION_BEFORE_PLUGIN_REGISTER, function () {
