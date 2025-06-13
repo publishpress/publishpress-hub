@@ -1,0 +1,3 @@
+[submodule "tests/Support/Data/Plugins/prototype"]
+	path = tests/Support/Data/Plugins/prototype
+	url = https://github.com/publishpress/publishpress-hub-prototype.git
