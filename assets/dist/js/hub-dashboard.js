@@ -219,10 +219,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `#wpcontent {
     border: 1px solid #0073aa;
     cursor: pointer;
     border-radius: 3px;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .publishpress-hub-help-button .dashicons {
     margin-right: 5px;
+    transition: color 0.2s ease;
 }
 
 .publishpress-hub-help-button:hover {
@@ -242,7 +244,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `#wpcontent {
 .publishpress-hub-help-button:active .dashicons {
     color: #fff;
 }
-`, "",{"version":3,"sources":["webpack://./assets/jsx/css/admin-page.css"],"names":[],"mappings":"AAAA;IACI,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,SAAS;AACb;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,sBAAsB;IACtB,2CAA2C;IAC3C,aAAa;AACjB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,SAAS;IACT,YAAY;IACZ,gBAAgB;AACpB;;AAEA;IACI,sBAAsB;IACtB,aAAa;IACb,yBAAyB;IACzB,eAAe;IACf,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;AACrB;;AAEA;IACI,yBAAyB;IACzB,WAAW;AACf;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,yBAAyB;IACzB,WAAW;AACf;;AAEA;IACI,WAAW;AACf","sourcesContent":["#wpcontent {\n    padding-left: 0;\n}\n\n#publishpress-hub-admin-page-container {\n    display: flex;\n    flex-direction: column;\n    gap: 1rem;\n}\n\n#publishpress-hub-admin-page-container .publishpress-hub-admin-page-header {\n    display: flex;\n    justify-content: space-between;\n    background-color: #fff;\n    box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.1);\n    padding: 20px;\n}\n\n.publishpress-hub-admin-page-header-logo {\n    width: 300px;\n}\n\n.publishpress-hub-admin-page-header-actions {\n    display: flex;\n    gap: 10px;\n    height: 40px;\n    margin-top: 10px;\n}\n\n.publishpress-hub-help-button {\n    background-color: #fff;\n    padding: 10px;\n    border: 1px solid #0073aa;\n    cursor: pointer;\n    border-radius: 3px;\n}\n\n.publishpress-hub-help-button .dashicons {\n    margin-right: 5px;\n}\n\n.publishpress-hub-help-button:hover {\n    background-color: #0073aa;\n    color: #fff;\n}\n\n.publishpress-hub-help-button:hover .dashicons {\n    color: #fff;\n}\n\n.publishpress-hub-help-button:active {\n    background-color: #05587f;\n    color: #fff;\n}\n\n.publishpress-hub-help-button:active .dashicons {\n    color: #fff;\n}\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./assets/jsx/css/admin-page.css"],"names":[],"mappings":"AAAA;IACI,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,SAAS;AACb;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,sBAAsB;IACtB,2CAA2C;IAC3C,aAAa;AACjB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,SAAS;IACT,YAAY;IACZ,gBAAgB;AACpB;;AAEA;IACI,sBAAsB;IACtB,aAAa;IACb,yBAAyB;IACzB,eAAe;IACf,kBAAkB;IAClB,uDAAuD;AAC3D;;AAEA;IACI,iBAAiB;IACjB,2BAA2B;AAC/B;;AAEA;IACI,yBAAyB;IACzB,WAAW;AACf;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,yBAAyB;IACzB,WAAW;AACf;;AAEA;IACI,WAAW;AACf","sourcesContent":["#wpcontent {\n    padding-left: 0;\n}\n\n#publishpress-hub-admin-page-container {\n    display: flex;\n    flex-direction: column;\n    gap: 1rem;\n}\n\n#publishpress-hub-admin-page-container .publishpress-hub-admin-page-header {\n    display: flex;\n    justify-content: space-between;\n    background-color: #fff;\n    box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.1);\n    padding: 20px;\n}\n\n.publishpress-hub-admin-page-header-logo {\n    width: 300px;\n}\n\n.publishpress-hub-admin-page-header-actions {\n    display: flex;\n    gap: 10px;\n    height: 40px;\n    margin-top: 10px;\n}\n\n.publishpress-hub-help-button {\n    background-color: #fff;\n    padding: 10px;\n    border: 1px solid #0073aa;\n    cursor: pointer;\n    border-radius: 3px;\n    transition: background-color 0.2s ease, color 0.2s ease;\n}\n\n.publishpress-hub-help-button .dashicons {\n    margin-right: 5px;\n    transition: color 0.2s ease;\n}\n\n.publishpress-hub-help-button:hover {\n    background-color: #0073aa;\n    color: #fff;\n}\n\n.publishpress-hub-help-button:hover .dashicons {\n    color: #fff;\n}\n\n.publishpress-hub-help-button:active {\n    background-color: #05587f;\n    color: #fff;\n}\n\n.publishpress-hub-help-button:active .dashicons {\n    color: #fff;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
