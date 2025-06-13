@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container;
 
+use PublishPress\Hub\Infrastructure\Container\ServiceCollection;
 use PublishPress\Hub\Infrastructure\Container\Contracts\ServiceProviderInterface;
 use PublishPress\Hub\Infrastructure\Container\Contracts\ServiceContainerInterface;
 
@@ -48,13 +49,13 @@ class HubServiceCollectionProvider implements ServiceProviderInterface
     ): void {
         // Register services in the correct order
         $services = [
-            'language' => Services::LANGUAGE_SERVICE,
-            'admin_menu' => Services::ADMIN_MENU_SERVICE,
+            Services::LANGUAGE_SERVICE,
+            Services::ADMIN_MENU_SERVICE,
         ];
 
-        foreach ($services as $name => $serviceId) {
+        foreach ($services as $serviceId) {
             if ($container->has($serviceId)) {
-                $collection->add($name, $container->get($serviceId));
+                $collection->add($serviceId, $container->get($serviceId));
             }
         }
     }

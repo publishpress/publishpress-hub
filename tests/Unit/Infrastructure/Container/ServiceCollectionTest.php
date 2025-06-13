@@ -22,9 +22,6 @@ class ServiceCollectionTest extends TestCase
 {
     /**
      * Test adding and getting services.
-     *
-     * @covers ::add
-     * @covers ::get
      */
     public function testAddAndGetServices(): void
     {
@@ -43,8 +40,6 @@ class ServiceCollectionTest extends TestCase
 
     /**
      * Test initializing all services.
-     *
-     * @covers ::initialize
      */
     public function testInitializeAllServices(): void
     {
@@ -64,8 +59,6 @@ class ServiceCollectionTest extends TestCase
 
     /**
      * Test getting all services.
-     *
-     * @covers ::getAll
      */
     public function testGetAllServices(): void
     {
