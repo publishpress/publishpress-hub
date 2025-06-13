@@ -100,7 +100,7 @@ class AdminMenuService implements ServiceInterface
             'PublishPress Hub',
             'PublishPress Hub',
             $this->getAdminMenuCapability(),
-            'publishpress-hub',
+            'publishpress-hub-dashboard',
             [$this, 'renderDashboardView'],
             $this->getAdminMenuIcon()
         );
@@ -114,7 +114,7 @@ class AdminMenuService implements ServiceInterface
      */
     public function enqueueScripts(string $hookSuffix): void
     {
-        if ('toplevel_page_publishpress-hub' !== $hookSuffix) {
+        if ('toplevel_page_publishpress-hub-dashboard' !== $hookSuffix) {
             return;
         }
 
