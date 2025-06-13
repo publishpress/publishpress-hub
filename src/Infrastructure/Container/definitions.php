@@ -18,19 +18,25 @@ namespace PublishPress\Hub\Infrastructure\Container;
 
 use PublishPress\Hub\Application\Service\AdminMenuService;
 use PublishPress\Hub\Application\Service\HubService;
+use PublishPress\Hub\Application\Service\LanguageService;
 use PublishPress\Hub\Domain\Plugin\PluginRepository;
 use PublishPress\Hub\Infrastructure\Container\Contracts\ServiceContainerInterface;
 use PublishPress\Hub\Infrastructure\Logger\Logger;
+use PublishPress\Hub\Infrastructure\Container\HubServiceCollectionProvider;
 
 return [
     Services::LOGGER => function (ServiceContainerInterface $container) {
         return new Logger();
     },
 
+    Services::HUB_SERVICE_COLLECTION => function (ServiceContainerInterface $container) {
+        return (new HubServiceCollectionProvider())($container);
+    },
+
     Services::HUB_SERVICE => function (ServiceContainerInterface $container) {
         return new HubService(
             $container->get(Services::PLUGIN_REPOSITORY),
-            $container->get(Services::ADMIN_MENU_SERVICE)
+            $container->get(Services::HUB_SERVICE_COLLECTION)
         );
     },
 
@@ -40,5 +46,9 @@ return [
 
     Services::ADMIN_MENU_SERVICE => function (ServiceContainerInterface $container) {
         return new AdminMenuService();
+    },
+
+    Services::LANGUAGE_SERVICE => function (ServiceContainerInterface $container) {
+        return new LanguageService();
     },
 ];

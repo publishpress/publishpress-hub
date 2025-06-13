@@ -17,8 +17,8 @@ use PublishPress\Hub\Application\Hooks as ApplicationHooks;
 use PublishPress\Hub\Domain\Hooks as DomainHooks;
 use PublishPress\Hub\Domain\Plugin\Contracts\PluginRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Plugin;
-use PublishPress\Hub\Application\Service\AdminMenuService;
 use PublishPress\Hub\Application\Service\Contracts\ServiceInterface;
+use PublishPress\Hub\Infrastructure\Container\ServiceCollection;
 
 /**
  * Application service for managing the PublishPress Hub library.
@@ -47,12 +47,12 @@ class HubService implements ServiceInterface
     private PluginRepositoryInterface $pluginRepository;
 
     /**
-     * The admin menu service.
+     * The service collection.
      *
      * @since 1.0.0
-     * @var ServiceInterface
+     * @var ServiceCollection
      */
-    private ServiceInterface $adminMenuService;
+    private ServiceCollection $services;
 
     /**
      * Constructor.
@@ -61,10 +61,10 @@ class HubService implements ServiceInterface
      */
     public function __construct(
         PluginRepositoryInterface $pluginRepository,
-        ServiceInterface $adminMenuService
+        ServiceCollection $services
     ) {
         $this->pluginRepository = $pluginRepository;
-        $this->adminMenuService = $adminMenuService;
+        $this->services = $services;
     }
 
     /**
@@ -82,7 +82,7 @@ class HubService implements ServiceInterface
         $this->initialized = true;
 
         $this->registerHooks();
-        $this->adminMenuService->initialize();
+        $this->services->initialize();
 
         return $this;
     }
@@ -105,7 +105,7 @@ class HubService implements ServiceInterface
      */
     private function registerHooks(): void
     {
-        add_action(ApplicationHooks::ACTION_INIT, [$this->adminMenuService, 'start']);
+        add_action(ApplicationHooks::ACTION_INIT, [$this, 'start']);
         add_action(ApplicationHooks::ACTION_REGISTER_PLUGIN, [$this, 'registerPlugin'], 10, 4);
     }
 

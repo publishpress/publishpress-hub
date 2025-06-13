@@ -42,6 +42,7 @@ define('PUBLISHPRESS_HUB_URL', plugin_dir_url(__FILE__));
 define('PUBLISHPRESS_HUB_VERSION', '1.0.0');
 define('PUBLISHPRESS_HUB_VENDOR_PATH', __DIR__ . '/../lib/vendor/');
 define('PUBLISHPRESS_HUB_SRC_PATH', __DIR__ . '/');
+define('PUBLISHPRESS_HUB_LANGUAGES_PATH', __DIR__ . '/languages');
 
 require_once PUBLISHPRESS_HUB_VENDOR_PATH . 'autoload.php';
 
@@ -52,10 +53,10 @@ if (! class_exists(__NAMESPACE__ . '\\Infrastructure\\Autoloader\\Autoloader')) 
 Autoloader::register(__NAMESPACE__, PUBLISHPRESS_HUB_SRC_PATH);
 
 add_action(InfrastructureHooks::ACTION_PLUGINS_LOADED, function () {
-    // var_dump(class_exists('PublishPress\\Psr\\Container\\ContainerInterface')); die;
+    $serviceDefinitions = require_once PUBLISHPRESS_HUB_SRC_PATH . 'Infrastructure/Container/definitions.php';
 
-    // $container = ServiceContainer::getInstance();
-    // $hubService = $container->get(Services::HUB_SERVICE);
+    $container = ServiceContainer::getInstance($serviceDefinitions);
+    $hubService = $container->get(Services::HUB_SERVICE);
 
-    // $hubService->initialize();
+    $hubService->initialize();
 });

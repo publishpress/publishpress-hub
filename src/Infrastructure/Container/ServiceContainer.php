@@ -75,11 +75,13 @@ class ServiceContainer implements ServiceContainerInterface
 
     /**
      * @since 1.0.0
+     * @param array $services The services to register
+     * @return ServiceContainerInterface
      */
-    public static function getInstance(): ServiceContainerInterface
+    public static function getInstance(array $services = []): ServiceContainerInterface
     {
         if (empty(self::$instance)) {
-            self::$instance = new self();
+            self::$instance = new self($services);
         }
 
         return self::$instance;

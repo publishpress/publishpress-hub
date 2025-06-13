@@ -41,6 +41,6 @@ class LanguageService implements ServiceInterface
 
     public function loadTextdomain(): void
     {
-        load_plugin_textdomain('publishpress-hub', false, PUBLISHPRESS_HUB_PATH . 'languages');
+        load_plugin_textdomain('publishpress-hub', false, PUBLISHPRESS_HUB_LANGUAGES_PATH);
     }
 }

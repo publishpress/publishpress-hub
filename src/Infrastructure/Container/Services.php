@@ -26,4 +26,8 @@ abstract class Services
     public const PLUGIN_REPOSITORY = 'publishpress-hub/plugin-repository';
 
     public const ADMIN_MENU_SERVICE = 'publishpress-hub/admin-menu-service';
+
+    public const HUB_SERVICE_COLLECTION = 'publishpress-hub/hub-service-collection';
+
+    public const LANGUAGE_SERVICE = 'publishpress-hub/language-service';
 }
