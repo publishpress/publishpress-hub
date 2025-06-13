@@ -4,6 +4,25 @@
 			"path": "."
 		}
 	],
+    "settings": {
+        "githubIssues.queries": [
+            {
+                "label": "My Issues",
+                "query": "is:open assignee:${user} repo:publishpress/publishpress-hub",
+                "groupBy": [
+                    "milestone"
+                ]
+            },
+            {
+                "label": "Created Issues",
+                "query": "author:${user} state:open repo:publishpress/publishpress-hub sort:created-desc"
+            },
+            {
+                "label": "Recent Issues",
+                "query": "state:open repo:publishpress/publishpress-hub sort:updated-desc"
+            }
+        ],
+    },
 	"launch": {
         "configurations": [
             {
