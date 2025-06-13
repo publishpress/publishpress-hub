@@ -83,9 +83,9 @@ module.exports = wp.i18n;
 var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
-/*!*********************************!*\
-  !*** ./assets/src/jsx/i18n.jsx ***!
-  \*********************************/
+/*!*****************************!*\
+  !*** ./assets/jsx/i18n.jsx ***!
+  \*****************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   __: () => (/* binding */ __),

@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./assets/src/jsx/components/Dashboard.jsx":
-/*!*************************************************!*\
-  !*** ./assets/src/jsx/components/Dashboard.jsx ***!
-  \*************************************************/
+/***/ "./assets/jsx/components/Dashboard.jsx":
+/*!*********************************************!*\
+  !*** ./assets/jsx/components/Dashboard.jsx ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -147,12 +147,12 @@ module.exports = ReactDOM;
 var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
-/*!******************************************!*\
-  !*** ./assets/src/jsx/hub-dashboard.jsx ***!
-  \******************************************/
+/*!**************************************!*\
+  !*** ./assets/jsx/hub-dashboard.jsx ***!
+  \**************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var _components_Dashboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Dashboard */ "./assets/src/jsx/components/Dashboard.jsx");
+/* harmony import */ var _components_Dashboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Dashboard */ "./assets/jsx/components/Dashboard.jsx");
 
 
 var dashboardContainer = document.getElementById('publishpress-hub-dashboard-container');
