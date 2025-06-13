@@ -13,8 +13,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   Dashboard: () => (/* binding */ Dashboard),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @publishpress/hub-i18n */ "@publishpress/hub-i18n");
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_0__);
+
 var Dashboard = function Dashboard() {
-  return /*#__PURE__*/React.createElement("h1", null, "Dashboard");
+  return /*#__PURE__*/React.createElement("h1", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Dashboard', 'publishpress-hub'));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Dashboard);
 
@@ -50,6 +53,16 @@ if (false) // removed by dead control flow
   };
 }
 
+
+/***/ }),
+
+/***/ "@publishpress/hub-i18n":
+/*!***************************************!*\
+  !*** external "publishpressHub.i18n" ***!
+  \***************************************/
+/***/ ((module) => {
+
+module.exports = publishpressHub.i18n;
 
 /***/ }),
 
@@ -90,6 +103,18 @@ module.exports = ReactDOM;
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
