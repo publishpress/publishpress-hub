@@ -93,6 +93,29 @@ class AssetManager implements AssetManagerInterface
         );
     }
 
+    /**
+     * Localize a script.
+     *
+     * @since 1.0.0
+     * @param string $handle The script handle.
+     * @param string $name The name of the variable.
+     * @param array $data The data to localize.
+     * @return void
+     */
+    public function localizeScript(
+        string $handle,
+        string $name,
+        array $data
+    ): void {
+        wp_localize_script($handle, $name, $data);
+    }
+
+    /**
+     * Check if the environment is development.
+     *
+     * @since 1.0.0
+     * @return bool
+     */
     private function shouldUseUnminifiedFiles(): bool
     {
         return defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;

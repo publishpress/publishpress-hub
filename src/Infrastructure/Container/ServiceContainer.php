@@ -98,6 +98,7 @@ class ServiceContainer implements ServiceContainerInterface
         if (! $this->has($serviceId)) {
             throw new NotFoundException(
                 sprintf(
+                    // translators: %s is the service ID.
                     esc_html__('Service "%s" not found in container.', 'publishpress-hub'),
                     esc_html($serviceId)
                 )

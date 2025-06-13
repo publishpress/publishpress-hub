@@ -122,7 +122,7 @@ class AdminMenuService implements ServiceInterface
             'publishpress-hub-dashboard',
             'assets/dist/js/hub-dashboard',
             [
-                'wp-i18n',
+                'publishpress-hub-i18n',
                 'wp-element',
                 'wp-components',
             ]

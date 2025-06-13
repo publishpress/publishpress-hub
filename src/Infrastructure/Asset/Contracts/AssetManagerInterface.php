@@ -62,4 +62,19 @@ interface AssetManagerInterface
         string $path,
         array $dependencies = []
     ): void;
+
+    /**
+     * Localize a script.
+     *
+     * @since 1.0.0
+     * @param string $handle The script handle.
+     * @param string $name The name of the variable.
+     * @param array $data The data to localize.
+     * @return void
+     */
+    public function localizeScript(
+        string $handle,
+        string $name,
+        array $data
+    ): void;
 }

@@ -27,6 +27,8 @@ use PublishPress\Hub\Infrastructure\Logger\Logger;
 use PublishPress\Hub\Infrastructure\Container\HubServiceCollectionProvider;
 
 return [
+    Services::CONST_TEXT_DOMAIN => 'publishpress-hub',
+
     Services::LOGGER => function (ServiceContainerInterface $container) {
         return new Logger();
     },
@@ -54,7 +56,10 @@ return [
     },
 
     Services::LANGUAGE_SERVICE => function (ServiceContainerInterface $container) {
-        return new LanguageService();
+        return new LanguageService(
+            $container->get(Services::ASSET_MANAGER),
+            $container->get(Services::CONST_TEXT_DOMAIN)
+        );
     },
 
     Services::HUB_DASHBOARD_VIEW => function (ServiceContainerInterface $container) {

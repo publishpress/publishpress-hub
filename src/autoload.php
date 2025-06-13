@@ -42,7 +42,7 @@ define('PUBLISHPRESS_HUB_URL', plugin_dir_url(PUBLISHPRESS_HUB_PATH . 'publishpr
 define('PUBLISHPRESS_HUB_VERSION', '1.0.0');
 define('PUBLISHPRESS_HUB_VENDOR_PATH', __DIR__ . '/../lib/vendor/');
 define('PUBLISHPRESS_HUB_SRC_PATH', __DIR__ . '/');
-define('PUBLISHPRESS_HUB_LANGUAGES_PATH', __DIR__ . '/languages');
+define('PUBLISHPRESS_HUB_LANGUAGES_PATH', PUBLISHPRESS_HUB_PATH . '/languages');
 
 require_once PUBLISHPRESS_HUB_VENDOR_PATH . 'autoload.php';
 

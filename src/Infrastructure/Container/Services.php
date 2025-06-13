@@ -19,6 +19,8 @@ namespace PublishPress\Hub\Infrastructure\Container;
 
 abstract class Services
 {
+    public const CONST_TEXT_DOMAIN = 'publishpress-hub/const-text-domain';
+
     public const LOGGER = 'publishpress-hub/logger';
 
     public const HUB_SERVICE = 'publishpress-hub/hub-service';

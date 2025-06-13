@@ -7,6 +7,7 @@ module.exports = {
     devtool: NODE_ENV === 'development' ? 'source-map' : false,
     entry: {
         "hub-dashboard": "./assets/src/jsx/hub-dashboard.jsx",
+        "i18n": "./assets/src/jsx/i18n.jsx",
     },
     output: {
         path: path.join(__dirname, "assets", "dist", "js"),
@@ -49,6 +50,7 @@ module.exports = {
         "@wordpress/hooks": "wp.hooks",
         "@wordpress/url": "wp.url",
         "@wordpress/i18n": "wp.i18n",
-        'wp': 'wp'
+        'wp': 'wp',
+        '@publishpress/hub-i18n': 'publishpressHub.i18n'
     },
 };

@@ -1,0 +1,2 @@
+<?php
+return ['domain'=>'publishpress-hub','plural-forms'=>NULL,'language'=>'pt_BR','project-id-version'=>'','pot-creation-date'=>'2025-06-13T19:03:57+00:00','po-revision-date'=>'2025-06-13 16:06-0300','x-generator'=>'Poedit 3.6','messages'=>['Service "%s" not found in container.'=>'O serviço “%s” não foi encontrado.','Dashboard'=>'Painel de Controle']];
