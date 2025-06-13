@@ -120,11 +120,19 @@ class AdminMenuService implements ServiceInterface
 
         $this->assetManager->enqueueScript(
             'publishpress-hub-dashboard',
-            'assets/dist/js/hub-dashboard',
+            'dist/js/hub-dashboard',
             [
                 'publishpress-hub-i18n',
                 'wp-element',
                 'wp-components',
+            ]
+        );
+
+        $this->assetManager->localizeScript(
+            'publishpress-hub-dashboard',
+            'publishpressHubDashboardConfig',
+            [
+                'logoUrl' => $this->assetManager->getAssetUrl('images/publishpress-logo.png'),
             ]
         );
     }
@@ -148,7 +156,7 @@ class AdminMenuService implements ServiceInterface
     {
         // TODO: Add a proper icon and avoid converting to base64 on the fly.
         return 'data:image/svg+xml;base64,' . base64_encode(
-            file_get_contents(PUBLISHPRESS_HUB_PATH . 'assets/images/penguin-icon.svg')
+            file_get_contents(PUBLISHPRESS_HUB_ASSETS_PATH . 'images/penguin-icon.svg')
         );
     }
 

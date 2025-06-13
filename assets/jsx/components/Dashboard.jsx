@@ -1,7 +1,14 @@
 import { __ } from '@publishpress/hub-i18n';
+import { AdminPageContainer } from './AdminPageContainer';
+import { AdminPageHeader } from './AdminPageHeader';
 
 export const Dashboard = () => {
-    return <h1>{__('Dashboard', 'publishpress-hub')}</h1>;
+    return <AdminPageContainer>
+        <AdminPageHeader
+            title={__('Dashboard', 'publishpress-hub')}
+            logoUrl={window.publishpressHubDashboardConfig.logoUrl}
+        />
+    </AdminPageContainer>;
 };
 
 export default Dashboard;
