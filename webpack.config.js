@@ -6,7 +6,7 @@ module.exports = {
     mode: NODE_ENV,
     devtool: NODE_ENV === 'development' ? 'source-map' : false,
     entry: {
-        "hub-dashboard": "./assets/jsx/hub-dashboard.jsx",
+        "hub": "./assets/jsx/hub-dashboard.jsx",
         "i18n": "./assets/jsx/i18n.jsx",
     },
     output: {
@@ -54,3 +54,4 @@ module.exports = {
         '@publishpress/hub-i18n': 'publishpressHub.i18n'
     },
 };
+

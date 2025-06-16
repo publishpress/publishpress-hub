@@ -100,6 +100,7 @@
         ],
         "profile:js": "cross-env NODE_ENV=production npx webpack --profile",
         "watch:js": "cross-env NODE_ENV=development npx webpack --watch --progress",
+        "watch:js-prototype": "cross-env NODE_ENV=development npx webpack --watch --progress --config webpack.prototype.config.js",
         "check": [
             "@check:php",
             "@check:lint",
