@@ -97,8 +97,18 @@ class AdminMenuService implements ServiceInterface
     public function registerAdminMenu(): void
     {
         add_menu_page(
-            'PublishPress Hub',
-            'PublishPress Hub',
+            'PublishPress',
+            'PublishPress',
+            $this->getAdminMenuCapability(),
+            'publishpress-hub-dashboard',
+            [$this, 'renderDashboardView'],
+            $this->getAdminMenuIcon()
+        );
+
+        add_submenu_page(
+            'publishpress-hub-dashboard',
+            'Plugins',
+            'Plugins',
             $this->getAdminMenuCapability(),
             'publishpress-hub-dashboard',
             [$this, 'renderDashboardView'],
