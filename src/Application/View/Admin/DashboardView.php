@@ -20,6 +20,6 @@ class DashboardView implements ViewInterface
      */
     public function render(): void
     {
-        echo '<div id="publishpress-hub-dashboard-container">';
+        include PUBLISHPRESS_HUB_TEMPLATES_PATH . 'admin/dashboard.php';
     }
 }

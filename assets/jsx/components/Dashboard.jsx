@@ -3,11 +3,11 @@ import { AdminPageContainer } from './AdminPageContainer';
 import { AdminPageHeader } from './AdminPageHeader';
 
 export const Dashboard = () => {
-    return <AdminPageContainer>
-        <AdminPageHeader
-            title={__('Dashboard', 'publishpress-hub')}
-            logoUrl={window.publishpressHubDashboardConfig.logoUrl}
-        />
+    return <AdminPageContainer
+        title={__('Dashboard', 'publishpress-hub')}
+        logoUrl={window.publishpressHubDashboardConfig.logoUrl}
+    >
+
     </AdminPageContainer>;
 };
 
