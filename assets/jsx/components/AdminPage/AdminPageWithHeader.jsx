@@ -1,6 +1,6 @@
 import '../css/admin-page.css';
-import { AdminPageContainer } from './AdminPageContainer';
-import { AdminPageHeader } from './AdminPageHeader';
+import { AdminPageContainer } from './AdminPage/AdminPageContainer';
+import { AdminPageHeader } from './AdminPage/AdminPageHeader';
 
 export const AdminPageWithHeader = ({
     title,

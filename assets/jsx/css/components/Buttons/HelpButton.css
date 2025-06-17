@@ -1,0 +1,136 @@
+/* HelpButton Component */
+
+.pp-hub-help-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--pp-hub-spacing-sm) var(--pp-hub-spacing-lg);
+    font-size: var(--pp-hub-font-size-sm);
+    font-weight: var(--pp-hub-font-weight-medium);
+    line-height: 1;
+    text-decoration: none;
+    border: 1px solid var(--pp-hub-border-primary);
+    border-radius: var(--pp-hub-radius-md);
+    background-color: var(--pp-hub-bg-primary);
+    color: var(--pp-hub-text-primary);
+    cursor: pointer;
+    transition: all var(--pp-hub-transition-fast);
+    user-select: none;
+}
+
+/* Hover state */
+.pp-hub-help-button:hover {
+    background-color: var(--pp-hub-bg-secondary);
+    border-color: var(--pp-hub-border-secondary);
+    transform: translateY(-1px);
+    box-shadow: var(--pp-hub-shadow-sm);
+}
+
+/* Focus state */
+.pp-hub-help-button:focus {
+    outline: 2px solid var(--pp-hub-border-focus);
+    outline-offset: 2px;
+}
+
+/* Active state */
+.pp-hub-help-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Primary variant */
+.pp-hub-help-button--primary {
+    background-color: var(--pp-hub-primary-color);
+    color: var(--pp-hub-text-inverse);
+    border-color: var(--pp-hub-primary-color);
+}
+
+.pp-hub-help-button--primary:hover {
+    background-color: var(--pp-hub-tertiary-color);
+    border-color: var(--pp-hub-tertiary-color);
+}
+
+/* Secondary variant */
+.pp-hub-help-button--secondary {
+    background-color: var(--pp-hub-secondary-color);
+    color: var(--pp-hub-text-primary);
+    border-color: var(--pp-hub-secondary-color);
+}
+
+.pp-hub-help-button--secondary:hover {
+    background-color: #e6a000;
+    border-color: #e6a000;
+}
+
+/* Ghost variant */
+.pp-hub-help-button--ghost {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--pp-hub-text-secondary);
+}
+
+.pp-hub-help-button--ghost:hover {
+    background-color: var(--pp-hub-bg-secondary);
+    color: var(--pp-hub-text-primary);
+}
+
+/* Sizes */
+.pp-hub-help-button--small {
+    padding: var(--pp-hub-spacing-xs) var(--pp-hub-spacing-md);
+    font-size: var(--pp-hub-font-size-xs);
+}
+
+.pp-hub-help-button--large {
+    padding: var(--pp-hub-spacing-md) var(--pp-hub-spacing-xl);
+    font-size: var(--pp-hub-font-size-lg);
+}
+
+/* Disabled state */
+.pp-hub-help-button:disabled,
+.pp-hub-help-button--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Icon styling */
+.pp-hub-help-button__icon {
+    width: 16px;
+    height: 16px;
+    margin-right: var(--pp-hub-spacing-xs);
+}
+
+.pp-hub-help-button--icon-only .pp-hub-help-button__icon {
+    margin-right: 0;
+}
+
+/* Loading state */
+.pp-hub-help-button--loading {
+    position: relative;
+    color: transparent;
+}
+
+.pp-hub-help-button--loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    border-right-color: transparent;
+    animation: pp-hub-spinner 0.75s linear infinite;
+}
+
+@keyframes pp-hub-spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Full width variant */
+.pp-hub-help-button--full-width {
+    width: 100%;
+}

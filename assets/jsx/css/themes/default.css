@@ -1,0 +1,33 @@
+/* Default Theme */
+[data-theme="default"] {
+    /* Brand Colors */
+    --pp-hub-primary-color: #655997;
+    --pp-hub-secondary-color: #ffb200;
+    --pp-hub-tertiary-color: #1b004f;
+    --pp-hub-accent-color: #00a0d2;
+
+    /* Semantic Colors */
+    --pp-hub-success-color: #46b450;
+    --pp-hub-warning-color: #ffb900;
+    --pp-hub-error-color: #dc3232;
+    --pp-hub-info-color: #00a0d2;
+
+    /* Background Colors */
+    --pp-hub-bg-primary: #ffffff;
+    --pp-hub-bg-secondary: #f6f7f7;
+    --pp-hub-bg-tertiary: #f1f1f1;
+    --pp-hub-bg-overlay: rgba(0, 0, 0, 0.6);
+
+    /* Text Colors */
+    --pp-hub-text-primary: #1e1e1e;
+    --pp-hub-text-secondary: #646970;
+    --pp-hub-text-tertiary: #8c8f94;
+    --pp-hub-text-inverse: #ffffff;
+    --pp-hub-text-link: var(--pp-hub-primary-color);
+    --pp-hub-text-link-hover: var(--pp-hub-tertiary-color);
+
+    /* Border Colors */
+    --pp-hub-border-primary: #dcdcde;
+    --pp-hub-border-secondary: #c3c4c7;
+    --pp-hub-border-focus: var(--pp-hub-primary-color);
+}

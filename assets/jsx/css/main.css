@@ -1,0 +1,54 @@
+/* PublishPress Hub - Main CSS Entry Point */
+
+/* 1. Core Foundation */
+@import './core/variables.css';
+@import './core/base.css';
+@import './core/utilities.css';
+
+/* 2. Theme System */
+@import './themes/default.css';
+@import './themes/dark.css';
+
+/* 3. Component Styles */
+@import './components/AdminPage/AdminPageContainer.css';
+@import './components/AdminPage/AdminPageHeader.css';
+@import './components/Buttons/HelpButton.css';
+
+/* 4. WordPress Admin Compatibility */
+/* Ensure our styles don't conflict with WordPress admin */
+.pp-hub-root {
+    /* Create an isolated styling context */
+    isolation: isolate;
+}
+
+/* Reset WordPress admin table styles that might interfere */
+.pp-hub-root table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.pp-hub-root th,
+.pp-hub-root td {
+    text-align: left;
+    vertical-align: top;
+}
+
+/* Override WordPress button styles in our context */
+.pp-hub-root .button,
+.pp-hub-root .button-primary,
+.pp-hub-root .button-secondary {
+    all: unset;
+}
+
+/* Responsive container queries support */
+@supports (container-type: inline-size) {
+    .pp-hub-container {
+        container-type: inline-size;
+    }
+
+    @container (max-width: 768px) {
+        .pp-hub-mobile-stack {
+            flex-direction: column;
+        }
+    }
+}

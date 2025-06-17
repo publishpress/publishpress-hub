@@ -1,3 +1,14 @@
+/**
+ * I18n.jsx
+ *
+ * This file provides internationalization (i18n) functionality for PublishPress Hub.
+ * It allow to centralize translations in a single .pot file, avoiding the need to pass
+ * strings through global objects. WordPress i18n functions serve as fallback.
+ *
+ * @package PublishPressHub
+ * @since 1.0.0
+ */
+
 import {
     __ as wp__,
     sprintf as wpSprintf,

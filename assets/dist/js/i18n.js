@@ -111,6 +111,17 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+/**
+ * I18n.jsx
+ *
+ * This file provides internationalization (i18n) functionality for PublishPress Hub.
+ * It allow to centralize translations in a single .pot file, avoiding the need to pass
+ * strings through global objects. WordPress i18n functions serve as fallback.
+ *
+ * @package PublishPressHub
+ * @since 1.0.0
+ */
+
 
 var data = function (_window$publishpressH, _window$publishpressH2) {
   var free = ((_window$publishpressH = window.publishpressHubI18nConfig) === null || _window$publishpressH === void 0 ? void 0 : _window$publishpressH.data) || {};

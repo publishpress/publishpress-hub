@@ -1,0 +1,33 @@
+/* Dark Theme */
+[data-theme="dark"] {
+    /* Brand Colors - Adjusted for dark mode */
+    --pp-hub-primary-color: #8a7bc8;
+    --pp-hub-secondary-color: #ffd700;
+    --pp-hub-tertiary-color: #b19cd9;
+    --pp-hub-accent-color: #4fc3f7;
+
+    /* Semantic Colors - Dark mode variants */
+    --pp-hub-success-color: #66bb6a;
+    --pp-hub-warning-color: #ffca28;
+    --pp-hub-error-color: #ef5350;
+    --pp-hub-info-color: #29b6f6;
+
+    /* Background Colors - Dark theme */
+    --pp-hub-bg-primary: #121212;
+    --pp-hub-bg-secondary: #1e1e1e;
+    --pp-hub-bg-tertiary: #2d2d2d;
+    --pp-hub-bg-overlay: rgba(0, 0, 0, 0.8);
+
+    /* Text Colors - Inverted for dark mode */
+    --pp-hub-text-primary: #ffffff;
+    --pp-hub-text-secondary: #b3b3b3;
+    --pp-hub-text-tertiary: #808080;
+    --pp-hub-text-inverse: #121212;
+    --pp-hub-text-link: var(--pp-hub-primary-color);
+    --pp-hub-text-link-hover: var(--pp-hub-tertiary-color);
+
+    /* Border Colors - Dark theme */
+    --pp-hub-border-primary: #3c3c3c;
+    --pp-hub-border-secondary: #4a4a4a;
+    --pp-hub-border-focus: var(--pp-hub-primary-color);
+}
