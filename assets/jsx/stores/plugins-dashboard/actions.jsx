@@ -4,3 +4,10 @@ export function* setSelectedFilter(selectedFilter) {
         selectedFilter,
     };
 }
+
+export function* setPlugins(plugins) {
+    yield {
+        type: 'SET_PLUGINS',
+        plugins,
+    };
+}

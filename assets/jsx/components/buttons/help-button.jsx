@@ -1,7 +1,14 @@
 import { Button } from "@wordpress/components";
+import { memo, useCallback, useMemo } from '@wordpress/element';
+
 import { __ } from '@publishpress/hub-i18n';
 
-export const HelpButton = ({
+const BASE_CLASS = 'pp-hub-help-button';
+const HELP_URL = 'https://publishpress.com/publishpress-support/';
+
+const DEFAULT_HELP_TEXT = __('Need Help?', 'publishpress-hub');
+
+const HelpButtonComponent = ({
     variant = 'default', // 'default' | 'primary' | 'secondary' | 'ghost'
     size = 'default', // 'small' | 'default' | 'large'
     icon = 'editor-help',
@@ -9,17 +16,19 @@ export const HelpButton = ({
     className = '',
     ...props
 }) => {
-    const helpUrl = 'https://publishpress.com/publishpress-support/';
+    const handleClick = useCallback(() => {
+        window.open(HELP_URL, '_blank');
+    }, []);
 
-    const handleClick = () => {
-        window.open(helpUrl, '_blank');
-    }
+    const combinedClassName = useMemo(() => {
+        const variantClass = variant !== 'default' ? `${BASE_CLASS}--${variant}` : '';
+        const sizeClass = size !== 'default' ? `${BASE_CLASS}--${size}` : '';
+        return `${BASE_CLASS} ${variantClass} ${sizeClass} ${className}`.trim();
+    }, [variant, size, className]);
 
-    // Build CSS classes
-    const baseClass = 'pp-hub-help-button';
-    const variantClass = variant !== 'default' ? `pp-hub-help-button--${variant}` : '';
-    const sizeClass = size !== 'default' ? `pp-hub-help-button--${size}` : '';
-    const combinedClassName = `${baseClass} ${variantClass} ${sizeClass} ${className}`.trim();
+    const buttonText = useMemo(() => {
+        return children || DEFAULT_HELP_TEXT;
+    }, [children]);
 
     return (
         <Button
@@ -28,9 +37,11 @@ export const HelpButton = ({
             className={combinedClassName}
             {...props}
         >
-            {children || __('Need Help?', 'publishpress-hub')}
+            {buttonText}
         </Button>
-    )
-}
+    );
+};
+
+export const HelpButton = memo(HelpButtonComponent);
 
 export default HelpButton;
