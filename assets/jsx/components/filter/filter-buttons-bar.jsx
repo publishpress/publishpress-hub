@@ -1,5 +1,4 @@
-import { useCallback } from '@wordpress/element';
-import { memo } from '@wordpress/element';
+import { useCallback, memo } from '@wordpress/element';
 import { Button } from "../buttons/button";
 import { __ } from "@publishpress/hub-i18n";
 
@@ -59,7 +58,7 @@ const FilterButtonsBarComponent = ({
 
                         return (
                             <Button
-                                key={filter.value}
+                                key={`filter-${filter.value}`}
                                 className={`publishpress-hub-filter-button ${buttonClass} ${isDisabled ? 'disabled' : ''}`}
                                 onClick={createButtonClickHandler(filter.value)}
                                 disabled={filter.total === 0}
