@@ -128,9 +128,15 @@ class AdminMenuService implements ServiceInterface
             return;
         }
 
+        $this->assetManager->enqueueStyle(
+            'publishpress-hub-dashboard',
+            'css/admin-page.css',
+            []
+        );
+
         $this->assetManager->enqueueScript(
             'publishpress-hub-dashboard',
-            'dist/js/hub-dashboard',
+            'dist/js/hub-dashboard.js',
             [
                 'publishpress-hub-i18n',
                 'wp-element',
