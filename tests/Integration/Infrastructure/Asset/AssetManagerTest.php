@@ -30,28 +30,65 @@ class AssetManagerTest extends WPTestCase
         parent::tearDown();
     }
 
-    public function testGetScriptFileExtension(): void
+    public function testGetAssetUrlWithEmptyPath(): void
     {
-        $this->markTestIncomplete();
+        $assetManager = new AssetManager(
+            'http://localhost/publishpress-hub/assets/',
+            '1.0.0',
+            false
+        );
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        $assetManager->getAssetUrl('');
     }
 
-    public function testGetStyleFileExtension(): void
+    public function testGetAssetUrlWithInvalidPath(): void
     {
-        $this->markTestIncomplete();
+        $assetManager = new AssetManager(
+            'http://localhost/publishpress-hub/assets/',
+            '1.0.0',
+            false
+        );
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        $assetManager->getAssetUrl('invalid-path');
     }
 
-    public function testGetAssetUrl(): void
+    /**
+     * Test the getAssetUrl method for production.
+     *
+     * @since 1.0.0
+     */
+    public function testGetAssetUrlForProduction(): void
     {
-        $this->markTestIncomplete();
-    }
+        $data = [
+            ['js/admin-page.js', 'js/admin-page.min.js'],
+            ['/js/admin-page.js', 'js/admin-page.min.js'],
+            ['js/admin-page.js', 'js/admin-page.min.js'],
+            ['css/admin-page.css', 'css/admin-page.min.css'],
+            ['/css/admin-page.css', 'css/admin-page.min.css'],
+            ['css/admin-page.css', 'css/admin-page.min.css'],
+            ['images/admin-page.png', 'images/admin-page.png'],
+            ['/images/admin-page.png', 'images/admin-page.png'],
+            ['images/admin-page.png', 'images/admin-page.png'],
+        ];
 
-    public function testEnqueueScript(): void
-    {
-        $this->markTestIncomplete();
-    }
+        $assetManager = new AssetManager(
+            'http://localhost/publishpress-hub/assets/',
+            '1.0.0',
+            false
+        );
 
-    public function testEnqueueStyle(): void
-    {
-        $this->markTestIncomplete();
+        foreach ($data as $value) {
+            $url = $assetManager->getAssetUrl($value[0]);
+
+            $this->assertEquals(
+                'http://localhost/publishpress-hub/assets/' . $value[1],
+                $url,
+                'The URL is not correct'
+            );
+        }
     }
 }

@@ -9,25 +9,39 @@ use PublishPress\Hub\Infrastructure\Asset\Contracts\AssetManagerInterface;
 class AssetManager implements AssetManagerInterface
 {
     /**
-     * Get the appropriate file extension based on the environment.
+     * Whether the environment is development.
      *
-     * @since 1.0.0
-     * @return string
+     * @var bool
      */
-    public function getScriptFileExtension(): string
-    {
-        return $this->shouldUseUnminifiedFiles() ? '.js' : '.min.js';
-    }
+    private bool $isDevelopment = false;
 
     /**
-     * Get the appropriate file extension based on the environment.
+     * The URL of the assets.
+     *
+     * @var string
+     */
+    private string $assetsUrl;
+
+    /**
+     * The version of the assets.
+     *
+     * @var string
+     */
+    private string $version;
+
+    /**
+     * Constructor.
      *
      * @since 1.0.0
-     * @return string
+     * @param string $assetsUrl The URL of the assets.
+     * @param string $version The version of the assets.
+     * @param bool $isDevelopment Whether the environment is development.
      */
-    public function getStyleFileExtension(): string
+    public function __construct(string $assetsUrl, string $version, bool $isDevelopment = false)
     {
-        return $this->shouldUseUnminifiedFiles() ? '.css' : '.min.css';
+        $this->assetsUrl = $assetsUrl;
+        $this->version = $version;
+        $this->isDevelopment = $isDevelopment;
     }
 
     /**
@@ -36,10 +50,32 @@ class AssetManager implements AssetManagerInterface
      * @since 1.0.0
      * @param string $path The relative path to the asset.
      * @return string
+     * @throws \InvalidArgumentException If the path is empty.
      */
     public function getAssetUrl(string $path): string
     {
-        return PUBLISHPRESS_HUB_ASSETS_URL . $path;
+        $baseUrl = rtrim($this->assetsUrl, '/') . '/';
+
+        if (empty($path)) {
+            throw new \InvalidArgumentException('Path cannot be empty');
+        }
+
+        $path = ltrim($path, '/');
+        $fileExtension = pathinfo($path, PATHINFO_EXTENSION);
+
+        if (empty($fileExtension)) {
+            throw new \InvalidArgumentException('File extension cannot be empty');
+        }
+
+        $path = str_replace('.' . $fileExtension, '', $path);
+
+        $minifiableExtensions = ['js', 'css'];
+
+        if (!$this->isDevelopment && in_array($fileExtension, $minifiableExtensions, true)) {
+            $fileExtension = 'min.' . $fileExtension;
+        }
+
+        return $baseUrl . $path . '.' . $fileExtension;
     }
 
     /**
@@ -58,13 +94,11 @@ class AssetManager implements AssetManagerInterface
         array $dependencies = [],
         bool $inFooter = true
     ): void {
-        $scriptPath = $path . $this->getScriptFileExtension();
-
         wp_enqueue_script(
             $handle,
-            $this->getAssetUrl($scriptPath),
+            $this->getAssetUrl($path),
             $dependencies,
-            PUBLISHPRESS_HUB_VERSION,
+            $this->version,
             $inFooter
         );
     }
@@ -83,13 +117,11 @@ class AssetManager implements AssetManagerInterface
         string $path,
         array $dependencies = []
     ): void {
-        $stylePath = $path . self::getScriptFileExtension();
-
         wp_enqueue_style(
             $handle,
-            $this->getAssetUrl($stylePath),
+            $this->getAssetUrl($path),
             $dependencies,
-            PUBLISHPRESS_HUB_VERSION
+            $this->version
         );
     }
 
@@ -108,16 +140,5 @@ class AssetManager implements AssetManagerInterface
         array $data
     ): void {
         wp_localize_script($handle, $name, $data);
-    }
-
-    /**
-     * Check if the environment is development.
-     *
-     * @since 1.0.0
-     * @return bool
-     */
-    private function shouldUseUnminifiedFiles(): bool
-    {
-        return defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;
     }
 }

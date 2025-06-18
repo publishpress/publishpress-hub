@@ -7,27 +7,12 @@ namespace PublishPress\Hub\Infrastructure\Asset\Contracts;
 interface AssetManagerInterface
 {
     /**
-     * Get the appropriate file extension based on the environment.
-     *
-     * @since 1.0.0
-     * @return string
-     */
-    public function getScriptFileExtension(): string;
-
-    /**
-     * Get the appropriate file extension based on the environment.
-     *
-     * @since 1.0.0
-     * @return string
-     */
-    public function getStyleFileExtension(): string;
-
-    /**
      * Get the full asset URL.
      *
      * @since 1.0.0
      * @param string $path The relative path to the asset.
      * @return string
+     * @throws \InvalidArgumentException If the path is empty.
      */
     public function getAssetUrl(string $path): string;
 

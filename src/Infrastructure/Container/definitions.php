@@ -67,6 +67,12 @@ return [
     },
 
     Services::ASSET_MANAGER => function (ServiceContainerInterface $container) {
-        return new AssetManager();
+        $isDevelopment = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;
+
+        return new AssetManager(
+            PUBLISHPRESS_HUB_ASSETS_URL,
+            PUBLISHPRESS_HUB_VERSION,
+            $isDevelopment
+        );
     },
 ];
