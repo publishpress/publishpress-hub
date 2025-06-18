@@ -24,28 +24,20 @@ class AdminMenuService implements ServiceInterface
     private bool $initialized = false;
 
     /**
-     * The dashboard view.
-     *
-     * @since 1.0.0
-     */
-    private ViewInterface $dashboardView;
-
+     * The plugins dashboard view.
     /**
-     * The asset manager.
-     *
      * @since 1.0.0
      */
-    private AssetManager $assetManager;
+    private ViewInterface $pluginsDashboardView;
 
     /**
      * The constructor.
      *
      * @since 1.0.0
      */
-    public function __construct(ViewInterface $dashboardView, AssetManager $assetManager    )
+    public function __construct(ViewInterface $pluginsDashboardView)
     {
-        $this->dashboardView = $dashboardView;
-        $this->assetManager = $assetManager;
+        $this->pluginsDashboardView = $pluginsDashboardView;
     }
 
     /**
@@ -101,7 +93,7 @@ class AdminMenuService implements ServiceInterface
             'PublishPress',
             $this->getAdminMenuCapability(),
             'publishpress-hub-dashboard',
-            [$this, 'renderDashboardView'],
+            [$this, 'renderPluginsDashboardView'],
             $this->getAdminMenuIcon()
         );
 
@@ -111,7 +103,7 @@ class AdminMenuService implements ServiceInterface
             'Plugins',
             $this->getAdminMenuCapability(),
             'publishpress-hub-dashboard',
-            [$this, 'renderDashboardView'],
+            [$this, 'renderPluginsDashboardView'],
             $this->getAdminMenuIcon()
         );
     }
@@ -124,33 +116,7 @@ class AdminMenuService implements ServiceInterface
      */
     public function enqueueScripts(string $hookSuffix): void
     {
-        if ('toplevel_page_publishpress-hub-dashboard' !== $hookSuffix) {
-            return;
-        }
-
-        $this->assetManager->enqueueStyle(
-            'publishpress-hub-dashboard',
-            'css/admin-page.css',
-            []
-        );
-
-        $this->assetManager->enqueueScript(
-            'publishpress-hub-dashboard',
-            'dist/js/hub-dashboard.js',
-            [
-                'publishpress-hub-i18n',
-                'wp-element',
-                'wp-components',
-            ]
-        );
-
-        $this->assetManager->localizeScript(
-            'publishpress-hub-dashboard',
-            'publishpressHubDashboardConfig',
-            [
-                'logoUrl' => $this->assetManager->getAssetUrl('images/publishpress-logo.png'),
-            ]
-        );
+        $this->pluginsDashboardView->enqueueScripts($hookSuffix);
     }
 
     /**
@@ -181,8 +147,8 @@ class AdminMenuService implements ServiceInterface
      *
      * @since 1.0.0
      */
-    public function renderDashboardView(): void
+    public function renderPluginsDashboardView(): void
     {
-        $this->dashboardView->render();
+        $this->pluginsDashboardView->render();
     }
 }

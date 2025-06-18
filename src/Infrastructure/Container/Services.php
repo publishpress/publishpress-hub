@@ -33,7 +33,7 @@ abstract class Services
 
     public const LANGUAGE_SERVICE = 'publishpress-hub/language-service';
 
-    public const HUB_DASHBOARD_VIEW = 'publishpress-hub/hub-dashboard-view';
+    public const PLUGINS_DASHBOARD_VIEW = 'publishpress-hub/plugins-dashboard-view';
 
     public const ASSET_MANAGER = 'publishpress-hub/asset-manager';
 }

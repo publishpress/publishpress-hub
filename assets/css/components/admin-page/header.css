@@ -4,15 +4,20 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--pp-hub-spacing-xl) var(--pp-hub-spacing-2xl);
+    padding: var(--pp-hub-spacing-xl) var(--pp-hub-spacing-xl);
     background-color: var(--pp-hub-bg-primary);
     border-bottom: 1px solid var(--pp-hub-border-primary);
-    margin-bottom: var(--pp-hub-spacing-xl);
 }
 
 .pp-hub-admin-page-header__logo {
-    height: 32px;
+    height: 65px;
     width: auto;
+}
+
+.pp-hub-admin-page-header__logo-text {
+    font-size: 35px;
+    line-height: 41px;
+    font-weight: 600;
     margin-right: var(--pp-hub-spacing-lg);
 }
 

@@ -1,8 +1,6 @@
 import HelpButton from "../buttons/help-button";
 
 export const AdminPageHeader = ({
-    title,
-    description,
     logoUrl,
     children,
     compact = false
@@ -20,12 +18,6 @@ export const AdminPageHeader = ({
             />
             <span className="pp-hub-admin-page-header__logo-text">Hub</span>
             <div className="pp-hub-admin-page-header__content">
-                {title && (
-                    <h1 className="pp-hub-admin-page-header__title">{title}</h1>
-                )}
-                {description && (
-                    <p className="pp-hub-admin-page-header__description">{description}</p>
-                )}
                 {children}
             </div>
             <div className="pp-hub-admin-page-header__actions">

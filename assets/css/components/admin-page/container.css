@@ -16,7 +16,7 @@
 .pp-hub-admin-page-container.pp-hub-contained {
     max-width: 1200px;
     margin: 0 auto;
-    padding: var(--pp-hub-spacing-lg);
+    padding: var(--pp-hub-spacing-xl);
 }
 
 /* Content area styling */

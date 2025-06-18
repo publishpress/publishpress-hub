@@ -46,9 +46,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _buttons_help_button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../buttons/help-button */ "./assets/jsx/components/buttons/help-button.jsx");
 
 var AdminPageHeader = function AdminPageHeader(_ref) {
-  var title = _ref.title,
-    description = _ref.description,
-    logoUrl = _ref.logoUrl,
+  var logoUrl = _ref.logoUrl,
     children = _ref.children,
     _ref$compact = _ref.compact,
     compact = _ref$compact === void 0 ? false : _ref$compact;
@@ -63,11 +61,7 @@ var AdminPageHeader = function AdminPageHeader(_ref) {
     className: "pp-hub-admin-page-header__logo-text"
   }, "Hub"), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-admin-page-header__content"
-  }, title && /*#__PURE__*/React.createElement("h1", {
-    className: "pp-hub-admin-page-header__title"
-  }, title), description && /*#__PURE__*/React.createElement("p", {
-    className: "pp-hub-admin-page-header__description"
-  }, description), children), /*#__PURE__*/React.createElement("div", {
+  }, children), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-admin-page-header__actions"
   }, /*#__PURE__*/React.createElement(_buttons_help_button__WEBPACK_IMPORTED_MODULE_0__["default"], null)));
 };
@@ -115,15 +109,58 @@ var AdminPageLayout = function AdminPageLayout(_ref) {
   var title = _ref.title,
     logoUrl = _ref.logoUrl,
     children = _ref.children;
-  return /*#__PURE__*/React.createElement(_container__WEBPACK_IMPORTED_MODULE_0__.AdminPageContainer, {
-    title: title,
-    logoUrl: logoUrl
+  return /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-admin-page-layout"
   }, /*#__PURE__*/React.createElement(_header__WEBPACK_IMPORTED_MODULE_1__.AdminPageHeader, {
-    title: title,
     logoUrl: logoUrl
-  }), children);
+  }), /*#__PURE__*/React.createElement(_container__WEBPACK_IMPORTED_MODULE_0__.AdminPageContainer, null, title && /*#__PURE__*/React.createElement("h1", {
+    className: "pp-hub-admin-page-layout__title"
+  }, title), /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-admin-page-layout__content"
+  }, children)));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AdminPageLayout);
+
+/***/ }),
+
+/***/ "./assets/jsx/components/buttons/button.jsx":
+/*!**************************************************!*\
+  !*** ./assets/jsx/components/buttons/button.jsx ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Button: () => (/* binding */ Button)
+/* harmony export */ });
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__);
+
+var Button = function Button(_ref) {
+  var variant = _ref.variant,
+    icon = _ref.icon,
+    onClick = _ref.onClick,
+    href = _ref.href,
+    target = _ref.target,
+    rel = _ref.rel,
+    className = _ref.className,
+    disabled = _ref.disabled,
+    title = _ref.title,
+    style = _ref.style,
+    children = _ref.children;
+  return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
+    variant: variant,
+    icon: icon,
+    onClick: onClick,
+    href: href,
+    target: target || '_blank',
+    rel: rel || 'noopener noreferrer',
+    className: className,
+    disabled: disabled,
+    title: title,
+    style: style
+  }, children);
+};
 
 /***/ }),
 
@@ -179,6 +216,76 @@ var HelpButton = function HelpButton(_ref) {
 
 /***/ }),
 
+/***/ "./assets/jsx/components/filter/filter-buttons-bar.jsx":
+/*!*************************************************************!*\
+  !*** ./assets/jsx/components/filter/filter-buttons-bar.jsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FilterButtonsBar: () => (/* binding */ FilterButtonsBar),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../buttons/button */ "./assets/jsx/components/buttons/button.jsx");
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress/hub-i18n */ "@publishpress/hub-i18n");
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var FilterButtonsBar = function FilterButtonsBar(_ref) {
+  var options = _ref.options,
+    selectedOption = _ref.selectedOption,
+    onSelect = _ref.onSelect,
+    children = _ref.children,
+    className = _ref.className;
+  if (!options) {
+    return null;
+  }
+  if (!options.length) {
+    return null;
+  }
+  return /*#__PURE__*/React.createElement("div", {
+    className: "publishpress-hub-filter-buttons-bar ".concat(className)
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "sm:hidden"
+  }, /*#__PURE__*/React.createElement("label", {
+    htmlFor: "tabs",
+    className: "sr-only"
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select an option', 'publishpress-hub')), /*#__PURE__*/React.createElement("select", {
+    id: "tabs",
+    className: "block w-full max-w-none py-2 text-base border-gray-300 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm rounded-md",
+    onChange: function onChange(e) {
+      onSelect(e.target.value);
+    }
+  }, /*#__PURE__*/React.createElement("optgroup", {
+    label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Options', 'publishpress-hub')
+  }, options.map(function (filter) {
+    return /*#__PURE__*/React.createElement("option", {
+      key: filter.value,
+      value: filter.value
+    }, filter.label, " (", filter.total, ")");
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "hidden sm:block"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "publishpress-hub-filter-buttons-bar"
+  }, options.map(function (filter) {
+    var isSelected = selectedOption === filter.value;
+    var buttonClass = isSelected ? 'active' : '';
+    var isDisabled = !filter.total;
+    return /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_0__.Button, {
+      key: filter.value,
+      className: "publishpress-hub-filter-button ".concat(buttonClass, " ").concat(isDisabled ? 'disabled' : ''),
+      onClick: function onClick() {
+        onSelect(filter.value);
+      },
+      disabled: filter.total === 0
+    }, filter.label, " ", filter.total > 0 && "(".concat(filter.total, ")"));
+  }), children)));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FilterButtonsBar);
+
+/***/ }),
+
 /***/ "./assets/jsx/components/pages/plugins-dashboard.jsx":
 /*!***********************************************************!*\
   !*** ./assets/jsx/components/pages/plugins-dashboard.jsx ***!
@@ -192,13 +299,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @publishpress/hub-i18n */ "@publishpress/hub-i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _admin_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../admin-page */ "./assets/jsx/components/admin-page/index.jsx");
+/* harmony import */ var _filter_filter_buttons_bar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../filter/filter-buttons-bar */ "./assets/jsx/components/filter/filter-buttons-bar.jsx");
+function _objectDestructuringEmpty(t) { if (null == t) throw new TypeError("Cannot destructure " + t); }
 
 
-var PluginsDashboard = function PluginsDashboard() {
+
+var PluginsDashboard = function PluginsDashboard(_ref) {
+  _objectDestructuringEmpty(_ref);
   return /*#__PURE__*/React.createElement(_admin_page__WEBPACK_IMPORTED_MODULE_1__.AdminPageLayout, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Plugins Dashboard', 'publishpress-hub'),
-    logoUrl: window.publishpressHubDashboardConfig.logoUrl
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Plugins Dashboard")));
+    logoUrl: window.ppHubPluginsDashboardConfig.logoUrl
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-plugins-dashboard"
+  }, /*#__PURE__*/React.createElement(_filter_filter_buttons_bar__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    options: [{
+      label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('All', 'publishpress-hub'),
+      value: 'all',
+      total: 10
+    }, {
+      label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Unlicensed', 'publishpress-hub'),
+      value: 'unlicensed',
+      total: 5
+    }, {
+      label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Active', 'publishpress-hub'),
+      value: 'licensed',
+      total: 5
+    }, {
+      label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Inactive', 'publishpress-hub'),
+      value: 'inactive',
+      total: 5
+    }, {
+      label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Not installed', 'publishpress-hub'),
+      value: 'not-installed',
+      total: 5
+    }]
+  })));
 };
 
 /***/ }),
@@ -337,21 +472,21 @@ module.exports = ReactDOM;
 var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
-/*!**************************************!*\
-  !*** ./assets/jsx/hub-dashboard.jsx ***!
-  \**************************************/
+/*!******************************************!*\
+  !*** ./assets/jsx/plugins-dashboard.jsx ***!
+  \******************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _components_pages_plugins_dashboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/pages/plugins-dashboard */ "./assets/jsx/components/pages/plugins-dashboard.jsx");
 
 
-var dashboardContainer = document.getElementById('publishpress-hub-dashboard-container');
-if (dashboardContainer) {
-  var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(dashboardContainer);
+var pluginsDashboardContainer = document.getElementById('publishpress-hub-plugins-dashboard-container');
+if (pluginsDashboardContainer) {
+  var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(pluginsDashboardContainer);
   root.render(/*#__PURE__*/React.createElement(_components_pages_plugins_dashboard__WEBPACK_IMPORTED_MODULE_1__.PluginsDashboard, null));
 }
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=hub-dashboard.js.map
+//# sourceMappingURL=plugins-dashboard.js.map

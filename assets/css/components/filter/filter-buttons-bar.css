@@ -1,0 +1,11 @@
+/* FilterButtonsBar Component */
+
+.publishpress-hub-filter-buttons-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pp-hub-spacing-sm);
+}
+
+.publishpress-hub-filter-button {
+    display: inline-flex;
+}

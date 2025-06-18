@@ -19,7 +19,7 @@ namespace PublishPress\Hub\Infrastructure\Container;
 use PublishPress\Hub\Application\Service\AdminMenuService;
 use PublishPress\Hub\Application\Service\HubService;
 use PublishPress\Hub\Application\Service\LanguageService;
-use PublishPress\Hub\Application\View\Admin\DashboardView;
+use PublishPress\Hub\Application\View\Admin\PluginsDashboardView;
 use PublishPress\Hub\Domain\Plugin\PluginRepository;
 use PublishPress\Hub\Infrastructure\Asset\AssetManager;
 use PublishPress\Hub\Infrastructure\Container\Contracts\ServiceContainerInterface;
@@ -50,8 +50,7 @@ return [
 
     Services::ADMIN_MENU_SERVICE => function (ServiceContainerInterface $container) {
         return new AdminMenuService(
-            $container->get(Services::HUB_DASHBOARD_VIEW),
-            $container->get(Services::ASSET_MANAGER)
+            $container->get(Services::PLUGINS_DASHBOARD_VIEW)
         );
     },
 
@@ -62,8 +61,10 @@ return [
         );
     },
 
-    Services::HUB_DASHBOARD_VIEW => function (ServiceContainerInterface $container) {
-        return new DashboardView();
+    Services::PLUGINS_DASHBOARD_VIEW => function (ServiceContainerInterface $container) {
+        return new PluginsDashboardView(
+            $container->get(Services::ASSET_MANAGER)
+        );
     },
 
     Services::ASSET_MANAGER => function (ServiceContainerInterface $container) {

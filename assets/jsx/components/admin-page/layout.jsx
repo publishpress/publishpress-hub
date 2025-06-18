@@ -7,16 +7,18 @@ export const AdminPageLayout = ({
     children,
 }) => {
     return (
-        <AdminPageContainer
-            title={title}
-            logoUrl={logoUrl}
-        >
-            <AdminPageHeader
-                title={title}
-                logoUrl={logoUrl}
-            />
-            {children}
-        </AdminPageContainer>
+        <div className="pp-hub-admin-page-layout">
+            <AdminPageHeader logoUrl={logoUrl} />
+            <AdminPageContainer>
+                {title && (
+                    <h1 className="pp-hub-admin-page-layout__title">{title}</h1>
+                )}
+
+                <div className="pp-hub-admin-page-layout__content">
+                    {children}
+                </div>
+            </AdminPageContainer>
+        </div>
     )
 }
 
