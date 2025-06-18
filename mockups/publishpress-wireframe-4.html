@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PublishPress Hub - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #f6f7f8;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6366f1;
+        }
+        
+        .help-btn {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 14px;
+        }
+        
+        /* Page Title */
+        .page-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+        
+        .page-title h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        .refresh-btn {
+            background: white;
+            border: 1px solid #d1d5db;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        /* Status Tabs */
+        .status-tabs {
+            background: white;
+            border-radius: 8px;
+            padding: 6px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .tab {
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tab.active {
+            background: #6366f1;
+            color: white;
+        }
+        
+        .tab:not(.active) {
+            color: #6b7280;
+        }
+        
+        .tab:not(.active):hover {
+            background: #f3f4f6;
+        }
+        
+        .count {
+            background: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .tab:not(.active) .count {
+            background: #e5e7eb;
+            color: #6b7280;
+        }
+        
+        /* Installed Plugins Section */
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #111827;
+        }
+        
+        .installed-plugins {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .plugin-row {
+            display: flex;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        .plugin-row:last-child {
+            border-bottom: none;
+        }
+        
+        .plugin-icon {
+            width: 40px;
+            height: 40px;
+            background: #e5e7eb;
+            border-radius: 8px;
+            margin-right: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        
+        .plugin-info {
+            flex: 1;
+        }
+        
+        .plugin-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+        
+        .plugin-description {
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        .license-status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-right: 24px;
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .status-free {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .status-licensed {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .status-unlicensed {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .license-info {
+            font-size: 12px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        
+        .primary-btn {
+            background: #f59e0b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .primary-btn:hover {
+            background: #d97706;
+        }
+        
+        .secondary-btn {
+            background: white;
+            color: #6366f1;
+            border: 1px solid #6366f1;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 8px;
+            transition: all 0.2s;
+        }
+        
+        .secondary-btn:hover {
+            background: #6366f1;
+            color: white;
+        }
+        
+        /* Bundle Offer */
+        .bundle-offer {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .bundle-content h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .bundle-content p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        
+        .bundle-btn {
+            background: white;
+            color: #6366f1;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .bundle-btn:hover {
+            transform: translateY(-1px);
+        }
+        
+        /* Plugin Grid */
+        .plugin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        
+        .plugin-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+            border: 1px solid #f3f4f6;
+        }
+        
+        .plugin-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: #e5e7eb;
+            border-radius: 12px;
+            margin-right: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        .card-description {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .card-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .card-links {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #f3f4f6;
+        }
+        
+        .card-links a {
+            color: #6b7280;
+            text-decoration: none;
+        }
+        
+        .card-links a:hover {
+            color: #6366f1;
+        }
+        
+        /* Icons */
+        .icon-revisions { background: #fef3c7; color: #d97706; }
+        .icon-planner { background: #dbeafe; color: #1d4ed8; }
+        .icon-blocks { background: #fce7f3; color: #be185d; }
+        .icon-capabilities { background: #ecfdf5; color: #059669; }
+        .icon-future { background: #e0e7ff; color: #4338ca; }
+        .icon-series { background: #fff7ed; color: #ea580c; }
+        .icon-authors { background: #f3e8ff; color: #7c3aed; }
+        .icon-checklists { background: #f0fdf4; color: #16a34a; }
+        .icon-permissions { background: #fef2f2; color: #dc2626; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">🚀 PublishPress</div>
+            <a href="#" class="help-btn">Need Help?</a>
+        </div>
+        
+        <!-- Page Title -->
+        <div class="page-title">
+            <h1>Plugin Hub</h1>
+            <button class="refresh-btn">🔄 Refresh</button>
+        </div>
+        
+        <!-- Status Tabs -->
+        <div class="status-tabs">
+            <div class="tab active">
+                All <span class="count">4</span>
+            </div>
+            <div class="tab">
+                Installed <span class="count">4</span>
+            </div>
+            <div class="tab">
+                Licensed <span class="count">1</span>
+            </div>
+            <div class="tab">
+                Unlicensed <span class="count">1</span>
+            </div>
+            <div class="tab">
+                Free <span class="count">2</span>
+            </div>
+        </div>
+        
+        <!-- Installed Plugins -->
+        <div class="section">
+            <h2 class="section-title">Your Installed Plugins</h2>
+            <div class="installed-plugins">
+                <div class="plugin-row">
+                    <div class="plugin-icon icon-checklists">✓</div>
+                    <div class="plugin-info">
+                        <div class="plugin-name">PublishPress Checklists Pro</div>
+                        <div class="plugin-description">Improve content quality with customizable editorial checklists</div>
+                    </div>
+                    <div class="license-status">
+                        <span class="status-badge status-unlicensed">Unlicensed</span>
+                    </div>
+                    <div>
+                        <button class="primary-btn">Add License Key</button>
+                    </div>
+                </div>
+                
+                <div class="plugin-row">
+                    <div class="plugin-icon icon-permissions">👥</div>
+                    <div class="plugin-info">
+                        <div class="plugin-name">PublishPress Permissions Pro</div>
+                        <div class="plugin-description">Advanced user role and permission management</div>
+                    </div>
+                    <div class="license-status">
+                        <span class="status-badge status-licensed">Licensed</span>
+                        <span class="license-info">Expires Dec 2025</span>
+                    </div>
+                    <div>
+                        <button class="secondary-btn">Manage License</button>
+                    </div>
+                </div>
+                
+                <div class="plugin-row">
+                    <div class="plugin-icon icon-future">🚀</div>
+                    <div class="plugin-info">
+                        <div class="plugin-name">PublishPress Future</div>
+                        <div class="plugin-description">Automatically unpublish posts and pages on a scheduled future date</div>
+                    </div>
+                    <div class="license-status">
+                        <span class="status-badge status-free">Free</span>
+                    </div>
+                    <div>
+                        <button class="primary-btn">Upgrade to Pro</button>
+                    </div>
+                </div>
+                
+                <div class="plugin-row">
+                    <div class="plugin-icon icon-capabilities">⚡</div>
+                    <div class="plugin-info">
+                        <div class="plugin-name">PublishPress Capabilities</div>
+                        <div class="plugin-description">Fine-grained user role management for WordPress sites</div>
+                    </div>
+                    <div class="license-status">
+                        <span class="status-badge status-free">Free</span>
+                    </div>
+                    <div>
+                        <button class="primary-btn">Upgrade to Pro</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bundle Offer -->
+        <div class="bundle-offer">
+            <div class="bundle-content">
+                <h3>Save 40% with Pro Bundle</h3>
+                <p>Get all PublishPress Pro plugins at a discounted price</p>
+            </div>
+            <button class="bundle-btn">View Bundle</button>
+        </div>
+        
+        <!-- Available Plugins -->
+        <div class="section">
+            <h2 class="section-title">Available Plugins</h2>
+            <div class="plugin-grid">
+                <div class="plugin-card">
+                    <div class="card-header">
+                        <div class="card-icon icon-revisions">📝</div>
+                        <div class="card-title">PublishPress Revisions</div>
+                    </div>
+                    <div class="card-description">
+                        Advanced revision management, scheduling and approval workflows for your content team.
+                    </div>
+                    <div class="card-actions">
+                        <button class="secondary-btn">Install Free</button>
+                        <button class="primary-btn">Upgrade Pro</button>
+                    </div>
+                    <div class="card-links">
+                        <a href="#">Learn more</a>
+                        <a href="#">Documentation</a>
+                    </div>
+                </div>
+                
+                <div class="plugin-card">
+                    <div class="card-header">
+                        <div class="card-icon icon-planner">📅</div>
+                        <div class="card-title">PublishPress Planner</div>
+                    </div>
+                    <div class="card-description">
+                        Editorial calendar and content planning tools to organize your publishing schedule.
+                    </div>
+                    <div class="card-actions">
+                        <button class="secondary-btn">Install Free</button>
+                        <button class="primary-btn">Upgrade Pro</button>
+                    </div>
+                    <div class="card-links">
+                        <a href="#">Learn more</a>
+                        <a href="#">Documentation</a>
+                    </div>
+                </div>
+                
+                <div class="plugin-card">
+                    <div class="card-header">
+                        <div class="card-icon icon-blocks">🧱</div>
+                        <div class="card-title">PublishPress Blocks</div>
+                    </div>
+                    <div class="card-description">
+                        Enhanced Gutenberg blocks with advanced styling and configuration options.
+                    </div>
+                    <div class="card-actions">
+                        <button class="secondary-btn">Install Free</button>
+                        <button class="primary-btn">Upgrade Pro</button>
+                    </div>
+                    <div class="card-links">
+                        <a href="#">Learn more</a>
+                        <a href="#">Documentation</a>
+                    </div>
+                </div>
+                
+                <div class="plugin-card">
+                    <div class="card-header">
+                        <div class="card-icon icon-series">📚</div>
+                        <div class="card-title">PublishPress Series</div>
+                    </div>
+                    <div class="card-description">
+                        Organize related content into series for better reader engagement and SEO.
+                    </div>
+                    <div class="card-actions">
+                        <button class="secondary-btn">Install Free</button>
+                        <button class="primary-btn">Upgrade Pro</button>
+                    </div>
+                    <div class="card-links">
+                        <a href="#">Learn more</a>
+                        <a href="#">Documentation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

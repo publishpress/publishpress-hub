@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PublishPress Hub - Plugin Diagnostics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #f6f7f8;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6366f1;
+        }
+
+        .help-btn {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        /* Page Title */
+        .page-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .page-title h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .breadcrumb a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+
+        .refresh-btn {
+            background: white;
+            border: 1px solid #d1d5db;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Status Overview */
+        .status-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .status-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .status-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .status-healthy { background: #dcfce7; color: #16a34a; }
+        .status-warning { background: #fef3c7; color: #d97706; }
+        .status-error { background: #fef2f2; color: #dc2626; }
+        .status-info { background: #dbeafe; color: #1d4ed8; }
+
+        .status-label {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+
+        .status-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #f3f4f6;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 16px;
+        }
+
+        .diagnostics-icon {
+            background: #e0e7ff;
+            color: #4338ca;
+        }
+
+        .details-icon {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        .card-subtitle {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        /* Plugin List */
+        .plugin-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .plugin-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: #f9fafb;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .plugin-item:hover {
+            border-color: #6366f1;
+            background: #f8fafc;
+        }
+
+        .plugin-item.selected {
+            border-color: #6366f1;
+            background: #eff6ff;
+        }
+
+        .plugin-status {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .status-ok { background: #16a34a; }
+        .status-warn { background: #d97706; }
+        .status-fail { background: #dc2626; }
+
+        .plugin-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .plugin-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .plugin-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 2px;
+        }
+
+        .plugin-version {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .plugin-health {
+            text-align: right;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .health-ok { color: #16a34a; }
+        .health-warn { color: #d97706; }
+        .health-fail { color: #dc2626; }
+
+        /* Diagnostic Tabs */
+        .diagnostic-tabs {
+            display: flex;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 20px;
+        }
+
+        .diagnostic-tab {
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            color: #6b7280;
+            transition: all 0.2s;
+        }
+
+        .diagnostic-tab:hover {
+            color: #374151;
+        }
+
+        .diagnostic-tab.active {
+            color: #6366f1;
+            border-bottom-color: #6366f1;
+        }
+
+        /* Diagnostic Content */
+        .diagnostic-content {
+            display: none;
+        }
+
+        .diagnostic-content.active {
+            display: block;
+        }
+
+        .no-plugin-selected {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6b7280;
+        }
+
+        .no-plugin-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+            opacity: 0.5;
+        }
+
+        /* Health Check Results */
+        .health-checks {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .health-check {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: #f9fafb;
+            border-radius: 8px;
+            border-left: 4px solid #e5e7eb;
+        }
+
+        .health-check.success {
+            border-left-color: #16a34a;
+            background: #f0fdf4;
+        }
+
+        .health-check.warning {
+            border-left-color: #d97706;
+            background: #fffbeb;
+        }
+
+        .health-check.error {
+            border-left-color: #dc2626;
+            background: #fef2f2;
+        }
+
+        .health-check-icon {
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+        .health-check-content {
+            flex: 1;
+        }
+
+        .health-check-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 2px;
+        }
+
+        .health-check-desc {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        /* Debug Log */
+        .debug-log {
+            background: #111827;
+            color: #f9fafb;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.4;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .log-entry {
+            margin-bottom: 4px;
+        }
+
+        .log-timestamp {
+            color: #9ca3af;
+        }
+
+        .log-level-info { color: #60a5fa; }
+        .log-level-warn { color: #fbbf24; }
+        .log-level-error { color: #f87171; }
+
+        /* Settings Dump */
+        .settings-dump {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.4;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .primary-btn {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .primary-btn:hover {
+            background: #4f46e5;
+        }
+
+        .secondary-btn {
+            background: white;
+            color: #6b7280;
+            border: 1px solid #d1d5db;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .secondary-btn:hover {
+            background: #f9fafb;
+            border-color: #9ca3af;
+        }
+
+        /* System Information */
+        .system-info {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #f3f4f6;
+        }
+
+        .system-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .system-section {
+            padding: 16px;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+
+        .system-section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        .system-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 13px;
+        }
+
+        .system-item:last-child {
+            border-bottom: none;
+        }
+
+        .system-label {
+            color: #6b7280;
+        }
+
+        .system-value {
+            color: #111827;
+            font-weight: 500;
+        }
+
+        /* Plugin Icons */
+        .icon-checklists { background: #dcfce7; color: #16a34a; }
+        .icon-permissions { background: #fef2f2; color: #dc2626; }
+        .icon-future { background: #e0e7ff; color: #4338ca; }
+        .icon-capabilities { background: #ecfdf5; color: #059669; }
+        .icon-revisions { background: #fef3c7; color: #d97706; }
+        .icon-planner { background: #dbeafe; color: #1d4ed8; }
+        .icon-blocks { background: #fce7f3; color: #be185d; }
+        .icon-series { background: #fff7ed; color: #ea580c; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">🚀 PublishPress</div>
+            <a href="#" class="help-btn">Need Help?</a>
+        </div>
+
+        <!-- Page Title -->
+        <div class="page-title">
+            <div>
+                <div class="breadcrumb">
+                    <a href="#">Plugin Hub</a> > Diagnostics
+                </div>
+                <h1>Plugin Diagnostics</h1>
+            </div>
+            <button class="refresh-btn" onclick="runDiagnostics()">
+                🔄 Refresh All
+            </button>
+        </div>
+
+        <!-- Status Overview -->
+        <div class="status-overview">
+            <div class="status-card">
+                <div class="status-icon status-healthy">✓</div>
+                <div class="status-label">Healthy Plugins</div>
+                <div class="status-value">3</div>
+            </div>
+            <div class="status-card">
+                <div class="status-icon status-warning">⚠️</div>
+                <div class="status-label">With Warnings</div>
+                <div class="status-value">1</div>
+            </div>
+            <div class="status-card">
+                <div class="status-icon status-error">❌</div>
+                <div class="status-label">With Errors</div>
+                <div class="status-value">0</div>
+            </div>
+            <div class="status-card">
+                <div class="status-icon status-info">📊</div>
+                <div class="status-label">Total Installed</div>
+                <div class="status-value">4</div>
+            </div>
+        </div>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Plugin Selection -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon diagnostics-icon">🔍</div>
+                    <div>
+                        <div class="card-title">Plugin Status</div>
+                        <div class="card-subtitle">Select a plugin to view detailed diagnostics</div>
+                    </div>
+                </div>
+
+                <div class="plugin-list">
+                    <div class="plugin-item selected" onclick="selectPlugin(this, 'checklists')">
+                        <div class="plugin-status status-ok"></div>
+                        <div class="plugin-icon icon-checklists">✓</div>
+                        <div class="plugin-info">
+                            <div class="plugin-name">PublishPress Checklists</div>
+                            <div class="plugin-version">v3.2.1 • Licensed</div>
+                        </div>
+                        <div class="plugin-health health-ok">Healthy</div>
+                    </div>
+
+                    <div class="plugin-item" onclick="selectPlugin(this, 'permissions')">
+                        <div class="plugin-status status-warn"></div>
+                        <div class="plugin-icon icon-permissions">👥</div>
+                        <div class="plugin-info">
+                            <div class="plugin-name">PublishPress Permissions</div>
+                            <div class="plugin-version">v4.1.0 • Licensed</div>
+                        </div>
+                        <div class="plugin-health health-warn">2 Warnings</div>
+                    </div>
+
+                    <div class="plugin-item" onclick="selectPlugin(this, 'future')">
+                        <div class="plugin-status status-ok"></div>
+                        <div class="plugin-icon icon-future">🚀</div>
+                        <div class="plugin-info">
+                            <div class="plugin-name">PublishPress Future</div>
+                            <div class="plugin-version">v2.5.3 • Free</div>
+                        </div>
+                        <div class="plugin-health health-ok">Healthy</div>
+                    </div>
+
+                    <div class="plugin-item" onclick="selectPlugin(this, 'capabilities')">
+                        <div class="plugin-status status-ok"></div>
+                        <div class="plugin-icon icon-capabilities">⚡</div>
+                        <div class="plugin-info">
+                            <div class="plugin-name">PublishPress Capabilities</div>
+                            <div class="plugin-version">v2.8.1 • Free</div>
+                        </div>
+                        <div class="plugin-health health-ok">Healthy</div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="primary-btn">🔍 Run Full Scan</button>
+                    <button class="secondary-btn">Export Report</button>
+                </div>
+            </div>
+
+            <!-- Diagnostic Details -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon details-icon">📊</div>
+                    <div>
+                        <div class="card-title">Diagnostic Details</div>
+                        <div class="card-subtitle">Health checks, logs, and configuration data</div>
+                    </div>
+                </div>
+
+                <div class="diagnostic-tabs">
+                    <div class="diagnostic-tab active" onclick="showTab('health')">Health Check</div>
+                    <div class="diagnostic-tab" onclick="showTab('logs')">Debug Logs</div>
+                    <div class="diagnostic-tab" onclick="showTab('settings')">Settings Dump</div>
+                    <div class="diagnostic-tab" onclick="showTab('files')">File Status</div>
+                </div>
+
+                <!-- Health Check Tab -->
+                <div id="healthTab" class="diagnostic-content active">
+                    <div class="health-checks">
+                        <div class="health-check success">
+                            <div class="health-check-icon">✅</div>
+                            <div class="health-check-content">
+                                <div class="health-check-title">Database Connection</div>
+                                <div class="health-check-desc">Plugin tables accessible and optimized</div>
+                            </div>
+                        </div>
+
+                        <div class="health-check success">
+                            <div class="health-check-icon">✅</div>
+                            <div class="health-check-content">
+                                <div class="health-check-title">License Status</div>
+                                <div class="health-check-desc">Valid license key, expires Dec 2025</div>
+                            </div>
+                        </div>
+
+                        <div class="health-check success">
+                            <div class="health-check-icon">✅</div>
+                            <div class="health-check-content">
+                                <div class="health-check-title">File Permissions</div>
+                                <div class="health-check-desc">All plugin files have correct permissions</div>
+                            </div>
+                        </div>
+
+                        <div class="health-check success">
+                            <div class="health-check-icon">✅</div>
+                            <div class="health-check-content">
+                                <div class="health-check-title">WordPress Compatibility</div>
+                                <div class="health-check-desc">Compatible with WordPress 6.5.3</div>
+                            </div>
+                        </div>
+
+                        <div class="health-check success">
+                            <div class="health-check-icon">✅</div>
+                            <div class="health-check-content">
+                                <div class="health-check-title">Dependencies</div>
+                                <div class="health-check-desc">All required dependencies available</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Debug Logs Tab -->
+                <div id="logsTab" class="diagnostic-content">
+                    <div class="debug-log">
+<span class="log-timestamp">[2024-06-20 14:23:45]</span> <span class="log-level-info">INFO</span> Checklists: Workflow "Content Review" executed successfully
+<span class="log-timestamp">[2024-06-20 14:22:10]</span> <span class="log-level-info">INFO</span> Checklists: Task template "SEO Check" loaded
+<span class="log-timestamp">[2024-06-20 14:20:33]</span> <span class="log-level-info">INFO</span> Checklists: User permissions validated for Editor role
+<span class="log-timestamp">[2024-06-20 14:18:55]</span> <span class="log-level-info">INFO</span> Checklists: Database optimization completed
+<span class="log-timestamp">[2024-06-20 13:45:21]</span> <span class="log-level-info">INFO</span> Checklists: License key validated successfully
+<span class="log-timestamp">[2024-06-20 13:30:12]</span> <span class="log-level-info">INFO</span> Checklists: Plugin initialized successfully
+                    </div>
+                    <div class="action-buttons">
+                        <button class="secondary-btn">📥 Download Full Log</button>
+                        <button class="secondary-btn">🗑️ Clear Log</button>
+                    </div>
+                </div>
+
+                <!-- Settings Dump Tab -->
+                <div id="settingsTab" class="diagnostic-content">
+                    <div class="settings-dump">
+{
+  "plugin_version": "3.2.1",
+  "license_key": "pp_ck_********************",
+  "license_status": "valid",
+  "license_expires": "2025-12-31",
+  "workflows": {
+    "enabled": true,
+    "count": 3,
+    "active_workflows": [
+      {
+        "id": 1,
+        "name": "Content Review Process",
+        "status": "active",
+        "tasks": 8
+      },
+      {
+        "id": 2,
+        "name": "SEO Checklist Workflow",
+        "status": "active",
+        "tasks": 5
+      }
+    ]
+  },
+  "global_settings": {
+    "auto_assign_workflows": true,
+    "email_notifications": true,
+    "slack_integration": false,
+    "task_reminders": true
+  },
+  "database": {
+    "tables_count": 4,
+    "last_optimization": "2024-06-20 14:18:55",
+    "total_records": 156
+  }
+}
+                    </div>
+                    <div class="action-buttons">
+                        <button class="secondary-btn">📋 Copy to Clipboard</button>
+                        <button class="secondary-btn">📥 Download JSON</button>
+                    </div>
+                </div>
+
+                <!-- File Status Tab -->
+                <div id="filesTab" class="diagnostic-content">
+                    <div class="health-checks">
+                        <div class="health-check success">
+                            <div class="health-check-icon">📁</div>
+                            <div class="health-check-content">
+                                <div class="health-check-title">Core Plugin Files</div>
+                                <div class="health-check-desc">45 files • All present and readable</div>
+                            </div>
+                        </div>
+
+                        <div class="health-check success">
+                            <div class="health-check-icon">🎨</div>
+                            <div class="health-check-content">
+                                <div class="health-check-title">Asset Files</div>
+                                <div class="health-check-desc">12 CSS, 8 JS files • All optimized</div>
+                            </div>
+                        </div>
+
+                        <div class="health-check success">
+                            <div class="health-check-icon">🌐</div>
+                            <div class="health-check-content">
+                                <div class="health-check-title">Language Files</div>
+                                <div class="health-check-desc">3 translation files loaded</div>
+                            </div>
+                        </div>
+
+                        <div class="health-check success">
+                            <div class="health-check-icon">📝</div>
+                            <div class="health-check-content">
+                                <div class="health-check-title">Template Files</div>
+                                <div class="health-check-desc">6 template files • No conflicts detected</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Information -->
+        <div class="system-info">
+            <div class="card-header">
+                <div class="card-icon diagnostics-icon">🖥️</div>
+                <div>
+                    <div class="card-title">System Information</div>
+                    <div class="card-subtitle">WordPress and server environment details</div>
+                </div>
+            </div>
+
+            <div class="system-grid">
+                <div class="system-section">
+                    <div class="system-section-title">WordPress Environment</div>
+                    <div class="system-item">
+                        <span class="system-label">WordPress Version</span>
+                        <span class="system-value">6.5.3</span>
+                    </div>
+                    <div class="system-item">
+                        <span class="system-label">Multisite</span>
+                        <span class="system-value">No</span>
+                    </div>
+                    <div class="system-item">
+                        <span class="system-label">Active Theme</span>
+                        <span class="system-value">Twenty Twenty-Four</span>
+                    </div>
+                    <div class="system-item">
+                        <span class="system-label">Active Plugins</span>
+                        <span class="system-value">12</span>
+                    </div>
+                </div>
+
+                <div class="system-section">
+                    <div class="system-section-title">Server Environment</div>
+                    <div class="system-item">
+                        <span class="system-label">PHP Version</span>
+                        <span class="system-value">8.1.22</span>
+                    </div>
+                    <div class="system-item">
+                        <span class="system-label">MySQL Version</span>
+                        <span class="system-value">8.0.33</span>
+                    </div>
+                    <div class="system-item">
+                        <span class="system-label">Web Server</span>
+                        <span class="system-value">Apache/2.4.57</span>
+                    </div>
+                    <div class="system-item">
+                        <span class="system-label">Memory Limit</span>
+                        <span class="system-value">512M</span>
+                    </div>
+                </div>
+
+                <div class="system-section">
+                    <div class="system-section-title">PublishPress Hub</div>
+                    <div class="system-item">
+                        <span class="system-label">Hub Version</span>
+                        <span class="system-value">2.1.0</span>
+                    </div>
+                    <div class="system-item">
+                        <span class="system-label">API Status</span>
+                        <span class="system-value">Connected</span>
+                    </div>
+                    <div class="system-item">
+                        <span class="system-label">Last Check</span>
+                        <span class="system-value">2 minutes ago</span>
+                    </div>
+                    <div class="system-item">
+                        <span class="system-label">Debug Mode</span>
+                        <span class="system-value">Disabled</span>
+                    </div>
+                </div>
+
+                <div class="system-section">
+                    <div class="system-section-title">Performance</div>
+                    <div class="system-item">
+                        <span class="system-label">Page Load Time</span>
+                        <span class="system-value">1.2s</span>
+                    </div>
+                    <div class="system-item">
+                        <span class="system-label">Database Queries</span>
+                        <span class="system-value">24</span>
+                    </div>
+                    <div class="system-item">
+                        <span class="system-label">Memory Usage</span>
+                        <span class="system-value">45MB</span>
+                    </div>
+                    <div class="system-item">
+                        <span class="system-label">Object Cache</span>
+                        <span class="system-value">Active</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedPlugin = 'checklists';
+
+        function selectPlugin(element, pluginId) {
+            // Update visual selection
+            document.querySelectorAll('.plugin-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            element.classList.add('selected');
+
+            selectedPlugin = pluginId;
+            loadPluginDiagnostics(pluginId);
+        }
+
+        function loadPluginDiagnostics(pluginId) {
+            // Here you would load different diagnostic data based on the plugin
+            // For now, we'll show the same data structure
+            console.log('Loading diagnostics for:', pluginId);
+        }
+
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.diagnostic-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.diagnostic-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Show selected tab
+            event.target.classList.add('active');
+            document.getElementById(tabName + 'Tab').classList.add('active');
+        }
+
+        function runDiagnostics() {
+            // Simulate refresh animation
+            const btn = event.target;
+            btn.innerHTML = '⟳ Running...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = '🔄 Refresh All';
+                btn.disabled = false;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

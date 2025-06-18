@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PublishPress Hub - Plugin Diagnostics Comparison</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #f6f7f8;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6366f1;
+        }
+
+        .help-btn {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        /* Page Title */
+        .page-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .page-title h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .breadcrumb a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+
+        .comparison-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .refresh-btn, .compare-btn {
+            background: white;
+            border: 1px solid #d1d5db;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .compare-btn.active {
+            background: #6366f1;
+            color: white;
+            border-color: #6366f1;
+        }
+
+        /* View Mode Tabs */
+        .view-modes {
+            background: white;
+            border-radius: 8px;
+            padding: 6px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .view-mode {
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .view-mode.active {
+            background: #6366f1;
+            color: white;
+        }
+
+        .view-mode:not(.active) {
+            color: #6b7280;
+        }
+
+        .view-mode:not(.active):hover {
+            background: #f3f4f6;
+        }
+
+        /* Comparison Grid */
+        .comparison-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .plugin-comparison-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #f3f4f6;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        .plugin-comparison-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        .plugin-comparison-card.selected {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        /* Plugin Header */
+        .plugin-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #f3f4f6;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .plugin-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            margin-right: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .plugin-info {
+            flex: 1;
+        }
+
+        .plugin-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        .plugin-version {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .plugin-status-badge {
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-healthy {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-error {
+            background: #fef2f2;
+            color: #991b1b;
+        }
+
+        /* Health Metrics */
+        .health-metrics {
+            padding: 20px 24px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .metric-item {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .metric-value.good { color: #16a34a; }
+        .metric-value.warning { color: #d97706; }
+        .metric-value.error { color: #dc2626; }
+
+        .metric-label {
+            font-size: 12px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Health Checks Comparison */
+        .health-checks-comparison {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .health-check-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: #f9fafb;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        .check-name {
+            color: #374151;
+        }
+
+        .check-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        .check-status.pass { color: #16a34a; }
+        .check-status.warn { color: #d97706; }
+        .check-status.fail { color: #dc2626; }
+
+        /* Quick Actions */
+        .quick-actions {
+            padding: 16px 24px;
+            border-top: 1px solid #f3f4f6;
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            flex: 1;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .action-btn:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        .action-btn.primary {
+            background: #6366f1;
+            color: white;
+            border-color: #6366f1;
+        }
+
+        .action-btn.primary:hover {
+            background: #4f46e5;
+        }
+
+        /* Side-by-Side Comparison */
+        .side-by-side {
+            display: none;
+            gap: 24px;
+        }
+
+        .side-by-side.active {
+            display: flex;
+        }
+
+        .comparison-panel {
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #f3f4f6;
+        }
+
+        .comparison-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .comparison-selector {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: between;
+        }
+
+        .comparison-table {
+            width: 100%;
+        }
+
+        .comparison-row {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-label {
+            flex: 1;
+            font-size: 14px;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .comparison-value {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .value-good {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .value-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .value-error {
+            background: #fef2f2;
+            color: #991b1b;
+        }
+
+        .value-neutral {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        /* Summary Comparison */
+        .summary-comparison {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #f3f4f6;
+            margin-bottom: 24px;
+        }
+
+        .summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .summary-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .export-btn {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-stat {
+            text-align: center;
+            padding: 16px;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        /* Plugin Icons */
+        .icon-checklists { background: #dcfce7; color: #16a34a; }
+        .icon-permissions { background: #fef2f2; color: #dc2626; }
+        .icon-future { background: #e0e7ff; color: #4338ca; }
+        .icon-capabilities { background: #ecfdf5; color: #059669; }
+        .icon-revisions { background: #fef3c7; color: #d97706; }
+        .icon-planner { background: #dbeafe; color: #1d4ed8; }
+        .icon-blocks { background: #fce7f3; color: #be185d; }
+        .icon-series { background: #fff7ed; color: #ea580c; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">🚀 PublishPress</div>
+            <a href="#" class="help-btn">Need Help?</a>
+        </div>
+
+        <!-- Page Title -->
+        <div class="page-title">
+            <div>
+                <div class="breadcrumb">
+                    <a href="#">Plugin Hub</a> > Diagnostics
+                </div>
+                <h1>Plugin Diagnostics</h1>
+            </div>
+            <div class="comparison-controls">
+                <button class="compare-btn" onclick="toggleCompareMode()">
+                    ⚖️ Compare
+                </button>
+                <button class="refresh-btn" onclick="runDiagnostics()">
+                    🔄 Refresh All
+                </button>
+            </div>
+        </div>
+
+        <!-- View Mode Tabs -->
+        <div class="view-modes">
+            <div class="view-mode active" onclick="showViewMode('overview')">
+                📊 Overview
+            </div>
+            <div class="view-mode" onclick="showViewMode('compare')">
+                ⚖️ Side-by-Side
+            </div>
+            <div class="view-mode" onclick="showViewMode('timeline')">
+                📈 Timeline
+            </div>
+        </div>
+
+        <!-- Summary Comparison -->
+        <div class="summary-comparison">
+            <div class="summary-header">
+                <div class="summary-title">Platform Health Summary</div>
+                <button class="export-btn">📊 Export Report</button>
+            </div>
+            <div class="summary-stats">
+                <div class="summary-stat">
+                    <div class="stat-value" style="color: #16a34a;">75%</div>
+                    <div class="stat-label">Overall Health Score</div>
+                </div>
+                <div class="summary-stat">
+                    <div class="stat-value" style="color: #16a34a;">3</div>
+                    <div class="stat-label">Healthy Plugins</div>
+                </div>
+                <div class="summary-stat">
+                    <div class="stat-value" style="color: #d97706;">1</div>
+                    <div class="stat-label">Needs Attention</div>
+                </div>
+                <div class="summary-stat">
+                    <div class="stat-value" style="color: #6b7280;">4.2s</div>
+                    <div class="stat-label">Avg Load Time</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overview Mode -->
+        <div id="overviewMode" class="comparison-container">
+            <!-- Checklists Plugin Card -->
+            <div class="plugin-comparison-card" onclick="selectCard(this)">
+                <div class="plugin-header">
+                    <div class="plugin-icon icon-checklists">✓</div>
+                    <div class="plugin-info">
+                        <div class="plugin-name">PublishPress Checklists</div>
+                        <div class="plugin-version">v3.2.1 • Licensed</div>
+                    </div>
+                    <div class="plugin-status-badge status-healthy">Healthy</div>
+                </div>
+
+                <div class="health-metrics">
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-value good">98%</div>
+                            <div class="metric-label">Health Score</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value good">1.2s</div>
+                            <div class="metric-label">Load Time</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value good">45MB</div>
+                            <div class="metric-label">Memory</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value good">8</div>
+                            <div class="metric-label">DB Queries</div>
+                        </div>
+                    </div>
+
+                    <div class="health-checks-comparison">
+                        <div class="health-check-item">
+                            <span class="check-name">Database</span>
+                            <span class="check-status pass">✅ Optimized</span>
+                        </div>
+                        <div class="health-check-item">
+                            <span class="check-name">License</span>
+                            <span class="check-status pass">✅ Valid</span>
+                        </div>
+                        <div class="health-check-item">
+                            <span class="check-name">Files</span>
+                            <span class="check-status pass">✅ Intact</span>
+                        </div>
+                        <div class="health-check-item">
+                            <span class="check-name">Performance</span>
+                            <span class="check-status pass">✅ Good</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="action-btn">📋 Logs</button>
+                    <button class="action-btn">⚙️ Settings</button>
+                    <button class="action-btn primary">🔍 Details</button>
+                </div>
+            </div>
+
+            <!-- Permissions Plugin Card -->
+            <div class="plugin-comparison-card" onclick="selectCard(this)">
+                <div class="plugin-header">
+                    <div class="plugin-icon icon-permissions">👥</div>
+                    <div class="plugin-info">
+                        <div class="plugin-name">PublishPress Permissions</div>
+                        <div class="plugin-version">v4.1.0 • Licensed</div>
+                    </div>
+                    <div class="plugin-status-badge status-warning">Warnings</div>
+                </div>
+
+                <div class="health-metrics">
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-value warning">72%</div>
+                            <div class="metric-label">Health Score</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value warning">2.8s</div>
+                            <div class="metric-label">Load Time</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value good">52MB</div>
+                            <div class="metric-label">Memory</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value warning">15</div>
+                            <div class="metric-label">DB Queries</div>
+                        </div>
+                    </div>
+
+                    <div class="health-checks-comparison">
+                        <div class="health-check-item">
+                            <span class="check-name">Database</span>
+                            <span class="check-status warn">⚠️ Needs Index</span>
+                        </div>
+                        <div class="health-check-item">
+                            <span class="check-name">License</span>
+                            <span class="check-status pass">✅ Valid</span>
+                        </div>
+                        <div class="health-check-item">
+                            <span class="check-name">Files</span>
+                            <span class="check-status pass">✅ Intact</span>
+                        </div>
+                        <div class="health-check-item">
+                            <span class="check-name">Performance</span>
+                            <span class="check-status warn">⚠️ Slow</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="action-btn">📋 Logs</button>
+                    <button class="action-btn">⚙️ Settings</button>
+                    <button class="action-btn primary">🔧 Fix Issues</button>
+                </div>
+            </div>
+
+            <!-- Future Plugin Card -->
+            <div class="plugin-comparison-card" onclick="selectCard(this)">
+                <div class="plugin-header">
+                    <div class="plugin-icon icon-future">🚀</div>
+                    <div class="plugin-info">
+                        <div class="plugin-name">PublishPress Future</div>
+                        <div class="plugin-version">v2.5.3 • Free</div>
+                    </div>
+                    <div class="plugin-status-badge status-healthy">Healthy</div>
+                </div>
+
+                <div class="health-metrics">
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-value good">94%</div>
+                            <div class="metric-label">Health Score</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value good">0.8s</div>
+                            <div class="metric-label">Load Time</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value good">12MB</div>
+                            <div class="metric-label">Memory</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value good">3</div>
+                            <div class="metric-label">DB Queries</div>
+                        </div>
+                    </div>
+
+                    <div class="health-checks-comparison">
+                        <div class="health-check-item">
+                            <span class="check-name">Database</span>
+                            <span class="check-status pass">✅ Optimized</span>
+                        </div>
+                        <div class="health-check-item">
+                            <span class="check-name">Cron Jobs</span>
+                            <span class="check-status pass">✅ Running</span>
+                        </div>
+                        <div class="health-check-item">
+                            <span class="check-name">Files</span>
+                            <span class="check-status pass">✅ Intact</span>
+                        </div>
+                        <div class="health-check-item">
+                            <span class="check-name">Performance</span>
+                            <span class="check-status pass">✅ Excellent</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="action-btn">📋 Logs</button>
+                    <button class="action-btn">⚙️ Settings</button>
+                    <button class="action-btn primary">🔍 Details</button>
+                </div>
+            </div>
+
+            <!-- Capabilities Plugin Card -->
+            <div class="plugin-comparison-card" onclick="selectCard(this)">
+                <div class="plugin-header">
+                    <div class="plugin-icon icon-capabilities">⚡</div>
+                    <div class="plugin-info">
+                        <div class="plugin-name">PublishPress Capabilities</div>
+                        <div class="plugin-version">v2.8.1 • Free</div>
+                    </div>
+                    <div class="plugin-status-badge status-healthy">Healthy</div>
+                </div>
+
+                <div class="health-metrics">
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-value good">91%</div>
+                            <div class="metric-label">Health Score</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value good">1.5s</div>
+                            <div class="metric-label">Load Time</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value good">28MB</div>
+                            <div class="metric-label">Memory</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value good">6</div>
+                            <div class="metric-label">DB Queries</div>
+                        </div>
+                    </div>
+
+                    <div class="health-checks-comparison">
+                        <div class="health-check-item">
+                            <span class="check-name">Database</span>
+                            <span class="check-status pass">✅ Good</span>
+                        </div>
+                        <div class="health-check-item">
+                            <span class="check-name">Capabilities</span>
+                            <span class="check-status pass">✅ Valid</span>
+                        </div>
+                        <div class="health-check-item">
+                            <span class="check-name">Files</span>
+                            <span class="check-status pass">✅ Intact</span>
+                        </div>
+                        <div class="health-check-item">
+                            <span class="check-name">Performance</span>
+                            <span class="check-status pass">✅ Good</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="action-btn">📋 Logs</button>
+                    <button class="action-btn">⚙️ Settings</button>
+                    <button class="action-btn primary">🔍 Details</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Side-by-Side Comparison Mode -->
+        <div id="compareMode" class="side-by-side">
+            <div class="comparison-panel">
+                <div class="comparison-header">
+                    <div class="comparison-selector" onclick="showPluginSelector(this)">
+                        <div class="plugin-icon icon-checklists">✓</div>
+                        <div style="margin-left: 12px;">
+                            <div style="font-weight: 600;">PublishPress Checklists</div>
+                            <div style="font-size: 12px; color: #6b7280;">v3.2.1</div>
+                        </div>
+                        <div style="margin-left: auto;">▼</div>
+                    </div>
+                </div>
+
+                <div class="comparison-table">
+                    <div class="comparison-row">
+                        <span class="comparison-label">Health Score</span>
+                        <span class="comparison-value value-good">98%</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label">Load Time</span>
+                        <span class="comparison-value value-good">1.2s</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label">Memory Usage</span>
+                        <span class="comparison-value value-good">45MB</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label">Database Queries</span>
+                        <span class="comparison-value value-good">8</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label">License Status</span>
+                        <span class="comparison-value value-good">Valid</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label">File Integrity</span>
+                        <span class="comparison-value value-good">100%</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label">Error Rate</span>
+                        <span class="comparison-value value-good">0%</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label">Last Update</span>
+                        <span class="comparison-value value-neutral">2 days ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparison-panel">
+                <div class="comparison-header">
+                    <div class="comparison-selector" onclick="showPluginSelector(this)">
+                        <div class="plugin-icon icon-permissions">👥</div>
+                        <div style="margin-left: 12px;">
+                            <div style="font-weight: 600;">PublishPress Permissions</div>
+                            <div style="font-size: 12px; color: #6b7280;">v4.1.0</div>
+                        </div>
+                        <div style="margin-left: auto;">▼</div>
+                    </div>
+                </div>
+
+                <div class="comparison-table">
+                    <div class="comparison-row">
+                        <span class="comparison-label">Health Score</span>
+                        <span class="comparison-value value-warning">72%</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label">Load Time</span>
+                        <span class="comparison-value value-warning">2.8s</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label">Memory Usage</span>
+                        <span class="comparison-value value-good">52MB</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label">Database Queries</span>
+                        <span class="comparison-value value-warning">15</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label">License Status</span>
+                        <span class="comparison-value value-good">Valid</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label">File Integrity</span>
+                        <span class="comparison-value value-good">100%</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label">Error Rate</span>
+                        <span class="comparison-value value-warning">2.1%</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-label">Last Update</span>
+                        <span class="comparison-value value-neutral">1 week ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let compareMode = false;
+
+        function selectCard(card) {
+            document.querySelectorAll('.plugin-comparison-card').forEach(c => {
+                c.classList.remove('selected');
+            });
+            card.classList.add('selected');
+        }
+
+        function toggleCompareMode() {
+            compareMode = !compareMode;
+            const btn = document.querySelector('.compare-btn');
+
+            if (compareMode) {
+                btn.classList.add('active');
+                btn.innerHTML = '⚖️ Comparing';
+                showViewMode('compare');
+            } else {
+                btn.classList.remove('active');
+                btn.innerHTML = '⚖️ Compare';
+                showViewMode('overview');
+            }
+        }
+
+        function showViewMode(mode) {
+            // Update tabs
+            document.querySelectorAll('.view-mode').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Show/hide content
+            const overviewMode = document.getElementById('overviewMode');
+            const compareMode = document.getElementById('compareMode');
+
+            if (mode === 'overview') {
+                overviewMode.style.display = 'grid';
+                compareMode.classList.remove('active');
+            } else if (mode === 'compare') {
+                overviewMode.style.display = 'none';
+                compareMode.classList.add('active');
+            }
+        }
+
+        function runDiagnostics() {
+            const btn = event.target;
+            btn.innerHTML = '⟳ Running...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = '🔄 Refresh All';
+                btn.disabled = false;
+            }, 2000);
+        }
+
+        function showPluginSelector(selector) {
+            // This would show a dropdown to select different plugins for comparison
+            console.log('Show plugin selector');
+        }
+    </script>
+</body>
+</html>

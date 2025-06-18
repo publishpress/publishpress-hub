@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PublishPress Hub - Backup Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #f6f7f8;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6366f1;
+        }
+
+        .help-btn {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        /* Page Title */
+        .page-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .page-title h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .breadcrumb a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+
+        /* Backup Type Tabs */
+        .backup-tabs {
+            background: white;
+            border-radius: 8px;
+            padding: 6px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .tab {
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab.active {
+            background: #6366f1;
+            color: white;
+        }
+
+        .tab:not(.active) {
+            color: #6b7280;
+        }
+
+        .tab:not(.active):hover {
+            background: #f3f4f6;
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #f3f4f6;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 16px;
+        }
+
+        .backup-icon {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .details-icon {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        .card-subtitle {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quick-action-btn {
+            flex: 1;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+            font-weight: 500;
+            color: #475569;
+        }
+
+        .quick-action-btn:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        .quick-action-btn.primary {
+            background: #6366f1;
+            color: white;
+            border-color: #6366f1;
+        }
+
+        .quick-action-btn.primary:hover {
+            background: #4f46e5;
+        }
+
+        /* Plugin Selection */
+        .plugin-selection {
+            margin-bottom: 20px;
+        }
+
+        .selection-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .selection-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .select-all-btn {
+            background: none;
+            border: none;
+            color: #6366f1;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .plugin-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 12px;
+            background: #f9fafb;
+        }
+
+        .plugin-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .plugin-item:hover {
+            border-color: #6366f1;
+            background: #f8fafc;
+        }
+
+        .plugin-item.selected {
+            border-color: #6366f1;
+            background: #eff6ff;
+        }
+
+        .plugin-checkbox {
+            margin-right: 12px;
+            width: 16px;
+            height: 16px;
+        }
+
+        .plugin-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .plugin-info {
+            flex: 1;
+        }
+
+        .plugin-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 2px;
+        }
+
+        .plugin-meta {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .plugin-size {
+            font-size: 12px;
+            color: #6b7280;
+            padding: 2px 8px;
+            background: #f3f4f6;
+            border-radius: 12px;
+        }
+
+        /* Detailed Selection Panel */
+        .detailed-selection {
+            margin-bottom: 20px;
+        }
+
+        .no-selection-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6b7280;
+        }
+
+        .no-selection-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+            opacity: 0.5;
+        }
+
+        .data-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 350px;
+            overflow-y: auto;
+        }
+
+        .category {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+            cursor: pointer;
+        }
+
+        .category-checkbox {
+            margin-right: 12px;
+            width: 16px;
+            height: 16px;
+        }
+
+        .category-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #111827;
+            flex: 1;
+        }
+
+        .item-count {
+            font-size: 12px;
+            color: #6b7280;
+            background: #e5e7eb;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-right: 8px;
+        }
+
+        .category-toggle {
+            color: #6b7280;
+            font-size: 12px;
+        }
+
+        .category-items {
+            padding: 12px 16px;
+            display: none;
+        }
+
+        .category.expanded .category-items {
+            display: block;
+        }
+
+        .category.expanded .category-toggle::before {
+            content: "▼";
+        }
+
+        .category-toggle::before {
+            content: "▶";
+        }
+
+        .data-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .data-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-checkbox {
+            margin-right: 12px;
+            width: 14px;
+            height: 14px;
+        }
+
+        .item-name {
+            font-size: 14px;
+            color: #374151;
+            flex: 1;
+        }
+
+        .item-meta {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .primary-btn {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            flex: 1;
+        }
+
+        .primary-btn:hover {
+            background: #4f46e5;
+        }
+
+        .primary-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .secondary-btn {
+            background: white;
+            color: #6b7280;
+            border: 1px solid #d1d5db;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .secondary-btn:hover {
+            background: #f9fafb;
+            border-color: #9ca3af;
+        }
+
+        /* Backup History */
+        .backup-history {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #f3f4f6;
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .history-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .filter-dropdown {
+            position: relative;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 1px solid #d1d5db;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .backup-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .backup-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            background: #f9fafb;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .backup-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .backup-type-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .full-backup { background: #dbeafe; color: #1d4ed8; }
+        .plugin-backup { background: #dcfce7; color: #16a34a; }
+
+        .backup-info {
+            flex: 1;
+        }
+
+        .backup-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 2px;
+        }
+
+        .backup-meta {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .backup-plugins {
+            font-size: 12px;
+            color: #6366f1;
+            margin-top: 2px;
+        }
+
+        .backup-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #6b7280;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .icon-btn:hover {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        /* Plugin Icons */
+        .icon-checklists { background: #dcfce7; color: #16a34a; }
+        .icon-permissions { background: #fef2f2; color: #dc2626; }
+        .icon-future { background: #e0e7ff; color: #4338ca; }
+        .icon-capabilities { background: #ecfdf5; color: #059669; }
+        .icon-revisions { background: #fef3c7; color: #d97706; }
+        .icon-planner { background: #dbeafe; color: #1d4ed8; }
+        .icon-blocks { background: #fce7f3; color: #be185d; }
+        .icon-series { background: #fff7ed; color: #ea580c; }
+        .icon-authors { background: #f3e8ff; color: #7c3aed; }
+        .icon-workflows { background: #f0fdf4; color: #16a34a; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">🚀 PublishPress</div>
+            <a href="#" class="help-btn">Need Help?</a>
+        </div>
+
+        <!-- Page Title -->
+        <div class="page-title">
+            <div>
+                <div class="breadcrumb">
+                    <a href="#">Plugin Hub</a> > Backup Management
+                </div>
+                <h1>Backup Management</h1>
+            </div>
+        </div>
+
+        <!-- Backup Type Tabs -->
+        <div class="backup-tabs">
+            <div class="tab active">
+                📦 Create Backup
+            </div>
+            <div class="tab">
+                📥 Restore
+            </div>
+            <div class="tab">
+                📋 History
+            </div>
+        </div>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Create Backup Section -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon backup-icon">📦</div>
+                    <div>
+                        <div class="card-title">Select Plugins</div>
+                        <div class="card-subtitle">Choose which PublishPress plugins to include in your backup</div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <button class="quick-action-btn primary" onclick="selectAllPlugins()">
+                        🌍 Full Backup<br>
+                        <small>All plugins & settings</small>
+                    </button>
+                    <button class="quick-action-btn" onclick="selectActivePlugins()">
+                        ⚡ Active Only<br>
+                        <small>Licensed plugins</small>
+                    </button>
+                </div>
+
+                <!-- Plugin Selection -->
+                <div class="plugin-selection">
+                    <div class="selection-header">
+                        <div class="selection-title">Available Plugins</div>
+                        <button class="select-all-btn" onclick="toggleSelectAll()">Select All</button>
+                    </div>
+
+                    <div class="plugin-list">
+                        <div class="plugin-item selected" onclick="selectPlugin(this, 'checklists')">
+                            <input type="checkbox" class="plugin-checkbox" id="checklists" checked>
+                            <div class="plugin-icon icon-checklists">✓</div>
+                            <div class="plugin-info">
+                                <div class="plugin-name">PublishPress Checklists</div>
+                                <div class="plugin-meta">Licensed • 3 workflows, 12 tasks</div>
+                            </div>
+                            <span class="plugin-size">2.1 MB</span>
+                        </div>
+
+                        <div class="plugin-item" onclick="selectPlugin(this, 'permissions')">
+                            <input type="checkbox" class="plugin-checkbox" id="permissions" checked>
+                            <div class="plugin-icon icon-permissions">👥</div>
+                            <div class="plugin-info">
+                                <div class="plugin-name">PublishPress Permissions</div>
+                                <div class="plugin-meta">Licensed • 8 roles, 25 capabilities</div>
+                            </div>
+                            <span class="plugin-size">1.8 MB</span>
+                        </div>
+
+                        <div class="plugin-item" onclick="selectPlugin(this, 'future')">
+                            <input type="checkbox" class="plugin-checkbox" id="future">
+                            <div class="plugin-icon icon-future">🚀</div>
+                            <div class="plugin-info">
+                                <div class="plugin-name">PublishPress Future</div>
+                                <div class="plugin-meta">Free • 5 scheduled posts</div>
+                            </div>
+                            <span class="plugin-size">0.5 MB</span>
+                        </div>
+
+                        <div class="plugin-item" onclick="selectPlugin(this, 'capabilities')">
+                            <input type="checkbox" class="plugin-checkbox" id="capabilities">
+                            <div class="plugin-icon icon-capabilities">⚡</div>
+                            <div class="plugin-info">
+                                <div class="plugin-name">PublishPress Capabilities</div>
+                                <div class="plugin-meta">Free • 12 custom capabilities</div>
+                            </div>
+                            <span class="plugin-size">0.7 MB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="primary-btn" id="createBackupBtn">📦 Create Backup</button>
+                    <button class="secondary-btn">Schedule</button>
+                </div>
+            </div>
+
+            <!-- Detailed Data Selection -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon details-icon">⚙️</div>
+                    <div>
+                        <div class="card-title">Detailed Selection</div>
+                        <div class="card-subtitle">Choose specific data from selected plugins</div>
+                    </div>
+                </div>
+
+                <div class="detailed-selection">
+                    <div id="noSelectionState" class="no-selection-state">
+                        <div class="no-selection-icon">📂</div>
+                        <div>Select a plugin on the left to see detailed backup options</div>
+                    </div>
+
+                    <div id="checklistsDetails" class="data-categories" style="display: block;">
+                        <div class="category expanded">
+                            <div class="category-header" onclick="toggleCategory(this)">
+                                <input type="checkbox" class="category-checkbox" checked>
+                                <span class="category-name">Editorial Workflows</span>
+                                <span class="item-count">3 items</span>
+                                <span class="category-toggle"></span>
+                            </div>
+                            <div class="category-items">
+                                <div class="data-item">
+                                    <input type="checkbox" class="item-checkbox" checked>
+                                    <span class="item-name">Content Review Process</span>
+                                    <span class="item-meta">Modified 2 days ago</span>
+                                </div>
+                                <div class="data-item">
+                                    <input type="checkbox" class="item-checkbox" checked>
+                                    <span class="item-name">SEO Checklist Workflow</span>
+                                    <span class="item-meta">Modified 1 week ago</span>
+                                </div>
+                                <div class="data-item">
+                                    <input type="checkbox" class="item-checkbox" checked>
+                                    <span class="item-name">Guest Author Review</span>
+                                    <span class="item-meta">Modified 3 weeks ago</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category expanded">
+                            <div class="category-header" onclick="toggleCategory(this)">
+                                <input type="checkbox" class="category-checkbox" checked>
+                                <span class="category-name">Custom Task Templates</span>
+                                <span class="item-count">8 items</span>
+                                <span class="category-toggle"></span>
+                            </div>
+                            <div class="category-items">
+                                <div class="data-item">
+                                    <input type="checkbox" class="item-checkbox" checked>
+                                    <span class="item-name">Pre-Publish Checklist</span>
+                                    <span class="item-meta">5 tasks</span>
+                                </div>
+                                <div class="data-item">
+                                    <input type="checkbox" class="item-checkbox" checked>
+                                    <span class="item-name">Image Optimization Tasks</span>
+                                    <span class="item-meta">3 tasks</span>
+                                </div>
+                                <div class="data-item">
+                                    <input type="checkbox" class="item-checkbox">
+                                    <span class="item-name">Social Media Prep</span>
+                                    <span class="item-meta">4 tasks</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category">
+                            <div class="category-header" onclick="toggleCategory(this)">
+                                <input type="checkbox" class="category-checkbox">
+                                <span class="category-name">Plugin Settings</span>
+                                <span class="item-count">1 item</span>
+                                <span class="category-toggle"></span>
+                            </div>
+                            <div class="category-items">
+                                <div class="data-item">
+                                    <input type="checkbox" class="item-checkbox">
+                                    <span class="item-name">Global Configuration</span>
+                                    <span class="item-meta">General settings</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="permissionsDetails" class="data-categories" style="display: none;">
+                        <div class="category expanded">
+                            <div class="category-header" onclick="toggleCategory(this)">
+                                <input type="checkbox" class="category-checkbox" checked>
+                                <span class="category-name">Custom Roles</span>
+                                <span class="item-count">5 items</span>
+                                <span class="category-toggle"></span>
+                            </div>
+                            <div class="category-items">
+                                <div class="data-item">
+                                    <input type="checkbox" class="item-checkbox" checked>
+                                    <span class="item-name">Content Manager</span>
+                                    <span class="item-meta">12 capabilities</span>
+                                </div>
+                                <div class="data-item">
+                                    <input type="checkbox" class="item-checkbox" checked>
+                                    <span class="item-name">SEO Specialist</span>
+                                    <span class="item-meta">8 capabilities</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category">
+                            <div class="category-header" onclick="toggleCategory(this)">
+                                <input type="checkbox" class="category-checkbox">
+                                <span class="category-name">Permission Settings</span>
+                                <span class="item-count">3 items</span>
+                                <span class="category-toggle"></span>
+                            </div>
+                            <div class="category-items">
+                                <div class="data-item">
+                                    <input type="checkbox" class="item-checkbox">
+                                    <span class="item-name">Post Type Permissions</span>
+                                    <span class="item-meta">All post types</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="futureDetails" class="data-categories" style="display: none;">
+                        <div class="category expanded">
+                            <div class="category-header" onclick="toggleCategory(this)">
+                                <input type="checkbox" class="category-checkbox" checked>
+                                <span class="category-name">Scheduled Actions</span>
+                                <span class="item-count">5 items</span>
+                                <span class="category-toggle"></span>
+                            </div>
+                            <div class="category-items">
+                                <div class="data-item">
+                                    <input type="checkbox" class="item-checkbox" checked>
+                                    <span class="item-name">Summer Sale Posts</span>
+                                    <span class="item-meta">Expires July 31, 2024</span>
+                                </div>
+                                <div class="data-item">
+                                    <input type="checkbox" class="item-checkbox" checked>
+                                    <span class="item-name">Event Announcements</span>
+                                    <span class="item-meta">Expires Aug 15, 2024</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category">
+                            <div class="category-header" onclick="toggleCategory(this)">
+                                <input type="checkbox" class="category-checkbox">
+                                <span class="category-name">Plugin Configuration</span>
+                                <span class="item-count">1 item</span>
+                                <span class="category-toggle"></span>
+                            </div>
+                            <div class="category-items">
+                                <div class="data-item">
+                                    <input type="checkbox" class="item-checkbox">
+                                    <span class="item-name">Default Settings</span>
+                                    <span class="item-meta">Expiration rules</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="select-all-btn" onclick="selectAllDetails()">Select All Details</button>
+                    <button class="secondary-btn">Reset Selection</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Backup History -->
+        <div class="backup-history">
+            <div class="history-header">
+                <div class="history-title">Recent Backups</div>
+                <div class="filter-dropdown">
+                    <button class="filter-btn">
+                        Filter: All Backups ▼
+                    </button>
+                </div>
+            </div>
+
+            <div class="backup-list">
+                <div class="backup-item">
+                    <div class="backup-left">
+                        <div class="backup-type-icon full-backup">🌍</div>
+                        <div class="backup-info">
+                            <div class="backup-name">Full Platform Backup - June 20, 2024</div>
+                            <div class="backup-meta">4.2 MB • Auto-generated • All 4 installed plugins</div>
+                            <div class="backup-plugins">Checklists, Permissions, Future, Capabilities</div>
+                        </div>
+                    </div>
+                    <div class="backup-actions">
+                        <button class="icon-btn" title="Download">📥</button>
+                        <button class="icon-btn" title="Restore">🔄</button>
+                        <button class="icon-btn" title="Delete">🗑️</button>
+                    </div>
+                </div>
+
+                <div class="backup-item">
+                    <div class="backup-left">
+                        <div class="backup-type-icon plugin-backup">✓</div>
+                        <div class="backup-info">
+                            <div class="backup-name">Checklists Workflows Only - June 18, 2024</div>
+                            <div class="backup-meta">1.2 MB • Manual backup • Selective data</div>
+                            <div class="backup-plugins">Checklists: Workflows only</div>
+                        </div>
+                    </div>
+                    <div class="backup-actions">
+                        <button class="icon-btn" title="Download">📥</button>
+                        <button class="icon-btn" title="Restore">🔄</button>
+                        <button class="icon-btn" title="Delete">🗑️</button>
+                    </div>
+                </div>
+
+                <div class="backup-item">
+                    <div class="backup-left">
+                        <div class="backup-type-icon plugin-backup">👥</div>
+                        <div class="backup-info">
+                            <div class="backup-name">Custom Roles Backup - June 15, 2024</div>
+                            <div class="backup-meta">0.8 MB • Manual backup • Selective data</div>
+                            <div class="backup-plugins">Permissions: Custom roles & capabilities</div>
+                        </div>
+                    </div>
+                    <div class="backup-actions">
+                        <button class="icon-btn" title="Download">📥</button>
+                        <button class="icon-btn" title="Restore">🔄</button>
+                        <button class="icon-btn" title="Delete">🗑️</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedPlugin = 'checklists';
+
+        function selectPlugin(element, pluginId) {
+            // Update visual selection
+            document.querySelectorAll('.plugin-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            element.classList.add('selected');
+
+            // Update checkbox
+            const checkbox = element.querySelector('.plugin-checkbox');
+            checkbox.checked = true;
+
+            // Show detailed options for selected plugin
+            selectedPlugin = pluginId;
+            showPluginDetails(pluginId);
+
+            updateCreateButton();
+        }
+
+        function showPluginDetails(pluginId) {
+            // Hide all detail panels
+            document.querySelectorAll('.data-categories').forEach(panel => {
+                panel.style.display = 'none';
+            });
+
+            // Hide no selection state
+            document.getElementById('noSelectionState').style.display = 'none';
+
+            // Show selected plugin details
+            const detailsPanel = document.getElementById(pluginId + 'Details');
+            if (detailsPanel) {
+                detailsPanel.style.display = 'block';
+            }
+        }
+
+        function toggleCategory(headerElement) {
+            const category = headerElement.closest('.category');
+            category.classList.toggle('expanded');
+        }
+
+        function selectAllPlugins() {
+            document.querySelectorAll('.plugin-checkbox').forEach(cb => cb.checked = true);
+            updateCreateButton();
+        }
+
+        function selectActivePlugins() {
+            document.querySelectorAll('.plugin-checkbox').forEach(cb => {
+                const pluginItem = cb.closest('.plugin-item');
+                const meta = pluginItem.querySelector('.plugin-meta').textContent;
+                cb.checked = meta.includes('Licensed');
+            });
+            updateCreateButton();
+        }
+
+        function toggleSelectAll() {
+            const checkboxes = document.querySelectorAll('.plugin-checkbox');
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+            const btn = document.querySelector('.select-all-btn');
+
+            checkboxes.forEach(cb => cb.checked = !allChecked);
+            btn.textContent = allChecked ? 'Select All' : 'Deselect All';
+            updateCreateButton();
+        }
+
+        function selectAllDetails() {
+            const visiblePanel = document.querySelector('.data-categories[style*="block"]');
+            if (visiblePanel) {
+                visiblePanel.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
+            }
+        }
+
+        function updateCreateButton() {
+            const checkedPlugins = document.querySelectorAll('.plugin-checkbox:checked').length;
+            const createBtn = document.getElementById('createBackupBtn');
+
+            if (checkedPlugins === 0) {
+                createBtn.disabled = true;
+                createBtn.textContent = '📦 Select Plugins First';
+            } else {
+                createBtn.disabled = false;
+                createBtn.textContent = `📦 Create Backup (${checkedPlugins} plugin${checkedPlugins > 1 ? 's' : ''})`;
+            }
+        }
+
+        // Handle category checkboxes
+        document.addEventListener('change', function(e) {
+            if (e.target.classList.contains('category-checkbox')) {
+                const category = e.target.closest('.category');
+                const itemCheckboxes = category.querySelectorAll('.item-checkbox');
+                itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
+            }
+
+            if (e.target.classList.contains('item-checkbox')) {
+                const category = e.target.closest('.category');
+                const categoryCheckbox = category.querySelector('.category-checkbox');
+                const itemCheckboxes = category.querySelectorAll('.item-checkbox');
+                const checkedItems = category.querySelectorAll('.item-checkbox:checked');
+
+                if (checkedItems.length === 0) {
+                    categoryCheckbox.checked = false;
+                    categoryCheckbox.indeterminate = false;
+                } else if (checkedItems.length === itemCheckboxes.length) {
+                    categoryCheckbox.checked = true;
+                    categoryCheckbox.indeterminate = false;
+                } else {
+                    categoryCheckbox.checked = false;
+                    categoryCheckbox.indeterminate = true;
+                }
+            }
+
+            if (e.target.classList.contains('plugin-checkbox')) {
+                updateCreateButton();
+            }
+        });
+
+        // Initialize
+        updateCreateButton();
+    </script>
+</body>
+</html>

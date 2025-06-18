@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PublishPress Hub - Discover Your Publishing Power</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #f6f7f8;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6366f1;
+        }
+
+        .help-btn {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 16px;
+            padding: 48px 40px;
+            margin-bottom: 40px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-bottom: 32px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .hero-cta {
+            background: white;
+            color: #6366f1;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Value Propositions */
+        .value-propositions {
+            margin-bottom: 48px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .value-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 1px solid #f3f4f6;
+            position: relative;
+        }
+
+        .value-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+        }
+
+        .value-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+
+        .icon-workflow { background: #dbeafe; color: #1d4ed8; }
+        .icon-security { background: #dcfce7; color: #16a34a; }
+        .icon-efficiency { background: #fef3c7; color: #d97706; }
+        .icon-collaboration { background: #f3e8ff; color: #7c3aed; }
+        .icon-growth { background: #fce7f3; color: #be185d; }
+        .icon-support { background: #e0e7ff; color: #4338ca; }
+
+        .value-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        .value-description {
+            font-size: 15px;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .value-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .value-features li {
+            font-size: 14px;
+            color: #374151;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .value-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #16a34a;
+            font-weight: 600;
+        }
+
+        .value-cta {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #6366f1;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .value-cta:hover {
+            background: #6366f1;
+            color: white;
+        }
+
+        /* Featured Plugins */
+        .featured-plugins {
+            margin-bottom: 48px;
+        }
+
+        .plugins-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .plugin-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+            border: 1px solid #f3f4f6;
+        }
+
+        .plugin-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        .plugin-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .plugin-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .plugin-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .plugin-description {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .plugin-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .download-count {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Getting Started */
+        .getting-started {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: #6366f1;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 auto 16px;
+        }
+
+        .step-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .step-description {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        /* Success Stories */
+        .success-stories {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 32px;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .story-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            border-left: 4px solid #6366f1;
+        }
+
+        .story-quote {
+            font-size: 16px;
+            color: #374151;
+            font-style: italic;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .story-author {
+            font-size: 14px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        /* Call to Action */
+        .final-cta {
+            background: linear-gradient(135deg, #111827 0%, #374151 100%);
+            border-radius: 16px;
+            padding: 48px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .cta-description {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            background: #6366f1;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .primary-btn:hover {
+            background: #5856eb;
+            transform: translateY(-2px);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.3);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .secondary-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Plugin Icons */
+        .icon-revisions { background: #fef3c7; color: #d97706; }
+        .icon-planner { background: #dbeafe; color: #1d4ed8; }
+        .icon-blocks { background: #fce7f3; color: #be185d; }
+        .icon-capabilities { background: #ecfdf5; color: #059669; }
+        .icon-future { background: #e0e7ff; color: #4338ca; }
+        .icon-series { background: #fff7ed; color: #ea580c; }
+        .icon-authors { background: #f3e8ff; color: #7c3aed; }
+        .icon-checklists { background: #f0fdf4; color: #16a34a; }
+
+        @media (max-width: 768px) {
+            .hero-stats {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .plugins-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">🚀 PublishPress Hub</div>
+            <a href="#" class="help-btn">Need Help?</a>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Transform Your WordPress Publishing Workflow</h1>
+                <p class="hero-subtitle">
+                    The complete suite of professional publishing tools trusted by content teams,
+                    publishers, and WordPress professionals worldwide.
+                </p>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Active Sites</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Professional Tools</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Customer Satisfaction</div>
+                    </div>
+                </div>
+
+                <a href="#get-started" class="hero-cta">🚀 Start Your Journey</a>
+            </div>
+        </div>
+
+        <!-- Value Propositions -->
+        <div class="value-propositions">
+            <div class="section-header">
+                <h2 class="section-title">What You Get with PublishPress Hub</h2>
+                <p class="section-subtitle">
+                    Comprehensive publishing solutions that scale with your content strategy
+                </p>
+            </div>
+
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon icon-workflow">⚡</div>
+                    <h3 class="value-title">Streamlined Workflows</h3>
+                    <p class="value-description">
+                        Automate your editorial process with advanced scheduling, approval workflows,
+                        and content management tools that save hours every week.
+                    </p>
+                    <ul class="value-features">
+                        <li>Editorial calendar planning</li>
+                        <li>Automated publishing schedules</li>
+                        <li>Content approval workflows</li>
+                        <li>Team collaboration tools</li>
+                    </ul>
+                    <a href="#" class="value-cta">Explore Workflow Tools →</a>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon icon-security">🔒</div>
+                    <h3 class="value-title">Enterprise Security</h3>
+                    <p class="value-description">
+                        Advanced user permissions, role management, and secure backup solutions
+                        to protect your content and control access.
+                    </p>
+                    <ul class="value-features">
+                        <li>Granular permission controls</li>
+                        <li>Automated backups</li>
+                        <li>User role management</li>
+                        <li>Data export & import</li>
+                    </ul>
+                    <a href="#" class="value-cta">See Security Features →</a>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon icon-efficiency">📈</div>
+                    <h3 class="value-title">Increased Efficiency</h3>
+                    <p class="value-description">
+                        Powerful content tools and optimization features that help you create
+                        better content faster and improve your publishing ROI.
+                    </p>
+                    <ul class="value-features">
+                        <li>Content quality checklists</li>
+                        <li>Advanced Gutenberg blocks</li>
+                        <li>SEO optimization tools</li>
+                        <li>Performance monitoring</li>
+                    </ul>
+                    <a href="#" class="value-cta">Boost Efficiency →</a>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon icon-collaboration">👥</div>
+                    <h3 class="value-title">Team Collaboration</h3>
+                    <p class="value-description">
+                        Enable seamless collaboration between writers, editors, and stakeholders
+                        with built-in communication and review tools.
+                    </p>
+                    <ul class="value-features">
+                        <li>Multi-author support</li>
+                        <li>Editorial comments</li>
+                        <li>Version control</li>
+                        <li>Notification system</li>
+                    </ul>
+                    <a href="#" class="value-cta">Build Your Team →</a>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon icon-growth">📊</div>
+                    <h3 class="value-title">Scalable Growth</h3>
+                    <p class="value-description">
+                        Tools that grow with your business, from single-author blogs to
+                        enterprise publishing operations with unlimited scalability.
+                    </p>
+                    <ul class="value-features">
+                        <li>Multi-site management</li>
+                        <li>Custom post types</li>
+                        <li>Advanced taxonomies</li>
+                        <li>API integrations</li>
+                    </ul>
+                    <a href="#" class="value-cta">Scale Your Content →</a>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon icon-support">🎯</div>
+                    <h3 class="value-title">Expert Support</h3>
+                    <p class="value-description">
+                        Get help when you need it with comprehensive documentation,
+                        video tutorials, and direct access to our expert support team.
+                    </p>
+                    <ul class="value-features">
+                        <li>24/7 priority support</li>
+                        <li>Video tutorials</li>
+                        <li>Community forums</li>
+                        <li>Migration assistance</li>
+                    </ul>
+                    <a href="#" class="value-cta">Get Support →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Plugins -->
+        <div class="featured-plugins">
+            <div class="section-header">
+                <h2 class="section-title">Featured Publishing Tools</h2>
+                <p class="section-subtitle">
+                    Professional-grade plugins designed for serious content creators
+                </p>
+            </div>
+
+            <div class="plugins-grid">
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon icon-revisions">📝</div>
+                        <div class="plugin-title">PublishPress Revisions</div>
+                    </div>
+                    <div class="plugin-description">
+                        Advanced revision management and approval workflows for professional content teams.
+                    </div>
+                    <div class="plugin-meta">
+                        <span class="download-count">📥 12K+ downloads</span>
+                        <span class="rating">⭐ 4.8 (156 reviews)</span>
+                    </div>
+                </div>
+
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon icon-planner">📅</div>
+                        <div class="plugin-title">PublishPress Planner</div>
+                    </div>
+                    <div class="plugin-description">
+                        Editorial calendar and content planning tools to organize your publishing schedule.
+                    </div>
+                    <div class="plugin-meta">
+                        <span class="download-count">📥 25K+ downloads</span>
+                        <span class="rating">⭐ 4.9 (243 reviews)</span>
+                    </div>
+                </div>
+
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon icon-checklists">✅</div>
+                        <div class="plugin-title">PublishPress Checklists</div>
+                    </div>
+                    <div class="plugin-description">
+                        Improve content quality with customizable editorial checklists and quality gates.
+                    </div>
+                    <div class="plugin-meta">
+                        <span class="download-count">📥 8K+ downloads</span>
+                        <span class="rating">⭐ 4.7 (89 reviews)</span>
+                    </div>
+                </div>
+
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon icon-capabilities">⚡</div>
+                        <div class="plugin-title">PublishPress Capabilities</div>
+                    </div>
+                    <div class="plugin-description">
+                        Fine-grained user role management and permission controls for WordPress sites.
+                    </div>
+                    <div class="plugin-meta">
+                        <span class="download-count">📥 18K+ downloads</span>
+                        <span class="rating">⭐ 4.6 (132 reviews)</span>
+                    </div>
+                </div>
+
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon icon-blocks">🧱</div>
+                        <div class="plugin-title">PublishPress Blocks</div>
+                    </div>
+                    <div class="plugin-description">
+                        Enhanced Gutenberg blocks with advanced styling and configuration options.
+                    </div>
+                    <div class="plugin-meta">
+                        <span class="download-count">📥 15K+ downloads</span>
+                        <span class="rating">⭐ 4.8 (167 reviews)</span>
+                    </div>
+                </div>
+
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon icon-authors">👤</div>
+                        <div class="plugin-title">PublishPress Authors</div>
+                    </div>
+                    <div class="plugin-description">
+                        Advanced author management with guest authors, multiple authors, and author profiles.
+                    </div>
+                    <div class="plugin-meta">
+                        <span class="download-count">📥 9K+ downloads</span>
+                        <span class="rating">⭐ 4.5 (74 reviews)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Getting Started -->
+        <div class="getting-started" id="get-started">
+            <div class="section-header">
+                <h2 class="section-title">Get Started in Minutes</h2>
+                <p class="section-subtitle">
+                    Simple setup process that gets you publishing like a pro in no time
+                </p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Choose Your Tools</h3>
+                    <p class="step-description">
+                        Browse our collection of publishing tools and select the ones that fit your workflow.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Install & Configure</h3>
+                    <p class="step-description">
+                        One-click installation with guided setup wizards to get you up and running quickly.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Start Publishing</h3>
+                    <p class="step-description">
+                        Begin creating better content with professional workflows and collaboration tools.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Scale & Optimize</h3>
+                    <p class="step-description">
+                        Use analytics and feedback to optimize your process and scale your content operation.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Stories -->
+        <div class="success-stories">
+            <div class="section-header">
+                <h2 class="section-title">Trusted by Publishers Worldwide</h2>
+                <p class="section-subtitle">
+                    See how teams are transforming their content workflows with PublishPress
+                </p>
+            </div>
+
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-quote">
+                        "PublishPress transformed our editorial workflow. We're now publishing 40% more content
+                        with the same team size, and the quality has never been better."
+                    </div>
+                    <div class="story-author">— Sarah Chen, Content Director at TechNews Daily</div>
+                </div>
+
+                <div class="story-card">
+                    <div class="story-quote">
+                        "The collaboration features saved us countless hours. Our writers, editors, and stakeholders
+                        can now work together seamlessly without endless email chains."
+                    </div>
+                    <div class="story-author">— Marcus Rodriguez, Editorial Manager at Modern Marketing</div>
+                </div>
+
+                <div class="story-card">
+                    <div class="story-quote">
+                        "We migrated from multiple tools to PublishPress Hub and streamlined our entire publishing
+                        operation. The ROI was immediate and significant."
+                    </div>
+                    <div class="story-author">— Jennifer Walsh, VP of Content at Digital Ventures</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final CTA -->
+        <div class="final-cta">
+            <h2 class="cta-title">Ready to Transform Your Publishing?</h2>
+            <p class="cta-description">
+                Join thousands of content creators who have already elevated their publishing game with PublishPress Hub.
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="primary-btn">🚀 Start Free Trial</a>
+                <a href="#" class="secondary-btn">📋 View All Features</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.value-card, .plugin-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.borderColor = '#6366f1';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.borderColor = '#f3f4f6';
+            });
+        });
+
+        // Simple animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.value-card, .plugin-card, .step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PublishPress Backup & Import/Export - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #f6f7f8;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6366f1;
+        }
+        
+        .help-btn {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 14px;
+        }
+        
+        /* Page Title */
+        .page-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+        
+        .page-title h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        .breadcrumb {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+        
+        .breadcrumb a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+        
+        /* Main Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+        
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #f3f4f6;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 16px;
+        }
+        
+        .export-icon {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+        
+        .import-icon {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+        
+        .card-subtitle {
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        /* Selection Areas */
+        .selection-area {
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #f9fafb;
+        }
+        
+        .selection-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .selection-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        .select-all-btn {
+            background: none;
+            border: none;
+            color: #6366f1;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        
+        .data-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .category {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .category-checkbox {
+            margin-right: 12px;
+            width: 16px;
+            height: 16px;
+        }
+        
+        .category-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            flex: 1;
+        }
+        
+        .item-count {
+            font-size: 12px;
+            color: #6b7280;
+            background: #f3f4f6;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+        
+        .category-items {
+            margin-left: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+        }
+        
+        .item-checkbox {
+            margin-right: 12px;
+            width: 14px;
+            height: 14px;
+        }
+        
+        .item-name {
+            font-size: 14px;
+            color: #374151;
+            flex: 1;
+        }
+        
+        .item-meta {
+            font-size: 12px;
+            color: #6b7280;
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .primary-btn {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            flex: 1;
+        }
+        
+        .primary-btn:hover {
+            background: #4f46e5;
+        }
+        
+        .secondary-btn {
+            background: white;
+            color: #6b7280;
+            border: 1px solid #d1d5db;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .secondary-btn:hover {
+            background: #f9fafb;
+            border-color: #9ca3af;
+        }
+        
+        /* File Upload Area */
+        .upload-area {
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+            padding: 32px;
+            text-align: center;
+            background: #f9fafb;
+            margin-bottom: 20px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .upload-area:hover {
+            border-color: #6366f1;
+            background: #f0f9ff;
+        }
+        
+        .upload-area.dragover {
+            border-color: #6366f1;
+            background: #eff6ff;
+        }
+        
+        .upload-icon {
+            font-size: 48px;
+            color: #9ca3af;
+            margin-bottom: 16px;
+        }
+        
+        .upload-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+        
+        .upload-subtext {
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        /* Recent Backups */
+        .recent-backups {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #f3f4f6;
+        }
+        
+        .recent-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .recent-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        .view-all-btn {
+            color: #6366f1;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .backup-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .backup-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: #f9fafb;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .backup-info {
+            flex: 1;
+        }
+        
+        .backup-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 2px;
+        }
+        
+        .backup-meta {
+            font-size: 12px;
+            color: #6b7280;
+        }
+        
+        .backup-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .icon-btn {
+            background: none;
+            border: none;
+            padding: 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #6b7280;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+        
+        .icon-btn:hover {
+            background: #e5e7eb;
+            color: #374151;
+        }
+        
+        /* Import Preview */
+        .import-preview {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .preview-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .preview-icon {
+            color: #f59e0b;
+            font-size: 20px;
+            margin-right: 8px;
+        }
+        
+        .preview-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #92400e;
+        }
+        
+        .preview-content {
+            font-size: 14px;
+            color: #78350f;
+            line-height: 1.6;
+        }
+        
+        .import-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .import-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .import-option input[type="radio"] {
+            margin-right: 8px;
+        }
+        
+        .import-option label {
+            font-size: 14px;
+            color: #374151;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">🚀 PublishPress</div>
+            <a href="#" class="help-btn">Need Help?</a>
+        </div>
+        
+        <!-- Page Title -->
+        <div class="page-title">
+            <div>
+                <div class="breadcrumb">
+                    <a href="#">Plugin Hub</a> > Backup & Import/Export
+                </div>
+                <h1>Backup & Import/Export</h1>
+            </div>
+        </div>
+        
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Export Section -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon export-icon">📤</div>
+                    <div>
+                        <div class="card-title">Export Data</div>
+                        <div class="card-subtitle">Create a backup of your settings and data</div>
+                    </div>
+                </div>
+                
+                <div class="selection-area">
+                    <div class="selection-header">
+                        <div class="selection-title">Select Data to Export</div>
+                        <button class="select-all-btn">Select All</button>
+                    </div>
+                    
+                    <div class="data-categories">
+                        <div class="category">
+                            <div class="category-header">
+                                <input type="checkbox" class="category-checkbox" id="workflows" checked>
+                                <label for="workflows" class="category-name">Workflows</label>
+                                <span class="item-count">3 items</span>
+                            </div>
+                            <div class="category-items">
+                                <div class="item">
+                                    <input type="checkbox" class="item-checkbox" id="workflow1" checked>
+                                    <label for="workflow1" class="item-name">Editorial Review Process</label>
+                                    <span class="item-meta">Modified 2 days ago</span>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" class="item-checkbox" id="workflow2" checked>
+                                    <label for="workflow2" class="item-name">Content Approval Flow</label>
+                                    <span class="item-meta">Modified 1 week ago</span>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" class="item-checkbox" id="workflow3" checked>
+                                    <label for="workflow3" class="item-name">Guest Author Workflow</label>
+                                    <span class="item-meta">Modified 3 weeks ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="category">
+                            <div class="category-header">
+                                <input type="checkbox" class="category-checkbox" id="permissions" checked>
+                                <label for="permissions" class="category-name">User Permissions</label>
+                                <span class="item-count">5 items</span>
+                            </div>
+                            <div class="category-items">
+                                <div class="item">
+                                    <input type="checkbox" class="item-checkbox" id="perm1" checked>
+                                    <label for="perm1" class="item-name">Editor Role Settings</label>
+                                    <span class="item-meta">12 users</span>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" class="item-checkbox" id="perm2" checked>
+                                    <label for="perm2" class="item-name">Author Capabilities</label>
+                                    <span class="item-meta">8 users</span>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" class="item-checkbox" id="perm3">
+                                    <label for="perm3" class="item-name">Contributor Settings</label>
+                                    <span class="item-meta">15 users</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="category">
+                            <div class="category-header">
+                                <input type="checkbox" class="category-checkbox" id="checklists">
+                                <label for="checklists" class="category-name">Editorial Checklists</label>
+                                <span class="item-count">2 items</span>
+                            </div>
+                            <div class="category-items">
+                                <div class="item">
+                                    <input type="checkbox" class="item-checkbox" id="check1">
+                                    <label for="check1" class="item-name">Pre-Publish Checklist</label>
+                                    <span class="item-meta">8 tasks</span>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" class="item-checkbox" id="check2">
+                                    <label for="check2" class="item-name">SEO Review Checklist</label>
+                                    <span class="item-meta">5 tasks</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="primary-btn">📥 Create Backup</button>
+                    <button class="secondary-btn">Preview</button>
+                </div>
+            </div>
+            
+            <!-- Import Section -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon import-icon">📥</div>
+                    <div>
+                        <div class="card-title">Import Data</div>
+                        <div class="card-subtitle">Restore settings from a backup file</div>
+                    </div>
+                </div>
+                
+                <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                    <div class="upload-icon">📁</div>
+                    <div class="upload-text">Drop backup file here or click to browse</div>
+                    <div class="upload-subtext">Supports .json, .zip files up to 10MB</div>
+                    <input type="file" id="fileInput" style="display: none;" accept=".json,.zip">
+                </div>
+                
+                <div class="import-preview">
+                    <div class="preview-header">
+                        <span class="preview-icon">⚠️</span>
+                        <span class="preview-title">Import Preview</span>
+                    </div>
+                    <div class="preview-content">
+                        <strong>backup_2024-06-18.json</strong> contains:<br>
+                        • 3 Workflows<br>
+                        • 5 User Permission Settings<br>
+                        • 2 Editorial Checklists<br>
+                        • 1 Plugin Configuration
+                    </div>
+                    
+                    <div class="import-options">
+                        <div class="import-option">
+                            <input type="radio" id="merge" name="import-mode" value="merge" checked>
+                            <label for="merge">Merge with existing data (recommended)</label>
+                        </div>
+                        <div class="import-option">
+                            <input type="radio" id="replace" name="import-mode" value="replace">
+                            <label for="replace">Replace existing data (caution: this will overwrite current settings)</label>
+                        </div>
+                        <div class="import-option">
+                            <input type="radio" id="selective" name="import-mode" value="selective">
+                            <label for="selective">Let me choose what to import</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="primary-btn">🔄 Import Data</button>
+                    <button class="secondary-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recent Backups -->
+        <div class="recent-backups">
+            <div class="recent-header">
+                <div class="recent-title">Recent Backups</div>
+                <a href="#" class="view-all-btn">View All</a>
+            </div>
+            
+            <div class="backup-list">
+                <div class="backup-item">
+                    <div class="backup-info">
+                        <div class="backup-name">Full Backup - June 18, 2025</div>
+                        <div class="backup-meta">2.3 MB • All data included • Auto-generated</div>
+                    </div>
+                    <div class="backup-actions">
+                        <button class="icon-btn" title="Download">📥</button>
+                        <button class="icon-btn" title="Restore">🔄</button>
+                        <button class="icon-btn" title="Delete">🗑️</button>
+                    </div>
+                </div>
+                
+                <div class="backup-item">
+                    <div class="backup-info">
+                        <div class="backup-name">Workflows Only - June 15, 2025</div>
+                        <div class="backup-meta">0.8 MB • 3 workflows • Manual backup</div>
+                    </div>
+                    <div class="backup-actions">
+                        <button class="icon-btn" title="Download">📥</button>
+                        <button class="icon-btn" title="Restore">🔄</button>
+                        <button class="icon-btn" title="Delete">🗑️</button>
+                    </div>
+                </div>
+                
+                <div class="backup-item">
+                    <div class="backup-info">
+                        <div class="backup-name">Pre-Update Backup - June 10, 2025</div>
+                        <div class="backup-meta">1.9 MB • Settings & permissions • Auto-generated</div>
+                    </div>
+                    <div class="backup-actions">
+                        <button class="icon-btn" title="Download">📥</button>
+                        <button class="icon-btn" title="Restore">🔄</button>
+                        <button class="icon-btn" title="Delete">🗑️</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Handle file upload
+        const uploadArea = document.querySelector('.upload-area');
+        const fileInput = document.getElementById('fileInput');
+        
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            // Handle file drop
+        });
+        
+        // Handle category checkboxes
+        document.querySelectorAll('.category-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const categoryItems = this.closest('.category').querySelectorAll('.item-checkbox');
+                categoryItems.forEach(item => {
+                    item.checked = this.checked;
+                });
+            });
+        });
+        
+        // Handle item checkboxes
+        document.querySelectorAll('.item-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const category = this.closest('.category');
+                const categoryCheckbox = category.querySelector('.category-checkbox');
+                const itemCheckboxes = category.querySelectorAll('.item-checkbox');
+                const checkedItems = category.querySelectorAll('.item-checkbox:checked');
+                
+                if (checkedItems.length === 0) {
+                    categoryCheckbox.checked = false;
+                    categoryCheckbox.indeterminate = false;
+                } else if (checkedItems.length === itemCheckboxes.length) {
+                    categoryCheckbox.checked = true;
+                    categoryCheckbox.indeterminate = false;
+                } else {
+                    categoryCheckbox.checked = false;
+                    categoryCheckbox.indeterminate = true;
+                }
+            });
+        });
+        
+        // Select all functionality
+        document.querySelector('.select-all-btn').addEventListener('click', function() {
+            const allCheckboxes = document.querySelectorAll('.category-checkbox, .item-checkbox');
+            const allChecked = Array.from(allCheckboxes).every(cb => cb.checked);
+            
+            allCheckboxes.forEach(cb => {
+                cb.checked = !allChecked;
+                cb.indeterminate = false;
+            });
+            
+            this.textContent = allChecked ? 'Select All' : 'Deselect All';
+        });
+    </script>
+</body>
+</html>

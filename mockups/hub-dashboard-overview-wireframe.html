@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PublishPress Hub - Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #f6f7f8;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6366f1;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .help-btn, .settings-btn {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        /* Page Title */
+        .page-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .page-title h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .breadcrumb a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+
+        .refresh-btn {
+            background: white;
+            border: 1px solid #d1d5db;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Quick Stats */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .stat-plugins { background: #dbeafe; color: #1d4ed8; }
+        .stat-licensed { background: #dcfce7; color: #16a34a; }
+        .stat-backups { background: #fef3c7; color: #d97706; }
+        .stat-issues { background: #fef2f2; color: #dc2626; }
+
+        .stat-label {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .stat-subtext {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-top: 4px;
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        /* Hub Features */
+        .hub-features {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .features-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .features-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .view-all-link {
+            color: #6366f1;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .feature-card {
+            border: 1px solid #f3f4f6;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            border-color: #6366f1;
+            background: #f8fafc;
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .feature-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .feature-description {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .feature-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-active { background: #dcfce7; color: #166534; }
+        .status-available { background: #e0e7ff; color: #3730a3; }
+        .status-inactive { background: #f3f4f6; color: #6b7280; }
+
+        .feature-action {
+            color: #6366f1;
+            font-weight: 500;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+        }
+
+        .quick-actions h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+
+        .action-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .action-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #f3f4f6;
+            text-decoration: none;
+            color: #374151;
+            transition: all 0.2s;
+        }
+
+        .action-item:hover {
+            background: #f8fafc;
+            border-color: #d1d5db;
+        }
+
+        .action-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .action-text {
+            flex: 1;
+        }
+
+        .action-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #111827;
+        }
+
+        .action-subtitle {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        /* Recent Activity */
+        .recent-activity {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .recent-activity h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+
+        .activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-text {
+            font-size: 14px;
+            color: #374151;
+            margin-bottom: 2px;
+        }
+
+        .activity-time {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        /* System Status */
+        .system-status {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 32px;
+        }
+
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .status-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .overall-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #16a34a;
+        }
+
+        .status-indicators {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 0;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .status-healthy { background: #16a34a; }
+        .status-warning { background: #d97706; }
+        .status-error { background: #dc2626; }
+
+        .status-text {
+            font-size: 14px;
+            color: #374151;
+        }
+
+        /* Icons */
+        .icon-plugins { background: #dbeafe; color: #1d4ed8; }
+        .icon-backup { background: #dcfce7; color: #16a34a; }
+        .icon-diagnostics { background: #fef3c7; color: #d97706; }
+        .icon-revisions { background: #fef3c7; color: #d97706; }
+        .icon-planner { background: #dbeafe; color: #1d4ed8; }
+        .icon-blocks { background: #fce7f3; color: #be185d; }
+        .icon-capabilities { background: #ecfdf5; color: #059669; }
+        .icon-future { background: #e0e7ff; color: #4338ca; }
+        .icon-series { background: #fff7ed; color: #ea580c; }
+        .icon-authors { background: #f3e8ff; color: #7c3aed; }
+        .icon-checklists { background: #f0fdf4; color: #16a34a; }
+        .icon-permissions { background: #fef2f2; color: #dc2626; }
+
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">🚀 PublishPress Hub</div>
+            <div class="header-actions">
+                <a href="#" class="help-btn">Help</a>
+                <a href="#" class="settings-btn">⚙️ Settings</a>
+            </div>
+        </div>
+
+        <!-- Page Title -->
+        <div class="page-title">
+            <div>
+                <div class="breadcrumb">
+                    <a href="#">PublishPress</a> / Hub Dashboard
+                </div>
+                <h1>Hub Dashboard</h1>
+            </div>
+            <button class="refresh-btn">
+                🔄 Refresh
+            </button>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="quick-stats">
+            <div class="stat-card">
+                <div class="stat-icon stat-plugins">🔌</div>
+                <div class="stat-label">Installed Plugins</div>
+                <div class="stat-value">8</div>
+                <div class="stat-subtext">4 active, 2 licensed</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon stat-licensed">✅</div>
+                <div class="stat-label">Licensed Features</div>
+                <div class="stat-value">2</div>
+                <div class="stat-subtext">Valid until Dec 2025</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon stat-backups">💾</div>
+                <div class="stat-label">Recent Backups</div>
+                <div class="stat-value">3</div>
+                <div class="stat-subtext">Last: 2 days ago</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon stat-issues">⚠️</div>
+                <div class="stat-label">Issues Found</div>
+                <div class="stat-value">0</div>
+                <div class="stat-subtext">All systems healthy</div>
+            </div>
+        </div>
+
+        <!-- System Status -->
+        <div class="system-status">
+            <div class="status-header">
+                <h3 class="status-title">System Status</h3>
+                <div class="overall-status">
+                    <div class="status-dot status-healthy"></div>
+                    All Systems Operational
+                </div>
+            </div>
+
+            <div class="status-indicators">
+                <div class="status-indicator">
+                    <div class="status-dot status-healthy"></div>
+                    <span class="status-text">Plugin Health</span>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot status-healthy"></div>
+                    <span class="status-text">License Status</span>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot status-healthy"></div>
+                    <span class="status-text">Backup System</span>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot status-warning"></div>
+                    <span class="status-text">Updates Available</span>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot status-healthy"></div>
+                    <span class="status-text">WordPress Core</span>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot status-healthy"></div>
+                    <span class="status-text">Database</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Hub Features -->
+            <div class="hub-features">
+                <div class="features-header">
+                    <h2 class="features-title">Available Features</h2>
+                    <a href="#" class="view-all-link">Manage All →</a>
+                </div>
+
+                <div class="features-grid">
+                    <!-- Plugin Management -->
+                    <div class="feature-card" onclick="location.href='#'">
+                        <div class="feature-header">
+                            <div class="feature-icon icon-plugins">🔌</div>
+                            <div class="feature-title">Plugin Management</div>
+                        </div>
+                        <div class="feature-description">
+                            Install, update, and manage all PublishPress plugins from one central location.
+                        </div>
+                        <div class="feature-status">
+                            <span class="status-badge status-active">Active</span>
+                            <span class="feature-action">Manage →</span>
+                        </div>
+                    </div>
+
+                    <!-- Backup & Import/Export -->
+                    <div class="feature-card" onclick="location.href='#'">
+                        <div class="feature-header">
+                            <div class="feature-icon icon-backup">💾</div>
+                            <div class="feature-title">Backup & Import/Export</div>
+                        </div>
+                        <div class="feature-description">
+                            Create backups and import/export settings across your PublishPress tools.
+                        </div>
+                        <div class="feature-status">
+                            <span class="status-badge status-active">Active</span>
+                            <span class="feature-action">Backup →</span>
+                        </div>
+                    </div>
+
+                    <!-- System Diagnostics -->
+                    <div class="feature-card" onclick="location.href='#'">
+                        <div class="feature-header">
+                            <div class="feature-icon icon-diagnostics">🔍</div>
+                            <div class="feature-title">System Diagnostics</div>
+                        </div>
+                        <div class="feature-description">
+                            Monitor plugin health, performance, and troubleshoot common issues.
+                        </div>
+                        <div class="feature-status">
+                            <span class="status-badge status-active">Active</span>
+                            <span class="feature-action">Diagnose →</span>
+                        </div>
+                    </div>
+
+                    <!-- Content Planning -->
+                    <div class="feature-card" onclick="location.href='#'">
+                        <div class="feature-header">
+                            <div class="feature-icon icon-planner">📅</div>
+                            <div class="feature-title">Content Planning</div>
+                        </div>
+                        <div class="feature-description">
+                            Editorial calendar and content scheduling with PublishPress Planner.
+                        </div>
+                        <div class="feature-status">
+                            <span class="status-badge status-active">Active</span>
+                            <span class="feature-action">Plan →</span>
+                        </div>
+                    </div>
+
+                    <!-- Content Workflows -->
+                    <div class="feature-card" onclick="location.href='#'">
+                        <div class="feature-header">
+                            <div class="feature-icon icon-revisions">📝</div>
+                            <div class="feature-title">Content Workflows</div>
+                        </div>
+                        <div class="feature-description">
+                            Advanced revision management and approval workflows for content teams.
+                        </div>
+                        <div class="feature-status">
+                            <span class="status-badge status-available">Available</span>
+                            <span class="feature-action">Install →</span>
+                        </div>
+                    </div>
+
+                    <!-- User Management -->
+                    <div class="feature-card" onclick="location.href='#'">
+                        <div class="feature-header">
+                            <div class="feature-icon icon-capabilities">⚡</div>
+                            <div class="feature-title">User Management</div>
+                        </div>
+                        <div class="feature-description">
+                            Advanced user roles, permissions, and capabilities management.
+                        </div>
+                        <div class="feature-status">
+                            <span class="status-badge status-active">Active</span>
+                            <span class="feature-action">Manage →</span>
+                        </div>
+                    </div>
+
+                    <!-- Content Quality -->
+                    <div class="feature-card" onclick="location.href='#'">
+                        <div class="feature-header">
+                            <div class="feature-icon icon-checklists">✅</div>
+                            <div class="feature-title">Content Quality</div>
+                        </div>
+                        <div class="feature-description">
+                            Editorial checklists and quality control tools for consistent content.
+                        </div>
+                        <div class="feature-status">
+                            <span class="status-badge status-available">Available</span>
+                            <span class="feature-action">Install →</span>
+                        </div>
+                    </div>
+
+                    <!-- Enhanced Blocks -->
+                    <div class="feature-card" onclick="location.href='#'">
+                        <div class="feature-header">
+                            <div class="feature-icon icon-blocks">🧱</div>
+                            <div class="feature-title">Enhanced Blocks</div>
+                        </div>
+                        <div class="feature-description">
+                            Advanced Gutenberg blocks with enhanced styling and functionality.
+                        </div>
+                        <div class="feature-status">
+                            <span class="status-badge status-inactive">Inactive</span>
+                            <span class="feature-action">Activate →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div>
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="action-list">
+                        <a href="#" class="action-item">
+                            <div class="action-icon icon-plugins">🔌</div>
+                            <div class="action-text">
+                                <div class="action-title">Install Plugin</div>
+                                <div class="action-subtitle">Browse available plugins</div>
+                            </div>
+                        </a>
+
+                        <a href="#" class="action-item">
+                            <div class="action-icon icon-backup">💾</div>
+                            <div class="action-text">
+                                <div class="action-title">Create Backup</div>
+                                <div class="action-subtitle">Backup current settings</div>
+                            </div>
+                        </a>
+
+                        <a href="#" class="action-item">
+                            <div class="action-icon icon-diagnostics">🔍</div>
+                            <div class="action-text">
+                                <div class="action-title">Run Diagnostics</div>
+                                <div class="action-subtitle">Check system health</div>
+                            </div>
+                        </a>
+
+                        <a href="#" class="action-item">
+                            <div class="action-icon icon-permissions">👥</div>
+                            <div class="action-text">
+                                <div class="action-title">Manage Licenses</div>
+                                <div class="action-subtitle">View license status</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+                    <h3>Recent Activity</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon icon-backup">💾</div>
+                            <div class="activity-content">
+                                <div class="activity-text">Backup created successfully</div>
+                                <div class="activity-time">2 hours ago</div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon icon-plugins">🔌</div>
+                            <div class="activity-content">
+                                <div class="activity-text">PublishPress Planner updated</div>
+                                <div class="activity-time">1 day ago</div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon icon-capabilities">⚡</div>
+                            <div class="activity-content">
+                                <div class="activity-text">User permissions modified</div>
+                                <div class="activity-time">3 days ago</div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon icon-diagnostics">🔍</div>
+                            <div class="activity-content">
+                                <div class="activity-text">System diagnostics completed</div>
+                                <div class="activity-time">1 week ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add click handlers for feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Add click animation
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // Simulate refresh functionality
+        document.querySelector('.refresh-btn').addEventListener('click', function() {
+            this.style.opacity = '0.5';
+            this.innerHTML = '🔄 Refreshing...';
+
+            setTimeout(() => {
+                this.style.opacity = '';
+                this.innerHTML = '🔄 Refresh';
+
+                // Update some stats to show refresh worked
+                const statsValues = document.querySelectorAll('.stat-value');
+                statsValues.forEach(stat => {
+                    const currentValue = parseInt(stat.textContent);
+                    stat.style.color = '#16a34a';
+                    setTimeout(() => {
+                        stat.style.color = '';
+                    }, 1000);
+                });
+            }, 1500);
+        });
+
+        // Add hover effects for action items
+        document.querySelectorAll('.action-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.borderColor = '#6366f1';
+            });
+
+            item.addEventListener('mouseleave', function() {
+                this.style.borderColor = '';
+            });
+        });
+    </script>
+</body>
+</html>
