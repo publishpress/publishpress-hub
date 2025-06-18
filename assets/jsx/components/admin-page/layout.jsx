@@ -1,8 +1,7 @@
-import '../css/admin-page.css';
-import { AdminPageContainer } from './AdminPage/AdminPageContainer';
-import { AdminPageHeader } from './AdminPage/AdminPageHeader';
+import { AdminPageContainer } from './container';
+import { AdminPageHeader } from './header';
 
-export const AdminPageWithHeader = ({
+export const AdminPageLayout = ({
     title,
     logoUrl,
     children,
@@ -20,3 +19,5 @@ export const AdminPageWithHeader = ({
         </AdminPageContainer>
     )
 }
+
+export default AdminPageLayout;

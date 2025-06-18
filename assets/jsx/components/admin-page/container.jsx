@@ -1,5 +1,3 @@
-import '../../css/main.css';
-
 export const AdminPageContainer = ({
     className = '',
     variant = 'contained', // 'contained' | 'fullwidth'
@@ -19,3 +17,5 @@ export const AdminPageContainer = ({
         </div>
     )
 }
+
+export default AdminPageContainer;

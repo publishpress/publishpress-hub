@@ -13,9 +13,9 @@
     --pp-hub-info-color: #00a0d2;
 
     /* Background Colors */
-    --pp-hub-bg-primary: #ffffff;
-    --pp-hub-bg-secondary: #f6f7f7;
-    --pp-hub-bg-tertiary: #f1f1f1;
+    --pp-hub-bg-primary: transparent;
+    --pp-hub-bg-secondary: #ffffff;
+    --pp-hub-bg-tertiary: #f6f7f7;
     --pp-hub-bg-overlay: rgba(0, 0, 0, 0.6);
 
     /* Text Colors */

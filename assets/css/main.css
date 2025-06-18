@@ -10,9 +10,9 @@
 @import './themes/dark.css';
 
 /* 3. Component Styles */
-@import './components/AdminPage/AdminPageContainer.css';
-@import './components/AdminPage/AdminPageHeader.css';
-@import './components/Buttons/HelpButton.css';
+@import './components/admin-page/container.css';
+@import './components/admin-page/header.css';
+@import './components/buttons/help-button.css';
 
 /* 4. WordPress Admin Compatibility */
 /* Ensure our styles don't conflict with WordPress admin */

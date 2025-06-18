@@ -1,4 +1,4 @@
-import HelpButton from "../Buttons/HelpButton"
+import HelpButton from "../buttons/help-button";
 
 export const AdminPageHeader = ({
     title,
@@ -34,3 +34,5 @@ export const AdminPageHeader = ({
         </div>
     )
 }
+
+export default AdminPageHeader;
