@@ -29,6 +29,22 @@
     --pp-hub-border-primary: #dcdcde;
     --pp-hub-border-secondary: #c3c4c7;
     --pp-hub-border-focus: var(--pp-hub-primary-color);
+    --pp-hub-border-input: #d1d5db;
+    --pp-hub-border-input-focus: #111827;
+
+    /* Form Colors */
+    --pp-hub-form-bg: #ffffff;
+    --pp-hub-form-text: #111827;
+    --pp-hub-form-placeholder: #9ca3af;
+
+    /* Button States */
+    --pp-hub-button-padding-x: var(--pp-hub-spacing-lg);
+    --pp-hub-button-padding-y: var(--pp-hub-spacing-md);
+    --pp-hub-button-gap: var(--pp-hub-spacing-sm);
+
+    /* Filter Component Specific */
+    --pp-hub-filter-container-padding: var(--pp-hub-spacing-sm);
+    --pp-hub-filter-button-padding: var(--pp-hub-spacing-sm) var(--pp-hub-spacing-md);
 
     /* Spacing Scale */
     --pp-hub-spacing-xs: 0.25rem;    /* 4px */
@@ -44,13 +60,15 @@
     --pp-hub-font-family-mono: Consolas, Monaco, "Courier New", monospace;
 
     /* Font Sizes */
-    --pp-hub-font-size-xs: 0.75rem;   /* 12px */
-    --pp-hub-font-size-sm: 0.875rem;  /* 14px */
-    --pp-hub-font-size-md: 1rem;      /* 16px */
-    --pp-hub-font-size-lg: 1.125rem;  /* 18px */
-    --pp-hub-font-size-xl: 1.25rem;   /* 20px */
-    --pp-hub-font-size-2xl: 1.5rem;   /* 24px */
-    --pp-hub-font-size-3xl: 2rem;     /* 32px */
+    /* Start of Selection */
+    --pp-hub-font-size-xs: 0.625rem;  /* 10px */
+    --pp-hub-font-size-sm: 0.75rem;   /* 12px */
+    --pp-hub-font-size-md: 0.875rem;  /* 14px */
+    --pp-hub-font-size-lg: 1rem;      /* 16px */
+    --pp-hub-font-size-xl: 1.125rem;  /* 18px */
+    --pp-hub-font-size-2xl: 1.25rem;  /* 20px */
+    --pp-hub-font-size-3xl: 1.5rem;   /* 24px */
+    /* End of Selection */
 
     /* Font Weights */
     --pp-hub-font-weight-normal: 400;
