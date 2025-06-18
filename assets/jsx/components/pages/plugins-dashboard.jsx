@@ -1,5 +1,5 @@
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useCallback } from '@wordpress/element';
+import { useCallback, useMemo, memo } from '@wordpress/element';
 
 import { __ } from '@publishpress/hub-i18n';
 
@@ -35,15 +35,15 @@ const FILTER_OPTIONS = [
     },
 ];
 
-export const PluginsDashboard = ({
-}) => {
+// Move selector outside component to prevent recreation on each render
+const selectPluginsDashboardData = (select) => ({
+    selectedFilter: select(store).getSelectedFilter(),
+});
+
+const PluginsDashboardComponent = () => {
     const {
         selectedFilter
-    } = useSelect((select) => {
-        return {
-            selectedFilter: select(store).getSelectedFilter(),
-        }
-    });
+    } = useSelect(selectPluginsDashboardData, []);
 
     const {
         setSelectedFilter
@@ -53,9 +53,11 @@ export const PluginsDashboard = ({
         setSelectedFilter(selectedFilter);
     }, [setSelectedFilter]);
 
+    const title = useMemo(() => __('Plugins Dashboard', 'publishpress-hub'), []);
+
     return (
         <AdminPageLayout
-            title={__('Plugins Dashboard', 'publishpress-hub')}
+            title={title}
             logoUrl={window.ppHubPluginsDashboardConfig.logoUrl}
         >
             <div className="pp-hub-plugins-dashboard">
@@ -66,5 +68,7 @@ export const PluginsDashboard = ({
                 />
             </div>
         </AdminPageLayout>
-    )
+    );
 };
+
+export const PluginsDashboard = memo(PluginsDashboardComponent);

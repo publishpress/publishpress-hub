@@ -227,26 +227,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   FilterButtonsBar: () => (/* binding */ FilterButtonsBar),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../buttons/button */ "./assets/jsx/components/buttons/button.jsx");
-/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress/hub-i18n */ "@publishpress/hub-i18n");
-/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../buttons/button */ "./assets/jsx/components/buttons/button.jsx");
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress/hub-i18n */ "@publishpress/hub-i18n");
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
 
 
-var FilterButtonsBar = function FilterButtonsBar(_ref) {
+
+
+var FilterButtonsBarComponent = function FilterButtonsBarComponent(_ref) {
   var options = _ref.options,
     selectedOption = _ref.selectedOption,
-    _onChange = _ref.onChange,
+    onChange = _ref.onChange,
     children = _ref.children,
-    className = _ref.className;
-  if (!options) {
+    _ref$className = _ref.className,
+    className = _ref$className === void 0 ? '' : _ref$className;
+  // Early returns for better performance
+  if (!options || !options.length) {
     return null;
   }
-  if (!options.length) {
-    return null;
-  }
-  if (!selectedOption) {
-    selectedOption = options[0].value;
-  }
+
+  // Use the first option as default if none selected
+  var activeSelectedOption = selectedOption || options[0].value;
+
+  // Memoize the select change handler
+  var handleSelectChange = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
+    onChange(e.target.value);
+  }, [onChange]);
+
+  // Memoize the button click handler factory
+  var createButtonClickHandler = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (value) {
+    return function () {
+      onChange(value);
+    };
+  }, [onChange]);
   return /*#__PURE__*/React.createElement("div", {
     className: "publishpress-hub-filter-container ".concat(className)
   }, /*#__PURE__*/React.createElement("div", {
@@ -254,14 +269,13 @@ var FilterButtonsBar = function FilterButtonsBar(_ref) {
   }, /*#__PURE__*/React.createElement("label", {
     htmlFor: "tabs",
     className: "publishpress-hub-filter-label-sr"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select an option', 'publishpress-hub')), /*#__PURE__*/React.createElement("select", {
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select an option', 'publishpress-hub')), /*#__PURE__*/React.createElement("select", {
     id: "tabs",
     className: "publishpress-hub-filter-select",
-    onChange: function onChange(e) {
-      _onChange(e.target.value);
-    }
+    value: activeSelectedOption,
+    onChange: handleSelectChange
   }, /*#__PURE__*/React.createElement("optgroup", {
-    label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Options', 'publishpress-hub')
+    label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Options', 'publishpress-hub')
   }, options.map(function (filter) {
     return /*#__PURE__*/React.createElement("option", {
       key: filter.value,
@@ -272,19 +286,20 @@ var FilterButtonsBar = function FilterButtonsBar(_ref) {
   }, /*#__PURE__*/React.createElement("div", {
     className: "publishpress-hub-filter-buttons-bar"
   }, options.map(function (filter) {
-    var isSelected = selectedOption === filter.value;
+    var isSelected = activeSelectedOption === filter.value;
     var buttonClass = isSelected ? 'active' : '';
     var isDisabled = !filter.total;
-    return /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_0__.Button, {
+    return /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_1__.Button, {
       key: filter.value,
       className: "publishpress-hub-filter-button ".concat(buttonClass, " ").concat(isDisabled ? 'disabled' : ''),
-      onClick: function onClick() {
-        _onChange(filter.value);
-      },
+      onClick: createButtonClickHandler(filter.value),
       disabled: filter.total === 0
     }, filter.label, " ", filter.total > 0 && "(".concat(filter.total, ")"));
   }), children)));
 };
+
+// Memoize the component to prevent unnecessary re-renders
+var FilterButtonsBar = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(FilterButtonsBarComponent);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FilterButtonsBar);
 
 /***/ }),
@@ -308,7 +323,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _admin_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../admin-page */ "./assets/jsx/components/admin-page/index.jsx");
 /* harmony import */ var _filter_filter_buttons_bar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../filter/filter-buttons-bar */ "./assets/jsx/components/filter/filter-buttons-bar.jsx");
 /* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../stores/plugins-dashboard */ "./assets/jsx/stores/plugins-dashboard/index.jsx");
-function _objectDestructuringEmpty(t) { if (null == t) throw new TypeError("Cannot destructure " + t); }
 
 
 
@@ -336,21 +350,26 @@ var FILTER_OPTIONS = [{
   value: 'not-installed',
   total: 5
 }];
-var PluginsDashboard = function PluginsDashboard(_ref) {
-  _objectDestructuringEmpty(_ref);
-  var _useSelect = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.useSelect)(function (select) {
-      return {
-        selectedFilter: select(_stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_5__.store).getSelectedFilter()
-      };
-    }),
+
+// Move selector outside component to prevent recreation on each render
+var selectPluginsDashboardData = function selectPluginsDashboardData(select) {
+  return {
+    selectedFilter: select(_stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_5__.store).getSelectedFilter()
+  };
+};
+var PluginsDashboardComponent = function PluginsDashboardComponent() {
+  var _useSelect = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.useSelect)(selectPluginsDashboardData, []),
     selectedFilter = _useSelect.selectedFilter;
   var _useDispatch = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.useDispatch)(_stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_5__.store),
     setSelectedFilter = _useDispatch.setSelectedFilter;
   var handleFilterChange = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useCallback)(function (selectedFilter) {
     setSelectedFilter(selectedFilter);
   }, [setSelectedFilter]);
+  var title = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+    return (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugins Dashboard', 'publishpress-hub');
+  }, []);
   return /*#__PURE__*/React.createElement(_admin_page__WEBPACK_IMPORTED_MODULE_3__.AdminPageLayout, {
-    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugins Dashboard', 'publishpress-hub'),
+    title: title,
     logoUrl: window.ppHubPluginsDashboardConfig.logoUrl
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-dashboard"
@@ -360,6 +379,7 @@ var PluginsDashboard = function PluginsDashboard(_ref) {
     onChange: handleFilterChange
   })));
 };
+var PluginsDashboard = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(PluginsDashboardComponent);
 
 /***/ }),
 
