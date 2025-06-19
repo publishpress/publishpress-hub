@@ -19,3 +19,5 @@ fi
 [[ -f $CACHE_PATH/.zsh_history ]] || touch $CACHE_PATH/.zsh_history
 [[ -f $CACHE_PATH/.bash_history ]] || touch $CACHE_PATH/.bash_history
 [[ -f $CACHE_PATH/.composer/auth.json ]] || echo '{}' > $CACHE_PATH/.composer/auth.json
+[[ -f $CACHE_PATH/tmp_wp_test ]] || touch $CACHE_PATH/tmp_wp_test
+[[ -f $CACHE_PATH/tmp_wp_dev ]] || touch $CACHE_PATH/tmp_wp_dev
