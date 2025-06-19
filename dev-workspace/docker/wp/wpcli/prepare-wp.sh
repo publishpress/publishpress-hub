@@ -115,6 +115,24 @@ show_header "Activating dummy-plugin-2"
 wp plugin activate dummy-plugin-2
 show_status "dummy-plugin-2 activated successfully"
 
+# Create the application password
+show_header "Creating application password"
+
+if wp user application-password exists admin api-tests; then
+    wp user application-password delete admin api-tests
+fi
+PASSWORD=$(wp user application-password create admin api-tests --porcelain)
+
+echo -e "${YELLOW}Application password: $PASSWORD${NC}"
+
+# Update the application password in the .env file
+echo -e "${YELLOW}Updating the application password in the .env file...${NC}"
+sed -i "s/WP_TESTS_APPLICATION_PASSWORD=.*/WP_TESTS_APPLICATION_PASSWORD=$PASSWORD/" /project/.env
+AUTH_HASH=$(echo -n "admin:$PASSWORD" | base64)
+sed -i "s/WP_TESTS_AUTH_HASH=.*/WP_TESTS_AUTH_HASH=$AUTH_HASH/" /project/.env
+
+show_status "Application password created successfully"
+
 echo -e "\n${GREEN}================================================================"
 echo -e "✨ WordPress environment setup completed successfully!"
 echo -e "================================================================"
