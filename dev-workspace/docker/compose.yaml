@@ -118,7 +118,7 @@ services:
             - db_test
             - mailhog
         working_dir: /var/www/html
-        command: ["/bin/sh", "-c", "sh /tmp/prepare-wp.sh http://localhost:8031 publishpress-hub"]
+        command: ["/bin/sh", "-c", "sh /tmp/prepare-wp.sh http://localhost:8031 publishpress-hub TESTS"]
         extra_hosts:
             - "host.docker.internal:host-gateway"
     ##############################################################################
@@ -217,7 +217,7 @@ services:
             - db_dev
             - mailhog
         working_dir: /var/www/html
-        command: ["/bin/sh", "-c", "sh /tmp/prepare-wp.sh http://localhost:8032 publishpress-hub"]
+        command: ["/bin/sh", "-c", "sh /tmp/prepare-wp.sh http://localhost:8032 publishpress-hub DEV"]
         extra_hosts:
             - "host.docker.internal:host-gateway"
 

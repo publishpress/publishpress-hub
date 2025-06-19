@@ -15,11 +15,25 @@ if [[ $# -eq 0 ]] || [[ $1 == "-h" ]]; then
 fi
 
 PROFILE="${2:-dev}"
+WP_ADMIN_USER="admin"
+WP_ADMIN_PASSWORD="admin"
+
+if [[ ${PROFILE} == "test" ]]; then
+  ENVIRONMENT_TYPE="TESTS"
+else
+  ENVIRONMENT_TYPE="DEV"
+fi
 
 COMPOSE_FILE=docker/compose.yaml
 CACHE_BASE_PATH=$(pwd)/.cache
 WP_CACHE=$CACHE_BASE_PATH/wp_${PROFILE}
 DB_CACHE=$CACHE_BASE_PATH/db_${PROFILE}
+
+APP_PASSWORD_VAR="WP_${ENVIRONMENT_TYPE}_APPLICATION_PASSWORD"
+AUTH_HASH_VAR="WP_${ENVIRONMENT_TYPE}_AUTH_HASH"
+
+WP_APPLICATION_PASSWORD=$(eval "echo \$$APP_PASSWORD_VAR")
+WP_AUTH_HASH=$(eval "echo \$$AUTH_HASH_VAR")
 
 remove_port_from_domain() {
   echo $1 | sed -E 's/:.*//'
@@ -95,6 +109,8 @@ service_info() {
   echo "Site URL:       http://$WP_DOMAIN:$WP_PORT"
   echo "Admin URL:      http://$WP_DOMAIN:$WP_PORT/wp-admin"
   echo "Login:          $WP_ADMIN_USER / $WP_ADMIN_PASSWORD"
+  echo "App Password:   $WP_APPLICATION_PASSWORD"
+  echo "API Auth Hash:  $WP_AUTH_HASH"
   echo "Root Directory: $WP_CACHE"
   echo "Container ID:   $(get_container_id wp_${PROFILE})"
   echo ""
@@ -103,7 +119,7 @@ service_info() {
   echo "DB Host:        $WP_DB_HOST:$DB_PORT"
   echo "DB User:        $WP_DB_USER"
   echo "DB Pass:        $WP_DB_PASS"
-  echo "Data Directory: $WP_DB_CACHE"
+  echo "Data Directory: $DB_CACHE"
   echo "Container ID:   $(get_container_id db_${PROFILE})"
   echo ""
   echo "=============================================="
