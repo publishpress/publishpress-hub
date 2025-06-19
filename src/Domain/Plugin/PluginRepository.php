@@ -24,17 +24,17 @@ class PluginRepository implements PluginRepositoryInterface
      */
     public function register(Plugin $plugin): void
     {
-        $existingPlugin = $this->findBySlug($plugin->getSlug());
+        $existingPlugin = $this->findBySlug($plugin->getSlugFree());
 
         if ($existingPlugin && $existingPlugin->isNewerThan($plugin)) {
             return;
         }
 
-        $this->plugins[$plugin->getSlug()] = $plugin;
+        $this->plugins[$plugin->getSlugFree()] = $plugin;
     }
 
     /**
-     * Find a plugin by its slug.
+     * Find a plugin by its free slug.
      *
      * @since 1.0.0
      * @param string $slug

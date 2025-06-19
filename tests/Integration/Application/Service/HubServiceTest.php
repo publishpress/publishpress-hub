@@ -56,7 +56,7 @@ class HubServiceTest extends NoTransactionWPTestCase
         $hubService->initialize();
 
         // Trigger the action like external plugins would
-        do_action(Hooks::ACTION_REGISTER_PLUGIN, 'Test Plugin', 'test-plugin', '1.0.0', '/test/path');
+        do_action(Hooks::ACTION_REGISTER_PLUGIN, 'test-plugin', '1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
         // Verify plugin was registered
         $registeredPlugins = $pluginRepository->getAllPlugins();
@@ -86,7 +86,7 @@ class HubServiceTest extends NoTransactionWPTestCase
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Test exception');
 
-        $hubService->registerPlugin('Test Plugin', 'test-plugin', '1.0.0', '/test/path');
+        $hubService->registerPlugin('test-plugin', '1.0.0', '/test/path');
 
         $this->seeHookCalled(DomainHooks::ACTION_PLUGIN_REGISTRATION_FAILED);
     }

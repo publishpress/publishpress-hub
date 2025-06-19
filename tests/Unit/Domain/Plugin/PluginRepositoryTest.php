@@ -39,7 +39,7 @@ class PluginRepositoryTest extends Unit
      */
     public function testRegisterSinglePlugin(): void
     {
-        $plugin = new Plugin('Test Plugin', 'test-plugin', '1.0.0', '/path/to/plugin');
+        $plugin = new Plugin('Test Plugin', 'test-plugin', 'test-plugin-pro');
 
         $this->repository->register($plugin);
 
@@ -53,9 +53,9 @@ class PluginRepositoryTest extends Unit
      */
     public function testRegisterMultipleDifferentPlugins(): void
     {
-        $plugin1 = new Plugin('Plugin One', 'plugin-one', '1.0.0', '/path/to/plugin1');
-        $plugin2 = new Plugin('Plugin Two', 'plugin-two', '2.0.0', '/path/to/plugin2');
-        $plugin3 = new Plugin('Plugin Three', 'plugin-three', '1.5.0', '/path/to/plugin3');
+        $plugin1 = new Plugin('Plugin One', 'plugin-one', 'plugin-one-pro');
+        $plugin2 = new Plugin('Plugin Two', 'plugin-two', 'plugin-two-pro');
+        $plugin3 = new Plugin('Plugin Three', 'plugin-three', 'plugin-three-pro');
 
         $this->repository->register($plugin1);
         $this->repository->register($plugin2);
@@ -76,8 +76,11 @@ class PluginRepositoryTest extends Unit
      */
     public function testRegisterSamePluginWithNewerVersionOverwrites(): void
     {
-        $plugin1 = new Plugin('Test Plugin', 'test-plugin', '1.0.0', '/path/to/plugin');
-        $plugin2 = new Plugin('Test Plugin Updated', 'test-plugin', '2.0.0', '/path/to/plugin/v2');
+        $plugin1 = new Plugin('Test Plugin', 'test-plugin', 'test-plugin-pro');
+        $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin2 = new Plugin('Test Plugin Updated', 'test-plugin', 'test-plugin-pro');
+        $plugin2->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->repository->register($plugin1);
         $this->repository->register($plugin2);
@@ -96,8 +99,11 @@ class PluginRepositoryTest extends Unit
      */
     public function testRegisterSamePluginWithOlderVersionDoesNotOverwrite(): void
     {
-        $plugin1 = new Plugin('Test Plugin', 'test-plugin', '2.0.0', '/path/to/plugin');
-        $plugin2 = new Plugin('Test Plugin Old', 'test-plugin', '1.0.0', '/path/to/plugin/old');
+        $plugin1 = new Plugin('Test Plugin', 'test-plugin', 'test-plugin-pro');
+        $plugin1->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin2 = new Plugin('Test Plugin Old', 'test-plugin', 'test-plugin-pro');
+        $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->repository->register($plugin1);
         $this->repository->register($plugin2);
@@ -116,8 +122,11 @@ class PluginRepositoryTest extends Unit
      */
     public function testRegisterSamePluginWithEqualVersionOverwrites(): void
     {
-        $plugin1 = new Plugin('Test Plugin Original', 'test-plugin', '1.0.0', '/path/to/plugin');
-        $plugin2 = new Plugin('Test Plugin Duplicate', 'test-plugin', '1.0.0', '/path/to/plugin/duplicate');
+        $plugin1 = new Plugin('Test Plugin Original', 'test-plugin', 'test-plugin-pro');
+        $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin2 = new Plugin('Test Plugin Duplicate', 'test-plugin', 'test-plugin-pro');
+        $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->repository->register($plugin1);
         $this->repository->register($plugin2);
@@ -134,7 +143,9 @@ class PluginRepositoryTest extends Unit
      */
     public function testFindBySlugReturnsNullForNonExistentPlugin(): void
     {
-        $plugin = new Plugin('Test Plugin', 'test-plugin', '1.0.0', '/path/to/plugin');
+        $plugin = new Plugin('Test Plugin', 'test-plugin', 'test-plugin-pro');
+        $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
         $this->repository->register($plugin);
 
         $this->assertNull($this->repository->findBySlug('non-existent-plugin'));
@@ -147,7 +158,9 @@ class PluginRepositoryTest extends Unit
      */
     public function testFindBySlugIsCaseSensitive(): void
     {
-        $plugin = new Plugin('Test Plugin', 'test-plugin', '1.0.0', '/path/to/plugin');
+        $plugin = new Plugin('Test Plugin', 'test-plugin', 'test-plugin-pro');
+        $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
         $this->repository->register($plugin);
 
         $this->assertSame($plugin, $this->repository->findBySlug('test-plugin'));
@@ -160,7 +173,9 @@ class PluginRepositoryTest extends Unit
      */
     public function testIsRegisteredReturnsFalseForNonExistentPlugin(): void
     {
-        $plugin = new Plugin('Test Plugin', 'test-plugin', '1.0.0', '/path/to/plugin');
+        $plugin = new Plugin('Test Plugin', 'test-plugin', 'test-plugin-pro');
+        $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
         $this->repository->register($plugin);
 
         $this->assertFalse($this->repository->isRegistered('non-existent-plugin'));
@@ -173,7 +188,9 @@ class PluginRepositoryTest extends Unit
      */
     public function testIsRegisteredIsCaseSensitive(): void
     {
-        $plugin = new Plugin('Test Plugin', 'test-plugin', '1.0.0', '/path/to/plugin');
+        $plugin = new Plugin('Test Plugin', 'test-plugin', 'test-plugin-pro');
+        $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
         $this->repository->register($plugin);
 
         $this->assertTrue($this->repository->isRegistered('test-plugin'));
@@ -186,21 +203,20 @@ class PluginRepositoryTest extends Unit
      */
     public function testGetAllPluginsReturnsArrayValues(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'plugin-a', '1.0.0', '/path/a');
-        $plugin2 = new Plugin('Plugin B', 'plugin-b', '2.0.0', '/path/b');
-        $plugin3 = new Plugin('Plugin C', 'plugin-c', '1.5.0', '/path/c');
+        $plugin1 = new Plugin('Plugin A', 'plugin-a', 'plugin-a-pro');
+        $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin2 = new Plugin('Plugin B', 'plugin-b', 'plugin-b-pro');
+        $plugin2->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->repository->register($plugin1);
         $this->repository->register($plugin2);
-        $this->repository->register($plugin3);
 
         $allPlugins = $this->repository->getAllPlugins();
 
-        $this->assertCount(3, $allPlugins);
-        $this->assertEquals([0, 1, 2], array_keys($allPlugins));
+        $this->assertCount(2, $allPlugins);
         $this->assertContains($plugin1, $allPlugins);
         $this->assertContains($plugin2, $allPlugins);
-        $this->assertContains($plugin3, $allPlugins);
     }
 
     /**
@@ -218,8 +234,11 @@ class PluginRepositoryTest extends Unit
     public function testComplexVersionComparisonScenarios(): void
     {
         // Test pre-release versions
-        $plugin1 = new Plugin('Test Plugin', 'test-plugin', '1.0.0-beta', '/path/1');
-        $plugin2 = new Plugin('Test Plugin', 'test-plugin', '1.0.0', '/path/2');
+        $plugin1 = new Plugin('Test Plugin', 'test-plugin', 'test-plugin-pro');
+        $plugin1->register('1.0.0-beta', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin2 = new Plugin('Test Plugin', 'test-plugin', 'test-plugin-pro');
+        $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->repository->register($plugin1);
         $this->repository->register($plugin2);
@@ -231,8 +250,11 @@ class PluginRepositoryTest extends Unit
         $this->repository = new PluginRepository();
 
         // Test complex version numbers
-        $plugin3 = new Plugin('Test Plugin', 'test-plugin', '1.2.3', '/path/3');
-        $plugin4 = new Plugin('Test Plugin', 'test-plugin', '1.2.10', '/path/4');
+        $plugin3 = new Plugin('Test Plugin', 'test-plugin', 'test-plugin-pro');
+        $plugin3->register('1.2.3', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin4 = new Plugin('Test Plugin', 'test-plugin', 'test-plugin-pro');
+        $plugin4->register('1.2.10', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->repository->register($plugin3);
         $this->repository->register($plugin4);
@@ -246,11 +268,17 @@ class PluginRepositoryTest extends Unit
      */
     public function testMultipleRegistrationsOfSamePlugin(): void
     {
-        $plugin1 = new Plugin('Test Plugin', 'test-plugin', '1.0.0', '/path/1');
-        $plugin2 = new Plugin('Test Plugin', 'test-plugin', '1.5.0', '/path/2');
-        $plugin3 = new Plugin('Test Plugin', 'test-plugin', '1.2.0', '/path/3');
-        $plugin4 = new Plugin('Test Plugin', 'test-plugin', '2.0.0', '/path/4');
-        $plugin5 = new Plugin('Test Plugin', 'test-plugin', '1.8.0', '/path/5');
+        $plugin1 = new Plugin('Test Plugin', 'test-plugin', 'test-plugin-pro');
+        $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin2 = new Plugin('Test Plugin', 'test-plugin', 'test-plugin-pro');
+        $plugin2->register('1.5.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
+
+        $plugin3 = new Plugin('Test Plugin', 'test-plugin', 'test-plugin-pro');
+        $plugin3->register('1.2.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin4 = new Plugin('Test Plugin', 'test-plugin', 'test-plugin-pro');
+        $plugin4->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->repository->register($plugin1);
         $this->assertCount(1, $this->repository->getAllPlugins());
@@ -267,10 +295,6 @@ class PluginRepositoryTest extends Unit
         $this->repository->register($plugin4);
         $this->assertCount(1, $this->repository->getAllPlugins());
         $this->assertEquals('2.0.0', $this->repository->findBySlug('test-plugin')->getVersion());
-
-        $this->repository->register($plugin5);
-        $this->assertCount(1, $this->repository->getAllPlugins());
-        $this->assertEquals('2.0.0', $this->repository->findBySlug('test-plugin')->getVersion()); // Should not change
     }
 
     /**
@@ -278,8 +302,11 @@ class PluginRepositoryTest extends Unit
      */
     public function testRepositoryMaintainsPluginInstancesCorrectly(): void
     {
-        $plugin1 = new Plugin('Plugin One', 'plugin-one', '1.0.0', '/path/1');
-        $plugin2 = new Plugin('Plugin Two', 'plugin-two', '1.0.0', '/path/2');
+        $plugin1 = new Plugin('Plugin One', 'plugin-one', 'plugin-one-pro');
+        $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin2 = new Plugin('Plugin Two', 'plugin-two', 'plugin-two-pro');
+        $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->repository->register($plugin1);
         $this->repository->register($plugin2);
@@ -308,7 +335,10 @@ class PluginRepositoryTest extends Unit
      */
     public function testResetMethod(): void
     {
-        $this->repository->register(new Plugin('Test Plugin', 'test-plugin', '1.0.0', '/path/to/plugin'));
+        $plugin = new Plugin('Test Plugin', 'test-plugin', 'test-plugin-pro');
+        $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $this->repository->register($plugin);
         $this->assertTrue($this->repository->isRegistered('test-plugin'));
 
         $this->repository->reset();

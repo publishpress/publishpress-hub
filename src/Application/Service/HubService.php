@@ -18,6 +18,7 @@ use PublishPress\Hub\Domain\Hooks as DomainHooks;
 use PublishPress\Hub\Domain\Plugin\Contracts\PluginRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Plugin;
 use PublishPress\Hub\Application\Service\Contracts\ServiceInterface;
+use PublishPress\Hub\Domain\DomainException;
 use PublishPress\Hub\Infrastructure\Container\ServiceCollection;
 
 /**
@@ -120,23 +121,28 @@ class HubService implements ServiceInterface
     }
 
     /**
-     * Register a plugin.
+     * Register a plugin as installed.
      *
      * @since 1.0.0
-     * @param string $name
      * @param string $slug
      * @param string $version
      * @param string $path
+     *
+     * @throws DomainException
      */
-    public function registerPlugin(string $name, string $slug, string $version, string $path): void
+    public function registerPlugin(string $slug, string $version, string $path): void
     {
         // Fire before registration hook
-        do_action(DomainHooks::ACTION_BEFORE_PLUGIN_REGISTER, $name, $slug, $version, $path);
+        do_action(DomainHooks::ACTION_BEFORE_PLUGIN_REGISTER, $slug, $version, $path);
 
         try {
-            $plugin = new Plugin($name, $slug, $version, $path);
+            $plugin = $this->pluginRepository->findBySlug($slug);
 
-            $this->pluginRepository->register($plugin);
+            if (!$plugin) {
+                throw new DomainException('Plugin not found');
+            }
+
+            $plugin->register($version, $path);
 
             // Fire after successful registration hook
             do_action(DomainHooks::ACTION_PLUGIN_REGISTERED, $plugin);
@@ -144,7 +150,6 @@ class HubService implements ServiceInterface
             // Fire registration failed hook
             do_action(
                 DomainHooks::ACTION_PLUGIN_REGISTRATION_FAILED,
-                $name,
                 $slug,
                 $version,
                 $path,

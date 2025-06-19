@@ -20,43 +20,80 @@ class Plugin
     private string $name;
 
     /**
-     * The slug of the plugin.
+     * The slug of the Free plugin.
      *
      * @since 1.0.0
      * @var string
      */
-    private string $slug;
+    private string $slugFree;
 
     /**
-     * The version of the plugin.
+     * The slug of the Pro plugin.
      *
      * @since 1.0.0
      * @var string
      */
-    private string $version;
+    private string $slugPro;
 
     /**
-     * The path of the plugin.
+     * The version of the plugin, if installed.
      *
      * @since 1.0.0
      * @var string
      */
-    private string $path;
+    private ?string $version = null;
 
+    /**
+     * The path of the plugin file, if installed.
+     *
+     * @since 1.0.0
+     * @var string
+     */
+    private ?string $filePath = null;
+
+    /**
+     * The installation status of the plugin.
+     *
+     * @since 1.0.0
+     * @var bool
+     */
+    private bool $isInstalled = false;
+
+    /**
+     * The activation status of the plugin.
+     *
+     * @since 1.0.0
+     * @var bool
+     */
+    private bool $isActive = false;
+
+    /**
+     * The license status of the plugin.
+     *
+     * @since 1.0.0
+     * @var bool
+     */
+    private bool $isLicensed = false;
+
+    /**
+     * The pro flag.
+     *
+     * @since 1.0.0
+     * @var bool
+     */
+    private bool $isPro = false;
 
     public function __construct(
         string $name,
-        string $slug,
-        string $version,
-        string $path
+        string $slugFree,
+        string $slugPro
     ) {
-        $this->validateSlug($slug);
-        $this->validateVersion($version);
+        $this->validateSlug($slugFree);
+        $this->validateSlug($slugPro);
 
         $this->name = $name;
-        $this->slug = $slug;
-        $this->version = $version;
-        $this->path = $path;
+        $this->slugFree = $slugFree;
+        $this->slugPro = $slugPro;
     }
 
     /**
@@ -71,36 +108,91 @@ class Plugin
     }
 
     /**
-     * Get the slug of the plugin.
+     * Get the slug of the Free plugin.
      *
      * @since 1.0.0
      * @return string
      */
-    public function getSlug(): string
+    public function getSlugFree(): string
     {
-        return $this->slug;
+        return $this->slugFree;
     }
 
     /**
-     * Get the version of the plugin.
+     * Get the slug of the Pro plugin.
      *
      * @since 1.0.0
      * @return string
      */
-    public function getVersion(): string
+    public function getSlugPro(): string
+    {
+        return $this->slugPro;
+    }
+
+    /**
+     * Get the version of the plugin, if installed.
+     *
+     * @since 1.0.0
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
 
     /**
-     * Get the path of the plugin.
+     * Get the path of the plugin file, if installed.
      *
      * @since 1.0.0
-     * @return string
+     * @return string|null
      */
-    public function getPath(): string
+    public function getPath(): ?string
     {
-        return $this->path;
+        return $this->filePath;
+    }
+
+    /**
+     * Check if the plugin is installed.
+     *
+     * @since 1.0.0
+     * @return bool
+     */
+    public function isInstalled(): bool
+    {
+        return $this->isInstalled;
+    }
+
+    /**
+     * Check if the plugin is active.
+     *
+     * @since 1.0.0
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Check if the plugin is licensed.
+     *
+     * @since 1.0.0
+     * @return bool
+     */
+    public function isLicensed(): bool
+    {
+        return $this->isLicensed;
+    }
+
+    /**
+     * Check if the plugin is pro.
+     *
+     * @since 1.0.0
+     * @return bool
+     */
+    public function isPro(): bool
+    {
+        return $this->isPro;
     }
 
     /**
@@ -112,7 +204,7 @@ class Plugin
      */
     public function isNewerThan(Plugin $other): bool
     {
-        return version_compare($this->version, $other->getVersion(), '>');
+        return version_compare($this->getVersion(), $other->getVersion(), '>');
     }
 
     /**
@@ -124,7 +216,17 @@ class Plugin
      */
     public function isSamePlugin(Plugin $other): bool
     {
-        return $this->slug === $other->getSlug();
+        return $this->slugFree === $other->getSlugFree() || $this->slugPro === $other->getSlugPro();
+    }
+
+    public function register(string $version, string $filePath): void
+    {
+        $this->validateVersion($version);
+        $this->validatePath($filePath);
+
+        $this->version = $version;
+        $this->filePath = $filePath;
+        $this->isInstalled = true;
     }
 
     /**
@@ -150,6 +252,27 @@ class Plugin
     {
         if (empty($version)) {
             throw new InvalidArgumentException('Version cannot be empty');
+        }
+
+        if (!preg_match('/^\d+\.\d+\.\d+(-[a-z0-9\.]+)?$/', $version)) {
+            throw new InvalidArgumentException('Invalid version format');
+        }
+    }
+
+    private function validatePath(string $path): void
+    {
+        if (empty($path)) {
+            throw new InvalidArgumentException('Path cannot be empty');
+        }
+
+        if (!file_exists($path)) {
+            throw new InvalidArgumentException('Path does not exist');
+        }
+
+        $fileName = basename($path);
+
+        if (!preg_match('/^[a-z0-9-]+\.php$/', $fileName)) {
+            throw new InvalidArgumentException('Invalid file extension');
         }
     }
 }

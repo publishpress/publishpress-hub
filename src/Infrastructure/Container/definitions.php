@@ -19,6 +19,8 @@ namespace PublishPress\Hub\Infrastructure\Container;
 use PublishPress\Hub\Application\Service\AdminMenuService;
 use PublishPress\Hub\Application\Service\HubService;
 use PublishPress\Hub\Application\Service\LanguageService;
+use PublishPress\Hub\Application\Service\PluginBootstrapService;
+use PublishPress\Hub\Application\Service\RestApiService;
 use PublishPress\Hub\Application\View\Admin\PluginsDashboardView;
 use PublishPress\Hub\Domain\Plugin\PluginRepository;
 use PublishPress\Hub\Infrastructure\Asset\AssetManager;
@@ -48,6 +50,12 @@ return [
         return new PluginRepository();
     },
 
+    Services::PLUGIN_BOOTSTRAP_SERVICE => function (ServiceContainerInterface $container) {
+        return new PluginBootstrapService(
+            $container->get(Services::PLUGIN_REPOSITORY)
+        );
+    },
+
     Services::ADMIN_MENU_SERVICE => function (ServiceContainerInterface $container) {
         return new AdminMenuService(
             $container->get(Services::PLUGINS_DASHBOARD_VIEW)
@@ -74,6 +82,12 @@ return [
             PUBLISHPRESS_HUB_ASSETS_URL,
             PUBLISHPRESS_HUB_VERSION,
             $isDevelopment
+        );
+    },
+
+    Services::REST_API_SERVICE => function (ServiceContainerInterface $container) {
+        return new RestApiService(
+            $container->get(Services::PLUGIN_REPOSITORY)
         );
     },
 ];

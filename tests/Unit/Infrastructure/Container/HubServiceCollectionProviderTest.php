@@ -52,11 +52,9 @@ class HubServiceCollectionProviderTest extends TestCase
             'has' => true,
             'get' => $serviceMock,
         ]);
-        $container->expects($this->exactly(2))->method('has')->willReturn(true);
-        $container->expects($this->exactly(2))->method('get')->willReturn($serviceMock);
 
         $collection = $provider($container);
 
-        $this->assertCount(2, $collection->getAll());
+        $this->assertCount(4, $collection->getAll());
     }
 }

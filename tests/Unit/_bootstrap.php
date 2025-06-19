@@ -4,6 +4,8 @@ use PublishPress\Hub\Infrastructure\Autoloader\Autoloader;
 
 define('ABSPATH', '/tmp');
 
+define('TESTS_PATH', realpath(__DIR__ . '/../') . '/');
+
 require_once __DIR__ . '/../../src/Infrastructure/Autoloader/Autoloader.php';
 
 require_once __DIR__ . '/../../lib/vendor/autoload.php';

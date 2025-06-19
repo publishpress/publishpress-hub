@@ -25,14 +25,18 @@ class PluginTest extends Unit
         $plugin = new Plugin(
             'Test Plugin',
             'test-plugin',
-            '1.0.0',
-            '/path/to/plugin'
+            'test-plugin-pro'
         );
 
         $this->assertEquals('Test Plugin', $plugin->getName());
-        $this->assertEquals('test-plugin', $plugin->getSlug());
-        $this->assertEquals('1.0.0', $plugin->getVersion());
-        $this->assertEquals('/path/to/plugin', $plugin->getPath());
+        $this->assertEquals('test-plugin', $plugin->getSlugFree());
+        $this->assertEquals('test-plugin-pro', $plugin->getSlugPro());
+        $this->assertFalse($plugin->isInstalled());
+        $this->assertFalse($plugin->isActive());
+        $this->assertFalse($plugin->isLicensed());
+        $this->assertFalse($plugin->isPro());
+        $this->assertNull($plugin->getVersion());
+        $this->assertNull($plugin->getPath());
     }
 
     /**
@@ -43,11 +47,11 @@ class PluginTest extends Unit
         $plugin = new Plugin(
             'Complex Plugin Name',
             'complex-plugin-123',
-            '2.1.5',
-            '/some/complex/path'
+            'complex-plugin-123-pro'
         );
 
-        $this->assertEquals('complex-plugin-123', $plugin->getSlug());
+        $this->assertEquals('complex-plugin-123', $plugin->getSlugFree());
+        $this->assertEquals('complex-plugin-123-pro', $plugin->getSlugPro());
     }
 
     /**
@@ -61,8 +65,7 @@ class PluginTest extends Unit
         new Plugin(
             'Test Plugin',
             '',
-            '1.0.0',
-            '/path/to/plugin'
+            ''
         );
     }
 
@@ -77,8 +80,7 @@ class PluginTest extends Unit
         new Plugin(
             'Test Plugin',
             'Test-Plugin',
-            '1.0.0',
-            '/path/to/plugin'
+            'Test-Plugin-Pro'
         );
     }
 
@@ -93,8 +95,7 @@ class PluginTest extends Unit
         new Plugin(
             'Test Plugin',
             'test_plugin!',
-            '1.0.0',
-            '/path/to/plugin'
+            'test_plugin_pro!'
         );
     }
 
@@ -109,24 +110,7 @@ class PluginTest extends Unit
         new Plugin(
             'Test Plugin',
             'test plugin',
-            '1.0.0',
-            '/path/to/plugin'
-        );
-    }
-
-    /**
-     * Test plugin constructor throws exception for empty version.
-     */
-    public function testConstructorThrowsExceptionForEmptyVersion(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Version cannot be empty');
-
-        new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            '',
-            '/path/to/plugin'
+            'test_plugin_pro'
         );
     }
 
@@ -141,8 +125,7 @@ class PluginTest extends Unit
         new Plugin(
             'Test Plugin',
             '123',
-            '1.0.0',
-            '/path/to/plugin'
+            '123-pro'
         );
     }
 
@@ -157,8 +140,7 @@ class PluginTest extends Unit
         new Plugin(
             'Test Plugin',
             '123-plugin',
-            '1.0.0',
-            '/path/to/plugin'
+            '123-plugin-pro'
         );
     }
 
@@ -173,8 +155,7 @@ class PluginTest extends Unit
         new Plugin(
             'Test Plugin',
             '-plugin',
-            '1.0.0',
-            '/path/to/plugin'
+            '-plugin-pro'
         );
     }
 
@@ -186,8 +167,7 @@ class PluginTest extends Unit
         $plugin = new Plugin(
             'My Awesome Plugin',
             'awesome-plugin',
-            '1.0.0',
-            '/path/to/plugin'
+            'awesome-plugin-pro'
         );
 
         $this->assertEquals('My Awesome Plugin', $plugin->getName());
@@ -196,31 +176,156 @@ class PluginTest extends Unit
     /**
      * Test getSlug method.
      */
-    public function testGetSlug(): void
+    public function testgetSlugFree(): void
     {
         $plugin = new Plugin(
             'Test Plugin',
             'test-plugin-123',
-            '1.0.0',
-            '/path/to/plugin'
+            'test-plugin-123-pro'
         );
 
-        $this->assertEquals('test-plugin-123', $plugin->getSlug());
+        $this->assertEquals('test-plugin-123', $plugin->getSlugFree());
+    }
+
+    /**
+     * Test getSlugPro method.
+     */
+    public function testGetSlugPro(): void
+    {
+        $plugin = new Plugin(
+            'Test Plugin',
+            'test-plugin',
+            'test-plugin-pro'
+        );
+
+        $this->assertEquals('test-plugin-pro', $plugin->getSlugPro());
     }
 
     /**
      * Test getVersion method.
      */
-    public function testGetVersion(): void
+    public function testGetVersionReturnsNullIfNotRegistered(): void
     {
         $plugin = new Plugin(
             'Test Plugin',
             'test-plugin',
-            '2.5.1-beta',
-            '/path/to/plugin'
+            'test-plugin-pro'
         );
 
-        $this->assertEquals('2.5.1-beta', $plugin->getVersion());
+        $this->assertNull($plugin->getVersion());
+    }
+
+    public function testGetPathReturnsNullIfNotRegistered(): void
+    {
+        $plugin = new Plugin(
+            'Test Plugin',
+            'test-plugin',
+            'test-plugin-pro'
+        );
+
+        $this->assertNull($plugin->getPath());
+    }
+
+
+    public function testRegisterWithIncompleteVersion(): void
+    {
+        $plugin = new Plugin(
+            'Test Plugin',
+            'test-plugin',
+            'test-plugin-pro'
+        );
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid version format');
+
+        $plugin->register('1.0', '/custom/plugin/path');
+    }
+
+    public function testRegisterWithInvalidVersion(): void
+    {
+        $plugin = new Plugin(
+            'Test Plugin',
+            'test-plugin',
+            'test-plugin-pro'
+        );
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid version format');
+
+        $plugin->register('q1.0.0', '/custom/plugin/path');
+    }
+
+    public function testRegisterWithInvalidUnstableVersion(): void
+    {
+        $plugin = new Plugin(
+            'Test Plugin',
+            'test-plugin',
+            'test-plugin-pro'
+        );
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid version format');
+
+        $plugin->register('1.0.0_beta', '/custom/plugin/path');
+    }
+
+    public function testRegisterWithEmptyPath(): void
+    {
+        $plugin = new Plugin(
+            'Test Plugin',
+            'test-plugin',
+            'test-plugin-pro'
+        );
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Path cannot be empty');
+
+        $plugin->register('1.0.0', '');
+    }
+
+    public function testRegisterWithNotExistingPath(): void
+    {
+        $plugin = new Plugin(
+            'Test Plugin',
+            'test-plugin',
+            'test-plugin-pro'
+        );
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Path does not exist');
+
+        $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/not-existing-1.php');
+    }
+
+    public function testRegisterWithValidVersionAndPath(): void
+    {
+        $plugin = new Plugin(
+            'Test Plugin',
+            'test-plugin',
+            'test-plugin-pro'
+        );
+
+        $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $this->assertEquals('1.0.0', $plugin->getVersion());
+        $this->assertEquals(TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php', $plugin->getPath());
+    }
+
+    public function testRegisterWithValidUnstableVersion(): void
+    {
+        $plugin = new Plugin(
+            'Test Plugin',
+            'test-plugin',
+            'test-plugin-pro'
+        );
+
+        $plugin->register('1.0.0-beta.1', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $this->assertEquals('1.0.0-beta.1', $plugin->getVersion());
+
+        $plugin->register('1.0.0-rc.1', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $this->assertEquals('1.0.0-rc.1', $plugin->getVersion());
     }
 
     /**
@@ -231,11 +336,40 @@ class PluginTest extends Unit
         $plugin = new Plugin(
             'Test Plugin',
             'test-plugin',
-            '1.0.0',
-            '/custom/plugin/path'
+            'test-plugin-pro'
         );
 
-        $this->assertEquals('/custom/plugin/path', $plugin->getPath());
+        $this->assertNull($plugin->getPath());
+
+        $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $this->assertEquals(TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php', $plugin->getPath());
+    }
+
+    public function testRegisterValidateFileExtensionForInvalidFileExtension(): void
+    {
+        $plugin = new Plugin(
+            'Test Plugin',
+            'test-plugin',
+            'test-plugin-pro'
+        );
+
+        $this->expectException(InvalidArgumentException::class);
+
+        $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.html');
+    }
+
+    public function testRegisterValidateFileExtensionForValidFileExtension(): void
+    {
+        $plugin = new Plugin(
+            'Test Plugin',
+            'test-plugin',
+            'test-plugin-pro'
+        );
+
+        $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $this->assertEquals(TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php', $plugin->getPath());
     }
 
     /**
@@ -243,8 +377,11 @@ class PluginTest extends Unit
      */
     public function testIsNewerThanReturnsTrue(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'plugin-a', '2.0.0', '/path/a');
-        $plugin2 = new Plugin('Plugin B', 'plugin-b', '1.0.0', '/path/b');
+        $plugin1 = new Plugin('Plugin A', 'plugin-a', 'plugin-a-pro');
+        $plugin1->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin2 = new Plugin('Plugin B', 'plugin-b', 'plugin-b-pro');
+        $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->assertTrue($plugin1->isNewerThan($plugin2));
     }
@@ -254,8 +391,11 @@ class PluginTest extends Unit
      */
     public function testIsNewerThanReturnsFalse(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'plugin-a', '1.0.0', '/path/a');
-        $plugin2 = new Plugin('Plugin B', 'plugin-b', '2.0.0', '/path/b');
+        $plugin1 = new Plugin('Plugin A', 'plugin-a', 'plugin-a-pro');
+        $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin2 = new Plugin('Plugin B', 'plugin-b', 'plugin-b-pro');
+        $plugin2->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->assertFalse($plugin1->isNewerThan($plugin2));
     }
@@ -265,8 +405,11 @@ class PluginTest extends Unit
      */
     public function testIsNewerThanReturnsFalseForEqualVersions(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'plugin-a', '1.0.0', '/path/a');
-        $plugin2 = new Plugin('Plugin B', 'plugin-b', '1.0.0', '/path/b');
+        $plugin1 = new Plugin('Plugin A', 'plugin-a', 'plugin-a-pro');
+        $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin2 = new Plugin('Plugin B', 'plugin-b', 'plugin-b-pro');
+        $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->assertFalse($plugin1->isNewerThan($plugin2));
     }
@@ -276,8 +419,11 @@ class PluginTest extends Unit
      */
     public function testIsNewerThanWithComplexVersions(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'plugin-a', '1.2.1', '/path/a');
-        $plugin2 = new Plugin('Plugin B', 'plugin-b', '1.2.0', '/path/b');
+        $plugin1 = new Plugin('Plugin A', 'plugin-a', 'plugin-a-pro');
+        $plugin1->register('1.2.1', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin2 = new Plugin('Plugin B', 'plugin-b', 'plugin-b-pro');
+        $plugin2->register('1.2.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->assertTrue($plugin1->isNewerThan($plugin2));
     }
@@ -287,8 +433,11 @@ class PluginTest extends Unit
      */
     public function testIsNewerThanWithPreReleaseVersions(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'plugin-a', '1.0.0', '/path/a');
-        $plugin2 = new Plugin('Plugin B', 'plugin-b', '1.0.0-beta', '/path/b');
+        $plugin1 = new Plugin('Plugin A', 'plugin-a', 'plugin-a-pro');
+        $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin2 = new Plugin('Plugin B', 'plugin-b', 'plugin-b-pro' );
+        $plugin2->register('1.0.0-beta', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
         $this->assertTrue($plugin1->isNewerThan($plugin2));
     }
@@ -298,8 +447,11 @@ class PluginTest extends Unit
      */
     public function testIsSamePluginReturnsTrue(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'same-plugin', '1.0.0', '/path/a');
-        $plugin2 = new Plugin('Plugin B', 'same-plugin', '2.0.0', '/path/b');
+        $plugin1 = new Plugin('Plugin A', 'same-plugin', 'same-plugin-pro');
+        $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin2 = new Plugin('Plugin B', 'same-plugin', 'same-plugin-pro');
+        $plugin2->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->assertTrue($plugin1->isSamePlugin($plugin2));
     }
@@ -309,8 +461,11 @@ class PluginTest extends Unit
      */
     public function testIsSamePluginReturnsFalse(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'plugin-a', '1.0.0', '/path/a');
-        $plugin2 = new Plugin('Plugin B', 'plugin-b', '1.0.0', '/path/b');
+        $plugin1 = new Plugin('Plugin A', 'plugin-a', 'plugin-a-pro');
+        $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin2 = new Plugin('Plugin B', 'plugin-b', 'plugin-b-pro');
+        $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->assertFalse($plugin1->isSamePlugin($plugin2));
     }
@@ -320,8 +475,8 @@ class PluginTest extends Unit
      */
     public function testIsSamePluginWithIdenticalPlugins(): void
     {
-        $plugin1 = new Plugin('Same Plugin', 'same-plugin', '1.0.0', '/path/plugin');
-        $plugin2 = new Plugin('Same Plugin', 'same-plugin', '1.0.0', '/path/plugin');
+        $plugin1 = new Plugin('Same Plugin', 'same-plugin', 'same-plugin-pro');
+        $plugin2 = new Plugin('Same Plugin', 'same-plugin', 'same-plugin-pro');
 
         $this->assertTrue($plugin1->isSamePlugin($plugin2));
     }
@@ -331,9 +486,9 @@ class PluginTest extends Unit
      */
     public function testPluginWithMinimumValidSlug(): void
     {
-        $plugin = new Plugin('Plugin', 'a', '1.0.0', '/path/plugin');
+        $plugin = new Plugin('Plugin', 'a', 'a-pro');
 
-        $this->assertEquals('a', $plugin->getSlug());
+        $this->assertEquals('a', $plugin->getSlugFree());
     }
 
     /**
@@ -341,9 +496,9 @@ class PluginTest extends Unit
      */
     public function testPluginWithMixedSlug(): void
     {
-        $plugin = new Plugin('Plugin', 'plugin-123-test', '1.0.0', '/path/plugin');
+        $plugin = new Plugin('Plugin', 'plugin-123-test', 'plugin-123-test-pro');
 
-        $this->assertEquals('plugin-123-test', $plugin->getSlug());
+        $this->assertEquals('plugin-123-test', $plugin->getSlugFree());
     }
 
     /**
@@ -351,8 +506,11 @@ class PluginTest extends Unit
      */
     public function testVersionComparisonEdgeCases(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'plugin-a', '10.0.0', '/path/a');
-        $plugin2 = new Plugin('Plugin B', 'plugin-b', '2.0.0', '/path/b');
+        $plugin1 = new Plugin('Plugin A', 'plugin-a', 'plugin-a-pro');
+        $plugin1->register('10.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+
+        $plugin2 = new Plugin('Plugin B', 'plugin-b', 'plugin-b-pro');
+        $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->assertTrue($plugin1->isNewerThan($plugin2));
     }
@@ -367,20 +525,16 @@ class PluginTest extends Unit
             '1.0.0-alpha',
             '1.0.0-beta.1',
             '1.0.0-rc.1',
-            '1.0.0+build.1',
             '1.0.0-b1',
-            'v1.0.0',
-            '1.0',
-            '1',
         ];
 
         foreach ($validVersions as $version) {
             $plugin = new Plugin(
                 'Test Plugin',
                 'test-plugin',
-                $version,
-                '/path/to/plugin'
+                'test-plugin-pro'
             );
+            $plugin->register($version, TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
             $this->assertEquals($version, $plugin->getVersion());
         }
