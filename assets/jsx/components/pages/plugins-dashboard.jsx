@@ -53,7 +53,7 @@ const PluginsDashboardComponent = () => {
             },
             {
                 label: __('Not installed', 'publishpress-hub'),
-                value: 'not-installed',
+                value: 'notInstalled',
                 total: filterCounts.notInstalled,
             },
         ];
