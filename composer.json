@@ -161,6 +161,7 @@
         "dev:clean-cache": "rm -rf dev-workspace/.cache/wp_dev && rm -rf dev-workspace/.cache/db_dev",
         "dev:refresh": "bash dev-workspace/scripts/env.sh refresh dev",
         "dev:info": "bash dev-workspace/scripts/env.sh info dev",
+        "dev:logs": "bash dev-workspace/scripts/log-web.sh dev",
         "test:db-export": "bash dev-workspace/scripts/tests-db-export.sh $@",
         "test:db-import": "bash dev-workspace/scripts/tests-db-import.sh $@",
         "test:up": [
@@ -182,6 +183,7 @@
         "test:refresh": "bash dev-workspace/scripts/env.sh refresh test",
         "test:snippets": "composer codecept gherkin:snippets $@",
         "test:steps": "composer codecept gherkin:steps $@",
+        "test:logs": "bash dev-workspace/scripts/log-web.sh test",
         "test": "vendor/bin/codecept run $@",
         "test:coverage": "vendor/bin/codecept run --coverage --coverage-html",
         "test:all": [
