@@ -8,6 +8,7 @@ namespace Tests\Integration\Application\Service;
 use PublishPress\Hub\Application\Service\HubService;
 use PublishPress\Hub\Domain\Hooks as DomainHooks;
 use PublishPress\Hub\Application\Hooks;
+use PublishPress\Hub\Application\Service\PluginBootstrapService;
 use PublishPress\Hub\Domain\Plugin\PluginRepository;
 use PublishPress\Hub\Infrastructure\Container\ServiceCollection;
 use Tests\NoTransactionWPTestCase;
@@ -52,21 +53,19 @@ class HubServiceTest extends NoTransactionWPTestCase
     {
         $pluginRepository = new PluginRepository();
         $serviceCollection = new ServiceCollection();
+        $pluginBootstrapService = new PluginBootstrapService($pluginRepository);
         $hubService = new HubService($pluginRepository, $serviceCollection);
+        $pluginBootstrapService->initialize();
         $hubService->initialize();
 
         // Trigger the action like external plugins would
-        do_action(Hooks::ACTION_REGISTER_PLUGIN, 'test-plugin', '1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+        do_action(Hooks::ACTION_REGISTER_PLUGIN, 'post-expirator', '1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        // Verify plugin was registered
-        $registeredPlugins = $pluginRepository->getAllPlugins();
-        $this->assertCount(1, $registeredPlugins);
-
-        $plugin = $registeredPlugins[0];
-        $this->assertEquals('Test Plugin', $plugin->getName());
-        $this->assertEquals('test-plugin', $plugin->getSlug());
+        $plugin = $pluginRepository->findBySlug('post-expirator');
+        $this->assertEquals('PublishPress Future', $plugin->getName());
+        $this->assertEquals('post-expirator', $plugin->getSlugFree());
         $this->assertEquals('1.0.0', $plugin->getVersion());
-        $this->assertEquals('/test/path', $plugin->getPath());
+        $this->assertEquals(TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php', $plugin->getPath());
 
         $this->seeHookCalledTimes(DomainHooks::ACTION_BEFORE_PLUGIN_REGISTER, 1);
         $this->seeHookCalledTimes(DomainHooks::ACTION_PLUGIN_REGISTERED, 1);
