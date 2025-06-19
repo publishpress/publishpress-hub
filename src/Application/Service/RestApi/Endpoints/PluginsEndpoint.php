@@ -109,10 +109,11 @@ class PluginsEndpoint implements EndpointInterface
         try {
             $plugins = $this->pluginRepository->getAllPlugins();
             $plugins = $this->pluginMapper->toDtoArray($plugins);
+            $plugins = $this->pluginMapper->toSerializableArray($plugins);
 
             return new WP_REST_Response([
                 'success' => true,
-                'data' => $plugins,
+                'data' => (array) $plugins,
             ], 200);
         } catch (\Exception $e) {
             return new WP_Error(
