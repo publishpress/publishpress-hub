@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Domain\Plugin;
 
 use InvalidArgumentException;
+use PublishPress\Hub\Domain\Plugin\Contracts\PluginInterface;
 
 /**
  * Plugin entity representing a registered plugin in the hub.
  */
-class Plugin
+class Plugin implements PluginInterface
 {
     /**
      * The name of the plugin.
@@ -199,10 +200,10 @@ class Plugin
      * Check if the plugin is newer than another plugin.
      *
      * @since 1.0.0
-     * @param Plugin $other
+     * @param PluginInterface $other
      * @return bool
      */
-    public function isNewerThan(Plugin $other): bool
+    public function isNewerThan(PluginInterface $other): bool
     {
         return version_compare($this->getVersion(), $other->getVersion(), '>');
     }
@@ -211,10 +212,10 @@ class Plugin
      * Check if the plugin is the same as another plugin.
      *
      * @since 1.0.0
-     * @param Plugin $other
+     * @param PluginInterface $other
      * @return bool
      */
-    public function isSamePlugin(Plugin $other): bool
+    public function isSamePlugin(PluginInterface $other): bool
     {
         return $this->slugFree === $other->getSlugFree() || $this->slugPro === $other->getSlugPro();
     }

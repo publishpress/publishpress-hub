@@ -76,4 +76,11 @@ abstract class Hooks
      * @since 1.0.0
      */
     public const ACTION_ENQUEUE_SCRIPTS = 'admin_enqueue_scripts';
+
+    /**
+     * Hook used to initialize the REST API.
+     *
+     * @since 1.0.0
+     */
+    public const ACTION_REST_API_INIT = 'rest_api_init';
 }

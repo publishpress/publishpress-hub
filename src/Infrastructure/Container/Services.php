@@ -40,4 +40,6 @@ abstract class Services
     public const REST_API_SERVICE = 'publishpress-hub/rest-api-service';
 
     public const PLUGIN_BOOTSTRAP_SERVICE = 'publishpress-hub/plugin-bootstrap-service';
+
+    public const PLUGIN_MAPPER = 'publishpress-hub/plugin-mapper';
 }

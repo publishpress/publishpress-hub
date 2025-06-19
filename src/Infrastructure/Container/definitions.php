@@ -20,6 +20,7 @@ use PublishPress\Hub\Application\Service\AdminMenuService;
 use PublishPress\Hub\Application\Service\HubService;
 use PublishPress\Hub\Application\Service\LanguageService;
 use PublishPress\Hub\Application\Service\PluginBootstrapService;
+use PublishPress\Hub\Application\Service\RestApi\Mapper\PluginMapper;
 use PublishPress\Hub\Application\Service\RestApiService;
 use PublishPress\Hub\Application\View\Admin\PluginsDashboardView;
 use PublishPress\Hub\Domain\Plugin\PluginRepository;
@@ -87,7 +88,12 @@ return [
 
     Services::REST_API_SERVICE => function (ServiceContainerInterface $container) {
         return new RestApiService(
-            $container->get(Services::PLUGIN_REPOSITORY)
+            $container->get(Services::PLUGIN_REPOSITORY),
+            $container->get(Services::PLUGIN_MAPPER)
         );
+    },
+
+    Services::PLUGIN_MAPPER => function (ServiceContainerInterface $container) {
+        return new PluginMapper();
     },
 ];

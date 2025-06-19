@@ -12,9 +12,9 @@ interface PluginInterface
 
     public function getSlugPro(): string;
 
-    public function getVersion(): string;
+    public function getVersion(): ?string;
 
-    public function getPath(): string;
+    public function getPath(): ?string;
 
     public function isInstalled(): bool;
 
