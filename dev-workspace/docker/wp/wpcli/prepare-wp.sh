@@ -135,6 +135,11 @@ sed -i "s/WP_${ENVIRONMENT_TYPE}_AUTH_HASH=.*/WP_${ENVIRONMENT_TYPE}_AUTH_HASH=$
 
 show_status "Application password created successfully"
 
+# Activate the permalinks structure
+show_header "Activating the permalinks structure"
+wp rewrite structure '/%postname%/' --hard
+show_status "Permalinks structure activated successfully"
+
 echo -e "\n${GREEN}================================================================"
 echo -e "✨ WordPress environment setup completed successfully!"
 echo -e "================================================================"
