@@ -1,0 +1,9 @@
+actor: ApiTester
+suite_namespace: Tests\Api
+modules:
+    # enable helpers as array
+    enabled:
+        - REST:
+            url: %WP_TESTS_URL%/wp-json/publishpress-hub/v1/
+            depends: PhpBrowser
+            part: Json

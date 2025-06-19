@@ -1,0 +1,15 @@
+### Variables for environment
+@baseUrl = http://localhost:8031/wp-json
+@apiPath = publishpress-hub/v1
+# Replace these with your credentials - use base64 encoded credentials (username:appPassword), get from the .env file after starting the test containers.
+@passwordHash = YWRtaW46S1JjeHdnbUpqNEtDV3NZd2s4TWhIeXJB
+
+### Test WordPress REST API (no auth required)
+GET {{baseUrl}}
+Accept: application/json
+
+### Get Notifications with Application Password
+GET {{baseUrl}}/{{apiPath}}/plugins
+Accept: application/json
+Content-Type: application/json
+Authorization: Basic {{passwordHash}}
