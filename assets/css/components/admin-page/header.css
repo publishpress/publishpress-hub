@@ -10,15 +10,16 @@
 }
 
 .pp-hub-admin-page-header__logo {
-    height: 65px;
+    height: 40px;
     width: auto;
 }
 
 .pp-hub-admin-page-header__logo-text {
-    font-size: 35px;
-    line-height: 41px;
+    font-size: 33px;
+    line-height: 40px;
     font-weight: 600;
-    margin-right: var(--pp-hub-spacing-lg);
+    margin-left: var(--pp-hub-spacing-sm);
+    margin-top: var(--pp-hub-spacing-xs);
 }
 
 .pp-hub-admin-page-header__content {
