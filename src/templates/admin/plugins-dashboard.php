@@ -9,16 +9,9 @@ declare(strict_types=1);
  */
 ?>
 <div id="publishpress-hub-plugins-dashboard-container">
-    <style type="text/css">
-        .publishpress-hub-plugins-dashboard-loading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-size: medium;
-        }
-    </style>
-    <div class="publishpress-hub-plugins-dashboard-loading">
-        <?php esc_html_e('Please wait while we load the plugins dashboard...', 'publishpress-hub'); ?>
+    <div class="publishpress-hub-admin-page-loading">
+        <p>
+            <?php esc_html_e('Please wait while we load the plugins dashboard...', 'publishpress-hub'); ?>
+        </p>
     </div>
 </div>
