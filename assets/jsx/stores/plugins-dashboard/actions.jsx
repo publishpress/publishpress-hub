@@ -30,6 +30,13 @@ export function* setError(error) {
     };
 }
 
+export function* setCurrentFilter(currentFilter) {
+    yield {
+        type: 'SET_CURRENT_FILTER',
+        currentFilter,
+    };
+}
+
 export function* fetchPlugins() {
     try {
         yield {type: 'FETCH_PLUGINS_START'};

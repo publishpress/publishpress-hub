@@ -13,7 +13,9 @@
 @import './components/admin-page/container.css';
 @import './components/admin-page/header.css';
 @import './components/admin-page/layout.css';
+@import './components/buttons/button.css';
 @import './components/buttons/help-button.css';
+@import './components/plugins-list/plugins-list.css';
 @import './components/filter/filter-buttons-bar.css';
 
 /* 4. WordPress Admin Compatibility */

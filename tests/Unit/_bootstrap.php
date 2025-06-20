@@ -14,3 +14,9 @@ require_once __DIR__ . '/../../lib/vendor/publishpress/psr-container/lib/autoloa
 Autoloader::register('PublishPress\\Hub\\', __DIR__ . '/../../src/');
 
 class CustomException extends Exception {}
+
+if (! function_exists('__')) {
+    function __($text, $domain = 'publishpress-hub') {
+        return $text;
+    }
+}

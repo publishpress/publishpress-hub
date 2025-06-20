@@ -1,7 +1,7 @@
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useCallback, useMemo, useEffect, memo } from '@wordpress/element';
 
-import { __, sprintf } from '@publishpress/hub-i18n';
+import { __ } from '@publishpress/hub-i18n';
 
 import { AdminPageLayout } from '../admin-page';
 import FilterButtonsBar from '../filter/filter-buttons-bar';
@@ -18,7 +18,7 @@ const {
 const selectPluginsDashboardData = (select) => ({
     selectedFilter: select(store).getSelectedFilter(),
     filterCounts: select(store).getFilterCounts(),
-    plugins: select(store).getPlugins(),
+    plugins: select(store).getFilteredPlugins(),
     isLoading: select(store).getIsLoading(),
     error: select(store).getError(),
 });
@@ -46,6 +46,8 @@ const PluginsDashboardComponent = () => {
     useEffect(() => {
         fetchPlugins();
     }, [fetchPlugins]);
+
+    console.debug(plugins, filterCounts);
 
     const filterOptions = useMemo(() => {
         return [

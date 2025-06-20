@@ -5,6 +5,7 @@ export const DEFAULT_STATE = {
     plugins: [],
     isLoading: false,
     error: null,
+    currentFilter: 'all',
 }
 
 const setSelectedFilter = (state, selectedFilter) => {
@@ -63,6 +64,13 @@ const fetchPluginsError = (state, error) => {
     }
 }
 
+const setCurrentFilter = (state, currentFilter) => {
+    return {
+        ...state,
+        currentFilter,
+    }
+}
+
 export const reducer = (state = DEFAULT_STATE, action) => {
     if (! action) {
         return state;
@@ -83,6 +91,8 @@ export const reducer = (state = DEFAULT_STATE, action) => {
             return fetchPluginsSuccess(state, action.data);
         case 'FETCH_PLUGINS_ERROR':
             return fetchPluginsError(state, action.error);
+        case 'SET_CURRENT_FILTER':
+            return setCurrentFilter(state, action.currentFilter);
         default:
             return state;
     }

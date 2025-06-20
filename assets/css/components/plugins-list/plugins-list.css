@@ -1,0 +1,61 @@
+.pp-hub-plugins-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-hub-spacing-md);
+    background-color: var(--pp-hub-bg-secondary);
+    border-radius: var(--pp-hub-radius-md);
+}
+
+.pp-hub-plugins-list-item {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-lg);
+    align-items: center;
+    padding: var(--pp-hub-spacing-xl);
+    border-bottom: 1px solid var(--pp-hub-border-primary);
+    min-height: 110px;
+}
+
+.pp-hub-plugins-list-item-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.pp-hub-plugins-list-item-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: var(--pp-hub-radius-md);
+}
+
+.pp-hub-plugins-list-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-hub-spacing-sm);
+}
+
+.pp-hub-plugins-list-item-name {
+    font-size: var(--pp-hub-font-size-lg);
+    font-weight: var(--pp-hub-font-weight-bold);
+}
+
+.pp-hub-plugins-list-item-description {
+    font-size: var(--pp-hub-font-size-md);
+    color: var(--pp-hub-text-secondary);
+}
+
+.pp-hub-plugins-list-item-status {
+    font-size: var(--pp-hub-font-size-sm);
+    color: var(--pp-hub-text-secondary);
+}
+
+.pp-hub-plugins-list-item-actions {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-sm);
+}
+
+.pp-hub-plugins-list-item-actions button {
+    width: 100%;
+}
+

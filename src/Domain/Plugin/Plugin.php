@@ -213,6 +213,10 @@ class Plugin implements PluginInterface
      */
     public function isActive(): bool
     {
+        if (! $this->isInstalled) {
+            $this->isActive = false;
+        }
+
         return $this->isActive;
     }
 
@@ -224,6 +228,10 @@ class Plugin implements PluginInterface
      */
     public function isLicensed(): bool
     {
+        if (! $this->isInstalled) {
+            $this->isLicensed = false;
+        }
+
         return $this->isLicensed;
     }
 

@@ -26,6 +26,10 @@ const ButtonComponent = ({
         return rel || (href ? DEFAULT_REL : undefined);
     }, [rel, href]);
 
+    const buttonClassName = useMemo(() => {
+        return `pp-hub-button ${className ? className : ''}`;
+    }, [variant, className]);
+
     return (
         <WPButton
             variant={variant}
@@ -34,7 +38,7 @@ const ButtonComponent = ({
             href={href}
             target={targetValue}
             rel={relValue}
-            className={className}
+            className={buttonClassName}
             disabled={disabled}
             title={title}
             style={style}

@@ -27,7 +27,7 @@
     --pp-hub-text-link-hover: var(--pp-hub-tertiary-color);
 
     /* Border Colors */
-    --pp-hub-border-primary: #dcdcde;
-    --pp-hub-border-secondary: #c3c4c7;
+    --pp-hub-border-primary: #ededed;
+    --pp-hub-border-secondary: #cfd0d5;
     --pp-hub-border-focus: var(--pp-hub-primary-color);
 }

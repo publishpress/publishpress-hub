@@ -1,0 +1,11 @@
+.pp-hub-button {
+    background-color: var(--pp-hub-primary-color);
+    color: var(--pp-hub-text-inverse);
+    border-color: var(--pp-hub-primary-color);
+}
+
+.pp-hub-button.is-secondary {
+    background-color: var(--pp-hub-secondary-color);
+    color: var(--pp-hub-text-primary);
+    border-color: var(--pp-hub-secondary-color);
+}
