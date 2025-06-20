@@ -32,7 +32,8 @@ class PluginMapper implements PluginMapperInterface
             $plugin->isInstalled(),
             $plugin->isActive(),
             $plugin->isLicensed(),
-            $plugin->isPro()
+            $plugin->isPro(),
+            $plugin->getIconFile()
         );
     }
 

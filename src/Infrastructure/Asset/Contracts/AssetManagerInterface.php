@@ -17,6 +17,14 @@ interface AssetManagerInterface
     public function getAssetUrl(string $path): string;
 
     /**
+     * Get the base URL of the assets.
+     *
+     * @since 1.0.0
+     * @return string
+     */
+    public function getAssetBaseUrl(): string;
+
+    /**
      * Enqueue a script.
      *
      * @since 1.0.0

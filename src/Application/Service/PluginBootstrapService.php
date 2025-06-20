@@ -88,7 +88,8 @@ class PluginBootstrapService implements ServiceInterface
             $plugin = new Plugin(
                 $definition['name'],
                 $definition['slugFree'],
-                $definition['slugPro']
+                $definition['slugPro'],
+                $definition['iconFile']
             );
 
             $this->pluginRepository->register($plugin);
@@ -110,51 +111,61 @@ class PluginBootstrapService implements ServiceInterface
                 'name' => 'PublishPress Checklists',
                 'slugFree' => 'publishpress-checklists',
                 'slugPro' => 'publishpress-checklists-pro',
+                'iconFile' => 'icon-checklists',
             ],
             [
                 'name' => 'PublishPress Permissions',
                 'slugFree' => 'press-permit-core',
                 'slugPro' => 'presspermit-pro',
+                'iconFile' => 'icon-permissions',
             ],
             [
                 'name' => 'PublishPress Authors',
                 'slugFree' => 'publishpress-authors',
                 'slugPro' => 'publishpress-authors-pro',
+                'iconFile' => 'icon-authors',
             ],
             [
                 'name' => 'PublishPress Blocks',
-                'slugFree' => 'publishpress-blocks',
-                'slugPro' => 'publishpress-blocks-pro',
+                'slugFree' => 'advanced-gutenberg',
+                'slugPro' => 'advanced-gutenberg-pro',
+                'iconFile' => 'icon-blocks',
             ],
             [
                 'name' => 'PublishPress Capabilities',
                 'slugFree' => 'capability-manager-enhanced',
                 'slugPro' => 'capabilities-pro',
+                'iconFile' => 'icon-capabilities',
             ],
             [
                 'name' => 'PublishPress Future',
                 'slugFree' => 'post-expirator',
                 'slugPro' => 'publishpress-future-pro',
+                'iconFile' => 'icon-future',
             ],
             [
                 'name' => 'PublishPress Planner',
                 'slugFree' => 'publishpress',
-                'slugPro' => 'publishpress-planner-pro',
+                'slugPro' => 'publishpress-pro',
+                'iconFile' => 'icon-planner',
             ],
             [
                 'name' => 'PublishPress Revisions',
-                'slugFree' => 'publishpress-revisions',
-                'slugPro' => 'publishpress-revisions-pro',
+                'slugFree' => 'revisionary',
+                'slugPro' => 'revisionary-pro',
+                'iconFile' => 'icon-revisions',
             ],
             [
                 'name' => 'PublishPress Series',
-                'slugFree' => 'publishpress-series',
+                'slugFree' => 'organize-series',
                 'slugPro' => 'publishpress-series-pro',
+                'iconFile' => 'icon-series',
             ],
             [
                 'name' => 'PublishPress Statuses',
-                'slugFree' => 'post-status-notifier-lite',
+                'slugFree' => 'publishpress-statuses',
                 'slugPro' => 'publishpress-statuses-pro',
+                'iconFile' => 'icon-statuses',
             ],
         ];
     }

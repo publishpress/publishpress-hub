@@ -45,6 +45,17 @@ class AssetManager implements AssetManagerInterface
     }
 
     /**
+     * Get the base URL of the assets.
+     *
+     * @since 1.0.0
+     * @return string
+     */
+    public function getAssetBaseUrl(): string
+    {
+        return rtrim($this->assetsUrl, '/') . '/';
+    }
+
+    /**
      * Get the full asset URL.
      *
      * @since 1.0.0
@@ -54,7 +65,7 @@ class AssetManager implements AssetManagerInterface
      */
     public function getAssetUrl(string $path): string
     {
-        $baseUrl = rtrim($this->assetsUrl, '/') . '/';
+        $baseUrl = $this->getAssetBaseUrl();
 
         if (empty($path)) {
             throw new \InvalidArgumentException('Path cannot be empty');

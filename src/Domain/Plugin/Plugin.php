@@ -77,6 +77,14 @@ class Plugin implements PluginInterface
     private bool $isLicensed = false;
 
     /**
+     * The icon file of the plugin.
+     *
+     * @since 1.0.0
+     * @var string|null
+     */
+    private ?string $iconFile = null;
+
+    /**
      * The pro flag.
      *
      * @since 1.0.0
@@ -87,7 +95,8 @@ class Plugin implements PluginInterface
     public function __construct(
         string $name,
         string $slugFree,
-        string $slugPro
+        string $slugPro,
+        ?string $iconFile = null
     ) {
         $this->validateSlug($slugFree);
         $this->validateSlug($slugPro);
@@ -95,6 +104,7 @@ class Plugin implements PluginInterface
         $this->name = $name;
         $this->slugFree = $slugFree;
         $this->slugPro = $slugPro;
+        $this->iconFile = $iconFile;
     }
 
     /**
@@ -150,6 +160,17 @@ class Plugin implements PluginInterface
     public function getPath(): ?string
     {
         return $this->filePath;
+    }
+
+    /**
+     * Get the icon file of the plugin.
+     *
+     * @since 1.0.0
+     * @return string|null
+     */
+    public function getIconFile(): ?string
+    {
+        return $this->iconFile;
     }
 
     /**

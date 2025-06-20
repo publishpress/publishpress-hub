@@ -56,6 +56,36 @@ class AssetManagerTest extends WPTestCase
         $assetManager->getAssetUrl('invalid-path');
     }
 
+    public function testGetAssetBaseUrlWithTrailingSlash(): void
+    {
+        $assetManager = new AssetManager(
+            'http://localhost/publishpress-hub/assets/',
+            '1.0.0',
+            false
+        );
+
+        $this->assertEquals(
+            'http://localhost/publishpress-hub/assets/',
+            $assetManager->getAssetBaseUrl(),
+            'The base URL is not correct'
+        );
+    }
+
+    public function testGetAssetBaseUrlWithoutTrailingSlash(): void
+    {
+        $assetManager = new AssetManager(
+            'http://localhost/publishpress-hub/assets',
+            '1.0.0',
+            false
+        );
+
+        $this->assertEquals(
+            'http://localhost/publishpress-hub/assets/',
+            $assetManager->getAssetBaseUrl(),
+            'The base URL is not correct'
+        );
+    }
+
     /**
      * Test the getAssetUrl method for production.
      *
@@ -72,7 +102,7 @@ class AssetManagerTest extends WPTestCase
             ['css/admin-page.css', 'css/admin-page.min.css'],
             ['images/admin-page.png', 'images/admin-page.png'],
             ['/images/admin-page.png', 'images/admin-page.png'],
-            ['images/admin-page.png', 'images/admin-page.png'],
+            ['images/icons/admin-page.png', 'images/icons/admin-page.png'],
         ];
 
         $assetManager = new AssetManager(

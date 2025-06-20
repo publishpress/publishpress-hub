@@ -21,6 +21,12 @@ abstract class Services
 {
     public const CONST_TEXT_DOMAIN = 'publishpress-hub/const-text-domain';
 
+    public const CONST_ASSETS_URL = 'publishpress-hub/const-assets-url';
+
+    public const CONST_VERSION = 'publishpress-hub/const-version';
+
+    public const CONST_IS_DEVELOPMENT = 'publishpress-hub/const-is-development';
+
     public const LOGGER = 'publishpress-hub/logger';
 
     public const HUB_SERVICE = 'publishpress-hub/hub-service';

@@ -31,6 +31,9 @@ use PublishPress\Hub\Infrastructure\Container\HubServiceCollectionProvider;
 
 return [
     Services::CONST_TEXT_DOMAIN => 'publishpress-hub',
+    Services::CONST_ASSETS_URL => PUBLISHPRESS_HUB_ASSETS_URL,
+    Services::CONST_VERSION => PUBLISHPRESS_HUB_VERSION,
+    Services::CONST_IS_DEVELOPMENT => defined('SCRIPT_DEBUG') && SCRIPT_DEBUG,
 
     Services::LOGGER => function (ServiceContainerInterface $container) {
         return new Logger();
@@ -77,12 +80,10 @@ return [
     },
 
     Services::ASSET_MANAGER => function (ServiceContainerInterface $container) {
-        $isDevelopment = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;
-
         return new AssetManager(
-            PUBLISHPRESS_HUB_ASSETS_URL,
-            PUBLISHPRESS_HUB_VERSION,
-            $isDevelopment
+            $container->get(Services::CONST_ASSETS_URL),
+            $container->get(Services::CONST_VERSION),
+            $container->get(Services::CONST_IS_DEVELOPMENT)
         );
     },
 

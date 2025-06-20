@@ -16,6 +16,8 @@ interface PluginInterface
 
     public function getPath(): ?string;
 
+    public function getIconFile(): ?string;
+
     public function isInstalled(): bool;
 
     public function isActive(): bool;

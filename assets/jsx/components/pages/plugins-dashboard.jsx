@@ -6,7 +6,13 @@ import { __, sprintf } from '@publishpress/hub-i18n';
 import { AdminPageLayout } from '../admin-page';
 import FilterButtonsBar from '../filter/filter-buttons-bar';
 import { store } from '../../stores/plugins-dashboard';
-import { PluginsList } from '../../../css/components/plugins-list';
+import { PluginsList } from '../plugins-list';
+import { ErrorPage } from '../pages/error-page';
+
+const {
+    logoUrl,
+    pluginIconBaseUrl,
+} = window.ppHubPluginsDashboardConfig;
 
 // Move selector outside component to prevent recreation on each render
 const selectPluginsDashboardData = (select) => ({
@@ -16,8 +22,6 @@ const selectPluginsDashboardData = (select) => ({
     isLoading: select(store).getIsLoading(),
     error: select(store).getError(),
 });
-
-const logoUrl = window.ppHubPluginsDashboardConfig.logoUrl;
 
 const PluginsDashboardComponent = () => {
     const {
@@ -94,7 +98,11 @@ const PluginsDashboardComponent = () => {
                     selectedOption={selectedFilter}
                     onChange={handleFilterChange}
                 />
-                <PluginsList plugins={plugins} isLoading={isLoading} />
+                <PluginsList
+                    plugins={plugins}
+                    isLoading={isLoading}
+                    pluginIconBaseUrl={pluginIconBaseUrl}
+                />
             </div>
         </AdminPageLayout>
     );
