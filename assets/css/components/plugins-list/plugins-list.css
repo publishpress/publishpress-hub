@@ -3,7 +3,7 @@
     flex-direction: column;
     gap: var(--pp-hub-spacing-md);
     background-color: var(--pp-hub-bg-secondary);
-    border-radius: var(--pp-hub-radius-md);
+    border-radius: var(--pp-hub-radius-lg);
 }
 
 .pp-hub-plugins-list-item {
