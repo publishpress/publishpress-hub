@@ -55,6 +55,7 @@ class PluginsDashboardView implements ViewInterface
                 'publishpress-hub-i18n',
                 'wp-element',
                 'wp-components',
+                'wp-data-controls',
             ]
         );
 
@@ -63,6 +64,8 @@ class PluginsDashboardView implements ViewInterface
             'ppHubPluginsDashboardConfig',
             [
                 'logoUrl' => $this->assetManager->getAssetUrl('images/publishpress-logo.png'),
+                'apiNonce' => wp_create_nonce('wp_rest'),
+                'apiUrl' => rest_url('publishpress-hub/v1'),
             ]
         );
     }

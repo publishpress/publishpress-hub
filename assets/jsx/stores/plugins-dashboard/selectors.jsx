@@ -6,6 +6,14 @@ export const getPlugins = (state) => {
     return state.plugins;
 }
 
+export const getIsLoading = (state) => {
+    return state.isLoading;
+}
+
+export const getError = (state) => {
+    return state.error;
+}
+
 export const getFilterCounts = (state) => {
     const plugins = state.plugins;
 

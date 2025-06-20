@@ -50,6 +50,8 @@ module.exports = {
         "@wordpress/hooks": "wp.hooks",
         "@wordpress/url": "wp.url",
         "@wordpress/i18n": "wp.i18n",
+        "@wordpress/api-fetch": "wp.apiFetch",
+        "@wordpress/data-controls": "wp.dataControls",
         'wp': 'wp',
         '@publishpress/hub-i18n': 'publishpressHub.i18n'
     },

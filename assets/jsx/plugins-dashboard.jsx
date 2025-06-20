@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client';
+
 import { PluginsDashboard } from './components/pages/plugins-dashboard';
 import { store } from './stores/plugins-dashboard';
 

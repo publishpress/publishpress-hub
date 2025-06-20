@@ -1,26 +1,34 @@
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useCallback, useMemo, memo } from '@wordpress/element';
+import { useCallback, useMemo, useEffect, memo } from '@wordpress/element';
 
 import { __ } from '@publishpress/hub-i18n';
 
 import { AdminPageLayout } from '../admin-page';
 import FilterButtonsBar from '../filter/filter-buttons-bar';
 import { store } from '../../stores/plugins-dashboard';
+import { PluginsList } from '../../../css/components/plugins-list';
 
 // Move selector outside component to prevent recreation on each render
 const selectPluginsDashboardData = (select) => ({
     selectedFilter: select(store).getSelectedFilter(),
     filterCounts: select(store).getFilterCounts(),
+    plugins: select(store).getPlugins(),
+    isLoading: select(store).getIsLoading(),
+    error: select(store).getError(),
 });
 
 const PluginsDashboardComponent = () => {
     const {
         selectedFilter,
         filterCounts,
+        plugins,
+        isLoading,
+        error,
     } = useSelect(selectPluginsDashboardData, []);
 
     const {
-        setSelectedFilter
+        setSelectedFilter,
+        fetchPlugins
     } = useDispatch(store);
 
     const handleFilterChange = useCallback((selectedFilter) => {
@@ -28,6 +36,10 @@ const PluginsDashboardComponent = () => {
     }, [setSelectedFilter]);
 
     const title = useMemo(() => __('Plugins Dashboard', 'publishpress-hub'), []);
+
+    useEffect(() => {
+        fetchPlugins();
+    }, [fetchPlugins]);
 
     const filterOptions = useMemo(() => {
         return [
@@ -59,6 +71,21 @@ const PluginsDashboardComponent = () => {
         ];
     }, [filterCounts]);
 
+    if (error) {
+        return (
+            <AdminPageLayout
+                title={title}
+                logoUrl={window.ppHubPluginsDashboardConfig.logoUrl}
+            >
+                <div className="pp-hub-plugins-dashboard">
+                    <div className="error-message">
+                        {error}
+                    </div>
+                </div>
+            </AdminPageLayout>
+        );
+    }
+
     return (
         <AdminPageLayout
             title={title}
@@ -70,6 +97,7 @@ const PluginsDashboardComponent = () => {
                     selectedOption={selectedFilter}
                     onChange={handleFilterChange}
                 />
+                <PluginsList plugins={plugins} isLoading={isLoading} />
             </div>
         </AdminPageLayout>
     );
