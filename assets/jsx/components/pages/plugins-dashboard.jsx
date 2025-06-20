@@ -17,6 +17,8 @@ const selectPluginsDashboardData = (select) => ({
     error: select(store).getError(),
 });
 
+const logoUrl = window.ppHubPluginsDashboardConfig.logoUrl;
+
 const PluginsDashboardComponent = () => {
     const {
         selectedFilter,
@@ -73,24 +75,18 @@ const PluginsDashboardComponent = () => {
 
     if (error) {
         return (
-            <AdminPageLayout
+            <ErrorPage
+                error={error}
                 title={title}
-                logoUrl={window.ppHubPluginsDashboardConfig.logoUrl}
-            >
-                <div className="pp-hub-plugins-dashboard">
-                    <div className="error-message">
-                        {error?.data?.status && sprintf(__('Error [%s]: %s', 'publishpress-hub'), error.data.status, error.message)}
-                        {!error?.data?.status && sprintf(__('Error: %s', 'publishpress-hub'), error.message)}
-                    </div>
-                </div>
-            </AdminPageLayout>
+                logoUrl={logoUrl}
+            />
         );
     }
 
     return (
         <AdminPageLayout
             title={title}
-            logoUrl={window.ppHubPluginsDashboardConfig.logoUrl}
+            logoUrl={logoUrl}
         >
             <div className="pp-hub-plugins-dashboard">
                 <FilterButtonsBar
