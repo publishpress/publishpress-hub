@@ -4,6 +4,6 @@ modules:
     # enable helpers as array
     enabled:
         - REST:
-            url: %WP_TESTS_URL%/wp-json/publishpress-hub/v1/
+            url: %WP_TESTS_URL%/wp-json/
             depends: PhpBrowser
             part: Json

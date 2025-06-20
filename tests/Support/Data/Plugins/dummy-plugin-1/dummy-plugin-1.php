@@ -25,6 +25,4 @@ define('DUMMY_PLUGIN_1_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 require_once __DIR__ . '/Plugin.php';
 
-require_once __DIR__ . '/../publishpress-hub/src/include.php';
-
 DummyPlugin1::getInstance();
