@@ -65,7 +65,7 @@ class PluginsDashboardView implements ViewInterface
             [
                 'logoUrl' => $this->assetManager->getAssetUrl('images/publishpress-logo.png'),
                 'apiNonce' => wp_create_nonce('wp_rest'),
-                'apiUrl' => rest_url('publishpress-hub/v1'),
+                'apiUrlV1' => rest_url('publishpress-hub/v1'),
             ]
         );
     }
