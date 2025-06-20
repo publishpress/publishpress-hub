@@ -1,7 +1,7 @@
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useCallback, useMemo, useEffect, memo } from '@wordpress/element';
 
-import { __ } from '@publishpress/hub-i18n';
+import { __, sprintf } from '@publishpress/hub-i18n';
 
 import { AdminPageLayout } from '../admin-page';
 import FilterButtonsBar from '../filter/filter-buttons-bar';
@@ -79,7 +79,8 @@ const PluginsDashboardComponent = () => {
             >
                 <div className="pp-hub-plugins-dashboard">
                     <div className="error-message">
-                        {error}
+                        {error?.data?.status && sprintf(__('Error [%s]: %s', 'publishpress-hub'), error.data.status, error.message)}
+                        {!error?.data?.status && sprintf(__('Error: %s', 'publishpress-hub'), error.message)}
                     </div>
                 </div>
             </AdminPageLayout>
