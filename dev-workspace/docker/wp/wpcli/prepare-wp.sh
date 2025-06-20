@@ -27,6 +27,9 @@ show_error() {
 
 ENVIRONMENT_TYPE=$3
 
+# Cleanup the done flag
+rm -f /tmp/prepare-wp.sh.done
+
 # Clean up the database
 show_header "Cleaning up the database"
 wp db reset --yes
@@ -107,6 +110,11 @@ wp config set WP_DEBUG_DISPLAY false --raw
 wp config set SCRIPT_DEBUG true --raw
 show_status "Debug configuration completed"
 
+# Activate publishpress-hub
+show_header "Activating publishpress-hub"
+wp plugin activate publishpress-hub
+show_status "publishpress-hub activated successfully"
+
 # Activate dummy-plugin-1
 show_header "Activating dummy-plugin-1"
 wp plugin activate dummy-plugin-1
@@ -143,3 +151,6 @@ show_status "Permalinks structure activated successfully"
 echo -e "\n${GREEN}================================================================"
 echo -e "✨ WordPress environment setup completed successfully!"
 echo -e "================================================================"
+
+# Create the done flag
+touch /tmp/prepare-wp.sh.done

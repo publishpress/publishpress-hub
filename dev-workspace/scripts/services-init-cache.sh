@@ -21,3 +21,5 @@ fi
 [[ -f $CACHE_PATH/.composer/auth.json ]] || echo '{}' > $CACHE_PATH/.composer/auth.json
 [[ -f $CACHE_PATH/tmp_wp_test ]] || touch $CACHE_PATH/tmp_wp_test
 [[ -f $CACHE_PATH/tmp_wp_dev ]] || touch $CACHE_PATH/tmp_wp_dev
+[[ -f $CACHE_PATH/tmp_wp_test_cli ]] || touch $CACHE_PATH/tmp_wp_test_cli
+[[ -f $CACHE_PATH/tmp_wp_dev_cli ]] || touch $CACHE_PATH/tmp_wp_dev_cli

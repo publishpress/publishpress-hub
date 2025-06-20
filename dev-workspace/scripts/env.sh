@@ -14,6 +14,9 @@ if [[ $# -eq 0 ]] || [[ $1 == "-h" ]]; then
   exit 1
 fi
 
+WP_READY_MAX_ATTEMPTS=30
+WP_READY_INTERVAL=3
+
 PROFILE="${2:-dev}"
 WP_ADMIN_USER="admin"
 WP_ADMIN_PASSWORD="admin"
@@ -97,7 +100,38 @@ get_container_id() {
   docker compose -f $COMPOSE_FILE ps -q $1
 }
 
+is_wp_ready() {
+  if [[ -f "$CACHE_BASE_PATH/tmp_wp_${PROFILE}_cli/prepare-wp.sh.done" ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+wait_for_wp_ready() {
+  for i in $(seq 1 $WP_READY_MAX_ATTEMPTS); do
+    if is_wp_ready; then
+      break
+    else
+      echo "WordPress is not ready yet. Attempt $i/$WP_READY_MAX_ATTEMPTS. Waiting $WP_READY_INTERVAL seconds..."
+      sleep $WP_READY_INTERVAL
+    fi
+  done
+}
+
+check_wp_ready() {
+  if ! is_wp_ready; then
+    echo "WordPress failed to become ready."
+    exit 1
+  else
+    echo "WordPress is ready."
+  fi
+}
+
 service_info() {
+  wait_for_wp_ready
+  check_wp_ready
+
   WP_PORT=$(get_wp_port wp_${PROFILE})
   DB_PORT=$(get_db_port db_${PROFILE})
   MAILHOG_PORT_8025=$(get_mailhog_port_8025)
