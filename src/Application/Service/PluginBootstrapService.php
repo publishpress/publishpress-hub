@@ -89,7 +89,8 @@ class PluginBootstrapService implements ServiceInterface
                 $definition['name'],
                 $definition['slugFree'],
                 $definition['slugPro'],
-                $definition['iconFile']
+                $definition['iconFile'],
+                $definition['description']
             );
 
             $this->pluginRepository->register($plugin);
@@ -112,60 +113,70 @@ class PluginBootstrapService implements ServiceInterface
                 'slugFree' => 'publishpress-checklists',
                 'slugPro' => 'publishpress-checklists-pro',
                 'iconFile' => 'icon-checklists',
+                'description' => 'Improve content quality with customizable editorial checklists.',
             ],
             [
                 'name' => 'PublishPress Permissions',
                 'slugFree' => 'press-permit-core',
                 'slugPro' => 'presspermit-pro',
                 'iconFile' => 'icon-permissions',
+                'description' => 'Advanced user role and permission management.',
             ],
             [
                 'name' => 'PublishPress Authors',
                 'slugFree' => 'publishpress-authors',
                 'slugPro' => 'publishpress-authors-pro',
                 'iconFile' => 'icon-authors',
+                'description' => 'Add many authors to one WordPress post.',
             ],
             [
                 'name' => 'PublishPress Blocks',
                 'slugFree' => 'advanced-gutenberg',
                 'slugPro' => 'advanced-gutenberg-pro',
                 'iconFile' => 'icon-blocks',
+                'description' => 'Take the control of the new Gutenberg editor.',
             ],
             [
                 'name' => 'PublishPress Capabilities',
                 'slugFree' => 'capability-manager-enhanced',
                 'slugPro' => 'capabilities-pro',
                 'iconFile' => 'icon-capabilities',
+                'description' => 'Fine-grained user role management for WordPress sites.',
             ],
             [
                 'name' => 'PublishPress Future',
                 'slugFree' => 'post-expirator',
                 'slugPro' => 'publishpress-future-pro',
                 'iconFile' => 'icon-future',
+                'description' => 'Automatically run actions on a scheduled future moment.',
             ],
             [
                 'name' => 'PublishPress Planner',
                 'slugFree' => 'publishpress',
                 'slugPro' => 'publishpress-pro',
                 'iconFile' => 'icon-planner',
+                'description' => 'Organize, schedule and plan your WordPress content.',
             ],
             [
                 'name' => 'PublishPress Revisions',
                 'slugFree' => 'revisionary',
                 'slugPro' => 'revisionary-pro',
                 'iconFile' => 'icon-revisions',
+                'description' => 'Manage, schedule and approve WordPress revisions.',
             ],
             [
                 'name' => 'PublishPress Series',
                 'slugFree' => 'organize-series',
                 'slugPro' => 'publishpress-series-pro',
                 'iconFile' => 'icon-series',
+                'description' => 'Group WordPress content together into a series.',
             ],
             [
                 'name' => 'PublishPress Statuses',
                 'slugFree' => 'publishpress-statuses',
                 'slugPro' => 'publishpress-statuses-pro',
                 'iconFile' => 'icon-statuses',
+                'description' => 'Manage custom statuses for your WordPress posts.',
             ],
         ];
     }

@@ -85,6 +85,14 @@ class Plugin implements PluginInterface
     private ?string $iconFile = null;
 
     /**
+     * The description of the plugin.
+     *
+     * @since 1.0.0
+     * @var string|null
+     */
+    private ?string $description = null;
+
+    /**
      * The pro flag.
      *
      * @since 1.0.0
@@ -96,7 +104,8 @@ class Plugin implements PluginInterface
         string $name,
         string $slugFree,
         string $slugPro,
-        ?string $iconFile = null
+        ?string $iconFile = null,
+        ?string $description = null
     ) {
         $this->validateSlug($slugFree);
         $this->validateSlug($slugPro);
@@ -105,6 +114,7 @@ class Plugin implements PluginInterface
         $this->slugFree = $slugFree;
         $this->slugPro = $slugPro;
         $this->iconFile = $iconFile;
+        $this->description = $description;
     }
 
     /**
@@ -171,6 +181,17 @@ class Plugin implements PluginInterface
     public function getIconFile(): ?string
     {
         return $this->iconFile;
+    }
+
+    /**
+     * Get the description of the plugin.
+     *
+     * @since 1.0.0
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
     }
 
     /**

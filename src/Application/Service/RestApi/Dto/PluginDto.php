@@ -85,6 +85,14 @@ class PluginDto implements DtoInterface
      */
     private ?string $iconFile;
 
+    /**
+     * The description of the plugin.
+     *
+     * @since 1.0.0
+     * @var string|null
+     */
+    private ?string $description;
+
     public function __construct(
         string $slugFree,
         string $slugPro,
@@ -94,7 +102,8 @@ class PluginDto implements DtoInterface
         bool $isActive,
         bool $isLicensed,
         bool $isPro,
-        ?string $iconFile = null
+        ?string $iconFile = null,
+        ?string $description = null
     ) {
         $this->slugFree = $slugFree;
         $this->slugPro = $slugPro;
@@ -105,6 +114,7 @@ class PluginDto implements DtoInterface
         $this->isLicensed = $isLicensed;
         $this->isPro = $isPro;
         $this->iconFile = $iconFile;
+        $this->description = $description;
     }
 
     /**
@@ -124,6 +134,7 @@ class PluginDto implements DtoInterface
             'isLicensed' => $this->isLicensed,
             'isPro' => $this->isPro,
             'iconFile' => $this->iconFile,
+            'description' => $this->description,
         ];
     }
 }
