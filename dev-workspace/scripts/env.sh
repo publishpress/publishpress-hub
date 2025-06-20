@@ -32,10 +32,10 @@ CACHE_BASE_PATH=$(pwd)/.cache
 WP_CACHE=$CACHE_BASE_PATH/wp_${PROFILE}
 DB_CACHE=$CACHE_BASE_PATH/db_${PROFILE}
 
-APP_PASSWORD_VAR="WP_${ENVIRONMENT_TYPE}_APPLICATION_PASSWORD"
+APP_PASSWORD_VAR="WP_${ENVIRONMENT_TYPE}_APP_PASSWORD"
 AUTH_HASH_VAR="WP_${ENVIRONMENT_TYPE}_AUTH_HASH"
 
-WP_APPLICATION_PASSWORD=$(eval "echo \$$APP_PASSWORD_VAR")
+WP_APP_PASSWORD=$(eval "echo \$$APP_PASSWORD_VAR")
 WP_AUTH_HASH=$(eval "echo \$$AUTH_HASH_VAR")
 
 remove_port_from_domain() {
@@ -143,7 +143,7 @@ service_info() {
   echo "Site URL:       http://$WP_DOMAIN:$WP_PORT"
   echo "Admin URL:      http://$WP_DOMAIN:$WP_PORT/wp-admin"
   echo "Login:          $WP_ADMIN_USER / $WP_ADMIN_PASSWORD"
-  echo "App Password:   $WP_APPLICATION_PASSWORD"
+  echo "App Password:   $WP_APP_PASSWORD"
   echo "API Auth Hash:  $WP_AUTH_HASH"
   echo "Root Directory: $WP_CACHE"
   echo "Container ID:   $(get_container_id wp_${PROFILE})"

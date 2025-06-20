@@ -186,9 +186,13 @@
         "test:logs": "bash dev-workspace/scripts/log-web.sh test",
         "test": "vendor/bin/codecept run $@",
         "test:coverage": "vendor/bin/codecept run --coverage --coverage-html",
+        "test:unit": "vendor/bin/codecept run Unit",
+        "test:integration": "vendor/bin/codecept run Integration",
+        "test:api": "vendor/bin/codecept run Api",
         "test:all": [
-            "vendor/bin/codecept run Unit",
-            "vendor/bin/codecept run Integration"
+            "@test:unit",
+            "@test:integration",
+            "@test:api"
         ],
         "test:debug": "php -d xdebug.mode=debug -d xdebug.start_with_request=yes vendor/bin/codecept run $@",
         "codecept": "./vendor/bin/codecept $@",

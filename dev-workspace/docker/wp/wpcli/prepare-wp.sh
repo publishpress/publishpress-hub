@@ -137,7 +137,7 @@ echo -e "${YELLOW}Application password: $PASSWORD${NC}"
 
 # Update the application password in the .env file
 echo -e "${YELLOW}Updating the application password in the .env file...${NC}"
-sed -i "s/WP_${ENVIRONMENT_TYPE}_APPLICATION_PASSWORD=.*/WP_${ENVIRONMENT_TYPE}_APPLICATION_PASSWORD=$PASSWORD/" /project/.env
+sed -i "s/WP_${ENVIRONMENT_TYPE}_APP_PASSWORD=.*/WP_${ENVIRONMENT_TYPE}_APP_PASSWORD=$PASSWORD/" /project/.env
 AUTH_HASH=$(echo -n "admin:$PASSWORD" | base64)
 sed -i "s/WP_${ENVIRONMENT_TYPE}_AUTH_HASH=.*/WP_${ENVIRONMENT_TYPE}_AUTH_HASH=$AUTH_HASH/" /project/.env
 
