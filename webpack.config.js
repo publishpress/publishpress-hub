@@ -8,10 +8,10 @@ module.exports = {
     mode: NODE_ENV,
     devtool: NODE_ENV === 'development' ? 'source-map' : false,
     entry: {
-        "plugins-dashboard": "./assets/jsx/plugins-dashboard.jsx",
-        "i18n": "./assets/jsx/i18n.jsx",
-        "components-showcase": "./assets/jsx/components-showcase.jsx",
-        "admin-page": "./assets/css/admin-page.css",
+        "plugins-dashboard": "./assets/src/jsx/plugins-dashboard.jsx",
+        "i18n": "./assets/src/jsx/i18n.jsx",
+        "components-showcase": "./assets/src/jsx/components-showcase.jsx",
+        "admin-page": "./assets/src/css/admin-page.css",
     },
     output: {
         path: path.join(__dirname, "assets", "dist"),
