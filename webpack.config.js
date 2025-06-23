@@ -8,6 +8,7 @@ module.exports = {
     entry: {
         "plugins-dashboard": "./assets/jsx/plugins-dashboard.jsx",
         "i18n": "./assets/jsx/i18n.jsx",
+        "components-showcase": "./assets/jsx/components-showcase.jsx",
     },
     output: {
         path: path.join(__dirname, "assets", "dist", "js"),

@@ -31,13 +31,26 @@ class AdminMenuService implements ServiceInterface
     private ViewInterface $pluginsDashboardView;
 
     /**
+     * The components showcase view.
+     *
+     * @since 1.0.0
+     */
+    private ViewInterface $componentsShowcaseView;
+
+    private bool $displayShowcase = false;
+
+    /**
      * The constructor.
      *
      * @since 1.0.0
      */
-    public function __construct(ViewInterface $pluginsDashboardView)
+    public function __construct(ViewInterface $pluginsDashboardView, ViewInterface $componentsShowcaseView)
     {
         $this->pluginsDashboardView = $pluginsDashboardView;
+        $this->componentsShowcaseView = $componentsShowcaseView;
+
+        $this->displayShowcase = defined('PUBLISHPRESS_HUB_DISPLAY_SHOWCASE')
+            && constant('PUBLISHPRESS_HUB_DISPLAY_SHOWCASE') == true;
     }
 
     /**
@@ -106,6 +119,18 @@ class AdminMenuService implements ServiceInterface
             [$this, 'renderPluginsDashboardView'],
             $this->getAdminMenuIcon()
         );
+
+        if ($this->displayShowcase) {
+            add_submenu_page(
+                'publishpress-hub-dashboard',
+                'Components Showcase',
+                'Components Showcase',
+                $this->getAdminMenuCapability(),
+                'publishpress-hub-components-showcase',
+                [$this, 'renderComponentsShowcaseView'],
+                $this->getAdminMenuIcon()
+            );
+        }
     }
 
     /**
@@ -117,6 +142,10 @@ class AdminMenuService implements ServiceInterface
     public function enqueueScripts(string $hookSuffix): void
     {
         $this->pluginsDashboardView->enqueueScripts($hookSuffix);
+
+        if ($this->displayShowcase) {
+            $this->componentsShowcaseView->enqueueScripts($hookSuffix);
+        }
     }
 
     /**
@@ -150,5 +179,15 @@ class AdminMenuService implements ServiceInterface
     public function renderPluginsDashboardView(): void
     {
         $this->pluginsDashboardView->render();
+    }
+
+    /**
+     * Render the components showcase view.
+     *
+     * @since 1.0.0
+     */
+    public function renderComponentsShowcaseView(): void
+    {
+        $this->componentsShowcaseView->render();
     }
 }

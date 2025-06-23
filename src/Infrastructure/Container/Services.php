@@ -41,6 +41,8 @@ abstract class Services
 
     public const PLUGINS_DASHBOARD_VIEW = 'publishpress-hub/plugins-dashboard-view';
 
+    public const COMPONENTS_SHOWCASE_VIEW = 'publishpress-hub/components-showcase-view';
+
     public const ASSET_MANAGER = 'publishpress-hub/asset-manager';
 
     public const REST_API_SERVICE = 'publishpress-hub/rest-api-service';

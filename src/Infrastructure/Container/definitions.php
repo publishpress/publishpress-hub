@@ -22,6 +22,7 @@ use PublishPress\Hub\Application\Service\LanguageService;
 use PublishPress\Hub\Application\Service\PluginBootstrapService;
 use PublishPress\Hub\Application\Service\RestApi\Mapper\PluginMapper;
 use PublishPress\Hub\Application\Service\RestApiService;
+use PublishPress\Hub\Application\View\Admin\ComponentsShowcaseView;
 use PublishPress\Hub\Application\View\Admin\PluginsDashboardView;
 use PublishPress\Hub\Domain\Plugin\PluginRepository;
 use PublishPress\Hub\Infrastructure\Asset\AssetManager;
@@ -62,7 +63,8 @@ return [
 
     Services::ADMIN_MENU_SERVICE => function (ServiceContainerInterface $container) {
         return new AdminMenuService(
-            $container->get(Services::PLUGINS_DASHBOARD_VIEW)
+            $container->get(Services::PLUGINS_DASHBOARD_VIEW),
+            $container->get(Services::COMPONENTS_SHOWCASE_VIEW)
         );
     },
 
@@ -75,6 +77,12 @@ return [
 
     Services::PLUGINS_DASHBOARD_VIEW => function (ServiceContainerInterface $container) {
         return new PluginsDashboardView(
+            $container->get(Services::ASSET_MANAGER)
+        );
+    },
+
+    Services::COMPONENTS_SHOWCASE_VIEW => function (ServiceContainerInterface $container) {
+        return new ComponentsShowcaseView(
             $container->get(Services::ASSET_MANAGER)
         );
     },
