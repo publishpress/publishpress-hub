@@ -17,15 +17,17 @@
 }
 
 .pp-hub-plugins-list-item-icon {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    box-sizing: border-box;
 }
 
 .pp-hub-plugins-list-item-icon img {
-    width: 100%;
-    height: 100%;
     object-fit: contain;
     border-radius: var(--pp-hub-radius-md);
+    width: 48px;
+    height: 48px;
 }
 
 .pp-hub-plugins-list-item-info {
