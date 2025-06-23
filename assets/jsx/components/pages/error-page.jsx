@@ -1,5 +1,7 @@
 import { memo } from '@wordpress/element';
 
+import { __ } from '@publishpress/hub-i18n';
+
 import { AdminPageLayout } from '../admin-page';
 
 const ErrorPageComponent = ({ error, title, logoUrl }) => {
