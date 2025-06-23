@@ -59,7 +59,7 @@ add_action(InfrastructureHooks::ACTION_PLUGINS_LOADED, function () {
     $serviceDefinitions = require_once PUBLISHPRESS_HUB_SRC_PATH . 'Infrastructure/Container/definitions.php';
 
     $container = ServiceContainer::getInstance($serviceDefinitions);
-    $hubService = $container->get(Services::HUB_SERVICE);
+    $coreHubService = $container->get(Services::CORE_HUB_SERVICE);
 
-    $hubService->initialize();
+    $coreHubService->initialize();
 });

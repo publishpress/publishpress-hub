@@ -29,7 +29,7 @@ abstract class Services
 
     public const LOGGER = 'publishpress-hub/logger';
 
-    public const HUB_SERVICE = 'publishpress-hub/hub-service';
+    public const CORE_HUB_SERVICE = 'publishpress-hub/core-hub-service';
 
     public const PLUGIN_REPOSITORY = 'publishpress-hub/plugin-repository';
 

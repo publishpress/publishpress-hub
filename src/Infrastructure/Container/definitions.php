@@ -17,7 +17,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Infrastructure\Container;
 
 use PublishPress\Hub\Application\Service\AdminMenuService;
-use PublishPress\Hub\Application\Service\HubService;
+use PublishPress\Hub\Application\Service\CoreHubService;
 use PublishPress\Hub\Application\Service\LanguageService;
 use PublishPress\Hub\Application\Service\PluginBootstrapService;
 use PublishPress\Hub\Application\Service\RestApi\Mapper\PluginMapper;
@@ -43,8 +43,8 @@ return [
         return (new HubServiceCollectionProvider())($container);
     },
 
-    Services::HUB_SERVICE => function (ServiceContainerInterface $container) {
-        return new HubService(
+    Services::CORE_HUB_SERVICE => function (ServiceContainerInterface $container) {
+        return new CoreHubService(
             $container->get(Services::PLUGIN_REPOSITORY),
             $container->get(Services::HUB_SERVICE_COLLECTION)
         );

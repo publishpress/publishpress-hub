@@ -16,7 +16,6 @@ namespace PublishPress\Hub\Application\Service;
 use PublishPress\Hub\Application\Hooks as ApplicationHooks;
 use PublishPress\Hub\Domain\Hooks as DomainHooks;
 use PublishPress\Hub\Domain\Plugin\Contracts\PluginRepositoryInterface;
-use PublishPress\Hub\Domain\Plugin\Plugin;
 use PublishPress\Hub\Application\Service\Contracts\ServiceInterface;
 use PublishPress\Hub\Domain\DomainException;
 use PublishPress\Hub\Infrastructure\Container\ServiceCollection;
@@ -29,7 +28,7 @@ use PublishPress\Hub\Infrastructure\Container\ServiceCollection;
  *
  * @since 1.0.0
  */
-class HubService implements ServiceInterface
+class CoreHubService implements ServiceInterface
 {
     /**
      * Whether the service has been initialized.
