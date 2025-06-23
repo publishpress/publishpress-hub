@@ -1,6 +1,6 @@
 import { apiFetch } from '@wordpress/data-controls';
 
-const { apiUrlV1, apiNonce } = window.ppHubPluginsDashboardConfig;
+const { apiV1Url, apiNonce } = window.ppHubPluginsDashboardConfig;
 
 export function* setSelectedFilter(selectedFilter) {
     yield {
@@ -42,7 +42,7 @@ export function* fetchPlugins() {
         yield {type: 'FETCH_PLUGINS_START'};
 
         const data = yield apiFetch({
-            path: `${apiUrlV1}/plugins`,
+            path: `${apiV1Url}/plugins`,
             headers: {
                 'X-WP-Nonce': apiNonce,
             },
