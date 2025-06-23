@@ -6,6 +6,7 @@ namespace PublishPress\Hub\Application\Service;
 
 use PublishPress\Hub\Application\Service\Contracts\ServiceInterface;
 use PublishPress\Hub\Domain\Plugin\Contracts\PluginRepositoryInterface;
+use PublishPress\Hub\Application\Hooks as ApplicationHooks;
 use PublishPress\Hub\Domain\Plugin\Plugin;
 
 /**
@@ -56,7 +57,7 @@ class PluginBootstrapService implements ServiceInterface
 
         $this->initialized = true;
 
-        $this->bootstrapPlugins();
+        $this->registerHooks();
 
         return $this;
     }
@@ -73,6 +74,16 @@ class PluginBootstrapService implements ServiceInterface
     }
 
     /**
+     * Register the hooks.
+     *
+     * @since 1.0.0
+     */
+    private function registerHooks(): void
+    {
+        add_action(ApplicationHooks::ACTION_INIT, [$this, 'bootstrapPlugins'], 5);
+    }
+
+    /**
      * Bootstrap all PublishPress plugins.
      *
      * This method defines all plugins and registers them in the repository.
@@ -80,7 +91,7 @@ class PluginBootstrapService implements ServiceInterface
      *
      * @since 1.0.0
      */
-    private function bootstrapPlugins(): void
+    public function bootstrapPlugins(): void
     {
         $pluginDefinitions = $this->getPluginDefinitions();
 
