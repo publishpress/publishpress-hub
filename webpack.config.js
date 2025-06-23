@@ -1,6 +1,8 @@
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const path = require("path");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
     mode: NODE_ENV,
@@ -9,10 +11,11 @@ module.exports = {
         "plugins-dashboard": "./assets/jsx/plugins-dashboard.jsx",
         "i18n": "./assets/jsx/i18n.jsx",
         "components-showcase": "./assets/jsx/components-showcase.jsx",
+        "admin-page": "./assets/css/admin-page.css",
     },
     output: {
-        path: path.join(__dirname, "assets", "dist", "js"),
-        filename: NODE_ENV === 'production' ? "[name].min.js" : "[name].js"
+        path: path.join(__dirname, "assets", "dist"),
+        filename: "js/" + (NODE_ENV === 'production' ? "[name].min.js" : "[name].js")
     },
     resolve: {
         extensions: ['.js', '.jsx']
@@ -28,19 +31,30 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: ["style-loader", "css-loader", "postcss-loader"],
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "postcss-loader"
+                ],
             }
         ]
     },
     optimization: {
         minimize: NODE_ENV === 'production',
+        minimizer: [
+            `...`,
+            new CssMinimizerPlugin(),
+        ],
     },
-    // plugins: [
-    //     new BundleAnalyzerPlugin({
-    //         analyzerMode: 'static',
-    //         reportFilename: 'webpack-bundle-stats.html',
-    //     }),
-    // ],
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: "css/" + (NODE_ENV === 'production' ? "[name].min.css" : "[name].css"),
+        }),
+        // new BundleAnalyzerPlugin({
+        //     analyzerMode: 'static',
+        //     reportFilename: 'webpack-bundle-stats.html',
+        // }),
+    ],
     externals: {
         "react": "React",
         "react-dom": "ReactDOM",

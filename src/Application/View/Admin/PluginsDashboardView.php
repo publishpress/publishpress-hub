@@ -44,7 +44,7 @@ class PluginsDashboardView implements ViewInterface
 
         $this->assetManager->enqueueStyle(
             'publishpress-hub-plugin-dashboard',
-            'css/admin-page.css',
+            'dist/css/admin-page.css',
             [
                 // 'wp-components',
             ]

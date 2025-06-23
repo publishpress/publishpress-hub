@@ -1,0 +1,1190 @@
+/*!*********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/core/variables.css ***!
+  \*********************************************************************************/
+:root {
+    /* Brand Colors */
+    --pp-hub-primary-color: #655997;
+    --pp-hub-secondary-color: #ffb200;
+    --pp-hub-tertiary-color: #1b004f;
+    --pp-hub-accent-color: #00a0d2;
+
+    /* Semantic Colors */
+    --pp-hub-success-color: #46b450;
+    --pp-hub-warning-color: #ffb900;
+    --pp-hub-error-color: #dc3232;
+    --pp-hub-info-color: #00a0d2;
+
+    /* Background Colors */
+    --pp-hub-bg-primary: #ffffff;
+    --pp-hub-bg-secondary: #f6f7f7;
+    --pp-hub-bg-tertiary: #f1f1f1;
+    --pp-hub-bg-overlay: rgba(0, 0, 0, 0.6);
+
+    /* Text Colors */
+    --pp-hub-text-primary: #1e1e1e;
+    --pp-hub-text-secondary: #646970;
+    --pp-hub-text-tertiary: #8c8f94;
+    --pp-hub-text-inverse: #ffffff;
+    --pp-hub-text-link: var(--pp-hub-primary-color);
+    --pp-hub-text-link-hover: var(--pp-hub-tertiary-color);
+
+    /* Border Colors */
+    --pp-hub-border-primary: #dcdcde;
+    --pp-hub-border-secondary: #c3c4c7;
+    --pp-hub-border-focus: var(--pp-hub-primary-color);
+    --pp-hub-border-input: #d1d5db;
+    --pp-hub-border-input-focus: #111827;
+
+    /* Form Colors */
+    --pp-hub-form-bg: #ffffff;
+    --pp-hub-form-text: #111827;
+    --pp-hub-form-placeholder: #9ca3af;
+
+    /* Button States */
+    --pp-hub-button-padding-x: var(--pp-hub-spacing-lg);
+    --pp-hub-button-padding-y: var(--pp-hub-spacing-md);
+    --pp-hub-button-gap: var(--pp-hub-spacing-sm);
+
+    /* Filter Component Specific */
+    --pp-hub-filter-container-padding: var(--pp-hub-spacing-sm);
+    --pp-hub-filter-button-padding: var(--pp-hub-spacing-sm) var(--pp-hub-spacing-md);
+
+    /* Spacing Scale */
+    --pp-hub-spacing-xs: 0.25rem;    /* 4px */
+    --pp-hub-spacing-sm: 0.5rem;     /* 8px */
+    --pp-hub-spacing-md: 0.75rem;    /* 12px */
+    --pp-hub-spacing-lg: 1rem;       /* 16px */
+    --pp-hub-spacing-xl: 1.5rem;     /* 24px */
+    --pp-hub-spacing-2xl: 2rem;      /* 32px */
+    --pp-hub-spacing-3xl: 3rem;      /* 48px */
+
+    /* Typography */
+    --pp-hub-font-family-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    --pp-hub-font-family-mono: Consolas, Monaco, "Courier New", monospace;
+
+    /* Font Sizes */
+    /* Start of Selection */
+    --pp-hub-font-size-xs: 0.625rem;  /* 10px */
+    --pp-hub-font-size-sm: 0.75rem;   /* 12px */
+    --pp-hub-font-size-md: 0.875rem;  /* 14px */
+    --pp-hub-font-size-lg: 1rem;      /* 16px */
+    --pp-hub-font-size-xl: 1.125rem;  /* 18px */
+    --pp-hub-font-size-2xl: 1.25rem;  /* 20px */
+    --pp-hub-font-size-3xl: 1.5rem;   /* 24px */
+    /* End of Selection */
+
+    /* Font Weights */
+    --pp-hub-font-weight-normal: 400;
+    --pp-hub-font-weight-medium: 500;
+    --pp-hub-font-weight-semibold: 600;
+    --pp-hub-font-weight-bold: 700;
+
+    /* Line Heights */
+    --pp-hub-line-height-tight: 1.25;
+    --pp-hub-line-height-normal: 1.5;
+    --pp-hub-line-height-loose: 1.75;
+
+    /* Border Radius */
+    --pp-hub-radius-sm: 0.25rem;
+    --pp-hub-radius-md: 0.375rem;
+    --pp-hub-radius-lg: 0.5rem;
+    --pp-hub-radius-xl: 0.75rem;
+    --pp-hub-radius-full: 9999px;
+
+    /* Shadows */
+    --pp-hub-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --pp-hub-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --pp-hub-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    /* Z-Index Scale */
+    --pp-hub-z-dropdown: 1000;
+    --pp-hub-z-modal: 1050;
+    --pp-hub-z-tooltip: 1070;
+
+    /* Transitions */
+    --pp-hub-transition-fast: 150ms ease-in-out;
+    --pp-hub-transition-normal: 300ms ease-in-out;
+    --pp-hub-transition-slow: 500ms ease-in-out;
+
+    /* Breakpoints (for container queries) */
+    --pp-hub-breakpoint-sm: 640px;
+    --pp-hub-breakpoint-md: 768px;
+    --pp-hub-breakpoint-lg: 1024px;
+    --pp-hub-breakpoint-xl: 1280px;
+}
+
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/core/base.css ***!
+  \****************************************************************************/
+/* Base styles and WordPress admin compatibility */
+
+/* WordPress admin body adjustments */
+#wpcontent {
+    padding-left: 0;
+}
+
+/* Base typography */
+.pp-hub-root {
+    font-family: var(--pp-hub-font-family-primary);
+    font-size: var(--pp-hub-font-size-md);
+    line-height: var(--pp-hub-line-height-normal);
+    color: var(--pp-hub-text-primary);
+}
+
+/* Reset button styles to avoid WordPress conflicts */
+.pp-hub-root button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* Reset link styles */
+.pp-hub-root a {
+    color: var(--pp-hub-text-link);
+    text-decoration: none;
+    transition: color var(--pp-hub-transition-fast);
+}
+
+.pp-hub-root a:hover,
+.pp-hub-root a:focus {
+    color: var(--pp-hub-text-link-hover);
+}
+
+/* Focus management */
+.pp-hub-root *:focus {
+    outline: 2px solid var(--pp-hub-border-focus);
+    outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+.pp-hub-root *:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Smooth scrolling */
+.pp-hub-root {
+    scroll-behavior: smooth;
+}
+
+/* Container base */
+.pp-hub-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--pp-hub-spacing-lg);
+}
+
+/* Box model reset for consistent sizing */
+.pp-hub-root *,
+.pp-hub-root *::before,
+.pp-hub-root *::after {
+    box-sizing: border-box;
+}
+
+/*!*********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/core/utilities.css ***!
+  \*********************************************************************************/
+/* Utility Classes */
+
+/* Spacing Utilities */
+.pp-hub-p-xs { padding: var(--pp-hub-spacing-xs); }
+.pp-hub-p-sm { padding: var(--pp-hub-spacing-sm); }
+.pp-hub-p-md { padding: var(--pp-hub-spacing-md); }
+.pp-hub-p-lg { padding: var(--pp-hub-spacing-lg); }
+.pp-hub-p-xl { padding: var(--pp-hub-spacing-xl); }
+.pp-hub-p-2xl { padding: var(--pp-hub-spacing-2xl); }
+
+.pp-hub-m-xs { margin: var(--pp-hub-spacing-xs); }
+.pp-hub-m-sm { margin: var(--pp-hub-spacing-sm); }
+.pp-hub-m-md { margin: var(--pp-hub-spacing-md); }
+.pp-hub-m-lg { margin: var(--pp-hub-spacing-lg); }
+.pp-hub-m-xl { margin: var(--pp-hub-spacing-xl); }
+.pp-hub-m-2xl { margin: var(--pp-hub-spacing-2xl); }
+
+/* Flexbox Utilities */
+.pp-hub-flex { display: flex; }
+.pp-hub-flex-col { flex-direction: column; }
+.pp-hub-flex-row { flex-direction: row; }
+.pp-hub-flex-wrap { flex-wrap: wrap; }
+.pp-hub-flex-nowrap { flex-wrap: nowrap; }
+
+.pp-hub-justify-start { justify-content: flex-start; }
+.pp-hub-justify-center { justify-content: center; }
+.pp-hub-justify-end { justify-content: flex-end; }
+.pp-hub-justify-between { justify-content: space-between; }
+.pp-hub-justify-around { justify-content: space-around; }
+
+.pp-hub-items-start { align-items: flex-start; }
+.pp-hub-items-center { align-items: center; }
+.pp-hub-items-end { align-items: flex-end; }
+.pp-hub-items-stretch { align-items: stretch; }
+
+.pp-hub-flex-1 { flex: 1; }
+.pp-hub-flex-auto { flex: auto; }
+.pp-hub-flex-none { flex: none; }
+
+/* Grid Utilities */
+.pp-hub-grid { display: grid; }
+.pp-hub-grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+.pp-hub-grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.pp-hub-grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.pp-hub-grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+.pp-hub-gap-xs { gap: var(--pp-hub-spacing-xs); }
+.pp-hub-gap-sm { gap: var(--pp-hub-spacing-sm); }
+.pp-hub-gap-md { gap: var(--pp-hub-spacing-md); }
+.pp-hub-gap-lg { gap: var(--pp-hub-spacing-lg); }
+.pp-hub-gap-xl { gap: var(--pp-hub-spacing-xl); }
+
+/* Typography Utilities */
+.pp-hub-text-xs { font-size: var(--pp-hub-font-size-xs); }
+.pp-hub-text-sm { font-size: var(--pp-hub-font-size-sm); }
+.pp-hub-text-md { font-size: var(--pp-hub-font-size-md); }
+.pp-hub-text-lg { font-size: var(--pp-hub-font-size-lg); }
+.pp-hub-text-xl { font-size: var(--pp-hub-font-size-xl); }
+.pp-hub-text-2xl { font-size: var(--pp-hub-font-size-2xl); }
+.pp-hub-text-3xl { font-size: var(--pp-hub-font-size-3xl); }
+
+.pp-hub-font-normal { font-weight: var(--pp-hub-font-weight-normal); }
+.pp-hub-font-medium { font-weight: var(--pp-hub-font-weight-medium); }
+.pp-hub-font-semibold { font-weight: var(--pp-hub-font-weight-semibold); }
+.pp-hub-font-bold { font-weight: var(--pp-hub-font-weight-bold); }
+
+.pp-hub-text-center { text-align: center; }
+.pp-hub-text-left { text-align: left; }
+.pp-hub-text-right { text-align: right; }
+
+.pp-hub-text-primary { color: var(--pp-hub-text-primary); }
+.pp-hub-text-secondary { color: var(--pp-hub-text-secondary); }
+.pp-hub-text-tertiary { color: var(--pp-hub-text-tertiary); }
+.pp-hub-text-inverse { color: var(--pp-hub-text-inverse); }
+
+/* Border Utilities */
+.pp-hub-border { border: 1px solid var(--pp-hub-border-primary); }
+.pp-hub-border-t { border-top: 1px solid var(--pp-hub-border-primary); }
+.pp-hub-border-b { border-bottom: 1px solid var(--pp-hub-border-primary); }
+.pp-hub-border-l { border-left: 1px solid var(--pp-hub-border-primary); }
+.pp-hub-border-r { border-right: 1px solid var(--pp-hub-border-primary); }
+
+.pp-hub-rounded-sm { border-radius: var(--pp-hub-radius-sm); }
+.pp-hub-rounded-md { border-radius: var(--pp-hub-radius-md); }
+.pp-hub-rounded-lg { border-radius: var(--pp-hub-radius-lg); }
+.pp-hub-rounded-xl { border-radius: var(--pp-hub-radius-xl); }
+.pp-hub-rounded-full { border-radius: var(--pp-hub-radius-full); }
+
+/* Background Utilities */
+.pp-hub-bg-primary { background-color: var(--pp-hub-bg-primary); }
+.pp-hub-bg-secondary { background-color: var(--pp-hub-bg-secondary); }
+.pp-hub-bg-tertiary { background-color: var(--pp-hub-bg-tertiary); }
+
+/* Shadow Utilities */
+.pp-hub-shadow-sm { box-shadow: var(--pp-hub-shadow-sm); }
+.pp-hub-shadow-md { box-shadow: var(--pp-hub-shadow-md); }
+.pp-hub-shadow-lg { box-shadow: var(--pp-hub-shadow-lg); }
+
+/* Display Utilities */
+.pp-hub-hidden { display: none; }
+.pp-hub-block { display: block; }
+.pp-hub-inline { display: inline; }
+.pp-hub-inline-block { display: inline-block; }
+
+/* Position Utilities */
+.pp-hub-relative { position: relative; }
+.pp-hub-absolute { position: absolute; }
+.pp-hub-fixed { position: fixed; }
+.pp-hub-sticky { position: sticky; }
+
+/* Overflow Utilities */
+.pp-hub-overflow-hidden { overflow: hidden; }
+.pp-hub-overflow-auto { overflow: auto; }
+.pp-hub-overflow-scroll { overflow: scroll; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pp-hub-mobile-hidden { display: none; }
+    .pp-hub-mobile-flex { display: flex; }
+    .pp-hub-mobile-block { display: block; }
+}
+
+/*!*********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/themes/default.css ***!
+  \*********************************************************************************/
+/* Default Theme */
+[data-theme="default"] {
+    /* Brand Colors */
+    --pp-hub-primary-color: #655997;
+    --pp-hub-primary-color-darker: #50467e;
+    --pp-hub-primary-color-lighter: #7a6faf;
+    --pp-hub-primary-color-disabled: #3a345e;
+
+    --pp-hub-secondary-color: #ffb200;
+    --pp-hub-secondary-color-darker: #e69900;
+    --pp-hub-secondary-color-lighter: #ffc133;
+    --pp-hub-secondary-color-disabled: #c28400;
+
+    --pp-hub-tertiary-color: #1b004f;
+    --pp-hub-tertiary-color-darker: #150048;
+    --pp-hub-tertiary-color-lighter: #2f005e;
+    --pp-hub-tertiary-color-disabled: #0d0027;
+
+    --pp-hub-accent-color: #00a0d2;
+    --pp-hub-accent-color-darker: #0080b0;
+    --pp-hub-accent-color-lighter: #00b3e6;
+    --pp-hub-accent-color-disabled: #005066;
+
+    /* Semantic Colors */
+    --pp-hub-success-color: #46b450;
+    --pp-hub-warning-color: #ffb900;
+    --pp-hub-error-color: #dc3232;
+    --pp-hub-info-color: #00a0d2;
+
+    /* Background Colors */
+    --pp-hub-bg-primary: #ffffff;
+    --pp-hub-bg-secondary: #f6f7f7;
+    --pp-hub-bg-tertiary: #dfdfdf;
+    --pp-hub-bg-overlay: rgba(0, 0, 0, 0.6);
+
+    /* Text Colors */
+    --pp-hub-text-primary: #1e1e1e;
+    --pp-hub-text-secondary: #646970;
+    --pp-hub-text-tertiary: #444548;
+    --pp-hub-text-inverse: #ffffff;
+    --pp-hub-text-disabled: #767b82;
+    --pp-hub-text-link: var(--pp-hub-primary-color);
+    --pp-hub-text-link-hover: var(--pp-hub-primary-color-lighter);
+
+    /* Border Colors */
+    --pp-hub-border-primary: #ededed;
+    --pp-hub-border-secondary: #cfd0d5;
+    --pp-hub-border-focus: var(--pp-hub-primary-color);
+
+    /* Button Colors */
+    --pp-hub-button-bg-primary: var(--pp-hub-primary-color);
+    --pp-hub-button-bg-primary-lighter: var(--pp-hub-primary-color-lighter);
+    --pp-hub-button-bg-primary-darker: var(--pp-hub-primary-color-darker);
+    --pp-hub-button-bg-primary-disabled: var(--pp-hub-primary-color-disabled);
+
+    --pp-hub-button-bg-secondary: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-secondary-lighter: var(--pp-hub-bg-secondary);
+    --pp-hub-button-bg-secondary-darker: var(--pp-hub-bg-tertiary);
+    --pp-hub-button-bg-secondary-disabled: transparent
+
+    --pp-hub-button-bg-tertiary: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-tertiary-lighter: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-tertiary-darker: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-tertiary-disabled: var(--pp-hub-tertiary-color-disabled);
+
+    --pp-hub-button-bg-highlight: var(--pp-hub-secondary-color);
+    --pp-hub-button-bg-highlight-lighter: var(--pp-hub-secondary-color-lighter);
+    --pp-hub-button-bg-highlight-darker: var(--pp-hub-secondary-color-darker);
+    --pp-hub-button-bg-highlight-disabled: var(--pp-hub-secondary-color-disabled);
+
+    --pp-hub-button-text-primary: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-secondary: var(--pp-hub-text-secondary);
+    --pp-hub-button-text-tertiary: var(--pp-hub-text-tertiary);
+    --pp-hub-button-text-inverse: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-disabled: var(--pp-hub-text-disabled);
+    --pp-hub-button-text-link: none;
+
+    --pp-hub-button-border-primary: var(--pp-hub-border-primary);
+    --pp-hub-button-border-secondary: var(--pp-hub-border-secondary);
+    --pp-hub-button-border-tertiary: var(--pp-hub-border-tertiary);
+    --pp-hub-button-border-highlight: var(--pp-hub-border-tertiary);
+    --pp-hub-button-border-disabled: var(--pp-hub-border-secondary);
+}
+
+/*!******************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/themes/dark.css ***!
+  \******************************************************************************/
+/* Dark Theme */
+[data-theme="dark"] {
+    /* Brand Colors - Adjusted for dark mode */
+    --pp-hub-primary-color: #8a7bc8;
+    --pp-hub-secondary-color: #ffd700;
+    --pp-hub-tertiary-color: #b19cd9;
+    --pp-hub-accent-color: #4fc3f7;
+
+    /* Semantic Colors - Dark mode variants */
+    --pp-hub-success-color: #66bb6a;
+    --pp-hub-warning-color: #ffca28;
+    --pp-hub-error-color: #ef5350;
+    --pp-hub-info-color: #29b6f6;
+
+    /* Background Colors - Dark theme */
+    --pp-hub-bg-primary: #121212;
+    --pp-hub-bg-secondary: #1e1e1e;
+    --pp-hub-bg-tertiary: #2d2d2d;
+    --pp-hub-bg-overlay: rgba(0, 0, 0, 0.8);
+
+    /* Text Colors - Inverted for dark mode */
+    --pp-hub-text-primary: #ffffff;
+    --pp-hub-text-secondary: #b3b3b3;
+    --pp-hub-text-tertiary: #808080;
+    --pp-hub-text-inverse: #121212;
+    --pp-hub-text-link: var(--pp-hub-primary-color);
+    --pp-hub-text-link-hover: var(--pp-hub-tertiary-color);
+
+    /* Border Colors - Dark theme */
+    --pp-hub-border-primary: #3c3c3c;
+    --pp-hub-border-secondary: #4a4a4a;
+    --pp-hub-border-focus: var(--pp-hub-primary-color);
+}
+
+/*!**************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/components/admin-page/container.css ***!
+  \**************************************************************************************************/
+/* AdminPageContainer Component */
+
+.pp-hub-admin-page-container {
+    min-height: 100vh;
+    font-family: var(--pp-hub-font-family-primary);
+    color: var(--pp-hub-text-primary);
+}
+
+.pp-hub-admin-page-container.pp-hub-fullwidth {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.pp-hub-admin-page-container.pp-hub-contained {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--pp-hub-spacing-xl);
+}
+
+/* Content area styling */
+.pp-hub-admin-page-container__content {
+    padding: var(--pp-hub-spacing-xl);
+    background-color: var(--pp-hub-bg-primary);
+    border-radius: var(--pp-hub-radius-lg);
+    box-shadow: var(--pp-hub-shadow-sm);
+}
+
+/* WordPress admin body reset */
+.pp-hub-admin-page-container #wpcontent {
+    padding-left: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .pp-hub-admin-page-container.pp-hub-contained {
+        padding: var(--pp-hub-spacing-md);
+    }
+
+    .pp-hub-admin-page-container__content {
+        padding: var(--pp-hub-spacing-lg);
+        border-radius: var(--pp-hub-radius-md);
+    }
+}
+
+/*!***********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/components/admin-page/header.css ***!
+  \***********************************************************************************************/
+/* AdminPageHeader Component */
+
+.pp-hub-admin-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--pp-hub-spacing-xl) var(--pp-hub-spacing-xl);
+    background-color: var(--pp-hub-bg-primary);
+    border-bottom: 1px solid var(--pp-hub-border-primary);
+}
+
+.pp-hub-admin-page-header__logo {
+    height: 40px;
+    width: auto;
+}
+
+.pp-hub-admin-page-header__logo-text {
+    font-size: 33px;
+    line-height: 40px;
+    font-weight: 600;
+    margin-left: var(--pp-hub-spacing-sm);
+    margin-top: var(--pp-hub-spacing-xs);
+}
+
+.pp-hub-admin-page-header__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: var(--pp-hub-spacing-lg);
+}
+
+.pp-hub-admin-page-header__title {
+    font-size: var(--pp-hub-font-size-2xl);
+    font-weight: var(--pp-hub-font-weight-bold);
+    color: var(--pp-hub-text-primary);
+    margin: 0;
+    line-height: var(--pp-hub-line-height-tight);
+}
+
+.pp-hub-admin-page-header__description {
+    font-size: var(--pp-hub-font-size-md);
+    color: var(--pp-hub-text-secondary);
+    margin: var(--pp-hub-spacing-xs) 0 0 0;
+    line-height: var(--pp-hub-line-height-normal);
+}
+
+.pp-hub-admin-page-header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--pp-hub-spacing-md);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .pp-hub-admin-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--pp-hub-spacing-lg);
+    }
+
+    .pp-hub-admin-page-header__logo {
+        margin-bottom: var(--pp-hub-spacing-md);
+        margin-right: 0;
+    }
+
+    .pp-hub-admin-page-header__content {
+        margin-right: 0;
+        margin-bottom: var(--pp-hub-spacing-md);
+        width: 100%;
+    }
+
+    .pp-hub-admin-page-header__actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .pp-hub-admin-page-header__title {
+        font-size: var(--pp-hub-font-size-xl);
+    }
+}
+
+/* Compact variant */
+.pp-hub-admin-page-header--compact {
+    padding: var(--pp-hub-spacing-lg) var(--pp-hub-spacing-xl);
+}
+
+.pp-hub-admin-page-header--compact .pp-hub-admin-page-header__title {
+    font-size: var(--pp-hub-font-size-xl);
+}
+
+.pp-hub-admin-page-header--compact .pp-hub-admin-page-header__logo {
+    height: 24px;
+}
+
+/*!***********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/components/admin-page/layout.css ***!
+  \***********************************************************************************************/
+.pp-hub-admin-page-layout__content h1 {
+    font-size: var(--pp-hub-font-size-3xl);
+    font-weight: var(--pp-hub-font-weight-bold);
+    color: var(--pp-hub-text-primary);
+    margin: 0;
+    line-height: var(--pp-hub-line-height-tight);
+}
+
+.pp-hub-admin-page-layout__content h2 {
+    font-size: var(--pp-hub-font-size-2xl);
+    font-weight: var(--pp-hub-font-weight-bold);
+    color: var(--pp-hub-text-primary);
+    margin: 0;
+    line-height: var(--pp-hub-line-height-tight);
+}
+
+.pp-hub-admin-page-layout__content h3 {
+    font-size: var(--pp-hub-font-size-xl);
+    font-weight: var(--pp-hub-font-weight-bold);
+    color: var(--pp-hub-text-primary);
+    margin: 0;
+    line-height: var(--pp-hub-line-height-tight);
+}
+
+.pp-hub-admin-page-layout__content h4 {
+    font-size: var(--pp-hub-font-size-lg);
+    font-weight: var(--pp-hub-font-weight-bold);
+    color: var(--pp-hub-text-primary);
+    margin: 0;
+    line-height: var(--pp-hub-line-height-tight);
+}
+
+.pp-hub-admin-page-layout__content h5 {
+    font-size: var(--pp-hub-font-size-md);
+    font-weight: var(--pp-hub-font-weight-bold);
+    color: var(--pp-hub-text-primary);
+    margin: 0;
+    line-height: var(--pp-hub-line-height-tight);
+}
+
+.pp-hub-admin-page-layout__title {
+    margin-top: 0;
+}
+
+/*!********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/components/buttons/button.css ***!
+  \********************************************************************************************/
+.pp-hub-root button {
+    all: unset;
+    cursor: pointer;
+    border-radius: var(--pp-hub-radius-md);
+    padding: var(--pp-hub-spacing-sm) var(--pp-hub-spacing-md);
+    text-align: center;
+    white-space: nowrap;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--pp-hub-button-border-primary);
+}
+
+.pp-hub-root button:disabled {
+    cursor: not-allowed;
+}
+
+.pp-hub-root button,
+.pp-hub-root button.is-secondary {
+    background-color: var(--pp-hub-button-bg-secondary);
+    color: var(--pp-hub-button-text-secondary);
+    border-color: var(--pp-hub-button-border-secondary);
+}
+
+.pp-hub-root button:hover,
+.pp-hub-root button.is-secondary:hover {
+    background-color: var(--pp-hub-button-bg-secondary-lighter);
+}
+
+.pp-hub-root button:active,
+.pp-hub-root button.is-secondary:active {
+    background-color: var(--pp-hub-button-bg-secondary-darker);
+}
+
+.pp-hub-root button:focus,
+.pp-hub-root button.is-secondary:focus {
+    background-color: var(--pp-hub-button-bg-secondary-lighter);
+}
+
+.pp-hub-root button:disabled,
+.pp-hub-root button.is-secondary:disabled {
+    background-color: var(--pp-hub-button-bg-secondary-disabled);
+    color: var(--pp-hub-button-text-disabled);
+}
+
+
+.pp-hub-root button.is-primary {
+    background-color: var(--pp-hub-button-bg-primary);
+    color: var(--pp-hub-button-text-primary);
+    border-color: var(--pp-hub-button-border-primary);
+}
+
+.pp-hub-root button.is-primary:hover {
+    background-color: var(--pp-hub-button-bg-primary-lighter);
+    border-color: var(--pp-hub-button-bg-primary-lighter);
+}
+
+.pp-hub-root button.is-primary:active {
+    background-color: var(--pp-hub-button-bg-primary-darker);
+    border-color: var(--pp-hub-button-bg-primary-darker);
+}
+
+.pp-hub-root button.is-primary:focus {
+    background-color: var(--pp-hub-button-bg-primary-lighter);
+    border-color: var(--pp-hub-button-bg-primary-lighter);
+}
+
+.pp-hub-root button.is-primary:disabled {
+    background-color: var(--pp-hub-button-bg-primary-disabled);
+    border-color: var(--pp-hub-button-bg-primary-disabled);
+    color: var(--pp-hub-button-text-disabled);
+}
+
+.pp-hub-root button.is-highlight {
+    background-color: var(--pp-hub-button-bg-highlight);
+    color: var(--pp-hub-button-text-primary);
+    border-color: var(--pp-hub-button-bg-highlight);
+}
+
+.pp-hub-root button.is-highlight:hover {
+    background-color: var(--pp-hub-button-bg-highlight-lighter);
+    border-color: var(--pp-hub-button-bg-highlight-lighter);
+}
+
+.pp-hub-root button.is-highlight:active {
+    background-color: var(--pp-hub-button-bg-highlight-darker);
+    border-color: var(--pp-hub-button-bg-highlight-darker);
+}
+
+.pp-hub-root button.is-highlight:focus {
+    background-color: var(--pp-hub-button-bg-highlight-lighter);
+    border-color: var(--pp-hub-button-bg-highlight-lighter);
+}
+
+.pp-hub-root button.is-highlight:disabled {
+    background-color: var(--pp-hub-button-bg-highlight-disabled);
+    border-color: var(--pp-hub-button-bg-highlight-disabled);
+    color: var(--pp-hub-button-text-disabled);
+}
+
+.pp-hub-root button.is-tertiary {
+    background-color: var(--pp-hub-button-bg-tertiary);
+    color: var(--pp-hub-button-text-tertiary);
+    border-color: none;
+}
+
+.pp-hub-root button.is-tertiary:hover {
+    background-color: var(--pp-hub-button-bg-tertiary-lighter);
+    border-color: var(--pp-hub-button-bg-tertiary-lighter);
+}
+
+.pp-hub-root button.is-tertiary:active {
+    background-color: var(--pp-hub-button-bg-tertiary-darker);
+    border-color: var(--pp-hub-button-bg-tertiary-darker);
+}
+
+.pp-hub-root button.is-tertiary:focus {
+    background-color: var(--pp-hub-button-bg-tertiary-lighter);
+    border-color: none;
+}
+
+.pp-hub-root button.is-tertiary:disabled {
+    color: var(--pp-hub-button-text-disabled);
+}
+
+.pp-hub-root button.is-link {
+    background-color: unset;
+    color: var(--pp-hub-text-primary);
+    border: none;
+}
+
+.pp-hub-root button.is-link:hover {
+    background-color: unset;
+    color: var(--pp-hub-text-link-hover);
+}
+
+.pp-hub-root button.is-link:active {
+    background-color: unset;
+}
+
+.pp-hub-root button.is-link:focus {
+    background-color: unset;
+    color: var(--pp-hub-text-link-hover);
+}
+
+.pp-hub-root button.is-link:disabled {
+    color: var(--pp-hub-button-text-disabled);
+}
+
+/*!*************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/components/buttons/help-button.css ***!
+  \*************************************************************************************************/
+/* HelpButton Component */
+
+.pp-hub-help-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--pp-hub-spacing-sm) var(--pp-hub-spacing-lg);
+    font-size: var(--pp-hub-font-size-sm);
+    font-weight: var(--pp-hub-font-weight-medium);
+    line-height: 1;
+    text-decoration: none;
+    border: 1px solid var(--pp-hub-border-primary);
+    border-radius: var(--pp-hub-radius-md);
+    background-color: var(--pp-hub-bg-primary);
+    color: var(--pp-hub-text-primary);
+    cursor: pointer;
+    transition: all var(--pp-hub-transition-fast);
+    user-select: none;
+}
+
+/* Hover state */
+.pp-hub-help-button:hover {
+    background-color: var(--pp-hub-bg-secondary);
+    border-color: var(--pp-hub-border-secondary);
+    transform: translateY(-1px);
+    box-shadow: var(--pp-hub-shadow-sm);
+}
+
+/* Focus state */
+.pp-hub-help-button:focus {
+    outline: 2px solid var(--pp-hub-border-focus);
+    outline-offset: 2px;
+}
+
+/* Active state */
+.pp-hub-help-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Primary variant */
+.pp-hub-help-button--primary {
+    background-color: var(--pp-hub-primary-color);
+    color: var(--pp-hub-text-inverse);
+    border-color: var(--pp-hub-primary-color);
+}
+
+.pp-hub-help-button--primary:hover {
+    background-color: var(--pp-hub-tertiary-color);
+    border-color: var(--pp-hub-tertiary-color);
+}
+
+/* Secondary variant */
+.pp-hub-help-button--secondary {
+    background-color: var(--pp-hub-secondary-color);
+    color: var(--pp-hub-text-primary);
+    border-color: var(--pp-hub-secondary-color);
+}
+
+.pp-hub-help-button--secondary:hover {
+    background-color: #e6a000;
+    border-color: #e6a000;
+}
+
+/* Ghost variant */
+.pp-hub-help-button--ghost {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--pp-hub-text-secondary);
+}
+
+.pp-hub-help-button--ghost:hover {
+    background-color: var(--pp-hub-bg-secondary);
+    color: var(--pp-hub-text-primary);
+}
+
+/* Sizes */
+.pp-hub-help-button--small {
+    padding: var(--pp-hub-spacing-xs) var(--pp-hub-spacing-md);
+    font-size: var(--pp-hub-font-size-xs);
+}
+
+.pp-hub-help-button--large {
+    padding: var(--pp-hub-spacing-md) var(--pp-hub-spacing-xl);
+    font-size: var(--pp-hub-font-size-lg);
+}
+
+/* Disabled state */
+.pp-hub-help-button:disabled,
+.pp-hub-help-button--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Icon styling */
+.pp-hub-help-button__icon {
+    width: 16px;
+    height: 16px;
+    margin-right: var(--pp-hub-spacing-xs);
+}
+
+.pp-hub-help-button--icon-only .pp-hub-help-button__icon {
+    margin-right: 0;
+}
+
+/* Loading state */
+.pp-hub-help-button--loading {
+    position: relative;
+    color: transparent;
+}
+
+.pp-hub-help-button--loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    border-right-color: transparent;
+    animation: pp-hub-spinner 0.75s linear infinite;
+}
+
+@keyframes pp-hub-spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Full width variant */
+.pp-hub-help-button--full-width {
+    width: 100%;
+}
+
+/*!*******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/components/plugins-list/plugins-list.css ***!
+  \*******************************************************************************************************/
+.pp-hub-plugins-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-hub-spacing-md);
+    background: var(--pp-hub-bg-primary);
+    border-radius: var(--pp-hub-radius-lg);
+}
+
+.pp-hub-plugins-list-item {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-lg);
+    align-items: center;
+    padding: var(--pp-hub-spacing-xl);
+    border-bottom: 1px solid var(--pp-hub-border-primary);
+    min-height: 110px;
+}
+
+.pp-hub-plugins-list-item-icon {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.pp-hub-plugins-list-item-icon img {
+    object-fit: contain;
+    border-radius: var(--pp-hub-radius-md);
+    width: 48px;
+    height: 48px;
+}
+
+.pp-hub-plugins-list-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-hub-spacing-sm);
+}
+
+.pp-hub-plugins-list-item-name {
+    font-size: var(--pp-hub-font-size-lg);
+    font-weight: var(--pp-hub-font-weight-bold);
+}
+
+.pp-hub-plugins-list-item-description {
+    font-size: var(--pp-hub-font-size-md);
+    color: var(--pp-hub-text-secondary);
+}
+
+.pp-hub-plugins-list-item-status {
+    font-size: var(--pp-hub-font-size-sm);
+    color: var(--pp-hub-text-secondary);
+}
+
+.pp-hub-plugins-list-item-actions {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-sm);
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.pp-hub-plugins-list-item-actions button {
+    max-width: 140px;
+}
+
+/*!*******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/components/filter/filter-buttons-bar.css ***!
+  \*******************************************************************************************************/
+/* FilterButtonsBar Component */
+
+.publishpress-hub-filter-buttons-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pp-hub-button-gap);
+    background-color: var(--pp-hub-bg-primary);
+}
+
+.publishpress-hub-filter-button {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--pp-hub-filter-button-padding) !important;
+    border-radius: var(--pp-hub-radius-md);
+    font-size: var(--pp-hub-font-size-sm);
+    font-weight: var(--pp-hub-font-weight-medium);
+    cursor: pointer;
+    transition: var(--pp-hub-transition-fast);
+    color: var(--pp-hub-text-primary);
+    background: transparent;
+    border: none;
+}
+
+button.publishpress-hub-filter-button:hover {
+    background: var(--pp-hub-bg-tertiary) !important;
+    color: var(--pp-hub-text-secondary) !important;
+}
+
+.publishpress-hub-filter-button.active {
+    background: var(--pp-hub-primary-color) !important;
+    color: var(--pp-hub-text-inverse) !important;
+    box-shadow: var(--pp-hub-shadow-md);
+}
+
+.publishpress-hub-filter-button.active:hover {
+    background: var(--pp-hub-primary-color) !important;
+    color: var(--pp-hub-text-inverse) !important;
+}
+
+.publishpress-hub-filter-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* FilterBar Component */
+.publishpress-hub-filter-container {
+    padding-bottom: var(--pp-hub-spacing-lg);
+}
+
+.publishpress-hub-filter-mobile {
+    display: block;
+}
+
+.publishpress-hub-filter-desktop {
+    display: none;
+    gap: var(--pp-hub-spacing-xs);
+    background: var(--pp-hub-bg-primary);
+    border-radius: var(--pp-hub-radius-lg);
+    padding: var(--pp-hub-filter-container-padding);
+    margin-bottom: var(--pp-hub-spacing-xl);
+    box-shadow: var(--pp-hub-shadow-sm);
+}
+
+.publishpress-hub-filter-label-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.publishpress-hub-filter-select {
+    display: block;
+    width: 100%;
+    max-width: none;
+    padding: var(--pp-hub-spacing-sm) 0;
+    font-size: var(--pp-hub-font-size-md);
+    line-height: var(--pp-hub-line-height-normal);
+    border: 1px solid var(--pp-hub-border-input);
+    border-radius: var(--pp-hub-radius-md);
+    background-color: var(--pp-hub-form-bg);
+    color: var(--pp-hub-form-text);
+    font-family: var(--pp-hub-font-family-primary);
+    transition: var(--pp-hub-transition-fast);
+}
+
+.publishpress-hub-filter-select:focus {
+    outline: none;
+    border-color: var(--pp-hub-border-input-focus);
+    box-shadow: 0 0 0 1px var(--pp-hub-border-input-focus);
+}
+
+/* Responsive breakpoints */
+@media (min-width: 640px) {
+    .publishpress-hub-filter-mobile {
+        display: none;
+    }
+
+    .publishpress-hub-filter-desktop {
+        display: block;
+    }
+
+    .publishpress-hub-filter-select {
+        font-size: var(--pp-hub-font-size-sm);
+        line-height: var(--pp-hub-line-height-tight);
+    }
+}
+
+/*!***********************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/main.css ***!
+  \***********************************************************************/
+/* PublishPress Hub - Main CSS Entry Point */
+
+/* 1. Core Foundation */
+
+/* 2. Theme System */
+
+/* 3. Component Styles */
+
+/* 4. WordPress Admin Compatibility */
+/* Ensure our styles don't conflict with WordPress admin */
+.pp-hub-root {
+    /* Create an isolated styling context */
+    isolation: isolate;
+}
+
+/* Reset WordPress admin table styles that might interfere */
+.pp-hub-root table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.pp-hub-root th,
+.pp-hub-root td {
+    text-align: left;
+    vertical-align: top;
+}
+
+/* Override WordPress button styles in our context */
+.pp-hub-root .button,
+.pp-hub-root .button-primary,
+.pp-hub-root .button-secondary {
+    all: unset;
+}
+
+/* Responsive container queries support */
+@supports (container-type: inline-size) {
+    .pp-hub-container {
+        container-type: inline-size;
+    }
+
+    @container (max-width: 768px) {
+        .pp-hub-mobile-stack {
+            flex-direction: column;
+        }
+    }
+}
+
+/*!***********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./assets/css/admin-page.css ***!
+  \***********************************************************************************************************************/
+/* Import the complete CSS system */
+
+.publishpress-hub-admin-page-loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    gap: 16px;
+}
+
+.publishpress-hub-admin-page-loading p {
+    font-size: 16px;
+    color: #50575e;
+    text-align: center;
+}
+
+.publishpress-hub-admin-page-loading::before {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 3px solid #e9ecef;
+    border-top: 3px solid #0073aa;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/*# sourceMappingURL=admin-page.css.map*/
