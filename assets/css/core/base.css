@@ -11,7 +11,6 @@
     font-size: var(--pp-hub-font-size-md);
     line-height: var(--pp-hub-line-height-normal);
     color: var(--pp-hub-text-primary);
-    background-color: var(--pp-hub-bg-primary);
 }
 
 /* Reset button styles to avoid WordPress conflicts */

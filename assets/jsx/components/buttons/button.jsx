@@ -16,6 +16,7 @@ const ButtonComponent = ({
     title,
     style,
     children,
+    isFullWidth,
     ...restProps
 }) => {
     const targetValue = useMemo(() => {
@@ -27,8 +28,13 @@ const ButtonComponent = ({
     }, [rel, href]);
 
     const buttonClassName = useMemo(() => {
-        return `pp-hub-button ${className ? className : ''}`;
-    }, [variant, className]);
+        let variantClassName = '';
+        if (variant === 'highlight') {
+            variantClassName = 'is-highlight';
+        }
+
+        return `pp-hub-button ${variantClassName} ${className ? className : ''} ${isFullWidth ? 'is-full-width' : ''}`;
+    }, [className, isFullWidth, variant]);
 
     return (
         <WPButton

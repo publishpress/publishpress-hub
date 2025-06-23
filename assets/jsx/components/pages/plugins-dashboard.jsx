@@ -47,8 +47,6 @@ const PluginsDashboardComponent = () => {
         fetchPlugins();
     }, [fetchPlugins]);
 
-    console.debug(plugins, filterCounts);
-
     const filterOptions = useMemo(() => {
         return [
             {

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--pp-hub-spacing-md);
-    background-color: var(--pp-hub-bg-secondary);
+    background: var(--pp-hub-bg-primary);
     border-radius: var(--pp-hub-radius-lg);
 }
 
@@ -53,9 +53,10 @@
     display: flex;
     flex-direction: row;
     gap: var(--pp-hub-spacing-sm);
+    width: 100%;
+    justify-content: flex-end;
 }
 
 .pp-hub-plugins-list-item-actions button {
-    width: 100%;
+    max-width: 140px;
 }
-

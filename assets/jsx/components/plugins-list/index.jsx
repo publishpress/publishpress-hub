@@ -12,9 +12,6 @@ const PluginsListComponent = ({
     return (
         <div className="pp-hub-plugins-list">
             {plugins.map((plugin) => {
-
-
-
                 return (
                     <div key={`plugin-${plugin.slugFree}`} className='pp-hub-plugins-list-item'>
                         <div className='pp-hub-plugins-list-item-icon'>
@@ -24,11 +21,10 @@ const PluginsListComponent = ({
                             <div className='pp-hub-plugins-list-item-name'>{plugin.name}{plugin.isPro && ' Pro'}</div>
                             <div className='pp-hub-plugins-list-item-description'>{plugin.description}</div>
                         </div>
-                        <div className='pp-hub-plugins-list-item-status'>
-                            <span className='pp-hub-plugins-list-item-status-label'>{plugin.status}</span>
-                        </div>
                         <div className='pp-hub-plugins-list-item-actions'>
-                            <Button variant='secondary'>{__('Install', 'publishpress-hub')}</Button>
+                            <span className='pp-hub-plugins-list-item-status-label'>{plugin.status}</span>
+
+                            <Button variant='secondary' style={{ width: '100%' }}>{__('Install', 'publishpress-hub')}</Button>
                         </div>
                     </div>
                 );

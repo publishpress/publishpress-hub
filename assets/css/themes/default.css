@@ -2,9 +2,24 @@
 [data-theme="default"] {
     /* Brand Colors */
     --pp-hub-primary-color: #655997;
+    --pp-hub-primary-color-darker: #50467e;
+    --pp-hub-primary-color-lighter: #7a6faf;
+    --pp-hub-primary-color-disabled: #3a345e;
+
     --pp-hub-secondary-color: #ffb200;
+    --pp-hub-secondary-color-darker: #e69900;
+    --pp-hub-secondary-color-lighter: #ffc133;
+    --pp-hub-secondary-color-disabled: #c28400;
+
     --pp-hub-tertiary-color: #1b004f;
+    --pp-hub-tertiary-color-darker: #150048;
+    --pp-hub-tertiary-color-lighter: #2f005e;
+    --pp-hub-tertiary-color-disabled: #0d0027;
+
     --pp-hub-accent-color: #00a0d2;
+    --pp-hub-accent-color-darker: #0080b0;
+    --pp-hub-accent-color-lighter: #00b3e6;
+    --pp-hub-accent-color-disabled: #005066;
 
     /* Semantic Colors */
     --pp-hub-success-color: #46b450;
@@ -13,21 +28,56 @@
     --pp-hub-info-color: #00a0d2;
 
     /* Background Colors */
-    --pp-hub-bg-primary: transparent;
-    --pp-hub-bg-secondary: #ffffff;
-    --pp-hub-bg-tertiary: #f6f7f7;
+    --pp-hub-bg-primary: #ffffff;
+    --pp-hub-bg-secondary: #f6f7f7;
+    --pp-hub-bg-tertiary: #dfdfdf;
     --pp-hub-bg-overlay: rgba(0, 0, 0, 0.6);
 
     /* Text Colors */
     --pp-hub-text-primary: #1e1e1e;
     --pp-hub-text-secondary: #646970;
-    --pp-hub-text-tertiary: #8c8f94;
+    --pp-hub-text-tertiary: #444548;
     --pp-hub-text-inverse: #ffffff;
+    --pp-hub-text-disabled: #767b82;
     --pp-hub-text-link: var(--pp-hub-primary-color);
-    --pp-hub-text-link-hover: var(--pp-hub-tertiary-color);
+    --pp-hub-text-link-hover: var(--pp-hub-primary-color-lighter);
 
     /* Border Colors */
     --pp-hub-border-primary: #ededed;
     --pp-hub-border-secondary: #cfd0d5;
     --pp-hub-border-focus: var(--pp-hub-primary-color);
+
+    /* Button Colors */
+    --pp-hub-button-bg-primary: var(--pp-hub-primary-color);
+    --pp-hub-button-bg-primary-lighter: var(--pp-hub-primary-color-lighter);
+    --pp-hub-button-bg-primary-darker: var(--pp-hub-primary-color-darker);
+    --pp-hub-button-bg-primary-disabled: var(--pp-hub-primary-color-disabled);
+
+    --pp-hub-button-bg-secondary: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-secondary-lighter: var(--pp-hub-bg-secondary);
+    --pp-hub-button-bg-secondary-darker: var(--pp-hub-bg-tertiary);
+    --pp-hub-button-bg-secondary-disabled: transparent
+
+    --pp-hub-button-bg-tertiary: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-tertiary-lighter: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-tertiary-darker: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-tertiary-disabled: var(--pp-hub-tertiary-color-disabled);
+
+    --pp-hub-button-bg-highlight: var(--pp-hub-secondary-color);
+    --pp-hub-button-bg-highlight-lighter: var(--pp-hub-secondary-color-lighter);
+    --pp-hub-button-bg-highlight-darker: var(--pp-hub-secondary-color-darker);
+    --pp-hub-button-bg-highlight-disabled: var(--pp-hub-secondary-color-disabled);
+
+    --pp-hub-button-text-primary: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-secondary: var(--pp-hub-text-secondary);
+    --pp-hub-button-text-tertiary: var(--pp-hub-text-tertiary);
+    --pp-hub-button-text-inverse: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-disabled: var(--pp-hub-text-disabled);
+    --pp-hub-button-text-link: none;
+
+    --pp-hub-button-border-primary: var(--pp-hub-border-primary);
+    --pp-hub-button-border-secondary: var(--pp-hub-border-secondary);
+    --pp-hub-button-border-tertiary: var(--pp-hub-border-tertiary);
+    --pp-hub-button-border-highlight: var(--pp-hub-border-tertiary);
+    --pp-hub-button-border-disabled: var(--pp-hub-border-secondary);
 }

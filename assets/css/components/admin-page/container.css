@@ -2,7 +2,6 @@
 
 .pp-hub-admin-page-container {
     min-height: 100vh;
-    background-color: var(--pp-hub-bg-primary);
     font-family: var(--pp-hub-font-family-primary);
     color: var(--pp-hub-text-primary);
 }

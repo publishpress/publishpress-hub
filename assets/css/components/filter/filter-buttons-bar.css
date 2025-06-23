@@ -4,6 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--pp-hub-button-gap);
+    background-color: var(--pp-hub-bg-primary);
 }
 
 .publishpress-hub-filter-button {
@@ -53,7 +54,7 @@ button.publishpress-hub-filter-button:hover {
 .publishpress-hub-filter-desktop {
     display: none;
     gap: var(--pp-hub-spacing-xs);
-    background: var(--pp-hub-bg-secondary);
+    background: var(--pp-hub-bg-primary);
     border-radius: var(--pp-hub-radius-lg);
     padding: var(--pp-hub-filter-container-padding);
     margin-bottom: var(--pp-hub-spacing-xl);
