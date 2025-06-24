@@ -1,4 +1,4 @@
-import { Popover } from '@wordpress/components';
+import { Popover, SlotFillProvider } from '@wordpress/components';
 
 export const AdminPageContainer = ({
     className = '',
@@ -16,7 +16,9 @@ export const AdminPageContainer = ({
             data-theme="default"
         >
             {children}
-            <Popover.Slot />
+            <SlotFillProvider>
+                <Popover.Slot />
+            </SlotFillProvider>
         </div>
     )
 }
