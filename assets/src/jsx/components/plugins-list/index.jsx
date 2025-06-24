@@ -65,8 +65,16 @@ const PluginsListComponent = ({
                                 <Button variant='secondary' style={{ width: '100%' }}>{__('Install', 'publishpress-hub')}</Button>
                             )}
 
-                            {plugin.isInstalled && (
-                                <Button variant='secondary' style={{ width: '100%' }}>{__('Manage', 'publishpress-hub')}</Button>
+                            {plugin.isInstalled && plugin.isPro && plugin.isLicensed && (
+                                <Button variant='secondary' style={{ width: '100%' }}>{__('Manage License', 'publishpress-hub')}</Button>
+                            )}
+
+                            {plugin.isInstalled && plugin.isPro && !plugin.isLicensed && (
+                                <Button variant='secondary' style={{ width: '100%' }}>{__('Activate License', 'publishpress-hub')}</Button>
+                            )}
+
+                            {plugin.isInstalled && !plugin.isPro && (
+                                <Button variant='highlight' style={{ width: '100%' }}>{__('Upgrade to Pro', 'publishpress-hub')}</Button>
                             )}
                         </div>
                     </div>
