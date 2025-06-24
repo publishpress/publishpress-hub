@@ -1,4 +1,4 @@
-import { memo } from '@wordpress/element';
+import { memo, useCallback } from '@wordpress/element';
 
 import { __ } from '@publishpress/hub-i18n';
 import classNames from 'classnames';
@@ -22,7 +22,7 @@ const PluginsListComponent = ({
         'not-installed': !plugin.isInstalled,
     });
 
-    const getStatusFlagTooltipText = (plugin) => {
+    const getStatusFlagTooltipText = useCallback((plugin) => {
         if (!plugin.isInstalled) {
             return __('This plugin is not installed.', 'publishpress-hub');
         }
@@ -34,9 +34,9 @@ const PluginsListComponent = ({
         if (!plugin.isActive) {
             return __('This plugin is not active.', 'publishpress-hub');
         }
-    };
+    }, []);
 
-    const ActionButton = ({ plugin }) => {
+    const ActionButton = useCallback(({ plugin }) => {
         if (!plugin.isInstalled) {
             return (
                 <Button variant='secondary'>{__('Install', 'publishpress-hub')}</Button>
@@ -62,9 +62,9 @@ const PluginsListComponent = ({
         }
 
         return null;
-    };
+    }, []);
 
-    const StatusFlag = ({ plugin }) => {
+    const StatusFlag = useCallback(({ plugin }) => {
         if (!plugin.isInstalled) {
             return (
                 <Badge text={__('Not Installed', 'publishpress-hub')} className='not-installed' />
@@ -90,7 +90,7 @@ const PluginsListComponent = ({
         }
 
         return null;
-    };
+    }, []);
 
     return (
         <div className="pp-hub-plugins-list">
