@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import { Button } from '../buttons/button';
 import { Tooltip } from '../tooltip';
+import { Badge } from '../badge/badge';
 
 const PluginsListComponent = ({
     plugins,
@@ -35,6 +36,62 @@ const PluginsListComponent = ({
         }
     };
 
+    const ActionButton = ({ plugin }) => {
+        if (!plugin.isInstalled) {
+            return (
+                <Button variant='secondary'>{__('Install', 'publishpress-hub')}</Button>
+            );
+        }
+
+        if (plugin.isPro && plugin.isLicensed) {
+            return (
+                <Button variant='secondary'>{__('Manage License', 'publishpress-hub')}</Button>
+            );
+        }
+
+        if (plugin.isPro && !plugin.isLicensed) {
+            return (
+                <Button variant='secondary'>{__('Activate License', 'publishpress-hub')}</Button>
+            );
+        }
+
+        if (!plugin.isPro) {
+            return (
+                <Button variant='highlight'>{__('Upgrade to Pro', 'publishpress-hub')}</Button>
+            );
+        }
+
+        return null;
+    };
+
+    const StatusFlag = ({ plugin }) => {
+        if (!plugin.isInstalled) {
+            return (
+                <Badge text={__('Not Installed', 'publishpress-hub')} className='not-installed' />
+            )
+        }
+
+        if (!plugin.isPro) {
+            return (
+                <Badge text={__('Free', 'publishpress-hub')} className='free' />
+            );
+        }
+
+        if (plugin.isLicensed) {
+            return (
+                <Badge text={__('Licensed', 'publishpress-hub')} className='licensed' />
+            );
+        }
+
+        if (!plugin.isLicensed) {
+            return (
+                <Badge text={__('Unlicensed', 'publishpress-hub')} className='unlicensed' />
+            );
+        }
+
+        return null;
+    };
+
     return (
         <div className="pp-hub-plugins-list">
             {plugins.map((plugin) => {
@@ -59,23 +116,8 @@ const PluginsListComponent = ({
                             <div className='pp-hub-plugins-list-item-description'>{plugin.description}</div>
                         </div>
                         <div className='pp-hub-plugins-list-item-actions'>
-                            <span className='pp-hub-plugins-list-item-status-label'>{plugin.status}</span>
-
-                            {!plugin.isInstalled && (
-                                <Button variant='secondary' style={{ width: '100%' }}>{__('Install', 'publishpress-hub')}</Button>
-                            )}
-
-                            {plugin.isInstalled && plugin.isPro && plugin.isLicensed && (
-                                <Button variant='secondary' style={{ width: '100%' }}>{__('Manage License', 'publishpress-hub')}</Button>
-                            )}
-
-                            {plugin.isInstalled && plugin.isPro && !plugin.isLicensed && (
-                                <Button variant='secondary' style={{ width: '100%' }}>{__('Activate License', 'publishpress-hub')}</Button>
-                            )}
-
-                            {plugin.isInstalled && !plugin.isPro && (
-                                <Button variant='highlight' style={{ width: '100%' }}>{__('Upgrade to Pro', 'publishpress-hub')}</Button>
-                            )}
+                            <StatusFlag plugin={plugin} />
+                            <ActionButton plugin={plugin} />
                         </div>
                     </div>
                 );

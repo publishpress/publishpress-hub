@@ -88,4 +88,18 @@
     /* Tooltip Colors */
     --pp-hub-tooltip-bg: #000000;
     --pp-hub-tooltip-text: #ffffff;
+
+    /* Badge Colors */
+    --pp-hub-badge-bg: #f0f0f0;
+    --pp-hub-badge-bg-installed: #46b450;
+    --pp-hub-badge-bg-not-installed: #f3f4f6;
+    --pp-hub-badge-bg-free: #dbeafe;
+    --pp-hub-badge-bg-licensed: #dcfce7;
+    --pp-hub-badge-bg-unlicensed: #fef3c7;
+    --pp-hub-badge-text: #333;
+    --pp-hub-badge-text-installed: #ffffff;
+    --pp-hub-badge-text-not-installed: #6b7280;
+    --pp-hub-badge-text-free: #1e40af;
+    --pp-hub-badge-text-licensed: #166534;
+    --pp-hub-badge-text-unlicensed: #92400e;
 }

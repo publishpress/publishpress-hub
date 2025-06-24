@@ -1,0 +1,39 @@
+.pp-hub-badge {
+    padding: 4px 12px;
+    border-radius: 16px;
+    background-color: var(--pp-hub-badge-bg);
+    color: var(--pp-hub-badge-text);
+    box-sizing: border-box;
+    line-height: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin-right: var(--pp-hub-spacing-md);
+}
+
+.pp-hub-badge.installed {
+    background-color: var(--pp-hub-badge-bg-installed);
+    color: var(--pp-hub-badge-text-installed);
+}
+
+.pp-hub-badge.not-installed {
+    background-color: var(--pp-hub-badge-bg-not-installed);
+    color: var(--pp-hub-badge-text-not-installed);
+}
+
+.pp-hub-badge.free {
+    background-color: var(--pp-hub-badge-bg-free);
+    color: var(--pp-hub-badge-text-free);
+}
+
+.pp-hub-badge.licensed {
+    background-color: var(--pp-hub-badge-bg-licensed);
+    color: var(--pp-hub-badge-text-licensed);
+}
+
+.pp-hub-badge.unlicensed {
+    background-color: var(--pp-hub-badge-bg-unlicensed);
+    color: var(--pp-hub-badge-text-unlicensed);
+}

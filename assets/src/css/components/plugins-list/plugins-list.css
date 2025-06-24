@@ -53,6 +53,7 @@
 
 .pp-hub-plugins-list-item-actions {
     display: flex;
+    align-items: center;
     flex-direction: row;
     gap: var(--pp-hub-spacing-sm);
     width: 100%;
