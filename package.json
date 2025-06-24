@@ -15,7 +15,8 @@
     "lasttranslator": "PublishPress Hub Translate Team"
   },
   "dependencies": {
-    "@wordpress/data-controls": "^4.25.0"
+    "@wordpress/data-controls": "^4.25.0",
+    "classnames": "^2.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.24.3",

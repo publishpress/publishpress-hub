@@ -1,6 +1,7 @@
 import { memo } from '@wordpress/element';
 
 import { __ } from '@publishpress/hub-i18n';
+import classNames from 'classnames';
 
 import { Button } from '../buttons/button';
 import { Tooltip } from '../tooltip';
@@ -9,10 +10,30 @@ const PluginsListComponent = ({
     plugins,
     pluginIconBaseUrl,
 }) => {
-    const statusFlagClass = (isActive) => isActive ? 'active' : 'inactive';
-    const statusFlagTooltip = (isActive) => isActive ?
-        __('This plugin is active.', 'publishpress-hub') :
-        __('This plugin is inactive.', 'publishpress-hub');
+    const getStatusFlagClass = (plugin) => classNames({
+        'active': plugin.isActive,
+        'inactive': !plugin.isActive,
+        'pro': plugin.isPro,
+        'free': !plugin.isPro,
+        'licensed': plugin.isLicensed,
+        'unlicensed': !plugin.isLicensed,
+        'installed': plugin.isInstalled,
+        'not-installed': !plugin.isInstalled,
+    });
+
+    const getStatusFlagTooltipText = (plugin) => {
+        if (!plugin.isInstalled) {
+            return __('This plugin is not installed.', 'publishpress-hub');
+        }
+
+        if (plugin.isActive) {
+            return __('This plugin is active.', 'publishpress-hub');
+        }
+
+        if (!plugin.isActive) {
+            return __('This plugin is not active.', 'publishpress-hub');
+        }
+    };
 
     return (
         <div className="pp-hub-plugins-list">
@@ -20,14 +41,14 @@ const PluginsListComponent = ({
                 return (
                     <div
                         key={`plugin-${plugin.slugFree}`}
-                        className={`pp-hub-plugins-list-item ${statusFlagClass(plugin.isActive)}`}
+                        className={`pp-hub-plugins-list-item ${getStatusFlagClass(plugin)}`}
                     >
                         <div className='pp-hub-plugins-list-item-icon'>
                             <img src={`${pluginIconBaseUrl}images/plugin-icons/${plugin.iconFile}-96x96.png`} alt={plugin.name} />
                         </div>
                         <div className='pp-hub-plugins-list-item-info'>
                             <Tooltip
-                                text={statusFlagTooltip(plugin.isActive)}
+                                text={getStatusFlagTooltipText(plugin)}
                                 placement='top'
                                 useCustom={true}
                             >

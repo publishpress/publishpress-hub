@@ -61,7 +61,7 @@ const PluginsDashboardComponent = () => {
             },
             {
                 label: __('Active', 'publishpress-hub'),
-                value: 'licensed',
+                value: 'active',
                 total: filterCounts.active,
             },
             {

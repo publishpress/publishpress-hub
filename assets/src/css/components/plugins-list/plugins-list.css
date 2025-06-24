@@ -63,7 +63,7 @@
     max-width: 140px;
 }
 
-.pp-hub-plugins-list-item-name::after {
+.pp-hub-plugins-list-item.installed .pp-hub-plugins-list-item-name::after {
     width: 12px;
     height: 12px;
     border-radius: 50%;
