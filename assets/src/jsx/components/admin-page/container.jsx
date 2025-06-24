@@ -1,3 +1,5 @@
+import { Popover } from '@wordpress/components';
+
 export const AdminPageContainer = ({
     className = '',
     variant = 'contained', // 'contained' | 'fullwidth'
@@ -14,6 +16,7 @@ export const AdminPageContainer = ({
             data-theme="default"
         >
             {children}
+            <Popover.Slot />
         </div>
     )
 }

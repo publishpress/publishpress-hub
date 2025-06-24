@@ -7,10 +7,12 @@ import { Tooltip } from '../tooltip';
 
 const PluginsListComponent = ({
     plugins,
-    isLoading,
     pluginIconBaseUrl,
 }) => {
     const statusFlagClass = (isActive) => isActive ? 'active' : 'inactive';
+    const statusFlagTooltip = (isActive) => isActive ?
+        __('This plugin is active.', 'publishpress-hub') :
+        __('This plugin is inactive.', 'publishpress-hub');
 
     return (
         <div className="pp-hub-plugins-list">
@@ -24,7 +26,11 @@ const PluginsListComponent = ({
                             <img src={`${pluginIconBaseUrl}images/plugin-icons/${plugin.iconFile}-96x96.png`} alt={plugin.name} />
                         </div>
                         <div className='pp-hub-plugins-list-item-info'>
-                            <Tooltip text={plugin.name} placement='top'>
+                            <Tooltip
+                                text={statusFlagTooltip(plugin.isActive)}
+                                placement='top'
+                                useCustom={true}
+                            >
                                 <div className='pp-hub-plugins-list-item-name'>
                                     {plugin.name}{plugin.isPro && ' Pro'}
                                 </div>

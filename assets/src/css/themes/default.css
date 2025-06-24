@@ -84,4 +84,8 @@
     /* Status Colors */
     --pp-hub-status-color-active: #46b450;
     --pp-hub-status-color-inactive: #d4d4d4;
+
+    /* Tooltip Colors */
+    --pp-hub-tooltip-bg: #000000;
+    --pp-hub-tooltip-text: #ffffff;
 }

@@ -30,4 +30,8 @@
     --pp-hub-border-primary: #3c3c3c;
     --pp-hub-border-secondary: #4a4a4a;
     --pp-hub-border-focus: var(--pp-hub-primary-color);
+
+    /* Tooltip Colors - Dark theme */
+    --pp-hub-tooltip-bg: #000000;
+    --pp-hub-tooltip-text: #ffffff;
 }
