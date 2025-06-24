@@ -18,7 +18,7 @@
     transition: var(--pp-hub-transition-fast);
     color: var(--pp-hub-text-primary);
     background: transparent;
-    border: none;
+    border: none !important;
 }
 
 button.publishpress-hub-filter-button:hover {
