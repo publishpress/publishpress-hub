@@ -6,15 +6,36 @@ export const getPlugins = (state) => {
     return state.plugins;
 }
 
+// Memoization cache for getFilteredPlugins
+let lastPluginsForFiltering = null;
+let lastSelectedFilterForFiltering = null;
+let lastFilteredPlugins = null;
+
 export const getFilteredPlugins = (state) => {
     const plugins = state.plugins;
     const selectedFilter = state.selectedFilter;
 
-    if (!selectedFilter || selectedFilter === 'all') {
-        return plugins;
+    // If neither plugins nor selectedFilter have changed, return cached result
+    if (plugins === lastPluginsForFiltering &&
+        selectedFilter === lastSelectedFilterForFiltering &&
+        lastFilteredPlugins !== null) {
+        return lastFilteredPlugins;
     }
 
-    return plugins.filter((plugin) => filterPlugin(plugin, selectedFilter));
+    // Calculate filtered plugins
+    let filteredPlugins;
+    if (!selectedFilter || selectedFilter === 'all') {
+        filteredPlugins = plugins;
+    } else {
+        filteredPlugins = plugins.filter((plugin) => filterPlugin(plugin, selectedFilter));
+    }
+
+    // Cache the result
+    lastPluginsForFiltering = plugins;
+    lastSelectedFilterForFiltering = selectedFilter;
+    lastFilteredPlugins = filteredPlugins;
+
+    return filteredPlugins;
 }
 
 export const getIsLoading = (state) => {
@@ -29,16 +50,32 @@ export const getCurrentFilter = (state) => {
     return state.currentFilter;
 }
 
+// Memoization cache for getFilterCounts
+let lastPluginsForFilterCounts = null;
+let lastFilterCountsForFilterCounts = null;
+
 export const getFilterCounts = (state) => {
     const plugins = state.plugins;
 
-    return {
+    // If plugins haven't changed, return cached result
+    if (plugins === lastPluginsForFilterCounts && lastFilterCountsForFilterCounts !== null) {
+        return lastFilterCountsForFilterCounts;
+    }
+
+    // Calculate new filter counts
+    const filterCounts = {
         all: plugins.filter((plugin) => filterPlugin(plugin, 'all')).length,
         unlicensed: plugins.filter((plugin) => filterPlugin(plugin, 'unlicensed')).length,
         active: plugins.filter((plugin) => filterPlugin(plugin, 'active')).length,
         inactive: plugins.filter((plugin) => filterPlugin(plugin, 'inactive')).length,
         notInstalled: plugins.filter((plugin) => filterPlugin(plugin, 'notInstalled')).length,
-    }
+    };
+
+    // Cache the result
+    lastPluginsForFilterCounts = plugins;
+    lastFilterCountsForFilterCounts = filterCounts;
+
+    return filterCounts;
 }
 
 const filterPlugin = (plugin, selectedFilter) => {
