@@ -62,3 +62,22 @@
 .pp-hub-plugins-list-item-actions button {
     max-width: 140px;
 }
+
+.pp-hub-plugins-list-item-name::after {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: var(--pp-hub-spacing-sm);
+    content: '.';
+    color: transparent;
+    line-height: 10px;
+}
+
+.pp-hub-plugins-list-item.active .pp-hub-plugins-list-item-name::after {
+    background-color: var(--pp-hub-status-color-active);
+}
+
+.pp-hub-plugins-list-item.inactive .pp-hub-plugins-list-item-name::after {
+    background-color: var(--pp-hub-status-color-inactive);
+}

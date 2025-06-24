@@ -32,5 +32,5 @@ interface PluginInterface
 
     public function isSamePlugin(PluginInterface $other): bool;
 
-    public function register(string $version, string $path): void;
+    public function register(string $version, string $filePath, $isPro = false): void;
 }

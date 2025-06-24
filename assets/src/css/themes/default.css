@@ -80,4 +80,8 @@
     --pp-hub-button-border-tertiary: var(--pp-hub-border-tertiary);
     --pp-hub-button-border-highlight: var(--pp-hub-border-tertiary);
     --pp-hub-button-border-disabled: var(--pp-hub-border-secondary);
+
+    /* Status Colors */
+    --pp-hub-status-color-active: #46b450;
+    --pp-hub-status-color-inactive: #d4d4d4;
 }

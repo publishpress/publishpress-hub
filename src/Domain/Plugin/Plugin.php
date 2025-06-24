@@ -53,28 +53,36 @@ class Plugin implements PluginInterface
     private ?string $filePath = null;
 
     /**
-     * The installation status of the plugin.
+     * Cache for installation status check.
      *
      * @since 1.0.0
-     * @var bool
+     * @var ?bool
      */
-    private bool $isInstalled = false;
+    private ?bool $installationStatusCache = null;
 
     /**
      * The activation status of the plugin.
      *
      * @since 1.0.0
-     * @var bool
+     * @var ?bool
      */
-    private bool $isActive = false;
+    private ?bool $isActive = null;
 
     /**
      * The license status of the plugin.
      *
      * @since 1.0.0
-     * @var bool
+     * @var ?bool
      */
-    private bool $isLicensed = false;
+    private ?bool $isLicensed = null;
+
+    /**
+     * Cache for pro status check.
+     *
+     * @since 1.0.0
+     * @var ?bool
+     */
+    private ?bool $proStatusCache = null;
 
     /**
      * The icon file of the plugin.
@@ -82,7 +90,7 @@ class Plugin implements PluginInterface
      * @since 1.0.0
      * @var string|null
      */
-    private ?string $iconFile = null;
+    private ?string $iconFile;
 
     /**
      * The description of the plugin.
@@ -90,15 +98,7 @@ class Plugin implements PluginInterface
      * @since 1.0.0
      * @var string|null
      */
-    private ?string $description = null;
-
-    /**
-     * The pro flag.
-     *
-     * @since 1.0.0
-     * @var bool
-     */
-    private bool $isPro = false;
+    private ?string $description;
 
     public function __construct(
         string $name,
@@ -202,7 +202,32 @@ class Plugin implements PluginInterface
      */
     public function isInstalled(): bool
     {
-        return $this->isInstalled;
+        if ($this->installationStatusCache !== null) {
+            return $this->installationStatusCache;
+        }
+
+        /*
+         * TODO: Check if the plugin registered itself as installed (this is the preferred way,
+         * since it make sure the plugin is found on non conventional paths).
+         *
+         * For now, we'll check if the plugin file exists in the plugin directory.
+         */
+
+        if (file_exists(WP_PLUGIN_DIR . '/' . $this->slugFree . '/' . $this->slugFree . '.php')) {
+            $this->installationStatusCache = true;
+            $this->proStatusCache = false;
+            return true;
+        }
+
+        if (file_exists(WP_PLUGIN_DIR . '/' . $this->slugPro . '/' . $this->slugPro . '.php')) {
+            $this->installationStatusCache = true;
+            $this->proStatusCache = true;
+            return true;
+        }
+
+        $this->installationStatusCache = false;
+        $this->proStatusCache = false;
+        return false;
     }
 
     /**
@@ -213,8 +238,19 @@ class Plugin implements PluginInterface
      */
     public function isActive(): bool
     {
-        if (! $this->isInstalled) {
+        if ($this->isActive !== null) {
+            return $this->isActive;
+        }
+
+        if (!$this->isInstalled()) {
             $this->isActive = false;
+            return false;
+        }
+
+        if ($this->isPro()) {
+            $this->isActive = is_plugin_active("{$this->slugPro}/{$this->slugPro}.php");
+        } else {
+            $this->isActive = is_plugin_active("{$this->slugFree}/{$this->slugFree}.php");
         }
 
         return $this->isActive;
@@ -228,10 +264,17 @@ class Plugin implements PluginInterface
      */
     public function isLicensed(): bool
     {
-        if (! $this->isInstalled) {
-            $this->isLicensed = false;
+        if ($this->isLicensed !== null) {
+            return $this->isLicensed;
         }
 
+        if (!$this->isInstalled()) {
+            $this->isLicensed = false;
+            return false;
+        }
+
+        // TODO: Implement actual license check
+        $this->isLicensed = false;
         return $this->isLicensed;
     }
 
@@ -243,7 +286,18 @@ class Plugin implements PluginInterface
      */
     public function isPro(): bool
     {
-        return $this->isPro;
+        if ($this->proStatusCache !== null) {
+            return $this->proStatusCache;
+        }
+
+        if (!$this->isInstalled()) {
+            $this->proStatusCache = false;
+            return false;
+        }
+
+        // If installed but proStatusCache is still null, default to false
+        $this->proStatusCache = false;
+        return $this->proStatusCache;
     }
 
     /**
@@ -270,14 +324,23 @@ class Plugin implements PluginInterface
         return $this->slugFree === $other->getSlugFree() || $this->slugPro === $other->getSlugPro();
     }
 
-    public function register(string $version, string $filePath): void
+    /**
+     * Register the plugin.
+     *
+     * @since 1.0.0
+     * @param string $version
+     * @param string $filePath
+     * @param bool $isPro
+     */
+    public function register(string $version, string $filePath, $isPro = false): void
     {
         $this->validateVersion($version);
         $this->validatePath($filePath);
 
         $this->version = $version;
         $this->filePath = $filePath;
-        $this->isInstalled = true;
+        $this->installationStatusCache = true;
+        $this->proStatusCache = (bool) $isPro;
     }
 
     /**
