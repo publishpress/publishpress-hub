@@ -8,7 +8,7 @@
     border-width: 1px;
     border-style: solid;
     border-color: var(--pp-hub-button-border-primary);
-    transition: all 0.2s ease-in-out;
+    transition: all 0.2s;
 }
 
 .pp-hub-root button:disabled {
@@ -25,17 +25,18 @@
 
 .pp-hub-root button:hover,
 .pp-hub-root button.is-secondary:hover {
-    background-color: var(--pp-hub-button-bg-secondary-lighter);
+    background-color: var(--pp-hub-button-bg-secondary-hover);
 }
 
 .pp-hub-root button:active,
 .pp-hub-root button.is-secondary:active {
-    background-color: var(--pp-hub-button-bg-secondary-darker);
+    background-color: var(--pp-hub-button-bg-secondary-active);
 }
 
 .pp-hub-root button:focus,
 .pp-hub-root button.is-secondary:focus {
-    background-color: var(--pp-hub-button-bg-secondary-lighter);
+    background-color: var(--pp-hub-button-bg-secondary-hover);
+    border-color: var(--pp-hub-button-border-secondary);
 }
 
 .pp-hub-root button:disabled,
@@ -51,18 +52,18 @@
 }
 
 .pp-hub-root button.is-primary:hover {
-    background-color: var(--pp-hub-button-bg-primary-lighter);
-    border-color: var(--pp-hub-button-bg-primary-lighter);
+    background-color: var(--pp-hub-button-bg-primary-hover);
+    border-color: var(--pp-hub-button-bg-primary-hover);
 }
 
 .pp-hub-root button.is-primary:active {
-    background-color: var(--pp-hub-button-bg-primary-darker);
-    border-color: var(--pp-hub-button-bg-primary-darker);
+    background-color: var(--pp-hub-button-bg-primary-active);
+    border-color: var(--pp-hub-button-bg-primary-active);
 }
 
 .pp-hub-root button.is-primary:focus {
-    background-color: var(--pp-hub-button-bg-primary-lighter);
-    border-color: var(--pp-hub-button-bg-primary-lighter);
+    background-color: var(--pp-hub-button-bg-primary-hover);
+    border-color: var(--pp-hub-button-bg-primary-hover);
 }
 
 .pp-hub-root button.is-primary:disabled {
@@ -78,8 +79,8 @@
 }
 
 .pp-hub-root button.is-highlight:hover {
-    background-color: var(--pp-hub-button-bg-highlight-lighter);
-    border-color: var(--pp-hub-button-bg-highlight-lighter);
+    background-color: var(--pp-hub-button-bg-highlight-hover);
+    border-color: var(--pp-hub-button-bg-highlight-hover);
 }
 
 .pp-hub-root button.is-highlight:active {
@@ -88,8 +89,8 @@
 }
 
 .pp-hub-root button.is-highlight:focus {
-    background-color: var(--pp-hub-button-bg-highlight-lighter);
-    border-color: var(--pp-hub-button-bg-highlight-lighter);
+    background-color: var(--pp-hub-button-bg-highlight-hover);
+    border-color: var(--pp-hub-button-bg-highlight-hover);
 }
 
 .pp-hub-root button.is-highlight:disabled {
@@ -105,17 +106,17 @@
 }
 
 .pp-hub-root button.is-tertiary:hover {
-    background-color: var(--pp-hub-button-bg-tertiary-lighter);
-    border-color: var(--pp-hub-button-bg-tertiary-lighter);
+    background-color: var(--pp-hub-button-bg-tertiary-hover);
+    border-color: var(--pp-hub-button-bg-tertiary-hover);
 }
 
 .pp-hub-root button.is-tertiary:active {
-    background-color: var(--pp-hub-button-bg-tertiary-darker);
-    border-color: var(--pp-hub-button-bg-tertiary-darker);
+    background-color: var(--pp-hub-button-bg-tertiary-active);
+    border-color: var(--pp-hub-button-bg-tertiary-active);
 }
 
 .pp-hub-root button.is-tertiary:focus {
-    background-color: var(--pp-hub-button-bg-tertiary-lighter);
+    background-color: var(--pp-hub-button-bg-tertiary-hover);
     border-color: none;
 }
 

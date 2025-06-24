@@ -2,14 +2,14 @@
 [data-theme="default"] {
     /* Brand Colors */
     --pp-hub-primary-color: #655997;
-    --pp-hub-primary-color-darker: #50467e;
-    --pp-hub-primary-color-lighter: #7a6faf;
-    --pp-hub-primary-color-disabled: #3a345e;
+    --pp-hub-primary-color-darker: #473d76;
+    --pp-hub-primary-color-lighter: #847ab4;
+    --pp-hub-primary-color-disabled: #4c495b;
 
     --pp-hub-secondary-color: #ffb200;
-    --pp-hub-secondary-color-darker: #e69900;
+    --pp-hub-secondary-color-darker: #d68f00;
     --pp-hub-secondary-color-lighter: #ffc133;
-    --pp-hub-secondary-color-disabled: #c28400;
+    --pp-hub-secondary-color-disabled: #aa8f54;
 
     --pp-hub-tertiary-color: #1b004f;
     --pp-hub-tertiary-color-darker: #150048;
@@ -49,23 +49,27 @@
 
     /* Button Colors */
     --pp-hub-button-bg-primary: var(--pp-hub-primary-color);
-    --pp-hub-button-bg-primary-lighter: var(--pp-hub-primary-color-lighter);
-    --pp-hub-button-bg-primary-darker: var(--pp-hub-primary-color-darker);
+    --pp-hub-button-bg-primary-hover: var(--pp-hub-primary-color-lighter);
+    --pp-hub-button-bg-primary-active: var(--pp-hub-primary-color-darker);
+    --pp-hub-button-bg-primary-focus: var(--pp-hub-primary-color-lighter);
     --pp-hub-button-bg-primary-disabled: var(--pp-hub-primary-color-disabled);
 
     --pp-hub-button-bg-secondary: var(--pp-hub-bg-primary);
-    --pp-hub-button-bg-secondary-lighter: var(--pp-hub-bg-secondary);
-    --pp-hub-button-bg-secondary-darker: var(--pp-hub-bg-tertiary);
+    --pp-hub-button-bg-secondary-hover: #e0ddec;
+    --pp-hub-button-bg-secondary-active: var(--pp-hub-bg-tertiary);
+    --pp-hub-button-bg-secondary-focus: var(--pp-hub-bg-tertiary);
     --pp-hub-button-bg-secondary-disabled: transparent
 
     --pp-hub-button-bg-tertiary: var(--pp-hub-bg-primary);
-    --pp-hub-button-bg-tertiary-lighter: var(--pp-hub-bg-primary);
-    --pp-hub-button-bg-tertiary-darker: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-tertiary-hover: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-tertiary-active: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-tertiary-focus: var(--pp-hub-bg-primary);
     --pp-hub-button-bg-tertiary-disabled: var(--pp-hub-tertiary-color-disabled);
 
     --pp-hub-button-bg-highlight: var(--pp-hub-secondary-color);
-    --pp-hub-button-bg-highlight-lighter: var(--pp-hub-secondary-color-lighter);
-    --pp-hub-button-bg-highlight-darker: var(--pp-hub-secondary-color-darker);
+    --pp-hub-button-bg-highlight-hover: var(--pp-hub-secondary-color-lighter);
+    --pp-hub-button-bg-highlight-active: var(--pp-hub-secondary-color-darker);
+    --pp-hub-button-bg-highlight-focus: var(--pp-hub-secondary-color-lighter);
     --pp-hub-button-bg-highlight-disabled: var(--pp-hub-secondary-color-disabled);
 
     --pp-hub-button-text-primary: var(--pp-hub-text-inverse);

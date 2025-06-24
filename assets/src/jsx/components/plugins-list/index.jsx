@@ -36,28 +36,64 @@ const PluginsListComponent = ({
         }
     }, []);
 
+    const onClickInstall = useCallback((plugin) => {
+        console.log('onClickInstall', plugin);
+    }, []);
+
+    const onClickManageLicense = useCallback((plugin) => {
+        console.log('onClickManageLicense', plugin);
+    }, []);
+
+    const onClickActivateLicense = useCallback((plugin) => {
+        console.log('onClickActivateLicense', plugin);
+    }, []);
+
+    const onClickUpgradeToPro = useCallback((plugin) => {
+        console.log('onClickUpgradeToPro', plugin);
+    }, []);
+
     const ActionButton = useCallback(({ plugin }) => {
         if (!plugin.isInstalled) {
             return (
-                <Button variant='secondary'>{__('Install', 'publishpress-hub')}</Button>
+                <Button
+                    variant='secondary'
+                    onClick={() => onClickInstall(plugin)}
+                >
+                    {__('Install', 'publishpress-hub')}
+                </Button>
             );
         }
 
         if (plugin.isPro && plugin.isLicensed) {
             return (
-                <Button variant='secondary'>{__('Manage License', 'publishpress-hub')}</Button>
+                <Button
+                    variant='secondary'
+                    onClick={() => onClickManageLicense(plugin)}
+                >
+                    {__('Manage License', 'publishpress-hub')}
+                </Button>
             );
         }
 
         if (plugin.isPro && !plugin.isLicensed) {
             return (
-                <Button variant='secondary'>{__('Activate License', 'publishpress-hub')}</Button>
+                <Button
+                    variant='secondary'
+                    onClick={() => onClickActivateLicense(plugin)}
+                >
+                    {__('Activate License', 'publishpress-hub')}
+                </Button>
             );
         }
 
         if (!plugin.isPro) {
             return (
-                <Button variant='highlight'>{__('Upgrade to Pro', 'publishpress-hub')}</Button>
+                <Button
+                    variant='highlight'
+                    onClick={() => onClickUpgradeToPro(plugin)}
+                >
+                    {__('Upgrade to Pro', 'publishpress-hub')}
+                </Button>
             );
         }
 
