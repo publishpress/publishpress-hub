@@ -11,6 +11,38 @@ let lastPluginsForFiltering = null;
 let lastSelectedFilterForFiltering = null;
 let lastFilteredPlugins = null;
 
+const sortPlugins = (plugins) => {
+
+    return plugins.sort((a, b) => {
+        // First sort by installed status
+        if (a.isInstalled && !b.isInstalled) {
+            return -1;
+        }
+        if (!a.isInstalled && b.isInstalled) {
+            return 1;
+        }
+
+        // If both are installed or both are not installed, sort by pro status
+        if (a.isInstalled && b.isInstalled) {
+            if (a.isLicensed && !b.isLicensed) {
+                return -1;
+            }
+            if (!a.isLicensed && b.isLicensed) {
+                return 1;
+            }
+
+            if (a.isPro && !b.isPro) {
+                return -1;
+            }
+            if (!a.isPro && b.isPro) {
+                return 1;
+            }
+        }
+
+        return 0;
+    });
+}
+
 export const getFilteredPlugins = (state) => {
     const plugins = state.plugins;
     const selectedFilter = state.selectedFilter;
@@ -30,12 +62,14 @@ export const getFilteredPlugins = (state) => {
         filteredPlugins = plugins.filter((plugin) => filterPlugin(plugin, selectedFilter));
     }
 
+    const sortedPlugins = sortPlugins(filteredPlugins);
+
     // Cache the result
     lastPluginsForFiltering = plugins;
     lastSelectedFilterForFiltering = selectedFilter;
-    lastFilteredPlugins = filteredPlugins;
+    lastFilteredPlugins = sortedPlugins;
 
-    return filteredPlugins;
+    return lastFilteredPlugins;
 }
 
 export const getIsLoading = (state) => {
