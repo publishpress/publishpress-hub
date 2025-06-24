@@ -8,6 +8,7 @@
     border-width: 1px;
     border-style: solid;
     border-color: var(--pp-hub-button-border-primary);
+    transition: all 0.2s ease-in-out;
 }
 
 .pp-hub-root button:disabled {
@@ -41,7 +42,6 @@
     background-color: var(--pp-hub-button-bg-secondary-disabled);
     color: var(--pp-hub-button-text-disabled);
 }
-
 
 .pp-hub-root button.is-primary {
     background-color: var(--pp-hub-button-bg-primary);
