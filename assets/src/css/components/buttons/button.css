@@ -20,6 +20,7 @@
     background-color: var(--pp-hub-button-bg-secondary);
     color: var(--pp-hub-button-text-secondary);
     border-color: var(--pp-hub-button-border-secondary);
+    font-weight: var(--pp-hub-font-weight-medium);
 }
 
 .pp-hub-root button:hover,
