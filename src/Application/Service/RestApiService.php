@@ -72,20 +72,32 @@ class RestApiService implements ServiceInterface
     private PluginMapperInterface $pluginMapper;
 
     /**
+     * The plugin installation service.
+     *
+     * @since 1.0.0
+     * @var PluginInstallationService
+     */
+    private PluginInstallationService $pluginInstallationService;
+
+    /**
      * Constructor.
      *
      * @since 1.0.0
      * @param PluginRepositoryInterface $pluginRepository The plugin repository
+     * @param PluginMapperInterface $pluginMapper The plugin mapper
+     * @param PluginInstallationService $pluginInstallationService The plugin installation service
      */
     public function __construct(
         PluginRepositoryInterface $pluginRepository,
-        PluginMapperInterface $pluginMapper
+        PluginMapperInterface $pluginMapper,
+        PluginInstallationService $pluginInstallationService
     ) {
         $this->pluginRepository = $pluginRepository;
         $this->pluginMapper = $pluginMapper;
+        $this->pluginInstallationService = $pluginInstallationService;
 
         $this->endpoints = [
-            new PluginsEndpoint($this->pluginRepository, $this->pluginMapper),
+            new PluginsEndpoint($this->pluginRepository, $this->pluginMapper, $this->pluginInstallationService),
         ];
     }
 

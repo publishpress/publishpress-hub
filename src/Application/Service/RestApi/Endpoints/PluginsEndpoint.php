@@ -13,10 +13,9 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\RestApi\Endpoints;
 
-use Plugin_Upgrader;
+use PublishPress\Hub\Application\Service\PluginInstallationService;
 use PublishPress\Hub\Application\Service\RestApi\Contracts\EndpointInterface;
 use PublishPress\Hub\Application\Service\RestApi\Contracts\PluginMapperInterface;
-use PublishPress\Hub\Application\Service\RestApi\QuietUpgradeSkin;
 use PublishPress\Hub\Domain\Plugin\Contracts\PluginRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Contracts\PluginInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
@@ -60,17 +59,29 @@ class PluginsEndpoint implements EndpointInterface
     private PluginMapperInterface $pluginMapper;
 
     /**
+     * The plugin installation service.
+     *
+     * @since 1.0.0
+     * @var PluginInstallationService
+     */
+    private PluginInstallationService $pluginInstallationService;
+
+    /**
      * Constructor.
      *
      * @since 1.0.0
      * @param PluginRepositoryInterface $pluginRepository The plugin repository
+     * @param PluginMapperInterface $pluginMapper The plugin mapper
+     * @param PluginInstallationService $pluginInstallationService The plugin installation service
      */
     public function __construct(
         PluginRepositoryInterface $pluginRepository,
-        PluginMapperInterface $pluginMapper
+        PluginMapperInterface $pluginMapper,
+        PluginInstallationService $pluginInstallationService
     ) {
         $this->pluginRepository = $pluginRepository;
         $this->pluginMapper = $pluginMapper;
+        $this->pluginInstallationService = $pluginInstallationService;
     }
 
     /**
@@ -172,62 +183,12 @@ class PluginsEndpoint implements EndpointInterface
             $pluginSlug = $request->get_param('plugin_slug');
             $plugin = $this->getPluginBySlug($pluginSlug);
 
-            if ($plugin->isInstalled()) {
-                throw new PluginAlreadyInstalledException($pluginSlug);
-            }
-
-            if (!function_exists('plugins_api')) {
-                require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
-            }
-
-            if (!function_exists('get_file_description')) {
-                require_once ABSPATH . 'wp-admin/includes/file.php';
-            }
-
-            if (!function_exists('got_url_rewrite')) {
-                require_once ABSPATH . 'wp-admin/includes/misc.php';
-            }
-
-            if (!function_exists('get_plugin_data')) {
-                require_once ABSPATH . 'wp-admin/includes/plugin.php';
-            }
-
-            if (!class_exists('WP_Upgrader')) {
-                require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
-            }
-
-            $api = plugins_api('plugin_information', [
-                'slug' => $pluginSlug,
-                'fields' => [
-                    'downloadlink' => true,
-                ],
-            ]);
-
-            // Start output buffering to catch any remaining HTML output
-            ob_start();
-
-            $skin = new QuietUpgradeSkin();
-            $upgrader = new Plugin_Upgrader($skin);
-
-            $install = $upgrader->install($api->download_link);
-
-            // Clean any buffered output
-            ob_end_clean();
-
-            if (is_wp_error($install)) {
-                throw new \Exception($install->get_error_message());
-            }
+            $this->pluginInstallationService->installFreePlugin($plugin);
 
             return new WP_REST_Response([
                 'success' => true,
                 'data' => ['plugin_slug' => $pluginSlug],
             ], 200);
-
-            return new WP_REST_Response([
-                'success' => false,
-                'message' => 'Plugin installation not yet implemented',
-                'data' => ['plugin_slug' => $pluginSlug],
-            ], 501); // 501 Not Implemented
         } catch (PluginNotFoundException $e) {
             return new WP_Error(
                 'plugin_not_found',
