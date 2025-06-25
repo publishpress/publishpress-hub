@@ -183,7 +183,11 @@ class PluginsEndpoint implements EndpointInterface
             $pluginSlug = $request->get_param('plugin_slug');
             $plugin = $this->getPluginBySlug($pluginSlug);
 
-            $this->pluginInstallationService->installFreePlugin($plugin);
+            $installed = $this->pluginInstallationService->installFreePlugin($plugin);
+
+            if (!$installed) {
+                throw new \Exception('Failed to install plugin');
+            }
 
             return new WP_REST_Response([
                 'success' => true,
