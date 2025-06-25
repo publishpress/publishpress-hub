@@ -46,7 +46,7 @@ class PluginsDashboardView implements ViewInterface
             'publishpress-hub-plugin-dashboard',
             'dist/css/admin-page.css',
             [
-                // 'wp-components',
+                'wp-components',
             ]
         );
 

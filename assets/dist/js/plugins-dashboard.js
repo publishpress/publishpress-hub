@@ -568,6 +568,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../buttons/button */ "./assets/src/jsx/components/buttons/button.jsx");
 /* harmony import */ var _badge_badge__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../badge/badge */ "./assets/src/jsx/components/badge/badge.jsx");
 /* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../stores/plugins-dashboard */ "./assets/src/jsx/stores/plugins-dashboard/index.jsx");
+/* harmony import */ var _modal_installation_type__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modal-installation-type */ "./assets/src/jsx/components/plugins-list/modal-installation-type.jsx");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
 
 
 
@@ -579,6 +587,14 @@ __webpack_require__.r(__webpack_exports__);
 var PluginsListComponent = function PluginsListComponent(_ref) {
   var plugins = _ref.plugins,
     pluginIconBaseUrl = _ref.pluginIconBaseUrl;
+  var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    isInstallationTypeModalOpen = _useState2[0],
+    setIsInstallationTypeModalOpen = _useState2[1];
+  var _useState3 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    currentPluginForActivation = _useState4[0],
+    setCurrentPluginForActivation = _useState4[1];
   var getStatusFlagClass = function getStatusFlagClass(plugin) {
     return classnames__WEBPACK_IMPORTED_MODULE_3___default()({
       'active': plugin.isActive,
@@ -605,15 +621,19 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
     }
   }, []);
   var onClickInstall = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (plugin) {
-    installFreePlugin(plugin.slugFree);
+    setIsInstallationTypeModalOpen(true);
+    setCurrentPluginForActivation(plugin);
   }, []);
   var onClickManageLicense = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (plugin) {
+    setCurrentPluginForActivation(plugin);
     console.log('onClickManageLicense', plugin);
   }, []);
   var onClickActivateLicense = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (plugin) {
+    setCurrentPluginForActivation(plugin);
     console.log('onClickActivateLicense', plugin);
   }, []);
   var onClickUpgradeToPro = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (plugin) {
+    setCurrentPluginForActivation(plugin);
     console.log('onClickUpgradeToPro', plugin);
   }, []);
   var getActionButton = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (_ref2) {
@@ -738,9 +758,66 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
     }), /*#__PURE__*/React.createElement(ActionButton, {
       plugin: plugin
     })));
+  }), isInstallationTypeModalOpen && /*#__PURE__*/React.createElement(_modal_installation_type__WEBPACK_IMPORTED_MODULE_8__.ModalInstallationType, {
+    onClose: function onClose(type) {
+      setIsInstallationTypeModalOpen(false);
+      if (type === 'free') {
+        installFreePlugin(currentPluginForActivation.slugFree);
+      }
+      setCurrentPluginForActivation(null);
+    }
   }));
 };
 var PluginsList = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(PluginsListComponent);
+
+/***/ }),
+
+/***/ "./assets/src/jsx/components/plugins-list/modal-installation-type.jsx":
+/*!****************************************************************************!*\
+  !*** ./assets/src/jsx/components/plugins-list/modal-installation-type.jsx ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ModalInstallationType: () => (/* binding */ ModalInstallationType)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress/hub-i18n */ "@publishpress/hub-i18n");
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../buttons/button */ "./assets/src/jsx/components/buttons/button.jsx");
+
+
+
+
+var ModalInstallationTypeComponent = function ModalInstallationTypeComponent(_ref) {
+  var onClose = _ref.onClose;
+  return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Modal, {
+    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Install Plugin', 'publishpress-hub'),
+    onRequestClose: onClose
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-modal-installation-type"
+  }, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select how you would like to install this plugin. You can install the Pro version if you have a license, or the Free version to get started.', 'publishpress-hub')), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    variant: "secondary",
+    icon: "unlock",
+    isFullWidth: true,
+    onClick: function onClick() {
+      onClose('pro');
+    }
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('I have a license, install the Pro version', 'publishpress-hub')), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    variant: "primary",
+    icon: "download",
+    isFullWidth: true,
+    onClick: function onClick() {
+      onClose('free');
+    }
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('I don\'t have a license, install the Free version', 'publishpress-hub'))));
+};
+var ModalInstallationType = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(ModalInstallationTypeComponent);
 
 /***/ }),
 

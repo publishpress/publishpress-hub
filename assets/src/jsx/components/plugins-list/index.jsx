@@ -1,5 +1,5 @@
-import { memo, useCallback } from '@wordpress/element';
-import { useDispatch, useSelect } from '@wordpress/data';
+import { memo, useCallback, useState } from '@wordpress/element';
+import { useDispatch } from '@wordpress/data';
 
 import { __ } from '@publishpress/hub-i18n';
 import classNames from 'classnames';
@@ -8,11 +8,15 @@ import { Tooltip } from '../tooltip';
 import { Button } from '../buttons/button';
 import { Badge } from '../badge/badge';
 import { store } from '../../stores/plugins-dashboard';
+import { ModalInstallationType } from './modal-installation-type';
 
 const PluginsListComponent = ({
     plugins,
     pluginIconBaseUrl,
 }) => {
+    const [isInstallationTypeModalOpen, setIsInstallationTypeModalOpen] = useState(false);
+    const [currentPluginForActivation, setCurrentPluginForActivation] = useState(null);
+
     const getStatusFlagClass = (plugin) => classNames({
         'active': plugin.isActive,
         'inactive': !plugin.isActive,
@@ -43,18 +47,22 @@ const PluginsListComponent = ({
     }, []);
 
     const onClickInstall = useCallback((plugin) => {
-        installFreePlugin(plugin.slugFree);
+        setIsInstallationTypeModalOpen(true);
+        setCurrentPluginForActivation(plugin);
     }, []);
 
     const onClickManageLicense = useCallback((plugin) => {
+        setCurrentPluginForActivation(plugin);
         console.log('onClickManageLicense', plugin);
     }, []);
 
     const onClickActivateLicense = useCallback((plugin) => {
+        setCurrentPluginForActivation(plugin);
         console.log('onClickActivateLicense', plugin);
     }, []);
 
     const onClickUpgradeToPro = useCallback((plugin) => {
+        setCurrentPluginForActivation(plugin);
         console.log('onClickUpgradeToPro', plugin);
     }, []);
 
@@ -174,6 +182,18 @@ const PluginsListComponent = ({
                     </div>
                 );
             })}
+            {isInstallationTypeModalOpen && (
+                <ModalInstallationType
+                    onClose={(type) => {
+                        setIsInstallationTypeModalOpen(false);
+                        if (type === 'free') {
+                            installFreePlugin(currentPluginForActivation.slugFree);
+                        }
+
+                        setCurrentPluginForActivation(null);
+                    }}
+                />
+            )}
         </div>
     );
 };

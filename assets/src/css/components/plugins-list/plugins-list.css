@@ -1,3 +1,5 @@
+@import './modal-installation-type.css';
+
 .pp-hub-plugins-list {
     display: flex;
     flex-direction: column;
