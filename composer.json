@@ -158,7 +158,7 @@
             "@dev:clean-cache"
         ],
         "dev:clean-logs": "rm -f dev-workspace/.cache/logs/db_dev/",
-        "dev:clean-cache": "rm -rf dev-workspace/.cache/wp_dev && rm -rf dev-workspace/.cache/db_dev",
+        "dev:clean-cache": "rm -rf dev-workspace/.cache/wp_dev && rm -rf dev-workspace/.cache/db_dev && rm -rf dev-workspace/.cache/tmp_wp_dev",
         "dev:refresh": "bash dev-workspace/scripts/env.sh refresh dev",
         "dev:info": "bash dev-workspace/scripts/env.sh info dev",
         "dev:logs": "bash dev-workspace/scripts/log-web.sh dev",
@@ -177,7 +177,7 @@
             "composer codecept clean"
         ],
         "test:clean-logs": "rm -f dev-workspace/.cache/logs/db_test/",
-        "test:clean-cache": "rm -rf dev-workspace/.cache/wp_test && rm -rf dev-workspace/.cache/db_test",
+        "test:clean-cache": "rm -rf dev-workspace/.cache/wp_test && rm -rf dev-workspace/.cache/db_test && rm -rf dev-workspace/.cache/tmp_wp_test",
         "test:db-logs": "bash dev-workspace/scripts/tests-db-logs.sh $@",
         "test:info": "bash dev-workspace/scripts/env.sh info test",
         "test:refresh": "bash dev-workspace/scripts/env.sh refresh test",
