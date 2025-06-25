@@ -1,8 +1,8 @@
 ### Variables for environment
-@baseUrl = http://localhost:8031/wp-json
+@baseUrl = http://localhost:8032/wp-json
 @apiPath = publishpress-hub/v1
 # Replace these with your credentials - use base64 encoded credentials (username:appPassword), get from the .env file after starting the test containers.
-@passwordHash = YWRtaW46V0tmM1EwMjZnOWFEdmtIbEJxUW8yWHpX
+@passwordHash = YWRtaW46RDRHb0o1ektsc3ViaDJvYXlpYlY5NkZr
 
 ### Test WordPress REST API (no auth required)
 GET {{baseUrl}}
@@ -15,19 +15,19 @@ Content-Type: application/json
 Authorization: Basic {{passwordHash}}
 
 ### Try to install plugin with invalid slug
-POST {{baseUrl}}/{{apiPath}}/plugins/invalid-slug/install-free
+POST {{baseUrl}}/{{apiPath}}/plugins/invalid-slug/install/free
 Accept: application/json
 Content-Type: application/json
 Authorization: Basic {{passwordHash}}
 
 ### Try to install plugin that is already installed
-POST {{baseUrl}}/{{apiPath}}/plugins/publishpress-authors/install-free
+POST {{baseUrl}}/{{apiPath}}/plugins/publishpress-authors/install/free
 Accept: application/json
 Content-Type: application/json
 Authorization: Basic {{passwordHash}}
 
 ### Install Plugin
-POST {{baseUrl}}/{{apiPath}}/plugins/publishpress-checklists/install-free
+POST {{baseUrl}}/{{apiPath}}/plugins/publishpress-checklists/install/free
 Accept: application/json
 Content-Type: application/json
 Authorization: Basic {{passwordHash}}

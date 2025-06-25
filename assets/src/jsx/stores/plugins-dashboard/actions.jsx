@@ -1,6 +1,6 @@
 import { apiFetch } from '@wordpress/data-controls';
 
-const { apiV1Url, apiNonce } = window.ppHubPluginsDashboardConfig;
+const { apiNonce } = window.ppHubPluginsDashboardConfig;
 
 export function* setSelectedFilter(selectedFilter) {
     yield {
@@ -42,10 +42,7 @@ export function* fetchPlugins() {
         yield {type: 'FETCH_PLUGINS_START'};
 
         const data = yield apiFetch({
-            path: `${apiV1Url}/plugins`,
-            headers: {
-                'X-WP-Nonce': apiNonce,
-            },
+            path: '/plugins',
         });
 
         if (data.success) {
@@ -55,5 +52,24 @@ export function* fetchPlugins() {
         }
     } catch (error) {
         yield {type: 'FETCH_PLUGINS_ERROR', error: error};
+    }
+}
+
+export function* installFreePlugin(pluginSlug) {
+    try {
+        yield {type: 'INSTALL_PLUGIN_START', data: {pluginSlug}};
+
+        const data = yield apiFetch({
+            path: `/plugins/${pluginSlug}/install/free`,
+            method: 'POST',
+        });
+
+        if (data.success) {
+            yield {type: 'INSTALL_PLUGIN_SUCCESS', data: data.data};
+        } else {
+            yield {type: 'INSTALL_PLUGIN_ERROR', pluginSlug, error: data.error};
+        }
+    } catch (error) {
+        yield {type: 'INSTALL_PLUGIN_ERROR', pluginSlug, error: error};
     }
 }

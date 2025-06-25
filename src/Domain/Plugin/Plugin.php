@@ -37,6 +37,22 @@ class Plugin implements PluginInterface
     private string $slugPro;
 
     /**
+     * The plugin file name for the Free plugin.
+     *
+     * @since 1.0.0
+     * @var string
+     */
+    private string $pluginFileNameFree;
+
+    /**
+     * The plugin file name for the Pro plugin.
+     *
+     * @since 1.0.0
+     * @var string
+     */
+    private string $pluginFileNamePro;
+
+    /**
      * The version of the plugin, if installed.
      *
      * @since 1.0.0
@@ -104,15 +120,21 @@ class Plugin implements PluginInterface
         string $name,
         string $slugFree,
         string $slugPro,
+        string $pluginFileNameFree,
+        string $pluginFileNamePro,
         ?string $iconFile = null,
         ?string $description = null
     ) {
         $this->validateSlug($slugFree);
         $this->validateSlug($slugPro);
+        $this->validatePluginFileName($pluginFileNameFree);
+        $this->validatePluginFileName($pluginFileNamePro);
 
         $this->name = $name;
         $this->slugFree = $slugFree;
         $this->slugPro = $slugPro;
+        $this->pluginFileNameFree = $pluginFileNameFree;
+        $this->pluginFileNamePro = $pluginFileNamePro;
         $this->iconFile = $iconFile;
         $this->description = $description;
     }
@@ -195,6 +217,28 @@ class Plugin implements PluginInterface
     }
 
     /**
+     * Get the plugin file name.
+     *
+     * @since 1.0.0
+     * @return string
+     */
+    public function getPluginFileNameFree(): string
+    {
+        return $this->pluginFileNameFree;
+    }
+
+    /**
+     * Get the plugin file name for the Pro plugin.
+     *
+     * @since 1.0.0
+     * @return string
+     */
+    public function getPluginFileNamePro(): string
+    {
+        return $this->pluginFileNamePro;
+    }
+
+    /**
      * Check if the plugin is installed.
      *
      * @since 1.0.0
@@ -206,22 +250,26 @@ class Plugin implements PluginInterface
             return $this->installationStatusCache;
         }
 
+        $slugFree = $this->getSlugFree();
+        $slugPro = $this->getSlugPro();
+        $pluginFileNameFree = $this->getPluginFileNameFree();
+        $pluginFileNamePro = $this->getPluginFileNamePro();
+
         /*
          * TODO: Check if the plugin registered itself as installed (this is the preferred way,
          * since it make sure the plugin is found on non conventional paths).
          *
          * For now, we'll check if the plugin file exists in the plugin directory.
          */
-
-        if (file_exists(WP_PLUGIN_DIR . '/' . $this->slugFree . '/' . $this->slugFree . '.php')) {
+        if (file_exists(WP_PLUGIN_DIR . '/' . $slugPro . '/' . $pluginFileNamePro)) {
             $this->installationStatusCache = true;
-            $this->proStatusCache = false;
+            $this->proStatusCache = true;
             return true;
         }
 
-        if (file_exists(WP_PLUGIN_DIR . '/' . $this->slugPro . '/' . $this->slugPro . '.php')) {
+        if (file_exists(WP_PLUGIN_DIR . '/' . $slugFree . '/' . $pluginFileNameFree)) {
             $this->installationStatusCache = true;
-            $this->proStatusCache = true;
+            $this->proStatusCache = false;
             return true;
         }
 
@@ -248,9 +296,9 @@ class Plugin implements PluginInterface
         }
 
         if ($this->isPro()) {
-            $this->isActive = is_plugin_active("{$this->slugPro}/{$this->slugPro}.php");
+            $this->isActive = is_plugin_active("{$this->slugPro}/{$this->pluginFileNamePro}");
         } else {
-            $this->isActive = is_plugin_active("{$this->slugFree}/{$this->slugFree}.php");
+            $this->isActive = is_plugin_active("{$this->slugFree}/{$this->pluginFileNameFree}");
         }
 
         return $this->isActive;
@@ -359,6 +407,19 @@ class Plugin implements PluginInterface
     }
 
     /**
+     * Clear the cache of the plugin.
+     *
+     * @since 1.0.0
+     */
+    public function clearCache(): void
+    {
+        $this->installationStatusCache = null;
+        $this->proStatusCache = null;
+        $this->isActive = null;
+        $this->isLicensed = null;
+    }
+
+    /**
      * Validate the slug of the plugin.
      *
      * @since 1.0.0
@@ -402,6 +463,17 @@ class Plugin implements PluginInterface
 
         if (!preg_match('/^[a-z0-9-]+\.php$/', $fileName)) {
             throw new InvalidArgumentException('Invalid file extension');
+        }
+    }
+
+    private function validatePluginFileName(string $pluginFileName): void
+    {
+        if (empty($pluginFileName)) {
+            throw new InvalidArgumentException('Plugin file name cannot be empty');
+        }
+
+        if (!preg_match('/^[a-zA-Z0-9-\.]+\.php$/', $pluginFileName)) {
+            throw new InvalidArgumentException('Invalid plugin file name');
         }
     }
 }

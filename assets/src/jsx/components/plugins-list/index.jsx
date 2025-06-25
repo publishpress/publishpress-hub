@@ -1,11 +1,13 @@
 import { memo, useCallback } from '@wordpress/element';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 import { __ } from '@publishpress/hub-i18n';
 import classNames from 'classnames';
 
-import { Button } from '../buttons/button';
 import { Tooltip } from '../tooltip';
+import { Button } from '../buttons/button';
 import { Badge } from '../badge/badge';
+import { store } from '../../stores/plugins-dashboard';
 
 const PluginsListComponent = ({
     plugins,
@@ -22,6 +24,10 @@ const PluginsListComponent = ({
         'not-installed': !plugin.isInstalled,
     });
 
+    const {
+        installFreePlugin,
+    } = useDispatch(store);
+
     const getStatusFlagTooltipText = useCallback((plugin) => {
         if (!plugin.isInstalled) {
             return __('This plugin is not installed.', 'publishpress-hub');
@@ -37,7 +43,7 @@ const PluginsListComponent = ({
     }, []);
 
     const onClickInstall = useCallback((plugin) => {
-        console.log('onClickInstall', plugin);
+        installFreePlugin(plugin.slugFree);
     }, []);
 
     const onClickManageLicense = useCallback((plugin) => {
@@ -52,55 +58,65 @@ const PluginsListComponent = ({
         console.log('onClickUpgradeToPro', plugin);
     }, []);
 
+    const getActionButton = useCallback(({variant, onClick, text, inProgress}) => {
+        return (
+            <Button
+                variant={variant}
+                onClick={onClick}
+                isLoading={inProgress}
+            >
+                {text}
+            </Button>
+        );
+    }, []);
+
     const ActionButton = useCallback(({ plugin }) => {
         if (!plugin.isInstalled) {
-            return (
-                <Button
-                    variant='secondary'
-                    onClick={() => onClickInstall(plugin)}
-                >
-                    {__('Install', 'publishpress-hub')}
-                </Button>
-            );
-        }
-
-        if (plugin.isPro && plugin.isLicensed) {
-            return (
-                <Button
-                    variant='secondary'
-                    onClick={() => onClickManageLicense(plugin)}
-                >
-                    {__('Manage License', 'publishpress-hub')}
-                </Button>
-            );
-        }
-
-        if (plugin.isPro && !plugin.isLicensed) {
-            return (
-                <Button
-                    variant='secondary'
-                    onClick={() => onClickActivateLicense(plugin)}
-                >
-                    {__('Activate License', 'publishpress-hub')}
-                </Button>
-            );
+            return getActionButton({
+                variant: 'secondary',
+                onClick: () => onClickInstall(plugin),
+                text: __('Install', 'publishpress-hub'),
+                inProgress: plugin?.installation?.inProgress,
+            });
         }
 
         if (!plugin.isPro) {
-            return (
-                <Button
-                    variant='highlight'
-                    onClick={() => onClickUpgradeToPro(plugin)}
-                >
-                    {__('Upgrade to Pro', 'publishpress-hub')}
-                </Button>
-            );
+            return getActionButton({
+                variant: 'highlight',
+                onClick: () => onClickUpgradeToPro(plugin),
+                text: __('Upgrade to Pro', 'publishpress-hub'),
+                inProgress: plugin?.installation?.inProgress,
+            });
+        }
+
+        if (plugin.isLicensed) {
+            return getActionButton({
+                variant: 'secondary',
+                onClick: () => onClickManageLicense(plugin),
+                text: __('Manage License', 'publishpress-hub'),
+                inProgress: plugin?.installation?.inProgress,
+            });
+        }
+
+        if (!plugin.isLicensed) {
+            return getActionButton({
+                variant: 'secondary',
+                onClick: () => onClickActivateLicense(plugin),
+                text: __('Activate License', 'publishpress-hub'),
+                inProgress: plugin?.installation?.inProgress,
+            });
         }
 
         return null;
     }, []);
 
     const StatusFlag = useCallback(({ plugin }) => {
+        if (!plugin.isInstalled && plugin?.installation?.inProgress) {
+            return (
+                <Badge text={__('Installing', 'publishpress-hub')} className='installing' />
+            )
+        }
+
         if (!plugin.isInstalled) {
             return (
                 <Badge text={__('Not Installed', 'publishpress-hub')} className='not-installed' />

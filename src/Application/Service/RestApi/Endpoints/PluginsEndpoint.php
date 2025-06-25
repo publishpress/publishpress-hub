@@ -101,7 +101,7 @@ class PluginsEndpoint implements EndpointInterface
             ],
         ]);
 
-        register_rest_route($namespace, $this->route . '/(?P<plugin_slug>[a-zA-Z0-9_-]+)/install-free', [
+        register_rest_route($namespace, $this->route . '/(?P<plugin_slug>[a-zA-Z0-9_-]+)/install/free', [
             [
                 'methods' => 'POST',
                 'callback' => [$this, 'installPluginFree'],
@@ -141,9 +141,7 @@ class PluginsEndpoint implements EndpointInterface
     public function getPlugins(WP_REST_Request $request)
     {
         try {
-            $plugins = $this->pluginRepository->getAllPlugins();
-            $plugins = $this->pluginMapper->toDtoArray($plugins);
-            $plugins = $this->pluginMapper->toSerializableArray($plugins);
+            $plugins = $this->getAllPluginsSerializable();
 
             return new WP_REST_Response([
                 'success' => true,
@@ -189,9 +187,16 @@ class PluginsEndpoint implements EndpointInterface
                 throw new \Exception('Failed to install plugin');
             }
 
+            $plugin->clearCache();
+
+            $plugins = $this->getAllPluginsSerializable();
+
             return new WP_REST_Response([
                 'success' => true,
-                'data' => ['plugin_slug' => $pluginSlug],
+                'data' => [
+                    'plugin_slug' => $pluginSlug,
+                    'plugins' => (array) $plugins,
+                ],
             ], 200);
         } catch (PluginNotFoundException $e) {
             return new WP_Error(
@@ -215,6 +220,33 @@ class PluginsEndpoint implements EndpointInterface
     }
 
     /**
+     * Check if the current user has permission to install a plugin.
+     *
+     * @since 1.0.0
+     * @param WP_REST_Request $request The REST request
+     * @return bool
+     */
+    public function checkInstallPermissions(WP_REST_Request $request): bool
+    {
+        return current_user_can('install_plugins');
+    }
+
+    /**
+     * Get all plugins in a serializable format.
+     *
+     * @since 1.0.0
+     * @return array
+     */
+    private function getAllPluginsSerializable(): array
+    {
+        $plugins = $this->pluginRepository->getAllPlugins();
+        $plugins = $this->pluginMapper->toDtoArray($plugins);
+        $plugins = $this->pluginMapper->toSerializableArray($plugins);
+
+        return $plugins;
+    }
+
+    /**
      * Get plugin by slug from repository.
      *
      * @since 1.0.0
@@ -231,17 +263,5 @@ class PluginsEndpoint implements EndpointInterface
         }
 
         return $plugin;
-    }
-
-    /**
-     * Check if the current user has permission to install a plugin.
-     *
-     * @since 1.0.0
-     * @param WP_REST_Request $request The REST request
-     * @return bool
-     */
-    public function checkInstallPermissions(WP_REST_Request $request): bool
-    {
-        return current_user_can('install_plugins');
     }
 }

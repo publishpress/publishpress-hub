@@ -71,6 +71,69 @@ const setCurrentFilter = (state, currentFilter) => {
     }
 }
 
+const installPluginStart = (state, data) => {
+    const plugins = state.plugins.map((plugin) => {
+        if (plugin.slugFree === data.pluginSlug) {
+            return {
+                ...plugin,
+                installation: {
+                    inProgress: true,
+                    error: null,
+                },
+            }
+        }
+
+        return plugin;
+    });
+
+    return {
+        ...state,
+        plugins,
+    }
+}
+
+const installPluginSuccess = (state, data) => {
+    const plugins = data.plugins.map((plugin) => {
+        if (plugin.slug === data.pluginSlug) {
+            return {
+                ...plugin,
+                installation: {
+                    inProgress: false,
+                    error: null,
+                },
+            }
+        }
+
+        return plugin;
+    });
+
+    return {
+        ...state,
+        plugins,
+    }
+}
+
+const installPluginError = (state, pluginSlug, error) => {
+    const plugins = data.plugins.map((plugin) => {
+        if (plugin.slug === pluginSlug) {
+            return {
+                ...plugin,
+                installation: {
+                    inProgress: false,
+                    error,
+                },
+            }
+        }
+
+        return plugin;
+    });
+
+    return {
+        ...state,
+        plugins,
+    }
+}
+
 export const reducer = (state = DEFAULT_STATE, action) => {
     if (! action) {
         return state;
@@ -93,6 +156,12 @@ export const reducer = (state = DEFAULT_STATE, action) => {
             return fetchPluginsError(state, action.error);
         case 'SET_CURRENT_FILTER':
             return setCurrentFilter(state, action.currentFilter);
+        case 'INSTALL_PLUGIN_START':
+            return installPluginStart(state, action.data);
+        case 'INSTALL_PLUGIN_SUCCESS':
+            return installPluginSuccess(state, action.data);
+        case 'INSTALL_PLUGIN_ERROR':
+            return installPluginError(state, action.pluginSlug, action.error);
         default:
             return state;
     }

@@ -20,6 +20,10 @@ interface PluginInterface
 
     public function getDescription(): ?string;
 
+    public function getPluginFileNameFree(): string;
+
+    public function getPluginFileNamePro(): string;
+
     public function isInstalled(): bool;
 
     public function isActive(): bool;
@@ -33,4 +37,6 @@ interface PluginInterface
     public function isSamePlugin(PluginInterface $other): bool;
 
     public function register(string $version, string $filePath, $isPro = false): void;
+
+    public function clearCache(): void;
 }

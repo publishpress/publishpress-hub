@@ -136,13 +136,19 @@ class PluginInstallationService implements ServiceInterface
         $skin = new QuietUpgradeSkin();
         $upgrader = new Plugin_Upgrader($skin);
 
-        $install = $upgrader->install($downloadLink);
+        $install = $upgrader->install($downloadLink, [
+            'overwrite_package' => true,
+        ]);
 
         // Clean any buffered output
         ob_end_clean();
 
         if (is_wp_error($install)) {
             throw new \Exception($install->get_error_message());
+        }
+
+        if (is_wp_error($skin->result)) {
+            throw new \Exception($skin->result->get_error_message());
         }
 
         return $install === true;

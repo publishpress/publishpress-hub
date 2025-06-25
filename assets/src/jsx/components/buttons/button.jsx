@@ -1,4 +1,4 @@
-import { Button as WPButton } from "@wordpress/components";
+import { Button as WPButton, Spinner } from "@wordpress/components";
 import { memo, useMemo } from '@wordpress/element';
 
 const DEFAULT_TARGET = '_blank';
@@ -17,6 +17,7 @@ const ButtonComponent = ({
     style,
     children,
     isFullWidth,
+    isLoading,
     ...restProps
 }) => {
     const targetValue = useMemo(() => {
@@ -26,6 +27,17 @@ const ButtonComponent = ({
     const relValue = useMemo(() => {
         return rel || (href ? DEFAULT_REL : undefined);
     }, [rel, href]);
+
+    if (isLoading) {
+        children = (
+            <>
+                {children}
+                <Spinner />
+            </>
+        );
+
+        disabled = true;
+    }
 
     const buttonClassName = useMemo(() => {
         let variantClassName = '';

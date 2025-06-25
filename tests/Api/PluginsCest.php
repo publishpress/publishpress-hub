@@ -41,7 +41,7 @@ final class PluginsCest
 
     public function testInstallPluginFreeWithInvalidSlug(ApiTester $I): void
     {
-        $I->sendPOST('publishpress-hub/v1/plugins/invalid-slug/install-free');
+        $I->sendPOST('publishpress-hub/v1/plugins/invalid-slug/install/free');
 
         $I->seeResponseCodeIs(404);
         $I->seeResponseIsJson();
@@ -61,6 +61,8 @@ final class PluginsCest
             'PublishPress Authors',
             'publishpress-authors',
             'publishpress-authors-pro',
+            'publishpress-authors.php',
+            'publishpress-authors-pro.php',
             'icon-authors',
             'A dummy plugin for testing purposes'
         );
@@ -71,7 +73,7 @@ final class PluginsCest
         );
         $pluginRepository->register($plugin);
 
-        $I->sendPOST('publishpress-hub/v1/plugins/publishpress-authors/install-free');
+        $I->sendPOST('publishpress-hub/v1/plugins/publishpress-authors/install/free');
 
         $I->seeResponseCodeIs(400);
         $I->seeResponseIsJson();
@@ -101,7 +103,7 @@ final class PluginsCest
             $plugin->unregister();
         }
 
-        $I->sendPOST('publishpress-hub/v1/plugins/publishpress-checklists/install-free');
+        $I->sendPOST('publishpress-hub/v1/plugins/publishpress-checklists/install/free');
 
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();

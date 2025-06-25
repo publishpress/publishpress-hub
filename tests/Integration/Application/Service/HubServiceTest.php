@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 namespace Tests\Integration\Application\Service;
 
-use PublishPress\Hub\Application\Service\HubService;
+use PublishPress\Hub\Application\Service\CoreHubService;
 use PublishPress\Hub\Domain\Hooks as DomainHooks;
 use PublishPress\Hub\Application\Hooks;
 use PublishPress\Hub\Application\Service\PluginBootstrapService;
@@ -37,7 +37,7 @@ class HubServiceTest extends NoTransactionWPTestCase
     {
         $pluginRepository = new PluginRepository();
         $serviceCollection = new ServiceCollection();
-        $hubService = new HubService($pluginRepository, $serviceCollection);
+        $hubService = new CoreHubService($pluginRepository, $serviceCollection);
 
         $this->assertFalse($hubService->isInitialized());
 
@@ -54,28 +54,34 @@ class HubServiceTest extends NoTransactionWPTestCase
         $pluginRepository = new PluginRepository();
         $serviceCollection = new ServiceCollection();
         $pluginBootstrapService = new PluginBootstrapService($pluginRepository);
-        $hubService = new HubService($pluginRepository, $serviceCollection);
         $pluginBootstrapService->initialize();
+        $pluginBootstrapService->bootstrapPlugins();
+        $hubService = new CoreHubService($pluginRepository, $serviceCollection);
         $hubService->initialize();
 
-        // Trigger the action like external plugins would
-        do_action(Hooks::ACTION_REGISTER_PLUGIN, 'post-expirator', '1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
+        // Trigger the action like our plugins would do.
+        do_action(
+            Hooks::ACTION_REGISTER_PLUGIN,
+            'publishpress-authors',
+            '1.0.0',
+            TESTS_PATH . 'Support/Data/Plugins/dummy-authors-free/publishpress-authors.php'
+        );
 
-        $plugin = $pluginRepository->findBySlug('post-expirator');
-        $this->assertEquals('PublishPress Future', $plugin->getName());
-        $this->assertEquals('post-expirator', $plugin->getSlugFree());
+        $plugin = $pluginRepository->findBySlug('publishpress-authors');
+        $this->assertEquals('PublishPress Authors', $plugin->getName());
+        $this->assertEquals('publishpress-authors', $plugin->getSlugFree());
         $this->assertEquals('1.0.0', $plugin->getVersion());
-        $this->assertEquals(TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php', $plugin->getPath());
+        $this->assertEquals(TESTS_PATH . 'Support/Data/Plugins/dummy-authors-free/publishpress-authors.php', $plugin->getPath());
 
         $this->seeHookCalledTimes(DomainHooks::ACTION_BEFORE_PLUGIN_REGISTER, 1);
         $this->seeHookCalledTimes(DomainHooks::ACTION_PLUGIN_REGISTERED, 1);
     }
 
-    public function testRegisterPluginWithException(): void
+    public function testRegisterPluginFailsWithException(): void
     {
         $pluginRepository = new PluginRepository();
         $serviceCollection = new ServiceCollection();
-        $hubService = new HubService($pluginRepository, $serviceCollection);
+        $hubService = new CoreHubService($pluginRepository, $serviceCollection);
         $hubService->initialize();
 
         add_action(DomainHooks::ACTION_BEFORE_PLUGIN_REGISTER, function () {
