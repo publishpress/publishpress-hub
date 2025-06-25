@@ -317,14 +317,14 @@
 [data-theme="default"] {
     /* Brand Colors */
     --pp-hub-primary-color: #655997;
-    --pp-hub-primary-color-darker: #50467e;
-    --pp-hub-primary-color-lighter: #7a6faf;
-    --pp-hub-primary-color-disabled: #3a345e;
+    --pp-hub-primary-color-darker: #473d76;
+    --pp-hub-primary-color-lighter: #847ab4;
+    --pp-hub-primary-color-disabled: #4c495b;
 
     --pp-hub-secondary-color: #ffb200;
-    --pp-hub-secondary-color-darker: #e69900;
+    --pp-hub-secondary-color-darker: #d68f00;
     --pp-hub-secondary-color-lighter: #ffc133;
-    --pp-hub-secondary-color-disabled: #c28400;
+    --pp-hub-secondary-color-disabled: #aa8f54;
 
     --pp-hub-tertiary-color: #1b004f;
     --pp-hub-tertiary-color-darker: #150048;
@@ -364,34 +364,38 @@
 
     /* Button Colors */
     --pp-hub-button-bg-primary: var(--pp-hub-primary-color);
-    --pp-hub-button-bg-primary-lighter: var(--pp-hub-primary-color-lighter);
-    --pp-hub-button-bg-primary-darker: var(--pp-hub-primary-color-darker);
+    --pp-hub-button-bg-primary-hover: var(--pp-hub-primary-color-lighter);
+    --pp-hub-button-bg-primary-active: var(--pp-hub-primary-color-darker);
+    --pp-hub-button-bg-primary-focus: var(--pp-hub-primary-color-lighter);
     --pp-hub-button-bg-primary-disabled: var(--pp-hub-primary-color-disabled);
 
     --pp-hub-button-bg-secondary: var(--pp-hub-bg-primary);
-    --pp-hub-button-bg-secondary-lighter: var(--pp-hub-bg-secondary);
-    --pp-hub-button-bg-secondary-darker: var(--pp-hub-bg-tertiary);
+    --pp-hub-button-bg-secondary-hover: #e0ddec;
+    --pp-hub-button-bg-secondary-active: var(--pp-hub-bg-tertiary);
+    --pp-hub-button-bg-secondary-focus: var(--pp-hub-bg-tertiary);
     --pp-hub-button-bg-secondary-disabled: transparent
 
     --pp-hub-button-bg-tertiary: var(--pp-hub-bg-primary);
-    --pp-hub-button-bg-tertiary-lighter: var(--pp-hub-bg-primary);
-    --pp-hub-button-bg-tertiary-darker: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-tertiary-hover: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-tertiary-active: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-tertiary-focus: var(--pp-hub-bg-primary);
     --pp-hub-button-bg-tertiary-disabled: var(--pp-hub-tertiary-color-disabled);
 
     --pp-hub-button-bg-highlight: var(--pp-hub-secondary-color);
-    --pp-hub-button-bg-highlight-lighter: var(--pp-hub-secondary-color-lighter);
-    --pp-hub-button-bg-highlight-darker: var(--pp-hub-secondary-color-darker);
+    --pp-hub-button-bg-highlight-hover: var(--pp-hub-secondary-color-lighter);
+    --pp-hub-button-bg-highlight-active: var(--pp-hub-secondary-color-darker);
+    --pp-hub-button-bg-highlight-focus: var(--pp-hub-secondary-color-lighter);
     --pp-hub-button-bg-highlight-disabled: var(--pp-hub-secondary-color-disabled);
 
     --pp-hub-button-text-primary: var(--pp-hub-text-inverse);
-    --pp-hub-button-text-secondary: var(--pp-hub-text-secondary);
+    --pp-hub-button-text-secondary: var(--pp-hub-primary-color);
     --pp-hub-button-text-tertiary: var(--pp-hub-text-tertiary);
     --pp-hub-button-text-inverse: var(--pp-hub-text-inverse);
     --pp-hub-button-text-disabled: var(--pp-hub-text-disabled);
     --pp-hub-button-text-link: none;
 
     --pp-hub-button-border-primary: var(--pp-hub-border-primary);
-    --pp-hub-button-border-secondary: var(--pp-hub-border-secondary);
+    --pp-hub-button-border-secondary: var(--pp-hub-primary-color);
     --pp-hub-button-border-tertiary: var(--pp-hub-border-tertiary);
     --pp-hub-button-border-highlight: var(--pp-hub-border-tertiary);
     --pp-hub-button-border-disabled: var(--pp-hub-border-secondary);
@@ -403,6 +407,20 @@
     /* Tooltip Colors */
     --pp-hub-tooltip-bg: #000000;
     --pp-hub-tooltip-text: #ffffff;
+
+    /* Badge Colors */
+    --pp-hub-badge-bg: #f0f0f0;
+    --pp-hub-badge-bg-installed: #46b450;
+    --pp-hub-badge-bg-not-installed: #f3f4f6;
+    --pp-hub-badge-bg-free: #dbeafe;
+    --pp-hub-badge-bg-licensed: #dcfce7;
+    --pp-hub-badge-bg-unlicensed: #fef3c7;
+    --pp-hub-badge-text: #333;
+    --pp-hub-badge-text-installed: #ffffff;
+    --pp-hub-badge-text-not-installed: #6b7280;
+    --pp-hub-badge-text-free: #1e40af;
+    --pp-hub-badge-text-licensed: #166534;
+    --pp-hub-badge-text-unlicensed: #92400e;
 }
 
 /*!**********************************************************************************!*\
@@ -651,6 +669,7 @@
     border-width: 1px;
     border-style: solid;
     border-color: var(--pp-hub-button-border-primary);
+    transition: all 0.2s;
 }
 
 .pp-hub-root button:disabled {
@@ -662,21 +681,23 @@
     background-color: var(--pp-hub-button-bg-secondary);
     color: var(--pp-hub-button-text-secondary);
     border-color: var(--pp-hub-button-border-secondary);
+    font-weight: var(--pp-hub-font-weight-medium);
 }
 
 .pp-hub-root button:hover,
 .pp-hub-root button.is-secondary:hover {
-    background-color: var(--pp-hub-button-bg-secondary-lighter);
+    background-color: var(--pp-hub-button-bg-secondary-hover);
 }
 
 .pp-hub-root button:active,
 .pp-hub-root button.is-secondary:active {
-    background-color: var(--pp-hub-button-bg-secondary-darker);
+    background-color: var(--pp-hub-button-bg-secondary-active);
 }
 
 .pp-hub-root button:focus,
 .pp-hub-root button.is-secondary:focus {
-    background-color: var(--pp-hub-button-bg-secondary-lighter);
+    background-color: var(--pp-hub-button-bg-secondary-hover);
+    border-color: var(--pp-hub-button-border-secondary);
 }
 
 .pp-hub-root button:disabled,
@@ -685,7 +706,6 @@
     color: var(--pp-hub-button-text-disabled);
 }
 
-
 .pp-hub-root button.is-primary {
     background-color: var(--pp-hub-button-bg-primary);
     color: var(--pp-hub-button-text-primary);
@@ -693,18 +713,18 @@
 }
 
 .pp-hub-root button.is-primary:hover {
-    background-color: var(--pp-hub-button-bg-primary-lighter);
-    border-color: var(--pp-hub-button-bg-primary-lighter);
+    background-color: var(--pp-hub-button-bg-primary-hover);
+    border-color: var(--pp-hub-button-bg-primary-hover);
 }
 
 .pp-hub-root button.is-primary:active {
-    background-color: var(--pp-hub-button-bg-primary-darker);
-    border-color: var(--pp-hub-button-bg-primary-darker);
+    background-color: var(--pp-hub-button-bg-primary-active);
+    border-color: var(--pp-hub-button-bg-primary-active);
 }
 
 .pp-hub-root button.is-primary:focus {
-    background-color: var(--pp-hub-button-bg-primary-lighter);
-    border-color: var(--pp-hub-button-bg-primary-lighter);
+    background-color: var(--pp-hub-button-bg-primary-hover);
+    border-color: var(--pp-hub-button-bg-primary-hover);
 }
 
 .pp-hub-root button.is-primary:disabled {
@@ -720,8 +740,8 @@
 }
 
 .pp-hub-root button.is-highlight:hover {
-    background-color: var(--pp-hub-button-bg-highlight-lighter);
-    border-color: var(--pp-hub-button-bg-highlight-lighter);
+    background-color: var(--pp-hub-button-bg-highlight-hover);
+    border-color: var(--pp-hub-button-bg-highlight-hover);
 }
 
 .pp-hub-root button.is-highlight:active {
@@ -730,8 +750,8 @@
 }
 
 .pp-hub-root button.is-highlight:focus {
-    background-color: var(--pp-hub-button-bg-highlight-lighter);
-    border-color: var(--pp-hub-button-bg-highlight-lighter);
+    background-color: var(--pp-hub-button-bg-highlight-hover);
+    border-color: var(--pp-hub-button-bg-highlight-hover);
 }
 
 .pp-hub-root button.is-highlight:disabled {
@@ -747,17 +767,17 @@
 }
 
 .pp-hub-root button.is-tertiary:hover {
-    background-color: var(--pp-hub-button-bg-tertiary-lighter);
-    border-color: var(--pp-hub-button-bg-tertiary-lighter);
+    background-color: var(--pp-hub-button-bg-tertiary-hover);
+    border-color: var(--pp-hub-button-bg-tertiary-hover);
 }
 
 .pp-hub-root button.is-tertiary:active {
-    background-color: var(--pp-hub-button-bg-tertiary-darker);
-    border-color: var(--pp-hub-button-bg-tertiary-darker);
+    background-color: var(--pp-hub-button-bg-tertiary-active);
+    border-color: var(--pp-hub-button-bg-tertiary-active);
 }
 
 .pp-hub-root button.is-tertiary:focus {
-    background-color: var(--pp-hub-button-bg-tertiary-lighter);
+    background-color: var(--pp-hub-button-bg-tertiary-hover);
     border-color: none;
 }
 
@@ -947,7 +967,7 @@
     align-items: center;
     padding: var(--pp-hub-spacing-xl);
     border-bottom: 1px solid var(--pp-hub-border-primary);
-    min-height: 110px;
+    min-height: 100px;
 }
 
 .pp-hub-plugins-list-item-icon {
@@ -968,6 +988,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--pp-hub-spacing-sm);
+    width: 600px;
 }
 
 .pp-hub-plugins-list-item-name {
@@ -987,6 +1008,7 @@
 
 .pp-hub-plugins-list-item-actions {
     display: flex;
+    align-items: center;
     flex-direction: row;
     gap: var(--pp-hub-spacing-sm);
     width: 100%;
@@ -994,7 +1016,7 @@
 }
 
 .pp-hub-plugins-list-item-actions button {
-    max-width: 140px;
+    width: 200px;
 }
 
 .pp-hub-plugins-list-item.installed .pp-hub-plugins-list-item-name::after {
@@ -1039,7 +1061,7 @@
     transition: var(--pp-hub-transition-fast);
     color: var(--pp-hub-text-primary);
     background: transparent;
-    border: none;
+    border: none !important;
 }
 
 button.publishpress-hub-filter-button:hover {
@@ -1173,6 +1195,49 @@ button.publishpress-hub-filter-button:hover {
 /* Ensure tooltip appears above other elements */
 .pp-hub-tooltip--custom {
     z-index: var(--pp-hub-z-tooltip) !important;
+}
+
+/*!*********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/src/css/components/badge/badge.css ***!
+  \*********************************************************************************************/
+.pp-hub-badge {
+    padding: 4px 12px;
+    border-radius: 16px;
+    background-color: var(--pp-hub-badge-bg);
+    color: var(--pp-hub-badge-text);
+    box-sizing: border-box;
+    line-height: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin-right: var(--pp-hub-spacing-md);
+}
+
+.pp-hub-badge.installed {
+    background-color: var(--pp-hub-badge-bg-installed);
+    color: var(--pp-hub-badge-text-installed);
+}
+
+.pp-hub-badge.not-installed {
+    background-color: var(--pp-hub-badge-bg-not-installed);
+    color: var(--pp-hub-badge-text-not-installed);
+}
+
+.pp-hub-badge.free {
+    background-color: var(--pp-hub-badge-bg-free);
+    color: var(--pp-hub-badge-text-free);
+}
+
+.pp-hub-badge.licensed {
+    background-color: var(--pp-hub-badge-bg-licensed);
+    color: var(--pp-hub-badge-text-licensed);
+}
+
+.pp-hub-badge.unlicensed {
+    background-color: var(--pp-hub-badge-bg-unlicensed);
+    color: var(--pp-hub-badge-text-unlicensed);
 }
 
 /*!***************************************************************************!*\
