@@ -344,6 +344,21 @@ class Plugin implements PluginInterface
     }
 
     /**
+     * Unregister the plugin.
+     *
+     * @since 1.0.0
+     */
+    public function unregister(): void
+    {
+        $this->version = null;
+        $this->filePath = null;
+        $this->installationStatusCache = null;
+        $this->proStatusCache = null;
+        $this->isActive = null;
+        $this->isLicensed = null;
+    }
+
+    /**
      * Validate the slug of the plugin.
      *
      * @since 1.0.0

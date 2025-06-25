@@ -22,3 +22,6 @@ codecept_debug('Updating .env file with auth hash');
 putenv("WP_TESTS_AUTH_HASH={$authHash}");
 putenv("WP_TESTS_APP_PASSWORD={$password}");
 
+require_once __DIR__ . '/../../src/autoload.php';
+
+do_action('plugins_loaded');
