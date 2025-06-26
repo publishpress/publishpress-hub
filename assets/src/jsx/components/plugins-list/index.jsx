@@ -47,6 +47,7 @@ const PluginsListComponent = ({
         installProPlugin,
         setLicenseInputModalOpen,
         setInstallationTypeModalOpen,
+        fetchPlugins,
     } = useDispatch(store);
 
     const getStatusFlagTooltipText = useCallback((plugin) => {
@@ -203,8 +204,7 @@ const PluginsListComponent = ({
                     onClose={(type) => {
                         setInstallationTypeModalOpen(false);
                         if (type === 'free') {
-                            installFreePlugin(currentPluginForModal.slugFree);
-                            setCurrentPluginForModal(null);
+                            installFreePlugin(currentPluginForModal.slugFree).then(fetchPlugins);
                         }
 
                         if (type === 'pro') {
@@ -224,7 +224,7 @@ const PluginsListComponent = ({
                         installProPlugin(
                             currentPluginForModal.slugFree,
                             licenseKey,
-                        );
+                        ).then(fetchPlugins);
                     }}
                     error={pluginError[currentPluginForModal.slugFree] || null}
                     buttonInProgress={pluginInstallationInProgress[currentPluginForModal.slugFree] || false}

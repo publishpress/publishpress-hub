@@ -80,8 +80,6 @@ export function* installFreePlugin(pluginSlug) {
 
         if (data.success) {
             yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree: pluginSlug}};
-
-            yield* fetchPlugins();
         } else {
             yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree: pluginSlug, error: data?.error}};
         }
@@ -106,8 +104,6 @@ export function* installProPlugin(pluginSlugFree, licenseKey) {
 
         if (data.success) {
             yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree}};
-
-            yield* fetchPlugins();
         } else {
             yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: data?.error}};
         }
