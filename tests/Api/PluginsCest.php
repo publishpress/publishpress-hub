@@ -7,6 +7,7 @@ namespace Tests\Api;
 
 use lucatume\WPBrowser\Utils\Filesystem;
 use PublishPress\Hub\Domain\Plugin\Plugin;
+use PublishPress\Hub\Domain\Plugin\PluginBuilder;
 use PublishPress\Hub\Infrastructure\Container\ServiceContainer;
 use PublishPress\Hub\Infrastructure\Container\Services;
 use Tests\Support\ApiTester;
@@ -57,16 +58,17 @@ final class PluginsCest
     {
         $container = ServiceContainer::getInstance();
         $pluginRepository = $container->get(Services::PLUGIN_REPOSITORY);
-        $plugin = new Plugin(
-            'PublishPress Authors',
-            'publishpress-authors',
-            'publishpress-authors-pro',
-            'publishpress-authors.php',
-            'publishpress-authors-pro.php',
-            1000,
-            'icon-authors',
-            'A dummy plugin for testing purposes'
-        );
+
+        $plugin = PluginBuilder::create('PublishPress Authors')
+            ->withSlugFree('publishpress-authors')
+            ->withSlugPro('publishpress-authors-pro')
+            ->withPluginFileNameFree('publishpress-authors.php')
+            ->withPluginFileNamePro('publishpress-authors-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-authors')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
+
         $plugin->register(
             '1.0.0',
             __DIR__ . '/../Support/Data/Plugins/dummy-authors-free/publishpress-authors.php',

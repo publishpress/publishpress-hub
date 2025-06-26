@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace Tests\Integration\Domain\Plugin;
 
 use PublishPress\Hub\Domain\Plugin\Plugin;
+use PublishPress\Hub\Domain\Plugin\PluginBuilder;
 use PublishPress\Hub\Domain\Plugin\PluginRepository;
 use Tests\NoTransactionWPTestCase;
 
@@ -36,14 +37,15 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
      */
     public function testRegisterSinglePlugin(): void
     {
-        $plugin = new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin = PluginBuilder::create('Test Plugin')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
 
         $this->repository->register($plugin);
 
@@ -57,30 +59,33 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
      */
     public function testRegisterMultipleDifferentPlugins(): void
     {
-        $plugin1 = new Plugin(
-            'Plugin One',
-            'plugin-one',
-            'plugin-one-pro',
-            'plugin-one.php',
-            'plugin-one-pro.php',
-            1000
-        );
-        $plugin2 = new Plugin(
-            'Plugin Two',
-            'plugin-two',
-            'plugin-two-pro',
-            'plugin-two.php',
-            'plugin-two-pro.php',
-            1000
-        );
-        $plugin3 = new Plugin(
-            'Plugin Three',
-            'plugin-three',
-            'plugin-three-pro',
-            'plugin-three.php',
-            'plugin-three-pro.php',
-            1000
-        );
+        $plugin1 = PluginBuilder::create('Plugin One')
+            ->withSlugFree('plugin-one')
+            ->withSlugPro('plugin-one-pro')
+            ->withPluginFileNameFree('plugin-one.php')
+            ->withPluginFileNamePro('plugin-one-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-plugin-one')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
+        $plugin2 = PluginBuilder::create('Plugin Two')
+            ->withSlugFree('plugin-two')
+            ->withSlugPro('plugin-two-pro')
+            ->withPluginFileNameFree('plugin-two.php')
+            ->withPluginFileNamePro('plugin-two-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-plugin-two')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
+        $plugin3 = PluginBuilder::create('Plugin Three')
+            ->withSlugFree('plugin-three')
+            ->withSlugPro('plugin-three-pro')
+            ->withPluginFileNameFree('plugin-three.php')
+            ->withPluginFileNamePro('plugin-three-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-plugin-three')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
 
         $this->repository->register($plugin1);
         $this->repository->register($plugin2);
@@ -101,24 +106,26 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
      */
     public function testRegisterSamePluginWithNewerVersionOverwrites(): void
     {
-        $plugin1 = new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin1 = PluginBuilder::create('Test Plugin')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin2 = new Plugin(
-            'Test Plugin Updated',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin2 = PluginBuilder::create('Test Plugin Updated')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin2->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->repository->register($plugin1);
@@ -138,24 +145,26 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
      */
     public function testRegisterSamePluginWithOlderVersionDoesNotOverwrite(): void
     {
-        $plugin1 = new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin1 = PluginBuilder::create('Test Plugin')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin1->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin2 = new Plugin(
-            'Test Plugin Old',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin2 = PluginBuilder::create('Test Plugin Old')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->repository->register($plugin1);
@@ -175,24 +184,26 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
      */
     public function testRegisterSamePluginWithEqualVersionOverwrites(): void
     {
-        $plugin1 = new Plugin(
-            'Test Plugin Original',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin1 = PluginBuilder::create('Test Plugin Original')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin2 = new Plugin(
-            'Test Plugin Duplicate',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin2 = PluginBuilder::create('Test Plugin Duplicate')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->repository->register($plugin1);
@@ -210,14 +221,15 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
      */
     public function testFindBySlugReturnsNullForNonExistentPlugin(): void
     {
-        $plugin = new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin = PluginBuilder::create('Test Plugin')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
         $this->repository->register($plugin);
@@ -232,14 +244,15 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
      */
     public function testFindBySlugIsCaseSensitive(): void
     {
-        $plugin = new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin = PluginBuilder::create('Test Plugin')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
         $this->repository->register($plugin);
@@ -254,14 +267,15 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
      */
     public function testIsRegisteredReturnsFalseForNonExistentPlugin(): void
     {
-        $plugin = new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin = PluginBuilder::create('Test Plugin')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
         $this->repository->register($plugin);
@@ -276,14 +290,15 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
      */
     public function testIsRegisteredIsCaseSensitive(): void
     {
-        $plugin = new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin = PluginBuilder::create('Test Plugin')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
         $this->repository->register($plugin);
@@ -298,24 +313,26 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
      */
     public function testGetAllPluginsReturnsArrayValues(): void
     {
-        $plugin1 = new Plugin(
-            'Plugin A',
-            'plugin-a',
-            'plugin-a-pro',
-            'plugin-a.php',
-            'plugin-a-pro.php',
-            1000
-        );
+        $plugin1 = PluginBuilder::create('Plugin A')
+            ->withSlugFree('plugin-a')
+            ->withSlugPro('plugin-a-pro')
+            ->withPluginFileNameFree('plugin-a.php')
+            ->withPluginFileNamePro('plugin-a-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-plugin-a')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin2 = new Plugin(
-            'Plugin B',
-            'plugin-b',
-            'plugin-b-pro',
-            'plugin-b.php',
-            'plugin-b-pro.php',
-            1000
-        );
+        $plugin2 = PluginBuilder::create('Plugin B')
+            ->withSlugFree('plugin-b')
+            ->withSlugPro('plugin-b-pro')
+            ->withPluginFileNameFree('plugin-b.php')
+            ->withPluginFileNamePro('plugin-b-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-plugin-b')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin2->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->repository->register($plugin1);
@@ -343,24 +360,26 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
     public function testComplexVersionComparisonScenarios(): void
     {
         // Test pre-release versions
-        $plugin1 = new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin1 = PluginBuilder::create('Test Plugin')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin1->register('1.0.0-beta', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin2 = new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin2 = PluginBuilder::create('Test Plugin')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->repository->register($plugin1);
@@ -373,24 +392,26 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
         $this->repository = new PluginRepository();
 
         // Test complex version numbers
-        $plugin3 = new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin3 = PluginBuilder::create('Test Plugin')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin3->register('1.2.3', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin4 = new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin4 = PluginBuilder::create('Test Plugin')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin4->register('1.2.10', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->repository->register($plugin3);
@@ -405,44 +426,48 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
      */
     public function testMultipleRegistrationsOfSamePlugin(): void
     {
-        $plugin1 = new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin1 = PluginBuilder::create('Test Plugin')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin2 = new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin2 = PluginBuilder::create('Test Plugin')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin2->register('1.5.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
-        $plugin3 = new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin3 = PluginBuilder::create('Test Plugin')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin3->register('1.2.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin4 = new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin4 = PluginBuilder::create('Test Plugin')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin4->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->repository->register($plugin1);
@@ -467,24 +492,26 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
      */
     public function testRepositoryMaintainsPluginInstancesCorrectly(): void
     {
-        $plugin1 = new Plugin(
-            'Plugin One',
-            'plugin-one',
-            'plugin-one-pro',
-            'plugin-one.php',
-            'plugin-one-pro.php',
-            1000
-        );
+        $plugin1 = PluginBuilder::create('Plugin One')
+            ->withSlugFree('plugin-one')
+            ->withSlugPro('plugin-one-pro')
+            ->withPluginFileNameFree('plugin-one.php')
+            ->withPluginFileNamePro('plugin-one-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-plugin-one')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin2 = new Plugin(
-            'Plugin Two',
-            'plugin-two',
-            'plugin-two-pro',
-            'plugin-two.php',
-            'plugin-two-pro.php',
-            1000
-        );
+        $plugin2 = PluginBuilder::create('Plugin Two')
+            ->withSlugFree('plugin-two')
+            ->withSlugPro('plugin-two-pro')
+            ->withPluginFileNameFree('plugin-two.php')
+            ->withPluginFileNamePro('plugin-two-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-plugin-two')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->repository->register($plugin1);
@@ -514,14 +541,15 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
      */
     public function testResetMethod(): void
     {
-        $plugin = new Plugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin-pro',
-            'test-plugin.php',
-            'test-plugin-pro.php',
-            1000
-        );
+        $plugin = PluginBuilder::create('Test Plugin')
+            ->withSlugFree('test-plugin')
+            ->withSlugPro('test-plugin-pro')
+            ->withPluginFileNameFree('test-plugin.php')
+            ->withPluginFileNamePro('test-plugin-pro.php')
+            ->withEddItemId(1000)
+            ->withIconFile('icon-test-plugin')
+            ->withDescription('A dummy plugin for testing purposes')
+            ->build();
         $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
         $this->repository->register($plugin);

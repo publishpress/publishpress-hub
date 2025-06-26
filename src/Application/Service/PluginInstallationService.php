@@ -208,18 +208,14 @@ class PluginInstallationService implements ServiceInterface
      */
     private function getAuthenticatedDownloadUrl(PluginInterface $plugin, string $licenseKey): string
     {
-        // Get the plugin's EDD item ID - you'll need to map plugin slugs to EDD item IDs
-        $itemId = $this->getEddItemId($plugin->getSlugFree());
-
-        if (!$itemId) {
-            throw new \Exception('Plugin not found in EDD store mapping');
-        }
+        // Get the plugin's EDD item ID directly from the plugin
+        $itemId = $plugin->getEddItemId();
 
         // First, validate the license
-        $this->validateLicense($$this->storeUrl, $itemId, $licenseKey);
+        $this->validateLicense($this->storeUrl, $itemId, $licenseKey);
 
         // Get version information which includes the download link
-        $versionData = $this->getVersionInfo($$this->storeUrl, $itemId, $licenseKey);
+        $versionData = $this->getVersionInfo($this->storeUrl, $itemId, $licenseKey);
 
         if (empty($versionData['download_link'])) {
             throw new \Exception('No download link available for this license');
@@ -318,41 +314,5 @@ class PluginInstallationService implements ServiceInterface
         }
 
         return $versionData;
-    }
-
-    /**
-     * Get EDD item ID for a plugin slug.
-     *
-     * @since 1.0.0
-     * @param string $pluginSlug The plugin slug
-     * @return int|null The EDD item ID or null if not found
-     */
-    private function getEddItemId(string $pluginSlug): ?int
-    {
-        // Default mapping - can be overridden via filter
-        $defaultMapping = [
-            'publishpress-authors' => 123, // Replace with actual EDD item ID
-            'publishpress-checklists' => 456, // Replace with actual EDD item ID
-            'capability-manager-enhanced' => 789, // Replace with actual EDD item ID
-            'advanced-gutenberg' => 101, // Replace with actual EDD item ID
-            'post-expirator' => 102, // Replace with actual EDD item ID
-            'press-permit-core' => 103, // Replace with actual EDD item ID
-            'revisionary' => 104, // Replace with actual EDD item ID
-            'organize-series' => 105, // Replace with actual EDD item ID
-            'publishpress' => 106, // Replace with actual EDD item ID
-        ];
-
-        /**
-         * Filter the plugin slug to EDD item ID mapping.
-         *
-         * Allows developers to modify or extend the mapping of plugin slugs
-         * to EDD item IDs for license validation and download URL generation.
-         *
-         * @since 1.0.0
-         * @param array $mapping Array of plugin_slug => edd_item_id mappings
-         */
-        $pluginToEddMapping = apply_filters('publishpress_hub_edd_item_mapping', $defaultMapping);
-
-        return $pluginToEddMapping[$pluginSlug] ?? null;
     }
 }

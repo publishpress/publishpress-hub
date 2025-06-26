@@ -53,6 +53,30 @@ class Plugin implements PluginInterface
     private string $pluginFileNamePro;
 
     /**
+     * The icon file of the plugin.
+     *
+     * @since 1.0.0
+     * @var string
+     */
+    private string $iconFile;
+
+    /**
+     * The description of the plugin.
+     *
+     * @since 1.0.0
+     * @var string
+     */
+    private string $description;
+
+    /**
+     * The EDD item ID for license validation.
+     *
+     * @since 1.0.0
+     * @var int
+     */
+    private int $eddItemId;
+
+    /**
      * The version of the plugin, if installed.
      *
      * @since 1.0.0
@@ -101,29 +125,18 @@ class Plugin implements PluginInterface
     private ?bool $proStatusCache = null;
 
     /**
-     * The icon file of the plugin.
+     * Constructor. Use the PluginBuilder instead.
      *
      * @since 1.0.0
-     * @var string|null
+     * @param string $name
+     * @param string $slugFree
+     * @param string $slugPro
+     * @param string $pluginFileNameFree
+     * @param string $pluginFileNamePro
+     * @param int $eddItemId
+     * @param string $iconFile
+     * @param string $description
      */
-    private ?string $iconFile;
-
-    /**
-     * The description of the plugin.
-     *
-     * @since 1.0.0
-     * @var string|null
-     */
-    private ?string $description;
-
-    /**
-     * The EDD item ID of the plugin.
-     *
-     * @since 1.0.0
-     * @var int
-     */
-    private int $eddItemId;
-
     public function __construct(
         string $name,
         string $slugFree,
@@ -131,8 +144,8 @@ class Plugin implements PluginInterface
         string $pluginFileNameFree,
         string $pluginFileNamePro,
         int $eddItemId,
-        ?string $iconFile = null,
-        ?string $description = null
+        string $iconFile,
+        string $description
     ) {
         $this->validateSlug($slugFree);
         $this->validateSlug($slugPro);
@@ -146,6 +159,47 @@ class Plugin implements PluginInterface
         $this->pluginFileNamePro = $pluginFileNamePro;
         $this->iconFile = $iconFile;
         $this->description = $description;
+    }
+
+    /**
+     * Create a Plugin instance from an array.
+     *
+     * @since 1.0.0
+     * @param array $data The plugin data array
+     * @return self
+     */
+    public static function fromArray(array $data): self
+    {
+        $requiredKeys = [
+            'name',
+            'slugFree',
+            'slugPro',
+            'pluginFileNameFree',
+            'pluginFileNamePro',
+            'eddItemId',
+            'iconFile',
+            'description',
+        ];
+
+        foreach ($requiredKeys as $key) {
+            if (!isset($data[$key])) {
+                throw new InvalidArgumentException(
+                    sprintf('Missing required key: %s', $key)
+                );
+            }
+        }
+
+        $plugin = PluginBuilder::create($data['name'])
+            ->withSlugFree($data['slugFree'])
+            ->withSlugPro($data['slugPro'])
+            ->withPluginFileNameFree($data['pluginFileNameFree'])
+            ->withPluginFileNamePro($data['pluginFileNamePro'])
+            ->withEddItemId($data['eddItemId'])
+            ->withIconFile($data['iconFile'])
+            ->withDescription($data['description'])
+            ->build();
+
+        return $plugin;
     }
 
     /**

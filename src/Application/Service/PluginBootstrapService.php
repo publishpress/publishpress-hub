@@ -8,6 +8,7 @@ use PublishPress\Hub\Application\Service\Contracts\ServiceInterface;
 use PublishPress\Hub\Domain\Plugin\Contracts\PluginRepositoryInterface;
 use PublishPress\Hub\Application\Hooks as ApplicationHooks;
 use PublishPress\Hub\Domain\Plugin\Plugin;
+use PublishPress\Hub\Domain\Plugin\PluginBuilder;
 
 /**
  * Plugin Bootstrap Service.
@@ -96,16 +97,15 @@ class PluginBootstrapService implements ServiceInterface
         $pluginDefinitions = $this->getPluginDefinitions();
 
         foreach ($pluginDefinitions as $definition) {
-            $plugin = new Plugin(
-                $definition['name'],
-                $definition['slugFree'],
-                $definition['slugPro'],
-                $definition['pluginFileNameFree'],
-                $definition['pluginFileNamePro'],
-                $definition['eddItemId'],
-                $definition['iconFile'],
-                $definition['description']
-            );
+            $plugin = PluginBuilder::create($definition['name'])
+                ->withSlugFree($definition['slugFree'])
+                ->withSlugPro($definition['slugPro'])
+                ->withPluginFileNameFree($definition['pluginFileNameFree'])
+                ->withPluginFileNamePro($definition['pluginFileNamePro'])
+                ->withEddItemId($definition['eddItemId'])
+                ->withIconFile($definition['iconFile'])
+                ->withDescription($definition['description'])
+                ->build();
 
             $this->pluginRepository->register($plugin);
         }

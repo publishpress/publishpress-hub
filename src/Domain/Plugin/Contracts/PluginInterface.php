@@ -39,4 +39,12 @@ interface PluginInterface
     public function register(string $version, string $filePath, $isPro = false): void;
 
     public function clearCache(): void;
+
+    /**
+     * Get the EDD item ID of the plugin.
+     *
+     * @since 1.0.0
+     * @return int
+     */
+    public function getEddItemId(): int;
 }
