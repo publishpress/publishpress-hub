@@ -13,7 +13,7 @@ const ModalInstallationTypeComponent = ({
             title={__('Install Plugin', 'publishpress-hub')}
             onRequestClose={onClose}
         >
-            <div className='pp-hub-modal-installation-type'>
+            <div className='pp-hub-modal pp-hub-modal-installation-type'>
                 <p>
                     {__('Select how you would like to install this plugin. You can install the Pro version if you have a license, or the Free version to get started.', 'publishpress-hub')}
                 </p>
@@ -22,7 +22,7 @@ const ModalInstallationTypeComponent = ({
                 }}>
                     {__('I have a license, install the Pro version', 'publishpress-hub')}
                 </Button>
-                <Button variant='primary' icon='download' isFullWidth onClick={() => {
+                <Button variant='primary' icon='download' onClick={() => {
                     onClose('free')
                 }}>
                     {__('I don\'t have a license, install the Free version', 'publishpress-hub')}

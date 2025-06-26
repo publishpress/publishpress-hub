@@ -9,6 +9,7 @@ flowchart TD
     E -->|No| F[Show error]
     E -->|Yes| G[Activate the license]
     G --> H[Install the Pro plugin]
+    G --> I[Save license information on the plugin's settings]
 
 ```
 

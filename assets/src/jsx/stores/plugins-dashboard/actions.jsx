@@ -73,3 +73,25 @@ export function* installFreePlugin(pluginSlug) {
         yield {type: 'INSTALL_PLUGIN_ERROR', pluginSlug, error: error};
     }
 }
+
+export function* installProPlugin(pluginSlugFree, pluginSlugPro, licenseKey) {
+    try {
+        yield {type: 'INSTALL_PLUGIN_START', data: {pluginSlugFree}};
+
+        const data = yield apiFetch({
+            path: `/plugins/${pluginSlugFree}/install/pro`,
+            method: 'POST',
+            data: {
+                license_key: licenseKey,
+            },
+        });
+
+        if (data.success) {
+            yield {type: 'INSTALL_PLUGIN_SUCCESS', data: data.data};
+        } else {
+            yield {type: 'INSTALL_PLUGIN_ERROR', pluginSlugFree, error: data.error};
+        }
+    } catch (error) {
+        yield {type: 'INSTALL_PLUGIN_ERROR', pluginSlugFree, error: error};
+    }
+}

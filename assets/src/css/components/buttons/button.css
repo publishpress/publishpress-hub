@@ -147,3 +147,7 @@
 .pp-hub-root button.is-link:disabled {
     color: var(--pp-hub-button-text-disabled);
 }
+
+.components-button.has-icon.has-text {
+    justify-content: center !important;
+}

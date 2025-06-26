@@ -93,26 +93,36 @@ class PluginDto implements DtoInterface
      */
     private ?string $description;
 
+    /**
+     * The EDD item ID of the plugin.
+     *
+     * @since 1.0.0
+     * @var int
+     */
+    private int $eddItemId;
+
     public function __construct(
         string $slugFree,
         string $slugPro,
         string $name,
-        ?string $version,
+        int $eddItemId = null,
         bool $isInstalled,
         bool $isActive,
         bool $isLicensed,
         bool $isPro,
+        ?string $version,
         ?string $iconFile = null,
         ?string $description = null
     ) {
         $this->slugFree = $slugFree;
         $this->slugPro = $slugPro;
         $this->name = $name;
-        $this->version = $version;
+        $this->eddItemId = $eddItemId;
         $this->isInstalled = $isInstalled;
         $this->isActive = $isActive;
         $this->isLicensed = $isLicensed;
         $this->isPro = $isPro;
+        $this->version = $version;
         $this->iconFile = $iconFile;
         $this->description = $description;
     }
@@ -128,6 +138,7 @@ class PluginDto implements DtoInterface
             'slugFree' => $this->slugFree,
             'slugPro' => $this->slugPro,
             'name' => $this->name,
+            'eddItemId' => $this->eddItemId,
             'version' => $this->version,
             'isInstalled' => $this->isInstalled,
             'isActive' => $this->isActive,

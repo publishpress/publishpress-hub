@@ -27,6 +27,8 @@ abstract class Services
 
     public const CONST_IS_DEVELOPMENT = 'publishpress-hub/const-is-development';
 
+    public const CONST_STORE_URL = 'publishpress-hub/const-store-url';
+
     public const LOGGER = 'publishpress-hub/logger';
 
     public const CORE_HUB_SERVICE = 'publishpress-hub/core-hub-service';

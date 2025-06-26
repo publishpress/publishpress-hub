@@ -9,12 +9,14 @@ import { Button } from '../buttons/button';
 import { Badge } from '../badge/badge';
 import { store } from '../../stores/plugins-dashboard';
 import { ModalInstallationType } from './modal-installation-type';
+import { ModalLicenseInput } from './modal-license-input';
 
 const PluginsListComponent = ({
     plugins,
     pluginIconBaseUrl,
 }) => {
     const [isInstallationTypeModalOpen, setIsInstallationTypeModalOpen] = useState(false);
+    const [isLicenseInputModalOpen, setIsLicenseInputModalOpen] = useState(false);
     const [currentPluginForActivation, setCurrentPluginForActivation] = useState(null);
 
     const getStatusFlagClass = (plugin) => classNames({
@@ -30,6 +32,7 @@ const PluginsListComponent = ({
 
     const {
         installFreePlugin,
+        installProPlugin,
     } = useDispatch(store);
 
     const getStatusFlagTooltipText = useCallback((plugin) => {
@@ -188,8 +191,24 @@ const PluginsListComponent = ({
                         setIsInstallationTypeModalOpen(false);
                         if (type === 'free') {
                             installFreePlugin(currentPluginForActivation.slugFree);
+                            setCurrentPluginForActivation(null);
                         }
 
+                        if (type === 'pro') {
+                            setIsLicenseInputModalOpen(true);
+                        }
+                    }}
+                />
+            )}
+
+            {isLicenseInputModalOpen && (
+                <ModalLicenseInput
+                    onClose={() => {
+                        setIsLicenseInputModalOpen(false);
+                        setCurrentPluginForActivation(null);
+                    }}
+                    onActivate={(licenseKey) => {
+                        installProPlugin(currentPluginForActivation.slugFree, currentPluginForActivation.slugPro, licenseKey);
                         setCurrentPluginForActivation(null);
                     }}
                 />

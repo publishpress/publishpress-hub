@@ -809,6 +809,10 @@
     color: var(--pp-hub-button-text-disabled);
 }
 
+.components-button.has-icon.has-text {
+    justify-content: center !important;
+}
+
 /*!*****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./assets/src/css/components/buttons/help-button.css ***!
   \*****************************************************************************************************/
@@ -949,19 +953,32 @@
     width: 100%;
 }
 
-/*!**********************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/src/css/components/plugins-list/modal-installation-type.css ***!
-  \**********************************************************************************************************************/
-.pp-hub-modal-installation-type {
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/src/css/components/plugins-list/modal.css ***!
+  \****************************************************************************************************/
+.pp-hub-modal {
     display: flex;
     flex-direction: column;
     gap: 10px;
     max-width: 400px;
 }
 
-.pp-hub-modal-installation-type .pp-hub-button.is-full-width {
+.pp-hub-modal .pp-hub-button.is-full-width {
     width: 100%;
     justify-content: center !important;
+}
+
+.pp-hub-modal .pp-hub-text-control input {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: var(--pp-hub-radius-md);
+    border: 1px solid var(--pp-hub-border-primary);
+    padding: var(--pp-hub-spacing-md);
+    font-size: var(--pp-hub-font-size-lg);
+    color: var(--pp-hub-text-primary);
+    background-color: var(--pp-hub-bg-primary);
+    box-shadow: none;
 }
 
 /*!***********************************************************************************************************!*\

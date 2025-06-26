@@ -116,21 +116,30 @@ class Plugin implements PluginInterface
      */
     private ?string $description;
 
+    /**
+     * The EDD item ID of the plugin.
+     *
+     * @since 1.0.0
+     * @var int
+     */
+    private int $eddItemId;
+
     public function __construct(
         string $name,
         string $slugFree,
         string $slugPro,
         string $pluginFileNameFree,
         string $pluginFileNamePro,
+        int $eddItemId,
         ?string $iconFile = null,
         ?string $description = null
     ) {
         $this->validateSlug($slugFree);
         $this->validateSlug($slugPro);
         $this->validatePluginFileName($pluginFileNameFree);
-        $this->validatePluginFileName($pluginFileNamePro);
 
         $this->name = $name;
+        $this->eddItemId = (int) $eddItemId;
         $this->slugFree = $slugFree;
         $this->slugPro = $slugPro;
         $this->pluginFileNameFree = $pluginFileNameFree;
@@ -236,6 +245,17 @@ class Plugin implements PluginInterface
     public function getPluginFileNamePro(): string
     {
         return $this->pluginFileNamePro;
+    }
+
+    /**
+     * Get the EDD item ID of the plugin.
+     *
+     * @since 1.0.0
+     * @return int
+     */
+    public function getEddItemId(): int
+    {
+        return $this->eddItemId;
     }
 
     /**

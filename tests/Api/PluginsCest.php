@@ -63,6 +63,7 @@ final class PluginsCest
             'publishpress-authors-pro',
             'publishpress-authors.php',
             'publishpress-authors-pro.php',
+            1000,
             'icon-authors',
             'A dummy plugin for testing purposes'
         );

@@ -24,7 +24,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin',
             'test-plugin-pro',
             'test-plugin.php',
-            'test-plugin-pro.php'
+            'test-plugin-pro.php',
+            1000
         );
 
         $this->assertEquals('Test Plugin', $plugin->getName());
@@ -48,7 +49,8 @@ class PluginTest extends NoTransactionWPTestCase
             'complex-plugin-123',
             'complex-plugin-123-pro',
             'complex-plugin-123.php',
-            'complex-plugin-123-pro.php'
+            'complex-plugin-123-pro.php',
+            1000
         );
 
         $this->assertEquals('complex-plugin-123', $plugin->getSlugFree());
@@ -68,7 +70,8 @@ class PluginTest extends NoTransactionWPTestCase
             '',
             '',
             '',
-            ''
+            '',
+            1000
         );
     }
 
@@ -85,7 +88,8 @@ class PluginTest extends NoTransactionWPTestCase
             'Test-Plugin',
             'Test-Plugin-Pro',
             'Test-Plugin.php',
-            'Test-Plugin-Pro.php'
+            'Test-Plugin-Pro.php',
+            1000
         );
     }
 
@@ -102,7 +106,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test_plugin!',
             'test_plugin_pro!',
             'test_plugin!.php',
-            'test_plugin_pro!.php'
+            'test_plugin_pro!.php',
+            1000
         );
     }
 
@@ -119,7 +124,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test plugin',
             'test_plugin_pro',
             'test_plugin.php',
-            'test_plugin_pro.php'
+            'test_plugin_pro.php',
+            1000
         );
     }
 
@@ -136,7 +142,8 @@ class PluginTest extends NoTransactionWPTestCase
             '123',
             '123-pro',
             '123.php',
-            '123-pro.php'
+            '123-pro.php',
+            1000
         );
     }
 
@@ -153,7 +160,8 @@ class PluginTest extends NoTransactionWPTestCase
             '123-plugin',
             '123-plugin-pro',
             '123-plugin.php',
-            '123-plugin-pro.php'
+            '123-plugin-pro.php',
+            1000
         );
     }
 
@@ -170,7 +178,8 @@ class PluginTest extends NoTransactionWPTestCase
             '-plugin',
             '-plugin-pro',
             '-plugin.php',
-            '-plugin-pro.php'
+            '-plugin-pro.php',
+            1000
         );
     }
 
@@ -184,7 +193,8 @@ class PluginTest extends NoTransactionWPTestCase
             'awesome-plugin',
             'awesome-plugin-pro',
             'awesome-plugin.php',
-            'awesome-plugin-pro.php'
+            'awesome-plugin-pro.php',
+            1000
         );
 
         $this->assertEquals('My Awesome Plugin', $plugin->getName());
@@ -200,7 +210,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin-123',
             'test-plugin-123-pro',
             'test-plugin-123.php',
-            'test-plugin-123-pro.php'
+            'test-plugin-123-pro.php',
+            1000
         );
 
         $this->assertEquals('test-plugin-123', $plugin->getSlugFree());
@@ -216,7 +227,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin',
             'test-plugin-pro',
             'test-plugin.php',
-            'test-plugin-pro.php'
+            'test-plugin-pro.php',
+            1000
         );
 
         $this->assertEquals('test-plugin-pro', $plugin->getSlugPro());
@@ -232,7 +244,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin',
             'test-plugin-pro',
             'test-plugin.php',
-            'test-plugin-pro.php'
+            'test-plugin-pro.php',
+            1000
         );
 
         $this->assertNull($plugin->getVersion());
@@ -245,7 +258,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin',
             'test-plugin-pro',
             'test-plugin.php',
-            'test-plugin-pro.php'
+            'test-plugin-pro.php',
+            1000
         );
 
         $this->assertNull($plugin->getPath());
@@ -259,7 +273,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin',
             'test-plugin-pro',
             'test-plugin.php',
-            'test-plugin-pro.php'
+            'test-plugin-pro.php',
+            1000
         );
 
         $this->expectException(InvalidArgumentException::class);
@@ -275,7 +290,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin',
             'test-plugin-pro',
             'test-plugin.php',
-            'test-plugin-pro.php'
+            'test-plugin-pro.php',
+            1000
         );
 
         $this->expectException(InvalidArgumentException::class);
@@ -291,7 +307,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin',
             'test-plugin-pro',
             'test-plugin.php',
-            'test-plugin-pro.php'
+            'test-plugin-pro.php',
+            1000
         );
 
         $this->expectException(InvalidArgumentException::class);
@@ -307,7 +324,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin',
             'test-plugin-pro',
             'test-plugin.php',
-            'test-plugin-pro.php'
+            'test-plugin-pro.php',
+            1000
         );
 
         $this->expectException(InvalidArgumentException::class);
@@ -323,7 +341,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin',
             'test-plugin-pro',
             'test-plugin.php',
-            'test-plugin-pro.php'
+            'test-plugin-pro.php',
+            1000
         );
 
         $this->expectException(InvalidArgumentException::class);
@@ -339,7 +358,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin',
             'test-plugin-pro',
             'test-plugin.php',
-            'test-plugin-pro.php'
+            'test-plugin-pro.php',
+            1000
         );
 
         $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
@@ -355,7 +375,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin',
             'test-plugin-pro',
             'test-plugin.php',
-            'test-plugin-pro.php'
+            'test-plugin-pro.php',
+            1000
         );
 
         $plugin->register('1.0.0-beta.1', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
@@ -377,7 +398,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin',
             'test-plugin-pro',
             'test-plugin.php',
-            'test-plugin-pro.php'
+            'test-plugin-pro.php',
+            1000
         );
 
         $this->assertNull($plugin->getPath());
@@ -394,7 +416,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin',
             'test-plugin-pro',
             'test-plugin.php',
-            'test-plugin-pro.php'
+            'test-plugin-pro.php',
+            1000
         );
 
         $this->expectException(InvalidArgumentException::class);
@@ -409,7 +432,8 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin',
             'test-plugin-pro',
             'test-plugin.php',
-            'test-plugin-pro.php'
+            'test-plugin-pro.php',
+            1000
         );
 
         $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
@@ -422,10 +446,24 @@ class PluginTest extends NoTransactionWPTestCase
      */
     public function testIsNewerThanReturnsTrue(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'plugin-a', 'plugin-a-pro', 'plugin-a.php', 'plugin-a-pro.php');
+        $plugin1 = new Plugin(
+            'Plugin A',
+            'plugin-a',
+            'plugin-a-pro',
+            'plugin-a.php',
+            'plugin-a-pro.php',
+            1000
+        );
         $plugin1->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin2 = new Plugin('Plugin B', 'plugin-b', 'plugin-b-pro', 'plugin-b.php', 'plugin-b-pro.php');
+        $plugin2 = new Plugin(
+            'Plugin B',
+            'plugin-b',
+            'plugin-b-pro',
+            'plugin-b.php',
+            'plugin-b-pro.php',
+            1000
+        );
         $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->assertTrue($plugin1->isNewerThan($plugin2));
@@ -436,10 +474,24 @@ class PluginTest extends NoTransactionWPTestCase
      */
     public function testIsNewerThanReturnsFalse(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'plugin-a', 'plugin-a-pro', 'plugin-a.php', 'plugin-a-pro.php');
+        $plugin1 = new Plugin(
+            'Plugin A',
+            'plugin-a',
+            'plugin-a-pro',
+            'plugin-a.php',
+            'plugin-a-pro.php',
+            1000
+        );
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin2 = new Plugin('Plugin B', 'plugin-b', 'plugin-b-pro', 'plugin-b.php', 'plugin-b-pro.php');
+        $plugin2 = new Plugin(
+            'Plugin B',
+            'plugin-b',
+            'plugin-b-pro',
+            'plugin-b.php',
+            'plugin-b-pro.php',
+            1000
+        );
         $plugin2->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->assertFalse($plugin1->isNewerThan($plugin2));
@@ -450,10 +502,24 @@ class PluginTest extends NoTransactionWPTestCase
      */
     public function testIsNewerThanReturnsFalseForEqualVersions(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'plugin-a', 'plugin-a-pro', 'plugin-a.php', 'plugin-a-pro.php');
+        $plugin1 = new Plugin(
+            'Plugin A',
+            'plugin-a',
+            'plugin-a-pro',
+            'plugin-a.php',
+            'plugin-a-pro.php',
+            1000
+        );
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin2 = new Plugin('Plugin B', 'plugin-b', 'plugin-b-pro', 'plugin-b.php', 'plugin-b-pro.php');
+        $plugin2 = new Plugin(
+            'Plugin B',
+            'plugin-b',
+            'plugin-b-pro',
+            'plugin-b.php',
+            'plugin-b-pro.php',
+            1000
+        );
         $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->assertFalse($plugin1->isNewerThan($plugin2));
@@ -464,10 +530,24 @@ class PluginTest extends NoTransactionWPTestCase
      */
     public function testIsNewerThanWithComplexVersions(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'plugin-a', 'plugin-a-pro', 'plugin-a.php', 'plugin-a-pro.php');
+        $plugin1 = new Plugin(
+            'Plugin A',
+            'plugin-a',
+            'plugin-a-pro',
+            'plugin-a.php',
+            'plugin-a-pro.php',
+            1000
+        );
         $plugin1->register('1.2.1', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin2 = new Plugin('Plugin B', 'plugin-b', 'plugin-b-pro', 'plugin-b.php', 'plugin-b-pro.php');
+        $plugin2 = new Plugin(
+            'Plugin B',
+            'plugin-b',
+            'plugin-b-pro',
+            'plugin-b.php',
+            'plugin-b-pro.php',
+            1000
+        );
         $plugin2->register('1.2.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->assertTrue($plugin1->isNewerThan($plugin2));
@@ -478,10 +558,24 @@ class PluginTest extends NoTransactionWPTestCase
      */
     public function testIsNewerThanWithPreReleaseVersions(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'plugin-a', 'plugin-a-pro', 'plugin-a.php', 'plugin-a-pro.php');
+        $plugin1 = new Plugin(
+            'Plugin A',
+            'plugin-a',
+            'plugin-a-pro',
+            'plugin-a.php',
+            'plugin-a-pro.php',
+            1000
+        );
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin2 = new Plugin('Plugin B', 'plugin-b', 'plugin-b-pro', 'plugin-b.php', 'plugin-b-pro.php');
+        $plugin2 = new Plugin(
+            'Plugin B',
+            'plugin-b',
+            'plugin-b-pro',
+            'plugin-b.php',
+            'plugin-b-pro.php',
+            1000
+        );
         $plugin2->register('1.0.0-beta', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
         $this->assertTrue($plugin1->isNewerThan($plugin2));
@@ -492,10 +586,24 @@ class PluginTest extends NoTransactionWPTestCase
      */
     public function testIsSamePluginReturnsTrue(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'same-plugin', 'same-plugin-pro', 'same-plugin.php', 'same-plugin-pro.php');
+        $plugin1 = new Plugin(
+            'Plugin A',
+            'same-plugin',
+            'same-plugin-pro',
+            'same-plugin.php',
+            'same-plugin-pro.php',
+            1000
+        );
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin2 = new Plugin('Plugin B', 'same-plugin', 'same-plugin-pro', 'same-plugin.php', 'same-plugin-pro.php');
+        $plugin2 = new Plugin(
+            'Plugin B',
+            'same-plugin',
+            'same-plugin-pro',
+            'same-plugin.php',
+            'same-plugin-pro.php',
+            1000
+        );
         $plugin2->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->assertTrue($plugin1->isSamePlugin($plugin2));
@@ -506,10 +614,24 @@ class PluginTest extends NoTransactionWPTestCase
      */
     public function testIsSamePluginReturnsFalse(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'plugin-a', 'plugin-a-pro', 'plugin-a.php', 'plugin-a-pro.php');
+        $plugin1 = new Plugin(
+            'Plugin A',
+            'plugin-a',
+            'plugin-a-pro',
+            'plugin-a.php',
+            'plugin-a-pro.php',
+            1000
+        );
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin2 = new Plugin('Plugin B', 'plugin-b', 'plugin-b-pro', 'plugin-b.php', 'plugin-b-pro.php');
+        $plugin2 = new Plugin(
+            'Plugin B',
+            'plugin-b',
+            'plugin-b-pro',
+            'plugin-b.php',
+            'plugin-b-pro.php',
+            1000
+        );
         $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->assertFalse($plugin1->isSamePlugin($plugin2));
@@ -525,7 +647,8 @@ class PluginTest extends NoTransactionWPTestCase
             'same-plugin',
             'same-plugin-pro',
             'same-plugin.php',
-            'same-plugin-pro.php'
+            'same-plugin-pro.php',
+            1000
         );
 
         $plugin2 = new Plugin(
@@ -533,7 +656,8 @@ class PluginTest extends NoTransactionWPTestCase
             'same-plugin',
             'same-plugin-pro',
             'same-plugin.php',
-            'same-plugin-pro.php'
+            'same-plugin-pro.php',
+            1000
         );
 
         $this->assertTrue($plugin1->isSamePlugin($plugin2));
@@ -544,7 +668,14 @@ class PluginTest extends NoTransactionWPTestCase
      */
     public function testPluginWithMinimumValidSlug(): void
     {
-        $plugin = new Plugin('Plugin', 'a', 'a-pro', 'a.php', 'a-pro.php');
+        $plugin = new Plugin(
+            'Plugin',
+            'a',
+            'a-pro',
+            'a.php',
+            'a-pro.php',
+            1000
+        );
 
         $this->assertEquals('a', $plugin->getSlugFree());
     }
@@ -559,7 +690,8 @@ class PluginTest extends NoTransactionWPTestCase
             'plugin-123-test',
             'plugin-123-test-pro',
             'plugin-123-test.php',
-            'plugin-123-test-pro.php'
+            'plugin-123-test-pro.php',
+            1000
         );
 
         $this->assertEquals('plugin-123-test', $plugin->getSlugFree());
@@ -570,10 +702,24 @@ class PluginTest extends NoTransactionWPTestCase
      */
     public function testVersionComparisonEdgeCases(): void
     {
-        $plugin1 = new Plugin('Plugin A', 'plugin-a', 'plugin-a-pro', 'plugin-a.php', 'plugin-a-pro.php');
+        $plugin1 = new Plugin(
+            'Plugin A',
+            'plugin-a',
+            'plugin-a-pro',
+            'plugin-a.php',
+            'plugin-a-pro.php',
+            1000
+        );
         $plugin1->register('10.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
-        $plugin2 = new Plugin('Plugin B', 'plugin-b', 'plugin-b-pro', 'plugin-b.php', 'plugin-b-pro.php');
+        $plugin2 = new Plugin(
+            'Plugin B',
+            'plugin-b',
+            'plugin-b-pro',
+            'plugin-b.php',
+            'plugin-b-pro.php',
+            1000
+        );
         $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
         $this->assertTrue($plugin1->isNewerThan($plugin2));
@@ -598,7 +744,8 @@ class PluginTest extends NoTransactionWPTestCase
                 'test-plugin',
                 'test-plugin-pro',
                 'test-plugin.php',
-                'test-plugin-pro.php'
+                'test-plugin-pro.php',
+                1000
             );
             $plugin->register($version, TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 

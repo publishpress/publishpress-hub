@@ -28,11 +28,12 @@ class PluginMapper implements PluginMapperInterface
             $plugin->getSlugFree(),
             $plugin->getSlugPro(),
             $plugin->getName(),
-            $plugin->getVersion(),
+            $plugin->getEddItemId(),
             $plugin->isInstalled(),
             $plugin->isActive(),
             $plugin->isLicensed(),
             $plugin->isPro(),
+            $plugin->getVersion(),
             $plugin->getIconFile(),
             $plugin->getDescription()
         );

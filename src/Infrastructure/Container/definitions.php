@@ -36,6 +36,7 @@ return [
     Services::CONST_ASSETS_URL => PUBLISHPRESS_HUB_ASSETS_URL,
     Services::CONST_VERSION => PUBLISHPRESS_HUB_VERSION,
     Services::CONST_IS_DEVELOPMENT => defined('SCRIPT_DEBUG') && SCRIPT_DEBUG,
+    Services::CONST_STORE_URL => 'https://publishpress.com',
 
     Services::LOGGER => function (ServiceContainerInterface $container) {
         return new Logger();
@@ -109,6 +110,8 @@ return [
     },
 
     Services::PLUGIN_INSTALLATION_SERVICE => function (ServiceContainerInterface $container) {
-        return new PluginInstallationService();
+        return new PluginInstallationService(
+            $container->get(Services::CONST_STORE_URL)
+        );
     },
 ];

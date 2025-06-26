@@ -104,16 +104,36 @@ class PluginsEndpoint implements EndpointInterface
         register_rest_route($namespace, $this->route . '/(?P<plugin_slug>[a-zA-Z0-9_-]+)/install/free', [
             [
                 'methods' => 'POST',
-                'callback' => [$this, 'installPluginFree'],
+                'callback' => [$this, 'installFreePlugin'],
                 'permission_callback' => [$this, 'checkInstallPermissions'],
                 'args' => [
                     'plugin_slug' => [
                         'type' => 'string',
                         'required' => true,
                         'description' => 'The slug of the plugin to install.',
-                        'validate_callback' => function($param, $request, $key) {
-                            return !empty($param) && preg_match('/^[a-zA-Z0-9_-]+$/', $param);
-                        },
+                        'validate_callback' => [$this, 'validateSlugParam'],
+                    ],
+                ],
+            ],
+        ]);
+
+        register_rest_route($namespace, $this->route . '/(?P<plugin_slug>[a-zA-Z0-9_-]+)/install/pro', [
+            [
+                'methods' => 'POST',
+                'callback' => [$this, 'installProPlugin'],
+                'permission_callback' => [$this, 'checkInstallPermissions'],
+                'args' => [
+                    'plugin_slug' => [
+                        'type' => 'string',
+                        'required' => true,
+                        'description' => 'The slug of the plugin to install.',
+                        'validate_callback' => [$this, 'validateSlugParam'],
+                    ],
+                    'license_key' => [
+                        'type' => 'string',
+                        'required' => true,
+                        'description' => 'The license key to install the plugin.',
+                        'validate_callback' => [$this, 'validateLicenseKeyParam'],
                     ],
                 ],
             ],
@@ -175,13 +195,66 @@ class PluginsEndpoint implements EndpointInterface
      * @param WP_REST_Request $request The REST request
      * @return WP_REST_Response|WP_Error
      */
-    public function installPluginFree(WP_REST_Request $request)
+    public function installFreePlugin(WP_REST_Request $request)
     {
         try {
             $pluginSlug = $request->get_param('plugin_slug');
             $plugin = $this->getPluginBySlug($pluginSlug);
 
             $installed = $this->pluginInstallationService->installFreePlugin($plugin);
+
+            if (!$installed) {
+                throw new \Exception('Failed to install plugin');
+            }
+
+            $plugin->clearCache();
+
+            $plugins = $this->getAllPluginsSerializable();
+
+            return new WP_REST_Response([
+                'success' => true,
+                'data' => [
+                    'plugin_slug' => $pluginSlug,
+                    'plugins' => (array) $plugins,
+                ],
+            ], 200);
+        } catch (PluginNotFoundException $e) {
+            return new WP_Error(
+                'plugin_not_found',
+                $e->getMessage(),
+                ['status' => 404]
+            );
+        } catch (PluginAlreadyInstalledException $e) {
+            return new WP_Error(
+                'plugin_already_installed',
+                $e->getMessage(),
+                ['status' => 400]
+            );
+        } catch (\Exception $e) {
+            return new WP_Error(
+                'plugin_install_error',
+                'Failed to install plugin: ' . $e->getMessage(),
+                ['status' => 500]
+            );
+        }
+    }
+
+    /**
+     * Install a pro plugin.
+     *
+     * @since 1.0.0
+     * @param WP_REST_Request $request The REST request
+     * @return WP_REST_Response|WP_Error
+     */
+    public function installProPlugin(WP_REST_Request $request)
+    {
+        try {
+            $pluginSlug = $request->get_param('plugin_slug');
+            $licenseKey = $request->get_param('license_key');
+
+            $plugin = $this->getPluginBySlug($pluginSlug);
+
+            $installed = $this->pluginInstallationService->installProPlugin($plugin, $licenseKey);
 
             if (!$installed) {
                 throw new \Exception('Failed to install plugin');
@@ -263,5 +336,33 @@ class PluginsEndpoint implements EndpointInterface
         }
 
         return $plugin;
+    }
+
+    /**
+     * Validate the slug parameter.
+     *
+     * @since 1.0.0
+     * @param string $param The parameter value
+     * @param WP_REST_Request $request The REST request
+     * @param string $key The parameter key
+     * @return bool
+     */
+    public function validateSlugParam(string $param, WP_REST_Request $request, string $key): bool
+    {
+        return !empty($param) && preg_match('/^[a-zA-Z0-9_-]+$/', $param);
+    }
+
+    /**
+     * Validate the license key parameter.
+     *
+     * @since 1.0.0
+     * @param string $param The parameter value
+     * @param WP_REST_Request $request The REST request
+     * @param string $key The parameter key
+     * @return bool
+     */
+    public function validateLicenseKeyParam(string $param, WP_REST_Request $request, string $key): bool
+    {
+        return !empty($param) && preg_match('/^[a-zA-Z0-9_-]+$/', $param);
     }
 }

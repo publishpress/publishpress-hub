@@ -102,6 +102,7 @@ class PluginBootstrapService implements ServiceInterface
                 $definition['slugPro'],
                 $definition['pluginFileNameFree'],
                 $definition['pluginFileNamePro'],
+                $definition['eddItemId'],
                 $definition['iconFile'],
                 $definition['description']
             );
@@ -129,6 +130,7 @@ class PluginBootstrapService implements ServiceInterface
                 'pluginFileNamePro' => 'publishpress-checklists-pro.php',
                 'iconFile' => 'icon-checklists',
                 'description' => __('Improve content quality with customizable editorial checklists.', 'publishpress-hub'),
+                'eddItemId' => 6465,
             ],
             [
                 'name' => 'PublishPress Permissions',
@@ -138,6 +140,7 @@ class PluginBootstrapService implements ServiceInterface
                 'pluginFileNamePro' => 'presspermit-pro.php',
                 'iconFile' => 'icon-permissions',
                 'description' => __('Advanced user role and permission management.', 'publishpress-hub'),
+                'eddItemId' => 34506,
             ],
             [
                 'name' => 'PublishPress Authors',
@@ -147,6 +150,7 @@ class PluginBootstrapService implements ServiceInterface
                 'pluginFileNamePro' => 'publishpress-authors-pro.php',
                 'iconFile' => 'icon-authors',
                 'description' => __('Add many authors to one WordPress post.', 'publishpress-hub'),
+                'eddItemId' => 7203,
             ],
             [
                 'name' => 'PublishPress Blocks',
@@ -156,6 +160,7 @@ class PluginBootstrapService implements ServiceInterface
                 'pluginFileNamePro' => 'advanced-gutenberg-pro.php',
                 'iconFile' => 'icon-blocks',
                 'description' => __('Take the control of the new Gutenberg editor.', 'publishpress-hub'),
+                'eddItemId' => 98972,
             ],
             [
                 'name' => 'PublishPress Capabilities',
@@ -165,6 +170,7 @@ class PluginBootstrapService implements ServiceInterface
                 'pluginFileNamePro' => 'capabilities-pro.php',
                 'iconFile' => 'icon-capabilities',
                 'description' => __('Fine-grained user role management for WordPress sites.', 'publishpress-hub'),
+                'eddItemId' => 44811,
             ],
             [
                 'name' => 'PublishPress Future',
@@ -174,6 +180,7 @@ class PluginBootstrapService implements ServiceInterface
                 'pluginFileNamePro' => 'publishpress-future-pro.php',
                 'iconFile' => 'icon-future',
                 'description' => __('Automatically run actions on a scheduled future moment.', 'publishpress-hub'),
+                'eddItemId' => 129032,
             ],
             [
                 'name' => 'PublishPress Planner',
@@ -183,6 +190,7 @@ class PluginBootstrapService implements ServiceInterface
                 'pluginFileNamePro' => 'publishpress-pro.php',
                 'iconFile' => 'icon-planner',
                 'description' => __('Organize, schedule and plan your WordPress content.', 'publishpress-hub'),
+                'eddItemId' => 49742,
             ],
             [
                 'name' => 'PublishPress Revisions',
@@ -192,6 +200,7 @@ class PluginBootstrapService implements ServiceInterface
                 'pluginFileNamePro' => 'revisionary-pro.php',
                 'iconFile' => 'icon-revisions',
                 'description' => __('Manage, schedule and approve WordPress revisions.', 'publishpress-hub'),
+                'eddItemId' => 40280,
             ],
             [
                 'name' => 'PublishPress Series',
@@ -201,6 +210,7 @@ class PluginBootstrapService implements ServiceInterface
                 'pluginFileNamePro' => 'publishpress-series-pro.php',
                 'iconFile' => 'icon-series',
                 'description' => __('Group WordPress content together into a series.', 'publishpress-hub'),
+                'eddItemId' => 110550,
             ],
             [
                 'name' => 'PublishPress Statuses',
@@ -210,6 +220,7 @@ class PluginBootstrapService implements ServiceInterface
                 'pluginFileNamePro' => 'publishpress-statuses-pro.php',
                 'iconFile' => 'icon-statuses',
                 'description' => __('Manage custom statuses for your WordPress posts.', 'publishpress-hub'),
+                'eddItemId' => 336700,
             ],
         ];
     }
