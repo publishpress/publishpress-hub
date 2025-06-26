@@ -133,7 +133,14 @@ const PluginsListComponent = ({
         }
 
         return null;
-    }, []);
+    }, [
+        pluginInstallationInProgress,
+        getActionButton,
+        onClickInstall,
+        onClickUpgradeToPro,
+        onClickManageLicense,
+        onClickActivateLicense,
+    ]);
 
     const StatusFlag = useCallback(({ plugin }) => {
         if (!plugin.isInstalled && pluginInstallationInProgress[plugin.slugFree]) {
@@ -167,7 +174,7 @@ const PluginsListComponent = ({
         }
 
         return null;
-    }, []);
+    }, [pluginInstallationInProgress]);
 
     return (
         <div className="pp-hub-plugins-list">
@@ -224,7 +231,11 @@ const PluginsListComponent = ({
                         installProPlugin(
                             currentPluginForModal.slugFree,
                             licenseKey,
-                        ).then(fetchPlugins);
+                        ).then(() => {
+                            fetchPlugins();
+                            setLicenseInputModalOpen(false);
+                            setCurrentPluginForModal(null);
+                        });
                     }}
                     error={pluginError[currentPluginForModal.slugFree] || null}
                     buttonInProgress={pluginInstallationInProgress[currentPluginForModal.slugFree] || false}

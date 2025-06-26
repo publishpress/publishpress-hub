@@ -69,22 +69,22 @@ export function* fetchPlugins() {
     }
 }
 
-export function* installFreePlugin(pluginSlug) {
+export function* installFreePlugin(pluginSlugFree) {
     try {
-        yield {type: 'INSTALL_PLUGIN_START', data: {pluginSlug}};
+        yield {type: 'INSTALL_PLUGIN_START', data: {pluginSlugFree}};
 
         const data = yield apiFetch({
-            path: `/plugins/${pluginSlug}/install/free`,
+            path: `/plugins/${pluginSlugFree}/install/free`,
             method: 'POST',
         });
 
         if (data.success) {
-            yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree: pluginSlug}};
+            yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree}};
         } else {
-            yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree: pluginSlug, error: data?.error}};
+            yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: data?.error}};
         }
     } catch (error) {
-        yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree: pluginSlug, error: error}};
+        yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
     }
 }
 

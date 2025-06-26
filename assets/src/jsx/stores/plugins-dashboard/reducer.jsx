@@ -90,32 +90,40 @@ const setInstallationTypeModalOpen = (state, isOpen) => {
 }
 
 const installPluginStart = (state, data) => {
-    delete state.pluginErrors[data.pluginSlugFree];
-
     return {
         ...state,
         pluginInstallationInProgress: {
             ...state.pluginInstallationInProgress,
             [data.pluginSlugFree]: true,
         },
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginSlugFree]: null,
+        },
     }
 }
 
 const installPluginSuccess = (state, data) => {
-    delete state.pluginInstallationInProgress[data.pluginSlugFree];
-    delete state.pluginErrors[data.pluginSlugFree];
-
     return {
         ...state,
+        pluginInstallationInProgress: {
+            ...state.pluginInstallationInProgress,
+            [data.pluginSlugFree]: false,
+        },
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginSlugFree]: null,
+        },
     }
 }
 
 const installPluginError = (state, data) => {
-    console.log('installPluginError', data);
-    delete state.pluginInstallationInProgress[data.pluginSlugFree];
-
     return {
         ...state,
+        pluginInstallationInProgress: {
+            ...state.pluginInstallationInProgress,
+            [data.pluginSlugFree]: false,
+        },
         pluginErrors: {
             ...state.pluginErrors,
             [data.pluginSlugFree]: data.error,
