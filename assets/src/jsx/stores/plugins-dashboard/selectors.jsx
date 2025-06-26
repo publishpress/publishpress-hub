@@ -84,6 +84,22 @@ export const getCurrentFilter = (state) => {
     return state.currentFilter;
 }
 
+export const getPluginInstallationInProgress = (state) => {
+    return state.pluginInstallationInProgress;
+}
+
+export const getPluginError = (state) => {
+    return state.pluginErrors;
+}
+
+export const getIsLicenseInputModalOpen = (state) => {
+    return state.isLicenseInputModalOpen;
+}
+
+export const getIsInstallationTypeModalOpen = (state) => {
+    return state.isInstallationTypeModalOpen;
+}
+
 // Memoization cache for getFilterCounts
 let lastPluginsForFilterCounts = null;
 let lastFilterCountsForFilterCounts = null;

@@ -19,6 +19,7 @@ use PublishPress\Hub\Application\Hooks as ApplicationHooks;
 use PublishPress\Hub\Application\Service\Contracts\ServiceInterface;
 use PublishPress\Hub\Application\Service\RestApi\Contracts\PluginMapperInterface;
 use PublishPress\Hub\Application\Service\RestApi\Endpoints\PluginsEndpoint;
+use PublishPress\Hub\Application\Service\RestApi\ExceptionResponseMapper;
 use PublishPress\Hub\Domain\Plugin\Contracts\PluginRepositoryInterface;
 
 /**
@@ -80,24 +81,40 @@ class RestApiService implements ServiceInterface
     private PluginInstallationService $pluginInstallationService;
 
     /**
+     * The exception response mapper.
+     *
+     * @since 1.0.0
+     * @var ExceptionResponseMapper
+     */
+    private ExceptionResponseMapper $exceptionResponseMapper;
+
+    /**
      * Constructor.
      *
      * @since 1.0.0
      * @param PluginRepositoryInterface $pluginRepository The plugin repository
      * @param PluginMapperInterface $pluginMapper The plugin mapper
      * @param PluginInstallationService $pluginInstallationService The plugin installation service
+     * @param ExceptionResponseMapper $exceptionResponseMapper The exception response mapper
      */
     public function __construct(
         PluginRepositoryInterface $pluginRepository,
         PluginMapperInterface $pluginMapper,
-        PluginInstallationService $pluginInstallationService
+        PluginInstallationService $pluginInstallationService,
+        ExceptionResponseMapper $exceptionResponseMapper
     ) {
         $this->pluginRepository = $pluginRepository;
         $this->pluginMapper = $pluginMapper;
         $this->pluginInstallationService = $pluginInstallationService;
+        $this->exceptionResponseMapper = $exceptionResponseMapper;
 
         $this->endpoints = [
-            new PluginsEndpoint($this->pluginRepository, $this->pluginMapper, $this->pluginInstallationService),
+            new PluginsEndpoint(
+                $this->pluginRepository,
+                $this->pluginMapper,
+                $this->pluginInstallationService,
+                $this->exceptionResponseMapper
+            ),
         ];
     }
 

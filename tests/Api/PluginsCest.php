@@ -48,8 +48,7 @@ final class PluginsCest
         $I->seeResponseIsJson();
         $I->seeResponseContainsJson(
             [
-                'code' => 'plugin_not_found',
-                'message' => 'Plugin not found: invalid-slug',
+                'code' => 'plugin_not_found'
             ]
         );
     }

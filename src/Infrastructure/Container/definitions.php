@@ -21,6 +21,7 @@ use PublishPress\Hub\Application\Service\CoreHubService;
 use PublishPress\Hub\Application\Service\LanguageService;
 use PublishPress\Hub\Application\Service\PluginBootstrapService;
 use PublishPress\Hub\Application\Service\PluginInstallationService;
+use PublishPress\Hub\Application\Service\RestApi\ExceptionResponseMapper;
 use PublishPress\Hub\Application\Service\RestApi\Mapper\PluginMapper;
 use PublishPress\Hub\Application\Service\RestApiService;
 use PublishPress\Hub\Application\View\Admin\ComponentsShowcaseView;
@@ -37,6 +38,7 @@ return [
     Services::CONST_VERSION => PUBLISHPRESS_HUB_VERSION,
     Services::CONST_IS_DEVELOPMENT => defined('SCRIPT_DEBUG') && SCRIPT_DEBUG,
     Services::CONST_STORE_URL => 'https://publishpress.com',
+    Services::CONST_HOME_URL => home_url(),
 
     Services::LOGGER => function (ServiceContainerInterface $container) {
         return new Logger();
@@ -101,7 +103,8 @@ return [
         return new RestApiService(
             $container->get(Services::PLUGIN_REPOSITORY),
             $container->get(Services::PLUGIN_MAPPER),
-            $container->get(Services::PLUGIN_INSTALLATION_SERVICE)
+            $container->get(Services::PLUGIN_INSTALLATION_SERVICE),
+            $container->get(Services::EXCEPTION_RESPONSE_MAPPER)
         );
     },
 
@@ -111,7 +114,12 @@ return [
 
     Services::PLUGIN_INSTALLATION_SERVICE => function (ServiceContainerInterface $container) {
         return new PluginInstallationService(
-            $container->get(Services::CONST_STORE_URL)
+            $container->get(Services::CONST_STORE_URL),
+            $container->get(Services::CONST_HOME_URL)
         );
+    },
+
+    Services::EXCEPTION_RESPONSE_MAPPER => function (ServiceContainerInterface $container) {
+        return new ExceptionResponseMapper();
     },
 ];

@@ -37,6 +37,20 @@ export function* setCurrentFilter(currentFilter) {
     };
 }
 
+export function* setLicenseInputModalOpen(isOpen) {
+    yield {
+        type: 'SET_LICENSE_INPUT_MODAL_OPEN',
+        isOpen,
+    };
+}
+
+export function* setInstallationTypeModalOpen(isOpen) {
+    yield {
+        type: 'SET_INSTALLATION_TYPE_MODAL_OPEN',
+        isOpen,
+    };
+}
+
 export function* fetchPlugins() {
     try {
         yield {type: 'FETCH_PLUGINS_START'};
@@ -65,18 +79,22 @@ export function* installFreePlugin(pluginSlug) {
         });
 
         if (data.success) {
-            yield {type: 'INSTALL_PLUGIN_SUCCESS', data: data.data};
+            yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree: pluginSlug}};
+
+            yield* fetchPlugins();
         } else {
-            yield {type: 'INSTALL_PLUGIN_ERROR', pluginSlug, error: data.error};
+            yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree: pluginSlug, error: data?.error}};
         }
     } catch (error) {
-        yield {type: 'INSTALL_PLUGIN_ERROR', pluginSlug, error: error};
+        yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree: pluginSlug, error: error}};
     }
 }
 
-export function* installProPlugin(pluginSlugFree, pluginSlugPro, licenseKey) {
+export function* installProPlugin(pluginSlugFree, licenseKey) {
     try {
         yield {type: 'INSTALL_PLUGIN_START', data: {pluginSlugFree}};
+
+        licenseKey = licenseKey.trim();
 
         const data = yield apiFetch({
             path: `/plugins/${pluginSlugFree}/install/pro`,
@@ -87,11 +105,13 @@ export function* installProPlugin(pluginSlugFree, pluginSlugPro, licenseKey) {
         });
 
         if (data.success) {
-            yield {type: 'INSTALL_PLUGIN_SUCCESS', data: data.data};
+            yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree}};
+
+            yield* fetchPlugins();
         } else {
-            yield {type: 'INSTALL_PLUGIN_ERROR', pluginSlugFree, error: data.error};
+            yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: data?.error}};
         }
     } catch (error) {
-        yield {type: 'INSTALL_PLUGIN_ERROR', pluginSlugFree, error: error};
+        yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
     }
 }

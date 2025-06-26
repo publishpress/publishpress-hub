@@ -9,7 +9,7 @@ const DEFAULT_THEME = 'default';
 
 export class ThemeController {
     constructor() {
-        this.themes = ['default', 'dark', 'high-contrast'];
+        this.themes = ['default', 'dark'];
         this.currentTheme = this.getStoredTheme() || this.getSystemTheme() || DEFAULT_THEME;
         this.init();
     }
@@ -61,6 +61,10 @@ export class ThemeController {
         const hubRoot = document.querySelector('.pp-hub-root');
         if (hubRoot) {
             hubRoot.setAttribute(THEME_ATTRIBUTE, themeName);
+        }
+        const body = document.body;
+        if (body) {
+            body.setAttribute(THEME_ATTRIBUTE, themeName);
         }
 
         this.currentTheme = themeName;

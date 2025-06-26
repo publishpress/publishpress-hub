@@ -19,6 +19,7 @@
 @import './components/filter/filter-buttons-bar.css';
 @import './components/tooltip/tooltip.css';
 @import './components/badge/badge.css';
+@import './components/messages/messages.css';
 
 /* 4. WordPress Admin Compatibility */
 /* Ensure our styles don't conflict with WordPress admin */

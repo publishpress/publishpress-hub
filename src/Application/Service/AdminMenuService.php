@@ -116,8 +116,7 @@ class AdminMenuService implements ServiceInterface
             'Plugins',
             $this->getAdminMenuCapability(),
             'publishpress-hub-dashboard',
-            [$this, 'renderPluginsDashboardView'],
-            $this->getAdminMenuIcon()
+            [$this, 'renderPluginsDashboardView']
         );
 
         if ($this->displayShowcase) {
@@ -127,8 +126,7 @@ class AdminMenuService implements ServiceInterface
                 'Components Showcase',
                 $this->getAdminMenuCapability(),
                 'publishpress-hub-components-showcase',
-                [$this, 'renderComponentsShowcaseView'],
-                $this->getAdminMenuIcon()
+                [$this, 'renderComponentsShowcaseView']
             );
         }
     }

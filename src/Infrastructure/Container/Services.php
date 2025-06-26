@@ -29,6 +29,8 @@ abstract class Services
 
     public const CONST_STORE_URL = 'publishpress-hub/const-store-url';
 
+    public const CONST_HOME_URL = 'publishpress-hub/const-home-url';
+
     public const LOGGER = 'publishpress-hub/logger';
 
     public const CORE_HUB_SERVICE = 'publishpress-hub/core-hub-service';
@@ -54,4 +56,6 @@ abstract class Services
     public const PLUGIN_MAPPER = 'publishpress-hub/plugin-mapper';
 
     public const PLUGIN_INSTALLATION_SERVICE = 'publishpress-hub/plugin-installation-service';
+
+    public const EXCEPTION_RESPONSE_MAPPER = 'publishpress-hub/exception-response-mapper';
 }

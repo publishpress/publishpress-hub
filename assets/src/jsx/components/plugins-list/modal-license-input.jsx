@@ -4,10 +4,13 @@ import { Modal, TextControl } from '@wordpress/components';
 import { __ } from '@publishpress/hub-i18n';
 
 import { Button } from '../buttons/button';
+import { Message } from '../message/message';
 
 const ModalLicenseInputComponent = ({
     onClose,
     onActivate,
+    error,
+    buttonInProgress,
 }) => {
     const [licenseKey, setLicenseKey] = useState('');
 
@@ -25,13 +28,21 @@ const ModalLicenseInputComponent = ({
                         {__('Go to my profile to get the license key', 'publishpress-hub')}
                     </Button>
                 </p>
+
                 <TextControl
                     value={licenseKey}
                     className='pp-hub-text-control'
                     placeholder={__('Enter your license key here', 'publishpress-hub')}
                     onChange={(value) => setLicenseKey(value)}
                 />
-                <Button variant='primary' icon='check' isFullWidth onClick={() => onActivate(licenseKey)}>
+
+                {error && (
+                    <Message variant='error'>
+                        {error.message}
+                    </Message>
+                )}
+
+                <Button variant='primary' icon='check' isFullWidth onClick={() => onActivate(licenseKey)} isLoading={buttonInProgress}>
                     {__('Activate and install the plugin', 'publishpress-hub')}
                 </Button>
             </div>

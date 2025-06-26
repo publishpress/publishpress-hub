@@ -1,5 +1,5 @@
 import { memo, useCallback, useState } from '@wordpress/element';
-import { useDispatch } from '@wordpress/data';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 import { __ } from '@publishpress/hub-i18n';
 import classNames from 'classnames';
@@ -15,9 +15,7 @@ const PluginsListComponent = ({
     plugins,
     pluginIconBaseUrl,
 }) => {
-    const [isInstallationTypeModalOpen, setIsInstallationTypeModalOpen] = useState(false);
-    const [isLicenseInputModalOpen, setIsLicenseInputModalOpen] = useState(false);
-    const [currentPluginForActivation, setCurrentPluginForActivation] = useState(null);
+    const [currentPluginForModal, setCurrentPluginForModal] = useState(null);
 
     const getStatusFlagClass = (plugin) => classNames({
         'active': plugin.isActive,
@@ -31,8 +29,24 @@ const PluginsListComponent = ({
     });
 
     const {
+        pluginInstallationInProgress,
+        pluginError,
+        isLicenseInputModalOpen,
+        isInstallationTypeModalOpen,
+    } = useSelect((select) => {
+        return {
+            pluginInstallationInProgress: select(store).getPluginInstallationInProgress(),
+            pluginError: select(store).getPluginError(),
+            isLicenseInputModalOpen: select(store).getIsLicenseInputModalOpen(),
+            isInstallationTypeModalOpen: select(store).getIsInstallationTypeModalOpen(),
+        }
+    }, []);
+
+    const {
         installFreePlugin,
         installProPlugin,
+        setLicenseInputModalOpen,
+        setInstallationTypeModalOpen,
     } = useDispatch(store);
 
     const getStatusFlagTooltipText = useCallback((plugin) => {
@@ -50,23 +64,20 @@ const PluginsListComponent = ({
     }, []);
 
     const onClickInstall = useCallback((plugin) => {
-        setIsInstallationTypeModalOpen(true);
-        setCurrentPluginForActivation(plugin);
+        setInstallationTypeModalOpen(true);
+        setCurrentPluginForModal(plugin);
     }, []);
 
     const onClickManageLicense = useCallback((plugin) => {
-        setCurrentPluginForActivation(plugin);
-        console.log('onClickManageLicense', plugin);
+        setCurrentPluginForModal(plugin);
     }, []);
 
     const onClickActivateLicense = useCallback((plugin) => {
-        setCurrentPluginForActivation(plugin);
-        console.log('onClickActivateLicense', plugin);
+        setCurrentPluginForModal(plugin);
     }, []);
 
     const onClickUpgradeToPro = useCallback((plugin) => {
-        setCurrentPluginForActivation(plugin);
-        console.log('onClickUpgradeToPro', plugin);
+        setCurrentPluginForModal(plugin);
     }, []);
 
     const getActionButton = useCallback(({variant, onClick, text, inProgress}) => {
@@ -82,12 +93,14 @@ const PluginsListComponent = ({
     }, []);
 
     const ActionButton = useCallback(({ plugin }) => {
+        const inProgress = pluginInstallationInProgress[plugin.slugFree] || false;
+
         if (!plugin.isInstalled) {
             return getActionButton({
                 variant: 'secondary',
                 onClick: () => onClickInstall(plugin),
                 text: __('Install', 'publishpress-hub'),
-                inProgress: plugin?.installation?.inProgress,
+                inProgress,
             });
         }
 
@@ -96,7 +109,7 @@ const PluginsListComponent = ({
                 variant: 'highlight',
                 onClick: () => onClickUpgradeToPro(plugin),
                 text: __('Upgrade to Pro', 'publishpress-hub'),
-                inProgress: plugin?.installation?.inProgress,
+                inProgress,
             });
         }
 
@@ -105,7 +118,7 @@ const PluginsListComponent = ({
                 variant: 'secondary',
                 onClick: () => onClickManageLicense(plugin),
                 text: __('Manage License', 'publishpress-hub'),
-                inProgress: plugin?.installation?.inProgress,
+                inProgress,
             });
         }
 
@@ -114,7 +127,7 @@ const PluginsListComponent = ({
                 variant: 'secondary',
                 onClick: () => onClickActivateLicense(plugin),
                 text: __('Activate License', 'publishpress-hub'),
-                inProgress: plugin?.installation?.inProgress,
+                inProgress,
             });
         }
 
@@ -122,7 +135,7 @@ const PluginsListComponent = ({
     }, []);
 
     const StatusFlag = useCallback(({ plugin }) => {
-        if (!plugin.isInstalled && plugin?.installation?.inProgress) {
+        if (!plugin.isInstalled && pluginInstallationInProgress[plugin.slugFree]) {
             return (
                 <Badge text={__('Installing', 'publishpress-hub')} className='installing' />
             )
@@ -185,32 +198,36 @@ const PluginsListComponent = ({
                     </div>
                 );
             })}
-            {isInstallationTypeModalOpen && (
+            {isInstallationTypeModalOpen && currentPluginForModal && (
                 <ModalInstallationType
                     onClose={(type) => {
-                        setIsInstallationTypeModalOpen(false);
+                        setInstallationTypeModalOpen(false);
                         if (type === 'free') {
-                            installFreePlugin(currentPluginForActivation.slugFree);
-                            setCurrentPluginForActivation(null);
+                            installFreePlugin(currentPluginForModal.slugFree);
+                            setCurrentPluginForModal(null);
                         }
 
                         if (type === 'pro') {
-                            setIsLicenseInputModalOpen(true);
+                            setLicenseInputModalOpen(true);
                         }
                     }}
                 />
             )}
 
-            {isLicenseInputModalOpen && (
+            {isLicenseInputModalOpen && currentPluginForModal && (
                 <ModalLicenseInput
                     onClose={() => {
-                        setIsLicenseInputModalOpen(false);
-                        setCurrentPluginForActivation(null);
+                        setLicenseInputModalOpen(false);
+                        setCurrentPluginForModal(null);
                     }}
                     onActivate={(licenseKey) => {
-                        installProPlugin(currentPluginForActivation.slugFree, currentPluginForActivation.slugPro, licenseKey);
-                        setCurrentPluginForActivation(null);
+                        installProPlugin(
+                            currentPluginForModal.slugFree,
+                            licenseKey,
+                        );
                     }}
+                    error={pluginError[currentPluginForModal.slugFree] || null}
+                    buttonInProgress={pluginInstallationInProgress[currentPluginForModal.slugFree] || false}
                 />
             )}
         </div>

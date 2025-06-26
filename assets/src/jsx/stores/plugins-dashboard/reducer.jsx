@@ -6,6 +6,10 @@ export const DEFAULT_STATE = {
     isLoading: false,
     error: null,
     currentFilter: 'all',
+    pluginInstallationInProgress: {},
+    pluginErrors: {},
+    isLicenseInputModalOpen: false,
+    isInstallationTypeModalOpen: false,
 }
 
 const setSelectedFilter = (state, selectedFilter) => {
@@ -71,66 +75,51 @@ const setCurrentFilter = (state, currentFilter) => {
     }
 }
 
-const installPluginStart = (state, data) => {
-    const plugins = state.plugins.map((plugin) => {
-        if (plugin.slugFree === data.pluginSlug) {
-            return {
-                ...plugin,
-                installation: {
-                    inProgress: true,
-                    error: null,
-                },
-            }
-        }
+const setLicenseInputModalOpen = (state, isOpen) => {
+    return {
+        ...state,
+        isLicenseInputModalOpen: isOpen,
+    }
+}
 
-        return plugin;
-    });
+const setInstallationTypeModalOpen = (state, isOpen) => {
+    return {
+        ...state,
+        isInstallationTypeModalOpen: isOpen,
+    }
+}
+
+const installPluginStart = (state, data) => {
+    delete state.pluginErrors[data.pluginSlugFree];
 
     return {
         ...state,
-        plugins,
+        pluginInstallationInProgress: {
+            ...state.pluginInstallationInProgress,
+            [data.pluginSlugFree]: true,
+        },
     }
 }
 
 const installPluginSuccess = (state, data) => {
-    const plugins = data.plugins.map((plugin) => {
-        if (plugin.slug === data.pluginSlug) {
-            return {
-                ...plugin,
-                installation: {
-                    inProgress: false,
-                    error: null,
-                },
-            }
-        }
-
-        return plugin;
-    });
+    delete state.pluginInstallationInProgress[data.pluginSlugFree];
+    delete state.pluginErrors[data.pluginSlugFree];
 
     return {
         ...state,
-        plugins,
     }
 }
 
-const installPluginError = (state, pluginSlug, error) => {
-    const plugins = data.plugins.map((plugin) => {
-        if (plugin.slug === pluginSlug) {
-            return {
-                ...plugin,
-                installation: {
-                    inProgress: false,
-                    error,
-                },
-            }
-        }
-
-        return plugin;
-    });
+const installPluginError = (state, data) => {
+    console.log('installPluginError', data);
+    delete state.pluginInstallationInProgress[data.pluginSlugFree];
 
     return {
         ...state,
-        plugins,
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginSlugFree]: data.error,
+        },
     }
 }
 
@@ -156,12 +145,16 @@ export const reducer = (state = DEFAULT_STATE, action) => {
             return fetchPluginsError(state, action.error);
         case 'SET_CURRENT_FILTER':
             return setCurrentFilter(state, action.currentFilter);
+        case 'SET_LICENSE_INPUT_MODAL_OPEN':
+            return setLicenseInputModalOpen(state, action.isOpen);
+        case 'SET_INSTALLATION_TYPE_MODAL_OPEN':
+            return setInstallationTypeModalOpen(state, action.isOpen);
         case 'INSTALL_PLUGIN_START':
             return installPluginStart(state, action.data);
         case 'INSTALL_PLUGIN_SUCCESS':
             return installPluginSuccess(state, action.data);
         case 'INSTALL_PLUGIN_ERROR':
-            return installPluginError(state, action.pluginSlug, action.error);
+            return installPluginError(state, action.data);
         default:
             return state;
     }

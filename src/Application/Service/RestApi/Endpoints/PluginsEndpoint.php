@@ -13,13 +13,16 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\RestApi\Endpoints;
 
+use PublishPress\Hub\Application\Service\Exception\FetchingPluginInformationException;
+use PublishPress\Hub\Application\Service\Exception\PluginInstallationException;
 use PublishPress\Hub\Application\Service\PluginInstallationService;
 use PublishPress\Hub\Application\Service\RestApi\Contracts\EndpointInterface;
 use PublishPress\Hub\Application\Service\RestApi\Contracts\PluginMapperInterface;
+use PublishPress\Hub\Application\Service\RestApi\ExceptionResponseMapper;
 use PublishPress\Hub\Domain\Plugin\Contracts\PluginRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Contracts\PluginInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
-use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
+use Throwable;
 use WP_REST_Request;
 use WP_REST_Response;
 use WP_Error;
@@ -67,21 +70,32 @@ class PluginsEndpoint implements EndpointInterface
     private PluginInstallationService $pluginInstallationService;
 
     /**
+     * The exception response mapper.
+     *
+     * @since 1.0.0
+     * @var ExceptionResponseMapper
+     */
+    private ExceptionResponseMapper $exceptionResponseMapper;
+
+    /**
      * Constructor.
      *
      * @since 1.0.0
      * @param PluginRepositoryInterface $pluginRepository The plugin repository
      * @param PluginMapperInterface $pluginMapper The plugin mapper
      * @param PluginInstallationService $pluginInstallationService The plugin installation service
+     * @param ExceptionResponseMapper $exceptionResponseMapper The exception response mapper
      */
     public function __construct(
         PluginRepositoryInterface $pluginRepository,
         PluginMapperInterface $pluginMapper,
-        PluginInstallationService $pluginInstallationService
+        PluginInstallationService $pluginInstallationService,
+        ExceptionResponseMapper $exceptionResponseMapper
     ) {
         $this->pluginRepository = $pluginRepository;
         $this->pluginMapper = $pluginMapper;
         $this->pluginInstallationService = $pluginInstallationService;
+        $this->exceptionResponseMapper = $exceptionResponseMapper;
     }
 
     /**
@@ -167,11 +181,9 @@ class PluginsEndpoint implements EndpointInterface
                 'success' => true,
                 'data' => (array) $plugins,
             ], 200);
-        } catch (\Exception $e) {
-            return new WP_Error(
-                'plugins_fetch_error',
-                'Failed to fetch plugins: ' . $e->getMessage(),
-                ['status' => 500]
+        } catch (Throwable $e) {
+            return $this->exceptionResponseMapper->mapToWpError(
+                new FetchingPluginInformationException('Failed to fetch plugins: ' . $e->getMessage())
             );
         }
     }
@@ -204,7 +216,7 @@ class PluginsEndpoint implements EndpointInterface
             $installed = $this->pluginInstallationService->installFreePlugin($plugin);
 
             if (!$installed) {
-                throw new \Exception('Failed to install plugin');
+                throw new PluginInstallationException('Failed to install plugin');
             }
 
             $plugin->clearCache();
@@ -218,24 +230,8 @@ class PluginsEndpoint implements EndpointInterface
                     'plugins' => (array) $plugins,
                 ],
             ], 200);
-        } catch (PluginNotFoundException $e) {
-            return new WP_Error(
-                'plugin_not_found',
-                $e->getMessage(),
-                ['status' => 404]
-            );
-        } catch (PluginAlreadyInstalledException $e) {
-            return new WP_Error(
-                'plugin_already_installed',
-                $e->getMessage(),
-                ['status' => 400]
-            );
-        } catch (\Exception $e) {
-            return new WP_Error(
-                'plugin_install_error',
-                'Failed to install plugin: ' . $e->getMessage(),
-                ['status' => 500]
-            );
+        } catch (Throwable $e) {
+            return $this->exceptionResponseMapper->mapToWpError($e);
         }
     }
 
@@ -257,7 +253,7 @@ class PluginsEndpoint implements EndpointInterface
             $installed = $this->pluginInstallationService->installProPlugin($plugin, $licenseKey);
 
             if (!$installed) {
-                throw new \Exception('Failed to install plugin');
+                throw new PluginInstallationException('Failed to install plugin');
             }
 
             $plugin->clearCache();
@@ -271,24 +267,8 @@ class PluginsEndpoint implements EndpointInterface
                     'plugins' => (array) $plugins,
                 ],
             ], 200);
-        } catch (PluginNotFoundException $e) {
-            return new WP_Error(
-                'plugin_not_found',
-                $e->getMessage(),
-                ['status' => 404]
-            );
-        } catch (PluginAlreadyInstalledException $e) {
-            return new WP_Error(
-                'plugin_already_installed',
-                $e->getMessage(),
-                ['status' => 400]
-            );
-        } catch (\Exception $e) {
-            return new WP_Error(
-                'plugin_install_error',
-                'Failed to install plugin: ' . $e->getMessage(),
-                ['status' => 500]
-            );
+        } catch (Throwable $e) {
+            return $this->exceptionResponseMapper->mapToWpError($e);
         }
     }
 
