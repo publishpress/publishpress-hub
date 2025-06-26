@@ -80,11 +80,29 @@ export function* installFreePlugin(pluginSlugFree) {
 
         if (data.success) {
             yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree}};
+
+            return {
+                success: true,
+                pluginSlugFree,
+                apiResponse: data,
+            };
         } else {
             yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: data?.error}};
+
+            return {
+                success: false,
+                pluginSlugFree,
+                error: data?.error,
+            };
         }
     } catch (error) {
         yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
+
+        return {
+            success: false,
+            pluginSlugFree,
+            error,
+        };
     }
 }
 
@@ -104,10 +122,32 @@ export function* installProPlugin(pluginSlugFree, licenseKey) {
 
         if (data.success) {
             yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree}};
+
+            // Return context along with the API response
+            return {
+                success: true,
+                pluginSlugFree,
+                licenseKey,
+                apiResponse: data,
+            };
         } else {
             yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: data?.error}};
+            // Return error context
+            return {
+                success: false,
+                pluginSlugFree,
+                licenseKey,
+                error: data?.error,
+            };
         }
     } catch (error) {
         yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
+        // Return error context
+        return {
+            success: false,
+            pluginSlugFree,
+            licenseKey,
+            error,
+        };
     }
 }

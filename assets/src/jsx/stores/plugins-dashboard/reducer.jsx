@@ -79,6 +79,7 @@ const setLicenseInputModalOpen = (state, isOpen) => {
     return {
         ...state,
         isLicenseInputModalOpen: isOpen,
+        pluginErrors: {},
     }
 }
 
@@ -86,6 +87,7 @@ const setInstallationTypeModalOpen = (state, isOpen) => {
     return {
         ...state,
         isInstallationTypeModalOpen: isOpen,
+        pluginErrors: {},
     }
 }
 
