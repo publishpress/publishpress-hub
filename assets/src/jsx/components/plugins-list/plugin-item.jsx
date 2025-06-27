@@ -1,4 +1,4 @@
-import { memo, useMemo, Fragment } from '@wordpress/element';
+import { memo, useMemo, Fragment, useState } from '@wordpress/element';
 
 import classNames from 'classnames';
 
@@ -29,6 +29,8 @@ const PluginItemComponent = ({
         'installed': plugin.isInstalled,
         'not-installed': !plugin.isInstalled,
     }), [plugin]);
+
+    const [isHovered, setIsHovered] = useState(false);
 
     const tooltipText = useMemo(() => {
         if (!plugin.isInstalled) {
@@ -83,7 +85,13 @@ const PluginItemComponent = ({
 
     return (
         <div
-            className={`pp-hub-plugins-list-item ${statusFlagClass}`}
+            className={`pp-hub-plugins-list-item ${statusFlagClass} ${isHovered ? 'hovered' : ''}`}
+            onMouseEnter={() => {
+                setIsHovered(true);
+            }}
+            onMouseLeave={() => {
+                setIsHovered(false);
+            }}
         >
             <div className='pp-hub-plugins-list-item-icon'>
                 <img src={iconSrc} alt={plugin.name} />

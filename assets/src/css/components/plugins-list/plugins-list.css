@@ -3,7 +3,6 @@
 .pp-hub-plugins-list {
     display: flex;
     flex-direction: column;
-    gap: var(--pp-hub-spacing-md);
     background: var(--pp-hub-bg-primary);
     border-radius: var(--pp-hub-radius-lg);
 }
@@ -12,10 +11,28 @@
     display: flex;
     flex-direction: row;
     gap: var(--pp-hub-spacing-lg);
-    align-items: center;
+    align-items: flex-start;
     padding: var(--pp-hub-spacing-xl);
+    border: 1px solid transparent;
     border-bottom: 1px solid var(--pp-hub-border-primary);
-    min-height: 100px;
+    min-height: 153px;
+    transition: background-color 0.1s ease-in-out;
+    box-sizing: border-box;
+}
+
+.pp-hub-plugins-list-item:hover {
+    background-color: var(--pp-hub-bg-secondary);
+    border: 1px solid var(--pp-hub-border-primary);
+}
+
+.pp-hub-plugins-list-item:first-child {
+    border-top-left-radius: var(--pp-hub-radius-lg);
+    border-top-right-radius: var(--pp-hub-radius-lg);
+}
+
+.pp-hub-plugins-list-item:last-child {
+    border-bottom-left-radius: var(--pp-hub-radius-lg);
+    border-bottom-right-radius: var(--pp-hub-radius-lg);
 }
 
 .pp-hub-plugins-list-item-icon {
@@ -86,7 +103,11 @@
     background-color: var(--pp-hub-status-color-inactive);
 }
 
-.pp-hub-plugins-list-item-inline-actions {
+.pp-hub-plugins-list-item .pp-hub-plugins-list-item-inline-actions {
+    display: none;
+}
+
+.pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-inline-actions {
     display: flex;
     flex-direction: row;
     gap: var(--pp-hub-spacing-sm);

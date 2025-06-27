@@ -11,6 +11,7 @@
     letter-spacing: 0.5px;
     text-align: center;
     margin-right: var(--pp-hub-spacing-md);
+    transition: background-color 0.1s ease-in-out;
 }
 
 .pp-hub-badge.installed {
@@ -37,3 +38,33 @@
     background-color: var(--pp-hub-badge-bg-unlicensed);
     color: var(--pp-hub-badge-text-unlicensed);
 }
+
+.pp-hub-badge.installing {
+    background-color: var(--pp-hub-badge-bg-installing);
+    color: var(--pp-hub-badge-text-installing);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.installed {
+    background-color: var(--pp-hub-badge-bg-installed-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.not-installed {
+    background-color: var(--pp-hub-badge-bg-not-installed-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.free {
+    background-color: var(--pp-hub-badge-bg-free-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.licensed {
+    background-color: var(--pp-hub-badge-bg-licensed-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.unlicensed {
+    background-color: var(--pp-hub-badge-bg-unlicensed-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.installing {
+    background-color: var(--pp-hub-badge-bg-installing-hover);
+}
+
