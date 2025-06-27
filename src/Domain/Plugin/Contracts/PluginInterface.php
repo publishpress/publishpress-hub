@@ -12,6 +12,8 @@ interface PluginInterface
 
     public function getSlugPro(): string;
 
+    public function getSlug(): string;
+
     public function getVersion(): ?string;
 
     public function getPath(): ?string;
@@ -23,6 +25,8 @@ interface PluginInterface
     public function getPluginFileNameFree(): string;
 
     public function getPluginFileNamePro(): string;
+
+    public function getPluginFileName(): string;
 
     public function isInstalled(): bool;
 

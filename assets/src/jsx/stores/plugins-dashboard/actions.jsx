@@ -153,3 +153,40 @@ export function* installProPlugin(pluginSlugFree, licenseKey) {
         };
     }
 }
+
+
+export function* uninstallPlugin(pluginSlugFree) {
+    try {
+        yield {type: 'UNINSTALL_PLUGIN_START', data: {pluginSlugFree}};
+
+        // Wait for API to be ready to avoid race conditions
+        if (window.ppHubApiReady) {
+            yield window.ppHubApiReady;
+        }
+
+        const data = yield apiFetch({
+            path: `/plugins/${pluginSlugFree}/uninstall`,
+            method: 'POST',
+        });
+
+        if (data.success) {
+            yield {type: 'UNINSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree}};
+
+            return {
+                success: true,
+                pluginSlugFree,
+                apiResponse: data,
+            };
+        } else {
+            throw new Error(data?.error || 'Plugin uninstall failed');
+        }
+    } catch (error) {
+        yield {type: 'UNINSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
+
+        return {
+            success: false,
+            pluginSlugFree,
+            error,
+        };
+    }
+}

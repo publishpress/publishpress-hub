@@ -730,7 +730,8 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
     installProPlugin = _useDispatch.installProPlugin,
     setLicenseInputModalOpen = _useDispatch.setLicenseInputModalOpen,
     setInstallationTypeModalOpen = _useDispatch.setInstallationTypeModalOpen,
-    fetchPlugins = _useDispatch.fetchPlugins;
+    fetchPlugins = _useDispatch.fetchPlugins,
+    uninstallPlugin = _useDispatch.uninstallPlugin;
 
   // Memoized handlers
   var handleInstall = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (plugin) {
@@ -771,6 +772,9 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
       });
     });
   }, [currentPluginForModal, installProPlugin, fetchPlugins, setLicenseInputModalOpen]);
+  var handleUninstall = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (plugin) {
+    uninstallPlugin(plugin.slugFree).then(fetchPlugins);
+  }, [uninstallPlugin, fetchPlugins]);
   var currentPluginState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     if (!currentPluginForModal) return {
       error: null,
@@ -794,7 +798,8 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
       onInstall: handleInstall,
       onUpgradeToPro: handleUpgradeToPro,
       onManageLicense: handleManageLicense,
-      onActivateLicense: handleActivateLicense
+      onActivateLicense: handleActivateLicense,
+      onUninstall: handleUninstall
     });
   }), isInstallationTypeModalOpen && currentPluginForModal && /*#__PURE__*/React.createElement(_modal_installation_type__WEBPACK_IMPORTED_MODULE_3__.ModalInstallationType, {
     onClose: handleInstallationTypeModalClose
@@ -971,7 +976,8 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     onInstall = _ref.onInstall,
     onUpgradeToPro = _ref.onUpgradeToPro,
     onManageLicense = _ref.onManageLicense,
-    onActivateLicense = _ref.onActivateLicense;
+    onActivateLicense = _ref.onActivateLicense,
+    onUninstall = _ref.onUninstall;
   var statusFlagClass = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     return classnames__WEBPACK_IMPORTED_MODULE_1___default()({
       'active': plugin.isActive,
@@ -1017,7 +1023,10 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
       }
       buttons.push(/*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_6__["default"], {
         variant: "link",
-        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Uninstall', 'publishpress-hub')
+        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Uninstall', 'publishpress-hub'),
+        onClick: function onClick() {
+          onUninstall(plugin);
+        }
       }));
     }
     return buttons;
@@ -1338,7 +1347,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   setLicenseInputModalOpen: () => (/* binding */ setLicenseInputModalOpen),
 /* harmony export */   setLoading: () => (/* binding */ setLoading),
 /* harmony export */   setPlugins: () => (/* binding */ setPlugins),
-/* harmony export */   setSelectedFilter: () => (/* binding */ setSelectedFilter)
+/* harmony export */   setSelectedFilter: () => (/* binding */ setSelectedFilter),
+/* harmony export */   uninstallPlugin: () => (/* binding */ uninstallPlugin)
 /* harmony export */ });
 /* harmony import */ var _wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/data-controls */ "@wordpress/data-controls");
 /* harmony import */ var _wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__);
@@ -1353,7 +1363,8 @@ var _marked = /*#__PURE__*/_regenerator().m(setSelectedFilter),
   _marked7 = /*#__PURE__*/_regenerator().m(setInstallationTypeModalOpen),
   _marked8 = /*#__PURE__*/_regenerator().m(fetchPlugins),
   _marked9 = /*#__PURE__*/_regenerator().m(installFreePlugin),
-  _marked0 = /*#__PURE__*/_regenerator().m(installProPlugin);
+  _marked0 = /*#__PURE__*/_regenerator().m(installProPlugin),
+  _marked1 = /*#__PURE__*/_regenerator().m(uninstallPlugin);
 
 var apiNonce = window.ppHubPluginsDashboardConfig.apiNonce;
 function setSelectedFilter(selectedFilter) {
@@ -1658,6 +1669,78 @@ function installProPlugin(pluginSlugFree, licenseKey) {
     }
   }, _marked0, null, [[0, 7]]);
 }
+function uninstallPlugin(pluginSlugFree) {
+  var data, _t4;
+  return _regenerator().w(function (_context1) {
+    while (1) switch (_context1.n) {
+      case 0:
+        _context1.p = 0;
+        _context1.n = 1;
+        return {
+          type: 'UNINSTALL_PLUGIN_START',
+          data: {
+            pluginSlugFree: pluginSlugFree
+          }
+        };
+      case 1:
+        if (!window.ppHubApiReady) {
+          _context1.n = 2;
+          break;
+        }
+        _context1.n = 2;
+        return window.ppHubApiReady;
+      case 2:
+        _context1.n = 3;
+        return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
+          path: "/plugins/".concat(pluginSlugFree, "/uninstall"),
+          method: 'POST'
+        });
+      case 3:
+        data = _context1.v;
+        if (!data.success) {
+          _context1.n = 5;
+          break;
+        }
+        _context1.n = 4;
+        return {
+          type: 'UNINSTALL_PLUGIN_SUCCESS',
+          data: {
+            pluginSlugFree: pluginSlugFree
+          }
+        };
+      case 4:
+        return _context1.a(2, {
+          success: true,
+          pluginSlugFree: pluginSlugFree,
+          apiResponse: data
+        });
+      case 5:
+        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin uninstall failed');
+      case 6:
+        _context1.n = 9;
+        break;
+      case 7:
+        _context1.p = 7;
+        _t4 = _context1.v;
+        _context1.n = 8;
+        return {
+          type: 'UNINSTALL_PLUGIN_ERROR',
+          data: {
+            pluginSlugFree: pluginSlugFree,
+            error: _t4
+          }
+        };
+      case 8:
+        return _context1.a(2, {
+          success: false,
+          pluginSlugFree: pluginSlugFree,
+          error: _t4
+        });
+      case 9:
+        return _context1.a(2);
+    }
+  }, _marked1, null, [[0, 7]]);
+}
 
 /***/ }),
 
@@ -1743,6 +1826,7 @@ var DEFAULT_STATE = {
   error: null,
   currentFilter: 'all',
   pluginInstallationInProgress: {},
+  pluginUninstallationInProgress: {},
   pluginErrors: {},
   isLicenseInputModalOpen: false,
   isInstallationTypeModalOpen: false
@@ -1824,6 +1908,21 @@ var installPluginError = function installPluginError(state, data) {
     pluginErrors: _objectSpread(_objectSpread({}, state.pluginErrors), {}, _defineProperty({}, data.pluginSlugFree, data.error))
   });
 };
+var uninstallPluginStart = function uninstallPluginStart(state, data) {
+  return _objectSpread(_objectSpread({}, state), {}, {
+    pluginUninstallationInProgress: _objectSpread(_objectSpread({}, state.pluginUninstallationInProgress), {}, _defineProperty({}, data.pluginSlugFree, true))
+  });
+};
+var uninstallPluginSuccess = function uninstallPluginSuccess(state, data) {
+  return _objectSpread(_objectSpread({}, state), {}, {
+    pluginUninstallationInProgress: _objectSpread(_objectSpread({}, state.pluginUninstallationInProgress), {}, _defineProperty({}, data.pluginSlugFree, false))
+  });
+};
+var uninstallPluginError = function uninstallPluginError(state, data) {
+  return _objectSpread(_objectSpread({}, state), {}, {
+    pluginUninstallationInProgress: _objectSpread(_objectSpread({}, state.pluginUninstallationInProgress), {}, _defineProperty({}, data.pluginSlugFree, false))
+  });
+};
 var reducer = function reducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : DEFAULT_STATE;
   var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -1857,6 +1956,12 @@ var reducer = function reducer() {
       return installPluginSuccess(state, action.data);
     case 'INSTALL_PLUGIN_ERROR':
       return installPluginError(state, action.data);
+    case 'UNINSTALL_PLUGIN_START':
+      return uninstallPluginStart(state, action.data);
+    case 'UNINSTALL_PLUGIN_SUCCESS':
+      return uninstallPluginSuccess(state, action.data);
+    case 'UNINSTALL_PLUGIN_ERROR':
+      return uninstallPluginError(state, action.data);
     default:
       return state;
   }

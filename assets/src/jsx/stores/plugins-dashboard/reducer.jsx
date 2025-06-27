@@ -7,6 +7,7 @@ export const DEFAULT_STATE = {
     error: null,
     currentFilter: 'all',
     pluginInstallationInProgress: {},
+    pluginUninstallationInProgress: {},
     pluginErrors: {},
     isLicenseInputModalOpen: false,
     isInstallationTypeModalOpen: false,
@@ -133,6 +134,36 @@ const installPluginError = (state, data) => {
     }
 }
 
+const uninstallPluginStart = (state, data) => {
+    return {
+        ...state,
+        pluginUninstallationInProgress: {
+            ...state.pluginUninstallationInProgress,
+            [data.pluginSlugFree]: true,
+        },
+    }
+}
+
+const uninstallPluginSuccess = (state, data) => {
+    return {
+        ...state,
+        pluginUninstallationInProgress: {
+            ...state.pluginUninstallationInProgress,
+            [data.pluginSlugFree]: false,
+        },
+    }
+}
+
+const uninstallPluginError = (state, data) => {
+    return {
+        ...state,
+        pluginUninstallationInProgress: {
+            ...state.pluginUninstallationInProgress,
+            [data.pluginSlugFree]: false,
+        },
+    }
+}
+
 export const reducer = (state = DEFAULT_STATE, action) => {
     if (! action) {
         return state;
@@ -165,6 +196,12 @@ export const reducer = (state = DEFAULT_STATE, action) => {
             return installPluginSuccess(state, action.data);
         case 'INSTALL_PLUGIN_ERROR':
             return installPluginError(state, action.data);
+        case 'UNINSTALL_PLUGIN_START':
+            return uninstallPluginStart(state, action.data);
+        case 'UNINSTALL_PLUGIN_SUCCESS':
+            return uninstallPluginSuccess(state, action.data);
+        case 'UNINSTALL_PLUGIN_ERROR':
+            return uninstallPluginError(state, action.data);
         default:
             return state;
     }

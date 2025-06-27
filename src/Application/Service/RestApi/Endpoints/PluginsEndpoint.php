@@ -152,6 +152,14 @@ class PluginsEndpoint implements EndpointInterface
                 ],
             ],
         ]);
+
+        register_rest_route($namespace, $this->route . '/(?P<plugin_slug>[a-zA-Z0-9_-]+)/uninstall', [
+            [
+                'methods' => 'POST',
+                'callback' => [$this, 'uninstallPlugin'],
+                'permission_callback' => [$this, 'checkInstallPermissions'],
+            ],
+        ]);
     }
 
     /**
@@ -221,13 +229,10 @@ class PluginsEndpoint implements EndpointInterface
 
             $plugin->clearCache();
 
-            $plugins = $this->getAllPluginsSerializable();
-
             return new WP_REST_Response([
                 'success' => true,
                 'data' => [
                     'plugin_slug' => $pluginSlug,
-                    'plugins' => (array) $plugins,
                 ],
             ], 200);
         } catch (Throwable $e) {
@@ -258,13 +263,40 @@ class PluginsEndpoint implements EndpointInterface
 
             $plugin->clearCache();
 
-            $plugins = $this->getAllPluginsSerializable();
+            return new WP_REST_Response([
+                'success' => true,
+                'data' => [
+                    'plugin_slug' => $pluginSlug
+                ],
+            ], 200);
+        } catch (Throwable $e) {
+            return $this->exceptionResponseMapper->mapToWpError($e);
+        }
+    }
+
+    /**
+     * Uninstall a plugin.
+     *
+     * @since 1.0.0
+     * @param WP_REST_Request $request The REST request
+     * @return WP_REST_Response|WP_Error
+     */
+    public function uninstallPlugin(WP_REST_Request $request)
+    {
+        try {
+            $pluginSlug = $request->get_param('plugin_slug');
+            $plugin = $this->getPluginBySlug($pluginSlug);
+
+            $uninstalled = $this->pluginInstallationService->uninstallPlugin($plugin);
+
+            if (!$uninstalled) {
+                throw new PluginInstallationException('Failed to uninstall plugin');
+            }
 
             return new WP_REST_Response([
                 'success' => true,
                 'data' => [
                     'plugin_slug' => $pluginSlug,
-                    'plugins' => (array) $plugins,
                 ],
             ], 200);
         } catch (Throwable $e) {
@@ -282,6 +314,34 @@ class PluginsEndpoint implements EndpointInterface
     public function checkInstallPermissions(WP_REST_Request $request): bool
     {
         return current_user_can('install_plugins');
+    }
+
+    /**
+     * Validate the slug parameter.
+     *
+     * @since 1.0.0
+     * @param string $param The parameter value
+     * @param WP_REST_Request $request The REST request
+     * @param string $key The parameter key
+     * @return bool
+     */
+    public function validateSlugParam(string $param, WP_REST_Request $request, string $key): bool
+    {
+        return !empty($param) && preg_match('/^[a-zA-Z0-9_-]+$/', $param);
+    }
+
+    /**
+     * Validate the license key parameter.
+     *
+     * @since 1.0.0
+     * @param string $param The parameter value
+     * @param WP_REST_Request $request The REST request
+     * @param string $key The parameter key
+     * @return bool
+     */
+    public function validateLicenseKeyParam(string $param, WP_REST_Request $request, string $key): bool
+    {
+        return !empty($param) && preg_match('/^[a-zA-Z0-9_-]+$/', $param);
     }
 
     /**
@@ -316,33 +376,5 @@ class PluginsEndpoint implements EndpointInterface
         }
 
         return $plugin;
-    }
-
-    /**
-     * Validate the slug parameter.
-     *
-     * @since 1.0.0
-     * @param string $param The parameter value
-     * @param WP_REST_Request $request The REST request
-     * @param string $key The parameter key
-     * @return bool
-     */
-    public function validateSlugParam(string $param, WP_REST_Request $request, string $key): bool
-    {
-        return !empty($param) && preg_match('/^[a-zA-Z0-9_-]+$/', $param);
-    }
-
-    /**
-     * Validate the license key parameter.
-     *
-     * @since 1.0.0
-     * @param string $param The parameter value
-     * @param WP_REST_Request $request The REST request
-     * @param string $key The parameter key
-     * @return bool
-     */
-    public function validateLicenseKeyParam(string $param, WP_REST_Request $request, string $key): bool
-    {
-        return !empty($param) && preg_match('/^[a-zA-Z0-9_-]+$/', $param);
     }
 }

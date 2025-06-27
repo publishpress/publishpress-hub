@@ -33,6 +33,7 @@ use PublishPress\Hub\Application\Service\Exception\ServiceException;
 use PublishPress\Hub\Application\Service\RestApi\QuietUpgradeSkin;
 use PublishPress\Hub\Domain\Plugin\Contracts\PluginInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
+use PublishPress\Hub\Domain\Plugin\Exception\PluginNotInstalledException;
 
 /**
  * Plugin Installation Service.
@@ -173,6 +174,25 @@ class PluginInstallationService implements ServiceInterface
     }
 
     /**
+     * Uninstall a plugin.
+     *
+     * @since 1.0.0
+     * @param PluginInterface $plugin The plugin to uninstall
+     * @return bool True on success
+     * @throws PluginNotInstalledException If plugin is not installed
+     */
+    public function uninstallPlugin(PluginInterface $plugin): bool
+    {
+        if (!$plugin->isInstalled()) {
+            throw new PluginNotInstalledException($plugin->getSlugFree());
+        }
+
+        $this->ensureWordPressRequirements();
+
+        return $this->performUninstallation($plugin);
+    }
+
+    /**
      * Ensure WordPress requirements are loaded.
      *
      * @since 1.0.0
@@ -233,6 +253,51 @@ class PluginInstallationService implements ServiceInterface
         }
 
         return $install === true;
+    }
+
+    /**
+     * Perform the actual plugin uninstallation.
+     *
+     * @since 1.0.0
+     * @param string $pluginSlug The plugin slug
+     * @return bool True on success
+     * @throws PluginNotInstalledException If plugin is not installed
+     */
+    private function performUninstallation(PluginInterface $plugin): bool
+    {
+        $pluginSlug = $plugin->getSlug();
+
+        if (!$plugin->isInstalled()) {
+            throw new PluginNotInstalledException($pluginSlug);
+        }
+
+        $pluginPath = $plugin->getPath();
+
+        if (!$pluginPath) {
+            throw new PluginNotInstalledException($pluginSlug);
+        }
+
+        $pluginFileName = $plugin->getPluginFileName();
+
+        $pluginData = get_plugin_data($pluginPath);
+
+        if (!$pluginData || empty($pluginData['Name'])) {
+            throw new PluginNotInstalledException($pluginSlug);
+        }
+
+        sleep(10);
+
+        $folderName = basename(dirname($pluginPath));
+
+        deactivate_plugins([$folderName . '/' . $pluginFileName]);
+
+        $result = delete_plugins([$folderName . '/' . $pluginFileName]);
+
+        if (is_wp_error($result)) {
+            throw new PluginInstallationException('Failed to uninstall plugin: ' . $result->get_error_message());
+        }
+
+        return $result === true;
     }
 
     /**

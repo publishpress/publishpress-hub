@@ -33,6 +33,7 @@ const PluginsListComponent = ({
         setLicenseInputModalOpen,
         setInstallationTypeModalOpen,
         fetchPlugins,
+        uninstallPlugin,
     } = useDispatch(store);
 
     // Memoized handlers
@@ -87,6 +88,10 @@ const PluginsListComponent = ({
         });
     }, [currentPluginForModal, installProPlugin, fetchPlugins, setLicenseInputModalOpen]);
 
+    const handleUninstall = useCallback((plugin) => {
+        uninstallPlugin(plugin.slugFree).then(fetchPlugins);
+    }, [uninstallPlugin, fetchPlugins]);
+
     const currentPluginState = useMemo(() => {
         if (!currentPluginForModal) return { error: null, inProgress: false };
 
@@ -112,6 +117,7 @@ const PluginsListComponent = ({
                         onUpgradeToPro={handleUpgradeToPro}
                         onManageLicense={handleManageLicense}
                         onActivateLicense={handleActivateLicense}
+                        onUninstall={handleUninstall}
                     />
                 );
             })}

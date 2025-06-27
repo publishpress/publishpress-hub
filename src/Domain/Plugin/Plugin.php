@@ -236,6 +236,17 @@ class Plugin implements PluginInterface
     }
 
     /**
+     * Get the slug of the plugin.
+     *
+     * @since 1.0.0
+     * @return string
+     */
+    public function getSlug(): string
+    {
+        return $this->isPro() ? $this->getSlugPro() : $this->getSlugFree();
+    }
+
+    /**
      * Get the version of the plugin, if installed.
      *
      * @since 1.0.0
@@ -254,7 +265,15 @@ class Plugin implements PluginInterface
      */
     public function getPath(): ?string
     {
-        return $this->filePath;
+        if (!$this->isInstalled()) {
+            return null;
+        }
+
+        if ($this->filePath) {
+            return $this->filePath;
+        }
+
+        return WP_PLUGIN_DIR . '/' . $this->getSlug() . '/' . $this->getPluginFileName();
     }
 
     /**
@@ -299,6 +318,17 @@ class Plugin implements PluginInterface
     public function getPluginFileNamePro(): string
     {
         return $this->pluginFileNamePro;
+    }
+
+    /**
+     * Get the plugin file name.
+     *
+     * @since 1.0.0
+     * @return string
+     */
+    public function getPluginFileName(): string
+    {
+        return $this->isPro() ? $this->getPluginFileNamePro() : $this->getPluginFileNameFree();
     }
 
     /**

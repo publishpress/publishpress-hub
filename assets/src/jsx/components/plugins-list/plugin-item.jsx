@@ -18,6 +18,7 @@ const PluginItemComponent = ({
     onUpgradeToPro,
     onManageLicense,
     onActivateLicense,
+    onUninstall,
 }) => {
     const statusFlagClass = useMemo(() => classNames({
         'active': plugin.isActive,
@@ -76,6 +77,9 @@ const PluginItemComponent = ({
                 <Button
                     variant='link'
                     text={__('Uninstall', 'publishpress-hub')}
+                    onClick={() => {
+                        onUninstall(plugin);
+                    }}
                 />
             );
         }
