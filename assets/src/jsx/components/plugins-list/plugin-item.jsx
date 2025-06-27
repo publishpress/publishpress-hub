@@ -1,4 +1,4 @@
-import { memo, useMemo } from '@wordpress/element';
+import { memo, useMemo, Fragment } from '@wordpress/element';
 
 import classNames from 'classnames';
 
@@ -7,6 +7,7 @@ import { __ } from '@publishpress/hub-i18n';
 import { Tooltip } from '../tooltip';
 import { StatusFlag } from './status-flag';
 import { ActionButton } from './action-button';
+import Button from '../buttons/button';
 
 const PluginItemComponent = ({
     plugin,
@@ -47,6 +48,39 @@ const PluginItemComponent = ({
         `${plugin.name}${plugin.isPro ? ' Pro' : ''}`
     , [plugin.name, plugin.isPro]);
 
+    const actionButtons = useMemo(() => {
+        let buttons = [];
+
+        if (plugin.isInstalled) {
+            if (plugin.isActive) {
+                buttons.push(
+                    <Button
+                        variant='link'
+                        text={__('Deactivate', 'publishpress-hub')}
+                    />
+                );
+            }
+
+            if (!plugin.isActive) {
+                buttons.push(
+                    <Button
+                        variant='link'
+                        text={__('Activate', 'publishpress-hub')}
+                    />
+                );
+            }
+
+            buttons.push(
+                <Button
+                    variant='link'
+                    text={__('Uninstall', 'publishpress-hub')}
+                />
+            );
+        }
+
+        return buttons;
+    }, [plugin]);
+
     return (
         <div
             className={`pp-hub-plugins-list-item ${statusFlagClass}`}
@@ -67,6 +101,18 @@ const PluginItemComponent = ({
                 <div className='pp-hub-plugins-list-item-description'>
                     {plugin.description}
                 </div>
+                {plugin.isInstalled && (
+                    <div className='pp-hub-plugins-list-item-inline-actions'>
+                        {actionButtons.map((button, index) => (
+                            <Fragment key={index}>
+                                {button}
+                                {index < actionButtons.length - 1 && (
+                                    <span>|</span>
+                                )}
+                            </Fragment>
+                        ))}
+                    </div>
+                )}
             </div>
             <div className='pp-hub-plugins-list-item-actions'>
                 <StatusFlag plugin={plugin} isInstalling={isInstalling} />
