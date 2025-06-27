@@ -20,6 +20,7 @@
 @import './components/tooltip/tooltip.css';
 @import './components/badge/badge.css';
 @import './components/messages/messages.css';
+@import './components/notices/notices.css';
 
 /* 4. WordPress Admin Compatibility */
 /* Ensure our styles don't conflict with WordPress admin */

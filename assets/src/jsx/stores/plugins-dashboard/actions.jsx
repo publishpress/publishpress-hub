@@ -1,6 +1,5 @@
 import { apiFetch } from '@wordpress/data-controls';
-
-const { apiNonce } = window.ppHubPluginsDashboardConfig;
+import apiReady from '../../utils/apiReady';
 
 export function* setSelectedFilter(selectedFilter) {
     yield {
@@ -55,10 +54,7 @@ export function* fetchPlugins() {
     try {
         yield {type: 'FETCH_PLUGINS_START'};
 
-        // Wait for API to be ready to avoid race conditions
-        if (window.ppHubApiReady) {
-            yield window.ppHubApiReady;
-        }
+        yield apiReady();
 
         const data = yield apiFetch({
             path: '/plugins',
@@ -78,10 +74,7 @@ export function* installFreePlugin(pluginSlugFree) {
     try {
         yield {type: 'INSTALL_PLUGIN_START', data: {pluginSlugFree}};
 
-        // Wait for API to be ready to avoid race conditions
-        if (window.ppHubApiReady) {
-            yield window.ppHubApiReady;
-        }
+        yield apiReady();
 
         const data = yield apiFetch({
             path: `/plugins/${pluginSlugFree}/install/free`,
@@ -114,10 +107,7 @@ export function* installProPlugin(pluginSlugFree, licenseKey) {
     try {
         yield {type: 'INSTALL_PLUGIN_START', data: {pluginSlugFree}};
 
-        // Wait for API to be ready to avoid race conditions
-        if (window.ppHubApiReady) {
-            yield window.ppHubApiReady;
-        }
+        yield apiReady();
 
         licenseKey = licenseKey.trim();
 
@@ -159,10 +149,7 @@ export function* uninstallPlugin(pluginSlugFree) {
     try {
         yield {type: 'UNINSTALL_PLUGIN_START', data: {pluginSlugFree}};
 
-        // Wait for API to be ready to avoid race conditions
-        if (window.ppHubApiReady) {
-            yield window.ppHubApiReady;
-        }
+        yield apiReady();
 
         const data = yield apiFetch({
             path: `/plugins/${pluginSlugFree}/uninstall`,

@@ -126,3 +126,14 @@
 .pp-hub-plugins-list-item-inline-actions button:last-child {
     margin-right: 0;
 }
+
+.pp-hub-plugins-list__empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: var(--pp-hub-spacing-xl);
+    border-radius: var(--pp-hub-radius-lg);
+    background-color: var(--pp-hub-bg-secondary);
+}

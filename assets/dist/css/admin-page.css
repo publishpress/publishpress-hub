@@ -1216,6 +1216,17 @@
     margin-right: 0;
 }
 
+.pp-hub-plugins-list__empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: var(--pp-hub-spacing-xl);
+    border-radius: var(--pp-hub-radius-lg);
+    background-color: var(--pp-hub-bg-secondary);
+}
+
 /*!***********************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./assets/src/css/components/filter/filter-buttons-bar.css ***!
   \***********************************************************************************************************/
@@ -1477,6 +1488,13 @@ button.publishpress-hub-filter-button:hover {
 .pp-hub-message.is-info {
     background-color: var(--pp-hub-bg-info);
     color: var(--pp-hub-text-info);
+}
+
+/*!*************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/src/css/components/notices/notices.css ***!
+  \*************************************************************************************************/
+.publishpress-hub-notices__notice-list {
+    margin-bottom: 16px;
 }
 
 /*!***************************************************************************!*\

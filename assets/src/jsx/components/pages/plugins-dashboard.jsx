@@ -1,13 +1,14 @@
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useCallback, useMemo, useEffect, memo } from '@wordpress/element';
 
-import { __ } from '@publishpress/hub-i18n';
+import { __, sprintf } from '@publishpress/hub-i18n';
 
 import { AdminPageLayout } from '../admin-page';
 import FilterButtonsBar from '../filter/filter-buttons-bar';
 import { store } from '../../stores/plugins-dashboard';
 import { PluginsList } from '../plugins-list';
 import { ErrorPage } from '../pages/error-page';
+import NoticesList from '../notices/NoticesList';
 
 const {
     logoUrl,
@@ -37,6 +38,10 @@ const PluginsDashboardComponent = () => {
         fetchPlugins
     } = useDispatch(store);
 
+    const {
+        createErrorNotice,
+    } = useDispatch('core/notices');
+
     const handleFilterChange = useCallback((selectedFilter) => {
         setSelectedFilter(selectedFilter);
     }, [setSelectedFilter]);
@@ -44,7 +49,14 @@ const PluginsDashboardComponent = () => {
     const title = useMemo(() => __('Plugins Dashboard', 'publishpress-hub'), []);
 
     useEffect(() => {
-        fetchPlugins();
+        /**
+         * TODO: Find another way to avoid race conditions. We were receiving an intermitent error
+         * "Uncaught (in promise) Error: The resource could not be loaded because the app is not ready."
+         * when fetching plugins. This is a temporary solution to avoid the error.
+         */
+        // setTimeout(() => {
+            fetchPlugins();
+        // }, 400);
     }, [fetchPlugins]);
 
     const filterOptions = useMemo(() => {
@@ -78,13 +90,10 @@ const PluginsDashboardComponent = () => {
     }, [filterCounts]);
 
     if (error) {
-        return (
-            <ErrorPage
-                error={error}
-                title={title}
-                logoUrl={logoUrl}
-            />
-        );
+        const message = error.data?.status && sprintf(__('Error [%s]: %s', 'publishpress-hub'), error.data.status, error.message)
+            || sprintf(__('Error: %s', 'publishpress-hub'), error.message);
+
+        createErrorNotice(message);
     }
 
     return (
@@ -93,6 +102,7 @@ const PluginsDashboardComponent = () => {
             logoUrl={logoUrl}
         >
             <div className="pp-hub-plugins-dashboard">
+                <NoticesList />
                 <FilterButtonsBar
                     options={filterOptions}
                     selectedOption={selectedFilter}

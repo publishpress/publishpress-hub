@@ -1,6 +1,8 @@
 import { memo, useCallback, useState, useMemo } from '@wordpress/element';
 import { useDispatch, useSelect } from '@wordpress/data';
 
+import { __ } from '@publishpress/hub-i18n';
+
 import { store } from '../../stores/plugins-dashboard';
 import { ModalInstallationType } from './modal-installation-type';
 import { ModalLicenseInput } from './modal-license-input';
@@ -125,6 +127,12 @@ const PluginsListComponent = ({
                     />
                 );
             })}
+
+            {plugins.length === 0 && (
+                <div className="pp-hub-plugins-list__empty">
+                    <p>{__('No plugins found.', 'publishpress-hub')}</p>
+                </div>
+            )}
 
             {isInstallationTypeModalOpen && currentPluginForModal && (
                 <ModalInstallationType onClose={handleInstallationTypeModalClose} />
