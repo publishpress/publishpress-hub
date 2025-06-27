@@ -1491,11 +1491,7 @@ function fetchPlugins() {
         _context8.n = 6;
         break;
       case 5:
-        _context8.n = 6;
-        return {
-          type: 'FETCH_PLUGINS_ERROR',
-          error: data.error
-        };
+        throw new Error(data.error || 'Failed to fetch plugins');
       case 6:
         _context8.n = 8;
         break;
@@ -1558,27 +1554,14 @@ function installFreePlugin(pluginSlugFree) {
           apiResponse: data
         });
       case 5:
-        _context9.n = 6;
-        return {
-          type: 'INSTALL_PLUGIN_ERROR',
-          data: {
-            pluginSlugFree: pluginSlugFree,
-            error: data === null || data === void 0 ? void 0 : data.error
-          }
-        };
+        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin installation failed');
       case 6:
-        return _context9.a(2, {
-          success: false,
-          pluginSlugFree: pluginSlugFree,
-          error: data === null || data === void 0 ? void 0 : data.error
-        });
-      case 7:
-        _context9.n = 10;
-        break;
-      case 8:
-        _context9.p = 8;
-        _t2 = _context9.v;
         _context9.n = 9;
+        break;
+      case 7:
+        _context9.p = 7;
+        _t2 = _context9.v;
+        _context9.n = 8;
         return {
           type: 'INSTALL_PLUGIN_ERROR',
           data: {
@@ -1586,16 +1569,16 @@ function installFreePlugin(pluginSlugFree) {
             error: _t2
           }
         };
-      case 9:
+      case 8:
         return _context9.a(2, {
           success: false,
           pluginSlugFree: pluginSlugFree,
           error: _t2
         });
-      case 10:
+      case 9:
         return _context9.a(2);
     }
-  }, _marked9, null, [[0, 8]]);
+  }, _marked9, null, [[0, 7]]);
 }
 function installProPlugin(pluginSlugFree, licenseKey) {
   var data, _t3;
@@ -1648,28 +1631,14 @@ function installProPlugin(pluginSlugFree, licenseKey) {
           apiResponse: data
         });
       case 5:
-        _context0.n = 6;
-        return {
-          type: 'INSTALL_PLUGIN_ERROR',
-          data: {
-            pluginSlugFree: pluginSlugFree,
-            error: data === null || data === void 0 ? void 0 : data.error
-          }
-        };
+        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin installation failed');
       case 6:
-        return _context0.a(2, {
-          success: false,
-          pluginSlugFree: pluginSlugFree,
-          licenseKey: licenseKey,
-          error: data === null || data === void 0 ? void 0 : data.error
-        });
-      case 7:
-        _context0.n = 10;
-        break;
-      case 8:
-        _context0.p = 8;
-        _t3 = _context0.v;
         _context0.n = 9;
+        break;
+      case 7:
+        _context0.p = 7;
+        _t3 = _context0.v;
+        _context0.n = 8;
         return {
           type: 'INSTALL_PLUGIN_ERROR',
           data: {
@@ -1677,17 +1646,17 @@ function installProPlugin(pluginSlugFree, licenseKey) {
             error: _t3
           }
         };
-      case 9:
+      case 8:
         return _context0.a(2, {
           success: false,
           pluginSlugFree: pluginSlugFree,
           licenseKey: licenseKey,
           error: _t3
         });
-      case 10:
+      case 9:
         return _context0.a(2);
     }
-  }, _marked0, null, [[0, 8]]);
+  }, _marked0, null, [[0, 7]]);
 }
 
 /***/ }),

@@ -67,7 +67,7 @@ export function* fetchPlugins() {
         if (data.success) {
             yield {type: 'FETCH_PLUGINS_SUCCESS', data: data.data};
         } else {
-            yield {type: 'FETCH_PLUGINS_ERROR', error: data.error};
+            throw new Error(data.error || 'Failed to fetch plugins');
         }
     } catch (error) {
         yield {type: 'FETCH_PLUGINS_ERROR', error: error};
@@ -97,13 +97,7 @@ export function* installFreePlugin(pluginSlugFree) {
                 apiResponse: data,
             };
         } else {
-            yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: data?.error}};
-
-            return {
-                success: false,
-                pluginSlugFree,
-                error: data?.error,
-            };
+            throw new Error(data?.error || 'Plugin installation failed');
         }
     } catch (error) {
         yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
@@ -146,14 +140,7 @@ export function* installProPlugin(pluginSlugFree, licenseKey) {
                 apiResponse: data,
             };
         } else {
-            yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: data?.error}};
-            // Return error context
-            return {
-                success: false,
-                pluginSlugFree,
-                licenseKey,
-                error: data?.error,
-            };
+            throw new Error(data?.error || 'Plugin installation failed');
         }
     } catch (error) {
         yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
