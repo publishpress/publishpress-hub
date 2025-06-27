@@ -25,11 +25,23 @@ const STATUS_BADGE_CONFIGS = {
         text: __('Unlicensed', 'publishpress-hub'),
         className: 'unlicensed',
     },
+    uninstalling: {
+        text: __('Uninstalling', 'publishpress-hub'),
+        className: 'uninstalling',
+    },
 };
 
-const StatusFlagComponent = ({ plugin, isInstalling }) => {
+const StatusFlagComponent = ({
+    plugin,
+    isInstalling,
+    isUninstalling,
+}) => {
     if (!plugin.isInstalled && isInstalling) {
         return <Badge {...STATUS_BADGE_CONFIGS.installing} />;
+    }
+
+    if (isUninstalling) {
+        return <Badge {...STATUS_BADGE_CONFIGS.uninstalling} />;
     }
 
     if (!plugin.isInstalled) {

@@ -285,8 +285,6 @@ class PluginInstallationService implements ServiceInterface
             throw new PluginNotInstalledException($pluginSlug);
         }
 
-        sleep(10);
-
         $folderName = basename(dirname($pluginPath));
 
         deactivate_plugins([$folderName . '/' . $pluginFileName]);

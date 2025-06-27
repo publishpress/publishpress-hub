@@ -13,6 +13,7 @@ const PluginItemComponent = ({
     plugin,
     pluginIconBaseUrl,
     isInstalling,
+    isUninstalling,
     inProgress,
     onInstall,
     onUpgradeToPro,
@@ -77,6 +78,7 @@ const PluginItemComponent = ({
                 <Button
                     variant='link'
                     text={__('Uninstall', 'publishpress-hub')}
+                    isLoading={isUninstalling}
                     onClick={() => {
                         onUninstall(plugin);
                     }}
@@ -85,7 +87,7 @@ const PluginItemComponent = ({
         }
 
         return buttons;
-    }, [plugin]);
+    }, [plugin, isUninstalling]);
 
     return (
         <div
@@ -127,7 +129,7 @@ const PluginItemComponent = ({
                 )}
             </div>
             <div className='pp-hub-plugins-list-item-actions'>
-                <StatusFlag plugin={plugin} isInstalling={isInstalling} />
+                <StatusFlag plugin={plugin} isInstalling={isInstalling} isUninstalling={isUninstalling} />
                 <ActionButton
                     plugin={plugin}
                     inProgress={inProgress}

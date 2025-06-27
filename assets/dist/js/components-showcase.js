@@ -204,7 +204,7 @@ var ButtonComponent = function ButtonComponent(_ref) {
     target: targetValue,
     rel: relValue,
     className: buttonClassName,
-    disabled: disabled,
+    disabled: disabled || isLoading,
     title: title,
     style: style
   }, restProps), children);

@@ -14,6 +14,7 @@ const PluginsListComponent = ({
 
     const {
         pluginInstallationInProgress,
+        pluginUninstallationInProgress,
         pluginError,
         isLicenseInputModalOpen,
         isInstallationTypeModalOpen,
@@ -21,6 +22,7 @@ const PluginsListComponent = ({
         const storeSelect = select(store);
         return {
             pluginInstallationInProgress: storeSelect.getPluginInstallationInProgress(),
+            pluginUninstallationInProgress: storeSelect.getPluginUninstallationInProgress(),
             pluginError: storeSelect.getPluginError(),
             isLicenseInputModalOpen: storeSelect.getIsLicenseInputModalOpen(),
             isInstallationTypeModalOpen: storeSelect.getIsInstallationTypeModalOpen(),
@@ -105,6 +107,7 @@ const PluginsListComponent = ({
         <div className="pp-hub-plugins-list">
             {plugins.map((plugin) => {
                 const isInstalling = pluginInstallationInProgress[plugin.slugFree] || false;
+                const isUninstalling = pluginUninstallationInProgress[plugin.slugFree] || false;
 
                 return (
                     <PluginItem
@@ -112,6 +115,7 @@ const PluginsListComponent = ({
                         plugin={plugin}
                         pluginIconBaseUrl={pluginIconBaseUrl}
                         isInstalling={isInstalling}
+                        isUninstalling={isUninstalling}
                         inProgress={isInstalling}
                         onInstall={handleInstall}
                         onUpgradeToPro={handleUpgradeToPro}

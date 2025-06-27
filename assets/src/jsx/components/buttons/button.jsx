@@ -57,7 +57,7 @@ const ButtonComponent = ({
             target={targetValue}
             rel={relValue}
             className={buttonClassName}
-            disabled={disabled}
+            disabled={disabled || isLoading}
             title={title}
             style={style}
             {...restProps}

@@ -88,6 +88,10 @@ export const getPluginInstallationInProgress = (state) => {
     return state.pluginInstallationInProgress;
 }
 
+export const getPluginUninstallationInProgress = (state) => {
+    return state.pluginUninstallationInProgress;
+}
+
 export const getPluginError = (state) => {
     return state.pluginErrors;
 }

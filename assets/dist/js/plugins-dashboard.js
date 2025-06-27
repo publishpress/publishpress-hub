@@ -235,7 +235,7 @@ var ButtonComponent = function ButtonComponent(_ref) {
     target: targetValue,
     rel: relValue,
     className: buttonClassName,
-    disabled: disabled,
+    disabled: disabled || isLoading,
     title: title,
     style: style
   }, restProps), children);
@@ -716,12 +716,14 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
       var storeSelect = select(_stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_2__.store);
       return {
         pluginInstallationInProgress: storeSelect.getPluginInstallationInProgress(),
+        pluginUninstallationInProgress: storeSelect.getPluginUninstallationInProgress(),
         pluginError: storeSelect.getPluginError(),
         isLicenseInputModalOpen: storeSelect.getIsLicenseInputModalOpen(),
         isInstallationTypeModalOpen: storeSelect.getIsInstallationTypeModalOpen()
       };
     }, []),
     pluginInstallationInProgress = _useSelect.pluginInstallationInProgress,
+    pluginUninstallationInProgress = _useSelect.pluginUninstallationInProgress,
     pluginError = _useSelect.pluginError,
     isLicenseInputModalOpen = _useSelect.isLicenseInputModalOpen,
     isInstallationTypeModalOpen = _useSelect.isInstallationTypeModalOpen;
@@ -789,11 +791,13 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
     className: "pp-hub-plugins-list"
   }, plugins.map(function (plugin) {
     var isInstalling = pluginInstallationInProgress[plugin.slugFree] || false;
+    var isUninstalling = pluginUninstallationInProgress[plugin.slugFree] || false;
     return /*#__PURE__*/React.createElement(_plugin_item__WEBPACK_IMPORTED_MODULE_5__.PluginItem, {
       key: "plugin-".concat(plugin.slugFree),
       plugin: plugin,
       pluginIconBaseUrl: pluginIconBaseUrl,
       isInstalling: isInstalling,
+      isUninstalling: isUninstalling,
       inProgress: isInstalling,
       onInstall: handleInstall,
       onUpgradeToPro: handleUpgradeToPro,
@@ -972,6 +976,7 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
   var plugin = _ref.plugin,
     pluginIconBaseUrl = _ref.pluginIconBaseUrl,
     isInstalling = _ref.isInstalling,
+    isUninstalling = _ref.isUninstalling,
     inProgress = _ref.inProgress,
     onInstall = _ref.onInstall,
     onUpgradeToPro = _ref.onUpgradeToPro,
@@ -1024,13 +1029,14 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
       buttons.push(/*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_6__["default"], {
         variant: "link",
         text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Uninstall', 'publishpress-hub'),
+        isLoading: isUninstalling,
         onClick: function onClick() {
           onUninstall(plugin);
         }
       }));
     }
     return buttons;
-  }, [plugin]);
+  }, [plugin, isUninstalling]);
   return /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item ".concat(statusFlagClass, " ").concat(isHovered ? 'hovered' : ''),
     onMouseEnter: function onMouseEnter() {
@@ -1064,7 +1070,8 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     className: "pp-hub-plugins-list-item-actions"
   }, /*#__PURE__*/React.createElement(_status_flag__WEBPACK_IMPORTED_MODULE_4__.StatusFlag, {
     plugin: plugin,
-    isInstalling: isInstalling
+    isInstalling: isInstalling,
+    isUninstalling: isUninstalling
   }), /*#__PURE__*/React.createElement(_action_button__WEBPACK_IMPORTED_MODULE_5__.ActionButton, {
     plugin: plugin,
     inProgress: inProgress,
@@ -1118,13 +1125,21 @@ var STATUS_BADGE_CONFIGS = {
   unlicensed: {
     text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Unlicensed', 'publishpress-hub'),
     className: 'unlicensed'
+  },
+  uninstalling: {
+    text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Uninstalling', 'publishpress-hub'),
+    className: 'uninstalling'
   }
 };
 var StatusFlagComponent = function StatusFlagComponent(_ref) {
   var plugin = _ref.plugin,
-    isInstalling = _ref.isInstalling;
+    isInstalling = _ref.isInstalling,
+    isUninstalling = _ref.isUninstalling;
   if (!plugin.isInstalled && isInstalling) {
     return /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_2__.Badge, STATUS_BADGE_CONFIGS.installing);
+  }
+  if (isUninstalling) {
+    return /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_2__.Badge, STATUS_BADGE_CONFIGS.uninstalling);
   }
   if (!plugin.isInstalled) {
     return /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_2__.Badge, STATUS_BADGE_CONFIGS.notInstalled);
@@ -1987,6 +2002,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getIsLoading: () => (/* binding */ getIsLoading),
 /* harmony export */   getPluginError: () => (/* binding */ getPluginError),
 /* harmony export */   getPluginInstallationInProgress: () => (/* binding */ getPluginInstallationInProgress),
+/* harmony export */   getPluginUninstallationInProgress: () => (/* binding */ getPluginUninstallationInProgress),
 /* harmony export */   getPlugins: () => (/* binding */ getPlugins),
 /* harmony export */   getSelectedFilter: () => (/* binding */ getSelectedFilter)
 /* harmony export */ });
@@ -2066,6 +2082,9 @@ var getCurrentFilter = function getCurrentFilter(state) {
 };
 var getPluginInstallationInProgress = function getPluginInstallationInProgress(state) {
   return state.pluginInstallationInProgress;
+};
+var getPluginUninstallationInProgress = function getPluginUninstallationInProgress(state) {
+  return state.pluginUninstallationInProgress;
 };
 var getPluginError = function getPluginError(state) {
   return state.pluginErrors;

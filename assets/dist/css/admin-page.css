@@ -912,6 +912,12 @@
     justify-content: center !important;
 }
 
+.components-button.is-link svg {
+    margin-right: 0;
+    width: 12px;
+    height: 12px;
+}
+
 /*!*****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./assets/src/css/components/buttons/help-button.css ***!
   \*****************************************************************************************************/

@@ -151,3 +151,9 @@
 .components-button.has-icon.has-text {
     justify-content: center !important;
 }
+
+.components-button.is-link svg {
+    margin-right: 0;
+    width: 12px;
+    height: 12px;
+}
