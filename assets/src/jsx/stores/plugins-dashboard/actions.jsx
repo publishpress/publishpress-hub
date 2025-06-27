@@ -1,5 +1,47 @@
 import { apiFetch } from '@wordpress/data-controls';
+import { dispatch } from '@wordpress/data';
+
+import { __ } from '@publishpress/hub-i18n';
+
 import apiReady from '../../utils/apiReady';
+
+const API_NAMESPACE = '/publishpress-hub/v1';
+
+const { createSuccessNotice, createErrorNotice } = dispatch('core/notices');
+
+const createNotice = (message, type) => {
+    if (type === 'success') {
+        createSuccessNotice(message);
+        return;
+    }
+
+    createErrorNotice(message);
+};
+
+const createSnackbarNotice = (message, type) => {
+    if (type === 'success') {
+        createSuccessNotice(
+            message,
+            {
+                type: 'snackbar',
+                isDismissible: true,
+                autoDismiss: true,
+                explicitDismiss: true,
+            }
+        );
+        return;
+    }
+
+    createErrorNotice(
+        message,
+        {
+            type: 'snackbar',
+            isDismissible: true,
+            autoDismiss: true,
+            explicitDismiss: true,
+        }
+    );
+}
 
 export function* setSelectedFilter(selectedFilter) {
     yield {
@@ -57,16 +99,28 @@ export function* fetchPlugins() {
         yield apiReady();
 
         const data = yield apiFetch({
-            path: '/plugins',
+            path: `${API_NAMESPACE}/plugins`,
         });
 
         if (data.success) {
             yield {type: 'FETCH_PLUGINS_SUCCESS', data: data.data};
+
+            return {
+                success: true,
+                data: data.data,
+            };
         } else {
             throw new Error(data.error || 'Failed to fetch plugins');
         }
     } catch (error) {
         yield {type: 'FETCH_PLUGINS_ERROR', error: error};
+
+        yield createNotice(__('Failed to fetch plugins', 'publishpress-hub'), 'error');
+
+        return {
+            success: false,
+            error,
+        };
     }
 }
 
@@ -77,12 +131,14 @@ export function* installFreePlugin(pluginSlugFree) {
         yield apiReady();
 
         const data = yield apiFetch({
-            path: `/plugins/${pluginSlugFree}/install/free`,
+            path: `${API_NAMESPACE}/plugins/${pluginSlugFree}/install/free`,
             method: 'POST',
         });
 
         if (data.success) {
             yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree}};
+
+            yield createSnackbarNotice(__('Plugin installed successfully', 'publishpress-hub'), 'success');
 
             return {
                 success: true,
@@ -94,6 +150,8 @@ export function* installFreePlugin(pluginSlugFree) {
         }
     } catch (error) {
         yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
+
+        yield createNotice(__('Plugin installation failed', 'publishpress-hub'), 'error');
 
         return {
             success: false,
@@ -112,7 +170,7 @@ export function* installProPlugin(pluginSlugFree, licenseKey) {
         licenseKey = licenseKey.trim();
 
         const data = yield apiFetch({
-            path: `/plugins/${pluginSlugFree}/install/pro`,
+            path: `${API_NAMESPACE}/plugins/${pluginSlugFree}/install/pro`,
             method: 'POST',
             data: {
                 license_key: licenseKey,
@@ -121,6 +179,8 @@ export function* installProPlugin(pluginSlugFree, licenseKey) {
 
         if (data.success) {
             yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree}};
+
+            yield createSnackbarNotice(__('Plugin installed successfully', 'publishpress-hub'), 'success');
 
             // Return context along with the API response
             return {
@@ -134,7 +194,9 @@ export function* installProPlugin(pluginSlugFree, licenseKey) {
         }
     } catch (error) {
         yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
-        // Return error context
+
+        yield createNotice(__('Plugin installation failed', 'publishpress-hub'), 'error');
+
         return {
             success: false,
             pluginSlugFree,
@@ -152,12 +214,14 @@ export function* uninstallPlugin(pluginSlugFree) {
         yield apiReady();
 
         const data = yield apiFetch({
-            path: `/plugins/${pluginSlugFree}/uninstall`,
+            path: `${API_NAMESPACE}/plugins/${pluginSlugFree}/uninstall`,
             method: 'POST',
         });
 
         if (data.success) {
             yield {type: 'UNINSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree}};
+
+            yield createSnackbarNotice(__('Plugin uninstalled successfully', 'publishpress-hub'), 'success');
 
             return {
                 success: true,
@@ -169,6 +233,8 @@ export function* uninstallPlugin(pluginSlugFree) {
         }
     } catch (error) {
         yield {type: 'UNINSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
+
+        yield createNotice(__('Plugin uninstall failed', 'publishpress-hub'), 'error');
 
         return {
             success: false,

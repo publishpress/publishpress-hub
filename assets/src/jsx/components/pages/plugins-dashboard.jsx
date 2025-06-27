@@ -7,8 +7,8 @@ import { AdminPageLayout } from '../admin-page';
 import FilterButtonsBar from '../filter/filter-buttons-bar';
 import { store } from '../../stores/plugins-dashboard';
 import { PluginsList } from '../plugins-list';
-import { ErrorPage } from '../pages/error-page';
 import NoticesList from '../notices/NoticesList';
+import SnackbarList from '../notices/SnackbarList';
 
 const {
     logoUrl,
@@ -40,6 +40,7 @@ const PluginsDashboardComponent = () => {
 
     const {
         createErrorNotice,
+        createSuccessNotice,
     } = useDispatch('core/notices');
 
     const handleFilterChange = useCallback((selectedFilter) => {
@@ -89,13 +90,6 @@ const PluginsDashboardComponent = () => {
         ];
     }, [filterCounts]);
 
-    if (error) {
-        const message = error.data?.status && sprintf(__('Error [%s]: %s', 'publishpress-hub'), error.data.status, error.message)
-            || sprintf(__('Error: %s', 'publishpress-hub'), error.message);
-
-        createErrorNotice(message);
-    }
-
     return (
         <AdminPageLayout
             title={title}
@@ -113,6 +107,7 @@ const PluginsDashboardComponent = () => {
                     isLoading={isLoading}
                     pluginIconBaseUrl={pluginIconBaseUrl}
                 />
+                <SnackbarList />
             </div>
         </AdminPageLayout>
     );

@@ -1216,7 +1216,7 @@
     margin-right: 0;
 }
 
-.pp-hub-plugins-list__empty {
+.pp-hub-plugins-list-message {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1493,8 +1493,23 @@ button.publishpress-hub-filter-button:hover {
 /*!*************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./assets/src/css/components/notices/notices.css ***!
   \*************************************************************************************************/
-.publishpress-hub-notices__notice-list {
+.pp-hub-notices-list {
     margin-bottom: 16px;
+}
+
+.pp-hub-snackbar-list {
+    position: fixed;
+    bottom: 20px;
+    left: 175px;
+    z-index: 100000;
+}
+
+body.sticky-menu.folded .pp-hub-snackbar-list {
+    left: 50px;
+}
+
+.pp-hub-snackbar-list .components-snackbar__action {
+    color: var(--pp-hub-text-primary-inverted) !important;
 }
 
 /*!***************************************************************************!*\

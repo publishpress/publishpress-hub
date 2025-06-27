@@ -23,24 +23,16 @@ export default function NoticesList() {
         isDismissible: false,
         type: 'default',
     });
-    const snackbarNotices = filter(notices, {
-        type: 'snackbar',
-    });
 
     return (
         <>
             <NoticeList
                 notices={nonDismissibleNotices}
-                className="publishpress-hub-notices__notice-list"
+                className="pp-hub-notices-list"
             />
             <NoticeList
                 notices={dismissibleNotices}
-                className="publishpress-hub-notices__notice-list"
-                onRemove={removeNotice}
-            />
-            <SnackbarList
-                notices={snackbarNotices}
-                className="publishpress-hub-notices__snackbar-list"
+                className="pp-hub-notices-list"
                 onRemove={removeNotice}
             />
         </>

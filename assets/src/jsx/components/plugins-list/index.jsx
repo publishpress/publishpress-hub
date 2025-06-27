@@ -11,6 +11,7 @@ import { PluginItem } from './plugin-item';
 const PluginsListComponent = ({
     plugins,
     pluginIconBaseUrl,
+    isLoading,
 }) => {
     const [currentPluginForModal, setCurrentPluginForModal] = useState(null);
 
@@ -128,9 +129,15 @@ const PluginsListComponent = ({
                 );
             })}
 
-            {plugins.length === 0 && (
-                <div className="pp-hub-plugins-list__empty">
+            {plugins.length === 0 && !isLoading && (
+                <div className="pp-hub-plugins-list-message">
                     <p>{__('No plugins found.', 'publishpress-hub')}</p>
+                </div>
+            )}
+
+            {isLoading && plugins.length === 0 && (
+                <div className="pp-hub-plugins-list-message">
+                    <p>{__('Loading plugins...', 'publishpress-hub')}</p>
                 </div>
             )}
 

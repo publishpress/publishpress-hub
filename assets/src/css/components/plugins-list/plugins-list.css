@@ -127,7 +127,7 @@
     margin-right: 0;
 }
 
-.pp-hub-plugins-list__empty {
+.pp-hub-plugins-list-message {
     display: flex;
     justify-content: center;
     align-items: center;

@@ -73,17 +73,11 @@ class PluginsDashboardView implements ViewInterface
             ]
         );
 
-        // Set up wp.apiFetch with proper nonce middleware and custom namespace middleware
+        // Set up wp.apiFetch with proper nonce middleware
         wp_add_inline_script(
             'publishpress-hub-plugin-dashboard',
             sprintf(
-                'wp.apiFetch.use( wp.apiFetch.createNonceMiddleware( %s ) );
-                wp.apiFetch.use( function( options, next ) {
-                    if ( options.path && options.path.startsWith( "/plugins" ) ) {
-                        options.path = "/publishpress-hub/v1" + options.path;
-                    }
-                    return next( options );
-                } );',
+                'wp.apiFetch.use( wp.apiFetch.createNonceMiddleware( %s ) );',
                 wp_json_encode(wp_create_nonce('wp_rest'))
             ),
             'after'
