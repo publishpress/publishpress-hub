@@ -154,7 +154,7 @@ class RestApiService implements ServiceInterface
      */
     private function registerHooks(): void
     {
-        add_action(ApplicationHooks::ACTION_REST_API_INIT, [$this, 'registerEndpoints']);
+        add_action(ApplicationHooks::ACTION_REST_API_INIT, [$this, 'registerEndpoints'], 5);
     }
 
     /**

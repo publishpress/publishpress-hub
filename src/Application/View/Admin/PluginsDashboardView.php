@@ -82,6 +82,18 @@ class PluginsDashboardView implements ViewInterface
                         options.path = "/publishpress-hub/v1" + options.path;
                     }
                     return next( options );
+                } );
+
+                // Ensure DOM is ready and REST API endpoints are available
+                window.ppHubApiReady = new Promise( function( resolve ) {
+                    if ( document.readyState === "complete" || document.readyState === "interactive" ) {
+                        // Small delay to ensure REST API routes are registered
+                        setTimeout( resolve, 100 );
+                    } else {
+                        document.addEventListener( "DOMContentLoaded", function() {
+                            setTimeout( resolve, 100 );
+                        } );
+                    }
                 } );',
                 wp_json_encode(wp_create_nonce('wp_rest'))
             ),

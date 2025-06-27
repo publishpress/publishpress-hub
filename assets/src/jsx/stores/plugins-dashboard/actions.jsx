@@ -55,6 +55,11 @@ export function* fetchPlugins() {
     try {
         yield {type: 'FETCH_PLUGINS_START'};
 
+        // Wait for API to be ready to avoid race conditions
+        if (window.ppHubApiReady) {
+            yield window.ppHubApiReady;
+        }
+
         const data = yield apiFetch({
             path: '/plugins',
         });
@@ -72,6 +77,11 @@ export function* fetchPlugins() {
 export function* installFreePlugin(pluginSlugFree) {
     try {
         yield {type: 'INSTALL_PLUGIN_START', data: {pluginSlugFree}};
+
+        // Wait for API to be ready to avoid race conditions
+        if (window.ppHubApiReady) {
+            yield window.ppHubApiReady;
+        }
 
         const data = yield apiFetch({
             path: `/plugins/${pluginSlugFree}/install/free`,
@@ -109,6 +119,11 @@ export function* installFreePlugin(pluginSlugFree) {
 export function* installProPlugin(pluginSlugFree, licenseKey) {
     try {
         yield {type: 'INSTALL_PLUGIN_START', data: {pluginSlugFree}};
+
+        // Wait for API to be ready to avoid race conditions
+        if (window.ppHubApiReady) {
+            yield window.ppHubApiReady;
+        }
 
         licenseKey = licenseKey.trim();
 

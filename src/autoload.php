@@ -62,4 +62,4 @@ add_action(InfrastructureHooks::ACTION_PLUGINS_LOADED, function () {
     $coreHubService = $container->get(Services::CORE_HUB_SERVICE);
 
     $coreHubService->initialize();
-});
+}, 5);

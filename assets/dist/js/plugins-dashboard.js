@@ -1465,45 +1465,52 @@ function fetchPlugins() {
           type: 'FETCH_PLUGINS_START'
         };
       case 1:
+        if (!window.ppHubApiReady) {
+          _context8.n = 2;
+          break;
+        }
         _context8.n = 2;
+        return window.ppHubApiReady;
+      case 2:
+        _context8.n = 3;
         return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
           path: '/plugins'
         });
-      case 2:
+      case 3:
         data = _context8.v;
         if (!data.success) {
-          _context8.n = 4;
+          _context8.n = 5;
           break;
         }
-        _context8.n = 3;
+        _context8.n = 4;
         return {
           type: 'FETCH_PLUGINS_SUCCESS',
           data: data.data
         };
-      case 3:
-        _context8.n = 5;
-        break;
       case 4:
-        _context8.n = 5;
+        _context8.n = 6;
+        break;
+      case 5:
+        _context8.n = 6;
         return {
           type: 'FETCH_PLUGINS_ERROR',
           error: data.error
         };
-      case 5:
-        _context8.n = 7;
-        break;
       case 6:
-        _context8.p = 6;
+        _context8.n = 8;
+        break;
+      case 7:
+        _context8.p = 7;
         _t = _context8.v;
-        _context8.n = 7;
+        _context8.n = 8;
         return {
           type: 'FETCH_PLUGINS_ERROR',
           error: _t
         };
-      case 7:
+      case 8:
         return _context8.a(2);
     }
-  }, _marked8, null, [[0, 6]]);
+  }, _marked8, null, [[0, 7]]);
 }
 function installFreePlugin(pluginSlugFree) {
   var data, _t2;
@@ -1519,32 +1526,39 @@ function installFreePlugin(pluginSlugFree) {
           }
         };
       case 1:
+        if (!window.ppHubApiReady) {
+          _context9.n = 2;
+          break;
+        }
         _context9.n = 2;
+        return window.ppHubApiReady;
+      case 2:
+        _context9.n = 3;
         return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
           path: "/plugins/".concat(pluginSlugFree, "/install/free"),
           method: 'POST'
         });
-      case 2:
+      case 3:
         data = _context9.v;
         if (!data.success) {
-          _context9.n = 4;
+          _context9.n = 5;
           break;
         }
-        _context9.n = 3;
+        _context9.n = 4;
         return {
           type: 'INSTALL_PLUGIN_SUCCESS',
           data: {
             pluginSlugFree: pluginSlugFree
           }
         };
-      case 3:
+      case 4:
         return _context9.a(2, {
           success: true,
           pluginSlugFree: pluginSlugFree,
           apiResponse: data
         });
-      case 4:
-        _context9.n = 5;
+      case 5:
+        _context9.n = 6;
         return {
           type: 'INSTALL_PLUGIN_ERROR',
           data: {
@@ -1552,19 +1566,19 @@ function installFreePlugin(pluginSlugFree) {
             error: data === null || data === void 0 ? void 0 : data.error
           }
         };
-      case 5:
+      case 6:
         return _context9.a(2, {
           success: false,
           pluginSlugFree: pluginSlugFree,
           error: data === null || data === void 0 ? void 0 : data.error
         });
-      case 6:
-        _context9.n = 9;
-        break;
       case 7:
-        _context9.p = 7;
+        _context9.n = 10;
+        break;
+      case 8:
+        _context9.p = 8;
         _t2 = _context9.v;
-        _context9.n = 8;
+        _context9.n = 9;
         return {
           type: 'INSTALL_PLUGIN_ERROR',
           data: {
@@ -1572,16 +1586,16 @@ function installFreePlugin(pluginSlugFree) {
             error: _t2
           }
         };
-      case 8:
+      case 9:
         return _context9.a(2, {
           success: false,
           pluginSlugFree: pluginSlugFree,
           error: _t2
         });
-      case 9:
+      case 10:
         return _context9.a(2);
     }
-  }, _marked9, null, [[0, 7]]);
+  }, _marked9, null, [[0, 8]]);
 }
 function installProPlugin(pluginSlugFree, licenseKey) {
   var data, _t3;
@@ -1597,8 +1611,15 @@ function installProPlugin(pluginSlugFree, licenseKey) {
           }
         };
       case 1:
-        licenseKey = licenseKey.trim();
+        if (!window.ppHubApiReady) {
+          _context0.n = 2;
+          break;
+        }
         _context0.n = 2;
+        return window.ppHubApiReady;
+      case 2:
+        licenseKey = licenseKey.trim();
+        _context0.n = 3;
         return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
           path: "/plugins/".concat(pluginSlugFree, "/install/pro"),
           method: 'POST',
@@ -1606,28 +1627,28 @@ function installProPlugin(pluginSlugFree, licenseKey) {
             license_key: licenseKey
           }
         });
-      case 2:
+      case 3:
         data = _context0.v;
         if (!data.success) {
-          _context0.n = 4;
+          _context0.n = 5;
           break;
         }
-        _context0.n = 3;
+        _context0.n = 4;
         return {
           type: 'INSTALL_PLUGIN_SUCCESS',
           data: {
             pluginSlugFree: pluginSlugFree
           }
         };
-      case 3:
+      case 4:
         return _context0.a(2, {
           success: true,
           pluginSlugFree: pluginSlugFree,
           licenseKey: licenseKey,
           apiResponse: data
         });
-      case 4:
-        _context0.n = 5;
+      case 5:
+        _context0.n = 6;
         return {
           type: 'INSTALL_PLUGIN_ERROR',
           data: {
@@ -1635,20 +1656,20 @@ function installProPlugin(pluginSlugFree, licenseKey) {
             error: data === null || data === void 0 ? void 0 : data.error
           }
         };
-      case 5:
+      case 6:
         return _context0.a(2, {
           success: false,
           pluginSlugFree: pluginSlugFree,
           licenseKey: licenseKey,
           error: data === null || data === void 0 ? void 0 : data.error
         });
-      case 6:
-        _context0.n = 9;
-        break;
       case 7:
-        _context0.p = 7;
+        _context0.n = 10;
+        break;
+      case 8:
+        _context0.p = 8;
         _t3 = _context0.v;
-        _context0.n = 8;
+        _context0.n = 9;
         return {
           type: 'INSTALL_PLUGIN_ERROR',
           data: {
@@ -1656,17 +1677,17 @@ function installProPlugin(pluginSlugFree, licenseKey) {
             error: _t3
           }
         };
-      case 8:
+      case 9:
         return _context0.a(2, {
           success: false,
           pluginSlugFree: pluginSlugFree,
           licenseKey: licenseKey,
           error: _t3
         });
-      case 9:
+      case 10:
         return _context0.a(2);
     }
-  }, _marked0, null, [[0, 7]]);
+  }, _marked0, null, [[0, 8]]);
 }
 
 /***/ }),
