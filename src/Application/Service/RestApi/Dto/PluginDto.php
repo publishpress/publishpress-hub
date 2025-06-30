@@ -101,6 +101,30 @@ class PluginDto implements DtoInterface
      */
     private int $eddItemId;
 
+    /**
+     * The free details URL of the plugin.
+     *
+     * @since 1.0.0
+     * @var string
+     */
+    private string $freeDetailsUrl;
+
+    /**
+     * The pro details URL of the plugin.
+     *
+     * @since 1.0.0
+     * @var string
+     */
+    private string $proDetailsUrl;
+
+    /**
+     * The changelog URL of the plugin.
+     *
+     * @since 1.0.0
+     * @var string
+     */
+    private string $changelogUrl;
+
     public function __construct(
         string $slugFree,
         string $slugPro,
@@ -112,7 +136,10 @@ class PluginDto implements DtoInterface
         bool $isPro,
         ?string $version,
         ?string $iconFile = null,
-        ?string $description = null
+        ?string $description = null,
+        string $freeDetailsUrl,
+        string $proDetailsUrl,
+        string $changelogUrl
     ) {
         $this->slugFree = $slugFree;
         $this->slugPro = $slugPro;
@@ -125,6 +152,9 @@ class PluginDto implements DtoInterface
         $this->version = $version;
         $this->iconFile = $iconFile;
         $this->description = $description;
+        $this->freeDetailsUrl = $freeDetailsUrl;
+        $this->proDetailsUrl = $proDetailsUrl;
+        $this->changelogUrl = $changelogUrl;
     }
 
     /**
@@ -146,6 +176,9 @@ class PluginDto implements DtoInterface
             'isPro' => $this->isPro,
             'iconFile' => $this->iconFile,
             'description' => $this->description,
+            'freeDetailsUrl' => $this->freeDetailsUrl,
+            'proDetailsUrl' => $this->proDetailsUrl,
+            'changelogUrl' => $this->changelogUrl,
         ];
     }
 }

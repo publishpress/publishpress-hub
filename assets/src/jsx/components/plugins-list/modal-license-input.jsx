@@ -23,15 +23,15 @@ const ModalLicenseInputComponent = ({
                 <p>
                     {__('Enter your license key to activate the Pro version of this plugin. You can find your license key in your PublishPress account dashboard.', 'publishpress-hub')}
                 </p>
-                <p>
+                <div className='pp-hub-modal-inline-links'>
                     <Button variant='link' href='https://publishpress.com/subscriptions/' target='_blank' rel='noopener noreferrer'>
                         {__('Go to my profile to get the license key', 'publishpress-hub')}
                     </Button>
-                </p>
+                </div>
 
                 <TextControl
                     value={licenseKey}
-                    className='pp-hub-text-control'
+                    className='pp-hub-text-control pp-hub-license-input'
                     placeholder={__('Enter your license key here', 'publishpress-hub')}
                     onChange={(value) => setLicenseKey(value)}
                 />

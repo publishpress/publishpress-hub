@@ -27,7 +27,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
 
         $this->assertEquals('Test Plugin', $plugin->getName());
@@ -54,7 +57,10 @@ class PluginTest extends NoTransactionWPTestCase
             'complex-plugin-123-pro.php',
             1000,
             'icon-complex-plugin-123',
-            'This is a complex plugin'
+            'This is a complex plugin',
+            'https://publishpress.com/pricing/complex-plugin-123/',
+            'https://publishpress.com/pricing/complex-plugin-123-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-complex-plugin-123/'
         );
 
         $this->assertEquals('complex-plugin-123', $plugin->getSlugFree());
@@ -77,7 +83,10 @@ class PluginTest extends NoTransactionWPTestCase
             '',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
     }
 
@@ -97,7 +106,10 @@ class PluginTest extends NoTransactionWPTestCase
             'Test-Plugin-Pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
     }
 
@@ -117,7 +129,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test_plugin_pro!.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
     }
 
@@ -137,7 +152,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test_plugin_pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
     }
 
@@ -157,7 +175,10 @@ class PluginTest extends NoTransactionWPTestCase
             '123-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
     }
 
@@ -177,7 +198,10 @@ class PluginTest extends NoTransactionWPTestCase
             '123-plugin-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
     }
 
@@ -197,7 +221,10 @@ class PluginTest extends NoTransactionWPTestCase
             '-plugin-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
     }
 
@@ -214,7 +241,10 @@ class PluginTest extends NoTransactionWPTestCase
             'awesome-plugin-pro.php',
             1000,
             'icon-awesome-plugin',
-            'This is an awesome plugin'
+            'This is an awesome plugin',
+            'https://publishpress.com/pricing/awesome-plugin/',
+            'https://publishpress.com/pricing/awesome-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-awesome-plugin/'
         );
 
         $this->assertEquals('My Awesome Plugin', $plugin->getName());
@@ -233,7 +263,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin-123-pro.php',
                 1000,
             'icon-test-plugin-123',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin-123/',
+            'https://publishpress.com/pricing/test-plugin-123-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin-123/'
         );
 
         $this->assertEquals('test-plugin-123', $plugin->getSlugFree());
@@ -252,7 +285,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
 
         $this->assertEquals('test-plugin-pro', $plugin->getSlugPro());
@@ -271,7 +307,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
 
         $this->assertNull($plugin->getVersion());
@@ -287,7 +326,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
 
         $this->assertNull($plugin->getPath());
@@ -304,7 +346,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
 
         $this->expectException(InvalidArgumentException::class);
@@ -323,7 +368,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
 
         $this->expectException(InvalidArgumentException::class);
@@ -342,7 +390,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
 
         $this->expectException(InvalidArgumentException::class);
@@ -361,7 +412,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
 
         $this->expectException(InvalidArgumentException::class);
@@ -380,7 +434,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
 
         $this->expectException(InvalidArgumentException::class);
@@ -399,7 +456,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
 
         $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
@@ -418,7 +478,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
 
         $plugin->register('1.0.0-beta.1', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
@@ -443,7 +506,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
 
         $this->assertNull($plugin->getPath());
@@ -463,7 +529,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
 
         $this->expectException(InvalidArgumentException::class);
@@ -481,7 +550,10 @@ class PluginTest extends NoTransactionWPTestCase
             'test-plugin-pro.php',
             1000,
             'icon-test-plugin',
-            'This is a test plugin'
+            'This is a test plugin',
+            'https://publishpress.com/pricing/test-plugin/',
+            'https://publishpress.com/pricing/test-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
         );
 
         $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
@@ -502,7 +574,10 @@ class PluginTest extends NoTransactionWPTestCase
             'plugin-a-pro.php',
             1000,
             'icon-plugin-a',
-            'This is a plugin A'
+            'This is a plugin A',
+            'https://publishpress.com/pricing/plugin-a/',
+            'https://publishpress.com/pricing/plugin-a-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-plugin-a/'
         );
         $plugin1->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -514,7 +589,10 @@ class PluginTest extends NoTransactionWPTestCase
             'plugin-b-pro.php',
             1000,
             'icon-plugin-b',
-            'This is a plugin B'
+            'This is a plugin B',
+            'https://publishpress.com/pricing/plugin-b/',
+            'https://publishpress.com/pricing/plugin-b-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-plugin-b/'
         );
         $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
@@ -534,7 +612,10 @@ class PluginTest extends NoTransactionWPTestCase
             'plugin-a-pro.php',
             1000,
             'icon-plugin-a',
-            'This is a plugin A'
+            'This is a plugin A',
+            'https://publishpress.com/pricing/plugin-a/',
+            'https://publishpress.com/pricing/plugin-a-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-plugin-a/'
         );
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -546,7 +627,10 @@ class PluginTest extends NoTransactionWPTestCase
             'plugin-b-pro.php',
             1000,
             'icon-plugin-b',
-            'This is a plugin B'
+            'This is a plugin B',
+            'https://publishpress.com/pricing/plugin-b/',
+            'https://publishpress.com/pricing/plugin-b-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-plugin-b/'
         );
         $plugin2->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
@@ -566,7 +650,10 @@ class PluginTest extends NoTransactionWPTestCase
             'plugin-a-pro.php',
             1000,
             'icon-plugin-a',
-            'This is a plugin A'
+            'This is a plugin A',
+            'https://publishpress.com/pricing/plugin-a/',
+            'https://publishpress.com/pricing/plugin-a-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-plugin-a/'
         );
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -578,7 +665,10 @@ class PluginTest extends NoTransactionWPTestCase
             'plugin-b-pro.php',
             1000,
             'icon-plugin-b',
-            'This is a plugin B'
+            'This is a plugin B',
+            'https://publishpress.com/pricing/plugin-b/',
+            'https://publishpress.com/pricing/plugin-b-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-plugin-b/'
         );
         $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
@@ -598,7 +688,10 @@ class PluginTest extends NoTransactionWPTestCase
             'plugin-a-pro.php',
             1000,
             'icon-plugin-a',
-            'This is a plugin A'
+            'This is a plugin A',
+            'https://publishpress.com/pricing/plugin-a/',
+            'https://publishpress.com/pricing/plugin-a-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-plugin-a/'
         );
         $plugin1->register('1.2.1', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -610,7 +703,10 @@ class PluginTest extends NoTransactionWPTestCase
             'plugin-b-pro.php',
             1000,
             'icon-plugin-b',
-            'This is a plugin B'
+            'This is a plugin B',
+            'https://publishpress.com/pricing/plugin-b/',
+            'https://publishpress.com/pricing/plugin-b-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-plugin-b/'
         );
         $plugin2->register('1.2.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
@@ -630,7 +726,10 @@ class PluginTest extends NoTransactionWPTestCase
             'plugin-a-pro.php',
             1000,
             'icon-plugin-a',
-            'This is a plugin A'
+            'This is a plugin A',
+            'https://publishpress.com/pricing/plugin-a/',
+            'https://publishpress.com/pricing/plugin-a-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-plugin-a/'
         );
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -642,7 +741,10 @@ class PluginTest extends NoTransactionWPTestCase
             'plugin-b-pro.php',
             1000,
             'icon-plugin-b',
-            'This is a plugin B'
+            'This is a plugin B',
+            'https://publishpress.com/pricing/plugin-b/',
+            'https://publishpress.com/pricing/plugin-b-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-plugin-b/'
         );
         $plugin2->register('1.0.0-beta', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -662,7 +764,10 @@ class PluginTest extends NoTransactionWPTestCase
             'same-plugin-pro.php',
             1000,
             'icon-same-plugin',
-            'This is a same plugin'
+            'This is a same plugin',
+            'https://publishpress.com/pricing/same-plugin/',
+            'https://publishpress.com/pricing/same-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-same-plugin/'
         );
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -674,7 +779,10 @@ class PluginTest extends NoTransactionWPTestCase
             'same-plugin-pro.php',
             1000,
             'icon-same-plugin',
-            'This is a same plugin'
+            'This is a same plugin',
+            'https://publishpress.com/pricing/same-plugin/',
+            'https://publishpress.com/pricing/same-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-same-plugin/'
         );
         $plugin2->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
@@ -694,7 +802,10 @@ class PluginTest extends NoTransactionWPTestCase
             'plugin-a-pro.php',
             1000,
             'icon-plugin-a',
-            'This is a plugin A'
+            'This is a plugin A',
+            'https://publishpress.com/pricing/plugin-a/',
+            'https://publishpress.com/pricing/plugin-a-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-plugin-a/'
         );
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -706,7 +817,10 @@ class PluginTest extends NoTransactionWPTestCase
             'plugin-b-pro.php',
             1000,
             'icon-plugin-b',
-            'This is a plugin B'
+            'This is a plugin B',
+            'https://publishpress.com/pricing/plugin-b/',
+            'https://publishpress.com/pricing/plugin-b-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-plugin-b/'
         );
         $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
@@ -726,7 +840,10 @@ class PluginTest extends NoTransactionWPTestCase
             'same-plugin-pro.php',
             1000,
             'icon-same-plugin',
-            'This is a same plugin'
+            'This is a same plugin',
+            'https://publishpress.com/pricing/same-plugin/',
+            'https://publishpress.com/pricing/same-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-same-plugin/'
         );
 
         $plugin2 = new Plugin(
@@ -737,7 +854,10 @@ class PluginTest extends NoTransactionWPTestCase
             'same-plugin-pro.php',
             1000,
             'icon-same-plugin',
-            'This is a same plugin'
+            'This is a same plugin',
+            'https://publishpress.com/pricing/same-plugin/',
+            'https://publishpress.com/pricing/same-plugin-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-same-plugin/'
         );
 
         $this->assertTrue($plugin1->isSamePlugin($plugin2));
@@ -756,7 +876,10 @@ class PluginTest extends NoTransactionWPTestCase
             'a-pro.php',
             1000,
             'icon-plugin-a',
-            'This is a plugin A'
+            'This is a plugin A',
+            'https://publishpress.com/pricing/plugin-a/',
+            'https://publishpress.com/pricing/plugin-a-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-plugin-a/'
         );
 
         $this->assertEquals('a', $plugin->getSlugFree());
@@ -775,7 +898,10 @@ class PluginTest extends NoTransactionWPTestCase
             'plugin-123-test-pro.php',
             1000,
             'icon-plugin-123-test',
-            'This is a plugin 123 test'
+            'This is a plugin 123 test',
+            'https://publishpress.com/pricing/plugin-123-test/',
+            'https://publishpress.com/pricing/plugin-123-test-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-plugin-123-test/'
         );
 
         $this->assertEquals('plugin-123-test', $plugin->getSlugFree());
@@ -794,7 +920,10 @@ class PluginTest extends NoTransactionWPTestCase
             'plugin-a-pro.php',
             1000,
             'icon-plugin-a',
-            'This is a plugin A'
+            'This is a plugin A',
+            'https://publishpress.com/pricing/plugin-a/',
+            'https://publishpress.com/pricing/plugin-a-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-plugin-a/'
         );
         $plugin1->register('10.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -806,7 +935,10 @@ class PluginTest extends NoTransactionWPTestCase
             'plugin-b-pro.php',
             1000,
             'icon-plugin-b',
-            'This is a plugin B'
+            'This is a plugin B',
+            'https://publishpress.com/pricing/plugin-b/',
+            'https://publishpress.com/pricing/plugin-b-pro/',
+            'https://publishpress.com/knowledge-base/changelogs-plugin-b/'
         );
         $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
@@ -835,7 +967,10 @@ class PluginTest extends NoTransactionWPTestCase
                 'test-plugin-pro.php',
                 1000,
                 'icon-test-plugin',
-                'This is a test plugin'
+                'This is a test plugin',
+                'https://publishpress.com/pricing/test-plugin/',
+                'https://publishpress.com/pricing/test-plugin-pro/',
+                'https://publishpress.com/knowledge-base/changelogs-test-plugin/'
             );
             $plugin->register($version, TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 

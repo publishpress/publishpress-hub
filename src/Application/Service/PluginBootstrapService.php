@@ -105,6 +105,9 @@ class PluginBootstrapService implements ServiceInterface
                 ->withEddItemId($definition['eddItemId'])
                 ->withIconFile($definition['iconFile'])
                 ->withDescription($definition['description'])
+                ->withFreeDetailsUrl($definition['freeDetailsUrl'])
+                ->withProDetailsUrl($definition['proDetailsUrl'])
+                ->withChangelogUrl($definition['changelogUrl'])
                 ->build();
 
             $this->pluginRepository->register($plugin);
@@ -131,6 +134,9 @@ class PluginBootstrapService implements ServiceInterface
                 'iconFile' => 'icon-checklists',
                 'description' => __('Improve content quality with customizable editorial checklists.', 'publishpress-hub'),
                 'eddItemId' => 6465,
+                'freeDetailsUrl' => 'https://wordpress.org/plugins/publishpress-checklists/',
+                'proDetailsUrl' => 'https://publishpress.com/checklists/',
+                'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-checklists/',
             ],
             [
                 'name' => 'PublishPress Permissions',
@@ -141,6 +147,9 @@ class PluginBootstrapService implements ServiceInterface
                 'iconFile' => 'icon-permissions',
                 'description' => __('Advanced user role and permission management.', 'publishpress-hub'),
                 'eddItemId' => 34506,
+                'freeDetailsUrl' => 'https://wordpress.org/plugins/press-permit-core/',
+                'proDetailsUrl' => 'https://publishpress.com/permissions/',
+                'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-for-permissions-pro/',
             ],
             [
                 'name' => 'PublishPress Authors',
@@ -151,6 +160,9 @@ class PluginBootstrapService implements ServiceInterface
                 'iconFile' => 'icon-authors',
                 'description' => __('Add many authors to one WordPress post.', 'publishpress-hub'),
                 'eddItemId' => 7203,
+                'freeDetailsUrl' => 'https://wordpress.org/plugins/publishpress-authors/',
+                'proDetailsUrl' => 'https://publishpress.com/authors/',
+                'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-multiple-authors/',
             ],
             [
                 'name' => 'PublishPress Blocks',
@@ -161,6 +173,9 @@ class PluginBootstrapService implements ServiceInterface
                 'iconFile' => 'icon-blocks',
                 'description' => __('Take the control of the new Gutenberg editor.', 'publishpress-hub'),
                 'eddItemId' => 98972,
+                'freeDetailsUrl' => 'https://wordpress.org/plugins/advanced-gutenberg/',
+                'proDetailsUrl' => 'https://publishpress.com/blocks/',
+                'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-blocks/',
             ],
             [
                 'name' => 'PublishPress Capabilities',
@@ -171,6 +186,9 @@ class PluginBootstrapService implements ServiceInterface
                 'iconFile' => 'icon-capabilities',
                 'description' => __('Fine-grained user role management for WordPress sites.', 'publishpress-hub'),
                 'eddItemId' => 44811,
+                'freeDetailsUrl' => 'https://wordpress.org/plugins/capability-manager-enhanced/',
+                'proDetailsUrl' => 'https://publishpress.com/capabilities/',
+                'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-capabilities-pro/',
             ],
             [
                 'name' => 'PublishPress Future',
@@ -181,6 +199,9 @@ class PluginBootstrapService implements ServiceInterface
                 'iconFile' => 'icon-future',
                 'description' => __('Automatically run actions on a scheduled future moment.', 'publishpress-hub'),
                 'eddItemId' => 129032,
+                'freeDetailsUrl' => 'https://wordpress.org/plugins/post-expirator/',
+                'proDetailsUrl' => 'https://publishpress.com/future/',
+                'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-for-publishpress-future-pro/',
             ],
             [
                 'name' => 'PublishPress Planner',
@@ -191,6 +212,9 @@ class PluginBootstrapService implements ServiceInterface
                 'iconFile' => 'icon-planner',
                 'description' => __('Organize, schedule and plan your WordPress content.', 'publishpress-hub'),
                 'eddItemId' => 49742,
+                'freeDetailsUrl' => 'https://wordpress.org/plugins/publishpress/',
+                'proDetailsUrl' => 'https://publishpress.com/planner/',
+                'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-publishpress/',
             ],
             [
                 'name' => 'PublishPress Revisions',
@@ -201,6 +225,9 @@ class PluginBootstrapService implements ServiceInterface
                 'iconFile' => 'icon-revisions',
                 'description' => __('Manage, schedule and approve WordPress revisions.', 'publishpress-hub'),
                 'eddItemId' => 40280,
+                'freeDetailsUrl' => 'https://wordpress.org/plugins/revisionary/',
+                'proDetailsUrl' => 'https://publishpress.com/revisions/',
+                'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-revisions-pro/',
             ],
             [
                 'name' => 'PublishPress Series',
@@ -211,6 +238,9 @@ class PluginBootstrapService implements ServiceInterface
                 'iconFile' => 'icon-series',
                 'description' => __('Group WordPress content together into a series.', 'publishpress-hub'),
                 'eddItemId' => 110550,
+                'freeDetailsUrl' => 'https://wordpress.org/plugins/organize-series/',
+                'proDetailsUrl' => 'https://publishpress.com/series/',
+                'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-series-pro/',
             ],
             [
                 'name' => 'PublishPress Statuses',
@@ -221,6 +251,9 @@ class PluginBootstrapService implements ServiceInterface
                 'iconFile' => 'icon-statuses',
                 'description' => __('Manage custom statuses for your WordPress posts.', 'publishpress-hub'),
                 'eddItemId' => 336700,
+                'freeDetailsUrl' => 'https://wordpress.org/plugins/publishpress-statuses/',
+                'proDetailsUrl' => 'https://publishpress.com/statuses/',
+                'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-for-publishpress-statuses-pro/',
             ],
         ];
     }

@@ -7,6 +7,9 @@ import { Button } from '../buttons/button';
 
 const ModalInstallationTypeComponent = ({
     onClose,
+    freeDetailsUrl,
+    proDetailsUrl,
+    changelogUrl,
 }) => {
     return (
         <Modal
@@ -17,6 +20,13 @@ const ModalInstallationTypeComponent = ({
                 <p>
                     {__('Select how you would like to install this plugin. You can install the Pro version if you have a license, or the Free version to get started.', 'publishpress-hub')}
                 </p>
+                <div className='pp-hub-modal-inline-links'>
+                    <Button variant='link' href={freeDetailsUrl}>{__('Free Details', 'publishpress-hub')}</Button>
+                    <span>|</span>
+                    <Button variant='link' href={proDetailsUrl}>{__('Pro Details', 'publishpress-hub')}</Button>
+                    <span>|</span>
+                    <Button variant='link' href={changelogUrl}>{__('Changelogs', 'publishpress-hub')}</Button>
+                </div>
                 <Button variant='secondary' icon='unlock' isFullWidth onClick={() => {
                     onClose('pro');
                 }}>

@@ -142,7 +142,12 @@ const PluginsListComponent = ({
             )}
 
             {isInstallationTypeModalOpen && currentPluginForModal && (
-                <ModalInstallationType onClose={handleInstallationTypeModalClose} />
+                <ModalInstallationType
+                    onClose={handleInstallationTypeModalClose}
+                    freeDetailsUrl={currentPluginForModal.freeDetailsUrl}
+                    proDetailsUrl={currentPluginForModal.proDetailsUrl}
+                    changelogUrl={currentPluginForModal.changelogUrl}
+                />
             )}
 
             {isLicenseInputModalOpen && currentPluginForModal && (

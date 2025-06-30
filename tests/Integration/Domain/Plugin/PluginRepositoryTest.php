@@ -45,6 +45,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
 
         $this->repository->register($plugin);
@@ -67,6 +70,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-plugin-one')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/plugin-two/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/plugin-two-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-plugin-two/')
             ->build();
         $plugin2 = PluginBuilder::create('Plugin Two')
             ->withSlugFree('plugin-two')
@@ -76,6 +82,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-plugin-two')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/plugin-two/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/plugin-two-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-plugin-two/')
             ->build();
         $plugin3 = PluginBuilder::create('Plugin Three')
             ->withSlugFree('plugin-three')
@@ -85,6 +94,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-plugin-three')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/plugin-three/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/plugin-three-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-plugin-three/')
             ->build();
 
         $this->repository->register($plugin1);
@@ -114,6 +126,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -125,6 +140,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin2->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
@@ -153,6 +171,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin1->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -164,6 +185,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
@@ -192,6 +216,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -203,6 +230,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
@@ -229,6 +259,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -252,6 +285,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -275,6 +311,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -298,6 +337,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -321,6 +363,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-plugin-a')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/plugin-a/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/plugin-a-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-plugin-a/')
             ->build();
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -332,6 +377,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-plugin-b')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/plugin-b/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/plugin-b-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-plugin-b/')
             ->build();
         $plugin2->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
@@ -368,6 +416,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin1->register('1.0.0-beta', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -379,6 +430,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
@@ -400,6 +454,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin3->register('1.2.3', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -411,6 +468,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin4->register('1.2.10', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
@@ -434,6 +494,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -445,6 +508,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin2->register('1.5.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
@@ -456,6 +522,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin3->register('1.2.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -467,6 +536,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin4->register('2.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
@@ -500,6 +572,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-plugin-one')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin1->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 
@@ -511,6 +586,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-plugin-two')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin2->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-2/dummy-plugin-2.php');
 
@@ -549,6 +627,9 @@ class PluginRepositoryTest extends NoTransactionWPTestCase
             ->withEddItemId(1000)
             ->withIconFile('icon-test-plugin')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/test-plugin/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/test-plugin-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-test-plugin/')
             ->build();
         $plugin->register('1.0.0', TESTS_PATH . 'Support/Data/Plugins/dummy-plugin-1/dummy-plugin-1.php');
 

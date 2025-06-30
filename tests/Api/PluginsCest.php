@@ -38,6 +38,9 @@ final class PluginsCest
         $I->seeResponseJsonMatchesJsonPath('$.data[0].isActive');
         $I->seeResponseJsonMatchesJsonPath('$.data[0].isLicensed');
         $I->seeResponseJsonMatchesJsonPath('$.data[0].isPro');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].freeDetailsUrl');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].proDetailsUrl');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].changelogUrl');
     }
 
     public function testInstallPluginFreeWithInvalidSlug(ApiTester $I): void
@@ -66,6 +69,9 @@ final class PluginsCest
             ->withEddItemId(1000)
             ->withIconFile('icon-authors')
             ->withDescription('A dummy plugin for testing purposes')
+            ->withFreeDetailsUrl('https://publishpress.com/pricing/publishpress-authors/')
+            ->withProDetailsUrl('https://publishpress.com/pricing/publishpress-authors-pro/')
+            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-publishpress-authors/')
             ->build();
 
         $plugin->register(

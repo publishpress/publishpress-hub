@@ -315,6 +315,8 @@
   \*************************************************************************************/
 /* Default Theme */
 [data-theme="default"] {
+    --pp-hub-font-family-mono: monospace;
+
     /* Brand Colors */
     --pp-hub-primary-color: #655997;
     --pp-hub-primary-color-darker: #473d76;
@@ -1084,6 +1086,23 @@
     color: var(--pp-hub-text-primary);
     background-color: var(--pp-hub-bg-primary);
     box-shadow: none;
+}
+
+.pp-hub-modal .pp-hub-modal-inline-links {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-sm);
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--pp-hub-spacing-md);
+}
+
+.pp-hub-modal .pp-hub-license-input input {
+    font-family: var(--pp-hub-font-family-mono);
+    padding: var(--pp-hub-spacing-md);
+    line-height: 16px;
+    height: auto;
+    box-sizing: border-box;
 }
 
 /*!***********************************************************************************************************!*\

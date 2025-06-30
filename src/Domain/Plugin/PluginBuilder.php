@@ -78,6 +78,30 @@ class PluginBuilder
     private string $description;
 
     /**
+     * The free details URL for the plugin.
+     *
+     * @since 1.0.0
+     * @var string
+     */
+    private string $freeDetailsUrl;
+
+    /**
+     * The pro details URL for the plugin.
+     *
+     * @since 1.0.0
+     * @var string
+     */
+    private string $proDetailsUrl;
+
+    /**
+     * The changelog URL for the plugin.
+     *
+     * @since 1.0.0
+     * @var string
+     */
+    private string $changelogUrl;
+
+    /**
      * Create a new PluginBuilder instance.
      *
      * @since 1.0.0
@@ -183,6 +207,45 @@ class PluginBuilder
     }
 
     /**
+     * Set the free details URL for the plugin.
+     *
+     * @since 1.0.0
+     * @param string $freeDetailsUrl The free details URL for the plugin
+     * @return self
+     */
+    public function withFreeDetailsUrl(string $freeDetailsUrl): self
+    {
+        $this->freeDetailsUrl = $freeDetailsUrl;
+        return $this;
+    }
+
+    /**
+     * Set the pro details URL for the plugin.
+     *
+     * @since 1.0.0
+     * @param string $proDetailsUrl The pro details URL for the plugin
+     * @return self
+     */
+    public function withProDetailsUrl(string $proDetailsUrl): self
+    {
+        $this->proDetailsUrl = $proDetailsUrl;
+        return $this;
+    }
+
+    /**
+     * Set the changelog URL for the plugin.
+     *
+     * @since 1.0.0
+     * @param string $changelogUrl The changelog URL for the plugin
+     * @return self
+     */
+    public function withChangelogUrl(string $changelogUrl): self
+    {
+        $this->changelogUrl = $changelogUrl;
+        return $this;
+    }
+
+    /**
      * Build the Plugin instance.
      *
      * @since 1.0.0
@@ -198,7 +261,10 @@ class PluginBuilder
             $this->pluginFileNamePro,
             $this->eddItemId,
             $this->iconFile,
-            $this->description
+            $this->description,
+            $this->freeDetailsUrl,
+            $this->proDetailsUrl,
+            $this->changelogUrl
         );
     }
 }

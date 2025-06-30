@@ -125,6 +125,30 @@ class Plugin implements PluginInterface
     private ?bool $proStatusCache = null;
 
     /**
+     * The free details URL for the plugin.
+     *
+     * @since 1.0.0
+     * @var string
+     */
+    private string $freeDetailsUrl;
+
+    /**
+     * The pro details URL for the plugin.
+     *
+     * @since 1.0.0
+     * @var string
+     */
+    private string $proDetailsUrl;
+
+    /**
+     * The changelog URL for the plugin.
+     *
+     * @since 1.0.0
+     * @var string
+     */
+    private string $changelogUrl;
+
+    /**
      * Constructor. Use the PluginBuilder instead.
      *
      * @since 1.0.0
@@ -136,6 +160,9 @@ class Plugin implements PluginInterface
      * @param int $eddItemId
      * @param string $iconFile
      * @param string $description
+     * @param string $freeDetailsUrl
+     * @param string $proDetailsUrl
+     * @param string $changelogUrl
      */
     public function __construct(
         string $name,
@@ -145,7 +172,10 @@ class Plugin implements PluginInterface
         string $pluginFileNamePro,
         int $eddItemId,
         string $iconFile,
-        string $description
+        string $description,
+        string $freeDetailsUrl,
+        string $proDetailsUrl,
+        string $changelogUrl
     ) {
         $this->validateSlug($slugFree);
         $this->validateSlug($slugPro);
@@ -159,6 +189,9 @@ class Plugin implements PluginInterface
         $this->pluginFileNamePro = $pluginFileNamePro;
         $this->iconFile = $iconFile;
         $this->description = $description;
+        $this->freeDetailsUrl = $freeDetailsUrl;
+        $this->proDetailsUrl = $proDetailsUrl;
+        $this->changelogUrl = $changelogUrl;
     }
 
     /**
@@ -179,6 +212,9 @@ class Plugin implements PluginInterface
             'eddItemId',
             'iconFile',
             'description',
+            'freeDetailsUrl',
+            'proDetailsUrl',
+            'changelogUrl',
         ];
 
         foreach ($requiredKeys as $key) {
@@ -197,6 +233,9 @@ class Plugin implements PluginInterface
             ->withEddItemId($data['eddItemId'])
             ->withIconFile($data['iconFile'])
             ->withDescription($data['description'])
+            ->withFreeDetailsUrl($data['freeDetailsUrl'])
+            ->withProDetailsUrl($data['proDetailsUrl'])
+            ->withChangelogUrl($data['changelogUrl'])
             ->build();
 
         return $plugin;
@@ -340,6 +379,39 @@ class Plugin implements PluginInterface
     public function getEddItemId(): int
     {
         return $this->eddItemId;
+    }
+
+    /**
+     * Get the free details URL of the plugin.
+     *
+     * @since 1.0.0
+     * @return string
+     */
+    public function getFreeDetailsUrl(): string
+    {
+        return $this->freeDetailsUrl;
+    }
+
+    /**
+     * Get the pro details URL of the plugin.
+     *
+     * @since 1.0.0
+     * @return string
+     */
+    public function getProDetailsUrl(): string
+    {
+        return $this->proDetailsUrl;
+    }
+
+    /**
+     * Get the pro details URL of the plugin.
+     *
+     * @since 1.0.0
+     * @return string
+     */
+    public function getChangelogUrl(): string
+    {
+        return $this->changelogUrl;
     }
 
     /**

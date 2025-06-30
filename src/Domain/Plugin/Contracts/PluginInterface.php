@@ -28,6 +28,12 @@ interface PluginInterface
 
     public function getPluginFileName(): string;
 
+    public function getFreeDetailsUrl(): string;
+
+    public function getProDetailsUrl(): string;
+
+    public function getChangelogUrl(): string;
+
     public function isInstalled(): bool;
 
     public function isActive(): bool;

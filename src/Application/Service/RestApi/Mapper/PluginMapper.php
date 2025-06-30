@@ -35,7 +35,10 @@ class PluginMapper implements PluginMapperInterface
             $plugin->isPro(),
             $plugin->getVersion(),
             $plugin->getIconFile(),
-            $plugin->getDescription()
+            $plugin->getDescription(),
+            $plugin->getFreeDetailsUrl(),
+            $plugin->getProDetailsUrl(),
+            $plugin->getChangelogUrl()
         );
     }
 
