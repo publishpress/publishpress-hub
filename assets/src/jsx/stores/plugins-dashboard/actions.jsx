@@ -11,11 +11,15 @@ const { createSuccessNotice, createErrorNotice } = dispatch('core/notices');
 
 const createNotice = (message, type) => {
     if (type === 'success') {
-        createSuccessNotice(message);
+        createSuccessNotice(message, {
+            isDismissible: true,
+        });
         return;
     }
 
-    createErrorNotice(message);
+    createErrorNotice(message, {
+        isDismissible: true,
+    });
 };
 
 const createSnackbarNotice = (message, type) => {
@@ -25,8 +29,6 @@ const createSnackbarNotice = (message, type) => {
             {
                 type: 'snackbar',
                 isDismissible: true,
-                autoDismiss: true,
-                explicitDismiss: true,
             }
         );
         return;
@@ -37,8 +39,6 @@ const createSnackbarNotice = (message, type) => {
         {
             type: 'snackbar',
             isDismissible: true,
-            autoDismiss: true,
-            explicitDismiss: true,
         }
     );
 }

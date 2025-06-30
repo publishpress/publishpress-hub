@@ -1568,26 +1568,26 @@ var _dispatch = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.dispatch)('core/
   createErrorNotice = _dispatch.createErrorNotice;
 var createNotice = function createNotice(message, type) {
   if (type === 'success') {
-    createSuccessNotice(message);
+    createSuccessNotice(message, {
+      isDismissible: true
+    });
     return;
   }
-  createErrorNotice(message);
+  createErrorNotice(message, {
+    isDismissible: true
+  });
 };
 var createSnackbarNotice = function createSnackbarNotice(message, type) {
   if (type === 'success') {
     createSuccessNotice(message, {
       type: 'snackbar',
-      isDismissible: true,
-      autoDismiss: true,
-      explicitDismiss: true
+      isDismissible: true
     });
     return;
   }
   createErrorNotice(message, {
     type: 'snackbar',
-    isDismissible: true,
-    autoDismiss: true,
-    explicitDismiss: true
+    isDismissible: true
   });
 };
 function setSelectedFilter(selectedFilter) {
