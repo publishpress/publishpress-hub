@@ -7,6 +7,7 @@ import { store } from '../../stores/plugins-dashboard';
 import { ModalInstallationType } from './modal-installation-type';
 import { ModalLicenseInput } from './modal-license-input';
 import { PluginItem } from './plugin-item';
+import { ModalConfirmation } from './modal-confirmation';
 
 const PluginsListComponent = ({
     plugins,
@@ -31,6 +32,8 @@ const PluginsListComponent = ({
             isInstallationTypeModalOpen: storeSelect.getIsInstallationTypeModalOpen(),
         };
     }, []);
+
+    const [isUninstallConfirmationModalOpen, setIsUninstallConfirmationModalOpen] = useState(false);
 
     const {
         installFreePlugin,
@@ -94,8 +97,9 @@ const PluginsListComponent = ({
     }, [currentPluginForModal, installProPlugin, fetchPlugins, setLicenseInputModalOpen]);
 
     const handleUninstall = useCallback((plugin) => {
-        uninstallPlugin(plugin.slugFree).then(fetchPlugins);
-    }, [uninstallPlugin, fetchPlugins]);
+        setIsUninstallConfirmationModalOpen(true);
+        setCurrentPluginForModal(plugin);
+    }, [setIsUninstallConfirmationModalOpen, setCurrentPluginForModal]);
 
     const currentPluginState = useMemo(() => {
         if (!currentPluginForModal) return { error: null, inProgress: false };
@@ -105,6 +109,19 @@ const PluginsListComponent = ({
             inProgress: pluginInstallationInProgress[currentPluginForModal.slugFree] || false,
         };
     }, [currentPluginForModal, pluginError, pluginInstallationInProgress]);
+
+    const handleUninstallConfirmationConfirm = useCallback(() => {
+        setIsUninstallConfirmationModalOpen(false);
+        uninstallPlugin(currentPluginForModal.slugFree).then(fetchPlugins);
+    }, [currentPluginForModal, uninstallPlugin, fetchPlugins]);
+
+    const handleUninstallConfirmationCancel = useCallback(() => {
+        setIsUninstallConfirmationModalOpen(false);
+    }, []);
+
+    const handleUninstallConfirmationModalClose = useCallback(() => {
+        setIsUninstallConfirmationModalOpen(false);
+    }, []);
 
     return (
         <div className="pp-hub-plugins-list">
@@ -156,6 +173,16 @@ const PluginsListComponent = ({
                     onActivate={handleLicenseActivate}
                     error={currentPluginState.error}
                     buttonInProgress={currentPluginState.inProgress}
+                />
+            )}
+
+            {isUninstallConfirmationModalOpen && currentPluginForModal && (
+                <ModalConfirmation
+                    onClose={handleUninstallConfirmationModalClose}
+                    onConfirm={handleUninstallConfirmationConfirm}
+                    onCancel={handleUninstallConfirmationCancel}
+                    title={__('Uninstall Plugin', 'publishpress-hub')}
+                    message={__('Are you sure you want to uninstall this plugin?', 'publishpress-hub')}
                 />
             )}
         </div>

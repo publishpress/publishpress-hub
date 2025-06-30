@@ -763,12 +763,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modal_installation_type__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modal-installation-type */ "./assets/src/jsx/components/plugins-list/modal-installation-type.jsx");
 /* harmony import */ var _modal_license_input__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modal-license-input */ "./assets/src/jsx/components/plugins-list/modal-license-input.jsx");
 /* harmony import */ var _plugin_item__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./plugin-item */ "./assets/src/jsx/components/plugins-list/plugin-item.jsx");
+/* harmony import */ var _modal_confirmation__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modal-confirmation */ "./assets/src/jsx/components/plugins-list/modal-confirmation.jsx");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
 
 
 
@@ -799,6 +801,10 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
     pluginError = _useSelect.pluginError,
     isLicenseInputModalOpen = _useSelect.isLicenseInputModalOpen,
     isInstallationTypeModalOpen = _useSelect.isInstallationTypeModalOpen;
+  var _useState3 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    isUninstallConfirmationModalOpen = _useState4[0],
+    setIsUninstallConfirmationModalOpen = _useState4[1];
   var _useDispatch = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useDispatch)(_stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_3__.store),
     installFreePlugin = _useDispatch.installFreePlugin,
     installProPlugin = _useDispatch.installProPlugin,
@@ -847,8 +853,9 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
     });
   }, [currentPluginForModal, installProPlugin, fetchPlugins, setLicenseInputModalOpen]);
   var handleUninstall = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (plugin) {
-    uninstallPlugin(plugin.slugFree).then(fetchPlugins);
-  }, [uninstallPlugin, fetchPlugins]);
+    setIsUninstallConfirmationModalOpen(true);
+    setCurrentPluginForModal(plugin);
+  }, [setIsUninstallConfirmationModalOpen, setCurrentPluginForModal]);
   var currentPluginState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     if (!currentPluginForModal) return {
       error: null,
@@ -859,6 +866,16 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
       inProgress: pluginInstallationInProgress[currentPluginForModal.slugFree] || false
     };
   }, [currentPluginForModal, pluginError, pluginInstallationInProgress]);
+  var handleUninstallConfirmationConfirm = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    setIsUninstallConfirmationModalOpen(false);
+    uninstallPlugin(currentPluginForModal.slugFree).then(fetchPlugins);
+  }, [currentPluginForModal, uninstallPlugin, fetchPlugins]);
+  var handleUninstallConfirmationCancel = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    setIsUninstallConfirmationModalOpen(false);
+  }, []);
+  var handleUninstallConfirmationModalClose = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    setIsUninstallConfirmationModalOpen(false);
+  }, []);
   return /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list"
   }, plugins.map(function (plugin) {
@@ -891,9 +908,70 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
     onActivate: handleLicenseActivate,
     error: currentPluginState.error,
     buttonInProgress: currentPluginState.inProgress
+  }), isUninstallConfirmationModalOpen && currentPluginForModal && /*#__PURE__*/React.createElement(_modal_confirmation__WEBPACK_IMPORTED_MODULE_7__.ModalConfirmation, {
+    onClose: handleUninstallConfirmationModalClose,
+    onConfirm: handleUninstallConfirmationConfirm,
+    onCancel: handleUninstallConfirmationCancel,
+    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Uninstall Plugin', 'publishpress-hub'),
+    message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Are you sure you want to uninstall this plugin?', 'publishpress-hub')
   }));
 };
 var PluginsList = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(PluginsListComponent);
+
+/***/ }),
+
+/***/ "./assets/src/jsx/components/plugins-list/modal-confirmation.jsx":
+/*!***********************************************************************!*\
+  !*** ./assets/src/jsx/components/plugins-list/modal-confirmation.jsx ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ModalConfirmation: () => (/* binding */ ModalConfirmation)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress/hub-i18n */ "@publishpress/hub-i18n");
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../buttons/button */ "./assets/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _message_message__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../message/message */ "./assets/src/jsx/components/message/message.jsx");
+
+
+
+
+
+var ModalConfirmationComponent = function ModalConfirmationComponent(_ref) {
+  var onClose = _ref.onClose,
+    onConfirm = _ref.onConfirm,
+    onCancel = _ref.onCancel,
+    title = _ref.title,
+    message = _ref.message,
+    children = _ref.children,
+    error = _ref.error;
+  return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Modal, {
+    title: title || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Confirmation', 'publishpress-hub'),
+    onRequestClose: onClose
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-modal pp-hub-modal-confirmation"
+  }, /*#__PURE__*/React.createElement("p", null, message || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Are you sure you want to continue?', 'publishpress-hub')), children, error && /*#__PURE__*/React.createElement(_message_message__WEBPACK_IMPORTED_MODULE_4__.Message, {
+    variant: "error"
+  }, error.message), /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-modal-actions"
+  }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    variant: "primary",
+    isFullWidth: true,
+    onClick: onConfirm
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Continue', 'publishpress-hub')), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    variant: "secondary",
+    isFullWidth: true,
+    onClick: onCancel
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Cancel', 'publishpress-hub')))));
+};
+var ModalConfirmation = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(ModalConfirmationComponent);
 
 /***/ }),
 

@@ -1105,6 +1105,14 @@
     box-sizing: border-box;
 }
 
+.pp-hub-modal .pp-hub-modal-actions {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-sm);
+    justify-content: center;
+    align-items: center;
+}
+
 /*!***********************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./assets/src/css/components/plugins-list/plugins-list.css ***!
   \***********************************************************************************************************/
