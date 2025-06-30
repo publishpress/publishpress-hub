@@ -1,5 +1,7 @@
 /* Default Theme */
 [data-theme="default"] {
+    --pp-hub-font-family-mono: monospace;
+
     /* Brand Colors */
     --pp-hub-primary-color: #655997;
     --pp-hub-primary-color-darker: #473d76;
