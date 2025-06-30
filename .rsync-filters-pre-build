@@ -32,7 +32,7 @@
 - dev-workspace
 - cache
 - .cache
-- dist
+- /dist
 - jsconfig.json
 - node_modules
 - package-lock.json
@@ -48,3 +48,5 @@
 - .env
 - .env.example
 - /.cursor
+- /docs
+- /mockups

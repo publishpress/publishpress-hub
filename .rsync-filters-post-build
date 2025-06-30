@@ -11,3 +11,5 @@
 - .DS_Store
 - .phplint.cache
 - phpmd.ruleset.xml
+- .gitmodules
+- webpack.prototype.config.js
