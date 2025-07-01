@@ -11,4 +11,4 @@ set +a
 
 DB_EXPORT_FILE=/project/tests/Support/Data/dump.sql
 
-bash ./scripts/tests-wp-cli.sh wp_test_cli db import $DB_EXPORT_FILE
+bash ./scripts/tests-wp-cli.sh test-wpcli db import $DB_EXPORT_FILE

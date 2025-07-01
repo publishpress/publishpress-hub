@@ -11,7 +11,7 @@ set +a
 
 PROFILE=$1
 
-TARGET_CONTAINER_NAME=${CONTAINER_NAME}_env_wp_${PROFILE}
+TARGET_CONTAINER_NAME=${CONTAINER_NAME}-env-${PROFILE}-wp
 echo "Logging to $TARGET_CONTAINER_NAME"
 
 # Get the logs of the web container

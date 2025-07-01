@@ -12,10 +12,10 @@ build-%:
 	docker compose -f docker/compose.yaml --env-file ../.env build $*
 
 build-wp:
-	$(MAKE) build-wp_dev
+	$(MAKE) build-dev-wp
 
 build-wpcli:
-	$(MAKE) build-wp_dev_cli
+	$(MAKE) build-dev-wpcli
 
 build:
 	$(MAKE) build-wp

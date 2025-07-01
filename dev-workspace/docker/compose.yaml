@@ -7,7 +7,7 @@ services:
     terminal:
         build: ./terminal/
         profiles: ["term"]
-        container_name: ${CONTAINER_NAME}_env_term
+        container_name: ${CONTAINER_NAME}-env-terminal
         image: ${TERMINAL_IMAGE_NAME}
         command: ["zsh"]
         stdin_open: true
@@ -15,20 +15,20 @@ services:
         working_dir: "/project"
         volumes:
             - ../../:/project
-            - ../.cache/.zsh_history:/root/.zsh_history
-            - ../.cache/.bash_history:/root/.bash_history
-            - ../.cache/.npm/_cacache:/root/.npm/_cacache
-            - ../.cache/.npm/_logs:/root/.npm/_logs
-            - ../.cache/.oh-my-zsh/log:/root/.oh-my-zsh/log
-            - ../.cache/.composer/cache:/root/.composer/cache
-            - ../.cache/.composer/auth.json:/root/.composer/auth.json
+            - ../.cache/terminal/.zsh_history:/root/.zsh_history
+            - ../.cache/terminal/.bash_history:/root/.bash_history
+            - ../.cache/terminal/.npm/_cacache:/root/.npm/_cacache
+            - ../.cache/terminal/.npm/_logs:/root/.npm/_logs
+            - ../.cache/terminal/.oh-my-zsh/log:/root/.oh-my-zsh/log
+            - ../.cache/terminal/.composer/cache:/root/.composer/cache
+            - ../.cache/terminal/.composer/auth.json:/root/.composer/auth.json
     ##############################################################################
     # Tests
     ##############################################################################
-    db_test:
+    test-db:
         image: mariadb:latest
         profiles: ["test"]
-        container_name: ${CONTAINER_NAME}_env_db_test
+        container_name: ${CONTAINER_NAME}-env-test-db
         restart: always
         environment:
             MARIADB_DATABASE: wordpress
@@ -38,21 +38,21 @@ services:
         ports:
           - "3331:3306"
         volumes:
-            - ../.cache/db_test:/var/lib/mysql
-            - ../.cache/logs/db_test:/var/log/mysql
+            - ../.cache/test-db/mysql:/var/lib/mysql
+            - ../.cache/test-db/logs:/var/log/mysql
             - ./wp/db/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf
         healthcheck:
             test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
             start_period: 10s
             retries: 3
-    wp_test:
+    test-wp:
         build: ./wp/wordpress
         profiles: ["test"]
         image: ${WP_IMAGE_NAME}
-        container_name: ${CONTAINER_NAME}_env_wp_test
+        container_name: ${CONTAINER_NAME}-env-test-wp
         restart: always
         environment:
-            WORDPRESS_DB_HOST: db_test
+            WORDPRESS_DB_HOST: test-db
             WORDPRESS_DB_USER: wordpress
             WORDPRESS_DB_PASSWORD: wordpress
             WORDPRESS_DB_NAME: wordpress
@@ -60,8 +60,8 @@ services:
         ports:
             - "8031:80"
         volumes:
-          - ../.cache/wp_test:/var/www/html/
-          - ../.cache/tmp_wp_test:/tmp/
+          - ../.cache/test-wp/html:/var/www/html/
+          - ../.cache/test-wp/tmp:/tmp/
           - ../../tests/Support/Data/Plugins/dummy-plugin-1:/var/www/html/wp-content/plugins/dummy-plugin-1
           - ../../tests/Support/Data/Plugins/dummy-plugin-2:/var/www/html/wp-content/plugins/dummy-plugin-2
           - ../../tests/Support/Data/Plugins/prototype:/var/www/html/wp-content/plugins/hub-prototype
@@ -74,31 +74,31 @@ services:
           - ./wp/wordpress/ray.php:/var/www/html/ray.php
           - ../../:/project
         depends_on:
-            db_test:
+            test-db:
                 condition: service_healthy
             mailhog:
                 condition: service_started
         links:
-            - db_test
+            - test-db
             - mailhog
         healthcheck:
             test: ["CMD", "test", "-f", "/var/www/html/wp-config.php"]
             retries: 3
         extra_hosts:
             - "host.docker.internal:host-gateway"
-    wp_test_cli:
+    test-wpcli:
         build: ./wp/wpcli
         image: ${WPCLI_IMAGE_NAME}
         profiles: ["test"]
-        container_name: ${CONTAINER_NAME}_env_wp_test_cli
+        container_name: ${CONTAINER_NAME}-env-test-wpcli
         environment:
-            WORDPRESS_DB_HOST: db_test
+            WORDPRESS_DB_HOST: test-db
             WORDPRESS_DB_USER: wordpress
             WORDPRESS_DB_PASSWORD: wordpress
             WORDPRESS_DB_NAME: wordpress
         volumes:
-            - ../.cache/wp_test:/var/www/html/
-            - ../.cache/tmp_wp_test_cli:/tmp/
+            - ../.cache/test-wp/html:/var/www/html/
+            - ../.cache/test-wpcli/tmp:/tmp/
             - ../../tests/Support/Data/Plugins/dummy-plugin-1:/var/www/html/wp-content/plugins/dummy-plugin-1
             - ../../tests/Support/Data/Plugins/dummy-plugin-2:/var/www/html/wp-content/plugins/dummy-plugin-2
             - ../../tests/Support/Data/Plugins/prototype:/var/www/html/wp-content/plugins/hub-prototype
@@ -109,18 +109,18 @@ services:
             - ./wp/wordpress/conf.d/99-custom.ini:/usr/local/etc/php/conf.d/99-custom.ini
             - ../../:/project
         depends_on:
-            wp_test:
+            test-wp:
                 condition: service_healthy
-            db_test:
+            test-db:
                 condition: service_healthy
             mailhog:
                 condition: service_started
         links:
-            - wp_test
-            - db_test
+            - test-wp
+            - test-db
             - mailhog
         working_dir: /var/www/html
-        command: ["/bin/sh", "-c", "sh /tmp/prepare-wp.sh http://localhost:8031 publishpress-hub TESTS"]
+        command: ["/bin/sh", "-c", "sh /tmp/prepare-wp.sh http://localhost:8031 publishpress-hub TEST"]
         extra_hosts:
             - "host.docker.internal:host-gateway"
         healthcheck:
@@ -132,10 +132,10 @@ services:
     ##############################################################################
     # Development
     ##############################################################################
-    db_dev:
+    dev-db:
         image: mariadb:latest
         profiles: ["dev"]
-        container_name: ${CONTAINER_NAME}_env_db_dev
+        container_name: ${CONTAINER_NAME}-env-dev-db
         restart: always
         environment:
             MARIADB_DATABASE: wordpress
@@ -145,21 +145,21 @@ services:
         ports:
           - "3332:3306"
         volumes:
-            - ../.cache/db_dev:/var/lib/mysql
-            - ../.cache/logs/db_dev:/var/log/mysql
+            - ../.cache/dev-db/mysql:/var/lib/mysql
+            - ../.cache/dev-db/logs:/var/log/mysql
             - ./wp/db/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf
         healthcheck:
             test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
             start_period: 10s
             retries: 3
-    wp_dev:
+    dev-wp:
         build: ./wp/wordpress
         profiles: ["dev"]
         image: ${WP_IMAGE_NAME}
-        container_name: ${CONTAINER_NAME}_env_wp_dev
+        container_name: ${CONTAINER_NAME}-env-dev-wp
         restart: always
         environment:
-            WORDPRESS_DB_HOST: db_dev
+            WORDPRESS_DB_HOST: dev-db
             WORDPRESS_DB_USER: wordpress
             WORDPRESS_DB_PASSWORD: wordpress
             WORDPRESS_DB_NAME: wordpress
@@ -167,8 +167,8 @@ services:
         ports:
             - "8032:80"
         volumes:
-          - ../.cache/wp_dev:/var/www/html/
-          - ../.cache/tmp_wp_dev:/tmp/
+          - ../.cache/dev-wp/html:/var/www/html/
+          - ../.cache/dev-wp/tmp:/tmp/
           - ../../tests/Support/Data/Plugins/dummy-plugin-1:/var/www/html/wp-content/plugins/dummy-plugin-1
           - ../../tests/Support/Data/Plugins/dummy-plugin-2:/var/www/html/wp-content/plugins/dummy-plugin-2
           - ../../tests/Support/Data/Plugins/prototype:/var/www/html/wp-content/plugins/hub-prototype
@@ -180,31 +180,31 @@ services:
           - ./wp/wordpress/ray.php:/var/www/html/ray.php
           - ../../:/project
         depends_on:
-            db_dev:
+            dev-db:
                 condition: service_healthy
             mailhog:
                 condition: service_started
         links:
-            - db_dev
+            - dev-db
             - mailhog
         healthcheck:
             test: ["CMD", "test", "-f", "/var/www/html/wp-config.php"]
             retries: 3
         extra_hosts:
             - "host.docker.internal:host-gateway"
-    wp_dev_cli:
+    dev-wpcli:
         build: ./wp/wpcli
         image: ${WPCLI_IMAGE_NAME}
         profiles: ["dev"]
-        container_name: ${CONTAINER_NAME}_env_wp_dev_cli
+        container_name: ${CONTAINER_NAME}-env-dev-wpcli
         environment:
-            WORDPRESS_DB_HOST: db_dev
+            WORDPRESS_DB_HOST: dev-db
             WORDPRESS_DB_USER: wordpress
             WORDPRESS_DB_PASSWORD: wordpress
             WORDPRESS_DB_NAME: wordpress
         volumes:
-            - ../.cache/wp_dev:/var/www/html/
-            - ../.cache/tmp_wp_dev_cli:/tmp/
+            - ../.cache/dev-wp/html:/var/www/html/
+            - ../.cache/dev-wpcli/tmp:/tmp/
             - ../../tests/Support/Data/Plugins/dummy-plugin-1:/var/www/html/wp-content/plugins/dummy-plugin-1
             - ../../tests/Support/Data/Plugins/dummy-plugin-2:/var/www/html/wp-content/plugins/dummy-plugin-2
             - ../../tests/Support/Data/Plugins/prototype:/var/www/html/wp-content/plugins/hub-prototype
@@ -215,15 +215,15 @@ services:
             - ./wp/wordpress/conf.d/99-custom.ini:/usr/local/etc/php/conf.d/99-custom.ini
             - ../../:/project
         depends_on:
-            wp_dev:
+            dev-wp:
                 condition: service_healthy
-            db_dev:
+            dev-db:
                 condition: service_healthy
             mailhog:
                 condition: service_started
         links:
-            - wp_dev
-            - db_dev
+            - dev-wp
+            - dev-db
             - mailhog
         working_dir: /var/www/html
         command: ["/bin/sh", "-c", "sh /tmp/prepare-wp.sh http://localhost:8032 publishpress-hub DEV"]
@@ -241,7 +241,7 @@ services:
     mailhog:
         image: mailhog/mailhog:latest
         profiles: ["dev", "test"]
-        container_name: ${CONTAINER_NAME}_env_mailhog
+        container_name: ${CONTAINER_NAME}-env-mailhog
         ports:
             - "8033:8025" # Web UI
             - "8034:1025" # SMTP server

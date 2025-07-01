@@ -151,8 +151,8 @@
             "@test:down",
             "@dev:down"
         ],
-        "wp:tests": "bash dev-workspace/scripts/tests-wp-cli.sh wp_test_cli $@",
-        "wp:dev": "bash dev-workspace/scripts/tests-wp-cli.sh wp_dev_cli $@",
+        "wp:tests": "bash dev-workspace/scripts/tests-wp-cli.sh test-wpcli $@",
+        "wp:dev": "bash dev-workspace/scripts/tests-wp-cli.sh dev-wpcli $@",
         "dev:up": [
             "bash dev-workspace/scripts/env.sh up dev",
             "@dev:info"
@@ -164,8 +164,9 @@
             "bash dev-workspace/scripts/env.sh cleanup dev",
             "@dev:clean-cache"
         ],
-        "dev:clean-logs": "rm -f dev-workspace/.cache/logs/db_dev/",
-        "dev:clean-cache": "rm -rf dev-workspace/.cache/wp_dev && rm -rf dev-workspace/.cache/db_dev && rm -rf dev-workspace/.cache/tmp_wp_dev",
+        "dev:clean-logs": "rm -f dev-workspace/.cache/dev-db/logs/*",
+        "dev:clean-cache": "rm -rf dev-workspace/.cache/dev-wp && rm -rf dev-workspace/.cache/dev-db && rm -rf dev-workspace/.cache/dev-wpcli",
+        "dev:clean-cachegrind": "rm -rf dev-workspace/.cache/dev-wp/tmp/cachegrind.out.*",
         "dev:refresh": "bash dev-workspace/scripts/env.sh refresh dev",
         "dev:info": "bash dev-workspace/scripts/env.sh info dev",
         "dev:logs": "bash dev-workspace/scripts/log-web.sh dev",
@@ -183,8 +184,9 @@
             "@test:clean-cache",
             "composer codecept clean"
         ],
-        "test:clean-logs": "rm -f dev-workspace/.cache/logs/db_test/",
-        "test:clean-cache": "rm -rf dev-workspace/.cache/wp_test && rm -rf dev-workspace/.cache/db_test && rm -rf dev-workspace/.cache/tmp_wp_test",
+        "test:clean-logs": "rm -f dev-workspace/.cache/test-db/logs/*",
+        "test:clean-cache": "rm -rf dev-workspace/.cache/test-wp && rm -rf dev-workspace/.cache/test-db && rm -rf dev-workspace/.cache/test-wpcli",
+        "test:clean-cachegrind": "rm -rf dev-workspace/.cache/test-wp/tmp/cachegrind.out.*",
         "test:db-logs": "bash dev-workspace/scripts/tests-db-logs.sh $@",
         "test:info": "bash dev-workspace/scripts/env.sh info test",
         "test:refresh": "bash dev-workspace/scripts/env.sh refresh test",

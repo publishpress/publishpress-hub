@@ -22,15 +22,16 @@ WP_ADMIN_USER="admin"
 WP_ADMIN_PASSWORD="admin"
 
 if [[ ${PROFILE} == "test" ]]; then
-  ENVIRONMENT_TYPE="TESTS"
+  ENVIRONMENT_TYPE="TEST"
 else
   ENVIRONMENT_TYPE="DEV"
 fi
 
 COMPOSE_FILE=docker/compose.yaml
 CACHE_BASE_PATH=$(pwd)/.cache
-WP_CACHE=$CACHE_BASE_PATH/wp_${PROFILE}
-DB_CACHE=$CACHE_BASE_PATH/db_${PROFILE}
+WP_CACHE=$CACHE_BASE_PATH/${PROFILE}-wp/html
+DB_CACHE=$CACHE_BASE_PATH/${PROFILE}-db/mysql
+MAILHOG_CACHE=$CACHE_BASE_PATH/mailhog/maildir
 
 APP_PASSWORD_VAR="WP_${ENVIRONMENT_TYPE}_APP_PASSWORD"
 AUTH_HASH_VAR="WP_${ENVIRONMENT_TYPE}_AUTH_HASH"
@@ -51,8 +52,6 @@ if [[ ${PROFILE} == "dev" ]]; then
   WP_DOMAIN=$(remove_port_from_domain $WP_DEV_DOMAIN)
   WP_DB_URL=$WP_DEV_DB_URL
 fi
-
-MAILHOG_CACHE=$CACHE_BASE_PATH/mailhog
 
 WP_DB_USER=$(echo $WP_DB_URL | sed -E 's/mysql:\/\/([^:]+):.*/\1/')
 WP_DB_PASS=$(echo $WP_DB_URL | sed -E 's/mysql:\/\/.*:(.*)@.*/\1/')
@@ -101,7 +100,7 @@ get_container_id() {
 }
 
 is_wp_ready() {
-  if [[ -f "$CACHE_BASE_PATH/tmp_wp_${PROFILE}_cli/prepare-wp.sh.done" ]]; then
+  if [[ -f "$CACHE_BASE_PATH/${PROFILE}-wpcli/tmp/prepare-wp.sh.done" ]]; then
     return 0
   else
     return 1
@@ -132,8 +131,8 @@ service_info() {
   wait_for_wp_ready
   check_wp_ready
 
-  WP_PORT=$(get_wp_port wp_${PROFILE})
-  DB_PORT=$(get_db_port db_${PROFILE})
+  WP_PORT=$(get_wp_port ${PROFILE}-wp)
+  DB_PORT=$(get_db_port ${PROFILE}-db)
   MAILHOG_PORT_8025=$(get_mailhog_port_8025)
   MAILHOG_PORT_1025=$(get_mailhog_port_1025)
 
@@ -146,22 +145,18 @@ service_info() {
   echo "App Password:   $WP_APP_PASSWORD"
   echo "API Auth Hash:  $WP_AUTH_HASH"
   echo "Root Directory: $WP_CACHE"
-  echo "Container ID:   $(get_container_id wp_${PROFILE})"
   echo ""
   echo "DB Url:         mysql://$WP_DB_USER:$WP_DB_PASS@$WP_DB_HOST:$DB_PORT"
   echo "DB Name:        $WP_DB_NAME"
   echo "DB Host:        $WP_DB_HOST:$DB_PORT"
   echo "DB User:        $WP_DB_USER"
   echo "DB Pass:        $WP_DB_PASS"
-  echo "Data Directory: $DB_CACHE"
-  echo "Container ID:   $(get_container_id db_${PROFILE})"
   echo ""
   echo "=============================================="
   echo "Mail Information"
   echo "=============================================="
   echo "Web Interface:  http://$WP_DOMAIN:$MAILHOG_PORT_8025"
   echo "SMTP Server:    smtp://$WP_DOMAIN:$MAILHOG_PORT_1025"
-  echo "Container ID:   $(get_container_id mailhog)"
   echo ""
   echo "=============================================="
 }
