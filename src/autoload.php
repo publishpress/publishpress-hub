@@ -50,7 +50,7 @@ define('PUBLISHPRESS_HUB_URL', plugin_dir_url(PUBLISHPRESS_HUB_PATH . 'publishpr
 define('PUBLISHPRESS_HUB_ASSETS_PATH', PUBLISHPRESS_HUB_PATH . 'assets/');
 define('PUBLISHPRESS_HUB_ASSETS_URL', PUBLISHPRESS_HUB_URL . 'assets/');
 define('PUBLISHPRESS_HUB_VERSION', '1.0.0-alpha.1');
-define('PUBLISHPRESS_HUB_VENDOR_PATH', __DIR__ . '/../lib/vendor/');
+define('PUBLISHPRESS_HUB_VENDOR_PATH', realpath(__DIR__ . '/../lib/vendor/') . '/');
 define('PUBLISHPRESS_HUB_SRC_PATH', __DIR__ . '/');
 define('PUBLISHPRESS_HUB_LANGUAGES_PATH', PUBLISHPRESS_HUB_PATH . 'languages/');
 define('PUBLISHPRESS_HUB_TEMPLATES_PATH', PUBLISHPRESS_HUB_SRC_PATH . 'templates/');
@@ -63,7 +63,7 @@ define('PUBLISHPRESS_HUB_TEMPLATES_PATH', PUBLISHPRESS_HUB_SRC_PATH . 'templates
  * the same library multiple times, so we can't asure the only the
  * most recent version is loaded.
  */
-require_once PUBLISHPRESS_HUB_VENDOR_PATH . 'publishpress/psr-container/src/include.php';
+require_once PUBLISHPRESS_HUB_VENDOR_PATH . 'publishpress/psr-container/lib/include.php';
 
 /*
  * Load the autoloader and register the plugin's namespace.
