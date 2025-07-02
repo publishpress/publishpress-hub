@@ -66,11 +66,11 @@ const PluginsListComponent = ({
         setInstallationTypeModalOpen(false);
 
         if (type === 'free' && currentPluginForModal) {
-            installFreePlugin(currentPluginForModal.slugFree).then(fetchPlugins);
+            installFreePlugin(currentPluginForModal.slugFree);
         } else if (type === 'pro') {
             setLicenseInputModalOpen(true);
         }
-    }, [currentPluginForModal, installFreePlugin, fetchPlugins, setInstallationTypeModalOpen, setLicenseInputModalOpen]);
+    }, [currentPluginForModal, installFreePlugin, setInstallationTypeModalOpen, setLicenseInputModalOpen]);
 
     const handleLicenseModalClose = useCallback(() => {
         setLicenseInputModalOpen(false);
@@ -89,12 +89,10 @@ const PluginsListComponent = ({
                 return;
             }
 
-            fetchPlugins().then(() => {
-                setLicenseInputModalOpen(false);
-                setCurrentPluginForModal(null);
-            });
+            setLicenseInputModalOpen(false);
+            setCurrentPluginForModal(null);
         });
-    }, [currentPluginForModal, installProPlugin, fetchPlugins, setLicenseInputModalOpen]);
+    }, [currentPluginForModal, installProPlugin, setLicenseInputModalOpen]);
 
     const handleUninstall = useCallback((plugin) => {
         setIsUninstallConfirmationModalOpen(true);
@@ -112,8 +110,8 @@ const PluginsListComponent = ({
 
     const handleUninstallConfirmationConfirm = useCallback(() => {
         setIsUninstallConfirmationModalOpen(false);
-        uninstallPlugin(currentPluginForModal.slugFree).then(fetchPlugins);
-    }, [currentPluginForModal, uninstallPlugin, fetchPlugins]);
+        uninstallPlugin(currentPluginForModal.slugFree);
+    }, [currentPluginForModal, uninstallPlugin]);
 
     const handleUninstallConfirmationCancel = useCallback(() => {
         setIsUninstallConfirmationModalOpen(false);

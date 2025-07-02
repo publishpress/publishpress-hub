@@ -136,6 +136,8 @@ export function* installFreePlugin(pluginSlugFree) {
         });
 
         if (data.success) {
+            yield fetchPlugins();
+
             yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree}};
 
             yield createSnackbarNotice(__('Plugin installed successfully', 'publishpress-hub'), 'success');
@@ -178,6 +180,8 @@ export function* installProPlugin(pluginSlugFree, licenseKey) {
         });
 
         if (data.success) {
+            yield fetchPlugins();
+
             yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree}};
 
             yield createSnackbarNotice(__('Plugin installed successfully', 'publishpress-hub'), 'success');
@@ -219,6 +223,8 @@ export function* uninstallPlugin(pluginSlugFree) {
         });
 
         if (data.success) {
+            yield fetchPlugins();
+
             yield {type: 'UNINSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree}};
 
             yield createSnackbarNotice(__('Plugin uninstalled successfully', 'publishpress-hub'), 'success');
