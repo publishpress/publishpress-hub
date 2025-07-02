@@ -1,4 +1,4 @@
-import { memo } from '@wordpress/element';
+import { memo, useMemo } from '@wordpress/element';
 
 import { __ } from '@publishpress/hub-i18n';
 
@@ -36,27 +36,35 @@ const StatusFlagComponent = ({
     isInstalling,
     isUninstalling,
 }) => {
-    if (!plugin.isInstalled && isInstalling) {
-        return <Badge {...STATUS_BADGE_CONFIGS.installing} />;
+    const props = useMemo(() => {
+        if (!plugin.isInstalled && isInstalling) {
+            return STATUS_BADGE_CONFIGS.installing;
+        }
+
+        if (isUninstalling) {
+            return STATUS_BADGE_CONFIGS.uninstalling;
+        }
+
+        if (!plugin.isInstalled) {
+            return STATUS_BADGE_CONFIGS.notInstalled;
+        }
+
+        if (!plugin.isPro) {
+            return STATUS_BADGE_CONFIGS.free;
+        }
+
+        if (plugin.isLicensed) {
+            return STATUS_BADGE_CONFIGS.licensed;
+        }
+
+        return STATUS_BADGE_CONFIGS.unlicensed;
+    }, [plugin, isInstalling, isUninstalling]);
+
+    if (!props) {
+        return null;
     }
 
-    if (isUninstalling) {
-        return <Badge {...STATUS_BADGE_CONFIGS.uninstalling} />;
-    }
-
-    if (!plugin.isInstalled) {
-        return <Badge {...STATUS_BADGE_CONFIGS.notInstalled} />;
-    }
-
-    if (!plugin.isPro) {
-        return <Badge {...STATUS_BADGE_CONFIGS.free} />;
-    }
-
-    if (plugin.isLicensed) {
-        return <Badge {...STATUS_BADGE_CONFIGS.licensed} />;
-    }
-
-    return <Badge {...STATUS_BADGE_CONFIGS.unlicensed} />;
+    return <Badge {...props}>{props.text}</Badge>;
 }
 
 StatusFlagComponent.displayName = 'StatusFlag';

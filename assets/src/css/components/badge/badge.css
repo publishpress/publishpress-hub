@@ -44,6 +44,11 @@
     color: var(--pp-hub-badge-text-installing);
 }
 
+.pp-hub-badge.uninstalling {
+    background-color: var(--pp-hub-badge-bg-uninstalling);
+    color: var(--pp-hub-badge-text-uninstalling);
+}
+
 .pp-hub-plugins-list-item:hover .pp-hub-badge.installed {
     background-color: var(--pp-hub-badge-bg-installed-hover);
 }
@@ -68,3 +73,6 @@
     background-color: var(--pp-hub-badge-bg-installing-hover);
 }
 
+.pp-hub-plugins-list-item:hover .pp-hub-badge.uninstalling {
+    background-color: var(--pp-hub-badge-bg-uninstalling-hover);
+}

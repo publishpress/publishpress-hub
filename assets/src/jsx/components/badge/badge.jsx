@@ -1,11 +1,11 @@
 import { memo } from '@wordpress/element';
 
 const BadgeComponent = ({
-    text,
     className,
+    children,
 }) => {
     return (
-        <span className={`pp-hub-badge ${className}`}>{text}</span>
+        <span className={`pp-hub-badge ${className}`}>{children}</span>
     );
 };
 

@@ -79,12 +79,28 @@ const PluginItemComponent = ({
                     variant='link'
                     text={__('Uninstall', 'publishpress-hub')}
                     isLoading={isUninstalling}
+                    className='is-danger'
                     onClick={() => {
                         onUninstall(plugin);
                     }}
                 />
             );
         }
+
+        if (!plugin.isInstalled) {
+            buttons.push(
+                <Button variant='link' href={plugin.freeDetailsUrl} text={__('Free Details', 'publishpress-hub')} />
+            );
+
+            buttons.push(
+                <Button variant='link' href={plugin.proDetailsUrl} text={__('Pro Details', 'publishpress-hub')} />
+            );
+
+        }
+
+        buttons.push(
+            <Button variant='link' href={plugin.changelogUrl} text={__('Changelogs', 'publishpress-hub')} />
+        );
 
         return buttons;
     }, [plugin, isUninstalling]);
@@ -115,8 +131,8 @@ const PluginItemComponent = ({
                 <div className='pp-hub-plugins-list-item-description'>
                     {plugin.description}
                 </div>
-                {plugin.isInstalled && (
-                    <div className='pp-hub-plugins-list-item-inline-actions'>
+                <div className='pp-hub-plugins-list-item-inline-actions'>
+                    <>
                         {actionButtons.map((button, index) => (
                             <Fragment key={index}>
                                 {button}
@@ -125,8 +141,9 @@ const PluginItemComponent = ({
                                 )}
                             </Fragment>
                         ))}
-                    </div>
-                )}
+                    </>
+                </div>
+
             </div>
             <div className='pp-hub-plugins-list-item-actions'>
                 <StatusFlag plugin={plugin} isInstalling={isInstalling} isUninstalling={isUninstalling} />

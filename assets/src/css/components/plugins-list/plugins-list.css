@@ -80,7 +80,7 @@
     justify-content: flex-end;
 }
 
-.pp-hub-plugins-list-item-actions button {
+.pp-hub-plugins-list-item-actions .pp-hub-button {
     width: 200px;
 }
 
@@ -115,16 +115,12 @@
     width: 100%;
 }
 
-.pp-hub-plugins-list-item-inline-actions button {
-    margin: 0 var(--pp-hub-spacing-xs);
+.pp-hub-plugins-list-item-inline-actions .pp-hub-button.is-link {
+    padding: 0;
 }
 
-.pp-hub-plugins-list-item-inline-actions button:first-child {
-    margin-left: 0;
-}
-
-.pp-hub-plugins-list-item-inline-actions button:last-child {
-    margin-right: 0;
+.pp-hub-plugins-list-item-inline-actions .pp-hub-button.is-link.is-danger {
+    color: var(--pp-hub-text-error);
 }
 
 .pp-hub-plugins-list-message {

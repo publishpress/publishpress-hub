@@ -1,4 +1,4 @@
-.pp-hub-root button {
+.pp-hub-root .pp-hub-button {
     all: unset;
     cursor: pointer;
     border-radius: var(--pp-hub-radius-md);
@@ -11,140 +11,140 @@
     transition: all 0.2s;
 }
 
-.pp-hub-root button:disabled {
+.pp-hub-root .pp-hub-button:disabled {
     cursor: not-allowed;
 }
 
-.pp-hub-root button,
-.pp-hub-root button.is-secondary {
+.pp-hub-root .pp-hub-button,
+.pp-hub-root .pp-hub-button.is-secondary {
     background-color: var(--pp-hub-button-bg-secondary);
     color: var(--pp-hub-button-text-secondary);
     border-color: var(--pp-hub-button-border-secondary);
     font-weight: var(--pp-hub-font-weight-medium);
 }
 
-.pp-hub-root button:hover,
-.pp-hub-root button.is-secondary:hover {
+.pp-hub-root .pp-hub-button:hover,
+.pp-hub-root .pp-hub-button.is-secondary:hover {
     background-color: var(--pp-hub-button-bg-secondary-hover);
 }
 
-.pp-hub-root button:active,
-.pp-hub-root button.is-secondary:active {
+.pp-hub-root .pp-hub-button:active,
+.pp-hub-root .pp-hub-button.is-secondary:active {
     background-color: var(--pp-hub-button-bg-secondary-active);
 }
 
-.pp-hub-root button:focus,
-.pp-hub-root button.is-secondary:focus {
+.pp-hub-root .pp-hub-button:focus,
+.pp-hub-root .pp-hub-button.is-secondary:focus {
     background-color: var(--pp-hub-button-bg-secondary-hover);
     border-color: var(--pp-hub-button-border-secondary);
 }
 
-.pp-hub-root button:disabled,
-.pp-hub-root button.is-secondary:disabled {
+.pp-hub-root .pp-hub-button:disabled,
+.pp-hub-root .pp-hub-button.is-secondary:disabled {
     background-color: var(--pp-hub-button-bg-secondary-disabled);
     color: var(--pp-hub-button-text-disabled);
 }
 
-.pp-hub-root button.is-primary {
+.pp-hub-root .pp-hub-button.is-primary {
     background-color: var(--pp-hub-button-bg-primary);
     color: var(--pp-hub-button-text-primary);
     border-color: var(--pp-hub-button-border-primary);
 }
 
-.pp-hub-root button.is-primary:hover {
+.pp-hub-root .pp-hub-button.is-primary:hover {
     background-color: var(--pp-hub-button-bg-primary-hover);
     border-color: var(--pp-hub-button-bg-primary-hover);
 }
 
-.pp-hub-root button.is-primary:active {
+.pp-hub-root .pp-hub-button.is-primary:active {
     background-color: var(--pp-hub-button-bg-primary-active);
     border-color: var(--pp-hub-button-bg-primary-active);
 }
 
-.pp-hub-root button.is-primary:focus {
+.pp-hub-root .pp-hub-button.is-primary:focus {
     background-color: var(--pp-hub-button-bg-primary-hover);
     border-color: var(--pp-hub-button-bg-primary-hover);
 }
 
-.pp-hub-root button.is-primary:disabled {
+.pp-hub-root .pp-hub-button.is-primary:disabled {
     background-color: var(--pp-hub-button-bg-primary-disabled);
     border-color: var(--pp-hub-button-bg-primary-disabled);
     color: var(--pp-hub-button-text-disabled);
 }
 
-.pp-hub-root button.is-highlight {
+.pp-hub-root .pp-hub-button.is-highlight {
     background-color: var(--pp-hub-button-bg-highlight);
     color: var(--pp-hub-button-text-primary);
     border-color: var(--pp-hub-button-bg-highlight);
 }
 
-.pp-hub-root button.is-highlight:hover {
+.pp-hub-root .pp-hub-button.is-highlight:hover {
     background-color: var(--pp-hub-button-bg-highlight-hover);
     border-color: var(--pp-hub-button-bg-highlight-hover);
 }
 
-.pp-hub-root button.is-highlight:active {
+.pp-hub-root .pp-hub-button.is-highlight:active {
     background-color: var(--pp-hub-button-bg-highlight-darker);
     border-color: var(--pp-hub-button-bg-highlight-darker);
 }
 
-.pp-hub-root button.is-highlight:focus {
+.pp-hub-root .pp-hub-button.is-highlight:focus {
     background-color: var(--pp-hub-button-bg-highlight-hover);
     border-color: var(--pp-hub-button-bg-highlight-hover);
 }
 
-.pp-hub-root button.is-highlight:disabled {
+.pp-hub-root .pp-hub-button.is-highlight:disabled {
     background-color: var(--pp-hub-button-bg-highlight-disabled);
     border-color: var(--pp-hub-button-bg-highlight-disabled);
     color: var(--pp-hub-button-text-disabled);
 }
 
-.pp-hub-root button.is-tertiary {
+.pp-hub-root .pp-hub-button.is-tertiary {
     background-color: var(--pp-hub-button-bg-tertiary);
     color: var(--pp-hub-button-text-tertiary);
     border-color: none;
 }
 
-.pp-hub-root button.is-tertiary:hover {
+.pp-hub-root .pp-hub-button.is-tertiary:hover {
     background-color: var(--pp-hub-button-bg-tertiary-hover);
     border-color: var(--pp-hub-button-bg-tertiary-hover);
 }
 
-.pp-hub-root button.is-tertiary:active {
+.pp-hub-root .pp-hub-button.is-tertiary:active {
     background-color: var(--pp-hub-button-bg-tertiary-active);
     border-color: var(--pp-hub-button-bg-tertiary-active);
 }
 
-.pp-hub-root button.is-tertiary:focus {
+.pp-hub-root .pp-hub-button.is-tertiary:focus {
     background-color: var(--pp-hub-button-bg-tertiary-hover);
     border-color: none;
 }
 
-.pp-hub-root button.is-tertiary:disabled {
+.pp-hub-root .pp-hub-button.is-tertiary:disabled {
     color: var(--pp-hub-button-text-disabled);
 }
 
-.pp-hub-root button.is-link {
+.pp-hub-root .pp-hub-button.is-link {
     background-color: unset;
     color: var(--pp-hub-text-primary);
     border: none;
 }
 
-.pp-hub-root button.is-link:hover {
+.pp-hub-root .pp-hub-button.is-link:hover {
     background-color: unset;
     color: var(--pp-hub-text-link-hover);
 }
 
-.pp-hub-root button.is-link:active {
+.pp-hub-root .pp-hub-button.is-link:active {
     background-color: unset;
 }
 
-.pp-hub-root button.is-link:focus {
+.pp-hub-root .pp-hub-button.is-link:focus {
     background-color: unset;
     color: var(--pp-hub-text-link-hover);
 }
 
-.pp-hub-root button.is-link:disabled {
+.pp-hub-root .pp-hub-button.is-link:disabled {
     color: var(--pp-hub-button-text-disabled);
 }
 
