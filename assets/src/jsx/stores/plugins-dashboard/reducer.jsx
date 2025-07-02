@@ -13,6 +13,7 @@ export const DEFAULT_STATE = {
     pluginErrors: {},
     isLicenseInputModalOpen: false,
     isInstallationTypeModalOpen: false,
+    isUninstallConfirmationModalOpen: false,
 }
 
 const setSelectedFilter = (state, selectedFilter) => {
@@ -90,6 +91,14 @@ const setInstallationTypeModalOpen = (state, isOpen) => {
     return {
         ...state,
         isInstallationTypeModalOpen: isOpen,
+        pluginErrors: {},
+    }
+}
+
+const setIsUninstallConfirmationModalOpen = (state, isOpen) => {
+    return {
+        ...state,
+        isUninstallConfirmationModalOpen: isOpen,
         pluginErrors: {},
     }
 }
@@ -252,6 +261,8 @@ export const reducer = (state = DEFAULT_STATE, action) => {
             return setLicenseInputModalOpen(state, action.isOpen);
         case 'SET_INSTALLATION_TYPE_MODAL_OPEN':
             return setInstallationTypeModalOpen(state, action.isOpen);
+        case 'SET_IS_UNINSTALL_CONFIRMATION_MODAL_OPEN':
+            return setIsUninstallConfirmationModalOpen(state, action.isOpen);
         case 'INSTALL_PLUGIN_START':
             return installPluginStart(state, action.data);
         case 'INSTALL_PLUGIN_SUCCESS':

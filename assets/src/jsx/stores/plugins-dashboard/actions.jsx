@@ -92,6 +92,13 @@ export function* setInstallationTypeModalOpen(isOpen) {
     };
 }
 
+export function* setIsUninstallConfirmationModalOpen(isOpen) {
+    yield {
+        type: 'SET_IS_UNINSTALL_CONFIRMATION_MODAL_OPEN',
+        isOpen,
+    };
+}
+
 export function* fetchPlugins() {
     try {
         yield {type: 'FETCH_PLUGINS_START'};

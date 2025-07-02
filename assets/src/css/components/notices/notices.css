@@ -16,3 +16,7 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
 .pp-hub-snackbar-list .components-snackbar__action {
     color: var(--pp-hub-text-primary-inverted) !important;
 }
+
+.components-notice {
+    border-radius: var(--pp-hub-radius-md);
+}

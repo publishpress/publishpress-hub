@@ -24,6 +24,7 @@ const PluginsListComponent = ({
         pluginError,
         isLicenseInputModalOpen,
         isInstallationTypeModalOpen,
+        isUninstallConfirmationModalOpen,
     } = useSelect((select) => {
         const storeSelect = select(store);
         return {
@@ -34,16 +35,16 @@ const PluginsListComponent = ({
             pluginError: storeSelect.getPluginError(),
             isLicenseInputModalOpen: storeSelect.getIsLicenseInputModalOpen(),
             isInstallationTypeModalOpen: storeSelect.getIsInstallationTypeModalOpen(),
+            isUninstallConfirmationModalOpen: storeSelect.getIsUninstallConfirmationModalOpen(),
         };
     }, []);
-
-    const [isUninstallConfirmationModalOpen, setIsUninstallConfirmationModalOpen] = useState(false);
 
     const {
         installFreePlugin,
         installProPlugin,
         setLicenseInputModalOpen,
         setInstallationTypeModalOpen,
+        setIsUninstallConfirmationModalOpen,
         uninstallPlugin,
         activatePlugin,
         deactivatePlugin,

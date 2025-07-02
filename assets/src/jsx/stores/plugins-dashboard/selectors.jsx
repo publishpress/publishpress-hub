@@ -112,6 +112,10 @@ export const getPluginDeactivationInProgress = (state) => {
     return state.pluginDeactivationInProgress;
 }
 
+export const getIsUninstallConfirmationModalOpen = (state) => {
+    return state.isUninstallConfirmationModalOpen;
+}
+
 // Memoization cache for getFilterCounts
 let lastPluginsForFilterCounts = null;
 let lastFilterCountsForFilterCounts = null;
