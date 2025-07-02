@@ -40,7 +40,6 @@ const PluginsListComponent = ({
         installProPlugin,
         setLicenseInputModalOpen,
         setInstallationTypeModalOpen,
-        fetchPlugins,
         uninstallPlugin,
     } = useDispatch(store);
 

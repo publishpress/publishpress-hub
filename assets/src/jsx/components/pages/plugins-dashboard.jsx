@@ -55,9 +55,9 @@ const PluginsDashboardComponent = () => {
          * "Uncaught (in promise) Error: The resource could not be loaded because the app is not ready."
          * when fetching plugins. This is a temporary solution to avoid the error.
          */
-        // setTimeout(() => {
+        setTimeout(() => {
             fetchPlugins();
-        // }, 400);
+        }, 100);
     }, [fetchPlugins]);
 
     const filterOptions = useMemo(() => {
