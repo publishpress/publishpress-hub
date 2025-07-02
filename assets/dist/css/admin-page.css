@@ -1159,7 +1159,7 @@
     padding: var(--pp-hub-spacing-xl);
     border: 1px solid transparent;
     border-bottom: 1px solid var(--pp-hub-border-primary);
-    min-height: 153px;
+    min-height: 160px;
     transition: background-color 0.1s ease-in-out;
     box-sizing: border-box;
 }
