@@ -33,6 +33,7 @@ use PublishPress\Hub\Application\Service\Exception\ServiceException;
 use PublishPress\Hub\Application\Service\RestApi\QuietUpgradeSkin;
 use PublishPress\Hub\Domain\Plugin\Contracts\PluginInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
+use PublishPress\Hub\Domain\Plugin\Exception\PluginNotActivatedException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotInstalledException;
 
 /**
@@ -193,6 +194,48 @@ class PluginInstallationService implements ServiceInterface
     }
 
     /**
+     * Activate a plugin.
+     *
+     * @since 1.0.0
+     * @param PluginInterface $plugin The plugin to activate
+     * @return bool True on success
+     * @throws PluginNotInstalledException If plugin is not installed
+     */
+    public function activatePlugin(PluginInterface $plugin): bool
+    {
+        if (!$plugin->isInstalled()) {
+            throw new PluginNotInstalledException($plugin->getSlugFree());
+        }
+
+        $this->ensureWordPressRequirements();
+
+        return $this->performActivation($plugin);
+    }
+
+    /**
+     * Deactivate a plugin.
+     *
+     * @since 1.0.0
+     * @param PluginInterface $plugin The plugin to deactivate
+     * @return bool True on success
+     * @throws PluginNotInstalledException If plugin is not installed
+     */
+    public function deactivatePlugin(PluginInterface $plugin): bool
+    {
+        if (!$plugin->isInstalled()) {
+            throw new PluginNotInstalledException($plugin->getSlugFree());
+        }
+
+        if (!$plugin->isActive()) {
+            throw new PluginNotActivatedException($plugin->getSlugFree());
+        }
+
+        $this->ensureWordPressRequirements();
+
+        return $this->performDeactivation($plugin);
+    }
+
+    /**
      * Ensure WordPress requirements are loaded.
      *
      * @since 1.0.0
@@ -255,29 +298,16 @@ class PluginInstallationService implements ServiceInterface
         return $install === true;
     }
 
-    /**
-     * Perform the actual plugin uninstallation.
-     *
-     * @since 1.0.0
-     * @param string $pluginSlug The plugin slug
-     * @return bool True on success
-     * @throws PluginNotInstalledException If plugin is not installed
-     */
-    private function performUninstallation(PluginInterface $plugin): bool
+    private function getPluginRelativePath(PluginInterface $plugin): string
     {
         $pluginSlug = $plugin->getSlug();
-
-        if (!$plugin->isInstalled()) {
-            throw new PluginNotInstalledException($pluginSlug);
-        }
+        $pluginFileName = $plugin->getPluginFileName();
 
         $pluginPath = $plugin->getPath();
 
         if (!$pluginPath) {
             throw new PluginNotInstalledException($pluginSlug);
         }
-
-        $pluginFileName = $plugin->getPluginFileName();
 
         $pluginData = get_plugin_data($pluginPath);
 
@@ -287,15 +317,79 @@ class PluginInstallationService implements ServiceInterface
 
         $folderName = basename(dirname($pluginPath));
 
-        deactivate_plugins([$folderName . '/' . $pluginFileName]);
+        return $folderName . '/' . $pluginFileName;
+    }
 
-        $result = delete_plugins([$folderName . '/' . $pluginFileName]);
+    /**
+     * Perform the actual plugin uninstallation.
+     *
+     * @since 1.0.0
+     * @param string $pluginSlug The plugin slug
+     * @return bool True on success
+     * @throws PluginNotInstalledException If plugin is not installed
+     * @throws PluginInstallationException If uninstallation fails
+     */
+    private function performUninstallation(PluginInterface $plugin): bool
+    {
+        $pluginRelativePath = $this->getPluginRelativePath($plugin);
+
+        if ($plugin->isActive()) {
+            $this->performDeactivation($plugin);
+        }
+
+        $result = delete_plugins([$pluginRelativePath]);
 
         if (is_wp_error($result)) {
             throw new PluginInstallationException('Failed to uninstall plugin: ' . $result->get_error_message());
         }
 
         return $result === true;
+    }
+
+    /**
+     * Perform the actual plugin activation.
+     *
+     * @since 1.0.0
+     * @param PluginInterface $plugin The plugin to activate
+     * @return bool True on success
+     * @throws PluginInstallationException If plugin activation fails
+     */
+    private function performActivation(PluginInterface $plugin): bool
+    {
+        $pluginRelativePath = $this->getPluginRelativePath($plugin);
+
+        $result = activate_plugin($pluginRelativePath, false);
+
+        if (is_wp_error($result)) {
+            throw new PluginInstallationException('Failed to activate plugin: ' . $result->get_error_message());
+        }
+
+        if (!$plugin->isActive(true)) {
+            throw new PluginInstallationException('Failed to activate plugin');
+        }
+
+        return $result === null;
+    }
+
+    /**
+     * Perform the actual plugin deactivation.
+     *
+     * @since 1.0.0
+     * @param PluginInterface $plugin The plugin to deactivate
+     * @return bool True on success
+     * @throws PluginInstallationException If plugin deactivation fails
+     */
+    private function performDeactivation(PluginInterface $plugin): bool
+    {
+        $pluginRelativePath = $this->getPluginRelativePath($plugin);
+
+        deactivate_plugins([$pluginRelativePath]);
+
+        if ($plugin->isActive(true)) {
+            throw new PluginInstallationException('Failed to deactivate plugin');
+        }
+
+        return true;
     }
 
     /**

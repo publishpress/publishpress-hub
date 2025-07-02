@@ -36,7 +36,7 @@ interface PluginInterface
 
     public function isInstalled(): bool;
 
-    public function isActive(): bool;
+    public function isActive(bool $forceCheck = false): bool;
 
     public function isLicensed(): bool;
 

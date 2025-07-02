@@ -8,6 +8,8 @@ export const DEFAULT_STATE = {
     currentFilter: 'all',
     pluginInstallationInProgress: {},
     pluginUninstallationInProgress: {},
+    pluginActivationInProgress: {},
+    pluginDeactivationInProgress: {},
     pluginErrors: {},
     isLicenseInputModalOpen: false,
     isInstallationTypeModalOpen: false,
@@ -164,6 +166,66 @@ const uninstallPluginError = (state, data) => {
     }
 }
 
+const activatePluginStart = (state, data) => {
+    return {
+        ...state,
+        pluginActivationInProgress: {
+            ...state.pluginActivationInProgress,
+            [data.pluginSlugFree]: true,
+        },
+    }
+}
+
+const activatePluginSuccess = (state, data) => {
+    return {
+        ...state,
+        pluginActivationInProgress: {
+            ...state.pluginActivationInProgress,
+            [data.pluginSlugFree]: false,
+        },
+    }
+}
+
+const activatePluginError = (state, data) => {
+    return {
+        ...state,
+        pluginActivationInProgress: {
+            ...state.pluginActivationInProgress,
+            [data.pluginSlugFree]: false,
+        },
+    }
+}
+
+const deactivatePluginStart = (state, data) => {
+    return {
+        ...state,
+        pluginDeactivationInProgress: {
+            ...state.pluginDeactivationInProgress,
+            [data.pluginSlugFree]: true,
+        },
+    }
+}
+
+const deactivatePluginSuccess = (state, data) => {
+    return {
+        ...state,
+        pluginDeactivationInProgress: {
+            ...state.pluginDeactivationInProgress,
+            [data.pluginSlugFree]: false,
+        },
+    }
+}
+
+const deactivatePluginError = (state, data) => {
+    return {
+        ...state,
+        pluginDeactivationInProgress: {
+            ...state.pluginDeactivationInProgress,
+            [data.pluginSlugFree]: false,
+        },
+    }
+}
+
 export const reducer = (state = DEFAULT_STATE, action) => {
     if (! action) {
         return state;
@@ -202,6 +264,18 @@ export const reducer = (state = DEFAULT_STATE, action) => {
             return uninstallPluginSuccess(state, action.data);
         case 'UNINSTALL_PLUGIN_ERROR':
             return uninstallPluginError(state, action.data);
+        case 'ACTIVATE_PLUGIN_START':
+            return activatePluginStart(state, action.data);
+        case 'ACTIVATE_PLUGIN_SUCCESS':
+            return activatePluginSuccess(state, action.data);
+        case 'ACTIVATE_PLUGIN_ERROR':
+            return activatePluginError(state, action.data);
+        case 'DEACTIVATE_PLUGIN_START':
+            return deactivatePluginStart(state, action.data);
+        case 'DEACTIVATE_PLUGIN_SUCCESS':
+            return deactivatePluginSuccess(state, action.data);
+        case 'DEACTIVATE_PLUGIN_ERROR':
+            return deactivatePluginError(state, action.data);
         default:
             return state;
     }

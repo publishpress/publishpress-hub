@@ -249,3 +249,81 @@ export function* uninstallPlugin(pluginSlugFree) {
         };
     }
 }
+
+export function* activatePlugin(pluginSlugFree) {
+    try {
+        yield {type: 'ACTIVATE_PLUGIN_START', data: {pluginSlugFree}};
+
+        yield apiReady();
+
+        const data = yield apiFetch({
+            path: `${API_NAMESPACE}/plugins/${pluginSlugFree}/activate`,
+            method: 'POST',
+        });
+
+        if (data.success) {
+            yield fetchPlugins();
+
+            yield {type: 'ACTIVATE_PLUGIN_SUCCESS', data: {pluginSlugFree}};
+
+            yield createSnackbarNotice(__('Plugin activated successfully', 'publishpress-hub'), 'success');
+
+            return {
+                success: true,
+                pluginSlugFree,
+                apiResponse: data,
+            };
+        } else {
+            throw new Error(data?.error || 'Plugin activation failed');
+        }
+    } catch (error) {
+        yield {type: 'ACTIVATE_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
+
+        yield createNotice(__('Plugin activation failed', 'publishpress-hub'), 'error');
+
+        return {
+            success: false,
+            pluginSlugFree,
+            error,
+        };
+    }
+}
+
+export function* deactivatePlugin(pluginSlugFree) {
+    try {
+        yield {type: 'DEACTIVATE_PLUGIN_START', data: {pluginSlugFree}};
+
+        yield apiReady();
+
+        const data = yield apiFetch({
+            path: `${API_NAMESPACE}/plugins/${pluginSlugFree}/deactivate`,
+            method: 'POST',
+        });
+
+        if (data.success) {
+            yield fetchPlugins();
+
+            yield {type: 'DEACTIVATE_PLUGIN_SUCCESS', data: {pluginSlugFree}};
+
+            yield createSnackbarNotice(__('Plugin deactivated successfully', 'publishpress-hub'), 'success');
+
+            return {
+                success: true,
+                pluginSlugFree,
+                apiResponse: data,
+            };
+        } else {
+            throw new Error(data?.error || 'Plugin deactivation failed');
+        }
+    } catch (error) {
+        yield {type: 'DEACTIVATE_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
+
+        yield createNotice(__('Plugin deactivation failed', 'publishpress-hub'), 'error');
+
+        return {
+            success: false,
+            pluginSlugFree,
+            error,
+        };
+    }
+}

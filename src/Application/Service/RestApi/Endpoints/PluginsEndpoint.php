@@ -115,7 +115,9 @@ class PluginsEndpoint implements EndpointInterface
             ],
         ]);
 
-        register_rest_route($namespace, $this->route . '/(?P<plugin_slug>[a-zA-Z0-9_-]+)/install/free', [
+        $routeWithPluginSlug = $this->route . '/(?P<plugin_slug>[a-zA-Z0-9_-]+)';
+
+        register_rest_route($namespace, $routeWithPluginSlug . '/install/free', [
             [
                 'methods' => 'POST',
                 'callback' => [$this, 'installFreePlugin'],
@@ -131,7 +133,7 @@ class PluginsEndpoint implements EndpointInterface
             ],
         ]);
 
-        register_rest_route($namespace, $this->route . '/(?P<plugin_slug>[a-zA-Z0-9_-]+)/install/pro', [
+        register_rest_route($namespace, $routeWithPluginSlug . '/install/pro', [
             [
                 'methods' => 'POST',
                 'callback' => [$this, 'installProPlugin'],
@@ -153,10 +155,26 @@ class PluginsEndpoint implements EndpointInterface
             ],
         ]);
 
-        register_rest_route($namespace, $this->route . '/(?P<plugin_slug>[a-zA-Z0-9_-]+)/uninstall', [
+        register_rest_route($namespace, $routeWithPluginSlug . '/uninstall', [
             [
                 'methods' => 'POST',
                 'callback' => [$this, 'uninstallPlugin'],
+                'permission_callback' => [$this, 'checkInstallPermissions'],
+            ],
+        ]);
+
+        register_rest_route($namespace, $routeWithPluginSlug . '/activate', [
+            [
+                'methods' => 'POST',
+                'callback' => [$this, 'activatePlugin'],
+                'permission_callback' => [$this, 'checkInstallPermissions'],
+            ],
+        ]);
+
+        register_rest_route($namespace, $routeWithPluginSlug . '/deactivate', [
+            [
+                'methods' => 'POST',
+                'callback' => [$this, 'deactivatePlugin'],
                 'permission_callback' => [$this, 'checkInstallPermissions'],
             ],
         ]);
@@ -291,6 +309,66 @@ class PluginsEndpoint implements EndpointInterface
 
             if (!$uninstalled) {
                 throw new PluginInstallationException('Failed to uninstall plugin');
+            }
+
+            return new WP_REST_Response([
+                'success' => true,
+                'data' => [
+                    'plugin_slug' => $pluginSlug,
+                ],
+            ], 200);
+        } catch (Throwable $e) {
+            return $this->exceptionResponseMapper->mapToWpError($e);
+        }
+    }
+
+    /**
+     * Activate a plugin.
+     *
+     * @since 1.0.0
+     * @param WP_REST_Request $request The REST request
+     * @return WP_REST_Response|WP_Error
+     */
+    public function activatePlugin(WP_REST_Request $request)
+    {
+        try {
+            $pluginSlug = $request->get_param('plugin_slug');
+            $plugin = $this->getPluginBySlug($pluginSlug);
+
+            $activated = $this->pluginInstallationService->activatePlugin($plugin);
+
+            if (!$activated) {
+                throw new PluginInstallationException('Failed to activate plugin');
+            }
+
+            return new WP_REST_Response([
+                'success' => true,
+                'data' => [
+                    'plugin_slug' => $pluginSlug,
+                ],
+            ], 200);
+        } catch (Throwable $e) {
+            return $this->exceptionResponseMapper->mapToWpError($e);
+        }
+    }
+
+    /**
+     * Deactivate a plugin.
+     *
+     * @since 1.0.0
+     * @param WP_REST_Request $request The REST request
+     * @return WP_REST_Response|WP_Error
+     */
+    public function deactivatePlugin(WP_REST_Request $request)
+    {
+        try {
+            $pluginSlug = $request->get_param('plugin_slug');
+            $plugin = $this->getPluginBySlug($pluginSlug);
+
+            $deactivated = $this->pluginInstallationService->deactivatePlugin($plugin);
+
+            if (!$deactivated) {
+                throw new PluginInstallationException('Failed to deactivate plugin');
             }
 
             return new WP_REST_Response([

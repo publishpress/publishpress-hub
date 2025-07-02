@@ -458,11 +458,12 @@ class Plugin implements PluginInterface
      * Check if the plugin is active.
      *
      * @since 1.0.0
+     * @param bool $forceCheck
      * @return bool
      */
-    public function isActive(): bool
+    public function isActive(bool $forceCheck = false): bool
     {
-        if ($this->isActive !== null) {
+        if ($this->isActive !== null && !$forceCheck) {
             return $this->isActive;
         }
 
@@ -471,11 +472,7 @@ class Plugin implements PluginInterface
             return false;
         }
 
-        if ($this->isPro()) {
-            $this->isActive = is_plugin_active("{$this->slugPro}/{$this->pluginFileNamePro}");
-        } else {
-            $this->isActive = is_plugin_active("{$this->slugFree}/{$this->pluginFileNameFree}");
-        }
+        $this->isActive = is_plugin_active($this->getRelativePath());
 
         return $this->isActive;
     }
@@ -651,5 +648,12 @@ class Plugin implements PluginInterface
         if (!preg_match('/^[a-zA-Z0-9-\.]+\.php$/', $pluginFileName)) {
             throw new InvalidArgumentException('Invalid plugin file name');
         }
+    }
+
+    private function getRelativePath(): string
+    {
+        return $this->isPro() ?
+            "{$this->slugPro}/{$this->pluginFileNamePro}" :
+            "{$this->slugFree}/{$this->pluginFileNameFree}";
     }
 }

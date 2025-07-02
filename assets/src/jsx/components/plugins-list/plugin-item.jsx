@@ -14,8 +14,12 @@ const PluginItemComponent = ({
     pluginIconBaseUrl,
     isInstalling,
     isUninstalling,
+    isDeactivating,
+    isActivating,
     inProgress,
     onInstall,
+    onActivate,
+    onDeactivate,
     onUpgradeToPro,
     onManageLicense,
     onActivateLicense,
@@ -61,6 +65,10 @@ const PluginItemComponent = ({
                     <Button
                         variant='link'
                         text={__('Deactivate', 'publishpress-hub')}
+                        isLoading={isDeactivating}
+                        onClick={() => {
+                            onDeactivate(plugin);
+                        }}
                     />
                 );
             }
@@ -70,6 +78,10 @@ const PluginItemComponent = ({
                     <Button
                         variant='link'
                         text={__('Activate', 'publishpress-hub')}
+                        isLoading={isActivating}
+                        onClick={() => {
+                            onActivate(plugin);
+                        }}
                     />
                 );
             }
@@ -103,7 +115,7 @@ const PluginItemComponent = ({
         );
 
         return buttons;
-    }, [plugin, isUninstalling]);
+    }, [plugin, isUninstalling, isActivating, isDeactivating]);
 
     return (
         <div

@@ -19,6 +19,8 @@ const PluginsListComponent = ({
     const {
         pluginInstallationInProgress,
         pluginUninstallationInProgress,
+        pluginDeactivationInProgress,
+        pluginActivationInProgress,
         pluginError,
         isLicenseInputModalOpen,
         isInstallationTypeModalOpen,
@@ -27,6 +29,8 @@ const PluginsListComponent = ({
         return {
             pluginInstallationInProgress: storeSelect.getPluginInstallationInProgress(),
             pluginUninstallationInProgress: storeSelect.getPluginUninstallationInProgress(),
+            pluginDeactivationInProgress: storeSelect.getPluginDeactivationInProgress(),
+            pluginActivationInProgress: storeSelect.getPluginActivationInProgress(),
             pluginError: storeSelect.getPluginError(),
             isLicenseInputModalOpen: storeSelect.getIsLicenseInputModalOpen(),
             isInstallationTypeModalOpen: storeSelect.getIsInstallationTypeModalOpen(),
@@ -41,6 +45,8 @@ const PluginsListComponent = ({
         setLicenseInputModalOpen,
         setInstallationTypeModalOpen,
         uninstallPlugin,
+        activatePlugin,
+        deactivatePlugin,
     } = useDispatch(store);
 
     // Memoized handlers
@@ -48,6 +54,14 @@ const PluginsListComponent = ({
         setInstallationTypeModalOpen(true);
         setCurrentPluginForModal(plugin);
     }, [setInstallationTypeModalOpen]);
+
+    const handleActivate = useCallback((plugin) => {
+        activatePlugin(plugin.slugFree);
+    }, [activatePlugin]);
+
+    const handleDeactivate = useCallback((plugin) => {
+        deactivatePlugin(plugin.slugFree);
+    }, [deactivatePlugin]);
 
     const handleManageLicense = useCallback((plugin) => {
         setCurrentPluginForModal(plugin);
@@ -133,8 +147,12 @@ const PluginsListComponent = ({
                         pluginIconBaseUrl={pluginIconBaseUrl}
                         isInstalling={isInstalling}
                         isUninstalling={isUninstalling}
+                        isDeactivating={pluginDeactivationInProgress[plugin.slugFree] || false}
+                        isActivating={pluginActivationInProgress[plugin.slugFree] || false}
                         inProgress={isInstalling}
                         onInstall={handleInstall}
+                        onActivate={handleActivate}
+                        onDeactivate={handleDeactivate}
                         onUpgradeToPro={handleUpgradeToPro}
                         onManageLicense={handleManageLicense}
                         onActivateLicense={handleActivateLicense}

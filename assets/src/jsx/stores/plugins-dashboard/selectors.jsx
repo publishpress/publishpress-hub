@@ -104,6 +104,14 @@ export const getIsInstallationTypeModalOpen = (state) => {
     return state.isInstallationTypeModalOpen;
 }
 
+export const getPluginActivationInProgress = (state) => {
+    return state.pluginActivationInProgress;
+}
+
+export const getPluginDeactivationInProgress = (state) => {
+    return state.pluginDeactivationInProgress;
+}
+
 // Memoization cache for getFilterCounts
 let lastPluginsForFilterCounts = null;
 let lastFilterCountsForFilterCounts = null;
