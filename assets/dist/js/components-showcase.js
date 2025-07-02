@@ -141,6 +141,32 @@ var AdminPageLayout = function AdminPageLayout(_ref) {
 
 /***/ }),
 
+/***/ "./assets/src/jsx/components/badge/badge.jsx":
+/*!***************************************************!*\
+  !*** ./assets/src/jsx/components/badge/badge.jsx ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Badge: () => (/* binding */ Badge),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+var BadgeComponent = function BadgeComponent(_ref) {
+  var className = _ref.className,
+    children = _ref.children;
+  return /*#__PURE__*/React.createElement("span", {
+    className: "pp-hub-badge ".concat(className)
+  }, children);
+};
+var Badge = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(BadgeComponent);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Badge);
+
+/***/ }),
+
 /***/ "./assets/src/jsx/components/buttons/button.jsx":
 /*!******************************************************!*\
   !*** ./assets/src/jsx/components/buttons/button.jsx ***!
@@ -294,6 +320,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _admin_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../admin-page */ "./assets/src/jsx/components/admin-page/index.jsx");
 /* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../buttons/button */ "./assets/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _badge_badge__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../badge/badge */ "./assets/src/jsx/components/badge/badge.jsx");
+
 
 
 
@@ -305,7 +333,14 @@ var ComponentsShowcaseComponent = function ComponentsShowcaseComponent() {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Components Showcase', 'publishpress-hub'),
     logoUrl: logoUrl
   }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-components-showcase"
+    className: "pp-hub-components-showcase",
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '20px',
+      backgroundColor: '#ffffff',
+      padding: '20px'
+    }
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-components-showcase-header"
   }, /*#__PURE__*/React.createElement("h1", null, "H1 component"), /*#__PURE__*/React.createElement("h2", null, "H2 component"), /*#__PURE__*/React.createElement("h3", null, "H3 component"), /*#__PURE__*/React.createElement("h4", null, "H4 component"), /*#__PURE__*/React.createElement("h5", null, "H5 component"), /*#__PURE__*/React.createElement("h6", null, "H6 component")), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("div", {
@@ -348,7 +383,26 @@ var ComponentsShowcaseComponent = function ComponentsShowcaseComponent() {
   }, "Highlight"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
     disabled: true,
     variant: "link"
-  }, "Link"))));
+  }, "Link")), /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-components-showcase-badges",
+    style: {
+      display: 'flex',
+      gap: '10px',
+      marginTop: '10px'
+    }
+  }, /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_5__.Badge, null, "Default"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_5__.Badge, {
+    className: "installing"
+  }, "Installing"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_5__.Badge, {
+    className: "not-installed"
+  }, "Not Installed"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_5__.Badge, {
+    className: "free"
+  }, "Free"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_5__.Badge, {
+    className: "licensed"
+  }, "Licensed"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_5__.Badge, {
+    className: "unlicensed"
+  }, "Unlicensed"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_5__.Badge, {
+    className: "uninstalling"
+  }, "Uninstalling"))));
 };
 var ComponentsShowcase = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(ComponentsShowcaseComponent);
 

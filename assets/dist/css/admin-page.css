@@ -131,17 +131,6 @@
     color: var(--pp-hub-text-primary);
 }
 
-/* Reset button styles to avoid WordPress conflicts */
-.pp-hub-root button {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font: inherit;
-    color: inherit;
-    cursor: pointer;
-}
-
 /* Reset link styles */
 .pp-hub-root a {
     color: var(--pp-hub-text-link);
@@ -403,13 +392,18 @@
     --pp-hub-button-text-tertiary: var(--pp-hub-text-tertiary);
     --pp-hub-button-text-inverse: var(--pp-hub-text-inverse);
     --pp-hub-button-text-disabled: var(--pp-hub-text-disabled);
-    --pp-hub-button-text-link: none;
 
     --pp-hub-button-border-primary: var(--pp-hub-border-primary);
     --pp-hub-button-border-secondary: var(--pp-hub-primary-color);
     --pp-hub-button-border-tertiary: var(--pp-hub-border-tertiary);
     --pp-hub-button-border-highlight: var(--pp-hub-border-tertiary);
     --pp-hub-button-border-disabled: var(--pp-hub-border-secondary);
+
+    --pp-hub-button-text-primary-hover: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-secondary-hover: var(--pp-hub-primary-color);
+    --pp-hub-button-text-tertiary-hover: var(--pp-hub-text-tertiary);
+    --pp-hub-button-text-highlight-hover: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-disabled-hover: var(--pp-hub-text-disabled);
 
     /* Status Colors */
     --pp-hub-status-color-active: #46b450;
@@ -425,22 +419,25 @@
     --pp-hub-badge-bg-installed: #46b450;
     --pp-hub-badge-bg-installed-hover: #3f8f44;
     --pp-hub-badge-bg-not-installed: #f3f4f6;
-    --pp-hub-badge-bg-not-installed-hover: #e5e7eb;
+    --pp-hub-badge-bg-not-installed-hover: #e8e8e8;
     --pp-hub-badge-bg-free: #dbeafe;
     --pp-hub-badge-bg-free-hover: #b9d6f2;
     --pp-hub-badge-bg-licensed: #dcfce7;
     --pp-hub-badge-bg-licensed-hover: #c7f0c1;
     --pp-hub-badge-bg-unlicensed: #fef3c7;
     --pp-hub-badge-bg-unlicensed-hover: #ebe8b4;
-    --pp-hub-badge-bg-installing: #f8df6c;
-    --pp-hub-badge-bg-installing-hover: #e0c861;
+    --pp-hub-badge-bg-installing: #f3f4f6;
+    --pp-hub-badge-bg-installing-hover: #e8e8e8;
+    --pp-hub-badge-bg-uninstalling: #daa7a7;
+    --pp-hub-badge-bg-uninstalling-hover: #c79696;
     --pp-hub-badge-text: #333;
     --pp-hub-badge-text-installed: #ffffff;
-    --pp-hub-badge-text-not-installed: #6b7280;
+    --pp-hub-badge-text-not-installed: #a7a7a7;
     --pp-hub-badge-text-free: #1e40af;
     --pp-hub-badge-text-licensed: #166534;
     --pp-hub-badge-text-unlicensed: #92400e;
-    --pp-hub-badge-text-installing: #797613;
+    --pp-hub-badge-text-installing: #a7a7a7;
+    --pp-hub-badge-text-uninstalling: #6f5454;
 }
 
 /*!**********************************************************************************!*\
@@ -760,153 +757,179 @@
 /*!************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./assets/src/css/components/buttons/button.css ***!
   \************************************************************************************************/
-.pp-hub-root button {
+.pp-hub-button {
     all: unset;
     cursor: pointer;
     border-radius: var(--pp-hub-radius-md);
-    padding: var(--pp-hub-spacing-sm) var(--pp-hub-spacing-md);
+    padding: var(--pp-hub-spacing-sm) var(--pp-hub-spacing-md) !important;
     text-align: center;
     white-space: nowrap;
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(--pp-hub-button-border-primary);
-    transition: all 0.2s;
+    border: 1px solid var(--pp-hub-button-border-primary);
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+    box-shadow: none;
+    font-size: var(--pp-hub-font-size-md);
+    line-height: 2em;
 }
 
-.pp-hub-root button:disabled {
+.components-button.is-primary,
+.components-button.is-secondary,
+.components-button.is-tertiary,
+.components-button.is-link {
+    box-shadow: none;
+}
+
+.components-button.is-primary:hover:not(:disabled),
+.components-button.is-secondary:hover:not(:disabled),
+.components-button.is-tertiary:hover:not(:disabled),
+.components-button.is-link:hover:not(:disabled) {
+    background: unset;
+    color: unset;
+    border-color: unset;
+}
+
+.pp-hub-button:disabled {
     cursor: not-allowed;
 }
 
-.pp-hub-root button,
-.pp-hub-root button.is-secondary {
+.pp-hub-button,
+.components-button.is-secondary,
+.pp-hub-button.is-secondary {
     background-color: var(--pp-hub-button-bg-secondary);
     color: var(--pp-hub-button-text-secondary);
     border-color: var(--pp-hub-button-border-secondary);
     font-weight: var(--pp-hub-font-weight-medium);
 }
 
-.pp-hub-root button:hover,
-.pp-hub-root button.is-secondary:hover {
+.pp-hub-button:hover,
+.components-button.is-secondary:hover:not(:disabled),
+.pp-hub-button.is-secondary:hover {
     background-color: var(--pp-hub-button-bg-secondary-hover);
+    color: var(--pp-hub-button-text-secondary-hover);
 }
 
-.pp-hub-root button:active,
-.pp-hub-root button.is-secondary:active {
+.pp-hub-button:active,
+.pp-hub-button.is-secondary:active {
     background-color: var(--pp-hub-button-bg-secondary-active);
 }
 
-.pp-hub-root button:focus,
-.pp-hub-root button.is-secondary:focus {
+.pp-hub-button:focus,
+.pp-hub-button.is-secondary:focus {
     background-color: var(--pp-hub-button-bg-secondary-hover);
     border-color: var(--pp-hub-button-border-secondary);
 }
 
-.pp-hub-root button:disabled,
-.pp-hub-root button.is-secondary:disabled {
+.pp-hub-button:disabled,
+.pp-hub-button.is-secondary:disabled {
     background-color: var(--pp-hub-button-bg-secondary-disabled);
     color: var(--pp-hub-button-text-disabled);
 }
 
-.pp-hub-root button.is-primary {
+.components-button.is-primary,
+.pp-hub-button.is-primary {
     background-color: var(--pp-hub-button-bg-primary);
     color: var(--pp-hub-button-text-primary);
     border-color: var(--pp-hub-button-border-primary);
 }
 
-.pp-hub-root button.is-primary:hover {
+.components-button.is-primary:hover:not(:disabled),
+.pp-hub-button.is-primary:hover {
     background-color: var(--pp-hub-button-bg-primary-hover);
-    border-color: var(--pp-hub-button-bg-primary-hover);
+    border-color: var(--pp-hub-button-border-primary);
+    color: var(--pp-hub-button-text-primary-hover);
 }
 
-.pp-hub-root button.is-primary:active {
+.pp-hub-button.is-primary:active {
     background-color: var(--pp-hub-button-bg-primary-active);
-    border-color: var(--pp-hub-button-bg-primary-active);
+    border-color: var(--pp-hub-button-border-primary);
 }
 
-.pp-hub-root button.is-primary:focus {
+.pp-hub-button.is-primary:focus {
     background-color: var(--pp-hub-button-bg-primary-hover);
-    border-color: var(--pp-hub-button-bg-primary-hover);
+    border-color: var(--pp-hub-button-border-primary);
 }
 
-.pp-hub-root button.is-primary:disabled {
+.pp-hub-button.is-primary:disabled {
     background-color: var(--pp-hub-button-bg-primary-disabled);
-    border-color: var(--pp-hub-button-bg-primary-disabled);
+    border-color: var(--pp-hub-button-border-primary);
     color: var(--pp-hub-button-text-disabled);
 }
 
-.pp-hub-root button.is-highlight {
+.pp-hub-button.is-highlight {
     background-color: var(--pp-hub-button-bg-highlight);
     color: var(--pp-hub-button-text-primary);
-    border-color: var(--pp-hub-button-bg-highlight);
+    border-color: var(--pp-hub-button-border-highlight);
 }
 
-.pp-hub-root button.is-highlight:hover {
+.pp-hub-button.is-highlight:hover {
     background-color: var(--pp-hub-button-bg-highlight-hover);
-    border-color: var(--pp-hub-button-bg-highlight-hover);
+    border-color: var(--pp-hub-button-border-highlight);
+    color: var(--pp-hub-button-text-highlight-hover);
 }
 
-.pp-hub-root button.is-highlight:active {
+.pp-hub-button.is-highlight:active {
     background-color: var(--pp-hub-button-bg-highlight-darker);
-    border-color: var(--pp-hub-button-bg-highlight-darker);
+    border-color: var(--pp-hub-button-border-highlight);
 }
 
-.pp-hub-root button.is-highlight:focus {
+.pp-hub-button.is-highlight:focus {
     background-color: var(--pp-hub-button-bg-highlight-hover);
-    border-color: var(--pp-hub-button-bg-highlight-hover);
+    border-color: var(--pp-hub-button-border-highlight);
 }
 
-.pp-hub-root button.is-highlight:disabled {
+.pp-hub-button.is-highlight:disabled {
     background-color: var(--pp-hub-button-bg-highlight-disabled);
-    border-color: var(--pp-hub-button-bg-highlight-disabled);
+    border-color: var(--pp-hub-button-border-highlight);
     color: var(--pp-hub-button-text-disabled);
 }
 
-.pp-hub-root button.is-tertiary {
+.pp-hub-button.is-tertiary {
     background-color: var(--pp-hub-button-bg-tertiary);
     color: var(--pp-hub-button-text-tertiary);
-    border-color: none;
+    border-color: var(--pp-hub-button-border-tertiary);
 }
 
-.pp-hub-root button.is-tertiary:hover {
+.pp-hub-button.is-tertiary:hover {
     background-color: var(--pp-hub-button-bg-tertiary-hover);
-    border-color: var(--pp-hub-button-bg-tertiary-hover);
+    border-color: var(--pp-hub-button-border-tertiary);
+    color: var(--pp-hub-button-text-tertiary-hover);
 }
 
-.pp-hub-root button.is-tertiary:active {
+.pp-hub-button.is-tertiary:active {
     background-color: var(--pp-hub-button-bg-tertiary-active);
-    border-color: var(--pp-hub-button-bg-tertiary-active);
+    border-color: var(--pp-hub-button-border-tertiary);
 }
 
-.pp-hub-root button.is-tertiary:focus {
+.pp-hub-button.is-tertiary:focus {
     background-color: var(--pp-hub-button-bg-tertiary-hover);
-    border-color: none;
+    border-color: var(--pp-hub-button-border-tertiary);
 }
 
-.pp-hub-root button.is-tertiary:disabled {
+.pp-hub-button.is-tertiary:disabled {
     color: var(--pp-hub-button-text-disabled);
 }
 
-.pp-hub-root button.is-link {
+.pp-hub-button.is-link {
     background-color: unset;
     color: var(--pp-hub-text-primary);
     border: none;
+    padding: 0 !important;
 }
 
-.pp-hub-root button.is-link:hover {
+.pp-hub-button.is-link:hover {
     background-color: unset;
     color: var(--pp-hub-text-link-hover);
 }
 
-.pp-hub-root button.is-link:active {
+.pp-hub-button.is-link:active {
     background-color: unset;
 }
 
-.pp-hub-root button.is-link:focus {
+.pp-hub-button.is-link:focus {
     background-color: unset;
     color: var(--pp-hub-text-link-hover);
 }
 
-.pp-hub-root button.is-link:disabled {
+.pp-hub-button.is-link:disabled {
     color: var(--pp-hub-button-text-disabled);
 }
 
@@ -1063,7 +1086,7 @@
 /*!****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./assets/src/css/components/plugins-list/modal.css ***!
   \****************************************************************************************************/
-.pp-hub-modal {
+.pp-hub-modal .components-modal__content > div:not(.components-modal__header) {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -1092,7 +1115,7 @@
     display: flex;
     flex-direction: row;
     gap: var(--pp-hub-spacing-sm);
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin-bottom: var(--pp-hub-spacing-md);
 }
@@ -1111,6 +1134,11 @@
     gap: var(--pp-hub-spacing-sm);
     justify-content: center;
     align-items: center;
+}
+
+.pp-hub-modal,
+.pp-hub-modal p {
+    font-size: var(--pp-hub-font-size-md);
 }
 
 /*!***********************************************************************************************************!*\
@@ -1196,7 +1224,7 @@
     justify-content: flex-end;
 }
 
-.pp-hub-plugins-list-item-actions button {
+.pp-hub-plugins-list-item-actions .pp-hub-button {
     width: 200px;
 }
 
@@ -1231,16 +1259,12 @@
     width: 100%;
 }
 
-.pp-hub-plugins-list-item-inline-actions button {
-    margin: 0 var(--pp-hub-spacing-xs);
+.pp-hub-plugins-list-item-inline-actions .pp-hub-button.is-link {
+    padding: 0;
 }
 
-.pp-hub-plugins-list-item-inline-actions button:first-child {
-    margin-left: 0;
-}
-
-.pp-hub-plugins-list-item-inline-actions button:last-child {
-    margin-right: 0;
+.pp-hub-plugins-list-item-inline-actions .pp-hub-button.is-link.is-danger {
+    color: var(--pp-hub-text-error);
 }
 
 .pp-hub-plugins-list-message {
@@ -1462,6 +1486,11 @@ button.publishpress-hub-filter-button:hover {
     color: var(--pp-hub-badge-text-installing);
 }
 
+.pp-hub-badge.uninstalling {
+    background-color: var(--pp-hub-badge-bg-uninstalling);
+    color: var(--pp-hub-badge-text-uninstalling);
+}
+
 .pp-hub-plugins-list-item:hover .pp-hub-badge.installed {
     background-color: var(--pp-hub-badge-bg-installed-hover);
 }
@@ -1486,6 +1515,9 @@ button.publishpress-hub-filter-button:hover {
     background-color: var(--pp-hub-badge-bg-installing-hover);
 }
 
+.pp-hub-plugins-list-item:hover .pp-hub-badge.uninstalling {
+    background-color: var(--pp-hub-badge-bg-uninstalling-hover);
+}
 
 /*!***************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./assets/src/css/components/messages/messages.css ***!
