@@ -88,13 +88,18 @@
     --pp-hub-button-text-tertiary: var(--pp-hub-text-tertiary);
     --pp-hub-button-text-inverse: var(--pp-hub-text-inverse);
     --pp-hub-button-text-disabled: var(--pp-hub-text-disabled);
-    --pp-hub-button-text-link: none;
 
     --pp-hub-button-border-primary: var(--pp-hub-border-primary);
     --pp-hub-button-border-secondary: var(--pp-hub-primary-color);
     --pp-hub-button-border-tertiary: var(--pp-hub-border-tertiary);
     --pp-hub-button-border-highlight: var(--pp-hub-border-tertiary);
     --pp-hub-button-border-disabled: var(--pp-hub-border-secondary);
+
+    --pp-hub-button-text-primary-hover: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-secondary-hover: var(--pp-hub-primary-color);
+    --pp-hub-button-text-tertiary-hover: var(--pp-hub-text-tertiary);
+    --pp-hub-button-text-highlight-hover: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-disabled-hover: var(--pp-hub-text-disabled);
 
     /* Status Colors */
     --pp-hub-status-color-active: #46b450;
