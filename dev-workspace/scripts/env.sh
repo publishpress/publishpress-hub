@@ -44,8 +44,8 @@ remove_port_from_domain() {
 }
 
 if [[ ${PROFILE} == "test" ]]; then
-  WP_DOMAIN=$(remove_port_from_domain $WP_TESTS_DOMAIN)
-  WP_DB_URL=$WP_TESTS_DB_URL
+  WP_DOMAIN=$(remove_port_from_domain $WP_TEST_DOMAIN)
+  WP_DB_URL=$WP_TEST_DB_URL
 fi
 
 if [[ ${PROFILE} == "dev" ]]; then

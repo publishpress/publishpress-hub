@@ -18,7 +18,7 @@ final class PluginsCest
 
     public function _before(ApiTester $I): void
     {
-        $this->authHash = getenv('WP_TESTS_AUTH_HASH');
+        $this->authHash = getenv('WP_TEST_AUTH_HASH');
         $I->haveHttpHeader('Authorization', 'Basic ' . $this->authHash);
         $I->haveHttpHeader('Content-Type', 'application/json');
     }
