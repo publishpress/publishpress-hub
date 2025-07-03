@@ -29,12 +29,27 @@ const STATUS_BADGE_CONFIGS = {
         text: __('Uninstalling', 'publishpress-hub'),
         className: 'uninstalling',
     },
+    upgrading: {
+        text: __('Upgrading', 'publishpress-hub'),
+        className: 'upgrading',
+    },
+    deactivating: {
+        text: __('Deactivating', 'publishpress-hub'),
+        className: 'deactivating',
+    },
+    activating: {
+        text: __('Activating', 'publishpress-hub'),
+        className: 'activating',
+    },
 };
 
 const StatusFlagComponent = ({
     plugin,
     isInstalling,
     isUninstalling,
+    isUpgrading,
+    isDeactivating,
+    isActivating,
 }) => {
     const props = useMemo(() => {
         if (!plugin.isInstalled && isInstalling) {
@@ -43,6 +58,18 @@ const StatusFlagComponent = ({
 
         if (isUninstalling) {
             return STATUS_BADGE_CONFIGS.uninstalling;
+        }
+
+        if (isUpgrading) {
+            return STATUS_BADGE_CONFIGS.upgrading;
+        }
+
+        if (isDeactivating) {
+            return STATUS_BADGE_CONFIGS.deactivating;
+        }
+
+        if (isActivating) {
+            return STATUS_BADGE_CONFIGS.activating;
         }
 
         if (!plugin.isInstalled) {

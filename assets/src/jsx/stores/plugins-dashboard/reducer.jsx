@@ -10,10 +10,12 @@ export const DEFAULT_STATE = {
     pluginUninstallationInProgress: {},
     pluginActivationInProgress: {},
     pluginDeactivationInProgress: {},
+    pluginUpgradeInProgress: {},
     pluginErrors: {},
     isLicenseInputModalOpen: false,
     isInstallationTypeModalOpen: false,
     isUninstallConfirmationModalOpen: false,
+    isUpgradeModalOpen: false,
 }
 
 const setSelectedFilter = (state, selectedFilter) => {
@@ -99,6 +101,14 @@ const setIsUninstallConfirmationModalOpen = (state, isOpen) => {
     return {
         ...state,
         isUninstallConfirmationModalOpen: isOpen,
+        pluginErrors: {},
+    }
+}
+
+const setIsUpgradeModalOpen = (state, isOpen) => {
+    return {
+        ...state,
+        isUpgradeModalOpen: isOpen,
         pluginErrors: {},
     }
 }
@@ -235,6 +245,48 @@ const deactivatePluginError = (state, data) => {
     }
 }
 
+const upgradePluginToProStart = (state, data) => {
+    return {
+        ...state,
+        pluginUpgradeInProgress: {
+            ...state.pluginUpgradeInProgress,
+            [data.pluginSlugFree]: true,
+        },
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginSlugFree]: null,
+        },
+    }
+}
+
+const upgradePluginToProSuccess = (state, data) => {
+    return {
+        ...state,
+        pluginUpgradeInProgress: {
+            ...state.pluginUpgradeInProgress,
+            [data.pluginSlugFree]: false,
+        },
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginSlugFree]: null,
+        },
+    }
+}
+
+const upgradePluginToProError = (state, data) => {
+    return {
+        ...state,
+        pluginUpgradeInProgress: {
+            ...state.pluginUpgradeInProgress,
+            [data.pluginSlugFree]: false,
+        },
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginSlugFree]: data.error,
+        },
+    }
+}
+
 export const reducer = (state = DEFAULT_STATE, action) => {
     if (! action) {
         return state;
@@ -263,6 +315,8 @@ export const reducer = (state = DEFAULT_STATE, action) => {
             return setInstallationTypeModalOpen(state, action.isOpen);
         case 'SET_IS_UNINSTALL_CONFIRMATION_MODAL_OPEN':
             return setIsUninstallConfirmationModalOpen(state, action.isOpen);
+        case 'SET_IS_UPGRADE_MODAL_OPEN':
+            return setIsUpgradeModalOpen(state, action.isOpen);
         case 'INSTALL_PLUGIN_START':
             return installPluginStart(state, action.data);
         case 'INSTALL_PLUGIN_SUCCESS':
@@ -287,6 +341,12 @@ export const reducer = (state = DEFAULT_STATE, action) => {
             return deactivatePluginSuccess(state, action.data);
         case 'DEACTIVATE_PLUGIN_ERROR':
             return deactivatePluginError(state, action.data);
+        case 'UPGRADE_PLUGIN_TO_PRO_START':
+            return upgradePluginToProStart(state, action.data);
+        case 'UPGRADE_PLUGIN_TO_PRO_SUCCESS':
+            return upgradePluginToProSuccess(state, action.data);
+        case 'UPGRADE_PLUGIN_TO_PRO_ERROR':
+            return upgradePluginToProError(state, action.data);
         default:
             return state;
     }

@@ -99,6 +99,13 @@ export function* setIsUninstallConfirmationModalOpen(isOpen) {
     };
 }
 
+export function* setIsUpgradeModalOpen(isOpen) {
+    yield {
+        type: 'SET_IS_UPGRADE_MODAL_OPEN',
+        isOpen,
+    };
+}
+
 export function* fetchPlugins() {
     try {
         yield {type: 'FETCH_PLUGINS_START'};
@@ -330,6 +337,53 @@ export function* deactivatePlugin(pluginSlugFree) {
         return {
             success: false,
             pluginSlugFree,
+            error,
+        };
+    }
+}
+
+export function* upgradePluginToPro(pluginSlugFree, licenseKey) {
+    try {
+        yield {type: 'UPGRADE_PLUGIN_TO_PRO_START', data: {pluginSlugFree, licenseKey}};
+
+        yield apiReady();
+
+        licenseKey = licenseKey.trim();
+
+        const data = yield apiFetch({
+            path: `${API_NAMESPACE}/plugins/${pluginSlugFree}/upgrade-to-pro`,
+            method: 'POST',
+            data: {
+                license_key: licenseKey,
+            },
+        });
+
+        if (data.success) {
+            yield fetchPlugins();
+
+            yield {type: 'UPGRADE_PLUGIN_TO_PRO_SUCCESS', data: {pluginSlugFree}};
+
+            yield createSnackbarNotice(__('Plugin upgraded to Pro successfully', 'publishpress-hub'), 'success');
+
+            // Return context along with the API response
+            return {
+                success: true,
+                pluginSlugFree,
+                licenseKey,
+                apiResponse: data,
+            };
+        } else {
+            throw new Error(data?.error || 'Plugin upgrade to Pro failed');
+        }
+    } catch (error) {
+        yield {type: 'UPGRADE_PLUGIN_TO_PRO_ERROR', data: {pluginSlugFree, error: error}};
+
+        yield createNotice(__('Plugin upgrade to Pro failed', 'publishpress-hub'), 'error');
+
+        return {
+            success: false,
+            pluginSlugFree,
+            licenseKey,
             error,
         };
     }

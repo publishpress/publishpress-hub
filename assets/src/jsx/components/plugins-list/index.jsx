@@ -21,10 +21,12 @@ const PluginsListComponent = ({
         pluginUninstallationInProgress,
         pluginDeactivationInProgress,
         pluginActivationInProgress,
+        pluginUpgradeInProgress,
         pluginError,
         isLicenseInputModalOpen,
         isInstallationTypeModalOpen,
         isUninstallConfirmationModalOpen,
+        isUpgradeModalOpen,
     } = useSelect((select) => {
         const storeSelect = select(store);
         return {
@@ -32,10 +34,12 @@ const PluginsListComponent = ({
             pluginUninstallationInProgress: storeSelect.getPluginUninstallationInProgress(),
             pluginDeactivationInProgress: storeSelect.getPluginDeactivationInProgress(),
             pluginActivationInProgress: storeSelect.getPluginActivationInProgress(),
+            pluginUpgradeInProgress: storeSelect.getPluginUpgradeInProgress(),
             pluginError: storeSelect.getPluginError(),
             isLicenseInputModalOpen: storeSelect.getIsLicenseInputModalOpen(),
             isInstallationTypeModalOpen: storeSelect.getIsInstallationTypeModalOpen(),
             isUninstallConfirmationModalOpen: storeSelect.getIsUninstallConfirmationModalOpen(),
+            isUpgradeModalOpen: storeSelect.getIsUpgradeModalOpen(),
         };
     }, []);
 
@@ -45,9 +49,11 @@ const PluginsListComponent = ({
         setLicenseInputModalOpen,
         setInstallationTypeModalOpen,
         setIsUninstallConfirmationModalOpen,
+        setIsUpgradeModalOpen,
         uninstallPlugin,
         activatePlugin,
         deactivatePlugin,
+        upgradePluginToPro,
     } = useDispatch(store);
 
     // Memoized handlers
@@ -73,8 +79,14 @@ const PluginsListComponent = ({
     }, []);
 
     const handleUpgradeToPro = useCallback((plugin) => {
+        setIsUpgradeModalOpen(true);
         setCurrentPluginForModal(plugin);
-    }, []);
+    }, [setIsUpgradeModalOpen, setCurrentPluginForModal]);
+
+    const handleUpgradeModalClose = useCallback(() => {
+        setIsUpgradeModalOpen(false);
+        setCurrentPluginForModal(null);
+    }, [setIsUpgradeModalOpen, setCurrentPluginForModal]);
 
     const handleInstallationTypeModalClose = useCallback((type) => {
         setInstallationTypeModalOpen(false);
@@ -106,7 +118,24 @@ const PluginsListComponent = ({
             setLicenseInputModalOpen(false);
             setCurrentPluginForModal(null);
         });
-    }, [currentPluginForModal, installProPlugin, setLicenseInputModalOpen]);
+    }, [currentPluginForModal, installProPlugin, setLicenseInputModalOpen, setCurrentPluginForModal]);
+
+    const handlePluginUpgrade = useCallback((licenseKey) => {
+        if (!currentPluginForModal) return;
+
+        upgradePluginToPro(
+            currentPluginForModal.slugFree,
+            licenseKey,
+        ).then((result) => {
+            if (!result.success || result.error) {
+                console.error('Upgrade failed:', result.error);
+                return;
+            }
+
+            setIsUpgradeModalOpen(false);
+            setCurrentPluginForModal(null);
+        });
+    }, [currentPluginForModal, installProPlugin, setIsUpgradeModalOpen, setCurrentPluginForModal]);
 
     const handleUninstall = useCallback((plugin) => {
         setIsUninstallConfirmationModalOpen(true);
@@ -140,6 +169,9 @@ const PluginsListComponent = ({
             {plugins.map((plugin) => {
                 const isInstalling = pluginInstallationInProgress[plugin.slugFree] || false;
                 const isUninstalling = pluginUninstallationInProgress[plugin.slugFree] || false;
+                const isDeactivating = pluginDeactivationInProgress[plugin.slugFree] || false;
+                const isActivating = pluginActivationInProgress[plugin.slugFree] || false;
+                const isUpgrading = pluginUpgradeInProgress[plugin.slugFree] || false;
 
                 return (
                     <PluginItem
@@ -148,9 +180,9 @@ const PluginsListComponent = ({
                         pluginIconBaseUrl={pluginIconBaseUrl}
                         isInstalling={isInstalling}
                         isUninstalling={isUninstalling}
-                        isDeactivating={pluginDeactivationInProgress[plugin.slugFree] || false}
-                        isActivating={pluginActivationInProgress[plugin.slugFree] || false}
-                        inProgress={isInstalling}
+                        isDeactivating={isDeactivating}
+                        isActivating={isActivating}
+                        isUpgrading={isUpgrading}
                         onInstall={handleInstall}
                         onActivate={handleActivate}
                         onDeactivate={handleDeactivate}
@@ -199,6 +231,15 @@ const PluginsListComponent = ({
                     onCancel={handleUninstallConfirmationCancel}
                     title={__('Uninstall Plugin', 'publishpress-hub')}
                     message={__('Are you sure you want to uninstall this plugin?', 'publishpress-hub')}
+                />
+            )}
+
+            {isUpgradeModalOpen && currentPluginForModal && (
+                <ModalLicenseInput
+                    onClose={handleUpgradeModalClose}
+                    onActivate={handlePluginUpgrade}
+                    error={currentPluginState.error}
+                    buttonInProgress={currentPluginState.inProgress}
                 />
             )}
         </div>

@@ -116,6 +116,14 @@ export const getIsUninstallConfirmationModalOpen = (state) => {
     return state.isUninstallConfirmationModalOpen;
 }
 
+export const getIsUpgradeModalOpen = (state) => {
+    return state.isUpgradeModalOpen;
+}
+
+export const getPluginUpgradeInProgress = (state) => {
+    return state.pluginUpgradeInProgress;
+}
+
 // Memoization cache for getFilterCounts
 let lastPluginsForFilterCounts = null;
 let lastFilterCountsForFilterCounts = null;

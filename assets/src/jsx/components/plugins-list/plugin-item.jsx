@@ -16,7 +16,7 @@ const PluginItemComponent = ({
     isUninstalling,
     isDeactivating,
     isActivating,
-    inProgress,
+    isUpgrading,
     onInstall,
     onActivate,
     onDeactivate,
@@ -115,7 +115,11 @@ const PluginItemComponent = ({
         );
 
         return buttons;
-    }, [plugin, isUninstalling, isActivating, isDeactivating]);
+    }, [plugin, isUninstalling, isActivating, isDeactivating, isUpgrading]);
+
+    const inProgress = useMemo(() => {
+        return isInstalling || isUninstalling || isDeactivating || isActivating || isUpgrading;
+    }, [isInstalling, isUninstalling, isDeactivating, isActivating, isUpgrading]);
 
     return (
         <div
@@ -158,7 +162,7 @@ const PluginItemComponent = ({
 
             </div>
             <div className='pp-hub-plugins-list-item-actions'>
-                <StatusFlag plugin={plugin} isInstalling={isInstalling} isUninstalling={isUninstalling} />
+                <StatusFlag plugin={plugin} isInstalling={isInstalling} isUninstalling={isUninstalling} isUpgrading={isUpgrading} isDeactivating={isDeactivating} isActivating={isActivating} />
                 <ActionButton
                     plugin={plugin}
                     inProgress={inProgress}
