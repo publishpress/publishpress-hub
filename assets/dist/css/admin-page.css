@@ -1295,7 +1295,7 @@
     align-items: center;
     padding: var(--pp-hub-filter-button-padding) !important;
     border-radius: var(--pp-hub-radius-md);
-    font-size: var(--pp-hub-font-size-sm);
+    font-size: var(--pp-hub-font-size-md);
     font-weight: var(--pp-hub-font-weight-medium);
     cursor: pointer;
     transition: var(--pp-hub-transition-fast);
@@ -1569,6 +1569,10 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
 
 .pp-hub-snackbar-list .components-snackbar__action {
     color: var(--pp-hub-text-primary-inverted) !important;
+}
+
+.components-notice {
+    border-radius: var(--pp-hub-radius-md);
 }
 
 /*!***************************************************************************!*\
