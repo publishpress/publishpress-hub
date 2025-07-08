@@ -97,7 +97,7 @@
 
 .pp-hub-button.is-highlight {
     background-color: var(--pp-hub-button-bg-highlight);
-    color: var(--pp-hub-button-text-primary);
+    color: var(--pp-hub-button-text-highlight);
     border-color: var(--pp-hub-button-border-highlight);
 }
 
