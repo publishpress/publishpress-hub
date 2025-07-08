@@ -28,6 +28,7 @@ const PluginsListComponent = ({
         selectedPluginForConflictResolution,
         pluginError,
         isLicenseInputModalOpen,
+        isLicenseInputModalOpenForUpgrade,
         isInstallationTypeModalOpen,
         isUninstallConfirmationModalOpen,
         isUpgradeModalOpen,
@@ -44,6 +45,7 @@ const PluginsListComponent = ({
             selectedPluginForConflictResolution: storeSelect.getSelectedPluginForConflictResolution(),
             pluginError: storeSelect.getPluginError(),
             isLicenseInputModalOpen: storeSelect.getIsLicenseInputModalOpen(),
+            isLicenseInputModalOpenForUpgrade: storeSelect.getIsLicenseInputModalOpenForUpgrade(),
             isInstallationTypeModalOpen: storeSelect.getIsInstallationTypeModalOpen(),
             isUninstallConfirmationModalOpen: storeSelect.getIsUninstallConfirmationModalOpen(),
             isUpgradeModalOpen: storeSelect.getIsUpgradeModalOpen(),
@@ -55,6 +57,7 @@ const PluginsListComponent = ({
         installFreePlugin,
         installProPlugin,
         setLicenseInputModalOpen,
+        setLicenseInputModalOpenForUpgrade,
         setInstallationTypeModalOpen,
         setIsUninstallConfirmationModalOpen,
         setIsUpgradeModalOpen,
@@ -66,7 +69,6 @@ const PluginsListComponent = ({
         resolveConflict,
     } = useDispatch(store);
 
-    // Memoized handlers
     const handleInstall = useCallback((pluginFamily) => {
         setCurrentPluginForModal(pluginFamily);
         setInstallationTypeModalOpen(true);
@@ -86,8 +88,9 @@ const PluginsListComponent = ({
     }, [deactivatePlugin]);
 
     const handleManageLicense = useCallback((pluginFamily) => {
-        setCurrentPluginForModal(pluginFamily);
-    }, []);
+        // setCurrentPluginForModal(pluginFamily);
+        // TODO: Implement license management modal
+    }, [setCurrentPluginForModal]);
 
     const handleActivateLicense = useCallback((pluginFamily) => {
         setCurrentPluginForModal(pluginFamily);
@@ -100,29 +103,42 @@ const PluginsListComponent = ({
 
     const handleUpgradeModalClose = useCallback((option) => {
         if (option === 'license') {
-            setLicenseInputModalOpen(true);
+            setLicenseInputModalOpenForUpgrade(true);
         } else if (option === 'buy') {
             window.open(currentPluginForModal.proPlugin.detailsUrl, '_blank');
+        }
+
+        // Always reset currentPluginForModal unless we're opening the license modal
+        if (option !== 'license') {
             setCurrentPluginForModal(null);
         }
 
         setIsUpgradeModalOpen(false);
-    }, [setIsUpgradeModalOpen, setCurrentPluginForModal, setLicenseInputModalOpen, currentPluginForModal]);
+    }, [setIsUpgradeModalOpen, setCurrentPluginForModal, setLicenseInputModalOpenForUpgrade, currentPluginForModal]);
 
     const handleInstallationTypeModalClose = useCallback((type) => {
         setInstallationTypeModalOpen(false);
 
         if (type === 'free' && currentPluginForModal) {
             installFreePlugin(currentPluginForModal.slug);
+            setCurrentPluginForModal(null);
         } else if (type === 'pro') {
             setLicenseInputModalOpen(true);
+        } else {
+            // Reset currentPluginForModal if user closes without selecting
+            setCurrentPluginForModal(null);
         }
-    }, [currentPluginForModal, installFreePlugin, setInstallationTypeModalOpen, setLicenseInputModalOpen]);
+    }, [currentPluginForModal, installFreePlugin, setInstallationTypeModalOpen, setLicenseInputModalOpen, setCurrentPluginForModal]);
 
     const handleLicenseModalClose = useCallback(() => {
         setLicenseInputModalOpen(false);
         setCurrentPluginForModal(null);
     }, [setLicenseInputModalOpen]);
+
+    const handleLicenseInputModalCloseForUpgrade = useCallback(() => {
+        setLicenseInputModalOpenForUpgrade(false);
+        setCurrentPluginForModal(null);
+    }, [setLicenseInputModalOpenForUpgrade, setCurrentPluginForModal]);
 
     const handleResolveConflictModalClose = useCallback(() => {
         setIsResolveConflictModalOpen(false);
@@ -181,10 +197,11 @@ const PluginsListComponent = ({
                 return;
             }
 
+            setLicenseInputModalOpenForUpgrade(false);
             setIsUpgradeModalOpen(false);
             setCurrentPluginForModal(null);
         });
-    }, [currentPluginForModal, installProPlugin, setIsUpgradeModalOpen, setCurrentPluginForModal]);
+    }, [currentPluginForModal, upgradePluginToPro, setLicenseInputModalOpenForUpgrade, setIsUpgradeModalOpen, setCurrentPluginForModal]);
 
     const handleUninstall = useCallback((pluginFamily) => {
         setIsUninstallConfirmationModalOpen(true);
@@ -218,15 +235,18 @@ const PluginsListComponent = ({
     const handleUninstallConfirmationConfirm = useCallback(() => {
         setIsUninstallConfirmationModalOpen(false);
         uninstallPlugin(currentPluginForModal.slug);
-    }, [currentPluginForModal, uninstallPlugin]);
+        setCurrentPluginForModal(null);
+    }, [currentPluginForModal, uninstallPlugin, setCurrentPluginForModal, setIsUninstallConfirmationModalOpen]);
 
     const handleUninstallConfirmationCancel = useCallback(() => {
         setIsUninstallConfirmationModalOpen(false);
-    }, []);
+        setCurrentPluginForModal(null);
+    }, [setCurrentPluginForModal, setIsUninstallConfirmationModalOpen]);
 
     const handleUninstallConfirmationModalClose = useCallback(() => {
         setIsUninstallConfirmationModalOpen(false);
-    }, []);
+        setCurrentPluginForModal(null);
+    }, [setCurrentPluginForModal, setIsUninstallConfirmationModalOpen]);
 
     return (
         <div className="pp-hub-plugins-list">
@@ -286,6 +306,15 @@ const PluginsListComponent = ({
                 <ModalLicenseInput
                     onClose={handleLicenseModalClose}
                     onActivate={handleLicenseActivate}
+                    error={currentPluginState.error}
+                    buttonInProgress={currentPluginState.inProgress}
+                />
+            )}
+
+            {isLicenseInputModalOpenForUpgrade && currentPluginForModal && (
+                <ModalLicenseInput
+                    onClose={handleLicenseInputModalCloseForUpgrade}
+                    onActivate={handlePluginUpgrade}
                     error={currentPluginState.error}
                     buttonInProgress={currentPluginState.inProgress}
                 />

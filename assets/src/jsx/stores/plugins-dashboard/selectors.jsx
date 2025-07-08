@@ -135,6 +135,10 @@ export const getSelectedPluginForConflictResolution = (state) => {
     return state.selectedPluginForConflictResolution;
 }
 
+export const getIsLicenseInputModalOpenForUpgrade = (state) => {
+    return state.isLicenseInputModalOpenForUpgrade;
+}
+
 // Memoization cache for getFilterCounts
 let lastPluginsForFilterCounts = null;
 let lastFilterCountsForFilterCounts = null;

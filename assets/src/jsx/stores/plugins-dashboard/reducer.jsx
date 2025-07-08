@@ -15,6 +15,7 @@ export const DEFAULT_STATE = {
     selectedPluginForConflictResolution: null,
     pluginErrors: {},
     isLicenseInputModalOpen: false,
+    isLicenseInputModalOpenForUpgrade: false,
     isInstallationTypeModalOpen: false,
     isUninstallConfirmationModalOpen: false,
     isUpgradeModalOpen: false,
@@ -88,6 +89,15 @@ const setLicenseInputModalOpen = (state, isOpen) => {
     return {
         ...state,
         isLicenseInputModalOpen: isOpen,
+        pluginErrors: {},
+    }
+}
+
+const setLicenseInputModalOpenForUpgrade = (state, isOpen) => {
+
+    return {
+        ...state,
+        isLicenseInputModalOpenForUpgrade: isOpen,
         pluginErrors: {},
     }
 }
@@ -367,6 +377,8 @@ export const reducer = (state = DEFAULT_STATE, action) => {
             return setCurrentFilter(state, action.currentFilter);
         case 'SET_LICENSE_INPUT_MODAL_OPEN':
             return setLicenseInputModalOpen(state, action.isOpen);
+        case 'SET_LICENSE_INPUT_MODAL_OPEN_FOR_UPGRADE':
+            return setLicenseInputModalOpenForUpgrade(state, action.isOpen);
         case 'SET_INSTALLATION_TYPE_MODAL_OPEN':
             return setInstallationTypeModalOpen(state, action.isOpen);
         case 'SET_IS_UNINSTALL_CONFIRMATION_MODAL_OPEN':

@@ -85,6 +85,13 @@ export function* setLicenseInputModalOpen(isOpen) {
     };
 }
 
+export function* setLicenseInputModalOpenForUpgrade(isOpen) {
+    yield {
+        type: 'SET_LICENSE_INPUT_MODAL_OPEN_FOR_UPGRADE',
+        isOpen,
+    };
+}
+
 export function* setInstallationTypeModalOpen(isOpen) {
     yield {
         type: 'SET_INSTALLATION_TYPE_MODAL_OPEN',
