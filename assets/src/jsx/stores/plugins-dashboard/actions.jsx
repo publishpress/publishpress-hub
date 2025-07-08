@@ -145,55 +145,55 @@ export function* fetchPlugins() {
     }
 }
 
-export function* installFreePlugin(pluginSlugFree) {
+export function* installFreePlugin(pluginFamilySlug) {
     try {
-        yield {type: 'INSTALL_PLUGIN_START', data: {pluginSlugFree}};
+        yield {type: 'INSTALL_PLUGIN_START', data: {pluginFamilySlug}};
 
         yield apiReady();
 
         const data = yield apiFetch({
-            path: `${API_NAMESPACE}/plugins/${pluginSlugFree}/install/free`,
+            path: `${API_NAMESPACE}/plugins/${pluginFamilySlug}/install/free`,
             method: 'POST',
         });
 
         if (data.success) {
             yield fetchPlugins();
 
-            yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree}};
+            yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 
             yield createSnackbarNotice(__('Plugin installed successfully', 'publishpress-hub'), 'success');
 
             return {
                 success: true,
-                pluginSlugFree,
+                pluginFamilySlug,
                 apiResponse: data,
             };
         } else {
             throw new Error(data?.error || 'Plugin installation failed');
         }
     } catch (error) {
-        yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
+        yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginFamilySlug, error: error}};
 
         yield createNotice(__('Plugin installation failed', 'publishpress-hub'), 'error');
 
         return {
             success: false,
-            pluginSlugFree,
+            pluginFamilySlug,
             error,
         };
     }
 }
 
-export function* installProPlugin(pluginSlugFree, licenseKey) {
+export function* installProPlugin(pluginFamilySlug, licenseKey) {
     try {
-        yield {type: 'INSTALL_PLUGIN_START', data: {pluginSlugFree}};
+        yield {type: 'INSTALL_PLUGIN_START', data: {pluginFamilySlug}};
 
         yield apiReady();
 
         licenseKey = licenseKey.trim();
 
         const data = yield apiFetch({
-            path: `${API_NAMESPACE}/plugins/${pluginSlugFree}/install/pro`,
+            path: `${API_NAMESPACE}/plugins/${pluginFamilySlug}/install/pro`,
             method: 'POST',
             data: {
                 license_key: licenseKey,
@@ -203,14 +203,14 @@ export function* installProPlugin(pluginSlugFree, licenseKey) {
         if (data.success) {
             yield fetchPlugins();
 
-            yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree}};
+            yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 
             yield createSnackbarNotice(__('Plugin installed successfully', 'publishpress-hub'), 'success');
 
             // Return context along with the API response
             return {
                 success: true,
-                pluginSlugFree,
+                pluginFamilySlug,
                 licenseKey,
                 apiResponse: data,
             };
@@ -218,13 +218,13 @@ export function* installProPlugin(pluginSlugFree, licenseKey) {
             throw new Error(data?.error || 'Plugin installation failed');
         }
     } catch (error) {
-        yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
+        yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginFamilySlug, error: error}};
 
         yield createNotice(__('Plugin installation failed', 'publishpress-hub'), 'error');
 
         return {
             success: false,
-            pluginSlugFree,
+            pluginFamilySlug,
             licenseKey,
             error,
         };
@@ -232,40 +232,40 @@ export function* installProPlugin(pluginSlugFree, licenseKey) {
 }
 
 
-export function* uninstallPlugin(pluginSlugFree) {
+export function* uninstallPlugin(pluginFamilySlug) {
     try {
-        yield {type: 'UNINSTALL_PLUGIN_START', data: {pluginSlugFree}};
+        yield {type: 'UNINSTALL_PLUGIN_START', data: {pluginFamilySlug}};
 
         yield apiReady();
 
         const data = yield apiFetch({
-            path: `${API_NAMESPACE}/plugins/${pluginSlugFree}/uninstall`,
+            path: `${API_NAMESPACE}/plugins/${pluginFamilySlug}/uninstall`,
             method: 'POST',
         });
 
         if (data.success) {
             yield fetchPlugins();
 
-            yield {type: 'UNINSTALL_PLUGIN_SUCCESS', data: {pluginSlugFree}};
+            yield {type: 'UNINSTALL_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 
             yield createSnackbarNotice(__('Plugin uninstalled successfully', 'publishpress-hub'), 'success');
 
             return {
                 success: true,
-                pluginSlugFree,
+                pluginFamilySlug,
                 apiResponse: data,
             };
         } else {
             throw new Error(data?.error || 'Plugin uninstall failed');
         }
     } catch (error) {
-        yield {type: 'UNINSTALL_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
+        yield {type: 'UNINSTALL_PLUGIN_ERROR', data: {pluginFamilySlug, error: error}};
 
         yield createNotice(__('Plugin uninstall failed', 'publishpress-hub'), 'error');
 
         return {
             success: false,
-            pluginSlugFree,
+            pluginFamilySlug,
             error,
         };
     }
@@ -310,55 +310,55 @@ export function* activatePlugin(pluginFamilySlug) {
     }
 }
 
-export function* deactivatePlugin(pluginSlugFree) {
+export function* deactivatePlugin(pluginFamilySlug) {
     try {
-        yield {type: 'DEACTIVATE_PLUGIN_START', data: {pluginSlugFree}};
+        yield {type: 'DEACTIVATE_PLUGIN_START', data: {pluginFamilySlug}};
 
         yield apiReady();
 
         const data = yield apiFetch({
-            path: `${API_NAMESPACE}/plugins/${pluginSlugFree}/deactivate`,
+            path: `${API_NAMESPACE}/plugins/${pluginFamilySlug}/deactivate`,
             method: 'POST',
         });
 
         if (data.success) {
             yield fetchPlugins();
 
-            yield {type: 'DEACTIVATE_PLUGIN_SUCCESS', data: {pluginSlugFree}};
+            yield {type: 'DEACTIVATE_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 
             yield createSnackbarNotice(__('Plugin deactivated successfully', 'publishpress-hub'), 'success');
 
             return {
                 success: true,
-                pluginSlugFree,
+                pluginFamilySlug,
                 apiResponse: data,
             };
         } else {
             throw new Error(data?.error || 'Plugin deactivation failed');
         }
     } catch (error) {
-        yield {type: 'DEACTIVATE_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
+        yield {type: 'DEACTIVATE_PLUGIN_ERROR', data: {pluginFamilySlug, error: error}};
 
         yield createNotice(__('Plugin deactivation failed', 'publishpress-hub'), 'error');
 
         return {
             success: false,
-            pluginSlugFree,
+            pluginFamilySlug,
             error,
         };
     }
 }
 
-export function* upgradePluginToPro(pluginSlugFree, licenseKey) {
+export function* upgradePluginToPro(pluginFamilySlug, licenseKey) {
     try {
-        yield {type: 'UPGRADE_PLUGIN_TO_PRO_START', data: {pluginSlugFree, licenseKey}};
+        yield {type: 'UPGRADE_PLUGIN_TO_PRO_START', data: {pluginFamilySlug, licenseKey}};
 
         yield apiReady();
 
         licenseKey = licenseKey.trim();
 
         const data = yield apiFetch({
-            path: `${API_NAMESPACE}/plugins/${pluginSlugFree}/upgrade-to-pro`,
+            path: `${API_NAMESPACE}/plugins/${pluginFamilySlug}/upgrade-to-pro`,
             method: 'POST',
             data: {
                 license_key: licenseKey,
@@ -368,14 +368,14 @@ export function* upgradePluginToPro(pluginSlugFree, licenseKey) {
         if (data.success) {
             yield fetchPlugins();
 
-            yield {type: 'UPGRADE_PLUGIN_TO_PRO_SUCCESS', data: {pluginSlugFree}};
+            yield {type: 'UPGRADE_PLUGIN_TO_PRO_SUCCESS', data: {pluginFamilySlug}};
 
             yield createSnackbarNotice(__('Plugin upgraded to Pro successfully', 'publishpress-hub'), 'success');
 
             // Return context along with the API response
             return {
                 success: true,
-                pluginSlugFree,
+                pluginFamilySlug,
                 licenseKey,
                 apiResponse: data,
             };
@@ -383,13 +383,13 @@ export function* upgradePluginToPro(pluginSlugFree, licenseKey) {
             throw new Error(data?.error || 'Plugin upgrade to Pro failed');
         }
     } catch (error) {
-        yield {type: 'UPGRADE_PLUGIN_TO_PRO_ERROR', data: {pluginSlugFree, error: error}};
+        yield {type: 'UPGRADE_PLUGIN_TO_PRO_ERROR', data: {pluginFamilySlug, error: error}};
 
         yield createNotice(__('Plugin upgrade to Pro failed', 'publishpress-hub'), 'error');
 
         return {
             success: false,
-            pluginSlugFree,
+            pluginFamilySlug,
             licenseKey,
             error,
         };

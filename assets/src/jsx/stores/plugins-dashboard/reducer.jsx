@@ -129,11 +129,11 @@ const installPluginStart = (state, data) => {
         ...state,
         pluginInstallationInProgress: {
             ...state.pluginInstallationInProgress,
-            [data.pluginSlugFree]: true,
+            [data.pluginFamilySlug]: true,
         },
         pluginErrors: {
             ...state.pluginErrors,
-            [data.pluginSlugFree]: null,
+            [data.pluginFamilySlug]: null,
         },
     }
 }
@@ -143,11 +143,11 @@ const installPluginSuccess = (state, data) => {
         ...state,
         pluginInstallationInProgress: {
             ...state.pluginInstallationInProgress,
-            [data.pluginSlugFree]: false,
+            [data.pluginFamilySlug]: false,
         },
         pluginErrors: {
             ...state.pluginErrors,
-            [data.pluginSlugFree]: null,
+            [data.pluginFamilySlug]: null,
         },
     }
 }
@@ -157,11 +157,11 @@ const installPluginError = (state, data) => {
         ...state,
         pluginInstallationInProgress: {
             ...state.pluginInstallationInProgress,
-            [data.pluginSlugFree]: false,
+            [data.pluginFamilySlug]: false,
         },
         pluginErrors: {
             ...state.pluginErrors,
-            [data.pluginSlugFree]: data.error,
+            [data.pluginFamilySlug]: data.error,
         },
     }
 }
@@ -171,7 +171,7 @@ const uninstallPluginStart = (state, data) => {
         ...state,
         pluginUninstallationInProgress: {
             ...state.pluginUninstallationInProgress,
-            [data.pluginSlugFree]: true,
+            [data.pluginFamilySlug]: true,
         },
     }
 }
@@ -181,7 +181,7 @@ const uninstallPluginSuccess = (state, data) => {
         ...state,
         pluginUninstallationInProgress: {
             ...state.pluginUninstallationInProgress,
-            [data.pluginSlugFree]: false,
+            [data.pluginFamilySlug]: false,
         },
     }
 }
@@ -191,7 +191,7 @@ const uninstallPluginError = (state, data) => {
         ...state,
         pluginUninstallationInProgress: {
             ...state.pluginUninstallationInProgress,
-            [data.pluginSlugFree]: false,
+            [data.pluginFamilySlug]: false,
         },
     }
 }
@@ -201,7 +201,7 @@ const activatePluginStart = (state, data) => {
         ...state,
         pluginActivationInProgress: {
             ...state.pluginActivationInProgress,
-            [data.pluginSlugFree]: true,
+            [data.pluginFamilySlug]: true,
         },
     }
 }
@@ -211,7 +211,7 @@ const activatePluginSuccess = (state, data) => {
         ...state,
         pluginActivationInProgress: {
             ...state.pluginActivationInProgress,
-            [data.pluginSlugFree]: false,
+            [data.pluginFamilySlug]: false,
         },
     }
 }
@@ -221,7 +221,7 @@ const activatePluginError = (state, data) => {
         ...state,
         pluginActivationInProgress: {
             ...state.pluginActivationInProgress,
-            [data.pluginSlugFree]: false,
+            [data.pluginFamilySlug]: false,
         },
     }
 }
@@ -231,7 +231,7 @@ const deactivatePluginStart = (state, data) => {
         ...state,
         pluginDeactivationInProgress: {
             ...state.pluginDeactivationInProgress,
-            [data.pluginSlugFree]: true,
+            [data.pluginFamilySlug]: true,
         },
     }
 }
@@ -241,7 +241,7 @@ const deactivatePluginSuccess = (state, data) => {
         ...state,
         pluginDeactivationInProgress: {
             ...state.pluginDeactivationInProgress,
-            [data.pluginSlugFree]: false,
+            [data.pluginFamilySlug]: false,
         },
     }
 }
@@ -251,7 +251,7 @@ const deactivatePluginError = (state, data) => {
         ...state,
         pluginDeactivationInProgress: {
             ...state.pluginDeactivationInProgress,
-            [data.pluginSlugFree]: false,
+            [data.pluginFamilySlug]: false,
         },
     }
 }
@@ -261,11 +261,11 @@ const upgradePluginToProStart = (state, data) => {
         ...state,
         pluginUpgradeInProgress: {
             ...state.pluginUpgradeInProgress,
-            [data.pluginSlugFree]: true,
+            [data.pluginFamilySlug]: true,
         },
         pluginErrors: {
             ...state.pluginErrors,
-            [data.pluginSlugFree]: null,
+            [data.pluginFamilySlug]: null,
         },
     }
 }
@@ -275,11 +275,11 @@ const upgradePluginToProSuccess = (state, data) => {
         ...state,
         pluginUpgradeInProgress: {
             ...state.pluginUpgradeInProgress,
-            [data.pluginSlugFree]: false,
+            [data.pluginFamilySlug]: false,
         },
         pluginErrors: {
             ...state.pluginErrors,
-            [data.pluginSlugFree]: null,
+            [data.pluginFamilySlug]: null,
         },
     }
 }
@@ -289,11 +289,11 @@ const upgradePluginToProError = (state, data) => {
         ...state,
         pluginUpgradeInProgress: {
             ...state.pluginUpgradeInProgress,
-            [data.pluginSlugFree]: false,
+            [data.pluginFamilySlug]: false,
         },
         pluginErrors: {
             ...state.pluginErrors,
-            [data.pluginSlugFree]: data.error,
+            [data.pluginFamilySlug]: data.error,
         },
     }
 }
