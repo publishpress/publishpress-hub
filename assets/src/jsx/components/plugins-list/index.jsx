@@ -98,10 +98,16 @@ const PluginsListComponent = ({
         setCurrentPluginForModal(pluginFamily);
     }, [setIsUpgradeModalOpen, setCurrentPluginForModal]);
 
-    const handleUpgradeModalClose = useCallback(() => {
+    const handleUpgradeModalClose = useCallback((option) => {
+        if (option === 'license') {
+            setLicenseInputModalOpen(true);
+        } else if (option === 'buy') {
+            window.open(currentPluginForModal.proPlugin.detailsUrl, '_blank');
+            setCurrentPluginForModal(null);
+        }
+
         setIsUpgradeModalOpen(false);
-        setCurrentPluginForModal(null);
-    }, [setIsUpgradeModalOpen, setCurrentPluginForModal]);
+    }, [setIsUpgradeModalOpen, setCurrentPluginForModal, setLicenseInputModalOpen, currentPluginForModal]);
 
     const handleInstallationTypeModalClose = useCallback((type) => {
         setInstallationTypeModalOpen(false);
@@ -299,7 +305,7 @@ const PluginsListComponent = ({
             {isUpgradeModalOpen && currentPluginForModal && (
                 <ModalUpgrade
                     onClose={handleUpgradeModalClose}
-                    proDetailsUrl={currentPluginForModal.proDetailsUrl}
+                    proDetailsUrl={currentPluginForModal.proPlugin.detailsUrl}
                     changelogUrl={currentPluginForModal.changelogUrl}
                 />
             )}

@@ -33,7 +33,7 @@ const ACTION_BUTTON_CONFIGS = {
         variant: 'primary',
         text: __('Resolve Conflict', 'publishpress-hub'),
         loadingText: __('Resolving Conflict...', 'publishpress-hub'),
-        icon: 'check',
+        icon: 'admin-tools',
     },
 };
 

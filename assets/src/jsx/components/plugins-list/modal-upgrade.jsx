@@ -32,7 +32,7 @@ const ModalUpgradeComponent = ({
             <Button variant='highlight' icon='cart' onClick={() => {
                 onClose('buy');
             }}>
-                {__('I don\'t have a license, but I want to buy it', 'publishpress-hub')}
+                {__('I don\'t have a license, and I want to buy it', 'publishpress-hub')}
             </Button>
         </Modal>
     );

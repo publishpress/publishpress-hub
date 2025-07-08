@@ -46,39 +46,32 @@ const ModalResolveConflictComponent = ({
                 </Message>
             )}
 
-            <div className='pp-hub-modal-actions'>
                 <Button
                     variant='primary'
-                    isFullWidth
-                    onClick={onKeepFreePlugin}
-                    isLoading={buttonInProgress && selectedPluginForConflictResolution === 'free'}
-                    disabled={selectedPluginForConflictResolution === 'pro'}
-                >
-                    {__('Keep Free Plugin', 'publishpress-hub')}
-                </Button>
-
-                <Button
-                    variant='primary'
-                    isFullWidth
                     onClick={onKeepProPlugin}
                     isLoading={buttonInProgress && selectedPluginForConflictResolution === 'pro'}
                     disabled={selectedPluginForConflictResolution === 'free'}
                 >
-                    {__('Keep Pro Plugin', 'publishpress-hub')}
+                    {__('Keep the Pro version', 'publishpress-hub')}
                 </Button>
 
                 <Button
                     variant='secondary'
-                    isFullWidth
+                    onClick={onKeepFreePlugin}
+                    isLoading={buttonInProgress && selectedPluginForConflictResolution === 'free'}
+                    disabled={selectedPluginForConflictResolution === 'pro'}
+                >
+                    {__('Keep the Free version', 'publishpress-hub')}
+                </Button>
+
+                <Button
+                    variant='secondary'
+                    icon='no'
                     onClick={onCancel}
                     disabled={buttonInProgress}
                 >
                     {__('Cancel', 'publishpress-hub')}
                 </Button>
-                <p>
-                    {selectedPluginForConflictResolution}
-                </p>
-            </div>
         </Modal>
     );
 }
