@@ -1,5 +1,7 @@
 import { memo, useMemo } from '@wordpress/element';
-import HelpButton from "../buttons/help-button";
+import Button from "../buttons/button";
+
+import { __ } from '@publishpress/hub-i18n';
 
 // Constants moved outside to prevent recreation
 const BASE_HEADER_CLASS = "pp-hub-admin-page-header";
@@ -29,7 +31,13 @@ const AdminPageHeaderComponent = ({
                 {children}
             </div>
             <div className="pp-hub-admin-page-header__actions">
-                <HelpButton />
+                <Button
+                    variant='secondary'
+                    href='https://publishpress.com/publishpress-support/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    icon='editor-help'
+                >{__('Get Support', 'publishpress-hub')}</Button>
             </div>
         </div>
     );
