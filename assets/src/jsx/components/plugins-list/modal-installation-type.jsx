@@ -7,6 +7,8 @@ import { Modal } from '../modal';
 
 const ModalInstallationTypeComponent = ({
     onClose,
+    onProClick,
+    onFreeClick,
     freeDetailsUrl,
     proDetailsUrl,
     changelogUrl,
@@ -15,7 +17,7 @@ const ModalInstallationTypeComponent = ({
         <Modal
             title={__('Install Plugin', 'publishpress-hub')}
             className='pp-hub-modal-installation-type'
-            onRequestClose={onClose}
+            onRequestClose={() => onClose()}
         >
             <p>
                 {__('Select how you would like to install this plugin. You can install the Pro version if you have a license, or the Free version to get started.', 'publishpress-hub')}
@@ -27,14 +29,10 @@ const ModalInstallationTypeComponent = ({
                 <span>|</span>
                 <Button variant='link' href={changelogUrl}>{__('Changelogs', 'publishpress-hub')}</Button>
             </div>
-            <Button variant='secondary' icon='unlock' onClick={() => {
-                onClose('pro');
-            }}>
+            <Button variant='secondary' icon='unlock' onClick={() => onProClick()}>
                 {__('I have a license, install the Pro version', 'publishpress-hub')}
             </Button>
-            <Button variant='primary' icon='download' onClick={() => {
-                onClose('free')
-            }}>
+            <Button variant='primary' icon='download' onClick={() => onFreeClick()}>
                 {__('I don\'t have a license, install the Free version', 'publishpress-hub')}
             </Button>
         </Modal>

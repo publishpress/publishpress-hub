@@ -19,7 +19,7 @@ const ModalLicenseInputComponent = ({
         <Modal
             title={__('Enter your license key', 'publishpress-hub')}
             className='pp-hub-modal-license-input'
-            onRequestClose={onClose}
+            onRequestClose={() => onClose()}
         >
             <p>
                 {__('Enter your license key to activate the Pro version of this plugin. You can find your license key in your PublishPress account dashboard.', 'publishpress-hub')}

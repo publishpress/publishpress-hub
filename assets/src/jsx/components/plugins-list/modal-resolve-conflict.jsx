@@ -23,7 +23,7 @@ const ModalResolveConflictComponent = ({
         <Modal
             title={title || __('Resolve Conflict', 'publishpress-hub')}
             className='pp-hub-modal-resolve-conflict'
-            onRequestClose={onClose}
+            onRequestClose={() => onClose()}
         >
             <p>
                 {message || __('A conflict has been detected between the following plugins. Please select the plugin you want to keep.', 'publishpress-hub')}
@@ -48,7 +48,7 @@ const ModalResolveConflictComponent = ({
 
                 <Button
                     variant='primary'
-                    onClick={onKeepProPlugin}
+                    onClick={() => onKeepProPlugin()}
                     isLoading={buttonInProgress && selectedPluginForConflictResolution === 'pro'}
                     disabled={selectedPluginForConflictResolution === 'free'}
                 >
@@ -57,7 +57,7 @@ const ModalResolveConflictComponent = ({
 
                 <Button
                     variant='secondary'
-                    onClick={onKeepFreePlugin}
+                    onClick={() => onKeepFreePlugin()}
                     isLoading={buttonInProgress && selectedPluginForConflictResolution === 'free'}
                     disabled={selectedPluginForConflictResolution === 'pro'}
                 >
@@ -67,7 +67,7 @@ const ModalResolveConflictComponent = ({
                 <Button
                     variant='secondary'
                     icon='no'
-                    onClick={onCancel}
+                    onClick={() => onCancel()}
                     disabled={buttonInProgress}
                 >
                     {__('Cancel', 'publishpress-hub')}

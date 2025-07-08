@@ -11,11 +11,20 @@ import { ModalConfirmation } from './modal-confirmation';
 import { ModalResolveConflict } from './modal-resolve-conflict';
 import { ModalUpgrade } from './modal-upgrade';
 
+const MODAL_NONE = 'none';
+const MODAL_INSTALLATION_TYPE = 'installation-type';
+const MODAL_LICENSE_INPUT = 'license-input';
+const MODAL_LICENSE_INPUT_FOR_UPGRADE = 'license-input-for-upgrade';
+const MODAL_UNINSTALL_CONFIRMATION = 'uninstall-confirmation';
+const MODAL_UPGRADE = 'upgrade';
+const MODAL_RESOLVE_CONFLICT = 'resolve-conflict';
+
 const PluginsListComponent = ({
     plugins,
     pluginIconBaseUrl,
     isLoading,
 }) => {
+    const [activeModal, setActiveModal] = useState(MODAL_NONE);
     const [currentPluginForModal, setCurrentPluginForModal] = useState(null);
 
     const {
@@ -26,13 +35,7 @@ const PluginsListComponent = ({
         pluginUpgradeInProgress,
         pluginResolveConflictInProgress,
         selectedPluginForConflictResolution,
-        pluginError,
-        isLicenseInputModalOpen,
-        isLicenseInputModalOpenForUpgrade,
-        isInstallationTypeModalOpen,
-        isUninstallConfirmationModalOpen,
-        isUpgradeModalOpen,
-        isResolveConflictModalOpen,
+        pluginError
     } = useSelect((select) => {
         const storeSelect = select(store);
         return {
@@ -44,24 +47,12 @@ const PluginsListComponent = ({
             pluginResolveConflictInProgress: storeSelect.getPluginResolveConflictInProgress(),
             selectedPluginForConflictResolution: storeSelect.getSelectedPluginForConflictResolution(),
             pluginError: storeSelect.getPluginError(),
-            isLicenseInputModalOpen: storeSelect.getIsLicenseInputModalOpen(),
-            isLicenseInputModalOpenForUpgrade: storeSelect.getIsLicenseInputModalOpenForUpgrade(),
-            isInstallationTypeModalOpen: storeSelect.getIsInstallationTypeModalOpen(),
-            isUninstallConfirmationModalOpen: storeSelect.getIsUninstallConfirmationModalOpen(),
-            isUpgradeModalOpen: storeSelect.getIsUpgradeModalOpen(),
-            isResolveConflictModalOpen: storeSelect.getIsResolveConflictModalOpen(),
         };
     }, []);
 
     const {
         installFreePlugin,
         installProPlugin,
-        setLicenseInputModalOpen,
-        setLicenseInputModalOpenForUpgrade,
-        setInstallationTypeModalOpen,
-        setIsUninstallConfirmationModalOpen,
-        setIsUpgradeModalOpen,
-        setIsResolveConflictModalOpen,
         uninstallPlugin,
         activatePlugin,
         deactivatePlugin,
@@ -71,13 +62,13 @@ const PluginsListComponent = ({
 
     const handleInstall = useCallback((pluginFamily) => {
         setCurrentPluginForModal(pluginFamily);
-        setInstallationTypeModalOpen(true);
-    }, [setInstallationTypeModalOpen]);
+        setActiveModal(MODAL_INSTALLATION_TYPE);
+    }, [setActiveModal, setCurrentPluginForModal]);
 
     const handleResolveConflict = useCallback((pluginFamily) => {
         setCurrentPluginForModal(pluginFamily);
-        setIsResolveConflictModalOpen(true);
-    }, [setCurrentPluginForModal, setIsResolveConflictModalOpen]);
+        setActiveModal(MODAL_RESOLVE_CONFLICT);
+    }, [setCurrentPluginForModal, setActiveModal]);
 
     const handleActivate = useCallback((pluginFamily) => {
         activatePlugin(pluginFamily.slug);
@@ -94,79 +85,81 @@ const PluginsListComponent = ({
 
     const handleActivateLicense = useCallback((pluginFamily) => {
         setCurrentPluginForModal(pluginFamily);
-    }, []);
+    }, [setCurrentPluginForModal]);
 
     const handleUpgradeToPro = useCallback((pluginFamily) => {
-        setIsUpgradeModalOpen(true);
+        setActiveModal(MODAL_UPGRADE);
         setCurrentPluginForModal(pluginFamily);
-    }, [setIsUpgradeModalOpen, setCurrentPluginForModal]);
+    }, [setCurrentPluginForModal, setActiveModal]);
 
     const handleUpgradeModalClose = useCallback((option) => {
-        if (option === 'license') {
-            setLicenseInputModalOpenForUpgrade(true);
-        } else if (option === 'buy') {
-            window.open(currentPluginForModal.proPlugin.detailsUrl, '_blank');
-        }
+        setActiveModal(MODAL_NONE);
+        setCurrentPluginForModal(null);
+    }, [setCurrentPluginForModal, setActiveModal]);
 
-        // Always reset currentPluginForModal unless we're opening the license modal
-        if (option !== 'license') {
-            setCurrentPluginForModal(null);
-        }
+    const handleUpgradeModalLicenseClick = useCallback(() => {
+        setActiveModal(MODAL_LICENSE_INPUT_FOR_UPGRADE);
+    }, [setActiveModal]);
 
-        setIsUpgradeModalOpen(false);
-    }, [setIsUpgradeModalOpen, setCurrentPluginForModal, setLicenseInputModalOpenForUpgrade, currentPluginForModal]);
+    const handleUpgradeModalBuyClick = useCallback(() => {
+        console.log('handleUpgradeModalBuyClick');
+        window.open(currentPluginForModal.proPlugin.detailsUrl, '_blank');
+        setActiveModal(MODAL_NONE);
+        setCurrentPluginForModal(null);
+    }, [currentPluginForModal, setActiveModal, setCurrentPluginForModal]);
 
     const handleInstallationTypeModalClose = useCallback((type) => {
-        setInstallationTypeModalOpen(false);
+        setActiveModal(MODAL_NONE);
+        setCurrentPluginForModal(null);
+    }, [currentPluginForModal, installFreePlugin, setActiveModal, setCurrentPluginForModal]);
 
-        if (type === 'free' && currentPluginForModal) {
-            installFreePlugin(currentPluginForModal.slug);
-            setCurrentPluginForModal(null);
-        } else if (type === 'pro') {
-            setLicenseInputModalOpen(true);
-        } else {
-            // Reset currentPluginForModal if user closes without selecting
-            setCurrentPluginForModal(null);
-        }
-    }, [currentPluginForModal, installFreePlugin, setInstallationTypeModalOpen, setLicenseInputModalOpen, setCurrentPluginForModal]);
+    const handleInstallationTypeModalProClick = useCallback(() => {
+        setActiveModal(MODAL_LICENSE_INPUT);
+    }, [setActiveModal]);
+
+    const handleInstallationTypeModalFreeClick = useCallback(() => {
+        installFreePlugin(currentPluginForModal.slug);
+        setCurrentPluginForModal(null);
+        setActiveModal(MODAL_NONE);
+    }, [currentPluginForModal, installFreePlugin, setActiveModal, setCurrentPluginForModal]);
 
     const handleLicenseModalClose = useCallback(() => {
-        setLicenseInputModalOpen(false);
+        setActiveModal(MODAL_NONE);
         setCurrentPluginForModal(null);
-    }, [setLicenseInputModalOpen]);
+    }, [setActiveModal, setCurrentPluginForModal]);
 
     const handleLicenseInputModalCloseForUpgrade = useCallback(() => {
-        setLicenseInputModalOpenForUpgrade(false);
+        setActiveModal(MODAL_NONE);
         setCurrentPluginForModal(null);
-    }, [setLicenseInputModalOpenForUpgrade, setCurrentPluginForModal]);
+    }, [setActiveModal, setCurrentPluginForModal]);
 
     const handleResolveConflictModalClose = useCallback(() => {
-        setIsResolveConflictModalOpen(false);
+        setActiveModal(MODAL_NONE);
         setCurrentPluginForModal(null);
-    }, [setIsResolveConflictModalOpen]);
+    }, [setActiveModal, setCurrentPluginForModal]);
 
     const handleResolveConflictKeepFree = useCallback(() => {
         resolveConflict(currentPluginForModal, 'free').then((result) => {
             if (result.success) {
-                setIsResolveConflictModalOpen(false);
+                setActiveModal(MODAL_NONE);
                 setCurrentPluginForModal(null);
             }
         });
-    }, [resolveConflict, currentPluginForModal]);
+    }, [resolveConflict, currentPluginForModal, setActiveModal, setCurrentPluginForModal]);
 
     const handleResolveConflictKeepPro = useCallback(() => {
         resolveConflict(currentPluginForModal, 'pro').then((result) => {
             if (result.success) {
-                setIsResolveConflictModalOpen(false);
+                setActiveModal(MODAL_NONE);
                 setCurrentPluginForModal(null);
             }
         });
-    }, [resolveConflict, currentPluginForModal]);
+    }, [resolveConflict, currentPluginForModal, setActiveModal, setCurrentPluginForModal]);
 
     const handleResolveConflictCancel = useCallback(() => {
-        setIsResolveConflictModalOpen(false);
+        setActiveModal(MODAL_NONE);
         setCurrentPluginForModal(null);
-    }, [setIsResolveConflictModalOpen, setCurrentPluginForModal]);
+    }, [setActiveModal, setCurrentPluginForModal]);
 
     const handleLicenseActivate = useCallback((licenseKey) => {
         if (!currentPluginForModal) return;
@@ -180,10 +173,10 @@ const PluginsListComponent = ({
                 return;
             }
 
-            setLicenseInputModalOpen(false);
+            setActiveModal(MODAL_NONE);
             setCurrentPluginForModal(null);
         });
-    }, [currentPluginForModal, installProPlugin, setLicenseInputModalOpen, setCurrentPluginForModal]);
+    }, [currentPluginForModal, installProPlugin, setActiveModal, setCurrentPluginForModal]);
 
     const handlePluginUpgrade = useCallback((licenseKey) => {
         if (!currentPluginForModal) return;
@@ -197,16 +190,15 @@ const PluginsListComponent = ({
                 return;
             }
 
-            setLicenseInputModalOpenForUpgrade(false);
-            setIsUpgradeModalOpen(false);
+            setActiveModal(MODAL_NONE);
             setCurrentPluginForModal(null);
         });
-    }, [currentPluginForModal, upgradePluginToPro, setLicenseInputModalOpenForUpgrade, setIsUpgradeModalOpen, setCurrentPluginForModal]);
+    }, [currentPluginForModal, upgradePluginToPro, setActiveModal, setCurrentPluginForModal]);
 
     const handleUninstall = useCallback((pluginFamily) => {
-        setIsUninstallConfirmationModalOpen(true);
+        setActiveModal(MODAL_UNINSTALL_CONFIRMATION);
         setCurrentPluginForModal(pluginFamily);
-    }, [setIsUninstallConfirmationModalOpen, setCurrentPluginForModal]);
+    }, [setActiveModal, setCurrentPluginForModal]);
 
     const currentPluginState = useMemo(() => {
         if (!currentPluginForModal) return { error: null, inProgress: false };
@@ -233,20 +225,20 @@ const PluginsListComponent = ({
     ]);
 
     const handleUninstallConfirmationConfirm = useCallback(() => {
-        setIsUninstallConfirmationModalOpen(false);
+        setActiveModal(MODAL_NONE);
         uninstallPlugin(currentPluginForModal.slug);
         setCurrentPluginForModal(null);
-    }, [currentPluginForModal, uninstallPlugin, setCurrentPluginForModal, setIsUninstallConfirmationModalOpen]);
+    }, [currentPluginForModal, uninstallPlugin, setActiveModal, setCurrentPluginForModal]);
 
     const handleUninstallConfirmationCancel = useCallback(() => {
-        setIsUninstallConfirmationModalOpen(false);
+        setActiveModal(MODAL_NONE);
         setCurrentPluginForModal(null);
-    }, [setCurrentPluginForModal, setIsUninstallConfirmationModalOpen]);
+    }, [setCurrentPluginForModal, setActiveModal]);
 
     const handleUninstallConfirmationModalClose = useCallback(() => {
-        setIsUninstallConfirmationModalOpen(false);
+        setActiveModal(MODAL_NONE);
         setCurrentPluginForModal(null);
-    }, [setCurrentPluginForModal, setIsUninstallConfirmationModalOpen]);
+    }, [setCurrentPluginForModal, setActiveModal]);
 
     return (
         <div className="pp-hub-plugins-list">
@@ -293,16 +285,18 @@ const PluginsListComponent = ({
                 </div>
             )}
 
-            {isInstallationTypeModalOpen && currentPluginForModal && (
+            {activeModal === MODAL_INSTALLATION_TYPE && currentPluginForModal && (
                 <ModalInstallationType
                     onClose={handleInstallationTypeModalClose}
+                    onProClick={handleInstallationTypeModalProClick}
+                    onFreeClick={handleInstallationTypeModalFreeClick}
                     freeDetailsUrl={currentPluginForModal.freeDetailsUrl}
                     proDetailsUrl={currentPluginForModal.proDetailsUrl}
                     changelogUrl={currentPluginForModal.changelogUrl}
                 />
             )}
 
-            {isLicenseInputModalOpen && currentPluginForModal && (
+            {activeModal === MODAL_LICENSE_INPUT && currentPluginForModal && (
                 <ModalLicenseInput
                     onClose={handleLicenseModalClose}
                     onActivate={handleLicenseActivate}
@@ -311,7 +305,7 @@ const PluginsListComponent = ({
                 />
             )}
 
-            {isLicenseInputModalOpenForUpgrade && currentPluginForModal && (
+            {activeModal === MODAL_LICENSE_INPUT_FOR_UPGRADE && currentPluginForModal && (
                 <ModalLicenseInput
                     onClose={handleLicenseInputModalCloseForUpgrade}
                     onActivate={handlePluginUpgrade}
@@ -320,7 +314,7 @@ const PluginsListComponent = ({
                 />
             )}
 
-            {isUninstallConfirmationModalOpen && currentPluginForModal && (
+            {activeModal === MODAL_UNINSTALL_CONFIRMATION && currentPluginForModal && (
                 <ModalConfirmation
                     onClose={handleUninstallConfirmationModalClose}
                     onConfirm={handleUninstallConfirmationConfirm}
@@ -331,15 +325,17 @@ const PluginsListComponent = ({
                 />
             )}
 
-            {isUpgradeModalOpen && currentPluginForModal && (
+            {activeModal === MODAL_UPGRADE && currentPluginForModal && (
                 <ModalUpgrade
                     onClose={handleUpgradeModalClose}
+                    onLicenseClick={handleUpgradeModalLicenseClick}
+                    onBuyClick={handleUpgradeModalBuyClick}
                     proDetailsUrl={currentPluginForModal.proPlugin.detailsUrl}
                     changelogUrl={currentPluginForModal.changelogUrl}
                 />
             )}
 
-            {isResolveConflictModalOpen && currentPluginForModal && (
+            {activeModal === MODAL_RESOLVE_CONFLICT && currentPluginForModal && (
                 <ModalResolveConflict
                     onClose={handleResolveConflictModalClose}
                     onKeepFreePlugin={handleResolveConflictKeepFree}
