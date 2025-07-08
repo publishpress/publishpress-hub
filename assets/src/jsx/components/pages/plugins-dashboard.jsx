@@ -15,14 +15,46 @@ const {
     pluginIconBaseUrl,
 } = window.ppHubPluginsDashboardConfig;
 
-// Move selector outside component to prevent recreation on each render
-const selectPluginsDashboardData = (select) => ({
-    selectedFilter: select(store).getSelectedFilter(),
-    filterCounts: select(store).getFilterCounts(),
-    plugins: select(store).getFilteredPlugins(),
-    isLoading: select(store).getIsLoading(),
-    error: select(store).getError(),
-});
+// Optimize selector by splitting into focused selectors
+const selectPluginsDashboardData = (select) => {
+    const storeSelect = select(store);
+    return {
+        selectedFilter: storeSelect.getSelectedFilter(),
+        filterCounts: storeSelect.getFilterCounts(),
+        plugins: storeSelect.getFilteredPlugins(),
+        isLoading: storeSelect.getIsLoading(),
+        error: storeSelect.getError(),
+    };
+};
+
+// Memoize filter options outside component to prevent recreation
+const createFilterOptions = (filterCounts) => [
+    {
+        label: __('All', 'publishpress-hub'),
+        value: 'all',
+        total: filterCounts.all,
+    },
+    {
+        label: __('Unlicensed', 'publishpress-hub'),
+        value: 'unlicensed',
+        total: filterCounts.unlicensed,
+    },
+    {
+        label: __('Active', 'publishpress-hub'),
+        value: 'active',
+        total: filterCounts.active,
+    },
+    {
+        label: __('Inactive', 'publishpress-hub'),
+        value: 'inactive',
+        total: filterCounts.inactive,
+    },
+    {
+        label: __('Not installed', 'publishpress-hub'),
+        value: 'notInstalled',
+        total: filterCounts.notInstalled,
+    },
+];
 
 const PluginsDashboardComponent = () => {
     const {
@@ -43,46 +75,17 @@ const PluginsDashboardComponent = () => {
 
     const title = useMemo(() => __('Plugins Dashboard', 'publishpress-hub'), []);
 
-    useEffect(() => {
-        /**
-         * TODO: Find another way to avoid race conditions. We were receiving an intermitent error
-         * "Uncaught (in promise) Error: The resource could not be loaded because the app is not ready."
-         * when fetching plugins. This is a temporary solution to avoid the error.
-         */
-        setTimeout(() => {
-            fetchPlugins();
-        }, 100);
-    }, [fetchPlugins]);
-
+    // Optimize filterOptions memoization with stable reference
     const filterOptions = useMemo(() => {
-        return [
-            {
-                label: __('All', 'publishpress-hub'),
-                value: 'all',
-                total: filterCounts.all,
-            },
-            {
-                label: __('Unlicensed', 'publishpress-hub'),
-                value: 'unlicensed',
-                total: filterCounts.unlicensed,
-            },
-            {
-                label: __('Active', 'publishpress-hub'),
-                value: 'active',
-                total: filterCounts.active,
-            },
-            {
-                label: __('Inactive', 'publishpress-hub'),
-                value: 'inactive',
-                total: filterCounts.inactive,
-            },
-            {
-                label: __('Not installed', 'publishpress-hub'),
-                value: 'notInstalled',
-                total: filterCounts.notInstalled,
-            },
-        ];
-    }, [filterCounts]);
+        return createFilterOptions(filterCounts);
+    }, [filterCounts.all, filterCounts.unlicensed, filterCounts.active, filterCounts.inactive, filterCounts.notInstalled]);
+
+    useEffect(() => {
+        // Improved approach: Check if plugins are already available before fetching
+        if (!plugins || plugins.length === 0) {
+            fetchPlugins();
+        }
+    }, [fetchPlugins, plugins]);
 
     return (
         <AdminPageLayout

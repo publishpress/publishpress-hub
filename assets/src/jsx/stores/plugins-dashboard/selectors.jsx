@@ -1,3 +1,25 @@
+const createMemoizedSelector = (selectorFn) => {
+    let lastArgs = null;
+    let lastResult = null;
+
+    return (...args) => {
+        // Simple equality check for arguments
+        if (!lastArgs || !areArgsEqual(lastArgs, args)) {
+            lastArgs = args;
+            lastResult = selectorFn(...args);
+        }
+        return lastResult;
+    };
+};
+
+const areArgsEqual = (prev, curr) => {
+    if (prev.length !== curr.length) return false;
+    for (let i = 0; i < prev.length; i++) {
+        if (prev[i] !== curr[i]) return false;
+    }
+    return true;
+};
+
 export const getSelectedFilter = (state) => {
     return state.selectedFilter;
 }
@@ -5,11 +27,6 @@ export const getSelectedFilter = (state) => {
 export const getPlugins = (state) => {
     return state.plugins;
 }
-
-// Memoization cache for getFilteredPlugins
-let lastPluginsForFiltering = null;
-let lastSelectedFilterForFiltering = null;
-let lastFilteredPlugins = null;
 
 const sortPlugins = (pluginFamily) => {
     return pluginFamily.sort((a, b) => {
@@ -42,18 +59,10 @@ const sortPlugins = (pluginFamily) => {
     });
 }
 
-export const getFilteredPlugins = (state) => {
+export const getFilteredPlugins = createMemoizedSelector((state) => {
     const plugins = state.plugins;
     const selectedFilter = state.selectedFilter;
 
-    // If neither plugins nor selectedFilter have changed, return cached result
-    if (plugins === lastPluginsForFiltering &&
-        selectedFilter === lastSelectedFilterForFiltering &&
-        lastFilteredPlugins !== null) {
-        return lastFilteredPlugins;
-    }
-
-    // Calculate filtered plugins
     let filteredPlugins;
     if (!selectedFilter || selectedFilter === 'all') {
         filteredPlugins = plugins;
@@ -61,15 +70,8 @@ export const getFilteredPlugins = (state) => {
         filteredPlugins = plugins.filter((plugin) => filterPlugin(plugin, selectedFilter));
     }
 
-    const sortedPlugins = sortPlugins(filteredPlugins);
-
-    // Cache the result
-    lastPluginsForFiltering = plugins;
-    lastSelectedFilterForFiltering = selectedFilter;
-    lastFilteredPlugins = sortedPlugins;
-
-    return lastFilteredPlugins;
-}
+    return sortPlugins(filteredPlugins);
+});
 
 export const getIsLoading = (state) => {
     return state.isLoading;
@@ -139,33 +141,45 @@ export const getIsLicenseInputModalOpenForUpgrade = (state) => {
     return state.isLicenseInputModalOpenForUpgrade;
 }
 
-// Memoization cache for getFilterCounts
-let lastPluginsForFilterCounts = null;
-let lastFilterCountsForFilterCounts = null;
-
-export const getFilterCounts = (state) => {
+export const getFilterCounts = createMemoizedSelector((state) => {
     const plugins = state.plugins;
 
-    // If plugins haven't changed, return cached result
-    if (plugins === lastPluginsForFilterCounts && lastFilterCountsForFilterCounts !== null) {
-        return lastFilterCountsForFilterCounts;
-    }
-
-    // Calculate new filter counts
-    const filterCounts = {
-        all: plugins.filter((plugin) => filterPlugin(plugin, 'all')).length,
-        unlicensed: plugins.filter((plugin) => filterPlugin(plugin, 'unlicensed')).length,
-        active: plugins.filter((plugin) => filterPlugin(plugin, 'active')).length,
-        inactive: plugins.filter((plugin) => filterPlugin(plugin, 'inactive')).length,
-        notInstalled: plugins.filter((plugin) => filterPlugin(plugin, 'notInstalled')).length,
+    // Pre-calculate filter results for better performance
+    const filterResults = {
+        all: [],
+        unlicensed: [],
+        active: [],
+        inactive: [],
+        notInstalled: [],
     };
 
-    // Cache the result
-    lastPluginsForFilterCounts = plugins;
-    lastFilterCountsForFilterCounts = filterCounts;
+    // Single pass through plugins to calculate all filters
+    plugins.forEach((plugin) => {
+        filterResults.all.push(plugin);
 
-    return filterCounts;
-}
+        if (!plugin.hasAnyVersionInstalled) {
+            filterResults.notInstalled.push(plugin);
+        } else {
+            if (plugin.proPlugin.isInstalled && !plugin.proPlugin.isLicensed) {
+                filterResults.unlicensed.push(plugin);
+            }
+
+            if (plugin.hasAnyVersionActive) {
+                filterResults.active.push(plugin);
+            } else {
+                filterResults.inactive.push(plugin);
+            }
+        }
+    });
+
+    return {
+        all: filterResults.all.length,
+        unlicensed: filterResults.unlicensed.length,
+        active: filterResults.active.length,
+        inactive: filterResults.inactive.length,
+        notInstalled: filterResults.notInstalled.length,
+    };
+});
 
 const filterPlugin = (plugin, selectedFilter) => {
     switch (selectedFilter) {

@@ -13,12 +13,7 @@ import { usePluginStatus, useActionButtons, usePluginDisplayInfo } from '../hook
 const PluginItemComponent = ({
     pluginFamily,
     pluginIconBaseUrl,
-    isInstalling,
-    isUninstalling,
-    isDeactivating,
-    isActivating,
-    isUpgrading,
-    isResolvingConflict,
+    progressStates,
     onInstall,
     onActivate,
     onDeactivate,
@@ -29,6 +24,16 @@ const PluginItemComponent = ({
     onResolveConflict,
 }) => {
     const [isHovered, setIsHovered] = useState(false);
+
+    // Extract individual progress states for backwards compatibility
+    const {
+        isInstalling,
+        isUninstalling,
+        isDeactivating,
+        isActivating,
+        isUpgrading,
+        isResolvingConflict,
+    } = progressStates;
 
     const status = usePluginStatus(pluginFamily);
     const { iconSrc, displayName } = usePluginDisplayInfo(pluginFamily, pluginIconBaseUrl, status);
