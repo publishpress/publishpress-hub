@@ -43,12 +43,7 @@ const PluginItemComponent = ({
         const isPro = pluginFamily.proPlugin.isInstalled;
         const hasConflictingInstallations = pluginFamily.hasConflictingInstallations;
 
-        const inProgress = isInstalling ||
-            isUninstalling ||
-            isDeactivating ||
-            isActivating ||
-            isUpgrading ||
-            isResolvingConflict;
+        const inProgress = isInstalling || isUpgrading || isResolvingConflict;
 
         const statusFlagClass = classNames({
             'active': isActive,
