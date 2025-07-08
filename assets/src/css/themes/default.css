@@ -5,13 +5,13 @@
     /* Brand Colors */
     --pp-hub-primary-color: #655997;
     --pp-hub-primary-color-darker: #473d76;
-    --pp-hub-primary-color-lighter: #847ab4;
+    --pp-hub-primary-color-lighter: #8477bb;
     --pp-hub-primary-color-disabled: #4c495b;
 
     --pp-hub-secondary-color: #ffb200;
-    --pp-hub-secondary-color-darker: #d68f00;
-    --pp-hub-secondary-color-lighter: #ffc133;
-    --pp-hub-secondary-color-disabled: #aa8f54;
+    --pp-hub-secondary-color-darker: #e6a100;
+    --pp-hub-secondary-color-lighter: #ffcc55;
+    --pp-hub-secondary-color-disabled: #ceab62;
 
     --pp-hub-tertiary-color: #1b004f;
     --pp-hub-tertiary-color-darker: #150048;
@@ -70,7 +70,7 @@
     --pp-hub-button-bg-primary-disabled: var(--pp-hub-primary-color-disabled);
 
     --pp-hub-button-bg-secondary: var(--pp-hub-bg-primary);
-    --pp-hub-button-bg-secondary-hover: #e0ddec;
+    --pp-hub-button-bg-secondary-hover: var(--pp-hub-bg-secondary);
     --pp-hub-button-bg-secondary-active: var(--pp-hub-bg-tertiary);
     --pp-hub-button-bg-secondary-focus: var(--pp-hub-bg-tertiary);
     --pp-hub-button-bg-secondary-disabled: transparent;
@@ -82,7 +82,7 @@
     --pp-hub-button-bg-tertiary-disabled: var(--pp-hub-tertiary-color-disabled);
 
     --pp-hub-button-bg-highlight: var(--pp-hub-secondary-color);
-    --pp-hub-button-bg-highlight-hover: var(--pp-hub-secondary-color-lighter);
+    --pp-hub-button-bg-highlight-hover: var(--pp-hub-secondary-color-darker);
     --pp-hub-button-bg-highlight-active: var(--pp-hub-secondary-color-darker);
     --pp-hub-button-bg-highlight-focus: var(--pp-hub-secondary-color-lighter);
     --pp-hub-button-bg-highlight-disabled: var(--pp-hub-secondary-color-disabled);
@@ -101,10 +101,10 @@
     --pp-hub-button-text-disabled: var(--pp-hub-text-disabled);
     --pp-hub-button-text-danger: var(--pp-hub-text-inverse);
 
-    --pp-hub-button-border-primary: var(--pp-hub-border-primary);
+    --pp-hub-button-border-primary: var(--pp-hub-primary-color-darker);
     --pp-hub-button-border-secondary: var(--pp-hub-primary-color);
     --pp-hub-button-border-tertiary: var(--pp-hub-border-tertiary);
-    --pp-hub-button-border-highlight: var(--pp-hub-secondary-color);
+    --pp-hub-button-border-highlight: #b37d00;
     --pp-hub-button-border-disabled: var(--pp-hub-border-secondary);
     --pp-hub-button-border-danger: var(--pp-hub-error-color);
 

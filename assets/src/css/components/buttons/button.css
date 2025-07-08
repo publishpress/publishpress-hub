@@ -10,6 +10,7 @@
     box-shadow: none;
     font-size: var(--pp-hub-font-size-md);
     line-height: 2em;
+    box-sizing: border-box;
 }
 
 .components-button.is-primary,
@@ -77,16 +78,19 @@
     background-color: var(--pp-hub-button-bg-primary-hover);
     border-color: var(--pp-hub-button-border-primary);
     color: var(--pp-hub-button-text-primary-hover);
+    outline: 1px solid var(--pp-hub-button-border-primary);
 }
 
 .pp-hub-button.is-primary:active {
     background-color: var(--pp-hub-button-bg-primary-active);
     border-color: var(--pp-hub-button-border-primary);
+    outline: 1px solid var(--pp-hub-button-border-primary);
 }
 
 .pp-hub-button.is-primary:focus {
     background-color: var(--pp-hub-button-bg-primary-hover);
     border-color: var(--pp-hub-button-border-primary);
+    outline: 1px solid var(--pp-hub-button-border-primary);
 }
 
 .pp-hub-button.is-primary:disabled {
@@ -103,18 +107,23 @@
 
 .pp-hub-button.is-highlight:hover {
     background-color: var(--pp-hub-button-bg-highlight-hover);
-    border-color: var(--pp-hub-button-border-highlight);
     color: var(--pp-hub-button-text-highlight-hover);
+    border-color: var(--pp-hub-button-border-highlight);
+    outline: 1px solid var(--pp-hub-button-border-highlight);
 }
 
 .pp-hub-button.is-highlight:active {
     background-color: var(--pp-hub-button-bg-highlight-darker);
     border-color: var(--pp-hub-button-border-highlight);
+    border-color: var(--pp-hub-button-border-highlight);
+    outline: 1px solid var(--pp-hub-button-border-highlight);
 }
 
 .pp-hub-button.is-highlight:focus {
     background-color: var(--pp-hub-button-bg-highlight-hover);
     border-color: var(--pp-hub-button-border-highlight);
+    border-color: var(--pp-hub-button-border-highlight);
+    outline: 1px solid var(--pp-hub-button-border-highlight);
 }
 
 .pp-hub-button.is-highlight:disabled {
