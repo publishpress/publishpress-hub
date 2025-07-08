@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     background: var(--pp-hub-bg-primary);
-    border-radius: var(--pp-hub-radius-lg);
+    border-radius: var(--pp-hub-radius-sm);
 }
 
 .pp-hub-plugins-list-item {
@@ -26,13 +26,13 @@
 }
 
 .pp-hub-plugins-list-item:first-child {
-    border-top-left-radius: var(--pp-hub-radius-lg);
-    border-top-right-radius: var(--pp-hub-radius-lg);
+    border-top-left-radius: var(--pp-hub-radius-sm);
+    border-top-right-radius: var(--pp-hub-radius-sm);
 }
 
 .pp-hub-plugins-list-item:last-child {
-    border-bottom-left-radius: var(--pp-hub-radius-lg);
-    border-bottom-right-radius: var(--pp-hub-radius-lg);
+    border-bottom-left-radius: var(--pp-hub-radius-sm);
+    border-bottom-right-radius: var(--pp-hub-radius-sm);
 }
 
 .pp-hub-plugins-list-item-icon {
@@ -44,7 +44,7 @@
 
 .pp-hub-plugins-list-item-icon img {
     object-fit: contain;
-    border-radius: var(--pp-hub-radius-md);
+    border-radius: var(--pp-hub-radius-sm);
     width: 48px;
     height: 48px;
 }
@@ -130,6 +130,6 @@
     height: 100%;
     width: 100%;
     padding: var(--pp-hub-spacing-xl);
-    border-radius: var(--pp-hub-radius-lg);
+    border-radius: var(--pp-hub-radius-sm);
     background-color: var(--pp-hub-bg-secondary);
 }

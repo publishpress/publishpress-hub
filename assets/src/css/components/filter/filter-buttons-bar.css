@@ -11,7 +11,7 @@
     display: inline-flex;
     align-items: center;
     padding: var(--pp-hub-filter-button-padding) !important;
-    border-radius: var(--pp-hub-radius-md);
+    border-radius: var(--pp-hub-radius-sm);
     font-size: var(--pp-hub-font-size-md);
     font-weight: var(--pp-hub-font-weight-medium);
     cursor: pointer;
@@ -55,7 +55,7 @@ button.publishpress-hub-filter-button:hover {
     display: none;
     gap: var(--pp-hub-spacing-xs);
     background: var(--pp-hub-bg-primary);
-    border-radius: var(--pp-hub-radius-lg);
+    border-radius: var(--pp-hub-radius-sm);
     padding: var(--pp-hub-filter-container-padding);
     margin-bottom: var(--pp-hub-spacing-xl);
     box-shadow: var(--pp-hub-shadow-sm);
@@ -81,7 +81,7 @@ button.publishpress-hub-filter-button:hover {
     font-size: var(--pp-hub-font-size-md);
     line-height: var(--pp-hub-line-height-normal);
     border: 1px solid var(--pp-hub-border-input);
-    border-radius: var(--pp-hub-radius-md);
+    border-radius: var(--pp-hub-radius-sm);
     background-color: var(--pp-hub-form-bg);
     color: var(--pp-hub-form-text);
     font-family: var(--pp-hub-font-family-primary);

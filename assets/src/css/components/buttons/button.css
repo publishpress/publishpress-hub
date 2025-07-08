@@ -1,7 +1,7 @@
 .pp-hub-button {
     all: unset;
     cursor: pointer;
-    border-radius: var(--pp-hub-radius-md);
+    border-radius: var(--pp-hub-radius-sm);
     padding: var(--pp-hub-spacing-sm) var(--pp-hub-spacing-md) !important;
     text-align: center;
     white-space: nowrap;
