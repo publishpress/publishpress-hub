@@ -197,7 +197,7 @@ const PluginsListComponent = ({
                 pluginResolveConflictInProgress[currentPluginForModal.slug] ||
                 false,
         };
-    }, [currentPluginForModal, pluginError, pluginInstallationInProgress, pluginUninstallationInProgress, pluginDeactivationInProgress, pluginActivationInProgress, pluginUpgradeInProgress]);
+    }, [currentPluginForModal, pluginError, pluginInstallationInProgress, pluginUninstallationInProgress, pluginDeactivationInProgress, pluginActivationInProgress, pluginUpgradeInProgress, pluginResolveConflictInProgress]);
 
     const handleUninstallConfirmationConfirm = useCallback(() => {
         setIsUninstallConfirmationModalOpen(false);
