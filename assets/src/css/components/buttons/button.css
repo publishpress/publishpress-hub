@@ -200,6 +200,7 @@
 }
 
 .pp-hub-button.is-link:disabled {
+    background-color: unset;
     color: var(--pp-hub-button-text-disabled);
 }
 
