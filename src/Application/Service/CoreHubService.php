@@ -18,6 +18,7 @@ use PublishPress\Hub\Domain\Hooks as DomainHooks;
 use PublishPress\Hub\Domain\Plugin\Contracts\PluginRepositoryInterface;
 use PublishPress\Hub\Application\Service\Contracts\ServiceInterface;
 use PublishPress\Hub\Domain\DomainException;
+use PublishPress\Hub\Domain\Plugin\Contracts\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Infrastructure\Container\ServiceCollection;
 
 /**
@@ -42,9 +43,9 @@ class CoreHubService implements ServiceInterface
      * The plugin repository.
      *
      * @since 1.0.0
-     * @var PluginRepositoryInterface
+     * @var PluginFamilyRepositoryInterface
      */
-    private PluginRepositoryInterface $pluginRepository;
+    private PluginFamilyRepositoryInterface $pluginFamilyRepository;
 
     /**
      * The service collection.
@@ -60,10 +61,10 @@ class CoreHubService implements ServiceInterface
      * @since 1.0.0
      */
     public function __construct(
-        PluginRepositoryInterface $pluginRepository,
+        PluginFamilyRepositoryInterface $pluginFamilyRepository,
         ServiceCollection $services
     ) {
-        $this->pluginRepository = $pluginRepository;
+        $this->pluginFamilyRepository = $pluginFamilyRepository;
         $this->services = $services;
     }
 
@@ -135,13 +136,15 @@ class CoreHubService implements ServiceInterface
         do_action(DomainHooks::ACTION_BEFORE_PLUGIN_REGISTER, $slug, $version, $path);
 
         try {
-            $plugin = $this->pluginRepository->findBySlug($slug);
+            // TODO: Implement this
+            $plugin = null;
+            // $plugin = $this->pluginFamilyRepository->findBySlug($slug);
 
-            if (!$plugin) {
-                throw new DomainException('Plugin not found');
-            }
+            // if (!$plugin) {
+            //     throw new DomainException('Plugin not found');
+            // }
 
-            $plugin->register($version, $path);
+            // $plugin->register($version, $path);
 
             // Fire after successful registration hook
             do_action(DomainHooks::ACTION_PLUGIN_REGISTERED, $plugin);
@@ -156,16 +159,5 @@ class CoreHubService implements ServiceInterface
             );
             throw $e;
         }
-    }
-
-    /**
-     * Get the plugins.
-     *
-     * @since 1.0.0
-     * @return array
-     */
-    public function getPlugins(): array
-    {
-        return $this->pluginRepository->getAllPlugins();
     }
 }

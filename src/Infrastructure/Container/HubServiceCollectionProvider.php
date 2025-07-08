@@ -49,7 +49,7 @@ class HubServiceCollectionProvider implements ServiceProviderInterface
     ): void {
         // Register services in the correct order
         $services = [
-            Services::PLUGIN_BOOTSTRAP_SERVICE,
+            Services::PLUGIN_FAMILY_BOOTSTRAP_SERVICE,
             Services::LANGUAGE_SERVICE,
             Services::ADMIN_MENU_SERVICE,
             Services::REST_API_SERVICE,

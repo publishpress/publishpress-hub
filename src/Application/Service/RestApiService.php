@@ -17,10 +17,10 @@ namespace PublishPress\Hub\Application\Service;
 
 use PublishPress\Hub\Application\Hooks as ApplicationHooks;
 use PublishPress\Hub\Application\Service\Contracts\ServiceInterface;
-use PublishPress\Hub\Application\Service\RestApi\Contracts\PluginMapperInterface;
+use PublishPress\Hub\Application\Service\RestApi\Contracts\PluginFamilyDtoMapperInterface;
 use PublishPress\Hub\Application\Service\RestApi\Endpoints\PluginsEndpoint;
 use PublishPress\Hub\Application\Service\RestApi\ExceptionResponseMapper;
-use PublishPress\Hub\Domain\Plugin\Contracts\PluginRepositoryInterface;
+use PublishPress\Hub\Domain\Plugin\Contracts\PluginFamilyRepositoryInterface;
 
 /**
  * REST API service for managing API endpoints.
@@ -60,17 +60,17 @@ class RestApiService implements ServiceInterface
      * The plugin repository.
      *
      * @since 1.0.0
-     * @var PluginRepositoryInterface
+     * @var PluginFamilyRepositoryInterface
      */
-    private PluginRepositoryInterface $pluginRepository;
+    private PluginFamilyRepositoryInterface $pluginFamilyRepository;
 
     /**
      * The plugin mapper.
      *
      * @since 1.0.0
-     * @var PluginMapperInterface
+     * @var PluginFamilyDtoMapperInterface
      */
-    private PluginMapperInterface $pluginMapper;
+    private PluginFamilyDtoMapperInterface $pluginFamilyDtoMapper;
 
     /**
      * The plugin installation service.
@@ -92,26 +92,26 @@ class RestApiService implements ServiceInterface
      * Constructor.
      *
      * @since 1.0.0
-     * @param PluginRepositoryInterface $pluginRepository The plugin repository
-     * @param PluginMapperInterface $pluginMapper The plugin mapper
+     * @param PluginFamilyRepositoryInterface $pluginFamilyRepository The plugin repository
+     * @param PluginFamilyDtoMapperInterface $pluginFamilyDtoMapper The plugin mapper
      * @param PluginInstallationService $pluginInstallationService The plugin installation service
      * @param ExceptionResponseMapper $exceptionResponseMapper The exception response mapper
      */
     public function __construct(
-        PluginRepositoryInterface $pluginRepository,
-        PluginMapperInterface $pluginMapper,
+        PluginFamilyRepositoryInterface $pluginFamilyRepository,
+        PluginFamilyDtoMapperInterface $pluginFamilyDtoMapper,
         PluginInstallationService $pluginInstallationService,
         ExceptionResponseMapper $exceptionResponseMapper
     ) {
-        $this->pluginRepository = $pluginRepository;
-        $this->pluginMapper = $pluginMapper;
+        $this->pluginFamilyRepository = $pluginFamilyRepository;
+        $this->pluginFamilyDtoMapper = $pluginFamilyDtoMapper;
         $this->pluginInstallationService = $pluginInstallationService;
         $this->exceptionResponseMapper = $exceptionResponseMapper;
 
         $this->endpoints = [
             new PluginsEndpoint(
-                $this->pluginRepository,
-                $this->pluginMapper,
+                $this->pluginFamilyRepository,
+                $this->pluginFamilyDtoMapper,
                 $this->pluginInstallationService,
                 $this->exceptionResponseMapper
             ),

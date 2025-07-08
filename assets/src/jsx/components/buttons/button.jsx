@@ -45,6 +45,10 @@ const ButtonComponent = ({
             variantClassName = 'is-highlight';
         }
 
+        if (variant === 'danger') {
+            variantClassName = 'is-danger';
+        }
+
         return `pp-hub-button ${variantClassName} ${className ? className : ''} ${isFullWidth ? 'is-full-width' : ''}`;
     }, [className, isFullWidth, variant]);
 

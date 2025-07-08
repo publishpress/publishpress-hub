@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Application\Service;
 
 use PublishPress\Hub\Application\Service\Contracts\ServiceInterface;
-use PublishPress\Hub\Domain\Plugin\Contracts\PluginRepositoryInterface;
 use PublishPress\Hub\Application\Hooks as ApplicationHooks;
-use PublishPress\Hub\Domain\Plugin\Plugin;
-use PublishPress\Hub\Domain\Plugin\PluginBuilder;
+use PublishPress\Hub\Domain\Plugin\Contracts\PluginFamilyRepositoryInterface;
+use PublishPress\Hub\Domain\Plugin\FreePlugin;
+use PublishPress\Hub\Domain\Plugin\PluginFamily;
+use PublishPress\Hub\Domain\Plugin\ProPlugin;
 
 /**
  * Plugin Bootstrap Service.
@@ -28,20 +29,20 @@ class PluginBootstrapService implements ServiceInterface
     private bool $initialized = false;
 
     /**
-     * The plugin repository.
+     * The plugin family repository.
      *
      * @since 1.0.0
      */
-    private PluginRepositoryInterface $pluginRepository;
+    private PluginFamilyRepositoryInterface $pluginFamilyRepository;
 
     /**
      * Constructor.
      *
      * @since 1.0.0
      */
-    public function __construct(PluginRepositoryInterface $pluginRepository)
+    public function __construct(PluginFamilyRepositoryInterface $pluginFamilyRepository)
     {
-        $this->pluginRepository = $pluginRepository;
+        $this->pluginFamilyRepository = $pluginFamilyRepository;
     }
 
     /**
@@ -81,179 +82,226 @@ class PluginBootstrapService implements ServiceInterface
      */
     private function registerHooks(): void
     {
-        add_action(ApplicationHooks::ACTION_INIT, [$this, 'bootstrapPlugins'], 5);
+        add_action(ApplicationHooks::ACTION_INIT, [$this, 'bootstrapPluginFamilies'], 5);
     }
 
     /**
-     * Bootstrap all PublishPress plugins.
+     * Bootstrap all PublishPress plugin families.
      *
-     * This method defines all plugins and registers them in the repository.
-     * Each plugin will check if it's installed and register itself accordingly.
+     * This method defines all plugin families and registers them in the repository.
+     * Each plugin family will check if it's installed and register itself accordingly.
      *
      * @since 1.0.0
      */
-    public function bootstrapPlugins(): void
+    public function bootstrapPluginFamilies(): void
     {
-        $pluginDefinitions = $this->getPluginDefinitions();
+        $pluginDefinitions = $this->getPluginFamiliesDefinitions();
 
         foreach ($pluginDefinitions as $definition) {
-            $plugin = PluginBuilder::create($definition['name'])
-                ->withSlugFree($definition['slugFree'])
-                ->withSlugPro($definition['slugPro'])
-                ->withPluginFileNameFree($definition['pluginFileNameFree'])
-                ->withPluginFileNamePro($definition['pluginFileNamePro'])
-                ->withEddItemId($definition['eddItemId'])
-                ->withIconFile($definition['iconFile'])
-                ->withDescription($definition['description'])
-                ->withFreeDetailsUrl($definition['freeDetailsUrl'])
-                ->withProDetailsUrl($definition['proDetailsUrl'])
-                ->withChangelogUrl($definition['changelogUrl'])
-                ->build();
+            $freePlugin = new FreePlugin(
+                $definition['free_name'],
+                $definition['free_slug'],
+                $definition['free_file_name'],
+                $definition['free_detailsUrl']
+            );
 
-            $this->pluginRepository->register($plugin);
+            $proPlugin = new ProPlugin(
+                $definition['pro_name'],
+                $definition['pro_slug'],
+                $definition['pro_file_name'],
+                $definition['pro_detailsUrl'],
+                $definition['edd_item_id'],
+                $definition['free_slug']
+            );
+
+            $pluginFamily = new PluginFamily(
+                $definition['name'],
+                $definition['slug'],
+                $definition['icon_file'],
+                $definition['description'],
+                $definition['changelogUrl']
+            );
+
+            $freePlugin->setFamily($pluginFamily);
+            $proPlugin->setFamily($pluginFamily);
+
+            $pluginFamily->setFreePlugin($freePlugin);
+            $pluginFamily->setProPlugin($proPlugin);
+
+            $this->pluginFamilyRepository->registerFamily($pluginFamily);
         }
     }
 
     /**
-     * Get the definitions of all PublishPress plugins.
+     * Get the definitions of all PublishPress plugin families.
      *
-     * This method contains the configuration of all PublishPress plugins.
+     * This method contains the configuration of all PublishPress plugin families.
      *
      * @since 1.0.0
      * @return array
      */
-    private function getPluginDefinitions(): array
+    private function getPluginFamiliesDefinitions(): array
     {
         return [
             [
                 'name' => 'PublishPress Checklists',
-                'slugFree' => 'publishpress-checklists',
-                'slugPro' => 'publishpress-checklists-pro',
-                'pluginFileNameFree' => 'publishpress-checklists.php',
-                'pluginFileNamePro' => 'publishpress-checklists-pro.php',
-                'iconFile' => 'icon-checklists',
+                'slug' => 'publishpress-checklists',
+                'icon_file' => 'icon-checklists',
                 'description' => __('Improve content quality with customizable editorial checklists.', 'publishpress-hub'),
-                'eddItemId' => 6465,
-                'freeDetailsUrl' => 'https://wordpress.org/plugins/publishpress-checklists/',
-                'proDetailsUrl' => 'https://publishpress.com/checklists/',
                 'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-checklists/',
+                'free_name' => 'PublishPress Checklists',
+                'free_slug' => 'publishpress-checklists',
+                'free_file_name' => 'publishpress-checklists.php',
+                'free_detailsUrl' => 'https://wordpress.org/plugins/publishpress-checklists/',
+                'pro_name' => 'PublishPress Checklists Pro',
+                'pro_slug' => 'publishpress-checklists-pro',
+                'pro_file_name' => 'publishpress-checklists-pro.php',
+                'pro_detailsUrl' => 'https://publishpress.com/checklists/',
+                'edd_item_id' => 6465,
             ],
             [
                 'name' => 'PublishPress Permissions',
-                'slugFree' => 'press-permit-core',
-                'slugPro' => 'presspermit-pro',
-                'pluginFileNameFree' => 'press-permit-core.php',
-                'pluginFileNamePro' => 'presspermit-pro.php',
-                'iconFile' => 'icon-permissions',
+                'slug' => 'publishpress-permissions',
+                'icon_file' => 'icon-permissions',
                 'description' => __('Advanced user role and permission management.', 'publishpress-hub'),
-                'eddItemId' => 34506,
-                'freeDetailsUrl' => 'https://wordpress.org/plugins/press-permit-core/',
-                'proDetailsUrl' => 'https://publishpress.com/permissions/',
                 'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-for-permissions-pro/',
+                'free_name' => 'PublishPress Permissions',
+                'free_slug' => 'press-permit-core',
+                'free_file_name' => 'press-permit-core.php',
+                'free_detailsUrl' => 'https://wordpress.org/plugins/press-permit-core/',
+                'pro_name' => 'PublishPress Permissions Pro',
+                'pro_slug' => 'presspermit-pro',
+                'pro_file_name' => 'presspermit-pro.php',
+                'pro_detailsUrl' => 'https://publishpress.com/permissions/',
+                'edd_item_id' => 34506,
             ],
             [
                 'name' => 'PublishPress Authors',
-                'slugFree' => 'publishpress-authors',
-                'slugPro' => 'publishpress-authors-pro',
-                'pluginFileNameFree' => 'publishpress-authors.php',
-                'pluginFileNamePro' => 'publishpress-authors-pro.php',
-                'iconFile' => 'icon-authors',
+                'slug' => 'publishpress-authors',
+                'icon_file' => 'icon-authors',
                 'description' => __('Add many authors to one WordPress post.', 'publishpress-hub'),
-                'eddItemId' => 7203,
-                'freeDetailsUrl' => 'https://wordpress.org/plugins/publishpress-authors/',
-                'proDetailsUrl' => 'https://publishpress.com/authors/',
                 'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-multiple-authors/',
+                'free_name' => 'PublishPress Authors',
+                'free_slug' => 'publishpress-authors',
+                'free_file_name' => 'publishpress-authors.php',
+                'free_detailsUrl' => 'https://wordpress.org/plugins/publishpress-authors/',
+                'pro_name' => 'PublishPress Authors Pro',
+                'pro_slug' => 'publishpress-authors-pro',
+                'pro_file_name' => 'publishpress-authors-pro.php',
+                'pro_detailsUrl' => 'https://publishpress.com/authors/',
+                'edd_item_id' => 7203,
             ],
             [
                 'name' => 'PublishPress Blocks',
-                'slugFree' => 'advanced-gutenberg',
-                'slugPro' => 'advanced-gutenberg-pro',
-                'pluginFileNameFree' => 'advanced-gutenberg.php',
-                'pluginFileNamePro' => 'advanced-gutenberg-pro.php',
-                'iconFile' => 'icon-blocks',
+                'slug' => 'publishpress-blocks',
+                'icon_file' => 'icon-blocks',
                 'description' => __('Take the control of the new Gutenberg editor.', 'publishpress-hub'),
-                'eddItemId' => 98972,
-                'freeDetailsUrl' => 'https://wordpress.org/plugins/advanced-gutenberg/',
-                'proDetailsUrl' => 'https://publishpress.com/blocks/',
                 'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-blocks/',
+                'free_name' => 'PublishPress Blocks',
+                'free_slug' => 'advanced-gutenberg',
+                'free_file_name' => 'advanced-gutenberg.php',
+                'free_detailsUrl' => 'https://wordpress.org/plugins/advanced-gutenberg/',
+                'pro_name' => 'PublishPress Blocks Pro',
+                'pro_slug' => 'advanced-gutenberg-pro',
+                'pro_file_name' => 'advanced-gutenberg-pro.php',
+                'pro_detailsUrl' => 'https://publishpress.com/blocks/',
+                'edd_item_id' => 98972,
             ],
             [
                 'name' => 'PublishPress Capabilities',
-                'slugFree' => 'capability-manager-enhanced',
-                'slugPro' => 'capabilities-pro',
-                'pluginFileNameFree' => 'capsman-enhanced.php',
-                'pluginFileNamePro' => 'capabilities-pro.php',
-                'iconFile' => 'icon-capabilities',
+                'slug' => 'publishpress-capabilities',
+                'icon_file' => 'icon-capabilities',
                 'description' => __('Fine-grained user role management for WordPress sites.', 'publishpress-hub'),
-                'eddItemId' => 44811,
-                'freeDetailsUrl' => 'https://wordpress.org/plugins/capability-manager-enhanced/',
-                'proDetailsUrl' => 'https://publishpress.com/capabilities/',
                 'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-capabilities-pro/',
+                'free_name' => 'PublishPress Capabilities',
+                'free_slug' => 'capability-manager-enhanced',
+                'free_file_name' => 'capsman-enhanced.php',
+                'free_detailsUrl' => 'https://wordpress.org/plugins/capability-manager-enhanced/',
+                'pro_name' => 'PublishPress Capabilities Pro',
+                'pro_slug' => 'capabilities-pro',
+                'pro_file_name' => 'capabilities-pro.php',
+                'pro_detailsUrl' => 'https://publishpress.com/capabilities/',
+                'edd_item_id' => 44811,
             ],
             [
                 'name' => 'PublishPress Future',
-                'slugFree' => 'post-expirator',
-                'slugPro' => 'publishpress-future-pro',
-                'pluginFileNameFree' => 'post-expirator.php',
-                'pluginFileNamePro' => 'publishpress-future-pro.php',
-                'iconFile' => 'icon-future',
+                'slug' => 'publishpress-future',
+                'icon_file' => 'icon-future',
                 'description' => __('Automatically run actions on a scheduled future moment.', 'publishpress-hub'),
-                'eddItemId' => 129032,
-                'freeDetailsUrl' => 'https://wordpress.org/plugins/post-expirator/',
-                'proDetailsUrl' => 'https://publishpress.com/future/',
                 'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-for-publishpress-future-pro/',
+                'free_name' => 'PublishPress Future',
+                'free_slug' => 'post-expirator',
+                'free_file_name' => 'post-expirator.php',
+                'free_detailsUrl' => 'https://wordpress.org/plugins/post-expirator/',
+                'pro_name' => 'PublishPress Future Pro',
+                'pro_slug' => 'publishpress-future-pro',
+                'pro_file_name' => 'publishpress-future-pro.php',
+                'pro_detailsUrl' => 'https://publishpress.com/future/',
+                'edd_item_id' => 129032,
             ],
             [
                 'name' => 'PublishPress Planner',
-                'slugFree' => 'publishpress',
-                'slugPro' => 'publishpress-pro',
-                'pluginFileNameFree' => 'publishpress.php',
-                'pluginFileNamePro' => 'publishpress-pro.php',
-                'iconFile' => 'icon-planner',
+                'slug' => 'publishpress-planner',
+                'icon_file' => 'icon-planner',
                 'description' => __('Organize, schedule and plan your WordPress content.', 'publishpress-hub'),
-                'eddItemId' => 49742,
-                'freeDetailsUrl' => 'https://wordpress.org/plugins/publishpress/',
-                'proDetailsUrl' => 'https://publishpress.com/planner/',
                 'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-publishpress/',
+                'free_name' => 'PublishPress Planner',
+                'free_slug' => 'publishpress',
+                'free_file_name' => 'publishpress.php',
+                'free_detailsUrl' => 'https://wordpress.org/plugins/publishpress/',
+                'pro_name' => 'PublishPress Planner Pro',
+                'pro_slug' => 'publishpress-pro',
+                'pro_file_name' => 'publishpress-pro.php',
+                'pro_detailsUrl' => 'https://publishpress.com/planner/',
+                'edd_item_id' => 49742,
             ],
             [
                 'name' => 'PublishPress Revisions',
-                'slugFree' => 'revisionary',
-                'slugPro' => 'revisionary-pro',
-                'pluginFileNameFree' => 'revisionary.php',
-                'pluginFileNamePro' => 'revisionary-pro.php',
-                'iconFile' => 'icon-revisions',
+                'slug' => 'publishpress-revisions',
+                'icon_file' => 'icon-revisions',
                 'description' => __('Manage, schedule and approve WordPress revisions.', 'publishpress-hub'),
-                'eddItemId' => 40280,
-                'freeDetailsUrl' => 'https://wordpress.org/plugins/revisionary/',
-                'proDetailsUrl' => 'https://publishpress.com/revisions/',
                 'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-revisions-pro/',
+                'free_name' => 'PublishPress Revisions',
+                'free_slug' => 'revisionary',
+                'free_file_name' => 'revisionary.php',
+                'free_detailsUrl' => 'https://wordpress.org/plugins/revisionary/',
+                'pro_name' => 'PublishPress Revisions Pro',
+                'pro_slug' => 'revisionary-pro',
+                'pro_file_name' => 'revisionary-pro.php',
+                'pro_detailsUrl' => 'https://publishpress.com/revisions/',
+                'edd_item_id' => 40280,
             ],
             [
                 'name' => 'PublishPress Series',
-                'slugFree' => 'organize-series',
-                'slugPro' => 'publishpress-series-pro',
-                'pluginFileNameFree' => 'orgSeries.php',
-                'pluginFileNamePro' => 'publishpress-series-pro.php',
-                'iconFile' => 'icon-series',
+                'slug' => 'publishpress-series',
+                'icon_file' => 'icon-series',
                 'description' => __('Group WordPress content together into a series.', 'publishpress-hub'),
-                'eddItemId' => 110550,
-                'freeDetailsUrl' => 'https://wordpress.org/plugins/organize-series/',
-                'proDetailsUrl' => 'https://publishpress.com/series/',
                 'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-series-pro/',
+                'free_name' => 'PublishPress Series',
+                'free_slug' => 'organize-series',
+                'free_file_name' => 'orgSeries.php',
+                'free_detailsUrl' => 'https://wordpress.org/plugins/organize-series/',
+                'pro_name' => 'PublishPress Series Pro',
+                'pro_slug' => 'publishpress-series-pro',
+                'pro_file_name' => 'publishpress-series-pro.php',
+                'pro_detailsUrl' => 'https://publishpress.com/series/',
+                'edd_item_id' => 110550,
             ],
             [
                 'name' => 'PublishPress Statuses',
-                'slugFree' => 'publishpress-statuses',
-                'slugPro' => 'publishpress-statuses-pro',
-                'pluginFileNameFree' => 'publishpress-statuses.php',
-                'pluginFileNamePro' => 'publishpress-statuses-pro.php',
-                'iconFile' => 'icon-statuses',
+                'slug' => 'publishpress-statuses',
+                'icon_file' => 'icon-statuses',
                 'description' => __('Manage custom statuses for your WordPress posts.', 'publishpress-hub'),
-                'eddItemId' => 336700,
-                'freeDetailsUrl' => 'https://wordpress.org/plugins/publishpress-statuses/',
-                'proDetailsUrl' => 'https://publishpress.com/statuses/',
                 'changelogUrl' => 'https://publishpress.com/knowledge-base/changelogs-for-publishpress-statuses-pro/',
+                'free_name' => 'PublishPress Statuses',
+                'free_slug' => 'publishpress-statuses',
+                'free_file_name' => 'publishpress-statuses.php',
+                'free_detailsUrl' => 'https://wordpress.org/plugins/publishpress-statuses/',
+                'pro_name' => 'PublishPress Statuses Pro',
+                'pro_slug' => 'publishpress-statuses-pro',
+                'pro_file_name' => 'publishpress-statuses-pro.php',
+                'pro_detailsUrl' => 'https://publishpress.com/statuses/',
+                'edd_item_id' => 336700,
             ],
         ];
     }

@@ -10,13 +10,14 @@ import { ActionButton } from './action-button';
 import Button from '../buttons/button';
 
 const PluginItemComponent = ({
-    plugin,
+    pluginFamily,
     pluginIconBaseUrl,
     isInstalling,
     isUninstalling,
     isDeactivating,
     isActivating,
     isUpgrading,
+    isResolvingConflict,
     onInstall,
     onActivate,
     onDeactivate,
@@ -24,102 +25,147 @@ const PluginItemComponent = ({
     onManageLicense,
     onActivateLicense,
     onUninstall,
+    onResolveConflict,
 }) => {
-    const statusFlagClass = useMemo(() => classNames({
-        'active': plugin.isActive,
-        'inactive': !plugin.isActive,
-        'pro': plugin.isPro,
-        'free': !plugin.isPro,
-        'licensed': plugin.isLicensed,
-        'unlicensed': !plugin.isLicensed,
-        'installed': plugin.isInstalled,
-        'not-installed': !plugin.isInstalled,
-    }), [plugin]);
-
     const [isHovered, setIsHovered] = useState(false);
 
-    const tooltipText = useMemo(() => {
-        if (!plugin.isInstalled) {
-            return __('This plugin is not installed.', 'publishpress-hub');
-        }
+    const {
+        statusFlagClass,
+        tooltipText,
+        iconSrc,
+        displayName,
+        inProgress,
+        actionButtons,
+    } = useMemo(() => {
+        const isActive = pluginFamily.hasAnyVersionActive;
+        const isInstalled = pluginFamily.hasAnyVersionInstalled;
+        const isLicensed = pluginFamily.isLicensed;
+        const isPro = pluginFamily.proPlugin.isInstalled;
+        const hasConflictingInstallations = pluginFamily.hasConflictingInstallations;
 
-        return plugin.isActive
-            ? __('This plugin is active.', 'publishpress-hub')
-            : __('This plugin is not active.', 'publishpress-hub');
-    }, [plugin.isInstalled, plugin.isActive]);
+        const inProgress = isInstalling ||
+            isUninstalling ||
+            isDeactivating ||
+            isActivating ||
+            isUpgrading ||
+            isResolvingConflict;
 
-    const iconSrc = useMemo(() =>
-        `${pluginIconBaseUrl}images/plugin-icons/${plugin.iconFile}-96x96.png`
-    , [pluginIconBaseUrl, plugin.iconFile]);
+        const statusFlagClass = classNames({
+            'active': isActive,
+            'inactive': !isActive,
+            'pro': isPro,
+            'free': !isPro,
+            'licensed': isLicensed,
+            'unlicensed': !isLicensed,
+            'installed': isInstalled,
+            'not-installed': !isInstalled,
+        });
 
-    const displayName = useMemo(() =>
-        `${plugin.name}${plugin.isPro ? ' Pro' : ''}`
-    , [plugin.name, plugin.isPro]);
+        const tooltipText = (() => {
+            if (!isInstalled) {
+                return __('This plugin is not installed.', 'publishpress-hub');
+            }
+            return isActive ?
+                __('This plugin is active.', 'publishpress-hub') : __('This plugin is not active.', 'publishpress-hub');
+        })();
 
-    const actionButtons = useMemo(() => {
-        let buttons = [];
+        const iconSrc = `${pluginIconBaseUrl}images/plugin-icons/${pluginFamily.iconPath}-96x96.png`;
 
-        if (plugin.isInstalled) {
-            if (plugin.isActive) {
+        const displayName = isPro ? pluginFamily.proPlugin.name : pluginFamily.freePlugin.name;
+
+        const actionButtons = (() => {
+            let buttons = [];
+
+            if (isInstalled && !pluginFamily.hasConflictingInstallations) {
+                if (isActive) {
+                    buttons.push(
+                        <Button
+                            variant='link'
+                            text={__('Deactivate', 'publishpress-hub')}
+                            isLoading={isDeactivating}
+                            onClick={() => {
+                                onDeactivate(pluginFamily);
+                            }}
+                        />
+                    );
+                }
+
+                if (!isActive) {
+                    buttons.push(
+                        <Button
+                            variant='link'
+                            text={__('Activate', 'publishpress-hub')}
+                            isLoading={isActivating}
+                            onClick={() => {
+                                onActivate(pluginFamily);
+                            }}
+                        />
+                    );
+                }
+
                 buttons.push(
                     <Button
                         variant='link'
-                        text={__('Deactivate', 'publishpress-hub')}
-                        isLoading={isDeactivating}
+                        text={__('Uninstall', 'publishpress-hub')}
+                        isLoading={isUninstalling}
+                        className='is-danger'
                         onClick={() => {
-                            onDeactivate(plugin);
+                            onUninstall(pluginFamily);
                         }}
                     />
                 );
             }
 
-            if (!plugin.isActive) {
+            if (!isInstalled && !pluginFamily.hasConflictingInstallations) {
                 buttons.push(
                     <Button
                         variant='link'
-                        text={__('Activate', 'publishpress-hub')}
-                        isLoading={isActivating}
-                        onClick={() => {
-                            onActivate(plugin);
-                        }}
+                        href={pluginFamily.freePlugin.detailsUrl}
+                        text={__('Free Details', 'publishpress-hub')}
                     />
                 );
+
+                buttons.push(
+                    <Button
+                        variant='link'
+                        href={pluginFamily.proPlugin.detailsUrl}
+                        text={__('Pro Details', 'publishpress-hub')}
+                    />
+                );
+
             }
 
             buttons.push(
                 <Button
                     variant='link'
-                    text={__('Uninstall', 'publishpress-hub')}
-                    isLoading={isUninstalling}
-                    className='is-danger'
-                    onClick={() => {
-                        onUninstall(plugin);
-                    }}
+                    href={pluginFamily.changelogUrl}
+                    text={__('Changelogs', 'publishpress-hub')}
                 />
             );
-        }
 
-        if (!plugin.isInstalled) {
-            buttons.push(
-                <Button variant='link' href={plugin.freeDetailsUrl} text={__('Free Details', 'publishpress-hub')} />
-            );
+            return buttons;
+        })();
 
-            buttons.push(
-                <Button variant='link' href={plugin.proDetailsUrl} text={__('Pro Details', 'publishpress-hub')} />
-            );
-
-        }
-
-        buttons.push(
-            <Button variant='link' href={plugin.changelogUrl} text={__('Changelogs', 'publishpress-hub')} />
-        );
-
-        return buttons;
-    }, [plugin, isUninstalling, isActivating, isDeactivating, isUpgrading]);
-
-    const inProgress = useMemo(() => {
-        return isInstalling || isUninstalling || isDeactivating || isActivating || isUpgrading;
-    }, [isInstalling, isUninstalling, isDeactivating, isActivating, isUpgrading]);
+        return {
+            statusFlagClass,
+            tooltipText,
+            iconSrc,
+            displayName,
+            inProgress,
+            actionButtons,
+        };
+    }, [
+        pluginFamily,
+        pluginIconBaseUrl,
+        isInstalling,
+        isUninstalling,
+        isDeactivating,
+        isActivating,
+        isUpgrading,
+        onDeactivate,
+        onActivate,
+        onUninstall,
+    ]);
 
     return (
         <div
@@ -132,7 +178,7 @@ const PluginItemComponent = ({
             }}
         >
             <div className='pp-hub-plugins-list-item-icon'>
-                <img src={iconSrc} alt={plugin.name} />
+                <img src={iconSrc} alt={pluginFamily.name} />
             </div>
             <div className='pp-hub-plugins-list-item-info'>
                 <Tooltip
@@ -145,7 +191,7 @@ const PluginItemComponent = ({
                     </div>
                 </Tooltip>
                 <div className='pp-hub-plugins-list-item-description'>
-                    {plugin.description}
+                    {pluginFamily.description}
                 </div>
                 <div className='pp-hub-plugins-list-item-inline-actions'>
                     <>
@@ -162,11 +208,12 @@ const PluginItemComponent = ({
 
             </div>
             <div className='pp-hub-plugins-list-item-actions'>
-                <StatusFlag plugin={plugin} isInstalling={isInstalling} isUninstalling={isUninstalling} isUpgrading={isUpgrading} isDeactivating={isDeactivating} isActivating={isActivating} />
+                <StatusFlag pluginFamily={pluginFamily} isInstalling={isInstalling} isUninstalling={isUninstalling} isUpgrading={isUpgrading} isDeactivating={isDeactivating} isActivating={isActivating} />
                 <ActionButton
-                    plugin={plugin}
+                    plugin={pluginFamily}
                     inProgress={inProgress}
                     onInstall={onInstall}
+                    onResolveConflict={onResolveConflict}
                     onUpgradeToPro={onUpgradeToPro}
                     onManageLicense={onManageLicense}
                     onActivateLicense={onActivateLicense}

@@ -11,11 +11,14 @@ export const DEFAULT_STATE = {
     pluginActivationInProgress: {},
     pluginDeactivationInProgress: {},
     pluginUpgradeInProgress: {},
+    pluginResolveConflictInProgress: {},
+    selectedPluginForConflictResolution: null,
     pluginErrors: {},
     isLicenseInputModalOpen: false,
     isInstallationTypeModalOpen: false,
     isUninstallConfirmationModalOpen: false,
     isUpgradeModalOpen: false,
+    isResolveConflictModalOpen: false,
 }
 
 const setSelectedFilter = (state, selectedFilter) => {
@@ -109,6 +112,14 @@ const setIsUpgradeModalOpen = (state, isOpen) => {
     return {
         ...state,
         isUpgradeModalOpen: isOpen,
+        pluginErrors: {},
+    }
+}
+
+const setIsResolveConflictModalOpen = (state, isOpen) => {
+    return {
+        ...state,
+        isResolveConflictModalOpen: isOpen,
         pluginErrors: {},
     }
 }
@@ -287,6 +298,51 @@ const upgradePluginToProError = (state, data) => {
     }
 }
 
+const resolveConflictStart = (state, data) => {
+    return {
+        ...state,
+        pluginResolveConflictInProgress: {
+            ...state.pluginResolveConflictInProgress,
+            [data.pluginFamily.slug]: true,
+        },
+        selectedPluginForConflictResolution: data.pluginToKeep,
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginFamily.slug]: null,
+        },
+    }
+}
+
+const resolveConflictSuccess = (state, data) => {
+    return {
+        ...state,
+        pluginResolveConflictInProgress: {
+            ...state.pluginResolveConflictInProgress,
+            [data.pluginFamily.slug]: false,
+        },
+        selectedPluginForConflictResolution: null,
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginFamily.slug]: data.error,
+        },
+    }
+}
+
+const resolveConflictError = (state, data) => {
+    return {
+        ...state,
+        pluginResolveConflictInProgress: {
+            ...state.pluginResolveConflictInProgress,
+            [data.pluginFamily.slug]: false,
+        },
+        selectedPluginForConflictResolution: null,
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginFamily.slug]: data.error,
+        },
+    }
+}
+
 export const reducer = (state = DEFAULT_STATE, action) => {
     if (! action) {
         return state;
@@ -317,6 +373,8 @@ export const reducer = (state = DEFAULT_STATE, action) => {
             return setIsUninstallConfirmationModalOpen(state, action.isOpen);
         case 'SET_IS_UPGRADE_MODAL_OPEN':
             return setIsUpgradeModalOpen(state, action.isOpen);
+        case 'SET_IS_RESOLVE_CONFLICT_MODAL_OPEN':
+            return setIsResolveConflictModalOpen(state, action.isOpen);
         case 'INSTALL_PLUGIN_START':
             return installPluginStart(state, action.data);
         case 'INSTALL_PLUGIN_SUCCESS':
@@ -347,6 +405,12 @@ export const reducer = (state = DEFAULT_STATE, action) => {
             return upgradePluginToProSuccess(state, action.data);
         case 'UPGRADE_PLUGIN_TO_PRO_ERROR':
             return upgradePluginToProError(state, action.data);
+        case 'RESOLVE_CONFLICT_START':
+            return resolveConflictStart(state, action.data);
+        case 'RESOLVE_CONFLICT_SUCCESS':
+            return resolveConflictSuccess(state, action.data);
+        case 'RESOLVE_CONFLICT_ERROR':
+            return resolveConflictError(state, action.data);
         default:
             return state;
     }

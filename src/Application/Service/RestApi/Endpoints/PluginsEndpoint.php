@@ -17,11 +17,12 @@ use PublishPress\Hub\Application\Service\Exception\FetchingPluginInformationExce
 use PublishPress\Hub\Application\Service\Exception\PluginInstallationException;
 use PublishPress\Hub\Application\Service\PluginInstallationService;
 use PublishPress\Hub\Application\Service\RestApi\Contracts\EndpointInterface;
-use PublishPress\Hub\Application\Service\RestApi\Contracts\PluginMapperInterface;
+use PublishPress\Hub\Application\Service\RestApi\Contracts\PluginFamilyDtoMapperInterface;
 use PublishPress\Hub\Application\Service\RestApi\ExceptionResponseMapper;
-use PublishPress\Hub\Domain\Plugin\Contracts\PluginRepositoryInterface;
-use PublishPress\Hub\Domain\Plugin\Contracts\PluginInterface;
-use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
+use PublishPress\Hub\Domain\Plugin\Contracts\FreePluginInterface;
+use PublishPress\Hub\Domain\Plugin\Contracts\PluginFamilyRepositoryInterface;
+use PublishPress\Hub\Domain\Plugin\Contracts\PluginFamilyInterface;
+use PublishPress\Hub\Domain\Plugin\Exception\PluginFamilyNotFoundException;
 use Throwable;
 use WP_REST_Request;
 use WP_REST_Response;
@@ -51,15 +52,15 @@ class PluginsEndpoint implements EndpointInterface
      * @since 1.0.0
      * @var PluginRepositoryInterface
      */
-    private PluginRepositoryInterface $pluginRepository;
+    private PluginFamilyRepositoryInterface $pluginFamilyRepository;
 
     /**
      * The plugin mapper.
      *
      * @since 1.0.0
-     * @var PluginMapperInterface
+     * @var PluginFamilyDtoMapperInterface
      */
-    private PluginMapperInterface $pluginMapper;
+    private PluginFamilyDtoMapperInterface $pluginFamilyDtoMapper;
 
     /**
      * The plugin installation service.
@@ -81,19 +82,19 @@ class PluginsEndpoint implements EndpointInterface
      * Constructor.
      *
      * @since 1.0.0
-     * @param PluginRepositoryInterface $pluginRepository The plugin repository
-     * @param PluginMapperInterface $pluginMapper The plugin mapper
+     * @param PluginFamilyRepositoryInterface $pluginFamilyRepository The plugin family repository
+     * @param PluginFamilyDtoMapperInterface $pluginFamilyDtoMapper The plugin family DTO mapper
      * @param PluginInstallationService $pluginInstallationService The plugin installation service
      * @param ExceptionResponseMapper $exceptionResponseMapper The exception response mapper
      */
     public function __construct(
-        PluginRepositoryInterface $pluginRepository,
-        PluginMapperInterface $pluginMapper,
+        PluginFamilyRepositoryInterface $pluginFamilyRepository,
+        PluginFamilyDtoMapperInterface $pluginFamilyDtoMapper,
         PluginInstallationService $pluginInstallationService,
         ExceptionResponseMapper $exceptionResponseMapper
     ) {
-        $this->pluginRepository = $pluginRepository;
-        $this->pluginMapper = $pluginMapper;
+        $this->pluginFamilyRepository = $pluginFamilyRepository;
+        $this->pluginFamilyDtoMapper = $pluginFamilyDtoMapper;
         $this->pluginInstallationService = $pluginInstallationService;
         $this->exceptionResponseMapper = $exceptionResponseMapper;
     }
@@ -110,44 +111,34 @@ class PluginsEndpoint implements EndpointInterface
         register_rest_route($namespace, $this->route, [
             [
                 'methods' => 'GET',
-                'callback' => [$this, 'getPlugins'],
+                'callback' => [$this, 'getPluginFamilies'],
                 'permission_callback' => [$this, 'checkPermissions'],
             ],
         ]);
 
-        $routeWithPluginSlug = $this->route . '/(?P<plugin_slug>[a-zA-Z0-9_-]+)';
+        $routeWithFamilySlug = $this->route . '/(?P<pluginFamily>[a-zA-Z0-9_-]+)';
 
-        register_rest_route($namespace, $routeWithPluginSlug . '/install/free', [
+        register_rest_route($namespace, $routeWithFamilySlug . '/install/(?P<plugin_type>free|pro)', [
             [
                 'methods' => 'POST',
-                'callback' => [$this, 'installFreePlugin'],
+                'callback' => [$this, 'installPlugin'],
                 'permission_callback' => [$this, 'checkInstallPermissions'],
                 'args' => [
-                    'plugin_slug' => [
+                    'pluginFamily' => [
                         'type' => 'string',
                         'required' => true,
-                        'description' => 'The slug of the plugin to install.',
+                        'description' => 'The slug of the plugin family to install.',
                         'validate_callback' => [$this, 'validateSlugParam'],
                     ],
-                ],
-            ],
-        ]);
-
-        register_rest_route($namespace, $routeWithPluginSlug . '/install/pro', [
-            [
-                'methods' => 'POST',
-                'callback' => [$this, 'installProPlugin'],
-                'permission_callback' => [$this, 'checkInstallPermissions'],
-                'args' => [
-                    'plugin_slug' => [
+                    'plugin_type' => [
                         'type' => 'string',
                         'required' => true,
-                        'description' => 'The slug of the plugin to install.',
-                        'validate_callback' => [$this, 'validateSlugParam'],
+                        'description' => 'The type of plugin to install. Can be "free" or "pro".',
+                        'validate_callback' => [$this, 'validatePluginTypeParam'],
                     ],
                     'license_key' => [
                         'type' => 'string',
-                        'required' => true,
+                        'required' => false,
                         'description' => 'The license key to install the plugin.',
                         'validate_callback' => [$this, 'validateLicenseKeyParam'],
                     ],
@@ -155,27 +146,89 @@ class PluginsEndpoint implements EndpointInterface
             ],
         ]);
 
-        register_rest_route($namespace, $routeWithPluginSlug . '/uninstall', [
+        register_rest_route($namespace, $routeWithFamilySlug . '/uninstall', [
             [
                 'methods' => 'POST',
                 'callback' => [$this, 'uninstallPlugin'],
                 'permission_callback' => [$this, 'checkInstallPermissions'],
+                'args' => [
+                    'pluginFamily' => [
+                        'type' => 'string',
+                        'required' => true,
+                        'description' => 'The slug of the plugin family to install.',
+                        'validate_callback' => [$this, 'validateSlugParam'],
+                    ],
+                ],
             ],
         ]);
 
-        register_rest_route($namespace, $routeWithPluginSlug . '/activate', [
+        register_rest_route($namespace, $routeWithFamilySlug . '/activate', [
             [
                 'methods' => 'POST',
                 'callback' => [$this, 'activatePlugin'],
                 'permission_callback' => [$this, 'checkInstallPermissions'],
+                'args' => [
+                    'pluginFamily' => [
+                        'type' => 'string',
+                        'required' => true,
+                        'description' => 'The slug of the plugin family to install.',
+                        'validate_callback' => [$this, 'validateSlugParam'],
+                    ],
+                ],
             ],
         ]);
 
-        register_rest_route($namespace, $routeWithPluginSlug . '/deactivate', [
+        register_rest_route($namespace, $routeWithFamilySlug . '/deactivate', [
             [
                 'methods' => 'POST',
                 'callback' => [$this, 'deactivatePlugin'],
                 'permission_callback' => [$this, 'checkInstallPermissions'],
+                'args' => [
+                    'pluginFamily' => [
+                        'type' => 'string',
+                        'required' => true,
+                        'description' => 'The slug of the plugin family to install.',
+                        'validate_callback' => [$this, 'validateSlugParam'],
+                    ],
+                ],
+            ],
+        ]);
+
+        register_rest_route($namespace, $routeWithFamilySlug . '/upgrade-to-pro', [
+            [
+                'methods' => 'POST',
+                'callback' => [$this, 'upgradePluginToPro'],
+                'permission_callback' => [$this, 'checkInstallPermissions'],
+                'args' => [
+                    'pluginFamily' => [
+                        'type' => 'string',
+                        'required' => true,
+                        'description' => 'The slug of the plugin family to install.',
+                        'validate_callback' => [$this, 'validateSlugParam'],
+                    ],
+                ],
+            ],
+        ]);
+
+        register_rest_route($namespace, $routeWithFamilySlug . '/resolve-conflict', [
+            [
+                'methods' => 'POST',
+                'callback' => [$this, 'resolveConflict'],
+                'permission_callback' => [$this, 'checkInstallPermissions'],
+                'args' => [
+                    'pluginFamily' => [
+                        'type' => 'string',
+                        'required' => true,
+                        'description' => 'The slug of the plugin family to resolve conflict.',
+                        'validate_callback' => [$this, 'validateSlugParam'],
+                    ],
+                    'plugin_to_keep' => [
+                        'type' => 'string',
+                        'required' => true,
+                        'description' => 'The plugin to keep. Can be "free" or "pro".',
+                        'validate_callback' => [$this, 'validatePluginTypeParam'],
+                    ],
+                ],
             ],
         ]);
     }
@@ -192,20 +245,20 @@ class PluginsEndpoint implements EndpointInterface
     }
 
     /**
-     * Get all registered plugins.
+     * Get all registered plugin families.
      *
      * @since 1.0.0
      * @param WP_REST_Request $request The REST request
      * @return WP_REST_Response|WP_Error
      */
-    public function getPlugins(WP_REST_Request $request)
+    public function getPluginFamilies(WP_REST_Request $request)
     {
         try {
-            $plugins = $this->getAllPluginsSerializable();
+            $pluginFamilies = $this->getAllPluginFamiliesSerializable();
 
             return new WP_REST_Response([
                 'success' => true,
-                'data' => (array) $plugins,
+                'data' => (array) $pluginFamilies,
             ], 200);
         } catch (Throwable $e) {
             return $this->exceptionResponseMapper->mapToWpError(
@@ -227,66 +280,22 @@ class PluginsEndpoint implements EndpointInterface
     }
 
     /**
-     * Install a free plugin.
+     * Install a plugin.
      *
      * @since 1.0.0
      * @param WP_REST_Request $request The REST request
      * @return WP_REST_Response|WP_Error
      */
-    public function installFreePlugin(WP_REST_Request $request)
+    public function installPlugin(WP_REST_Request $request)
     {
         try {
-            $pluginSlug = $request->get_param('plugin_slug');
-            $plugin = $this->getPluginBySlug($pluginSlug);
+            $pluginType = $request->get_param('plugin_type');
 
-            $installed = $this->pluginInstallationService->installFreePlugin($plugin);
-
-            if (!$installed) {
-                throw new PluginInstallationException('Failed to install plugin');
+            if ($pluginType === 'free') {
+                return $this->installFreePlugin($request);
+            } else {
+                return $this->installProPlugin($request);
             }
-
-            $plugin->clearCache();
-
-            return new WP_REST_Response([
-                'success' => true,
-                'data' => [
-                    'plugin_slug' => $pluginSlug,
-                ],
-            ], 200);
-        } catch (Throwable $e) {
-            return $this->exceptionResponseMapper->mapToWpError($e);
-        }
-    }
-
-    /**
-     * Install a pro plugin.
-     *
-     * @since 1.0.0
-     * @param WP_REST_Request $request The REST request
-     * @return WP_REST_Response|WP_Error
-     */
-    public function installProPlugin(WP_REST_Request $request)
-    {
-        try {
-            $pluginSlug = $request->get_param('plugin_slug');
-            $licenseKey = $request->get_param('license_key');
-
-            $plugin = $this->getPluginBySlug($pluginSlug);
-
-            $installed = $this->pluginInstallationService->installProPlugin($plugin, $licenseKey);
-
-            if (!$installed) {
-                throw new PluginInstallationException('Failed to install plugin');
-            }
-
-            $plugin->clearCache();
-
-            return new WP_REST_Response([
-                'success' => true,
-                'data' => [
-                    'plugin_slug' => $pluginSlug
-                ],
-            ], 200);
         } catch (Throwable $e) {
             return $this->exceptionResponseMapper->mapToWpError($e);
         }
@@ -302,8 +311,9 @@ class PluginsEndpoint implements EndpointInterface
     public function uninstallPlugin(WP_REST_Request $request)
     {
         try {
-            $pluginSlug = $request->get_param('plugin_slug');
-            $plugin = $this->getPluginBySlug($pluginSlug);
+            $pluginFamilySlug = $request->get_param('pluginFamily');
+
+            $plugin = $this->getInstalledPluginByFamilySlug($pluginFamilySlug);
 
             $uninstalled = $this->pluginInstallationService->uninstallPlugin($plugin);
 
@@ -314,7 +324,7 @@ class PluginsEndpoint implements EndpointInterface
             return new WP_REST_Response([
                 'success' => true,
                 'data' => [
-                    'plugin_slug' => $pluginSlug,
+                    'pluginFamily' => $pluginFamilySlug,
                 ],
             ], 200);
         } catch (Throwable $e) {
@@ -328,12 +338,14 @@ class PluginsEndpoint implements EndpointInterface
      * @since 1.0.0
      * @param WP_REST_Request $request The REST request
      * @return WP_REST_Response|WP_Error
+     * @throws PluginInstallationException If plugin is not installed
      */
     public function activatePlugin(WP_REST_Request $request)
     {
         try {
-            $pluginSlug = $request->get_param('plugin_slug');
-            $plugin = $this->getPluginBySlug($pluginSlug);
+            $pluginFamilySlug = $request->get_param('pluginFamily');
+
+            $plugin = $this->getInstalledPluginByFamilySlug($pluginFamilySlug);
 
             $activated = $this->pluginInstallationService->activatePlugin($plugin);
 
@@ -344,7 +356,7 @@ class PluginsEndpoint implements EndpointInterface
             return new WP_REST_Response([
                 'success' => true,
                 'data' => [
-                    'plugin_slug' => $pluginSlug,
+                    'pluginFamily' => $pluginFamilySlug,
                 ],
             ], 200);
         } catch (Throwable $e) {
@@ -362,8 +374,9 @@ class PluginsEndpoint implements EndpointInterface
     public function deactivatePlugin(WP_REST_Request $request)
     {
         try {
-            $pluginSlug = $request->get_param('plugin_slug');
-            $plugin = $this->getPluginBySlug($pluginSlug);
+            $pluginFamilySlug = $request->get_param('pluginFamily');
+
+            $plugin = $this->getInstalledPluginByFamilySlug($pluginFamilySlug);
 
             $deactivated = $this->pluginInstallationService->deactivatePlugin($plugin);
 
@@ -374,7 +387,71 @@ class PluginsEndpoint implements EndpointInterface
             return new WP_REST_Response([
                 'success' => true,
                 'data' => [
-                    'plugin_slug' => $pluginSlug,
+                    'pluginFamily' => $pluginFamilySlug,
+                ],
+            ], 200);
+        } catch (Throwable $e) {
+            return $this->exceptionResponseMapper->mapToWpError($e);
+        }
+    }
+
+    /**
+     * Upgrade a plugin to Pro.
+     *
+     * @since 1.0.0
+     * @param WP_REST_Request $request The REST request
+     * @return WP_REST_Response|WP_Error
+     */
+    public function upgradePluginToPro(WP_REST_Request $request)
+    {
+        try {
+            $pluginFamilySlug = $request->get_param('pluginFamily');
+            $licenseKey = $request->get_param('license_key');
+
+            $plugin = $this->getPluginFamilyBySlug($pluginFamilySlug)->getFreePlugin();
+
+            $upgraded = $this->pluginInstallationService->upgradePluginToPro($plugin, $licenseKey);
+
+            if (!$upgraded) {
+                throw new PluginInstallationException('Failed to upgrade plugin to Pro');
+            }
+
+            return new WP_REST_Response([
+                'success' => true,
+                'data' => [
+                    'pluginFamily' => $pluginFamilySlug
+                ],
+            ], 200);
+        } catch (Throwable $e) {
+            return $this->exceptionResponseMapper->mapToWpError($e);
+        }
+    }
+
+    /**
+     * Resolve a conflict.
+     *
+     * @since 1.0.0
+     * @param WP_REST_Request $request The REST request
+     * @return WP_REST_Response|WP_Error
+     */
+    public function resolveConflict(WP_REST_Request $request)
+    {
+        try {
+            $pluginFamilySlug = $request->get_param('pluginFamily');
+            $pluginToKeep = $request->get_param('plugin_to_keep');
+
+            $pluginFamily = $this->getPluginFamilyBySlug($pluginFamilySlug);
+
+            $resolved = $this->pluginInstallationService->resolveConflict($pluginFamily, $pluginToKeep);
+
+            if (!$resolved) {
+                throw new PluginInstallationException('Failed to resolve conflict');
+            }
+
+            return new WP_REST_Response([
+                'success' => true,
+                'data' => [
+                    'pluginFamily' => $pluginFamilySlug,
                 ],
             ], 200);
         } catch (Throwable $e) {
@@ -423,36 +500,136 @@ class PluginsEndpoint implements EndpointInterface
     }
 
     /**
-     * Get all plugins in a serializable format.
+     * Validate the plugin type parameter.
+     *
+     * @since 1.0.0
+     * @param string $param The parameter value
+     * @param WP_REST_Request $request The REST request
+     * @param string $key The parameter key
+     * @return bool
+     */
+    public function validatePluginTypeParam(string $param, WP_REST_Request $request, string $key): bool
+    {
+        return !empty($param) && in_array($param, ['free', 'pro'], true);
+    }
+
+    /**
+     * Install a free plugin.
+     *
+     * @since 1.0.0
+     * @param WP_REST_Request $request The REST request
+     * @return WP_REST_Response|WP_Error
+     */
+    private function installFreePlugin(WP_REST_Request $request)
+    {
+        try {
+            $pluginFamilySlug = $request->get_param('pluginFamily');
+
+            $pluginFamily = $this->getPluginFamilyBySlug($pluginFamilySlug);
+
+            $installed = $this->pluginInstallationService->installFreePlugin($pluginFamily->getFreePlugin());
+
+            if (!$installed) {
+                throw new PluginInstallationException('Failed to install plugin');
+            }
+
+            return new WP_REST_Response([
+                'success' => true,
+                'data' => [
+                'pluginFamily' => $pluginFamilySlug,
+                ],
+            ], 200);
+        } catch (Throwable $e) {
+            return $this->exceptionResponseMapper->mapToWpError($e);
+        }
+    }
+
+    /**
+     * Install a pro plugin.
+     *
+     * @since 1.0.0
+     * @param WP_REST_Request $request The REST request
+     * @return WP_REST_Response|WP_Error
+     */
+    private function installProPlugin(WP_REST_Request $request)
+    {
+        try {
+            $pluginFamilySlug = $request->get_param('pluginFamily');
+            $licenseKey = $request->get_param('license_key');
+
+            $plugin = $this->getPluginFamilyBySlug($pluginFamilySlug)->getProPlugin();
+
+            $installed = $this->pluginInstallationService->installProPlugin($plugin, $licenseKey);
+
+            if (!$installed) {
+                throw new PluginInstallationException('Failed to install plugin');
+            }
+
+            return new WP_REST_Response([
+                'success' => true,
+                'data' => [
+                    'pluginFamily' => $pluginFamilySlug
+                ],
+            ], 200);
+        } catch (Throwable $e) {
+            return $this->exceptionResponseMapper->mapToWpError($e);
+        }
+    }
+
+    /**
+     * Get a plugin by family slug.
+     *
+     * @since 1.0.0
+     * @param string $pluginFamilySlug
+     * @return FreePluginInterface
+     * @throws PluginFamilyNotFoundException
+     * @throws PluginInstallationException If plugin is not installed
+     */
+    private function getInstalledPluginByFamilySlug(string $pluginFamilySlug): FreePluginInterface
+    {
+        $pluginFamily = $this->getPluginFamilyBySlug($pluginFamilySlug);
+
+        if ($pluginFamily->getFreePlugin()->isInstalled()) {
+            return $pluginFamily->getFreePlugin();
+        } elseif ($pluginFamily->getProPlugin()->isInstalled()) {
+            return $pluginFamily->getProPlugin();
+        }
+
+        throw new PluginInstallationException('Plugin is not installed');
+    }
+
+    /**
+     * Get all plugin families in a serializable format.
      *
      * @since 1.0.0
      * @return array
      */
-    private function getAllPluginsSerializable(): array
+    private function getAllPluginFamiliesSerializable(): array
     {
-        $plugins = $this->pluginRepository->getAllPlugins();
-        $plugins = $this->pluginMapper->toDtoArray($plugins);
-        $plugins = $this->pluginMapper->toSerializableArray($plugins);
+        $pluginFamilies = $this->pluginFamilyRepository->getAllPluginFamilies();
 
-        return $plugins;
+        $pluginFamilies = $this->pluginFamilyDtoMapper->toDtoArray($pluginFamilies);
+        $pluginFamilies = $this->pluginFamilyDtoMapper->toSerializableArray($pluginFamilies);
+
+        return $pluginFamilies;
     }
 
     /**
-     * Get plugin by slug from repository.
+     * Get plugin family by slug from repository.
      *
      * @since 1.0.0
-     * @param string $slug The plugin slug
-     * @return PluginInterface The plugin
-     * @throws PluginNotFoundException If plugin is not found
+     * @param string $slug The plugin family slug
+     * @return PluginFamilyInterface The plugin family
+     * @throws PluginFamilyNotFoundException If plugin is not found
      */
-    private function getPluginBySlug(string $slug): PluginInterface
+    private function getPluginFamilyBySlug(string $slug): PluginFamilyInterface
     {
-        $plugin = $this->pluginRepository->findBySlug($slug);
+        $pluginFamily = $this->pluginFamilyRepository->findByFamilySlug($slug);
 
-        if (!$plugin) {
-            throw new PluginNotFoundException($slug);
+        if (!$pluginFamily) {
+            throw new PluginFamilyNotFoundException($slug);
         }
 
-        return $plugin;
+        return $pluginFamily;
     }
 }

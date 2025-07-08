@@ -25,6 +25,11 @@ const ACTION_BUTTON_CONFIGS = {
         text: __('Activate License', 'publishpress-hub'),
         loadingText: __('Activating License...', 'publishpress-hub'),
     },
+    conflict: {
+        variant: 'primary',
+        text: __('Resolve Conflict', 'publishpress-hub'),
+        loadingText: __('Resolving Conflict...', 'publishpress-hub'),
+    },
 };
 
 const ActionButtonComponent = ({
@@ -33,24 +38,32 @@ const ActionButtonComponent = ({
     onInstall,
     onUpgradeToPro,
     onManageLicense,
-    onActivateLicense
+    onActivateLicense,
+    onResolveConflict,
 }) => {
     const getButtonProps = () => {
-        if (!plugin.isInstalled) {
+        if (plugin.hasConflictingInstallations) {
+            return {
+                ...ACTION_BUTTON_CONFIGS.conflict,
+                onClick: () => onResolveConflict(plugin),
+            };
+        }
+
+        if (!plugin.hasAnyVersionInstalled) {
             return {
                 ...ACTION_BUTTON_CONFIGS.install,
                 onClick: () => onInstall(plugin),
             };
         }
 
-        if (!plugin.isPro) {
+        if (!plugin.proPlugin.isInstalled) {
             return {
                 ...ACTION_BUTTON_CONFIGS.upgradeToPro,
                 onClick: () => onUpgradeToPro(plugin),
             };
         }
 
-        if (plugin.isLicensed) {
+        if (plugin.proPlugin.isInstalled && !plugin.proPlugin.isLicensed) {
             return {
                 ...ACTION_BUTTON_CONFIGS.manageLicense,
                 onClick: () => onManageLicense(plugin),

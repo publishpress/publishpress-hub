@@ -29,6 +29,10 @@
     --pp-hub-error-color: #dc3232;
     --pp-hub-info-color: #00a0d2;
 
+    --pp-hub-error-color-lighter: #b32d2d;
+    --pp-hub-error-color-darker: #802020;
+    --pp-hub-error-color-disabled: #4c1a1a;
+
     /* Background Colors */
     --pp-hub-bg-primary: #ffffff;
     --pp-hub-bg-secondary: #f6f7f7;
@@ -83,23 +87,32 @@
     --pp-hub-button-bg-highlight-focus: var(--pp-hub-secondary-color-lighter);
     --pp-hub-button-bg-highlight-disabled: var(--pp-hub-secondary-color-disabled);
 
+    --pp-hub-button-bg-danger: var(--pp-hub-error-color);
+    --pp-hub-button-bg-danger-hover: var(--pp-hub-error-color-lighter);
+    --pp-hub-button-bg-danger-active: var(--pp-hub-error-color-darker);
+    --pp-hub-button-bg-danger-focus: var(--pp-hub-error-color-lighter);
+    --pp-hub-button-bg-danger-disabled: var(--pp-hub-error-color-disabled);
+
     --pp-hub-button-text-primary: var(--pp-hub-text-inverse);
     --pp-hub-button-text-secondary: var(--pp-hub-primary-color);
     --pp-hub-button-text-tertiary: var(--pp-hub-text-tertiary);
     --pp-hub-button-text-inverse: var(--pp-hub-text-inverse);
     --pp-hub-button-text-disabled: var(--pp-hub-text-disabled);
+    --pp-hub-button-text-danger: var(--pp-hub-text-inverse);
 
     --pp-hub-button-border-primary: var(--pp-hub-border-primary);
     --pp-hub-button-border-secondary: var(--pp-hub-primary-color);
     --pp-hub-button-border-tertiary: var(--pp-hub-border-tertiary);
     --pp-hub-button-border-highlight: var(--pp-hub-border-tertiary);
     --pp-hub-button-border-disabled: var(--pp-hub-border-secondary);
+    --pp-hub-button-border-danger: var(--pp-hub-error-color);
 
     --pp-hub-button-text-primary-hover: var(--pp-hub-text-inverse);
     --pp-hub-button-text-secondary-hover: var(--pp-hub-primary-color);
     --pp-hub-button-text-tertiary-hover: var(--pp-hub-text-tertiary);
     --pp-hub-button-text-highlight-hover: var(--pp-hub-text-inverse);
     --pp-hub-button-text-disabled-hover: var(--pp-hub-text-disabled);
+    --pp-hub-button-text-danger-hover: var(--pp-hub-text-inverse);
 
     /* Status Colors */
     --pp-hub-status-color-active: #46b450;
@@ -126,6 +139,8 @@
     --pp-hub-badge-bg-installing-hover: #e8e8e8;
     --pp-hub-badge-bg-uninstalling: #daa7a7;
     --pp-hub-badge-bg-uninstalling-hover: #c79696;
+    --pp-hub-badge-bg-conflicting-installations: #c48080;
+    --pp-hub-badge-bg-conflicting-installations-hover: #bb7676;
     --pp-hub-badge-text: #333;
     --pp-hub-badge-text-installed: #ffffff;
     --pp-hub-badge-text-not-installed: #a7a7a7;
@@ -134,4 +149,5 @@
     --pp-hub-badge-text-unlicensed: #92400e;
     --pp-hub-badge-text-installing: #a7a7a7;
     --pp-hub-badge-text-uninstalling: #6f5454;
+    --pp-hub-badge-text-conflicting-installations: #ffffff;
 }

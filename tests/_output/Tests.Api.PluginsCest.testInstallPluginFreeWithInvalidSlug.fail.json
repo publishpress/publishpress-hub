@@ -1,1 +1,1 @@
-{"code":"unknown_error","message":"Class \"PublishPress\\Hub\\Application\\Service\\Exception\\PluginNotFoundException\" not found","data":{"status":500}}
+{"code":"plugin_family_not_found","message":"Plugin family not found: invalid-slug","data":{"status":404}}

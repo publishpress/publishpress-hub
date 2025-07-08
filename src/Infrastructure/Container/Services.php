@@ -35,7 +35,7 @@ abstract class Services
 
     public const CORE_HUB_SERVICE = 'publishpress-hub/core-hub-service';
 
-    public const PLUGIN_REPOSITORY = 'publishpress-hub/plugin-repository';
+    public const PLUGIN_FAMILY_REPOSITORY = 'publishpress-hub/plugin-family-repository';
 
     public const ADMIN_MENU_SERVICE = 'publishpress-hub/admin-menu-service';
 
@@ -51,9 +51,9 @@ abstract class Services
 
     public const REST_API_SERVICE = 'publishpress-hub/rest-api-service';
 
-    public const PLUGIN_BOOTSTRAP_SERVICE = 'publishpress-hub/plugin-bootstrap-service';
+    public const PLUGIN_FAMILY_BOOTSTRAP_SERVICE = 'publishpress-hub/plugin-family-bootstrap-service';
 
-    public const PLUGIN_MAPPER = 'publishpress-hub/plugin-mapper';
+    public const PLUGIN_FAMILY_DTO_MAPPER = 'publishpress-hub/plugin-family-dto-mapper';
 
     public const PLUGIN_INSTALLATION_SERVICE = 'publishpress-hub/plugin-installation-service';
 

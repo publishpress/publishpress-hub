@@ -29,12 +29,14 @@ use PublishPress\Hub\Application\Service\Exception\LicenseNotActivableException;
 use PublishPress\Hub\Application\Service\Exception\LicenseServerException;
 use PublishPress\Hub\Application\Service\Exception\LicenseSiteInactiveException;
 use PublishPress\Hub\Application\Service\Exception\PluginInstallationException;
-use PublishPress\Hub\Application\Service\Exception\ServiceException;
 use PublishPress\Hub\Application\Service\RestApi\QuietUpgradeSkin;
-use PublishPress\Hub\Domain\Plugin\Contracts\PluginInterface;
+use PublishPress\Hub\Domain\Plugin\Contracts\EddPluginInterface;
+use PublishPress\Hub\Domain\Plugin\Contracts\FreePluginInterface;
+use PublishPress\Hub\Domain\Plugin\Contracts\PluginFamilyInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotActivatedException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotInstalledException;
+use stdClass;
 
 /**
  * Plugin Installation Service.
@@ -110,38 +112,36 @@ class PluginInstallationService implements ServiceInterface
      * Install a free plugin from WordPress.org repository.
      *
      * @since 1.0.0
-     * @param PluginInterface $plugin The plugin to install
+     * @param FreePluginInterface $plugin The plugin to install
      * @return bool True on success
      * @throws PluginAlreadyInstalledException If plugin is already installed
+     * @throws FetchingPluginInformationException If getting plugin information fails
      * @throws \Exception If installation fails
      */
-    public function installFreePlugin(PluginInterface $plugin): bool
+    public function installFreePlugin(FreePluginInterface $plugin): bool
     {
         if ($plugin->isInstalled()) {
-            throw new PluginAlreadyInstalledException($plugin->getSlugFree());
+            throw new PluginAlreadyInstalledException($plugin->getSlug());
         }
 
         $this->ensureWordPressRequirements();
 
-        $api = plugins_api('plugin_information', [
-            'slug' => $plugin->getSlugFree(),
-            'fields' => [
-                'downloadlink' => true,
-            ],
-        ]);
+        $api = $this->getPluginInformationFromWpOrg($plugin->getSlug());
 
-        if (is_wp_error($api)) {
-            throw new FetchingPluginInformationException('Failed to get plugin information: ' . $api->get_error_message());
+        $result = $this->performInstallation($api->download_link);
+
+        if ($result) {
+            $plugin->setInstalled($api->version, $plugin->getPath(true));
         }
 
-        return $this->performInstallation($api->download_link);
+        return $result;
     }
 
     /**
      * Install a pro plugin from a private repository.
      *
      * @since 1.0.0
-     * @param PluginInterface $plugin The plugin to install
+     * @param EddPluginInterface $plugin The plugin to install
      * @param string $licenseKey The license key for authentication
      * @return bool True on success
      * @throws PluginAlreadyInstalledException If plugin is already installed
@@ -160,10 +160,10 @@ class PluginInstallationService implements ServiceInterface
      * @throws LicenseServerException If license server error occurs
      * @throws PluginInstallationException If no download link is available
      */
-    public function installProPlugin(PluginInterface $plugin, string $licenseKey): bool
+    public function installProPlugin(EddPluginInterface $plugin, string $licenseKey): bool
     {
         if ($plugin->isInstalled()) {
-            throw new PluginAlreadyInstalledException($plugin->getSlugFree());
+            throw new PluginAlreadyInstalledException($plugin->getSlug());
         }
 
         $this->ensureWordPressRequirements();
@@ -175,17 +175,61 @@ class PluginInstallationService implements ServiceInterface
     }
 
     /**
+     * Upgrade a plugin to Pro.
+     *
+     * @since 1.0.0
+     * @param FreePluginInterface $freePlugin The free plugin to upgrade
+     * @param string $licenseKey The license key for authentication
+     * @return bool True on success
+     * @throws PluginNotInstalledException If plugin is not installed
+     * @throws PluginAlreadyInstalledException If plugin is already installed
+     * @throws LicenseServerException If license server error occurs
+     * @throws LicenseMissingException If license is missing
+     * @throws LicenseMissingUrlException If license is missing
+     * @throws LicenseNotActivableException If license is not activable
+     * @throws LicenseDisabledException If license is disabled
+     * @throws LicenseNoActivationsLeftException If license has no activations left
+     * @throws LicenseExpiredException If license is expired
+     * @throws LicenseInvalidException If license is invalid
+     * @throws LicenseKeyMismatchException If license does not match the product
+     * @throws LicenseInvalidItemIdException If license item ID is invalid
+     * @throws LicenseInvalidItemNameException If license item name is invalid
+     * @throws LicenseSiteInactiveException If license site is inactive
+     * @throws LicenseServerException If license server error occurs
+     * @throws PluginInstallationException If no download link is available
+     */
+    public function upgradePluginToPro(FreePluginInterface $freePlugin, string $licenseKey): bool
+    {
+        if (! $freePlugin->isInstalled(true)) {
+            throw new PluginNotInstalledException($freePlugin->getSlug());
+        }
+
+        $proPlugin = $freePlugin->getFamily()->getProPlugin();
+
+        if ($proPlugin->isInstalled(true)) {
+            throw new PluginAlreadyInstalledException($proPlugin->getSlug());
+        }
+
+        $this->ensureWordPressRequirements();
+
+        // Get the download URL using EDD Software Licensing API
+        $downloadLink = $this->getAuthenticatedDownloadUrl($proPlugin, $licenseKey);
+
+        return $this->performUpgradeToPro($freePlugin, $downloadLink);
+    }
+
+    /**
      * Uninstall a plugin.
      *
      * @since 1.0.0
-     * @param PluginInterface $plugin The plugin to uninstall
+     * @param FreePluginInterface $plugin The plugin to uninstall
      * @return bool True on success
      * @throws PluginNotInstalledException If plugin is not installed
      */
-    public function uninstallPlugin(PluginInterface $plugin): bool
+    public function uninstallPlugin(FreePluginInterface $plugin): bool
     {
         if (!$plugin->isInstalled()) {
-            throw new PluginNotInstalledException($plugin->getSlugFree());
+            throw new PluginNotInstalledException($plugin->getSlug());
         }
 
         $this->ensureWordPressRequirements();
@@ -197,14 +241,14 @@ class PluginInstallationService implements ServiceInterface
      * Activate a plugin.
      *
      * @since 1.0.0
-     * @param PluginInterface $plugin The plugin to activate
+     * @param FreePluginInterface $plugin The plugin to activate
      * @return bool True on success
      * @throws PluginNotInstalledException If plugin is not installed
      */
-    public function activatePlugin(PluginInterface $plugin): bool
+    public function activatePlugin(FreePluginInterface $plugin): bool
     {
         if (!$plugin->isInstalled()) {
-            throw new PluginNotInstalledException($plugin->getSlugFree());
+            throw new PluginNotInstalledException($plugin->getSlug());
         }
 
         $this->ensureWordPressRequirements();
@@ -216,23 +260,47 @@ class PluginInstallationService implements ServiceInterface
      * Deactivate a plugin.
      *
      * @since 1.0.0
-     * @param PluginInterface $plugin The plugin to deactivate
+     * @param FreePluginInterface $plugin The plugin to deactivate
      * @return bool True on success
      * @throws PluginNotInstalledException If plugin is not installed
      */
-    public function deactivatePlugin(PluginInterface $plugin): bool
+    public function deactivatePlugin(FreePluginInterface $plugin): bool
     {
         if (!$plugin->isInstalled()) {
-            throw new PluginNotInstalledException($plugin->getSlugFree());
+            throw new PluginNotInstalledException($plugin->getSlug());
         }
 
         if (!$plugin->isActive()) {
-            throw new PluginNotActivatedException($plugin->getSlugFree());
+            throw new PluginNotActivatedException($plugin->getSlug());
         }
 
         $this->ensureWordPressRequirements();
 
         return $this->performDeactivation($plugin);
+    }
+
+    /**
+     * Resolve a conflict.
+     *
+     * @since 1.0.0
+     * @param PluginFamilyInterface $pluginFamily The plugin family to resolve conflict
+     * @param string $pluginToKeep The plugin to keep
+     * @return bool True on success
+     * @throws PluginInstallationException If plugin family has conflicting installations
+     */
+    public function resolveConflict(PluginFamilyInterface $pluginFamily, string $pluginToKeep): bool
+    {
+        $result = false;
+
+        if ($pluginToKeep === 'free') {
+            $result = $this->performUninstallation($pluginFamily->getProPlugin());
+        } elseif ($pluginToKeep === 'pro') {
+            $result = $this->performUninstallation($pluginFamily->getFreePlugin());
+        } else {
+            throw new PluginInstallationException('Invalid plugin to keep');
+        }
+
+        return $result;
     }
 
     /**
@@ -298,43 +366,50 @@ class PluginInstallationService implements ServiceInterface
         return $install === true;
     }
 
-    private function getPluginRelativePath(PluginInterface $plugin): string
+    /**
+     * Perform the actual plugin upgrade to Pro.
+     *
+     * @since 1.0.0
+     * @param FreePluginInterface $freePlugin The free plugin to upgrade
+     * @param string $downloadLink The plugin download URL
+     * @return bool True on success
+     * @throws PluginInstallationException If installation fails
+     */
+    private function performUpgradeToPro(FreePluginInterface $freePlugin, string $downloadLink): bool
     {
-        $pluginSlug = $plugin->getSlug();
-        $pluginFileName = $plugin->getPluginFileName();
+        $result = $this->performUninstallation($freePlugin);
 
-        $pluginPath = $plugin->getPath();
-
-        if (!$pluginPath) {
-            throw new PluginNotInstalledException($pluginSlug);
+        if (!$result) {
+            throw new PluginInstallationException('Failed to uninstall plugin');
         }
 
-        $pluginData = get_plugin_data($pluginPath);
+        $result = $this->performInstallation($downloadLink);
 
-        if (!$pluginData || empty($pluginData['Name'])) {
-            throw new PluginNotInstalledException($pluginSlug);
-        }
-
-        $folderName = basename(dirname($pluginPath));
-
-        return $folderName . '/' . $pluginFileName;
+        return $result === true;
     }
 
     /**
      * Perform the actual plugin uninstallation.
      *
      * @since 1.0.0
-     * @param string $pluginSlug The plugin slug
+     * @param FreePluginInterface $plugin The plugin to uninstall
      * @return bool True on success
      * @throws PluginNotInstalledException If plugin is not installed
      * @throws PluginInstallationException If uninstallation fails
      */
-    private function performUninstallation(PluginInterface $plugin): bool
+    private function performUninstallation(FreePluginInterface $plugin): bool
     {
-        $pluginRelativePath = $this->getPluginRelativePath($plugin);
+        $pluginRelativePath = $plugin->getPath();
 
         if ($plugin->isActive()) {
             $this->performDeactivation($plugin);
+        }
+
+        global $wp_filesystem;
+
+        if (empty($wp_filesystem)) {
+            require_once(ABSPATH . '/wp-admin/includes/file.php');
+            WP_Filesystem();
         }
 
         $result = delete_plugins([$pluginRelativePath]);
@@ -350,13 +425,13 @@ class PluginInstallationService implements ServiceInterface
      * Perform the actual plugin activation.
      *
      * @since 1.0.0
-     * @param PluginInterface $plugin The plugin to activate
+     * @param FreePluginInterface $plugin The plugin to activate
      * @return bool True on success
      * @throws PluginInstallationException If plugin activation fails
      */
-    private function performActivation(PluginInterface $plugin): bool
+    private function performActivation(FreePluginInterface $plugin): bool
     {
-        $pluginRelativePath = $this->getPluginRelativePath($plugin);
+        $pluginRelativePath = $plugin->getPath();
 
         $result = activate_plugin($pluginRelativePath, false);
 
@@ -375,13 +450,13 @@ class PluginInstallationService implements ServiceInterface
      * Perform the actual plugin deactivation.
      *
      * @since 1.0.0
-     * @param PluginInterface $plugin The plugin to deactivate
+     * @param FreePluginInterface $plugin The plugin to deactivate
      * @return bool True on success
      * @throws PluginInstallationException If plugin deactivation fails
      */
-    private function performDeactivation(PluginInterface $plugin): bool
+    private function performDeactivation(FreePluginInterface $plugin): bool
     {
-        $pluginRelativePath = $this->getPluginRelativePath($plugin);
+        $pluginRelativePath = $plugin->getPath();
 
         deactivate_plugins([$pluginRelativePath]);
 
@@ -396,7 +471,7 @@ class PluginInstallationService implements ServiceInterface
      * Get an authenticated download URL for a plugin.
      *
      * @since 1.0.0
-     * @param PluginInterface $plugin The plugin to install
+     * @param EddPluginInterface $proPlugin The plugin to install
      * @param string $licenseKey The license key for authentication
      * @return string The authenticated download URL
      * @throws LicenseServerException If license server error occurs
@@ -414,15 +489,12 @@ class PluginInstallationService implements ServiceInterface
      * @throws LicenseServerException If license server error occurs
      * @throws PluginInstallationException If no download link is available
      */
-    private function getAuthenticatedDownloadUrl(PluginInterface $plugin, string $licenseKey): string
+    private function getAuthenticatedDownloadUrl(EddPluginInterface $proPlugin, string $licenseKey): string
     {
-        // Get the plugin's EDD item ID directly from the plugin
-        $itemId = $plugin->getEddItemId();
+        $itemId = $proPlugin->getEddItemId();
 
-        // First, validate the license
         $this->validateLicense($this->storeUrl, $itemId, $licenseKey);
 
-        // Get version information which includes the download link
         $versionData = $this->getVersionInfo($this->storeUrl, $itemId, $licenseKey);
 
         if (empty($versionData['download_link'])) {
@@ -634,5 +706,30 @@ class PluginInstallationService implements ServiceInterface
             default:
                 throw new LicenseServerException('Unknown license error: ' . $licenseData['license']);
         }
+    }
+
+    /**
+     * Get plugin information from WordPress.org.
+     *
+     * @since 1.0.0
+     * @param string $slug The plugin slug
+     * @return stdClass The plugin information
+     * @throws FetchingPluginInformationException If getting plugin information fails
+     */
+    private function getPluginInformationFromWpOrg(string $slug): stdClass
+    {
+        $api = plugins_api('plugin_information', [
+            'slug' => $slug,
+            'fields' => [
+                'downloadlink' => true,
+                'version' => true
+            ],
+        ]);
+
+        if (is_wp_error($api)) {
+            throw new FetchingPluginInformationException('Failed to get plugin information: ' . $api->get_error_message());
+        }
+
+        return $api;
     }
 }

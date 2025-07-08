@@ -19,14 +19,14 @@ namespace PublishPress\Hub\Infrastructure\Container;
 use PublishPress\Hub\Application\Service\AdminMenuService;
 use PublishPress\Hub\Application\Service\CoreHubService;
 use PublishPress\Hub\Application\Service\LanguageService;
-use PublishPress\Hub\Application\Service\PluginBootstrapService;
+use PublishPress\Hub\Application\Service\PluginFamilyBootstrapService;
 use PublishPress\Hub\Application\Service\PluginInstallationService;
 use PublishPress\Hub\Application\Service\RestApi\ExceptionResponseMapper;
-use PublishPress\Hub\Application\Service\RestApi\Mapper\PluginMapper;
+use PublishPress\Hub\Application\Service\RestApi\Mapper\PluginFamilyDtoMapper;
 use PublishPress\Hub\Application\Service\RestApiService;
 use PublishPress\Hub\Application\View\Admin\ComponentsShowcaseView;
 use PublishPress\Hub\Application\View\Admin\PluginsDashboardView;
-use PublishPress\Hub\Domain\Plugin\PluginRepository;
+use PublishPress\Hub\Domain\Plugin\PluginFamilyRepository;
 use PublishPress\Hub\Infrastructure\Asset\AssetManager;
 use PublishPress\Hub\Infrastructure\Container\Contracts\ServiceContainerInterface;
 use PublishPress\Hub\Infrastructure\Logger\Logger;
@@ -50,18 +50,18 @@ return [
 
     Services::CORE_HUB_SERVICE => function (ServiceContainerInterface $container) {
         return new CoreHubService(
-            $container->get(Services::PLUGIN_REPOSITORY),
+            $container->get(Services::PLUGIN_FAMILY_REPOSITORY),
             $container->get(Services::HUB_SERVICE_COLLECTION)
         );
     },
 
-    Services::PLUGIN_REPOSITORY => function (ServiceContainerInterface $container) {
-        return new PluginRepository();
+    Services::PLUGIN_FAMILY_REPOSITORY => function (ServiceContainerInterface $container) {
+        return new PluginFamilyRepository();
     },
 
-    Services::PLUGIN_BOOTSTRAP_SERVICE => function (ServiceContainerInterface $container) {
-        return new PluginBootstrapService(
-            $container->get(Services::PLUGIN_REPOSITORY)
+    Services::PLUGIN_FAMILY_BOOTSTRAP_SERVICE => function (ServiceContainerInterface $container) {
+        return new PluginFamilyBootstrapService(
+            $container->get(Services::PLUGIN_FAMILY_REPOSITORY)
         );
     },
 
@@ -101,15 +101,15 @@ return [
 
     Services::REST_API_SERVICE => function (ServiceContainerInterface $container) {
         return new RestApiService(
-            $container->get(Services::PLUGIN_REPOSITORY),
-            $container->get(Services::PLUGIN_MAPPER),
+            $container->get(Services::PLUGIN_FAMILY_REPOSITORY),
+            $container->get(Services::PLUGIN_FAMILY_DTO_MAPPER),
             $container->get(Services::PLUGIN_INSTALLATION_SERVICE),
             $container->get(Services::EXCEPTION_RESPONSE_MAPPER)
         );
     },
 
-    Services::PLUGIN_MAPPER => function (ServiceContainerInterface $container) {
-        return new PluginMapper();
+    Services::PLUGIN_FAMILY_DTO_MAPPER => function (ServiceContainerInterface $container) {
+        return new PluginFamilyDtoMapper();
     },
 
     Services::PLUGIN_INSTALLATION_SERVICE => function (ServiceContainerInterface $container) {

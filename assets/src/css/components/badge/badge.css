@@ -49,6 +49,11 @@
     color: var(--pp-hub-badge-text-uninstalling);
 }
 
+.pp-hub-badge.conflicting-installations {
+    background-color: var(--pp-hub-badge-bg-conflicting-installations);
+    color: var(--pp-hub-badge-text-conflicting-installations);
+}
+
 .pp-hub-plugins-list-item:hover .pp-hub-badge.installed {
     background-color: var(--pp-hub-badge-bg-installed-hover);
 }
@@ -75,4 +80,8 @@
 
 .pp-hub-plugins-list-item:hover .pp-hub-badge.uninstalling {
     background-color: var(--pp-hub-badge-bg-uninstalling-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.conflicting-installations {
+    background-color: var(--pp-hub-badge-bg-conflicting-installations-hover);
 }

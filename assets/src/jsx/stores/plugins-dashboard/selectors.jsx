@@ -11,30 +11,29 @@ let lastPluginsForFiltering = null;
 let lastSelectedFilterForFiltering = null;
 let lastFilteredPlugins = null;
 
-const sortPlugins = (plugins) => {
-
-    return plugins.sort((a, b) => {
+const sortPlugins = (pluginFamily) => {
+    return pluginFamily.sort((a, b) => {
         // First sort by installed status
-        if (a.isInstalled && !b.isInstalled) {
+        if (a.hasAnyVersionInstalled && !b.hasAnyVersionInstalled) {
             return -1;
         }
-        if (!a.isInstalled && b.isInstalled) {
+        if (!a.hasAnyVersionInstalled && b.hasAnyVersionInstalled) {
             return 1;
         }
 
         // If both are installed or both are not installed, sort by pro status
-        if (a.isInstalled && b.isInstalled) {
-            if (a.isLicensed && !b.isLicensed) {
+        if (a.hasAnyVersionInstalled && b.hasAnyVersionInstalled) {
+            if (a.proPlugin.isLicensed && !b.proPlugin.isLicensed) {
                 return -1;
             }
-            if (!a.isLicensed && b.isLicensed) {
+            if (!a.proPlugin.isLicensed && b.proPlugin.isLicensed) {
                 return 1;
             }
 
-            if (a.isPro && !b.isPro) {
+            if (a.proPlugin.isInstalled && !b.proPlugin.isInstalled) {
                 return -1;
             }
-            if (!a.isPro && b.isPro) {
+            if (!a.proPlugin.isInstalled && b.proPlugin.isInstalled) {
                 return 1;
             }
         }
@@ -116,12 +115,24 @@ export const getIsUninstallConfirmationModalOpen = (state) => {
     return state.isUninstallConfirmationModalOpen;
 }
 
+export const getIsResolveConflictModalOpen = (state) => {
+    return state.isResolveConflictModalOpen;
+}
+
 export const getIsUpgradeModalOpen = (state) => {
     return state.isUpgradeModalOpen;
 }
 
 export const getPluginUpgradeInProgress = (state) => {
     return state.pluginUpgradeInProgress;
+}
+
+export const getPluginResolveConflictInProgress = (state) => {
+    return state.pluginResolveConflictInProgress;
+}
+
+export const getSelectedPluginForConflictResolution = (state) => {
+    return state.selectedPluginForConflictResolution;
 }
 
 // Memoization cache for getFilterCounts
@@ -154,14 +165,14 @@ export const getFilterCounts = (state) => {
 
 const filterPlugin = (plugin, selectedFilter) => {
     switch (selectedFilter) {
-        case 'unlicensed':
-            return !plugin.isLicensed && plugin.isInstalled;
-        case 'active':
-            return plugin.isActive && plugin.isInstalled;
-        case 'inactive':
-            return !plugin.isActive && plugin.isInstalled;
         case 'notInstalled':
-            return !plugin.isInstalled;
+            return !plugin.hasAnyVersionInstalled;
+        case 'unlicensed':
+            return plugin.proPlugin.isInstalled && !plugin.proPlugin.isLicensed;
+        case 'active':
+            return plugin.hasAnyVersionActive && plugin.hasAnyVersionInstalled;
+        case 'inactive':
+            return !plugin.hasAnyVersionActive && plugin.hasAnyVersionInstalled;
         default:
             return true;
     }

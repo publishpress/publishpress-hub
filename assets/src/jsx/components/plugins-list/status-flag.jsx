@@ -41,18 +41,39 @@ const STATUS_BADGE_CONFIGS = {
         text: __('Activating', 'publishpress-hub'),
         className: 'activating',
     },
+    hasConflictingInstallations: {
+        text: __('Conflicting Installations', 'publishpress-hub'),
+        className: 'conflicting-installations',
+    },
 };
 
 const StatusFlagComponent = ({
-    plugin,
+    pluginFamily,
     isInstalling,
     isUninstalling,
     isUpgrading,
     isDeactivating,
     isActivating,
 }) => {
+    // Extract the countInstalledPlugins calculation to avoid nesting useMemo hooks
+    const countInstalledPlugins = useMemo(() => {
+        let count = 0;
+        if (pluginFamily.freePlugin.isInstalled) {
+            count += 1;
+        }
+        if (pluginFamily.proPlugin.isInstalled) {
+            count += 1;
+        }
+
+        return count;
+    }, [pluginFamily]);
+
     const props = useMemo(() => {
-        if (!plugin.isInstalled && isInstalling) {
+        if (pluginFamily.hasConflictingInstallations) {
+            return STATUS_BADGE_CONFIGS.hasConflictingInstallations;
+        }
+
+        if (isInstalling) {
             return STATUS_BADGE_CONFIGS.installing;
         }
 
@@ -72,20 +93,16 @@ const StatusFlagComponent = ({
             return STATUS_BADGE_CONFIGS.activating;
         }
 
-        if (!plugin.isInstalled) {
+        if (countInstalledPlugins === 0) {
             return STATUS_BADGE_CONFIGS.notInstalled;
         }
 
-        if (!plugin.isPro) {
-            return STATUS_BADGE_CONFIGS.free;
+        if (pluginFamily.proPlugin.isInstalled) {
+            return pluginFamily.proPlugin.isLicensed ? STATUS_BADGE_CONFIGS.licensed : STATUS_BADGE_CONFIGS.unlicensed;
         }
 
-        if (plugin.isLicensed) {
-            return STATUS_BADGE_CONFIGS.licensed;
-        }
-
-        return STATUS_BADGE_CONFIGS.unlicensed;
-    }, [plugin, isInstalling, isUninstalling]);
+        return STATUS_BADGE_CONFIGS.free;
+    }, [pluginFamily, isInstalling, isUninstalling, isUpgrading, isDeactivating, isActivating, countInstalledPlugins]);
 
     if (!props) {
         return null;

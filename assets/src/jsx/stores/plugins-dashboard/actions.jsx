@@ -106,6 +106,13 @@ export function* setIsUpgradeModalOpen(isOpen) {
     };
 }
 
+export function* setIsResolveConflictModalOpen(isOpen) {
+    yield {
+        type: 'SET_IS_RESOLVE_CONFLICT_MODAL_OPEN',
+        isOpen,
+    };
+}
+
 export function* fetchPlugins() {
     try {
         yield {type: 'FETCH_PLUGINS_START'};
@@ -264,40 +271,40 @@ export function* uninstallPlugin(pluginSlugFree) {
     }
 }
 
-export function* activatePlugin(pluginSlugFree) {
+export function* activatePlugin(pluginFamilySlug) {
     try {
-        yield {type: 'ACTIVATE_PLUGIN_START', data: {pluginSlugFree}};
+        yield {type: 'ACTIVATE_PLUGIN_START', data: {pluginFamilySlug}};
 
         yield apiReady();
 
         const data = yield apiFetch({
-            path: `${API_NAMESPACE}/plugins/${pluginSlugFree}/activate`,
+            path: `${API_NAMESPACE}/plugins/${pluginFamilySlug}/activate`,
             method: 'POST',
         });
 
         if (data.success) {
             yield fetchPlugins();
 
-            yield {type: 'ACTIVATE_PLUGIN_SUCCESS', data: {pluginSlugFree}};
+            yield {type: 'ACTIVATE_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 
             yield createSnackbarNotice(__('Plugin activated successfully', 'publishpress-hub'), 'success');
 
             return {
                 success: true,
-                pluginSlugFree,
+                pluginFamilySlug,
                 apiResponse: data,
             };
         } else {
             throw new Error(data?.error || 'Plugin activation failed');
         }
     } catch (error) {
-        yield {type: 'ACTIVATE_PLUGIN_ERROR', data: {pluginSlugFree, error: error}};
+        yield {type: 'ACTIVATE_PLUGIN_ERROR', data: {pluginFamilySlug, error: error}};
 
         yield createNotice(__('Plugin activation failed', 'publishpress-hub'), 'error');
 
         return {
             success: false,
-            pluginSlugFree,
+            pluginFamilySlug,
             error,
         };
     }
@@ -384,6 +391,57 @@ export function* upgradePluginToPro(pluginSlugFree, licenseKey) {
             success: false,
             pluginSlugFree,
             licenseKey,
+            error,
+        };
+    }
+}
+
+export function* resolveConflict(pluginFamily, pluginToKeep) {
+    try {
+        const validPlugins = ['free', 'pro'];
+        const validPluginToKeep = validPlugins.includes(pluginToKeep) ? pluginToKeep : null;
+
+        if (!validPluginToKeep) {
+            throw new Error('Invalid plugin to keep');
+        }
+
+        yield {type: 'RESOLVE_CONFLICT_START', data: {pluginFamily, pluginToKeep}};
+
+        yield apiReady();
+
+        const data = yield apiFetch({
+            path: `${API_NAMESPACE}/plugins/${pluginFamily.slug}/resolve-conflict`,
+            method: 'POST',
+            data: {
+                plugin_to_keep: pluginToKeep,
+            },
+        });
+
+        if (data.success) {
+            yield fetchPlugins();
+
+            yield {type: 'RESOLVE_CONFLICT_SUCCESS', data: {pluginFamily, pluginToKeep}};
+
+            yield createSnackbarNotice(__('Conflict resolved successfully', 'publishpress-hub'), 'success');
+
+            return {
+                success: true,
+                pluginFamily,
+                pluginToKeep,
+                apiResponse: data,
+            };
+        } else {
+            throw new Error(data?.error || 'Failed to resolve conflict');
+        }
+    } catch (error) {
+        yield {type: 'RESOLVE_CONFLICT_ERROR', data: {pluginFamily, pluginToKeep, error: error}};
+
+        yield createNotice(__('Failed to resolve conflict', 'publishpress-hub'), 'error');
+
+        return {
+            success: false,
+            pluginFamily,
+            pluginToKeep,
             error,
         };
     }

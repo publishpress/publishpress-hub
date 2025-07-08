@@ -8,6 +8,7 @@ use PublishPress\Hub\Application\Service\Contracts\ExceptionMetadataInterface;
 use PublishPress\Hub\Application\Service\Contracts\HttpExceptionInterface;
 use PublishPress\Hub\Application\Service\Exception\ServiceException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
+use PublishPress\Hub\Domain\Plugin\Exception\PluginFamilyNotFoundException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use Throwable;
 use WP_Error;
@@ -35,6 +36,16 @@ class ExceptionResponseMapper
         if ($exception instanceof PluginNotFoundException) {
             return new WP_Error(
                 'plugin_not_found',
+                $exception->getMessage(),
+                [
+                    'status' => 404,
+                ]
+            );
+        }
+
+        if ($exception instanceof PluginFamilyNotFoundException) {
+            return new WP_Error(
+                'plugin_family_not_found',
                 $exception->getMessage(),
                 [
                     'status' => 404,

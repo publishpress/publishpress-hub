@@ -8,6 +8,7 @@ import { ModalInstallationType } from './modal-installation-type';
 import { ModalLicenseInput } from './modal-license-input';
 import { PluginItem } from './plugin-item';
 import { ModalConfirmation } from './modal-confirmation';
+import { ModalResolveConflict } from './modal-resolve-conflict';
 
 const PluginsListComponent = ({
     plugins,
@@ -22,11 +23,14 @@ const PluginsListComponent = ({
         pluginDeactivationInProgress,
         pluginActivationInProgress,
         pluginUpgradeInProgress,
+        pluginResolveConflictInProgress,
+        selectedPluginForConflictResolution,
         pluginError,
         isLicenseInputModalOpen,
         isInstallationTypeModalOpen,
         isUninstallConfirmationModalOpen,
         isUpgradeModalOpen,
+        isResolveConflictModalOpen,
     } = useSelect((select) => {
         const storeSelect = select(store);
         return {
@@ -35,11 +39,14 @@ const PluginsListComponent = ({
             pluginDeactivationInProgress: storeSelect.getPluginDeactivationInProgress(),
             pluginActivationInProgress: storeSelect.getPluginActivationInProgress(),
             pluginUpgradeInProgress: storeSelect.getPluginUpgradeInProgress(),
+            pluginResolveConflictInProgress: storeSelect.getPluginResolveConflictInProgress(),
+            selectedPluginForConflictResolution: storeSelect.getSelectedPluginForConflictResolution(),
             pluginError: storeSelect.getPluginError(),
             isLicenseInputModalOpen: storeSelect.getIsLicenseInputModalOpen(),
             isInstallationTypeModalOpen: storeSelect.getIsInstallationTypeModalOpen(),
             isUninstallConfirmationModalOpen: storeSelect.getIsUninstallConfirmationModalOpen(),
             isUpgradeModalOpen: storeSelect.getIsUpgradeModalOpen(),
+            isResolveConflictModalOpen: storeSelect.getIsResolveConflictModalOpen(),
         };
     }, []);
 
@@ -50,37 +57,44 @@ const PluginsListComponent = ({
         setInstallationTypeModalOpen,
         setIsUninstallConfirmationModalOpen,
         setIsUpgradeModalOpen,
+        setIsResolveConflictModalOpen,
         uninstallPlugin,
         activatePlugin,
         deactivatePlugin,
         upgradePluginToPro,
+        resolveConflict,
     } = useDispatch(store);
 
     // Memoized handlers
-    const handleInstall = useCallback((plugin) => {
+    const handleInstall = useCallback((pluginFamily) => {
+        setCurrentPluginForModal(pluginFamily);
         setInstallationTypeModalOpen(true);
-        setCurrentPluginForModal(plugin);
     }, [setInstallationTypeModalOpen]);
 
-    const handleActivate = useCallback((plugin) => {
-        activatePlugin(plugin.slugFree);
+    const handleResolveConflict = useCallback((pluginFamily) => {
+        setCurrentPluginForModal(pluginFamily);
+        setIsResolveConflictModalOpen(true);
+    }, [setCurrentPluginForModal, setIsResolveConflictModalOpen]);
+
+    const handleActivate = useCallback((pluginFamily) => {
+        activatePlugin(pluginFamily.slug);
     }, [activatePlugin]);
 
-    const handleDeactivate = useCallback((plugin) => {
-        deactivatePlugin(plugin.slugFree);
+    const handleDeactivate = useCallback((pluginFamily) => {
+        deactivatePlugin(pluginFamily.slug);
     }, [deactivatePlugin]);
 
-    const handleManageLicense = useCallback((plugin) => {
-        setCurrentPluginForModal(plugin);
+    const handleManageLicense = useCallback((pluginFamily) => {
+        setCurrentPluginForModal(pluginFamily);
     }, []);
 
-    const handleActivateLicense = useCallback((plugin) => {
-        setCurrentPluginForModal(plugin);
+    const handleActivateLicense = useCallback((pluginFamily) => {
+        setCurrentPluginForModal(pluginFamily);
     }, []);
 
-    const handleUpgradeToPro = useCallback((plugin) => {
+    const handleUpgradeToPro = useCallback((pluginFamily) => {
         setIsUpgradeModalOpen(true);
-        setCurrentPluginForModal(plugin);
+        setCurrentPluginForModal(pluginFamily);
     }, [setIsUpgradeModalOpen, setCurrentPluginForModal]);
 
     const handleUpgradeModalClose = useCallback(() => {
@@ -92,7 +106,7 @@ const PluginsListComponent = ({
         setInstallationTypeModalOpen(false);
 
         if (type === 'free' && currentPluginForModal) {
-            installFreePlugin(currentPluginForModal.slugFree);
+            installFreePlugin(currentPluginForModal.slug);
         } else if (type === 'pro') {
             setLicenseInputModalOpen(true);
         }
@@ -103,11 +117,39 @@ const PluginsListComponent = ({
         setCurrentPluginForModal(null);
     }, [setLicenseInputModalOpen]);
 
+    const handleResolveConflictModalClose = useCallback(() => {
+        setIsResolveConflictModalOpen(false);
+        setCurrentPluginForModal(null);
+    }, [setIsResolveConflictModalOpen]);
+
+    const handleResolveConflictKeepFree = useCallback(() => {
+        resolveConflict(currentPluginForModal, 'free').then((result) => {
+            if (result.success) {
+                setIsResolveConflictModalOpen(false);
+                setCurrentPluginForModal(null);
+            }
+        });
+    }, [resolveConflict, currentPluginForModal]);
+
+    const handleResolveConflictKeepPro = useCallback(() => {
+        resolveConflict(currentPluginForModal, 'pro').then((result) => {
+            if (result.success) {
+                setIsResolveConflictModalOpen(false);
+                setCurrentPluginForModal(null);
+            }
+        });
+    }, [resolveConflict, currentPluginForModal]);
+
+    const handleResolveConflictCancel = useCallback(() => {
+        setIsResolveConflictModalOpen(false);
+        setCurrentPluginForModal(null);
+    }, [setIsResolveConflictModalOpen, setCurrentPluginForModal]);
+
     const handleLicenseActivate = useCallback((licenseKey) => {
         if (!currentPluginForModal) return;
 
         installProPlugin(
-            currentPluginForModal.slugFree,
+            currentPluginForModal.slug,
             licenseKey,
         ).then((result) => {
             if (!result.success || result.error) {
@@ -124,7 +166,7 @@ const PluginsListComponent = ({
         if (!currentPluginForModal) return;
 
         upgradePluginToPro(
-            currentPluginForModal.slugFree,
+            currentPluginForModal.slug,
             licenseKey,
         ).then((result) => {
             if (!result.success || result.error) {
@@ -137,23 +179,29 @@ const PluginsListComponent = ({
         });
     }, [currentPluginForModal, installProPlugin, setIsUpgradeModalOpen, setCurrentPluginForModal]);
 
-    const handleUninstall = useCallback((plugin) => {
+    const handleUninstall = useCallback((pluginFamily) => {
         setIsUninstallConfirmationModalOpen(true);
-        setCurrentPluginForModal(plugin);
+        setCurrentPluginForModal(pluginFamily);
     }, [setIsUninstallConfirmationModalOpen, setCurrentPluginForModal]);
 
     const currentPluginState = useMemo(() => {
         if (!currentPluginForModal) return { error: null, inProgress: false };
 
         return {
-            error: pluginError[currentPluginForModal.slugFree] || null,
-            inProgress: pluginInstallationInProgress[currentPluginForModal.slugFree] || false,
+            error: pluginError[currentPluginForModal.slug] || null,
+            inProgress: pluginInstallationInProgress[currentPluginForModal.slug] ||
+                pluginUninstallationInProgress[currentPluginForModal.slug] ||
+                pluginDeactivationInProgress[currentPluginForModal.slug] ||
+                pluginActivationInProgress[currentPluginForModal.slug] ||
+                pluginUpgradeInProgress[currentPluginForModal.slug] ||
+                pluginResolveConflictInProgress[currentPluginForModal.slug] ||
+                false,
         };
-    }, [currentPluginForModal, pluginError, pluginInstallationInProgress]);
+    }, [currentPluginForModal, pluginError, pluginInstallationInProgress, pluginUninstallationInProgress, pluginDeactivationInProgress, pluginActivationInProgress, pluginUpgradeInProgress]);
 
     const handleUninstallConfirmationConfirm = useCallback(() => {
         setIsUninstallConfirmationModalOpen(false);
-        uninstallPlugin(currentPluginForModal.slugFree);
+        uninstallPlugin(currentPluginForModal.slug);
     }, [currentPluginForModal, uninstallPlugin]);
 
     const handleUninstallConfirmationCancel = useCallback(() => {
@@ -166,24 +214,27 @@ const PluginsListComponent = ({
 
     return (
         <div className="pp-hub-plugins-list">
-            {plugins.map((plugin) => {
-                const isInstalling = pluginInstallationInProgress[plugin.slugFree] || false;
-                const isUninstalling = pluginUninstallationInProgress[plugin.slugFree] || false;
-                const isDeactivating = pluginDeactivationInProgress[plugin.slugFree] || false;
-                const isActivating = pluginActivationInProgress[plugin.slugFree] || false;
-                const isUpgrading = pluginUpgradeInProgress[plugin.slugFree] || false;
+            {plugins.map((pluginFamily) => {
+                const isInstalling = pluginInstallationInProgress[pluginFamily.slug] || false;
+                const isUninstalling = pluginUninstallationInProgress[pluginFamily.slug] || false;
+                const isDeactivating = pluginDeactivationInProgress[pluginFamily.slug] || false;
+                const isActivating = pluginActivationInProgress[pluginFamily.slug] || false;
+                const isUpgrading = pluginUpgradeInProgress[pluginFamily.slug] || false;
+                const isResolvingConflict = pluginResolveConflictInProgress[pluginFamily.slug] || false;
 
                 return (
                     <PluginItem
-                        key={`plugin-${plugin.slugFree}`}
-                        plugin={plugin}
+                        key={`plugin-${pluginFamily.slug}`}
+                        pluginFamily={pluginFamily}
                         pluginIconBaseUrl={pluginIconBaseUrl}
                         isInstalling={isInstalling}
                         isUninstalling={isUninstalling}
                         isDeactivating={isDeactivating}
                         isActivating={isActivating}
                         isUpgrading={isUpgrading}
+                        isResolvingConflict={isResolvingConflict}
                         onInstall={handleInstall}
+                        onResolveConflict={handleResolveConflict}
                         onActivate={handleActivate}
                         onDeactivate={handleDeactivate}
                         onUpgradeToPro={handleUpgradeToPro}
@@ -240,6 +291,19 @@ const PluginsListComponent = ({
                     onActivate={handlePluginUpgrade}
                     error={currentPluginState.error}
                     buttonInProgress={currentPluginState.inProgress}
+                />
+            )}
+
+            {isResolveConflictModalOpen && currentPluginForModal && (
+                <ModalResolveConflict
+                    onClose={handleResolveConflictModalClose}
+                    onKeepFreePlugin={handleResolveConflictKeepFree}
+                    onKeepProPlugin={handleResolveConflictKeepPro}
+                    onCancel={handleResolveConflictCancel}
+                    pluginsFamily={currentPluginForModal}
+                    error={currentPluginState.error}
+                    buttonInProgress={pluginResolveConflictInProgress[currentPluginForModal.slug] || false}
+                    selectedPluginForConflictResolution={selectedPluginForConflictResolution}
                 />
             )}
         </div>

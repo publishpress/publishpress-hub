@@ -6,8 +6,10 @@ declare(strict_types=1);
 namespace Tests\Api;
 
 use lucatume\WPBrowser\Utils\Filesystem;
-use PublishPress\Hub\Domain\Plugin\Plugin;
+use PublishPress\Hub\Domain\Plugin\FreePlugin;
 use PublishPress\Hub\Domain\Plugin\PluginBuilder;
+use PublishPress\Hub\Domain\Plugin\PluginFamily;
+use PublishPress\Hub\Domain\Plugin\ProPlugin;
 use PublishPress\Hub\Infrastructure\Container\ServiceContainer;
 use PublishPress\Hub\Infrastructure\Container\Services;
 use Tests\Support\ApiTester;
@@ -30,17 +32,26 @@ final class PluginsCest
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
         $I->seeResponseContainsJson(['success' => true,]);
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].slugFree');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].slugPro');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].slug');
         $I->seeResponseJsonMatchesJsonPath('$.data[0].name');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].version');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].isInstalled');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].isActive');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].isLicensed');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].isPro');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].freeDetailsUrl');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proDetailsUrl');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].iconPath');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].description');
         $I->seeResponseJsonMatchesJsonPath('$.data[0].changelogUrl');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.name');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.slug');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.version');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.detailsUrl');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.isInstalled');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.isActive');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.path');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.name');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.slug');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.version');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.detailsUrl');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.isInstalled');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.isActive');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.isLicensed');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.path');
     }
 
     public function testInstallPluginFreeWithInvalidSlug(ApiTester $I): void
@@ -51,46 +62,47 @@ final class PluginsCest
         $I->seeResponseIsJson();
         $I->seeResponseContainsJson(
             [
-                'code' => 'plugin_not_found'
+                'code' => 'plugin_family_not_found',
             ]
         );
     }
 
-    public function testInstallPluginFreeWithAlreadyInstalledPlugin(ApiTester $I): void
+    public function testInstallFreePlugin(ApiTester $I): void
     {
         $container = ServiceContainer::getInstance();
-        $pluginRepository = $container->get(Services::PLUGIN_REPOSITORY);
+        $pluginFamilyRepository = $container->get(Services::PLUGIN_FAMILY_REPOSITORY);
 
-        $plugin = PluginBuilder::create('PublishPress Authors')
-            ->withSlugFree('publishpress-authors')
-            ->withSlugPro('publishpress-authors-pro')
-            ->withPluginFileNameFree('publishpress-authors.php')
-            ->withPluginFileNamePro('publishpress-authors-pro.php')
-            ->withEddItemId(1000)
-            ->withIconFile('icon-authors')
-            ->withDescription('A dummy plugin for testing purposes')
-            ->withFreeDetailsUrl('https://publishpress.com/pricing/publishpress-authors/')
-            ->withProDetailsUrl('https://publishpress.com/pricing/publishpress-authors-pro/')
-            ->withChangelogUrl('https://publishpress.com/knowledge-base/changelogs-publishpress-authors/')
-            ->build();
-
-        $plugin->register(
-            '1.0.0',
-            __DIR__ . '/../Support/Data/Plugins/dummy-authors-free/publishpress-authors.php',
-            false
+        $pluginFamily = new PluginFamily(
+            'icon-authors',
+            'A dummy plugin for testing purposes',
+            'https://publishpress.com/knowledge-base/changelogs-publishpress-authors/'
         );
-        $pluginRepository->register($plugin);
+
+        $freePlugin = new FreePlugin(
+            'PublishPress Authors',
+            'publishpress-authors',
+            'publishpress-authors.php',
+            'https://publishpress.com/pricing/publishpress-authors/'
+        );
+
+        $proPlugin = new ProPlugin(
+            'PublishPress Authors Pro',
+            'publishpress-authors-pro',
+            'publishpress-authors-pro.php',
+            'https://publishpress.com/pricing/publishpress-authors-pro/',
+            1000,
+            'publishpress-authors'
+        );
+
+        $pluginFamily->setFreePlugin($freePlugin);
+        $pluginFamily->setProPlugin($proPlugin);
+
+        $pluginFamilyRepository->registerFamily($pluginFamily);
 
         $I->sendPOST('publishpress-hub/v1/plugins/publishpress-authors/install/free');
 
-        $I->seeResponseCodeIs(400);
+        $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
-        $I->seeResponseContainsJson(
-            [
-                'code' => 'plugin_already_installed',
-                'message' => 'Plugin "publishpress-authors" is already installed.',
-            ]
-        );
     }
 
     public function testInstallPluginFreeWithValidSlug(ApiTester $I): void
@@ -104,7 +116,7 @@ final class PluginsCest
         }
 
         $container = ServiceContainer::getInstance();
-        $pluginRepository = $container->get(Services::PLUGIN_REPOSITORY);
+        $pluginRepository = $container->get(Services::PLUGIN_FAMILY_REPOSITORY);
         $plugin = $pluginRepository->findBySlug('publishpress-checklists');
 
         if ($plugin) {

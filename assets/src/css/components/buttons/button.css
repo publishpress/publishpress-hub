@@ -149,6 +149,35 @@
     color: var(--pp-hub-button-text-disabled);
 }
 
+.pp-hub-button.is-danger {
+    background-color: var(--pp-hub-button-bg-danger);
+    color: var(--pp-hub-button-text-danger);
+    border-color: var(--pp-hub-button-border-danger);
+}
+
+.pp-hub-button.is-danger:hover {
+    background-color: var(--pp-hub-button-bg-danger-hover);
+    border-color: var(--pp-hub-button-border-danger);
+    color: var(--pp-hub-button-text-danger-hover);
+}
+
+.pp-hub-button.is-danger:active {
+    background-color: var(--pp-hub-button-bg-danger-active);
+    border-color: var(--pp-hub-button-border-danger);
+}
+
+.pp-hub-button.is-danger:focus {
+    background-color: var(--pp-hub-button-bg-danger-hover);
+    border-color: var(--pp-hub-button-border-danger);
+}
+
+.pp-hub-button.is-danger:disabled {
+    background-color: var(--pp-hub-button-bg-danger-disabled);
+    border-color: var(--pp-hub-button-border-danger);
+    color: var(--pp-hub-button-text-disabled);
+}
+
+
 .pp-hub-button.is-link {
     background-color: unset;
     color: var(--pp-hub-text-primary);

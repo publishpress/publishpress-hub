@@ -2,7 +2,7 @@
 @baseUrl = http://localhost:8032/wp-json
 @apiPath = publishpress-hub/v1
 # Replace these with your credentials - use base64 encoded credentials (username:appPassword), get from the .env file after starting the test containers.
-@passwordHash = YWRtaW46RDRHb0o1ektsc3ViaDJvYXlpYlY5NkZr
+@passwordHash = YWRtaW46UEthWGpLT1NhS2xHVXNtOWt4ZXpkYlF6
 
 ### Test WordPress REST API (no auth required)
 GET {{baseUrl}}
