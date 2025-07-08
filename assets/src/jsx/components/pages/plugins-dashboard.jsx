@@ -1,7 +1,7 @@
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useCallback, useMemo, useEffect, memo } from '@wordpress/element';
 
-import { __, sprintf } from '@publishpress/hub-i18n';
+import { __ } from '@publishpress/hub-i18n';
 
 import { AdminPageLayout } from '../admin-page';
 import FilterButtonsBar from '../filter/filter-buttons-bar';
@@ -30,18 +30,12 @@ const PluginsDashboardComponent = () => {
         filterCounts,
         plugins,
         isLoading,
-        error,
     } = useSelect(selectPluginsDashboardData, []);
 
     const {
         setSelectedFilter,
         fetchPlugins
     } = useDispatch(store);
-
-    const {
-        createErrorNotice,
-        createSuccessNotice,
-    } = useDispatch('core/notices');
 
     const handleFilterChange = useCallback((selectedFilter) => {
         setSelectedFilter(selectedFilter);

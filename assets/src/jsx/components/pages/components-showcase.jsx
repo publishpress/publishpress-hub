@@ -1,5 +1,4 @@
-import { useSelect, useDispatch } from '@wordpress/data';
-import { useCallback, useMemo, useEffect, memo } from '@wordpress/element';
+import { memo } from '@wordpress/element';
 
 import { __ } from '@publishpress/hub-i18n';
 
