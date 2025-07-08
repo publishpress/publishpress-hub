@@ -1,4 +1,4 @@
-import { memo, useMemo, Fragment, useState } from '@wordpress/element';
+import { memo, useMemo, Fragment, useState, useCallback } from '@wordpress/element';
 
 import classNames from 'classnames';
 
@@ -8,6 +8,7 @@ import { Tooltip } from '../../tooltip';
 import { StatusFlag } from './status-flag';
 import { ActionButton } from './action-button';
 import { Button } from '../../buttons/button';
+import { usePluginStatus, useActionButtons, usePluginDisplayInfo } from '../hooks';
 
 const PluginItemComponent = ({
     pluginFamily,
@@ -29,148 +30,38 @@ const PluginItemComponent = ({
 }) => {
     const [isHovered, setIsHovered] = useState(false);
 
-    const {
-        statusFlagClass,
-        tooltipText,
-        iconSrc,
-        displayName,
-        inProgress,
-        actionButtons,
-    } = useMemo(() => {
-        const isActive = pluginFamily.hasAnyVersionActive;
-        const isInstalled = pluginFamily.hasAnyVersionInstalled;
-        const isLicensed = pluginFamily.isLicensed;
-        const isPro = pluginFamily.proPlugin.isInstalled;
-        const hasConflictingInstallations = pluginFamily.hasConflictingInstallations;
+    const status = usePluginStatus(pluginFamily);
+    const { iconSrc, displayName } = usePluginDisplayInfo(pluginFamily, pluginIconBaseUrl, status);
 
-        const inProgress = isInstalling || isUpgrading || isResolvingConflict;
-
-        const statusFlagClass = classNames({
-            'active': isActive,
-            'inactive': !isActive,
-            'pro': isPro,
-            'free': !isPro,
-            'licensed': isLicensed,
-            'unlicensed': !isLicensed,
-            'installed': isInstalled,
-            'not-installed': !isInstalled,
-        });
-
-        const tooltipText = (() => {
-            if (!isInstalled) {
-                return __('This plugin is not installed.', 'publishpress-hub');
-            }
-            return isActive ?
-                __('This plugin is active.', 'publishpress-hub') : __('This plugin is not active.', 'publishpress-hub');
-        })();
-
-        const iconSrc = `${pluginIconBaseUrl}images/plugin-icons/${pluginFamily.iconPath}-96x96.png`;
-
-        const displayName = isPro ? pluginFamily.proPlugin.name : pluginFamily.freePlugin.name;
-
-        const actionButtons = (() => {
-            let buttons = [];
-
-            if (isInstalled && !pluginFamily.hasConflictingInstallations) {
-                if (isActive) {
-                    buttons.push(
-                        <Button
-                            variant='link'
-                            text={__('Deactivate', 'publishpress-hub')}
-                            isLoading={isDeactivating}
-                            onClick={() => {
-                                onDeactivate(pluginFamily);
-                            }}
-                        />
-                    );
-                }
-
-                if (!isActive) {
-                    buttons.push(
-                        <Button
-                            variant='link'
-                            text={__('Activate', 'publishpress-hub')}
-                            isLoading={isActivating}
-                            onClick={() => {
-                                onActivate(pluginFamily);
-                            }}
-                        />
-                    );
-                }
-
-                buttons.push(
-                    <Button
-                        variant='link'
-                        text={__('Uninstall', 'publishpress-hub')}
-                        isLoading={isUninstalling}
-                        className='is-danger'
-                        onClick={() => {
-                            onUninstall(pluginFamily);
-                        }}
-                    />
-                );
-            }
-
-            if (!isInstalled && !pluginFamily.hasConflictingInstallations) {
-                buttons.push(
-                    <Button
-                        variant='link'
-                        href={pluginFamily.freePlugin.detailsUrl}
-                        text={__('Free Details', 'publishpress-hub')}
-                    />
-                );
-
-                buttons.push(
-                    <Button
-                        variant='link'
-                        href={pluginFamily.proPlugin.detailsUrl}
-                        text={__('Pro Details', 'publishpress-hub')}
-                    />
-                );
-
-            }
-
-            buttons.push(
-                <Button
-                    variant='link'
-                    href={pluginFamily.changelogUrl}
-                    text={__('Changelogs', 'publishpress-hub')}
-                />
-            );
-
-            return buttons;
-        })();
-
-        return {
-            statusFlagClass,
-            tooltipText,
-            iconSrc,
-            displayName,
-            inProgress,
-            actionButtons,
-        };
-    }, [
-        pluginFamily,
-        pluginIconBaseUrl,
-        isInstalling,
-        isUninstalling,
+    const loadingStates = useMemo(() => ({
         isDeactivating,
         isActivating,
-        isUpgrading,
+        isUninstalling,
+    }), [isDeactivating, isActivating, isUninstalling]);
+
+    const handlers = useMemo(() => ({
         onDeactivate,
         onActivate,
         onUninstall,
-    ]);
+    }), [onDeactivate, onActivate, onUninstall]);
+
+    const actionButtonsData = useActionButtons(pluginFamily, status, loadingStates, handlers);
+
+    const inProgress = useMemo(() =>
+        isInstalling || isUpgrading || isResolvingConflict,
+        [isInstalling, isUpgrading, isResolvingConflict]
+    );
+
+    const handleMouseEnter = useCallback(() => setIsHovered(true), []);
+    const handleMouseLeave = useCallback(() => setIsHovered(false), []);
+
+    const { statusFlagClass, tooltipText } = status;
 
     return (
         <div
             className={`pp-hub-plugins-list-item ${statusFlagClass} ${isHovered ? 'hovered' : ''}`}
-            onMouseEnter={() => {
-                setIsHovered(true);
-            }}
-            onMouseLeave={() => {
-                setIsHovered(false);
-            }}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
         >
             <div className='pp-hub-plugins-list-item-icon'>
                 <img src={iconSrc} alt={pluginFamily.name} />
@@ -189,21 +80,25 @@ const PluginItemComponent = ({
                     {pluginFamily.description}
                 </div>
                 <div className='pp-hub-plugins-list-item-inline-actions'>
-                    <>
-                        {actionButtons.map((button, index) => (
-                            <Fragment key={index}>
-                                {button}
-                                {index < actionButtons.length - 1 && (
-                                    <span>|</span>
-                                )}
-                            </Fragment>
-                        ))}
-                    </>
+                    {actionButtonsData.map((buttonProps, index) => (
+                        <Fragment key={buttonProps.key}>
+                            <Button {...buttonProps} />
+                            {index < actionButtonsData.length - 1 && (
+                                <span>|</span>
+                            )}
+                        </Fragment>
+                    ))}
                 </div>
-
             </div>
             <div className='pp-hub-plugins-list-item-actions'>
-                <StatusFlag pluginFamily={pluginFamily} isInstalling={isInstalling} isUninstalling={isUninstalling} isUpgrading={isUpgrading} isDeactivating={isDeactivating} isActivating={isActivating} />
+                <StatusFlag
+                    pluginFamily={pluginFamily}
+                    isInstalling={isInstalling}
+                    isUninstalling={isUninstalling}
+                    isUpgrading={isUpgrading}
+                    isDeactivating={isDeactivating}
+                    isActivating={isActivating}
+                />
                 <ActionButton
                     plugin={pluginFamily}
                     inProgress={inProgress}
