@@ -4,8 +4,10 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@publishpress/hub-i18n';
 
 import { store } from '../../stores/plugins-dashboard';
-import { PluginItem } from './plugin-item';
-import { ModalRenderer } from './components/modal-renderer';
+import {
+    PluginItem,
+    ModalRenderer,
+} from './components';
 import { useModalManager, usePluginActions } from './hooks';
 
 const PluginsListComponent = ({

@@ -2,7 +2,7 @@ import { memo, useMemo } from '@wordpress/element';
 
 import { __ } from '@publishpress/hub-i18n';
 
-import { Badge } from '../badge/badge';
+import { Badge } from '../../badge/badge';
 
 const STATUS_BADGE_CONFIGS = {
     installing: {

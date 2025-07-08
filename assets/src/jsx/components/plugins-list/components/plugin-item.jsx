@@ -4,10 +4,10 @@ import classNames from 'classnames';
 
 import { __ } from '@publishpress/hub-i18n';
 
-import { Tooltip } from '../tooltip';
+import { Tooltip } from '../../tooltip';
 import { StatusFlag } from './status-flag';
 import { ActionButton } from './action-button';
-import Button from '../buttons/button';
+import { Button } from '../../buttons/button';
 
 const PluginItemComponent = ({
     pluginFamily,

@@ -2,7 +2,7 @@ import { memo } from '@wordpress/element';
 
 import { __ } from '@publishpress/hub-i18n';
 
-import { Button } from '../buttons/button';
+import { Button } from '../../buttons/button';
 
 const ACTION_BUTTON_CONFIGS = {
     install: {

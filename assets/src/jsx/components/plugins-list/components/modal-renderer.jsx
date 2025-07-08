@@ -2,11 +2,11 @@ import { memo } from '@wordpress/element';
 
 import { __ } from '@publishpress/hub-i18n';
 
-import { ModalInstallationType } from '../modal-installation-type';
-import { ModalLicenseInput } from '../modal-license-input';
-import { ModalConfirmation } from '../modal-confirmation';
-import { ModalResolveConflict } from '../modal-resolve-conflict';
-import { ModalUpgrade } from '../modal-upgrade';
+import { ModalConfirmation } from './modal-confirmation';
+import { ModalInstallationType } from './modal-installation-type';
+import { ModalLicenseInput } from './modal-license-input';
+import { ModalResolveConflict } from './modal-resolve-conflict';
+import { ModalUpgrade } from './modal-upgrade';
 
 const ModalRendererComponent = ({
     modalManager,

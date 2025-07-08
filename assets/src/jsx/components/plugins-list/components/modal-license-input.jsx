@@ -3,9 +3,9 @@ import { TextControl } from '@wordpress/components';
 
 import { __ } from '@publishpress/hub-i18n';
 
-import { Button } from '../buttons/button';
-import { Message } from '../message/message';
-import { Modal } from '../modal';
+import { Button } from '../../buttons/button';
+import { Message } from '../../message/message';
+import { Modal } from '../../modal';
 
 const ModalLicenseInputComponent = ({
     onClose,

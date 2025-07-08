@@ -2,9 +2,9 @@ import { memo } from '@wordpress/element';
 
 import { __ } from '@publishpress/hub-i18n';
 
-import { Button } from '../buttons/button';
-import { Message } from '../message/message';
-import { Modal } from '../modal';
+import { Button } from '../../buttons/button';
+import { Message } from '../../message/message';
+import { Modal } from '../../modal';
 
 const ModalResolveConflictComponent = ({
     onClose,
