@@ -9,26 +9,31 @@ const ACTION_BUTTON_CONFIGS = {
         variant: 'secondary',
         text: __('Install', 'publishpress-hub'),
         loadingText: __('Installing...', 'publishpress-hub'),
+        icon: 'download',
     },
     upgradeToPro: {
         variant: 'highlight',
         text: __('Upgrade to Pro', 'publishpress-hub'),
         loadingText: __('Upgrading to Pro...', 'publishpress-hub'),
+        icon: 'unlock',
     },
     manageLicense: {
         variant: 'secondary',
         text: __('Manage License', 'publishpress-hub'),
         loadingText: __('Managing License...', 'publishpress-hub'),
+        icon: 'admin-generic',
     },
     activateLicense: {
         variant: 'secondary',
         text: __('Activate License', 'publishpress-hub'),
         loadingText: __('Activating License...', 'publishpress-hub'),
+        icon: 'check',
     },
     conflict: {
         variant: 'primary',
         text: __('Resolve Conflict', 'publishpress-hub'),
         loadingText: __('Resolving Conflict...', 'publishpress-hub'),
+        icon: 'check',
     },
 };
 
@@ -78,14 +83,13 @@ const ActionButtonComponent = ({
 
     const buttonProps = getButtonProps();
 
+    if (inProgress) {
+        buttonProps.isLoading = true;
+        buttonProps.text = buttonProps.loadingText;
+    }
+
     return (
-        <Button
-            variant={buttonProps.variant}
-            onClick={buttonProps.onClick}
-            isLoading={inProgress}
-        >
-            {inProgress ? buttonProps.loadingText : buttonProps.text}
-        </Button>
+        <Button {...buttonProps} />
     );
 }
 

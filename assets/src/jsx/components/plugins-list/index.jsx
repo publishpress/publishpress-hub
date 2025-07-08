@@ -9,6 +9,7 @@ import { ModalLicenseInput } from './modal-license-input';
 import { PluginItem } from './plugin-item';
 import { ModalConfirmation } from './modal-confirmation';
 import { ModalResolveConflict } from './modal-resolve-conflict';
+import { ModalUpgrade } from './modal-upgrade';
 
 const PluginsListComponent = ({
     plugins,
@@ -289,17 +290,17 @@ const PluginsListComponent = ({
                     onClose={handleUninstallConfirmationModalClose}
                     onConfirm={handleUninstallConfirmationConfirm}
                     onCancel={handleUninstallConfirmationCancel}
+                    isDanger={true}
                     title={__('Uninstall Plugin', 'publishpress-hub')}
                     message={__('Are you sure you want to uninstall this plugin?', 'publishpress-hub')}
                 />
             )}
 
             {isUpgradeModalOpen && currentPluginForModal && (
-                <ModalLicenseInput
+                <ModalUpgrade
                     onClose={handleUpgradeModalClose}
-                    onActivate={handlePluginUpgrade}
-                    error={currentPluginState.error}
-                    buttonInProgress={currentPluginState.inProgress}
+                    proDetailsUrl={currentPluginForModal.proDetailsUrl}
+                    changelogUrl={currentPluginForModal.changelogUrl}
                 />
             )}
 

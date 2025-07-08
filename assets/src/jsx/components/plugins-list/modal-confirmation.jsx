@@ -14,6 +14,7 @@ const ModalConfirmationComponent = ({
     message,
     children,
     error,
+    isDanger,
 }) => {
     return (
         <Modal
@@ -34,10 +35,10 @@ const ModalConfirmationComponent = ({
             )}
 
             <div className='pp-hub-modal-actions'>
-                <Button variant='primary' isFullWidth onClick={onConfirm}>
+                <Button variant={isDanger ? 'danger' : 'primary'} isFullWidth icon='yes' onClick={onConfirm}>
                     {__('Continue', 'publishpress-hub')}
                 </Button>
-                <Button variant='secondary' isFullWidth onClick={onCancel}>
+                <Button variant='secondary' isFullWidth icon='no' onClick={onCancel}>
                     {__('Cancel', 'publishpress-hub')}
                 </Button>
             </div>
