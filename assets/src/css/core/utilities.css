@@ -8,12 +8,45 @@
 .pp-hub-p-xl { padding: var(--pp-hub-spacing-xl); }
 .pp-hub-p-2xl { padding: var(--pp-hub-spacing-2xl); }
 
+.pp-hub-m-0 { margin: 0; }
 .pp-hub-m-xs { margin: var(--pp-hub-spacing-xs); }
 .pp-hub-m-sm { margin: var(--pp-hub-spacing-sm); }
 .pp-hub-m-md { margin: var(--pp-hub-spacing-md); }
 .pp-hub-m-lg { margin: var(--pp-hub-spacing-lg); }
 .pp-hub-m-xl { margin: var(--pp-hub-spacing-xl); }
 .pp-hub-m-2xl { margin: var(--pp-hub-spacing-2xl); }
+
+.pp-hub-mr-0 { margin-right: 0; }
+.pp-hub-mr-xs { margin-right: var(--pp-hub-spacing-xs); }
+.pp-hub-mr-sm { margin-right: var(--pp-hub-spacing-sm); }
+.pp-hub-mr-md { margin-right: var(--pp-hub-spacing-md); }
+.pp-hub-mr-lg { margin-right: var(--pp-hub-spacing-lg); }
+.pp-hub-mr-xl { margin-right: var(--pp-hub-spacing-xl); }
+.pp-hub-mr-2xl { margin-right: var(--pp-hub-spacing-2xl); }
+
+.pp-hub-ml-0 { margin-left: 0; }
+.pp-hub-ml-xs { margin-left: var(--pp-hub-spacing-xs); }
+.pp-hub-ml-sm { margin-left: var(--pp-hub-spacing-sm); }
+.pp-hub-ml-md { margin-left: var(--pp-hub-spacing-md); }
+.pp-hub-ml-lg { margin-left: var(--pp-hub-spacing-lg); }
+.pp-hub-ml-xl { margin-left: var(--pp-hub-spacing-xl); }
+.pp-hub-ml-2xl { margin-left: var(--pp-hub-spacing-2xl); }
+
+.pp-hub-mt-0 { margin-top: 0; }
+.pp-hub-mt-xs { margin-top: var(--pp-hub-spacing-xs); }
+.pp-hub-mt-sm { margin-top: var(--pp-hub-spacing-sm); }
+.pp-hub-mt-md { margin-top: var(--pp-hub-spacing-md); }
+.pp-hub-mt-lg { margin-top: var(--pp-hub-spacing-lg); }
+.pp-hub-mt-xl { margin-top: var(--pp-hub-spacing-xl); }
+.pp-hub-mt-2xl { margin-top: var(--pp-hub-spacing-2xl); }
+
+.pp-hub-mb-0 { margin-bottom: 0; }
+.pp-hub-mb-xs { margin-bottom: var(--pp-hub-spacing-xs); }
+.pp-hub-mb-sm { margin-bottom: var(--pp-hub-spacing-sm); }
+.pp-hub-mb-md { margin-bottom: var(--pp-hub-spacing-md); }
+.pp-hub-mb-lg { margin-bottom: var(--pp-hub-spacing-lg); }
+.pp-hub-mb-xl { margin-bottom: var(--pp-hub-spacing-xl); }
+.pp-hub-mb-2xl { margin-bottom: var(--pp-hub-spacing-2xl); }
 
 /* Flexbox Utilities */
 .pp-hub-flex { display: flex; }

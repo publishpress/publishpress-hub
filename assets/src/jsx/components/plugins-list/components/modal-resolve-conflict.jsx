@@ -21,19 +21,32 @@ const ModalResolveConflictComponent = ({
 }) => {
     return (
         <Modal
-            title={title || __('Resolve Conflict', 'publishpress-hub')}
+            title={title || __('Resolve Plugin Conflict', 'publishpress-hub')}
             className='pp-hub-modal-resolve-conflict'
             onRequestClose={() => onClose()}
         >
             <p>
-                {message || __('A conflict has been detected between the following plugins. Please select the plugin you want to keep.', 'publishpress-hub')}
+                {message || __(
+                    'We have detected both Free and Pro versions of this plugin installed. ' +
+                    'To resolve this conflict, please choose which version you would like to keep. ' +
+                    'The other version will be automatically uninstalled.',
+                    'publishpress-hub'
+                )}
 
-                <ul>
+                <ul className='pp-hub-list'>
                     <li>
-                        {pluginsFamily.freePlugin.name} ({pluginsFamily.freePlugin.version})
+                        {sprintf(
+                            __('Free version: %s (%s)', 'publishpress-hub'),
+                            pluginsFamily.freePlugin.name,
+                            pluginsFamily.freePlugin.version
+                        )}
                     </li>
                     <li>
-                        {pluginsFamily.proPlugin.name} ({pluginsFamily.proPlugin.version})
+                        {sprintf(
+                            __('Pro version: %s (%s)', 'publishpress-hub'),
+                            pluginsFamily.proPlugin.name,
+                            pluginsFamily.proPlugin.version
+                        )}
                     </li>
                 </ul>
             </p>
@@ -51,8 +64,9 @@ const ModalResolveConflictComponent = ({
                     onClick={() => onKeepProPlugin()}
                     isLoading={buttonInProgress && selectedPluginForConflictResolution === 'pro'}
                     disabled={selectedPluginForConflictResolution === 'free'}
+                    icon='unlock'
                 >
-                    {__('Keep the Pro version', 'publishpress-hub')}
+                    {__('Keep the Pro version (Recommended)', 'publishpress-hub')}
                 </Button>
 
                 <Button
@@ -60,6 +74,7 @@ const ModalResolveConflictComponent = ({
                     onClick={() => onKeepFreePlugin()}
                     isLoading={buttonInProgress && selectedPluginForConflictResolution === 'free'}
                     disabled={selectedPluginForConflictResolution === 'pro'}
+                    icon='yes'
                 >
                     {__('Keep the Free version', 'publishpress-hub')}
                 </Button>

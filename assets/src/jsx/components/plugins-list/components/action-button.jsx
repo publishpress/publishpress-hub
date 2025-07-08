@@ -3,6 +3,7 @@ import { memo } from '@wordpress/element';
 import { __ } from '@publishpress/hub-i18n';
 
 import { Button } from '../../buttons/button';
+import { IconWarning } from '../../icons';
 
 const ACTION_BUTTON_CONFIGS = {
     install: {
@@ -33,7 +34,7 @@ const ACTION_BUTTON_CONFIGS = {
         variant: 'primary',
         text: __('Resolve Conflict', 'publishpress-hub'),
         loadingText: __('Resolving Conflict...', 'publishpress-hub'),
-        icon: 'admin-tools',
+        icon: 'warning',
     },
 };
 
