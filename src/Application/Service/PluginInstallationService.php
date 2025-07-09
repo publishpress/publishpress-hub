@@ -127,12 +127,12 @@ class PluginInstallationService implements ServiceInterface
 
         $this->ensureWordPressRequirements();
 
-        $api = $this->wpOrgPluginsService->getPluginInformationFromWpOrg($plugin->getSlug());
+        $pluginInfo = $this->wpOrgPluginsService->getPluginInformationFromWpOrg($plugin->getSlug());
 
-        $result = $this->performInstallation($api->download_link);
+        $result = $this->performInstallation($pluginInfo->download_link);
 
         if ($result) {
-            $plugin->setInstalled($api->version, $plugin->getPath(true));
+            $plugin->setInstalled($pluginInfo->version, $plugin->getPath(true));
         }
 
         return $result;
