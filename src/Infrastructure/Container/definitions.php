@@ -19,11 +19,13 @@ namespace PublishPress\Hub\Infrastructure\Container;
 use PublishPress\Hub\Application\Service\AdminMenuService;
 use PublishPress\Hub\Application\Service\CoreHubService;
 use PublishPress\Hub\Application\Service\LanguageService;
+use PublishPress\Hub\Application\Service\EDDLicenseService;
 use PublishPress\Hub\Application\Service\PluginFamilyBootstrapService;
 use PublishPress\Hub\Application\Service\PluginInstallationService;
 use PublishPress\Hub\Application\Service\RestApi\ExceptionResponseMapper;
 use PublishPress\Hub\Application\Service\RestApi\Mapper\PluginFamilyDtoMapper;
 use PublishPress\Hub\Application\Service\RestApiService;
+use PublishPress\Hub\Application\Service\WpOrgPluginsService;
 use PublishPress\Hub\Application\View\Admin\ComponentsShowcaseView;
 use PublishPress\Hub\Application\View\Admin\PluginsDashboardView;
 use PublishPress\Hub\Domain\Plugin\PluginFamilyRepository;
@@ -114,12 +116,23 @@ return [
 
     Services::PLUGIN_INSTALLATION_SERVICE => function (ServiceContainerInterface $container) {
         return new PluginInstallationService(
-            $container->get(Services::CONST_STORE_URL),
-            $container->get(Services::CONST_HOME_URL)
+            $container->get(Services::EDD_LICENSE_SERVICE),
+            $container->get(Services::WP_PLUGINS_SERVICE)
         );
     },
 
     Services::EXCEPTION_RESPONSE_MAPPER => function (ServiceContainerInterface $container) {
         return new ExceptionResponseMapper();
+    },
+
+    Services::EDD_LICENSE_SERVICE => function (ServiceContainerInterface $container) {
+        return new EDDLicenseService(
+            $container->get(Services::CONST_HOME_URL),
+            $container->get(Services::CONST_STORE_URL)
+        );
+    },
+
+    Services::WP_PLUGINS_SERVICE => function (ServiceContainerInterface $container) {
+        return new WpOrgPluginsService();
     },
 ];

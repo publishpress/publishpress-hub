@@ -14,7 +14,9 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Application\Service;
 
 use Plugin_Upgrader;
+use PublishPress\Hub\Application\Service\Contracts\LicenseServiceInterface;
 use PublishPress\Hub\Application\Service\Contracts\ServiceInterface;
+use PublishPress\Hub\Application\Service\Contracts\WPOrgPluginsServiceInterface;
 use PublishPress\Hub\Application\Service\Exception\FetchingPluginInformationException;
 use PublishPress\Hub\Application\Service\Exception\LicenseDisabledException;
 use PublishPress\Hub\Application\Service\Exception\LicenseExpiredException;
@@ -36,7 +38,6 @@ use PublishPress\Hub\Domain\Plugin\Contracts\PluginFamilyInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotActivatedException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotInstalledException;
-use stdClass;
 
 /**
  * Plugin Installation Service.
@@ -49,22 +50,6 @@ use stdClass;
 class PluginInstallationService implements ServiceInterface
 {
     /**
-     * Site URL for EDD API requests.
-     *
-     * @since 1.0.0
-     * @var string
-     */
-    private string $storeUrl;
-
-    /**
-     * Home URL for EDD API requests.
-     *
-     * @since 1.0.0
-     * @var string
-     */
-    private string $homeUrl;
-
-    /**
      * Service initialization status.
      *
      * @since 1.0.0
@@ -73,16 +58,32 @@ class PluginInstallationService implements ServiceInterface
     private bool $initialized = false;
 
     /**
+     * License service.
+     *
+     * @since 1.0.0
+     * @var LicenseServiceInterface
+     */
+    private LicenseServiceInterface $licenseService;
+
+    /**
+     * WordPress.org plugins service.
+     *
+     * @since 1.0.0
+     * @var WPOrgPluginsServiceInterface
+     */
+    private WPOrgPluginsServiceInterface $wpOrgPluginsService;
+
+    /**
      * Constructor.
      *
      * @since 1.0.0
-     * @param string $storeUrl The site URL for EDD API requests
-     * @param string $homeUrl The home URL for EDD API requests
+     * @param LicenseServiceInterface $licenseService
+     * @param WPOrgPluginsServiceInterface $wpOrgPluginsService
      */
-    public function __construct(string $storeUrl, string $homeUrl)
+    public function __construct(LicenseServiceInterface $licenseService, WPOrgPluginsServiceInterface $wpOrgPluginsService)
     {
-        $this->storeUrl = $storeUrl;
-        $this->homeUrl = $homeUrl;
+        $this->licenseService = $licenseService;
+        $this->wpOrgPluginsService = $wpOrgPluginsService;
     }
 
     /**
@@ -126,7 +127,7 @@ class PluginInstallationService implements ServiceInterface
 
         $this->ensureWordPressRequirements();
 
-        $api = $this->getPluginInformationFromWpOrg($plugin->getSlug());
+        $api = $this->wpOrgPluginsService->getPluginInformationFromWpOrg($plugin->getSlug());
 
         $result = $this->performInstallation($api->download_link);
 
@@ -165,6 +166,8 @@ class PluginInstallationService implements ServiceInterface
         if ($plugin->isInstalled()) {
             throw new PluginAlreadyInstalledException($plugin->getSlug());
         }
+
+        $this->licenseService->validateAndActivateLicense($plugin->getEddItemId(), $licenseKey);
 
         $this->ensureWordPressRequirements();
 
@@ -209,6 +212,8 @@ class PluginInstallationService implements ServiceInterface
         if ($proPlugin->isInstalled(true)) {
             throw new PluginAlreadyInstalledException($proPlugin->getSlug());
         }
+
+        $this->licenseService->validateAndActivateLicense($proPlugin->getEddItemId(), $licenseKey);
 
         $this->ensureWordPressRequirements();
 
@@ -311,10 +316,6 @@ class PluginInstallationService implements ServiceInterface
      */
     private function ensureWordPressRequirements(): void
     {
-        if (!function_exists('plugins_api')) {
-            require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
-        }
-
         if (!function_exists('get_file_description')) {
             require_once ABSPATH . 'wp-admin/includes/file.php';
         }
@@ -493,243 +494,12 @@ class PluginInstallationService implements ServiceInterface
     {
         $itemId = $proPlugin->getEddItemId();
 
-        $this->validateLicense($this->storeUrl, $itemId, $licenseKey);
-
-        $versionData = $this->getVersionInfo($this->storeUrl, $itemId, $licenseKey);
+        $versionData = $this->licenseService->getVersionInfo($itemId, $licenseKey);
 
         if (empty($versionData['download_link'])) {
             throw new PluginInstallationException('No download link available for this license');
         }
 
         return $versionData['download_link'];
-    }
-
-    /**
-     * Validate a license.
-     *
-     * @since 1.0.0
-     * @param string $storeUrl
-     * @param int $itemId
-     * @param string $licenseKey
-     * @return void
-     * @throws LicenseServerException
-     * @throws LicenseMissingException
-     * @throws LicenseMissingUrlException
-     * @throws LicenseNotActivableException
-     * @throws LicenseDisabledException
-     * @throws LicenseNoActivationsLeftException
-     * @throws LicenseExpiredException
-     * @throws LicenseKeyMismatchException
-     * @throws LicenseInvalidItemIdException
-     * @throws LicenseInvalidItemNameException
-     * @throws LicenseSiteInactiveException
-     * @throws LicenseInvalidException
-     */
-    private function validateLicense(string $storeUrl, int $itemId, string $licenseKey): void
-    {
-        $apiParams = [
-            'edd_action' => 'check_license',
-            'item_id' => $itemId,
-            'license' => $licenseKey,
-            'url' => $this->homeUrl,
-        ];
-
-        $response = wp_remote_post($storeUrl, [
-            'body' => $apiParams,
-            'timeout' => 15,
-            'sslverify' => true,
-        ]);
-
-        if (is_wp_error($response)) {
-            throw new LicenseServerException('Failed to validate license: ' . $response->get_error_message());
-        }
-
-        $licenseData = json_decode(wp_remote_retrieve_body($response), true);
-
-        if (!$licenseData || !isset($licenseData['license'])) {
-            throw new LicenseServerException('Invalid response from license server');
-        }
-
-        $this->validateLicenseData($licenseData, ['valid', 'inactive', 'site_inactive']);
-
-        if ($licenseData['license'] === 'inactive' || $licenseData['license'] === 'site_inactive') {
-            // Does the user have enough activations left?
-            if ($licenseData['activations_left'] > 0) {
-                // Activate the license
-                $this->activateLicense($storeUrl, $itemId, $licenseKey);
-
-                return;
-            }
-
-            throw new LicenseNoActivationsLeftException();
-        }
-    }
-
-    /**
-     * Get version information and download link from EDD Software Licensing API.
-     *
-     * @since 1.0.0
-     * @param string $storeUrl The store URL
-     * @param int $itemId The EDD item ID
-     * @param string $licenseKey The license key
-     * @return array Version information including download link
-     * @throws \Exception If getting version info fails
-     */
-    private function getVersionInfo(string $storeUrl, int $itemId, string $licenseKey): array
-    {
-        $apiParams = [
-            'edd_action' => 'get_version',
-            'item_id' => $itemId,
-            'license' => $licenseKey,
-            'url' => $this->homeUrl,
-        ];
-
-        $response = wp_remote_post($storeUrl, [
-            'body' => $apiParams,
-            'timeout' => 15,
-            'sslverify' => true,
-        ]);
-
-        if (is_wp_error($response)) {
-            throw new LicenseServerException('Failed to get version information: ' . $response->get_error_message());
-        }
-
-        $versionData = json_decode(wp_remote_retrieve_body($response), true);
-
-        if (!$versionData) {
-            throw new LicenseServerException('Invalid response from version server');
-        }
-
-        return $versionData;
-    }
-
-    /**
-     * Activate a license.
-     *
-     * @since 1.0.0
-     * @param string $storeUrl
-     * @param int $itemId
-     * @param string $licenseKey
-     * @return void
-     * @throws LicenseServerException
-     * @throws LicenseMissingException
-     * @throws LicenseMissingUrlException
-     * @throws LicenseNotActivableException
-     * @throws LicenseDisabledException
-     * @throws LicenseNoActivationsLeftException
-     * @throws LicenseExpiredException
-     * @throws LicenseKeyMismatchException
-     * @throws LicenseInvalidItemIdException
-     * @throws LicenseInvalidItemNameException
-     * @throws LicenseSiteInactiveException
-     * @throws LicenseInvalidException
-     */
-    private function activateLicense(string $storeUrl, int $itemId, string $licenseKey): void
-    {
-        $apiParams = [
-            'edd_action' => 'activate_license',
-            'item_id' => $itemId,
-            'license' => $licenseKey,
-            'url' => $this->homeUrl,
-        ];
-
-        $response = wp_remote_post($storeUrl, [
-            'body' => $apiParams,
-            'timeout' => 15,
-            'sslverify' => true,
-        ]);
-
-        if (is_wp_error($response)) {
-            throw new LicenseServerException('Failed to activate license: ' . $response->get_error_message());
-        }
-
-        $licenseData = json_decode(wp_remote_retrieve_body($response), true);
-
-        if (!$licenseData || !isset($licenseData['license'])) {
-            throw new LicenseServerException('Invalid response from license server');
-        }
-
-        $this->validateLicenseData($licenseData, ['valid']);
-    }
-
-    /**
-     * Validate license data.
-     *
-     * @since 1.0.0
-     * @param array $licenseData The license data
-     * @param array $acceptableResults The results to accept
-     * @return void
-     * @throws LicenseMissingException
-     * @throws LicenseMissingUrlException
-     * @throws LicenseNotActivableException
-     * @throws LicenseDisabledException
-     * @throws LicenseNoActivationsLeftException
-     * @throws LicenseExpiredException
-     * @throws LicenseKeyMismatchException
-     * @throws LicenseInvalidItemIdException
-     * @throws LicenseInvalidItemNameException
-     * @throws LicenseSiteInactiveException
-     * @throws LicenseInvalidException
-     * @throws LicenseServerException
-     */
-    private function validateLicenseData(array $licenseData, array $acceptableResults = []): void
-    {
-        if (in_array($licenseData['license'], $acceptableResults)) {
-            return;
-        }
-
-        switch ($licenseData['license']) {
-            case 'missing':
-                throw new LicenseMissingException();
-            case 'missing_url':
-                throw new LicenseMissingUrlException();
-            case 'license_not_activable':
-                throw new LicenseNotActivableException();
-            case 'disabled':
-                throw new LicenseDisabledException();
-            case 'no_activations_left':
-                throw new LicenseNoActivationsLeftException();
-            case 'expired':
-                throw new LicenseExpiredException();
-            case 'key_mismatch':
-                throw new LicenseKeyMismatchException();
-            case 'invalid_item_id':
-                throw new LicenseInvalidItemIdException();
-            case 'item_name_mismatch':
-                throw new LicenseInvalidItemNameException();
-            // TODO: Check if this is really an issue, since we should activate the license if it's inactive
-            case 'site_inactive':
-                throw new LicenseSiteInactiveException();
-            case 'invalid':
-                throw new LicenseInvalidException();
-
-            default:
-                throw new LicenseServerException('Unknown license error: ' . $licenseData['license']);
-        }
-    }
-
-    /**
-     * Get plugin information from WordPress.org.
-     *
-     * @since 1.0.0
-     * @param string $slug The plugin slug
-     * @return stdClass The plugin information
-     * @throws FetchingPluginInformationException If getting plugin information fails
-     */
-    private function getPluginInformationFromWpOrg(string $slug): stdClass
-    {
-        $api = plugins_api('plugin_information', [
-            'slug' => $slug,
-            'fields' => [
-                'downloadlink' => true,
-                'version' => true
-            ],
-        ]);
-
-        if (is_wp_error($api)) {
-            throw new FetchingPluginInformationException('Failed to get plugin information: ' . $api->get_error_message());
-        }
-
-        return $api;
     }
 }

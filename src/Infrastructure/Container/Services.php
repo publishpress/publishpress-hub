@@ -58,4 +58,8 @@ abstract class Services
     public const PLUGIN_INSTALLATION_SERVICE = 'publishpress-hub/plugin-installation-service';
 
     public const EXCEPTION_RESPONSE_MAPPER = 'publishpress-hub/exception-response-mapper';
+
+    public const EDD_LICENSE_SERVICE = 'publishpress-hub/license-service';
+
+    public const WP_PLUGINS_SERVICE = 'publishpress-hub/wp-plugins-directory-service';
 }
