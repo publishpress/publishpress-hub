@@ -23,6 +23,8 @@
     --pp-hub-accent-color-lighter: #00b3e6;
     --pp-hub-accent-color-disabled: #005066;
 
+    --pp-hub-disabled-color: #a7a7a7;
+
     /* Semantic Colors */
     --pp-hub-success-color: #46b450;
     --pp-hub-warning-color: #ffb900;

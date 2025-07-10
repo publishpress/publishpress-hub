@@ -1,0 +1,25 @@
+.pp-hub-root .components-form-toggle.is-checked .components-form-toggle__track {
+    background-color: var(--pp-hub-primary-color);
+    border-bottom-color: var(--pp-hub-primary-color);
+    border-top-color: var(--pp-hub-primary-color);
+    border-left-color: var(--pp-hub-primary-color);
+    border-right-color: var(--pp-hub-primary-color);
+}
+
+.pp-hub-root .components-form-toggle .components-form-toggle__track {
+    background-color: var(--pp-hub-bg-primary);
+    border-bottom-color: var(--pp-hub-disabled-color);
+    border-top-color: var(--pp-hub-disabled-color);
+    border-left-color: var(--pp-hub-disabled-color);
+    border-right-color: var(--pp-hub-disabled-color);
+}
+
+.pp-hub-root .components-form-toggle.is-checked .components-form-toggle__thumb {
+    background-color: var(--pp-hub-bg-primary);
+    border-color: var(--pp-hub-bg-primary);
+}
+
+.pp-hub-root .components-form-toggle .components-form-toggle__thumb {
+    background-color: var(--pp-hub-disabled-color);
+    border-color: var(--pp-hub-disabled-color);
+}

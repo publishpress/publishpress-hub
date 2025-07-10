@@ -59,6 +59,17 @@
 .pp-hub-plugins-list-item-name {
     font-size: var(--pp-hub-font-size-lg);
     font-weight: var(--pp-hub-font-weight-bold);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--pp-hub-spacing-sm);
+    align-items: center;
+}
+
+.pp-hub-plugins-list-item-name .components-toggle-control {
+    margin: 0;
+    height: 24px;
+    padding-top: 4px;
 }
 
 .pp-hub-plugins-list-item-description {
@@ -82,25 +93,6 @@
 
 .pp-hub-plugins-list-item-actions .pp-hub-button {
     width: 200px;
-}
-
-.pp-hub-plugins-list-item.installed .pp-hub-plugins-list-item-name::after {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-left: var(--pp-hub-spacing-sm);
-    content: '.';
-    color: transparent;
-    line-height: 10px;
-}
-
-.pp-hub-plugins-list-item.active .pp-hub-plugins-list-item-name::after {
-    background-color: var(--pp-hub-status-color-active);
-}
-
-.pp-hub-plugins-list-item.inactive .pp-hub-plugins-list-item-name::after {
-    background-color: var(--pp-hub-status-color-inactive);
 }
 
 .pp-hub-plugins-list-item .pp-hub-plugins-list-item-inline-actions {

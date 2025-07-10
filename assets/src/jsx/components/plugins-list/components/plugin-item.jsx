@@ -1,6 +1,5 @@
 import { memo, useMemo, Fragment, useState, useCallback } from '@wordpress/element';
-
-import classNames from 'classnames';
+import { ToggleControl } from '@wordpress/components';
 
 import { __ } from '@publishpress/hub-i18n';
 
@@ -78,7 +77,17 @@ const PluginItemComponent = ({
                     useCustom={true}
                 >
                     <div className='pp-hub-plugins-list-item-name'>
-                        {displayName}
+                        <ToggleControl
+                            checked={pluginFamily.hasAnyVersionActive}
+                            onChange={(newValue) => {
+                                if (newValue) {
+                                    onActivate(pluginFamily);
+                                } else {
+                                    onDeactivate(pluginFamily);
+                                }
+                            }}
+                        />
+                        <span>{displayName}</span>
                     </div>
                 </Tooltip>
                 <div className='pp-hub-plugins-list-item-description'>

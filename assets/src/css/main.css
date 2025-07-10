@@ -10,6 +10,7 @@
 @import './themes/dark.css';
 
 /* 3. Component Styles */
+@import './components/wp-components/toggle.css';
 @import './components/admin-page/container.css';
 @import './components/admin-page/header.css';
 @import './components/admin-page/layout.css';
