@@ -49,7 +49,7 @@ define('PUBLISHPRESS_HUB_PATH', realpath(__DIR__ . '/../') . '/');
 define('PUBLISHPRESS_HUB_URL', plugin_dir_url(PUBLISHPRESS_HUB_PATH . 'publishpress-hub.php'));
 define('PUBLISHPRESS_HUB_ASSETS_PATH', PUBLISHPRESS_HUB_PATH . 'assets/');
 define('PUBLISHPRESS_HUB_ASSETS_URL', PUBLISHPRESS_HUB_URL . 'assets/');
-define('PUBLISHPRESS_HUB_VERSION', '1.0.0-alpha.1');
+define('PUBLISHPRESS_HUB_VERSION', '1.0.0-alpha.2');
 define('PUBLISHPRESS_HUB_VENDOR_PATH', realpath(__DIR__ . '/../lib/vendor/') . '/');
 define('PUBLISHPRESS_HUB_SRC_PATH', __DIR__ . '/');
 define('PUBLISHPRESS_HUB_LANGUAGES_PATH', PUBLISHPRESS_HUB_PATH . 'languages/');
