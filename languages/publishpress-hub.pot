@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-27T20:24:07+00:00\n"
+"POT-Creation-Date: 2025-07-11T20:26:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
@@ -34,43 +34,53 @@ msgstr ""
 msgid "https://publishpress.com"
 msgstr ""
 
-#: src/Application/Service/PluginBootstrapService.php:132
+#: src/Application/Service/PluginBootstrapService.php:150
+#: src/Application/Service/PluginFamilyBootstrapService.php:151
 msgid "Improve content quality with customizable editorial checklists."
 msgstr ""
 
-#: src/Application/Service/PluginBootstrapService.php:142
+#: src/Application/Service/PluginBootstrapService.php:166
+#: src/Application/Service/PluginFamilyBootstrapService.php:167
 msgid "Advanced user role and permission management."
 msgstr ""
 
-#: src/Application/Service/PluginBootstrapService.php:152
+#: src/Application/Service/PluginBootstrapService.php:182
+#: src/Application/Service/PluginFamilyBootstrapService.php:183
 msgid "Add many authors to one WordPress post."
 msgstr ""
 
-#: src/Application/Service/PluginBootstrapService.php:162
+#: src/Application/Service/PluginBootstrapService.php:198
+#: src/Application/Service/PluginFamilyBootstrapService.php:199
 msgid "Take the control of the new Gutenberg editor."
 msgstr ""
 
-#: src/Application/Service/PluginBootstrapService.php:172
+#: src/Application/Service/PluginBootstrapService.php:214
+#: src/Application/Service/PluginFamilyBootstrapService.php:215
 msgid "Fine-grained user role management for WordPress sites."
 msgstr ""
 
-#: src/Application/Service/PluginBootstrapService.php:182
+#: src/Application/Service/PluginBootstrapService.php:230
+#: src/Application/Service/PluginFamilyBootstrapService.php:231
 msgid "Automatically run actions on a scheduled future moment."
 msgstr ""
 
-#: src/Application/Service/PluginBootstrapService.php:192
+#: src/Application/Service/PluginBootstrapService.php:246
+#: src/Application/Service/PluginFamilyBootstrapService.php:247
 msgid "Organize, schedule and plan your WordPress content."
 msgstr ""
 
-#: src/Application/Service/PluginBootstrapService.php:202
+#: src/Application/Service/PluginBootstrapService.php:262
+#: src/Application/Service/PluginFamilyBootstrapService.php:263
 msgid "Manage, schedule and approve WordPress revisions."
 msgstr ""
 
-#: src/Application/Service/PluginBootstrapService.php:212
+#: src/Application/Service/PluginBootstrapService.php:278
+#: src/Application/Service/PluginFamilyBootstrapService.php:279
 msgid "Group WordPress content together into a series."
 msgstr ""
 
-#: src/Application/Service/PluginBootstrapService.php:222
+#: src/Application/Service/PluginBootstrapService.php:294
+#: src/Application/Service/PluginFamilyBootstrapService.php:295
 msgid "Manage custom statuses for your WordPress posts."
 msgstr ""
 
@@ -88,8 +98,8 @@ msgstr ""
 msgid "Please wait while we load the plugins dashboard..."
 msgstr ""
 
-#: assets/src/jsx/components/buttons/help-button.jsx:9
-msgid "Need Help?"
+#: assets/src/jsx/components/admin-page/header.jsx:40
+msgid "Get Support"
 msgstr ""
 
 #: assets/src/jsx/components/filter/filter-buttons-bar.jsx:34
@@ -104,169 +114,308 @@ msgstr ""
 msgid "Components Showcase"
 msgstr ""
 
-#: assets/src/jsx/components/pages/plugins-dashboard.jsx:50
-msgid "Plugins Dashboard"
-msgstr ""
-
-#: assets/src/jsx/components/pages/plugins-dashboard.jsx:66
+#: assets/src/jsx/components/pages/plugins-dashboard.jsx:33
 msgid "All"
 msgstr ""
 
-#: assets/src/jsx/components/pages/plugins-dashboard.jsx:71
-#: assets/src/jsx/components/plugins-list/status-flag.jsx:25
+#: assets/src/jsx/components/pages/plugins-dashboard.jsx:38
+#: assets/src/jsx/components/plugins-list/components/status-flag.jsx:25
 msgid "Unlicensed"
 msgstr ""
 
-#: assets/src/jsx/components/pages/plugins-dashboard.jsx:76
+#: assets/src/jsx/components/pages/plugins-dashboard.jsx:43
 msgid "Active"
 msgstr ""
 
-#: assets/src/jsx/components/pages/plugins-dashboard.jsx:81
+#: assets/src/jsx/components/pages/plugins-dashboard.jsx:48
 msgid "Inactive"
 msgstr ""
 
-#: assets/src/jsx/components/pages/plugins-dashboard.jsx:86
+#: assets/src/jsx/components/pages/plugins-dashboard.jsx:53
 msgid "Not installed"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/action-button.jsx:10
+#: assets/src/jsx/components/pages/plugins-dashboard.jsx:76
+msgid "Plugins Dashboard"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/action-button.jsx:11
 msgid "Install"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/action-button.jsx:11
+#: assets/src/jsx/components/plugins-list/components/action-button.jsx:12
 msgid "Installing..."
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/action-button.jsx:15
+#: assets/src/jsx/components/plugins-list/components/action-button.jsx:17
+#: assets/src/jsx/components/plugins-list/components/modal-upgrade.jsx:17
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/action-button.jsx:16
+#: assets/src/jsx/components/plugins-list/components/action-button.jsx:18
 msgid "Upgrading to Pro..."
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/action-button.jsx:20
+#: assets/src/jsx/components/plugins-list/components/action-button.jsx:23
 msgid "Manage License"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/action-button.jsx:21
+#: assets/src/jsx/components/plugins-list/components/action-button.jsx:24
 msgid "Managing License..."
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/action-button.jsx:25
+#: assets/src/jsx/components/plugins-list/components/action-button.jsx:29
 msgid "Activate License"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/action-button.jsx:26
+#: assets/src/jsx/components/plugins-list/components/action-button.jsx:30
 msgid "Activating License..."
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/index.jsx:134
-msgid "No plugins found."
+#: assets/src/jsx/components/plugins-list/components/action-button.jsx:35
+msgid "Resolve Conflict"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/index.jsx:140
-msgid "Loading plugins..."
+#: assets/src/jsx/components/plugins-list/components/action-button.jsx:36
+msgid "Resolving Conflict..."
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/modal-installation-type.jsx:13
+#: assets/src/jsx/components/plugins-list/components/modal-confirmation.jsx:21
+msgid "Confirmation"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/modal-confirmation.jsx:26
+msgid "Are you sure you want to continue?"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/modal-confirmation.jsx:39
+msgid "Continue"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/modal-confirmation.jsx:42
+#: assets/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:88
+msgid "Cancel"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/modal-installation-type.jsx:18
 msgid "Install Plugin"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/modal-installation-type.jsx:18
+#: assets/src/jsx/components/plugins-list/components/modal-installation-type.jsx:23
 msgid "Select how you would like to install this plugin. You can install the Pro version if you have a license, or the Free version to get started."
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/modal-installation-type.jsx:23
+#: assets/src/jsx/components/plugins-list/components/modal-installation-type.jsx:26
+#: assets/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:66
+msgid "Free Details"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/modal-installation-type.jsx:28
+#: assets/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:73
+msgid "Pro Details"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/modal-installation-type.jsx:30
+#: assets/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:81
+msgid "Changelogs"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/modal-installation-type.jsx:33
 msgid "I have a license, install the Pro version"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/modal-installation-type.jsx:28
+#: assets/src/jsx/components/plugins-list/components/modal-installation-type.jsx:36
 msgid "I don't have a license, install the Free version"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/modal-license-input.jsx:19
+#: assets/src/jsx/components/plugins-list/components/modal-license-input.jsx:20
 msgid "Enter your license key"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/modal-license-input.jsx:24
+#: assets/src/jsx/components/plugins-list/components/modal-license-input.jsx:25
 msgid "Enter your license key to activate the Pro version of this plugin. You can find your license key in your PublishPress account dashboard."
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/modal-license-input.jsx:28
+#: assets/src/jsx/components/plugins-list/components/modal-license-input.jsx:29
 msgid "Go to my profile to get the license key"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/modal-license-input.jsx:35
+#: assets/src/jsx/components/plugins-list/components/modal-license-input.jsx:36
 msgid "Enter your license key here"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/modal-license-input.jsx:46
+#: assets/src/jsx/components/plugins-list/components/modal-license-input.jsx:47
 msgid "Activate and install the plugin"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/plugin-item.jsx:39
-msgid "This plugin is not installed."
+#: assets/src/jsx/components/plugins-list/components/modal-renderer.jsx:71
+msgid "Uninstall Plugin"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/plugin-item.jsx:43
-msgid "This plugin is active."
+#: assets/src/jsx/components/plugins-list/components/modal-renderer.jsx:72
+msgid "Are you sure you want to uninstall this plugin?"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/plugin-item.jsx:44
-msgid "This plugin is not active."
+#: assets/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:24
+msgid "Resolve Plugin Conflict"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/plugin-item.jsx:63
-msgid "Deactivate"
+#: assets/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:39
+#, js-format
+msgid "Free version: %s (%s)"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/plugin-item.jsx:72
-msgid "Activate"
+#: assets/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:46
+#, js-format
+msgid "Pro version: %s (%s)"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/plugin-item.jsx:80
-msgid "Uninstall"
+#: assets/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:69
+msgid "Keep the Pro version (Recommended)"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/status-flag.jsx:9
+#: assets/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:79
+msgid "Keep the Free version"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/modal-upgrade.jsx:22
+msgid "Unlock the full potential of this plugin with the Pro version. Enjoy advanced features, priority support, and exclusive benefits designed to help you get the most out of your workflow."
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/modal-upgrade.jsx:29
+msgid "Discover all Pro features"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
+msgid "Changelog"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/modal-upgrade.jsx:37
+msgid "Already have a license? Install Pro now"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
+msgid "Upgrade to Pro and boost your productivity"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/status-flag.jsx:9
 msgid "Installing"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/status-flag.jsx:13
+#: assets/src/jsx/components/plugins-list/components/status-flag.jsx:13
 msgid "Not Installed"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/status-flag.jsx:17
+#: assets/src/jsx/components/plugins-list/components/status-flag.jsx:17
 msgid "Free"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/status-flag.jsx:21
+#: assets/src/jsx/components/plugins-list/components/status-flag.jsx:21
 msgid "Licensed"
 msgstr ""
 
-#: assets/src/jsx/components/plugins-list/status-flag.jsx:29
+#: assets/src/jsx/components/plugins-list/components/status-flag.jsx:29
 msgid "Uninstalling"
 msgstr ""
 
-#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:118
+#: assets/src/jsx/components/plugins-list/components/status-flag.jsx:33
+msgid "Upgrading"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/status-flag.jsx:37
+msgid "Deactivating"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/status-flag.jsx:41
+msgid "Activating"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/components/status-flag.jsx:45
+msgid "Conflicting Installations"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:37
+msgid "Deactivate"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:45
+msgid "Activate"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+msgid "Uninstall"
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:27
+msgid "This plugin is not installed."
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:30
+msgid "This plugin is active."
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:31
+msgid "This plugin is not active."
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/index.jsx:133
+msgid "No plugins found."
+msgstr ""
+
+#: assets/src/jsx/components/plugins-list/index.jsx:139
+msgid "Loading plugins..."
+msgstr ""
+
+#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:146
 msgid "Failed to fetch plugins"
 msgstr ""
 
-#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:141
-#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:183
+#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:171
+#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:215
 msgid "Plugin installed successfully"
 msgstr ""
 
-#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:154
-#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:198
+#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:184
+#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:230
 msgid "Plugin installation failed"
 msgstr ""
 
-#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:224
+#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:258
 msgid "Plugin uninstalled successfully"
 msgstr ""
 
-#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:237
+#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:271
 msgid "Plugin uninstall failed"
+msgstr ""
+
+#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:297
+msgid "Plugin activated successfully"
+msgstr ""
+
+#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:310
+msgid "Plugin activation failed"
+msgstr ""
+
+#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:336
+msgid "Plugin deactivated successfully"
+msgstr ""
+
+#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:349
+msgid "Plugin deactivation failed"
+msgstr ""
+
+#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:380
+msgid "Plugin upgraded to Pro successfully"
+msgstr ""
+
+#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:395
+msgid "Plugin upgrade to Pro failed"
+msgstr ""
+
+#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:432
+msgid "Conflict resolved successfully"
+msgstr ""
+
+#: assets/src/jsx/stores/plugins-dashboard/actions.jsx:446
+msgid "Failed to resolve conflict"
 msgstr ""
