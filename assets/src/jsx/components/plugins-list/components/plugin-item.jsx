@@ -78,6 +78,7 @@ const PluginItemComponent = ({
                 >
                     <div className='pp-hub-plugins-list-item-name'>
                         <ToggleControl
+                            disabled={!pluginFamily.hasAnyVersionInstalled}
                             checked={pluginFamily.hasAnyVersionActive}
                             onChange={(newValue) => {
                                 if (newValue) {
