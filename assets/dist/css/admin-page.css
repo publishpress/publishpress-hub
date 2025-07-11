@@ -174,6 +174,21 @@
     box-sizing: border-box;
 }
 
+/* List styles */
+.pp-hub-list {
+    list-style: disc;
+    padding-left: 1em;
+}
+
+.pp-hub-list li {
+    margin-bottom: 0.5em;
+}
+
+.pp-hub-list-unstyled {
+    list-style: none;
+    padding-left: 0;
+}
+
 /*!*************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./assets/src/css/core/utilities.css ***!
   \*************************************************************************************/
@@ -187,12 +202,45 @@
 .pp-hub-p-xl { padding: var(--pp-hub-spacing-xl); }
 .pp-hub-p-2xl { padding: var(--pp-hub-spacing-2xl); }
 
+.pp-hub-m-0 { margin: 0; }
 .pp-hub-m-xs { margin: var(--pp-hub-spacing-xs); }
 .pp-hub-m-sm { margin: var(--pp-hub-spacing-sm); }
 .pp-hub-m-md { margin: var(--pp-hub-spacing-md); }
 .pp-hub-m-lg { margin: var(--pp-hub-spacing-lg); }
 .pp-hub-m-xl { margin: var(--pp-hub-spacing-xl); }
 .pp-hub-m-2xl { margin: var(--pp-hub-spacing-2xl); }
+
+.pp-hub-mr-0 { margin-right: 0; }
+.pp-hub-mr-xs { margin-right: var(--pp-hub-spacing-xs); }
+.pp-hub-mr-sm { margin-right: var(--pp-hub-spacing-sm); }
+.pp-hub-mr-md { margin-right: var(--pp-hub-spacing-md); }
+.pp-hub-mr-lg { margin-right: var(--pp-hub-spacing-lg); }
+.pp-hub-mr-xl { margin-right: var(--pp-hub-spacing-xl); }
+.pp-hub-mr-2xl { margin-right: var(--pp-hub-spacing-2xl); }
+
+.pp-hub-ml-0 { margin-left: 0; }
+.pp-hub-ml-xs { margin-left: var(--pp-hub-spacing-xs); }
+.pp-hub-ml-sm { margin-left: var(--pp-hub-spacing-sm); }
+.pp-hub-ml-md { margin-left: var(--pp-hub-spacing-md); }
+.pp-hub-ml-lg { margin-left: var(--pp-hub-spacing-lg); }
+.pp-hub-ml-xl { margin-left: var(--pp-hub-spacing-xl); }
+.pp-hub-ml-2xl { margin-left: var(--pp-hub-spacing-2xl); }
+
+.pp-hub-mt-0 { margin-top: 0; }
+.pp-hub-mt-xs { margin-top: var(--pp-hub-spacing-xs); }
+.pp-hub-mt-sm { margin-top: var(--pp-hub-spacing-sm); }
+.pp-hub-mt-md { margin-top: var(--pp-hub-spacing-md); }
+.pp-hub-mt-lg { margin-top: var(--pp-hub-spacing-lg); }
+.pp-hub-mt-xl { margin-top: var(--pp-hub-spacing-xl); }
+.pp-hub-mt-2xl { margin-top: var(--pp-hub-spacing-2xl); }
+
+.pp-hub-mb-0 { margin-bottom: 0; }
+.pp-hub-mb-xs { margin-bottom: var(--pp-hub-spacing-xs); }
+.pp-hub-mb-sm { margin-bottom: var(--pp-hub-spacing-sm); }
+.pp-hub-mb-md { margin-bottom: var(--pp-hub-spacing-md); }
+.pp-hub-mb-lg { margin-bottom: var(--pp-hub-spacing-lg); }
+.pp-hub-mb-xl { margin-bottom: var(--pp-hub-spacing-xl); }
+.pp-hub-mb-2xl { margin-bottom: var(--pp-hub-spacing-2xl); }
 
 /* Flexbox Utilities */
 .pp-hub-flex { display: flex; }
@@ -309,13 +357,13 @@
     /* Brand Colors */
     --pp-hub-primary-color: #655997;
     --pp-hub-primary-color-darker: #473d76;
-    --pp-hub-primary-color-lighter: #847ab4;
+    --pp-hub-primary-color-lighter: #8477bb;
     --pp-hub-primary-color-disabled: #4c495b;
 
     --pp-hub-secondary-color: #ffb200;
-    --pp-hub-secondary-color-darker: #d68f00;
-    --pp-hub-secondary-color-lighter: #ffc133;
-    --pp-hub-secondary-color-disabled: #aa8f54;
+    --pp-hub-secondary-color-darker: #e6a100;
+    --pp-hub-secondary-color-lighter: #ffcc55;
+    --pp-hub-secondary-color-disabled: #ceab62;
 
     --pp-hub-tertiary-color: #1b004f;
     --pp-hub-tertiary-color-darker: #150048;
@@ -327,11 +375,17 @@
     --pp-hub-accent-color-lighter: #00b3e6;
     --pp-hub-accent-color-disabled: #005066;
 
+    --pp-hub-disabled-color: #a7a7a7;
+
     /* Semantic Colors */
     --pp-hub-success-color: #46b450;
     --pp-hub-warning-color: #ffb900;
     --pp-hub-error-color: #dc3232;
     --pp-hub-info-color: #00a0d2;
+
+    --pp-hub-error-color-lighter: #b32d2d;
+    --pp-hub-error-color-darker: #802020;
+    --pp-hub-error-color-disabled: #4c1a1a;
 
     /* Background Colors */
     --pp-hub-bg-primary: #ffffff;
@@ -370,7 +424,7 @@
     --pp-hub-button-bg-primary-disabled: var(--pp-hub-primary-color-disabled);
 
     --pp-hub-button-bg-secondary: var(--pp-hub-bg-primary);
-    --pp-hub-button-bg-secondary-hover: #e0ddec;
+    --pp-hub-button-bg-secondary-hover: var(--pp-hub-bg-secondary);
     --pp-hub-button-bg-secondary-active: var(--pp-hub-bg-tertiary);
     --pp-hub-button-bg-secondary-focus: var(--pp-hub-bg-tertiary);
     --pp-hub-button-bg-secondary-disabled: transparent;
@@ -382,28 +436,38 @@
     --pp-hub-button-bg-tertiary-disabled: var(--pp-hub-tertiary-color-disabled);
 
     --pp-hub-button-bg-highlight: var(--pp-hub-secondary-color);
-    --pp-hub-button-bg-highlight-hover: var(--pp-hub-secondary-color-lighter);
+    --pp-hub-button-bg-highlight-hover: var(--pp-hub-secondary-color-darker);
     --pp-hub-button-bg-highlight-active: var(--pp-hub-secondary-color-darker);
     --pp-hub-button-bg-highlight-focus: var(--pp-hub-secondary-color-lighter);
     --pp-hub-button-bg-highlight-disabled: var(--pp-hub-secondary-color-disabled);
 
+    --pp-hub-button-bg-danger: var(--pp-hub-error-color);
+    --pp-hub-button-bg-danger-hover: var(--pp-hub-error-color-lighter);
+    --pp-hub-button-bg-danger-active: var(--pp-hub-error-color-darker);
+    --pp-hub-button-bg-danger-focus: var(--pp-hub-error-color-lighter);
+    --pp-hub-button-bg-danger-disabled: var(--pp-hub-error-color-disabled);
+
     --pp-hub-button-text-primary: var(--pp-hub-text-inverse);
     --pp-hub-button-text-secondary: var(--pp-hub-primary-color);
     --pp-hub-button-text-tertiary: var(--pp-hub-text-tertiary);
+    --pp-hub-button-text-highlight: var(--pp-hub-text-primary);
     --pp-hub-button-text-inverse: var(--pp-hub-text-inverse);
     --pp-hub-button-text-disabled: var(--pp-hub-text-disabled);
+    --pp-hub-button-text-danger: var(--pp-hub-text-inverse);
 
-    --pp-hub-button-border-primary: var(--pp-hub-border-primary);
+    --pp-hub-button-border-primary: var(--pp-hub-primary-color-darker);
     --pp-hub-button-border-secondary: var(--pp-hub-primary-color);
     --pp-hub-button-border-tertiary: var(--pp-hub-border-tertiary);
-    --pp-hub-button-border-highlight: var(--pp-hub-border-tertiary);
+    --pp-hub-button-border-highlight: #b37d00;
     --pp-hub-button-border-disabled: var(--pp-hub-border-secondary);
+    --pp-hub-button-border-danger: var(--pp-hub-error-color);
 
     --pp-hub-button-text-primary-hover: var(--pp-hub-text-inverse);
     --pp-hub-button-text-secondary-hover: var(--pp-hub-primary-color);
     --pp-hub-button-text-tertiary-hover: var(--pp-hub-text-tertiary);
-    --pp-hub-button-text-highlight-hover: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-highlight-hover: var(--pp-hub-text-primary);
     --pp-hub-button-text-disabled-hover: var(--pp-hub-text-disabled);
+    --pp-hub-button-text-danger-hover: var(--pp-hub-text-inverse);
 
     /* Status Colors */
     --pp-hub-status-color-active: #46b450;
@@ -420,8 +484,8 @@
     --pp-hub-badge-bg-installed-hover: #3f8f44;
     --pp-hub-badge-bg-not-installed: #f3f4f6;
     --pp-hub-badge-bg-not-installed-hover: #e8e8e8;
-    --pp-hub-badge-bg-free: #dbeafe;
-    --pp-hub-badge-bg-free-hover: #b9d6f2;
+    --pp-hub-badge-bg-free: var(--pp-hub-secondary-color);
+    --pp-hub-badge-bg-free-hover: var(--pp-hub-secondary-color-lighter);
     --pp-hub-badge-bg-licensed: #dcfce7;
     --pp-hub-badge-bg-licensed-hover: #c7f0c1;
     --pp-hub-badge-bg-unlicensed: #fef3c7;
@@ -430,14 +494,17 @@
     --pp-hub-badge-bg-installing-hover: #e8e8e8;
     --pp-hub-badge-bg-uninstalling: #daa7a7;
     --pp-hub-badge-bg-uninstalling-hover: #c79696;
+    --pp-hub-badge-bg-conflicting-installations: #c48080;
+    --pp-hub-badge-bg-conflicting-installations-hover: #bb7676;
     --pp-hub-badge-text: #333;
     --pp-hub-badge-text-installed: #ffffff;
     --pp-hub-badge-text-not-installed: #a7a7a7;
-    --pp-hub-badge-text-free: #1e40af;
+    --pp-hub-badge-text-free: var(--pp-hub-text-primary);
     --pp-hub-badge-text-licensed: #166534;
     --pp-hub-badge-text-unlicensed: #92400e;
     --pp-hub-badge-text-installing: #a7a7a7;
     --pp-hub-badge-text-uninstalling: #6f5454;
+    --pp-hub-badge-text-conflicting-installations: #ffffff;
 }
 
 /*!**********************************************************************************!*\
@@ -560,6 +627,35 @@
     --pp-hub-badge-text-free: #81d4fa;
     --pp-hub-badge-text-licensed: #a5d6a7;
     --pp-hub-badge-text-unlicensed: #ffcc80;
+}
+
+/*!******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/src/css/components/wp-components/toggle.css ***!
+  \******************************************************************************************************/
+.pp-hub-root .components-form-toggle.is-checked .components-form-toggle__track {
+    background-color: var(--pp-hub-primary-color);
+    border-bottom-color: var(--pp-hub-primary-color);
+    border-top-color: var(--pp-hub-primary-color);
+    border-left-color: var(--pp-hub-primary-color);
+    border-right-color: var(--pp-hub-primary-color);
+}
+
+.pp-hub-root .components-form-toggle .components-form-toggle__track {
+    background-color: var(--pp-hub-bg-primary);
+    border-bottom-color: var(--pp-hub-disabled-color);
+    border-top-color: var(--pp-hub-disabled-color);
+    border-left-color: var(--pp-hub-disabled-color);
+    border-right-color: var(--pp-hub-disabled-color);
+}
+
+.pp-hub-root .components-form-toggle.is-checked .components-form-toggle__thumb {
+    background-color: var(--pp-hub-bg-primary);
+    border-color: var(--pp-hub-bg-primary);
+}
+
+.pp-hub-root .components-form-toggle .components-form-toggle__thumb {
+    background-color: var(--pp-hub-disabled-color);
+    border-color: var(--pp-hub-disabled-color);
 }
 
 /*!******************************************************************************************************!*\
@@ -760,7 +856,7 @@
 .pp-hub-button {
     all: unset;
     cursor: pointer;
-    border-radius: var(--pp-hub-radius-md);
+    border-radius: var(--pp-hub-radius-sm);
     padding: var(--pp-hub-spacing-sm) var(--pp-hub-spacing-md) !important;
     text-align: center;
     white-space: nowrap;
@@ -769,6 +865,7 @@
     box-shadow: none;
     font-size: var(--pp-hub-font-size-md);
     line-height: 2em;
+    box-sizing: border-box;
 }
 
 .components-button.is-primary,
@@ -836,16 +933,19 @@
     background-color: var(--pp-hub-button-bg-primary-hover);
     border-color: var(--pp-hub-button-border-primary);
     color: var(--pp-hub-button-text-primary-hover);
+    outline: 1px solid var(--pp-hub-button-border-primary);
 }
 
 .pp-hub-button.is-primary:active {
     background-color: var(--pp-hub-button-bg-primary-active);
     border-color: var(--pp-hub-button-border-primary);
+    outline: 1px solid var(--pp-hub-button-border-primary);
 }
 
 .pp-hub-button.is-primary:focus {
     background-color: var(--pp-hub-button-bg-primary-hover);
     border-color: var(--pp-hub-button-border-primary);
+    outline: 1px solid var(--pp-hub-button-border-primary);
 }
 
 .pp-hub-button.is-primary:disabled {
@@ -856,24 +956,29 @@
 
 .pp-hub-button.is-highlight {
     background-color: var(--pp-hub-button-bg-highlight);
-    color: var(--pp-hub-button-text-primary);
+    color: var(--pp-hub-button-text-highlight);
     border-color: var(--pp-hub-button-border-highlight);
 }
 
 .pp-hub-button.is-highlight:hover {
     background-color: var(--pp-hub-button-bg-highlight-hover);
-    border-color: var(--pp-hub-button-border-highlight);
     color: var(--pp-hub-button-text-highlight-hover);
+    border-color: var(--pp-hub-button-border-highlight);
+    outline: 1px solid var(--pp-hub-button-border-highlight);
 }
 
 .pp-hub-button.is-highlight:active {
     background-color: var(--pp-hub-button-bg-highlight-darker);
     border-color: var(--pp-hub-button-border-highlight);
+    border-color: var(--pp-hub-button-border-highlight);
+    outline: 1px solid var(--pp-hub-button-border-highlight);
 }
 
 .pp-hub-button.is-highlight:focus {
     background-color: var(--pp-hub-button-bg-highlight-hover);
     border-color: var(--pp-hub-button-border-highlight);
+    border-color: var(--pp-hub-button-border-highlight);
+    outline: 1px solid var(--pp-hub-button-border-highlight);
 }
 
 .pp-hub-button.is-highlight:disabled {
@@ -908,6 +1013,35 @@
     color: var(--pp-hub-button-text-disabled);
 }
 
+.pp-hub-button.is-danger {
+    background-color: var(--pp-hub-button-bg-danger);
+    color: var(--pp-hub-button-text-danger);
+    border-color: var(--pp-hub-button-border-danger);
+}
+
+.pp-hub-button.is-danger:hover {
+    background-color: var(--pp-hub-button-bg-danger-hover);
+    border-color: var(--pp-hub-button-border-danger);
+    color: var(--pp-hub-button-text-danger-hover);
+}
+
+.pp-hub-button.is-danger:active {
+    background-color: var(--pp-hub-button-bg-danger-active);
+    border-color: var(--pp-hub-button-border-danger);
+}
+
+.pp-hub-button.is-danger:focus {
+    background-color: var(--pp-hub-button-bg-danger-hover);
+    border-color: var(--pp-hub-button-border-danger);
+}
+
+.pp-hub-button.is-danger:disabled {
+    background-color: var(--pp-hub-button-bg-danger-disabled);
+    border-color: var(--pp-hub-button-border-danger);
+    color: var(--pp-hub-button-text-disabled);
+}
+
+
 .pp-hub-button.is-link {
     background-color: unset;
     color: var(--pp-hub-text-primary);
@@ -930,6 +1064,7 @@
 }
 
 .pp-hub-button.is-link:disabled {
+    background-color: unset;
     color: var(--pp-hub-button-text-disabled);
 }
 
@@ -1091,6 +1226,7 @@
     flex-direction: column;
     gap: 10px;
     max-width: 400px;
+    border-radius: var(--pp-hub-radius-sm);
 }
 
 .pp-hub-modal .pp-hub-button.is-full-width {
@@ -1102,7 +1238,7 @@
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
-    border-radius: var(--pp-hub-radius-md);
+    border-radius: var(--pp-hub-radius-sm);
     border: 1px solid var(--pp-hub-border-primary);
     padding: var(--pp-hub-spacing-md);
     font-size: var(--pp-hub-font-size-lg);
@@ -1148,7 +1284,7 @@
     display: flex;
     flex-direction: column;
     background: var(--pp-hub-bg-primary);
-    border-radius: var(--pp-hub-radius-lg);
+    border-radius: var(--pp-hub-radius-sm);
 }
 
 .pp-hub-plugins-list-item {
@@ -1170,13 +1306,13 @@
 }
 
 .pp-hub-plugins-list-item:first-child {
-    border-top-left-radius: var(--pp-hub-radius-lg);
-    border-top-right-radius: var(--pp-hub-radius-lg);
+    border-top-left-radius: var(--pp-hub-radius-sm);
+    border-top-right-radius: var(--pp-hub-radius-sm);
 }
 
 .pp-hub-plugins-list-item:last-child {
-    border-bottom-left-radius: var(--pp-hub-radius-lg);
-    border-bottom-right-radius: var(--pp-hub-radius-lg);
+    border-bottom-left-radius: var(--pp-hub-radius-sm);
+    border-bottom-right-radius: var(--pp-hub-radius-sm);
 }
 
 .pp-hub-plugins-list-item-icon {
@@ -1188,7 +1324,7 @@
 
 .pp-hub-plugins-list-item-icon img {
     object-fit: contain;
-    border-radius: var(--pp-hub-radius-md);
+    border-radius: var(--pp-hub-radius-sm);
     width: 48px;
     height: 48px;
 }
@@ -1203,6 +1339,17 @@
 .pp-hub-plugins-list-item-name {
     font-size: var(--pp-hub-font-size-lg);
     font-weight: var(--pp-hub-font-weight-bold);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--pp-hub-spacing-sm);
+    align-items: center;
+}
+
+.pp-hub-plugins-list-item-name .components-toggle-control {
+    margin: 0;
+    height: 24px;
+    padding-top: 4px;
 }
 
 .pp-hub-plugins-list-item-description {
@@ -1226,25 +1373,6 @@
 
 .pp-hub-plugins-list-item-actions .pp-hub-button {
     width: 200px;
-}
-
-.pp-hub-plugins-list-item.installed .pp-hub-plugins-list-item-name::after {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-left: var(--pp-hub-spacing-sm);
-    content: '.';
-    color: transparent;
-    line-height: 10px;
-}
-
-.pp-hub-plugins-list-item.active .pp-hub-plugins-list-item-name::after {
-    background-color: var(--pp-hub-status-color-active);
-}
-
-.pp-hub-plugins-list-item.inactive .pp-hub-plugins-list-item-name::after {
-    background-color: var(--pp-hub-status-color-inactive);
 }
 
 .pp-hub-plugins-list-item .pp-hub-plugins-list-item-inline-actions {
@@ -1274,7 +1402,7 @@
     height: 100%;
     width: 100%;
     padding: var(--pp-hub-spacing-xl);
-    border-radius: var(--pp-hub-radius-lg);
+    border-radius: var(--pp-hub-radius-sm);
     background-color: var(--pp-hub-bg-secondary);
 }
 
@@ -1294,7 +1422,7 @@
     display: inline-flex;
     align-items: center;
     padding: var(--pp-hub-filter-button-padding) !important;
-    border-radius: var(--pp-hub-radius-md);
+    border-radius: var(--pp-hub-radius-sm);
     font-size: var(--pp-hub-font-size-md);
     font-weight: var(--pp-hub-font-weight-medium);
     cursor: pointer;
@@ -1338,7 +1466,7 @@ button.publishpress-hub-filter-button:hover {
     display: none;
     gap: var(--pp-hub-spacing-xs);
     background: var(--pp-hub-bg-primary);
-    border-radius: var(--pp-hub-radius-lg);
+    border-radius: var(--pp-hub-radius-sm);
     padding: var(--pp-hub-filter-container-padding);
     margin-bottom: var(--pp-hub-spacing-xl);
     box-shadow: var(--pp-hub-shadow-sm);
@@ -1364,7 +1492,7 @@ button.publishpress-hub-filter-button:hover {
     font-size: var(--pp-hub-font-size-md);
     line-height: var(--pp-hub-line-height-normal);
     border: 1px solid var(--pp-hub-border-input);
-    border-radius: var(--pp-hub-radius-md);
+    border-radius: var(--pp-hub-radius-sm);
     background-color: var(--pp-hub-form-bg);
     color: var(--pp-hub-form-text);
     font-family: var(--pp-hub-font-family-primary);
@@ -1491,6 +1619,11 @@ button.publishpress-hub-filter-button:hover {
     color: var(--pp-hub-badge-text-uninstalling);
 }
 
+.pp-hub-badge.conflicting-installations {
+    background-color: var(--pp-hub-badge-bg-conflicting-installations);
+    color: var(--pp-hub-badge-text-conflicting-installations);
+}
+
 .pp-hub-plugins-list-item:hover .pp-hub-badge.installed {
     background-color: var(--pp-hub-badge-bg-installed-hover);
 }
@@ -1517,6 +1650,10 @@ button.publishpress-hub-filter-button:hover {
 
 .pp-hub-plugins-list-item:hover .pp-hub-badge.uninstalling {
     background-color: var(--pp-hub-badge-bg-uninstalling-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.conflicting-installations {
+    background-color: var(--pp-hub-badge-bg-conflicting-installations-hover);
 }
 
 /*!***************************************************************************************************!*\
@@ -1573,6 +1710,13 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
 
 .components-notice {
     border-radius: var(--pp-hub-radius-md);
+}
+
+/*!*********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/src/css/components/icons/icons.css ***!
+  \*********************************************************************************************/
+.pp-hub-icon-warning {
+    color: var(--pp-hub-text-warning);
 }
 
 /*!***************************************************************************!*\

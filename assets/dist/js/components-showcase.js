@@ -48,7 +48,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _buttons_help_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../buttons/help-button */ "./assets/src/jsx/components/buttons/help-button.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../buttons/button */ "./assets/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress/hub-i18n */ "@publishpress/hub-i18n");
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 
@@ -78,7 +81,13 @@ var AdminPageHeaderComponent = function AdminPageHeaderComponent(_ref) {
     className: "pp-hub-admin-page-header__content"
   }, children), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-admin-page-header__actions"
-  }, /*#__PURE__*/React.createElement(_buttons_help_button__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+  }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    variant: "secondary",
+    href: "https://publishpress.com/publishpress-support/",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    icon: "editor-help"
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Get Support', 'publishpress-hub'))));
 };
 
 // Memoize the component to prevent unnecessary re-renders
@@ -220,6 +229,9 @@ var ButtonComponent = function ButtonComponent(_ref) {
     if (variant === 'highlight') {
       variantClassName = 'is-highlight';
     }
+    if (variant === 'danger') {
+      variantClassName = 'is-danger';
+    }
     return "pp-hub-button ".concat(variantClassName, " ").concat(className ? className : '', " ").concat(isFullWidth ? 'is-full-width' : '');
   }, [className, isFullWidth, variant]);
   return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, _extends({
@@ -242,66 +254,6 @@ var Button = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(ButtonComp
 
 /***/ }),
 
-/***/ "./assets/src/jsx/components/buttons/help-button.jsx":
-/*!***********************************************************!*\
-  !*** ./assets/src/jsx/components/buttons/help-button.jsx ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   HelpButton: () => (/* binding */ HelpButton),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress/hub-i18n */ "@publishpress/hub-i18n");
-/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
-var _excluded = ["variant", "size", "icon", "children", "className"];
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
-function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
-
-
-
-var BASE_CLASS = 'pp-hub-help-button';
-var HELP_URL = 'https://publishpress.com/publishpress-support/';
-var DEFAULT_HELP_TEXT = (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Need Help?', 'publishpress-hub');
-var HelpButtonComponent = function HelpButtonComponent(_ref) {
-  var _ref$variant = _ref.variant,
-    variant = _ref$variant === void 0 ? 'default' : _ref$variant,
-    _ref$size = _ref.size,
-    size = _ref$size === void 0 ? 'default' : _ref$size,
-    _ref$icon = _ref.icon,
-    icon = _ref$icon === void 0 ? 'editor-help' : _ref$icon,
-    children = _ref.children,
-    _ref$className = _ref.className,
-    className = _ref$className === void 0 ? '' : _ref$className,
-    props = _objectWithoutProperties(_ref, _excluded);
-  var handleClick = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useCallback)(function () {
-    window.open(HELP_URL, '_blank');
-  }, []);
-  var combinedClassName = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    var variantClass = variant !== 'default' ? "".concat(BASE_CLASS, "--").concat(variant) : '';
-    var sizeClass = size !== 'default' ? "".concat(BASE_CLASS, "--").concat(size) : '';
-    return "".concat(BASE_CLASS, " ").concat(variantClass, " ").concat(sizeClass, " ").concat(className).trim();
-  }, [variant, size, className]);
-  var buttonText = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return children || DEFAULT_HELP_TEXT;
-  }, [children]);
-  return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, _extends({
-    icon: icon,
-    onClick: handleClick,
-    className: combinedClassName
-  }, props), buttonText);
-};
-var HelpButton = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(HelpButtonComponent);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HelpButton);
-
-/***/ }),
-
 /***/ "./assets/src/jsx/components/pages/components-showcase.jsx":
 /*!*****************************************************************!*\
   !*** ./assets/src/jsx/components/pages/components-showcase.jsx ***!
@@ -312,16 +264,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ComponentsShowcase: () => (/* binding */ ComponentsShowcase)
 /* harmony export */ });
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress/hub-i18n */ "@publishpress/hub-i18n");
-/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _admin_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../admin-page */ "./assets/src/jsx/components/admin-page/index.jsx");
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../buttons/button */ "./assets/src/jsx/components/buttons/button.jsx");
-/* harmony import */ var _badge_badge__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../badge/badge */ "./assets/src/jsx/components/badge/badge.jsx");
-
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress/hub-i18n */ "@publishpress/hub-i18n");
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _admin_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../admin-page */ "./assets/src/jsx/components/admin-page/index.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../buttons/button */ "./assets/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _badge_badge__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../badge/badge */ "./assets/src/jsx/components/badge/badge.jsx");
 
 
 
@@ -329,8 +278,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var logoUrl = window.ppHubComponentsShowcaseConfig.logoUrl;
 var ComponentsShowcaseComponent = function ComponentsShowcaseComponent() {
-  return /*#__PURE__*/React.createElement(_admin_page__WEBPACK_IMPORTED_MODULE_3__.AdminPageLayout, {
-    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Components Showcase', 'publishpress-hub'),
+  return /*#__PURE__*/React.createElement(_admin_page__WEBPACK_IMPORTED_MODULE_2__.AdminPageLayout, {
+    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Components Showcase', 'publishpress-hub'),
     logoUrl: logoUrl
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-components-showcase",
@@ -349,15 +298,15 @@ var ComponentsShowcaseComponent = function ComponentsShowcaseComponent() {
       display: 'flex',
       gap: '10px'
     }
-  }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, null, "Default"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
+  }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, null, "Default"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     variant: "primary"
-  }, "Primary"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
+  }, "Primary"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     variant: "secondary"
-  }, "Secondary"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
+  }, "Secondary"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     variant: "tertiary"
-  }, "Tertiary"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
+  }, "Tertiary"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     variant: "highlight"
-  }, "Highlight"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
+  }, "Highlight"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     variant: "link"
   }, "Link")), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-components-showcase-buttons",
@@ -366,21 +315,21 @@ var ComponentsShowcaseComponent = function ComponentsShowcaseComponent() {
       gap: '10px',
       marginTop: '10px'
     }
-  }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
+  }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     disabled: true
-  }, "Default"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
+  }, "Default"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     disabled: true,
     variant: "primary"
-  }, "Primary"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
+  }, "Primary"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     disabled: true,
     variant: "secondary"
-  }, "Secondary"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
+  }, "Secondary"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     disabled: true,
     variant: "tertiary"
-  }, "Tertiary"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
+  }, "Tertiary"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     disabled: true,
     variant: "highlight"
-  }, "Highlight"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
+  }, "Highlight"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     disabled: true,
     variant: "link"
   }, "Link")), /*#__PURE__*/React.createElement("div", {
@@ -390,21 +339,21 @@ var ComponentsShowcaseComponent = function ComponentsShowcaseComponent() {
       gap: '10px',
       marginTop: '10px'
     }
-  }, /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_5__.Badge, null, "Default"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_5__.Badge, {
+  }, /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_4__.Badge, null, "Default"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_4__.Badge, {
     className: "installing"
-  }, "Installing"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_5__.Badge, {
+  }, "Installing"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_4__.Badge, {
     className: "not-installed"
-  }, "Not Installed"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_5__.Badge, {
+  }, "Not Installed"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_4__.Badge, {
     className: "free"
-  }, "Free"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_5__.Badge, {
+  }, "Free"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_4__.Badge, {
     className: "licensed"
-  }, "Licensed"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_5__.Badge, {
+  }, "Licensed"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_4__.Badge, {
     className: "unlicensed"
-  }, "Unlicensed"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_5__.Badge, {
+  }, "Unlicensed"), /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_4__.Badge, {
     className: "uninstalling"
   }, "Uninstalling"))));
 };
-var ComponentsShowcase = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(ComponentsShowcaseComponent);
+var ComponentsShowcase = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(ComponentsShowcaseComponent);
 
 /***/ }),
 
@@ -458,16 +407,6 @@ module.exports = publishpressHub.i18n;
 /***/ ((module) => {
 
 module.exports = wp.components;
-
-/***/ }),
-
-/***/ "@wordpress/data":
-/*!**************************!*\
-  !*** external "wp.data" ***!
-  \**************************/
-/***/ ((module) => {
-
-module.exports = wp.data;
 
 /***/ }),
 
