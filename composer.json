@@ -1,6 +1,6 @@
 {
     "name": "publishpress/publishpress-hub",
-    "version": "1.0.0",
+    "version": "1.0.0-alpha.2",
     "type": "library",
     "license": "GPL-3.0-or-later",
     "description": "PublishPress Hub",
@@ -81,7 +81,7 @@
         "knplabs/github-api": "^3.16",
         "symfony/http-client": "^7.1",
         "nyholm/psr7": "^1.8",
-        "publishpress/version-loader-generator": "^1.0"
+        "publishpress/version-loader-generator": "^1.2"
     },
     "scripts": {
         "build": [
