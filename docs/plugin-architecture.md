@@ -59,17 +59,21 @@ src/
 │   │   └── ModulesCoordinator.php
 │   ├── Container/                 # Dependency injection
 │   │   ├── DependencyContainer.php
-│   │   ├── Contract/
-│   │   │   └── DependencyContainerInterface.php
-│   │   └── Exception/
-│   │       ├── ContainerException.php
-│   │       └── DependencyNotFoundException.php
+│   │   └── Contract/
+│   │       └── DependencyContainerInterface.php
 │   ├── Exception/                 # Application exceptions
-│   │   ├── BaseException.php
-│   │   ├── ErrorCodes.php
-│   │   ├── NotLoadedException.php
-│   │   ├── ApplicationException.php
-│   │   └── UseCaseException.php
+│   │   ├── Base/                  # Base exception classes
+│   │   │   ├── BaseException.php
+│   │   │   ├── ErrorCodes.php
+│   │   │   └── ApplicationException.php
+│   │   ├── Container/             # Container-related exceptions
+│   │   │   ├── ContainerException.php
+│   │   │   └── DependencyNotFoundException.php
+│   │   ├── UseCase/               # Use case-related exceptions
+│   │   │   ├── UseCaseException.php
+│   │   │   └── NotLoadedException.php
+│   │   └── Service/               # Service-related exceptions
+│   │       └── ServiceException.php
 │   ├── AbstractDependencies.php
 │   └── container-definitions.php
 ├── Domain/                        # Business logic and entities

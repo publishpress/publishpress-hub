@@ -5,18 +5,19 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Application\Service;
 
 use PublishPress\Hub\Application\Service\Contracts\LicenseServiceInterface;
-use PublishPress\Hub\Application\Service\Exception\LicenseDisabledException;
-use PublishPress\Hub\Application\Service\Exception\LicenseExpiredException;
-use PublishPress\Hub\Application\Service\Exception\LicenseInvalidException;
-use PublishPress\Hub\Application\Service\Exception\LicenseInvalidItemIdException;
-use PublishPress\Hub\Application\Service\Exception\LicenseInvalidItemNameException;
-use PublishPress\Hub\Application\Service\Exception\LicenseKeyMismatchException;
-use PublishPress\Hub\Application\Service\Exception\LicenseMissingException;
-use PublishPress\Hub\Application\Service\Exception\LicenseMissingUrlException;
-use PublishPress\Hub\Application\Service\Exception\LicenseNoActivationsLeftException;
-use PublishPress\Hub\Application\Service\Exception\LicenseNotActivableException;
-use PublishPress\Hub\Application\Service\Exception\LicenseServerException;
-use PublishPress\Hub\Application\Service\Exception\LicenseSiteInactiveException;
+use PublishPress\Hub\Domain\Exception\License\LicenseDisabledException;
+use PublishPress\Hub\Domain\Exception\License\LicenseExpiredException;
+use PublishPress\Hub\Domain\Exception\License\LicenseInvalidException;
+use PublishPress\Hub\Domain\Exception\License\LicenseInvalidItemIdException;
+use PublishPress\Hub\Domain\Exception\License\LicenseInvalidItemNameException;
+use PublishPress\Hub\Domain\Exception\License\LicenseKeyMismatchException;
+use PublishPress\Hub\Domain\Exception\License\LicenseMissingException;
+use PublishPress\Hub\Domain\Exception\License\LicenseMissingUrlException;
+use PublishPress\Hub\Domain\Exception\License\LicenseNoActivationsLeftException;
+use PublishPress\Hub\Domain\Exception\License\LicenseNotActivableException;
+use PublishPress\Hub\Domain\Exception\License\LicenseServerException;
+use PublishPress\Hub\Domain\Exception\License\LicenseServerInvalidResponseException;
+use PublishPress\Hub\Domain\Exception\License\LicenseSiteInactiveException;
 
 class EDDLicenseService implements LicenseServiceInterface
 {
@@ -114,13 +115,15 @@ class EDDLicenseService implements LicenseServiceInterface
         ]);
 
         if (is_wp_error($response)) {
-            throw new LicenseServerException('Failed to validate license: ' . $response->get_error_message());
+            throw new LicenseServerException([
+                'error_message' => $response->get_error_message(),
+            ]);
         }
 
         $licenseData = json_decode(wp_remote_retrieve_body($response), true);
 
         if (!$licenseData || !isset($licenseData['license'])) {
-            throw new LicenseServerException('Invalid response from license server');
+            throw new LicenseServerInvalidResponseException();
         }
 
         $this->validateLicenseData($licenseData, ['valid', 'inactive', 'site_inactive']);
@@ -163,13 +166,15 @@ class EDDLicenseService implements LicenseServiceInterface
         ]);
 
         if (is_wp_error($response)) {
-            throw new LicenseServerException('Failed to get version information: ' . $response->get_error_message());
+            throw new LicenseServerException([
+                'error_message' => $response->get_error_message(),
+            ]);
         }
 
         $versionData = json_decode(wp_remote_retrieve_body($response), true);
 
         if (!$versionData) {
-            throw new LicenseServerException('Invalid response from version server');
+            throw new LicenseServerInvalidResponseException();
         }
 
         return $versionData;
@@ -211,13 +216,15 @@ class EDDLicenseService implements LicenseServiceInterface
         ]);
 
         if (is_wp_error($response)) {
-            throw new LicenseServerException('Failed to activate license: ' . $response->get_error_message());
+            throw new LicenseServerException([
+                'error_message' => 'Failed to activate license: ' . $response->get_error_message(),
+            ]);
         }
 
         $licenseData = json_decode(wp_remote_retrieve_body($response), true);
 
         if (!$licenseData || !isset($licenseData['license'])) {
-            throw new LicenseServerException('Invalid response from license server');
+            throw new LicenseServerInvalidResponseException();
         }
 
         $this->validateLicenseData($licenseData, ['valid']);
@@ -275,7 +282,9 @@ class EDDLicenseService implements LicenseServiceInterface
                 throw new LicenseInvalidException();
 
             default:
-                throw new LicenseServerException('Unknown license error: ' . $licenseData['license']);
+                throw new LicenseServerException([
+                    'error_message' => 'Unknown license error: ' . $licenseData['license'],
+                ]);
         }
     }
 }

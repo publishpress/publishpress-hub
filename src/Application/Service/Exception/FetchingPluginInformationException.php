@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\Exception;
 
-use PublishPress\Hub\Application\Exception\ApplicationException;
+use PublishPress\Hub\Application\Exception\Base\ApplicationException;
 use PublishPress\Hub\Application\Service\Contracts\HttpExceptionInterface;
 
 /**
