@@ -67,7 +67,9 @@ src/
 │   ├── Exception/                 # Application exceptions
 │   │   ├── BaseException.php
 │   │   ├── ErrorCodes.php
-│   │   └── NotLoadedException.php
+│   │   ├── NotLoadedException.php
+│   │   ├── ApplicationException.php
+│   │   └── UseCaseException.php
 │   ├── AbstractDependencies.php
 │   └── container-definitions.php
 ├── Domain/                        # Business logic and entities
@@ -89,9 +91,11 @@ src/
 │   │   ├── PluginRepositoryInterface.php
 │   │   └── ComponentRepositoryInterface.php
 │   └── Exception/
+│       ├── DomainException.php
 │       ├── PluginNotFoundException.php
 │       ├── PluginInstallationException.php
-│       └── ComponentNotFoundException.php
+│       ├── ComponentNotFoundException.php
+│       └── ValidationException.php
 ├── Infrastructure/                # External concerns and adapters
 │   ├── WordPress/
 │   │   ├── Adapter/
@@ -105,33 +109,45 @@ src/
 │   │   ├── Contract/
 │   │   │   └── WordPressAdapterInterface.php
 │   │   └── Exception/
+│   │       ├── WordPressException.php
 │   │       └── WordPressAPIException.php
 │   ├── Database/
 │   │   ├── Adapter/
 │   │   │   └── DatabasePluginRepository.php
-│   │   └── Contract/
-│   │       └── DatabaseAdapterInterface.php
+│   │   ├── Contract/
+│   │   │   └── DatabaseAdapterInterface.php
+│   │   └── Exception/
+│   │       ├── DatabaseException.php
+│   │       └── ConnectionException.php
 │   ├── External/
 │   │   ├── Adapter/
 │   │   │   ├── WordPressOrgApiAdapter.php
 │   │   │   └── EddApiAdapter.php
-│   │   └── Contract/
-│   │       └── ExternalAPIInterface.php
+│   │   ├── Contract/
+│   │   │   └── ExternalAPIInterface.php
+│   │   └── Exception/
+│   │       ├── ExternalAPIException.php
+│   │       └── NetworkException.php
 │   ├── Logger/
 │   │   ├── Logger.php
 │   │   ├── Contract/
 │   │   │   └── LoggerInterface.php
 │   │   └── Exception/
+│   │       ├── LoggerException.php
 │   │       └── LoggingException.php
 │   ├── Language/
 │   │   ├── LanguageService.php
 │   │   ├── Contract/
 │   │   │   └── LanguageServiceInterface.php
+│   │   ├── Exception/
+│   │   │   └── LanguageException.php
 │   │   └── container-definitions.php
 │   └── Asset/
 │       ├── AssetService.php
 │       ├── Contract/
 │       │   └── AssetServiceInterface.php
+│       ├── Exception/
+│       │   └── AssetException.php
 │       └── container-definitions.php
 ├── Presentation/                  # User interface and API
 │   ├── Controller/
@@ -145,6 +161,10 @@ src/
 │   ├── Api/
 │   │   ├── PluginApiController.php
 │   │   └── ComponentApiController.php
+│   ├── Exception/
+│   │   ├── PresentationException.php
+│   │   ├── ControllerException.php
+│   │   └── ViewException.php
 │   └── Asset/
 │       ├── css/
 │       │   ├── admin-page.css
