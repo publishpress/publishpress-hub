@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\Exception;
 
+use PublishPress\Hub\Application\Exception\ApplicationException;
 use PublishPress\Hub\Application\Service\Contracts\HttpExceptionInterface;
 
-class LicenseMissingUrlException extends ServiceException implements HttpExceptionInterface
+class LicenseMissingUrlException extends ApplicationException implements HttpExceptionInterface
 {
     public function __construct()
     {

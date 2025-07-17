@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\Exception;
 
+use PublishPress\Hub\Application\Exception\ApplicationException;
 use PublishPress\Hub\Application\Service\Contracts\HttpExceptionInterface;
 
 /**
@@ -11,7 +12,7 @@ use PublishPress\Hub\Application\Service\Contracts\HttpExceptionInterface;
  *
  * @since 1.0.0
  */
-class LicenseNoActivationsLeftException extends ServiceException implements HttpExceptionInterface
+class LicenseNoActivationsLeftException extends ApplicationException implements HttpExceptionInterface
 {
     /**
      * Constructor.

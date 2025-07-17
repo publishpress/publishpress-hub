@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\Exception;
 
+use PublishPress\Hub\Application\Exception\ApplicationException;
 use PublishPress\Hub\Application\Service\Contracts\ExceptionMetadataInterface;
 use PublishPress\Hub\Application\Service\Contracts\HttpExceptionInterface;
 
@@ -12,7 +13,7 @@ use PublishPress\Hub\Application\Service\Contracts\HttpExceptionInterface;
  *
  * @since 1.0.0
  */
-class LicenseExpiredException extends ServiceException implements HttpExceptionInterface, ExceptionMetadataInterface
+class LicenseExpiredException extends ApplicationException implements HttpExceptionInterface, ExceptionMetadataInterface
 {
     /**
      * Error metadata.
