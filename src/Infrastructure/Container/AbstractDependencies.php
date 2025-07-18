@@ -13,31 +13,31 @@ namespace PublishPress\Hub\Infrastructure\Container;
 abstract class AbstractDependencies
 {
     // Constants
-    public const PLUGIN_PATH = 'publishpress-hub.constants.plugin_path';
+    public const PLUGIN_PATH = 'publishpress-hub.constants.plugin-path';
 
-    public const PLUGIN_TEXT_DOMAIN = 'publishpress-hub.constants.plugin_text_domain';
+    public const PLUGIN_TEXT_DOMAIN = 'publishpress-hub.constants.plugin-text-domain';
 
-    public const PLUGIN_LANGUAGE_PATH = 'publishpress-hub.constants.plugin_language_path';
+    public const PLUGIN_LANGUAGE_PATH = 'publishpress-hub.constants.plugin-language-path';
 
-    public const PLUGIN_URL = 'publishpress-hub.constants.plugin_url';
+    public const PLUGIN_URL = 'publishpress-hub.constants.plugin-url';
 
-    public const PLUGIN_ASSETS_PATH = 'publishpress-hub.constants.plugin_assets_path';
+    public const PLUGIN_ASSETS_PATH = 'publishpress-hub.constants.plugin-assets-path';
 
-    public const PLUGIN_ASSETS_URL = 'publishpress-hub.constants.plugin_assets_url';
+    public const PLUGIN_ASSETS_URL = 'publishpress-hub.constants.plugin-assets-url';
 
-    public const PLUGIN_VENDOR_PATH = 'publishpress-hub.constants.plugin_vendor_path';
+    public const PLUGIN_VENDOR_PATH = 'publishpress-hub.constants.plugin-vendor-path';
 
-    public const PLUGIN_SRC_PATH = 'publishpress-hub.constants.plugin_src_path';
+    public const PLUGIN_SRC_PATH = 'publishpress-hub.constants.plugin-src-path';
 
-    public const PLUGIN_VERSION = 'publishpress-hub.constants.plugin_version';
+    public const PLUGIN_VERSION = 'publishpress-hub.constants.plugin-version';
 
-    public const PLUGIN_LANGUAGES_PATH = 'publishpress-hub.constants.plugin_languages_path';
+    public const PLUGIN_LANGUAGES_PATH = 'publishpress-hub.constants.plugin-languages-path';
 
-    public const PLUGIN_TEMPLATES_PATH = 'publishpress-hub.constants.plugin_templates_path';
+    public const PLUGIN_TEMPLATES_PATH = 'publishpress-hub.constants.plugin-templates-path';
 
-    public const SCRIPT_DEBUG = 'publishpress-hub.constants.script_debug';
+    public const SCRIPT_DEBUG = 'publishpress-hub.constants.script-debug';
 
-    public const PLUGIN_I18N_SCRIPT_PATH = 'publishpress-hub.constants.plugin_i18n_script_path';
+    public const PLUGIN_I18N_SCRIPT_PATH = 'publishpress-hub.constants.plugin-i18n-script-path';
 
     // Infrastructure Services
     public const HOOKS_SERVICE = 'publishpress-hub.infrastructure.hooks.service';
@@ -48,6 +48,8 @@ abstract class AbstractDependencies
 
     public const LOGGER_SERVICE = 'publishpress-hub.infrastructure.logger.service';
 
+    public const ADMIN_MENU_SERVICE = 'publishpress-hub.infrastructure.admin-menu.service';
+
     // Application Services
-    public const APPLICATION_BOOTSTRAP_SERVICE = 'publishpress-hub.application.bootstrap.service';
+    public const PLUGIN_BOOTSTRAP_SERVICE = 'publishpress-hub.application.plugin.bootstrap.service';
 }

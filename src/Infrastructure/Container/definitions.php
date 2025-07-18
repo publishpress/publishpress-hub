@@ -6,12 +6,14 @@ namespace PublishPress\Hub\Infrastructure\Container;
 
 use PublishPress\Psr\Container\ContainerInterface;
 use PublishPress\Hub\Infrastructure\WordPress\Hooks\WordPressHooksAdapter;
-use PublishPress\Hub\Application\Service\ApplicationBootstrapService;
+use PublishPress\Hub\Application\Service\PluginBootstrapService;
+use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\I18n\Contract\I18nServiceInterface;
 use PublishPress\Hub\Infrastructure\Logger\Contract\LoggerInterface;
 use PublishPress\Hub\Infrastructure\Logger\Logger;
+use PublishPress\Hub\Infrastructure\WordPress\AdminMenu\WordPressAdminMenuAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Asset\WordPressAssetAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\I18n\WordPressI18nAdapter;
 
@@ -76,14 +78,18 @@ return [
                 'trace_separator' => ' > ',
                 'message_prefix' => '[PublishPress Hub] ',
                 'error_log_function' => 'error_log',
-            ]
-            );
+            ]);
+        },
+
+    AbstractDependencies::ADMIN_MENU_SERVICE =>
+        function (ContainerInterface $container): AdminMenuServiceInterface {
+            return new WordPressAdminMenuAdapter();
         },
 
     // Application Services
-    AbstractDependencies::APPLICATION_BOOTSTRAP_SERVICE =>
-        function (ContainerInterface $container): ApplicationBootstrapService {
-            return new ApplicationBootstrapService(
+    AbstractDependencies::PLUGIN_BOOTSTRAP_SERVICE =>
+        function (ContainerInterface $container): PluginBootstrapService {
+            return new PluginBootstrapService(
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
                 $container->get(AbstractDependencies::I18N_SERVICE)
             );

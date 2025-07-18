@@ -10,7 +10,7 @@ use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\I18n\Contract\I18nServiceInterface;
 
-class ApplicationBootstrapService implements BootableInterface
+class PluginBootstrapService implements BootableInterface
 {
     use BootableTrait;
 

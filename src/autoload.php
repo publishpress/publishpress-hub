@@ -80,6 +80,6 @@ add_action(AbstractHooks::ACTION_PLUGINS_LOADED, function () {
     $serviceDefinitions = require_once PUBLISHPRESS_HUB_SRC_PATH . 'Infrastructure/Container/definitions.php';
 
     $container = new DependencyContainer($serviceDefinitions);
-    $applicationBootstrapService = $container->get(AbstractDependencies::APPLICATION_BOOTSTRAP_SERVICE);
-    $applicationBootstrapService->load();
+    $pluginBootstrapService = $container->get(AbstractDependencies::PLUGIN_BOOTSTRAP_SERVICE);
+    $pluginBootstrapService->load();
 }, 5);
