@@ -12,8 +12,6 @@ interface PluginFamilyInterface
 
     public function getChangelogUrl(): string;
 
-    public function getInstalledPlugins(): ?array;
-
     public function getFreePlugin(): PluginInterface;
 
     public function getProPlugin(): ProPluginInterface;

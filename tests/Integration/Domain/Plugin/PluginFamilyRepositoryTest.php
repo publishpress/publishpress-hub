@@ -5,10 +5,10 @@ declare(strict_types=1);
 
 namespace Tests\Integration\Domain\Plugin;
 
-use PublishPress\Hub\Domain\Plugin\FreePlugin;
-use PublishPress\Hub\Domain\Plugin\PluginFamily;
-use PublishPress\Hub\Domain\Plugin\PluginFamilyRepository;
-use PublishPress\Hub\Domain\Plugin\ProPlugin;
+use PublishPress\Hub\Domain\Plugin\Entity\FreePlugin;
+use PublishPress\Hub\Domain\Plugin\Entity\PluginFamily;
+use PublishPress\Hub\Domain\Plugin\Repository\PluginFamilyRepository;
+use PublishPress\Hub\Domain\Plugin\Entity\ProPlugin;
 use Tests\NoTransactionWPTestCase;
 
 /**
@@ -28,8 +28,8 @@ class PluginFamilyRepositoryTest extends NoTransactionWPTestCase
      */
     public function testRepositoryStartsEmpty(): void
     {
-        $this->assertEmpty($this->repository->getAllPluginFamilies());
-        $this->assertNull($this->repository->findByFamilySlug('any-plugin'));
+        $this->assertEmpty($this->repository->getAllFamilies());
+        $this->assertNull($this->repository->findFamilyBySlug('any-plugin'));
     }
 
     /**
@@ -41,8 +41,8 @@ class PluginFamilyRepositoryTest extends NoTransactionWPTestCase
 
         $this->repository->registerFamily($pluginFamily);
 
-        $this->assertCount(1, $this->repository->getAllPluginFamilies());
-        $this->assertSame($pluginFamily, $this->repository->findByFamilySlug('test-plugin'));
+        $this->assertCount(1, $this->repository->getAllFamilies());
+        $this->assertSame($pluginFamily, $this->repository->findFamilyBySlug('test-plugin'));
     }
 
     /**
@@ -58,10 +58,10 @@ class PluginFamilyRepositoryTest extends NoTransactionWPTestCase
         $this->repository->registerFamily($pluginFamily2);
         $this->repository->registerFamily($pluginFamily3);
 
-        $this->assertCount(3, $this->repository->getAllPluginFamilies());
-        $this->assertSame($pluginFamily1, $this->repository->findByFamilySlug('plugin-one'));
-        $this->assertSame($pluginFamily2, $this->repository->findByFamilySlug('plugin-two'));
-        $this->assertSame($pluginFamily3, $this->repository->findByFamilySlug('plugin-three'));
+        $this->assertCount(3, $this->repository->getAllFamilies());
+        $this->assertSame($pluginFamily1, $this->repository->findFamilyBySlug('plugin-one'));
+        $this->assertSame($pluginFamily2, $this->repository->findFamilyBySlug('plugin-two'));
+        $this->assertSame($pluginFamily3, $this->repository->findFamilyBySlug('plugin-three'));
     }
 
     /**
@@ -70,17 +70,17 @@ class PluginFamilyRepositoryTest extends NoTransactionWPTestCase
     public function testRegisterSamePluginFamilyWithNewerVersionOverwrites(): void
     {
         $pluginFamily1 = $this->createPluginFamily('test-plugin');
-        $pluginFamily1->getFreePlugin()->setInstalled('1.0.0', 'dummy-plugin-1/dummy-plugin-1.php');
+        $pluginFamily1->getFreePlugin()->setInstalled(true, '1.0.0', 'dummy-plugin-1/dummy-plugin-1.php');
 
         $pluginFamily2 = $this->createPluginFamily('test-plugin');
-        $pluginFamily2->getFreePlugin()->setInstalled('2.0.0', 'dummy-plugin-2/dummy-plugin-1.php');
+        $pluginFamily2->getFreePlugin()->setInstalled(true, '2.0.0', 'dummy-plugin-2/dummy-plugin-1.php');
 
         $this->repository->registerFamily($pluginFamily1);
         $this->repository->registerFamily($pluginFamily2);
 
-        $this->assertCount(1, $this->repository->getAllPluginFamilies());
+        $this->assertCount(1, $this->repository->getAllFamilies());
 
-        $registeredFamily = $this->repository->findByFamilySlug('test-plugin');
+        $registeredFamily = $this->repository->findFamilyBySlug('test-plugin');
 
         $this->assertNotNull($registeredFamily);
 
@@ -94,13 +94,13 @@ class PluginFamilyRepositoryTest extends NoTransactionWPTestCase
     public function testFindFamilyBySlugReturnsNullForNonExistentPlugin(): void
     {
         $pluginFamily = $this->createPluginFamily('test-plugin');
-        $pluginFamily->getFreePlugin()->setInstalled('1.0.0', 'dummy-plugin-1/dummy-plugin-1.php');
+        $pluginFamily->getFreePlugin()->setInstalled(true, '1.0.0', 'dummy-plugin-1/dummy-plugin-1.php');
 
         $this->repository->registerFamily($pluginFamily);
 
-        $this->assertCount(1, $this->repository->getAllPluginFamilies());
+        $this->assertCount(1, $this->repository->getAllFamilies());
 
-        $registeredFamily = $this->repository->findByFamilySlug('not-existing-plugin');
+        $registeredFamily = $this->repository->findFamilyBySlug('not-existing-plugin');
 
         $this->assertNull($registeredFamily);
     }
@@ -111,17 +111,17 @@ class PluginFamilyRepositoryTest extends NoTransactionWPTestCase
     public function testFindFamilyBySlugIsCaseSensitive(): void
     {
         $pluginFamily = $this->createPluginFamily('test-plugin');
-        $pluginFamily->getFreePlugin()->setInstalled('1.0.0', 'dummy-plugin-1/dummy-plugin-1.php');
+        $pluginFamily->getFreePlugin()->setInstalled(true, '1.0.0', 'dummy-plugin-1/dummy-plugin-1.php');
 
         $this->repository->registerFamily($pluginFamily);
 
-        $registeredFamily = $this->repository->findByFamilySlug('test-plugin');
+        $registeredFamily = $this->repository->findFamilyBySlug('test-plugin');
 
         $this->assertNotNull($registeredFamily);
 
         $this->assertSame($pluginFamily, $registeredFamily);
-        $this->assertNull($this->repository->findByFamilySlug('Test-Plugin'));
-        $this->assertNull($this->repository->findByFamilySlug('TEST-PLUGIN'));
+        $this->assertNull($this->repository->findFamilyBySlug('Test-Plugin'));
+        $this->assertNull($this->repository->findFamilyBySlug('TEST-PLUGIN'));
     }
 
     /**
@@ -135,7 +135,7 @@ class PluginFamilyRepositoryTest extends NoTransactionWPTestCase
         $this->repository->registerFamily($pluginFamily1);
         $this->repository->registerFamily($pluginFamily2);
 
-        $allPluginFamilies = $this->repository->getAllPluginFamilies();
+        $allPluginFamilies = $this->repository->getAllFamilies();
 
         $this->assertCount(2, $allPluginFamilies);
         $this->assertContains($pluginFamily1, $allPluginFamilies);
@@ -147,8 +147,8 @@ class PluginFamilyRepositoryTest extends NoTransactionWPTestCase
      */
     public function testGetAllPluginFamiliesReturnsEmptyArrayWhenEmpty(): void
     {
-        $this->assertSame([], $this->repository->getAllPluginFamilies());
-        $this->assertIsArray($this->repository->getAllPluginFamilies());
+        $this->assertSame([], $this->repository->getAllFamilies());
+        $this->assertIsArray($this->repository->getAllFamilies());
     }
 
     /**
@@ -156,12 +156,14 @@ class PluginFamilyRepositoryTest extends NoTransactionWPTestCase
      */
     public function testEdgeCaseWithEmptySlugHandling(): void
     {
-        $this->assertNull($this->repository->findByFamilySlug(''));
+        $this->assertNull($this->repository->findFamilyBySlug(''));
     }
 
     private function createPluginFamily(string $pluginSlug): PluginFamily
     {
         $pluginFamily = new PluginFamily(
+            'Test Plugin Family ' . $pluginSlug,
+            $pluginSlug,
             'icon-' . $pluginSlug,
             'A dummy plugin for testing purposes',
             'https://publishpress.com/knowledge-base/changelogs-' . $pluginSlug . '/'
