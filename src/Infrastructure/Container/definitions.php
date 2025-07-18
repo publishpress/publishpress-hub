@@ -16,11 +16,13 @@ use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\I18n\Contract\I18nServiceInterface;
 use PublishPress\Hub\Infrastructure\Logger\Contract\LoggerInterface;
 use PublishPress\Hub\Infrastructure\Logger\Logger;
+use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
 use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
 use PublishPress\Hub\Infrastructure\View\ViewService;
 use PublishPress\Hub\Infrastructure\WordPress\AdminMenu\WordPressAdminMenuAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Asset\WordPressAssetAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\I18n\WordPressI18nAdapter;
+use PublishPress\Hub\Infrastructure\WordPress\Security\WordPressSecurityAdapter;
 use PublishPress\Hub\Presentation\Controller\MainMenuController;
 use PublishPress\Hub\Presentation\Controller\PluginsDashboardController;
 
@@ -99,6 +101,11 @@ return [
             );
         },
 
+    AbstractDependencies::SECURITY_SERVICE =>
+        function (ContainerInterface $container): SecurityServiceInterface {
+            return new WordPressSecurityAdapter();
+        },
+
     // Application Services
     AbstractDependencies::PLUGIN_BOOTSTRAP_SERVICE =>
         function (ContainerInterface $container): PluginBootstrapService {
@@ -135,7 +142,8 @@ return [
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
                 $container->get(AbstractDependencies::VIEW_SERVICE),
                 $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
-                $container->get(AbstractDependencies::ASSET_SERVICE)
+                $container->get(AbstractDependencies::ASSET_SERVICE),
+                $container->get(AbstractDependencies::SECURITY_SERVICE)
             );
         },
 

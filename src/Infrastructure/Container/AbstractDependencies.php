@@ -52,6 +52,8 @@ abstract class AbstractDependencies
 
     public const VIEW_SERVICE = 'publishpress-hub.infrastructure.view.service';
 
+    public const SECURITY_SERVICE = 'publishpress-hub.infrastructure.security.service';
+
     // Application Services
     public const PLUGIN_BOOTSTRAP_SERVICE = 'publishpress-hub.application.plugin.bootstrap.service';
 

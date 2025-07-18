@@ -12,6 +12,7 @@ use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
+use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
 
 class PluginsDashboardController implements BootableInterface
 {
@@ -25,16 +26,20 @@ class PluginsDashboardController implements BootableInterface
 
     private AssetServiceInterface $assetService;
 
+    private SecurityServiceInterface $securityService;
+
     public function __construct(
         HooksServiceInterface $hooksService,
         ViewServiceInterface $viewService,
         AdminMenuServiceInterface $adminMenuService,
-        AssetServiceInterface $assetService
+        AssetServiceInterface $assetService,
+        SecurityServiceInterface $securityService
     ) {
         $this->hooksService = $hooksService;
         $this->viewService = $viewService;
         $this->adminMenuService = $adminMenuService;
         $this->assetService = $assetService;
+        $this->securityService = $securityService;
     }
 
     protected function onLoad(): void
@@ -100,7 +105,7 @@ class PluginsDashboardController implements BootableInterface
             'ppHubPluginsDashboardConfig',
             [
                 'logoUrl' => $this->assetService->getPluginAssetUrl('images/publishpress-logo.png'),
-                'apiNonce' => wp_create_nonce('wp_rest'),
+                'apiNonce' => $this->securityService->createNonceForRest(),
                 'pluginIconBaseUrl' => $this->assetService->getPluginAssetsBaseUrl(),
             ]
         );
