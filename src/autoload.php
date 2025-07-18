@@ -78,8 +78,8 @@ Autoloader::register(__NAMESPACE__, PUBLISHPRESS_HUB_SRC_PATH);
  */
 add_action(AbstractHooks::ACTION_PLUGINS_LOADED, function () {
     $serviceDefinitions = require_once PUBLISHPRESS_HUB_SRC_PATH . 'Infrastructure/Container/definitions.php';
-
     $container = new DependencyContainer($serviceDefinitions);
+
     $pluginBootstrapService = $container->get(AbstractDependencies::PLUGIN_BOOTSTRAP_SERVICE);
     $pluginBootstrapService->load();
 }, 5);

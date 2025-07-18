@@ -7,6 +7,8 @@ namespace PublishPress\Hub\Infrastructure\Container;
 use PublishPress\Psr\Container\ContainerInterface;
 use PublishPress\Hub\Infrastructure\WordPress\Hooks\WordPressHooksAdapter;
 use PublishPress\Hub\Application\Service\PluginBootstrapService;
+use PublishPress\Hub\Infrastructure\AdminMenu\AdminMenuService;
+use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuAdapterInterface;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
@@ -83,7 +85,10 @@ return [
 
     AbstractDependencies::ADMIN_MENU_SERVICE =>
         function (ContainerInterface $container): AdminMenuServiceInterface {
-            return new WordPressAdminMenuAdapter();
+            return new AdminMenuService(
+                $container->get(AbstractDependencies::ADMIN_MENU_ADAPTER),
+                $container->get(AbstractDependencies::HOOKS_SERVICE),
+            );
         },
 
     // Application Services
@@ -91,7 +96,13 @@ return [
         function (ContainerInterface $container): PluginBootstrapService {
             return new PluginBootstrapService(
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
-                $container->get(AbstractDependencies::I18N_SERVICE)
+                $container->get(AbstractDependencies::I18N_SERVICE),
+                $container->get(AbstractDependencies::ADMIN_MENU_SERVICE)
             );
+        },
+
+    AbstractDependencies::ADMIN_MENU_ADAPTER =>
+        function (ContainerInterface $container): AdminMenuAdapterInterface {
+            return new WordPressAdminMenuAdapter();
         },
 ];
