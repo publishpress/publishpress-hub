@@ -3,16 +3,20 @@ const path = require("path");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
+
+const assetsBasePath = "./src/Presentation/Asset/src";
 
 module.exports = {
     mode: NODE_ENV,
     devtool: NODE_ENV === 'development' ? 'source-map' : false,
     entry: {
-        "plugins-dashboard": "./src/Presentation/Asset/src/jsx/plugins-dashboard.jsx",
-        "i18n": "./src/Presentation/Asset/src/jsx/i18n.jsx",
-        "components-showcase": "./src/Presentation/Asset/src/jsx/components-showcase.jsx",
-        "admin-page": "./src/Presentation/Asset/src/css/admin-page.css",
+        "plugins-dashboard": `${assetsBasePath}/jsx/plugins-dashboard.jsx`,
+        "i18n": `${assetsBasePath}/jsx/i18n.jsx`,
+        "components-showcase": `${assetsBasePath}/jsx/components-showcase.jsx`,
+        "admin-page": `${assetsBasePath}/css/admin-page.css`,
     },
+
     output: {
         path: path.join(__dirname, "src", "Presentation", "Asset", "dist"),
         filename: "js/" + (NODE_ENV === 'production' ? "[name].min.js" : "[name].js")
@@ -47,6 +51,7 @@ module.exports = {
         ],
     },
     plugins: [
+        new RemoveEmptyScriptsPlugin(),
         new MiniCssExtractPlugin({
             filename: "css/" + (NODE_ENV === 'production' ? "[name].min.css" : "[name].css"),
         }),
