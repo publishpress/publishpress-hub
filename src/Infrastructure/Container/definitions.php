@@ -21,7 +21,8 @@ use PublishPress\Hub\Infrastructure\View\ViewService;
 use PublishPress\Hub\Infrastructure\WordPress\AdminMenu\WordPressAdminMenuAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Asset\WordPressAssetAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\I18n\WordPressI18nAdapter;
-use PublishPress\Hub\Presentation\Controller\PluginDashboardController;
+use PublishPress\Hub\Presentation\Controller\MainMenuController;
+use PublishPress\Hub\Presentation\Controller\PluginsDashboardController;
 
 return [
     AbstractDependencies::PLUGIN_PATH => PUBLISHPRESS_HUB_PATH,
@@ -107,27 +108,36 @@ return [
         function (ContainerInterface $container): PluginBootstrapService {
             return new PluginBootstrapService(
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
-                $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
                 [
                     $container->get(AbstractDependencies::I18N_SERVICE),
+                    $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
                     $container->get(AbstractDependencies::PLUGINS_DASHBOARD_SERVICE),
-                ]
+                ],
+                $container->get(AbstractDependencies::MAIN_MENU_CONTROLLER)
             );
         },
 
     AbstractDependencies::PLUGINS_DASHBOARD_SERVICE =>
         function (ContainerInterface $container): PluginsDashboardService {
             return new PluginsDashboardService(
-                $container->get(AbstractDependencies::PLUGIN_DASHBOARD_CONTROLLER),
+                $container->get(AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER),
                 $container->get(AbstractDependencies::ADMIN_MENU_SERVICE)
             );
         },
 
     // Presentation Services
-    AbstractDependencies::PLUGIN_DASHBOARD_CONTROLLER =>
-        function (ContainerInterface $container): PluginDashboardController {
-            return new PluginDashboardController(
-                $container->get(AbstractDependencies::VIEW_SERVICE)
+    AbstractDependencies::MAIN_MENU_CONTROLLER =>
+        function (ContainerInterface $container): MainMenuController {
+            return new MainMenuController(
+                $container->get(AbstractDependencies::ADMIN_MENU_SERVICE)
+            );
+        },
+
+    AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER =>
+        function (ContainerInterface $container): PluginsDashboardController {
+            return new PluginsDashboardController(
+                $container->get(AbstractDependencies::VIEW_SERVICE),
+                $container->get(AbstractDependencies::ADMIN_MENU_SERVICE)
             );
         },
 

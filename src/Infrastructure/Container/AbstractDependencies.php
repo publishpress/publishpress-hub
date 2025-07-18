@@ -61,5 +61,7 @@ abstract class AbstractDependencies
     public const ADMIN_MENU_ADAPTER = 'publishpress-hub.infrastructure.admin-menu.adapter';
 
     // Presentation Services
-    public const PLUGIN_DASHBOARD_CONTROLLER = 'publishpress-hub.presentation.plugin.dashboard.controller';
+    public const MAIN_MENU_CONTROLLER = 'publishpress-hub.presentation.main-menu.controller';
+
+    public const PLUGINS_DASHBOARD_CONTROLLER = 'publishpress-hub.presentation.plugins-dashboard.controller';
 }
