@@ -2,20 +2,28 @@
 
 declare(strict_types=1);
 
-
 namespace Tests\Unit\Domain\Plugin;
 
-use InvalidArgumentException;
-use PublishPress\Hub\Domain\Plugin\Contracts\FreePluginInterface;
-use PublishPress\Hub\Domain\Plugin\FreePlugin;
-use PublishPress\Hub\Domain\Plugin\Plugin;
+use PublishPress\Hub\Application\Service\PluginStatusService;
+use PublishPress\Hub\Domain\Plugin\Entity\FreePlugin;
+use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginChecker;
 use Tests\NoTransactionWPTestCase;
 
 /**
- * Unit tests for the FreePlugin domain entity.
+ * Integration tests for the FreePlugin domain entity with proper architecture.
  */
 class FreePluginTest extends NoTransactionWPTestCase
 {
+    private PluginStatusService $pluginStatusService;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $pluginChecker = new WordPressPluginChecker();
+        $this->pluginStatusService = new PluginStatusService($pluginChecker);
+    }
+
     public function testConstructorWithValidParameters(): void
     {
         $plugin = new FreePlugin(
@@ -27,19 +35,8 @@ class FreePluginTest extends NoTransactionWPTestCase
 
         $this->assertEquals('Test Plugin', $plugin->getName());
         $this->assertEquals('test-plugin', $plugin->getSlug());
-        $this->assertEquals('test-plugin.php', $plugin->getPluginFileName());
+        $this->assertEquals('test-plugin.php', $plugin->getFileName());
         $this->assertEquals('https://publishpress.com/pricing/test-plugin/', $plugin->getDetailsUrl());
-    }
-
-    public function testGetPath(): void
-    {
-        $plugin = new FreePlugin(
-            'Test Plugin',
-            'test-plugin',
-            'test-plugin.php',
-            'https://publishpress.com/pricing/test-plugin/'
-        );
-
         $this->assertEquals('test-plugin/test-plugin.php', $plugin->getPath());
     }
 
@@ -55,47 +52,89 @@ class FreePluginTest extends NoTransactionWPTestCase
         $this->assertNull($plugin->getFamily());
     }
 
-    public function testIsInstalledReturnsFalseIfNotInstalled(): void
+    public function testInitialStateIsNotInstalled(): void
     {
         $plugin = new FreePlugin(
-            'Test Plugin Not Installed',
-            'test-plugin-not-installed',
-            'test-plugin-not-installed.php',
-            'https://publishpress.com/pricing/test-plugin-not-installed/'
+            'Test Plugin',
+            'test-plugin',
+            'test-plugin.php',
+            'https://publishpress.com/pricing/test-plugin/'
         );
-
-        $this->deletePluginFile($plugin);
 
         $this->assertFalse($plugin->isInstalled());
+        $this->assertFalse($plugin->isActive());
+        $this->assertFalse($plugin->isLicensed());
     }
 
-    public function testIsInstalledReturnsTrueIfInstalled(): void
+    public function testSetInstalledState(): void
     {
         $plugin = new FreePlugin(
-            'Test Plugin Installed',
-            'test-plugin-installed',
-            'test-plugin-installed.php',
-            'https://publishpress.com/pricing/test-plugin-installed/'
+            'Test Plugin',
+            'test-plugin',
+            'test-plugin.php',
+            'https://publishpress.com/pricing/test-plugin/'
         );
 
-        $this->createPluginFile($plugin, '1.0.0');
+        $plugin->setInstalled(true, '1.0.3', 'custom/path/test-plugin.php');
 
         $this->assertTrue($plugin->isInstalled());
+        $this->assertEquals('1.0.3', $plugin->getVersion());
+        $this->assertEquals('custom/path/test-plugin.php', $plugin->getPath());
     }
 
-    public function testIsActiveReturnsFalseIfNotActive(): void
+    public function testSetActiveState(): void
     {
         $plugin = new FreePlugin(
-            'Test Plugin Not Active',
-            'test-plugin-not-active',
-            'test-plugin-not-active.php',
-            'https://publishpress.com/pricing/test-plugin-not-active/'
+            'Test Plugin',
+            'test-plugin',
+            'test-plugin.php',
+            'https://publishpress.com/pricing/test-plugin/'
         );
 
-        $this->assertFalse($plugin->isActive());
+        $plugin->setActive(true);
+
+        $this->assertTrue($plugin->isActive());
     }
 
-    public function testIsActiveReturnsTrueIfActive(): void
+    public function testSetLicensedState(): void
+    {
+        $plugin = new FreePlugin(
+            'Test Plugin',
+            'test-plugin',
+            'test-plugin.php',
+            'https://publishpress.com/pricing/test-plugin/'
+        );
+
+        $plugin->setLicensed(true);
+
+        $this->assertTrue($plugin->isLicensed());
+    }
+
+    public function testRefreshPluginStatusFromWordPress(): void
+    {
+        $plugin = new FreePlugin(
+            'Test Plugin',
+            'test-plugin',
+            'test-plugin.php',
+            'https://publishpress.com/pricing/test-plugin/'
+        );
+
+        // Initially not installed
+        $this->assertFalse($plugin->isInstalled());
+
+        // Create the plugin file
+        $this->createPluginFile($plugin, '1.0.0');
+
+        // Refresh status from WordPress
+        $this->pluginStatusService->refreshPluginStatus($plugin);
+
+        // Should now be installed but not active
+        $this->assertTrue($plugin->isInstalled());
+        $this->assertFalse($plugin->isActive());
+        $this->assertEquals('1.0.0', $plugin->getVersion());
+    }
+
+    public function testRefreshPluginStatusWhenActive(): void
     {
         $plugin = new FreePlugin(
             'Test Plugin Active',
@@ -104,30 +143,51 @@ class FreePluginTest extends NoTransactionWPTestCase
             'https://publishpress.com/pricing/test-plugin-active/'
         );
 
+        // Create and activate the plugin
         $this->createPluginFile($plugin, '1.0.0');
         activate_plugin($plugin->getPath());
 
+        // Refresh status from WordPress
+        $this->pluginStatusService->refreshPluginStatus($plugin);
+
+        // Should be both installed and active
+        $this->assertTrue($plugin->isInstalled());
         $this->assertTrue($plugin->isActive());
     }
 
-    public function testSetInstalled(): void
+    public function testInfrastructureCheckWithoutUpdatingEntity(): void
     {
         $plugin = new FreePlugin(
-            'Test Plugin Set Installed',
-            'test-plugin-set-installed',
-            'test-plugin-set-installed.php',
-            'https://publishpress.com/pricing/test-plugin-set-installed/'
+            'Test Plugin Infrastructure',
+            'test-plugin-infrastructure',
+            'test-plugin-infrastructure.php',
+            'https://publishpress.com/pricing/test-plugin-infrastructure/'
         );
 
-        $this->createPluginFile($plugin, '1.0.3');
+        // Ensure no file exists initially
+        $this->deletePluginFile($plugin);
 
-        $plugin->setInstalled('1.0.3', WP_PLUGIN_DIR . '/new-' . $plugin->getPath());
+        // Check without updating entity state
+        $this->assertFalse($this->pluginStatusService->isPluginInstalled($plugin));
+        $this->assertFalse($this->pluginStatusService->isPluginActive($plugin));
 
-        $this->assertEquals('1.0.3', $plugin->getVersion());
-        $this->assertEquals(WP_PLUGIN_DIR . '/new-test-plugin-set-installed/test-plugin-set-installed.php', $plugin->getPath());
+        // Entity state should remain unchanged
+        $this->assertFalse($plugin->isInstalled());
+        $this->assertFalse($plugin->isActive());
+
+        // Create the plugin file
+        $this->createPluginFile($plugin, '1.0.0');
+
+        // Check again
+        $this->assertTrue($this->pluginStatusService->isPluginInstalled($plugin));
+        $this->assertFalse($this->pluginStatusService->isPluginActive($plugin));
+
+        // Entity state should still be unchanged
+        $this->assertFalse($plugin->isInstalled());
+        $this->assertFalse($plugin->isActive());
     }
 
-    private function createPluginFile(FreePluginInterface $plugin, string $version = '1.0.0'): void
+    private function createPluginFile(FreePlugin $plugin, string $version = '1.0.0'): void
     {
         $this->deletePluginFile($plugin);
 
@@ -151,7 +211,7 @@ class FreePluginTest extends NoTransactionWPTestCase
 echo "' . $name . '";');
     }
 
-    private function deletePluginFile(FreePluginInterface $plugin): void
+    private function deletePluginFile(FreePlugin $plugin): void
     {
         $pluginFilePath = WP_PLUGIN_DIR . '/' . $plugin->getPath();
 
