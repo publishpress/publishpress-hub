@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container;
 
+use PublishPress\Hub\Application\Service\DevComponentsShowcase\DevComponentsShowcaseService;
 use PublishPress\Psr\Container\ContainerInterface;
 use PublishPress\Hub\Infrastructure\WordPress\Hooks\WordPressHooksAdapter;
 use PublishPress\Hub\Application\Service\PluginBootstrapService;
@@ -23,6 +24,7 @@ use PublishPress\Hub\Infrastructure\WordPress\AdminMenu\WordPressAdminMenuAdapte
 use PublishPress\Hub\Infrastructure\WordPress\Asset\WordPressAssetAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\I18n\WordPressI18nAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Security\WordPressSecurityAdapter;
+use PublishPress\Hub\Presentation\Controller\DevComponentsShowcaseController;
 use PublishPress\Hub\Presentation\Controller\MainMenuController;
 use PublishPress\Hub\Presentation\Controller\PluginsDashboardController;
 
@@ -115,6 +117,7 @@ return [
                     $container->get(AbstractDependencies::I18N_SERVICE),
                     $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
                     $container->get(AbstractDependencies::PLUGINS_DASHBOARD_SERVICE),
+                    $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_SERVICE),
                 ],
                 $container->get(AbstractDependencies::MAIN_MENU_CONTROLLER)
             );
@@ -125,6 +128,13 @@ return [
             return new PluginsDashboardService(
                 $container->get(AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER),
                 $container->get(AbstractDependencies::ADMIN_MENU_SERVICE)
+            );
+        },
+
+    AbstractDependencies::DEV_COMPONENTS_SHOWCASE_SERVICE =>
+        function (ContainerInterface $container): DevComponentsShowcaseService {
+            return new DevComponentsShowcaseService(
+                $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER)
             );
         },
 
@@ -144,6 +154,16 @@ return [
                 $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
                 $container->get(AbstractDependencies::ASSET_SERVICE),
                 $container->get(AbstractDependencies::SECURITY_SERVICE)
+            );
+        },
+
+    AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER =>
+        function (ContainerInterface $container): DevComponentsShowcaseController {
+            return new DevComponentsShowcaseController(
+                $container->get(AbstractDependencies::HOOKS_SERVICE),
+                $container->get(AbstractDependencies::VIEW_SERVICE),
+                $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
+                $container->get(AbstractDependencies::ASSET_SERVICE)
             );
         },
 

@@ -45,7 +45,6 @@ class PluginsDashboardController implements BootableInterface
     protected function onLoad(): void
     {
         $this->registerAdminMenu();
-
         $this->addHooks();
     }
 
@@ -71,6 +70,16 @@ class PluginsDashboardController implements BootableInterface
 
         $this->adminMenuService->addSubmenuPage($submenu);
         $this->adminMenuService->setMainMenuPage('publishpress-hub-plugins-dashboard');
+    }
+
+    public function showDashboard(): void
+    {
+        $this->viewService->render(
+            'Admin/PluginsDashboard/plugins-dashboard-container',
+            [
+                'loading_message' => __('Please wait while we load the plugins dashboard...', 'publishpress-hub'),
+            ]
+        );
     }
 
     public function enqueueAssets(string $hookSuffix): void
@@ -107,16 +116,6 @@ class PluginsDashboardController implements BootableInterface
                 'logoUrl' => $this->assetService->getPluginAssetUrl('images/publishpress-logo.png'),
                 'apiNonce' => $this->securityService->createNonceForRest(),
                 'pluginIconBaseUrl' => $this->assetService->getPluginAssetsBaseUrl(),
-            ]
-        );
-    }
-
-    public function showDashboard(): void
-    {
-        $this->viewService->render(
-            'Admin/PluginsDashboard/plugins-dashboard-container',
-            [
-                'loading_message' => __('Please wait while we load the plugins dashboard...', 'publishpress-hub'),
             ]
         );
     }
