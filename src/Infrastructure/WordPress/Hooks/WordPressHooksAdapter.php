@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Infrastructure\WordPress;
+namespace PublishPress\Hub\Infrastructure\WordPress\Hooks;
 
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 

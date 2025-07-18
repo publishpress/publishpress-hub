@@ -5,15 +5,9 @@ declare(strict_types=1);
 
 namespace Tests\Integration\Infrastructure\WordPress\Hooks;
 
-use PublishPress\Hub\Infrastructure\Asset\AssetManager;
-use PublishPress\Hub\Infrastructure\WordPress\WordPressHooksAdapter;
+use PublishPress\Hub\Infrastructure\WordPress\Hooks\WordPressHooksAdapter;
 use Tests\WPTestCase;
 
-/**
- * Unit tests for WordPressHooksAdapter class.
- *
- * @coversDefaultClass \PublishPress\Hub\Infrastructure\WordPress\WordPressHooksAdapter
- */
 class WordPressHooksAdapterTest extends WPTestCase
 {
     /**
