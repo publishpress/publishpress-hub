@@ -67,8 +67,6 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
 
     protected function onLoad(): void
     {
-        $this->hooksService->addAction(AbstractHooks::ACTION_INIT, [$this, 'init']);
-
         $this->hooksService->addAction(
             AbstractHooks::ACTION_ADMIN_ENQUEUE_SCRIPTS,
             [$this, 'enqueueTranslationsScript'],

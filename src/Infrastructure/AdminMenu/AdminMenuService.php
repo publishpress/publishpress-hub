@@ -58,8 +58,8 @@ class AdminMenuService implements AdminMenuServiceInterface, BootableInterface
         $this->menuPages[$menuPage->getMenuSlug()] = $menuPage;
     }
 
-    public function addSubMenuPage(SubmenuPage $subMenuPage): void {
-        $this->submenuPages[$subMenuPage->getMenuSlug()] = $subMenuPage;
+    public function addSubmenuPage(SubmenuPage $submenuPage): void {
+        $this->submenuPages[$submenuPage->getMenuSlug()] = $submenuPage;
     }
 
     public function registerAdminMenu(): void
@@ -77,7 +77,12 @@ class AdminMenuService implements AdminMenuServiceInterface, BootableInterface
         }
 
         foreach ($this->submenuPages as $submenuPage) {
-            $menuSlug = $this->mainMenuPageSlug ?? $submenuPage->getParentSlug();
+            $menuSlug = $submenuPage->getMenuSlug();
+
+            // If the submenu page is the main menu page, use the parent slug to override the menu page.
+            if ($this->mainMenuPageSlug === $menuSlug) {
+                $menuSlug = $submenuPage->getParentSlug();
+            }
 
             $this->adminMenuAdapter->addSubmenuPage(
                 $submenuPage->getParentSlug(),

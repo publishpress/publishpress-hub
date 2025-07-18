@@ -7,6 +7,7 @@ namespace PublishPress\Hub\Infrastructure\Container;
 use PublishPress\Psr\Container\ContainerInterface;
 use PublishPress\Hub\Infrastructure\WordPress\Hooks\WordPressHooksAdapter;
 use PublishPress\Hub\Application\Service\PluginBootstrapService;
+use PublishPress\Hub\Application\Service\PluginsDashboard\PluginsDashboardService;
 use PublishPress\Hub\Infrastructure\AdminMenu\AdminMenuService;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuAdapterInterface;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
@@ -15,9 +16,12 @@ use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\I18n\Contract\I18nServiceInterface;
 use PublishPress\Hub\Infrastructure\Logger\Contract\LoggerInterface;
 use PublishPress\Hub\Infrastructure\Logger\Logger;
+use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
+use PublishPress\Hub\Infrastructure\View\ViewService;
 use PublishPress\Hub\Infrastructure\WordPress\AdminMenu\WordPressAdminMenuAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Asset\WordPressAssetAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\I18n\WordPressI18nAdapter;
+use PublishPress\Hub\Presentation\Controller\PluginDashboardController;
 
 return [
     AbstractDependencies::PLUGIN_PATH => PUBLISHPRESS_HUB_PATH,
@@ -38,7 +42,7 @@ return [
 
     AbstractDependencies::PLUGIN_LANGUAGES_PATH => PUBLISHPRESS_HUB_LANGUAGES_PATH,
 
-    AbstractDependencies::PLUGIN_TEMPLATES_PATH => PUBLISHPRESS_HUB_TEMPLATES_PATH,
+    AbstractDependencies::PLUGIN_TEMPLATES_BASE_PATH => PUBLISHPRESS_HUB_TEMPLATES_PATH,
 
     AbstractDependencies::PLUGIN_I18N_SCRIPT_PATH => 'js/i18n.js',
 
@@ -91,16 +95,43 @@ return [
             );
         },
 
+    AbstractDependencies::VIEW_SERVICE =>
+        function (ContainerInterface $container): ViewServiceInterface {
+            return new ViewService(
+                $container->get(AbstractDependencies::PLUGIN_TEMPLATES_BASE_PATH)
+            );
+        },
+
     // Application Services
     AbstractDependencies::PLUGIN_BOOTSTRAP_SERVICE =>
         function (ContainerInterface $container): PluginBootstrapService {
             return new PluginBootstrapService(
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
-                $container->get(AbstractDependencies::I18N_SERVICE),
+                $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
+                [
+                    $container->get(AbstractDependencies::I18N_SERVICE),
+                    $container->get(AbstractDependencies::PLUGINS_DASHBOARD_SERVICE),
+                ]
+            );
+        },
+
+    AbstractDependencies::PLUGINS_DASHBOARD_SERVICE =>
+        function (ContainerInterface $container): PluginsDashboardService {
+            return new PluginsDashboardService(
+                $container->get(AbstractDependencies::PLUGIN_DASHBOARD_CONTROLLER),
                 $container->get(AbstractDependencies::ADMIN_MENU_SERVICE)
             );
         },
 
+    // Presentation Services
+    AbstractDependencies::PLUGIN_DASHBOARD_CONTROLLER =>
+        function (ContainerInterface $container): PluginDashboardController {
+            return new PluginDashboardController(
+                $container->get(AbstractDependencies::VIEW_SERVICE)
+            );
+        },
+
+    // Adapters
     AbstractDependencies::ADMIN_MENU_ADAPTER =>
         function (ContainerInterface $container): AdminMenuAdapterInterface {
             return new WordPressAdminMenuAdapter();

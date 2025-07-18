@@ -12,7 +12,7 @@ interface AdminMenuServiceInterface extends BootableInterface
 {
     public function addMenuPage(MenuPage $menuPage): void;
 
-    public function addSubMenuPage(SubmenuPage $subMenuPage): void;
+    public function addSubmenuPage(SubmenuPage $submenuPage): void;
 
     public function setMainMenuPage(string $menuSlug): void;
 }

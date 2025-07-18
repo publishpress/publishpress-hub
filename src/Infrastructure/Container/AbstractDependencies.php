@@ -33,7 +33,7 @@ abstract class AbstractDependencies
 
     public const PLUGIN_LANGUAGES_PATH = 'publishpress-hub.constants.plugin-languages-path';
 
-    public const PLUGIN_TEMPLATES_PATH = 'publishpress-hub.constants.plugin-templates-path';
+    public const PLUGIN_TEMPLATES_BASE_PATH = 'publishpress-hub.constants.plugin-templates-base-path';
 
     public const SCRIPT_DEBUG = 'publishpress-hub.constants.script-debug';
 
@@ -50,9 +50,16 @@ abstract class AbstractDependencies
 
     public const ADMIN_MENU_SERVICE = 'publishpress-hub.infrastructure.admin-menu.service';
 
+    public const VIEW_SERVICE = 'publishpress-hub.infrastructure.view.service';
+
     // Application Services
     public const PLUGIN_BOOTSTRAP_SERVICE = 'publishpress-hub.application.plugin.bootstrap.service';
 
+    public const PLUGINS_DASHBOARD_SERVICE = 'publishpress-hub.application.plugins-dashboard.dashboard.service';
+
     // Adapters
     public const ADMIN_MENU_ADAPTER = 'publishpress-hub.infrastructure.admin-menu.adapter';
+
+    // Presentation Services
+    public const PLUGIN_DASHBOARD_CONTROLLER = 'publishpress-hub.presentation.plugin.dashboard.controller';
 }
