@@ -31,19 +31,15 @@ return [
 
     AbstractDependencies::PLUGIN_URL => PUBLISHPRESS_HUB_URL,
 
-    AbstractDependencies::PLUGIN_ASSETS_PATH => PUBLISHPRESS_HUB_ASSETS_PATH,
+    AbstractDependencies::PLUGIN_ASSETS_PATH => PUBLISHPRESS_HUB_PATH . 'src/Presentation/Asset/dist/',
 
-    AbstractDependencies::PLUGIN_ASSETS_URL => PUBLISHPRESS_HUB_ASSETS_URL,
-
-    AbstractDependencies::PLUGIN_VENDOR_PATH => PUBLISHPRESS_HUB_VENDOR_PATH,
-
-    AbstractDependencies::PLUGIN_SRC_PATH => PUBLISHPRESS_HUB_SRC_PATH,
+    AbstractDependencies::PLUGIN_ASSETS_URL => PUBLISHPRESS_HUB_URL . 'src/Presentation/Asset/dist/',
 
     AbstractDependencies::PLUGIN_VERSION => PUBLISHPRESS_HUB_VERSION,
 
-    AbstractDependencies::PLUGIN_LANGUAGES_PATH => PUBLISHPRESS_HUB_LANGUAGES_PATH,
+    AbstractDependencies::PLUGIN_LANGUAGES_PATH => PUBLISHPRESS_HUB_PATH . 'languages/',
 
-    AbstractDependencies::PLUGIN_TEMPLATES_BASE_PATH => PUBLISHPRESS_HUB_TEMPLATES_PATH,
+    AbstractDependencies::PLUGIN_TEMPLATES_BASE_PATH => PUBLISHPRESS_HUB_SRC_PATH . 'Presentation/Template/',
 
     AbstractDependencies::PLUGIN_I18N_SCRIPT_PATH => 'js/i18n.js',
 
@@ -136,8 +132,10 @@ return [
     AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER =>
         function (ContainerInterface $container): PluginsDashboardController {
             return new PluginsDashboardController(
+                $container->get(AbstractDependencies::HOOKS_SERVICE),
                 $container->get(AbstractDependencies::VIEW_SERVICE),
-                $container->get(AbstractDependencies::ADMIN_MENU_SERVICE)
+                $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
+                $container->get(AbstractDependencies::ASSET_SERVICE)
             );
         },
 
