@@ -36,7 +36,7 @@ return [
 
     AbstractDependencies::PLUGIN_TEMPLATES_PATH => PUBLISHPRESS_HUB_TEMPLATES_PATH,
 
-    AbstractDependencies::PLUGIN_I18N_SCRIPT_PATH => 'src/Presentation/Asset/dist/js/i18n.js',
+    AbstractDependencies::PLUGIN_I18N_SCRIPT_PATH => 'js/i18n.js',
 
     AbstractDependencies::SCRIPT_DEBUG => function (): bool {
         return defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;

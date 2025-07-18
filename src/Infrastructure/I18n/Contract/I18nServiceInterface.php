@@ -9,15 +9,16 @@ use PublishPress\Hub\Application\Contract\BootableInterface;
 interface I18nServiceInterface extends BootableInterface
 {
     /**
-     * Get the current WordPress locale
-     *
      * @since 1.0.0
      */
     public function getLocale(): string;
 
     /**
-     * Get the text domain
-     *
+     * @since 1.0.0
+     */
+    public function getUserLocale(): string;
+
+    /**
      * @since 1.0.0
      */
     public function getTextDomain(): string;

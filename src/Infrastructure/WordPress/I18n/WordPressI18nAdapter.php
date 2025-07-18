@@ -111,6 +111,14 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
     /**
      * @since 1.0.0
      */
+    public function getUserLocale(): string
+    {
+        return get_user_locale();
+    }
+
+    /**
+     * @since 1.0.0
+     */
     public function enqueueTranslationsScript(): void
     {
         $handle = $this->textDomain . '-i18n';
@@ -156,7 +164,7 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
      */
     private function getLocalizedTranslations(): array
     {
-        $currentLocale = $this->getLocale();
+        $currentLocale = $this->getUserLocale();
 
         $jsonPath = $this->languagesPath . $this->textDomain . '-' . $currentLocale . '.json';
 

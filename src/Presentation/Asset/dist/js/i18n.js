@@ -124,8 +124,8 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 
 
 var data = function (_window$publishpressH, _window$publishpressH2) {
-  var free = ((_window$publishpressH = window.publishpressHubI18nConfig) === null || _window$publishpressH === void 0 ? void 0 : _window$publishpressH.data) || {};
-  var pro = ((_window$publishpressH2 = window.publishpressHubI18nProConfig) === null || _window$publishpressH2 === void 0 ? void 0 : _window$publishpressH2.data) || {};
+  var free = ((_window$publishpressH = window.publishpressHubI18n) === null || _window$publishpressH === void 0 ? void 0 : _window$publishpressH.data) || {};
+  var pro = window.publishpressHubProI18n ? ((_window$publishpressH2 = window.publishpressHubProI18n) === null || _window$publishpressH2 === void 0 ? void 0 : _window$publishpressH2.data) || {} : {};
   var merged = {};
   var domains = new Set([].concat(_toConsumableArray(Object.keys(free.locale_data || {})), _toConsumableArray(Object.keys(pro.locale_data || {}))));
   domains.forEach(function (domain) {
