@@ -209,9 +209,9 @@ class PluginStateTest extends Unit
             'https://publishpress.com/pricing/test-plugin/'
         );
 
-        // Create a mock family
         $family = $this->createMock(PluginFamilyInterface::class);
 
+        /** @var PluginFamilyInterface $family */
         $newState = $originalState->withFamily($family);
 
         // Original state should remain unchanged
