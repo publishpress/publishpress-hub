@@ -8,6 +8,7 @@ use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
+use PublishPress\Hub\Infrastructure\I18n\Contract\I18nServiceInterface;
 
 class ApplicationBootstrapService implements BootableInterface
 {
@@ -18,15 +19,24 @@ class ApplicationBootstrapService implements BootableInterface
      */
     private $hooksService;
 
+    /**
+     * @var I18nServiceInterface
+     */
+    private $i18nService;
+
     public function __construct(
-        HooksServiceInterface $hooksService
+        HooksServiceInterface $hooksService,
+        I18nServiceInterface $i18nService
     ) {
         $this->hooksService = $hooksService;
+        $this->i18nService = $i18nService;
     }
 
     protected function onLoad(): void
     {
         $this->addHooks();
+
+        $this->i18nService->load();
     }
 
     protected function onInit(): void

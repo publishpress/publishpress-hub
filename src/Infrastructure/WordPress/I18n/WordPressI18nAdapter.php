@@ -23,12 +23,12 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
     /**
      * @since 1.0.0
      */
-    private string $pluginPath;
+    private string $scriptPath;
 
     /**
      * @since 1.0.0
      */
-    private string $languagePath;
+    private string $languagesPath;
 
     /**
      * @since 1.0.0
@@ -50,25 +50,32 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
      */
     public function __construct(
         string $textDomain,
-        string $pluginPath,
-        string $languagePath,
+        string $scriptPath,
+        string $languagesPath,
         HooksServiceInterface $hooksService,
         AssetServiceInterface $assetService
     ) {
         $this->textDomain = $textDomain;
-        $this->pluginPath = $pluginPath;
-        $this->languagePath = $languagePath;
+        $this->scriptPath = $scriptPath;
+        $this->languagesPath = $languagesPath;
         $this->hooksService = $hooksService;
         $this->assetService = $assetService;
     }
 
-    public function onLoad(): void
+    protected function onLoad(): void
     {
-        $this->hooksService->addAction(AbstractHooks::ACTION_INIT, [$this, 'loadTextDomain']);
+        $this->hooksService->addAction(AbstractHooks::ACTION_INIT, [$this, 'init']);
+
+        $this->hooksService->addAction(
+            AbstractHooks::ACTION_ADMIN_ENQUEUE_SCRIPTS,
+            [$this, 'enqueueTranslationsScript'],
+            5
+        );
     }
 
-    public function onInit(): void
+    protected function onInit(): void
     {
+        $this->loadTextDomain();
     }
 
     /**
@@ -84,12 +91,12 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
      */
     public function loadTextDomain(): void
     {
-        $pluginRelativePath = basename(dirname($this->pluginPath));
+        $pluginRelativePath = basename(dirname($this->languagesPath)) . '/' . basename($this->languagesPath);
 
         load_plugin_textdomain(
             $this->textDomain,
             false,
-            $pluginRelativePath . '/' . $this->languagePath
+            $pluginRelativePath
         );
     }
 
@@ -104,13 +111,61 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
     /**
      * @since 1.0.0
      */
-    public function enqueueTranslationsScript(string $handle, string $scriptPath): void
+    public function enqueueTranslationsScript(): void
     {
-        $this->assetService->enqueueScript(
+        $handle = $this->textDomain . '-i18n';
+
+        $this->assetService->registerScript(
             $handle,
-            $scriptPath,
-            [],
+            $this->scriptPath,
+            [
+                'wp-i18n',
+            ],
             true
         );
+
+        $json = $this->getLocalizedTranslations();
+
+        $variableName = $this->getVariableNameFromTextDomain();
+
+        $this->assetService->localizeScript(
+            $handle,
+            $variableName,
+            [
+                'data' => $json,
+            ]
+        );
+    }
+
+    private function getVariableNameFromTextDomain(): string
+    {
+        return preg_replace_callback(
+            '/-([a-z])/',
+            function ($matches) {
+                return strtoupper($matches[1]);
+            },
+            $this->textDomain . 'I18n'
+        );
+    }
+
+    /**
+     * Get the localized translations from the JSON file and
+     * return it as an array.
+     *
+     * @since 1.0.0
+     */
+    private function getLocalizedTranslations(): array
+    {
+        $currentLocale = $this->getLocale();
+
+        $jsonPath = $this->languagesPath . $this->textDomain . '-' . $currentLocale . '.json';
+
+        if (! file_exists($jsonPath)) {
+            return [];
+        }
+
+        // phpcs:ignore WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown
+        $json = file_get_contents($jsonPath);
+        return json_decode($json, true);
     }
 }

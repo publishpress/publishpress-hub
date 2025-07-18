@@ -33,7 +33,26 @@ interface AssetServiceInterface
     /**
      * @since 1.0.0
      */
+    public function registerScript(
+        string $scriptHandle,
+        string $scriptRelativePath,
+        array $dependencies = [],
+        bool $inFooter = true
+    ): void;
+
+    /**
+     * @since 1.0.0
+     */
     public function enqueueStyle(
+        string $styleHandle,
+        string $styleRelativePath,
+        array $dependencies = []
+    ): void;
+
+    /**
+     * @since 1.0.0
+     */
+    public function registerStyle(
         string $styleHandle,
         string $styleRelativePath,
         array $dependencies = []

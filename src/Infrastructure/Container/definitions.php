@@ -20,8 +20,6 @@ return [
 
     AbstractDependencies::PLUGIN_TEXT_DOMAIN => 'publishpress-hub',
 
-    AbstractDependencies::PLUGIN_LANGUAGE_PATH => 'languages',
-
     AbstractDependencies::PLUGIN_URL => PUBLISHPRESS_HUB_URL,
 
     AbstractDependencies::PLUGIN_ASSETS_PATH => PUBLISHPRESS_HUB_ASSETS_PATH,
@@ -38,6 +36,8 @@ return [
 
     AbstractDependencies::PLUGIN_TEMPLATES_PATH => PUBLISHPRESS_HUB_TEMPLATES_PATH,
 
+    AbstractDependencies::PLUGIN_I18N_SCRIPT_PATH => 'src/Presentation/Asset/dist/js/i18n.js',
+
     AbstractDependencies::SCRIPT_DEBUG => function (): bool {
         return defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;
     },
@@ -52,8 +52,8 @@ return [
         function (ContainerInterface $container): I18nServiceInterface {
             return new WordPressI18nAdapter(
                 $container->get(AbstractDependencies::PLUGIN_TEXT_DOMAIN),
-                $container->get(AbstractDependencies::PLUGIN_PATH),
-                $container->get(AbstractDependencies::PLUGIN_LANGUAGE_PATH),
+                $container->get(AbstractDependencies::PLUGIN_I18N_SCRIPT_PATH),
+                $container->get(AbstractDependencies::PLUGIN_LANGUAGES_PATH),
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
                 $container->get(AbstractDependencies::ASSET_SERVICE)
             );
@@ -84,7 +84,8 @@ return [
     AbstractDependencies::APPLICATION_BOOTSTRAP_SERVICE =>
         function (ContainerInterface $container): ApplicationBootstrapService {
             return new ApplicationBootstrapService(
-                $container->get(AbstractDependencies::HOOKS_SERVICE)
+                $container->get(AbstractDependencies::HOOKS_SERVICE),
+                $container->get(AbstractDependencies::I18N_SERVICE)
             );
         },
 ];

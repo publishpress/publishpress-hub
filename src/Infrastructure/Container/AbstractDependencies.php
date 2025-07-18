@@ -37,6 +37,8 @@ abstract class AbstractDependencies
 
     public const SCRIPT_DEBUG = 'publishpress-hub.constants.script_debug';
 
+    public const PLUGIN_I18N_SCRIPT_PATH = 'publishpress-hub.constants.plugin_i18n_script_path';
+
     // Infrastructure Services
     public const HOOKS_SERVICE = 'publishpress-hub.infrastructure.hooks.service';
 

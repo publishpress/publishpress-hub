@@ -98,6 +98,25 @@ class WordPressAssetAdapter implements AssetServiceInterface
     /**
      * @since 1.0.0
      */
+    public function registerScript(
+        string $scriptHandle,
+        string $scriptRelativePath,
+        array $dependencies = [],
+        bool $inFooter = true
+    ): void
+    {
+        wp_register_script(
+            $scriptHandle,
+            $this->getPluginAssetUrl($scriptRelativePath),
+            $dependencies,
+            $this->version,
+            $inFooter
+        );
+    }
+
+    /**
+     * @since 1.0.0
+     */
     public function enqueueStyle(
         string $styleHandle,
         string $styleRelativePath,
@@ -105,6 +124,23 @@ class WordPressAssetAdapter implements AssetServiceInterface
     ): void
     {
         wp_enqueue_style(
+            $styleHandle,
+            $this->getPluginAssetUrl($styleRelativePath),
+            $dependencies,
+            $this->version
+        );
+    }
+
+    /**
+     * @since 1.0.0
+     */
+    public function registerStyle(
+        string $styleHandle,
+        string $styleRelativePath,
+        array $dependencies = []
+    ): void
+    {
+        wp_register_style(
             $styleHandle,
             $this->getPluginAssetUrl($styleRelativePath),
             $dependencies,
