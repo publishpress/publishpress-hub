@@ -2,30 +2,21 @@
 
 ## Overview
 
-PublishPress Hub implements a simplified **Clean Architecture** pattern, designed for a WordPress plugin hub that serves as a central management system for multiple PublishPress plugins. This architecture combines:
+PublishPress Hub implements a **Feature-Based Clean Architecture** pattern, designed for a WordPress plugin hub that serves as a central management system for multiple PublishPress plugins. This architecture combines:
 
 - **Clean Architecture**: Clear separation of concerns with dependency inversion
 - **Domain-Driven Design**: Business logic centered around domain models
-- **Feature-Based Organization**: Use cases and services organized by business features
+- **Feature-Based Organization**: Business features organized by domain boundaries
 - **WordPress Integration**: Clean abstractions over WordPress functions
-
-## Why This Architecture?
-
-**For a WordPress Plugin Hub:**
-- **Single Developer**: Optimized for one developer working on multiple features
-- **5 Core Features**: Manageable scope with clear feature boundaries
-- **Future Growth**: Easy to extract modules when team grows
-- **WordPress Integration**: Clean abstractions over WordPress functions
-- **Testability**: Business logic can be tested independently of WordPress
-- **Maintainability**: Clear separation of concerns for long-term maintenance
 
 ## Key Principles
 
 1. **Dependency Inversion**: High-level modules don't depend on low-level modules
 2. **Single Responsibility**: Each layer has a single, well-defined responsibility
-3. **Feature Organization**: Business features are organized through use cases
+3. **Feature Organization**: Business features are organized by domain boundaries
 4. **Separation of Concerns**: Clear boundaries between business logic and external concerns
 5. **Testability**: Each component can be unit tested in isolation
+6. **Maintainability**: Clear separation of concerns for long-term maintenance
 
 ## How It's Organized
 
@@ -35,21 +26,27 @@ PublishPress Hub implements a simplified **Clean Architecture** pattern, designe
 src/
 ├── Application/                    # Use cases and application services
 │   ├── UseCase/                   # Business operations by feature
-│   │   ├── InstallPluginUseCase.php
-│   │   ├── ListPluginsUseCase.php
-│   │   ├── UpdatePluginUseCase.php
-│   │   ├── ShowcaseComponentUseCase.php
-│   │   ├── ListComponentsUseCase.php
-│   │   └── BootstrapApplicationUseCase.php
+│   │   ├── Plugin/                # Plugin management use cases
+│   │   │   ├── InstallPluginUseCase.php
+│   │   │   ├── ListPluginsUseCase.php
+│   │   │   └── UpdatePluginUseCase.php
+│   │   ├── Component/             # Component showcase use cases
+│   │   │   ├── ShowcaseComponentUseCase.php
+│   │   │   └── ListComponentsUseCase.php
+│   │   └── Module/                # Module management use cases
+│   │       └── BootstrapApplicationUseCase.php
 │   ├── Service/                   # Application services
 │   │   ├── PluginManagementService.php
 │   │   ├── ComponentShowcaseService.php
 │   │   └── ApplicationBootstrapService.php
 │   ├── DTO/                       # Data transfer objects
-│   │   ├── PluginInstallationDTO.php
-│   │   ├── PluginListDTO.php
-│   │   ├── ComponentDTO.php
-│   │   └── ApplicationConfigDTO.php
+│   │   ├── Plugin/                # Plugin-related DTOs
+│   │   │   ├── PluginInstallationDTO.php
+│   │   │   └── PluginListDTO.php
+│   │   ├── Component/             # Component-related DTOs
+│   │   │   └── ComponentDTO.php
+│   │   └── Module/                # Module-related DTOs
+│   │       └── ApplicationConfigDTO.php
 │   ├── Contract/                  # Application ports/interfaces
 │   │   ├── PluginRepositoryInterface.php
 │   │   ├── ComponentRepositoryInterface.php
@@ -73,29 +70,43 @@ src/
 │   ├── AbstractDependencies.php
 │   └── container-definitions.php
 ├── Domain/                        # Business logic and entities
-│   ├── Entity/
-│   │   ├── Plugin.php
-│   │   ├── PluginFamily.php
-│   │   ├── Component.php
-│   │   └── Module.php
-│   ├── ValueObject/
-│   │   ├── PluginVersion.php
-│   │   ├── PluginSlug.php
-│   │   ├── PluginStatus.php
-│   │   ├── ComponentType.php
-│   │   └── ModuleStatus.php
-│   ├── Service/
-│   │   ├── PluginValidationService.php
-│   │   └── ComponentValidationService.php
-│   ├── Repository/
-│   │   ├── PluginRepositoryInterface.php
-│   │   └── ComponentRepositoryInterface.php
-│   └── Exception/
-│       ├── DomainException.php
-│       ├── PluginNotFoundException.php
-│       ├── PluginInstallationException.php
-│       ├── ComponentNotFoundException.php
-│       └── ValidationException.php
+│   ├── Plugin/                    # Plugin management feature
+│   │   ├── Entity/
+│   │   │   ├── Plugin.php
+│   │   │   ├── PluginFamily.php
+│   │   │   ├── FreePlugin.php
+│   │   │   └── ProPlugin.php
+│   │   ├── ValueObject/
+│   │   │   ├── PluginVersion.php
+│   │   │   ├── PluginSlug.php
+│   │   │   └── PluginStatus.php
+│   │   ├── Service/
+│   │   │   └── PluginValidationService.php
+│   │   ├── Repository/
+│   │   │   └── PluginRepositoryInterface.php
+│   │   └── Exception/
+│   │       ├── PluginNotFoundException.php
+│   │       └── PluginInstallationException.php
+│   ├── Component/                 # Component showcase feature
+│   │   ├── Entity/
+│   │   │   └── Component.php
+│   │   ├── ValueObject/
+│   │   │   └── ComponentType.php
+│   │   ├── Service/
+│   │   │   └── ComponentValidationService.php
+│   │   ├── Repository/
+│   │   │   └── ComponentRepositoryInterface.php
+│   │   └── Exception/
+│   │       └── ComponentNotFoundException.php
+│   └── Module/                    # Module management feature
+│       ├── Entity/
+│       │   └── Module.php
+│       ├── ValueObject/
+│       │   └── ModuleStatus.php
+│       ├── Repository/
+│       │   └── ModuleRepositoryInterface.php
+│       └── Exception/
+│           └── ModuleNotFoundException.php
 ├── Infrastructure/                # External concerns and adapters
 │   ├── Container/                 # Dependency injection container
 │   │   ├── definitions.php        # Main container definitions
@@ -194,7 +205,7 @@ src/
 
 ### Architecture Overview
 
-The application follows **Clean Architecture** with feature-based organization:
+The application follows **Feature-Based Clean Architecture** with domain-driven organization:
 
 ```mermaid
 graph TB
@@ -206,15 +217,15 @@ graph TB
         end
 
         subgraph "Application Layer"
-            UseCases[Use Cases]
-            Services[Services]
-            DTOs[DTOs]
+            UseCases[Use Cases by Feature]
+            Services[Application Services]
+            DTOs[DTOs by Feature]
         end
 
         subgraph "Domain Layer"
-            Entities[Entities]
-            ValueObjects[Value Objects]
-            DomainServices[Domain Services]
+            PluginDomain[Plugin Domain]
+            ComponentDomain[Component Domain]
+            ModuleDomain[Module Domain]
         end
 
         subgraph "Infrastructure Layer"
@@ -236,45 +247,62 @@ graph TB
     RESTAPI --> UseCases
     UseCases --> Services
     Services --> DTOs
-    DTOs --> Entities
-    Entities --> ValueObjects
-    ValueObjects --> DomainServices
-    DomainServices --> WPAdapters
-    DomainServices --> DBAdapters
-    DomainServices --> ExternalServices
+    DTOs --> PluginDomain
+    DTOs --> ComponentDomain
+    DTOs --> ModuleDomain
+    PluginDomain --> WPAdapters
+    ComponentDomain --> WPAdapters
+    ModuleDomain --> WPAdapters
+    PluginDomain --> DBAdapters
+    ComponentDomain --> DBAdapters
+    ModuleDomain --> DBAdapters
+    PluginDomain --> ExternalServices
+    ComponentDomain --> ExternalServices
+    ModuleDomain --> ExternalServices
 
     Container -.-> UseCases
 ```
 
 ### Feature Organization
 
-Features are organized through **use cases** in the Application layer:
+Features are organized by **domain boundaries** across all layers:
 
 ```mermaid
-graph LR
-    subgraph "Feature Organization"
+graph TB
+    subgraph "Feature-Based Organization"
         subgraph "Plugin Management Feature"
-            InstallUC[Install Plugin Use Case]
-            ListUC[List Plugins Use Case]
-            UpdateUC[Update Plugin Use Case]
+            PluginUC[Plugin Use Cases]
+            PluginDTO[Plugin DTOs]
+            PluginEntity[Plugin Entities]
+            PluginRepo[Plugin Repositories]
         end
 
         subgraph "Component Showcase Feature"
-            ShowcaseUC[Showcase Component Use Case]
-            ListCompUC[List Components Use Case]
+            ComponentUC[Component Use Cases]
+            ComponentDTO[Component DTOs]
+            ComponentEntity[Component Entities]
+            ComponentRepo[Component Repositories]
         end
 
-        subgraph "Application Management"
-            BootstrapUC[Bootstrap Application Use Case]
+        subgraph "Module Management Feature"
+            ModuleUC[Module Use Cases]
+            ModuleDTO[Module DTOs]
+            ModuleEntity[Module Entities]
+            ModuleRepo[Module Repositories]
         end
     end
 
-    InstallUC --> PluginEntity[Plugin Entity]
-    ListUC --> PluginEntity
-    UpdateUC --> PluginEntity
-    ShowcaseUC --> ComponentEntity[Component Entity]
-    ListCompUC --> ComponentEntity
-    BootstrapUC --> ModuleEntity[Module Entity]
+    PluginUC --> PluginDTO
+    PluginDTO --> PluginEntity
+    PluginEntity --> PluginRepo
+
+    ComponentUC --> ComponentDTO
+    ComponentDTO --> ComponentEntity
+    ComponentEntity --> ComponentRepo
+
+    ModuleUC --> ModuleDTO
+    ModuleDTO --> ModuleEntity
+    ModuleEntity --> ModuleRepo
 ```
 
 ### Dependency Flow
@@ -316,22 +344,23 @@ graph TD
 
 ### Application Layer - Use Case Orchestration
 **Purpose:** Coordinates domain operations and implements business features
-- **Use Cases**: Business operations organized by feature (InstallPluginUseCase, ShowcaseComponentUseCase)
+- **Use Cases**: Business operations organized by feature domain (Plugin, Component, Module)
 - **Services**: Orchestrate domain operations and coordinate between entities
-- **DTOs**: Data structures for transferring data between layers
+- **DTOs**: Data structures for transferring data between layers, organized by feature
 - **Contracts**: Interfaces defining service behavior and contracts
 
-**Example:** A `InstallPluginUseCase` orchestrates the plugin installation process using domain entities.
+**Example:** A `InstallPluginUseCase` orchestrates the plugin installation process using Plugin domain entities.
 
 ### Domain Layer - Core Business Logic
-**Purpose:** Contains the core business rules and entities
-- **Entities**: Business objects with identity and lifecycle (Plugin, Component, Module)
-- **Value Objects**: Immutable objects representing concepts (PluginVersion, PluginSlug, PluginStatus)
-- **Repository Interfaces**: Contracts for data persistence operations
+**Purpose:** Contains the core business rules and entities organized by feature domains
+- **Plugin Domain**: Plugin management business logic (Plugin, PluginFamily, FreePlugin, ProPlugin)
+- **Component Domain**: Component showcase business logic (Component, ComponentType)
+- **Module Domain**: Module management business logic (Module, ModuleStatus)
+- **Repository Interfaces**: Contracts for data persistence operations per domain
 - **Domain Services**: Business logic that doesn't belong to specific entities
 - **Domain Exceptions**: Business rule violations and domain-specific errors
 
-**Example:** A `Plugin` entity encapsulates plugin state, validation rules, and business operations.
+**Example:** A `Plugin` entity encapsulates plugin state, validation rules, and business operations within the Plugin domain.
 
 ### Infrastructure Layer - External Concerns
 **Purpose:** Implements interfaces defined in higher layers
@@ -349,23 +378,13 @@ graph TD
 - **Templates**: HTML/PHP templates for rendering user interfaces
 - **Asset Management**: CSS, JavaScript, and other frontend resources
 
-**Example:** A `PluginController` handles "Install Plugin" requests and coordinates with application use cases.
+**Example:** A `PluginController` handles "Install Plugin" requests and coordinates with Plugin domain use cases.
 
-### Infrastructure Layer - External Concerns
-**Purpose:** Implements interfaces defined in higher layers
-- **Container**: Dependency injection container for service management
-- **Repository Implementations**: Concrete database operations and data persistence
-- **External Service Clients**: Integration with WordPress.org API, license servers, etc.
-- **WordPress Adapters**: Clean abstractions over WordPress functions
-- **Infrastructure Exceptions**: Technical errors and external service failures
+## Feature-Based Organization Benefits
 
-**Example:** A `WordPressPluginRepository` implements the `PluginRepositoryInterface` using WordPress functions.
-
-## Feature-Based Organization
-
-### Plugin Management Feature
+### **Plugin Management Feature**
 ```php
-// src/Application/UseCase/InstallPluginUseCase.php
+// src/Application/UseCase/Plugin/InstallPluginUseCase.php
 class InstallPluginUseCase
 {
     public function execute(InstallPluginRequest $request): InstallPluginResponse
@@ -385,7 +404,7 @@ class InstallPluginUseCase
     }
 }
 
-// src/Domain/Entity/Plugin.php
+// src/Domain/Plugin/Entity/Plugin.php
 class Plugin extends Entity
 {
     private PluginSlug $slug;
@@ -407,9 +426,9 @@ class Plugin extends Entity
 }
 ```
 
-### Component Showcase Feature
+### **Component Showcase Feature**
 ```php
-// src/Application/UseCase/ShowcaseComponentUseCase.php
+// src/Application/UseCase/Component/ShowcaseComponentUseCase.php
 class ShowcaseComponentUseCase
 {
     public function execute(ShowcaseComponentRequest $request): ShowcaseComponentResponse
@@ -445,13 +464,13 @@ The architecture provides clean abstractions over WordPress functions:
 
 ### Feature Development
 1. **Start with Use Case**: Define the business operation first
-2. **Define DTOs**: Create data structures for input/output
-3. **Implement Domain Logic**: Add business rules to entities
+2. **Define DTOs**: Create data structures for input/output within the feature
+3. **Implement Domain Logic**: Add business rules to entities within the feature domain
 4. **Create Infrastructure**: Implement repository and adapter classes
-5. **Add Presentation**: Create controllers and views
+5. **Add Presentation**: Create controllers and views for user interaction
 
 ### Code Organization
-1. **Feature-First**: Organize code by business features
+1. **Feature-First**: Organize code by business features and domain boundaries
 2. **Consistent Naming**: Use descriptive, consistent naming for classes and methods
 3. **Error Handling**: Implement proper exception handling at each layer
 4. **Logging**: Comprehensive logging for debugging and monitoring
@@ -467,15 +486,15 @@ The architecture provides clean abstractions over WordPress functions:
 ## Benefits
 
 ### For Single Developer
-- **Clear Structure**: Easy to understand and navigate
+- **Clear Structure**: Easy to understand and navigate by feature
 - **Fast Development**: Less time on architecture, more on features
-- **Easy Maintenance**: Simple dependency management
+- **Easy Maintenance**: Simple dependency management within feature boundaries
 - **Testable Code**: Business logic can be tested independently
 
 ### For Future Growth
-- **Easy Module Extraction**: Clear boundaries make modularization simple
+- **Easy Module Extraction**: Clear feature boundaries make modularization simple
 - **Team Onboarding**: New developers can understand the structure quickly
-- **Feature Isolation**: Each feature is self-contained through use cases
+- **Feature Isolation**: Each feature is self-contained through domain organization
 - **Scalable Architecture**: Can evolve to modular architecture when needed
 
 ### For WordPress Integration
@@ -489,7 +508,7 @@ The architecture provides clean abstractions over WordPress functions:
 ### Module Extraction Path
 When the team grows or complexity increases, the architecture can easily evolve:
 
-1. **Identify Feature Boundaries**: Group related use cases and entities
+1. **Identify Feature Boundaries**: Group related use cases and domain entities
 2. **Extract Module Structure**: Create module directories with Clean Architecture
 3. **Move Code**: Relocate files to module-specific locations
 4. **Update Namespaces**: Change namespaces to reflect module structure
@@ -497,9 +516,9 @@ When the team grows or complexity increases, the architecture can easily evolve:
 
 ### Example Extraction
 ```bash
-# Current structure
-src/Application/UseCase/InstallPluginUseCase.php
-src/Domain/Entity/Plugin.php
+# Current feature-based structure
+src/Application/UseCase/Plugin/InstallPluginUseCase.php
+src/Domain/Plugin/Entity/Plugin.php
 src/Infrastructure/WordPress/WordPressPluginRepository.php
 
 # After extraction to PluginsDashboard module
@@ -512,15 +531,23 @@ src/Module/PluginsDashboard/Infrastructure/Repository/WordPressPluginRepository.
 
 ### For New Developers
 1. **Understand the Layers**: Learn the responsibility of each layer
-2. **Follow Use Case Pattern**: Start with business operations
-3. **Use Domain Models**: Leverage entities and value objects
-4. **Write Tests**: Test your code as you write it
-5. **Document**: Document your changes and architectural decisions
+2. **Follow Feature Organization**: Understand how features are organized by domain
+3. **Follow Use Case Pattern**: Start with business operations
+4. **Use Domain Models**: Leverage entities and value objects within feature domains
+5. **Write Tests**: Test your code as you write it
+6. **Document**: Document your changes and architectural decisions
 
 ### For Feature Development
-1. **Define the Use Case**: Identify the business operation
-2. **Create DTOs**: Define input and output data structures
-3. **Implement Domain Logic**: Add business rules to entities
+1. **Define the Use Case**: Identify the business operation within the feature
+2. **Create DTOs**: Define input and output data structures for the feature
+3. **Implement Domain Logic**: Add business rules to entities within the feature domain
 4. **Build Infrastructure**: Create repository and adapter implementations
 5. **Add Presentation**: Create controllers and views for user interaction
+
+### Feature Organization Guidelines
+1. **Domain Boundaries**: Keep related business concepts together
+2. **Cross-Feature Dependencies**: Minimize dependencies between features
+3. **Shared Code**: Extract common functionality to shared layers
+4. **Feature Isolation**: Each feature should be self-contained
+5. **Consistent Structure**: Maintain consistent organization across features
 
