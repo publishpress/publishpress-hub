@@ -54,12 +54,24 @@ abstract class AbstractDependencies
 
     public const SECURITY_SERVICE = 'publishpress-hub.infrastructure.security.service';
 
+    public const REST_API_SERVICE = 'publishpress-hub.infrastructure.rest-api.service';
+
+    public const REST_API_ADAPTER = 'publishpress-hub.infrastructure.rest-api.adapter';
+
     // Application Services
     public const PLUGIN_BOOTSTRAP_SERVICE = 'publishpress-hub.application.plugin.bootstrap.service';
 
     public const PLUGINS_DASHBOARD_SERVICE = 'publishpress-hub.application.plugins-dashboard.dashboard.service';
 
     public const DEV_COMPONENTS_SHOWCASE_SERVICE = 'publishpress-hub.application.dev-components-showcase.service';
+
+    public const PLUGIN_FAMILY_REPOSITORY = 'publishpress-hub.domain.plugin.family.repository';
+
+    public const WORDPRESS_PLUGIN_ADAPTER = 'publishpress-hub.infrastructure.wordpress.plugin.adapter';
+
+    public const LIST_PLUGINS_USE_CASE = 'publishpress-hub.application.use-case.plugin.list';
+
+    public const INSTALL_PLUGIN_USE_CASE = 'publishpress-hub.application.use-case.plugin.install';
 
     // Adapters
     public const ADMIN_MENU_ADAPTER = 'publishpress-hub.infrastructure.admin-menu.adapter';
@@ -70,4 +82,6 @@ abstract class AbstractDependencies
     public const PLUGINS_DASHBOARD_CONTROLLER = 'publishpress-hub.presentation.plugins-dashboard.controller';
 
     public const DEV_COMPONENTS_SHOWCASE_CONTROLLER = 'publishpress-hub.presentation.dev-components-showcase.controller';
+
+    public const PLUGIN_API_CONTROLLER = 'publishpress-hub.presentation.plugin-api.controller';
 }

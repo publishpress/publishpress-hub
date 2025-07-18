@@ -9,6 +9,9 @@ use PublishPress\Psr\Container\ContainerInterface;
 use PublishPress\Hub\Infrastructure\WordPress\Hooks\WordPressHooksAdapter;
 use PublishPress\Hub\Application\Service\PluginBootstrapService;
 use PublishPress\Hub\Application\Service\PluginsDashboard\PluginsDashboardService;
+use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\InstallPluginUseCase;
+use PublishPress\Hub\Domain\Plugin\Repository\PluginFamilyRepository;
 use PublishPress\Hub\Infrastructure\AdminMenu\AdminMenuService;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuAdapterInterface;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
@@ -24,9 +27,13 @@ use PublishPress\Hub\Infrastructure\WordPress\AdminMenu\WordPressAdminMenuAdapte
 use PublishPress\Hub\Infrastructure\WordPress\Asset\WordPressAssetAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\I18n\WordPressI18nAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Security\WordPressSecurityAdapter;
+use PublishPress\Hub\Infrastructure\WordPress\RestApi\WordPressRestApiAdapter;
+use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginAdapter;
+use PublishPress\Hub\Infrastructure\RestApi\RestApiService;
 use PublishPress\Hub\Presentation\Controller\DevComponentsShowcaseController;
 use PublishPress\Hub\Presentation\Controller\MainMenuController;
 use PublishPress\Hub\Presentation\Controller\PluginsDashboardController;
+use PublishPress\Hub\Presentation\Controller\PluginApiController;
 
 return [
     AbstractDependencies::PLUGIN_PATH => PUBLISHPRESS_HUB_PATH,
@@ -108,6 +115,19 @@ return [
             return new WordPressSecurityAdapter();
         },
 
+    AbstractDependencies::REST_API_ADAPTER =>
+        function (ContainerInterface $container): \PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiAdapterInterface {
+            return new WordPressRestApiAdapter();
+        },
+
+    AbstractDependencies::REST_API_SERVICE =>
+        function (ContainerInterface $container): \PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface {
+            return new RestApiService(
+                $container->get(AbstractDependencies::HOOKS_SERVICE),
+                $container->get(AbstractDependencies::REST_API_ADAPTER)
+            );
+        },
+
     // Application Services
     AbstractDependencies::PLUGIN_BOOTSTRAP_SERVICE =>
         function (ContainerInterface $container): PluginBootstrapService {
@@ -118,6 +138,7 @@ return [
                     $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
                     $container->get(AbstractDependencies::PLUGINS_DASHBOARD_SERVICE),
                     $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_SERVICE),
+                    $container->get(AbstractDependencies::PLUGIN_API_CONTROLLER),
                 ],
                 $container->get(AbstractDependencies::MAIN_MENU_CONTROLLER)
             );
@@ -135,6 +156,31 @@ return [
         function (ContainerInterface $container): DevComponentsShowcaseService {
             return new DevComponentsShowcaseService(
                 $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER)
+            );
+        },
+
+    AbstractDependencies::PLUGIN_FAMILY_REPOSITORY =>
+        function (ContainerInterface $container): \PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface {
+            return new PluginFamilyRepository();
+        },
+
+    AbstractDependencies::WORDPRESS_PLUGIN_ADAPTER =>
+        function (ContainerInterface $container): WordPressPluginAdapter {
+            return new WordPressPluginAdapter();
+        },
+
+    AbstractDependencies::LIST_PLUGINS_USE_CASE =>
+        function (ContainerInterface $container): ListPluginsUseCase {
+            return new ListPluginsUseCase(
+                $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
+            );
+        },
+
+    AbstractDependencies::INSTALL_PLUGIN_USE_CASE =>
+        function (ContainerInterface $container): InstallPluginUseCase {
+            return new InstallPluginUseCase(
+                $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
+                $container->get(AbstractDependencies::WORDPRESS_PLUGIN_ADAPTER)
             );
         },
 
@@ -164,6 +210,15 @@ return [
                 $container->get(AbstractDependencies::VIEW_SERVICE),
                 $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
                 $container->get(AbstractDependencies::ASSET_SERVICE)
+            );
+        },
+
+    AbstractDependencies::PLUGIN_API_CONTROLLER =>
+        function (ContainerInterface $container): PluginApiController {
+            return new PluginApiController(
+                $container->get(AbstractDependencies::REST_API_SERVICE),
+                $container->get(AbstractDependencies::LIST_PLUGINS_USE_CASE),
+                $container->get(AbstractDependencies::INSTALL_PLUGIN_USE_CASE)
             );
         },
 

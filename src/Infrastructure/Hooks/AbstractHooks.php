@@ -15,4 +15,6 @@ abstract class AbstractHooks
     public const ACTION_ADMIN_ENQUEUE_SCRIPTS = 'admin_enqueue_scripts';
 
     public const ACTION_ADMIN_MENU = 'admin_menu';
+
+    public const ACTION_REST_API_INIT = 'rest_api_init';
 }
