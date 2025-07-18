@@ -12,9 +12,5 @@ interface BootableInterface
 
     public function load(): void;
 
-    public function initialize(): void;
-
-    public function onLoad(): void;
-
-    public function onInitialize(): void;
+    public function init(): void;
 }

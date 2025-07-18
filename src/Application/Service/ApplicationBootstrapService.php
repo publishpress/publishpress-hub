@@ -29,12 +29,12 @@ class ApplicationBootstrapService implements BootableInterface
         $this->addHooks();
     }
 
-    protected function onInitialize(): void
+    protected function onInit(): void
     {
     }
 
     private function addHooks(): void
     {
-        $this->hooksService->addAction(AbstractHooks::ACTION_INIT, [$this, 'initialize']);
+        $this->hooksService->addAction(AbstractHooks::ACTION_INIT, [$this, 'init']);
     }
 }

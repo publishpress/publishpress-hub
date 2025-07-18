@@ -55,7 +55,6 @@ define('PUBLISHPRESS_HUB_SRC_PATH', __DIR__ . '/');
 define('PUBLISHPRESS_HUB_LANGUAGES_PATH', PUBLISHPRESS_HUB_PATH . 'languages/');
 define('PUBLISHPRESS_HUB_TEMPLATES_PATH', PUBLISHPRESS_HUB_SRC_PATH . 'templates/');
 
-
 /*
  * Load the dependencies.
  *

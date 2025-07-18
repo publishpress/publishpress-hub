@@ -39,7 +39,7 @@ trait BootableTrait
         $this->loaded = true;
     }
 
-    public function initialize(): void
+    public function init(): void
     {
         if ($this->isInitialized()) {
             return;
@@ -49,12 +49,12 @@ trait BootableTrait
             throw new RuntimeException('Object must be loaded before initializing.');
         }
 
-        $this->onInitialize();
+        $this->onInit();
 
         $this->initialized = true;
     }
 
     abstract protected function onLoad(): void;
 
-    abstract protected function onInitialize(): void;
+    abstract protected function onInit(): void;
 }
