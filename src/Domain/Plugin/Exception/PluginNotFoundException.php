@@ -14,14 +14,10 @@ use PublishPress\Hub\Domain\Exception\Base\DomainException;
 class PluginNotFoundException extends DomainException
 {
     /**
-     * Constructor.
-     *
      * @since 1.0.0
-     * @param string $slug
-     * @return void
      */
-    public function __construct(string $slug)
+    public function __construct(array $context = [])
     {
-        parent::__construct(sprintf('Plugin not found: %s', $slug));
+        parent::__construct('Plugin not found.', $context);
     }
 }

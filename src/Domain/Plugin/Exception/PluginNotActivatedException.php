@@ -13,12 +13,11 @@ use PublishPress\Hub\Domain\Exception\Base\DomainException;
  */
 class PluginNotActivatedException extends DomainException
 {
-    public function __construct(string $slug = '')
+    /**
+     * @since 1.0.0
+     */
+    public function __construct(array $context = [])
     {
-        $message = empty($slug)
-            ? 'Plugin is not activated.'
-            : sprintf('Plugin "%s" is not activated.', $slug);
-
-        parent::__construct($message);
+        parent::__construct('Plugin is not activated.', $context);
     }
 }

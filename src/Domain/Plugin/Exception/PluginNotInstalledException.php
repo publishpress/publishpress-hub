@@ -13,12 +13,11 @@ use PublishPress\Hub\Domain\Exception\Base\DomainException;
  */
 class PluginNotInstalledException extends DomainException
 {
-    public function __construct(string $slug = '')
+    /**
+     * @since 1.0.0
+     */
+    public function __construct(array $context = [])
     {
-        $message = empty($slug)
-            ? 'Plugin is not installed.'
-            : sprintf('Plugin "%s" is not installed.', $slug);
-
-        parent::__construct($message);
+        parent::__construct('Plugin is not installed.', $context);
     }
 }
