@@ -13,9 +13,9 @@
 namespace PublishPress\Hub;
 
 use PublishPress\Hub\Infrastructure\Autoloader\Autoloader;
-use PublishPress\Hub\Infrastructure\Container\ServiceContainer;
-use PublishPress\Hub\Infrastructure\Container\Services;
-use PublishPress\Hub\Infrastructure\Hooks as InfrastructureHooks;
+use PublishPress\Hub\Infrastructure\Container\AbstractDependencies;
+use PublishPress\Hub\Infrastructure\Container\DependencyContainer;
+use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 
 /*
  * Check if the PHP and WP versions are compatible.
@@ -75,13 +75,12 @@ if (! class_exists(__NAMESPACE__ . '\\Infrastructure\\Autoloader\\Autoloader')) 
 Autoloader::register(__NAMESPACE__, PUBLISHPRESS_HUB_SRC_PATH);
 
 /*
- * Initialize the plugin.
+ * Load the plugin.
  */
-add_action(InfrastructureHooks::ACTION_PLUGINS_LOADED, function () {
+add_action(AbstractHooks::ACTION_PLUGINS_LOADED, function () {
     $serviceDefinitions = require_once PUBLISHPRESS_HUB_SRC_PATH . 'Infrastructure/Container/definitions.php';
 
-    $container = ServiceContainer::getInstance($serviceDefinitions);
-    $coreHubService = $container->get(Services::CORE_HUB_SERVICE);
-
-    $coreHubService->initialize();
+    $container = new DependencyContainer($serviceDefinitions);
+    $applicationBootstrapService = $container->get(AbstractDependencies::APPLICATION_BOOTSTRAP_SERVICE);
+    $applicationBootstrapService->load();
 }, 5);

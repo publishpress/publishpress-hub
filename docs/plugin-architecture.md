@@ -57,10 +57,6 @@ src/
 │   ├── Bootstrap/                 # Application startup
 │   │   ├── ApplicationBootstrap.php
 │   │   └── ModulesCoordinator.php
-│   ├── Container/                 # Dependency injection
-│   │   ├── DependencyContainer.php
-│   │   └── Contract/
-│   │       └── DependencyContainerInterface.php
 │   ├── Exception/                 # Application exceptions
 │   │   ├── Base/                  # Base exception classes
 │   │   │   ├── BaseException.php
@@ -101,6 +97,13 @@ src/
 │       ├── ComponentNotFoundException.php
 │       └── ValidationException.php
 ├── Infrastructure/                # External concerns and adapters
+│   ├── Container/                 # Dependency injection container
+│   │   ├── definitions.php        # Main container definitions
+│   │   ├── ServiceContainer.php   # Container implementation
+│   │   ├── ContainerDependencies.php # Service identifiers
+│   │   ├── NotFoundException.php  # Container exceptions
+│   │   └── Contracts/
+│   │       └── ServiceContainerInterface.php
 │   ├── WordPress/
 │   │   ├── Adapter/
 │   │   │   ├── WordPressPluginApiAdapter.php
@@ -112,9 +115,10 @@ src/
 │   │   │   └── WordPressRestApiAdapter.php
 │   │   ├── Contract/
 │   │   │   └── WordPressAdapterInterface.php
-│   │   └── Exception/
-│   │       ├── WordPressException.php
-│   │       └── WordPressAPIException.php
+│   │   ├── Exception/
+│   │   │   ├── WordPressException.php
+│   │   │   └── WordPressAPIException.php
+│   │   └── container-definitions.php
 │   ├── Database/
 │   │   ├── Adapter/
 │   │   │   └── DatabasePluginRepository.php
@@ -219,10 +223,11 @@ graph TB
             ExternalServices[External Services]
         end
 
-        subgraph "Shared Layer"
+        subgraph "Infrastructure Layer"
+            WPAdapters[WordPress Adapters]
+            DBAdapters[Database Adapters]
+            ExternalServices[External Services]
             Container[Container]
-            Logger[Logger]
-            Utils[Utils]
         end
     end
 
@@ -239,8 +244,6 @@ graph TB
     DomainServices --> ExternalServices
 
     Container -.-> UseCases
-    Logger -.-> UseCases
-    Utils -.-> UseCases
 ```
 
 ### Feature Organization
@@ -304,10 +307,9 @@ graph TD
     Infrastructure --> Database
     Infrastructure --> ExternalAPI
 
-    Shared -.-> Presentation
-    Shared -.-> Application
-    Shared -.-> Domain
-    Shared -.-> Infrastructure
+    Container -.-> Presentation
+    Container -.-> Application
+    Container -.-> Domain
 ```
 
 ## Layer Responsibilities
@@ -349,12 +351,15 @@ graph TD
 
 **Example:** A `PluginController` handles "Install Plugin" requests and coordinates with application use cases.
 
-### Shared Layer - Cross-Cutting Concerns
-**Purpose:** Provides common functionality across all layers
+### Infrastructure Layer - External Concerns
+**Purpose:** Implements interfaces defined in higher layers
 - **Container**: Dependency injection container for service management
-- **Logger**: Centralized logging and error tracking
-- **Utils**: Common utility functions and helpers
-- **Exceptions**: Base exception classes and common error types
+- **Repository Implementations**: Concrete database operations and data persistence
+- **External Service Clients**: Integration with WordPress.org API, license servers, etc.
+- **WordPress Adapters**: Clean abstractions over WordPress functions
+- **Infrastructure Exceptions**: Technical errors and external service failures
+
+**Example:** A `WordPressPluginRepository` implements the `PluginRepositoryInterface` using WordPress functions.
 
 ## Feature-Based Organization
 

@@ -1,0 +1,130 @@
+<?php
+
+declare(strict_types=1);
+
+namespace PublishPress\Hub\Infrastructure\Container;
+
+use Closure;
+use PublishPress\Hub\Infrastructure\Container\Contracts\DependencyContainerInterface;
+use PublishPress\Hub\Infrastructure\Container\Exception\NotFoundException;
+
+/**
+ * PHP Dependency Injection Container PSR-11.
+ * Services renamed to dependencies so we don't confuse with
+ * services from the DDD layer.
+ *
+ * Based on code from https://dev.to/fadymr/php-create-dependency-injection-container-psr-11-like-php-di-or-pimple-128i
+ *
+ * @copyright 2019 F.R Michel
+ * @copyright 2025 PublishPress
+ * @since 1.0.0
+ */
+class DependencyContainer implements DependencyContainerInterface
+{
+    /**
+     * @var array<callable|mixed>
+     * @since 1.0.0
+     */
+    private $resolvedDependencies = [];
+
+    /**
+     * @var array<callable|mixed>
+     * @since 1.0.0
+     */
+    private $dependencies = [];
+
+    /**
+     * @param array<callable|mixed> $dependencies
+     * @since 1.0.0
+     */
+    public function __construct(array $dependencies = [])
+    {
+        if (! empty($dependencies)) {
+            $this->register($dependencies);
+        }
+    }
+
+    /**
+     * @param array<callable|mixed> $dependencies
+     * @since 1.0.0
+     */
+    public function register(array $dependencies): void
+    {
+        $this->dependencies = array_merge(
+            $this->dependencies,
+            $dependencies
+        );
+
+        $this->clearResolvedDependencies(array_keys($dependencies));
+    }
+
+    /**
+     * Finds an entry of the container by its identifier and returns it.
+     *
+     * @return mixed dependency entry.
+     * @since 1.0.0
+     * @throws NotFoundException
+     */
+    public function get(string $dependencyId)
+    {
+        if (! $this->has($dependencyId)) {
+            throw new NotFoundException (
+                sprintf(
+                    // translators: %s is the dependency ID.
+                    __('Dependency "%s" not found in container.', 'publishpress-hub'),
+                    $dependencyId
+                )
+            );
+        }
+
+        if (array_key_exists($dependencyId, $this->resolvedDependencies)) {
+            return $this->resolvedDependencies[$dependencyId];
+        }
+
+        $dependency = $this->dependencies[$dependencyId];
+
+        if ($dependency instanceof Closure) {
+            $dependency = $dependency($this);
+        }
+
+        $this->resolvedDependencies[$dependencyId] = $dependency;
+
+        return $dependency;
+    }
+
+    /**
+     * Returns true if the container can return an entry for the given identifier.
+     * Returns false otherwise.
+     *
+     * `has($dependencyId)` returning true does not mean that `get($dependencyId)` will not throw an exception.
+     * It does however mean that `get($dependencyId)` will not throw a `NotFoundExceptionInterface`.
+     *
+     * @since 1.0.0
+     */
+    public function has(string $dependencyId): bool
+    {
+        return array_key_exists($dependencyId, $this->dependencies)
+               || array_key_exists($dependencyId, $this->resolvedDependencies);
+    }
+
+    /**
+     * @since 1.0.0
+     */
+    private function isDependencyResolved(string $dependencyId): bool
+    {
+        return array_key_exists($dependencyId, $this->resolvedDependencies);
+    }
+
+    /**
+     * @param array<string> $dependencyIds
+     * @since 1.0.0
+     */
+    private function clearResolvedDependencies(array $dependencyIds): void
+    {
+        foreach ($dependencyIds as $dependencyId) {
+            if ($this->isDependencyResolved($dependencyId)) {
+                unset($this->resolvedDependencies[$dependencyId]);
+            }
+        }
+    }
+}

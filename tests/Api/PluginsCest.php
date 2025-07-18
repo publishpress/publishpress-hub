@@ -10,7 +10,7 @@ use PublishPress\Hub\Domain\Plugin\FreePlugin;
 use PublishPress\Hub\Domain\Plugin\PluginBuilder;
 use PublishPress\Hub\Domain\Plugin\PluginFamily;
 use PublishPress\Hub\Domain\Plugin\ProPlugin;
-use PublishPress\Hub\Infrastructure\Container\ServiceContainer;
+use PublishPress\Hub\Infrastructure\Container\DependencyContainer;
 use PublishPress\Hub\Infrastructure\Container\Services;
 use Tests\Support\ApiTester;
 
@@ -69,7 +69,7 @@ final class PluginsCest
 
     public function testInstallFreePlugin(ApiTester $I): void
     {
-        $container = ServiceContainer::getInstance();
+        $container = DependencyContainer::getInstance();
         $pluginFamilyRepository = $container->get(Services::PLUGIN_FAMILY_REPOSITORY);
 
         $pluginFamily = new PluginFamily(
@@ -115,7 +115,7 @@ final class PluginsCest
             $filesystem->rrmdir($pluginPath);
         }
 
-        $container = ServiceContainer::getInstance();
+        $container = DependencyContainer::getInstance();
         $pluginRepository = $container->get(Services::PLUGIN_FAMILY_REPOSITORY);
         $plugin = $pluginRepository->findBySlug('publishpress-checklists');
 
