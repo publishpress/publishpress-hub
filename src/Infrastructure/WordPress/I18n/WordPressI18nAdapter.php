@@ -11,6 +11,11 @@ use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\I18n\Contract\I18nServiceInterface;
 
+/**
+ * TODO: Make this class reusable for other plugins, after the free plugin also has the Hub as requirement.
+ *
+ * @package PublishPress\Hub\Infrastructure\WordPress\I18n
+ */
 class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
 {
     use BootableTrait;
