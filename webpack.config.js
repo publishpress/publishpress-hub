@@ -8,13 +8,13 @@ module.exports = {
     mode: NODE_ENV,
     devtool: NODE_ENV === 'development' ? 'source-map' : false,
     entry: {
-        "plugins-dashboard": "./assets/src/jsx/plugins-dashboard.jsx",
-        "i18n": "./assets/src/jsx/i18n.jsx",
-        "components-showcase": "./assets/src/jsx/components-showcase.jsx",
-        "admin-page": "./assets/src/css/admin-page.css",
+        "plugins-dashboard": "./src/Presentation/Asset/src/jsx/plugins-dashboard.jsx",
+        "i18n": "./src/Presentation/Asset/src/jsx/i18n.jsx",
+        "components-showcase": "./src/Presentation/Asset/src/jsx/components-showcase.jsx",
+        "admin-page": "./src/Presentation/Asset/src/css/admin-page.css",
     },
     output: {
-        path: path.join(__dirname, "assets", "dist"),
+        path: path.join(__dirname, "src", "Presentation", "Asset", "dist"),
         filename: "js/" + (NODE_ENV === 'production' ? "[name].min.js" : "[name].js")
     },
     resolve: {
@@ -68,7 +68,7 @@ module.exports = {
         "@wordpress/api-fetch": "wp.apiFetch",
         "@wordpress/data-controls": "wp.dataControls",
         'wp': 'wp',
-        '@publishpress/hub-i18n': 'publishpressHub.i18n'
+        '@publishpress-hub/i18n': 'publishpressHub.i18n'
     },
 };
 
