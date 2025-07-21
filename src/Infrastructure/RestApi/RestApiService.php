@@ -77,11 +77,6 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
         return $this->restApiAdapter->getRequestParam($request, $param, $default);
     }
 
-    public function validateRequest(\PublishPress\Hub\Infrastructure\RestApi\Entity\RestRequest $request, array $rules): array
-    {
-        return $this->restApiAdapter->validateRequest($request, $rules);
-    }
-
     public function checkPermissions(string $capability = 'manage_options'): bool
     {
         return $this->securityService->userCan($capability);
