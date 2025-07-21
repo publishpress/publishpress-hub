@@ -61,13 +61,12 @@ class PluginBootstrapService implements BootableInterface
         $this->mainMenuController->load();
 
         $this->pluginFamilyRepository->reset();
-        $this->registerPluginFamilies();
     }
 
     protected function onInit(): void
     {
         $this->initServices();
-
+        $this->registerPluginFamilies();
         $this->mainMenuController->init();
     }
 

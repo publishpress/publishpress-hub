@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
 use PublishPress\Hub\Application\DTO\Plugin\PluginFamilyDto;
+use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
-use PublishPress\Hub\Domain\Plugin\Entity\PluginFamily;
 
 class ListPluginsUseCase
 {
@@ -19,22 +19,21 @@ class ListPluginsUseCase
 
     public function execute(): array
     {
-        $plugins = $this->pluginFamilyRepository->getAllFamilies();
+        $families = $this->pluginFamilyRepository->getAllFamilies();
 
-        $pluginDtos = [];
+        $plugins = [];
 
-        /** @var PluginFamily $plugin */
-        foreach ($plugins as $plugin) {
-            $dto = new PluginFamilyDto($plugin);
+        /** @var PluginFamilyInterface $family */
+        foreach ($families as $family) {
+            $freePlugin = $family->getFreePlugin();
+            $proPlugin = $family->getProPlugin();
 
-            $freePlugin = $plugin->getFreePlugin();
-            $proPlugin = $plugin->getProPlugin();
-
-            $dto->setName($plugin->getName())
-                ->setSlug($plugin->getSlug())
-                ->setIconPath($plugin->getIconPath())
-                ->setDescription($plugin->getDescription())
-                ->setChangelogUrl($plugin->getChangelogUrl())
+            $dto = new PluginFamilyDto();
+            $dto->setName($family->getName())
+                ->setSlug($family->getSlug())
+                ->setIconPath($family->getIconPath())
+                ->setDescription($family->getDescription())
+                ->setChangelogUrl($family->getChangelogUrl())
                 ->setFreePluginName($freePlugin->getName())
                 ->setFreePluginSlug($freePlugin->getSlug())
                 ->setFreePluginVersion($freePlugin->getVersion())
@@ -50,15 +49,15 @@ class ListPluginsUseCase
                 ->setProPluginIsActive($proPlugin->isActive())
                 ->setProPluginIsLicensed($proPlugin->isLicensed())
                 ->setProPluginPath($proPlugin->getPath())
-                ->setIsAnyVersionInstalled($plugin->hasAnyVersionInstalled())
-                ->setIsAnyVersionActive($plugin->hasAnyVersionActive())
-                ->setHasConflictingInstallations($plugin->hasConflictingInstallations());
+                ->setIsAnyVersionInstalled($family->hasAnyVersionInstalled())
+                ->setIsAnyVersionActive($family->hasAnyVersionActive())
+                ->setHasConflictingInstallations($family->hasConflictingInstallations());
 
-            $pluginDtos[] = $dto;
+            $plugins[] = $dto->toArray();
         }
 
         return [
-            'plugins' => $pluginDtos,
+            'plugins' => $plugins,
         ];
     }
 }
