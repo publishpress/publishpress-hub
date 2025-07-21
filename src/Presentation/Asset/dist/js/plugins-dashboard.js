@@ -7097,12 +7097,12 @@ function fetchPlugins() {
         _context10.n = 4;
         return {
           type: 'FETCH_PLUGINS_SUCCESS',
-          data: data.data
+          data: data.plugins
         };
       case 4:
         return _context10.a(2, {
           success: true,
-          data: data.data
+          data: data.plugins
         });
       case 5:
         throw new Error(data.error || 'Failed to fetch plugins');

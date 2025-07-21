@@ -57,6 +57,7 @@ class ListPluginsUseCase
         }
 
         return [
+            'success' => true,
             'plugins' => $plugins,
         ];
     }

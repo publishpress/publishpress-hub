@@ -67,7 +67,7 @@ class PluginApiController implements BootableInterface
         try {
             $response = $this->listPluginsUseCase->execute();
 
-            return $this->restApiService->createResponse($response);
+            return $this->restApiService->createSuccessResponse($response);
         } catch (\Exception $e) {
             return $this->restApiService->createErrorResponse(
                 $e->getMessage(),

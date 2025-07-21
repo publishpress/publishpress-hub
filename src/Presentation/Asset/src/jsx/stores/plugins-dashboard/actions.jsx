@@ -131,11 +131,11 @@ export function* fetchPlugins() {
         });
 
         if (data.success) {
-            yield {type: 'FETCH_PLUGINS_SUCCESS', data: data.data};
+            yield {type: 'FETCH_PLUGINS_SUCCESS', data: data.plugins};
 
             return {
                 success: true,
-                data: data.data,
+                data: data.plugins,
             };
         } else {
             throw new Error(data.error || 'Failed to fetch plugins');
