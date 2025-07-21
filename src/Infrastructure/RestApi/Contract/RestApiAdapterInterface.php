@@ -20,5 +20,5 @@ interface RestApiAdapterInterface
 
     public function getRequestParam(RestRequest $request, string $param, $default = null);
 
-    public function validateRequest(RestRequest $request, array $rules): array;
+    public function mapCallbackRequest(callable $callback): callable;
 }

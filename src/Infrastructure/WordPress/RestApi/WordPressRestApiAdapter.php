@@ -55,58 +55,6 @@ class WordPressRestApiAdapter implements RestApiAdapterInterface
         return $request->getWpRequest()->get_param($param) ?? $default;
     }
 
-    public function validateRequest(RestRequest $request, array $rules): array
-    {
-        $wpRequest = $request->getWpRequest();
-        $validated = [];
-        $errors = [];
-
-        foreach ($rules as $param => $rule) {
-            $value = $wpRequest->get_param($param);
-
-            if (isset($rule['required']) && $rule['required'] && empty($value)) {
-                $errors[$param] = sprintf('Parameter "%s" is required', $param);
-                continue;
-            }
-
-            if (!empty($value)) {
-                if (isset($rule['type'])) {
-                    $value = $this->validateType($value, $rule['type']);
-                }
-
-                if (isset($rule['sanitize_callback']) && is_callable($rule['sanitize_callback'])) {
-                    $value = call_user_func($rule['sanitize_callback'], $value);
-                }
-
-                $validated[$param] = $value;
-            } elseif (isset($rule['default'])) {
-                $validated[$param] = $rule['default'];
-            }
-        }
-
-        if (!empty($errors)) {
-            throw new \InvalidArgumentException(json_encode($errors));
-        }
-
-        return $validated;
-    }
-
-    private function validateType($value, string $type)
-    {
-        switch ($type) {
-            case 'string':
-                return (string) $value;
-            case 'integer':
-                return (int) $value;
-            case 'boolean':
-                return (bool) $value;
-            case 'array':
-                return is_array($value) ? $value : [$value];
-            default:
-                return $value;
-        }
-    }
-
     public function mapCallbackRequest(callable $callback): callable
     {
         return function (WP_REST_Request $request) use ($callback) {
