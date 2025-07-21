@@ -6,7 +6,7 @@ namespace Tests\Unit\Domain\Plugin;
 
 use PublishPress\Hub\Application\Service\PluginStatusService;
 use PublishPress\Hub\Domain\Plugin\Entity\FreePlugin;
-use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginChecker;
+use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapter;
 use Tests\NoTransactionWPTestCase;
 
 /**
@@ -20,7 +20,7 @@ class FreePluginTest extends NoTransactionWPTestCase
     {
         parent::setUp();
 
-        $pluginChecker = new WordPressPluginChecker();
+        $pluginChecker = new WordPressPluginStatusAdapter();
         $this->pluginStatusService = new PluginStatusService($pluginChecker);
     }
 

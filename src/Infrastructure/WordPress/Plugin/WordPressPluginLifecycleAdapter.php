@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WordPress\Plugin;
 
-class WordPressPluginAdapter
+class WordPressPluginLifecycleAdapter
 {
     public function installPlugin(string $slug): bool
     {

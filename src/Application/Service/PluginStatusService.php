@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Application\Service;
 
 use PublishPress\Hub\Domain\Plugin\Contract\PluginInterface;
-use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginChecker;
+use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapter;
 
 /**
  * Application service for managing plugin status.
@@ -15,9 +15,9 @@ use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginChecker;
  */
 class PluginStatusService
 {
-    private WordPressPluginChecker $pluginChecker;
+    private WordPressPluginStatusAdapter $pluginChecker;
 
-    public function __construct(WordPressPluginChecker $pluginChecker)
+    public function __construct(WordPressPluginStatusAdapter $pluginChecker)
     {
         $this->pluginChecker = $pluginChecker;
     }

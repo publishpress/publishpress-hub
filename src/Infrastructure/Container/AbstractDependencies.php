@@ -67,13 +67,15 @@ abstract class AbstractDependencies
 
     public const DEV_COMPONENTS_SHOWCASE_SERVICE = 'publishpress-hub.application.dev-components-showcase.service';
 
-    public const PLUGIN_FAMILY_REPOSITORY = 'publishpress-hub.domain.plugin.family.repository';
+    public const PLUGIN_FAMILY_REPOSITORY = 'publishpress-hub.domain.plugin-family.repository';
 
-    public const WORDPRESS_PLUGIN_ADAPTER = 'publishpress-hub.infrastructure.wordpress.plugin.adapter';
+    public const PLUGIN_LIFECYCLE_ADAPTER = 'publishpress-hub.infrastructure.plugin-lifecycle.adapter';
 
     public const LIST_PLUGINS_USE_CASE = 'publishpress-hub.application.use-case.plugin.list';
 
     public const INSTALL_PLUGIN_USE_CASE = 'publishpress-hub.application.use-case.plugin.install';
+
+    public const PLUGIN_STATUS_ADAPTER = 'publishpress-hub.infrastructure.plugin-status.adapter';
 
     // Adapters
     public const ADMIN_MENU_ADAPTER = 'publishpress-hub.infrastructure.admin-menu.adapter';

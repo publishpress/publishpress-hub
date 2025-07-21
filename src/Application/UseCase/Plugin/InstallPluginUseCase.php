@@ -8,16 +8,16 @@ use PublishPress\Hub\Application\DTO\Plugin\PluginInstallRequest;
 use PublishPress\Hub\Application\DTO\Plugin\PluginInstallResponse;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
-use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginAdapter;
+use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginLifecycleAdapter;
 
 class InstallPluginUseCase
 {
     private PluginFamilyRepositoryInterface $pluginFamilyRepository;
-    private WordPressPluginAdapter $wordPressAdapter;
+    private WordPressPluginLifecycleAdapter $wordPressAdapter;
 
     public function __construct(
         PluginFamilyRepositoryInterface $pluginFamilyRepository,
-        WordPressPluginAdapter $wordPressAdapter
+        WordPressPluginLifecycleAdapter $wordPressAdapter
     ) {
         $this->pluginFamilyRepository = $pluginFamilyRepository;
         $this->wordPressAdapter = $wordPressAdapter;

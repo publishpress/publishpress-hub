@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Infrastructure\WordPress\Plugin;
 
 use PublishPress\Hub\Domain\Plugin\Contract\PluginInterface;
+use WP_Filesystem_Base;
 
 /**
  * Infrastructure service for checking plugin status in WordPress.
  *
  * @since 1.0.0
  */
-class WordPressPluginChecker
+class WordPressPluginStatusAdapter
 {
     /**
      * Check if a plugin is actually installed in WordPress.
@@ -21,7 +22,7 @@ class WordPressPluginChecker
         $pluginPath = $plugin->getPath();
         $fullPath = WP_PLUGIN_DIR . '/' . $pluginPath;
 
-        return file_exists($fullPath);
+        return $this->getWpFilesystem()->exists($fullPath);
     }
 
     /**
@@ -62,6 +63,19 @@ class WordPressPluginChecker
         $pluginPath = $plugin->getPath();
         $fullPath = WP_PLUGIN_DIR . '/' . $pluginPath;
 
-        return file_exists($fullPath) ? $fullPath : null;
+        return $this->getWpFilesystem()->exists($fullPath) ? $fullPath : null;
+    }
+
+    private function getWpFilesystem(): WP_Filesystem_Base
+    {
+        global $wp_filesystem;
+
+        if (empty($wp_filesystem)) {
+            require_once ABSPATH . 'wp-admin/includes/file.php';
+
+            WP_Filesystem();
+        }
+
+        return $wp_filesystem;
     }
 }

@@ -7,14 +7,19 @@ namespace PublishPress\Hub\Application\UseCase\Plugin;
 use PublishPress\Hub\Application\DTO\Plugin\PluginFamilyDto;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
+use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapter;
 
 class ListPluginsUseCase
 {
     private PluginFamilyRepositoryInterface $pluginFamilyRepository;
+    private WordPressPluginStatusAdapter $pluginStatusAdapter;
 
-    public function __construct(PluginFamilyRepositoryInterface $pluginFamilyRepository)
-    {
+    public function __construct(
+        PluginFamilyRepositoryInterface $pluginFamilyRepository,
+        WordPressPluginStatusAdapter $pluginStatusAdapter
+    ) {
         $this->pluginFamilyRepository = $pluginFamilyRepository;
+        $this->pluginStatusAdapter = $pluginStatusAdapter;
     }
 
     public function execute(): array
@@ -27,6 +32,22 @@ class ListPluginsUseCase
         foreach ($families as $family) {
             $freePlugin = $family->getFreePlugin();
             $proPlugin = $family->getProPlugin();
+
+            // Check actual WordPress status for both plugins
+            $freePluginInstalled = $this->pluginStatusAdapter->checkIfPluginIsInstalled($freePlugin);
+            $freePluginActive = $this->pluginStatusAdapter->checkIfPluginIsActive($freePlugin);
+            $freePluginVersion = $this->pluginStatusAdapter->getPluginVersion($freePlugin);
+
+            $proPluginInstalled = $this->pluginStatusAdapter->checkIfPluginIsInstalled($proPlugin);
+            $proPluginActive = $this->pluginStatusAdapter->checkIfPluginIsActive($proPlugin);
+            $proPluginVersion = $this->pluginStatusAdapter->getPluginVersion($proPlugin);
+
+            // Update plugin entities with actual WordPress status
+            $freePlugin->setInstalled($freePluginInstalled, $freePluginVersion);
+            $freePlugin->setActive($freePluginActive);
+
+            $proPlugin->setInstalled($proPluginInstalled, $proPluginVersion);
+            $proPlugin->setActive($proPluginActive);
 
             $dto = new PluginFamilyDto();
             $dto->setName($family->getName())

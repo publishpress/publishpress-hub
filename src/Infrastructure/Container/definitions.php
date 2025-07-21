@@ -28,8 +28,9 @@ use PublishPress\Hub\Infrastructure\WordPress\Asset\WordPressAssetAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\I18n\WordPressI18nAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Security\WordPressSecurityAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\RestApi\WordPressRestApiAdapter;
-use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginAdapter;
+use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginLifecycleAdapter;
 use PublishPress\Hub\Infrastructure\RestApi\RestApiService;
+use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapter;
 use PublishPress\Hub\Presentation\Controller\DevComponentsShowcaseController;
 use PublishPress\Hub\Presentation\Controller\MainMenuController;
 use PublishPress\Hub\Presentation\Controller\PluginsDashboardController;
@@ -169,16 +170,22 @@ return [
             return new PluginFamilyRepository();
         },
 
-    AbstractDependencies::WORDPRESS_PLUGIN_ADAPTER =>
-        function (ContainerInterface $container): WordPressPluginAdapter {
-            return new WordPressPluginAdapter();
+    AbstractDependencies::PLUGIN_STATUS_ADAPTER =>
+        function (ContainerInterface $container): WordPressPluginStatusAdapter {
+            return new WordPressPluginStatusAdapter();
+        },
+
+    AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER =>
+        function (ContainerInterface $container): WordPressPluginLifecycleAdapter {
+            return new WordPressPluginLifecycleAdapter();
         },
 
     // Use Cases
     AbstractDependencies::LIST_PLUGINS_USE_CASE =>
         function (ContainerInterface $container): ListPluginsUseCase {
             return new ListPluginsUseCase(
-                $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
+                $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
+                $container->get(AbstractDependencies::PLUGIN_STATUS_ADAPTER)
             );
         },
 
@@ -186,7 +193,7 @@ return [
         function (ContainerInterface $container): InstallPluginUseCase {
             return new InstallPluginUseCase(
                 $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
-                $container->get(AbstractDependencies::WORDPRESS_PLUGIN_ADAPTER)
+                $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
             );
         },
 
