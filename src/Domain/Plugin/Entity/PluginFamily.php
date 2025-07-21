@@ -12,7 +12,7 @@ class PluginFamily implements PluginFamilyInterface
 {
     private string $name;
     private string $slug;
-    private string $iconPath;
+    private string $iconFileName;
     private ?string $description;
     private string $changelogUrl;
     private ?PluginInterface $freePlugin = null;
@@ -21,13 +21,13 @@ class PluginFamily implements PluginFamilyInterface
     public function __construct(
         string $name,
         string $slug,
-        string $iconPath,
+        string $iconFileName,
         ?string $description,
         string $changelogUrl
     ) {
         $this->name = $name;
         $this->slug = $slug;
-        $this->iconPath = $iconPath;
+        $this->iconFileName = $iconFileName;
         $this->description = $description;
         $this->changelogUrl = $changelogUrl;
     }
@@ -44,7 +44,7 @@ class PluginFamily implements PluginFamilyInterface
 
     public function getIconPath(): string
     {
-        return $this->iconPath;
+        return $this->iconFileName;
     }
 
     public function getDescription(): ?string
@@ -93,7 +93,7 @@ class PluginFamily implements PluginFamilyInterface
 
     public function setIconPath(string $iconPath): self
     {
-        $this->iconPath = $iconPath;
+        $this->iconFileName = $iconPath;
         return $this;
     }
 

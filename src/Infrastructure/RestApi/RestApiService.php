@@ -12,6 +12,8 @@ use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiAdapterInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
+use WP_REST_Request;
+use WP_REST_Response;
 
 class RestApiService implements RestApiServiceInterface, BootableInterface
 {
@@ -57,22 +59,22 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
         }
     }
 
-    public function createResponse(array $data, int $status = 200, array $headers = []): \PublishPress\Hub\Infrastructure\RestApi\Entity\RestResponse
+    public function createResponse(array $data, int $status = 200, array $headers = []): WP_REST_Response
     {
         return $this->restApiAdapter->createResponse($data, $status, $headers);
     }
 
-    public function createErrorResponse(string $message, int $status = 400, string $code = 'error'): \PublishPress\Hub\Infrastructure\RestApi\Entity\RestResponse
+    public function createErrorResponse(string $message, int $status = 400, string $code = 'error'): WP_REST_Response
     {
         return $this->restApiAdapter->createErrorResponse($message, $status, $code);
     }
 
-    public function getRequestData(\PublishPress\Hub\Infrastructure\RestApi\Entity\RestRequest $request): array
+    public function getRequestData(WP_REST_Request $request): array
     {
         return $this->restApiAdapter->getRequestData($request);
     }
 
-    public function getRequestParam(\PublishPress\Hub\Infrastructure\RestApi\Entity\RestRequest $request, string $param, $default = null)
+    public function getRequestParam(WP_REST_Request $request, string $param, $default = null)
     {
         return $this->restApiAdapter->getRequestParam($request, $param, $default);
     }

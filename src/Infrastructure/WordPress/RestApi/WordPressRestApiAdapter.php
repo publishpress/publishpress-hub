@@ -6,9 +6,8 @@ namespace PublishPress\Hub\Infrastructure\WordPress\RestApi;
 
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiAdapterInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
-use PublishPress\Hub\Infrastructure\RestApi\Entity\RestResponse;
-use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRequest;
 use WP_REST_Request;
+use WP_REST_Response;
 
 class WordPressRestApiAdapter implements RestApiAdapterInterface
 {
@@ -26,39 +25,39 @@ class WordPressRestApiAdapter implements RestApiAdapterInterface
         );
     }
 
-    public function createResponse(array $data, int $status = 200, array $headers = []): RestResponse
+    public function createResponse(array $data, int $status = 200, array $headers = []): WP_REST_Response
     {
-        $response = new \WP_REST_Response($data, $status);
+        $response = new WP_REST_Response($data, $status);
 
         foreach ($headers as $key => $value) {
             $response->header($key, $value);
         }
 
-        return new RestResponse($response);
+        return $response;
     }
 
-    public function createErrorResponse(string $message, int $status = 400, string $code = 'error'): RestResponse
+    public function createErrorResponse(string $message, int $status = 400, string $code = 'error'): WP_REST_Response
     {
         $error = new \WP_Error($code, $message, ['status' => $status]);
         $response = rest_ensure_response($error);
 
-        return new RestResponse($response);
+        return $response;
     }
 
-    public function getRequestData(RestRequest $request): array
+    public function getRequestData(WP_REST_Request $request): array
     {
-        return $request->getWpRequest()->get_params();
+        return $request->get_params();
     }
 
-    public function getRequestParam(RestRequest $request, string $param, $default = null)
+    public function getRequestParam(WP_REST_Request $request, string $param, $default = null)
     {
-        return $request->getWpRequest()->get_param($param) ?? $default;
+        return $request->get_param($param) ?? $default;
     }
 
     public function mapCallbackRequest(callable $callback): callable
     {
         return function (WP_REST_Request $request) use ($callback) {
-            return $callback(new RestRequest($request));
+            return $callback($request);
         };
     }
 }

@@ -8,7 +8,7 @@
 GET {{baseUrl}}
 Accept: application/json
 
-### Get Notifications with Application Password
+### Get Plugins
 GET {{baseUrl}}/{{apiPath}}/plugins
 Accept: application/json
 Content-Type: application/json

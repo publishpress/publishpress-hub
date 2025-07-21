@@ -6,14 +6,13 @@ namespace PublishPress\Hub\Presentation\Controller;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
-use PublishPress\Hub\Application\DTO\Plugin\PluginListRequest;
 use PublishPress\Hub\Application\DTO\Plugin\PluginInstallRequest;
 use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallPluginUseCase;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
-use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRequest;
-use PublishPress\Hub\Infrastructure\RestApi\Entity\RestResponse;
+use WP_REST_Request;
+use WP_REST_Response;
 use WP_REST_Server;
 
 class PluginApiController implements BootableInterface
@@ -56,15 +55,6 @@ class PluginApiController implements BootableInterface
             [$this, 'listPlugins'],
             [$this, 'checkPermissions']
         ));
-
-        // POST /plugins/{slug}/install/{type}
-        $this->restApiService->addRoute(new RestRoute(
-            $this->pluginApiBasePath,
-            '/plugins/(?P<slug>[a-zA-Z0-9-]+)/install/(?P<type>free|pro)',
-            WP_REST_Server::CREATABLE,
-            [$this, 'installPlugin'],
-            [$this, 'checkPermissions']
-        ));
     }
 
     public function checkPermissions(): bool
@@ -72,38 +62,12 @@ class PluginApiController implements BootableInterface
         return $this->restApiService->checkPermissions('manage_options');
     }
 
-    public function listPlugins(RestRequest $request): RestResponse
+    public function listPlugins(WP_REST_Request $request): WP_REST_Response
     {
         try {
-            $data = $this->restApiService->getRequestData($request);
-            $listRequest = PluginListRequest::fromArray($data);
+            $response = $this->listPluginsUseCase->execute();
 
-            $response = $this->listPluginsUseCase->execute($listRequest);
-
-            return $this->restApiService->createResponse($response->toArray());
-        } catch (\Exception $e) {
-            return $this->restApiService->createErrorResponse(
-                $e->getMessage(),
-                400
-            );
-        }
-    }
-
-    public function installPlugin(RestRequest $request): RestResponse
-    {
-        try {
-            $slug = $this->restApiService->getRequestParam($request, 'slug');
-            $type = $this->restApiService->getRequestParam($request, 'type', 'free');
-
-            $installRequest = new PluginInstallRequest($slug, $type);
-            $response = $this->installPluginUseCase->execute($installRequest);
-
-            $status = $response->isSuccess() ? 200 : 400;
-
-            return $this->restApiService->createResponse(
-                $response->toArray(),
-                $status
-            );
+            return $this->restApiService->createResponse($response);
         } catch (\Exception $e) {
             return $this->restApiService->createErrorResponse(
                 $e->getMessage(),

@@ -144,7 +144,8 @@ return [
                     $container->get(AbstractDependencies::REST_API_SERVICE),
                     $container->get(AbstractDependencies::PLUGIN_API_CONTROLLER),
                 ],
-                $container->get(AbstractDependencies::MAIN_MENU_CONTROLLER)
+                $container->get(AbstractDependencies::MAIN_MENU_CONTROLLER),
+                $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
             );
         },
 
@@ -173,6 +174,7 @@ return [
             return new WordPressPluginAdapter();
         },
 
+    // Use Cases
     AbstractDependencies::LIST_PLUGINS_USE_CASE =>
         function (ContainerInterface $container): ListPluginsUseCase {
             return new ListPluginsUseCase(

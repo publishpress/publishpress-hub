@@ -23,9 +23,11 @@ class ProPlugin implements ProPluginInterface
         string $name,
         string $slug,
         string $fileName,
-        string $detailsUrl
+        string $detailsUrl,
+        int $downloadId
     ) {
         $this->state = new PluginState($name, $slug, $fileName, $detailsUrl);
+        $this->downloadId = $downloadId;
     }
 
     public function getName(): string
