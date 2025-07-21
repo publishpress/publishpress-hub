@@ -8,6 +8,7 @@ use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiAdapterInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestResponse;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRequest;
+use WP_REST_Request;
 
 class WordPressRestApiAdapter implements RestApiAdapterInterface
 {
@@ -18,7 +19,7 @@ class WordPressRestApiAdapter implements RestApiAdapterInterface
             $route->getRoute(),
             [
                 'methods' => $route->getMethods(),
-                'callback' => $route->getCallback(),
+                'callback' => $this->mapCallbackRequest($route->getCallback()),
                 'permission_callback' => $route->getPermissionCallback(),
                 'args' => $route->getArgs(),
             ]
@@ -106,13 +107,10 @@ class WordPressRestApiAdapter implements RestApiAdapterInterface
         }
     }
 
-    public function checkPermissions(string $capability = 'manage_options'): bool
+    public function mapCallbackRequest(callable $callback): callable
     {
-        return current_user_can($capability);
-    }
-
-    public function verifyNonce(string $nonce, string $action = 'wp_rest'): bool
-    {
-        return wp_verify_nonce($nonce, $action) !== false;
+        return function (WP_REST_Request $request) use ($callback) {
+            return $callback(new RestRequest($request));
+        };
     }
 }

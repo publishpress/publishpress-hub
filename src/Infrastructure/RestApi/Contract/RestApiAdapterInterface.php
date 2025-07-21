@@ -21,8 +21,4 @@ interface RestApiAdapterInterface
     public function getRequestParam(RestRequest $request, string $param, $default = null);
 
     public function validateRequest(RestRequest $request, array $rules): array;
-
-    public function checkPermissions(string $capability = 'manage_options'): bool;
-
-    public function verifyNonce(string $nonce, string $action = 'wp_rest'): bool;
 }

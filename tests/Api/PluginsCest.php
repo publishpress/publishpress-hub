@@ -7,7 +7,6 @@ namespace Tests\Api;
 
 use lucatume\WPBrowser\Utils\Filesystem;
 use PublishPress\Hub\Domain\Plugin\FreePlugin;
-use PublishPress\Hub\Domain\Plugin\PluginBuilder;
 use PublishPress\Hub\Domain\Plugin\PluginFamily;
 use PublishPress\Hub\Domain\Plugin\ProPlugin;
 use PublishPress\Hub\Infrastructure\Container\DependencyContainer;

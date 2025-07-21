@@ -36,4 +36,9 @@ interface SecurityServiceInterface
      * @return int|false
      */
     public function checkAjaxReferer($action = -1, bool $queryArg = false, bool $stop = true);
+
+    /**
+     * @param int|WP_User|null $user
+     */
+    public function userCan(string $capability, $user = null): bool;
 }

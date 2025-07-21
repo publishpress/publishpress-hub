@@ -11,6 +11,7 @@ use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiAdapterInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
+use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
 
 class RestApiService implements RestApiServiceInterface, BootableInterface
 {
@@ -18,6 +19,7 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
 
     private HooksServiceInterface $hooksService;
     private RestApiAdapterInterface $restApiAdapter;
+    private SecurityServiceInterface $securityService;
 
     /**
      * @var array<RestRoute>
@@ -26,10 +28,12 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
 
     public function __construct(
         HooksServiceInterface $hooksService,
-        RestApiAdapterInterface $restApiAdapter
+        RestApiAdapterInterface $restApiAdapter,
+        SecurityServiceInterface $securityService
     ) {
         $this->hooksService = $hooksService;
         $this->restApiAdapter = $restApiAdapter;
+        $this->securityService = $securityService;
     }
 
     protected function onLoad(): void
@@ -80,11 +84,11 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
 
     public function checkPermissions(string $capability = 'manage_options'): bool
     {
-        return $this->restApiAdapter->checkPermissions($capability);
+        return $this->securityService->userCan($capability);
     }
 
     public function verifyNonce(string $nonce, string $action = 'wp_rest'): bool
     {
-        return $this->restApiAdapter->verifyNonce($nonce, $action);
+        return $this->securityService->verifyNonce($nonce, $action);
     }
 }

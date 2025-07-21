@@ -35,6 +35,8 @@ abstract class AbstractDependencies
 
     public const PLUGIN_TEMPLATES_BASE_PATH = 'publishpress-hub.constants.plugin-templates-base-path';
 
+    public const PLUGIN_API_BASE_PATH = 'publishpress-hub.constants.plugin-api-base-path';
+
     public const SCRIPT_DEBUG = 'publishpress-hub.constants.script-debug';
 
     public const PLUGIN_I18N_SCRIPT_PATH = 'publishpress-hub.constants.plugin-i18n-script-path';

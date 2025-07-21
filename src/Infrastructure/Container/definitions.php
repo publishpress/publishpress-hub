@@ -54,6 +54,8 @@ return [
 
     AbstractDependencies::PLUGIN_I18N_SCRIPT_PATH => 'js/i18n.js',
 
+    AbstractDependencies::PLUGIN_API_BASE_PATH => 'publishpress-hub/v1',
+
     AbstractDependencies::SCRIPT_DEBUG => function (): bool {
         return defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;
     },
@@ -124,7 +126,8 @@ return [
         function (ContainerInterface $container): \PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface {
             return new RestApiService(
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
-                $container->get(AbstractDependencies::REST_API_ADAPTER)
+                $container->get(AbstractDependencies::REST_API_ADAPTER),
+                $container->get(AbstractDependencies::SECURITY_SERVICE)
             );
         },
 
@@ -138,6 +141,7 @@ return [
                     $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
                     $container->get(AbstractDependencies::PLUGINS_DASHBOARD_SERVICE),
                     $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_SERVICE),
+                    $container->get(AbstractDependencies::REST_API_SERVICE),
                     $container->get(AbstractDependencies::PLUGIN_API_CONTROLLER),
                 ],
                 $container->get(AbstractDependencies::MAIN_MENU_CONTROLLER)
@@ -218,7 +222,8 @@ return [
             return new PluginApiController(
                 $container->get(AbstractDependencies::REST_API_SERVICE),
                 $container->get(AbstractDependencies::LIST_PLUGINS_USE_CASE),
-                $container->get(AbstractDependencies::INSTALL_PLUGIN_USE_CASE)
+                $container->get(AbstractDependencies::INSTALL_PLUGIN_USE_CASE),
+                $container->get(AbstractDependencies::PLUGIN_API_BASE_PATH)
             );
         },
 

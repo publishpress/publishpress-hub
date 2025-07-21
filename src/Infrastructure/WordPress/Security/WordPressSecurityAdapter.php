@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Infrastructure\WordPress\Security;
 
 use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
+use WP_User;
 
 class WordPressSecurityAdapter implements SecurityServiceInterface
 {
@@ -59,5 +60,25 @@ class WordPressSecurityAdapter implements SecurityServiceInterface
     public function checkAjaxReferer($action = -1, $queryArg = false, bool $stop = true)
     {
         return check_ajax_referer($action, $queryArg, $stop);
+    }
+
+    /**
+     * @param int|WP_User|null $user
+     */
+    public function userCan(string $capability, $user = null): bool
+    {
+        if (empty($user)) {
+            $user = get_current_user_id();
+        }
+
+        if (is_int($user)) {
+            $user = get_user_by('id', $user);
+        }
+
+        if (!$user instanceof WP_User) {
+            return false;
+        }
+
+        return $user->has_cap($capability);
     }
 }

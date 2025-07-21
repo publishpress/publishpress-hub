@@ -23,15 +23,18 @@ class PluginApiController implements BootableInterface
     private RestApiServiceInterface $restApiService;
     private ListPluginsUseCase $listPluginsUseCase;
     private InstallPluginUseCase $installPluginUseCase;
+    private string $pluginApiBasePath;
 
     public function __construct(
         RestApiServiceInterface $restApiService,
         ListPluginsUseCase $listPluginsUseCase,
-        InstallPluginUseCase $installPluginUseCase
+        InstallPluginUseCase $installPluginUseCase,
+        string $pluginApiBasePath
     ) {
         $this->restApiService = $restApiService;
         $this->listPluginsUseCase = $listPluginsUseCase;
         $this->installPluginUseCase = $installPluginUseCase;
+        $this->pluginApiBasePath = $pluginApiBasePath;
     }
 
     protected function onLoad(): void
@@ -45,18 +48,18 @@ class PluginApiController implements BootableInterface
 
     private function addRoutes(): void
     {
-        // GET /wp-json/publishpress-hub/v1/plugins
+        // GET /plugins
         $this->restApiService->addRoute(new RestRoute(
-            'publishpress-hub/v1',
+            $this->pluginApiBasePath,
             '/plugins',
             WP_REST_Server::READABLE,
             [$this, 'listPlugins'],
             [$this, 'checkPermissions']
         ));
 
-        // POST /wp-json/publishpress-hub/v1/plugins/{slug}/install/{type}
+        // POST /plugins/{slug}/install/{type}
         $this->restApiService->addRoute(new RestRoute(
-            'publishpress-hub/v1',
+            $this->pluginApiBasePath,
             '/plugins/(?P<slug>[a-zA-Z0-9-]+)/install/(?P<type>free|pro)',
             WP_REST_Server::CREATABLE,
             [$this, 'installPlugin'],
