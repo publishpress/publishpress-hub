@@ -31,37 +31,37 @@ final class PluginsCest
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
         $I->seeResponseContainsJson(['success' => true,]);
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].slug');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].name');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].iconPath');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].description');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].changelogUrl');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.name');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.slug');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.version');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.detailsUrl');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.isInstalled');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.isActive');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.path');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.name');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.slug');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.version');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.detailsUrl');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.isInstalled');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.isActive');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.isLicensed');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.path');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].slug');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].name');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].iconPath');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].description');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].changelogUrl');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].freePlugin.name');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].freePlugin.slug');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].freePlugin.version');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].freePlugin.detailsUrl');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].freePlugin.isInstalled');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].freePlugin.isActive');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].freePlugin.path');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].proPlugin.name');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].proPlugin.slug');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].proPlugin.version');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].proPlugin.detailsUrl');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].proPlugin.isInstalled');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].proPlugin.isActive');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].proPlugin.isLicensed');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].proPlugin.path');
     }
 
-    public function testInstallPluginFreeWithInvalidSlug(ApiTester $I): void
+    public function testInstallPluginFreeWithInvalidSlugReturnsError(ApiTester $I): void
     {
         $I->sendPOST('publishpress-hub/v1/plugins/invalid-slug/install/free');
 
-        $I->seeResponseCodeIs(404);
+        $I->seeResponseCodeIs(400);
         $I->seeResponseIsJson();
         $I->seeResponseContainsJson(
             [
-                'code' => 'plugin_family_not_found',
+                'success' => false,
             ]
         );
     }

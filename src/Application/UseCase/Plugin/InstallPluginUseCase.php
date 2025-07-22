@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
+use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginInstallException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginLifecycleAdapter;
+use WP_REST_Request;
 
-class InstallPluginUseCase
+class InstallPluginUseCase implements UseCaseInterface
 {
     private PluginFamilyRepositoryInterface $pluginFamilyRepository;
     private WordPressPluginLifecycleAdapter $pluginLifecycle;
@@ -23,8 +25,11 @@ class InstallPluginUseCase
         $this->pluginLifecycle = $pluginLifecycle;
     }
 
-    public function execute(string $familySlug, string $pluginType): array
+    public function execute(WP_REST_Request $request): array
     {
+        $familySlug = $request->get_param('familySlug');
+        $pluginType = $request->get_param('pluginType');
+
         $family = $this->pluginFamilyRepository->findFamilyBySlug($familySlug);
 
         if (!$family) {

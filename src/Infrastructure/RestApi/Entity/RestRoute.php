@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\RestApi\Entity;
 
+use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
+
 class RestRoute
 {
     private string $namespace;
@@ -11,10 +13,9 @@ class RestRoute
     private string $route;
 
     private string $methods;
-    /**
-     * @var callable
-     */
-    private $callback;
+
+    private UseCaseInterface $useCase;
+
     /**
      * @var callable
      */
@@ -26,14 +27,14 @@ class RestRoute
         string $namespace,
         string $route,
         string $methods,
-        callable $callback,
+        UseCaseInterface $useCase,
         callable $permissionCallback,
         array $args = []
     ) {
         $this->namespace = $namespace;
         $this->route = $route;
         $this->methods = $methods;
-        $this->callback = $callback;
+        $this->useCase = $useCase;
         $this->permissionCallback = $permissionCallback;
         $this->args = $args;
     }
@@ -53,9 +54,9 @@ class RestRoute
         return $this->methods;
     }
 
-    public function getCallback(): callable
+    public function getUseCase(): UseCaseInterface
     {
-        return $this->callback;
+        return $this->useCase;
     }
 
     public function getPermissionCallback(): callable

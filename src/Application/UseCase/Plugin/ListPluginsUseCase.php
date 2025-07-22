@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
 use PublishPress\Hub\Application\DTO\Plugin\PluginFamilyDto;
+use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapter;
+use WP_REST_Request;
 
-class ListPluginsUseCase
+class ListPluginsUseCase implements UseCaseInterface
 {
     private PluginFamilyRepositoryInterface $pluginFamilyRepository;
     private WordPressPluginStatusAdapter $pluginStatusAdapter;
@@ -22,7 +24,7 @@ class ListPluginsUseCase
         $this->pluginStatusAdapter = $pluginStatusAdapter;
     }
 
-    public function execute(): array
+    public function execute(WP_REST_Request $request): array
     {
         $families = $this->pluginFamilyRepository->getAllFamilies();
 

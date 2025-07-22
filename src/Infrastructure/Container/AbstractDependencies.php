@@ -35,11 +35,15 @@ abstract class AbstractDependencies
 
     public const PLUGIN_TEMPLATES_BASE_PATH = 'publishpress-hub.constants.plugin-templates-base-path';
 
-    public const PLUGIN_API_BASE_PATH = 'publishpress-hub.constants.plugin-api-base-path';
+    public const HUB_REST_API_NAMESPACE = 'publishpress-hub.constants.hub-rest-api-namespace';
 
     public const SCRIPT_DEBUG = 'publishpress-hub.constants.script-debug';
 
     public const PLUGIN_I18N_SCRIPT_PATH = 'publishpress-hub.constants.plugin-i18n-script-path';
+
+    public const EDD_SUBSCRIPTION_API_URL = 'publishpress-hub.constants.edd-subscription-api-url';
+
+    public const SITE_URL = 'publishpress-hub.constants.site-url';
 
     // Infrastructure Services
     public const HOOKS_SERVICE = 'publishpress-hub.infrastructure.hooks.service';
@@ -61,6 +65,14 @@ abstract class AbstractDependencies
     public const REST_API_ADAPTER = 'publishpress-hub.infrastructure.rest-api.adapter';
 
     public const FILE_SYSTEM_ADAPTER = 'publishpress-hub.infrastructure.file-system.adapter';
+
+    public const LICENSE_SERVICE = 'publishpress-hub.infrastructure.license.service';
+
+    public const EDD_SUBSCRIPTION_ADAPTER = 'publishpress-hub.infrastructure.edd-subscription.adapter';
+
+    public const REMOTE_SERVICE = 'publishpress-hub.infrastructure.remote.service';
+
+    public const REMOTE_ADAPTER = 'publishpress-hub.infrastructure.remote.adapter';
 
     // Application Services
     public const PLUGIN_BOOTSTRAP_SERVICE = 'publishpress-hub.application.plugin.bootstrap.service';
@@ -89,5 +101,5 @@ abstract class AbstractDependencies
 
     public const DEV_COMPONENTS_SHOWCASE_CONTROLLER = 'publishpress-hub.presentation.dev-components-showcase.controller';
 
-    public const PLUGIN_API_CONTROLLER = 'publishpress-hub.presentation.plugin-api.controller';
+    public const REST_API_PLUGINS_CONTROLLER = 'publishpress-hub.presentation.rest-api.plugins.controller';
 }

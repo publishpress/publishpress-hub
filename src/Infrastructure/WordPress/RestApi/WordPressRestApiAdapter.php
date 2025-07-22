@@ -11,14 +11,19 @@ use WP_REST_Response;
 
 class WordPressRestApiAdapter implements RestApiAdapterInterface
 {
-    public function registerRoute(RestRoute $route): void
+    /**
+     * @param callable $callback
+     */
+    public function registerRoute(RestRoute $route, $callback): void
     {
         register_rest_route(
             $route->getNamespace(),
             $route->getRoute(),
             [
                 'methods' => $route->getMethods(),
-                'callback' => $this->mapCallbackRequest($route->getCallback()),
+                'callback' => function (WP_REST_Request $request) use ($callback, $route) {
+                    return $callback($request, $route->getUseCase());
+                },
                 'permission_callback' => $route->getPermissionCallback(),
                 'args' => $route->getArgs(),
             ]
@@ -37,12 +42,22 @@ class WordPressRestApiAdapter implements RestApiAdapterInterface
     }
 
     /**
+     * @param string|int $code
      * @return WP_REST_Response|WP_Error
      */
-    public function createErrorResponse(string $message, int $status = 400, string $code = 'error')
+    public function createErrorResponse(string $message, int $status = 400, $code = 'error')
     {
-        $error = new \WP_Error($code, $message, ['status' => $status]);
-        $response = rest_ensure_response($error);
+        // Ensure code is always a string to avoid WordPress REST API issues
+        $errorCode = is_numeric($code) ? 'error_' . $code : (string) $code;
+
+        $error = new \WP_Error($errorCode, $message, ['status' => $status]);
+
+        // Create a proper REST response instead of using rest_ensure_response
+        $response = new \WP_REST_Response([
+            'success' => false,
+            'message' => $message,
+            'code' => $errorCode,
+        ], $status);
 
         return $response;
     }
@@ -55,12 +70,5 @@ class WordPressRestApiAdapter implements RestApiAdapterInterface
     public function getRequestParam(WP_REST_Request $request, string $param, $default = null)
     {
         return $request->get_param($param) ?? $default;
-    }
-
-    public function mapCallbackRequest(callable $callback): callable
-    {
-        return function (WP_REST_Request $request) use ($callback) {
-            return $callback($request);
-        };
     }
 }

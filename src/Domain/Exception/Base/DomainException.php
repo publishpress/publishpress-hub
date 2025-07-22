@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Domain\Exception\Base;
 
 use Exception;
+use PublishPress\Hub\Domain\Exception\Contract\WithContextInterface;
 use PublishPress\Hub\Domain\Exception\Traits\ContextTrait;
 
-class DomainException extends Exception
+class DomainException extends Exception implements WithContextInterface
 {
     use ContextTrait;
 

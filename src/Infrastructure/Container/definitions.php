@@ -16,10 +16,16 @@ use PublishPress\Hub\Infrastructure\AdminMenu\AdminMenuService;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuAdapterInterface;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
+use PublishPress\Hub\Infrastructure\Edd\Subscription\EddSubscriptionAdapter;
+use PublishPress\Hub\Infrastructure\WordPress\Remote\WordPressRemoteAdapter;
+use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\I18n\Contract\I18nServiceInterface;
+use PublishPress\Hub\Infrastructure\License\Contract\LicenseServiceInterface;
+use PublishPress\Hub\Infrastructure\License\LicenseService;
 use PublishPress\Hub\Infrastructure\Logger\Contract\LoggerInterface;
 use PublishPress\Hub\Infrastructure\Logger\Logger;
+use PublishPress\Hub\Infrastructure\Remote\RemoteService;
 use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
 use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
 use PublishPress\Hub\Infrastructure\View\ViewService;
@@ -35,7 +41,7 @@ use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapte
 use PublishPress\Hub\Presentation\Controller\DevComponentsShowcaseController;
 use PublishPress\Hub\Presentation\Controller\MainMenuController;
 use PublishPress\Hub\Presentation\Controller\PluginsDashboardController;
-use PublishPress\Hub\Presentation\Controller\PluginApiController;
+use PublishPress\Hub\Presentation\Controller\RestApi\PluginsController;
 
 return [
     AbstractDependencies::PLUGIN_PATH => PUBLISHPRESS_HUB_PATH,
@@ -56,7 +62,11 @@ return [
 
     AbstractDependencies::PLUGIN_I18N_SCRIPT_PATH => 'js/i18n.js',
 
-    AbstractDependencies::PLUGIN_API_BASE_PATH => 'publishpress-hub/v1',
+    AbstractDependencies::HUB_REST_API_NAMESPACE => 'publishpress-hub/v1',
+
+    AbstractDependencies::EDD_SUBSCRIPTION_API_URL => 'https://publishpress.com',
+
+    AbstractDependencies::SITE_URL => home_url(),
 
     AbstractDependencies::SCRIPT_DEBUG => function (): bool {
         return defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;
@@ -133,6 +143,34 @@ return [
             );
         },
 
+    AbstractDependencies::LICENSE_SERVICE =>
+        function (ContainerInterface $container): LicenseServiceInterface {
+            return new LicenseService(
+                $container->get(AbstractDependencies::EDD_SUBSCRIPTION_ADAPTER)
+            );
+        },
+
+    AbstractDependencies::EDD_SUBSCRIPTION_ADAPTER =>
+        function (ContainerInterface $container): LicenseServiceInterface {
+            return new EddSubscriptionAdapter(
+                $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
+                $container->get(AbstractDependencies::SITE_URL),
+                $container->get(AbstractDependencies::REMOTE_SERVICE)
+            );
+        },
+
+    AbstractDependencies::REMOTE_SERVICE =>
+        function (ContainerInterface $container): RemoteServiceInterface {
+            return new RemoteService(
+                $container->get(AbstractDependencies::REMOTE_ADAPTER)
+            );
+        },
+
+    AbstractDependencies::REMOTE_ADAPTER =>
+        function (ContainerInterface $container): RemoteServiceInterface {
+            return new WordPressRemoteAdapter();
+        },
+
     // Application Services
     AbstractDependencies::PLUGIN_BOOTSTRAP_SERVICE =>
         function (ContainerInterface $container): HubBootstrapService {
@@ -144,7 +182,7 @@ return [
                     $container->get(AbstractDependencies::PLUGINS_DASHBOARD_SERVICE),
                     $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_SERVICE),
                     $container->get(AbstractDependencies::REST_API_SERVICE),
-                    $container->get(AbstractDependencies::PLUGIN_API_CONTROLLER),
+                    $container->get(AbstractDependencies::REST_API_PLUGINS_CONTROLLER),
                 ],
                 $container->get(AbstractDependencies::MAIN_MENU_CONTROLLER),
                 $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
@@ -236,13 +274,13 @@ return [
             );
         },
 
-    AbstractDependencies::PLUGIN_API_CONTROLLER =>
-        function (ContainerInterface $container): PluginApiController {
-            return new PluginApiController(
+    AbstractDependencies::REST_API_PLUGINS_CONTROLLER =>
+        function (ContainerInterface $container): PluginsController {
+            return new PluginsController(
                 $container->get(AbstractDependencies::REST_API_SERVICE),
                 $container->get(AbstractDependencies::LIST_PLUGINS_USE_CASE),
                 $container->get(AbstractDependencies::INSTALL_PLUGIN_USE_CASE),
-                $container->get(AbstractDependencies::PLUGIN_API_BASE_PATH)
+                $container->get(AbstractDependencies::HUB_REST_API_NAMESPACE)
             );
         },
 
