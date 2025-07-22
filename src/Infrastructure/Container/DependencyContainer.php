@@ -7,6 +7,7 @@ namespace PublishPress\Hub\Infrastructure\Container;
 use Closure;
 use PublishPress\Hub\Infrastructure\Container\Contracts\DependencyContainerInterface;
 use PublishPress\Hub\Infrastructure\Container\Exception\NotFoundException;
+use RuntimeException;
 
 /**
  * PHP Dependency Injection Container PSR-11.
@@ -34,6 +35,11 @@ class DependencyContainer implements DependencyContainerInterface
     private $dependencies = [];
 
     /**
+     * @var self
+     */
+    private static $instance;
+
+    /**
      * @param array<callable|mixed> $dependencies
      * @since 1.0.0
      */
@@ -42,6 +48,20 @@ class DependencyContainer implements DependencyContainerInterface
         if (! empty($dependencies)) {
             $this->register($dependencies);
         }
+
+        self::$instance = $this;
+    }
+
+    /**
+     * @since 1.0.0
+     */
+    public static function getInstance(): self
+    {
+        if (! self::$instance) {
+            throw new RuntimeException('DependencyContainer not initialized');
+        }
+
+        return self::$instance;
     }
 
     /**

@@ -6,11 +6,14 @@ declare(strict_types=1);
 namespace Tests\Api;
 
 use lucatume\WPBrowser\Utils\Filesystem;
+use PublishPress\Hub\Domain\Plugin\Entity\FreePlugin as EntityFreePlugin;
+use PublishPress\Hub\Domain\Plugin\Entity\PluginFamily as EntityPluginFamily;
+use PublishPress\Hub\Domain\Plugin\Entity\ProPlugin as EntityProPlugin;
 use PublishPress\Hub\Domain\Plugin\FreePlugin;
 use PublishPress\Hub\Domain\Plugin\PluginFamily;
 use PublishPress\Hub\Domain\Plugin\ProPlugin;
+use PublishPress\Hub\Infrastructure\Container\AbstractDependencies;
 use PublishPress\Hub\Infrastructure\Container\DependencyContainer;
-use PublishPress\Hub\Infrastructure\Container\Services;
 use Tests\Support\ApiTester;
 
 final class PluginsCest
@@ -69,22 +72,24 @@ final class PluginsCest
     public function testInstallFreePlugin(ApiTester $I): void
     {
         $container = DependencyContainer::getInstance();
-        $pluginFamilyRepository = $container->get(Services::PLUGIN_FAMILY_REPOSITORY);
+        $pluginFamilyRepository = $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY);
 
-        $pluginFamily = new PluginFamily(
+        $pluginFamily = new EntityPluginFamily(
+            'PublishPress Authors',
+            'publishpress-authors',
             'icon-authors',
             'A dummy plugin for testing purposes',
             'https://publishpress.com/knowledge-base/changelogs-publishpress-authors/'
         );
 
-        $freePlugin = new FreePlugin(
+        $freePlugin = new EntityFreePlugin(
             'PublishPress Authors',
             'publishpress-authors',
             'publishpress-authors.php',
             'https://publishpress.com/pricing/publishpress-authors/'
         );
 
-        $proPlugin = new ProPlugin(
+        $proPlugin = new EntityProPlugin(
             'PublishPress Authors Pro',
             'publishpress-authors-pro',
             'publishpress-authors-pro.php',
@@ -115,8 +120,8 @@ final class PluginsCest
         }
 
         $container = DependencyContainer::getInstance();
-        $pluginRepository = $container->get(Services::PLUGIN_FAMILY_REPOSITORY);
-        $plugin = $pluginRepository->findBySlug('publishpress-checklists');
+        $pluginRepository = $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY);
+        $plugin = $pluginRepository->findFamilyBySlug('publishpress-checklists');
 
         if ($plugin) {
             $plugin->unregister();
@@ -129,7 +134,7 @@ final class PluginsCest
         $I->seeResponseContainsJson(
             [
                 'success' => true,
-                'data' => ['plugin_slug' => 'publishpress-checklists'],
+                'slug' => 'publishpress-checklists',
             ]
         );
     }
