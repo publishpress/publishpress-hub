@@ -7,7 +7,8 @@ namespace PublishPress\Hub\Presentation\Controller\RestApi;
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
-use PublishPress\Hub\Application\UseCase\Plugin\InstallPluginUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\InstallProPluginUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\InstallFreePluginUseCase;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use WP_REST_Server;
@@ -18,18 +19,21 @@ class PluginsController implements BootableInterface
 
     private RestApiServiceInterface $restApiService;
     private ListPluginsUseCase $listPluginsUseCase;
-    private InstallPluginUseCase $installPluginUseCase;
+    private InstallFreePluginUseCase $installFreePluginUseCase;
+    private InstallProPluginUseCase $installProPluginUseCase;
     private string $restApiNamespace;
 
     public function __construct(
         RestApiServiceInterface $restApiService,
         ListPluginsUseCase $listPluginsUseCase,
-        InstallPluginUseCase $installPluginUseCase,
+        InstallFreePluginUseCase $installFreePluginUseCase,
+        InstallProPluginUseCase $installProPluginUseCase,
         string $restApiNamespace
     ) {
         $this->restApiService = $restApiService;
         $this->listPluginsUseCase = $listPluginsUseCase;
-        $this->installPluginUseCase = $installPluginUseCase;
+        $this->installFreePluginUseCase = $installFreePluginUseCase;
+        $this->installProPluginUseCase = $installProPluginUseCase;
         $this->restApiNamespace = $restApiNamespace;
     }
 
@@ -53,12 +57,21 @@ class PluginsController implements BootableInterface
             [$this, 'checkPermissions']
         ));
 
-        // POST /plugins/install/{familySlug}/{pluginType}
+        // POST /plugins/install/{familySlug}/free
         $this->restApiService->addRoute(new RestRoute(
             $this->restApiNamespace,
-            '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/install/(?P<pluginType>(free|pro))',
+            '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/install/free',
             WP_REST_Server::CREATABLE,
-            $this->installPluginUseCase,
+            $this->installFreePluginUseCase,
+            [$this, 'checkPermissions']
+        ));
+
+        // POST /plugins/install/{familySlug}/pro
+        $this->restApiService->addRoute(new RestRoute(
+            $this->restApiNamespace,
+            '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/install/pro',
+            WP_REST_Server::CREATABLE,
+            $this->installProPluginUseCase,
             [$this, 'checkPermissions']
         ));
     }

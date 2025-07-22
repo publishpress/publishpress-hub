@@ -87,7 +87,9 @@ abstract class AbstractDependencies
 
     public const LIST_PLUGINS_USE_CASE = 'publishpress-hub.application.use-case.plugin.list';
 
-    public const INSTALL_PLUGIN_USE_CASE = 'publishpress-hub.application.use-case.plugin.install';
+    public const INSTALL_FREE_PLUGIN_USE_CASE = 'publishpress-hub.application.use-case.plugin.install-free';
+
+    public const INSTALL_PRO_PLUGIN_USE_CASE = 'publishpress-hub.application.use-case.plugin.install-pro';
 
     public const PLUGIN_STATUS_ADAPTER = 'publishpress-hub.infrastructure.plugin-status.adapter';
 

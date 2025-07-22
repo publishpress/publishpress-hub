@@ -138,4 +138,31 @@ final class PluginsCest
             ]
         );
     }
+
+    public function testInstallPluginProWithInvalidSlugReturnsError(ApiTester $I): void
+    {
+        $I->sendPOST('publishpress-hub/v1/plugins/invalid-slug/install/pro');
+
+        $I->seeResponseCodeIs(400);
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson(
+            [
+                'success' => false,
+            ]
+        );
+    }
+
+    public function testInstallPluginProWithValidSlug(ApiTester $I): void
+    {
+        $I->sendPOST('publishpress-hub/v1/plugins/publishpress-checklists/install/pro');
+
+        $I->seeResponseCodeIs(200);
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson(
+            [
+                'success' => true,
+                'slug' => 'publishpress-checklists',
+            ]
+        );
+    }
 }

@@ -10,7 +10,8 @@ use PublishPress\Hub\Infrastructure\WordPress\Hooks\WordPressHooksAdapter;
 use PublishPress\Hub\Application\Service\HubBootstrapService;
 use PublishPress\Hub\Application\Service\PluginsDashboard\PluginsDashboardService;
 use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
-use PublishPress\Hub\Application\UseCase\Plugin\InstallPluginUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\InstallFreePluginUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\InstallProPluginUseCase;
 use PublishPress\Hub\Domain\Plugin\Repository\PluginFamilyRepository;
 use PublishPress\Hub\Infrastructure\AdminMenu\AdminMenuService;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuAdapterInterface;
@@ -237,9 +238,17 @@ return [
             );
         },
 
-    AbstractDependencies::INSTALL_PLUGIN_USE_CASE =>
-        function (ContainerInterface $container): InstallPluginUseCase {
-            return new InstallPluginUseCase(
+    AbstractDependencies::INSTALL_FREE_PLUGIN_USE_CASE =>
+        function (ContainerInterface $container): InstallFreePluginUseCase {
+            return new InstallFreePluginUseCase(
+                $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
+                $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
+            );
+        },
+
+    AbstractDependencies::INSTALL_PRO_PLUGIN_USE_CASE =>
+        function (ContainerInterface $container): InstallProPluginUseCase {
+            return new InstallProPluginUseCase(
                 $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
                 $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
             );
@@ -279,7 +288,8 @@ return [
             return new PluginsController(
                 $container->get(AbstractDependencies::REST_API_SERVICE),
                 $container->get(AbstractDependencies::LIST_PLUGINS_USE_CASE),
-                $container->get(AbstractDependencies::INSTALL_PLUGIN_USE_CASE),
+                $container->get(AbstractDependencies::INSTALL_FREE_PLUGIN_USE_CASE),
+                $container->get(AbstractDependencies::INSTALL_PRO_PLUGIN_USE_CASE),
                 $container->get(AbstractDependencies::HUB_REST_API_NAMESPACE)
             );
         },

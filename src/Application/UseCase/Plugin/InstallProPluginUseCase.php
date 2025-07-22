@@ -12,7 +12,7 @@ use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginLifecycleAdapter;
 use WP_REST_Request;
 
-class InstallPluginUseCase implements UseCaseInterface
+class InstallProPluginUseCase implements UseCaseInterface
 {
     private PluginFamilyRepositoryInterface $pluginFamilyRepository;
     private WordPressPluginLifecycleAdapter $pluginLifecycle;
@@ -28,7 +28,6 @@ class InstallPluginUseCase implements UseCaseInterface
     public function execute(WP_REST_Request $request): array
     {
         $familySlug = $request->get_param('familySlug');
-        $pluginType = $request->get_param('pluginType');
 
         $family = $this->pluginFamilyRepository->findFamilyBySlug($familySlug);
 
@@ -36,10 +35,10 @@ class InstallPluginUseCase implements UseCaseInterface
             throw new PluginNotFoundException(['family_slug' => $familySlug]);
         }
 
-        $plugin = $this->getPluginFromFamily($family, $pluginType);
+        $plugin = $family->getProPlugin();
 
         if (!$plugin) {
-            throw new PluginNotFoundException(['family_slug' => $familySlug, 'plugin_type' => $pluginType]);
+            throw new PluginNotFoundException(['family_slug' => $familySlug, 'plugin_type' => 'pro']);
         }
 
         if ($plugin->isInstalled()) {
@@ -57,20 +56,5 @@ class InstallPluginUseCase implements UseCaseInterface
         } catch (\Exception $e) {
             throw new PluginInstallException(['plugin_slug' => $plugin->getSlug(), 'error' => $e->getMessage()]);
         }
-    }
-
-    private function getPluginFromFamily($family, string $type)
-    {
-        try {
-            if ($type === 'free') {
-                return $family->getFreePlugin();
-            } elseif ($type === 'pro') {
-                return $family->getProPlugin();
-            }
-        } catch (\RuntimeException $e) {
-            return null;
-        }
-
-        return null;
     }
 }
