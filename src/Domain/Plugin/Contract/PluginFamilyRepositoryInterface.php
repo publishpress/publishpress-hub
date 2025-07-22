@@ -12,5 +12,7 @@ interface PluginFamilyRepositoryInterface
 
     public function getAllFamilies(): array;
 
+    public function getAllFamilySlugs(): array;
+
     public function reset(): void;
 }

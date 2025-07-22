@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Presentation\Controller;
 
+use Exception;
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Application\DTO\Plugin\PluginInstallRequest;
@@ -55,6 +56,15 @@ class PluginApiController implements BootableInterface
             [$this, 'listPlugins'],
             [$this, 'checkPermissions']
         ));
+
+        // POST /plugins/install/{familySlug}/{pluginType}
+        $this->restApiService->addRoute(new RestRoute(
+            $this->pluginApiBasePath,
+            '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/install/(?P<pluginType>(free|pro))',
+            WP_REST_Server::CREATABLE,
+            [$this, 'installPlugin'],
+            [$this, 'checkPermissions']
+        ));
     }
 
     public function checkPermissions(): bool
@@ -62,13 +72,36 @@ class PluginApiController implements BootableInterface
         return $this->restApiService->checkPermissions('manage_options');
     }
 
-    public function listPlugins(WP_REST_Request $request): WP_REST_Response
+    /**
+     * @return WP_REST_Response|WP_Error
+     */
+    public function listPlugins(WP_REST_Request $request)
     {
         try {
             $response = $this->listPluginsUseCase->execute();
 
             return $this->restApiService->createSuccessResponse($response);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
+            return $this->restApiService->createErrorResponse(
+                $e->getMessage(),
+                400
+            );
+        }
+    }
+
+    /**
+     * @return WP_REST_Response|WP_Error
+     */
+    public function installPlugin(WP_REST_Request $request)
+    {
+        try {
+            $familySlug = $request->get_param('familySlug');
+            $pluginType = $request->get_param('pluginType');
+
+            $response = $this->installPluginUseCase->execute($familySlug, $pluginType);
+
+            return $this->restApiService->createSuccessResponse($response);
+        } catch (Exception $e) {
             return $this->restApiService->createErrorResponse(
                 $e->getMessage(),
                 400

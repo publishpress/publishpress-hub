@@ -36,7 +36,10 @@ class WordPressRestApiAdapter implements RestApiAdapterInterface
         return $response;
     }
 
-    public function createErrorResponse(string $message, int $status = 400, string $code = 'error'): WP_REST_Response
+    /**
+     * @return WP_REST_Response|WP_Error
+     */
+    public function createErrorResponse(string $message, int $status = 400, string $code = 'error')
     {
         $error = new \WP_Error($code, $message, ['status' => $status]);
         $response = rest_ensure_response($error);

@@ -16,7 +16,10 @@ interface RestApiServiceInterface
 
     public function createSuccessResponse(array $data, int $status = 200, array $headers = []): WP_REST_Response;
 
-    public function createErrorResponse(string $message, int $status = 400, string $code = 'error'): WP_REST_Response;
+    /**
+     * @return WP_REST_Response|WP_Error
+     */
+    public function createErrorResponse(string $message, int $status = 400, string $code = 'error');
 
     public function getRequestData(WP_REST_Request $request): array;
 

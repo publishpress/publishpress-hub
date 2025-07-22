@@ -7,7 +7,7 @@ namespace PublishPress\Hub\Infrastructure\Container;
 use PublishPress\Hub\Application\Service\DevComponentsShowcase\DevComponentsShowcaseService;
 use PublishPress\Psr\Container\ContainerInterface;
 use PublishPress\Hub\Infrastructure\WordPress\Hooks\WordPressHooksAdapter;
-use PublishPress\Hub\Application\Service\PluginBootstrapService;
+use PublishPress\Hub\Application\Service\HubBootstrapService;
 use PublishPress\Hub\Application\Service\PluginsDashboard\PluginsDashboardService;
 use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallPluginUseCase;
@@ -30,6 +30,7 @@ use PublishPress\Hub\Infrastructure\WordPress\Security\WordPressSecurityAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\RestApi\WordPressRestApiAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginLifecycleAdapter;
 use PublishPress\Hub\Infrastructure\RestApi\RestApiService;
+use PublishPress\Hub\Infrastructure\WordPress\Filesystem\WordPressFileSystemAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapter;
 use PublishPress\Hub\Presentation\Controller\DevComponentsShowcaseController;
 use PublishPress\Hub\Presentation\Controller\MainMenuController;
@@ -134,8 +135,8 @@ return [
 
     // Application Services
     AbstractDependencies::PLUGIN_BOOTSTRAP_SERVICE =>
-        function (ContainerInterface $container): PluginBootstrapService {
-            return new PluginBootstrapService(
+        function (ContainerInterface $container): HubBootstrapService {
+            return new HubBootstrapService(
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
                 [
                     $container->get(AbstractDependencies::I18N_SERVICE),
@@ -172,12 +173,21 @@ return [
 
     AbstractDependencies::PLUGIN_STATUS_ADAPTER =>
         function (ContainerInterface $container): WordPressPluginStatusAdapter {
-            return new WordPressPluginStatusAdapter();
+            return new WordPressPluginStatusAdapter(
+                $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER)
+            );
         },
 
     AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER =>
         function (ContainerInterface $container): WordPressPluginLifecycleAdapter {
-            return new WordPressPluginLifecycleAdapter();
+            return new WordPressPluginLifecycleAdapter(
+                $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER)
+            );
+        },
+
+    AbstractDependencies::FILE_SYSTEM_ADAPTER =>
+        function (ContainerInterface $container): WordPressFileSystemAdapter {
+            return new WordPressFileSystemAdapter();
         },
 
     // Use Cases

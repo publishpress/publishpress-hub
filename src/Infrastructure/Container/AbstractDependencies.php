@@ -60,6 +60,8 @@ abstract class AbstractDependencies
 
     public const REST_API_ADAPTER = 'publishpress-hub.infrastructure.rest-api.adapter';
 
+    public const FILE_SYSTEM_ADAPTER = 'publishpress-hub.infrastructure.file-system.adapter';
+
     // Application Services
     public const PLUGIN_BOOTSTRAP_SERVICE = 'publishpress-hub.application.plugin.bootstrap.service';
 

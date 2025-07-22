@@ -4,63 +4,53 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
-use PublishPress\Hub\Application\DTO\Plugin\PluginInstallRequest;
-use PublishPress\Hub\Application\DTO\Plugin\PluginInstallResponse;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
+use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
+use PublishPress\Hub\Domain\Plugin\Exception\PluginInstallException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginLifecycleAdapter;
 
 class InstallPluginUseCase
 {
     private PluginFamilyRepositoryInterface $pluginFamilyRepository;
-    private WordPressPluginLifecycleAdapter $wordPressAdapter;
+    private WordPressPluginLifecycleAdapter $pluginLifecycle;
 
     public function __construct(
         PluginFamilyRepositoryInterface $pluginFamilyRepository,
-        WordPressPluginLifecycleAdapter $wordPressAdapter
+        WordPressPluginLifecycleAdapter $pluginLifecycle
     ) {
         $this->pluginFamilyRepository = $pluginFamilyRepository;
-        $this->wordPressAdapter = $wordPressAdapter;
+        $this->pluginLifecycle = $pluginLifecycle;
     }
 
-    public function execute(PluginInstallRequest $request): PluginInstallResponse
+    public function execute(string $familySlug, string $pluginType): array
     {
-                $families = $this->pluginFamilyRepository->getAllFamilies();
-        $family = null;
-
-        foreach ($families as $f) {
-            if ($f->getSlug() === $request->getSlug()) {
-                $family = $f;
-                break;
-            }
-        }
+        $family = $this->pluginFamilyRepository->findFamilyBySlug($familySlug);
 
         if (!$family) {
-            throw new PluginNotFoundException('Plugin family not found: ' . $request->getSlug());
+            throw new PluginNotFoundException(['family_slug' => $familySlug]);
         }
 
-        $plugin = $this->getPluginFromFamily($family, $request->getType());
+        $plugin = $this->getPluginFromFamily($family, $pluginType);
 
         if (!$plugin) {
-            throw new PluginNotFoundException('Plugin not found: ' . $request->getSlug() . ' (' . $request->getType() . ')');
+            throw new PluginNotFoundException(['family_slug' => $familySlug, 'plugin_type' => $pluginType]);
         }
 
         if ($plugin->isInstalled()) {
-            return PluginInstallResponse::error('Plugin is already installed');
+            throw new PluginAlreadyInstalledException(['plugin_slug' => $plugin->getSlug()]);
         }
 
         try {
-            $this->wordPressAdapter->installPlugin($plugin->getSlug());
+            $this->pluginLifecycle->installPlugin($plugin->getSlug());
 
             $plugin->setInstalled(true);
 
-            return PluginInstallResponse::success(
-                'Plugin installed successfully',
-                $plugin->getSlug(),
-                'installed'
-            );
+            return [
+                'slug' => $plugin->getSlug(),
+            ];
         } catch (\Exception $e) {
-            return PluginInstallResponse::error('Failed to install plugin: ' . $e->getMessage());
+            throw new PluginInstallException(['plugin_slug' => $plugin->getSlug(), 'error' => $e->getMessage()]);
         }
     }
 

@@ -26,6 +26,11 @@ class PluginFamilyRepository implements PluginFamilyRepositoryInterface
         return array_values($this->families);
     }
 
+    public function getAllFamilySlugs(): array
+    {
+        return array_keys($this->families);
+    }
+
     public function reset(): void
     {
         $this->families = [];

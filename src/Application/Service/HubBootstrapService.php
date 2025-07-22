@@ -14,7 +14,7 @@ use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Presentation\Controller\MainMenuController;
 
-class PluginBootstrapService implements BootableInterface
+class HubBootstrapService implements BootableInterface
 {
     use BootableTrait;
 

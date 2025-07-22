@@ -71,7 +71,10 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
         return $this->createResponse($data, $status, $headers);
     }
 
-    public function createErrorResponse(string $message, int $status = 400, string $code = 'error'): WP_REST_Response
+    /**
+     * @return WP_REST_Response|WP_Error
+     */
+    public function createErrorResponse(string $message, int $status = 400, string $code = 'error')
     {
         return $this->restApiAdapter->createErrorResponse($message, $status, $code);
     }

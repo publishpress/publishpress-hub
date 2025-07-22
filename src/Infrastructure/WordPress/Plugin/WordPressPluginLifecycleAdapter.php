@@ -4,8 +4,19 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WordPress\Plugin;
 
+use InvalidArgumentException;
+use PublishPress\Hub\Infrastructure\WordPress\Filesystem\WordPressFileSystemAdapter;
+use RuntimeException;
+
 class WordPressPluginLifecycleAdapter
 {
+    private WordPressFileSystemAdapter $fileSystemAdapter;
+
+    public function __construct(WordPressFileSystemAdapter $fileSystemAdapter)
+    {
+        $this->fileSystemAdapter = $fileSystemAdapter;
+    }
+
     public function installPlugin(string $slug): bool
     {
         if (!function_exists('plugins_api')) {
@@ -14,22 +25,6 @@ class WordPressPluginLifecycleAdapter
 
         if (!function_exists('download_url')) {
             require_once ABSPATH . 'wp-admin/includes/file.php';
-        }
-
-        $allowedPlugins = [
-            'publishpress-authors',
-            'advanced-gutenberg',
-            'capability-manager-enhanced',
-            'publishpress-checklists',
-            'post-expirator',
-            'press-permit-core',
-            'revisionary',
-            'organize-series',
-            'publishpress'
-        ];
-
-        if (!in_array($slug, $allowedPlugins, true)) {
-            throw new \InvalidArgumentException('Plugin not allowed: ' . $slug);
         }
 
         $api = plugins_api('plugin_information', [
@@ -51,29 +46,25 @@ class WordPressPluginLifecycleAdapter
         ]);
 
         if (is_wp_error($api)) {
-            throw new \RuntimeException('Failed to get plugin information: ' . $api->get_error_message());
+            throw new RuntimeException('Failed to get plugin information: ' . $api->get_error_message());
         }
 
         $tmpFile = download_url($api->download_link);
 
         if (is_wp_error($tmpFile)) {
-            throw new \RuntimeException('Failed to download plugin: ' . $tmpFile->get_error_message());
+            throw new RuntimeException('Failed to download plugin: ' . $tmpFile->get_error_message());
         }
-
-        global $wp_filesystem;
-
-        WP_Filesystem();
 
         // Delete the plugin folder if exists
-        if (file_exists(WP_PLUGIN_DIR . '/' . $slug)) {
-            $wp_filesystem->delete(WP_PLUGIN_DIR . '/' . $slug, true);
+        if ($this->fileSystemAdapter->exists(WP_PLUGIN_DIR . '/' . $slug)) {
+            $this->fileSystemAdapter->delete(WP_PLUGIN_DIR . '/' . $slug, true);
         }
 
-        $unzipfile = unzip_file($tmpFile, WP_PLUGIN_DIR);
-        @unlink($tmpFile);
+        $unzipfile = $this->fileSystemAdapter->unzip($tmpFile, WP_PLUGIN_DIR);
+        $this->fileSystemAdapter->delete($tmpFile);
 
         if (!$unzipfile) {
-            throw new \RuntimeException('Failed to unzip plugin file');
+            throw new RuntimeException('Failed to unzip plugin file');
         }
 
         return true;
@@ -84,7 +75,7 @@ class WordPressPluginLifecycleAdapter
         $result = activate_plugin($pluginPath);
 
         if (is_wp_error($result)) {
-            throw new \RuntimeException('Failed to activate plugin: ' . $result->get_error_message());
+            throw new RuntimeException('Failed to activate plugin: ' . $result->get_error_message());
         }
 
         return true;
@@ -105,7 +96,7 @@ class WordPressPluginLifecycleAdapter
         $result = delete_plugins([$pluginPath]);
 
         if (is_wp_error($result)) {
-            throw new \RuntimeException('Failed to delete plugin: ' . $result->get_error_message());
+            throw new RuntimeException('Failed to delete plugin: ' . $result->get_error_message());
         }
 
         return true;
