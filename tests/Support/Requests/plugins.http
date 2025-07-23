@@ -2,7 +2,8 @@
 @baseUrl = http://localhost:8032/wp-json
 @apiPath = publishpress-hub/v1
 # Replace these with your credentials - use base64 encoded credentials (username:appPassword), get from the .env file after starting the test containers.
-@passwordHash = YWRtaW46UEthWGpLT1NhS2xHVXNtOWt4ZXpkYlF6
+@passwordHash = YWRtaW46ZEkwS3hzeDlnUEd5VlZ6MDllcWowQ1VU
+@licenseKey = b7dfdc0b0ebc6cc49561023e57c58c56
 
 ### Test WordPress REST API (no auth required)
 GET {{baseUrl}}
@@ -26,8 +27,18 @@ Accept: application/json
 Content-Type: application/json
 Authorization: Basic {{passwordHash}}
 
-### Install Plugin
+### Install Free Plugin
 POST {{baseUrl}}/{{apiPath}}/plugins/publishpress-checklists/install/free
 Accept: application/json
 Content-Type: application/json
 Authorization: Basic {{passwordHash}}
+
+### Install Pro Plugin
+POST {{baseUrl}}/{{apiPath}}/plugins/publishpress-checklists/install/pro
+Accept: application/json
+Content-Type: application/json
+Authorization: Basic {{passwordHash}}
+
+{
+    "license_key": "{{licenseKey}}"
+}
