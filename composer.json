@@ -193,7 +193,7 @@
         "test:snippets": "composer codecept gherkin:snippets $@",
         "test:steps": "composer codecept gherkin:steps $@",
         "test:logs": "bash dev-workspace/scripts/log-web.sh test",
-        "test": "vendor/bin/codecept run $@",
+        "test": "source ./.env && EDD_LICENSE_FOR_TESTS=$EDD_LICENSE_FOR_TESTS vendor/bin/codecept run $@",
         "test:coverage": "vendor/bin/codecept run --coverage --coverage-html",
         "test:unit": "vendor/bin/codecept run Unit",
         "test:integration": "vendor/bin/codecept run Integration",

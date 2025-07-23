@@ -1,8 +1,8 @@
 actor: ApiTester
 suite_namespace: Tests\Api
 bootstrap: _bootstrap.php
-env:
-    EDD_LICENSE_FOR_TESTS: %EDD_LICENSE_FOR_TESTS%
+params:
+    - .env
 modules:
     # enable helpers as array
     enabled:

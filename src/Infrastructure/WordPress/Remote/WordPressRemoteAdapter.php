@@ -80,8 +80,13 @@ class WordPressRemoteAdapter implements RemoteServiceInterface
     /**
      * @return mixed
      */
-    public function decodeResponseBody(array $response)
+    public function getDecodedBodyFromResponse(array $response)
     {
         return json_decode($this->getResponseBody($response), true);
+    }
+
+    public function getResponseStatusCode(array $response): int
+    {
+        return (int) wp_remote_retrieve_response_code($response);
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
+use PublishPress\Hub\Domain\Exception\Contract\WithContextInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseInvalidException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseException;
@@ -63,16 +64,15 @@ class InstallProPluginUseCase implements UseCaseInterface
         }
 
         try {
-            $this->licenseService->isLicenseValid($licenseKey, $plugin->getDownloadId());
+            $downloadId = $plugin->getDownloadId();
 
-            if (!$this->licenseService->isLicenseActive($licenseKey, $plugin->getDownloadId())) {
-                $this->licenseService->activateLicense($licenseKey, $plugin->getDownloadId());
+            $this->licenseService->isLicenseValid($licenseKey, $downloadId);
+
+            if (!$this->licenseService->isLicenseActive($licenseKey, $downloadId)) {
+                $this->licenseService->activateLicense($licenseKey, $downloadId);
             }
 
-            $pluginInfo = $this->licenseService->getPluginInfo($licenseKey, $plugin->getDownloadId());
-
-            var_dump($pluginInfo);
-            die();
+            $pluginInfo = $this->licenseService->getPluginInfo($licenseKey, $downloadId);
 
             $downloadUrl = $pluginInfo['download_url'];
 
@@ -83,8 +83,21 @@ class InstallProPluginUseCase implements UseCaseInterface
             return [
                 'slug' => $plugin->getSlug(),
             ];
+        } catch (WithContextInterface $e) {
+            throw new LicenseInvalidException(
+                [
+                    'plugin_slug' => $plugin->getSlug(),
+                    'error_message' => $e->getMessage(),
+                    'context' => $e->getContext(),
+                ]
+            );
         } catch (\Exception $e) {
-            throw new PluginInstallException(['plugin_slug' => $plugin->getSlug(), 'error_message' => $e->getMessage()]);
+            throw new PluginInstallException(
+                [
+                    'plugin_slug' => $plugin->getSlug(),
+                    'error_message' => $e->getMessage()
+                ]
+            );
         }
     }
 }

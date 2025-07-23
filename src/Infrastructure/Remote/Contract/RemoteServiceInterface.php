@@ -51,5 +51,7 @@ interface RemoteServiceInterface
     /**
      * @return mixed
      */
-    public function decodeResponseBody(array $response);
+    public function getDecodedBodyFromResponse(array $response);
+
+    public function getResponseStatusCode(array $response): int;
 }

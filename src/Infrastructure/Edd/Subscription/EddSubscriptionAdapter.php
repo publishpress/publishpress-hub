@@ -20,6 +20,7 @@ use PublishPress\Hub\Domain\Plugin\Exception\LicenseSiteInactiveException;
 use PublishPress\Hub\Infrastructure\Cache\Contract\CacheServiceInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseAdapterInterface;
 use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
+use PublishPress\Hub\Infrastructure\Remote\Exception\RemoteAccessDeniedException;
 
 class EddSubscriptionAdapter implements LicenseAdapterInterface
 {
@@ -100,13 +101,20 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
             ]);
         }
 
-        $responseData = $this->remoteService->decodeResponseBody($response);
+        if ($this->remoteService->getResponseStatusCode($response) === 403) {
+            throw new RemoteAccessDeniedException();
+        }
 
-        if (empty($responseData) || !isset($responseData['license'])) {
+        if ($this->remoteService->getResponseStatusCode($response) !== 200) {
             throw new LicenseServerInvalidResponseException();
         }
 
-        $data = $responseData;
+        $data = $this->remoteService->getDecodedBodyFromResponse($response);
+
+        if (empty($data) || !isset($data['license'])) {
+            throw new LicenseServerInvalidResponseException();
+        }
+
         $this->cacheService->set($cacheKey, $data, self::CACHE_TTL);
 
         return $data;
@@ -196,7 +204,15 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
                 ]);
             }
 
-            $data = $this->remoteService->decodeResponseBody($response);
+            if ($this->remoteService->getResponseStatusCode($response) === 403) {
+                throw new RemoteAccessDeniedException();
+            }
+
+            if ($this->remoteService->getResponseStatusCode($response) !== 200) {
+                throw new LicenseServerInvalidResponseException();
+            }
+
+            $data = $this->remoteService->getDecodedBodyFromResponse($response);
 
             if (empty($data) || !isset($data['license'])) {
                 throw new LicenseServerInvalidResponseException();
@@ -281,12 +297,17 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
             [
                 'body' => [
                     'edd_action' => 'get_version',
-                    'license' => $licenseKey,
                     'item_id' => $downloadId,
+                    'license' => $licenseKey,
                     'url' => $this->siteUrl,
                 ],
                 'timeout' => self::TIMEOUT,
                 'sslverify' => true,
+                'headers' => [
+                    'User-Agent' => 'PublishPressHub/' . PUBLISHPRESS_HUB_VERSION,
+                    'Accept' => 'application/json',
+                    'Content-Type' => 'application/json',
+                ],
             ]
         );
 
@@ -296,9 +317,18 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
             ]);
         }
 
-        $data = $this->remoteService->decodeResponseBody($response);
+        if ($this->remoteService->getResponseStatusCode($response) === 403) {
+            throw new RemoteAccessDeniedException();
+        }
 
-        if (!$data) {
+        if ($this->remoteService->getResponseStatusCode($response) !== 200) {
+            throw new LicenseServerInvalidResponseException();
+        }
+
+        $data = $this->remoteService->getDecodedBodyFromResponse($response);
+
+
+        if (empty($data)) {
             throw new LicenseServerInvalidResponseException();
         }
 

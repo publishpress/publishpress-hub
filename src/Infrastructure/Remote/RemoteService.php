@@ -87,8 +87,13 @@ class RemoteService implements RemoteServiceInterface
     /**
      * @return mixed
      */
-    public function decodeResponseBody(array $response)
+    public function getDecodedBodyFromResponse(array $response)
     {
-        return $this->remoteAdapter->decodeResponseBody($response);
+        return $this->remoteAdapter->getDecodedBodyFromResponse($response);
+    }
+
+    public function getResponseStatusCode(array $response): int
+    {
+        return $this->remoteAdapter->getResponseStatusCode($response);
     }
 }

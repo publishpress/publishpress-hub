@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace Tests\Api;
 
+use Exception;
 use lucatume\WPBrowser\Utils\Filesystem;
 use PublishPress\Hub\Domain\Plugin\Entity\FreePlugin as EntityFreePlugin;
 use PublishPress\Hub\Domain\Plugin\Entity\PluginFamily as EntityPluginFamily;
@@ -19,12 +20,16 @@ use Tests\Support\ApiTester;
 final class PluginsCest
 {
     private $authHash;
+    private $licenseKey;
 
     public function _before(ApiTester $I): void
     {
         $this->authHash = getenv('WP_TEST_AUTH_HASH');
         $I->haveHttpHeader('Authorization', 'Basic ' . $this->authHash);
         $I->haveHttpHeader('Content-Type', 'application/json');
+
+        // Store the license key for use in tests
+        $this->licenseKey = getenv('EDD_LICENSE_FOR_TESTS');
     }
 
     public function tryToGetPlugins(ApiTester $I): void
@@ -172,7 +177,24 @@ final class PluginsCest
 
     public function testInstallPluginProWithValidLicenseKey(ApiTester $I): void
     {
-        echo 'License key: ' . getenv('EDD_LICENSE_FOR_TESTS');
-        die();
+        if (!$this->licenseKey) {
+            throw new Exception('EDD_LICENSE_FOR_TESTS environment variable is not set');
+        }
+
+        $I->sendPOST(
+            'publishpress-hub/v1/plugins/publishpress-checklists/install/pro',
+            [
+                'licenseKey' => $this->licenseKey,
+            ]
+        );
+
+        $I->seeResponseCodeIs(200);
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson(
+            [
+                'success' => true,
+                'slug' => 'publishpress-checklists-pro',
+            ]
+        );
     }
 }
