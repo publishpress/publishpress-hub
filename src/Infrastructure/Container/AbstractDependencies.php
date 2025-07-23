@@ -45,6 +45,8 @@ abstract class AbstractDependencies
 
     public const SITE_URL = 'publishpress-hub.constants.site-url';
 
+    public const CACHE_GROUP = 'publishpress-hub.constants.cache-group';
+
     // Infrastructure Services
     public const HOOKS_SERVICE = 'publishpress-hub.infrastructure.hooks.service';
 
@@ -73,6 +75,10 @@ abstract class AbstractDependencies
     public const REMOTE_SERVICE = 'publishpress-hub.infrastructure.remote.service';
 
     public const REMOTE_ADAPTER = 'publishpress-hub.infrastructure.remote.adapter';
+
+    public const CACHE_SERVICE = 'publishpress-hub.infrastructure.cache.service';
+
+    public const CACHE_ADAPTER = 'publishpress-hub.infrastructure.cache.adapter';
 
     // Application Services
     public const PLUGIN_BOOTSTRAP_SERVICE = 'publishpress-hub.application.plugin.bootstrap.service';

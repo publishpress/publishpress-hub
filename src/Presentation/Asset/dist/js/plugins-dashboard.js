@@ -7230,7 +7230,7 @@ function installProPlugin(pluginFamilySlug, licenseKey) {
           path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/install/pro"),
           method: 'POST',
           data: {
-            license_key: licenseKey
+            licenseKey: licenseKey
           }
         });
       case 3:

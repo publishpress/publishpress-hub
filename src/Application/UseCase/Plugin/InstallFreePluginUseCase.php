@@ -25,6 +25,11 @@ class InstallFreePluginUseCase implements UseCaseInterface
         $this->pluginLifecycle = $pluginLifecycle;
     }
 
+    /**
+     * @throws PluginNotFoundException
+     * @throws PluginAlreadyInstalledException
+     * @throws PluginInstallException
+     */
     public function execute(WP_REST_Request $request): array
     {
         $familySlug = $request->get_param('familySlug');
@@ -54,7 +59,7 @@ class InstallFreePluginUseCase implements UseCaseInterface
                 'slug' => $plugin->getSlug(),
             ];
         } catch (\Exception $e) {
-            throw new PluginInstallException(['plugin_slug' => $plugin->getSlug(), 'error' => $e->getMessage()]);
+            throw new PluginInstallException(['plugin_slug' => $plugin->getSlug(), 'error_message' => $e->getMessage()]);
         }
     }
 }

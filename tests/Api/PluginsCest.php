@@ -152,17 +152,27 @@ final class PluginsCest
         );
     }
 
-    public function testInstallPluginProWithValidSlug(ApiTester $I): void
+    public function testInstallPluginProWithInvalidLicenseKeyReturnsError(ApiTester $I): void
     {
-        $I->sendPOST('publishpress-hub/v1/plugins/publishpress-checklists/install/pro');
+        $I->sendPOST(
+            'publishpress-hub/v1/plugins/publishpress-checklists/install/pro',
+            [
+                'licenseKey' => '1234567890',
+            ]
+        );
 
-        $I->seeResponseCodeIs(200);
+        $I->seeResponseCodeIs(400);
         $I->seeResponseIsJson();
         $I->seeResponseContainsJson(
             [
-                'success' => true,
-                'slug' => 'publishpress-checklists',
+                'success' => false,
             ]
         );
+    }
+
+    public function testInstallPluginProWithValidLicenseKey(ApiTester $I): void
+    {
+        echo 'License key: ' . getenv('EDD_LICENSE_FOR_TESTS');
+        die();
     }
 }

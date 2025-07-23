@@ -17,6 +17,9 @@ use PublishPress\Hub\Infrastructure\AdminMenu\AdminMenuService;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuAdapterInterface;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
+use PublishPress\Hub\Infrastructure\Cache\CacheService;
+use PublishPress\Hub\Infrastructure\Cache\Contract\CacheAdapterInterface;
+use PublishPress\Hub\Infrastructure\Cache\Contract\CacheServiceInterface;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\EddSubscriptionAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Remote\WordPressRemoteAdapter;
 use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
@@ -37,6 +40,7 @@ use PublishPress\Hub\Infrastructure\WordPress\Security\WordPressSecurityAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\RestApi\WordPressRestApiAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginLifecycleAdapter;
 use PublishPress\Hub\Infrastructure\RestApi\RestApiService;
+use PublishPress\Hub\Infrastructure\WordPress\Cache\WordPressCacheAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Filesystem\WordPressFileSystemAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapter;
 use PublishPress\Hub\Presentation\Controller\DevComponentsShowcaseController;
@@ -68,6 +72,8 @@ return [
     AbstractDependencies::EDD_SUBSCRIPTION_API_URL => 'https://publishpress.com',
 
     AbstractDependencies::SITE_URL => home_url(),
+
+    AbstractDependencies::CACHE_GROUP => 'publishpress-hub',
 
     AbstractDependencies::SCRIPT_DEBUG => function (): bool {
         return defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;
@@ -156,7 +162,8 @@ return [
             return new EddSubscriptionAdapter(
                 $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
                 $container->get(AbstractDependencies::SITE_URL),
-                $container->get(AbstractDependencies::REMOTE_SERVICE)
+                $container->get(AbstractDependencies::REMOTE_SERVICE),
+                $container->get(AbstractDependencies::CACHE_SERVICE)
             );
         },
 
@@ -170,6 +177,19 @@ return [
     AbstractDependencies::REMOTE_ADAPTER =>
         function (ContainerInterface $container): RemoteServiceInterface {
             return new WordPressRemoteAdapter();
+        },
+
+    AbstractDependencies::CACHE_SERVICE =>
+        function (ContainerInterface $container): CacheServiceInterface {
+            return new CacheService(
+                $container->get(AbstractDependencies::CACHE_GROUP),
+                $container->get(AbstractDependencies::CACHE_ADAPTER)
+            );
+        },
+
+    AbstractDependencies::CACHE_ADAPTER =>
+        function (ContainerInterface $container): CacheAdapterInterface {
+            return new WordPressCacheAdapter();
         },
 
     // Application Services
@@ -250,7 +270,8 @@ return [
         function (ContainerInterface $container): InstallProPluginUseCase {
             return new InstallProPluginUseCase(
                 $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
-                $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
+                $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
+                $container->get(AbstractDependencies::LICENSE_SERVICE)
             );
         },
 

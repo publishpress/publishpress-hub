@@ -29,18 +29,28 @@ class LicenseService implements LicenseServiceInterface, BootableInterface
     {
     }
 
-    public function validateLicense(string $licenseKey, int $downloadId): bool
+    public function isLicenseValid(string $licenseKey, int $downloadId, bool $force = false): bool
     {
-        return $this->licenseAdapter->validateLicense($licenseKey, $downloadId);
+        return $this->licenseAdapter->isLicenseValid($licenseKey, $downloadId, $force);
     }
 
-    public function activateLicense(string $licenseKey, int $downloadId): bool
+    public function isLicenseActive(string $licenseKey, int $downloadId, bool $force = false): bool
     {
-        return $this->licenseAdapter->activateLicense($licenseKey, $downloadId);
+        return $this->licenseAdapter->isLicenseActive($licenseKey, $downloadId, $force);
     }
 
-    public function getLicenseInfo(string $licenseKey, int $downloadId): array
+    public function activateLicense(string $licenseKey, int $downloadId, bool $force = false): bool
     {
-        return $this->licenseAdapter->getLicenseInfo($licenseKey, $downloadId);
+        return $this->licenseAdapter->activateLicense($licenseKey, $downloadId, $force);
+    }
+
+    public function getLicenseInfo(string $licenseKey, int $downloadId, bool $force = false): array
+    {
+        return $this->licenseAdapter->getLicenseInfo($licenseKey, $downloadId, $force);
+    }
+
+    public function getPluginInfo(string $licenseKey, int $downloadId, bool $force = false): array
+    {
+        return $this->licenseAdapter->getPluginInfo($licenseKey, $downloadId, $force);
     }
 }

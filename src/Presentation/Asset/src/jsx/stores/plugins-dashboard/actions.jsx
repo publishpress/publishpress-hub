@@ -203,7 +203,7 @@ export function* installProPlugin(pluginFamilySlug, licenseKey) {
             path: `${API_NAMESPACE}/plugins/${pluginFamilySlug}/install/pro`,
             method: 'POST',
             data: {
-                license_key: licenseKey,
+                licenseKey: licenseKey,
             },
         });
 
