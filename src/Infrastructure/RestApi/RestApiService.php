@@ -79,9 +79,9 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
      * @param string|int $code
      * @return WP_REST_Response|WP_Error
      */
-    public function createErrorResponse(string $message, int $status = 400, $code = 'error')
+    public function createErrorResponse(string $message, int $status = 400, $code = 'error', array $context = [])
     {
-        return $this->restApiAdapter->createErrorResponse($message, $status, $code);
+        return $this->restApiAdapter->createErrorResponse($message, $status, $code, $context);
     }
 
     public function getRequestData(WP_REST_Request $request): array
@@ -115,9 +115,10 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
             return $this->createSuccessResponse($response);
         } catch (WithContextInterface $e) {
             return $this->createErrorResponse(
-                $this->getErrorMessageFromException($e),
+                $e->getMessage(),
                 400,
-                $this->getErrorCodeFromException($e)
+                $this->getErrorCodeFromException($e),
+                $e->getContext()
             );
         } catch (Exception $e) {
             return $this->createErrorResponse(

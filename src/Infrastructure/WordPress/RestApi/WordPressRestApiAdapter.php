@@ -45,7 +45,7 @@ class WordPressRestApiAdapter implements RestApiAdapterInterface
      * @param string|int $code
      * @return WP_REST_Response|WP_Error
      */
-    public function createErrorResponse(string $message, int $status = 400, $code = 'error')
+    public function createErrorResponse(string $message, int $status = 400, $code = 'error', array $context = [])
     {
         // Ensure code is always a string to avoid WordPress REST API issues
         $errorCode = is_numeric($code) ? 'error_' . $code : (string) $code;
@@ -57,6 +57,7 @@ class WordPressRestApiAdapter implements RestApiAdapterInterface
             'success' => false,
             'message' => $message,
             'code' => $errorCode,
+            'context' => $context,
         ], $status);
 
         return $response;
