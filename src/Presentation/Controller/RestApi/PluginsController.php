@@ -9,6 +9,7 @@ use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallProPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallFreePluginUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use WP_REST_Server;
@@ -21,6 +22,7 @@ class PluginsController implements BootableInterface
     private ListPluginsUseCase $listPluginsUseCase;
     private InstallFreePluginUseCase $installFreePluginUseCase;
     private InstallProPluginUseCase $installProPluginUseCase;
+    private ChangePluginActivationUseCase $changePluginActivationUseCase;
     private string $restApiNamespace;
 
     public function __construct(
@@ -28,12 +30,14 @@ class PluginsController implements BootableInterface
         ListPluginsUseCase $listPluginsUseCase,
         InstallFreePluginUseCase $installFreePluginUseCase,
         InstallProPluginUseCase $installProPluginUseCase,
+        ChangePluginActivationUseCase $changePluginActivationUseCase,
         string $restApiNamespace
     ) {
         $this->restApiService = $restApiService;
         $this->listPluginsUseCase = $listPluginsUseCase;
         $this->installFreePluginUseCase = $installFreePluginUseCase;
         $this->installProPluginUseCase = $installProPluginUseCase;
+        $this->changePluginActivationUseCase = $changePluginActivationUseCase;
         $this->restApiNamespace = $restApiNamespace;
     }
 
@@ -72,6 +76,15 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/install/pro',
             WP_REST_Server::CREATABLE,
             $this->installProPluginUseCase,
+            [$this, 'checkPermissions']
+        ));
+
+        // POST /plugins/{familySlug}/(activate|deactivate)
+        $this->restApiService->addRoute(new RestRoute(
+            $this->restApiNamespace,
+            '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/(?P<action>activate|deactivate)',
+            WP_REST_Server::CREATABLE,
+            $this->changePluginActivationUseCase,
             [$this, 'checkPermissions']
         ));
     }

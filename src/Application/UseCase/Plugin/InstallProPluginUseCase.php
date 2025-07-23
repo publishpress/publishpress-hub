@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
+use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use PublishPress\Hub\Domain\Exception\Contract\WithContextInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
@@ -18,15 +19,16 @@ use WP_REST_Request;
 
 class InstallProPluginUseCase implements UseCaseInterface
 {
-    private PluginFamilyRepositoryInterface $pluginFamilyRepository;
+    private PluginStatusService $pluginStatusService;
     private WordPressPluginLifecycleAdapter $pluginLifecycle;
     private LicenseServiceInterface $licenseService;
+
     public function __construct(
-        PluginFamilyRepositoryInterface $pluginFamilyRepository,
+        PluginStatusService $pluginStatusService,
         WordPressPluginLifecycleAdapter $pluginLifecycle,
         LicenseServiceInterface $licenseService
     ) {
-        $this->pluginFamilyRepository = $pluginFamilyRepository;
+        $this->pluginStatusService = $pluginStatusService;
         $this->pluginLifecycle = $pluginLifecycle;
         $this->licenseService = $licenseService;
     }
@@ -43,7 +45,8 @@ class InstallProPluginUseCase implements UseCaseInterface
         $familySlug = $request->get_param('familySlug');
         $licenseKey = $request->get_param('licenseKey');
 
-        $family = $this->pluginFamilyRepository->findFamilyBySlug($familySlug);
+        // Get family with updated status to ensure we have current information
+        $family = $this->pluginStatusService->getPluginFamilyWithUpdatedStatus($familySlug);
 
         if (!$family) {
             throw new PluginNotFoundException(['family_slug' => $familySlug]);
@@ -78,10 +81,12 @@ class InstallProPluginUseCase implements UseCaseInterface
 
             $this->pluginLifecycle->installPlugin($plugin->getSlug());
 
-            $plugin->setInstalled(true);
+            // Update plugin status after installation to reflect current state
+            $this->pluginStatusService->updatePluginStatus($plugin);
 
             return [
                 'slug' => $plugin->getSlug(),
+                'installed' => $plugin->isInstalled(),
             ];
         } catch (WithContextInterface $e) {
             throw new LicenseInvalidException(

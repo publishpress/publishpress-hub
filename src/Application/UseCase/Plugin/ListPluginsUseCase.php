@@ -5,28 +5,24 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
 use PublishPress\Hub\Application\DTO\Plugin\PluginFamilyDto;
+use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
-use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
-use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapter;
 use WP_REST_Request;
 
 class ListPluginsUseCase implements UseCaseInterface
 {
-    private PluginFamilyRepositoryInterface $pluginFamilyRepository;
-    private WordPressPluginStatusAdapter $pluginStatusAdapter;
+    private PluginStatusService $pluginStatusService;
 
-    public function __construct(
-        PluginFamilyRepositoryInterface $pluginFamilyRepository,
-        WordPressPluginStatusAdapter $pluginStatusAdapter
-    ) {
-        $this->pluginFamilyRepository = $pluginFamilyRepository;
-        $this->pluginStatusAdapter = $pluginStatusAdapter;
+    public function __construct(PluginStatusService $pluginStatusService)
+    {
+        $this->pluginStatusService = $pluginStatusService;
     }
 
     public function execute(WP_REST_Request $request): array
     {
-        $families = $this->pluginFamilyRepository->getAllFamilies();
+        // Get all plugin families with updated status from WordPress
+        $families = $this->pluginStatusService->getAllPluginFamiliesWithUpdatedStatus();
 
         $plugins = [];
 
@@ -34,22 +30,6 @@ class ListPluginsUseCase implements UseCaseInterface
         foreach ($families as $family) {
             $freePlugin = $family->getFreePlugin();
             $proPlugin = $family->getProPlugin();
-
-            // Check actual WordPress status for both plugins
-            $freePluginInstalled = $this->pluginStatusAdapter->checkIfPluginIsInstalled($freePlugin);
-            $freePluginActive = $this->pluginStatusAdapter->checkIfPluginIsActive($freePlugin);
-            $freePluginVersion = $this->pluginStatusAdapter->getPluginVersion($freePlugin);
-
-            $proPluginInstalled = $this->pluginStatusAdapter->checkIfPluginIsInstalled($proPlugin);
-            $proPluginActive = $this->pluginStatusAdapter->checkIfPluginIsActive($proPlugin);
-            $proPluginVersion = $this->pluginStatusAdapter->getPluginVersion($proPlugin);
-
-            // Update plugin entities with actual WordPress status
-            $freePlugin->setInstalled($freePluginInstalled, $freePluginVersion);
-            $freePlugin->setActive($freePluginActive);
-
-            $proPlugin->setInstalled($proPluginInstalled, $proPluginVersion);
-            $proPlugin->setActive($proPluginActive);
 
             $dto = new PluginFamilyDto();
             $dto->setName($family->getName())

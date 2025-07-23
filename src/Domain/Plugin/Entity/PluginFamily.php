@@ -120,4 +120,17 @@ class PluginFamily implements PluginFamilyInterface
         $this->proPlugin = $proPlugin;
         return $this;
     }
+
+    public function getInstalledPlugin(): ?PluginInterface
+    {
+        if ($this->freePlugin && $this->freePlugin->isInstalled()) {
+            return $this->freePlugin;
+        }
+
+        if ($this->proPlugin && $this->proPlugin->isInstalled()) {
+            return $this->proPlugin;
+        }
+
+        return null;
+    }
 }

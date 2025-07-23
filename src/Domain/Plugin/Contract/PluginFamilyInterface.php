@@ -31,4 +31,6 @@ interface PluginFamilyInterface
     public function setDescription(string $description): self;
 
     public function setChangelogUrl(string $changelogUrl): self;
+
+    public function getInstalledPlugin(): ?PluginInterface;
 }

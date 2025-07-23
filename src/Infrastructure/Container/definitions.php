@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Infrastructure\Container;
 
 use PublishPress\Hub\Application\Service\DevComponentsShowcase\DevComponentsShowcaseService;
+use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Psr\Container\ContainerInterface;
 use PublishPress\Hub\Infrastructure\WordPress\Hooks\WordPressHooksAdapter;
 use PublishPress\Hub\Application\Service\HubBootstrapService;
 use PublishPress\Hub\Application\Service\PluginsDashboard\PluginsDashboardService;
+use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallFreePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallProPluginUseCase;
@@ -237,6 +239,14 @@ return [
             );
         },
 
+    AbstractDependencies::PLUGIN_STATUS_SERVICE =>
+        function (ContainerInterface $container): PluginStatusService {
+            return new PluginStatusService(
+                $container->get(AbstractDependencies::PLUGIN_STATUS_ADAPTER),
+                $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
+            );
+        },
+
     AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER =>
         function (ContainerInterface $container): WordPressPluginLifecycleAdapter {
             return new WordPressPluginLifecycleAdapter(
@@ -253,15 +263,14 @@ return [
     AbstractDependencies::LIST_PLUGINS_USE_CASE =>
         function (ContainerInterface $container): ListPluginsUseCase {
             return new ListPluginsUseCase(
-                $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
-                $container->get(AbstractDependencies::PLUGIN_STATUS_ADAPTER)
+                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE)
             );
         },
 
     AbstractDependencies::INSTALL_FREE_PLUGIN_USE_CASE =>
         function (ContainerInterface $container): InstallFreePluginUseCase {
             return new InstallFreePluginUseCase(
-                $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
+                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
                 $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
             );
         },
@@ -269,9 +278,17 @@ return [
     AbstractDependencies::INSTALL_PRO_PLUGIN_USE_CASE =>
         function (ContainerInterface $container): InstallProPluginUseCase {
             return new InstallProPluginUseCase(
-                $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
+                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
                 $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
                 $container->get(AbstractDependencies::LICENSE_SERVICE)
+            );
+        },
+
+    AbstractDependencies::CHANGE_PLUGIN_ACTIVATION_USE_CASE =>
+        function (ContainerInterface $container): ChangePluginActivationUseCase {
+            return new ChangePluginActivationUseCase(
+                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+                $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
             );
         },
 
@@ -311,6 +328,7 @@ return [
                 $container->get(AbstractDependencies::LIST_PLUGINS_USE_CASE),
                 $container->get(AbstractDependencies::INSTALL_FREE_PLUGIN_USE_CASE),
                 $container->get(AbstractDependencies::INSTALL_PRO_PLUGIN_USE_CASE),
+                $container->get(AbstractDependencies::CHANGE_PLUGIN_ACTIVATION_USE_CASE),
                 $container->get(AbstractDependencies::HUB_REST_API_NAMESPACE)
             );
         },

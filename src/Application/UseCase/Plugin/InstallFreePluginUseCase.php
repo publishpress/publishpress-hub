@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
+use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
@@ -14,14 +15,14 @@ use WP_REST_Request;
 
 class InstallFreePluginUseCase implements UseCaseInterface
 {
-    private PluginFamilyRepositoryInterface $pluginFamilyRepository;
+    private PluginStatusService $pluginStatusService;
     private WordPressPluginLifecycleAdapter $pluginLifecycle;
 
     public function __construct(
-        PluginFamilyRepositoryInterface $pluginFamilyRepository,
+        PluginStatusService $pluginStatusService,
         WordPressPluginLifecycleAdapter $pluginLifecycle
     ) {
-        $this->pluginFamilyRepository = $pluginFamilyRepository;
+        $this->pluginStatusService = $pluginStatusService;
         $this->pluginLifecycle = $pluginLifecycle;
     }
 
@@ -34,7 +35,8 @@ class InstallFreePluginUseCase implements UseCaseInterface
     {
         $familySlug = $request->get_param('familySlug');
 
-        $family = $this->pluginFamilyRepository->findFamilyBySlug($familySlug);
+        // Get family with updated status to ensure we have current information
+        $family = $this->pluginStatusService->getPluginFamilyWithUpdatedStatus($familySlug);
 
         if (!$family) {
             throw new PluginNotFoundException(['family_slug' => $familySlug]);
@@ -53,10 +55,12 @@ class InstallFreePluginUseCase implements UseCaseInterface
         try {
             $this->pluginLifecycle->installPlugin($plugin->getSlug());
 
-            $plugin->setInstalled(true);
+            // Update plugin status after installation to reflect current state
+            $this->pluginStatusService->updatePluginStatus($plugin);
 
             return [
                 'slug' => $plugin->getSlug(),
+                'installed' => $plugin->isInstalled(),
             ];
         } catch (\Exception $e) {
             throw new PluginInstallException(['plugin_slug' => $plugin->getSlug(), 'error_message' => $e->getMessage()]);
