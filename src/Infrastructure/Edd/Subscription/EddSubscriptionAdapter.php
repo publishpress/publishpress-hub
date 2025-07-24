@@ -43,6 +43,11 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
      */
     private const TIMEOUT = 15;
 
+    /**
+     * User-Agent for API requests
+     */
+    private const USER_AGENT = 'PublishPress-Hub/1.0 (+https://publishpress.com)';
+
     private const LICENSE_STATUS_VALID = 'valid';
     private const LICENSE_STATUS_INACTIVE = 'inactive';
     private const LICENSE_STATUS_INVALID = 'invalid';
@@ -95,7 +100,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
             'timeout' => self::TIMEOUT,
             'sslverify' => true,
             'headers' => [
-                'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'User-Agent' => self::USER_AGENT,
                 'Accept' => 'application/json, text/plain, */*',
                 'Accept-Language' => 'en-US,en;q=0.9',
                 'Accept-Encoding' => 'gzip, deflate, br',
@@ -224,7 +229,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
                 'timeout' => self::TIMEOUT,
                 'sslverify' => true,
                 'headers' => [
-                    'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'User-Agent' => self::USER_AGENT,
                     'Accept' => 'application/json, text/plain, */*',
                     'Accept-Language' => 'en-US,en;q=0.9',
                     'Accept-Encoding' => 'gzip, deflate, br',
@@ -358,7 +363,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
             'timeout' => self::TIMEOUT,
             'sslverify' => true,
             'headers' => [
-                'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'User-Agent' => self::USER_AGENT,
                 'Accept' => 'application/json, text/plain, */*',
                 'Accept-Language' => 'en-US,en;q=0.9',
                 'Accept-Encoding' => 'gzip, deflate, br',
