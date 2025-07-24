@@ -10,7 +10,7 @@ const DEFAULT_THEME = 'default';
 export class ThemeController {
     constructor() {
         this.themes = ['default', 'dark'];
-        this.currentTheme = this.getStoredTheme() || this.getSystemTheme() || DEFAULT_THEME;
+        this.currentTheme = this.getStoredTheme() || DEFAULT_THEME;
         this.init();
     }
 
@@ -116,15 +116,8 @@ export class ThemeController {
      * Listen for system theme changes
      */
     setupSystemThemeListener() {
-        if (window.matchMedia) {
-            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            mediaQuery.addListener((e) => {
-                // Only auto-switch if no manual preference is stored
-                if (!this.getStoredTheme()) {
-                    this.setTheme(e.matches ? 'dark' : 'default');
-                }
-            });
-        }
+        // System theme listener is disabled to always use default theme as fallback
+        // Users can manually switch themes if they prefer
     }
 
     /**
