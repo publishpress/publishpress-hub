@@ -89,4 +89,12 @@ class WordPressRemoteAdapter implements RemoteServiceInterface
     {
         return (int) wp_remote_retrieve_response_code($response);
     }
+
+    /**
+     * @return array
+     */
+    public function getResponseHeaders(array $response): array
+    {
+        return wp_remote_retrieve_headers($response);
+    }
 }

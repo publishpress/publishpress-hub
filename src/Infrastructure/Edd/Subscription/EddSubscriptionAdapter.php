@@ -21,6 +21,7 @@ use PublishPress\Hub\Infrastructure\Cache\Contract\CacheServiceInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseAdapterInterface;
 use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
 use PublishPress\Hub\Infrastructure\Remote\Exception\RemoteAccessDeniedException;
+use PublishPress\Hub\Infrastructure\Remote\HttpDebugger;
 
 class EddSubscriptionAdapter implements LicenseAdapterInterface
 {
@@ -81,19 +82,45 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
             return $data;
         }
 
+        // Prepare request parameters
+        $requestBody = [
+            'edd_action' => 'check_license',
+            'license' => $licenseKey,
+            'item_id' => $downloadId,
+            'url' => $this->siteUrl,
+        ];
+
+        $requestArgs = [
+            'body' => $requestBody,
+            'timeout' => self::TIMEOUT,
+            'sslverify' => true,
+            'headers' => [
+                'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept' => 'application/json, text/plain, */*',
+                'Accept-Language' => 'en-US,en;q=0.9',
+                'Accept-Encoding' => 'gzip, deflate, br',
+                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Connection' => 'keep-alive',
+                'Referer' => 'https://publishpress.com/',
+                'Origin' => 'https://publishpress.com',
+                'Sec-Fetch-Dest' => 'empty',
+                'Sec-Fetch-Mode' => 'cors',
+                'Sec-Fetch-Site' => 'same-origin',
+                'Cache-Control' => 'no-cache',
+                'Pragma' => 'no-cache',
+            ],
+        ];
+
+        // Debug: Log request details
+        HttpDebugger::debugRequest('GET', $this->eddSubscriptionApiUrl, $requestArgs);
+
         $response = $this->remoteService->get(
             $this->eddSubscriptionApiUrl,
-            [
-                'body' => [
-                    'edd_action' => 'check_license',
-                    'license' => $licenseKey,
-                    'item_id' => $downloadId,
-                    'url' => $this->siteUrl,
-                ],
-                'timeout' => self::TIMEOUT,
-                'sslverify' => true,
-            ]
+            $requestArgs
         );
+
+        // Debug: Log response details
+        HttpDebugger::debugResponse($response);
 
         if (is_wp_error($response)) {
             throw new LicenseServerException([
@@ -184,19 +211,45 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         $data = $this->cacheService->get($cacheKey);
 
         if (empty($data) || $force) {
+            // Prepare request parameters
+            $requestBody = [
+                'edd_action' => 'activate_license',
+                'license' => $licenseKey,
+                'item_id' => $downloadId,
+                'url' => $this->siteUrl,
+            ];
+
+            $requestArgs = [
+                'body' => $requestBody,
+                'timeout' => self::TIMEOUT,
+                'sslverify' => true,
+                'headers' => [
+                    'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'Accept' => 'application/json, text/plain, */*',
+                    'Accept-Language' => 'en-US,en;q=0.9',
+                    'Accept-Encoding' => 'gzip, deflate, br',
+                    'Content-Type' => 'application/x-www-form-urlencoded',
+                    'Connection' => 'keep-alive',
+                    'Referer' => 'https://publishpress.com/',
+                    'Origin' => 'https://publishpress.com',
+                    'Sec-Fetch-Dest' => 'empty',
+                    'Sec-Fetch-Mode' => 'cors',
+                    'Sec-Fetch-Site' => 'same-origin',
+                    'Cache-Control' => 'no-cache',
+                    'Pragma' => 'no-cache',
+                ],
+            ];
+
+            // Debug: Log request details
+            HttpDebugger::debugRequest('POST', $this->eddSubscriptionApiUrl, $requestArgs);
+
             $response = $this->remoteService->post(
                 $this->eddSubscriptionApiUrl,
-                [
-                    'body' => [
-                        'edd_action' => 'activate_license',
-                        'license' => $licenseKey,
-                        'item_id' => $downloadId,
-                        'url' => $this->siteUrl,
-                    ],
-                    'timeout' => self::TIMEOUT,
-                    'sslverify' => true,
-                ]
+                $requestArgs
             );
+
+            // Debug: Log response details
+            HttpDebugger::debugResponse($response);
 
             if (is_wp_error($response)) {
                 throw new LicenseServerException([
@@ -292,24 +345,45 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
             return $data;
         }
 
+        // Prepare request parameters
+        $requestBody = [
+            'edd_action' => 'get_version',
+            'item_id' => $downloadId,
+            'license' => $licenseKey,
+            'url' => $this->siteUrl,
+        ];
+
+        $requestArgs = [
+            'body' => $requestBody,
+            'timeout' => self::TIMEOUT,
+            'sslverify' => true,
+            'headers' => [
+                'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept' => 'application/json, text/plain, */*',
+                'Accept-Language' => 'en-US,en;q=0.9',
+                'Accept-Encoding' => 'gzip, deflate, br',
+                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Connection' => 'keep-alive',
+                'Referer' => 'https://publishpress.com/',
+                'Origin' => 'https://publishpress.com',
+                'Sec-Fetch-Dest' => 'empty',
+                'Sec-Fetch-Mode' => 'cors',
+                'Sec-Fetch-Site' => 'same-origin',
+                'Cache-Control' => 'no-cache',
+                'Pragma' => 'no-cache',
+            ],
+        ];
+
+        // Debug: Log request details
+        HttpDebugger::debugRequest('POST', $this->eddSubscriptionApiUrl, $requestArgs);
+
         $response = $this->remoteService->post(
             $this->eddSubscriptionApiUrl,
-            [
-                'body' => [
-                    'edd_action' => 'get_version',
-                    'item_id' => $downloadId,
-                    'license' => $licenseKey,
-                    'url' => $this->siteUrl,
-                ],
-                'timeout' => self::TIMEOUT,
-                'sslverify' => true,
-                'headers' => [
-                    'User-Agent' => 'PublishPressHub/' . PUBLISHPRESS_HUB_VERSION,
-                    'Accept' => 'application/json',
-                    'Content-Type' => 'application/json',
-                ],
-            ]
+            $requestArgs
         );
+
+        // Debug: Log response details
+        HttpDebugger::debugResponse($response);
 
         if (is_wp_error($response)) {
             throw new LicenseServerException([

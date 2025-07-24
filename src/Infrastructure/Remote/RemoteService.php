@@ -96,4 +96,12 @@ class RemoteService implements RemoteServiceInterface
     {
         return $this->remoteAdapter->getResponseStatusCode($response);
     }
+
+    /**
+     * @return array
+     */
+    public function getResponseHeaders(array $response): array
+    {
+        return $this->remoteAdapter->getResponseHeaders($response);
+    }
 }
