@@ -49,8 +49,8 @@ class LicenseService implements LicenseServiceInterface, BootableInterface
         return $this->licenseAdapter->getLicenseInfo($licenseKey, $downloadId, $force);
     }
 
-    public function getPluginInfo(string $licenseKey, int $downloadId, bool $force = false): array
+    public function getLastVersionInfo(string $licenseKey, int $downloadId, bool $force = false): array
     {
-        return $this->licenseAdapter->getPluginInfo($licenseKey, $downloadId, $force);
+        return $this->licenseAdapter->getLastVersionInfo($licenseKey, $downloadId, $force);
     }
 }

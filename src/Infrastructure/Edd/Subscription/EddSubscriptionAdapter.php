@@ -340,7 +340,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
      * @throws LicenseServerException
      * @throws LicenseServerInvalidResponseException
      */
-    public function getPluginInfo(string $licenseKey, int $downloadId, bool $force = false): array
+    public function getLastVersionInfo(string $licenseKey, int $downloadId, bool $force = false): array
     {
         $cacheKey = md5('edd_get_plugin_info_' . $licenseKey . '_' . $downloadId);
 

@@ -1,0 +1,45 @@
+<?php
+
+declare(strict_types=1);
+
+namespace PublishPress\Hub\Infrastructure\WordPressOrg\Api;
+
+use RuntimeException;
+
+class WordPressOrgPluginApiAdapter
+{
+    public function getLastVersionInfo(string $slug): array
+    {
+        if (!function_exists('plugins_api')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+        }
+
+        $pluginInfo = plugins_api('plugin_information', [
+            'slug' => $slug,
+            'fields' => [
+                'short_description' => false,
+                'sections' => false,
+                'requires' => false,
+                'rating' => false,
+                'ratings' => false,
+                'downloaded' => false,
+                'last_updated' => false,
+                'added' => false,
+                'tags' => false,
+                'compatibility' => false,
+                'homepage' => false,
+                'donate_link' => false,
+            ],
+        ]);
+
+        if (is_wp_error($pluginInfo)) {
+            throw new RuntimeException('Failed to get plugin information: ' . $pluginInfo->get_error_message());
+        }
+
+        if (is_object($pluginInfo)) {
+            $pluginInfo = json_decode(json_encode($pluginInfo), true);
+        }
+
+        return $pluginInfo;
+    }
+}

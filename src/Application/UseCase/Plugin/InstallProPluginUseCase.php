@@ -75,11 +75,11 @@ class InstallProPluginUseCase implements UseCaseInterface
                 $this->licenseService->activateLicense($licenseKey, $downloadId);
             }
 
-            $pluginInfo = $this->licenseService->getPluginInfo($licenseKey, $downloadId);
+            $pluginInfo = $this->licenseService->getLastVersionInfo($licenseKey, $downloadId);
 
-            $downloadUrl = $pluginInfo['download_url'];
+            $downloadUrl = $pluginInfo['download_link'];
 
-            $this->pluginLifecycle->installPlugin($plugin->getSlug());
+            $this->pluginLifecycle->installPlugin($plugin->getSlug(), $downloadUrl);
 
             // Update plugin status after installation to reflect current state
             $this->pluginStatusService->updatePluginStatus($plugin);

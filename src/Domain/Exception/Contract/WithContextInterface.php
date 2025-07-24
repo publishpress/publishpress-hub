@@ -12,7 +12,7 @@ interface WithContextInterface
 
     public function hasContext(): bool;
 
-    public function getMessage(): string;
+    public function getMessage();
 
     /**
      * @return int|string

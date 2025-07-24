@@ -45,6 +45,7 @@ use PublishPress\Hub\Infrastructure\RestApi\RestApiService;
 use PublishPress\Hub\Infrastructure\WordPress\Cache\WordPressCacheAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Filesystem\WordPressFileSystemAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapter;
+use PublishPress\Hub\Infrastructure\WordPressOrg\Api\WordPressOrgPluginApiAdapter;
 use PublishPress\Hub\Presentation\Controller\DevComponentsShowcaseController;
 use PublishPress\Hub\Presentation\Controller\MainMenuController;
 use PublishPress\Hub\Presentation\Controller\PluginsDashboardController;
@@ -194,6 +195,11 @@ return [
             return new WordPressCacheAdapter();
         },
 
+    AbstractDependencies::FREE_PLUGIN_API =>
+        function (ContainerInterface $container): WordPressOrgPluginApiAdapter {
+            return new WordPressOrgPluginApiAdapter();
+        },
+
     // Application Services
     AbstractDependencies::PLUGIN_BOOTSTRAP_SERVICE =>
         function (ContainerInterface $container): HubBootstrapService {
@@ -271,7 +277,8 @@ return [
         function (ContainerInterface $container): InstallFreePluginUseCase {
             return new InstallFreePluginUseCase(
                 $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-                $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
+                $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
+                $container->get(AbstractDependencies::FREE_PLUGIN_API)
             );
         },
 

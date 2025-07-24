@@ -16,5 +16,5 @@ interface LicenseServiceInterface
 
     public function getLicenseInfo(string $licenseKey, int $downloadId, bool $force = false): array;
 
-    public function getPluginInfo(string $licenseKey, int $downloadId, bool $force = false): array;
+    public function getLastVersionInfo(string $licenseKey, int $downloadId, bool $force = false): array;
 }

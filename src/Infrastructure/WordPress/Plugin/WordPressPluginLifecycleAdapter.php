@@ -17,39 +17,13 @@ class WordPressPluginLifecycleAdapter
         $this->fileSystemAdapter = $fileSystemAdapter;
     }
 
-    public function installPlugin(string $slug): bool
+    public function installPlugin(string $slug, string $downloadUrl): bool
     {
-        if (!function_exists('plugins_api')) {
-            require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
-        }
+        $tmpFile = download_url($downloadUrl);
 
         if (!function_exists('download_url')) {
             require_once ABSPATH . 'wp-admin/includes/file.php';
         }
-
-        $api = plugins_api('plugin_information', [
-            'slug' => $slug,
-            'fields' => [
-                'short_description' => false,
-                'sections' => false,
-                'requires' => false,
-                'rating' => false,
-                'ratings' => false,
-                'downloaded' => false,
-                'last_updated' => false,
-                'added' => false,
-                'tags' => false,
-                'compatibility' => false,
-                'homepage' => false,
-                'donate_link' => false,
-            ],
-        ]);
-
-        if (is_wp_error($api)) {
-            throw new RuntimeException('Failed to get plugin information: ' . $api->get_error_message());
-        }
-
-        $tmpFile = download_url($api->download_link);
 
         if (is_wp_error($tmpFile)) {
             throw new RuntimeException('Failed to download plugin: ' . $tmpFile->get_error_message());

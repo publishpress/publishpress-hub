@@ -103,6 +103,8 @@ abstract class AbstractDependencies
 
     public const PLUGIN_STATUS_SERVICE = 'publishpress-hub.application.plugin-status.service';
 
+    public const FREE_PLUGIN_API = 'publishpress-hub.infrastructure.free-plugin-api';
+
     // Adapters
     public const ADMIN_MENU_ADAPTER = 'publishpress-hub.infrastructure.admin-menu.adapter';
 
