@@ -45,6 +45,7 @@ button.publishpress-hub-filter-button:hover {
 /* FilterBar Component */
 .publishpress-hub-filter-container {
     padding-bottom: var(--pp-hub-spacing-lg);
+    margin-top: var(--pp-hub-spacing-xl);
 }
 
 .publishpress-hub-filter-mobile {

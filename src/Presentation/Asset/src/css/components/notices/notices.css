@@ -1,5 +1,7 @@
 .pp-hub-notices-list {
-    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .pp-hub-snackbar-list {

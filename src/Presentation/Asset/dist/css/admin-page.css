@@ -1596,6 +1596,7 @@ button.publishpress-hub-filter-button:hover {
 /* FilterBar Component */
 .publishpress-hub-filter-container {
     padding-bottom: var(--pp-hub-spacing-lg);
+    margin-top: var(--pp-hub-spacing-xl);
 }
 
 .publishpress-hub-filter-mobile {
@@ -1828,7 +1829,9 @@ button.publishpress-hub-filter-button:hover {
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/notices/notices.css ***!
   \*****************************************************************************************************************/
 .pp-hub-notices-list {
-    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .pp-hub-snackbar-list {
