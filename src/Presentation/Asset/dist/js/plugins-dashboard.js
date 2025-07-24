@@ -8100,14 +8100,6 @@ var getPlugins = function getPlugins(state) {
 };
 var sortPlugins = function sortPlugins(pluginFamily) {
   return pluginFamily.sort(function (a, b) {
-    // First sort by activation status
-    if (a.hasAnyVersionActive && !b.hasAnyVersionActive) {
-      return -1;
-    }
-    if (!a.hasAnyVersionActive && b.hasAnyVersionActive) {
-      return 1;
-    }
-
     // Then sort by installed status
     if (a.hasAnyVersionInstalled && !b.hasAnyVersionInstalled) {
       return -1;
