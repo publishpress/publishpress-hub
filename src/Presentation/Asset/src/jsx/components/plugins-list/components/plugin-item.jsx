@@ -67,44 +67,46 @@ const PluginItemComponent = ({
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <div className='pp-hub-plugins-list-item-icon'>
-                <img src={iconSrc} alt={pluginFamily.name} />
-            </div>
-            <div className='pp-hub-plugins-list-item-info'>
-                <Tooltip
-                    text={tooltipText}
-                    placement='top'
-                    useCustom={true}
-                >
-                    <div className='pp-hub-plugins-list-item-name'>
-                        {status.isInstalled && (
-                            <ToggleControl
-                                disabled={!pluginFamily.hasAnyVersionInstalled}
-                                checked={pluginFamily.hasAnyVersionActive}
-                                onChange={(newValue) => {
-                                    if (newValue) {
-                                        onActivate(pluginFamily);
-                                    } else {
-                                        onDeactivate(pluginFamily);
-                                    }
-                                }}
-                            />
-                        )}
-                        <span>{displayName}</span>
-                    </div>
-                </Tooltip>
-                <div className='pp-hub-plugins-list-item-description'>
-                    {pluginFamily.description}
+            <div className='pp-hub-plugins-list-item-content'>
+                <div className='pp-hub-plugins-list-item-icon'>
+                    <img src={iconSrc} alt={pluginFamily.name} />
                 </div>
-                <div className='pp-hub-plugins-list-item-inline-actions'>
-                    {actionButtonsData.map((buttonProps, index) => (
-                        <Fragment key={buttonProps.key}>
-                            <Button {...buttonProps} />
-                            {index < actionButtonsData.length - 1 && (
-                                <span>|</span>
+                <div className='pp-hub-plugins-list-item-info'>
+                    <Tooltip
+                        text={tooltipText}
+                        placement='top'
+                        useCustom={true}
+                    >
+                        <div className='pp-hub-plugins-list-item-name'>
+                            {status.isInstalled && (
+                                <ToggleControl
+                                    disabled={!pluginFamily.hasAnyVersionInstalled}
+                                    checked={pluginFamily.hasAnyVersionActive}
+                                    onChange={(newValue) => {
+                                        if (newValue) {
+                                            onActivate(pluginFamily);
+                                        } else {
+                                            onDeactivate(pluginFamily);
+                                        }
+                                    }}
+                                />
                             )}
-                        </Fragment>
-                    ))}
+                            <span>{displayName}</span>
+                        </div>
+                    </Tooltip>
+                    <div className='pp-hub-plugins-list-item-description'>
+                        {pluginFamily.description}
+                    </div>
+                    <div className='pp-hub-plugins-list-item-inline-actions'>
+                        {actionButtonsData.map((buttonProps, index) => (
+                            <Fragment key={buttonProps.key}>
+                                <Button {...buttonProps} />
+                                {index < actionButtonsData.length - 1 && (
+                                    <span>|</span>
+                                )}
+                            </Fragment>
+                        ))}
+                    </div>
                 </div>
             </div>
             <div className='pp-hub-plugins-list-item-actions'>

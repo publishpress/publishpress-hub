@@ -18,6 +18,7 @@
     min-height: 160px;
     transition: background-color 0.1s ease-in-out;
     box-sizing: border-box;
+    justify-content: space-between;
 }
 
 .pp-hub-plugins-list-item:hover {
@@ -33,6 +34,14 @@
 .pp-hub-plugins-list-item:last-child {
     border-bottom-left-radius: var(--pp-hub-radius-sm);
     border-bottom-right-radius: var(--pp-hub-radius-sm);
+}
+
+.pp-hub-plugins-list-item-content {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-lg);
+    align-items: flex-start;
+    width: 100%;
 }
 
 .pp-hub-plugins-list-item-icon {
@@ -53,7 +62,6 @@
     display: flex;
     flex-direction: column;
     gap: var(--pp-hub-spacing-sm);
-    width: 600px;
 }
 
 .pp-hub-plugins-list-item-name {
@@ -75,6 +83,13 @@
 .pp-hub-plugins-list-item-description {
     font-size: var(--pp-hub-font-size-md);
     color: var(--pp-hub-text-secondary);
+    height: 24px;
+    line-height: 24px;
+    min-height: 24px;
+    max-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .pp-hub-plugins-list-item-status {
@@ -89,6 +104,8 @@
     gap: var(--pp-hub-spacing-sm);
     width: 100%;
     justify-content: flex-end;
+    min-width: 300px;
+    max-width: 300px;
 }
 
 .pp-hub-plugins-list-item-actions .pp-hub-button {

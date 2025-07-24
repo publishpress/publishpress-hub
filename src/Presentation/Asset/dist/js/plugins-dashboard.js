@@ -5927,6 +5927,8 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave
   }, /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-plugins-list-item-content"
+  }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-icon"
   }, /*#__PURE__*/React.createElement("img", {
     src: iconSrc,
@@ -5957,7 +5959,7 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     return /*#__PURE__*/React.createElement(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: buttonProps.key
     }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_6__.Button, buttonProps), index < actionButtonsData.length - 1 && /*#__PURE__*/React.createElement("span", null, "|"));
-  }))), /*#__PURE__*/React.createElement("div", {
+  })))), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-actions"
   }, /*#__PURE__*/React.createElement(_status_flag__WEBPACK_IMPORTED_MODULE_4__.StatusFlag, {
     pluginFamily: pluginFamily,
