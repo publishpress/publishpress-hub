@@ -15,6 +15,7 @@ use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallFreePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallProPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UninstallPluginUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\UpgradePluginUseCase;
 use PublishPress\Hub\Domain\Plugin\Repository\PluginFamilyRepository;
 use PublishPress\Hub\Infrastructure\AdminMenu\AdminMenuService;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuAdapterInterface;
@@ -78,6 +79,8 @@ return [
     AbstractDependencies::SITE_URL => home_url(),
 
     AbstractDependencies::CACHE_GROUP => 'publishpress-hub',
+
+    AbstractDependencies::USER_AGENT => 'PublishPress-Hub/' . PUBLISHPRESS_HUB_VERSION,
 
     AbstractDependencies::SCRIPT_DEBUG => function (): bool {
         return defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;
@@ -166,6 +169,7 @@ return [
             return new EddSubscriptionAdapter(
                 $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
                 $container->get(AbstractDependencies::SITE_URL),
+                $container->get(AbstractDependencies::PLUGIN_VERSION),
                 $container->get(AbstractDependencies::REMOTE_SERVICE),
                 $container->get(AbstractDependencies::CACHE_SERVICE)
             );
@@ -308,6 +312,15 @@ return [
             );
         },
 
+    AbstractDependencies::UPGRADE_PLUGIN_USE_CASE =>
+        function (ContainerInterface $container): UpgradePluginUseCase {
+            return new UpgradePluginUseCase(
+                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+                $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
+                $container->get(AbstractDependencies::LICENSE_SERVICE)
+            );
+        },
+
     // Presentation Services
     AbstractDependencies::MAIN_MENU_CONTROLLER =>
         function (ContainerInterface $container): MainMenuController {
@@ -340,13 +353,14 @@ return [
     AbstractDependencies::REST_API_PLUGINS_CONTROLLER =>
         function (ContainerInterface $container): PluginsController {
             return new PluginsController(
+                $container->get(AbstractDependencies::HUB_REST_API_NAMESPACE),
                 $container->get(AbstractDependencies::REST_API_SERVICE),
                 $container->get(AbstractDependencies::LIST_PLUGINS_USE_CASE),
                 $container->get(AbstractDependencies::INSTALL_FREE_PLUGIN_USE_CASE),
                 $container->get(AbstractDependencies::INSTALL_PRO_PLUGIN_USE_CASE),
                 $container->get(AbstractDependencies::CHANGE_PLUGIN_ACTIVATION_USE_CASE),
                 $container->get(AbstractDependencies::UNINSTALL_PLUGIN_USE_CASE),
-                $container->get(AbstractDependencies::HUB_REST_API_NAMESPACE)
+                $container->get(AbstractDependencies::UPGRADE_PLUGIN_USE_CASE)
             );
         },
 

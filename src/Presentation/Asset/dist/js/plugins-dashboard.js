@@ -7632,10 +7632,10 @@ function upgradePluginToPro(pluginFamilySlug, licenseKey) {
         licenseKey = licenseKey.trim();
         _context16.n = 3;
         return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
-          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/upgrade-to-pro"),
+          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/upgrade"),
           method: 'POST',
           data: {
-            license_key: licenseKey
+            licenseKey: licenseKey
           }
         });
       case 3:

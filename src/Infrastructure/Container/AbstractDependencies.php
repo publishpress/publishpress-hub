@@ -35,6 +35,8 @@ abstract class AbstractDependencies
 
     public const PLUGIN_TEMPLATES_BASE_PATH = 'publishpress-hub.constants.plugin-templates-base-path';
 
+    public const USER_AGENT = 'publishpress-hub.constants.user-agent';
+
     public const HUB_REST_API_NAMESPACE = 'publishpress-hub.constants.hub-rest-api-namespace';
 
     public const SCRIPT_DEBUG = 'publishpress-hub.constants.script-debug';
@@ -100,6 +102,8 @@ abstract class AbstractDependencies
     public const CHANGE_PLUGIN_ACTIVATION_USE_CASE = 'publishpress-hub.application.use-case.plugin.change-plugin-activation';
 
     public const UNINSTALL_PLUGIN_USE_CASE = 'publishpress-hub.application.use-case.plugin.uninstall';
+
+    public const UPGRADE_PLUGIN_USE_CASE = 'publishpress-hub.application.use-case.plugin.upgrade';
 
     public const PLUGIN_STATUS_ADAPTER = 'publishpress-hub.infrastructure.plugin-status.adapter';
 

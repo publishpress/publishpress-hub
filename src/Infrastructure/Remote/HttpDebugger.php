@@ -118,7 +118,7 @@ class HttpDebugger
      */
     private static function isDebugEnabled(): bool
     {
-        return defined('WP_DEBUG') && WP_DEBUG;
+        return defined('PUBLISHPRESS_HUB_DEBUG_REMOTE') && constant('PUBLISHPRESS_HUB_DEBUG_REMOTE');
     }
 
     /**

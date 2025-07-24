@@ -365,10 +365,10 @@ export function* upgradePluginToPro(pluginFamilySlug, licenseKey) {
         licenseKey = licenseKey.trim();
 
         const data = yield apiFetch({
-            path: `${API_NAMESPACE}/plugins/${pluginFamilySlug}/upgrade-to-pro`,
+            path: `${API_NAMESPACE}/plugins/${pluginFamilySlug}/upgrade`,
             method: 'POST',
             data: {
-                license_key: licenseKey,
+                licenseKey: licenseKey,
             },
         });
 

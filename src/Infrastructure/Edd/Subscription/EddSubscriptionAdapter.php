@@ -43,11 +43,6 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
      */
     private const TIMEOUT = 15;
 
-    /**
-     * User-Agent for API requests
-     */
-    private const USER_AGENT = 'PublishPress-Hub/1.0 (+https://publishpress.com)';
-
     private const LICENSE_STATUS_VALID = 'valid';
     private const LICENSE_STATUS_INACTIVE = 'inactive';
     private const LICENSE_STATUS_INVALID = 'invalid';
@@ -61,9 +56,12 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
     private const LICENSE_STATUS_ITEM_NAME_MISMATCH = 'item_name_mismatch';
     private const LICENSE_STATUS_SITE_INACTIVE = 'site_inactive';
 
+    private string $userAgent;
+
     public function __construct(
         string $eddSubscriptionApiUrl,
         string $siteUrl,
+        string $userAgent,
         RemoteServiceInterface $remoteService,
         CacheServiceInterface $cacheService
     ) {
@@ -71,6 +69,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         $this->siteUrl = $siteUrl;
         $this->remoteService = $remoteService;
         $this->cacheService = $cacheService;
+        $this->userAgent = $userAgent;
     }
 
     /**
@@ -99,21 +98,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
             'body' => $requestBody,
             'timeout' => self::TIMEOUT,
             'sslverify' => true,
-            'headers' => [
-                'User-Agent' => self::USER_AGENT,
-                'Accept' => 'application/json, text/plain, */*',
-                'Accept-Language' => 'en-US,en;q=0.9',
-                'Accept-Encoding' => 'gzip, deflate, br',
-                'Content-Type' => 'application/x-www-form-urlencoded',
-                'Connection' => 'keep-alive',
-                'Referer' => 'https://publishpress.com/',
-                'Origin' => 'https://publishpress.com',
-                'Sec-Fetch-Dest' => 'empty',
-                'Sec-Fetch-Mode' => 'cors',
-                'Sec-Fetch-Site' => 'same-origin',
-                'Cache-Control' => 'no-cache',
-                'Pragma' => 'no-cache',
-            ],
+            'headers' => $this->getRequestHeaders(),
         ];
 
         // Debug: Log request details
@@ -228,21 +213,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
                 'body' => $requestBody,
                 'timeout' => self::TIMEOUT,
                 'sslverify' => true,
-                'headers' => [
-                    'User-Agent' => self::USER_AGENT,
-                    'Accept' => 'application/json, text/plain, */*',
-                    'Accept-Language' => 'en-US,en;q=0.9',
-                    'Accept-Encoding' => 'gzip, deflate, br',
-                    'Content-Type' => 'application/x-www-form-urlencoded',
-                    'Connection' => 'keep-alive',
-                    'Referer' => 'https://publishpress.com/',
-                    'Origin' => 'https://publishpress.com',
-                    'Sec-Fetch-Dest' => 'empty',
-                    'Sec-Fetch-Mode' => 'cors',
-                    'Sec-Fetch-Site' => 'same-origin',
-                    'Cache-Control' => 'no-cache',
-                    'Pragma' => 'no-cache',
-                ],
+                'headers' => $this->getRequestHeaders(),
             ];
 
             // Debug: Log request details
@@ -362,21 +333,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
             'body' => $requestBody,
             'timeout' => self::TIMEOUT,
             'sslverify' => true,
-            'headers' => [
-                'User-Agent' => self::USER_AGENT,
-                'Accept' => 'application/json, text/plain, */*',
-                'Accept-Language' => 'en-US,en;q=0.9',
-                'Accept-Encoding' => 'gzip, deflate, br',
-                'Content-Type' => 'application/x-www-form-urlencoded',
-                'Connection' => 'keep-alive',
-                'Referer' => 'https://publishpress.com/',
-                'Origin' => 'https://publishpress.com',
-                'Sec-Fetch-Dest' => 'empty',
-                'Sec-Fetch-Mode' => 'cors',
-                'Sec-Fetch-Site' => 'same-origin',
-                'Cache-Control' => 'no-cache',
-                'Pragma' => 'no-cache',
-            ],
+            'headers' => $this->getRequestHeaders(),
         ];
 
         // Debug: Log request details
@@ -414,5 +371,22 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         $this->cacheService->set($cacheKey, $data, self::CACHE_TTL);
 
         return $data;
+    }
+
+    private function getRequestHeaders(): array
+    {
+        return [
+            'User-Agent' => $this->userAgent,
+            'Accept' => 'application/json, text/plain, */*',
+            'Accept-Language' => 'en-US,en;q=0.9',
+            'Accept-Encoding' => 'gzip, deflate, br',
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'Connection' => 'keep-alive',
+            'Sec-Fetch-Dest' => 'empty',
+            'Sec-Fetch-Mode' => 'cors',
+            'Sec-Fetch-Site' => 'same-origin',
+            'Cache-Control' => 'no-cache',
+            'Pragma' => 'no-cache',
+        ];
     }
 }
