@@ -92,6 +92,14 @@ const PluginItemComponent = ({
                                 />
                             )}
                             <span>{displayName}</span>
+                            <StatusFlag
+                                pluginFamily={pluginFamily}
+                                isInstalling={isInstalling}
+                                isUninstalling={isUninstalling}
+                                isUpgrading={isUpgrading}
+                                isDeactivating={isDeactivating}
+                                isActivating={isActivating}
+                            />
                         </div>
                     </Tooltip>
                     <div className='pp-hub-plugins-list-item-description'>
@@ -110,14 +118,6 @@ const PluginItemComponent = ({
                 </div>
             </div>
             <div className='pp-hub-plugins-list-item-actions'>
-                <StatusFlag
-                    pluginFamily={pluginFamily}
-                    isInstalling={isInstalling}
-                    isUninstalling={isUninstalling}
-                    isUpgrading={isUpgrading}
-                    isDeactivating={isDeactivating}
-                    isActivating={isActivating}
-                />
                 <ActionButton
                     plugin={pluginFamily}
                     inProgress={inProgress}

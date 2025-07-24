@@ -5951,7 +5951,14 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
         onDeactivate(pluginFamily);
       }
     }
-  }), /*#__PURE__*/React.createElement("span", null, displayName))), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("span", null, displayName), /*#__PURE__*/React.createElement(_status_flag__WEBPACK_IMPORTED_MODULE_4__.StatusFlag, {
+    pluginFamily: pluginFamily,
+    isInstalling: isInstalling,
+    isUninstalling: isUninstalling,
+    isUpgrading: isUpgrading,
+    isDeactivating: isDeactivating,
+    isActivating: isActivating
+  }))), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-description"
   }, pluginFamily.description), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-inline-actions"
@@ -5961,14 +5968,7 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_6__.Button, buttonProps), index < actionButtonsData.length - 1 && /*#__PURE__*/React.createElement("span", null, "|"));
   })))), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-actions"
-  }, /*#__PURE__*/React.createElement(_status_flag__WEBPACK_IMPORTED_MODULE_4__.StatusFlag, {
-    pluginFamily: pluginFamily,
-    isInstalling: isInstalling,
-    isUninstalling: isUninstalling,
-    isUpgrading: isUpgrading,
-    isDeactivating: isDeactivating,
-    isActivating: isActivating
-  }), /*#__PURE__*/React.createElement(_action_button__WEBPACK_IMPORTED_MODULE_5__.ActionButton, {
+  }, /*#__PURE__*/React.createElement(_action_button__WEBPACK_IMPORTED_MODULE_5__.ActionButton, {
     plugin: pluginFamily,
     inProgress: inProgress,
     onInstall: onInstall,
