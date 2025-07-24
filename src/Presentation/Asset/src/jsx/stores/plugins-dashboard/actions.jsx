@@ -392,8 +392,6 @@ export function* upgradePluginToPro(pluginFamilySlug, licenseKey) {
     } catch (error) {
         yield {type: 'UPGRADE_PLUGIN_TO_PRO_ERROR', data: {pluginFamilySlug, error: error}};
 
-        yield createNotice(__('Plugin upgrade to Pro failed', 'publishpress-hub'), 'error');
-
         return {
             success: false,
             pluginFamilySlug,
@@ -442,8 +440,6 @@ export function* resolveConflict(pluginFamily, pluginToKeep) {
         }
     } catch (error) {
         yield {type: 'RESOLVE_CONFLICT_ERROR', data: {pluginFamily, pluginToKeep, error: error}};
-
-        yield createNotice(__('Failed to resolve conflict', 'publishpress-hub'), 'error');
 
         return {
             success: false,

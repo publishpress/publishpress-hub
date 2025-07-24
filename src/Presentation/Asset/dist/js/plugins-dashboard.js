@@ -7679,7 +7679,7 @@ function upgradePluginToPro(pluginFamilySlug, licenseKey) {
       case 7:
         throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin upgrade to Pro failed');
       case 8:
-        _context16.n = 12;
+        _context16.n = 11;
         break;
       case 9:
         _context16.p = 9;
@@ -7693,16 +7693,13 @@ function upgradePluginToPro(pluginFamilySlug, licenseKey) {
           }
         };
       case 10:
-        _context16.n = 11;
-        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugin upgrade to Pro failed', 'publishpress-hub'), 'error');
-      case 11:
         return _context16.a(2, {
           success: false,
           pluginFamilySlug: pluginFamilySlug,
           licenseKey: licenseKey,
           error: _t7
         });
-      case 12:
+      case 11:
         return _context16.a(2);
     }
   }, _marked16, null, [[0, 9]]);
@@ -7771,7 +7768,7 @@ function resolveConflict(pluginFamily, pluginToKeep) {
       case 8:
         throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Failed to resolve conflict');
       case 9:
-        _context17.n = 13;
+        _context17.n = 12;
         break;
       case 10:
         _context17.p = 10;
@@ -7786,16 +7783,13 @@ function resolveConflict(pluginFamily, pluginToKeep) {
           }
         };
       case 11:
-        _context17.n = 12;
-        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Failed to resolve conflict', 'publishpress-hub'), 'error');
-      case 12:
         return _context17.a(2, {
           success: false,
           pluginFamily: pluginFamily,
           pluginToKeep: pluginToKeep,
           error: _t8
         });
-      case 13:
+      case 12:
         return _context17.a(2);
     }
   }, _marked17, null, [[0, 10]]);
