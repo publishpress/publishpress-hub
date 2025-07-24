@@ -30,24 +30,6 @@ export const useActionButtons = (
         const buttons = [];
 
         if (isInstalled && !hasConflictingInstallations) {
-            if (isActive) {
-                buttons.push({
-                    key: 'deactivate',
-                    variant: 'link',
-                    text: __('Deactivate', 'publishpress-hub'),
-                    isLoading: isDeactivating,
-                    onClick: () => onDeactivate(pluginFamily),
-                });
-            } else {
-                buttons.push({
-                    key: 'activate',
-                    variant: 'link',
-                    text: __('Activate', 'publishpress-hub'),
-                    isLoading: isActivating,
-                    onClick: () => onActivate(pluginFamily),
-                });
-            }
-
             buttons.push({
                 key: 'uninstall',
                 variant: 'link',

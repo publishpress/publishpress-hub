@@ -77,17 +77,19 @@ const PluginItemComponent = ({
                     useCustom={true}
                 >
                     <div className='pp-hub-plugins-list-item-name'>
-                        <ToggleControl
-                            disabled={!pluginFamily.hasAnyVersionInstalled}
-                            checked={pluginFamily.hasAnyVersionActive}
-                            onChange={(newValue) => {
-                                if (newValue) {
-                                    onActivate(pluginFamily);
-                                } else {
-                                    onDeactivate(pluginFamily);
-                                }
-                            }}
-                        />
+                        {status.isInstalled && (
+                            <ToggleControl
+                                disabled={!pluginFamily.hasAnyVersionInstalled}
+                                checked={pluginFamily.hasAnyVersionActive}
+                                onChange={(newValue) => {
+                                    if (newValue) {
+                                        onActivate(pluginFamily);
+                                    } else {
+                                        onDeactivate(pluginFamily);
+                                    }
+                                }}
+                            />
+                        )}
                         <span>{displayName}</span>
                     </div>
                 </Tooltip>

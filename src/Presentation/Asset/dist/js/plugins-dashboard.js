@@ -5939,7 +5939,7 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     useCustom: true
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-name"
-  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+  }, status.isInstalled && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
     disabled: !pluginFamily.hasAnyVersionInstalled,
     checked: pluginFamily.hasAnyVersionActive,
     onChange: function onChange(newValue) {
@@ -6155,27 +6155,6 @@ var useActionButtons = function useActionButtons(pluginFamily, status, loadingSt
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     var buttons = [];
     if (isInstalled && !hasConflictingInstallations) {
-      if (isActive) {
-        buttons.push({
-          key: 'deactivate',
-          variant: 'link',
-          text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Deactivate', 'publishpress-hub'),
-          isLoading: isDeactivating,
-          onClick: function onClick() {
-            return onDeactivate(pluginFamily);
-          }
-        });
-      } else {
-        buttons.push({
-          key: 'activate',
-          variant: 'link',
-          text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate', 'publishpress-hub'),
-          isLoading: isActivating,
-          onClick: function onClick() {
-            return onActivate(pluginFamily);
-          }
-        });
-      }
       buttons.push({
         key: 'uninstall',
         variant: 'link',
