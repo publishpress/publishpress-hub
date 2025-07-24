@@ -5884,6 +5884,9 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     _useState2 = _slicedToArray(_useState, 2),
     isHovered = _useState2[0],
     setIsHovered = _useState2[1];
+  var _useScreenSize = (0,_hooks__WEBPACK_IMPORTED_MODULE_7__.useScreenSize)(),
+    isSmallMobile = _useScreenSize.isSmallMobile,
+    isMobile = _useScreenSize.isMobile;
 
   // Extract individual progress states for backwards compatibility
   var isInstalling = progressStates.isInstalling,
@@ -5922,8 +5925,33 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
   }, []);
   var statusFlagClass = status.statusFlagClass,
     tooltipText = status.tooltipText;
+
+  // Responsive class names
+  var responsiveClasses = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var classes = ['pp-hub-plugins-list-item', statusFlagClass];
+    if (isHovered) {
+      classes.push('hovered');
+    }
+    if (isSmallMobile) {
+      classes.push('is-small-mobile');
+    } else if (isMobile) {
+      classes.push('is-mobile');
+    }
+    return classes.join(' ');
+  }, [statusFlagClass, isHovered, isSmallMobile, isMobile]);
+
+  // Show toggle control based on screen size
+  var shouldShowToggle = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    // Hide toggle on small mobile screens
+    if (isSmallMobile) {
+      return false;
+    }
+
+    // Show toggle on larger screens
+    return status.isInstalled;
+  }, [status.isInstalled, isSmallMobile]);
   return /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-plugins-list-item ".concat(statusFlagClass, " ").concat(isHovered ? 'hovered' : ''),
+    className: responsiveClasses,
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave
   }, /*#__PURE__*/React.createElement("div", {
@@ -5941,7 +5969,7 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     useCustom: true
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-name"
-  }, status.isInstalled && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+  }, shouldShowToggle && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
     disabled: status.hasConflictingInstallations,
     checked: pluginFamily.hasAnyVersionActive,
     onChange: function onChange(newValue) {
@@ -5963,6 +5991,12 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
   }, pluginFamily.description), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-inline-actions"
   }, actionButtonsData.map(function (buttonProps, index) {
+    if (buttonProps.key === 'activate' && !isSmallMobile) {
+      return null;
+    }
+    if (buttonProps.key === 'deactivate' && !isSmallMobile) {
+      return null;
+    }
     return /*#__PURE__*/React.createElement(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: buttonProps.key
     }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_6__.Button, buttonProps), index < actionButtonsData.length - 1 && /*#__PURE__*/React.createElement("span", null, "|"));
@@ -6112,13 +6146,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   useModalManager: () => (/* reexport safe */ _use_modal_manager__WEBPACK_IMPORTED_MODULE_0__.useModalManager),
 /* harmony export */   usePluginActions: () => (/* reexport safe */ _use_plugin_actions__WEBPACK_IMPORTED_MODULE_1__.usePluginActions),
 /* harmony export */   usePluginDisplayInfo: () => (/* reexport safe */ _use_plugin_display_info__WEBPACK_IMPORTED_MODULE_4__.usePluginDisplayInfo),
-/* harmony export */   usePluginStatus: () => (/* reexport safe */ _use_plugin_status__WEBPACK_IMPORTED_MODULE_2__.usePluginStatus)
+/* harmony export */   usePluginStatus: () => (/* reexport safe */ _use_plugin_status__WEBPACK_IMPORTED_MODULE_2__.usePluginStatus),
+/* harmony export */   useScreenSize: () => (/* reexport safe */ _use_screen_size__WEBPACK_IMPORTED_MODULE_5__.useScreenSize)
 /* harmony export */ });
 /* harmony import */ var _use_modal_manager__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./use-modal-manager */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-modal-manager.jsx");
 /* harmony import */ var _use_plugin_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./use-plugin-actions */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-plugin-actions.jsx");
 /* harmony import */ var _use_plugin_status__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./use-plugin-status */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx");
 /* harmony import */ var _use_action_buttons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./use-action-buttons */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx");
 /* harmony import */ var _use_plugin_display_info__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./use-plugin-display-info */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-plugin-display-info.jsx");
+/* harmony import */ var _use_screen_size__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./use-screen-size */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-screen-size.jsx");
+
 
 
 
@@ -6157,6 +6194,27 @@ var useActionButtons = function useActionButtons(pluginFamily, status, loadingSt
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     var buttons = [];
     if (isInstalled && !hasConflictingInstallations) {
+      if (isActive) {
+        buttons.push({
+          key: 'deactivate',
+          variant: 'link',
+          text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Deactivate', 'publishpress-hub'),
+          isLoading: isDeactivating,
+          onClick: function onClick() {
+            return onDeactivate(pluginFamily);
+          }
+        });
+      } else {
+        buttons.push({
+          key: 'activate',
+          variant: 'link',
+          text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate', 'publishpress-hub'),
+          isLoading: isActivating,
+          onClick: function onClick() {
+            return onActivate(pluginFamily);
+          }
+        });
+      }
       buttons.push({
         key: 'uninstall',
         variant: 'link',
@@ -6168,7 +6226,7 @@ var useActionButtons = function useActionButtons(pluginFamily, status, loadingSt
         }
       });
     }
-    if (!isInstalled && !hasConflictingInstallations) {
+    if (!isInstalled) {
       buttons.push({
         key: 'free-details',
         variant: 'link',
@@ -6496,6 +6554,57 @@ var usePluginStatus = function usePluginStatus(pluginFamily) {
       tooltipText: tooltipText
     };
   }, [pluginFamily]);
+};
+
+/***/ }),
+
+/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-screen-size.jsx":
+/*!******************************************************************************************!*\
+  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-screen-size.jsx ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useScreenSize: () => (/* binding */ useScreenSize)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+var useScreenSize = function useScreenSize() {
+  var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      width: window.innerWidth,
+      height: window.innerHeight,
+      isMobile: window.innerWidth <= 768,
+      isSmallMobile: window.innerWidth <= 480
+    }),
+    _useState2 = _slicedToArray(_useState, 2),
+    screenSize = _useState2[0],
+    setScreenSize = _useState2[1];
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var handleResize = function handleResize() {
+      setScreenSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+        isMobile: window.innerWidth <= 768,
+        isSmallMobile: window.innerWidth <= 480
+      });
+    };
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return function () {
+      return window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  return screenSize;
 };
 
 /***/ }),

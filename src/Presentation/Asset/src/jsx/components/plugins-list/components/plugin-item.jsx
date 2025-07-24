@@ -1,4 +1,4 @@
-import { memo, useMemo, Fragment, useState, useCallback } from '@wordpress/element';
+import { memo, useMemo, Fragment, useState, useCallback, useEffect } from '@wordpress/element';
 import { ToggleControl } from '@wordpress/components';
 
 import { __ } from '@publishpress-hub/i18n';
@@ -7,7 +7,12 @@ import { Tooltip } from '../../tooltip';
 import { StatusFlag } from './status-flag';
 import { ActionButton } from './action-button';
 import { Button } from '../../buttons/button';
-import { usePluginStatus, useActionButtons, usePluginDisplayInfo } from '../hooks';
+import {
+    usePluginStatus,
+    useActionButtons,
+    usePluginDisplayInfo,
+    useScreenSize
+} from '../hooks';
 
 const PluginItemComponent = ({
     pluginFamily,
@@ -23,6 +28,7 @@ const PluginItemComponent = ({
     onResolveConflict,
 }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const { isSmallMobile, isMobile } = useScreenSize();
 
     // Extract individual progress states for backwards compatibility
     const {
@@ -61,9 +67,37 @@ const PluginItemComponent = ({
 
     const { statusFlagClass, tooltipText } = status;
 
+    // Responsive class names
+    const responsiveClasses = useMemo(() => {
+        const classes = ['pp-hub-plugins-list-item', statusFlagClass];
+
+        if (isHovered) {
+            classes.push('hovered');
+        }
+
+        if (isSmallMobile) {
+            classes.push('is-small-mobile');
+        } else if (isMobile) {
+            classes.push('is-mobile');
+        }
+
+        return classes.join(' ');
+    }, [statusFlagClass, isHovered, isSmallMobile, isMobile]);
+
+    // Show toggle control based on screen size
+    const shouldShowToggle = useMemo(() => {
+        // Hide toggle on small mobile screens
+        if (isSmallMobile) {
+            return false;
+        }
+
+        // Show toggle on larger screens
+        return status.isInstalled;
+    }, [status.isInstalled, isSmallMobile]);
+
     return (
         <div
-            className={`pp-hub-plugins-list-item ${statusFlagClass} ${isHovered ? 'hovered' : ''}`}
+            className={responsiveClasses}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
@@ -78,7 +112,7 @@ const PluginItemComponent = ({
                         useCustom={true}
                     >
                         <div className='pp-hub-plugins-list-item-name'>
-                            {status.isInstalled && (
+                            {shouldShowToggle && (
                                 <ToggleControl
                                     disabled={status.hasConflictingInstallations}
                                     checked={pluginFamily.hasAnyVersionActive}
@@ -106,14 +140,24 @@ const PluginItemComponent = ({
                         {pluginFamily.description}
                     </div>
                     <div className='pp-hub-plugins-list-item-inline-actions'>
-                        {actionButtonsData.map((buttonProps, index) => (
-                            <Fragment key={buttonProps.key}>
-                                <Button {...buttonProps} />
-                                {index < actionButtonsData.length - 1 && (
-                                    <span>|</span>
-                                )}
-                            </Fragment>
-                        ))}
+                        {actionButtonsData.map((buttonProps, index) => {
+                            if (buttonProps.key === 'activate' && !isSmallMobile) {
+                                return null;
+                            }
+
+                            if (buttonProps.key === 'deactivate' && !isSmallMobile) {
+                                return null;
+                            }
+
+                            return (
+                                <Fragment key={buttonProps.key}>
+                                    <Button {...buttonProps} />
+                                    {index < actionButtonsData.length - 1 && (
+                                        <span>|</span>
+                                    )}
+                                </Fragment>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
