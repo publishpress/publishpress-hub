@@ -99,6 +99,8 @@ abstract class AbstractDependencies
 
     public const CHANGE_PLUGIN_ACTIVATION_USE_CASE = 'publishpress-hub.application.use-case.plugin.change-plugin-activation';
 
+    public const UNINSTALL_PLUGIN_USE_CASE = 'publishpress-hub.application.use-case.plugin.uninstall';
+
     public const PLUGIN_STATUS_ADAPTER = 'publishpress-hub.infrastructure.plugin-status.adapter';
 
     public const PLUGIN_STATUS_SERVICE = 'publishpress-hub.application.plugin-status.service';

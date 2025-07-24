@@ -61,7 +61,7 @@ class WordPressPluginLifecycleAdapter
         return true;
     }
 
-    public function deletePlugin(string $pluginPath): bool
+    public function uninstallPlugin(string $pluginPath): bool
     {
         if (!function_exists('delete_plugins')) {
             require_once ABSPATH . 'wp-admin/includes/plugin.php';

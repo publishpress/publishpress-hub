@@ -7,7 +7,6 @@ namespace PublishPress\Hub\Application\UseCase\Plugin;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use PublishPress\Hub\Domain\Exception\Contract\WithContextInterface;
-use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseInvalidException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;

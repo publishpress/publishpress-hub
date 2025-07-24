@@ -10,6 +10,7 @@ use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallProPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallFreePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\UninstallPluginUseCase;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use WP_REST_Server;
@@ -23,6 +24,7 @@ class PluginsController implements BootableInterface
     private InstallFreePluginUseCase $installFreePluginUseCase;
     private InstallProPluginUseCase $installProPluginUseCase;
     private ChangePluginActivationUseCase $changePluginActivationUseCase;
+    private UninstallPluginUseCase $uninstallPluginUseCase;
     private string $restApiNamespace;
 
     public function __construct(
@@ -31,6 +33,7 @@ class PluginsController implements BootableInterface
         InstallFreePluginUseCase $installFreePluginUseCase,
         InstallProPluginUseCase $installProPluginUseCase,
         ChangePluginActivationUseCase $changePluginActivationUseCase,
+        UninstallPluginUseCase $uninstallPluginUseCase,
         string $restApiNamespace
     ) {
         $this->restApiService = $restApiService;
@@ -38,6 +41,7 @@ class PluginsController implements BootableInterface
         $this->installFreePluginUseCase = $installFreePluginUseCase;
         $this->installProPluginUseCase = $installProPluginUseCase;
         $this->changePluginActivationUseCase = $changePluginActivationUseCase;
+        $this->uninstallPluginUseCase = $uninstallPluginUseCase;
         $this->restApiNamespace = $restApiNamespace;
     }
 
@@ -85,6 +89,15 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/(?P<action>activate|deactivate)',
             WP_REST_Server::CREATABLE,
             $this->changePluginActivationUseCase,
+            [$this, 'checkPermissions']
+        ));
+
+        // POST /plugins/{familySlug}/uninstall
+        $this->restApiService->addRoute(new RestRoute(
+            $this->restApiNamespace,
+            '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/uninstall',
+            WP_REST_Server::CREATABLE,
+            $this->uninstallPluginUseCase,
             [$this, 'checkPermissions']
         ));
     }

@@ -6,8 +6,6 @@ namespace PublishPress\Hub\Application\UseCase\Plugin;
 
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
-use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
-use PublishPress\Hub\Domain\Plugin\Contract\PluginInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginActivationException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginConflictingInstallationsException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
@@ -80,23 +78,5 @@ class ChangePluginActivationUseCase implements UseCaseInterface
                 ]
             );
         }
-    }
-
-    /**
-     * @throws PluginNotFoundException
-     */
-    private function getPluginByType(string $familySlug, string $pluginType): ?PluginInterface
-    {
-        $family = $this->pluginStatusService->getPluginFamilyWithUpdatedStatus($familySlug);
-
-        if (!$family) {
-            throw new PluginNotFoundException(['family_slug' => $familySlug]);
-        }
-
-        if ($pluginType === 'free') {
-            return $family->getFreePlugin();
-        }
-
-        return $family->getProPlugin() ?? null;
     }
 }
