@@ -5642,9 +5642,15 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
   if (!currentPlugin || activeModal === MODAL_TYPES.NONE) {
     return null;
   }
+  var error = currentPluginState.error;
+
+  // Add the error message from the context to the error message
+  if (error && error.context && error.context.error_message) {
+    error.message += " ".concat(error.context.error_message);
+  }
   var modalProps = {
     onClose: closeModal,
-    error: currentPluginState.error,
+    error: error,
     buttonInProgress: currentPluginState.inProgress
   };
   return /*#__PURE__*/React.createElement(React.Fragment, null, isModalActive(MODAL_TYPES.INSTALLATION_TYPE) && /*#__PURE__*/React.createElement(_modal_installation_type__WEBPACK_IMPORTED_MODULE_3__.ModalInstallationType, _extends({}, modalProps, {

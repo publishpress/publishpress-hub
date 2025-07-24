@@ -29,9 +29,16 @@ const ModalRendererComponent = ({
         return null;
     }
 
+    const error = currentPluginState.error;
+
+    // Add the error message from the context to the error message
+    if (error && error.context && error.context.error_message) {
+        error.message += ` ${error.context.error_message}`;
+    }
+
     const modalProps = {
         onClose: closeModal,
-        error: currentPluginState.error,
+        error: error,
         buttonInProgress: currentPluginState.inProgress,
     };
 
