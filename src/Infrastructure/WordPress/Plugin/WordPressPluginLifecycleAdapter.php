@@ -61,7 +61,42 @@ class WordPressPluginLifecycleAdapter
         return true;
     }
 
+    /**
+     * Run the uninstallation process for a plugin executing the uninstall.php file
+     * or registered uninstall hook.
+     *
+     * This function will run the uninstallation process for a plugin.
+     * It will not delete the plugin from the filesystem.
+     *
+     * @param string $pluginPath
+     * @return bool True if the uninstall.php file has been found and included, false otherwise.
+     * @throws RuntimeException
+     * @see https://developer.wordpress.org/reference/functions/uninstall_plugin/
+     * @see https://developer.wordpress.org/reference/functions/register_uninstall_hook/
+     */
     public function uninstallPlugin(string $pluginPath): bool
+    {
+        if (!function_exists('uninstall_plugin')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        $result = uninstall_plugin($pluginPath);
+
+        return $result === true;
+    }
+
+    /**
+     * Delete a plugin from the filesystem.
+     *
+     * This function will delete a plugin from the filesystem.
+     * It will not run the uninstallation process.
+     *
+     * @param string $pluginPath
+     * @return bool True if the plugin has been deleted, false otherwise.
+     * @throws RuntimeException
+     * @see https://developer.wordpress.org/reference/functions/delete_plugins/
+     */
+    public function deletePlugin(string $pluginPath): bool
     {
         if (!function_exists('delete_plugins')) {
             require_once ABSPATH . 'wp-admin/includes/plugin.php';

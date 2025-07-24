@@ -7726,7 +7726,7 @@ function resolveConflict(pluginFamily, pluginToKeep) {
           path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamily.slug, "/resolve-conflict"),
           method: 'POST',
           data: {
-            plugin_to_keep: pluginToKeep
+            pluginToKeep: pluginToKeep
           }
         });
       case 4:

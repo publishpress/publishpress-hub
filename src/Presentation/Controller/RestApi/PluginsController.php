@@ -12,6 +12,7 @@ use PublishPress\Hub\Application\UseCase\Plugin\InstallFreePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UninstallPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UpgradePluginUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\ResolveConflictUseCase;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use WP_REST_Server;
@@ -27,6 +28,7 @@ class PluginsController implements BootableInterface
     private ChangePluginActivationUseCase $changePluginActivationUseCase;
     private UninstallPluginUseCase $uninstallPluginUseCase;
     private UpgradePluginUseCase $upgradePluginUseCase;
+    private ResolveConflictUseCase $resolveConflictUseCase;
     private string $restApiNamespace;
 
     public function __construct(
@@ -37,7 +39,8 @@ class PluginsController implements BootableInterface
         InstallProPluginUseCase $installProPluginUseCase,
         ChangePluginActivationUseCase $changePluginActivationUseCase,
         UninstallPluginUseCase $uninstallPluginUseCase,
-        UpgradePluginUseCase $upgradePluginUseCase
+        UpgradePluginUseCase $upgradePluginUseCase,
+        ResolveConflictUseCase $resolveConflictUseCase
     ) {
         $this->restApiService = $restApiService;
         $this->listPluginsUseCase = $listPluginsUseCase;
@@ -46,6 +49,7 @@ class PluginsController implements BootableInterface
         $this->changePluginActivationUseCase = $changePluginActivationUseCase;
         $this->uninstallPluginUseCase = $uninstallPluginUseCase;
         $this->upgradePluginUseCase = $upgradePluginUseCase;
+        $this->resolveConflictUseCase = $resolveConflictUseCase;
         $this->restApiNamespace = $restApiNamespace;
     }
 
@@ -111,6 +115,15 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/upgrade',
             WP_REST_Server::CREATABLE,
             $this->upgradePluginUseCase,
+            [$this, 'checkPermissions']
+        ));
+
+        // POST /plugins/{familySlug}/resolve-conflict
+        $this->restApiService->addRoute(new RestRoute(
+            $this->restApiNamespace,
+            '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/resolve-conflict',
+            WP_REST_Server::CREATABLE,
+            $this->resolveConflictUseCase,
             [$this, 'checkPermissions']
         ));
     }

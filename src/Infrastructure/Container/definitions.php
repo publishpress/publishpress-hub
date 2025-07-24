@@ -14,6 +14,7 @@ use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallFreePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallProPluginUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\ResolveConflictUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UninstallPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UpgradePluginUseCase;
 use PublishPress\Hub\Domain\Plugin\Repository\PluginFamilyRepository;
@@ -321,6 +322,14 @@ return [
             );
         },
 
+    AbstractDependencies::RESOLVE_CONFLICT_USE_CASE =>
+        function (ContainerInterface $container): ResolveConflictUseCase {
+            return new ResolveConflictUseCase(
+                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+                $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
+            );
+        },
+
     // Presentation Services
     AbstractDependencies::MAIN_MENU_CONTROLLER =>
         function (ContainerInterface $container): MainMenuController {
@@ -360,7 +369,8 @@ return [
                 $container->get(AbstractDependencies::INSTALL_PRO_PLUGIN_USE_CASE),
                 $container->get(AbstractDependencies::CHANGE_PLUGIN_ACTIVATION_USE_CASE),
                 $container->get(AbstractDependencies::UNINSTALL_PLUGIN_USE_CASE),
-                $container->get(AbstractDependencies::UPGRADE_PLUGIN_USE_CASE)
+                $container->get(AbstractDependencies::UPGRADE_PLUGIN_USE_CASE),
+                $container->get(AbstractDependencies::RESOLVE_CONFLICT_USE_CASE)
             );
         },
 

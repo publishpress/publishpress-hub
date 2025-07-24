@@ -420,7 +420,7 @@ export function* resolveConflict(pluginFamily, pluginToKeep) {
             path: `${API_NAMESPACE}/plugins/${pluginFamily.slug}/resolve-conflict`,
             method: 'POST',
             data: {
-                plugin_to_keep: pluginToKeep,
+                pluginToKeep: pluginToKeep,
             },
         });
 
