@@ -29,7 +29,7 @@ const ModalRendererComponent = ({
         return null;
     }
 
-    const error = currentPluginState.error;
+    const error = currentPluginState.error ? { ...currentPluginState.error } : null;
 
     // Add the error message from the context to the error message
     if (error && error.context && error.context.error_message) {
