@@ -484,8 +484,8 @@
     --pp-hub-badge-bg-installed-hover: #3f8f44;
     --pp-hub-badge-bg-not-installed: #f3f4f6;
     --pp-hub-badge-bg-not-installed-hover: #e8e8e8;
-    --pp-hub-badge-bg-free: var(--pp-hub-secondary-color);
-    --pp-hub-badge-bg-free-hover: var(--pp-hub-secondary-color-lighter);
+    --pp-hub-badge-bg-free: #a8e7e3;
+    --pp-hub-badge-bg-free-hover: #90d7d3;
     --pp-hub-badge-bg-licensed: #dcfce7;
     --pp-hub-badge-bg-licensed-hover: #c7f0c1;
     --pp-hub-badge-bg-unlicensed: #fef3c7;
@@ -1295,7 +1295,7 @@
     padding: var(--pp-hub-spacing-xl);
     border: 1px solid transparent;
     border-bottom: 1px solid var(--pp-hub-border-primary);
-    min-height: 160px;
+    min-height: 142px;
     transition: background-color 0.1s ease-in-out;
     box-sizing: border-box;
     justify-content: space-between;
@@ -1586,19 +1586,17 @@ button.publishpress-hub-filter-button:hover {
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/badge/badge.css ***!
   \*************************************************************************************************************/
 .pp-hub-badge {
-    padding: 4px 12px;
+    padding: 4px 10px;
     border-radius: 16px;
     background-color: var(--pp-hub-badge-bg);
     color: var(--pp-hub-badge-text);
     box-sizing: border-box;
-    line-height: 16px;
+    line-height: 12px;
     font-size: 12px;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    text-align: center;
     margin-right: var(--pp-hub-spacing-md);
     transition: background-color 0.1s ease-in-out;
+    display: inline-block;
 }
 
 .pp-hub-badge.installed {

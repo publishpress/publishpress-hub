@@ -132,8 +132,8 @@
     --pp-hub-badge-bg-installed-hover: #3f8f44;
     --pp-hub-badge-bg-not-installed: #f3f4f6;
     --pp-hub-badge-bg-not-installed-hover: #e8e8e8;
-    --pp-hub-badge-bg-free: var(--pp-hub-secondary-color);
-    --pp-hub-badge-bg-free-hover: var(--pp-hub-secondary-color-lighter);
+    --pp-hub-badge-bg-free: #a8e7e3;
+    --pp-hub-badge-bg-free-hover: #90d7d3;
     --pp-hub-badge-bg-licensed: #dcfce7;
     --pp-hub-badge-bg-licensed-hover: #c7f0c1;
     --pp-hub-badge-bg-unlicensed: #fef3c7;

@@ -5942,7 +5942,7 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-name"
   }, status.isInstalled && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-    disabled: !pluginFamily.hasAnyVersionInstalled,
+    disabled: status.hasConflictingInstallations,
     checked: pluginFamily.hasAnyVersionActive,
     onChange: function onChange(newValue) {
       if (newValue) {

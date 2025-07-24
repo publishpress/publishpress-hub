@@ -80,7 +80,7 @@ const PluginItemComponent = ({
                         <div className='pp-hub-plugins-list-item-name'>
                             {status.isInstalled && (
                                 <ToggleControl
-                                    disabled={!pluginFamily.hasAnyVersionInstalled}
+                                    disabled={status.hasConflictingInstallations}
                                     checked={pluginFamily.hasAnyVersionActive}
                                     onChange={(newValue) => {
                                         if (newValue) {

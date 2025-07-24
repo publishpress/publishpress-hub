@@ -15,7 +15,7 @@
     padding: var(--pp-hub-spacing-xl);
     border: 1px solid transparent;
     border-bottom: 1px solid var(--pp-hub-border-primary);
-    min-height: 160px;
+    min-height: 142px;
     transition: background-color 0.1s ease-in-out;
     box-sizing: border-box;
     justify-content: space-between;

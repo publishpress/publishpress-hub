@@ -1,17 +1,15 @@
 .pp-hub-badge {
-    padding: 4px 12px;
+    padding: 4px 10px;
     border-radius: 16px;
     background-color: var(--pp-hub-badge-bg);
     color: var(--pp-hub-badge-text);
     box-sizing: border-box;
-    line-height: 16px;
+    line-height: 12px;
     font-size: 12px;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    text-align: center;
     margin-right: var(--pp-hub-spacing-md);
     transition: background-color 0.1s ease-in-out;
+    display: inline-block;
 }
 
 .pp-hub-badge.installed {
