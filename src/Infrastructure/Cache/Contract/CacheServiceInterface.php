@@ -6,9 +6,19 @@ namespace PublishPress\Hub\Infrastructure\Cache\Contract;
 
 interface CacheServiceInterface
 {
-    public function get(string $key, mixed $default = null): mixed;
+    /**
+     * @param string $key
+     * @param mixed $default
+     * @return mixed
+     */
+    public function get(string $key, $default = null);
 
-    public function set(string $key, mixed $value, int $ttl = 0): void;
+    /**
+     * @param string $key
+     * @param mixed $value
+     * @param int $ttl
+     */
+    public function set(string $key, $value, int $ttl = 0): void;
 
     public function delete(string $key): void;
 

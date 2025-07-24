@@ -6,9 +6,21 @@ namespace PublishPress\Hub\Infrastructure\Cache\Contract;
 
 interface CacheAdapterInterface
 {
-    public function get(string $key, string $group = '', mixed $default = null): mixed;
+    /**
+     * @param string $key
+     * @param string $group
+     * @param mixed $default
+     * @return mixed
+     */
+    public function get(string $key, string $group = '', $default = null);
 
-    public function set(string $key, mixed $value, string $group = '', int $ttl = 0): void;
+    /**
+     * @param string $key
+     * @param mixed $value
+     * @param string $group
+     * @param int $ttl
+     */
+    public function set(string $key, $value, string $group = '', int $ttl = 0): void;
 
     public function delete(string $key, string $group = ''): void;
 

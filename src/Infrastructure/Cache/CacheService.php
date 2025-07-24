@@ -19,12 +19,22 @@ class CacheService implements CacheServiceInterface
         $this->cacheAdapter = $cacheAdapter;
     }
 
-    public function get(string $key, mixed $default = null): mixed
+    /**
+     * @param string $key
+     * @param mixed $default
+     * @return mixed
+     */
+    public function get(string $key, $default = null)
     {
         return $this->cacheAdapter->get($key, $this->group, $default);
     }
 
-    public function set(string $key, mixed $value, int $ttl = 0): void
+    /**
+     * @param string $key
+     * @param mixed $value
+     * @param int $ttl
+     */
+    public function set(string $key, $value, int $ttl = 0): void
     {
         $this->cacheAdapter->set($key, $value, $this->group, $ttl);
     }

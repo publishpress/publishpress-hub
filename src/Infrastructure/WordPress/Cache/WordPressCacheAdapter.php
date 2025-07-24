@@ -8,12 +8,24 @@ use PublishPress\Hub\Infrastructure\Cache\Contract\CacheAdapterInterface;
 
 class WordPressCacheAdapter implements CacheAdapterInterface
 {
-    public function get(string $key, string $group = '', mixed $default = null): mixed
+    /**
+     * @param string $key
+     * @param string $group
+     * @param mixed $default
+     * @return mixed
+     */
+    public function get(string $key, string $group = '', $default = null)
     {
         return wp_cache_get($key, $group, false, $default);
     }
 
-    public function set(string $key, mixed $value, string $group = '', int $ttl = 0): void
+    /**
+     * @param string $key
+     * @param mixed $value
+     * @param string $group
+     * @param int $ttl
+     */
+    public function set(string $key, $value, string $group = '', int $ttl = 0): void
     {
         wp_cache_set($key, $value, $group, $ttl);
     }
