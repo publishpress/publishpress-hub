@@ -59,4 +59,6 @@ interface RemoteServiceInterface
      * @return array
      */
     public function getResponseHeaders(array $response): array;
+
+    public function getCloudflareRayId(array $response): ?string;
 }

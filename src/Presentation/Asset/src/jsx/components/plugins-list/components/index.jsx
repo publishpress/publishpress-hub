@@ -3,6 +3,7 @@ export { PluginItem } from './plugin-item';
 export { ModalConfirmation } from './modal-confirmation';
 export { ModalInstallationType } from './modal-installation-type';
 export { ModalLicenseInput } from './modal-license-input';
+export { ModalLicenseManagement } from './modal-license-management';
 export { ModalUpgrade } from './modal-upgrade';
 export { ModalResolveConflict } from './modal-resolve-conflict';
 export { ActionButton } from './action-button';

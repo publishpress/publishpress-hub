@@ -41,9 +41,8 @@ export const usePluginActions = (modalManager) => {
     }, [openModal, MODAL_TYPES.UNINSTALL_CONFIRMATION]);
 
     const handleManageLicense = useCallback((pluginFamily) => {
-        // TODO: Implement license management modal
-        console.log('License management for:', pluginFamily.slug);
-    }, []);
+        openModal(MODAL_TYPES.LICENSE_MANAGEMENT, pluginFamily);
+    }, [openModal, MODAL_TYPES.LICENSE_MANAGEMENT]);
 
     const handleActivateLicense = useCallback((pluginFamily) => {
         openModal(MODAL_TYPES.LICENSE_INPUT, pluginFamily);

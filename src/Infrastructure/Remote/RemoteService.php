@@ -104,4 +104,15 @@ class RemoteService implements RemoteServiceInterface
     {
         return $this->remoteAdapter->getResponseHeaders($response);
     }
+
+    /**
+     * Check if the response contains a Cloudflare ray ID and return it if it does.
+     *
+     * @param array $response
+     * @return null|string
+     */
+    public function getCloudflareRayId(array $response): ?string
+    {
+        return $this->remoteAdapter->getCloudflareRayId($response);
+    }
 }

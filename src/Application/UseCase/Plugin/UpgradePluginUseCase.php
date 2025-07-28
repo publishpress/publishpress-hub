@@ -70,46 +70,29 @@ class UpgradePluginUseCase implements UseCaseInterface
             throw new PluginNotInstalledException(['plugin_slug' => $freePlugin->getSlug()]);
         }
 
-        try {
-            $proPlugin = $family->getProPlugin();
-            $downloadId = $proPlugin->getDownloadId();
+        $proPlugin = $family->getProPlugin();
+        $downloadId = $proPlugin->getDownloadId();
 
-            $this->licenseService->isLicenseValid($licenseKey, $downloadId);
+        $this->licenseService->isLicenseValid($licenseKey, $downloadId);
 
-            if (!$this->licenseService->isLicenseActive($licenseKey, $downloadId)) {
-                $this->licenseService->activateLicense($licenseKey, $downloadId);
-            }
-
-            $this->pluginLifecycle->uninstallPlugin($freePlugin->getSlug());
-
-            $pluginInfo = $this->licenseService->getLastVersionInfo($licenseKey, $downloadId);
-
-            $downloadUrl = $pluginInfo['download_link'];
-
-            $this->pluginLifecycle->installPlugin($proPlugin->getSlug(), $downloadUrl);
-
-            // Update plugin status after installation to reflect current state
-            $this->pluginStatusService->updatePluginStatus($proPlugin);
-
-            return [
-                'slug' => $proPlugin->getSlug(),
-                'installed' => $proPlugin->isInstalled(),
-            ];
-        } catch (WithContextInterface $e) {
-            throw new LicenseInvalidException(
-                [
-                    'plugin_slug' => $freePlugin->getSlug(),
-                    'error_message' => $e->getMessage(),
-                    'context' => $e->getContext(),
-                ]
-            );
-        } catch (\Exception $e) {
-            throw new PluginInstallException(
-                [
-                    'plugin_slug' => $freePlugin->getSlug(),
-                    'error_message' => $e->getMessage()
-                ]
-            );
+        if (!$this->licenseService->isLicenseActive($licenseKey, $downloadId)) {
+            $this->licenseService->activateLicense($licenseKey, $downloadId);
         }
+
+        $this->pluginLifecycle->uninstallPlugin($freePlugin->getSlug());
+
+        $pluginInfo = $this->licenseService->getLastVersionInfo($licenseKey, $downloadId);
+
+        $downloadUrl = $pluginInfo['download_link'];
+
+        $this->pluginLifecycle->installPlugin($proPlugin->getSlug(), $downloadUrl);
+
+        // Update plugin status after installation to reflect current state
+        $this->pluginStatusService->updatePluginStatus($proPlugin);
+
+        return [
+            'slug' => $proPlugin->getSlug(),
+            'installed' => $proPlugin->isInstalled(),
+        ];
     }
 }

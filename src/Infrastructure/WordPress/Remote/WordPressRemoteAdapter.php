@@ -97,4 +97,18 @@ class WordPressRemoteAdapter implements RemoteServiceInterface
     {
         return wp_remote_retrieve_headers($response);
     }
+
+    public function getCloudflareRayId(array $response): ?string
+    {
+        $body = $this->getResponseBody($response);
+
+        if (strpos($body, '_cf_chl_opt') !== false || strpos($body, 'ray=') !== false) {
+            preg_match('/ray=(.*?)\';/', $body, $matches);
+            $rayId = $matches[1] ?? null;
+
+            return $rayId;
+        }
+
+        return null;
+    }
 }

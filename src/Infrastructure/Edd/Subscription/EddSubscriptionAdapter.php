@@ -79,6 +79,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
     public function getLicenseInfo(string $licenseKey, int $downloadId, bool $force = false): array
     {
         $cacheKey = md5('edd_check_license_' . $licenseKey . '_' . $downloadId);
+        $operation = 'get_license_info';
 
         $data = $this->cacheService->get($cacheKey);
 
@@ -115,21 +116,18 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         if (is_wp_error($response)) {
             throw new LicenseServerException([
                 'error_message' => 'Error validating license: ' . $response->get_error_message(),
+                'operation' => $operation,
             ]);
         }
 
-        if ($this->remoteService->getResponseStatusCode($response) === 403) {
-            throw new RemoteAccessDeniedException();
-        }
-
-        if ($this->remoteService->getResponseStatusCode($response) !== 200) {
-            throw new LicenseServerInvalidResponseException();
-        }
+        $this->handlePossibleInvalidResponse($response, $operation);
 
         $data = $this->remoteService->getDecodedBodyFromResponse($response);
 
         if (empty($data) || !isset($data['license'])) {
-            throw new LicenseServerInvalidResponseException();
+            throw new LicenseServerInvalidResponseException([
+                'operation' => $operation,
+            ]);
         }
 
         $this->cacheService->set($cacheKey, $data, self::CACHE_TTL);
@@ -155,6 +153,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
     public function isLicenseValid(string $licenseKey, int $downloadId, bool $force = false): bool
     {
         $data = $this->getLicenseInfo($licenseKey, $downloadId, $force);
+        $operation = 'is_license_valid';
 
         $this->assertLicenseStatusOrThrow(
             $data['license'],
@@ -162,7 +161,8 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
                 self::LICENSE_STATUS_VALID,
                 self::LICENSE_STATUS_INACTIVE,
                 self::LICENSE_STATUS_SITE_INACTIVE,
-            ]
+            ],
+            $operation
         );
 
         return true;
@@ -197,6 +197,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
     public function activateLicense(string $licenseKey, int $downloadId, bool $force = false): bool
     {
         $cacheKey = md5('edd_activate_license_' . $licenseKey . '_' . $downloadId);
+        $operation = 'activate_license';
 
         $data = $this->cacheService->get($cacheKey);
 
@@ -230,27 +231,78 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
             if (is_wp_error($response)) {
                 throw new LicenseServerException([
                     'error_message' => 'Error activating license: ' . $response->get_error_message(),
+                    'operation' => $operation,
                 ]);
             }
 
-            if ($this->remoteService->getResponseStatusCode($response) === 403) {
-                throw new RemoteAccessDeniedException();
-            }
-
-            if ($this->remoteService->getResponseStatusCode($response) !== 200) {
-                throw new LicenseServerInvalidResponseException();
-            }
+            $this->handlePossibleInvalidResponse($response, $operation);
 
             $data = $this->remoteService->getDecodedBodyFromResponse($response);
 
             if (empty($data) || !isset($data['license'])) {
-                throw new LicenseServerInvalidResponseException();
+                throw new LicenseServerInvalidResponseException([
+                    'operation' => $operation,
+                ]);
             }
 
             $this->cacheService->set($cacheKey, $data, self::CACHE_TTL);
         }
 
-        $this->assertLicenseStatusOrThrow($data['license'], [self::LICENSE_STATUS_VALID]);
+        $this->assertLicenseStatusOrThrow(
+            $data['license'],
+            [self::LICENSE_STATUS_VALID],
+            $operation
+        );
+
+        return true;
+    }
+
+    public function deactivateLicense(string $licenseKey, int $downloadId): bool
+    {
+        $operation = 'deactivate_license';
+
+        // Prepare request parameters
+        $requestBody = [
+            'edd_action' => 'deactivate_license',
+            'license' => $licenseKey,
+            'item_id' => $downloadId,
+            'url' => $this->siteUrl,
+        ];
+
+        $requestArgs = [
+            'body' => $requestBody,
+            'timeout' => self::TIMEOUT,
+            'sslverify' => true,
+            'headers' => $this->getRequestHeaders(),
+        ];
+
+        // Debug: Log request details
+        HttpDebugger::debugRequest('POST', $this->eddSubscriptionApiUrl, $requestArgs);
+
+        $response = $this->remoteService->post(
+            $this->eddSubscriptionApiUrl,
+            $requestArgs
+        );
+
+        // Debug: Log response details
+        HttpDebugger::debugResponse($response);
+
+        if (is_wp_error($response)) {
+            throw new LicenseServerException([
+                'error_message' => 'Error deactivating license: ' . $response->get_error_message(),
+                'operation' => $operation,
+            ]);
+        }
+
+        $this->handlePossibleInvalidResponse($response, $operation);
+
+        $data = $this->remoteService->getDecodedBodyFromResponse($response);
+
+        if (empty($data)) {
+            throw new LicenseServerInvalidResponseException([
+                'operation' => $operation,
+            ]);
+        }
 
         return true;
     }
@@ -269,40 +321,51 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
      * @throws LicenseInvalidException
      * @throws LicenseServerException
      */
-    private function assertLicenseStatusOrThrow(string $license, array $acceptableResults): void
+    private function assertLicenseStatusOrThrow(
+        string $license,
+        array $acceptableResults,
+        string $operation = ''
+    ): void
     {
         if (in_array($license, $acceptableResults)) {
             return;
         }
 
+        $context = [];
+
+        if ($operation) {
+            $context['operation'] = $operation;
+        }
+
         switch ($license) {
             case 'missing':
-                throw new LicenseMissingException();
+                throw new LicenseMissingException($context);
             case 'missing_url':
-                throw new LicenseMissingUrlException();
+                throw new LicenseMissingUrlException($context);
             case 'license_not_activable':
-                throw new LicenseNotActivableException();
+                throw new LicenseNotActivableException($context);
             case 'disabled':
-                throw new LicenseDisabledException();
+                throw new LicenseDisabledException($context);
             case 'no_activations_left':
-                throw new LicenseNoActivationsLeftException();
+                throw new LicenseNoActivationsLeftException($context);
             case 'expired':
-                throw new LicenseExpiredException();
+                throw new LicenseExpiredException($context);
             case 'key_mismatch':
-                throw new LicenseKeyMismatchException();
+                throw new LicenseKeyMismatchException($context);
             case 'invalid_item_id':
-                throw new LicenseInvalidItemIdException();
+                throw new LicenseInvalidItemIdException($context);
             case 'item_name_mismatch':
-                throw new LicenseInvalidItemNameException();
+                throw new LicenseInvalidItemNameException($context);
             // TODO: Check if this is really an issue, since we should activate the license if it's inactive
             case 'site_inactive':
-                throw new LicenseSiteInactiveException();
+                throw new LicenseSiteInactiveException($context);
             case 'invalid':
-                throw new LicenseInvalidException();
+                throw new LicenseInvalidException($context);
 
             default:
                 throw new LicenseServerException([
                     'error_message' => 'Unknown license error: ' . $license,
+                    'operation' => $operation,
                 ]);
         }
     }
@@ -314,6 +377,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
     public function getLastVersionInfo(string $licenseKey, int $downloadId, bool $force = false): array
     {
         $cacheKey = md5('edd_get_plugin_info_' . $licenseKey . '_' . $downloadId);
+        $operation = 'get_last_version_info';
 
         $data = $this->cacheService->get($cacheKey);
 
@@ -350,22 +414,18 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         if (is_wp_error($response)) {
             throw new LicenseServerException([
                 'error_message' => 'Error getting license info: ' . $response->get_error_message(),
+                'operation' => $operation,
             ]);
         }
 
-        if ($this->remoteService->getResponseStatusCode($response) === 403) {
-            throw new RemoteAccessDeniedException();
-        }
-
-        if ($this->remoteService->getResponseStatusCode($response) !== 200) {
-            throw new LicenseServerInvalidResponseException();
-        }
+        $this->handlePossibleInvalidResponse($response, $operation);
 
         $data = $this->remoteService->getDecodedBodyFromResponse($response);
 
-
         if (empty($data)) {
-            throw new LicenseServerInvalidResponseException();
+            throw new LicenseServerInvalidResponseException([
+                'operation' => $operation,
+            ]);
         }
 
         $this->cacheService->set($cacheKey, $data, self::CACHE_TTL);
@@ -388,5 +448,31 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
             'Cache-Control' => 'no-cache',
             'Pragma' => 'no-cache',
         ];
+    }
+
+    /**
+     * @throws RemoteAccessDeniedException
+     * @throws LicenseServerInvalidResponseException
+     */
+    private function handlePossibleInvalidResponse(array $response, string $operation = ''): void
+    {
+        if ($this->remoteService->getResponseStatusCode($response) === 403) {
+            $rayId = $this->remoteService->getCloudflareRayId($response);
+
+            if ($rayId) {
+                throw new RemoteAccessDeniedException([
+                    'cloudflare_ray_id' => $rayId,
+                    'operation' => $operation,
+                ]);
+            }
+
+            throw new RemoteAccessDeniedException();
+        }
+
+        if ($this->remoteService->getResponseStatusCode($response) !== 200) {
+            throw new LicenseServerInvalidResponseException([
+                'operation' => $operation,
+            ]);
+        }
     }
 }

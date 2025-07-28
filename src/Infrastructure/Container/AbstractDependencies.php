@@ -70,7 +70,13 @@ abstract class AbstractDependencies
 
     public const FILE_SYSTEM_ADAPTER = 'publishpress-hub.infrastructure.file-system.adapter';
 
+    public const OPTIONS_ADAPTER = 'publishpress-hub.infrastructure.options.adapter';
+
+    public const LICENSE_OPTION_PREFIX = 'publishpress-hub.infrastructure.license.option-prefix';
+
     public const LICENSE_SERVICE = 'publishpress-hub.infrastructure.license.service';
+
+    public const LICENSE_PERSISTENCE_SERVICE = 'publishpress-hub.infrastructure.license.persistence.service';
 
     public const EDD_SUBSCRIPTION_ADAPTER = 'publishpress-hub.infrastructure.edd-subscription.adapter';
 

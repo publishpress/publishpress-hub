@@ -31,7 +31,9 @@ use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\I18n\Contract\I18nServiceInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseServiceInterface;
+use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use PublishPress\Hub\Infrastructure\License\LicenseService;
+use PublishPress\Hub\Infrastructure\License\LicensePersistenceService;
 use PublishPress\Hub\Infrastructure\Logger\Contract\LoggerInterface;
 use PublishPress\Hub\Infrastructure\Logger\Logger;
 use PublishPress\Hub\Infrastructure\Remote\RemoteService;
@@ -48,6 +50,8 @@ use PublishPress\Hub\Infrastructure\RestApi\RestApiService;
 use PublishPress\Hub\Infrastructure\WordPress\Cache\WordPressCacheAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Filesystem\WordPressFileSystemAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapter;
+use PublishPress\Hub\Infrastructure\WordPress\Options\WordPressOptionsAdapter;
+use PublishPress\Hub\Infrastructure\WordPress\Options\Contract\OptionsAdapterInterface;
 use PublishPress\Hub\Infrastructure\WordPressOrg\Api\WordPressOrgPluginApiAdapter;
 use PublishPress\Hub\Presentation\Controller\DevComponentsShowcaseController;
 use PublishPress\Hub\Presentation\Controller\MainMenuController;
@@ -81,9 +85,14 @@ return [
 
     AbstractDependencies::CACHE_GROUP => 'publishpress-hub',
 
-    AbstractDependencies::USER_AGENT => 'PublishPress-Hub/' . PUBLISHPRESS_HUB_VERSION,
 
-    AbstractDependencies::SCRIPT_DEBUG => function (): bool {
+    AbstractDependencies::LICENSE_OPTION_PREFIX => 'publishpress_hub_license_',
+
+    AbstractDependencies::USER_AGENT => function (ContainerInterface $container): string {
+        return 'PublishPress-Hub/' . $container->get(AbstractDependencies::PLUGIN_VERSION) . '; ' . $container->get(AbstractDependencies::SITE_URL);
+    },
+
+    AbstractDependencies::SCRIPT_DEBUG => function (ContainerInterface $container): bool {
         return defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;
     },
 
@@ -158,10 +167,19 @@ return [
             );
         },
 
+    AbstractDependencies::LICENSE_PERSISTENCE_SERVICE =>
+        function (ContainerInterface $container): LicensePersistenceInterface {
+            return new LicensePersistenceService(
+                $container->get(AbstractDependencies::OPTIONS_ADAPTER),
+                $container->get(AbstractDependencies::LICENSE_OPTION_PREFIX)
+            );
+        },
+
     AbstractDependencies::LICENSE_SERVICE =>
         function (ContainerInterface $container): LicenseServiceInterface {
             return new LicenseService(
-                $container->get(AbstractDependencies::EDD_SUBSCRIPTION_ADAPTER)
+                $container->get(AbstractDependencies::EDD_SUBSCRIPTION_ADAPTER),
+                $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
             );
         },
 
@@ -170,7 +188,7 @@ return [
             return new EddSubscriptionAdapter(
                 $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
                 $container->get(AbstractDependencies::SITE_URL),
-                $container->get(AbstractDependencies::PLUGIN_VERSION),
+                $container->get(AbstractDependencies::USER_AGENT),
                 $container->get(AbstractDependencies::REMOTE_SERVICE),
                 $container->get(AbstractDependencies::CACHE_SERVICE)
             );
@@ -269,6 +287,11 @@ return [
     AbstractDependencies::FILE_SYSTEM_ADAPTER =>
         function (ContainerInterface $container): WordPressFileSystemAdapter {
             return new WordPressFileSystemAdapter();
+        },
+
+    AbstractDependencies::OPTIONS_ADAPTER =>
+        function (ContainerInterface $container): OptionsAdapterInterface {
+            return new WordPressOptionsAdapter();
         },
 
     // Use Cases

@@ -5,6 +5,7 @@ import { __ } from '@publishpress-hub/i18n';
 import { ModalConfirmation } from './modal-confirmation';
 import { ModalInstallationType } from './modal-installation-type';
 import { ModalLicenseInput } from './modal-license-input';
+import { ModalLicenseManagement } from './modal-license-management';
 import { ModalResolveConflict } from './modal-resolve-conflict';
 import { ModalUpgrade } from './modal-upgrade';
 
@@ -99,6 +100,13 @@ const ModalRendererComponent = ({
                     pluginsFamily={currentPlugin}
                     buttonInProgress={pluginResolveConflictInProgress[currentPlugin.slug] || false}
                     selectedPluginForConflictResolution={selectedPluginForConflictResolution}
+                />
+            )}
+
+            {isModalActive(MODAL_TYPES.LICENSE_MANAGEMENT) && (
+                <ModalLicenseManagement
+                    {...modalProps}
+                    onActivate={() => handleManageLicense(currentPlugin.slug)}
                 />
             )}
         </>

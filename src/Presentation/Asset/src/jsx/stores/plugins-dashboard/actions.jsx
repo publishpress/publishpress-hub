@@ -1,7 +1,7 @@
 import { apiFetch } from '@wordpress/data-controls';
 import { dispatch } from '@wordpress/data';
 
-import { __ } from '@publishpress-hub/i18n';
+import { __, sprintf } from '@publishpress-hub/i18n';
 
 import apiReady from '../../utils/apiReady';
 
@@ -145,6 +145,8 @@ export function* fetchPlugins() {
 
         yield createNotice(__('Failed to fetch plugins', 'publishpress-hub'), 'error');
 
+        error = handleErrorMessageOnContext(error);
+
         return {
             success: false,
             error,
@@ -182,6 +184,8 @@ export function* installFreePlugin(pluginFamilySlug) {
         yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginFamilySlug, error: error}};
 
         yield createNotice(__('Plugin installation failed', 'publishpress-hub'), 'error');
+
+        error = handleErrorMessageOnContext(error);
 
         return {
             success: false,
@@ -229,6 +233,8 @@ export function* installProPlugin(pluginFamilySlug, licenseKey) {
 
         yield createNotice(__('Plugin installation failed', 'publishpress-hub'), 'error');
 
+        error = handleErrorMessageOnContext(error);
+
         return {
             success: false,
             pluginFamilySlug,
@@ -270,6 +276,8 @@ export function* uninstallPlugin(pluginFamilySlug) {
 
         yield createNotice(__('Plugin uninstall failed', 'publishpress-hub'), 'error');
 
+        error = handleErrorMessageOnContext(error);
+
         return {
             success: false,
             pluginFamilySlug,
@@ -309,6 +317,8 @@ export function* activatePlugin(pluginFamilySlug) {
 
         yield createNotice(__('Plugin activation failed', 'publishpress-hub'), 'error');
 
+        error = handleErrorMessageOnContext(error);
+
         return {
             success: false,
             pluginFamilySlug,
@@ -347,6 +357,8 @@ export function* deactivatePlugin(pluginFamilySlug) {
         yield {type: 'DEACTIVATE_PLUGIN_ERROR', data: {pluginFamilySlug, error: error}};
 
         yield createNotice(__('Plugin deactivation failed', 'publishpress-hub'), 'error');
+
+        error = handleErrorMessageOnContext(error);
 
         return {
             success: false,
@@ -391,6 +403,8 @@ export function* upgradePluginToPro(pluginFamilySlug, licenseKey) {
         }
     } catch (error) {
         yield {type: 'UPGRADE_PLUGIN_TO_PRO_ERROR', data: {pluginFamilySlug, error: error}};
+
+        error = handleErrorMessageOnContext(error);
 
         return {
             success: false,
@@ -441,6 +455,8 @@ export function* resolveConflict(pluginFamily, pluginToKeep) {
     } catch (error) {
         yield {type: 'RESOLVE_CONFLICT_ERROR', data: {pluginFamily, pluginToKeep, error: error}};
 
+        error = handleErrorMessageOnContext(error);
+
         return {
             success: false,
             pluginFamily,
@@ -448,4 +464,20 @@ export function* resolveConflict(pluginFamily, pluginToKeep) {
             error,
         };
     }
+}
+
+function handleErrorMessageOnContext(error) {
+    if (error.context?.cloudflare_ray_id) {
+        if (! error.context.error_message) {
+            error.context.error_message = '';
+        }
+
+        error.context.error_message += ' ' + sprintf(__('Cloudflare Ray ID: %s', 'publishpress-hub'), error.context.cloudflare_ray_id);
+    }
+
+    if (error.context?.operation) {
+        error.context.error_message += ' ' + sprintf(__('Operation: %s', 'publishpress-hub'), error.context.operation);
+    }
+
+    return error;
 }

@@ -8,6 +8,7 @@ const MODAL_TYPES = {
     UNINSTALL_CONFIRMATION: 'uninstall-confirmation',
     UPGRADE: 'upgrade',
     RESOLVE_CONFLICT: 'resolve-conflict',
+    LICENSE_MANAGEMENT: 'license-management',
 };
 
 export const useModalManager = () => {

@@ -14,6 +14,8 @@ interface LicenseServiceInterface
 
     public function activateLicense(string $licenseKey, int $downloadId, bool $force = false): bool;
 
+    public function deactivateLicense(string $licenseKey, int $downloadId): bool;
+
     public function getLicenseInfo(string $licenseKey, int $downloadId, bool $force = false): array;
 
     public function getLastVersionInfo(string $licenseKey, int $downloadId, bool $force = false): array;

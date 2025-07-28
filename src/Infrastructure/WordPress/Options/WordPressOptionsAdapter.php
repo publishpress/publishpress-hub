@@ -1,0 +1,70 @@
+<?php
+
+declare(strict_types=1);
+
+namespace PublishPress\Hub\Infrastructure\WordPress\Options;
+
+use PublishPress\Hub\Infrastructure\WordPress\Options\Contract\OptionsAdapterInterface;
+
+class WordPressOptionsAdapter implements OptionsAdapterInterface
+{
+    /**
+     * Store a value in WordPress options.
+     *
+     * @param string $optionName The option name
+     * @param mixed $value The value to store
+     * @param bool $autoload Whether to autoload the option
+     * @return bool True on success, false on failure
+     */
+    public function addOption(string $optionName, $value, bool $autoload = true): bool
+    {
+        return add_option($optionName, $value, '', $autoload);
+    }
+
+    /**
+     * Update a value in WordPress options.
+     *
+     * @param string $optionName The option name
+     * @param mixed $value The value to store
+     * @param bool $autoload Whether to autoload the option
+     * @return bool True on success, false on failure
+     */
+    public function updateOption(string $optionName, $value, bool $autoload = true): bool
+    {
+        return update_option($optionName, $value, $autoload);
+    }
+
+    /**
+     * Retrieve a value from WordPress options.
+     *
+     * @param string $optionName The option name
+     * @param mixed $default The default value if option doesn't exist
+     * @return mixed The option value or default
+     */
+    public function getOption(string $optionName, $default = false)
+    {
+        return get_option($optionName, $default);
+    }
+
+    /**
+     * Delete a value from WordPress options.
+     *
+     * @param string $optionName The option name
+     * @return bool True on success, false on failure
+     */
+    public function deleteOption(string $optionName): bool
+    {
+        return delete_option($optionName);
+    }
+
+    /**
+     * Check if an option exists.
+     *
+     * @param string $optionName The option name
+     * @return bool True if option exists, false otherwise
+     */
+    public function optionExists(string $optionName): bool
+    {
+        return get_option($optionName) !== false;
+    }
+}
