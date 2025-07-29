@@ -9,7 +9,7 @@ set -a
 source ../.env
 set +a
 
-echo "Building terminal container with devuser..."
+echo "Building terminal container..."
 
 docker compose -f docker/compose.yaml build terminal
 

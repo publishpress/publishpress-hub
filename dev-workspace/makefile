@@ -14,6 +14,9 @@ build-%:
 build-terminal:
 	bash ./scripts/build-terminal.sh
 
+setup-user:
+	bash ./scripts/setup-user-permissions.sh
+
 build-wp:
 	$(MAKE) build-dev-wp
 
