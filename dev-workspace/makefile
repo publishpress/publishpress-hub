@@ -11,6 +11,9 @@ help:
 build-%:
 	docker compose -f docker/compose.yaml --env-file ../.env build $*
 
+build-terminal:
+	bash ./scripts/build-terminal.sh
+
 build-wp:
 	$(MAKE) build-dev-wp
 

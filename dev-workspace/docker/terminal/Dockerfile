@@ -12,10 +12,20 @@ COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
-COPY git/.gitconfig /root/.gitconfig
+# Create devuser and add to anderson group (GID 1001)
+RUN set -ex \
+    && addgroup -g 1001 anderson \
+    && adduser -D -s /bin/sh devuser \
+    && adduser devuser anderson \
+    && mkdir -p /home/devuser/.ssh \
+    && mkdir -p /home/devuser/.composer \
+    && mkdir -p /home/devuser/.npm \
+    && mkdir -p /home/devuser/.oh-my-zsh \
+    && chown -R devuser:anderson /home/devuser
+
+COPY git/.gitconfig /home/devuser/.gitconfig
 
 RUN set -ex \
-    && mkdir -p /root/.ssh \
     && npm install -g cross-env \
     # Clean npm cache to reduce image size
     && npm cache clean --force \
@@ -23,4 +33,5 @@ RUN set -ex \
     && rm -rf /tmp/* \
     && rm -rf /var/cache/apk/* \
     # Set permissions for SSH directory
-    && chmod 700 /root/.ssh
+    && chmod 700 /home/devuser/.ssh \
+    && chown -R devuser:anderson /home/devuser
