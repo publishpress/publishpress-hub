@@ -79,7 +79,8 @@ class UpgradePluginUseCase implements UseCaseInterface
             $this->licenseService->activateLicense($licenseKey, $downloadId);
         }
 
-        $this->pluginLifecycle->uninstallPlugin($freePlugin->getSlug());
+        $this->pluginLifecycle->uninstallPlugin($freePlugin->getPath());
+        $this->pluginLifecycle->deletePlugin($freePlugin->getPath());
 
         $pluginInfo = $this->licenseService->getLastVersionInfo($licenseKey, $downloadId);
 
