@@ -14,17 +14,21 @@ flowchart TD
     C --> D["User enters key & submits"]
     D --> E["Validate & Activate License"]
     E --> F["Is Valid and Acitvated License?"]
-    B -- Yes --> G["Show license key in modal"]
-    G --> H["Options: Edit | Validate"]
-    H --> I{"License Active?"} & L["Option: Edit"]
-    I -- Yes --> J["Option: Deactivate"]
-    I -- No --> K["Option: Activate"]
-    L --> C
+    H["Options: Edit"] --> C
     F -- No --> n1["Show error message"]
     n1 --> C
-    F --> n2["Store the license key"]
-    n2 --> G
+    F -- Yes --> n2["Store the license key"]
+    n2 --> G["Show modal with license key"]
+    J["Option: Deactivate"] --> C
+    B -- Yes --> G
+    G --> I{"License Active?"}
+    I -- Yes --> J
+    I -- No --> K["Option: Activate"]
+    K --> n3["License Active?"]
+    n3 -- Yes --> C
+    n3 --> n4["Show error message"]
+    n4 --> G
     F@{ shape: diam}
-
+    n3@{ shape: diam}
 
 ```
