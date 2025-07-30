@@ -20,7 +20,6 @@ services:
             - ../.cache/terminal/.bash_history:/home/devuser/.bash_history
             - ../.cache/terminal/.npm/_cacache:/home/devuser/.npm/_cacache
             - ../.cache/terminal/.npm/_logs:/home/devuser/.npm/_logs
-            - ../.cache/terminal/.oh-my-zsh/log:/home/devuser/.oh-my-zsh/log
             - ../.cache/terminal/.composer/cache:/home/devuser/.composer/cache
             - ../.cache/terminal/.composer/auth.json:/home/devuser/.composer/auth.json
     ##############################################################################
