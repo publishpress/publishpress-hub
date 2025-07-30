@@ -47,6 +47,9 @@ help:
 	@echo "  clean          # Clean up the development and test environments"
 	@echo "  info           # Show info about the development and test environments"
 	@echo "  logs           # Show logs for the development and test environments"
+	@echo "  sync           # Start watching and syncing plugin files to dev site"
+	@echo "  sync-once      # Sync plugin files once to dev site"
+	@echo "  sync-stop      # Stop the sync process"
 
 
 dev-up:
@@ -205,3 +208,17 @@ clean:
 logs:
 	@make dev-logs
 	@make test-logs
+
+# Plugin sync commands
+sync:
+	@echo "Starting plugin sync (watching for changes)..."
+	@echo "Press Ctrl+C to stop"
+	@./dev-workspace/scripts/sync-plugin.sh
+
+sync-once:
+	@echo "Syncing plugin files once..."
+	@./dev-workspace/scripts/sync-plugin.sh --once
+
+sync-stop:
+	@echo "Stopping sync process..."
+	@pkill -f "sync-plugin.sh" || true
