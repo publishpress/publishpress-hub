@@ -113,6 +113,14 @@ export const getPluginDeactivationInProgress = (state) => {
     return state.pluginDeactivationInProgress;
 }
 
+export const getPluginLicenseActivationInProgress = (state) => {
+    return state.pluginLicenseActivationInProgress;
+}
+
+export const getPluginLicenseDeactivationInProgress = (state) => {
+    return state.pluginLicenseDeactivationInProgress;
+}
+
 export const getIsUninstallConfirmationModalOpen = (state) => {
     return state.isUninstallConfirmationModalOpen;
 }

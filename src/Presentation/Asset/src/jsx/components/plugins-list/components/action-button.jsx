@@ -39,7 +39,7 @@ const ACTION_BUTTON_CONFIGS = {
 };
 
 const ActionButtonComponent = ({
-    plugin,
+    pluginFamily,
     inProgress,
     onInstall,
     onUpgradeToPro,
@@ -48,37 +48,37 @@ const ActionButtonComponent = ({
     onResolveConflict,
 }) => {
     const getButtonProps = () => {
-        if (plugin.hasConflictingInstallations) {
+        if (pluginFamily.hasConflictingInstallations) {
             return {
                 ...ACTION_BUTTON_CONFIGS.conflict,
-                onClick: () => onResolveConflict(plugin),
+                onClick: () => onResolveConflict(pluginFamily),
             };
         }
 
-        if (!plugin.hasAnyVersionInstalled) {
+        if (!pluginFamily.hasAnyVersionInstalled) {
             return {
                 ...ACTION_BUTTON_CONFIGS.install,
-                onClick: () => onInstall(plugin),
+                onClick: () => onInstall(pluginFamily),
             };
         }
 
-        if (!plugin.proPlugin.isInstalled) {
+        if (!pluginFamily.proPlugin.isInstalled) {
             return {
                 ...ACTION_BUTTON_CONFIGS.upgradeToPro,
-                onClick: () => onUpgradeToPro(plugin),
+                onClick: () => onUpgradeToPro(pluginFamily),
             };
         }
 
-        if (plugin.proPlugin.isInstalled && !plugin.proPlugin.isLicensed) {
+        if (pluginFamily.proPlugin.isInstalled && !pluginFamily.proPlugin.isLicensed) {
             return {
                 ...ACTION_BUTTON_CONFIGS.activateLicense,
-                onClick: () => onActivateLicense(plugin),
+                onClick: () => onActivateLicense(pluginFamily),
             };
         }
 
         return {
             ...ACTION_BUTTON_CONFIGS.manageLicense,
-            onClick: () => onManageLicense(plugin),
+            onClick: () => onManageLicense(pluginFamily),
         };
     };
 

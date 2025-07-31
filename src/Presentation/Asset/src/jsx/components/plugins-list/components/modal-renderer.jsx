@@ -16,19 +16,20 @@ const ModalRendererComponent = ({
     selectedPluginForConflictResolution,
     pluginResolveConflictInProgress,
 }) => {
-    const { activeModal, currentPlugin, closeModal, isModalActive, MODAL_TYPES } = modalManager;
+    const { activeModal, currentPluginFamily, closeModal, isModalActive, MODAL_TYPES } = modalManager;
     const {
         handleInstallFree,
         handleInstallPro,
-        handleUpgradePlugin,
+        handleUpgradePluginToPro,
         handleUninstallPlugin,
         handleResolveConflictAction,
         handleBuyPlugin,
         handleDeactivateLicense,
         handleActivateLicense,
+        handleOpenUpgradeModal,
     } = pluginActions;
 
-    if (!currentPlugin || activeModal === MODAL_TYPES.NONE) {
+    if (!currentPluginFamily || activeModal === MODAL_TYPES.NONE) {
         return null;
     }
 
@@ -50,32 +51,32 @@ const ModalRendererComponent = ({
             {isModalActive(MODAL_TYPES.INSTALLATION_TYPE) && (
                 <ModalInstallationType
                     {...modalProps}
-                    onProClick={() => modalManager.openModal(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO, currentPlugin)}
-                    onFreeClick={() => handleInstallFree(currentPlugin.slug)}
-                    freeDetailsUrl={currentPlugin.freeDetailsUrl}
-                    proDetailsUrl={currentPlugin.proDetailsUrl}
-                    changelogUrl={currentPlugin.changelogUrl}
+                    onProClick={() => modalManager.openModal(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO, currentPluginFamily)}
+                    onFreeClick={() => handleInstallFree(currentPluginFamily.slug)}
+                    freeDetailsUrl={currentPluginFamily.freeDetailsUrl}
+                    proDetailsUrl={currentPluginFamily.proDetailsUrl}
+                    changelogUrl={currentPluginFamily.changelogUrl}
                 />
             )}
 
             {isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO) && (
                 <ModalLicenseInput
                     {...modalProps}
-                    onActivate={(licenseKey) => handleInstallPro(currentPlugin.slug, licenseKey)}
+                    onActivate={(licenseKey) => handleInstallPro(currentPluginFamily.slug, licenseKey)}
                 />
             )}
 
             {isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_UPGRADE) && (
                 <ModalLicenseInput
                     {...modalProps}
-                    onActivate={(licenseKey) => handleUpgradePlugin(currentPlugin.slug, licenseKey)}
+                    onActivate={(licenseKey) => handleUpgradePluginToPro(currentPluginFamily.slug, licenseKey)}
                 />
             )}
 
             {isModalActive(MODAL_TYPES.UNINSTALL_CONFIRMATION) && (
                 <ModalConfirmation
                     {...modalProps}
-                    onConfirm={() => handleUninstallPlugin(currentPlugin.slug)}
+                    onConfirm={() => handleUninstallPlugin(currentPluginFamily.slug)}
                     onCancel={closeModal}
                     isDanger={true}
                     title={__('Uninstall Plugin', 'publishpress-hub')}
@@ -83,24 +84,24 @@ const ModalRendererComponent = ({
                 />
             )}
 
-            {isModalActive(MODAL_TYPES.UPGRADE) && (
+            {isModalActive(MODAL_TYPES.UPGRADE_PLUGIN_TO_PRO) && (
                 <ModalUpgrade
                     {...modalProps}
-                    onLicenseClick={() => modalManager.openModal(MODAL_TYPES.LICENSE_INPUT_FOR_UPGRADE, currentPlugin)}
-                    onBuyClick={() => handleBuyPlugin(currentPlugin.proPlugin.detailsUrl)}
-                    proDetailsUrl={currentPlugin.proPlugin.detailsUrl}
-                    changelogUrl={currentPlugin.changelogUrl}
+                    onLicenseClick={() => modalManager.openModal(MODAL_TYPES.LICENSE_INPUT_FOR_UPGRADE, currentPluginFamily)}
+                    onBuyClick={() => handleBuyPlugin(currentPluginFamily.proPlugin.detailsUrl)}
+                    proDetailsUrl={currentPluginFamily.proPlugin.detailsUrl}
+                    changelogUrl={currentPluginFamily.changelogUrl}
                 />
             )}
 
             {isModalActive(MODAL_TYPES.RESOLVE_CONFLICT) && (
                 <ModalResolveConflict
                     {...modalProps}
-                    onKeepFreePlugin={() => handleResolveConflictAction(currentPlugin, 'free')}
-                    onKeepProPlugin={() => handleResolveConflictAction(currentPlugin, 'pro')}
+                    onKeepFreePlugin={() => handleResolveConflictAction(currentPluginFamily, 'free')}
+                    onKeepProPlugin={() => handleResolveConflictAction(currentPluginFamily, 'pro')}
                     onCancel={closeModal}
-                    pluginsFamily={currentPlugin}
-                    buttonInProgress={pluginResolveConflictInProgress[currentPlugin.slug] || false}
+                    pluginsFamily={currentPluginFamily}
+                    buttonInProgress={pluginResolveConflictInProgress[currentPluginFamily.slug] || false}
                     selectedPluginForConflictResolution={selectedPluginForConflictResolution}
                 />
             )}
@@ -108,16 +109,16 @@ const ModalRendererComponent = ({
             {isModalActive(MODAL_TYPES.LICENSE_MANAGEMENT) && (
                 <ModalLicenseManagement
                     {...modalProps}
-                    onActivate={() => handleManageLicense(currentPlugin.slug)}
-                    onDeactivate={() => handleDeactivateLicense(currentPlugin)}
-                    initialLicenseKey={currentPlugin.proPlugin.licenseKey}
+                    onActivate={() => handleOpenUpgradeModal(currentPluginFamily.slug)}
+                    onDeactivate={() => handleDeactivateLicense(currentPluginFamily)}
+                    initialLicenseKey={currentPluginFamily.proPlugin.licenseKey}
                 />
             )}
 
             {isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_ACTIVATING_LICENSE) && (
                 <ModalLicenseInput
                     {...modalProps}
-                    onActivate={(licenseKey) => handleActivateLicense(currentPlugin.slug, licenseKey)}
+                    onActivate={(licenseKey) => handleActivateLicense(currentPluginFamily, licenseKey)}
                 />
             )}
         </>

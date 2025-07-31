@@ -216,12 +216,10 @@ class UpgradePluginUseCase implements UseCaseInterface
         $this->licenseService->isLicenseValid($licenseKey, $downloadId);
 
         if (!$this->licenseService->isLicenseActive($licenseKey, $downloadId)) {
-            $result = $this->licenseService->activateLicense($licenseKey, $downloadId);
-
-            if ($result) {
-                $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
-            }
+            $this->licenseService->activateLicense($licenseKey, $downloadId);
         }
+
+        $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
     }
 
     /**

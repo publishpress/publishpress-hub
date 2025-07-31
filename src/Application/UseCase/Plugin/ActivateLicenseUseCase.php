@@ -44,6 +44,7 @@ class ActivateLicenseUseCase implements UseCaseInterface
     public function execute(WP_REST_Request $request): array
     {
         $familySlug = $request->get_param('familySlug');
+        $licenseKey = $request->get_param('licenseKey');
 
         // Get family with updated status to ensure we have current information
         $family = $this->pluginStatusService->getPluginFamilyWithUpdatedStatus($familySlug);
@@ -56,7 +57,6 @@ class ActivateLicenseUseCase implements UseCaseInterface
 
         try {
             $downloadId = $plugin->getDownloadId();
-            $licenseKey = $this->licensePersistence->getLicenseKey($downloadId);
 
             $this->licenseService->activateLicense($licenseKey, $downloadId);
             $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);

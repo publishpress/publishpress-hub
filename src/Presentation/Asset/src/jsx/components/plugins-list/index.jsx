@@ -20,6 +20,8 @@ const selectProgressStates = (select) => {
         pluginActivationInProgress: storeSelect.getPluginActivationInProgress(),
         pluginUpgradeInProgress: storeSelect.getPluginUpgradeInProgress(),
         pluginResolveConflictInProgress: storeSelect.getPluginResolveConflictInProgress(),
+        pluginLicenseActivationInProgress: storeSelect.getPluginLicenseActivationInProgress(),
+        pluginLicenseDeactivationInProgress: storeSelect.getPluginLicenseDeactivationInProgress(),
     };
 };
 
@@ -49,7 +51,10 @@ const PluginsListComponent = ({
         pluginActivationInProgress,
         pluginUpgradeInProgress,
         pluginResolveConflictInProgress,
+        pluginLicenseActivationInProgress,
+        pluginLicenseDeactivationInProgress,
     } = progressStates;
+
 
     const {
         selectedPluginForConflictResolution,
@@ -57,10 +62,13 @@ const PluginsListComponent = ({
     } = modalStates;
 
     const currentPluginState = useMemo(() => {
-        const { currentPlugin } = modalManager;
-        if (!currentPlugin) return { error: null, inProgress: false };
+        const { currentPluginFamily } = modalManager;
+        if (!currentPluginFamily) return { error: null, inProgress: false };
 
-        const slug = currentPlugin.slug;
+        const slug = currentPluginFamily.slug;
+
+        console.log('slug', slug, progressStates);
+
         return {
             error: pluginError[slug] || null,
             inProgress: Boolean(
@@ -69,18 +77,15 @@ const PluginsListComponent = ({
                 pluginDeactivationInProgress[slug] ||
                 pluginActivationInProgress[slug] ||
                 pluginUpgradeInProgress[slug] ||
-                pluginResolveConflictInProgress[slug]
+                pluginResolveConflictInProgress[slug] ||
+                pluginLicenseActivationInProgress[slug] ||
+                pluginLicenseDeactivationInProgress[slug]
             ),
         };
     }, [
-        modalManager.currentPlugin,
+        modalManager,
         pluginError,
-        pluginInstallationInProgress,
-        pluginUninstallationInProgress,
-        pluginDeactivationInProgress,
-        pluginActivationInProgress,
-        pluginUpgradeInProgress,
-        pluginResolveConflictInProgress,
+        progressStates
     ]);
 
     // Memoize the plugin item renderer to prevent recreation
@@ -95,6 +100,8 @@ const PluginsListComponent = ({
             isActivating: pluginActivationInProgress[slug] || false,
             isUpgrading: pluginUpgradeInProgress[slug] || false,
             isResolvingConflict: pluginResolveConflictInProgress[slug] || false,
+            isActivatingLicense: pluginLicenseActivationInProgress[slug] || false,
+            isDeactivatingLicense: pluginLicenseDeactivationInProgress[slug] || false,
         };
 
         return (
@@ -107,7 +114,7 @@ const PluginsListComponent = ({
                 onResolveConflict={pluginActions.handleOpenResolveConflictModal}
                 onActivate={pluginActions.handleActivatePlugin}
                 onDeactivate={pluginActions.handleDeactivatePlugin}
-                onUpgradeToPro={pluginActions.handleUpgradePluginToPro}
+                onUpgradeToPro={pluginActions.handleOpenUpgradeToProModal}
                 onManageLicense={pluginActions.handleOpenLicenseManagementModal}
                 onActivateLicense={pluginActions.handleOpenLicenseInputForActivatingLicenseModal}
                 onUninstall={pluginActions.handleOpenUninstallConfirmationModal}
@@ -122,6 +129,8 @@ const PluginsListComponent = ({
         pluginActivationInProgress,
         pluginUpgradeInProgress,
         pluginResolveConflictInProgress,
+        pluginLicenseActivationInProgress,
+        pluginLicenseDeactivationInProgress,
         pluginActions,
     ]);
 

@@ -39,6 +39,8 @@ const PluginItemComponent = ({
         isActivating,
         isUpgrading,
         isResolvingConflict,
+        isActivatingLicense,
+        isDeactivatingLicense,
     } = progressStates;
 
     const status = usePluginStatus(pluginFamily);
@@ -48,7 +50,13 @@ const PluginItemComponent = ({
         isDeactivating,
         isActivating,
         isUninstalling,
-    }), [isDeactivating, isActivating, isUninstalling]);
+        isDeactivating,
+        isActivating,
+        isUpgrading,
+        isResolvingConflict,
+        isActivatingLicense,
+        isDeactivatingLicense,
+    }), [isDeactivating, isActivating, isUninstalling, isActivatingLicense, isDeactivatingLicense]);
 
     const handlers = useMemo(() => ({
         onDeactivate,
@@ -165,7 +173,7 @@ const PluginItemComponent = ({
             </div>
             <div className='pp-hub-plugins-list-item-actions'>
                 <ActionButton
-                    plugin={pluginFamily}
+                    pluginFamily={pluginFamily}
                     inProgress={inProgress}
                     onInstall={onInstall}
                     onResolveConflict={onResolveConflict}

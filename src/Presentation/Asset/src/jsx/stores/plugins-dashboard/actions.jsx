@@ -468,7 +468,7 @@ export function* resolveConflict(pluginFamily, pluginToKeep) {
 
 export function* deactivateLicense(pluginFamily) {
     try {
-        yield {type: 'DEACTIVATE_LICENSE_START', data: {pluginSlug: pluginFamily.slug}};
+        yield {type: 'DEACTIVATE_LICENSE_START', data: {pluginFamily}};
 
         yield apiReady();
 
@@ -480,28 +480,26 @@ export function* deactivateLicense(pluginFamily) {
         if (data.success) {
             yield fetchPlugins();
 
-            yield {type: 'DEACTIVATE_LICENSE_SUCCESS', data: {pluginSlug: pluginFamily.slug}};
+            yield {type: 'DEACTIVATE_LICENSE_SUCCESS', data: {pluginFamily}};
 
             yield createSnackbarNotice(__('License deactivated successfully', 'publishpress-hub'), 'success');
 
             return {
                 success: true,
-                pluginSlug: pluginFamily,
+                pluginFamily,
                 apiResponse: data,
             };
         } else {
             throw new Error(data?.error || 'License deactivation failed');
         }
     } catch (error) {
-        yield {type: 'DEACTIVATE_LICENSE_ERROR', data: {pluginSlug: pluginFamily.slug, error: error}};
-
-        yield createNotice(__('License deactivation failed', 'publishpress-hub'), 'error');
+        yield {type: 'DEACTIVATE_LICENSE_ERROR', data: {pluginFamily, error: error}};
 
         error = handleErrorMessageOnContext(error);
 
         return {
             success: false,
-            pluginSlug: pluginFamily.slug,
+            pluginFamily,
             error,
         };
     }
@@ -509,7 +507,7 @@ export function* deactivateLicense(pluginFamily) {
 
 export function* activateLicense(pluginFamily, licenseKey) {
     try {
-        yield {type: 'ACTIVATE_LICENSE_START', data: {pluginSlug: pluginFamily.slug, licenseKey}};
+        yield {type: 'ACTIVATE_LICENSE_START', data: {pluginFamily, licenseKey}};
 
         yield apiReady();
 
@@ -521,10 +519,11 @@ export function* activateLicense(pluginFamily, licenseKey) {
             },
         });
 
+
         if (data.success) {
             yield fetchPlugins();
 
-            yield {type: 'ACTIVATE_LICENSE_SUCCESS', data: {pluginSlug: pluginFamily.slug, licenseKey}};
+            yield {type: 'ACTIVATE_LICENSE_SUCCESS', data: {pluginFamily, licenseKey}};
 
             yield createSnackbarNotice(__('License activated successfully', 'publishpress-hub'), 'success');
 
@@ -537,15 +536,14 @@ export function* activateLicense(pluginFamily, licenseKey) {
             throw new Error(data?.error || 'License activation failed');
         }
     } catch (error) {
-        yield {type: 'ACTIVATE_LICENSE_ERROR', data: {pluginSlug: pluginFamily.slug, licenseKey, error: error}};
-
-        yield createNotice(__('License activation failed', 'publishpress-hub'), 'error');
+        yield {type: 'ACTIVATE_LICENSE_ERROR', data: {pluginFamily, licenseKey, error: error}};
 
         error = handleErrorMessageOnContext(error);
 
         return {
             success: false,
-            pluginSlug: pluginFamily.slug,
+            pluginFamily,
+            licenseKey,
             error,
         };
     }

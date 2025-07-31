@@ -7,23 +7,24 @@ const MODAL_TYPES = {
     LICENSE_INPUT_FOR_UPGRADE: 'license-input-for-upgrade',
     LICENSE_INPUT_FOR_ACTIVATING_LICENSE: 'license-input-for-activating-license',
     UNINSTALL_CONFIRMATION: 'uninstall-confirmation',
-    UPGRADE: 'upgrade',
+    UPGRADE_PLUGIN_TO_PRO: 'upgrade-plugin-to-pro',
     RESOLVE_CONFLICT: 'resolve-conflict',
     LICENSE_MANAGEMENT: 'license-management',
 };
 
 export const useModalManager = () => {
     const [activeModal, setActiveModal] = useState(MODAL_TYPES.NONE);
-    const [currentPlugin, setCurrentPlugin] = useState(null);
+    const [currentPluginFamily, setCurrentPluginFamily] = useState(null);
 
     const openModal = useCallback((modalType, plugin = null) => {
         setActiveModal(modalType);
-        setCurrentPlugin(plugin);
+        setCurrentPluginFamily(plugin);
+        console.log('openModal', modalType, plugin);
     }, []);
 
     const closeModal = useCallback(() => {
         setActiveModal(MODAL_TYPES.NONE);
-        setCurrentPlugin(null);
+        setCurrentPluginFamily(null);
     }, []);
 
     const isModalActive = useCallback((modalType) => {
@@ -33,7 +34,7 @@ export const useModalManager = () => {
     return {
         MODAL_TYPES,
         activeModal,
-        currentPlugin,
+        currentPluginFamily,
         openModal,
         closeModal,
         isModalActive,

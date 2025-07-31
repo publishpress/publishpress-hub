@@ -10,6 +10,8 @@ export const DEFAULT_STATE = {
     pluginUninstallationInProgress: {},
     pluginActivationInProgress: {},
     pluginDeactivationInProgress: {},
+    pluginLicenseActivationInProgress: {},
+    pluginLicenseDeactivationInProgress: {},
     pluginUpgradeInProgress: {},
     pluginResolveConflictInProgress: {},
     selectedPluginForConflictResolution: null,
@@ -356,9 +358,13 @@ const resolveConflictError = (state, data) => {
 const deactivateLicenseStart = (state, data) => {
     return {
         ...state,
-        pluginDeactivationInProgress: {
-            ...state.pluginDeactivationInProgress,
+        pluginLicenseDeactivationInProgress: {
+            ...state.pluginLicenseDeactivationInProgress,
             [data.pluginFamily.slug]: true,
+        },
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginFamily.slug]: null,
         },
     }
 }
@@ -366,9 +372,13 @@ const deactivateLicenseStart = (state, data) => {
 const deactivateLicenseSuccess = (state, data) => {
     return {
         ...state,
-        pluginDeactivationInProgress: {
-            ...state.pluginDeactivationInProgress,
+        pluginLicenseDeactivationInProgress: {
+            ...state.pluginLicenseDeactivationInProgress,
             [data.pluginFamily.slug]: false,
+        },
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginFamily.slug]: null,
         },
     }
 }
@@ -376,9 +386,13 @@ const deactivateLicenseSuccess = (state, data) => {
 const deactivateLicenseError = (state, data) => {
     return {
         ...state,
-        pluginDeactivationInProgress: {
-            ...state.pluginDeactivationInProgress,
+        pluginLicenseDeactivationInProgress: {
+            ...state.pluginLicenseDeactivationInProgress,
             [data.pluginFamily.slug]: false,
+        },
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginFamily.slug]: data.error,
         },
     }
 }
@@ -386,9 +400,13 @@ const deactivateLicenseError = (state, data) => {
 const activateLicenseStart = (state, data) => {
     return {
         ...state,
-        pluginActivationInProgress: {
-            ...state.pluginActivationInProgress,
+        pluginLicenseActivationInProgress: {
+            ...state.pluginLicenseActivationInProgress,
             [data.pluginFamily.slug]: true,
+        },
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginFamily.slug]: null,
         },
     }
 }
@@ -396,9 +414,13 @@ const activateLicenseStart = (state, data) => {
 const activateLicenseSuccess = (state, data) => {
     return {
         ...state,
-        pluginActivationInProgress: {
-            ...state.pluginActivationInProgress,
+        pluginLicenseActivationInProgress: {
+            ...state.pluginLicenseActivationInProgress,
             [data.pluginFamily.slug]: false,
+        },
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginFamily.slug]: null,
         },
     }
 }
@@ -406,9 +428,13 @@ const activateLicenseSuccess = (state, data) => {
 const activateLicenseError = (state, data) => {
     return {
         ...state,
-        pluginActivationInProgress: {
-            ...state.pluginActivationInProgress,
+        pluginLicenseActivationInProgress: {
+            ...state.pluginLicenseActivationInProgress,
             [data.pluginFamily.slug]: false,
+        },
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginFamily.slug]: data.error,
         },
     }
 }

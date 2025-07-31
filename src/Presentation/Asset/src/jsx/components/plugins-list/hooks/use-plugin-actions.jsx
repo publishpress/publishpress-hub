@@ -20,15 +20,15 @@ export const usePluginActions = (modalManager) => {
 
     const handleOpenInstallationTypeModal = useCallback((pluginFamily) => {
         openModal(MODAL_TYPES.INSTALLATION_TYPE, pluginFamily);
-    }, [openModal, MODAL_TYPES.INSTALLATION_TYPE]);
+    }, [openModal, MODAL_TYPES]);
 
     const handleOpenResolveConflictModal = useCallback((pluginFamily) => {
         openModal(MODAL_TYPES.RESOLVE_CONFLICT, pluginFamily);
     }, [openModal, MODAL_TYPES.RESOLVE_CONFLICT]);
 
-    const handleOpenUpgradeModal = useCallback((pluginFamily) => {
-        openModal(MODAL_TYPES.UPGRADE, pluginFamily);
-    }, [openModal, MODAL_TYPES.UPGRADE]);
+    const handleOpenUpgradeToProModal = useCallback((pluginFamily) => {
+        openModal(MODAL_TYPES.UPGRADE_PLUGIN_TO_PRO, pluginFamily);
+    }, [openModal, MODAL_TYPES.UPGRADE_PLUGIN_TO_PRO]);
 
     const handleOpenUninstallConfirmationModal = useCallback((pluginFamily) => {
         openModal(MODAL_TYPES.UNINSTALL_CONFIRMATION, pluginFamily);
@@ -116,12 +116,13 @@ export const usePluginActions = (modalManager) => {
         handleOpenResolveConflictModal,
         handleActivatePlugin,
         handleDeactivatePlugin,
-        handleOpenUpgradeModal,
+        handleOpenUpgradeToProModal,
         handleOpenUninstallConfirmationModal,
         handleOpenLicenseManagementModal,
         handleOpenLicenseInputForInstallingProModal,
         handleOpenLicenseInputForActivatingLicenseModal,
         handleDeactivateLicense,
+        handleActivateLicense,
         // Modal-specific actions
         handleInstallFree,
         handleInstallPro,
