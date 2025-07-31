@@ -17,28 +17,16 @@ use PublishPress\Hub\Application\UseCase\Plugin\InstallProPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ResolveConflictUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UninstallPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UpgradePluginUseCase;
+use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Repository\PluginFamilyRepository;
 use PublishPress\Hub\Infrastructure\AdminMenu\AdminMenuService;
-use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuAdapterInterface;
-use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
-use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Cache\CacheService;
-use PublishPress\Hub\Infrastructure\Cache\Contract\CacheAdapterInterface;
-use PublishPress\Hub\Infrastructure\Cache\Contract\CacheServiceInterface;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\EddSubscriptionAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Remote\WordPressRemoteAdapter;
-use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
-use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
-use PublishPress\Hub\Infrastructure\I18n\Contract\I18nServiceInterface;
-use PublishPress\Hub\Infrastructure\License\Contract\LicenseServiceInterface;
-use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use PublishPress\Hub\Infrastructure\License\LicenseService;
 use PublishPress\Hub\Infrastructure\License\LicensePersistenceService;
-use PublishPress\Hub\Infrastructure\Logger\Contract\LoggerInterface;
 use PublishPress\Hub\Infrastructure\Logger\Logger;
 use PublishPress\Hub\Infrastructure\Remote\RemoteService;
-use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
-use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
 use PublishPress\Hub\Infrastructure\View\ViewService;
 use PublishPress\Hub\Infrastructure\WordPress\AdminMenu\WordPressAdminMenuAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Asset\WordPressAssetAdapter;
@@ -51,7 +39,6 @@ use PublishPress\Hub\Infrastructure\WordPress\Cache\WordPressCacheAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Filesystem\WordPressFileSystemAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Options\WordPressOptionsAdapter;
-use PublishPress\Hub\Infrastructure\WordPress\Options\Contract\OptionsAdapterInterface;
 use PublishPress\Hub\Infrastructure\WordPressOrg\Api\WordPressOrgPluginApiAdapter;
 use PublishPress\Hub\Presentation\Controller\DevComponentsShowcaseController;
 use PublishPress\Hub\Presentation\Controller\MainMenuController;
@@ -85,149 +72,114 @@ return [
 
     AbstractDependencies::CACHE_GROUP => 'publishpress-hub',
 
-
     AbstractDependencies::LICENSE_OPTION_PREFIX => 'publishpress_hub_license_',
 
-    AbstractDependencies::USER_AGENT => function (ContainerInterface $container): string {
-        return 'PublishPress-Hub/' . $container->get(AbstractDependencies::PLUGIN_VERSION) . '; ' . $container->get(AbstractDependencies::SITE_URL);
-    },
+    AbstractDependencies::USER_AGENT =>
+        fn(ContainerInterface $container) => sprintf(
+            'PublishPress-Hub/%s; %s',
+            $container->get(AbstractDependencies::PLUGIN_VERSION),
+            $container->get(AbstractDependencies::SITE_URL)
+        ),
 
-    AbstractDependencies::SCRIPT_DEBUG => function (ContainerInterface $container): bool {
-        return defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;
-    },
+    AbstractDependencies::SCRIPT_DEBUG =>
+        fn(ContainerInterface $container) => defined('SCRIPT_DEBUG') && SCRIPT_DEBUG,
 
     // Infrastructure Services
     AbstractDependencies::HOOKS_SERVICE =>
-        function (ContainerInterface $container): HooksServiceInterface {
-            return new WordPressHooksAdapter();
-        },
+        fn(ContainerInterface $container) => new WordPressHooksAdapter(),
 
     AbstractDependencies::I18N_SERVICE =>
-        function (ContainerInterface $container): I18nServiceInterface {
-            return new WordPressI18nAdapter(
-                $container->get(AbstractDependencies::PLUGIN_TEXT_DOMAIN),
-                $container->get(AbstractDependencies::PLUGIN_I18N_SCRIPT_PATH),
-                $container->get(AbstractDependencies::PLUGIN_LANGUAGES_PATH),
-                $container->get(AbstractDependencies::HOOKS_SERVICE),
-                $container->get(AbstractDependencies::ASSET_SERVICE)
-            );
-        },
+        fn(ContainerInterface $container) => new WordPressI18nAdapter(
+            $container->get(AbstractDependencies::PLUGIN_TEXT_DOMAIN),
+            $container->get(AbstractDependencies::PLUGIN_I18N_SCRIPT_PATH),
+            $container->get(AbstractDependencies::PLUGIN_LANGUAGES_PATH),
+            $container->get(AbstractDependencies::HOOKS_SERVICE),
+            $container->get(AbstractDependencies::ASSET_SERVICE)
+        ),
 
     AbstractDependencies::ASSET_SERVICE =>
-        function (ContainerInterface $container): AssetServiceInterface {
-            return new WordPressAssetAdapter(
+        fn(ContainerInterface $container) => new WordPressAssetAdapter(
                 $container->get(AbstractDependencies::PLUGIN_ASSETS_URL),
                 $container->get(AbstractDependencies::PLUGIN_VERSION),
                 $container->get(AbstractDependencies::SCRIPT_DEBUG)
-            );
-        },
+            ),
 
     AbstractDependencies::LOGGER_SERVICE =>
-        function (ContainerInterface $container): LoggerInterface {
-            return new Logger([
+        fn(ContainerInterface $container) => new Logger([
                 'include_class_name' => true,
                 'include_file_path' => true,
                 'trace_separator' => ' > ',
                 'message_prefix' => '[PublishPress Hub] ',
                 'error_log_function' => 'error_log',
-            ]);
-        },
+            ]),
 
     AbstractDependencies::ADMIN_MENU_SERVICE =>
-        function (ContainerInterface $container): AdminMenuServiceInterface {
-            return new AdminMenuService(
+        fn(ContainerInterface $container) => new AdminMenuService(
                 $container->get(AbstractDependencies::ADMIN_MENU_ADAPTER),
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
-            );
-        },
+            ),
 
     AbstractDependencies::VIEW_SERVICE =>
-        function (ContainerInterface $container): ViewServiceInterface {
-            return new ViewService(
+        fn(ContainerInterface $container) => new ViewService(
                 $container->get(AbstractDependencies::PLUGIN_TEMPLATES_BASE_PATH)
-            );
-        },
+            ),
 
     AbstractDependencies::SECURITY_SERVICE =>
-        function (ContainerInterface $container): SecurityServiceInterface {
-            return new WordPressSecurityAdapter();
-        },
+        fn(ContainerInterface $container) => new WordPressSecurityAdapter(),
 
     AbstractDependencies::REST_API_ADAPTER =>
-        function (ContainerInterface $container): \PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiAdapterInterface {
-            return new WordPressRestApiAdapter();
-        },
+        fn(ContainerInterface $container) => new WordPressRestApiAdapter(),
 
     AbstractDependencies::REST_API_SERVICE =>
-        function (ContainerInterface $container): \PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface {
-            return new RestApiService(
+        fn(ContainerInterface $container) => new RestApiService(
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
                 $container->get(AbstractDependencies::REST_API_ADAPTER),
                 $container->get(AbstractDependencies::SECURITY_SERVICE)
-            );
-        },
+            ),
 
     AbstractDependencies::LICENSE_PERSISTENCE_SERVICE =>
-        function (ContainerInterface $container): LicensePersistenceInterface {
-            return new LicensePersistenceService(
+        fn(ContainerInterface $container) => new LicensePersistenceService(
                 $container->get(AbstractDependencies::OPTIONS_ADAPTER),
                 $container->get(AbstractDependencies::LICENSE_OPTION_PREFIX)
-            );
-        },
+            ),
 
     AbstractDependencies::LICENSE_SERVICE =>
-        function (ContainerInterface $container): LicenseServiceInterface {
-            return new LicenseService(
+        fn(ContainerInterface $container) => new LicenseService(
                 $container->get(AbstractDependencies::EDD_SUBSCRIPTION_ADAPTER),
-                $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
-            );
-        },
+            ),
 
     AbstractDependencies::EDD_SUBSCRIPTION_ADAPTER =>
-        function (ContainerInterface $container): LicenseServiceInterface {
-            return new EddSubscriptionAdapter(
+        fn(ContainerInterface $container) => new EddSubscriptionAdapter(
                 $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
                 $container->get(AbstractDependencies::SITE_URL),
                 $container->get(AbstractDependencies::USER_AGENT),
                 $container->get(AbstractDependencies::REMOTE_SERVICE),
                 $container->get(AbstractDependencies::CACHE_SERVICE)
-            );
-        },
+            ),
 
     AbstractDependencies::REMOTE_SERVICE =>
-        function (ContainerInterface $container): RemoteServiceInterface {
-            return new RemoteService(
+        fn(ContainerInterface $container) => new RemoteService(
                 $container->get(AbstractDependencies::REMOTE_ADAPTER)
-            );
-        },
+            ),
 
     AbstractDependencies::REMOTE_ADAPTER =>
-        function (ContainerInterface $container): RemoteServiceInterface {
-            return new WordPressRemoteAdapter();
-        },
+        fn(ContainerInterface $container) => new WordPressRemoteAdapter(),
 
     AbstractDependencies::CACHE_SERVICE =>
-        function (ContainerInterface $container): CacheServiceInterface {
-            return new CacheService(
+        fn(ContainerInterface $container) => new CacheService(
                 $container->get(AbstractDependencies::CACHE_GROUP),
                 $container->get(AbstractDependencies::CACHE_ADAPTER)
-            );
-        },
+            ),
 
     AbstractDependencies::CACHE_ADAPTER =>
-        function (ContainerInterface $container): CacheAdapterInterface {
-            return new WordPressCacheAdapter();
-        },
+        fn(ContainerInterface $container) => new WordPressCacheAdapter(),
 
     AbstractDependencies::FREE_PLUGIN_API =>
-        function (ContainerInterface $container): WordPressOrgPluginApiAdapter {
-            return new WordPressOrgPluginApiAdapter();
-        },
+        fn(ContainerInterface $container) => new WordPressOrgPluginApiAdapter(),
 
     // Application Services
     AbstractDependencies::PLUGIN_BOOTSTRAP_SERVICE =>
-        function (ContainerInterface $container): HubBootstrapService {
-            return new HubBootstrapService(
+        fn(ContainerInterface $container) => new HubBootstrapService(
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
                 [
                     $container->get(AbstractDependencies::I18N_SERVICE),
@@ -239,152 +191,115 @@ return [
                 ],
                 $container->get(AbstractDependencies::MAIN_MENU_CONTROLLER),
                 $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
-            );
-        },
+            ),
 
     AbstractDependencies::PLUGINS_DASHBOARD_SERVICE =>
-        function (ContainerInterface $container): PluginsDashboardService {
-            return new PluginsDashboardService(
-                $container->get(AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER),
-                $container->get(AbstractDependencies::ADMIN_MENU_SERVICE)
-            );
-        },
+        fn(ContainerInterface $container) => new PluginsDashboardService(
+                $container->get(AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER)
+            ),
 
     AbstractDependencies::DEV_COMPONENTS_SHOWCASE_SERVICE =>
-        function (ContainerInterface $container): DevComponentsShowcaseService {
-            return new DevComponentsShowcaseService(
+        fn(ContainerInterface $container) => new DevComponentsShowcaseService(
                 $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER)
-            );
-        },
+            ),
 
     AbstractDependencies::PLUGIN_FAMILY_REPOSITORY =>
-        function (ContainerInterface $container): \PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface {
-            return new PluginFamilyRepository();
-        },
+        fn(ContainerInterface $container): PluginFamilyRepositoryInterface => new PluginFamilyRepository(),
 
     AbstractDependencies::PLUGIN_STATUS_ADAPTER =>
-        function (ContainerInterface $container): WordPressPluginStatusAdapter {
-            return new WordPressPluginStatusAdapter(
+        fn(ContainerInterface $container) => new WordPressPluginStatusAdapter(
                 $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER)
-            );
-        },
+            ),
 
     AbstractDependencies::PLUGIN_STATUS_SERVICE =>
-        function (ContainerInterface $container): PluginStatusService {
-            return new PluginStatusService(
+        fn(ContainerInterface $container) => new PluginStatusService(
                 $container->get(AbstractDependencies::PLUGIN_STATUS_ADAPTER),
                 $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
-            );
-        },
+            ),
 
     AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER =>
-        function (ContainerInterface $container): WordPressPluginLifecycleAdapter {
-            return new WordPressPluginLifecycleAdapter(
+        fn(ContainerInterface $container) => new WordPressPluginLifecycleAdapter(
                 $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER)
-            );
-        },
+            ),
 
     AbstractDependencies::FILE_SYSTEM_ADAPTER =>
-        function (ContainerInterface $container): WordPressFileSystemAdapter {
-            return new WordPressFileSystemAdapter();
-        },
+        fn(ContainerInterface $container) => new WordPressFileSystemAdapter(),
 
     AbstractDependencies::OPTIONS_ADAPTER =>
-        function (ContainerInterface $container): OptionsAdapterInterface {
-            return new WordPressOptionsAdapter();
-        },
+        fn(ContainerInterface $container) => new WordPressOptionsAdapter(),
 
     // Use Cases
     AbstractDependencies::LIST_PLUGINS_USE_CASE =>
-        function (ContainerInterface $container): ListPluginsUseCase {
-            return new ListPluginsUseCase(
+        fn(ContainerInterface $container) => new ListPluginsUseCase(
                 $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE)
-            );
-        },
+            ),
 
     AbstractDependencies::INSTALL_FREE_PLUGIN_USE_CASE =>
-        function (ContainerInterface $container): InstallFreePluginUseCase {
-            return new InstallFreePluginUseCase(
+        fn(ContainerInterface $container) => new InstallFreePluginUseCase(
                 $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
                 $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
                 $container->get(AbstractDependencies::FREE_PLUGIN_API)
-            );
-        },
+        ),
 
     AbstractDependencies::INSTALL_PRO_PLUGIN_USE_CASE =>
-        function (ContainerInterface $container): InstallProPluginUseCase {
-            return new InstallProPluginUseCase(
+        fn(ContainerInterface $container) => new InstallProPluginUseCase(
                 $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
                 $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
-                $container->get(AbstractDependencies::LICENSE_SERVICE)
-            );
-        },
+                $container->get(AbstractDependencies::LICENSE_SERVICE),
+                $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+            ),
 
     AbstractDependencies::CHANGE_PLUGIN_ACTIVATION_USE_CASE =>
-        function (ContainerInterface $container): ChangePluginActivationUseCase {
-            return new ChangePluginActivationUseCase(
+        fn(ContainerInterface $container) => new ChangePluginActivationUseCase(
                 $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
                 $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
-            );
-        },
+            ),
 
     AbstractDependencies::UNINSTALL_PLUGIN_USE_CASE =>
-        function (ContainerInterface $container): UninstallPluginUseCase {
-            return new UninstallPluginUseCase(
+        fn(ContainerInterface $container) => new UninstallPluginUseCase(
                 $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
                 $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
-            );
-        },
+            ),
 
     AbstractDependencies::UPGRADE_PLUGIN_USE_CASE =>
-        function (ContainerInterface $container): UpgradePluginUseCase {
-            return new UpgradePluginUseCase(
+        fn(ContainerInterface $container) => new UpgradePluginUseCase(
                 $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
                 $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
-                $container->get(AbstractDependencies::LICENSE_SERVICE)
-            );
-        },
+                $container->get(AbstractDependencies::LICENSE_SERVICE),
+                $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+            ),
 
     AbstractDependencies::RESOLVE_CONFLICT_USE_CASE =>
-        function (ContainerInterface $container): ResolveConflictUseCase {
-            return new ResolveConflictUseCase(
+        fn(ContainerInterface $container) => new ResolveConflictUseCase(
                 $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
                 $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
-            );
-        },
+            ),
 
     // Presentation Services
     AbstractDependencies::MAIN_MENU_CONTROLLER =>
-        function (ContainerInterface $container): MainMenuController {
-            return new MainMenuController(
+        fn(ContainerInterface $container) => new MainMenuController(
                 $container->get(AbstractDependencies::ADMIN_MENU_SERVICE)
-            );
-        },
+            ),
 
     AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER =>
-        function (ContainerInterface $container): PluginsDashboardController {
-            return new PluginsDashboardController(
+        fn(ContainerInterface $container) => new PluginsDashboardController(
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
                 $container->get(AbstractDependencies::VIEW_SERVICE),
                 $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
                 $container->get(AbstractDependencies::ASSET_SERVICE),
                 $container->get(AbstractDependencies::SECURITY_SERVICE)
-            );
-        },
+            ),
 
     AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER =>
-        function (ContainerInterface $container): DevComponentsShowcaseController {
-            return new DevComponentsShowcaseController(
+        fn(ContainerInterface $container) => new DevComponentsShowcaseController(
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
                 $container->get(AbstractDependencies::VIEW_SERVICE),
                 $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
                 $container->get(AbstractDependencies::ASSET_SERVICE)
-            );
-        },
+            ),
 
     AbstractDependencies::REST_API_PLUGINS_CONTROLLER =>
-        function (ContainerInterface $container): PluginsController {
-            return new PluginsController(
+        fn(ContainerInterface $container) => new PluginsController(
                 $container->get(AbstractDependencies::HUB_REST_API_NAMESPACE),
                 $container->get(AbstractDependencies::REST_API_SERVICE),
                 $container->get(AbstractDependencies::LIST_PLUGINS_USE_CASE),
@@ -394,12 +309,9 @@ return [
                 $container->get(AbstractDependencies::UNINSTALL_PLUGIN_USE_CASE),
                 $container->get(AbstractDependencies::UPGRADE_PLUGIN_USE_CASE),
                 $container->get(AbstractDependencies::RESOLVE_CONFLICT_USE_CASE)
-            );
-        },
+            ),
 
     // Adapters
     AbstractDependencies::ADMIN_MENU_ADAPTER =>
-        function (ContainerInterface $container): AdminMenuAdapterInterface {
-            return new WordPressAdminMenuAdapter();
-        },
+        fn(ContainerInterface $container) => new WordPressAdminMenuAdapter(),
 ];
