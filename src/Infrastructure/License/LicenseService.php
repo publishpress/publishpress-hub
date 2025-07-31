@@ -7,7 +7,6 @@ namespace PublishPress\Hub\Infrastructure\License;
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseAdapterInterface;
-use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseServiceInterface;
 
 class LicenseService implements LicenseServiceInterface, BootableInterface
@@ -15,14 +14,11 @@ class LicenseService implements LicenseServiceInterface, BootableInterface
     use BootableTrait;
 
     private LicenseAdapterInterface $licenseAdapter;
-    private LicensePersistenceInterface $licensePersistence;
 
     public function __construct(
-        LicenseAdapterInterface $licenseAdapter,
-        LicensePersistenceInterface $licensePersistence
+        LicenseAdapterInterface $licenseAdapter
     ) {
         $this->licenseAdapter = $licenseAdapter;
-        $this->licensePersistence = $licensePersistence;
     }
 
     protected function onLoad(): void
@@ -45,24 +41,12 @@ class LicenseService implements LicenseServiceInterface, BootableInterface
 
     public function activateLicense(string $licenseKey, int $downloadId, bool $force = false): bool
     {
-        $result = $this->licenseAdapter->activateLicense($licenseKey, $downloadId, $force);
-
-        if ($result) {
-            $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
-        }
-
-        return $result;
+        return $this->licenseAdapter->activateLicense($licenseKey, $downloadId, $force);
     }
 
     public function deactivateLicense(string $licenseKey, int $downloadId): bool
     {
-        $result = $this->licenseAdapter->deactivateLicense($licenseKey, $downloadId);
-
-        if ($result) {
-            $this->licensePersistence->removeLicenseKey($downloadId);
-        }
-
-        return $result;
+        return $this->licenseAdapter->deactivateLicense($licenseKey, $downloadId);
     }
 
     public function getLicenseInfo(string $licenseKey, int $downloadId, bool $force = false): array

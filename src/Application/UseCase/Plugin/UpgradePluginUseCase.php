@@ -24,6 +24,7 @@ use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginInstallException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotInstalledException;
+use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseServiceInterface;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginLifecycleAdapter;
 use WP_REST_Request;
@@ -34,14 +35,18 @@ class UpgradePluginUseCase implements UseCaseInterface
     private WordPressPluginLifecycleAdapter $pluginLifecycle;
     private LicenseServiceInterface $licenseService;
 
+    private LicensePersistenceInterface $licensePersistence;
+
     public function __construct(
         PluginStatusService $pluginStatusService,
         WordPressPluginLifecycleAdapter $pluginLifecycle,
-        LicenseServiceInterface $licenseService
+        LicenseServiceInterface $licenseService,
+        LicensePersistenceInterface $licensePersistence
     ) {
         $this->pluginStatusService = $pluginStatusService;
         $this->pluginLifecycle = $pluginLifecycle;
         $this->licenseService = $licenseService;
+        $this->licensePersistence = $licensePersistence;
     }
 
     /**
@@ -211,7 +216,11 @@ class UpgradePluginUseCase implements UseCaseInterface
         $this->licenseService->isLicenseValid($licenseKey, $downloadId);
 
         if (!$this->licenseService->isLicenseActive($licenseKey, $downloadId)) {
-            $this->licenseService->activateLicense($licenseKey, $downloadId);
+            $result = $this->licenseService->activateLicense($licenseKey, $downloadId);
+
+            if ($result) {
+                $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
+            }
         }
     }
 
