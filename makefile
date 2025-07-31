@@ -50,6 +50,7 @@ help:
 	@echo "  sync           # Start watching and syncing plugin files to dev site"
 	@echo "  sync-once      # Sync plugin files once to dev site"
 	@echo "  sync-stop      # Stop the sync process"
+	@echo "  watch          # Watch for changes in the assets and build assets using webpack"
 
 
 dev-up:
@@ -222,3 +223,14 @@ sync-once:
 sync-stop:
 	@echo "Stopping sync process..."
 	@pkill -f "sync-plugin.sh" || true
+
+# Dev-workspace commands
+
+watch:
+	./dev-workspace/run composer watch
+
+build-js:
+	./dev-workspace/run composer build-js
+
+build:
+	./dev-workspace/run composer build
