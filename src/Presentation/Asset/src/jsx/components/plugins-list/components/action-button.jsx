@@ -28,7 +28,7 @@ const ACTION_BUTTON_CONFIGS = {
         variant: 'secondary',
         text: __('Activate License', 'publishpress-hub'),
         loadingText: __('Activating License...', 'publishpress-hub'),
-        icon: 'check',
+        icon: 'yes',
     },
     conflict: {
         variant: 'primary',
@@ -71,14 +71,14 @@ const ActionButtonComponent = ({
 
         if (plugin.proPlugin.isInstalled && !plugin.proPlugin.isLicensed) {
             return {
-                ...ACTION_BUTTON_CONFIGS.manageLicense,
-                onClick: () => onManageLicense(plugin),
+                ...ACTION_BUTTON_CONFIGS.activateLicense,
+                onClick: () => onActivateLicense(plugin),
             };
         }
 
         return {
-            ...ACTION_BUTTON_CONFIGS.activateLicense,
-            onClick: () => onActivateLicense(plugin),
+            ...ACTION_BUTTON_CONFIGS.manageLicense,
+            onClick: () => onManageLicense(plugin),
         };
     };
 

@@ -10,7 +10,9 @@ use PublishPress\Psr\Container\ContainerInterface;
 use PublishPress\Hub\Infrastructure\WordPress\Hooks\WordPressHooksAdapter;
 use PublishPress\Hub\Application\Service\HubBootstrapService;
 use PublishPress\Hub\Application\Service\PluginsDashboard\PluginsDashboardService;
+use PublishPress\Hub\Application\UseCase\Plugin\ActivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\DeactivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallFreePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallProPluginUseCase;
@@ -214,7 +216,8 @@ return [
     AbstractDependencies::PLUGIN_STATUS_SERVICE =>
         fn(ContainerInterface $container) => new PluginStatusService(
                 $container->get(AbstractDependencies::PLUGIN_STATUS_ADAPTER),
-                $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
+                $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
+                $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
             ),
 
     AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER =>
@@ -231,7 +234,8 @@ return [
     // Use Cases
     AbstractDependencies::LIST_PLUGINS_USE_CASE =>
         fn(ContainerInterface $container) => new ListPluginsUseCase(
-                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE)
+                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+                $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
             ),
 
     AbstractDependencies::INSTALL_FREE_PLUGIN_USE_CASE =>
@@ -275,6 +279,20 @@ return [
                 $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
             ),
 
+    AbstractDependencies::DEACTIVATE_LICENSE_USE_CASE =>
+        fn(ContainerInterface $container) => new DeactivateLicenseUseCase(
+                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+                $container->get(AbstractDependencies::LICENSE_SERVICE),
+                $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+            ),
+
+    AbstractDependencies::ACTIVATE_LICENSE_USE_CASE =>
+        fn(ContainerInterface $container) => new ActivateLicenseUseCase(
+                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+                $container->get(AbstractDependencies::LICENSE_SERVICE),
+                $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+            ),
+
     // Presentation Services
     AbstractDependencies::MAIN_MENU_CONTROLLER =>
         fn(ContainerInterface $container) => new MainMenuController(
@@ -308,7 +326,9 @@ return [
                 $container->get(AbstractDependencies::CHANGE_PLUGIN_ACTIVATION_USE_CASE),
                 $container->get(AbstractDependencies::UNINSTALL_PLUGIN_USE_CASE),
                 $container->get(AbstractDependencies::UPGRADE_PLUGIN_USE_CASE),
-                $container->get(AbstractDependencies::RESOLVE_CONFLICT_USE_CASE)
+                $container->get(AbstractDependencies::RESOLVE_CONFLICT_USE_CASE),
+                $container->get(AbstractDependencies::DEACTIVATE_LICENSE_USE_CASE),
+                $container->get(AbstractDependencies::ACTIVATE_LICENSE_USE_CASE)
             ),
 
     // Adapters

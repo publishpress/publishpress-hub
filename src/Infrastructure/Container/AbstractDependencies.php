@@ -113,6 +113,10 @@ abstract class AbstractDependencies
 
     public const RESOLVE_CONFLICT_USE_CASE = 'publishpress-hub.application.use-case.plugin.resolve-conflict';
 
+    public const DEACTIVATE_LICENSE_USE_CASE = 'publishpress-hub.application.use-case.plugin.deactivate-license';
+
+    public const ACTIVATE_LICENSE_USE_CASE = 'publishpress-hub.application.use-case.plugin.activate-license';
+
     public const PLUGIN_STATUS_ADAPTER = 'publishpress-hub.infrastructure.plugin-status.adapter';
 
     public const PLUGIN_STATUS_SERVICE = 'publishpress-hub.application.plugin-status.service';

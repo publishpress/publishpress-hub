@@ -7,6 +7,8 @@ namespace PublishPress\Hub\Application\Service\PluginStatus;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginInterface;
+use PublishPress\Hub\Domain\Plugin\Contract\ProPluginInterface;
+use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapter;
 
 /**
@@ -21,13 +23,16 @@ class PluginStatusService
 {
     private WordPressPluginStatusAdapter $pluginStatusAdapter;
     private PluginFamilyRepositoryInterface $pluginFamilyRepository;
+    private LicensePersistenceInterface $licensePersistence;
 
     public function __construct(
         WordPressPluginStatusAdapter $pluginStatusAdapter,
-        PluginFamilyRepositoryInterface $pluginFamilyRepository
+        PluginFamilyRepositoryInterface $pluginFamilyRepository,
+        LicensePersistenceInterface $licensePersistence
     ) {
         $this->pluginStatusAdapter = $pluginStatusAdapter;
         $this->pluginFamilyRepository = $pluginFamilyRepository;
+        $this->licensePersistence = $licensePersistence;
     }
 
     /**
@@ -89,8 +94,13 @@ class PluginStatusService
         $isActive = $this->pluginStatusAdapter->checkIfPluginIsActive($plugin);
         $version = $this->pluginStatusAdapter->getPluginVersion($plugin);
 
+        $isLicensed = ($plugin instanceof ProPluginInterface) ?
+            $this->licensePersistence->hasLicenseKey($plugin->getDownloadId()) :
+            false;
+
         $plugin->setInstalled($isInstalled, $version);
         $plugin->setActive($isActive);
+        $plugin->setLicensed($isLicensed);
     }
 
     /**

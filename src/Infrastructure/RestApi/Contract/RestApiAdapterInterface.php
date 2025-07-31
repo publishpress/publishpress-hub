@@ -7,6 +7,7 @@ namespace PublishPress\Hub\Infrastructure\RestApi\Contract;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use WP_REST_Response;
 use WP_REST_Request;
+use WP_Error;
 
 interface RestApiAdapterInterface
 {
@@ -21,7 +22,7 @@ interface RestApiAdapterInterface
      * @param string|int $code
      * @return WP_REST_Response|WP_Error
      */
-    public function createErrorResponse(string $message, int $status = 400, $code = 'error');
+    public function createErrorResponse(string $message, int $status = 400, $code = 'error', array $context = []);
 
     public function getRequestData(WP_REST_Request $request): array;
 

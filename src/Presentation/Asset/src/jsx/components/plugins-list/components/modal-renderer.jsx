@@ -21,9 +21,11 @@ const ModalRendererComponent = ({
         handleInstallFree,
         handleInstallPro,
         handleUpgradePlugin,
-        handleUninstallConfirm,
+        handleUninstallPlugin,
         handleResolveConflictAction,
         handleBuyPlugin,
+        handleDeactivateLicense,
+        handleActivateLicense,
     } = pluginActions;
 
     if (!currentPlugin || activeModal === MODAL_TYPES.NONE) {
@@ -48,7 +50,7 @@ const ModalRendererComponent = ({
             {isModalActive(MODAL_TYPES.INSTALLATION_TYPE) && (
                 <ModalInstallationType
                     {...modalProps}
-                    onProClick={() => modalManager.openModal(MODAL_TYPES.LICENSE_INPUT, currentPlugin)}
+                    onProClick={() => modalManager.openModal(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO, currentPlugin)}
                     onFreeClick={() => handleInstallFree(currentPlugin.slug)}
                     freeDetailsUrl={currentPlugin.freeDetailsUrl}
                     proDetailsUrl={currentPlugin.proDetailsUrl}
@@ -56,7 +58,7 @@ const ModalRendererComponent = ({
                 />
             )}
 
-            {isModalActive(MODAL_TYPES.LICENSE_INPUT) && (
+            {isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO) && (
                 <ModalLicenseInput
                     {...modalProps}
                     onActivate={(licenseKey) => handleInstallPro(currentPlugin.slug, licenseKey)}
@@ -73,7 +75,7 @@ const ModalRendererComponent = ({
             {isModalActive(MODAL_TYPES.UNINSTALL_CONFIRMATION) && (
                 <ModalConfirmation
                     {...modalProps}
-                    onConfirm={() => handleUninstallConfirm(currentPlugin.slug)}
+                    onConfirm={() => handleUninstallPlugin(currentPlugin.slug)}
                     onCancel={closeModal}
                     isDanger={true}
                     title={__('Uninstall Plugin', 'publishpress-hub')}
@@ -107,6 +109,15 @@ const ModalRendererComponent = ({
                 <ModalLicenseManagement
                     {...modalProps}
                     onActivate={() => handleManageLicense(currentPlugin.slug)}
+                    onDeactivate={() => handleDeactivateLicense(currentPlugin)}
+                    initialLicenseKey={currentPlugin.proPlugin.licenseKey}
+                />
+            )}
+
+            {isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_ACTIVATING_LICENSE) && (
+                <ModalLicenseInput
+                    {...modalProps}
+                    onActivate={(licenseKey) => handleActivateLicense(currentPlugin.slug, licenseKey)}
                 />
             )}
         </>

@@ -26,6 +26,7 @@ const PluginItemComponent = ({
     onActivateLicense,
     onUninstall,
     onResolveConflict,
+    onDeactivateLicense,
 }) => {
     const [isHovered, setIsHovered] = useState(false);
     const { isSmallMobile, isMobile } = useScreenSize();
@@ -53,7 +54,8 @@ const PluginItemComponent = ({
         onDeactivate,
         onActivate,
         onUninstall,
-    }), [onDeactivate, onActivate, onUninstall]);
+        onDeactivateLicense,
+    }), [onDeactivate, onActivate, onUninstall, onDeactivateLicense]);
 
     const actionButtonsData = useActionButtons(pluginFamily, status, loadingStates, handlers);
 

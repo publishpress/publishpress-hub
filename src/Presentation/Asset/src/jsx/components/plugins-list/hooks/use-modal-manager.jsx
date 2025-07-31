@@ -3,8 +3,9 @@ import { useState, useCallback } from '@wordpress/element';
 const MODAL_TYPES = {
     NONE: 'none',
     INSTALLATION_TYPE: 'installation-type',
-    LICENSE_INPUT: 'license-input',
+    LICENSE_INPUT_FOR_INSTALLING_PRO: 'license-input-for-installing-pro',
     LICENSE_INPUT_FOR_UPGRADE: 'license-input-for-upgrade',
+    LICENSE_INPUT_FOR_ACTIVATING_LICENSE: 'license-input-for-activating-license',
     UNINSTALL_CONFIRMATION: 'uninstall-confirmation',
     UPGRADE: 'upgrade',
     RESOLVE_CONFLICT: 'resolve-conflict',

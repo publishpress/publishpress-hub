@@ -52,6 +52,6 @@ class LicensePersistenceService implements LicensePersistenceInterface
      */
     private function buildOptionName(int $downloadId): string
     {
-        return $this->optionPrefix . $downloadId;
+        return "{$this->optionPrefix}$downloadId";
     }
 }

@@ -103,14 +103,15 @@ const PluginsListComponent = ({
                 pluginFamily={pluginFamily}
                 pluginIconBaseUrl={pluginIconBaseUrl}
                 progressStates={pluginProgressStates}
-                onInstall={pluginActions.handleInstall}
-                onResolveConflict={pluginActions.handleResolveConflict}
-                onActivate={pluginActions.handleActivate}
-                onDeactivate={pluginActions.handleDeactivate}
-                onUpgradeToPro={pluginActions.handleUpgradeToPro}
-                onManageLicense={pluginActions.handleManageLicense}
-                onActivateLicense={pluginActions.handleActivateLicense}
-                onUninstall={pluginActions.handleUninstall}
+                onInstall={pluginActions.handleOpenInstallationTypeModal}
+                onResolveConflict={pluginActions.handleOpenResolveConflictModal}
+                onActivate={pluginActions.handleActivatePlugin}
+                onDeactivate={pluginActions.handleDeactivatePlugin}
+                onUpgradeToPro={pluginActions.handleUpgradePluginToPro}
+                onManageLicense={pluginActions.handleOpenLicenseManagementModal}
+                onActivateLicense={pluginActions.handleOpenLicenseInputForActivatingLicenseModal}
+                onUninstall={pluginActions.handleOpenUninstallConfirmationModal}
+                onDeactivateLicense={pluginActions.handleDeactivateLicense}
             />
         );
     }, [

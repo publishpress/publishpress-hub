@@ -466,6 +466,91 @@ export function* resolveConflict(pluginFamily, pluginToKeep) {
     }
 }
 
+export function* deactivateLicense(pluginFamily) {
+    try {
+        yield {type: 'DEACTIVATE_LICENSE_START', data: {pluginSlug: pluginFamily.slug}};
+
+        yield apiReady();
+
+        const data = yield apiFetch({
+            path: `${API_NAMESPACE}/plugins/${pluginFamily.slug}/deactivate-license`,
+            method: 'POST',
+        });
+
+        if (data.success) {
+            yield fetchPlugins();
+
+            yield {type: 'DEACTIVATE_LICENSE_SUCCESS', data: {pluginSlug: pluginFamily.slug}};
+
+            yield createSnackbarNotice(__('License deactivated successfully', 'publishpress-hub'), 'success');
+
+            return {
+                success: true,
+                pluginSlug: pluginFamily,
+                apiResponse: data,
+            };
+        } else {
+            throw new Error(data?.error || 'License deactivation failed');
+        }
+    } catch (error) {
+        yield {type: 'DEACTIVATE_LICENSE_ERROR', data: {pluginSlug: pluginFamily.slug, error: error}};
+
+        yield createNotice(__('License deactivation failed', 'publishpress-hub'), 'error');
+
+        error = handleErrorMessageOnContext(error);
+
+        return {
+            success: false,
+            pluginSlug: pluginFamily.slug,
+            error,
+        };
+    }
+}
+
+export function* activateLicense(pluginFamily, licenseKey) {
+    try {
+        yield {type: 'ACTIVATE_LICENSE_START', data: {pluginSlug: pluginFamily.slug, licenseKey}};
+
+        yield apiReady();
+
+        const data = yield apiFetch({
+            path: `${API_NAMESPACE}/plugins/${pluginFamily.slug}/activate-license`,
+            method: 'POST',
+            data: {
+                licenseKey: licenseKey,
+            },
+        });
+
+        if (data.success) {
+            yield fetchPlugins();
+
+            yield {type: 'ACTIVATE_LICENSE_SUCCESS', data: {pluginSlug: pluginFamily.slug, licenseKey}};
+
+            yield createSnackbarNotice(__('License activated successfully', 'publishpress-hub'), 'success');
+
+            return {
+                success: true,
+                pluginSlug: pluginFamily,
+                apiResponse: data,
+            };
+        } else {
+            throw new Error(data?.error || 'License activation failed');
+        }
+    } catch (error) {
+        yield {type: 'ACTIVATE_LICENSE_ERROR', data: {pluginSlug: pluginFamily.slug, licenseKey, error: error}};
+
+        yield createNotice(__('License activation failed', 'publishpress-hub'), 'error');
+
+        error = handleErrorMessageOnContext(error);
+
+        return {
+            success: false,
+            pluginSlug: pluginFamily.slug,
+            error,
+        };
+    }
+}
+
 function handleErrorMessageOnContext(error) {
     if (error.context?.cloudflare_ray_id) {
         if (! error.context.error_message) {

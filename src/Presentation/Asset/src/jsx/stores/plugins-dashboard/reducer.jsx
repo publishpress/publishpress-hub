@@ -353,6 +353,66 @@ const resolveConflictError = (state, data) => {
     }
 }
 
+const deactivateLicenseStart = (state, data) => {
+    return {
+        ...state,
+        pluginDeactivationInProgress: {
+            ...state.pluginDeactivationInProgress,
+            [data.pluginFamily.slug]: true,
+        },
+    }
+}
+
+const deactivateLicenseSuccess = (state, data) => {
+    return {
+        ...state,
+        pluginDeactivationInProgress: {
+            ...state.pluginDeactivationInProgress,
+            [data.pluginFamily.slug]: false,
+        },
+    }
+}
+
+const deactivateLicenseError = (state, data) => {
+    return {
+        ...state,
+        pluginDeactivationInProgress: {
+            ...state.pluginDeactivationInProgress,
+            [data.pluginFamily.slug]: false,
+        },
+    }
+}
+
+const activateLicenseStart = (state, data) => {
+    return {
+        ...state,
+        pluginActivationInProgress: {
+            ...state.pluginActivationInProgress,
+            [data.pluginFamily.slug]: true,
+        },
+    }
+}
+
+const activateLicenseSuccess = (state, data) => {
+    return {
+        ...state,
+        pluginActivationInProgress: {
+            ...state.pluginActivationInProgress,
+            [data.pluginFamily.slug]: false,
+        },
+    }
+}
+
+const activateLicenseError = (state, data) => {
+    return {
+        ...state,
+        pluginActivationInProgress: {
+            ...state.pluginActivationInProgress,
+            [data.pluginFamily.slug]: false,
+        },
+    }
+}
+
 export const reducer = (state = DEFAULT_STATE, action) => {
     if (! action) {
         return state;
@@ -423,6 +483,18 @@ export const reducer = (state = DEFAULT_STATE, action) => {
             return resolveConflictSuccess(state, action.data);
         case 'RESOLVE_CONFLICT_ERROR':
             return resolveConflictError(state, action.data);
+        case 'DEACTIVATE_LICENSE_START':
+            return deactivateLicenseStart(state, action.data);
+        case 'DEACTIVATE_LICENSE_SUCCESS':
+            return deactivateLicenseSuccess(state, action.data);
+        case 'DEACTIVATE_LICENSE_ERROR':
+            return deactivateLicenseError(state, action.data);
+        case 'ACTIVATE_LICENSE_START':
+            return activateLicenseStart(state, action.data);
+        case 'ACTIVATE_LICENSE_SUCCESS':
+            return activateLicenseSuccess(state, action.data);
+        case 'ACTIVATE_LICENSE_ERROR':
+            return activateLicenseError(state, action.data);
         default:
             return state;
     }

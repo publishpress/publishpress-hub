@@ -13,6 +13,8 @@ use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UninstallPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UpgradePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ResolveConflictUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\DeactivateLicenseUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\ActivateLicenseUseCase;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use WP_REST_Server;
@@ -29,6 +31,8 @@ class PluginsController implements BootableInterface
     private UninstallPluginUseCase $uninstallPluginUseCase;
     private UpgradePluginUseCase $upgradePluginUseCase;
     private ResolveConflictUseCase $resolveConflictUseCase;
+    private DeactivateLicenseUseCase $deactivateLicenseUseCase;
+    private ActivateLicenseUseCase $activateLicenseUseCase;
     private string $restApiNamespace;
 
     public function __construct(
@@ -40,7 +44,9 @@ class PluginsController implements BootableInterface
         ChangePluginActivationUseCase $changePluginActivationUseCase,
         UninstallPluginUseCase $uninstallPluginUseCase,
         UpgradePluginUseCase $upgradePluginUseCase,
-        ResolveConflictUseCase $resolveConflictUseCase
+        ResolveConflictUseCase $resolveConflictUseCase,
+        DeactivateLicenseUseCase $deactivateLicenseUseCase,
+        ActivateLicenseUseCase $activateLicenseUseCase
     ) {
         $this->restApiService = $restApiService;
         $this->listPluginsUseCase = $listPluginsUseCase;
@@ -51,6 +57,8 @@ class PluginsController implements BootableInterface
         $this->upgradePluginUseCase = $upgradePluginUseCase;
         $this->resolveConflictUseCase = $resolveConflictUseCase;
         $this->restApiNamespace = $restApiNamespace;
+        $this->deactivateLicenseUseCase = $deactivateLicenseUseCase;
+        $this->activateLicenseUseCase = $activateLicenseUseCase;
     }
 
     protected function onLoad(): void
@@ -124,6 +132,24 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/resolve-conflict',
             WP_REST_Server::CREATABLE,
             $this->resolveConflictUseCase,
+            [$this, 'checkPermissions']
+        ));
+
+        // POST /plugins/{familySlug}/deactivate-license
+        $this->restApiService->addRoute(new RestRoute(
+            $this->restApiNamespace,
+            '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/deactivate-license',
+            WP_REST_Server::CREATABLE,
+            $this->deactivateLicenseUseCase,
+            [$this, 'checkPermissions']
+        ));
+
+        // POST /plugins/{familySlug}/activate-license
+        $this->restApiService->addRoute(new RestRoute(
+            $this->restApiNamespace,
+            '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/activate-license',
+            WP_REST_Server::CREATABLE,
+            $this->activateLicenseUseCase,
             [$this, 'checkPermissions']
         ));
     }

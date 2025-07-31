@@ -8,15 +8,22 @@ use PublishPress\Hub\Application\DTO\Plugin\PluginFamilyDto;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
+use PublishPress\Hub\Domain\Plugin\Contract\ProPluginInterface;
+use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use WP_REST_Request;
 
 class ListPluginsUseCase implements UseCaseInterface
 {
     private PluginStatusService $pluginStatusService;
 
-    public function __construct(PluginStatusService $pluginStatusService)
-    {
+    private LicensePersistenceInterface $licensePersistence;
+
+    public function __construct(
+        PluginStatusService $pluginStatusService,
+        LicensePersistenceInterface $licensePersistence
+    ) {
         $this->pluginStatusService = $pluginStatusService;
+        $this->licensePersistence = $licensePersistence;
     }
 
     public function execute(WP_REST_Request $request): array
@@ -56,12 +63,22 @@ class ListPluginsUseCase implements UseCaseInterface
                 ->setIsAnyVersionActive($family->hasAnyVersionActive())
                 ->setHasConflictingInstallations($family->hasConflictingInstallations());
 
-            $plugins[] = $dto->toArray();
+            $pluginData = $dto->toArray();
+
+            $licenseKey = $this->getLicenseKey($proPlugin);
+            $pluginData['proPlugin']['licenseKey'] = $licenseKey;
+
+            $plugins[] = $pluginData;
         }
 
         return [
             'success' => true,
             'plugins' => $plugins,
         ];
+    }
+
+    private function getLicenseKey(ProPluginInterface $proPlugin): string
+    {
+        return $this->licensePersistence->getLicenseKey($proPlugin->getDownloadId()) ?? '';
     }
 }

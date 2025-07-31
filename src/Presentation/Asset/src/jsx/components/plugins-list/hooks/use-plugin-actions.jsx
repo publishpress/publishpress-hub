@@ -14,39 +14,61 @@ export const usePluginActions = (modalManager) => {
         deactivatePlugin,
         upgradePluginToPro,
         resolveConflict,
+        deactivateLicense,
+        activateLicense,
     } = useDispatch(store);
 
-    const handleInstall = useCallback((pluginFamily) => {
+    const handleOpenInstallationTypeModal = useCallback((pluginFamily) => {
         openModal(MODAL_TYPES.INSTALLATION_TYPE, pluginFamily);
     }, [openModal, MODAL_TYPES.INSTALLATION_TYPE]);
 
-    const handleResolveConflict = useCallback((pluginFamily) => {
+    const handleOpenResolveConflictModal = useCallback((pluginFamily) => {
         openModal(MODAL_TYPES.RESOLVE_CONFLICT, pluginFamily);
     }, [openModal, MODAL_TYPES.RESOLVE_CONFLICT]);
 
-    const handleActivate = useCallback((pluginFamily) => {
-        activatePlugin(pluginFamily.slug);
-    }, [activatePlugin]);
-
-    const handleDeactivate = useCallback((pluginFamily) => {
-        deactivatePlugin(pluginFamily.slug);
-    }, [deactivatePlugin]);
-
-    const handleUpgradeToPro = useCallback((pluginFamily) => {
+    const handleOpenUpgradeModal = useCallback((pluginFamily) => {
         openModal(MODAL_TYPES.UPGRADE, pluginFamily);
     }, [openModal, MODAL_TYPES.UPGRADE]);
 
-    const handleUninstall = useCallback((pluginFamily) => {
+    const handleOpenUninstallConfirmationModal = useCallback((pluginFamily) => {
         openModal(MODAL_TYPES.UNINSTALL_CONFIRMATION, pluginFamily);
     }, [openModal, MODAL_TYPES.UNINSTALL_CONFIRMATION]);
 
-    const handleManageLicense = useCallback((pluginFamily) => {
+    const handleOpenLicenseManagementModal = useCallback((pluginFamily) => {
         openModal(MODAL_TYPES.LICENSE_MANAGEMENT, pluginFamily);
     }, [openModal, MODAL_TYPES.LICENSE_MANAGEMENT]);
 
-    const handleActivateLicense = useCallback((pluginFamily) => {
-        openModal(MODAL_TYPES.LICENSE_INPUT, pluginFamily);
-    }, [openModal, MODAL_TYPES.LICENSE_INPUT]);
+    const handleOpenLicenseInputForInstallingProModal = useCallback((pluginFamily) => {
+        openModal(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO, pluginFamily);
+    }, [openModal, MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO]);
+
+    const handleOpenLicenseInputForActivatingLicenseModal = useCallback((pluginFamily) => {
+        openModal(MODAL_TYPES.LICENSE_INPUT_FOR_ACTIVATING_LICENSE, pluginFamily);
+    }, [openModal, MODAL_TYPES.LICENSE_INPUT_FOR_ACTIVATING_LICENSE]);
+
+    const handleActivatePlugin = useCallback((pluginFamily) => {
+        activatePlugin(pluginFamily.slug);
+    }, [activatePlugin]);
+
+    const handleDeactivatePlugin = useCallback((pluginFamily) => {
+        deactivatePlugin(pluginFamily.slug);
+    }, [deactivatePlugin]);
+
+    const handleDeactivateLicense = useCallback(async (pluginFamily) => {
+        const result = await deactivateLicense(pluginFamily);
+        if (result.success && !result.error) {
+            closeModal();
+        }
+        return result;
+    }, [deactivateLicense]);
+
+    const handleActivateLicense = useCallback(async (pluginFamily, licenseKey) => {
+        const result = await activateLicense(pluginFamily, licenseKey);
+        if (result.success && !result.error) {
+            closeModal();
+        }
+        return result;
+    }, [activateLicense]);
 
     // Modal-specific actions
     const handleInstallFree = useCallback((pluginSlug) => {
@@ -62,7 +84,7 @@ export const usePluginActions = (modalManager) => {
         return result;
     }, [installProPlugin, closeModal]);
 
-    const handleUpgradePlugin = useCallback(async (pluginSlug, licenseKey) => {
+    const handleUpgradePluginToPro = useCallback(async (pluginSlug, licenseKey) => {
         const result = await upgradePluginToPro(pluginSlug, licenseKey);
         if (result.success && !result.error) {
             closeModal();
@@ -70,7 +92,7 @@ export const usePluginActions = (modalManager) => {
         return result;
     }, [upgradePluginToPro, closeModal]);
 
-    const handleUninstallConfirm = useCallback((pluginSlug) => {
+    const handleUninstallPlugin = useCallback((pluginSlug) => {
         uninstallPlugin(pluginSlug);
         closeModal();
     }, [uninstallPlugin, closeModal]);
@@ -90,20 +112,21 @@ export const usePluginActions = (modalManager) => {
 
     return {
         // Primary actions
-        handleInstall,
-        handleResolveConflict,
-        handleActivate,
-        handleDeactivate,
-        handleUpgradeToPro,
-        handleUninstall,
-        handleManageLicense,
-        handleActivateLicense,
-
+        handleOpenInstallationTypeModal,
+        handleOpenResolveConflictModal,
+        handleActivatePlugin,
+        handleDeactivatePlugin,
+        handleOpenUpgradeModal,
+        handleOpenUninstallConfirmationModal,
+        handleOpenLicenseManagementModal,
+        handleOpenLicenseInputForInstallingProModal,
+        handleOpenLicenseInputForActivatingLicenseModal,
+        handleDeactivateLicense,
         // Modal-specific actions
         handleInstallFree,
         handleInstallPro,
-        handleUpgradePlugin,
-        handleUninstallConfirm,
+        handleUpgradePluginToPro,
+        handleUninstallPlugin,
         handleResolveConflictAction,
         handleBuyPlugin,
     };
