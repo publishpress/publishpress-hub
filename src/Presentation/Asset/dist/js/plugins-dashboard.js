@@ -5714,14 +5714,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
-/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _modal_confirmation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal-confirmation */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-confirmation.jsx");
-/* harmony import */ var _modal_installation_type__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modal-installation-type */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-installation-type.jsx");
-/* harmony import */ var _modal_license_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modal-license-input */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-license-input.jsx");
-/* harmony import */ var _modal_license_management__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modal-license-management */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-license-management.jsx");
-/* harmony import */ var _modal_resolve_conflict__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modal-resolve-conflict */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx");
-/* harmony import */ var _modal_upgrade__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modal-upgrade */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-upgrade.jsx");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../stores/plugins-dashboard */ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/index.jsx");
+/* harmony import */ var _modal_confirmation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modal-confirmation */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-confirmation.jsx");
+/* harmony import */ var _modal_installation_type__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modal-installation-type */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-installation-type.jsx");
+/* harmony import */ var _modal_license_input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modal-license-input */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-license-input.jsx");
+/* harmony import */ var _modal_license_management__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modal-license-management */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-license-management.jsx");
+/* harmony import */ var _modal_resolve_conflict__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modal-resolve-conflict */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx");
+/* harmony import */ var _modal_upgrade__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modal-upgrade */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-upgrade.jsx");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -5729,6 +5732,8 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
+
 
 
 
@@ -5755,23 +5760,29 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     handleResolveConflictAction = pluginActions.handleResolveConflictAction,
     handleBuyPlugin = pluginActions.handleBuyPlugin,
     handleDeactivateLicense = pluginActions.handleDeactivateLicense,
-    handleActivateLicense = pluginActions.handleActivateLicense,
-    handleOpenUpgradeToProModal = pluginActions.handleOpenUpgradeToProModal;
+    handleActivateLicense = pluginActions.handleActivateLicense;
   if (!currentPluginFamily || activeModal === MODAL_TYPES.NONE) {
     return null;
   }
+  var _useDispatch = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useDispatch)(_stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_3__.store),
+    cleanupError = _useDispatch.cleanupError;
   var error = currentPluginState.error ? _objectSpread({}, currentPluginState.error) : null;
 
   // Add the error message from the context to the error message
   if (error && error.context && error.context.error_message) {
     error.message += " ".concat(error.context.error_message);
   }
-  var modalProps = {
-    onClose: closeModal,
-    error: error,
-    buttonInProgress: currentPluginState.inProgress
-  };
-  return /*#__PURE__*/React.createElement(React.Fragment, null, isModalActive(MODAL_TYPES.INSTALLATION_TYPE) && /*#__PURE__*/React.createElement(_modal_installation_type__WEBPACK_IMPORTED_MODULE_3__.ModalInstallationType, _extends({}, modalProps, {
+  var modalProps = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return {
+      onClose: function onClose() {
+        closeModal();
+        cleanupError(currentPluginFamily);
+      },
+      error: error,
+      buttonInProgress: currentPluginState.inProgress
+    };
+  }, [currentPluginFamily, closeModal, cleanupError, currentPluginState.inProgress, error]);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, isModalActive(MODAL_TYPES.INSTALLATION_TYPE) && /*#__PURE__*/React.createElement(_modal_installation_type__WEBPACK_IMPORTED_MODULE_5__.ModalInstallationType, _extends({}, modalProps, {
     onProClick: function onProClick() {
       return modalManager.openModal(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO, currentPluginFamily);
     },
@@ -5781,23 +5792,23 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     freeDetailsUrl: currentPluginFamily.freeDetailsUrl,
     proDetailsUrl: currentPluginFamily.proDetailsUrl,
     changelogUrl: currentPluginFamily.changelogUrl
-  })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_4__.ModalLicenseInput, _extends({}, modalProps, {
+  })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_6__.ModalLicenseInput, _extends({}, modalProps, {
     onActivate: function onActivate(licenseKey) {
       return handleInstallPro(currentPluginFamily.slug, licenseKey);
     }
-  })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_UPGRADE) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_4__.ModalLicenseInput, _extends({}, modalProps, {
+  })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_UPGRADE) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_6__.ModalLicenseInput, _extends({}, modalProps, {
     onActivate: function onActivate(licenseKey) {
       return handleUpgradePluginToPro(currentPluginFamily.slug, licenseKey);
     }
-  })), isModalActive(MODAL_TYPES.UNINSTALL_CONFIRMATION) && /*#__PURE__*/React.createElement(_modal_confirmation__WEBPACK_IMPORTED_MODULE_2__.ModalConfirmation, _extends({}, modalProps, {
+  })), isModalActive(MODAL_TYPES.UNINSTALL_CONFIRMATION) && /*#__PURE__*/React.createElement(_modal_confirmation__WEBPACK_IMPORTED_MODULE_4__.ModalConfirmation, _extends({}, modalProps, {
     onConfirm: function onConfirm() {
       return handleUninstallPlugin(currentPluginFamily.slug);
     },
     onCancel: closeModal,
     isDanger: true,
-    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Uninstall Plugin', 'publishpress-hub'),
-    message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Are you sure you want to uninstall this plugin?', 'publishpress-hub')
-  })), isModalActive(MODAL_TYPES.UPGRADE_PLUGIN_TO_PRO) && /*#__PURE__*/React.createElement(_modal_upgrade__WEBPACK_IMPORTED_MODULE_7__.ModalUpgrade, _extends({}, modalProps, {
+    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Uninstall Plugin', 'publishpress-hub'),
+    message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Are you sure you want to uninstall this plugin?', 'publishpress-hub')
+  })), isModalActive(MODAL_TYPES.UPGRADE_PLUGIN_TO_PRO) && /*#__PURE__*/React.createElement(_modal_upgrade__WEBPACK_IMPORTED_MODULE_9__.ModalUpgrade, _extends({}, modalProps, {
     onLicenseClick: function onLicenseClick() {
       return modalManager.openModal(MODAL_TYPES.LICENSE_INPUT_FOR_UPGRADE, currentPluginFamily);
     },
@@ -5806,7 +5817,7 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     },
     proDetailsUrl: currentPluginFamily.proPlugin.detailsUrl,
     changelogUrl: currentPluginFamily.changelogUrl
-  })), isModalActive(MODAL_TYPES.RESOLVE_CONFLICT) && /*#__PURE__*/React.createElement(_modal_resolve_conflict__WEBPACK_IMPORTED_MODULE_6__.ModalResolveConflict, _extends({}, modalProps, {
+  })), isModalActive(MODAL_TYPES.RESOLVE_CONFLICT) && /*#__PURE__*/React.createElement(_modal_resolve_conflict__WEBPACK_IMPORTED_MODULE_8__.ModalResolveConflict, _extends({}, modalProps, {
     onKeepFreePlugin: function onKeepFreePlugin() {
       return handleResolveConflictAction(currentPluginFamily, 'free');
     },
@@ -5817,7 +5828,7 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     pluginsFamily: currentPluginFamily,
     buttonInProgress: pluginResolveConflictInProgress[currentPluginFamily.slug] || false,
     selectedPluginForConflictResolution: selectedPluginForConflictResolution
-  })), isModalActive(MODAL_TYPES.LICENSE_MANAGEMENT) && /*#__PURE__*/React.createElement(_modal_license_management__WEBPACK_IMPORTED_MODULE_5__.ModalLicenseManagement, _extends({}, modalProps, {
+  })), isModalActive(MODAL_TYPES.LICENSE_MANAGEMENT) && /*#__PURE__*/React.createElement(_modal_license_management__WEBPACK_IMPORTED_MODULE_7__.ModalLicenseManagement, _extends({}, modalProps, {
     onActivate: function onActivate(licenseKey) {
       return handleActivateLicense(currentPluginFamily, licenseKey);
     },
@@ -5825,7 +5836,7 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
       return handleDeactivateLicense(currentPluginFamily);
     },
     initialLicenseKey: currentPluginFamily.proPlugin.licenseKey
-  })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_ACTIVATING_LICENSE) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_4__.ModalLicenseInput, _extends({}, modalProps, {
+  })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_ACTIVATING_LICENSE) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_6__.ModalLicenseInput, _extends({}, modalProps, {
     onActivate: function onActivate(licenseKey) {
       return handleActivateLicense(currentPluginFamily, licenseKey);
     }
@@ -7130,6 +7141,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   activateLicense: () => (/* binding */ activateLicense),
 /* harmony export */   activatePlugin: () => (/* binding */ activatePlugin),
+/* harmony export */   cleanupError: () => (/* binding */ cleanupError),
 /* harmony export */   deactivateLicense: () => (/* binding */ deactivateLicense),
 /* harmony export */   deactivatePlugin: () => (/* binding */ deactivatePlugin),
 /* harmony export */   fetchPlugins: () => (/* binding */ fetchPlugins),
@@ -7179,7 +7191,8 @@ var _marked = /*#__PURE__*/_regenerator().m(setSelectedFilter),
   _marked16 = /*#__PURE__*/_regenerator().m(upgradePluginToPro),
   _marked17 = /*#__PURE__*/_regenerator().m(resolveConflict),
   _marked18 = /*#__PURE__*/_regenerator().m(deactivateLicense),
-  _marked19 = /*#__PURE__*/_regenerator().m(activateLicense);
+  _marked19 = /*#__PURE__*/_regenerator().m(activateLicense),
+  _marked20 = /*#__PURE__*/_regenerator().m(cleanupError);
 
 
 
@@ -8153,6 +8166,22 @@ function activateLicense(pluginFamily, licenseKey) {
     }
   }, _marked19, null, [[0, 9]]);
 }
+function cleanupError(pluginFamily) {
+  return _regenerator().w(function (_context20) {
+    while (1) switch (_context20.n) {
+      case 0:
+        _context20.n = 1;
+        return {
+          type: 'CLEANUP_ERROR',
+          data: {
+            pluginFamily: pluginFamily
+          }
+        };
+      case 1:
+        return _context20.a(2);
+    }
+  }, _marked20);
+}
 function handleErrorMessageOnContext(error) {
   var _error$context, _error$context2;
   if ((_error$context = error.context) !== null && _error$context !== void 0 && _error$context.cloudflare_ray_id) {
@@ -8488,6 +8517,11 @@ var activateLicenseError = function activateLicenseError(state, data) {
     pluginErrors: _objectSpread(_objectSpread({}, state.pluginErrors), {}, _defineProperty({}, data.pluginFamily.slug, data.error))
   });
 };
+var cleanupError = function cleanupError(state, data) {
+  return _objectSpread(_objectSpread({}, state), {}, {
+    pluginErrors: _objectSpread(_objectSpread({}, state.pluginErrors), {}, _defineProperty({}, data.pluginFamily.slug, null))
+  });
+};
 var reducer = function reducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : DEFAULT_STATE;
   var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -8571,6 +8605,8 @@ var reducer = function reducer() {
       return activateLicenseSuccess(state, action.data);
     case 'ACTIVATE_LICENSE_ERROR':
       return activateLicenseError(state, action.data);
+    case 'CLEANUP_ERROR':
+      return cleanupError(state, action.data);
     default:
       return state;
   }

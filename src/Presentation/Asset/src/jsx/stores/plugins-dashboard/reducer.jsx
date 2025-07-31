@@ -439,6 +439,16 @@ const activateLicenseError = (state, data) => {
     }
 }
 
+const cleanupError = (state, data) => {
+    return {
+        ...state,
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginFamily.slug]: null,
+        },
+    }
+}
+
 export const reducer = (state = DEFAULT_STATE, action) => {
     if (! action) {
         return state;
@@ -521,6 +531,8 @@ export const reducer = (state = DEFAULT_STATE, action) => {
             return activateLicenseSuccess(state, action.data);
         case 'ACTIVATE_LICENSE_ERROR':
             return activateLicenseError(state, action.data);
+        case 'CLEANUP_ERROR':
+            return cleanupError(state, action.data);
         default:
             return state;
     }

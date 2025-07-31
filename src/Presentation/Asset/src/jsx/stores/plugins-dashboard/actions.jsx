@@ -549,6 +549,10 @@ export function* activateLicense(pluginFamily, licenseKey) {
     }
 }
 
+export function* cleanupError(pluginFamily) {
+    yield {type: 'CLEANUP_ERROR', data: {pluginFamily}};
+}
+
 function handleErrorMessageOnContext(error) {
     if (error.context?.cloudflare_ray_id) {
         if (! error.context.error_message) {

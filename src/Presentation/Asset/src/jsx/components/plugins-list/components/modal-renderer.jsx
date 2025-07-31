@@ -1,6 +1,8 @@
-import { memo } from '@wordpress/element';
+import { memo, useMemo } from '@wordpress/element';
+import { useDispatch } from '@wordpress/data';
 
 import { __ } from '@publishpress-hub/i18n';
+import { store } from '../../../stores/plugins-dashboard';
 
 import { ModalConfirmation } from './modal-confirmation';
 import { ModalInstallationType } from './modal-installation-type';
@@ -26,12 +28,15 @@ const ModalRendererComponent = ({
         handleBuyPlugin,
         handleDeactivateLicense,
         handleActivateLicense,
-        handleOpenUpgradeToProModal,
     } = pluginActions;
 
     if (!currentPluginFamily || activeModal === MODAL_TYPES.NONE) {
         return null;
     }
+
+    const {
+        cleanupError,
+    } = useDispatch(store);
 
     const error = currentPluginState.error ? { ...currentPluginState.error } : null;
 
@@ -40,11 +45,16 @@ const ModalRendererComponent = ({
         error.message += ` ${error.context.error_message}`;
     }
 
-    const modalProps = {
-        onClose: closeModal,
-        error: error,
-        buttonInProgress: currentPluginState.inProgress,
-    };
+    const modalProps = useMemo(() => {
+        return {
+            onClose: () => {
+                closeModal();
+                cleanupError(currentPluginFamily);
+            },
+            error: error,
+            buttonInProgress: currentPluginState.inProgress,
+        }
+    }, [currentPluginFamily, closeModal, cleanupError, currentPluginState.inProgress, error]);
 
     return (
         <>
