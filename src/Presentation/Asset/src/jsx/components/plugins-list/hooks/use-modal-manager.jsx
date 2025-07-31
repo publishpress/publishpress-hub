@@ -19,7 +19,6 @@ export const useModalManager = () => {
     const openModal = useCallback((modalType, plugin = null) => {
         setActiveModal(modalType);
         setCurrentPluginFamily(plugin);
-        console.log('openModal', modalType, plugin);
     }, []);
 
     const closeModal = useCallback(() => {

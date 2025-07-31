@@ -26,7 +26,7 @@ const ModalRendererComponent = ({
         handleBuyPlugin,
         handleDeactivateLicense,
         handleActivateLicense,
-        handleOpenUpgradeModal,
+        handleOpenUpgradeToProModal,
     } = pluginActions;
 
     if (!currentPluginFamily || activeModal === MODAL_TYPES.NONE) {
@@ -109,7 +109,7 @@ const ModalRendererComponent = ({
             {isModalActive(MODAL_TYPES.LICENSE_MANAGEMENT) && (
                 <ModalLicenseManagement
                     {...modalProps}
-                    onActivate={() => handleOpenUpgradeModal(currentPluginFamily.slug)}
+                    onActivate={(licenseKey) => handleActivateLicense(currentPluginFamily, licenseKey)}
                     onDeactivate={() => handleDeactivateLicense(currentPluginFamily)}
                     initialLicenseKey={currentPluginFamily.proPlugin.licenseKey}
                 />

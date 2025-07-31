@@ -67,8 +67,6 @@ const PluginsListComponent = ({
 
         const slug = currentPluginFamily.slug;
 
-        console.log('slug', slug, progressStates);
-
         return {
             error: pluginError[slug] || null,
             inProgress: Boolean(

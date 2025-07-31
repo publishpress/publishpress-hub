@@ -5756,7 +5756,7 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     handleBuyPlugin = pluginActions.handleBuyPlugin,
     handleDeactivateLicense = pluginActions.handleDeactivateLicense,
     handleActivateLicense = pluginActions.handleActivateLicense,
-    handleOpenUpgradeModal = pluginActions.handleOpenUpgradeModal;
+    handleOpenUpgradeToProModal = pluginActions.handleOpenUpgradeToProModal;
   if (!currentPluginFamily || activeModal === MODAL_TYPES.NONE) {
     return null;
   }
@@ -5818,8 +5818,8 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     buttonInProgress: pluginResolveConflictInProgress[currentPluginFamily.slug] || false,
     selectedPluginForConflictResolution: selectedPluginForConflictResolution
   })), isModalActive(MODAL_TYPES.LICENSE_MANAGEMENT) && /*#__PURE__*/React.createElement(_modal_license_management__WEBPACK_IMPORTED_MODULE_5__.ModalLicenseManagement, _extends({}, modalProps, {
-    onActivate: function onActivate() {
-      return handleOpenUpgradeModal(currentPluginFamily.slug);
+    onActivate: function onActivate(licenseKey) {
+      return handleActivateLicense(currentPluginFamily, licenseKey);
     },
     onDeactivate: function onDeactivate() {
       return handleDeactivateLicense(currentPluginFamily);
@@ -6440,7 +6440,6 @@ var useModalManager = function useModalManager() {
     var plugin = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
     setActiveModal(modalType);
     setCurrentPluginFamily(plugin);
-    console.log('openModal', modalType, plugin);
   }, []);
   var closeModal = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
     setActiveModal(MODAL_TYPES.NONE);
@@ -6878,7 +6877,6 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
       inProgress: false
     };
     var slug = currentPluginFamily.slug;
-    console.log('slug', slug, progressStates);
     return {
       error: pluginError[slug] || null,
       inProgress: Boolean(pluginInstallationInProgress[slug] || pluginUninstallationInProgress[slug] || pluginDeactivationInProgress[slug] || pluginActivationInProgress[slug] || pluginUpgradeInProgress[slug] || pluginResolveConflictInProgress[slug] || pluginLicenseActivationInProgress[slug] || pluginLicenseDeactivationInProgress[slug])
