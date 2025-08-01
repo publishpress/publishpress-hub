@@ -57,7 +57,7 @@ class DeactivateLicenseUseCase implements UseCaseInterface
                 throw new LicenseInvalidException(['plugin_slug' => $plugin->getSlug(), 'error_message' => 'No license key found']);
             }
 
-            $this->licenseManagement->deactivateAndRemoveLicense($licenseKey, $downloadId);
+            $this->licenseManagement->deactivateAndRemoveLicenseFromAllPlugins($licenseKey, $downloadId);
 
             // Update plugin status after license deactivation to reflect current state
             $this->pluginStatusService->updatePluginStatus($plugin);

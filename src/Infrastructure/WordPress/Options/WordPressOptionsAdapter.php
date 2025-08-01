@@ -67,4 +67,32 @@ class WordPressOptionsAdapter implements OptionsAdapterInterface
     {
         return get_option($optionName) !== false;
     }
+
+    /**
+     * Get all options with a specific prefix.
+     *
+     * @param string $prefix The prefix to filter by
+     * @return array Associative array of option_name => option_value
+     */
+    public function getAllOptionsWithPrefix(string $prefix): array
+    {
+        global $wpdb;
+
+        $prefixEscaped = $wpdb->esc_like($prefix) . '%';
+
+        $results = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT option_name, option_value FROM {$wpdb->options} WHERE option_name LIKE %s",
+                $prefixEscaped
+            ),
+            ARRAY_A
+        );
+
+        $options = [];
+        foreach ($results as $row) {
+            $options[$row['option_name']] = maybe_unserialize($row['option_value']);
+        }
+
+        return $options;
+    }
 }

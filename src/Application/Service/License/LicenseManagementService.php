@@ -39,7 +39,7 @@ class LicenseManagementService
         return $activated;
     }
 
-    /**
+        /**
      * Deactivate license via API and remove it from local storage.
      *
      * @param string $licenseKey The license key to deactivate
@@ -52,6 +52,32 @@ class LicenseManagementService
 
         if ($deactivated) {
             $this->licensePersistence->removeLicenseKey($downloadId);
+        }
+
+        return $deactivated;
+    }
+
+    /**
+     * Deactivate license via API and remove it from ALL plugins using this license key.
+     *
+     * This implements the business rule: "When a license is deactivated,
+     * it should be removed from all plugins that use the same license key"
+     *
+     * @param string $licenseKey The license key to deactivate
+     * @param int $downloadId The primary download ID that requested deactivation
+     * @return bool True if deactivation was successful
+     */
+    public function deactivateAndRemoveLicenseFromAllPlugins(string $licenseKey, int $downloadId): bool
+    {
+        $deactivated = $this->licenseApiService->deactivateLicense($licenseKey, $downloadId);
+
+        if ($deactivated) {
+            // Business Rule: Remove license from ALL plugins using this key
+            $allDownloadIdsUsingLicense = $this->licensePersistence->getDownloadIdsUsingLicenseKey($licenseKey);
+
+            foreach ($allDownloadIdsUsingLicense as $affectedDownloadId) {
+                $this->licensePersistence->removeLicenseKey($affectedDownloadId);
+            }
         }
 
         return $deactivated;
@@ -154,7 +180,7 @@ class LicenseManagementService
         return $this->licenseApiService->isLicenseValid($licenseKey, $downloadId, $force);
     }
 
-    /**
+        /**
      * Check if license is active via API.
      *
      * @param string $licenseKey The license key
@@ -165,5 +191,18 @@ class LicenseManagementService
     public function isLicenseActive(string $licenseKey, int $downloadId, bool $force = false): bool
     {
         return $this->licenseApiService->isLicenseActive($licenseKey, $downloadId, $force);
+    }
+
+    /**
+     * Get all download IDs that would be affected by deactivating a license key.
+     *
+     * Useful for logging, UI feedback, or confirmation dialogs.
+     *
+     * @param string $licenseKey The license key to check
+     * @return int[] Array of download IDs that use this license key
+     */
+    public function getPluginsAffectedByLicenseDeactivation(string $licenseKey): array
+    {
+        return $this->licensePersistence->getDownloadIdsUsingLicenseKey($licenseKey);
     }
 }

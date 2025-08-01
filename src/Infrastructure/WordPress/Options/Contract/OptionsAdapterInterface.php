@@ -50,4 +50,12 @@ interface OptionsAdapterInterface
      * @return bool True if option exists, false otherwise
      */
     public function optionExists(string $optionName): bool;
+
+    /**
+     * Get all options with a specific prefix.
+     *
+     * @param string $prefix The prefix to filter by
+     * @return array Associative array of option_name => option_value
+     */
+    public function getAllOptionsWithPrefix(string $prefix): array;
 }

@@ -36,4 +36,12 @@ interface LicensePersistenceInterface
      * @return bool True if a license key exists, false otherwise
      */
     public function hasLicenseKey(int $downloadId): bool;
+
+    /**
+     * Find all download IDs that use the specified license key.
+     *
+     * @param string $licenseKey The license key to search for
+     * @return int[] Array of download IDs that use this license key
+     */
+    public function getDownloadIdsUsingLicenseKey(string $licenseKey): array;
 }
