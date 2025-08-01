@@ -188,19 +188,26 @@ return [
 
     // Application Services
     AbstractDependencies::HUB_BOOTSTRAP_SERVICE =>
-        fn(ContainerInterface $container) => new HubBootstrapService(
+        function (ContainerInterface $container) {
+            $servicesToInit = [
+                $container->get(AbstractDependencies::I18N_SERVICE),
+                $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
+                $container->get(AbstractDependencies::PLUGINS_DASHBOARD_SERVICE),
+                $container->get(AbstractDependencies::REST_API_SERVICE),
+                $container->get(AbstractDependencies::REST_API_PLUGINS_CONTROLLER),
+            ];
+
+            if (defined('PUBLISHPRESS_HUB_DEV_MODE') && constant('PUBLISHPRESS_HUB_DEV_MODE')) {
+                $servicesToInit[] = $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_SERVICE);
+            }
+
+            return new HubBootstrapService(
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
-                [
-                    $container->get(AbstractDependencies::I18N_SERVICE),
-                    $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
-                    $container->get(AbstractDependencies::PLUGINS_DASHBOARD_SERVICE),
-                    $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_SERVICE),
-                    $container->get(AbstractDependencies::REST_API_SERVICE),
-                    $container->get(AbstractDependencies::REST_API_PLUGINS_CONTROLLER),
-                ],
+                $servicesToInit,
                 $container->get(AbstractDependencies::MAIN_MENU_CONTROLLER),
                 $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
-            ),
+            );
+        },
 
     AbstractDependencies::PLUGINS_DASHBOARD_SERVICE =>
         fn(ContainerInterface $container) => new PluginsDashboardService(
