@@ -187,7 +187,7 @@ return [
         fn(ContainerInterface $container) => new WordPressOrgPluginApiAdapter(),
 
     // Application Services
-    AbstractDependencies::PLUGIN_BOOTSTRAP_SERVICE =>
+    AbstractDependencies::HUB_BOOTSTRAP_SERVICE =>
         fn(ContainerInterface $container) => new HubBootstrapService(
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
                 [

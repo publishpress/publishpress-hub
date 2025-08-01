@@ -91,7 +91,7 @@ abstract class AbstractDependencies
     public const CACHE_ADAPTER = 'publishpress-hub.infrastructure.cache.adapter';
 
     // Application Services
-    public const PLUGIN_BOOTSTRAP_SERVICE = 'publishpress-hub.application.plugin.bootstrap.service';
+    public const HUB_BOOTSTRAP_SERVICE = 'publishpress-hub.application.hub.bootstrap.service';
 
     public const PLUGINS_DASHBOARD_SERVICE = 'publishpress-hub.application.plugins-dashboard.dashboard.service';
 
