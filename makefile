@@ -230,7 +230,7 @@ watch:
 	./dev-workspace/run composer watch
 
 build-js:
-	./dev-workspace/run composer build-js
+	./dev-workspace/run composer build:js
 
 build:
 	./dev-workspace/run composer build
