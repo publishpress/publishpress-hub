@@ -33,8 +33,8 @@ class MainMenuController implements BootableInterface
     private function registerAdminMenu(): void
     {
         $adminPage = new MenuPage(
-            'PublishPress Hub',
-            'PublishPress Hub',
+            'PublishPress',
+            'PublishPress',
             'manage_options',
             'publishpress-hub',
             /*
