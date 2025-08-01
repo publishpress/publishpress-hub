@@ -45,8 +45,8 @@
                     "-dxdebug.start_with_request=yes"
                 ],
                 "pathMappings": {
-                    "/var/www/html/wp-content/plugins/publishpress-hub": "/home/anderson/git/publishpress/publishpress-hub",
-                    "/var/www/html": "/home/anderson/git/publishpress/publishpress-hub/dev-workspace/.cache/dev-wp/html",
+                    "/var/www/html/wp-content/plugins/publishpress-hub": "/var/git-repos/publishpress/publishpress-hub",
+                    "/var/www/html": "/var/git-repos/publishpress/publishpress-hub/dev-workspace/.cache/dev-wp/html",
                 },
                 "hostname": "0.0.0.0"
             }
