@@ -25,7 +25,8 @@ use PublishPress\Hub\Infrastructure\AdminMenu\AdminMenuService;
 use PublishPress\Hub\Infrastructure\Cache\CacheService;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\EddSubscriptionAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Remote\WordPressRemoteAdapter;
-use PublishPress\Hub\Infrastructure\License\LicenseService;
+use PublishPress\Hub\Infrastructure\License\LicenseApiService;
+use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use PublishPress\Hub\Infrastructure\License\LicensePersistenceService;
 use PublishPress\Hub\Infrastructure\Logger\Logger;
 use PublishPress\Hub\Infrastructure\Remote\RemoteService;
@@ -145,9 +146,15 @@ return [
                 $container->get(AbstractDependencies::LICENSE_OPTION_PREFIX)
             ),
 
-    AbstractDependencies::LICENSE_SERVICE =>
-        fn(ContainerInterface $container) => new LicenseService(
+    AbstractDependencies::LICENSE_API_SERVICE =>
+        fn(ContainerInterface $container) => new LicenseApiService(
                 $container->get(AbstractDependencies::EDD_SUBSCRIPTION_ADAPTER),
+            ),
+
+    AbstractDependencies::LICENSE_MANAGEMENT_SERVICE =>
+        fn(ContainerInterface $container) => new LicenseManagementService(
+                $container->get(AbstractDependencies::LICENSE_API_SERVICE),
+                $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
             ),
 
     AbstractDependencies::EDD_SUBSCRIPTION_ADAPTER =>
@@ -249,8 +256,7 @@ return [
         fn(ContainerInterface $container) => new InstallProPluginUseCase(
                 $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
                 $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
-                $container->get(AbstractDependencies::LICENSE_SERVICE),
-                $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+                $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
             ),
 
     AbstractDependencies::CHANGE_PLUGIN_ACTIVATION_USE_CASE =>
@@ -269,8 +275,7 @@ return [
         fn(ContainerInterface $container) => new UpgradePluginUseCase(
                 $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
                 $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
-                $container->get(AbstractDependencies::LICENSE_SERVICE),
-                $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+                $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
             ),
 
     AbstractDependencies::RESOLVE_CONFLICT_USE_CASE =>
@@ -282,15 +287,13 @@ return [
     AbstractDependencies::DEACTIVATE_LICENSE_USE_CASE =>
         fn(ContainerInterface $container) => new DeactivateLicenseUseCase(
                 $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-                $container->get(AbstractDependencies::LICENSE_SERVICE),
-                $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+                $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
             ),
 
     AbstractDependencies::ACTIVATE_LICENSE_USE_CASE =>
         fn(ContainerInterface $container) => new ActivateLicenseUseCase(
                 $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-                $container->get(AbstractDependencies::LICENSE_SERVICE),
-                $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+                $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
             ),
 
     // Presentation Services

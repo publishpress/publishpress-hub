@@ -7,9 +7,9 @@ namespace PublishPress\Hub\Infrastructure\License;
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseAdapterInterface;
-use PublishPress\Hub\Infrastructure\License\Contract\LicenseServiceInterface;
+use PublishPress\Hub\Infrastructure\License\Contract\LicenseApiServiceInterface;
 
-class LicenseService implements LicenseServiceInterface, BootableInterface
+class LicenseApiService implements LicenseApiServiceInterface, BootableInterface
 {
     use BootableTrait;
 

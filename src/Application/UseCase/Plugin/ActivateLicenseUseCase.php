@@ -12,26 +12,21 @@ use PublishPress\Hub\Domain\Plugin\Exception\LicenseException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginInstallException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
-use PublishPress\Hub\Infrastructure\License\Contract\LicenseServiceInterface;
-use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
+use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use WP_REST_Request;
 
 class ActivateLicenseUseCase implements UseCaseInterface
 {
     private PluginStatusService $pluginStatusService;
 
-    private LicenseServiceInterface $licenseService;
-
-    private LicensePersistenceInterface $licensePersistence;
+    private LicenseManagementService $licenseManagement;
 
     public function __construct(
         PluginStatusService $pluginStatusService,
-        LicenseServiceInterface $licenseService,
-        LicensePersistenceInterface $licensePersistence
+        LicenseManagementService $licenseManagement
     ) {
         $this->pluginStatusService = $pluginStatusService;
-        $this->licenseService = $licenseService;
-        $this->licensePersistence = $licensePersistence;
+        $this->licenseManagement = $licenseManagement;
     }
 
     /**
@@ -58,10 +53,9 @@ class ActivateLicenseUseCase implements UseCaseInterface
         try {
             $downloadId = $plugin->getDownloadId();
 
-            $this->licenseService->activateLicense($licenseKey, $downloadId);
-            $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
+            $this->licenseManagement->activateAndStoreLicense($licenseKey, $downloadId);
 
-            // Update plugin status after license deactivation to reflect current state
+            // Update plugin status after license activation to reflect current state
             $this->pluginStatusService->updatePluginStatus($plugin);
 
             return [

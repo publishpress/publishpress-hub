@@ -6,7 +6,7 @@ namespace PublishPress\Hub\Infrastructure\License\Contract;
 
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseException;
 
-interface LicenseServiceInterface
+interface LicenseApiServiceInterface
 {
     public function isLicenseValid(string $licenseKey, int $downloadId, bool $force = false): bool;
 

@@ -12,8 +12,7 @@ use PublishPress\Hub\Domain\Plugin\Exception\LicenseException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginInstallException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
-use PublishPress\Hub\Infrastructure\License\Contract\LicenseServiceInterface;
-use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
+use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginLifecycleAdapter;
 use WP_REST_Request;
 
@@ -21,19 +20,16 @@ class InstallProPluginUseCase implements UseCaseInterface
 {
     private PluginStatusService $pluginStatusService;
     private WordPressPluginLifecycleAdapter $pluginLifecycle;
-    private LicenseServiceInterface $licenseService;
+    private LicenseManagementService $licenseManagement;
 
-    private LicensePersistenceInterface $licensePersistence;
     public function __construct(
         PluginStatusService $pluginStatusService,
         WordPressPluginLifecycleAdapter $pluginLifecycle,
-        LicenseServiceInterface $licenseService,
-        LicensePersistenceInterface $licensePersistence
+        LicenseManagementService $licenseManagement
     ) {
         $this->pluginStatusService = $pluginStatusService;
         $this->pluginLifecycle = $pluginLifecycle;
-        $this->licenseService = $licenseService;
-        $this->licensePersistence = $licensePersistence;
+        $this->licenseManagement = $licenseManagement;
     }
 
     /**
@@ -72,17 +68,10 @@ class InstallProPluginUseCase implements UseCaseInterface
         try {
             $downloadId = $plugin->getDownloadId();
 
-            $this->licenseService->isLicenseValid($licenseKey, $downloadId);
+            // Validate license and ensure it's active (will store locally if successful)
+            $this->licenseManagement->validateAndEnsureActiveLicense($licenseKey, $downloadId);
 
-            if (!$this->licenseService->isLicenseActive($licenseKey, $downloadId)) {
-                $result = $this->licenseService->activateLicense($licenseKey, $downloadId);
-
-                if ($result) {
-                    $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
-                }
-            }
-
-            $pluginInfo = $this->licenseService->getLastVersionInfo($licenseKey, $downloadId);
+            $pluginInfo = $this->licenseManagement->getLastVersionInfo($licenseKey, $downloadId);
 
             $downloadUrl = $pluginInfo['download_link'];
 

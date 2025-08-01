@@ -24,8 +24,7 @@ use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginInstallException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotInstalledException;
-use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
-use PublishPress\Hub\Infrastructure\License\Contract\LicenseServiceInterface;
+use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginLifecycleAdapter;
 use WP_REST_Request;
 
@@ -33,20 +32,16 @@ class UpgradePluginUseCase implements UseCaseInterface
 {
     private PluginStatusService $pluginStatusService;
     private WordPressPluginLifecycleAdapter $pluginLifecycle;
-    private LicenseServiceInterface $licenseService;
-
-    private LicensePersistenceInterface $licensePersistence;
+    private LicenseManagementService $licenseManagement;
 
     public function __construct(
         PluginStatusService $pluginStatusService,
         WordPressPluginLifecycleAdapter $pluginLifecycle,
-        LicenseServiceInterface $licenseService,
-        LicensePersistenceInterface $licensePersistence
+        LicenseManagementService $licenseManagement
     ) {
         $this->pluginStatusService = $pluginStatusService;
         $this->pluginLifecycle = $pluginLifecycle;
-        $this->licenseService = $licenseService;
-        $this->licensePersistence = $licensePersistence;
+        $this->licenseManagement = $licenseManagement;
     }
 
     /**
@@ -213,13 +208,7 @@ class UpgradePluginUseCase implements UseCaseInterface
      */
     private function validateAndActivateLicense(string $licenseKey, int $downloadId): void
     {
-        $this->licenseService->isLicenseValid($licenseKey, $downloadId);
-
-        if (!$this->licenseService->isLicenseActive($licenseKey, $downloadId)) {
-            $this->licenseService->activateLicense($licenseKey, $downloadId);
-        }
-
-        $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
+        $this->licenseManagement->validateAndEnsureActiveLicense($licenseKey, $downloadId);
     }
 
     /**
@@ -261,7 +250,7 @@ class UpgradePluginUseCase implements UseCaseInterface
     private function installProPlugin(ProPluginInterface $proPlugin, string $licenseKey): void
     {
         $downloadId = $proPlugin->getDownloadId();
-        $pluginInfo = $this->licenseService->getLastVersionInfo($licenseKey, $downloadId);
+        $pluginInfo = $this->licenseManagement->getLastVersionInfo($licenseKey, $downloadId);
         $downloadUrl = $pluginInfo['download_link'];
 
         $this->pluginLifecycle->installPlugin($proPlugin->getSlug(), $downloadUrl);

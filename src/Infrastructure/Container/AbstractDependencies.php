@@ -74,9 +74,11 @@ abstract class AbstractDependencies
 
     public const LICENSE_OPTION_PREFIX = 'publishpress-hub.infrastructure.license.option-prefix';
 
-    public const LICENSE_SERVICE = 'publishpress-hub.infrastructure.license.service';
+    public const LICENSE_API_SERVICE = 'publishpress-hub.infrastructure.license.api.service';
 
     public const LICENSE_PERSISTENCE_SERVICE = 'publishpress-hub.infrastructure.license.persistence.service';
+
+    public const LICENSE_MANAGEMENT_SERVICE = 'publishpress-hub.application.license.management.service';
 
     public const EDD_SUBSCRIPTION_ADAPTER = 'publishpress-hub.infrastructure.edd-subscription.adapter';
 

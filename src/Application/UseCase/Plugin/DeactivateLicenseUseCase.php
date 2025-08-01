@@ -12,26 +12,21 @@ use PublishPress\Hub\Domain\Plugin\Exception\LicenseException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginInstallException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
-use PublishPress\Hub\Infrastructure\License\Contract\LicenseServiceInterface;
-use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
+use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use WP_REST_Request;
 
 class DeactivateLicenseUseCase implements UseCaseInterface
 {
     private PluginStatusService $pluginStatusService;
 
-    private LicenseServiceInterface $licenseService;
-
-    private LicensePersistenceInterface $licensePersistence;
+    private LicenseManagementService $licenseManagement;
 
     public function __construct(
         PluginStatusService $pluginStatusService,
-        LicenseServiceInterface $licenseService,
-        LicensePersistenceInterface $licensePersistence
+        LicenseManagementService $licenseManagement
     ) {
         $this->pluginStatusService = $pluginStatusService;
-        $this->licenseService = $licenseService;
-        $this->licensePersistence = $licensePersistence;
+        $this->licenseManagement = $licenseManagement;
     }
 
     /**
@@ -56,10 +51,13 @@ class DeactivateLicenseUseCase implements UseCaseInterface
 
         try {
             $downloadId = $plugin->getDownloadId();
-            $licenseKey = $this->licensePersistence->getLicenseKey($downloadId);
+            $licenseKey = $this->licenseManagement->getStoredLicenseKey($downloadId);
 
-            $this->licenseService->deactivateLicense($licenseKey, $downloadId);
-            $this->licensePersistence->removeLicenseKey($downloadId);
+            if (!$licenseKey) {
+                throw new LicenseInvalidException(['plugin_slug' => $plugin->getSlug(), 'error_message' => 'No license key found']);
+            }
+
+            $this->licenseManagement->deactivateAndRemoveLicense($licenseKey, $downloadId);
 
             // Update plugin status after license deactivation to reflect current state
             $this->pluginStatusService->updatePluginStatus($plugin);
