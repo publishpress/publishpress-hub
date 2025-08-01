@@ -1,4 +1,4 @@
-import { memo, useState, useCallback } from '@wordpress/element';
+import { memo, useState, useCallback, useRef, useEffect } from '@wordpress/element';
 import { TextControl } from '@wordpress/components';
 
 import { __ } from '@publishpress-hub/i18n';
@@ -22,6 +22,21 @@ const ModalLicenseManagementComponent = ({
 }) => {
     const [licenseKey, setLicenseKey] = useState(initialLicenseKey || '');
     const [currentAction, setCurrentAction] = useState(licenseKey === '' ? ACTIONS.EDIT : ACTIONS.VIEW);
+    const textControlRef = useRef(null);
+
+    // Focus the TextControl when switching to EDIT mode
+    useEffect(() => {
+        if (currentAction === ACTIONS.EDIT && textControlRef.current) {
+            // Small delay to ensure the component has rendered
+            setTimeout(() => {
+                const input = textControlRef.current.querySelector('input');
+                if (input) {
+                    input.focus();
+                    input.select();
+                }
+            }, 100);
+        }
+    }, [currentAction]);
 
     const getObfuscatedLicenseKey = useCallback((licenseKey, length = 5) => {
         return licenseKey.replace(/./g, '*').slice(0, length) + licenseKey.slice(-length);
@@ -44,12 +59,15 @@ const ModalLicenseManagementComponent = ({
                         </Button>
                     </div>
 
-                    <TextControl
-                        value={licenseKey}
-                        className='pp-hub-text-control pp-hub-license-input'
-                        placeholder={__('Enter your license key here', 'publishpress-hub')}
-                        onChange={(value) => setLicenseKey(value)}
-                    />
+                    <div ref={textControlRef}>
+                        <TextControl
+                            value={licenseKey}
+                            className='pp-hub-text-control pp-hub-license-input'
+                            placeholder={__('Enter your license key here', 'publishpress-hub')}
+                            onChange={(value) => setLicenseKey(value)}
+                            focusOnMount={true}
+                        />
+                    </div>
                 </>
             )}
 
@@ -69,17 +87,17 @@ const ModalLicenseManagementComponent = ({
 
             {currentAction === ACTIONS.EDIT && (
                 <Button variant='primary' icon='check' onClick={() => onActivate(licenseKey)} isLoading={buttonInProgress}>
-                    {__('Activate', 'publishpress-hub')}
+                    {__('Activate the license key for this site', 'publishpress-hub')}
                 </Button>
             )}
 
             {currentAction === ACTIONS.VIEW && (
                 <>
-                    <Button variant='primary' icon='check' onClick={() => setCurrentAction(ACTIONS.EDIT)} isLoading={buttonInProgress}>
-                        {__('Edit', 'publishpress-hub')}
+                    <Button variant='primary' icon='edit' onClick={() => setCurrentAction(ACTIONS.EDIT)} isLoading={buttonInProgress}>
+                        {__('Edit the license key', 'publishpress-hub')}
                     </Button>
-                    <Button variant='secondary' icon='check' onClick={() => onDeactivate()} isLoading={buttonInProgress}>
-                        {__('Deactivate', 'publishpress-hub')}
+                    <Button variant='secondary' icon='trash' onClick={() => onDeactivate()} isLoading={buttonInProgress}>
+                        {__('Deactivate the license key for this site', 'publishpress-hub')}
                     </Button>
                 </>
             )}

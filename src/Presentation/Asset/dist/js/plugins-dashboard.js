@@ -5648,6 +5648,21 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
     _useState4 = _slicedToArray(_useState3, 2),
     currentAction = _useState4[0],
     setCurrentAction = _useState4[1];
+  var textControlRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+
+  // Focus the TextControl when switching to EDIT mode
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (currentAction === ACTIONS.EDIT && textControlRef.current) {
+      // Small delay to ensure the component has rendered
+      setTimeout(function () {
+        var input = textControlRef.current.querySelector('input');
+        if (input) {
+          input.focus();
+          input.select();
+        }
+      }, 100);
+    }
+  }, [currentAction]);
   var getObfuscatedLicenseKey = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (licenseKey) {
     var length = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5;
     return licenseKey.replace(/./g, '*').slice(0, length) + licenseKey.slice(-length);
@@ -5665,14 +5680,17 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
     href: "https://publishpress.com/subscriptions/",
     target: "_blank",
     rel: "noopener noreferrer"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Go to my profile to get the license key', 'publishpress-hub'))), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Go to my profile to get the license key', 'publishpress-hub'))), /*#__PURE__*/React.createElement("div", {
+    ref: textControlRef
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
     value: licenseKey,
     className: "pp-hub-text-control pp-hub-license-input",
     placeholder: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enter your license key here', 'publishpress-hub'),
     onChange: function onChange(value) {
       return setLicenseKey(value);
-    }
-  })), currentAction === ACTIONS.VIEW && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Your license key is: ', 'publishpress-hub'), " ", getObfuscatedLicenseKey(licenseKey))), error && /*#__PURE__*/React.createElement(_message_message__WEBPACK_IMPORTED_MODULE_4__.Message, {
+    },
+    focusOnMount: true
+  }))), currentAction === ACTIONS.VIEW && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Your license key is: ', 'publishpress-hub'), " ", getObfuscatedLicenseKey(licenseKey))), error && /*#__PURE__*/React.createElement(_message_message__WEBPACK_IMPORTED_MODULE_4__.Message, {
     variant: "error"
   }, error.message), currentAction === ACTIONS.EDIT && /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     variant: "primary",
@@ -5681,21 +5699,21 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
       return onActivate(licenseKey);
     },
     isLoading: buttonInProgress
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Activate', 'publishpress-hub')), currentAction === ACTIONS.VIEW && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Activate the license key for this site', 'publishpress-hub')), currentAction === ACTIONS.VIEW && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     variant: "primary",
-    icon: "check",
+    icon: "edit",
     onClick: function onClick() {
       return setCurrentAction(ACTIONS.EDIT);
     },
     isLoading: buttonInProgress
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Edit', 'publishpress-hub')), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Edit the license key', 'publishpress-hub')), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     variant: "secondary",
-    icon: "check",
+    icon: "trash",
     onClick: function onClick() {
       return onDeactivate();
     },
     isLoading: buttonInProgress
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Deactivate', 'publishpress-hub'))));
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Deactivate the license key for this site', 'publishpress-hub'))));
 };
 var ModalLicenseManagement = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(ModalLicenseManagementComponent);
 
