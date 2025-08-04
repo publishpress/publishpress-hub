@@ -214,15 +214,15 @@ logs:
 sync:
 	@echo "Starting plugin sync (watching for changes)..."
 	@echo "Press Ctrl+C to stop"
-	@./dev-workspace/scripts/sync-plugin.sh
+	@./dev-workspace/scripts/sync-plugin-remote.sh --watch
 
 sync-once:
 	@echo "Syncing plugin files once..."
-	@./dev-workspace/scripts/sync-plugin.sh --once
+	@./dev-workspace/scripts/sync-plugin-remote.sh --once
 
 sync-stop:
 	@echo "Stopping sync process..."
-	@pkill -f "sync-plugin.sh" || true
+	@pkill -f "sync-plugin-remote.sh" || true
 
 # Dev-workspace commands
 
