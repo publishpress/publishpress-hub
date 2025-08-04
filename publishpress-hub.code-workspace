@@ -25,7 +25,7 @@
         "remote.SSH.defaultExtensions": [
             "ms-vscode.php-debug"
         ],
-        "php.debug.ideKey": "vsc",
+        "php.debug.ideKey": "VSCODE",
         "php.validate.enable": true,
         "php.suggest.basic": false,
         "files.associations": {
@@ -37,7 +37,7 @@
 	"launch": {
         "configurations": [
             {
-                "name": "Xdebug on wp_dev (dev-workspace)",
+                "name": "Xdebug with WordOps",
                 "type": "php",
                 "request": "launch",
                 "port": 9003,
@@ -45,10 +45,24 @@
                     "-dxdebug.start_with_request=yes"
                 ],
                 "pathMappings": {
-                    "/var/www/html/wp-content/plugins/publishpress-hub": "/var/git-repos/publishpress/publishpress-hub",
-                    "/var/www/html": "/var/git-repos/publishpress/publishpress-hub/dev-workspace/.cache/dev-wp/html",
+                    "/var/www/publishpress-hub.dev.realcodelab.com/htdocs/wp-content/plugins/publishpress-hub": "/var/git-repos/publishpress/publishpress-hub"
                 },
-                "hostname": "0.0.0.0"
+                "hostname": "0.0.0.0",
+                "log": true
+            },
+            {
+                "name": "Xdebug CLI",
+                "type": "php",
+                "request": "launch",
+                "port": 9003,
+                "runtimeArgs": [
+                    "-dxdebug.start_with_request=yes"
+                ],
+                "pathMappings": {
+                    "/var/git-repos/publishpress/publishpress-hub": "/var/git-repos/publishpress/publishpress-hub"
+                },
+                "hostname": "0.0.0.0",
+                "log": true
             }
         ]
     }
