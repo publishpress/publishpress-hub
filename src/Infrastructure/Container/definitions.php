@@ -257,7 +257,7 @@ return [
                 $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
                 $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
                 $container->get(AbstractDependencies::FREE_PLUGIN_API)
-        ),
+            ),
 
     AbstractDependencies::INSTALL_PRO_PLUGIN_USE_CASE =>
         fn(ContainerInterface $container) => new InstallProPluginUseCase(
