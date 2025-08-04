@@ -5784,22 +5784,25 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
   }
   var _useDispatch = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useDispatch)(_stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_3__.store),
     cleanupError = _useDispatch.cleanupError;
-  var error = currentPluginState.error ? _objectSpread({}, currentPluginState.error) : null;
-
-  // Add the error message from the context to the error message
-  if (error && error.context && error.context.error_message) {
-    error.message += " ".concat(error.context.error_message);
-  }
+  var processedError = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var _error$context;
+    if (!currentPluginState.error) return null;
+    var error = _objectSpread({}, currentPluginState.error);
+    if (error !== null && error !== void 0 && (_error$context = error.context) !== null && _error$context !== void 0 && _error$context.error_message && error.message !== error.context.error_message) {
+      error.message = "".concat(error.message, " ").concat(error.context.error_message);
+    }
+    return error;
+  }, [currentPluginState.error]);
   var modalProps = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     return {
       onClose: function onClose() {
         closeModal();
         cleanupError(currentPluginFamily);
       },
-      error: error,
+      error: processedError,
       buttonInProgress: currentPluginState.inProgress
     };
-  }, [currentPluginFamily, closeModal, cleanupError, currentPluginState.inProgress, error]);
+  }, [currentPluginFamily, closeModal, cleanupError, currentPluginState.inProgress, processedError]);
   return /*#__PURE__*/React.createElement(React.Fragment, null, isModalActive(MODAL_TYPES.INSTALLATION_TYPE) && /*#__PURE__*/React.createElement(_modal_installation_type__WEBPACK_IMPORTED_MODULE_5__.ModalInstallationType, _extends({}, modalProps, {
     onProClick: function onProClick() {
       return modalManager.openModal(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO, currentPluginFamily);

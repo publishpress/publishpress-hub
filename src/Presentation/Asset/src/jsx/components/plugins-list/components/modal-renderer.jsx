@@ -38,12 +38,16 @@ const ModalRendererComponent = ({
         cleanupError,
     } = useDispatch(store);
 
-    const error = currentPluginState.error ? { ...currentPluginState.error } : null;
+    const processedError = useMemo(() => {
+        if (!currentPluginState.error) return null;
 
-    // Add the error message from the context to the error message
-    if (error && error.context && error.context.error_message) {
-        error.message += ` ${error.context.error_message}`;
-    }
+        const error = { ...currentPluginState.error };
+        if (error?.context?.error_message && error.message !== error.context.error_message) {
+            error.message = `${error.message} ${error.context.error_message}`;
+        }
+
+        return error;
+    }, [currentPluginState.error]);
 
     const modalProps = useMemo(() => {
         return {
@@ -51,10 +55,10 @@ const ModalRendererComponent = ({
                 closeModal();
                 cleanupError(currentPluginFamily);
             },
-            error: error,
+            error: processedError,
             buttonInProgress: currentPluginState.inProgress,
         }
-    }, [currentPluginFamily, closeModal, cleanupError, currentPluginState.inProgress, error]);
+    }, [currentPluginFamily, closeModal, cleanupError, currentPluginState.inProgress, processedError]);
 
     return (
         <>

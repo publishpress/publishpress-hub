@@ -145,15 +145,11 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
     {
         $context = $e->getContext();
 
-        if (isset($context['error_code'])) {
-            $code = $context['error_code'];
-        } else {
-            $code = $e->getCode();
-        }
+        $code = $context['error_code'] ?? $e->getCode();
 
         // Convert numeric codes to string format to avoid WordPress REST API issues
         if (is_numeric($code)) {
-            return 'error_' . $code;
+            return "error_$code";
         }
 
         return (string) $code;
