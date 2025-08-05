@@ -94,23 +94,10 @@ class LicenseManagementService
      */
     public function validateAndEnsureActiveLicense(string $licenseKey, int $downloadId, bool $force = false): bool
     {
-        // First validate the license
-        $isValid = $this->licenseApiService->isLicenseValid($licenseKey, $downloadId, $force);
+        $activated = $this->licenseApiService->activateLicense($licenseKey, $downloadId, $force);
 
-        if (!$isValid) {
+        if (!$activated) {
             return false;
-        }
-
-        // Check if already active
-        $isActive = $this->licenseApiService->isLicenseActive($licenseKey, $downloadId, $force);
-
-        if (!$isActive) {
-            // Activate if not active
-            $activated = $this->licenseApiService->activateLicense($licenseKey, $downloadId, $force);
-
-            if (!$activated) {
-                return false;
-            }
         }
 
         // Store the license key locally
