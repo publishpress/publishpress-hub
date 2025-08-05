@@ -1,7 +1,9 @@
 import {
     memo,
     useState,
-    useCallback
+    useCallback,
+    useRef,
+    useEffect
 } from '@wordpress/element';
 
 import { __ } from '@publishpress-hub/i18n';
@@ -26,10 +28,39 @@ const ModalLicenseManagementComponent = ({
 }) => {
     const [licenseKey, setLicenseKey] = useState(initialLicenseKey || '');
     const [currentAction, setCurrentAction] = useState(licenseKey === '' ? ACTIONS.EDIT : ACTIONS.VIEW);
+    const [activationAttempted, setActivationAttempted] = useState(false);
+    const setFocusRef = useRef(null);
 
     const getObfuscatedLicenseKey = useCallback((licenseKey, length = 5) => {
         return licenseKey.replace(/./g, '*').slice(0, length) + licenseKey.slice(-length);
     }, []);
+
+    const handleFocusReady = useCallback((setFocus) => {
+        setFocusRef.current = setFocus;
+    }, []);
+
+    const handleActivate = useCallback(() => {
+        setActivationAttempted(true);
+        onActivate(licenseKey);
+    }, [onActivate, licenseKey]);
+
+    const handleSwitchToEdit = useCallback(() => {
+        setCurrentAction(ACTIONS.EDIT);
+        // Focus the input after switching to edit mode
+        setTimeout(() => {
+            if (setFocusRef.current) {
+                setFocusRef.current();
+            }
+        }, 100);
+    }, []);
+
+    useEffect(() => {
+        if (activationAttempted && error && setFocusRef.current) {
+            setTimeout(() => {
+                setFocusRef.current();
+            }, 100);
+        }
+    }, [activationAttempted, error]);
 
     return (
         <Modal
@@ -54,6 +85,8 @@ const ModalLicenseManagementComponent = ({
                         placeholder={__('Enter your license key here', 'publishpress-hub')}
                         onChange={(value) => setLicenseKey(value)}
                         autoFocus={true}
+                        onEnterKeyDown={handleActivate}
+                        onFocusReady={handleFocusReady}
                     />
                 </>
             )}
@@ -73,14 +106,14 @@ const ModalLicenseManagementComponent = ({
             )}
 
             {currentAction === ACTIONS.EDIT && (
-                <Button variant='primary' icon='check' onClick={() => onActivate(licenseKey)} isLoading={buttonInProgress}>
+                <Button variant='primary' icon='check' onClick={handleActivate} isLoading={buttonInProgress}>
                     {__('Activate the license key for this site', 'publishpress-hub')}
                 </Button>
             )}
 
             {currentAction === ACTIONS.VIEW && (
                 <>
-                    <Button variant='primary' icon='edit' onClick={() => setCurrentAction(ACTIONS.EDIT)} isLoading={buttonInProgress}>
+                    <Button variant='primary' icon='edit' onClick={handleSwitchToEdit} isLoading={buttonInProgress}>
                         {__('Edit the license key', 'publishpress-hub')}
                     </Button>
                     <Button variant='secondary' icon='trash' onClick={() => onDeactivate()} isLoading={buttonInProgress}>

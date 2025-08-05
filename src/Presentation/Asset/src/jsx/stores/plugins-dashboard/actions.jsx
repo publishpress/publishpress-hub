@@ -231,8 +231,6 @@ export function* installProPlugin(pluginFamilySlug, licenseKey) {
     } catch (error) {
         yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginFamilySlug, error: error}};
 
-        yield createNotice(__('Plugin installation failed', 'publishpress-hub'), 'error');
-
         error = handleErrorMessageOnContext(error);
 
         return {

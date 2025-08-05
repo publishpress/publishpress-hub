@@ -1,4 +1,4 @@
-import { memo, useState } from '@wordpress/element';
+import { memo, useState, useCallback, useRef, useEffect } from '@wordpress/element';
 
 import { __ } from '@publishpress-hub/i18n';
 
@@ -14,6 +14,25 @@ const ModalLicenseInputComponent = ({
     buttonInProgress,
 }) => {
     const [licenseKey, setLicenseKey] = useState('');
+    const [activationAttempted, setActivationAttempted] = useState(false);
+
+    const setFocusRef = useRef(null);
+    const handleFocusReady = useCallback((setFocus) => {
+        setFocusRef.current = setFocus;
+    }, []);
+
+    const handleActivate = useCallback(() => {
+        setActivationAttempted(true);
+        onActivate(licenseKey);
+    }, [onActivate, licenseKey]);
+
+    useEffect(() => {
+        if (activationAttempted && error && setFocusRef.current) {
+            setTimeout(() => {
+                setFocusRef.current();
+            }, 100);
+        }
+    }, [activationAttempted, error]);
 
     return (
         <Modal
@@ -36,6 +55,8 @@ const ModalLicenseInputComponent = ({
                 placeholder={__('Enter your license key here', 'publishpress-hub')}
                 onChange={(value) => setLicenseKey(value)}
                 autoFocus={true}
+                onEnterKeyDown={handleActivate}
+                onFocusReady={handleFocusReady}
             />
 
             {error && (
@@ -44,7 +65,7 @@ const ModalLicenseInputComponent = ({
                 </Message>
             )}
 
-            <Button variant='primary' icon='check' onClick={() => onActivate(licenseKey)} isLoading={buttonInProgress}>
+            <Button variant='primary' icon='check' onClick={handleActivate} isLoading={buttonInProgress}>
                 {__('Activate and install the plugin', 'publishpress-hub')}
             </Button>
         </Modal>

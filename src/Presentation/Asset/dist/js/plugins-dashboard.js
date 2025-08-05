@@ -5418,20 +5418,70 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _hooks_use_focus_on_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hooks/use-focus-on-action */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-focus-on-action.jsx");
-var _excluded = ["autoFocus"];
+var _excluded = ["autoFocus", "onEnterKeyDown", "value", "onChange", "placeholder", "className", "onFocusReady"];
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
 function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
 
 
 
+
+/**
+ * LicenseKeyControl component for handling license key input with auto-focus and Enter key handling
+ *
+ * @param {Object} props - Component props
+ * @param {boolean} props.autoFocus - Whether to auto-focus the input (default: true)
+ * @param {Function} props.onEnterKeyDown - Callback when Enter key is pressed
+ * @param {string} props.value - The input value
+ * @param {Function} props.onChange - Callback when input value changes
+ * @param {string} props.placeholder - Placeholder text
+ * @param {string} props.className - CSS class name
+ * @param {Function} props.onFocusReady - Callback that receives the setFocus function for external control
+ * @param {Object} props.restProps - Additional props passed to TextControl
+ */
 var LicenseKeyControlComponent = function LicenseKeyControlComponent(_ref) {
   var _ref$autoFocus = _ref.autoFocus,
     autoFocus = _ref$autoFocus === void 0 ? true : _ref$autoFocus,
-    props = _objectWithoutProperties(_ref, _excluded);
-  var textControlRef = (0,_hooks_use_focus_on_action__WEBPACK_IMPORTED_MODULE_2__.useFocusOnAction)(autoFocus);
+    onEnterKeyDown = _ref.onEnterKeyDown,
+    value = _ref.value,
+    onChange = _ref.onChange,
+    placeholder = _ref.placeholder,
+    className = _ref.className,
+    onFocusReady = _ref.onFocusReady,
+    restProps = _objectWithoutProperties(_ref, _excluded);
+  var _useFocusOnAction = (0,_hooks_use_focus_on_action__WEBPACK_IMPORTED_MODULE_2__.useFocusOnAction)(autoFocus),
+    _useFocusOnAction2 = _slicedToArray(_useFocusOnAction, 2),
+    textControlRef = _useFocusOnAction2[0],
+    setFocus = _useFocusOnAction2[1];
+
+  // Expose setFocus function to parent component
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (onFocusReady && setFocus) {
+      onFocusReady(setFocus);
+    }
+  }, [onFocusReady, setFocus]);
+  var handleKeyDown = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {
+    if (event.key === 'Enter' && onEnterKeyDown) {
+      event.preventDefault();
+      event.target.blur();
+      onEnterKeyDown(event);
+    }
+  }, [onEnterKeyDown]);
   return /*#__PURE__*/React.createElement("div", {
     ref: textControlRef
-  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, props));
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, _extends({
+    value: value,
+    onChange: onChange,
+    placeholder: placeholder,
+    className: className,
+    onKeyDown: handleKeyDown
+  }, restProps)));
 };
 LicenseKeyControlComponent.displayName = 'LicenseKeyControl';
 var LicenseKeyControl = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(LicenseKeyControlComponent);
@@ -5601,6 +5651,25 @@ var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
     _useState2 = _slicedToArray(_useState, 2),
     licenseKey = _useState2[0],
     setLicenseKey = _useState2[1];
+  var _useState3 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    activationAttempted = _useState4[0],
+    setActivationAttempted = _useState4[1];
+  var setFocusRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var handleFocusReady = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (setFocus) {
+    setFocusRef.current = setFocus;
+  }, []);
+  var handleActivate = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    setActivationAttempted(true);
+    onActivate(licenseKey);
+  }, [onActivate, licenseKey]);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (activationAttempted && error && setFocusRef.current) {
+      setTimeout(function () {
+        setFocusRef.current();
+      }, 100);
+    }
+  }, [activationAttempted, error]);
   return /*#__PURE__*/React.createElement(_modal__WEBPACK_IMPORTED_MODULE_4__.Modal, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter your license key', 'publishpress-hub'),
     className: "pp-hub-modal-license-input",
@@ -5621,15 +5690,15 @@ var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
     onChange: function onChange(value) {
       return setLicenseKey(value);
     },
-    autoFocus: true
+    autoFocus: true,
+    onEnterKeyDown: handleActivate,
+    onFocusReady: handleFocusReady
   }), error && /*#__PURE__*/React.createElement(_message_message__WEBPACK_IMPORTED_MODULE_3__.Message, {
     variant: "error"
   }, error.message), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "primary",
     icon: "check",
-    onClick: function onClick() {
-      return onActivate(licenseKey);
-    },
+    onClick: handleActivate,
     isLoading: buttonInProgress
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate and install the plugin', 'publishpress-hub')));
 };
@@ -5687,10 +5756,38 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
     _useState4 = _slicedToArray(_useState3, 2),
     currentAction = _useState4[0],
     setCurrentAction = _useState4[1];
+  var _useState5 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    activationAttempted = _useState6[0],
+    setActivationAttempted = _useState6[1];
+  var setFocusRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   var getObfuscatedLicenseKey = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (licenseKey) {
     var length = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5;
     return licenseKey.replace(/./g, '*').slice(0, length) + licenseKey.slice(-length);
   }, []);
+  var handleFocusReady = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (setFocus) {
+    setFocusRef.current = setFocus;
+  }, []);
+  var handleActivate = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    setActivationAttempted(true);
+    onActivate(licenseKey);
+  }, [onActivate, licenseKey]);
+  var handleSwitchToEdit = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    setCurrentAction(ACTIONS.EDIT);
+    // Focus the input after switching to edit mode
+    setTimeout(function () {
+      if (setFocusRef.current) {
+        setFocusRef.current();
+      }
+    }, 100);
+  }, []);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (activationAttempted && error && setFocusRef.current) {
+      setTimeout(function () {
+        setFocusRef.current();
+      }, 100);
+    }
+  }, [activationAttempted, error]);
   return /*#__PURE__*/React.createElement(_modal__WEBPACK_IMPORTED_MODULE_4__.Modal, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Manage your license', 'publishpress-hub'),
     className: "pp-hub-modal-license-input",
@@ -5711,22 +5808,20 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
     onChange: function onChange(value) {
       return setLicenseKey(value);
     },
-    autoFocus: true
+    autoFocus: true,
+    onEnterKeyDown: handleActivate,
+    onFocusReady: handleFocusReady
   })), currentAction === ACTIONS.VIEW && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Your license key is: ', 'publishpress-hub'), " ", getObfuscatedLicenseKey(licenseKey))), error && /*#__PURE__*/React.createElement(_message_message__WEBPACK_IMPORTED_MODULE_3__.Message, {
     variant: "error"
   }, error.message), currentAction === ACTIONS.EDIT && /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "primary",
     icon: "check",
-    onClick: function onClick() {
-      return onActivate(licenseKey);
-    },
+    onClick: handleActivate,
     isLoading: buttonInProgress
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate the license key for this site', 'publishpress-hub')), currentAction === ACTIONS.VIEW && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "primary",
     icon: "edit",
-    onClick: function onClick() {
-      return setCurrentAction(ACTIONS.EDIT);
-    },
+    onClick: handleSwitchToEdit,
     isLoading: buttonInProgress
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Edit the license key', 'publishpress-hub')), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "secondary",
@@ -6467,26 +6562,37 @@ __webpack_require__.r(__webpack_exports__);
 
 /**
  * Custom hook to focus an input element when a specific action is triggered
- * @param {bool} shouldFocus - Whether to focus the input element (default: true)
+ * @param {boolean} shouldFocus - Whether to focus the input element (default: true)
  * @param {number} delay - Delay in milliseconds before focusing (default: 100)
+ * @returns {React.RefObject} Reference to the container element
  */
 var useFocusOnAction = function useFocusOnAction() {
   var shouldFocus = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
   var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
   var textControlRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var focusInput = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    if (!textControlRef.current) {
+      return;
+    }
+    var input = textControlRef.current.querySelector('input');
+    if (input) {
+      input.focus();
+      input.select();
+    }
+  }, []);
+  var setFocus = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    focusInput();
+  }, [focusInput]);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (!shouldFocus) {
       return;
     }
-    setTimeout(function () {
-      var input = textControlRef.current.querySelector('input');
-      if (input) {
-        input.focus();
-        input.select();
-      }
-    }, delay);
-  }, [textControlRef, delay, shouldFocus]);
-  return textControlRef;
+    var timeoutId = setTimeout(focusInput, delay);
+    return function () {
+      clearTimeout(timeoutId);
+    };
+  }, [shouldFocus, delay, focusInput]);
+  return [textControlRef, setFocus];
 };
 
 /***/ }),
@@ -7657,7 +7763,7 @@ function installProPlugin(pluginFamilySlug, licenseKey) {
       case 7:
         throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin installation failed');
       case 8:
-        _context12.n = 12;
+        _context12.n = 11;
         break;
       case 9:
         _context12.p = 9;
@@ -7671,9 +7777,6 @@ function installProPlugin(pluginFamilySlug, licenseKey) {
           }
         };
       case 10:
-        _context12.n = 11;
-        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugin installation failed', 'publishpress-hub'), 'error');
-      case 11:
         _t3 = handleErrorMessageOnContext(_t3);
         return _context12.a(2, {
           success: false,
@@ -7681,7 +7784,7 @@ function installProPlugin(pluginFamilySlug, licenseKey) {
           licenseKey: licenseKey,
           error: _t3
         });
-      case 12:
+      case 11:
         return _context12.a(2);
     }
   }, _marked12, null, [[0, 9]]);
