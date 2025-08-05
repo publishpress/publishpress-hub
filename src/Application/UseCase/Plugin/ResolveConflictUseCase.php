@@ -66,33 +66,16 @@ class ResolveConflictUseCase implements UseCaseInterface
         $pluginToUninstallSlug = $pluginToUninstall->getSlug();
         $pluginToUninstallPath = $pluginToUninstall->getPath();
 
-        try {
-            $this->pluginLifecycle->deactivatePlugin($pluginToUninstallPath);
-            $this->pluginLifecycle->uninstallPlugin($pluginToUninstallPath);
-            $this->pluginLifecycle->deletePlugin($pluginToUninstallPath);
+        $this->pluginLifecycle->deactivatePlugin($pluginToUninstallPath);
+        $this->pluginLifecycle->uninstallPlugin($pluginToUninstallPath);
+        $this->pluginLifecycle->deletePlugin($pluginToUninstallPath);
 
-            // Update plugin status after installation to reflect current state
-            $this->pluginStatusService->updatePluginStatus($pluginToKeep);
+        // Update plugin status after installation to reflect current state
+        $this->pluginStatusService->updatePluginStatus($pluginToKeep);
 
-            return [
-                'slug' => $pluginToUninstallSlug,
-                'installed' => $pluginToKeep->isInstalled(),
-            ];
-        } catch (WithContextInterface $e) {
-            throw new PluginInstallException(
-                [
-                    'plugin_slug' => $pluginToUninstallSlug,
-                    'error_message' => $e->getMessage(),
-                    'context' => $e->getContext(),
-                ]
-            );
-        } catch (\Exception $e) {
-            throw new PluginInstallException(
-                [
-                    'plugin_slug' => $pluginToUninstallSlug,
-                    'error_message' => $e->getMessage()
-                ]
-            );
-        }
+        return [
+            'slug' => $pluginToUninstallSlug,
+            'installed' => $pluginToKeep->isInstalled(),
+        ];
     }
 }

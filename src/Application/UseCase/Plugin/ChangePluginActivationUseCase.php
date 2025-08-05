@@ -57,26 +57,17 @@ class ChangePluginActivationUseCase implements UseCaseInterface
             throw new PluginNotFoundException(['family_slug' => $familySlug]);
         }
 
-        try {
-            if ($action === 'activate') {
-                $this->pluginLifecycle->activatePlugin($plugin->getPath());
-                $plugin->setActive(true);
-            } else {
-                $this->pluginLifecycle->deactivatePlugin($plugin->getPath());
-                $plugin->setActive(false);
-            }
-
-            return [
-                'slug' => $plugin->getSlug(),
-                'active' => $plugin->isActive(),
-            ];
-        } catch (\Exception $e) {
-            throw new PluginActivationException(
-                [
-                    'plugin_slug' => $plugin->getSlug(),
-                    'error_message' => $e->getMessage(),
-                ]
-            );
+        if ($action === 'activate') {
+            $this->pluginLifecycle->activatePlugin($plugin->getPath());
+            $plugin->setActive(true);
+        } else {
+            $this->pluginLifecycle->deactivatePlugin($plugin->getPath());
+            $plugin->setActive(false);
         }
+
+        return [
+            'slug' => $plugin->getSlug(),
+            'active' => $plugin->isActive(),
+        ];
     }
 }

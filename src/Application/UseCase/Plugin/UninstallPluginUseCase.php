@@ -51,20 +51,11 @@ class UninstallPluginUseCase implements UseCaseInterface
 
         $plugin = $family->getInstalledPlugin();
 
-        try {
-            $this->pluginLifecycle->uninstallPlugin($plugin->getPath());
-            $this->pluginLifecycle->deletePlugin($plugin->getPath());
+        $this->pluginLifecycle->uninstallPlugin($plugin->getPath());
+        $this->pluginLifecycle->deletePlugin($plugin->getPath());
 
-            return [
-                'slug' => $plugin->getSlug(),
-            ];
-        } catch (\Exception $e) {
-            throw new PluginActivationException(
-                [
-                    'plugin_slug' => $plugin->getSlug(),
-                    'error_message' => $e->getMessage(),
-                ]
-            );
-        }
+        return [
+            'slug' => $plugin->getSlug(),
+        ];
     }
 }

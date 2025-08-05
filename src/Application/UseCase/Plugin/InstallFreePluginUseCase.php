@@ -58,20 +58,16 @@ class InstallFreePluginUseCase implements UseCaseInterface
             throw new PluginAlreadyInstalledException(['plugin_slug' => $pluginSlug]);
         }
 
-        try {
-            $pluginInfo = $this->freePluginApi->getLastVersionInfo($pluginSlug);
+        $pluginInfo = $this->freePluginApi->getLastVersionInfo($pluginSlug);
 
-            $this->pluginLifecycle->installPlugin($pluginSlug, $pluginInfo['download_link']);
+        $this->pluginLifecycle->installPlugin($pluginSlug, $pluginInfo['download_link']);
 
-            // Update plugin status after installation to reflect current state
-            $this->pluginStatusService->updatePluginStatus($plugin);
+        // Update plugin status after installation to reflect current state
+        $this->pluginStatusService->updatePluginStatus($plugin);
 
-            return [
-                'slug' => $pluginSlug,
-                'installed' => $plugin->isInstalled(),
-            ];
-        } catch (\Exception $e) {
-            throw new PluginInstallException(['plugin_slug' => $pluginSlug, 'error_message' => $e->getMessage()]);
-        }
+        return [
+            'slug' => $pluginSlug,
+            'installed' => $plugin->isInstalled(),
+        ];
     }
 }

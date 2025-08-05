@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Infrastructure\Remote;
 
 use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
+use WP_Error;
 
 class RemoteService implements RemoteServiceInterface
 {

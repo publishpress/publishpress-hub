@@ -6,7 +6,6 @@ namespace PublishPress\Hub\Application\UseCase\Plugin;
 
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
-use PublishPress\Hub\Domain\Exception\Contract\WithContextInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseInvalidException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
@@ -49,34 +48,16 @@ class ActivateLicenseUseCase implements UseCaseInterface
         }
 
         $plugin = $family->getProPlugin();
+        $downloadId = $plugin->getDownloadId();
 
-        try {
-            $downloadId = $plugin->getDownloadId();
+        $this->licenseManagement->activateAndStoreLicense($licenseKey, $downloadId);
 
-            $this->licenseManagement->activateAndStoreLicense($licenseKey, $downloadId);
+        // Update plugin status after license activation to reflect current state
+        $this->pluginStatusService->updatePluginStatus($plugin);
 
-            // Update plugin status after license activation to reflect current state
-            $this->pluginStatusService->updatePluginStatus($plugin);
-
-            return [
-                'slug' => $plugin->getSlug(),
-                'licensed' => $plugin->isLicensed(),
-            ];
-        } catch (WithContextInterface $e) {
-            throw new LicenseInvalidException(
-                [
-                    'plugin_slug' => $plugin->getSlug(),
-                    'error_message' => $e->getMessage(),
-                    'context' => $e->getContext(),
-                ]
-            );
-        } catch (\Exception $e) {
-            throw new PluginInstallException(
-                [
-                    'plugin_slug' => $plugin->getSlug(),
-                    'error_message' => $e->getMessage()
-                ]
-            );
-        }
+        return [
+            'slug' => $plugin->getSlug(),
+            'licensed' => $plugin->isLicensed(),
+        ];
     }
 }

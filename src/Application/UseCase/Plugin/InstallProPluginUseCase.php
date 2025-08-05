@@ -65,40 +65,23 @@ class InstallProPluginUseCase implements UseCaseInterface
             throw new PluginAlreadyInstalledException(['plugin_slug' => $plugin->getSlug()]);
         }
 
-        try {
-            $downloadId = $plugin->getDownloadId();
+        $downloadId = $plugin->getDownloadId();
 
-            // Validate license and ensure it's active (will store locally if successful)
-            $this->licenseManagement->validateAndEnsureActiveLicense($licenseKey, $downloadId);
+        // Validate license and ensure it's active (will store locally if successful)
+        $this->licenseManagement->validateAndEnsureActiveLicense($licenseKey, $downloadId);
 
-            $pluginInfo = $this->licenseManagement->getLastVersionInfo($licenseKey, $downloadId);
+        $pluginInfo = $this->licenseManagement->getLastVersionInfo($licenseKey, $downloadId);
 
-            $downloadUrl = $pluginInfo['download_link'];
+        $downloadUrl = $pluginInfo['download_link'];
 
-            $this->pluginLifecycle->installPlugin($plugin->getSlug(), $downloadUrl);
+        $this->pluginLifecycle->installPlugin($plugin->getSlug(), $downloadUrl);
 
-            // Update plugin status after installation to reflect current state
-            $this->pluginStatusService->updatePluginStatus($plugin);
+        // Update plugin status after installation to reflect current state
+        $this->pluginStatusService->updatePluginStatus($plugin);
 
-            return [
-                'slug' => $plugin->getSlug(),
-                'installed' => $plugin->isInstalled(),
-            ];
-        } catch (WithContextInterface $e) {
-            throw new LicenseInvalidException(
-                [
-                    'plugin_slug' => $plugin->getSlug(),
-                    'error_message' => $e->getMessage(),
-                    'context' => $e->getContext(),
-                ]
-            );
-        } catch (\Exception $e) {
-            throw new PluginInstallException(
-                [
-                    'plugin_slug' => $plugin->getSlug(),
-                    'error_message' => $e->getMessage()
-                ]
-            );
-        }
+        return [
+            'slug' => $plugin->getSlug(),
+            'installed' => $plugin->isInstalled(),
+        ];
     }
 }

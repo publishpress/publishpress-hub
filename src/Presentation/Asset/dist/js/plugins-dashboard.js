@@ -8204,15 +8204,19 @@ function cleanupError(pluginFamily) {
   }, _marked20);
 }
 function handleErrorMessageOnContext(error) {
-  var _error$context, _error$context2;
+  var _error$context;
+  var errorMessage = '';
   if ((_error$context = error.context) !== null && _error$context !== void 0 && _error$context.cloudflare_ray_id) {
-    if (!error.context.error_message) {
-      error.context.error_message = '';
-    }
-    error.context.error_message += ' ' + (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Cloudflare Ray ID: %s', 'publishpress-hub'), error.context.cloudflare_ray_id);
+    errorMessage += ' ' + (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Cloudflare Ray ID: %s', 'publishpress-hub'), error.context.cloudflare_ray_id);
   }
-  if ((_error$context2 = error.context) !== null && _error$context2 !== void 0 && _error$context2.operation) {
-    error.context.error_message += ' ' + (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Operation: %s', 'publishpress-hub'), error.context.operation);
+  if (errorMessage != '') {
+    var _error$context2;
+    errorMessage = errorMessage.trim();
+    if ((_error$context2 = error.context) !== null && _error$context2 !== void 0 && _error$context2.error_message) {
+      error.context.error_message += ' ' + errorMessage;
+    } else {
+      error.context.error_message = errorMessage;
+    }
   }
   return error;
 }

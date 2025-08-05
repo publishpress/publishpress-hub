@@ -554,16 +554,20 @@ export function* cleanupError(pluginFamily) {
 }
 
 function handleErrorMessageOnContext(error) {
-    if (error.context?.cloudflare_ray_id) {
-        if (! error.context.error_message) {
-            error.context.error_message = '';
-        }
+    let errorMessage = '';
 
-        error.context.error_message += ' ' + sprintf(__('Cloudflare Ray ID: %s', 'publishpress-hub'), error.context.cloudflare_ray_id);
+    if (error.context?.cloudflare_ray_id) {
+        errorMessage += ' ' + sprintf(__('Cloudflare Ray ID: %s', 'publishpress-hub'), error.context.cloudflare_ray_id);
     }
 
-    if (error.context?.operation) {
-        error.context.error_message += ' ' + sprintf(__('Operation: %s', 'publishpress-hub'), error.context.operation);
+    if (errorMessage != '') {
+        errorMessage = errorMessage.trim();
+
+        if (error.context?.error_message) {
+            error.context.error_message += ' ' + errorMessage;
+        } else {
+            error.context.error_message = errorMessage;
+        }
     }
 
     return error;
