@@ -6,6 +6,7 @@ import { __ } from '@publishpress-hub/i18n';
 import { Button } from '../../buttons/button';
 import { Message } from '../../message/message';
 import { Modal } from '../../modal';
+import { useFocusOnAction } from '../hooks/use-focus-on-action';
 
 const ModalLicenseInputComponent = ({
     onClose,
@@ -14,6 +15,8 @@ const ModalLicenseInputComponent = ({
     buttonInProgress,
 }) => {
     const [licenseKey, setLicenseKey] = useState('');
+
+    const textControlRef = useFocusOnAction();
 
     return (
         <Modal
@@ -30,12 +33,14 @@ const ModalLicenseInputComponent = ({
                 </Button>
             </div>
 
-            <TextControl
-                value={licenseKey}
-                className='pp-hub-text-control pp-hub-license-input'
-                placeholder={__('Enter your license key here', 'publishpress-hub')}
-                onChange={(value) => setLicenseKey(value)}
-            />
+            <div ref={textControlRef}>
+                <TextControl
+                    value={licenseKey}
+                    className='pp-hub-text-control pp-hub-license-input'
+                    placeholder={__('Enter your license key here', 'publishpress-hub')}
+                    onChange={(value) => setLicenseKey(value)}
+                />
+            </div>
 
             {error && (
                 <Message variant='error'>
