@@ -18,10 +18,16 @@ class ViewService implements ViewServiceInterface
 
     public function render(string $templatePath, array $context = []): void
     {
-        $templatePath = $this->templatesBasePath . $templatePath . '.php';
+        $templatePath = "{$this->templatesBasePath}$templatePath.php";
 
         if (! file_exists($templatePath)) {
-            throw new TemplateNotFoundException($templatePath);
+            throw new TemplateNotFoundException(
+                sprintf(
+                    // translators: %s is the template path
+                    esc_html__('Template not found: %s', 'publishpress-hub'),
+                    esc_html($templatePath)
+                )
+            );
         }
 
         require $templatePath;

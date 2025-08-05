@@ -80,6 +80,7 @@ class WordPressOptionsAdapter implements OptionsAdapterInterface
 
         $prefixEscaped = $wpdb->esc_like($prefix) . '%';
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         $results = $wpdb->get_results(
             $wpdb->prepare(
                 "SELECT option_name, option_value FROM {$wpdb->options} WHERE option_name LIKE %s",

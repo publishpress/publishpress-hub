@@ -43,19 +43,19 @@ class InstallFreePluginUseCase implements UseCaseInterface
         $family = $this->pluginStatusService->getPluginFamilyWithUpdatedStatus($familySlug);
 
         if (!$family) {
-            throw new PluginNotFoundException(['family_slug' => $familySlug]);
+            throw new PluginNotFoundException(['family_slug' => esc_html($familySlug)]);
         }
 
         $plugin = $family->getFreePlugin();
 
         if (!$plugin) {
-            throw new PluginNotFoundException(['family_slug' => $familySlug, 'plugin_type' => 'free']);
+            throw new PluginNotFoundException(['family_slug' => esc_html($familySlug), 'plugin_type' => 'free']);
         }
 
         $pluginSlug = $plugin->getSlug();
 
         if ($plugin->isInstalled()) {
-            throw new PluginAlreadyInstalledException(['plugin_slug' => $pluginSlug]);
+            throw new PluginAlreadyInstalledException(['plugin_slug' => esc_html($pluginSlug)]);
         }
 
         $pluginInfo = $this->freePluginApi->getLastVersionInfo($pluginSlug);
@@ -66,7 +66,7 @@ class InstallFreePluginUseCase implements UseCaseInterface
         $this->pluginStatusService->updatePluginStatus($plugin);
 
         return [
-            'slug' => $pluginSlug,
+            'slug' => esc_html($pluginSlug),
             'installed' => $plugin->isInstalled(),
         ];
     }

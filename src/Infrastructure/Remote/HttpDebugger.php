@@ -21,7 +21,7 @@ class HttpDebugger
         }
 
         $debugInfo = [
-            'timestamp' => date('Y-m-d H:i:s'),
+            'timestamp' => gmdate('Y-m-d H:i:s'),
             'method' => $method,
             'url' => $url,
             'body' => $args['body'] ?? [],
@@ -44,25 +44,21 @@ class HttpDebugger
             return;
         }
 
-        if (is_wp_error($response)) {
-            $debugInfo = [
-                'timestamp' => date('Y-m-d H:i:s'),
-                'error' => true,
-                'error_message' => $response->get_error_message(),
-                'error_code' => $response->get_error_code(),
-                'error_data' => $response->get_error_data(),
-            ];
-        } else {
-            $debugInfo = [
-                'timestamp' => date('Y-m-d H:i:s'),
-                'error' => false,
-                'status_code' => wp_remote_retrieve_response_code($response),
-                'status_message' => wp_remote_retrieve_response_message($response),
-                'headers' => wp_remote_retrieve_headers($response),
-                'body' => wp_remote_retrieve_body($response),
-                'cookies' => wp_remote_retrieve_cookies($response),
-            ];
-        }
+        $debugInfo = (is_wp_error($response)) ? [
+            'timestamp' => gmdate('Y-m-d H:i:s'),
+            'error' => true,
+            'error_message' => $response->get_error_message(),
+            'error_code' => $response->get_error_code(),
+            'error_data' => $response->get_error_data(),
+        ] : [
+            'timestamp' => gmdate('Y-m-d H:i:s'),
+            'error' => false,
+            'status_code' => wp_remote_retrieve_response_code($response),
+            'status_message' => wp_remote_retrieve_response_message($response),
+            'headers' => wp_remote_retrieve_headers($response),
+            'body' => wp_remote_retrieve_body($response),
+            'cookies' => wp_remote_retrieve_cookies($response),
+        ];
 
         self::log('RESPONSE', $debugInfo);
     }
@@ -85,7 +81,7 @@ class HttpDebugger
      */
     private static function buildRawRequest(string $method, string $url, array $args): string
     {
-        $parsedUrl = parse_url($url);
+        $parsedUrl = wp_parse_url($url);
         $path = $parsedUrl['path'] ?? '/';
         if (isset($parsedUrl['query'])) {
             $path .= '?' . $parsedUrl['query'];
@@ -133,6 +129,7 @@ class HttpDebugger
             json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
         );
 
+        // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
         error_log($logMessage);
     }
 

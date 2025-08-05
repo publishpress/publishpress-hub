@@ -43,7 +43,7 @@ class DeactivateLicenseUseCase implements UseCaseInterface
         $family = $this->pluginStatusService->getPluginFamilyWithUpdatedStatus($familySlug);
 
         if (!$family) {
-            throw new PluginNotFoundException(['family_slug' => $familySlug]);
+            throw new PluginNotFoundException(['family_slug' => esc_html($familySlug)]);
         }
 
         $plugin = $family->getProPlugin();
@@ -52,7 +52,10 @@ class DeactivateLicenseUseCase implements UseCaseInterface
         $licenseKey = $this->licenseManagement->getStoredLicenseKey($downloadId);
 
         if (!$licenseKey) {
-            throw new LicenseInvalidException(['plugin_slug' => $plugin->getSlug(), 'error_message' => 'No license key found']);
+            throw new LicenseInvalidException([
+                'plugin_slug' => esc_html($plugin->getSlug()),
+                'error_message' => esc_html__('No license key found', 'publishpress-hub'),
+            ]);
         }
 
         $this->licenseManagement->deactivateAndRemoveLicenseFromAllPlugins($licenseKey, $downloadId);
@@ -61,7 +64,7 @@ class DeactivateLicenseUseCase implements UseCaseInterface
         $this->pluginStatusService->updatePluginStatus($plugin);
 
         return [
-            'slug' => $plugin->getSlug(),
+            'slug' => esc_html($plugin->getSlug()),
             'licensed' => $plugin->isLicensed(),
         ];
     }

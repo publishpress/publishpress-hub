@@ -48,21 +48,21 @@ class InstallProPluginUseCase implements UseCaseInterface
         $family = $this->pluginStatusService->getPluginFamilyWithUpdatedStatus($familySlug);
 
         if (!$family) {
-            throw new PluginNotFoundException(['family_slug' => $familySlug]);
+            throw new PluginNotFoundException(['family_slug' => esc_html($familySlug)]);
         }
 
         if (!$licenseKey) {
-            throw new LicenseInvalidException(['family_slug' => $familySlug]);
+            throw new LicenseInvalidException(['family_slug' => esc_html($familySlug)]);
         }
 
         $plugin = $family->getProPlugin();
 
         if (!$plugin) {
-            throw new PluginNotFoundException(['family_slug' => $familySlug, 'plugin_type' => 'pro']);
+            throw new PluginNotFoundException(['family_slug' => esc_html($familySlug), 'plugin_type' => 'pro']);
         }
 
         if ($plugin->isInstalled()) {
-            throw new PluginAlreadyInstalledException(['plugin_slug' => $plugin->getSlug()]);
+            throw new PluginAlreadyInstalledException(['plugin_slug' => esc_html($plugin->getSlug())]);
         }
 
         $downloadId = $plugin->getDownloadId();
@@ -80,7 +80,7 @@ class InstallProPluginUseCase implements UseCaseInterface
         $this->pluginStatusService->updatePluginStatus($plugin);
 
         return [
-            'slug' => $plugin->getSlug(),
+            'slug' => esc_html($plugin->getSlug()),
             'installed' => $plugin->isInstalled(),
         ];
     }

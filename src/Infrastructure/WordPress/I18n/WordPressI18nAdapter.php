@@ -94,6 +94,7 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
     {
         $pluginRelativePath = basename(dirname($this->languagesPath)) . '/' . basename($this->languagesPath);
 
+        // phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound
         load_plugin_textdomain(
             $this->textDomain,
             false,

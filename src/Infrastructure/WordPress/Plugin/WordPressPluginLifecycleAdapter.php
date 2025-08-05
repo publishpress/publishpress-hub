@@ -26,7 +26,13 @@ class WordPressPluginLifecycleAdapter
         }
 
         if (is_wp_error($tmpFile)) {
-            throw new RuntimeException('Failed to download plugin: ' . $tmpFile->get_error_message());
+            throw new RuntimeException(
+                sprintf(
+                    // translators: %s is the error message
+                    esc_html__('Failed to download plugin: %s', 'publishpress-hub'),
+                    esc_html($tmpFile->get_error_message())
+                )
+            );
         }
 
         // Delete the plugin folder if exists
@@ -38,7 +44,9 @@ class WordPressPluginLifecycleAdapter
         $this->fileSystemAdapter->delete($tmpFile);
 
         if (!$unzipfile) {
-            throw new RuntimeException('Failed to unzip plugin file');
+            throw new RuntimeException(
+                esc_html__('Failed to unzip plugin file', 'publishpress-hub')
+            );
         }
 
         return true;
@@ -49,7 +57,13 @@ class WordPressPluginLifecycleAdapter
         $result = activate_plugin($pluginPath);
 
         if (is_wp_error($result)) {
-            throw new RuntimeException('Failed to activate plugin: ' . $result->get_error_message());
+            throw new RuntimeException(
+                sprintf(
+                    // translators: %s is the error message
+                    esc_html__('Failed to activate plugin: %s', 'publishpress-hub'),
+                    esc_html($result->get_error_message())
+                )
+            );
         }
 
         return true;
@@ -105,7 +119,13 @@ class WordPressPluginLifecycleAdapter
         $result = delete_plugins([$pluginPath]);
 
         if (is_wp_error($result)) {
-            throw new RuntimeException('Failed to delete plugin: ' . $result->get_error_message());
+            throw new RuntimeException(
+                sprintf(
+                    // translators: %s is the error message
+                    esc_html__('Failed to delete plugin: %s', 'publishpress-hub'),
+                    esc_html($result->get_error_message())
+                )
+            );
         }
 
         return true;

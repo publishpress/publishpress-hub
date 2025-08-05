@@ -64,20 +64,20 @@ class UpgradePluginUseCase implements UseCaseInterface
 
         $family = $this->pluginStatusService->getPluginFamilyWithUpdatedStatus($familySlug);
         if (!$family) {
-            throw new PluginNotFoundException(['family_slug' => $familySlug]);
+            throw new PluginNotFoundException(['family_slug' => esc_html($familySlug)]);
         }
 
         if ($family->hasConflictingInstallations()) {
-            throw new PluginAlreadyInstalledException(['family_slug' => $familySlug]);
+            throw new PluginAlreadyInstalledException(['family_slug' => esc_html($familySlug)]);
         }
 
         $freePlugin = $family->getFreePlugin();
         if (!$freePlugin) {
-            throw new PluginNotFoundException(['family_slug' => $familySlug, 'plugin_type' => 'free']);
+            throw new PluginNotFoundException(['family_slug' => esc_html($familySlug), 'plugin_type' => 'free']);
         }
 
         if (!$freePlugin->isInstalled()) {
-            throw new PluginNotInstalledException(['plugin_slug' => $freePlugin->getSlug()]);
+            throw new PluginNotInstalledException(['plugin_slug' => esc_html($freePlugin->getSlug())]);
         }
 
 
@@ -87,7 +87,7 @@ class UpgradePluginUseCase implements UseCaseInterface
         $this->performUpgrade($freePlugin, $proPlugin, $licenseKey);
 
         return [
-            'slug' => $proPlugin->getSlug(),
+            'slug' => esc_html($proPlugin->getSlug()),
             'installed' => $proPlugin->isInstalled(),
         ];
     }
@@ -105,7 +105,7 @@ class UpgradePluginUseCase implements UseCaseInterface
         $familySlug = $request->get_param('familySlug');
 
         if (empty($familySlug)) {
-            throw new PluginNotFoundException(['family_slug' => 'missing']);
+            throw new PluginNotFoundException(['family_slug' => esc_html('missing')]);
         }
 
         return $familySlug;
@@ -116,7 +116,7 @@ class UpgradePluginUseCase implements UseCaseInterface
         $licenseKey = $request->get_param('licenseKey');
 
         if (empty($licenseKey)) {
-            throw new LicenseInvalidException(['license_key' => 'missing']);
+            throw new LicenseInvalidException(['license_key' => esc_html('missing')]);
         }
 
         return $licenseKey;

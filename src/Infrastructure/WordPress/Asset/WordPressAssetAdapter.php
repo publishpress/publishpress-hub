@@ -44,7 +44,7 @@ class WordPressAssetAdapter implements AssetServiceInterface
 
         if (empty($relativePath)) {
             throw new InvalidArgumentException(
-                __('Path cannot be empty', 'publishpress-hub')
+                esc_html__('Path cannot be empty', 'publishpress-hub')
             );
         }
 
@@ -53,19 +53,19 @@ class WordPressAssetAdapter implements AssetServiceInterface
 
         if (empty($fileExtension)) {
             throw new InvalidArgumentException(
-                __('File extension cannot be empty', 'publishpress-hub')
+                esc_html__('File extension cannot be empty', 'publishpress-hub')
             );
         }
 
-        $relativePath = str_replace('.' . $fileExtension, '', $relativePath);
+        $relativePath = str_replace(".$fileExtension", '', $relativePath);
 
         $minifiableExtensions = ['js', 'css'];
 
         if (!$this->scriptDebug && in_array($fileExtension, $minifiableExtensions, true)) {
-            $fileExtension = 'min.' . $fileExtension;
+            $fileExtension = "min.$fileExtension";
         }
 
-        return $baseUrl . $relativePath . '.' . $fileExtension;
+        return "$baseUrl$relativePath.$fileExtension";
     }
 
     /**

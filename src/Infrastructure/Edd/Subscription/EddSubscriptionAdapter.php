@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Edd\Subscription;
 
+use PublishPress\Hub\Domain\Plugin\Exception\LicenseActivationException;
+use PublishPress\Hub\Domain\Plugin\Exception\LicenseDeactivationException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseDisabledException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseExpiredException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseInvalidException;
@@ -17,6 +19,7 @@ use PublishPress\Hub\Domain\Plugin\Exception\LicenseNotActivableException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseServerException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseServerInvalidResponseException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseSiteInactiveException;
+use PublishPress\Hub\Domain\Plugin\Exception\UnknownLicenseServerException;
 use PublishPress\Hub\Infrastructure\Cache\Contract\CacheServiceInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseAdapterInterface;
 use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
@@ -115,8 +118,12 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
 
         if (is_wp_error($response)) {
             throw new LicenseServerException([
-                'error_message' => 'Error validating license: ' . $response->get_error_message(),
-                'operation' => $operation,
+                'error_message' => sprintf(
+                    // translators: %s is the error message
+                    esc_html__('Error validating license: %s', 'publishpress-hub'),
+                    esc_html($response->get_error_message())
+                ),
+                'operation' => esc_html($operation),
             ]);
         }
 
@@ -126,7 +133,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
 
         if (empty($data) || !isset($data['license'])) {
             throw new LicenseServerInvalidResponseException([
-                'operation' => $operation,
+                'operation' => esc_html($operation),
             ]);
         }
 
@@ -229,9 +236,9 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
             HttpDebugger::debugResponse($response);
 
             if (is_wp_error($response)) {
-                throw new LicenseServerException([
-                    'error_message' => 'Error activating license: ' . $response->get_error_message(),
-                    'operation' => $operation,
+                throw new LicenseActivationException([
+                    'error_message' => esc_html($response->get_error_message()),
+                    'operation' => esc_html($operation),
                 ]);
             }
 
@@ -241,7 +248,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
 
             if (empty($data) || !isset($data['license'])) {
                 throw new LicenseServerInvalidResponseException([
-                    'operation' => $operation,
+                    'operation' => esc_html($operation),
                 ]);
             }
 
@@ -288,9 +295,9 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         HttpDebugger::debugResponse($response);
 
         if (is_wp_error($response)) {
-            throw new LicenseServerException([
-                'error_message' => 'Error deactivating license: ' . $response->get_error_message(),
-                'operation' => $operation,
+            throw new LicenseDeactivationException([
+                'error_message' => esc_html($response->get_error_message()),
+                'operation' => esc_html($operation),
             ]);
         }
 
@@ -300,7 +307,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
 
         if (empty($data)) {
             throw new LicenseServerInvalidResponseException([
-                'operation' => $operation,
+                'operation' => esc_html($operation),
             ]);
         }
 
@@ -334,9 +341,10 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         $context = [];
 
         if ($operation) {
-            $context['operation'] = $operation;
+            $context['operation'] = esc_html($operation);
         }
 
+        // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
         switch ($license) {
             case 'missing':
                 throw new LicenseMissingException($context);
@@ -356,18 +364,14 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
                 throw new LicenseInvalidItemIdException($context);
             case 'item_name_mismatch':
                 throw new LicenseInvalidItemNameException($context);
-            // TODO: Check if this is really an issue, since we should activate the license if it's inactive
             case 'site_inactive':
                 throw new LicenseSiteInactiveException($context);
             case 'invalid':
                 throw new LicenseInvalidException($context);
-
             default:
-                throw new LicenseServerException([
-                    'error_message' => 'Unknown license error: ' . $license,
-                    'operation' => $operation,
-                ]);
+                throw new UnknownLicenseServerException($context);
         }
+        // phpcs:enable WordPress.Security.EscapeOutput.ExceptionNotEscaped
     }
 
     /**
@@ -376,7 +380,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
      */
     public function getLastVersionInfo(string $licenseKey, int $downloadId, bool $force = false): array
     {
-        $cacheKey = md5('edd_get_plugin_info_' . $licenseKey . '_' . $downloadId);
+        $cacheKey = md5("edd_get_plugin_info_{$licenseKey}_$downloadId");
         $operation = 'get_last_version_info';
 
         $data = $this->cacheService->get($cacheKey);
@@ -413,8 +417,12 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
 
         if (is_wp_error($response)) {
             throw new LicenseServerException([
-                'error_message' => 'Error getting license info: ' . $response->get_error_message(),
-                'operation' => $operation,
+                'error_message' => sprintf(
+                    // translators: %s is the error message
+                    esc_html__('Error getting license info: %s', 'publishpress-hub'),
+                    esc_html($response->get_error_message())
+                ),
+                'operation' => esc_html($operation),
             ]);
         }
 
@@ -424,7 +432,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
 
         if (empty($data)) {
             throw new LicenseServerInvalidResponseException([
-                'operation' => $operation,
+                'operation' => esc_html($operation),
             ]);
         }
 
@@ -461,8 +469,8 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
 
             if ($rayId) {
                 throw new RemoteAccessDeniedException([
-                    'cloudflare_ray_id' => $rayId,
-                    'operation' => $operation,
+                    'cloudflare_ray_id' => esc_html($rayId),
+                    'operation' => esc_html($operation),
                 ]);
             }
 
@@ -471,7 +479,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
 
         if ($this->remoteService->getResponseStatusCode($response) !== 200) {
             throw new LicenseServerInvalidResponseException([
-                'operation' => $operation,
+                'operation' => esc_html($operation),
             ]);
         }
     }

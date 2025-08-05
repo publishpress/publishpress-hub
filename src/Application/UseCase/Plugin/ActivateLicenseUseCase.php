@@ -44,7 +44,7 @@ class ActivateLicenseUseCase implements UseCaseInterface
         $family = $this->pluginStatusService->getPluginFamilyWithUpdatedStatus($familySlug);
 
         if (!$family) {
-            throw new PluginNotFoundException(['family_slug' => $familySlug]);
+            throw new PluginNotFoundException(['family_slug' => esc_html($familySlug)]);
         }
 
         $plugin = $family->getProPlugin();
@@ -56,7 +56,7 @@ class ActivateLicenseUseCase implements UseCaseInterface
         $this->pluginStatusService->updatePluginStatus($plugin);
 
         return [
-            'slug' => $plugin->getSlug(),
+            'slug' => esc_html($plugin->getSlug()),
             'licensed' => $plugin->isLicensed(),
         ];
     }

@@ -5,7 +5,7 @@ Author URI: https://publishpress.com
 Tags:
 Requires at least: 6.7
 Requires PHP: 7.4
-Tested up to: 6.7
+Tested up to: 6.8
 License: GPLv2 or later
 Stable tag: 1.0.0
 

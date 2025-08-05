@@ -40,21 +40,21 @@ class ChangePluginActivationUseCase implements UseCaseInterface
         $family = $this->pluginStatusService->getPluginFamilyWithUpdatedStatus($familySlug);
 
         if (!$family) {
-            throw new PluginNotFoundException(['family_slug' => $familySlug]);
+            throw new PluginNotFoundException(['family_slug' => esc_html($familySlug)]);
         }
 
         if ($family->hasConflictingInstallations()) {
-            throw new PluginFreeProConflictException(['family_slug' => $familySlug]);
+            throw new PluginFreeProConflictException(['family_slug' => esc_html($familySlug)]);
         }
 
         if (!$family->hasAnyVersionInstalled()) {
-            throw new PluginNotInstalledException(['family_slug' => $familySlug]);
+            throw new PluginNotInstalledException(['family_slug' => esc_html($familySlug)]);
         }
 
         $plugin = $family->getInstalledPlugin();
 
         if (!$plugin) {
-            throw new PluginNotFoundException(['family_slug' => $familySlug]);
+            throw new PluginNotFoundException(['family_slug' => esc_html($familySlug)]);
         }
 
         if ($action === 'activate') {
@@ -66,7 +66,7 @@ class ChangePluginActivationUseCase implements UseCaseInterface
         }
 
         return [
-            'slug' => $plugin->getSlug(),
+            'slug' => esc_html($plugin->getSlug()),
             'active' => $plugin->isActive(),
         ];
     }

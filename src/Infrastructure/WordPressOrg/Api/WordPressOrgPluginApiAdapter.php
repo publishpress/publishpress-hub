@@ -33,7 +33,13 @@ class WordPressOrgPluginApiAdapter
         ]);
 
         if (is_wp_error($pluginInfo)) {
-            throw new RuntimeException('Failed to get plugin information: ' . $pluginInfo->get_error_message());
+            throw new RuntimeException(
+                sprintf(
+                    // translators: %s is the error message
+                    esc_html__('Failed to get plugin information: %s', 'publishpress-hub'),
+                    esc_html($pluginInfo->get_error_message())
+                )
+            );
         }
 
         if (is_object($pluginInfo)) {

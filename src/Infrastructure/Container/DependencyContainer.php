@@ -9,6 +9,8 @@ use PublishPress\Hub\Infrastructure\Container\Contracts\DependencyContainerInter
 use PublishPress\Hub\Infrastructure\Container\Exception\NotFoundException;
 use RuntimeException;
 
+use function Symfony\Component\VarDumper\Dumper\esc;
+
 /**
  * PHP Dependency Injection Container PSR-11.
  * Services renamed to dependencies so we don't confuse with
@@ -91,8 +93,8 @@ class DependencyContainer implements DependencyContainerInterface
             throw new NotFoundException (
                 sprintf(
                     // translators: %s is the dependency ID.
-                    __('Dependency "%s" not found in container.', 'publishpress-hub'),
-                    $dependencyId
+                    esc_html__('Dependency "%s" not found in container.', 'publishpress-hub'),
+                    esc_html($dependencyId)
                 )
             );
         }

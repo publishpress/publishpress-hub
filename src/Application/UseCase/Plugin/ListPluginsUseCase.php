@@ -39,26 +39,26 @@ class ListPluginsUseCase implements UseCaseInterface
             $proPlugin = $family->getProPlugin();
 
             $dto = new PluginFamilyDto();
-            $dto->setName($family->getName())
-                ->setSlug($family->getSlug())
-                ->setIconPath($family->getIconPath())
-                ->setDescription($family->getDescription())
-                ->setChangelogUrl($family->getChangelogUrl())
-                ->setFreePluginName($freePlugin->getName())
-                ->setFreePluginSlug($freePlugin->getSlug())
-                ->setFreePluginVersion($freePlugin->getVersion())
-                ->setFreePluginDetailsUrl($freePlugin->getDetailsUrl())
+            $dto->setName(esc_html($family->getName()))
+                ->setSlug(esc_html($family->getSlug()))
+                ->setIconPath(esc_html($family->getIconPath()))
+                ->setDescription(esc_html($family->getDescription()))
+                ->setChangelogUrl(esc_html($family->getChangelogUrl()))
+                ->setFreePluginName(esc_html($freePlugin->getName()))
+                ->setFreePluginSlug(esc_html($freePlugin->getSlug()))
+                ->setFreePluginVersion(esc_html($freePlugin->getVersion()))
+                ->setFreePluginDetailsUrl(esc_html($freePlugin->getDetailsUrl()))
                 ->setFreePluginIsInstalled($freePlugin->isInstalled())
                 ->setFreePluginIsActive($freePlugin->isActive())
-                ->setFreePluginPath($freePlugin->getPath())
-                ->setProPluginName($proPlugin->getName())
-                ->setProPluginSlug($proPlugin->getSlug())
-                ->setProPluginVersion($proPlugin->getVersion())
-                ->setProPluginDetailsUrl($proPlugin->getDetailsUrl())
+                ->setFreePluginPath(esc_html($freePlugin->getPath()))
+                ->setProPluginName(esc_html($proPlugin->getName()))
+                ->setProPluginSlug(esc_html($proPlugin->getSlug()))
+                ->setProPluginVersion(esc_html($proPlugin->getVersion()))
+                ->setProPluginDetailsUrl(esc_html($proPlugin->getDetailsUrl()))
                 ->setProPluginIsInstalled($proPlugin->isInstalled())
                 ->setProPluginIsActive($proPlugin->isActive())
                 ->setProPluginIsLicensed($proPlugin->isLicensed())
-                ->setProPluginPath($proPlugin->getPath())
+                ->setProPluginPath(esc_html($proPlugin->getPath()))
                 ->setIsAnyVersionInstalled($family->hasAnyVersionInstalled())
                 ->setIsAnyVersionActive($family->hasAnyVersionActive())
                 ->setHasConflictingInstallations($family->hasConflictingInstallations());
@@ -66,7 +66,7 @@ class ListPluginsUseCase implements UseCaseInterface
             $pluginData = $dto->toArray();
 
             $licenseKey = $this->getLicenseKey($proPlugin);
-            $pluginData['proPlugin']['licenseKey'] = $licenseKey;
+            $pluginData['proPlugin']['licenseKey'] = esc_html($licenseKey);
 
             $plugins[] = $pluginData;
         }

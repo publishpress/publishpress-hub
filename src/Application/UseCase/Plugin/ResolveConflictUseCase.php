@@ -44,11 +44,11 @@ class ResolveConflictUseCase implements UseCaseInterface
         $family = $this->pluginStatusService->getPluginFamilyWithUpdatedStatus($familySlug);
 
         if (!$family) {
-            throw new PluginNotFoundException(['family_slug' => $familySlug]);
+            throw new PluginNotFoundException(['family_slug' => esc_html($familySlug)]);
         }
 
         if (!$family->hasConflictingInstallations()) {
-            throw new PluginNotInstalledException(['family_slug' => $familySlug]);
+            throw new PluginNotInstalledException(['family_slug' => esc_html($familySlug)]);
         }
 
         if ($pluginTypeToKeep === 'free') {
@@ -60,7 +60,7 @@ class ResolveConflictUseCase implements UseCaseInterface
         }
 
         if (! $pluginToUninstall->isInstalled()) {
-            throw new PluginNotInstalledException(['plugin_slug' => $pluginToUninstall->getSlug()]);
+            throw new PluginNotInstalledException(['plugin_slug' => esc_html($pluginToUninstall->getSlug())]);
         }
 
         $pluginToUninstallSlug = $pluginToUninstall->getSlug();
@@ -74,7 +74,7 @@ class ResolveConflictUseCase implements UseCaseInterface
         $this->pluginStatusService->updatePluginStatus($pluginToKeep);
 
         return [
-            'slug' => $pluginToUninstallSlug,
+            'slug' => esc_html($pluginToUninstallSlug),
             'installed' => $pluginToKeep->isInstalled(),
         ];
     }
