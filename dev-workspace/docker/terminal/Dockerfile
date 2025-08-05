@@ -16,6 +16,7 @@ COPY git/.gitconfig $HOME/.gitconfig
 COPY .zshrc $HOME/.zshrc
 
 RUN set -ex \
+    git config --global --add safe.directory /project \
     && npm install -g cross-env \
     # Clean npm cache to reduce image size
     && npm cache clean --force \

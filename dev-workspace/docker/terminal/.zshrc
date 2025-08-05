@@ -9,5 +9,6 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="ys"
 plugins=(git asdf wp-cli )
 
+git config --global --add safe.directory /project
 
 source $ZSH/oh-my-zsh.sh
