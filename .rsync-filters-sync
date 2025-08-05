@@ -6,6 +6,7 @@
 - .gitattributes
 - .github
 - .gitignore
+- .gitmodules
 - .idea
 - .php-cs-fixer.cache
 - .phpcs-php-compatibility.xml
