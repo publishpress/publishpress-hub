@@ -196,7 +196,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
      */
     public function activateLicense(string $licenseKey, int $downloadId, bool $force = false): bool
     {
-        $cacheKey = md5('edd_activate_license_' . $licenseKey . '_' . $downloadId);
+        $cacheKey = md5("edd_activate_license_{$licenseKey}_$downloadId");
         $operation = 'activate_license';
 
         $data = $this->cacheService->get($cacheKey);
