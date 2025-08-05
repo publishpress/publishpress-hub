@@ -60,7 +60,13 @@ class PluginFamily implements PluginFamilyInterface
     public function getFreePlugin(): PluginInterface
     {
         if ($this->freePlugin === null) {
-            throw new \RuntimeException('Free plugin not set for plugin family: ' . $this->slug);
+            throw new \RuntimeException(
+                sprintf(
+                    // translators: %s is the plugin family slug
+                    esc_html__('Free plugin not set for plugin family: %s', 'publishpress-hub'),
+                    esc_html($this->slug)
+                )
+            );
         }
         return $this->freePlugin;
     }
@@ -68,7 +74,13 @@ class PluginFamily implements PluginFamilyInterface
     public function getProPlugin(): ProPluginInterface
     {
         if ($this->proPlugin === null) {
-            throw new \RuntimeException('Pro plugin not set for plugin family: ' . $this->slug);
+            throw new \RuntimeException(
+                sprintf(
+                    // translators: %s is the plugin family slug
+                    esc_html__('Pro plugin not set for plugin family: %s', 'publishpress-hub'),
+                    esc_html($this->slug)
+                )
+            );
         }
         return $this->proPlugin;
     }
