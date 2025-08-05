@@ -234,3 +234,6 @@ build-js:
 
 build:
 	./dev-workspace/run composer build
+
+build-lang:
+	./dev-workspace/run composer build:lang
