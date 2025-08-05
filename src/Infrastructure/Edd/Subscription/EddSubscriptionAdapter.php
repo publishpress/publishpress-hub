@@ -36,7 +36,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
     /**
      * Cache TTL in seconds
      */
-    private const CACHE_TTL = 30;
+    private const CACHE_TTL = 10;
 
     /**
      * Timeout in seconds
