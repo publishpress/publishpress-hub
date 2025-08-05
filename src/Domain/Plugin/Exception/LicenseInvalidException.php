@@ -14,6 +14,9 @@ class LicenseInvalidException extends LicenseException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('License key is invalid.', $context);
+        parent::__construct(
+            __('This license key is not recognized. Please verify your license key or contact support for help.', 'publishpress-hub'),
+            $context
+        );
     }
 }

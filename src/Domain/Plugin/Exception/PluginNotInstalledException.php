@@ -18,6 +18,9 @@ class PluginNotInstalledException extends DomainException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('Plugin is not installed.', $context);
+        parent::__construct(
+            __('This action is not possible because the plugin is not installed. Please install the plugin and try again.', 'publishpress-hub'),
+            $context
+        );
     }
 }

@@ -14,6 +14,9 @@ class LicenseInvalidItemNameException extends LicenseException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('License has invalid item name.', $context);
+        parent::__construct(
+            __('This license does not match the plugin you are trying to activate. Please contact support for assistance.', 'publishpress-hub'),
+            $context
+        );
     }
 }

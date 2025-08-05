@@ -18,6 +18,9 @@ class PluginNotFoundException extends DomainException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('Plugin not found.', $context);
+        parent::__construct(
+            __('Plugin not found in our available plugins list. Please contact support for help.', 'publishpress-hub'),
+            $context
+        );
     }
 }

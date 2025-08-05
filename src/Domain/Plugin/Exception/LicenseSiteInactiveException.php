@@ -14,6 +14,9 @@ class LicenseSiteInactiveException extends LicenseException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('Site is inactive for license.', $context);
+        parent::__construct(
+            __('This license is inactive for this site. Please contact support for help.', 'publishpress-hub'),
+            $context
+        );
     }
 }

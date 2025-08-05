@@ -7,7 +7,3 @@ if (componentsShowcaseContainer) {
     const root = createRoot(componentsShowcaseContainer);
     root.render(<ComponentsShowcase/>);
 }
-
-
-
-

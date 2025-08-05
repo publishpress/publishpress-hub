@@ -14,6 +14,9 @@ class LicenseInvalidItemIdException extends LicenseException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('License has invalid item ID.', $context);
+        parent::__construct(
+            __('This license cannot be used for this plugin. Please contact support for help.', 'publishpress-hub'),
+            $context
+        );
     }
 }

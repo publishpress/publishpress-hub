@@ -16,6 +16,9 @@ class PluginInstallException extends DomainException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('Failed to install plugin.', $context);
+        parent::__construct(
+            __('Plugin installation failed. Please contact support for help.', 'publishpress-hub'),
+            $context
+        );
     }
 }

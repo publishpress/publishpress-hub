@@ -14,6 +14,9 @@ class LicenseMissingUrlException extends LicenseException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('License URL is missing.', $context);
+        parent::__construct(
+            __('Your site URL is required to activate the license. Please enter a valid site URL to continue.', 'publishpress-hub'),
+            $context
+        );
     }
 }

@@ -19,6 +19,9 @@ class LicenseServerInvalidResponseException extends LicenseException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('License server invalid response.', $context);
+        parent::__construct(
+            __('The license server returned an invalid response. Please try again later or contact support for help.', 'publishpress-hub'),
+            $context
+        );
     }
 }

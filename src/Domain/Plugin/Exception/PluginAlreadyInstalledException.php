@@ -18,6 +18,9 @@ class PluginAlreadyInstalledException extends DomainException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('Plugin is already installed.', $context);
+        parent::__construct(
+            __('This action is not possible because the plugin is already installed.', 'publishpress-hub'),
+            $context
+        );
     }
 }

@@ -14,6 +14,9 @@ class LicenseExpiredException extends LicenseException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('License has expired.', $context);
+        parent::__construct(
+            __('This license has expired. Please contact support to renew it.', 'publishpress-hub'),
+            $context
+        );
     }
 }

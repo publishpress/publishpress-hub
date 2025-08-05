@@ -9,13 +9,16 @@ use PublishPress\Hub\Domain\Exception\Base\DomainException;
 /**
  * @since 1.0.0
  */
-class PluginVersionConflictException extends DomainException
+class PluginDeactivationException extends DomainException
 {
     /**
      * @since 1.0.0
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('Plugin version conflict.', $context);
+        parent::__construct(
+            __('Plugin deactivation failed. Please try again later or contact support for help.', 'publishpress-hub'),
+            $context
+        );
     }
 }

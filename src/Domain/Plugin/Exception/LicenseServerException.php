@@ -19,6 +19,9 @@ class LicenseServerException extends LicenseException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('License server error.', $context);
+        parent::__construct(
+            __('License server error. Please try again later or contact support for help.', 'publishpress-hub'),
+            $context
+        );
     }
 }

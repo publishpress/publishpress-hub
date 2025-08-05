@@ -16,6 +16,9 @@ class PluginActivationException extends DomainException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('Failed to activate/deactivate plugin.', $context);
+        parent::__construct(
+            __('Plugin activation failed. Please try again later or contact support for help.', 'publishpress-hub'),
+            $context
+        );
     }
 }

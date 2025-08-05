@@ -14,6 +14,9 @@ class LicenseNoActivationsLeftException extends LicenseException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('No activations left for license.', $context);
+        parent::__construct(
+            __('License activation limit reached. Please contact support to upgrade or deactivate on another site.', 'publishpress-hub'),
+            $context
+        );
     }
 }

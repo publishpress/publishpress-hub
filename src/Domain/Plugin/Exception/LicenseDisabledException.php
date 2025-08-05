@@ -19,6 +19,9 @@ class LicenseDisabledException extends LicenseException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('License key revoked.', $context);
+        parent::__construct(
+            __('This license is currently disabled. Please contact support for help.', 'publishpress-hub'),
+            $context
+        );
     }
 }

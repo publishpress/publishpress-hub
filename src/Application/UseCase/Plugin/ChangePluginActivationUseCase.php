@@ -7,7 +7,7 @@ namespace PublishPress\Hub\Application\UseCase\Plugin;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginActivationException;
-use PublishPress\Hub\Domain\Plugin\Exception\PluginConflictingInstallationsException;
+use PublishPress\Hub\Domain\Plugin\Exception\PluginFreeProConflictException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotInstalledException;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginLifecycleAdapter;
@@ -29,7 +29,7 @@ class ChangePluginActivationUseCase implements UseCaseInterface
     /**
      * @throws PluginNotFoundException
      * @throws PluginActivationException
-     * @throws PluginConflictingInstallationsException
+     * @throws PluginFreeProConflictException
      */
     public function execute(WP_REST_Request $request): array
     {
@@ -44,7 +44,7 @@ class ChangePluginActivationUseCase implements UseCaseInterface
         }
 
         if ($family->hasConflictingInstallations()) {
-            throw new PluginConflictingInstallationsException(['family_slug' => $familySlug]);
+            throw new PluginFreeProConflictException(['family_slug' => $familySlug]);
         }
 
         if (!$family->hasAnyVersionInstalled()) {

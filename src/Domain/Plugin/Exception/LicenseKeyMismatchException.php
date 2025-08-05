@@ -14,6 +14,9 @@ class LicenseKeyMismatchException extends LicenseException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('License key doesn\'t match.', $context);
+        parent::__construct(
+            __('License key does not match our records. Please contact support for assistance.', 'publishpress-hub'),
+            $context
+        );
     }
 }

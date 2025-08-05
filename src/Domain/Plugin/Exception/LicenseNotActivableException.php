@@ -14,6 +14,9 @@ class LicenseNotActivableException extends LicenseException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('License cannot be activated.', $context);
+        parent::__construct(
+            __('This license cannot be activated. Please contact support for help.', 'publishpress-hub'),
+            $context
+        );
     }
 }

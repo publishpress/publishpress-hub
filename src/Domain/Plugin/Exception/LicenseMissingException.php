@@ -14,6 +14,9 @@ class LicenseMissingException extends LicenseException
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('License key is missing.', $context);
+        parent::__construct(
+            __('No license key provided. Please enter a valid license key.', 'publishpress-hub'),
+            $context
+        );
     }
 }
