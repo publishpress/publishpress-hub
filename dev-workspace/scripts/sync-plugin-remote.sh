@@ -16,7 +16,7 @@ EXCLUDE_FILE=".rsync-filters-sync"
 
 # SSH Configuration
 SSH_KEY_PATH="/home/anderson/.ssh/id_rsa"
-SSH_OPTIONS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+SSH_OPTIONS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o GlobalKnownHostsFile=/dev/null -o ServerAliveInterval=600 -o ServerAliveCountMax=5 -o LogLevel=ERROR"
 
 # Colors for output
 RED='\033[0;31m'
