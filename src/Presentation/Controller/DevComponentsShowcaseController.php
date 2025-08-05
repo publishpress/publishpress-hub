@@ -109,5 +109,4 @@ class DevComponentsShowcaseController implements BootableInterface
             ]
         );
     }
-
 }

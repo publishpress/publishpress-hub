@@ -90,7 +90,7 @@ class DependencyContainer implements DependencyContainerInterface
     public function get(string $dependencyId)
     {
         if (! $this->has($dependencyId)) {
-            throw new NotFoundException (
+            throw new NotFoundException(
                 sprintf(
                     // translators: %s is the dependency ID.
                     esc_html__('Dependency "%s" not found in container.', 'publishpress-hub'),

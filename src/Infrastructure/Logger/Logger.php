@@ -40,7 +40,7 @@ class Logger implements LoggerInterface
      *
      * @since 1.0.0
      */
-    public static function logException(string $message = '', Throwable $e, bool $addTrace = false): void
+    public static function logException(string $message = '', ?Throwable $e = null, bool $addTrace = false): void
     {
         if (! function_exists('error_log')) {
             return;
@@ -50,7 +50,7 @@ class Logger implements LoggerInterface
             return;
         }
 
-        $message = ! empty($message) ? $message . ' - ' : '';
+        $message = ! empty($message) ? "$message - " : '';
         $message .= sprintf(
             'Caught %1$s: %2$s on file %3$s, line %4$d',
             get_class($e),

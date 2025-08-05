@@ -126,7 +126,7 @@ class HttpDebugger
             '[%s] %s: %s',
             self::DEBUG_PREFIX,
             $type,
-            json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+            wp_json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
         );
 
         // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log

@@ -54,11 +54,13 @@ class AdminMenuService implements AdminMenuServiceInterface, BootableInterface
         $this->hooksService->addAction(AbstractHooks::ACTION_ADMIN_MENU, [$this, 'registerAdminMenu']);
     }
 
-    public function addMenuPage(MenuPage $menuPage): void {
+    public function addMenuPage(MenuPage $menuPage): void
+    {
         $this->menuPages[$menuPage->getMenuSlug()] = $menuPage;
     }
 
-    public function addSubmenuPage(SubmenuPage $submenuPage): void {
+    public function addSubmenuPage(SubmenuPage $submenuPage): void
+    {
         $this->submenuPages[$submenuPage->getMenuSlug()] = $submenuPage;
     }
 

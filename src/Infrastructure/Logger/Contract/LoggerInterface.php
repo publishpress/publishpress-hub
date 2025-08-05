@@ -14,7 +14,7 @@ interface LoggerInterface
     /**
      * @since 1.0.0
      */
-    public static function logException(string $message = '', Throwable $e, bool $addTrace = false): void;
+    public static function logException(string $message = '', ?Throwable $e = null, bool $addTrace = false): void;
 
     /**
      * @since 1.0.0

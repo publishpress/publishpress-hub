@@ -43,7 +43,7 @@ class WordPressOrgPluginApiAdapter
         }
 
         if (is_object($pluginInfo)) {
-            $pluginInfo = json_decode(json_encode($pluginInfo), true);
+            $pluginInfo = json_decode(wp_json_encode($pluginInfo), true);
         }
 
         return $pluginInfo;

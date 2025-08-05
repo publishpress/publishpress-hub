@@ -84,8 +84,7 @@ class WordPressAssetAdapter implements AssetServiceInterface
         string $scriptRelativePath,
         array $dependencies = [],
         bool $inFooter = true
-    ): void
-    {
+    ): void {
         wp_enqueue_script(
             $scriptHandle,
             $this->getPluginAssetUrl($scriptRelativePath),
@@ -103,8 +102,7 @@ class WordPressAssetAdapter implements AssetServiceInterface
         string $scriptRelativePath,
         array $dependencies = [],
         bool $inFooter = true
-    ): void
-    {
+    ): void {
         wp_register_script(
             $scriptHandle,
             $this->getPluginAssetUrl($scriptRelativePath),
@@ -121,8 +119,7 @@ class WordPressAssetAdapter implements AssetServiceInterface
         string $styleHandle,
         string $styleRelativePath,
         array $dependencies = []
-    ): void
-    {
+    ): void {
         wp_enqueue_style(
             $styleHandle,
             $this->getPluginAssetUrl($styleRelativePath),
@@ -138,8 +135,7 @@ class WordPressAssetAdapter implements AssetServiceInterface
         string $styleHandle,
         string $styleRelativePath,
         array $dependencies = []
-    ): void
-    {
+    ): void {
         wp_register_style(
             $styleHandle,
             $this->getPluginAssetUrl($styleRelativePath),
@@ -155,8 +151,7 @@ class WordPressAssetAdapter implements AssetServiceInterface
         string $scriptHandle,
         string $variableName,
         array $data
-    ): void
-    {
+    ): void {
         wp_localize_script($scriptHandle, $variableName, $data);
     }
 }

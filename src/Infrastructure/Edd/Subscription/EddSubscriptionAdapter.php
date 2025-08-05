@@ -332,8 +332,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         string $license,
         array $acceptableResults,
         string $operation = ''
-    ): void
-    {
+    ): void {
         if (in_array($license, $acceptableResults)) {
             return;
         }

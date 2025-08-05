@@ -102,10 +102,10 @@ return [
 
     AbstractDependencies::ASSET_SERVICE =>
         fn(ContainerInterface $container) => new WordPressAssetAdapter(
-                $container->get(AbstractDependencies::PLUGIN_ASSETS_URL),
-                $container->get(AbstractDependencies::PLUGIN_VERSION),
-                $container->get(AbstractDependencies::SCRIPT_DEBUG)
-            ),
+            $container->get(AbstractDependencies::PLUGIN_ASSETS_URL),
+            $container->get(AbstractDependencies::PLUGIN_VERSION),
+            $container->get(AbstractDependencies::SCRIPT_DEBUG)
+        ),
 
     AbstractDependencies::LOGGER_SERVICE =>
         fn(ContainerInterface $container) => new Logger([
@@ -118,14 +118,14 @@ return [
 
     AbstractDependencies::ADMIN_MENU_SERVICE =>
         fn(ContainerInterface $container) => new AdminMenuService(
-                $container->get(AbstractDependencies::ADMIN_MENU_ADAPTER),
-                $container->get(AbstractDependencies::HOOKS_SERVICE),
-            ),
+            $container->get(AbstractDependencies::ADMIN_MENU_ADAPTER),
+            $container->get(AbstractDependencies::HOOKS_SERVICE),
+        ),
 
     AbstractDependencies::VIEW_SERVICE =>
         fn(ContainerInterface $container) => new ViewService(
-                $container->get(AbstractDependencies::PLUGIN_TEMPLATES_BASE_PATH)
-            ),
+            $container->get(AbstractDependencies::PLUGIN_TEMPLATES_BASE_PATH)
+        ),
 
     AbstractDependencies::SECURITY_SERVICE =>
         fn(ContainerInterface $container) => new WordPressSecurityAdapter(),
@@ -135,50 +135,50 @@ return [
 
     AbstractDependencies::REST_API_SERVICE =>
         fn(ContainerInterface $container) => new RestApiService(
-                $container->get(AbstractDependencies::HOOKS_SERVICE),
-                $container->get(AbstractDependencies::REST_API_ADAPTER),
-                $container->get(AbstractDependencies::SECURITY_SERVICE)
-            ),
+            $container->get(AbstractDependencies::HOOKS_SERVICE),
+            $container->get(AbstractDependencies::REST_API_ADAPTER),
+            $container->get(AbstractDependencies::SECURITY_SERVICE)
+        ),
 
     AbstractDependencies::LICENSE_PERSISTENCE_SERVICE =>
         fn(ContainerInterface $container) => new LicensePersistenceService(
-                $container->get(AbstractDependencies::OPTIONS_ADAPTER),
-                $container->get(AbstractDependencies::LICENSE_OPTION_PREFIX)
-            ),
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER),
+            $container->get(AbstractDependencies::LICENSE_OPTION_PREFIX)
+        ),
 
     AbstractDependencies::LICENSE_API_SERVICE =>
         fn(ContainerInterface $container) => new LicenseApiService(
-                $container->get(AbstractDependencies::EDD_SUBSCRIPTION_ADAPTER),
-            ),
+            $container->get(AbstractDependencies::EDD_SUBSCRIPTION_ADAPTER),
+        ),
 
     AbstractDependencies::LICENSE_MANAGEMENT_SERVICE =>
         fn(ContainerInterface $container) => new LicenseManagementService(
-                $container->get(AbstractDependencies::LICENSE_API_SERVICE),
-                $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
-            ),
+            $container->get(AbstractDependencies::LICENSE_API_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+        ),
 
     AbstractDependencies::EDD_SUBSCRIPTION_ADAPTER =>
         fn(ContainerInterface $container) => new EddSubscriptionAdapter(
-                $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
-                $container->get(AbstractDependencies::SITE_URL),
-                $container->get(AbstractDependencies::USER_AGENT),
-                $container->get(AbstractDependencies::REMOTE_SERVICE),
-                $container->get(AbstractDependencies::CACHE_SERVICE)
-            ),
+            $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
+            $container->get(AbstractDependencies::SITE_URL),
+            $container->get(AbstractDependencies::USER_AGENT),
+            $container->get(AbstractDependencies::REMOTE_SERVICE),
+            $container->get(AbstractDependencies::CACHE_SERVICE)
+        ),
 
     AbstractDependencies::REMOTE_SERVICE =>
         fn(ContainerInterface $container) => new RemoteService(
-                $container->get(AbstractDependencies::REMOTE_ADAPTER)
-            ),
+            $container->get(AbstractDependencies::REMOTE_ADAPTER)
+        ),
 
     AbstractDependencies::REMOTE_ADAPTER =>
         fn(ContainerInterface $container) => new WordPressRemoteAdapter(),
 
     AbstractDependencies::CACHE_SERVICE =>
         fn(ContainerInterface $container) => new CacheService(
-                $container->get(AbstractDependencies::CACHE_GROUP),
-                $container->get(AbstractDependencies::CACHE_ADAPTER)
-            ),
+            $container->get(AbstractDependencies::CACHE_GROUP),
+            $container->get(AbstractDependencies::CACHE_ADAPTER)
+        ),
 
     AbstractDependencies::CACHE_ADAPTER =>
         fn(ContainerInterface $container) => new WordPressCacheAdapter(),
@@ -211,33 +211,33 @@ return [
 
     AbstractDependencies::PLUGINS_DASHBOARD_SERVICE =>
         fn(ContainerInterface $container) => new PluginsDashboardService(
-                $container->get(AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER)
-            ),
+            $container->get(AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER)
+        ),
 
     AbstractDependencies::DEV_COMPONENTS_SHOWCASE_SERVICE =>
         fn(ContainerInterface $container) => new DevComponentsShowcaseService(
-                $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER)
-            ),
+            $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER)
+        ),
 
     AbstractDependencies::PLUGIN_FAMILY_REPOSITORY =>
         fn(ContainerInterface $container): PluginFamilyRepositoryInterface => new PluginFamilyRepository(),
 
     AbstractDependencies::PLUGIN_STATUS_ADAPTER =>
         fn(ContainerInterface $container) => new WordPressPluginStatusAdapter(
-                $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER)
-            ),
+            $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER)
+        ),
 
     AbstractDependencies::PLUGIN_STATUS_SERVICE =>
         fn(ContainerInterface $container) => new PluginStatusService(
-                $container->get(AbstractDependencies::PLUGIN_STATUS_ADAPTER),
-                $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
-                $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
-            ),
+            $container->get(AbstractDependencies::PLUGIN_STATUS_ADAPTER),
+            $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+        ),
 
     AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER =>
         fn(ContainerInterface $container) => new WordPressPluginLifecycleAdapter(
-                $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER)
-            ),
+            $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER)
+        ),
 
     AbstractDependencies::FILE_SYSTEM_ADAPTER =>
         fn(ContainerInterface $container) => new WordPressFileSystemAdapter(),
@@ -248,98 +248,98 @@ return [
     // Use Cases
     AbstractDependencies::LIST_PLUGINS_USE_CASE =>
         fn(ContainerInterface $container) => new ListPluginsUseCase(
-                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-                $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
-            ),
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+        ),
 
     AbstractDependencies::INSTALL_FREE_PLUGIN_USE_CASE =>
         fn(ContainerInterface $container) => new InstallFreePluginUseCase(
-                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-                $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
-                $container->get(AbstractDependencies::FREE_PLUGIN_API)
-            ),
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
+            $container->get(AbstractDependencies::FREE_PLUGIN_API)
+        ),
 
     AbstractDependencies::INSTALL_PRO_PLUGIN_USE_CASE =>
         fn(ContainerInterface $container) => new InstallProPluginUseCase(
-                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-                $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
-                $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
-            ),
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
+        ),
 
     AbstractDependencies::CHANGE_PLUGIN_ACTIVATION_USE_CASE =>
         fn(ContainerInterface $container) => new ChangePluginActivationUseCase(
-                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-                $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
-            ),
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
+        ),
 
     AbstractDependencies::UNINSTALL_PLUGIN_USE_CASE =>
         fn(ContainerInterface $container) => new UninstallPluginUseCase(
-                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-                $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
-            ),
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
+        ),
 
     AbstractDependencies::UPGRADE_PLUGIN_USE_CASE =>
         fn(ContainerInterface $container) => new UpgradePluginUseCase(
-                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-                $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
-                $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
-            ),
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
+        ),
 
     AbstractDependencies::RESOLVE_CONFLICT_USE_CASE =>
         fn(ContainerInterface $container) => new ResolveConflictUseCase(
-                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-                $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
-            ),
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
+        ),
 
     AbstractDependencies::DEACTIVATE_LICENSE_USE_CASE =>
         fn(ContainerInterface $container) => new DeactivateLicenseUseCase(
-                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-                $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
-            ),
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
+        ),
 
     AbstractDependencies::ACTIVATE_LICENSE_USE_CASE =>
         fn(ContainerInterface $container) => new ActivateLicenseUseCase(
-                $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-                $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
-            ),
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
+        ),
 
     // Presentation Services
     AbstractDependencies::MAIN_MENU_CONTROLLER =>
         fn(ContainerInterface $container) => new MainMenuController(
-                $container->get(AbstractDependencies::ADMIN_MENU_SERVICE)
-            ),
+            $container->get(AbstractDependencies::ADMIN_MENU_SERVICE)
+        ),
 
     AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER =>
         fn(ContainerInterface $container) => new PluginsDashboardController(
-                $container->get(AbstractDependencies::HOOKS_SERVICE),
-                $container->get(AbstractDependencies::VIEW_SERVICE),
-                $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
-                $container->get(AbstractDependencies::ASSET_SERVICE),
-                $container->get(AbstractDependencies::SECURITY_SERVICE)
-            ),
+            $container->get(AbstractDependencies::HOOKS_SERVICE),
+            $container->get(AbstractDependencies::VIEW_SERVICE),
+            $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
+            $container->get(AbstractDependencies::ASSET_SERVICE),
+            $container->get(AbstractDependencies::SECURITY_SERVICE)
+        ),
 
     AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER =>
         fn(ContainerInterface $container) => new DevComponentsShowcaseController(
-                $container->get(AbstractDependencies::HOOKS_SERVICE),
-                $container->get(AbstractDependencies::VIEW_SERVICE),
-                $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
-                $container->get(AbstractDependencies::ASSET_SERVICE)
-            ),
+            $container->get(AbstractDependencies::HOOKS_SERVICE),
+            $container->get(AbstractDependencies::VIEW_SERVICE),
+            $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
+            $container->get(AbstractDependencies::ASSET_SERVICE)
+        ),
 
     AbstractDependencies::REST_API_PLUGINS_CONTROLLER =>
         fn(ContainerInterface $container) => new PluginsController(
-                $container->get(AbstractDependencies::HUB_REST_API_NAMESPACE),
-                $container->get(AbstractDependencies::REST_API_SERVICE),
-                $container->get(AbstractDependencies::LIST_PLUGINS_USE_CASE),
-                $container->get(AbstractDependencies::INSTALL_FREE_PLUGIN_USE_CASE),
-                $container->get(AbstractDependencies::INSTALL_PRO_PLUGIN_USE_CASE),
-                $container->get(AbstractDependencies::CHANGE_PLUGIN_ACTIVATION_USE_CASE),
-                $container->get(AbstractDependencies::UNINSTALL_PLUGIN_USE_CASE),
-                $container->get(AbstractDependencies::UPGRADE_PLUGIN_USE_CASE),
-                $container->get(AbstractDependencies::RESOLVE_CONFLICT_USE_CASE),
-                $container->get(AbstractDependencies::DEACTIVATE_LICENSE_USE_CASE),
-                $container->get(AbstractDependencies::ACTIVATE_LICENSE_USE_CASE)
-            ),
+            $container->get(AbstractDependencies::HUB_REST_API_NAMESPACE),
+            $container->get(AbstractDependencies::REST_API_SERVICE),
+            $container->get(AbstractDependencies::LIST_PLUGINS_USE_CASE),
+            $container->get(AbstractDependencies::INSTALL_FREE_PLUGIN_USE_CASE),
+            $container->get(AbstractDependencies::INSTALL_PRO_PLUGIN_USE_CASE),
+            $container->get(AbstractDependencies::CHANGE_PLUGIN_ACTIVATION_USE_CASE),
+            $container->get(AbstractDependencies::UNINSTALL_PLUGIN_USE_CASE),
+            $container->get(AbstractDependencies::UPGRADE_PLUGIN_USE_CASE),
+            $container->get(AbstractDependencies::RESOLVE_CONFLICT_USE_CASE),
+            $container->get(AbstractDependencies::DEACTIVATE_LICENSE_USE_CASE),
+            $container->get(AbstractDependencies::ACTIVATE_LICENSE_USE_CASE)
+        ),
 
     // Adapters
     AbstractDependencies::ADMIN_MENU_ADAPTER =>
