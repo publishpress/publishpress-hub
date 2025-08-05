@@ -1,12 +1,15 @@
-import { memo, useState, useCallback, useRef, useEffect } from '@wordpress/element';
-import { TextControl } from '@wordpress/components';
+import {
+    memo,
+    useState,
+    useCallback
+} from '@wordpress/element';
 
 import { __ } from '@publishpress-hub/i18n';
 
 import { Button } from '../../buttons/button';
 import { Message } from '../../message/message';
 import { Modal } from '../../modal';
-import { useFocusOnAction } from '../hooks/use-focus-on-action';
+import { LicenseKeyControl } from './license-key-control';
 
 const ACTIONS = {
     EDIT: 'edit',
@@ -23,8 +26,6 @@ const ModalLicenseManagementComponent = ({
 }) => {
     const [licenseKey, setLicenseKey] = useState(initialLicenseKey || '');
     const [currentAction, setCurrentAction] = useState(licenseKey === '' ? ACTIONS.EDIT : ACTIONS.VIEW);
-
-    const textControlRef = useFocusOnAction(currentAction === ACTIONS.EDIT);
 
     const getObfuscatedLicenseKey = useCallback((licenseKey, length = 5) => {
         return licenseKey.replace(/./g, '*').slice(0, length) + licenseKey.slice(-length);
@@ -47,15 +48,13 @@ const ModalLicenseManagementComponent = ({
                         </Button>
                     </div>
 
-                    <div ref={textControlRef}>
-                        <TextControl
-                            value={licenseKey}
-                            className='pp-hub-text-control pp-hub-license-input'
-                            placeholder={__('Enter your license key here', 'publishpress-hub')}
-                            onChange={(value) => setLicenseKey(value)}
-                            focusOnMount={true}
-                        />
-                    </div>
+                    <LicenseKeyControl
+                        value={licenseKey}
+                        className='pp-hub-text-control pp-hub-license-input'
+                        placeholder={__('Enter your license key here', 'publishpress-hub')}
+                        onChange={(value) => setLicenseKey(value)}
+                        autoFocus={true}
+                    />
                 </>
             )}
 

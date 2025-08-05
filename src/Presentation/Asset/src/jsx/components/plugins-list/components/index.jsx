@@ -8,3 +8,4 @@ export { ModalUpgrade } from './modal-upgrade';
 export { ModalResolveConflict } from './modal-resolve-conflict';
 export { ActionButton } from './action-button';
 export { StatusFlag } from './status-flag';
+export { LicenseKeyControl } from './license-key-control';
