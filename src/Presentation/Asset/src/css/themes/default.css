@@ -153,4 +153,10 @@
     --pp-hub-badge-text-installing: #a7a7a7;
     --pp-hub-badge-text-uninstalling: #6f5454;
     --pp-hub-badge-text-conflicting-installations: #ffffff;
+
+    /* Toggle Colors */
+    --pp-hub-toggle-bg-checked: #00d084;
+    --pp-hub-toggle-bg-unchecked: #cccccc;
+    --pp-hub-toggle-thumb-checked: #ffffff;
+    --pp-hub-toggle-thumb-unchecked: #ffffff;
 }

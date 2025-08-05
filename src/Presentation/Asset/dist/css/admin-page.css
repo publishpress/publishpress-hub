@@ -505,6 +505,12 @@
     --pp-hub-badge-text-installing: #a7a7a7;
     --pp-hub-badge-text-uninstalling: #6f5454;
     --pp-hub-badge-text-conflicting-installations: #ffffff;
+
+    /* Toggle Colors */
+    --pp-hub-toggle-bg-checked: #00d084;
+    --pp-hub-toggle-bg-unchecked: #cccccc;
+    --pp-hub-toggle-thumb-checked: #ffffff;
+    --pp-hub-toggle-thumb-unchecked: #ffffff;
 }
 
 /*!**************************************************************************************************!*\
@@ -633,29 +639,29 @@
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/wp-components/toggle.css ***!
   \**********************************************************************************************************************/
 .pp-hub-root .components-form-toggle.is-checked .components-form-toggle__track {
-    background-color: var(--pp-hub-primary-color);
-    border-bottom-color: var(--pp-hub-primary-color);
-    border-top-color: var(--pp-hub-primary-color);
-    border-left-color: var(--pp-hub-primary-color);
-    border-right-color: var(--pp-hub-primary-color);
+    background-color: var(--pp-hub-toggle-bg-checked);
+    border-bottom-color: var(--pp-hub-toggle-bg-checked);
+    border-top-color: var(--pp-hub-toggle-bg-checked);
+    border-left-color: var(--pp-hub-toggle-bg-checked);
+    border-right-color: var(--pp-hub-toggle-bg-checked);
 }
 
 .pp-hub-root .components-form-toggle .components-form-toggle__track {
-    background-color: var(--pp-hub-bg-primary);
-    border-bottom-color: var(--pp-hub-disabled-color);
-    border-top-color: var(--pp-hub-disabled-color);
-    border-left-color: var(--pp-hub-disabled-color);
-    border-right-color: var(--pp-hub-disabled-color);
+    background-color: var(--pp-hub-toggle-bg-unchecked);
+    border-bottom-color: var(--pp-hub-toggle-bg-unchecked);
+    border-top-color: var(--pp-hub-toggle-bg-unchecked);
+    border-left-color: var(--pp-hub-toggle-bg-unchecked);
+    border-right-color: var(--pp-hub-toggle-bg-unchecked);
 }
 
 .pp-hub-root .components-form-toggle.is-checked .components-form-toggle__thumb {
-    background-color: var(--pp-hub-bg-primary);
-    border-color: var(--pp-hub-bg-primary);
+    background-color: var(--pp-hub-toggle-thumb-checked);
+    border-color: var(--pp-hub-toggle-thumb-checked);
 }
 
 .pp-hub-root .components-form-toggle .components-form-toggle__thumb {
-    background-color: var(--pp-hub-disabled-color);
-    border-color: var(--pp-hub-disabled-color);
+    background-color: var(--pp-hub-toggle-thumb-unchecked);
+    border-color: var(--pp-hub-toggle-thumb-unchecked);
 }
 
 /*!**********************************************************************************************************************!*\
