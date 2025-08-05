@@ -8868,6 +8868,14 @@ var getPlugins = function getPlugins(state) {
 };
 var sortPlugins = function sortPlugins(pluginFamily) {
   return pluginFamily.sort(function (a, b) {
+    // First sort by having or not a conflicting installation
+    if (a.hasConflictingInstallations && !b.hasConflictingInstallations) {
+      return -1;
+    }
+    if (!a.hasConflictingInstallations && b.hasConflictingInstallations) {
+      return 1;
+    }
+
     // Then sort by installed status
     if (a.hasAnyVersionInstalled && !b.hasAnyVersionInstalled) {
       return -1;

@@ -30,6 +30,14 @@ export const getPlugins = (state) => {
 
 const sortPlugins = (pluginFamily) => {
     return pluginFamily.sort((a, b) => {
+        // First sort by having or not a conflicting installation
+        if (a.hasConflictingInstallations && !b.hasConflictingInstallations) {
+            return -1;
+        }
+        if (!a.hasConflictingInstallations && b.hasConflictingInstallations) {
+            return 1;
+        }
+
         // Then sort by installed status
         if (a.hasAnyVersionInstalled && !b.hasAnyVersionInstalled) {
             return -1;
