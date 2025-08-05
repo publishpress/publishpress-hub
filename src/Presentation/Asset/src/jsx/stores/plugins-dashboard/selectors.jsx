@@ -46,21 +46,12 @@ const sortPlugins = (pluginFamily) => {
             return 1;
         }
 
-        // If both are installed or both are not installed, sort by pro status
-        if (a.hasAnyVersionInstalled && b.hasAnyVersionInstalled) {
-            if (a.proPlugin.isLicensed && !b.proPlugin.isLicensed) {
-                return -1;
-            }
-            if (!a.proPlugin.isLicensed && b.proPlugin.isLicensed) {
-                return 1;
-            }
-
-            if (a.proPlugin.isInstalled && !b.proPlugin.isInstalled) {
-                return -1;
-            }
-            if (!a.proPlugin.isInstalled && b.proPlugin.isInstalled) {
-                return 1;
-            }
+        // Finally sort by activation status (only for installed plugins)
+        if (a.hasAnyVersionActive && !b.hasAnyVersionActive) {
+            return -1;
+        }
+        if (!a.hasAnyVersionActive && b.hasAnyVersionActive) {
+            return 1;
         }
 
         return 0;
