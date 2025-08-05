@@ -45,7 +45,7 @@ if (defined('PUBLISHPRESS_HUB_PATH')) {
 /*
  * Define the plugin constants.
  */
-define('PUBLISHPRESS_HUB_VERSION', '1.0.0-alpha.4');
+define('PUBLISHPRESS_HUB_VERSION', '1.0.0-alpha.5');
 define('PUBLISHPRESS_HUB_SRC_PATH', __DIR__ . '/');
 define('PUBLISHPRESS_HUB_PATH', realpath(PUBLISHPRESS_HUB_SRC_PATH . '/../') . '/');
 define('PUBLISHPRESS_HUB_URL', plugin_dir_url(PUBLISHPRESS_HUB_PATH . 'publishpress-hub.php'));
