@@ -85,7 +85,7 @@ return [
         ),
 
     AbstractDependencies::SCRIPT_DEBUG =>
-        fn(ContainerInterface $container) => defined('SCRIPT_DEBUG') && SCRIPT_DEBUG,
+        fn(ContainerInterface $container) => defined('SCRIPT_DEBUG') && constant('SCRIPT_DEBUG'),
 
     // Infrastructure Services
     AbstractDependencies::HOOKS_SERVICE =>
