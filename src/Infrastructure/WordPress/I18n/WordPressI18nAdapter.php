@@ -41,11 +41,6 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
     /**
      * @since 1.0.0
      */
-    private I18nServiceInterface $i18nService;
-
-    /**
-     * @since 1.0.0
-     */
     private AssetServiceInterface $assetService;
 
     /**
