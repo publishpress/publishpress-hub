@@ -8,6 +8,7 @@ use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiAdapterInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use WP_REST_Request;
 use WP_REST_Response;
+use WP_Error;
 
 class WordPressRestApiAdapter implements RestApiAdapterInterface
 {
@@ -21,15 +22,19 @@ class WordPressRestApiAdapter implements RestApiAdapterInterface
             $route->getRoute(),
             [
                 'methods' => $route->getMethods(),
-                'callback' => function (WP_REST_Request $request) use ($callback, $route) {
-                    return $callback($request, $route->getUseCase());
-                },
+                'callback' => fn(WP_REST_Request $request) => $callback($request, $route->getUseCase()),
                 'permission_callback' => $route->getPermissionCallback(),
                 'args' => $route->getArgs(),
             ]
         );
     }
 
+    /**
+     * @param array<string, mixed> $data
+     * @param int $status
+     * @param array<string, string> $headers
+     * @return WP_REST_Response
+     */
     public function createResponse(array $data, int $status = 200, array $headers = []): WP_REST_Response
     {
         $response = new WP_REST_Response($data, $status);
@@ -50,10 +55,10 @@ class WordPressRestApiAdapter implements RestApiAdapterInterface
         // Ensure code is always a string to avoid WordPress REST API issues
         $errorCode = is_numeric($code) ? 'error_' . $code : (string) $code;
 
-        $error = new \WP_Error($errorCode, $message, ['status' => $status]);
+        $error = new WP_Error($errorCode, $message, ['status' => $status]);
 
         // Create a proper REST response instead of using rest_ensure_response
-        $response = new \WP_REST_Response([
+        $response = new WP_REST_Response([
             'success' => false,
             'message' => $message,
             'code' => $errorCode,
