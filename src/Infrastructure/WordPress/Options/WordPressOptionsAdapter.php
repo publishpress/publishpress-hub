@@ -72,7 +72,7 @@ class WordPressOptionsAdapter implements OptionsAdapterInterface
      * Get all options with a specific prefix.
      *
      * @param string $prefix The prefix to filter by
-     * @return array Associative array of option_name => option_value
+     * @return array<string, mixed> Associative array of option_name => option_value
      */
     public function getAllOptionsWithPrefix(string $prefix): array
     {

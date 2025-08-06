@@ -48,7 +48,7 @@ class WordPressPluginStatusAdapter
         $pluginPath = $plugin->getPath();
         $pluginData = get_plugin_data(WP_PLUGIN_DIR . '/' . $pluginPath);
 
-        return $pluginData['Version'] ?? null;
+        return $pluginData['Version'];
     }
 
     public function getPluginFilePath(PluginInterface $plugin): ?string

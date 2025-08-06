@@ -8,6 +8,12 @@ use RuntimeException;
 
 class WordPressOrgPluginApiAdapter
 {
+    /**
+     * Get the last version information for a plugin.
+     *
+     * @param string $slug The plugin slug.
+     * @return array<string, mixed> The plugin information.
+     */
     public function getLastVersionInfo(string $slug): array
     {
         if (!function_exists('plugins_api')) {
@@ -43,7 +49,9 @@ class WordPressOrgPluginApiAdapter
         }
 
         if (is_object($pluginInfo)) {
-            $pluginInfo = json_decode(wp_json_encode($pluginInfo), true);
+            $encodedPluginInfo = wp_json_encode($pluginInfo);
+
+            $pluginInfo = $encodedPluginInfo !== false ? json_decode($encodedPluginInfo, true) : [];
         }
 
         return $pluginInfo;

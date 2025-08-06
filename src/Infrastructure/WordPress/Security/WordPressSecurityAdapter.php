@@ -10,7 +10,7 @@ use WP_User;
 class WordPressSecurityAdapter implements SecurityServiceInterface
 {
     /**
-     * @param string|int $action
+     * @param -1|string $action
      */
     public function createNonce($action = -1): string
     {
@@ -23,7 +23,7 @@ class WordPressSecurityAdapter implements SecurityServiceInterface
     }
 
     /**
-     * @param string|int $action
+     * @param -1|string $action
      * @return int|false
      */
     public function verifyNonce(string $nonce, $action = -1)
@@ -32,15 +32,15 @@ class WordPressSecurityAdapter implements SecurityServiceInterface
     }
 
     /**
-     * @param string|int $action
+     * @param -1|string $action
      */
-    public function getNonceField($action = -1, $name = '_wpnonce', $referer = true, $display = true): string
+    public function getNonceField($action = -1, string $name = '_wpnonce', bool $referer = true, bool $display = true): string
     {
         return wp_nonce_field($action, $name, $referer, $display);
     }
 
     /**
-     * @param string|int $action
+     * @param -1|string $action
      */
     public function getNonceUrl(string $actionurl, $action = -1, string $name = '_wpnonce'): string
     {
@@ -53,7 +53,7 @@ class WordPressSecurityAdapter implements SecurityServiceInterface
     }
 
     /**
-     * @param string|int $action
+     * @param -1|string $action
      * @param false|string $queryArg
      * @return int|false
      */
