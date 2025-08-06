@@ -34,9 +34,19 @@ class WordPressSecurityAdapter implements SecurityServiceInterface
     /**
      * @param -1|string $action
      */
-    public function getNonceField($action = -1, string $name = '_wpnonce', bool $referer = true, bool $display = true): string
-    {
-        return wp_nonce_field($action, $name, $referer, $display);
+    public function getNonceField(
+        $action = -1,
+        string $name = '_wpnonce',
+        bool $referer = true,
+        bool $display = true
+    ): string {
+        $nonce_field = wp_nonce_field($action, $name, $referer, false);
+
+        if ($display) {
+            echo $nonce_field;
+        }
+
+        return $nonce_field;
     }
 
     /**
@@ -49,7 +59,13 @@ class WordPressSecurityAdapter implements SecurityServiceInterface
 
     public function getRefererField(bool $display = true): string
     {
-        return wp_referer_field($display);
+        $referer_field = wp_referer_field(false);
+
+        if ($display) {
+            echo $referer_field;
+        }
+
+        return $referer_field;
     }
 
     /**

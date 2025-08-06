@@ -118,7 +118,7 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
      */
     public function enqueueTranslationsScript(): void
     {
-        $handle = $this->textDomain . '-i18n';
+        $handle = "{$this->textDomain}-i18n";
 
         $this->assetService->registerScript(
             $handle,
@@ -133,6 +133,10 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
 
         $variableName = $this->getVariableNameFromTextDomain();
 
+        if (empty($variableName)) {
+            return;
+        }
+
         $this->assetService->localizeScript(
             $handle,
             $variableName,
@@ -144,26 +148,27 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
 
     private function getVariableNameFromTextDomain(): string
     {
-        return preg_replace_callback(
+        $variableName = preg_replace_callback(
             '/-([a-z])/',
-            function ($matches) {
-                return strtoupper($matches[1]);
-            },
-            $this->textDomain . 'I18n'
+            fn($matches) => strtoupper($matches[1]),
+            "{$this->textDomain}I18n"
         );
+
+        return $variableName ?? '';
     }
 
     /**
      * Get the localized translations from the JSON file and
      * return it as an array.
      *
+     * @return array<string, mixed>
      * @since 1.0.0
      */
     private function getLocalizedTranslations(): array
     {
         $currentLocale = $this->getUserLocale();
 
-        $jsonPath = $this->languagesPath . $this->textDomain . '-' . $currentLocale . '.json';
+        $jsonPath = "{$this->languagesPath}{$this->textDomain}-{$currentLocale}.json";
 
         if (! file_exists($jsonPath)) {
             return [];
@@ -171,6 +176,11 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
 
         // phpcs:ignore WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown
         $json = file_get_contents($jsonPath);
+
+        if (false === $json) {
+            return [];
+        }
+
         return json_decode($json, true);
     }
 }
