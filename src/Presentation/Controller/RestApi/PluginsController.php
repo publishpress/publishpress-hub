@@ -72,6 +72,8 @@ class PluginsController implements BootableInterface
 
     private function addRoutes(): void
     {
+        // phpcs:disable Squiz.PHP.CommentedOutCode.Found
+
         // GET /plugins
         $this->restApiService->addRoute(new RestRoute(
             $this->restApiNamespace,
@@ -152,6 +154,8 @@ class PluginsController implements BootableInterface
             $this->activateLicenseUseCase,
             [$this, 'checkPermissions']
         ));
+
+        // phpcs:enable Squiz.PHP.CommentedOutCode.Found
     }
 
     public function checkPermissions(): bool

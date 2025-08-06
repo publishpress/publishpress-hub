@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * Plugin upgrade use case for handling free to pro plugin upgrades.
  *
@@ -10,6 +8,8 @@ declare(strict_types=1);
  * @license GPL v2 or later
  * @since 1.0.0
  */
+
+declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 

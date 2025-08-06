@@ -27,6 +27,7 @@ class WordPressCacheAdapter implements CacheAdapterInterface
      */
     public function set(string $key, $value, string $group = '', int $ttl = 0): void
     {
+        // phpcs:ignore WordPressVIPMinimum.Performance.LowExpiryCacheTime.CacheTimeUndetermined
         wp_cache_set($key, $value, $group, $ttl);
     }
 
