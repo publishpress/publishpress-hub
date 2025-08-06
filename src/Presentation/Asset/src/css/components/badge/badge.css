@@ -83,3 +83,11 @@
 .pp-hub-plugins-list-item:hover .pp-hub-badge.conflicting-installations {
     background-color: var(--pp-hub-badge-bg-conflicting-installations-hover);
 }
+
+.pp-hub-badge-icon .dashicons {
+    font-size: 12px;
+    line-height: 12px;
+    width: 12px;
+    height: 12px;
+    margin-right: 2px;
+}

@@ -199,10 +199,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var BadgeComponent = function BadgeComponent(_ref) {
   var className = _ref.className,
-    children = _ref.children;
+    children = _ref.children,
+    icon = _ref.icon;
   return /*#__PURE__*/React.createElement("span", {
     className: "pp-hub-badge ".concat(className)
-  }, children);
+  }, icon && /*#__PURE__*/React.createElement("span", {
+    className: "pp-hub-badge-icon"
+  }, icon), children);
 };
 var Badge = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(BadgeComponent);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Badge);

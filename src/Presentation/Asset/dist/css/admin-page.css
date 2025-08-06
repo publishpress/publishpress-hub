@@ -482,14 +482,14 @@
     --pp-hub-badge-bg-hover: #e5e7eb;
     --pp-hub-badge-bg-installed: #46b450;
     --pp-hub-badge-bg-installed-hover: #3f8f44;
-    --pp-hub-badge-bg-not-installed: #f3f4f6;
-    --pp-hub-badge-bg-not-installed-hover: #e8e8e8;
-    --pp-hub-badge-bg-free: #a8e7e3;
-    --pp-hub-badge-bg-free-hover: #90d7d3;
-    --pp-hub-badge-bg-licensed: #dcfce7;
-    --pp-hub-badge-bg-licensed-hover: #c7f0c1;
-    --pp-hub-badge-bg-unlicensed: #fef3c7;
-    --pp-hub-badge-bg-unlicensed-hover: #ebe8b4;
+    --pp-hub-badge-bg-not-installed: #ededed;
+    --pp-hub-badge-bg-not-installed-hover: #dcdcdc;
+    --pp-hub-badge-bg-free: #d1cff1;
+    --pp-hub-badge-bg-free-hover: #c4c1e9;
+    --pp-hub-badge-bg-licensed: #cff1db;
+    --pp-hub-badge-bg-licensed-hover: #c7e9c1;
+    --pp-hub-badge-bg-unlicensed: #eff2c2;
+    --pp-hub-badge-bg-unlicensed-hover: #e7eab9;
     --pp-hub-badge-bg-installing: #f3f4f6;
     --pp-hub-badge-bg-installing-hover: #e8e8e8;
     --pp-hub-badge-bg-uninstalling: #daa7a7;
@@ -498,10 +498,10 @@
     --pp-hub-badge-bg-conflicting-installations-hover: #bb7676;
     --pp-hub-badge-text: #333;
     --pp-hub-badge-text-installed: #ffffff;
-    --pp-hub-badge-text-not-installed: #a7a7a7;
-    --pp-hub-badge-text-free: var(--pp-hub-text-primary);
+    --pp-hub-badge-text-not-installed: #989898;
+    --pp-hub-badge-text-free: #162665;
     --pp-hub-badge-text-licensed: #166534;
-    --pp-hub-badge-text-unlicensed: #92400e;
+    --pp-hub-badge-text-unlicensed: #626516;
     --pp-hub-badge-text-installing: #a7a7a7;
     --pp-hub-badge-text-uninstalling: #6f5454;
     --pp-hub-badge-text-conflicting-installations: #ffffff;
@@ -1799,6 +1799,14 @@ button.publishpress-hub-filter-button:hover {
 
 .pp-hub-plugins-list-item:hover .pp-hub-badge.conflicting-installations {
     background-color: var(--pp-hub-badge-bg-conflicting-installations-hover);
+}
+
+.pp-hub-badge-icon .dashicons {
+    font-size: 12px;
+    line-height: 12px;
+    width: 12px;
+    height: 12px;
+    margin-right: 2px;
 }
 
 /*!*******************************************************************************************************************!*\

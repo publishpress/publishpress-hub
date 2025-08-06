@@ -4687,10 +4687,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var BadgeComponent = function BadgeComponent(_ref) {
   var className = _ref.className,
-    children = _ref.children;
+    children = _ref.children,
+    icon = _ref.icon;
   return /*#__PURE__*/React.createElement("span", {
     className: "pp-hub-badge ".concat(className)
-  }, children);
+  }, icon && /*#__PURE__*/React.createElement("span", {
+    className: "pp-hub-badge-icon"
+  }, icon), children);
 };
 var Badge = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(BadgeComponent);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Badge);
@@ -6332,7 +6335,10 @@ __webpack_require__.r(__webpack_exports__);
 var STATUS_BADGE_CONFIGS = {
   installing: {
     text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Installing', 'publishpress-hub'),
-    className: 'installing'
+    className: 'installing',
+    icon: /*#__PURE__*/React.createElement("span", {
+      className: "dashicons dashicons-update"
+    })
   },
   notInstalled: {
     text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Not Installed', 'publishpress-hub'),
@@ -6352,19 +6358,31 @@ var STATUS_BADGE_CONFIGS = {
   },
   uninstalling: {
     text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Uninstalling', 'publishpress-hub'),
-    className: 'uninstalling'
+    className: 'uninstalling',
+    icon: /*#__PURE__*/React.createElement("span", {
+      className: "dashicons dashicons-update"
+    })
   },
   upgrading: {
     text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Upgrading', 'publishpress-hub'),
-    className: 'upgrading'
+    className: 'upgrading',
+    icon: /*#__PURE__*/React.createElement("span", {
+      className: "dashicons dashicons-update"
+    })
   },
   deactivating: {
     text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Deactivating', 'publishpress-hub'),
-    className: 'deactivating'
+    className: 'deactivating',
+    icon: /*#__PURE__*/React.createElement("span", {
+      className: "dashicons dashicons-update"
+    })
   },
   activating: {
     text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activating', 'publishpress-hub'),
-    className: 'activating'
+    className: 'activating',
+    icon: /*#__PURE__*/React.createElement("span", {
+      className: "dashicons dashicons-update"
+    })
   },
   hasConflictingInstallations: {
     text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Conflicting Installations', 'publishpress-hub'),

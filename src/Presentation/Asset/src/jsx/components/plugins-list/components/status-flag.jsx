@@ -8,6 +8,7 @@ const STATUS_BADGE_CONFIGS = {
     installing: {
         text: __('Installing', 'publishpress-hub'),
         className: 'installing',
+        icon: <span className="dashicons dashicons-update" />,
     },
     notInstalled: {
         text: __('Not Installed', 'publishpress-hub'),
@@ -28,18 +29,22 @@ const STATUS_BADGE_CONFIGS = {
     uninstalling: {
         text: __('Uninstalling', 'publishpress-hub'),
         className: 'uninstalling',
+        icon: <span className="dashicons dashicons-update" />,
     },
     upgrading: {
         text: __('Upgrading', 'publishpress-hub'),
         className: 'upgrading',
+        icon: <span className="dashicons dashicons-update" />,
     },
     deactivating: {
         text: __('Deactivating', 'publishpress-hub'),
         className: 'deactivating',
+        icon: <span className="dashicons dashicons-update" />,
     },
     activating: {
         text: __('Activating', 'publishpress-hub'),
         className: 'activating',
+        icon: <span className="dashicons dashicons-update" />,
     },
     hasConflictingInstallations: {
         text: __('Conflicting Installations', 'publishpress-hub'),
