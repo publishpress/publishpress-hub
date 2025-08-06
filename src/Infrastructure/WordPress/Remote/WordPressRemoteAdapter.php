@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Infrastructure\WordPress\Remote;
 
 use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
+use WP_Error;
 
 class WordPressRemoteAdapter implements RemoteServiceInterface
 {
@@ -21,7 +22,7 @@ class WordPressRemoteAdapter implements RemoteServiceInterface
      */
     public function get(string $url, array $args = [])
     {
-        return wp_remote_get($url, $args);
+        return $this->remoteGet($url, $args);
     }
 
     /**
@@ -110,5 +111,15 @@ class WordPressRemoteAdapter implements RemoteServiceInterface
         }
 
         return null;
+    }
+
+    private function remoteGet(string $url, array $args = [])
+    {
+        if (function_exists('vip_safe_wp_remote_get')) {
+            return call_user_func('vip_safe_wp_remote_get', $url, $args);
+        }
+
+        // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get
+        return wp_remote_get($url, $args);
     }
 }
