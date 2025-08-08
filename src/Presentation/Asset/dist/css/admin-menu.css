@@ -1,0 +1,15 @@
+/*!*******************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/Presentation/Asset/src/css/admin-menu.css ***!
+  \*******************************************************************************************************************************************/
+#toplevel_page_publishpress-hub .wp-menu-image img {
+    opacity: 1;
+    width: 20px;
+    margin-top: -3px;
+}
+
+#toplevel_page_publishpress-hub.wp-has-current-submenu .wp-menu-image img {
+    color: #72aee6;
+}
+
+
+/*# sourceMappingURL=admin-menu.css.map*/

@@ -15,6 +15,7 @@ module.exports = {
         "i18n": `${assetsBasePath}/jsx/i18n.jsx`,
         "components-showcase": `${assetsBasePath}/jsx/components-showcase.jsx`,
         "admin-page": `${assetsBasePath}/css/admin-page.css`,
+        "admin-menu": `${assetsBasePath}/css/admin-menu.css`,
     },
 
     output: {
