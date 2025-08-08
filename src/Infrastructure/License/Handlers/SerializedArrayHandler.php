@@ -18,23 +18,30 @@ use stdClass;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseOptionHandlerInterface;
 use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
 
-class ChecklistsHandler implements LicenseOptionHandlerInterface
+class SerializedArrayHandler implements LicenseOptionHandlerInterface
 {
-    private const OPTION_NAME = 'publishpress_checklists_settings_options';
-
-    private const OPTION_LICENSE_KEY_KEY = 'license_key';
-
-    private const OPTION_LICENSE_STATUS_KEY = 'license_status';
-
-    private const OPTION_LICENSE_STATUS_INVALID = 'invalid';
-
-    private const OPTION_LICENSE_STATUS_VALID = 'valid';
+    private string $optionName;
+    private string $licenseKeyKey;
+    private string $licenseStatusKey;
+    private string $licenseStatusInvalid;
+    private string $licenseStatusValid;
 
     private WPOptionsAdapterInterface $optionsAdapter;
 
-    public function __construct(WPOptionsAdapterInterface $optionsAdapter)
-    {
+    public function __construct(
+        WPOptionsAdapterInterface $optionsAdapter,
+        string $optionName,
+        string $licenseKeyKey,
+        string $licenseStatusKey,
+        string $licenseStatusValid,
+        string $licenseStatusInvalid
+    ) {
         $this->optionsAdapter = $optionsAdapter;
+        $this->optionName = $optionName;
+        $this->licenseKeyKey = $licenseKeyKey;
+        $this->licenseStatusKey = $licenseStatusKey;
+        $this->licenseStatusValid = $licenseStatusValid;
+        $this->licenseStatusInvalid = $licenseStatusInvalid;
     }
 
     /**
@@ -46,16 +53,16 @@ class ChecklistsHandler implements LicenseOptionHandlerInterface
      */
     public function storeLicenseKey(int $downloadId, string $licenseKey): void
     {
-        $currentValue = $this->optionsAdapter->getOption(self::OPTION_NAME);
+        $currentValue = $this->optionsAdapter->getOption($this->optionName);
 
         if (empty($currentValue)) {
-            $currentValue = new stdClass();
+            $currentValue = [];
         }
 
-        $currentValue->{self::OPTION_LICENSE_KEY_KEY} = $licenseKey;
-        $currentValue->{self::OPTION_LICENSE_STATUS_KEY} = self::OPTION_LICENSE_STATUS_INVALID;
+        $currentValue[$this->licenseKeyKey] = $licenseKey;
+        $currentValue[$this->licenseStatusKey] = $this->licenseStatusInvalid;
 
-        $this->optionsAdapter->updateOption(self::OPTION_NAME, $currentValue);
+        $this->optionsAdapter->updateOption($this->optionName, $currentValue);
     }
 
     /**
@@ -67,17 +74,17 @@ class ChecklistsHandler implements LicenseOptionHandlerInterface
      */
     public function storeLicenseStatus(int $downloadId, bool $isLicenseValid): void
     {
-        $currentValue = $this->optionsAdapter->getOption(self::OPTION_NAME);
+        $currentValue = $this->optionsAdapter->getOption($this->optionName);
 
         if (empty($currentValue)) {
-            $currentValue = new stdClass();
-            $currentValue->{self::OPTION_LICENSE_KEY_KEY} = '';
+            $currentValue = [];
+            $currentValue[$this->licenseKeyKey] = '';
         }
 
-        $value = $isLicenseValid ? self::OPTION_LICENSE_STATUS_VALID : self::OPTION_LICENSE_STATUS_INVALID;
-        $currentValue->{self::OPTION_LICENSE_STATUS_KEY} = $value;
+        $value = $isLicenseValid ? $this->licenseStatusValid : $this->licenseStatusInvalid;
+        $currentValue[$this->licenseStatusKey] = $value;
 
-        $this->optionsAdapter->updateOption(self::OPTION_NAME, $currentValue);
+        $this->optionsAdapter->updateOption($this->optionName, $currentValue);
     }
 
     /**
@@ -89,13 +96,13 @@ class ChecklistsHandler implements LicenseOptionHandlerInterface
      */
     public function getLicenseKey(int $downloadId): ?string
     {
-        $currentValue = $this->optionsAdapter->getOption(self::OPTION_NAME);
+        $currentValue = $this->optionsAdapter->getOption($this->optionName);
 
         if (empty($currentValue)) {
             return null;
         }
 
-        return $currentValue->{self::OPTION_LICENSE_KEY_KEY};
+        return $currentValue[$this->licenseKeyKey] ?? null;
     }
 
     /**
@@ -107,13 +114,13 @@ class ChecklistsHandler implements LicenseOptionHandlerInterface
      */
     public function getLicenseStatus(int $downloadId): bool
     {
-        $currentValue = $this->optionsAdapter->getOption(self::OPTION_NAME);
+        $currentValue = $this->optionsAdapter->getOption($this->optionName);
 
         if (empty($currentValue)) {
             return false;
         }
 
-        return $currentValue->{self::OPTION_LICENSE_STATUS_KEY} === self::OPTION_LICENSE_STATUS_VALID;
+        return $currentValue[$this->licenseStatusKey] === $this->licenseStatusValid;
     }
 
     /**
@@ -124,15 +131,15 @@ class ChecklistsHandler implements LicenseOptionHandlerInterface
      */
     public function remove(int $downloadId): void
     {
-        $currentValue = $this->optionsAdapter->getOption(self::OPTION_NAME);
+        $currentValue = $this->optionsAdapter->getOption($this->optionName);
 
         if (empty($currentValue)) {
             return;
         }
 
-        unset($currentValue->{self::OPTION_LICENSE_KEY_KEY});
-        unset($currentValue->{self::OPTION_LICENSE_STATUS_KEY});
+        unset($currentValue[$this->licenseKeyKey]);
+        unset($currentValue[$this->licenseStatusKey]);
 
-        $this->optionsAdapter->updateOption(self::OPTION_NAME, $currentValue);
+        $this->optionsAdapter->updateOption($this->optionName, $currentValue);
     }
 }

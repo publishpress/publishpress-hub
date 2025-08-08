@@ -17,7 +17,7 @@ namespace PublishPress\Hub\Infrastructure\License;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseOptionHandlerInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
-use PublishPress\Hub\Infrastructure\License\Handlers\ChecklistsHandler;
+use PublishPress\Hub\Infrastructure\License\Handlers\SerializedObjectHandler;
 use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
 
 class PerPluginLicensePersistenceService implements LicensePersistenceInterface
@@ -198,7 +198,7 @@ class PerPluginLicensePersistenceService implements LicensePersistenceInterface
     /**
      * Get the list of handlers.
      *
-     * @return array<string, string> The list of handlers.
+     * @return array<string, array<string, string>> The list of handlers.
      * @since 1.0.0
      */
     private function getHandlersList(): array
@@ -230,13 +230,16 @@ class PerPluginLicensePersistenceService implements LicensePersistenceInterface
             return $this->licenseOptionHandlers[$familySlug];
         }
 
-        $handler = $this->getHandlersList()[$familySlug] ?? null;
+        $handlerData = $this->getHandlersList()[$familySlug] ?? null;
 
-        if (empty($handler)) {
+        if (empty($handlerData)) {
             return null;
         }
 
-        $this->licenseOptionHandlers[$familySlug] = new $handler($this->optionsAdapter);
+        $handlerClass = $handlerData[0];
+        $handlerOptions = array_slice($handlerData, 1);
+
+        $this->licenseOptionHandlers[$familySlug] = new $handlerClass($this->optionsAdapter, ...$handlerOptions);
 
         return $this->licenseOptionHandlers[$familySlug];
     }

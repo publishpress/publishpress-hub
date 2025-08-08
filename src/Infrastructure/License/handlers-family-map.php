@@ -14,8 +14,24 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\License;
 
-use PublishPress\Hub\Infrastructure\License\Handlers\ChecklistsHandler;
+use PublishPress\Hub\Infrastructure\License\Handlers\SerializedArrayHandler;
+use PublishPress\Hub\Infrastructure\License\Handlers\SerializedObjectHandler;
 
 return [
-    'checklists' => ChecklistsHandler::class,
+    'checklists' => [
+        SerializedObjectHandler::class,
+        'publishpress_checklists_settings_options',
+        'license_key',
+        'license_status',
+        'valid',
+        'invalid',
+    ],
+    'permissions' => [
+        SerializedArrayHandler::class,
+        'presspermit_edd_key',
+        'license_key',
+        'license_status',
+        'valid',
+        'invalid',
+    ],
 ];
