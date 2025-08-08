@@ -248,6 +248,9 @@ return [
     AbstractDependencies::OPTIONS_ADAPTER =>
         fn(ContainerInterface $container) => new WPOptionsAdapter(),
 
+    AbstractDependencies::ADMIN_MENU_ADAPTER =>
+        fn(ContainerInterface $container) => new WPAdminMenuAdapter(),
+
     // Use Cases
     AbstractDependencies::LIST_PLUGINS_USE_CASE =>
         fn(ContainerInterface $container) => new ListPluginsUseCase(
@@ -306,7 +309,7 @@ return [
             $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
         ),
 
-    // Presentation Services
+    // Admin Services
     AbstractDependencies::MAIN_MENU_CONTROLLER =>
         fn(ContainerInterface $container) => new MenuController(
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
@@ -331,6 +334,7 @@ return [
             $container->get(AbstractDependencies::ASSET_SERVICE)
         ),
 
+    // Rest API Services
     AbstractDependencies::REST_API_PLUGINS_CONTROLLER =>
         fn(ContainerInterface $container) => new PluginsController(
             $container->get(AbstractDependencies::HUB_REST_API_NAMESPACE),
@@ -345,8 +349,4 @@ return [
             $container->get(AbstractDependencies::DEACTIVATE_LICENSE_USE_CASE),
             $container->get(AbstractDependencies::ACTIVATE_LICENSE_USE_CASE)
         ),
-
-    // Adapters
-    AbstractDependencies::ADMIN_MENU_ADAPTER =>
-        fn(ContainerInterface $container) => new WPAdminMenuAdapter(),
 ];
