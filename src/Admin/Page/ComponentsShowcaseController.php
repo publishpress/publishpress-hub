@@ -118,7 +118,7 @@ class ComponentsShowcaseController implements BootableInterface
     public function showComponentsShowcase(): void
     {
         $this->viewService->render(
-            'Admin/DevComponentsShowcase/dev-components-showcase-container',
+            'DevComponentsShowcase/dev-components-showcase-container',
             [
                 'loading_message' => __('Please wait while we load the components showcase...', 'publishpress-hub'),
             ]

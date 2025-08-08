@@ -72,7 +72,7 @@ return [
 
     AbstractDependencies::PLUGIN_LANGUAGES_PATH => PUBLISHPRESS_HUB_PATH . 'languages/',
 
-    AbstractDependencies::PLUGIN_TEMPLATES_BASE_PATH => PUBLISHPRESS_HUB_SRC_PATH . 'Presentation/Template/',
+    AbstractDependencies::ADMIN_TEMPLATES_BASE_PATH => PUBLISHPRESS_HUB_SRC_PATH . 'Admin/Template/',
 
     AbstractDependencies::PLUGIN_I18N_SCRIPT_PATH => 'js/i18n.js',
 
@@ -131,9 +131,9 @@ return [
             $container->get(AbstractDependencies::HOOKS_SERVICE),
         ),
 
-    AbstractDependencies::VIEW_SERVICE =>
+    AbstractDependencies::ADMIN_VIEW_SERVICE =>
         fn(ContainerInterface $container) => new ViewService(
-            $container->get(AbstractDependencies::PLUGIN_TEMPLATES_BASE_PATH)
+            $container->get(AbstractDependencies::ADMIN_TEMPLATES_BASE_PATH)
         ),
 
     AbstractDependencies::SECURITY_SERVICE =>
@@ -317,7 +317,7 @@ return [
     AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER =>
         fn(ContainerInterface $container) => new PluginsDashboardController(
             $container->get(AbstractDependencies::HOOKS_SERVICE),
-            $container->get(AbstractDependencies::VIEW_SERVICE),
+            $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
             $container->get(AbstractDependencies::ASSET_SERVICE),
             $container->get(AbstractDependencies::SECURITY_SERVICE)
@@ -326,7 +326,7 @@ return [
     AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER =>
         fn(ContainerInterface $container) => new ComponentsShowcaseController(
             $container->get(AbstractDependencies::HOOKS_SERVICE),
-            $container->get(AbstractDependencies::VIEW_SERVICE),
+            $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
             $container->get(AbstractDependencies::ASSET_SERVICE)
         ),

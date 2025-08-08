@@ -125,7 +125,7 @@ class PluginsDashboardController implements BootableInterface
     public function showDashboard(): void
     {
         $this->viewService->render(
-            'Admin/PluginsDashboard/plugins-dashboard-container',
+            'PluginsDashboard/plugins-dashboard-container',
             [
                 'loading_message' => __('Please wait while we load the plugins dashboard...', 'publishpress-hub'),
             ]

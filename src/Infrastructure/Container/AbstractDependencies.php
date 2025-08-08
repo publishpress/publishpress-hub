@@ -43,7 +43,7 @@ abstract class AbstractDependencies
 
     public const PLUGIN_LANGUAGES_PATH = 'publishpress-hub.constants.plugin-languages-path';
 
-    public const PLUGIN_TEMPLATES_BASE_PATH = 'publishpress-hub.constants.plugin-templates-base-path';
+    public const ADMIN_TEMPLATES_BASE_PATH = 'publishpress-hub.constants.admin-templates-base-path';
 
     public const USER_AGENT = 'publishpress-hub.constants.user-agent';
 
@@ -70,7 +70,7 @@ abstract class AbstractDependencies
 
     public const ADMIN_MENU_SERVICE = 'publishpress-hub.infrastructure.admin-menu.service';
 
-    public const VIEW_SERVICE = 'publishpress-hub.infrastructure.view.service';
+    public const ADMIN_VIEW_SERVICE = 'publishpress-hub.infrastructure.view.service';
 
     public const SECURITY_SERVICE = 'publishpress-hub.infrastructure.security.service';
 
