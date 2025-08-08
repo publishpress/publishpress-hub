@@ -74,6 +74,8 @@ abstract class AbstractDependencies
 
     public const SECURITY_SERVICE = 'publishpress-hub.infrastructure.security.service';
 
+    public const ENVIRONMENT_SERVICE = 'publishpress-hub.infrastructure.environment.service';
+
     public const REST_API_SERVICE = 'publishpress-hub.infrastructure.rest-api.service';
 
     public const REST_API_ADAPTER = 'publishpress-hub.infrastructure.rest-api.adapter';

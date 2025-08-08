@@ -51,6 +51,7 @@ use PublishPress\Hub\Infrastructure\WordPress\Filesystem\WordPressFileSystemAdap
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapter;
 use PublishPress\Hub\Infrastructure\WordPress\Options\WordPressOptionsAdapter;
 use PublishPress\Hub\Infrastructure\WordPressOrg\Api\WordPressOrgPluginApiAdapter;
+use PublishPress\Hub\Infrastructure\WordPress\Environment\WordPressEnvironmentAdapter;
 use PublishPress\Hub\Presentation\Controller\DevComponentsShowcaseController;
 use PublishPress\Hub\Presentation\Controller\MainMenuController;
 use PublishPress\Hub\Presentation\Controller\PluginsDashboardController;
@@ -137,6 +138,9 @@ return [
 
     AbstractDependencies::SECURITY_SERVICE =>
         fn(ContainerInterface $container) => new WordPressSecurityAdapter(),
+
+    AbstractDependencies::ENVIRONMENT_SERVICE =>
+        fn(ContainerInterface $container) => new WordPressEnvironmentAdapter(),
 
     AbstractDependencies::REST_API_ADAPTER =>
         fn(ContainerInterface $container) => new WordPressRestApiAdapter(),

@@ -69,9 +69,11 @@ class HubBootstrapService implements BootableInterface
         $this->addHooks();
         $this->loadServices();
 
-        $this->mainMenuController->load();
-
         $this->pluginFamilyRepository->reset();
+
+        if (is_admin()) {
+            $this->mainMenuController->load();
+        }
     }
 
     /**
@@ -83,7 +85,10 @@ class HubBootstrapService implements BootableInterface
     {
         $this->initServices();
         $this->registerPluginFamilies();
-        $this->mainMenuController->init();
+
+        if (is_admin()) {
+            $this->mainMenuController->init();
+        }
     }
 
     /**
