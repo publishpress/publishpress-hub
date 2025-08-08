@@ -3,7 +3,7 @@
 /**
  * WordPress cache adapter.
  *
- * @package PublishPress\Hub\Infrastructure\WordPress\Cache
+ * @package PublishPress\Hub\Infrastructure\WP\Cache
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,11 +12,11 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Infrastructure\WordPress\Cache;
+namespace PublishPress\Hub\Infrastructure\WP\Cache;
 
 use PublishPress\Hub\Infrastructure\Cache\Contract\CacheAdapterInterface;
 
-class WordPressCacheAdapter implements CacheAdapterInterface
+class WPCacheAdapter implements CacheAdapterInterface
 {
     /**
      * Get a cached value.

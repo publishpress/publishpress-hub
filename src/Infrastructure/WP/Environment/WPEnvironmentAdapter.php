@@ -3,7 +3,7 @@
 /**
  * WordPress environment adapter.
  *
- * @package PublishPress\Hub\Infrastructure\WordPress\Environment
+ * @package PublishPress\Hub\Infrastructure\WP\Environment
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,11 +12,11 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Infrastructure\WordPress\Environment;
+namespace PublishPress\Hub\Infrastructure\WP\Environment;
 
 use PublishPress\Hub\Infrastructure\Environment\Contract\EnvironmentServiceInterface;
 
-class WordPressEnvironmentAdapter implements EnvironmentServiceInterface
+class WPEnvironmentAdapter implements EnvironmentServiceInterface
 {
     /**
      * {@inheritdoc}

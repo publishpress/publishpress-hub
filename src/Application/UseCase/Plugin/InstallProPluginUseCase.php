@@ -23,14 +23,14 @@ use PublishPress\Hub\Domain\Plugin\Exception\PluginInstallException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use PublishPress\Hub\Domain\Plugin\Contract\ProPluginInterface;
-use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginLifecycleAdapter;
+use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginLifecycleAdapter;
 use WP_REST_Request;
 
 class InstallProPluginUseCase implements UseCaseInterface
 {
     private PluginStatusService $pluginStatusService;
 
-    private WordPressPluginLifecycleAdapter $pluginLifecycle;
+    private WPPluginLifecycleAdapter $pluginLifecycle;
 
     private LicenseManagementService $licenseManagement;
 
@@ -39,7 +39,7 @@ class InstallProPluginUseCase implements UseCaseInterface
      */
     public function __construct(
         PluginStatusService $pluginStatusService,
-        WordPressPluginLifecycleAdapter $pluginLifecycle,
+        WPPluginLifecycleAdapter $pluginLifecycle,
         LicenseManagementService $licenseManagement
     ) {
         $this->pluginStatusService = $pluginStatusService;

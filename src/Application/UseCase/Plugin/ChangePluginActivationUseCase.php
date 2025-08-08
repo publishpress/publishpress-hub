@@ -21,21 +21,21 @@ use PublishPress\Hub\Domain\Plugin\Exception\PluginActivationException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginFreeProConflictException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotInstalledException;
-use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginLifecycleAdapter;
+use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginLifecycleAdapter;
 use WP_REST_Request;
 
 class ChangePluginActivationUseCase implements UseCaseInterface
 {
     private PluginStatusService $pluginStatusService;
 
-    private WordPressPluginLifecycleAdapter $pluginLifecycle;
+    private WPPluginLifecycleAdapter $pluginLifecycle;
 
     /**
      * @since 1.0.0
      */
     public function __construct(
         PluginStatusService $pluginStatusService,
-        WordPressPluginLifecycleAdapter $pluginLifecycle
+        WPPluginLifecycleAdapter $pluginLifecycle
     ) {
         $this->pluginStatusService = $pluginStatusService;
         $this->pluginLifecycle = $pluginLifecycle;

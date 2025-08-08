@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 namespace Tests\Integration\Infrastructure\Asset;
 
-use PublishPress\Hub\Infrastructure\WordPress\Asset\WordPressAssetAdapter;
+use PublishPress\Hub\Infrastructure\WP\Asset\WPAssetAdapter;
 use Tests\WPTestCase;
 
 class WordPressAssetAdapterTest extends WPTestCase
@@ -23,7 +23,7 @@ class WordPressAssetAdapterTest extends WPTestCase
 
     public function testGetAssetUrlWithEmptyPath(): void
     {
-        $assetAdapter = new WordPressAssetAdapter(
+        $assetAdapter = new WPAssetAdapter(
             'http://localhost/publishpress-hub/assets/',
             '1.0.0',
             false
@@ -36,7 +36,7 @@ class WordPressAssetAdapterTest extends WPTestCase
 
     public function testGetAssetUrlWithInvalidPath(): void
     {
-        $assetManager = new WordPressAssetAdapter(
+        $assetManager = new WPAssetAdapter(
             'http://localhost/publishpress-hub/assets/',
             '1.0.0',
             false
@@ -49,7 +49,7 @@ class WordPressAssetAdapterTest extends WPTestCase
 
     public function testGetAssetBaseUrlWithTrailingSlash(): void
     {
-        $assetManager = new WordPressAssetAdapter(
+        $assetManager = new WPAssetAdapter(
             'http://localhost/publishpress-hub/assets/',
             '1.0.0',
             false
@@ -64,7 +64,7 @@ class WordPressAssetAdapterTest extends WPTestCase
 
     public function testGetAssetBaseUrlWithoutTrailingSlash(): void
     {
-        $assetManager = new WordPressAssetAdapter(
+        $assetManager = new WPAssetAdapter(
             'http://localhost/publishpress-hub/assets',
             '1.0.0',
             false
@@ -96,7 +96,7 @@ class WordPressAssetAdapterTest extends WPTestCase
             ['images/icons/admin-page.png', 'images/icons/admin-page.png'],
         ];
 
-        $assetManager = new WordPressAssetAdapter(
+        $assetManager = new WPAssetAdapter(
             'http://localhost/publishpress-hub/assets/',
             '1.0.0',
             false

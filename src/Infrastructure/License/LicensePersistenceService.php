@@ -15,20 +15,20 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Infrastructure\License;
 
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
-use PublishPress\Hub\Infrastructure\WordPress\Options\Contract\OptionsAdapterInterface;
+use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
 
 class LicensePersistenceService implements LicensePersistenceInterface
 {
-    private OptionsAdapterInterface $optionsAdapter;
+    private WPOptionsAdapterInterface $optionsAdapter;
 
     private string $optionPrefix;
 
     /**
-     * @param OptionsAdapterInterface $optionsAdapter The options adapter.
+     * @param WPOptionsAdapterInterface $optionsAdapter The options adapter.
      * @param string $optionPrefix The option prefix.
      * @since 1.0.0
      */
-    public function __construct(OptionsAdapterInterface $optionsAdapter, string $optionPrefix)
+    public function __construct(WPOptionsAdapterInterface $optionsAdapter, string $optionPrefix)
     {
         $this->optionsAdapter = $optionsAdapter;
         $this->optionPrefix = $optionPrefix;

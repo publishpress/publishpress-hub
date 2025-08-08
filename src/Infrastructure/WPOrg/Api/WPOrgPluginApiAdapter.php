@@ -3,7 +3,7 @@
 /**
  * WordPress.org plugin API adapter.
  *
- * @package PublishPress\Hub\Infrastructure\WordPressOrg\Api
+ * @package PublishPress\Hub\Infrastructure\WPOrg\Api
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,11 +12,11 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Infrastructure\WordPressOrg\Api;
+namespace PublishPress\Hub\Infrastructure\WPOrg\Api;
 
 use RuntimeException;
 
-class WordPressOrgPluginApiAdapter
+class WPOrgPluginApiAdapter
 {
     /**
      * Get the last version information for a plugin.

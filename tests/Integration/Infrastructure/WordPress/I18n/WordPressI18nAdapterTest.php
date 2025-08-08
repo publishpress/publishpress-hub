@@ -3,17 +3,17 @@
 declare(strict_types=1);
 
 
-namespace Tests\Integration\Infrastructure\WordPress\I18n;
+namespace Tests\Integration\Infrastructure\WP\I18n;
 
-use PublishPress\Hub\Infrastructure\WordPress\Asset\WordPressAssetAdapter;
-use PublishPress\Hub\Infrastructure\WordPress\Hooks\WordPressHooksAdapter;
-use PublishPress\Hub\Infrastructure\WordPress\I18n\WordPressI18nAdapter;
+use PublishPress\Hub\Infrastructure\WP\Asset\WPAssetAdapter;
+use PublishPress\Hub\Infrastructure\WP\Hooks\WPHooksAdapter;
+use PublishPress\Hub\Infrastructure\WP\I18n\WPI18nAdapter;
 use Tests\WPTestCase;
 
 class WordPressI18nAdapterTest extends WPTestCase
 {
     /**
-     * @var WordPressI18nAdapter
+     * @var WPI18nAdapter
      */
     private $i18nAdapter;
 
@@ -21,12 +21,12 @@ class WordPressI18nAdapterTest extends WPTestCase
     {
         parent::setUp();
 
-        $this->i18nAdapter = new WordPressI18nAdapter(
+        $this->i18nAdapter = new WPI18nAdapter(
             'publishpress-hub',
             __DIR__ . '/../../../../../',
             'languages',
-            new WordPressHooksAdapter(),
-            new WordPressAssetAdapter(
+            new WPHooksAdapter(),
+            new WPAssetAdapter(
                 'http://localhost/publishpress-hub/assets/',
                 '1.0.0',
                 false

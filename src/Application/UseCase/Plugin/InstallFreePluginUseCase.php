@@ -20,25 +20,25 @@ use PublishPress\Hub\Domain\Plugin\Contract\PluginInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginInstallException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
-use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginLifecycleAdapter;
-use PublishPress\Hub\Infrastructure\WordPressOrg\Api\WordPressOrgPluginApiAdapter;
+use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginLifecycleAdapter;
+use PublishPress\Hub\Infrastructure\WPOrg\Api\WPOrgPluginApiAdapter;
 use WP_REST_Request;
 
 class InstallFreePluginUseCase implements UseCaseInterface
 {
     private PluginStatusService $pluginStatusService;
 
-    private WordPressPluginLifecycleAdapter $pluginLifecycle;
+    private WPPluginLifecycleAdapter $pluginLifecycle;
 
-    private WordPressOrgPluginApiAdapter $freePluginApi;
+    private WPOrgPluginApiAdapter $freePluginApi;
 
     /**
      * @since 1.0.0
      */
     public function __construct(
         PluginStatusService $pluginStatusService,
-        WordPressPluginLifecycleAdapter $pluginLifecycle,
-        WordPressOrgPluginApiAdapter $freePluginApi
+        WPPluginLifecycleAdapter $pluginLifecycle,
+        WPOrgPluginApiAdapter $freePluginApi
     ) {
         $this->pluginStatusService = $pluginStatusService;
         $this->pluginLifecycle = $pluginLifecycle;

@@ -3,7 +3,7 @@
 /**
  * WordPress i18n adapter.
  *
- * @package PublishPress\Hub\Infrastructure\WordPress\I18n
+ * @package PublishPress\Hub\Infrastructure\WP\I18n
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,7 +12,7 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Infrastructure\WordPress\I18n;
+namespace PublishPress\Hub\Infrastructure\WP\I18n;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
@@ -24,7 +24,7 @@ use PublishPress\Hub\Infrastructure\I18n\Contract\I18nServiceInterface;
 /**
  * TODO: Make this class reusable for other plugins, after the free plugin also has the Hub as requirement.
  */
-class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
+class WPI18nAdapter implements I18nServiceInterface, BootableInterface
 {
     use BootableTrait;
 

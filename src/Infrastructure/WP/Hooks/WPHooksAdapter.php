@@ -3,7 +3,7 @@
 /**
  * WordPress hooks adapter.
  *
- * @package PublishPress\Hub\Infrastructure\WordPress\Hooks
+ * @package PublishPress\Hub\Infrastructure\WP\Hooks
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,11 +12,11 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Infrastructure\WordPress\Hooks;
+namespace PublishPress\Hub\Infrastructure\WP\Hooks;
 
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 
-class WordPressHooksAdapter implements HooksServiceInterface
+class WPHooksAdapter implements HooksServiceInterface
 {
     /**
      * Add an action.

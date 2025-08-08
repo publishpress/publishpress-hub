@@ -3,7 +3,7 @@
 /**
  * Options adapter interface.
  *
- * @package PublishPress\Hub\Infrastructure\WordPress\Options\Contract
+ * @package PublishPress\Hub\Infrastructure\WP\Options\Contract
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,9 +12,9 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Infrastructure\WordPress\Options\Contract;
+namespace PublishPress\Hub\Infrastructure\WP\Options\Contract;
 
-interface OptionsAdapterInterface
+interface WPOptionsAdapterInterface
 {
     /**
      * Store a value in WordPress options.

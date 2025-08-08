@@ -3,7 +3,7 @@
 /**
  * WordPress REST API adapter.
  *
- * @package PublishPress\Hub\Infrastructure\WordPress\RestApi
+ * @package PublishPress\Hub\Infrastructure\WP\RestApi
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,7 +12,7 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Infrastructure\WordPress\RestApi;
+namespace PublishPress\Hub\Infrastructure\WP\RestApi;
 
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiAdapterInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
@@ -20,7 +20,7 @@ use WP_REST_Request;
 use WP_REST_Response;
 use WP_Error;
 
-class WordPressRestApiAdapter implements RestApiAdapterInterface
+class WPRestApiAdapter implements RestApiAdapterInterface
 {
     /**
      * Register a REST route.

@@ -3,7 +3,7 @@
 /**
  * WordPress security adapter.
  *
- * @package PublishPress\Hub\Infrastructure\WordPress\Security
+ * @package PublishPress\Hub\Infrastructure\WP\Security
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,12 +12,12 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Infrastructure\WordPress\Security;
+namespace PublishPress\Hub\Infrastructure\WP\Security;
 
 use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
 use WP_User;
 
-class WordPressSecurityAdapter implements SecurityServiceInterface
+class WPSecurityAdapter implements SecurityServiceInterface
 {
     /**
      * Create a nonce.

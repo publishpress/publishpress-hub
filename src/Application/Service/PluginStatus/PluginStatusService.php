@@ -19,7 +19,7 @@ use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\ProPluginInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
-use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapter;
+use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginStatusAdapter;
 
 /**
  * Application service responsible for managing plugin status across the system.
@@ -31,7 +31,7 @@ use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapte
  */
 class PluginStatusService
 {
-    private WordPressPluginStatusAdapter $pluginStatusAdapter;
+    private WPPluginStatusAdapter $pluginStatusAdapter;
     private PluginFamilyRepositoryInterface $pluginFamilyRepository;
     private LicensePersistenceInterface $licensePersistence;
 
@@ -39,7 +39,7 @@ class PluginStatusService
      * @since 1.0.0
      */
     public function __construct(
-        WordPressPluginStatusAdapter $pluginStatusAdapter,
+        WPPluginStatusAdapter $pluginStatusAdapter,
         PluginFamilyRepositoryInterface $pluginFamilyRepository,
         LicensePersistenceInterface $licensePersistence
     ) {

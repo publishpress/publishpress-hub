@@ -3,7 +3,7 @@
 /**
  * WordPress admin menu adapter.
  *
- * @package PublishPress\Hub\Infrastructure\WordPress\AdminMenu
+ * @package PublishPress\Hub\Infrastructure\WP\AdminMenu
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,11 +12,11 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Infrastructure\WordPress\AdminMenu;
+namespace PublishPress\Hub\Infrastructure\WP\AdminMenu;
 
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuAdapterInterface;
 
-class WordPressAdminMenuAdapter implements AdminMenuAdapterInterface
+class WPAdminMenuAdapter implements AdminMenuAdapterInterface
 {
     /**
      * Add a menu page.

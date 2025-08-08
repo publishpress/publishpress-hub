@@ -3,7 +3,7 @@
 /**
  * WordPress file system adapter.
  *
- * @package PublishPress\Hub\Infrastructure\WordPress\Filesystem
+ * @package PublishPress\Hub\Infrastructure\WP\Filesystem
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,11 +12,11 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Infrastructure\WordPress\Filesystem;
+namespace PublishPress\Hub\Infrastructure\WP\Filesystem;
 
 use WP_Filesystem_Base;
 
-class WordPressFileSystemAdapter
+class WPFileSystemAdapter
 {
     private ?WP_Filesystem_Base $wpFilesystem = null;
 

@@ -3,7 +3,7 @@
 /**
  * WordPress asset adapter.
  *
- * @package PublishPress\Hub\Infrastructure\WordPress\Asset
+ * @package PublishPress\Hub\Infrastructure\WP\Asset
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,12 +12,12 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Infrastructure\WordPress\Asset;
+namespace PublishPress\Hub\Infrastructure\WP\Asset;
 
 use InvalidArgumentException;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 
-class WordPressAssetAdapter implements AssetServiceInterface
+class WPAssetAdapter implements AssetServiceInterface
 {
     private string $assetBaseUrl;
 

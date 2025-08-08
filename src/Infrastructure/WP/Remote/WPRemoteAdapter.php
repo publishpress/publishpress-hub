@@ -3,7 +3,7 @@
 /**
  * WordPress remote adapter.
  *
- * @package PublishPress\Hub\Infrastructure\WordPress\Remote
+ * @package PublishPress\Hub\Infrastructure\WP\Remote
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,12 +12,12 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Infrastructure\WordPress\Remote;
+namespace PublishPress\Hub\Infrastructure\WP\Remote;
 
 use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
 use WP_Error;
 
-class WordPressRemoteAdapter implements RemoteServiceInterface
+class WPRemoteAdapter implements RemoteServiceInterface
 {
     /**
      * Request a remote URL.

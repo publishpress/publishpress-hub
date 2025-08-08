@@ -14,16 +14,15 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container;
 
-use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
-use PublishPress\Psr\Container\ContainerInterface;
-use PublishPress\Hub\Infrastructure\WordPress\Hooks\WordPressHooksAdapter;
 use PublishPress\Hub\Application\Service\HubBootstrapService;
+use PublishPress\Hub\Application\Service\License\LicenseManagementService;
+use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Plugin\ActivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\DeactivateLicenseUseCase;
-use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallFreePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallProPluginUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ResolveConflictUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UninstallPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UpgradePluginUseCase;
@@ -32,30 +31,31 @@ use PublishPress\Hub\Domain\Plugin\Repository\PluginFamilyRepository;
 use PublishPress\Hub\Infrastructure\AdminMenu\AdminMenuService;
 use PublishPress\Hub\Infrastructure\Cache\CacheService;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\EddSubscriptionAdapter;
-use PublishPress\Hub\Infrastructure\WordPress\Remote\WordPressRemoteAdapter;
 use PublishPress\Hub\Infrastructure\License\LicenseApiService;
-use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use PublishPress\Hub\Infrastructure\License\LicensePersistenceService;
 use PublishPress\Hub\Infrastructure\Logger\Logger;
 use PublishPress\Hub\Infrastructure\Remote\RemoteService;
-use PublishPress\Hub\Infrastructure\View\ViewService;
-use PublishPress\Hub\Infrastructure\WordPress\AdminMenu\WordPressAdminMenuAdapter;
-use PublishPress\Hub\Infrastructure\WordPress\Asset\WordPressAssetAdapter;
-use PublishPress\Hub\Infrastructure\WordPress\I18n\WordPressI18nAdapter;
-use PublishPress\Hub\Infrastructure\WordPress\Security\WordPressSecurityAdapter;
-use PublishPress\Hub\Infrastructure\WordPress\RestApi\WordPressRestApiAdapter;
-use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginLifecycleAdapter;
 use PublishPress\Hub\Infrastructure\RestApi\RestApiService;
-use PublishPress\Hub\Infrastructure\WordPress\Cache\WordPressCacheAdapter;
-use PublishPress\Hub\Infrastructure\WordPress\Filesystem\WordPressFileSystemAdapter;
-use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginStatusAdapter;
-use PublishPress\Hub\Infrastructure\WordPress\Options\WordPressOptionsAdapter;
-use PublishPress\Hub\Infrastructure\WordPressOrg\Api\WordPressOrgPluginApiAdapter;
-use PublishPress\Hub\Infrastructure\WordPress\Environment\WordPressEnvironmentAdapter;
+use PublishPress\Hub\Infrastructure\View\ViewService;
+use PublishPress\Hub\Infrastructure\WPOrg\Api\WPOrgPluginApiAdapter;
+use PublishPress\Hub\Infrastructure\WP\AdminMenu\WPAdminMenuAdapter;
+use PublishPress\Hub\Infrastructure\WP\Asset\WPAssetAdapter;
+use PublishPress\Hub\Infrastructure\WP\Cache\WPCacheAdapter;
+use PublishPress\Hub\Infrastructure\WP\Environment\WPEnvironmentAdapter;
+use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;
+use PublishPress\Hub\Infrastructure\WP\Hooks\WPHooksAdapter;
+use PublishPress\Hub\Infrastructure\WP\I18n\WPI18nAdapter;
+use PublishPress\Hub\Infrastructure\WP\Options\WPOptionsAdapter;
+use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginLifecycleAdapter;
+use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginStatusAdapter;
+use PublishPress\Hub\Infrastructure\WP\Remote\WPRemoteAdapter;
+use PublishPress\Hub\Infrastructure\WP\RestApi\WPRestApiAdapter;
+use PublishPress\Hub\Infrastructure\WP\Security\WPSecurityAdapter;
 use PublishPress\Hub\Presentation\Controller\DevComponentsShowcaseController;
 use PublishPress\Hub\Presentation\Controller\MainMenuController;
 use PublishPress\Hub\Presentation\Controller\PluginsDashboardController;
 use PublishPress\Hub\Presentation\Controller\RestApi\PluginsController;
+use PublishPress\Psr\Container\ContainerInterface;
 
 return [
     AbstractDependencies::PLUGIN_PATH => PUBLISHPRESS_HUB_PATH,
@@ -98,10 +98,10 @@ return [
 
     // Infrastructure Services
     AbstractDependencies::HOOKS_SERVICE =>
-        fn(ContainerInterface $container) => new WordPressHooksAdapter(),
+        fn(ContainerInterface $container) => new WPHooksAdapter(),
 
     AbstractDependencies::I18N_SERVICE =>
-        fn(ContainerInterface $container) => new WordPressI18nAdapter(
+        fn(ContainerInterface $container) => new WPI18nAdapter(
             $container->get(AbstractDependencies::PLUGIN_TEXT_DOMAIN),
             $container->get(AbstractDependencies::PLUGIN_I18N_SCRIPT_PATH),
             $container->get(AbstractDependencies::PLUGIN_LANGUAGES_PATH),
@@ -110,7 +110,7 @@ return [
         ),
 
     AbstractDependencies::ASSET_SERVICE =>
-        fn(ContainerInterface $container) => new WordPressAssetAdapter(
+        fn(ContainerInterface $container) => new WPAssetAdapter(
             $container->get(AbstractDependencies::PLUGIN_ASSETS_URL),
             $container->get(AbstractDependencies::PLUGIN_VERSION),
             $container->get(AbstractDependencies::SCRIPT_DEBUG)
@@ -137,13 +137,13 @@ return [
         ),
 
     AbstractDependencies::SECURITY_SERVICE =>
-        fn(ContainerInterface $container) => new WordPressSecurityAdapter(),
+        fn(ContainerInterface $container) => new WPSecurityAdapter(),
 
     AbstractDependencies::ENVIRONMENT_SERVICE =>
-        fn(ContainerInterface $container) => new WordPressEnvironmentAdapter(),
+        fn(ContainerInterface $container) => new WPEnvironmentAdapter(),
 
     AbstractDependencies::REST_API_ADAPTER =>
-        fn(ContainerInterface $container) => new WordPressRestApiAdapter(),
+        fn(ContainerInterface $container) => new WPRestApiAdapter(),
 
     AbstractDependencies::REST_API_SERVICE =>
         fn(ContainerInterface $container) => new RestApiService(
@@ -184,7 +184,7 @@ return [
         ),
 
     AbstractDependencies::REMOTE_ADAPTER =>
-        fn(ContainerInterface $container) => new WordPressRemoteAdapter(),
+        fn(ContainerInterface $container) => new WPRemoteAdapter(),
 
     AbstractDependencies::CACHE_SERVICE =>
         fn(ContainerInterface $container) => new CacheService(
@@ -193,10 +193,10 @@ return [
         ),
 
     AbstractDependencies::CACHE_ADAPTER =>
-        fn(ContainerInterface $container) => new WordPressCacheAdapter(),
+        fn(ContainerInterface $container) => new WPCacheAdapter(),
 
     AbstractDependencies::FREE_PLUGIN_API =>
-        fn(ContainerInterface $container) => new WordPressOrgPluginApiAdapter(),
+        fn(ContainerInterface $container) => new WPOrgPluginApiAdapter(),
 
     // Application Services
     AbstractDependencies::HUB_BOOTSTRAP_SERVICE =>
@@ -226,7 +226,7 @@ return [
         fn(ContainerInterface $container): PluginFamilyRepositoryInterface => new PluginFamilyRepository(),
 
     AbstractDependencies::PLUGIN_STATUS_ADAPTER =>
-        fn(ContainerInterface $container) => new WordPressPluginStatusAdapter(
+        fn(ContainerInterface $container) => new WPPluginStatusAdapter(
             $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER)
         ),
 
@@ -238,15 +238,15 @@ return [
         ),
 
     AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER =>
-        fn(ContainerInterface $container) => new WordPressPluginLifecycleAdapter(
+        fn(ContainerInterface $container) => new WPPluginLifecycleAdapter(
             $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER)
         ),
 
     AbstractDependencies::FILE_SYSTEM_ADAPTER =>
-        fn(ContainerInterface $container) => new WordPressFileSystemAdapter(),
+        fn(ContainerInterface $container) => new WPFileSystemAdapter(),
 
     AbstractDependencies::OPTIONS_ADAPTER =>
-        fn(ContainerInterface $container) => new WordPressOptionsAdapter(),
+        fn(ContainerInterface $container) => new WPOptionsAdapter(),
 
     // Use Cases
     AbstractDependencies::LIST_PLUGINS_USE_CASE =>
@@ -348,5 +348,5 @@ return [
 
     // Adapters
     AbstractDependencies::ADMIN_MENU_ADAPTER =>
-        fn(ContainerInterface $container) => new WordPressAdminMenuAdapter(),
+        fn(ContainerInterface $container) => new WPAdminMenuAdapter(),
 ];

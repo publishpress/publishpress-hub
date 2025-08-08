@@ -3,15 +3,15 @@
 declare(strict_types=1);
 
 
-namespace Tests\Integration\Infrastructure\WordPress\Hooks;
+namespace Tests\Integration\Infrastructure\WP\Hooks;
 
-use PublishPress\Hub\Infrastructure\WordPress\Hooks\WordPressHooksAdapter;
+use PublishPress\Hub\Infrastructure\WP\Hooks\WPHooksAdapter;
 use Tests\WPTestCase;
 
 class WordPressHooksAdapterTest extends WPTestCase
 {
     /**
-     * @var WordPressHooksAdapter
+     * @var WPHooksAdapter
      */
     private $hooksAdapter;
 
@@ -19,7 +19,7 @@ class WordPressHooksAdapterTest extends WPTestCase
     {
         parent::setUp();
 
-        $this->hooksAdapter = new WordPressHooksAdapter();
+        $this->hooksAdapter = new WPHooksAdapter();
     }
 
     protected function tearDown(): void

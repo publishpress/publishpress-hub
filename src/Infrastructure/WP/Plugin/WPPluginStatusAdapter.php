@@ -3,7 +3,7 @@
 /**
  * WordPress plugin status adapter.
  *
- * @package PublishPress\Hub\Infrastructure\WordPress\Plugin
+ * @package PublishPress\Hub\Infrastructure\WP\Plugin
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,10 +12,10 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Infrastructure\WordPress\Plugin;
+namespace PublishPress\Hub\Infrastructure\WP\Plugin;
 
 use PublishPress\Hub\Domain\Plugin\Contract\PluginInterface;
-use PublishPress\Hub\Infrastructure\WordPress\Filesystem\WordPressFileSystemAdapter;
+use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;
 use WP_Filesystem_Base;
 
 /**
@@ -23,15 +23,15 @@ use WP_Filesystem_Base;
  *
  * @since 1.0.0
  */
-class WordPressPluginStatusAdapter
+class WPPluginStatusAdapter
 {
-    private WordPressFileSystemAdapter $fileSystemAdapter;
+    private WPFileSystemAdapter $fileSystemAdapter;
 
     /**
-     * @param WordPressFileSystemAdapter $fileSystemAdapter The file system adapter.
+     * @param WPFileSystemAdapter $fileSystemAdapter The file system adapter.
      * @since 1.0.0
      */
-    public function __construct(WordPressFileSystemAdapter $fileSystemAdapter)
+    public function __construct(WPFileSystemAdapter $fileSystemAdapter)
     {
         $this->fileSystemAdapter = $fileSystemAdapter;
     }
