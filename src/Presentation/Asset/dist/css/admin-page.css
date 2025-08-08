@@ -562,6 +562,7 @@
  */
 
 [data-theme="dark"] {
+    --pp-hub-font-family-mono: monospace;
     /* Brand Colors - Adjusted for dark mode */
     --pp-hub-primary-color: #8a7bc8;
     --pp-hub-primary-color-darker: #6b5b9a;
@@ -583,11 +584,19 @@
     --pp-hub-accent-color-lighter: #81d4fa;
     --pp-hub-accent-color-disabled: #0277bd;
 
+    /* Generic Disabled */
+    --pp-hub-disabled-color: #666666;
+
     /* Semantic Colors - Dark mode variants */
     --pp-hub-success-color: #66bb6a;
     --pp-hub-warning-color: #ffca28;
     --pp-hub-error-color: #ef5350;
     --pp-hub-info-color: #29b6f6;
+
+    /* Error color variants for danger states */
+    --pp-hub-error-color-lighter: #f36c69;
+    --pp-hub-error-color-darker: #c33c39;
+    --pp-hub-error-color-disabled: #5a2a2a;
 
     /* Background Colors - Dark theme */
     --pp-hub-bg-primary: #121212;
@@ -643,18 +652,36 @@
     --pp-hub-button-bg-highlight-focus: var(--pp-hub-secondary-color-lighter);
     --pp-hub-button-bg-highlight-disabled: var(--pp-hub-secondary-color-disabled);
 
+    /* Danger button variants */
+    --pp-hub-button-bg-danger: var(--pp-hub-error-color);
+    --pp-hub-button-bg-danger-hover: var(--pp-hub-error-color-lighter);
+    --pp-hub-button-bg-danger-active: var(--pp-hub-error-color-darker);
+    --pp-hub-button-bg-danger-focus: var(--pp-hub-error-color-lighter);
+    --pp-hub-button-bg-danger-disabled: var(--pp-hub-error-color-disabled);
+
     --pp-hub-button-text-primary: var(--pp-hub-text-inverse);
     --pp-hub-button-text-secondary: var(--pp-hub-primary-color);
     --pp-hub-button-text-tertiary: var(--pp-hub-text-tertiary);
+    --pp-hub-button-text-highlight: var(--pp-hub-text-inverse);
     --pp-hub-button-text-inverse: var(--pp-hub-text-inverse);
     --pp-hub-button-text-disabled: var(--pp-hub-text-disabled);
     --pp-hub-button-text-link: none;
+    --pp-hub-button-text-danger: var(--pp-hub-text-inverse);
 
     --pp-hub-button-border-primary: var(--pp-hub-border-primary);
     --pp-hub-button-border-secondary: var(--pp-hub-primary-color);
     --pp-hub-button-border-tertiary: var(--pp-hub-border-tertiary);
     --pp-hub-button-border-highlight: var(--pp-hub-border-tertiary);
     --pp-hub-button-border-disabled: var(--pp-hub-border-secondary);
+    --pp-hub-button-border-danger: var(--pp-hub-error-color);
+
+    /* Button text hover colors */
+    --pp-hub-button-text-primary-hover: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-secondary-hover: var(--pp-hub-primary-color);
+    --pp-hub-button-text-tertiary-hover: var(--pp-hub-text-tertiary);
+    --pp-hub-button-text-highlight-hover: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-disabled-hover: var(--pp-hub-text-disabled);
+    --pp-hub-button-text-danger-hover: var(--pp-hub-text-inverse);
 
     /* Status Colors - Dark theme */
     --pp-hub-status-color-active: #66bb6a;
@@ -666,17 +693,38 @@
 
     /* Badge Colors - Dark theme */
     --pp-hub-badge-bg: #2a2a2a;
+    --pp-hub-badge-bg-hover: #333333;
     --pp-hub-badge-bg-installed: #66bb6a;
+    --pp-hub-badge-bg-installed-hover: #57a65b;
     --pp-hub-badge-bg-not-installed: #1e1e1e;
+    --pp-hub-badge-bg-not-installed-hover: #2a2a2a;
     --pp-hub-badge-bg-free: #1e3a5c;
+    --pp-hub-badge-bg-free-hover: #24466d;
     --pp-hub-badge-bg-licensed: #1e4d1e;
+    --pp-hub-badge-bg-licensed-hover: #245f24;
     --pp-hub-badge-bg-unlicensed: #4d3a1e;
+    --pp-hub-badge-bg-unlicensed-hover: #5a4526;
+    --pp-hub-badge-bg-installing: #2a2a2a;
+    --pp-hub-badge-bg-installing-hover: #383838;
+    --pp-hub-badge-bg-uninstalling: #5a2e2e;
+    --pp-hub-badge-bg-uninstalling-hover: #6a3838;
+    --pp-hub-badge-bg-conflicting-installations: #c48080;
+    --pp-hub-badge-bg-conflicting-installations-hover: #bb7676;
     --pp-hub-badge-text: #ffffff;
     --pp-hub-badge-text-installed: #ffffff;
     --pp-hub-badge-text-not-installed: #b3b3b3;
     --pp-hub-badge-text-free: #81d4fa;
     --pp-hub-badge-text-licensed: #a5d6a7;
     --pp-hub-badge-text-unlicensed: #ffcc80;
+    --pp-hub-badge-text-installing: #a7a7a7;
+    --pp-hub-badge-text-uninstalling: #6f5454;
+    --pp-hub-badge-text-conflicting-installations: #ffffff;
+
+    /* Toggle Colors - Dark theme */
+    --pp-hub-toggle-bg-checked: #00d084;
+    --pp-hub-toggle-bg-unchecked: #555555;
+    --pp-hub-toggle-thumb-checked: #ffffff;
+    --pp-hub-toggle-thumb-unchecked: #ffffff;
 }
 
 /*!**********************************************************************************************************************!*\
