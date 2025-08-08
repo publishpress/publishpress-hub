@@ -73,7 +73,7 @@ Autoloader::register(__NAMESPACE__, PUBLISHPRESS_HUB_SRC_PATH);
  * Load the plugin.
  */
 add_action(AbstractHooks::ACTION_PLUGINS_LOADED, function () {
-    $serviceDefinitions = require_once PUBLISHPRESS_HUB_SRC_PATH . 'Infrastructure/Container/definitions.php';
+    $serviceDefinitions = require_once PUBLISHPRESS_HUB_SRC_PATH . 'definitions.php';
     $container = new DependencyContainer($serviceDefinitions);
 
     $pluginBootstrapService = $container->get(AbstractDependencies::HUB_BOOTSTRAP_SERVICE);
