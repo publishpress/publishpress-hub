@@ -3,7 +3,7 @@
 /**
  * Plugin Name: PublishPress Hub
  * Description: A plugin to manage your PublishPress Hub.
- * Version: 1.0.0-alpha.5
+ * Version: 1.0.0-alpha.6
  * Author: PublishPress
  * Author URI: https://publishpress.com
  * License: GPL2
