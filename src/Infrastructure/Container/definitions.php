@@ -64,9 +64,9 @@ return [
 
     AbstractDependencies::PLUGIN_URL => PUBLISHPRESS_HUB_URL,
 
-    AbstractDependencies::PLUGIN_ASSETS_PATH => PUBLISHPRESS_HUB_PATH . 'src/Presentation/Asset/dist/',
+    AbstractDependencies::PLUGIN_ASSETS_PATH => PUBLISHPRESS_HUB_PATH . 'src/resources/Asset/dist/',
 
-    AbstractDependencies::PLUGIN_ASSETS_URL => PUBLISHPRESS_HUB_URL . 'src/Presentation/Asset/dist/',
+    AbstractDependencies::PLUGIN_ASSETS_URL => PUBLISHPRESS_HUB_URL . 'src/resources/Asset/dist/',
 
     AbstractDependencies::PLUGIN_VERSION => PUBLISHPRESS_HUB_VERSION,
 

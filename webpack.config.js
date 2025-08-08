@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 
-const assetsBasePath = "./src/Presentation/Asset/src";
+const assetsBasePath = "./src/resources/Asset/src";
 
 module.exports = {
     mode: NODE_ENV,
@@ -19,7 +19,7 @@ module.exports = {
     },
 
     output: {
-        path: path.join(__dirname, "src", "Presentation", "Asset", "dist"),
+        path: path.join(__dirname, "src", "resources", "Asset", "dist"),
         filename: "js/" + (NODE_ENV === 'production' ? "[name].min.js" : "[name].js")
     },
     resolve: {
