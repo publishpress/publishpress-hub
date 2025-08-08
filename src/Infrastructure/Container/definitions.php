@@ -217,7 +217,8 @@ return [
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
                 $servicesToInit,
                 $container->get(AbstractDependencies::MAIN_MENU_CONTROLLER),
-                $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
+                $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
+                $container->get(AbstractDependencies::ENVIRONMENT_SERVICE)
             );
         },
 

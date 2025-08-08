@@ -20,6 +20,7 @@ use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Entity\FreePlugin;
 use PublishPress\Hub\Domain\Plugin\Entity\PluginFamily;
 use PublishPress\Hub\Domain\Plugin\Entity\ProPlugin;
+use PublishPress\Hub\Infrastructure\Environment\Contract\EnvironmentServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Presentation\Controller\MainMenuController;
@@ -39,6 +40,8 @@ class HubBootstrapService implements BootableInterface
 
     private PluginFamilyRepositoryInterface $pluginFamilyRepository;
 
+    private EnvironmentServiceInterface $environmentService;
+
     /**
      * @param HooksServiceInterface $hooksService
      * @param BootableInterface[] $servicesToInit
@@ -51,12 +54,14 @@ class HubBootstrapService implements BootableInterface
         HooksServiceInterface $hooksService,
         array $servicesToInit,
         MainMenuController $mainMenuController,
-        PluginFamilyRepositoryInterface $pluginFamilyRepository
+        PluginFamilyRepositoryInterface $pluginFamilyRepository,
+        EnvironmentServiceInterface $environmentService
     ) {
         $this->hooksService = $hooksService;
         $this->servicesToInit = $servicesToInit;
         $this->mainMenuController = $mainMenuController;
         $this->pluginFamilyRepository = $pluginFamilyRepository;
+        $this->environmentService = $environmentService;
     }
 
     /**
@@ -71,7 +76,7 @@ class HubBootstrapService implements BootableInterface
 
         $this->pluginFamilyRepository->reset();
 
-        if (is_admin()) {
+        if ($this->environmentService->isAdminArea()) {
             $this->mainMenuController->load();
         }
     }
@@ -86,7 +91,7 @@ class HubBootstrapService implements BootableInterface
         $this->initServices();
         $this->registerPluginFamilies();
 
-        if (is_admin()) {
+        if ($this->environmentService->isAdminArea()) {
             $this->mainMenuController->init();
         }
     }
