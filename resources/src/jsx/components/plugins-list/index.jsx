@@ -72,12 +72,13 @@ const PluginsListComponent = ({
     } = modalStates;
 
     const currentPluginState = useMemo(() => {
-        const { currentPluginFamily } = modalManager;
+        const { currentPluginFamily, currentPluginDisplayName } = modalManager;
         if (!currentPluginFamily) return { error: null, inProgress: false };
 
         const slug = currentPluginFamily.slug;
 
         return {
+            pluginDisplayName: currentPluginDisplayName,
             error: pluginError[slug] || null,
             inProgress: Boolean(
                 pluginInstallationInProgress[slug] ||

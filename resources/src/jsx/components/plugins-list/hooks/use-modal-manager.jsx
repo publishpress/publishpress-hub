@@ -25,15 +25,20 @@ const MODAL_TYPES = {
 export const useModalManager = () => {
     const [activeModal, setActiveModal] = useState(MODAL_TYPES.NONE);
     const [currentPluginFamily, setCurrentPluginFamily] = useState(null);
+    const [currentPluginDisplayName, setCurrentPluginDisplayName] = useState(null);
 
-    const openModal = useCallback((modalType, plugin = null) => {
+    const openModal = useCallback((modalType, pluginFamily = null) => {
         setActiveModal(modalType);
-        setCurrentPluginFamily(plugin);
+        setCurrentPluginFamily(pluginFamily);
+
+        const isPro = pluginFamily.proPlugin.isInstalled;
+        setCurrentPluginDisplayName(isPro ? pluginFamily.proPlugin.name : pluginFamily.freePlugin.name);
     }, []);
 
     const closeModal = useCallback(() => {
         setActiveModal(MODAL_TYPES.NONE);
         setCurrentPluginFamily(null);
+        setCurrentPluginDisplayName(null);
     }, []);
 
     const isModalActive = useCallback((modalType) => {
@@ -47,5 +52,6 @@ export const useModalManager = () => {
         openModal,
         closeModal,
         isModalActive,
+        currentPluginDisplayName,
     };
 };

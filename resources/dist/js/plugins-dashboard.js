@@ -5778,9 +5778,10 @@ var ModalInstallationTypeComponent = function ModalInstallationTypeComponent(_re
     onFreeClick = _ref.onFreeClick,
     freeDetailsUrl = _ref.freeDetailsUrl,
     proDetailsUrl = _ref.proDetailsUrl,
-    changelogUrl = _ref.changelogUrl;
+    changelogUrl = _ref.changelogUrl,
+    title = _ref.title;
   return /*#__PURE__*/React.createElement(_modal__WEBPACK_IMPORTED_MODULE_3__.Modal, {
-    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Install Plugin', 'publishpress-hub'),
+    title: title || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Install Plugin', 'publishpress-hub'),
     className: "pp-hub-modal-installation-type",
     onRequestClose: function onRequestClose() {
       return onClose();
@@ -5859,7 +5860,8 @@ var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
   var onClose = _ref.onClose,
     onActivate = _ref.onActivate,
     error = _ref.error,
-    buttonInProgress = _ref.buttonInProgress;
+    buttonInProgress = _ref.buttonInProgress,
+    title = _ref.title;
   var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState2 = _slicedToArray(_useState, 2),
     licenseKey = _useState2[0],
@@ -5884,7 +5886,7 @@ var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
     }
   }, [activationAttempted, error]);
   return /*#__PURE__*/React.createElement(_modal__WEBPACK_IMPORTED_MODULE_4__.Modal, {
-    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter your license key', 'publishpress-hub'),
+    title: title || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter your license key', 'publishpress-hub'),
     className: "pp-hub-modal-license-input",
     onRequestClose: function onRequestClose() {
       return onClose();
@@ -5970,7 +5972,8 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
     onDeactivate = _ref.onDeactivate,
     error = _ref.error,
     buttonInProgress = _ref.buttonInProgress,
-    initialLicenseKey = _ref.initialLicenseKey;
+    initialLicenseKey = _ref.initialLicenseKey,
+    title = _ref.title;
   var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialLicenseKey || ''),
     _useState2 = _slicedToArray(_useState, 2),
     licenseKey = _useState2[0],
@@ -6012,7 +6015,7 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
     }
   }, [activationAttempted, error]);
   return /*#__PURE__*/React.createElement(_modal__WEBPACK_IMPORTED_MODULE_4__.Modal, {
-    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Manage your license', 'publishpress-hub'),
+    title: title || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Manage your license', 'publishpress-hub'),
     className: "pp-hub-modal-license-input",
     onRequestClose: function onRequestClose() {
       return onClose();
@@ -6120,7 +6123,8 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     currentPluginFamily = modalManager.currentPluginFamily,
     closeModal = modalManager.closeModal,
     isModalActive = modalManager.isModalActive,
-    MODAL_TYPES = modalManager.MODAL_TYPES;
+    MODAL_TYPES = modalManager.MODAL_TYPES,
+    currentPluginDisplayName = modalManager.currentPluginDisplayName;
   var handleInstallFree = pluginActions.handleInstallFree,
     handleInstallPro = pluginActions.handleInstallPro,
     handleUpgradePluginToPro = pluginActions.handleUpgradePluginToPro,
@@ -6154,6 +6158,7 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     };
   }, [currentPluginFamily, closeModal, cleanupError, currentPluginState.inProgress, processedError]);
   return /*#__PURE__*/React.createElement(React.Fragment, null, isModalActive(MODAL_TYPES.INSTALLATION_TYPE) && /*#__PURE__*/React.createElement(_modal_installation_type__WEBPACK_IMPORTED_MODULE_5__.ModalInstallationType, _extends({}, modalProps, {
+    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Install %s', 'publishpress-hub'), currentPluginDisplayName),
     onProClick: function onProClick() {
       return modalManager.openModal(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO, currentPluginFamily);
     },
@@ -6164,22 +6169,25 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     proDetailsUrl: currentPluginFamily.proDetailsUrl,
     changelogUrl: currentPluginFamily.changelogUrl
   })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_6__.ModalLicenseInput, _extends({}, modalProps, {
+    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Install %s Pro', 'publishpress-hub'), currentPluginDisplayName),
     onActivate: function onActivate(licenseKey) {
       return handleInstallPro(currentPluginFamily.slug, licenseKey);
     }
   })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_UPGRADE) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_6__.ModalLicenseInput, _extends({}, modalProps, {
+    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Upgrade %s to Pro', 'publishpress-hub'), currentPluginDisplayName),
     onActivate: function onActivate(licenseKey) {
       return handleUpgradePluginToPro(currentPluginFamily.slug, licenseKey);
     }
   })), isModalActive(MODAL_TYPES.UNINSTALL_CONFIRMATION) && /*#__PURE__*/React.createElement(_modal_confirmation__WEBPACK_IMPORTED_MODULE_4__.ModalConfirmation, _extends({}, modalProps, {
+    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Uninstall %s', 'publishpress-hub'), currentPluginDisplayName),
+    message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Are you sure you want to uninstall %s?', 'publishpress-hub'), currentPluginDisplayName),
+    isDanger: true,
     onConfirm: function onConfirm() {
       return handleUninstallPlugin(currentPluginFamily.slug);
     },
-    onCancel: closeModal,
-    isDanger: true,
-    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Uninstall Plugin', 'publishpress-hub'),
-    message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Are you sure you want to uninstall this plugin?', 'publishpress-hub')
+    onCancel: closeModal
   })), isModalActive(MODAL_TYPES.UPGRADE_PLUGIN_TO_PRO) && /*#__PURE__*/React.createElement(_modal_upgrade__WEBPACK_IMPORTED_MODULE_9__.ModalUpgrade, _extends({}, modalProps, {
+    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Upgrade %s to Pro', 'publishpress-hub'), currentPluginDisplayName),
     onLicenseClick: function onLicenseClick() {
       return modalManager.openModal(MODAL_TYPES.LICENSE_INPUT_FOR_UPGRADE, currentPluginFamily);
     },
@@ -6189,6 +6197,7 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     proDetailsUrl: currentPluginFamily.proPlugin.detailsUrl,
     changelogUrl: currentPluginFamily.changelogUrl
   })), isModalActive(MODAL_TYPES.RESOLVE_CONFLICT) && /*#__PURE__*/React.createElement(_modal_resolve_conflict__WEBPACK_IMPORTED_MODULE_8__.ModalResolveConflict, _extends({}, modalProps, {
+    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Resolve Conflict for %s', 'publishpress-hub'), currentPluginDisplayName),
     onKeepFreePlugin: function onKeepFreePlugin() {
       return handleResolveConflictAction(currentPluginFamily, 'free');
     },
@@ -6200,6 +6209,7 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     buttonInProgress: pluginResolveConflictInProgress[currentPluginFamily.slug] || false,
     selectedPluginForConflictResolution: selectedPluginForConflictResolution
   })), isModalActive(MODAL_TYPES.LICENSE_MANAGEMENT) && /*#__PURE__*/React.createElement(_modal_license_management__WEBPACK_IMPORTED_MODULE_7__.ModalLicenseManagement, _extends({}, modalProps, {
+    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Manage %s License', 'publishpress-hub'), currentPluginDisplayName),
     onActivate: function onActivate(licenseKey) {
       return handleActivateLicense(currentPluginFamily, licenseKey);
     },
@@ -6208,6 +6218,7 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     },
     initialLicenseKey: currentPluginFamily.proPlugin.licenseKey
   })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_ACTIVATING_LICENSE) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_6__.ModalLicenseInput, _extends({}, modalProps, {
+    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Activate %s License', 'publishpress-hub'), currentPluginDisplayName),
     onActivate: function onActivate(licenseKey) {
       return handleActivateLicense(currentPluginFamily, licenseKey);
     }
@@ -6337,9 +6348,10 @@ var ModalUpgradeComponent = function ModalUpgradeComponent(_ref) {
     onLicenseClick = _ref.onLicenseClick,
     onBuyClick = _ref.onBuyClick,
     proDetailsUrl = _ref.proDetailsUrl,
-    changelogUrl = _ref.changelogUrl;
+    changelogUrl = _ref.changelogUrl,
+    title = _ref.title;
   return /*#__PURE__*/React.createElement(_modal__WEBPACK_IMPORTED_MODULE_3__.Modal, {
-    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Upgrade to Pro', 'publishpress-hub'),
+    title: title || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Upgrade to Pro', 'publishpress-hub'),
     className: "pp-hub-modal-upgrade",
     onRequestClose: function onRequestClose() {
       return onClose();
@@ -6965,14 +6977,21 @@ var useModalManager = function useModalManager() {
     _useState4 = _slicedToArray(_useState3, 2),
     currentPluginFamily = _useState4[0],
     setCurrentPluginFamily = _useState4[1];
+  var _useState5 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState6 = _slicedToArray(_useState5, 2),
+    currentPluginDisplayName = _useState6[0],
+    setCurrentPluginDisplayName = _useState6[1];
   var openModal = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (modalType) {
-    var plugin = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    var pluginFamily = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
     setActiveModal(modalType);
-    setCurrentPluginFamily(plugin);
+    setCurrentPluginFamily(pluginFamily);
+    var isPro = pluginFamily.proPlugin.isInstalled;
+    setCurrentPluginDisplayName(isPro ? pluginFamily.proPlugin.name : pluginFamily.freePlugin.name);
   }, []);
   var closeModal = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
     setActiveModal(MODAL_TYPES.NONE);
     setCurrentPluginFamily(null);
+    setCurrentPluginDisplayName(null);
   }, []);
   var isModalActive = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (modalType) {
     return activeModal === modalType;
@@ -6983,7 +7002,8 @@ var useModalManager = function useModalManager() {
     currentPluginFamily: currentPluginFamily,
     openModal: openModal,
     closeModal: closeModal,
-    isModalActive: isModalActive
+    isModalActive: isModalActive,
+    currentPluginDisplayName: currentPluginDisplayName
   };
 };
 
@@ -7450,13 +7470,15 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
   var selectedPluginForConflictResolution = modalStates.selectedPluginForConflictResolution,
     pluginError = modalStates.pluginError;
   var currentPluginState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    var currentPluginFamily = modalManager.currentPluginFamily;
+    var currentPluginFamily = modalManager.currentPluginFamily,
+      currentPluginDisplayName = modalManager.currentPluginDisplayName;
     if (!currentPluginFamily) return {
       error: null,
       inProgress: false
     };
     var slug = currentPluginFamily.slug;
     return {
+      pluginDisplayName: currentPluginDisplayName,
       error: pluginError[slug] || null,
       inProgress: Boolean(pluginInstallationInProgress[slug] || pluginUninstallationInProgress[slug] || pluginDeactivationInProgress[slug] || pluginActivationInProgress[slug] || pluginUpgradeInProgress[slug] || pluginResolveConflictInProgress[slug] || pluginLicenseActivationInProgress[slug] || pluginLicenseDeactivationInProgress[slug])
     };

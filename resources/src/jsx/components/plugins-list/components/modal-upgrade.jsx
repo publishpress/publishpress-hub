@@ -21,10 +21,11 @@ const ModalUpgradeComponent = ({
     onBuyClick,
     proDetailsUrl,
     changelogUrl,
+    title,
 }) => {
     return (
         <Modal
-            title={__('Upgrade to Pro', 'publishpress-hub')}
+            title={title || __('Upgrade to Pro', 'publishpress-hub')}
             className='pp-hub-modal-upgrade'
             onRequestClose={() => onClose()}
         >

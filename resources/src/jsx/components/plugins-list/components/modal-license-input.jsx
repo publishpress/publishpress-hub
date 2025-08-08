@@ -22,6 +22,7 @@ const ModalLicenseInputComponent = ({
     onActivate,
     error,
     buttonInProgress,
+    title,
 }) => {
     const [licenseKey, setLicenseKey] = useState('');
     const [activationAttempted, setActivationAttempted] = useState(false);
@@ -46,7 +47,7 @@ const ModalLicenseInputComponent = ({
 
     return (
         <Modal
-            title={__('Enter your license key', 'publishpress-hub')}
+            title={title || __('Enter your license key', 'publishpress-hub')}
             className='pp-hub-modal-license-input'
             onRequestClose={() => onClose()}
         >

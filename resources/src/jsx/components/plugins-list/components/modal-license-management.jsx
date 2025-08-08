@@ -35,6 +35,7 @@ const ModalLicenseManagementComponent = ({
     error,
     buttonInProgress,
     initialLicenseKey,
+    title,
 }) => {
     const [licenseKey, setLicenseKey] = useState(initialLicenseKey || '');
     const [currentAction, setCurrentAction] = useState(licenseKey === '' ? ACTIONS.EDIT : ACTIONS.VIEW);
@@ -74,7 +75,7 @@ const ModalLicenseManagementComponent = ({
 
     return (
         <Modal
-            title={__('Manage your license', 'publishpress-hub')}
+            title={title || __('Manage your license', 'publishpress-hub')}
             className='pp-hub-modal-license-input'
             onRequestClose={() => onClose()}
         >

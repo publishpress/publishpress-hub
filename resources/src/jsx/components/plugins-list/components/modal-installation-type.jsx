@@ -22,10 +22,11 @@ const ModalInstallationTypeComponent = ({
     freeDetailsUrl,
     proDetailsUrl,
     changelogUrl,
+    title,
 }) => {
     return (
         <Modal
-            title={__('Install Plugin', 'publishpress-hub')}
+            title={title || __('Install Plugin', 'publishpress-hub')}
             className='pp-hub-modal-installation-type'
             onRequestClose={() => onClose()}
         >
