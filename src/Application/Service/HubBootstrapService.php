@@ -23,7 +23,7 @@ use PublishPress\Hub\Domain\Plugin\Entity\ProPlugin;
 use PublishPress\Hub\Infrastructure\Environment\Contract\EnvironmentServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
-use PublishPress\Hub\Presentation\Controller\MainMenuController;
+use PublishPress\Hub\Admin\MenuController;
 
 class HubBootstrapService implements BootableInterface
 {
@@ -36,7 +36,7 @@ class HubBootstrapService implements BootableInterface
      */
     private array $servicesToInit = [];
 
-    private MainMenuController $mainMenuController;
+    private MenuController $mainMenuController;
 
     private PluginFamilyRepositoryInterface $pluginFamilyRepository;
 
@@ -45,7 +45,7 @@ class HubBootstrapService implements BootableInterface
     /**
      * @param HooksServiceInterface $hooksService
      * @param BootableInterface[] $servicesToInit
-     * @param MainMenuController $mainMenuController
+     * @param MenuController $mainMenuController
      * @param PluginFamilyRepositoryInterface $pluginFamilyRepository
      *
      * @since 1.0.0
@@ -53,7 +53,7 @@ class HubBootstrapService implements BootableInterface
     public function __construct(
         HooksServiceInterface $hooksService,
         array $servicesToInit,
-        MainMenuController $mainMenuController,
+        MenuController $mainMenuController,
         PluginFamilyRepositoryInterface $pluginFamilyRepository,
         EnvironmentServiceInterface $environmentService
     ) {

@@ -51,10 +51,10 @@ use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginStatusAdapter;
 use PublishPress\Hub\Infrastructure\WP\Remote\WPRemoteAdapter;
 use PublishPress\Hub\Infrastructure\WP\RestApi\WPRestApiAdapter;
 use PublishPress\Hub\Infrastructure\WP\Security\WPSecurityAdapter;
-use PublishPress\Hub\Presentation\Controller\DevComponentsShowcaseController;
-use PublishPress\Hub\Presentation\Controller\MainMenuController;
-use PublishPress\Hub\Presentation\Controller\PluginsDashboardController;
-use PublishPress\Hub\Presentation\Controller\RestApi\PluginsController;
+use PublishPress\Hub\Admin\Page\ComponentsShowcaseController;
+use PublishPress\Hub\Admin\MenuController;
+use PublishPress\Hub\Admin\Page\PluginsDashboardController;
+use PublishPress\Hub\Rest\PluginsController;
 use PublishPress\Psr\Container\ContainerInterface;
 
 return [
@@ -64,9 +64,9 @@ return [
 
     AbstractDependencies::PLUGIN_URL => PUBLISHPRESS_HUB_URL,
 
-    AbstractDependencies::PLUGIN_RESOURCES_PATH => PUBLISHPRESS_HUB_PATH . 'src/resources/dist/',
+    AbstractDependencies::PLUGIN_RESOURCES_PATH => PUBLISHPRESS_HUB_PATH . 'resources/dist/',
 
-    AbstractDependencies::PLUGIN_RESOURCES_URL => PUBLISHPRESS_HUB_URL . 'src/resources/dist/',
+    AbstractDependencies::PLUGIN_RESOURCES_URL => PUBLISHPRESS_HUB_URL . 'resources/dist/',
 
     AbstractDependencies::PLUGIN_VERSION => PUBLISHPRESS_HUB_VERSION,
 
@@ -308,7 +308,7 @@ return [
 
     // Presentation Services
     AbstractDependencies::MAIN_MENU_CONTROLLER =>
-        fn(ContainerInterface $container) => new MainMenuController(
+        fn(ContainerInterface $container) => new MenuController(
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
             $container->get(AbstractDependencies::ASSET_SERVICE),
             $container->get(AbstractDependencies::HOOKS_SERVICE)
@@ -324,7 +324,7 @@ return [
         ),
 
     AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER =>
-        fn(ContainerInterface $container) => new DevComponentsShowcaseController(
+        fn(ContainerInterface $container) => new ComponentsShowcaseController(
             $container->get(AbstractDependencies::HOOKS_SERVICE),
             $container->get(AbstractDependencies::VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),

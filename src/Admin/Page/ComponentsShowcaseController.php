@@ -3,7 +3,7 @@
 /**
  * Dev components showcase controller.
  *
- * @package PublishPress\Hub\Presentation\Controller
+ * @package PublishPress\Hub\Admin\Page
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,7 +12,7 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Presentation\Controller;
+namespace PublishPress\Hub\Admin\Page;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
@@ -23,7 +23,7 @@ use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
 
-class DevComponentsShowcaseController implements BootableInterface
+class ComponentsShowcaseController implements BootableInterface
 {
     use BootableTrait;
 

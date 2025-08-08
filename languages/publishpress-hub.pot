@@ -254,11 +254,11 @@ msgstr ""
 msgid "Failed to get plugin information: %s"
 msgstr ""
 
-#: src/Presentation/Controller/DevComponentsShowcaseController.php:123
+#: src/Admin/Page/ComponentsShowcaseController.php:123
 msgid "Please wait while we load the components showcase..."
 msgstr ""
 
-#: src/Presentation/Controller/PluginsDashboardController.php:130
+#: src/Admin/Page/PluginsDashboardController.php:130
 msgid "Please wait while we load the plugins dashboard..."
 msgstr ""
 

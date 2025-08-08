@@ -35,10 +35,10 @@ if (false) // removed by dead control flow
 
 /***/ }),
 
-/***/ "./src/resources/Asset/src/jsx/components/admin-page/container.jsx":
-/*!*************************************************************************!*\
-  !*** ./src/resources/Asset/src/jsx/components/admin-page/container.jsx ***!
-  \*************************************************************************/
+/***/ "./resources/src/jsx/components/admin-page/container.jsx":
+/*!***************************************************************!*\
+  !*** ./resources/src/jsx/components/admin-page/container.jsx ***!
+  \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -78,10 +78,10 @@ var AdminPageContainer = function AdminPageContainer(_ref) {
 
 /***/ }),
 
-/***/ "./src/resources/Asset/src/jsx/components/admin-page/header.jsx":
-/*!**********************************************************************!*\
-  !*** ./src/resources/Asset/src/jsx/components/admin-page/header.jsx ***!
-  \**********************************************************************/
+/***/ "./resources/src/jsx/components/admin-page/header.jsx":
+/*!************************************************************!*\
+  !*** ./resources/src/jsx/components/admin-page/header.jsx ***!
+  \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -91,7 +91,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../buttons/button */ "./src/resources/Asset/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../buttons/button */ "./resources/src/jsx/components/buttons/button.jsx");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /**
@@ -149,10 +149,10 @@ var AdminPageHeader = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(A
 
 /***/ }),
 
-/***/ "./src/resources/Asset/src/jsx/components/admin-page/index.jsx":
-/*!*********************************************************************!*\
-  !*** ./src/resources/Asset/src/jsx/components/admin-page/index.jsx ***!
-  \*********************************************************************/
+/***/ "./resources/src/jsx/components/admin-page/index.jsx":
+/*!***********************************************************!*\
+  !*** ./resources/src/jsx/components/admin-page/index.jsx ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -161,9 +161,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   AdminPageHeader: () => (/* reexport safe */ _header__WEBPACK_IMPORTED_MODULE_2__["default"]),
 /* harmony export */   AdminPageLayout: () => (/* reexport safe */ _layout__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./layout */ "./src/resources/Asset/src/jsx/components/admin-page/layout.jsx");
-/* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./container */ "./src/resources/Asset/src/jsx/components/admin-page/container.jsx");
-/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header */ "./src/resources/Asset/src/jsx/components/admin-page/header.jsx");
+/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./layout */ "./resources/src/jsx/components/admin-page/layout.jsx");
+/* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./container */ "./resources/src/jsx/components/admin-page/container.jsx");
+/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header */ "./resources/src/jsx/components/admin-page/header.jsx");
 /**
  * Admin page.
  *
@@ -180,10 +180,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/resources/Asset/src/jsx/components/admin-page/layout.jsx":
-/*!**********************************************************************!*\
-  !*** ./src/resources/Asset/src/jsx/components/admin-page/layout.jsx ***!
-  \**********************************************************************/
+/***/ "./resources/src/jsx/components/admin-page/layout.jsx":
+/*!************************************************************!*\
+  !*** ./resources/src/jsx/components/admin-page/layout.jsx ***!
+  \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -191,8 +191,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   AdminPageLayout: () => (/* binding */ AdminPageLayout),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./container */ "./src/resources/Asset/src/jsx/components/admin-page/container.jsx");
-/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header */ "./src/resources/Asset/src/jsx/components/admin-page/header.jsx");
+/* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./container */ "./resources/src/jsx/components/admin-page/container.jsx");
+/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header */ "./resources/src/jsx/components/admin-page/header.jsx");
 /**
  * Admin page layout.
  *
@@ -223,10 +223,10 @@ var AdminPageLayout = function AdminPageLayout(_ref) {
 
 /***/ }),
 
-/***/ "./src/resources/Asset/src/jsx/components/badge/badge.jsx":
-/*!****************************************************************!*\
-  !*** ./src/resources/Asset/src/jsx/components/badge/badge.jsx ***!
-  \****************************************************************/
+/***/ "./resources/src/jsx/components/badge/badge.jsx":
+/*!******************************************************!*\
+  !*** ./resources/src/jsx/components/badge/badge.jsx ***!
+  \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -262,10 +262,10 @@ var Badge = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(BadgeCompon
 
 /***/ }),
 
-/***/ "./src/resources/Asset/src/jsx/components/buttons/button.jsx":
-/*!*******************************************************************!*\
-  !*** ./src/resources/Asset/src/jsx/components/buttons/button.jsx ***!
-  \*******************************************************************/
+/***/ "./resources/src/jsx/components/buttons/button.jsx":
+/*!*********************************************************!*\
+  !*** ./resources/src/jsx/components/buttons/button.jsx ***!
+  \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -350,10 +350,10 @@ var Button = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(ButtonComp
 
 /***/ }),
 
-/***/ "./src/resources/Asset/src/jsx/components/pages/components-showcase.jsx":
-/*!******************************************************************************!*\
-  !*** ./src/resources/Asset/src/jsx/components/pages/components-showcase.jsx ***!
-  \******************************************************************************/
+/***/ "./resources/src/jsx/components/pages/components-showcase.jsx":
+/*!********************************************************************!*\
+  !*** ./resources/src/jsx/components/pages/components-showcase.jsx ***!
+  \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -364,9 +364,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _admin_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../admin-page */ "./src/resources/Asset/src/jsx/components/admin-page/index.jsx");
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../buttons/button */ "./src/resources/Asset/src/jsx/components/buttons/button.jsx");
-/* harmony import */ var _badge_badge__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../badge/badge */ "./src/resources/Asset/src/jsx/components/badge/badge.jsx");
+/* harmony import */ var _admin_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../admin-page */ "./resources/src/jsx/components/admin-page/index.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../buttons/button */ "./resources/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _badge_badge__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../badge/badge */ "./resources/src/jsx/components/badge/badge.jsx");
 /**
  * Components showcase.
  *
@@ -574,12 +574,12 @@ module.exports = ReactDOM;
 var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
-/*!*************************************************************!*\
-  !*** ./src/resources/Asset/src/jsx/components-showcase.jsx ***!
-  \*************************************************************/
+/*!***************************************************!*\
+  !*** ./resources/src/jsx/components-showcase.jsx ***!
+  \***************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var _components_pages_components_showcase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/pages/components-showcase */ "./src/resources/Asset/src/jsx/components/pages/components-showcase.jsx");
+/* harmony import */ var _components_pages_components_showcase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/pages/components-showcase */ "./resources/src/jsx/components/pages/components-showcase.jsx");
 /**
  * Components showcase.
  *

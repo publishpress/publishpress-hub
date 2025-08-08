@@ -3,7 +3,7 @@
 /**
  * Main menu controller.
  *
- * @package PublishPress\Hub\Presentation\Controller
+ * @package PublishPress\Hub\Admin
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,7 +12,7 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Presentation\Controller;
+namespace PublishPress\Hub\Admin;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
@@ -22,7 +22,7 @@ use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 
-class MainMenuController implements BootableInterface
+class MenuController implements BootableInterface
 {
     use BootableTrait;
 

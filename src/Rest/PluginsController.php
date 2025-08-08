@@ -3,7 +3,7 @@
 /**
  * Plugins controller.
  *
- * @package PublishPress\Hub\Presentation\Controller\RestApi
+ * @package PublishPress\Hub\Rest
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,7 +12,7 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Presentation\Controller\RestApi;
+namespace PublishPress\Hub\Rest;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
