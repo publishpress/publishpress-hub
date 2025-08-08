@@ -14,12 +14,10 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container;
 
-use PublishPress\Hub\Application\Service\DevComponentsShowcase\DevComponentsShowcaseService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Psr\Container\ContainerInterface;
 use PublishPress\Hub\Infrastructure\WordPress\Hooks\WordPressHooksAdapter;
 use PublishPress\Hub\Application\Service\HubBootstrapService;
-use PublishPress\Hub\Application\Service\PluginsDashboard\PluginsDashboardService;
 use PublishPress\Hub\Application\UseCase\Plugin\ActivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\DeactivateLicenseUseCase;
@@ -202,13 +200,13 @@ return [
             $servicesToInit = [
                 $container->get(AbstractDependencies::I18N_SERVICE),
                 $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
-                $container->get(AbstractDependencies::PLUGINS_DASHBOARD_SERVICE),
+                $container->get(AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER),
                 $container->get(AbstractDependencies::REST_API_SERVICE),
                 $container->get(AbstractDependencies::REST_API_PLUGINS_CONTROLLER),
             ];
 
             if (defined('PUBLISHPRESS_HUB_DEV_MODE') && constant('PUBLISHPRESS_HUB_DEV_MODE')) {
-                $servicesToInit[] = $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_SERVICE);
+                $servicesToInit[] = $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER);
             }
 
             return new HubBootstrapService(
@@ -218,16 +216,6 @@ return [
                 $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
             );
         },
-
-    AbstractDependencies::PLUGINS_DASHBOARD_SERVICE =>
-        fn(ContainerInterface $container) => new PluginsDashboardService(
-            $container->get(AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER)
-        ),
-
-    AbstractDependencies::DEV_COMPONENTS_SHOWCASE_SERVICE =>
-        fn(ContainerInterface $container) => new DevComponentsShowcaseService(
-            $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER)
-        ),
 
     AbstractDependencies::PLUGIN_FAMILY_REPOSITORY =>
         fn(ContainerInterface $container): PluginFamilyRepositoryInterface => new PluginFamilyRepository(),

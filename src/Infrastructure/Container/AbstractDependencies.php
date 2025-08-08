@@ -103,9 +103,6 @@ abstract class AbstractDependencies
     // Application Services
     public const HUB_BOOTSTRAP_SERVICE = 'publishpress-hub.application.hub.bootstrap.service';
 
-    public const PLUGINS_DASHBOARD_SERVICE = 'publishpress-hub.application.plugins-dashboard.dashboard.service';
-
-    public const DEV_COMPONENTS_SHOWCASE_SERVICE = 'publishpress-hub.application.dev-components-showcase.service';
 
     public const PLUGIN_FAMILY_REPOSITORY = 'publishpress-hub.domain.plugin-family.repository';
 
