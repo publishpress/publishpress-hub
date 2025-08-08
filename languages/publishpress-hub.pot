@@ -2,14 +2,14 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Hub 1.0.0-alpha.5\n"
+"Project-Id-Version: PublishPress Hub 1.0.0-alpha.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-08T20:19:20+00:00\n"
+"POT-Creation-Date: 2025-08-08T20:47:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
@@ -278,29 +278,33 @@ msgstr ""
 msgid "Components Showcase"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:43
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:44
 msgid "All"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:48
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:49
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:36
 msgid "Unlicensed"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:53
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:54
 msgid "Active"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:58
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:59
 msgid "Inactive"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:63
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:64
 msgid "Not installed"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:86
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:87
 msgid "Plugins Dashboard"
+msgstr ""
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:116
+msgid "Refresh"
 msgstr ""
 
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
