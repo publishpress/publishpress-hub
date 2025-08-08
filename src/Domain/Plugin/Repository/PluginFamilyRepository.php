@@ -19,7 +19,15 @@ use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 
 class PluginFamilyRepository implements PluginFamilyRepositoryInterface
 {
-    private array $families = [];
+    /**
+     * @var array<string, PluginFamilyInterface>
+     */
+    private array $familiesBySlug = [];
+
+    /**
+     * @var array<int, string>
+     */
+    private array $familiesSlugsByDownloadId = [];
 
     /**
      * Register a plugin family.
@@ -29,7 +37,10 @@ class PluginFamilyRepository implements PluginFamilyRepositoryInterface
      */
     public function registerFamily(PluginFamilyInterface $family): void
     {
-        $this->families[$family->getSlug()] = $family;
+        $this->familiesBySlug[$family->getSlug()] = $family;
+
+        $downloadId = $family->getProPlugin()->getDownloadId();
+        $this->familiesSlugsByDownloadId[$downloadId] = $family->getSlug();
     }
 
     /**
@@ -41,7 +52,25 @@ class PluginFamilyRepository implements PluginFamilyRepositoryInterface
      */
     public function findFamilyBySlug(string $slug): ?PluginFamilyInterface
     {
-        return $this->families[$slug] ?? null;
+        return $this->familiesBySlug[$slug] ?? null;
+    }
+
+    /**
+     * Find a plugin family by download ID.
+     *
+     * @param int $downloadId The download ID of the plugin family to find.
+     * @return PluginFamilyInterface|null The plugin family if found, null otherwise.
+     * @since 1.0.0
+     */
+    public function findFamilyByDownloadId(int $downloadId): ?PluginFamilyInterface
+    {
+        $slug = $this->familiesSlugsByDownloadId[$downloadId] ?? null;
+
+        if (empty($slug)) {
+            return null;
+        }
+
+        return $this->findFamilyBySlug($slug);
     }
 
     /**
@@ -52,7 +81,7 @@ class PluginFamilyRepository implements PluginFamilyRepositoryInterface
      */
     public function getAllFamilies(): array
     {
-        return array_values($this->families);
+        return array_values($this->familiesBySlug);
     }
 
     /**
@@ -63,7 +92,7 @@ class PluginFamilyRepository implements PluginFamilyRepositoryInterface
      */
     public function getAllFamilySlugs(): array
     {
-        return array_keys($this->families);
+        return array_keys($this->familiesBySlug);
     }
 
     /**
@@ -73,6 +102,6 @@ class PluginFamilyRepository implements PluginFamilyRepositoryInterface
      */
     public function reset(): void
     {
-        $this->families = [];
+        $this->familiesBySlug = [];
     }
 }

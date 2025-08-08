@@ -35,6 +35,15 @@ interface PluginFamilyRepositoryInterface
     public function findFamilyBySlug(string $slug): ?PluginFamilyInterface;
 
     /**
+     * Finds a plugin family by download ID.
+     *
+     * @param int $downloadId The download ID of the plugin family.
+     * @return PluginFamilyInterface|null The plugin family.
+     * @since 1.0.0
+     */
+    public function findFamilyByDownloadId(int $downloadId): ?PluginFamilyInterface;
+
+    /**
      * Gets all plugin families.
      *
      * @return array<PluginFamilyInterface> The plugin families.
