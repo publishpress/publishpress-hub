@@ -4518,10 +4518,10 @@ if (false) // removed by dead control flow
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/admin-page/container.jsx":
-/*!****************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/admin-page/container.jsx ***!
-  \****************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/admin-page/container.jsx":
+/*!*************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/admin-page/container.jsx ***!
+  \*************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4562,10 +4562,10 @@ var AdminPageContainer = function AdminPageContainer(_ref) {
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/admin-page/header.jsx":
-/*!*************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/admin-page/header.jsx ***!
-  \*************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/admin-page/header.jsx":
+/*!**********************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/admin-page/header.jsx ***!
+  \**********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4576,7 +4576,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../buttons/button */ "./src/resources/Asset/src/jsx/components/buttons/button.jsx");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /**
@@ -4634,10 +4634,10 @@ var AdminPageHeader = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(A
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/admin-page/index.jsx":
-/*!************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/admin-page/index.jsx ***!
-  \************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/admin-page/index.jsx":
+/*!*********************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/admin-page/index.jsx ***!
+  \*********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4647,9 +4647,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   AdminPageHeader: () => (/* reexport safe */ _header__WEBPACK_IMPORTED_MODULE_2__["default"]),
 /* harmony export */   AdminPageLayout: () => (/* reexport safe */ _layout__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./layout */ "./src/Presentation/Asset/src/jsx/components/admin-page/layout.jsx");
-/* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./container */ "./src/Presentation/Asset/src/jsx/components/admin-page/container.jsx");
-/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header */ "./src/Presentation/Asset/src/jsx/components/admin-page/header.jsx");
+/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./layout */ "./src/resources/Asset/src/jsx/components/admin-page/layout.jsx");
+/* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./container */ "./src/resources/Asset/src/jsx/components/admin-page/container.jsx");
+/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header */ "./src/resources/Asset/src/jsx/components/admin-page/header.jsx");
 /**
  * Admin page.
  *
@@ -4666,10 +4666,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/admin-page/layout.jsx":
-/*!*************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/admin-page/layout.jsx ***!
-  \*************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/admin-page/layout.jsx":
+/*!**********************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/admin-page/layout.jsx ***!
+  \**********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4678,8 +4678,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   AdminPageLayout: () => (/* binding */ AdminPageLayout),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./container */ "./src/Presentation/Asset/src/jsx/components/admin-page/container.jsx");
-/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header */ "./src/Presentation/Asset/src/jsx/components/admin-page/header.jsx");
+/* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./container */ "./src/resources/Asset/src/jsx/components/admin-page/container.jsx");
+/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header */ "./src/resources/Asset/src/jsx/components/admin-page/header.jsx");
 /**
  * Admin page layout.
  *
@@ -4710,10 +4710,10 @@ var AdminPageLayout = function AdminPageLayout(_ref) {
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/badge/badge.jsx":
-/*!*******************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/badge/badge.jsx ***!
-  \*******************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/badge/badge.jsx":
+/*!****************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/badge/badge.jsx ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4750,10 +4750,10 @@ var Badge = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(BadgeCompon
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx":
-/*!**********************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/buttons/button.jsx ***!
-  \**********************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/buttons/button.jsx":
+/*!*******************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/buttons/button.jsx ***!
+  \*******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4839,10 +4839,10 @@ var Button = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(ButtonComp
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/filter/filter-buttons-bar.jsx":
-/*!*********************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/filter/filter-buttons-bar.jsx ***!
-  \*********************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/filter/filter-buttons-bar.jsx":
+/*!******************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/filter/filter-buttons-bar.jsx ***!
+  \******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4853,7 +4853,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../buttons/button */ "./src/resources/Asset/src/jsx/components/buttons/button.jsx");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /**
@@ -4937,10 +4937,10 @@ var FilterButtonsBar = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/icons/base.jsx":
-/*!******************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/icons/base.jsx ***!
-  \******************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/icons/base.jsx":
+/*!***************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/icons/base.jsx ***!
+  \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4978,10 +4978,10 @@ var BaseIcon = function BaseIcon(_ref) {
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/icons/icon-warning.jsx":
-/*!**************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/icons/icon-warning.jsx ***!
-  \**************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/icons/icon-warning.jsx":
+/*!***********************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/icons/icon-warning.jsx ***!
+  \***********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4989,7 +4989,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   IconWarning: () => (/* binding */ IconWarning)
 /* harmony export */ });
-/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ "./src/Presentation/Asset/src/jsx/components/icons/base.jsx");
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ "./src/resources/Asset/src/jsx/components/icons/base.jsx");
 /**
  * Icon warning.
  *
@@ -5027,10 +5027,10 @@ var IconWarning = function IconWarning(_ref) {
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/icons/index.jsx":
-/*!*******************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/icons/index.jsx ***!
-  \*******************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/icons/index.jsx":
+/*!****************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/icons/index.jsx ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5038,7 +5038,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   IconWarning: () => (/* reexport safe */ _icon_warning__WEBPACK_IMPORTED_MODULE_0__.IconWarning)
 /* harmony export */ });
-/* harmony import */ var _icon_warning__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./icon-warning */ "./src/Presentation/Asset/src/jsx/components/icons/icon-warning.jsx");
+/* harmony import */ var _icon_warning__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./icon-warning */ "./src/resources/Asset/src/jsx/components/icons/icon-warning.jsx");
 /**
  * Icons.
  *
@@ -5053,10 +5053,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/message/message.jsx":
-/*!***********************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/message/message.jsx ***!
-  \***********************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/message/message.jsx":
+/*!********************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/message/message.jsx ***!
+  \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5098,10 +5098,10 @@ var Message = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(MessageCo
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/modal/index.jsx":
-/*!*******************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/modal/index.jsx ***!
-  \*******************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/modal/index.jsx":
+/*!****************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/modal/index.jsx ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5147,10 +5147,10 @@ var Modal = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(ModalCompon
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/notices/NoticesList.jsx":
-/*!***************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/notices/NoticesList.jsx ***!
-  \***************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/notices/NoticesList.jsx":
+/*!************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/notices/NoticesList.jsx ***!
+  \************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5210,10 +5210,10 @@ function NoticesList() {
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/notices/SnackbarList.jsx":
-/*!****************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/notices/SnackbarList.jsx ***!
-  \****************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/notices/SnackbarList.jsx":
+/*!*************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/notices/SnackbarList.jsx ***!
+  \*************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5267,10 +5267,10 @@ var SnackbarList = function SnackbarList() {
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/pages/plugins-dashboard.jsx":
-/*!*******************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/pages/plugins-dashboard.jsx ***!
-  \*******************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/pages/plugins-dashboard.jsx":
+/*!****************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/pages/plugins-dashboard.jsx ***!
+  \****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5284,12 +5284,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _admin_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../admin-page */ "./src/Presentation/Asset/src/jsx/components/admin-page/index.jsx");
-/* harmony import */ var _filter_filter_buttons_bar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../filter/filter-buttons-bar */ "./src/Presentation/Asset/src/jsx/components/filter/filter-buttons-bar.jsx");
-/* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../stores/plugins-dashboard */ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/index.jsx");
-/* harmony import */ var _plugins_list__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../plugins-list */ "./src/Presentation/Asset/src/jsx/components/plugins-list/index.jsx");
-/* harmony import */ var _notices_NoticesList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../notices/NoticesList */ "./src/Presentation/Asset/src/jsx/components/notices/NoticesList.jsx");
-/* harmony import */ var _notices_SnackbarList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../notices/SnackbarList */ "./src/Presentation/Asset/src/jsx/components/notices/SnackbarList.jsx");
+/* harmony import */ var _admin_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../admin-page */ "./src/resources/Asset/src/jsx/components/admin-page/index.jsx");
+/* harmony import */ var _filter_filter_buttons_bar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../filter/filter-buttons-bar */ "./src/resources/Asset/src/jsx/components/filter/filter-buttons-bar.jsx");
+/* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../stores/plugins-dashboard */ "./src/resources/Asset/src/jsx/stores/plugins-dashboard/index.jsx");
+/* harmony import */ var _plugins_list__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../plugins-list */ "./src/resources/Asset/src/jsx/components/plugins-list/index.jsx");
+/* harmony import */ var _notices_NoticesList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../notices/NoticesList */ "./src/resources/Asset/src/jsx/components/notices/NoticesList.jsx");
+/* harmony import */ var _notices_SnackbarList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../notices/SnackbarList */ "./src/resources/Asset/src/jsx/components/notices/SnackbarList.jsx");
 /**
  * Plugins dashboard.
  *
@@ -5394,10 +5394,10 @@ var PluginsDashboard = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/action-button.jsx":
-/*!*********************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/components/action-button.jsx ***!
-  \*********************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/components/action-button.jsx":
+/*!******************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/components/action-button.jsx ***!
+  \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5409,8 +5409,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
-/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../icons */ "./src/Presentation/Asset/src/jsx/components/icons/index.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/resources/Asset/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../icons */ "./src/resources/Asset/src/jsx/components/icons/index.jsx");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -5518,10 +5518,10 @@ var ActionButton = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(Acti
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/index.jsx":
-/*!*************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/components/index.jsx ***!
-  \*************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/components/index.jsx":
+/*!**********************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/components/index.jsx ***!
+  \**********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5539,17 +5539,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   PluginItem: () => (/* reexport safe */ _plugin_item__WEBPACK_IMPORTED_MODULE_1__.PluginItem),
 /* harmony export */   StatusFlag: () => (/* reexport safe */ _status_flag__WEBPACK_IMPORTED_MODULE_9__.StatusFlag)
 /* harmony export */ });
-/* harmony import */ var _modal_renderer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-renderer */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-renderer.jsx");
-/* harmony import */ var _plugin_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./plugin-item */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/plugin-item.jsx");
-/* harmony import */ var _modal_confirmation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal-confirmation */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-confirmation.jsx");
-/* harmony import */ var _modal_installation_type__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modal-installation-type */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-installation-type.jsx");
-/* harmony import */ var _modal_license_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modal-license-input */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-license-input.jsx");
-/* harmony import */ var _modal_license_management__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modal-license-management */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-license-management.jsx");
-/* harmony import */ var _modal_upgrade__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modal-upgrade */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-upgrade.jsx");
-/* harmony import */ var _modal_resolve_conflict__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modal-resolve-conflict */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx");
-/* harmony import */ var _action_button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./action-button */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/action-button.jsx");
-/* harmony import */ var _status_flag__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./status-flag */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/status-flag.jsx");
-/* harmony import */ var _license_key_control__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./license-key-control */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/license-key-control.jsx");
+/* harmony import */ var _modal_renderer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-renderer */ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-renderer.jsx");
+/* harmony import */ var _plugin_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./plugin-item */ "./src/resources/Asset/src/jsx/components/plugins-list/components/plugin-item.jsx");
+/* harmony import */ var _modal_confirmation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal-confirmation */ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-confirmation.jsx");
+/* harmony import */ var _modal_installation_type__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modal-installation-type */ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-installation-type.jsx");
+/* harmony import */ var _modal_license_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modal-license-input */ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-license-input.jsx");
+/* harmony import */ var _modal_license_management__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modal-license-management */ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-license-management.jsx");
+/* harmony import */ var _modal_upgrade__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modal-upgrade */ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-upgrade.jsx");
+/* harmony import */ var _modal_resolve_conflict__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modal-resolve-conflict */ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx");
+/* harmony import */ var _action_button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./action-button */ "./src/resources/Asset/src/jsx/components/plugins-list/components/action-button.jsx");
+/* harmony import */ var _status_flag__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./status-flag */ "./src/resources/Asset/src/jsx/components/plugins-list/components/status-flag.jsx");
+/* harmony import */ var _license_key_control__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./license-key-control */ "./src/resources/Asset/src/jsx/components/plugins-list/components/license-key-control.jsx");
 /**
  * Plugins list components.
  *
@@ -5574,10 +5574,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/license-key-control.jsx":
-/*!***************************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/components/license-key-control.jsx ***!
-  \***************************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/components/license-key-control.jsx":
+/*!************************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/components/license-key-control.jsx ***!
+  \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5590,7 +5590,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _hooks_use_focus_on_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hooks/use-focus-on-action */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-focus-on-action.jsx");
+/* harmony import */ var _hooks_use_focus_on_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hooks/use-focus-on-action */ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-focus-on-action.jsx");
 var _excluded = ["autoFocus", "onEnterKeyDown", "value", "onChange", "placeholder", "className", "onFocusReady"];
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
@@ -5671,10 +5671,10 @@ var LicenseKeyControl = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-confirmation.jsx":
-/*!**************************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-confirmation.jsx ***!
-  \**************************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-confirmation.jsx":
+/*!***********************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/components/modal-confirmation.jsx ***!
+  \***********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5686,9 +5686,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
-/* harmony import */ var _message_message__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../message/message */ "./src/Presentation/Asset/src/jsx/components/message/message.jsx");
-/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../modal */ "./src/Presentation/Asset/src/jsx/components/modal/index.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/resources/Asset/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _message_message__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../message/message */ "./src/resources/Asset/src/jsx/components/message/message.jsx");
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../modal */ "./src/resources/Asset/src/jsx/components/modal/index.jsx");
 /**
  * Modal confirmation.
  *
@@ -5741,10 +5741,10 @@ var ModalConfirmation = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-installation-type.jsx":
-/*!*******************************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-installation-type.jsx ***!
-  \*******************************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-installation-type.jsx":
+/*!****************************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/components/modal-installation-type.jsx ***!
+  \****************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5756,8 +5756,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
-/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../modal */ "./src/Presentation/Asset/src/jsx/components/modal/index.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/resources/Asset/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../modal */ "./src/resources/Asset/src/jsx/components/modal/index.jsx");
 /**
  * Modal installation type.
  *
@@ -5814,10 +5814,10 @@ var ModalInstallationType = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.m
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-license-input.jsx":
-/*!***************************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-license-input.jsx ***!
-  \***************************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-license-input.jsx":
+/*!************************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/components/modal-license-input.jsx ***!
+  \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5829,10 +5829,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
-/* harmony import */ var _message_message__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../message/message */ "./src/Presentation/Asset/src/jsx/components/message/message.jsx");
-/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../modal */ "./src/Presentation/Asset/src/jsx/components/modal/index.jsx");
-/* harmony import */ var _license_key_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./license-key-control */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/license-key-control.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/resources/Asset/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _message_message__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../message/message */ "./src/resources/Asset/src/jsx/components/message/message.jsx");
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../modal */ "./src/resources/Asset/src/jsx/components/modal/index.jsx");
+/* harmony import */ var _license_key_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./license-key-control */ "./src/resources/Asset/src/jsx/components/plugins-list/components/license-key-control.jsx");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -5919,10 +5919,10 @@ var ModalLicenseInput = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-license-management.jsx":
-/*!********************************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-license-management.jsx ***!
-  \********************************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-license-management.jsx":
+/*!*****************************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/components/modal-license-management.jsx ***!
+  \*****************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5934,10 +5934,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
-/* harmony import */ var _message_message__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../message/message */ "./src/Presentation/Asset/src/jsx/components/message/message.jsx");
-/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../modal */ "./src/Presentation/Asset/src/jsx/components/modal/index.jsx");
-/* harmony import */ var _license_key_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./license-key-control */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/license-key-control.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/resources/Asset/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _message_message__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../message/message */ "./src/resources/Asset/src/jsx/components/message/message.jsx");
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../modal */ "./src/resources/Asset/src/jsx/components/modal/index.jsx");
+/* harmony import */ var _license_key_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./license-key-control */ "./src/resources/Asset/src/jsx/components/plugins-list/components/license-key-control.jsx");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -6059,10 +6059,10 @@ var ModalLicenseManagement = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-renderer.jsx":
-/*!**********************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-renderer.jsx ***!
-  \**********************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-renderer.jsx":
+/*!*******************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/components/modal-renderer.jsx ***!
+  \*******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6076,13 +6076,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../stores/plugins-dashboard */ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/index.jsx");
-/* harmony import */ var _modal_confirmation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modal-confirmation */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-confirmation.jsx");
-/* harmony import */ var _modal_installation_type__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modal-installation-type */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-installation-type.jsx");
-/* harmony import */ var _modal_license_input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modal-license-input */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-license-input.jsx");
-/* harmony import */ var _modal_license_management__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modal-license-management */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-license-management.jsx");
-/* harmony import */ var _modal_resolve_conflict__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modal-resolve-conflict */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx");
-/* harmony import */ var _modal_upgrade__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modal-upgrade */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-upgrade.jsx");
+/* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../stores/plugins-dashboard */ "./src/resources/Asset/src/jsx/stores/plugins-dashboard/index.jsx");
+/* harmony import */ var _modal_confirmation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modal-confirmation */ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-confirmation.jsx");
+/* harmony import */ var _modal_installation_type__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modal-installation-type */ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-installation-type.jsx");
+/* harmony import */ var _modal_license_input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modal-license-input */ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-license-input.jsx");
+/* harmony import */ var _modal_license_management__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modal-license-management */ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-license-management.jsx");
+/* harmony import */ var _modal_resolve_conflict__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modal-resolve-conflict */ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx");
+/* harmony import */ var _modal_upgrade__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modal-upgrade */ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-upgrade.jsx");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -6217,10 +6217,10 @@ var ModalRenderer = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(Mod
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx":
-/*!******************************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx ***!
-  \******************************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx":
+/*!***************************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx ***!
+  \***************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6232,9 +6232,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
-/* harmony import */ var _message_message__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../message/message */ "./src/Presentation/Asset/src/jsx/components/message/message.jsx");
-/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../modal */ "./src/Presentation/Asset/src/jsx/components/modal/index.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/resources/Asset/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _message_message__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../message/message */ "./src/resources/Asset/src/jsx/components/message/message.jsx");
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../modal */ "./src/resources/Asset/src/jsx/components/modal/index.jsx");
 /**
  * Modal resolve conflict.
  *
@@ -6301,10 +6301,10 @@ var ModalResolveConflict = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.me
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-upgrade.jsx":
-/*!*********************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/components/modal-upgrade.jsx ***!
-  \*********************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/components/modal-upgrade.jsx":
+/*!******************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/components/modal-upgrade.jsx ***!
+  \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6316,8 +6316,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
-/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../modal */ "./src/Presentation/Asset/src/jsx/components/modal/index.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/resources/Asset/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../modal */ "./src/resources/Asset/src/jsx/components/modal/index.jsx");
 /**
  * Modal upgrade.
  *
@@ -6370,10 +6370,10 @@ var ModalUpgrade = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(Moda
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/plugin-item.jsx":
-/*!*******************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/components/plugin-item.jsx ***!
-  \*******************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/components/plugin-item.jsx":
+/*!****************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/components/plugin-item.jsx ***!
+  \****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6387,11 +6387,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _tooltip__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../tooltip */ "./src/Presentation/Asset/src/jsx/components/tooltip/index.jsx");
-/* harmony import */ var _status_flag__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./status-flag */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/status-flag.jsx");
-/* harmony import */ var _action_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./action-button */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/action-button.jsx");
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
-/* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/index.jsx");
+/* harmony import */ var _tooltip__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../tooltip */ "./src/resources/Asset/src/jsx/components/tooltip/index.jsx");
+/* harmony import */ var _status_flag__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./status-flag */ "./src/resources/Asset/src/jsx/components/plugins-list/components/status-flag.jsx");
+/* harmony import */ var _action_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./action-button */ "./src/resources/Asset/src/jsx/components/plugins-list/components/action-button.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../buttons/button */ "./src/resources/Asset/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks */ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/index.jsx");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
@@ -6573,10 +6573,10 @@ var PluginItem = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(Plugin
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/status-flag.jsx":
-/*!*******************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/components/status-flag.jsx ***!
-  \*******************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/components/status-flag.jsx":
+/*!****************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/components/status-flag.jsx ***!
+  \****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6588,7 +6588,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _badge_badge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../badge/badge */ "./src/Presentation/Asset/src/jsx/components/badge/badge.jsx");
+/* harmony import */ var _badge_badge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../badge/badge */ "./src/resources/Asset/src/jsx/components/badge/badge.jsx");
 /**
  * Status flag.
  *
@@ -6714,10 +6714,10 @@ var StatusFlag = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(Status
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/index.jsx":
-/*!********************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/index.jsx ***!
-  \********************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/index.jsx":
+/*!*****************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/hooks/index.jsx ***!
+  \*****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6730,12 +6730,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   usePluginStatus: () => (/* reexport safe */ _use_plugin_status__WEBPACK_IMPORTED_MODULE_2__.usePluginStatus),
 /* harmony export */   useScreenSize: () => (/* reexport safe */ _use_screen_size__WEBPACK_IMPORTED_MODULE_5__.useScreenSize)
 /* harmony export */ });
-/* harmony import */ var _use_modal_manager__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./use-modal-manager */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-modal-manager.jsx");
-/* harmony import */ var _use_plugin_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./use-plugin-actions */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-plugin-actions.jsx");
-/* harmony import */ var _use_plugin_status__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./use-plugin-status */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx");
-/* harmony import */ var _use_action_buttons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./use-action-buttons */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx");
-/* harmony import */ var _use_plugin_display_info__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./use-plugin-display-info */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-plugin-display-info.jsx");
-/* harmony import */ var _use_screen_size__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./use-screen-size */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-screen-size.jsx");
+/* harmony import */ var _use_modal_manager__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./use-modal-manager */ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-modal-manager.jsx");
+/* harmony import */ var _use_plugin_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./use-plugin-actions */ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-plugin-actions.jsx");
+/* harmony import */ var _use_plugin_status__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./use-plugin-status */ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx");
+/* harmony import */ var _use_action_buttons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./use-action-buttons */ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx");
+/* harmony import */ var _use_plugin_display_info__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./use-plugin-display-info */ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-plugin-display-info.jsx");
+/* harmony import */ var _use_screen_size__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./use-screen-size */ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-screen-size.jsx");
 /**
  * Plugins list hooks.
  *
@@ -6755,10 +6755,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx":
-/*!*********************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx ***!
-  \*********************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx":
+/*!******************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx ***!
+  \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6853,10 +6853,10 @@ var useActionButtons = function useActionButtons(pluginFamily, status, loadingSt
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-focus-on-action.jsx":
-/*!**********************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-focus-on-action.jsx ***!
-  \**********************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-focus-on-action.jsx":
+/*!*******************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-focus-on-action.jsx ***!
+  \*******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6915,10 +6915,10 @@ var useFocusOnAction = function useFocusOnAction() {
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-modal-manager.jsx":
-/*!********************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-modal-manager.jsx ***!
-  \********************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-modal-manager.jsx":
+/*!*****************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-modal-manager.jsx ***!
+  \*****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6989,10 +6989,10 @@ var useModalManager = function useModalManager() {
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-plugin-actions.jsx":
-/*!*********************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-plugin-actions.jsx ***!
-  \*********************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-plugin-actions.jsx":
+/*!******************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-plugin-actions.jsx ***!
+  \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7004,7 +7004,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../stores/plugins-dashboard */ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/index.jsx");
+/* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../stores/plugins-dashboard */ "./src/resources/Asset/src/jsx/stores/plugins-dashboard/index.jsx");
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
@@ -7207,10 +7207,10 @@ var usePluginActions = function usePluginActions(modalManager) {
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-plugin-display-info.jsx":
-/*!**************************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-plugin-display-info.jsx ***!
-  \**************************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-plugin-display-info.jsx":
+/*!***********************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-plugin-display-info.jsx ***!
+  \***********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7245,10 +7245,10 @@ var usePluginDisplayInfo = function usePluginDisplayInfo(pluginFamily, pluginIco
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx":
-/*!********************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx ***!
-  \********************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx":
+/*!*****************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx ***!
+  \*****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7312,10 +7312,10 @@ var usePluginStatus = function usePluginStatus(pluginFamily) {
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-screen-size.jsx":
-/*!******************************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-screen-size.jsx ***!
-  \******************************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-screen-size.jsx":
+/*!***************************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/hooks/use-screen-size.jsx ***!
+  \***************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7373,10 +7373,10 @@ var useScreenSize = function useScreenSize() {
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/plugins-list/index.jsx":
-/*!**************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/plugins-list/index.jsx ***!
-  \**************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/plugins-list/index.jsx":
+/*!***********************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/plugins-list/index.jsx ***!
+  \***********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7390,9 +7390,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../stores/plugins-dashboard */ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/index.jsx");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/index.jsx");
-/* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hooks */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/index.jsx");
+/* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../stores/plugins-dashboard */ "./src/resources/Asset/src/jsx/stores/plugins-dashboard/index.jsx");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components */ "./src/resources/Asset/src/jsx/components/plugins-list/components/index.jsx");
+/* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hooks */ "./src/resources/Asset/src/jsx/components/plugins-list/hooks/index.jsx");
 /**
  * Plugins list.
  *
@@ -7511,10 +7511,10 @@ var PluginsList = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(Plugi
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/components/tooltip/index.jsx":
-/*!*********************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/components/tooltip/index.jsx ***!
-  \*********************************************************************/
+/***/ "./src/resources/Asset/src/jsx/components/tooltip/index.jsx":
+/*!******************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/components/tooltip/index.jsx ***!
+  \******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7708,10 +7708,10 @@ var Tooltip = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(CustomToo
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/actions.jsx":
-/*!*****************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/actions.jsx ***!
-  \*****************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/stores/plugins-dashboard/actions.jsx":
+/*!**************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/stores/plugins-dashboard/actions.jsx ***!
+  \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7746,7 +7746,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _utils_apiReady__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/apiReady */ "./src/Presentation/Asset/src/jsx/utils/apiReady.js");
+/* harmony import */ var _utils_apiReady__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/apiReady */ "./src/resources/Asset/src/jsx/utils/apiReady.js");
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
 var _marked = /*#__PURE__*/_regenerator().m(setSelectedFilter),
@@ -8787,10 +8787,10 @@ function handleErrorMessageOnContext(error) {
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/index.jsx":
-/*!***************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/index.jsx ***!
-  \***************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/stores/plugins-dashboard/index.jsx":
+/*!************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/stores/plugins-dashboard/index.jsx ***!
+  \************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8803,10 +8803,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_data_controls__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/data-controls */ "@wordpress/data-controls");
 /* harmony import */ var _wordpress_data_controls__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _name__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./name */ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/name.jsx");
-/* harmony import */ var _reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reducer */ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/reducer.jsx");
-/* harmony import */ var _selectors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./selectors */ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/selectors.jsx");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions */ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/actions.jsx");
+/* harmony import */ var _name__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./name */ "./src/resources/Asset/src/jsx/stores/plugins-dashboard/name.jsx");
+/* harmony import */ var _reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reducer */ "./src/resources/Asset/src/jsx/stores/plugins-dashboard/reducer.jsx");
+/* harmony import */ var _selectors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./selectors */ "./src/resources/Asset/src/jsx/stores/plugins-dashboard/selectors.jsx");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions */ "./src/resources/Asset/src/jsx/stores/plugins-dashboard/actions.jsx");
 /**
  * Plugins dashboard store.
  *
@@ -8834,10 +8834,10 @@ var store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.createReduxStore)(_n
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/name.jsx":
-/*!**************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/name.jsx ***!
-  \**************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/stores/plugins-dashboard/name.jsx":
+/*!***********************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/stores/plugins-dashboard/name.jsx ***!
+  \***********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8861,10 +8861,10 @@ var STORE_NAME = 'publishpress-hub/plugins-dashboard';
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/reducer.jsx":
-/*!*****************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/reducer.jsx ***!
-  \*****************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/stores/plugins-dashboard/reducer.jsx":
+/*!**************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/stores/plugins-dashboard/reducer.jsx ***!
+  \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -9233,10 +9233,10 @@ var reducer = function reducer() {
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/selectors.jsx":
-/*!*******************************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/selectors.jsx ***!
-  \*******************************************************************************/
+/***/ "./src/resources/Asset/src/jsx/stores/plugins-dashboard/selectors.jsx":
+/*!****************************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/stores/plugins-dashboard/selectors.jsx ***!
+  \****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -9455,10 +9455,10 @@ var filterPlugin = function filterPlugin(plugin, selectedFilter) {
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/utils/apiReady.js":
-/*!**********************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/utils/apiReady.js ***!
-  \**********************************************************/
+/***/ "./src/resources/Asset/src/jsx/utils/apiReady.js":
+/*!*******************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/utils/apiReady.js ***!
+  \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -9495,10 +9495,10 @@ function apiReady() {
 
 /***/ }),
 
-/***/ "./src/Presentation/Asset/src/jsx/utils/themeController.js":
-/*!*****************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/utils/themeController.js ***!
-  \*****************************************************************/
+/***/ "./src/resources/Asset/src/jsx/utils/themeController.js":
+/*!**************************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/utils/themeController.js ***!
+  \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -9866,14 +9866,14 @@ var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
 (() => {
 "use strict";
-/*!**************************************************************!*\
-  !*** ./src/Presentation/Asset/src/jsx/plugins-dashboard.jsx ***!
-  \**************************************************************/
+/*!***********************************************************!*\
+  !*** ./src/resources/Asset/src/jsx/plugins-dashboard.jsx ***!
+  \***********************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var _components_pages_plugins_dashboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/pages/plugins-dashboard */ "./src/Presentation/Asset/src/jsx/components/pages/plugins-dashboard.jsx");
-/* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stores/plugins-dashboard */ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/index.jsx");
-/* harmony import */ var _utils_themeController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/themeController */ "./src/Presentation/Asset/src/jsx/utils/themeController.js");
+/* harmony import */ var _components_pages_plugins_dashboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/pages/plugins-dashboard */ "./src/resources/Asset/src/jsx/components/pages/plugins-dashboard.jsx");
+/* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stores/plugins-dashboard */ "./src/resources/Asset/src/jsx/stores/plugins-dashboard/index.jsx");
+/* harmony import */ var _utils_themeController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/themeController */ "./src/resources/Asset/src/jsx/utils/themeController.js");
 /**
  * Plugins dashboard.
  *
