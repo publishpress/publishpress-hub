@@ -50,4 +50,20 @@
 
 .pp-hub-admin-page-layout__title {
     margin-top: 0;
+    width: 60%;
+}
+
+.pp-hub-admin-page-layout__title-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+}
+
+.pp-hub-admin-page-layout__title-children {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    flex-direction: row;
+    justify-content: flex-end;
 }

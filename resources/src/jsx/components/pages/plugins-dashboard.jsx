@@ -19,6 +19,7 @@ import { store } from '../../stores/plugins-dashboard';
 import { PluginsList } from '../plugins-list';
 import NoticesList from '../notices/NoticesList';
 import SnackbarList from '../notices/SnackbarList';
+import { Button } from '../buttons/button';
 
 const {
     logoUrl,
@@ -97,10 +98,24 @@ const PluginsDashboardComponent = () => {
         }
     }, [fetchPlugins, plugins]);
 
+    const handleRefresh = useCallback(() => {
+        fetchPlugins();
+    }, [fetchPlugins]);
+
     return (
         <AdminPageLayout
             title={title}
             logoUrl={logoUrl}
+            titleChildren={
+                <Button
+                    variant='link'
+                    onClick={handleRefresh}
+                    isLoading={isLoading}
+                    spinnerPosition='left'
+                >
+                    {__('Refresh', 'publishpress-hub')}
+                </Button>
+            }
         >
             <div className="pp-hub-plugins-dashboard">
                 <NoticesList />

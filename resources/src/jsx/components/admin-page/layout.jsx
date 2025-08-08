@@ -15,13 +15,21 @@ export const AdminPageLayout = ({
     title,
     logoUrl,
     children,
+    titleChildren,
 }) => {
     return (
         <div className="pp-hub-admin-page-layout">
             <AdminPageHeader logoUrl={logoUrl} />
             <AdminPageContainer>
                 {title && (
-                    <h1 className="pp-hub-admin-page-layout__title">{title}</h1>
+                    <div className="pp-hub-admin-page-layout__title-container">
+                        <h1 className="pp-hub-admin-page-layout__title">{title}</h1>
+                        {titleChildren && (
+                            <div className="pp-hub-admin-page-layout__title-children">
+                                {titleChildren}
+                            </div>
+                        )}
+                    </div>
                 )}
 
                 <div className="pp-hub-admin-page-layout__content">

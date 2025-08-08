@@ -28,6 +28,7 @@ const ButtonComponent = ({
     children,
     isFullWidth,
     isLoading,
+    spinnerPosition = 'right',
     ...restProps
 }) => {
     const targetValue = useMemo(() => {
@@ -41,8 +42,9 @@ const ButtonComponent = ({
     if (isLoading) {
         children = (
             <>
+                {spinnerPosition === 'left' && <Spinner />}
                 {children}
-                <Spinner />
+                {spinnerPosition === 'right' && <Spinner />}
             </>
         );
 
@@ -59,8 +61,8 @@ const ButtonComponent = ({
             variantClassName = 'is-danger';
         }
 
-        return `pp-hub-button ${variantClassName} ${className ? className : ''} ${isFullWidth ? 'is-full-width' : ''}`;
-    }, [className, isFullWidth, variant]);
+        return `pp-hub-button ${variantClassName} ${className ? className : ''} ${isFullWidth ? 'is-full-width' : ''} ${spinnerPosition === 'left' ? 'is-link-left' : ''}`;
+    }, [className, isFullWidth, variant, spinnerPosition]);
 
     return (
         <WPButton

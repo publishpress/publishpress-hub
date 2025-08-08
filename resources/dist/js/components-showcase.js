@@ -208,14 +208,19 @@ __webpack_require__.r(__webpack_exports__);
 var AdminPageLayout = function AdminPageLayout(_ref) {
   var title = _ref.title,
     logoUrl = _ref.logoUrl,
-    children = _ref.children;
+    children = _ref.children,
+    titleChildren = _ref.titleChildren;
   return /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-admin-page-layout"
   }, /*#__PURE__*/React.createElement(_header__WEBPACK_IMPORTED_MODULE_1__.AdminPageHeader, {
     logoUrl: logoUrl
-  }), /*#__PURE__*/React.createElement(_container__WEBPACK_IMPORTED_MODULE_0__.AdminPageContainer, null, title && /*#__PURE__*/React.createElement("h1", {
+  }), /*#__PURE__*/React.createElement(_container__WEBPACK_IMPORTED_MODULE_0__.AdminPageContainer, null, title && /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-admin-page-layout__title-container"
+  }, /*#__PURE__*/React.createElement("h1", {
     className: "pp-hub-admin-page-layout__title"
-  }, title), /*#__PURE__*/React.createElement("div", {
+  }, title), titleChildren && /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-admin-page-layout__title-children"
+  }, titleChildren)), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-admin-page-layout__content"
   }, children)));
 };
@@ -277,7 +282,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-var _excluded = ["variant", "icon", "onClick", "href", "target", "rel", "className", "disabled", "title", "style", "children", "isFullWidth", "isLoading"];
+var _excluded = ["variant", "icon", "onClick", "href", "target", "rel", "className", "disabled", "title", "style", "children", "isFullWidth", "isLoading", "spinnerPosition"];
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
 function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
@@ -309,6 +314,8 @@ var ButtonComponent = function ButtonComponent(_ref) {
     children = _ref.children,
     isFullWidth = _ref.isFullWidth,
     isLoading = _ref.isLoading,
+    _ref$spinnerPosition = _ref.spinnerPosition,
+    spinnerPosition = _ref$spinnerPosition === void 0 ? 'right' : _ref$spinnerPosition,
     restProps = _objectWithoutProperties(_ref, _excluded);
   var targetValue = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
     return target || (href ? DEFAULT_TARGET : undefined);
@@ -317,7 +324,7 @@ var ButtonComponent = function ButtonComponent(_ref) {
     return rel || (href ? DEFAULT_REL : undefined);
   }, [rel, href]);
   if (isLoading) {
-    children = /*#__PURE__*/React.createElement(React.Fragment, null, children, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, null));
+    children = /*#__PURE__*/React.createElement(React.Fragment, null, spinnerPosition === 'left' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, null), children, spinnerPosition === 'right' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, null));
     disabled = true;
   }
   var buttonClassName = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
@@ -328,8 +335,8 @@ var ButtonComponent = function ButtonComponent(_ref) {
     if (variant === 'danger') {
       variantClassName = 'is-danger';
     }
-    return "pp-hub-button ".concat(variantClassName, " ").concat(className ? className : '', " ").concat(isFullWidth ? 'is-full-width' : '');
-  }, [className, isFullWidth, variant]);
+    return "pp-hub-button ".concat(variantClassName, " ").concat(className ? className : '', " ").concat(isFullWidth ? 'is-full-width' : '', " ").concat(spinnerPosition === 'left' ? 'is-link-left' : '');
+  }, [className, isFullWidth, variant, spinnerPosition]);
   return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, _extends({
     variant: variant,
     icon: icon,

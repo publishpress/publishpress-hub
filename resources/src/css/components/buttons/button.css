@@ -232,3 +232,7 @@
     width: 12px;
     height: 12px;
 }
+
+.pp-hub-button.is-link-left svg {
+    margin-right: 8px;
+}
