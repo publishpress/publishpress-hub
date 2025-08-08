@@ -31,17 +31,17 @@ class SerializedObjectHandler implements LicenseOptionHandlerInterface
     public function __construct(
         WPOptionsAdapterInterface $optionsAdapter,
         string $optionName,
-        string $licenseKeyKey,
-        string $licenseStatusKey,
-        string $licenseStatusValid,
-        string $licenseStatusInvalid
+        string $licenseKeyKey = null,
+        string $licenseStatusKey = null,
+        string $licenseStatusValid = null,
+        string $licenseStatusInvalid = null
     ) {
         $this->optionsAdapter = $optionsAdapter;
         $this->optionName = $optionName;
-        $this->licenseKeyKey = $licenseKeyKey;
-        $this->licenseStatusKey = $licenseStatusKey;
-        $this->licenseStatusValid = $licenseStatusValid;
-        $this->licenseStatusInvalid = $licenseStatusInvalid;
+        $this->licenseKeyKey = $licenseKeyKey ?? 'license_key';
+        $this->licenseStatusKey = $licenseStatusKey ?? 'license_status';
+        $this->licenseStatusValid = $licenseStatusValid ?? 'valid';
+        $this->licenseStatusInvalid = $licenseStatusInvalid ?? 'invalid';
     }
 
     /**
@@ -102,7 +102,13 @@ class SerializedObjectHandler implements LicenseOptionHandlerInterface
             return null;
         }
 
-        return $currentValue->{$this->licenseKeyKey};
+        $licenseKey = $currentValue->{$this->licenseKeyKey} ?? null;
+
+        if (empty($licenseKey)) {
+            return null;
+        }
+
+        return $licenseKey;
     }
 
     /**
@@ -120,7 +126,13 @@ class SerializedObjectHandler implements LicenseOptionHandlerInterface
             return false;
         }
 
-        return $currentValue->{$this->licenseStatusKey} === $this->licenseStatusValid;
+        $licenseStatus = $currentValue->{$this->licenseStatusKey} ?? null;
+
+        if (empty($licenseStatus)) {
+            return false;
+        }
+
+        return $licenseStatus === $this->licenseStatusValid;
     }
 
     /**
