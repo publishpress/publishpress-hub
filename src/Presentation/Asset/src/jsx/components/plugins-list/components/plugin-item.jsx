@@ -112,7 +112,7 @@ const PluginItemComponent = ({
         }
 
         // Show toggle on larger screens
-        return status.isInstalled;
+        return status.isInstalled && !status.hasConflictingInstallations;
     }, [status.isInstalled, isSmallMobile]);
 
     return (

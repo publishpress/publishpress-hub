@@ -6504,7 +6504,7 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     }
 
     // Show toggle on larger screens
-    return status.isInstalled;
+    return status.isInstalled && !status.hasConflictingInstallations;
   }, [status.isInstalled, isSmallMobile]);
   return /*#__PURE__*/React.createElement("div", {
     className: responsiveClasses,
