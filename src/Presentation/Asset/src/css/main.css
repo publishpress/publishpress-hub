@@ -1,4 +1,12 @@
-/* PublishPress Hub - Main CSS Entry Point */
+/**
+ * Main CSS entry point.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\main
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
 
 /* 1. Core Foundation */
 @import './core/variables.css';

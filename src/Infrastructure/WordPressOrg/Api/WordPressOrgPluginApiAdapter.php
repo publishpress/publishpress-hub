@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * WordPress.org plugin API adapter.
+ *
+ * @package PublishPress\Hub\Infrastructure\WordPressOrg\Api
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WordPressOrg\Api;
@@ -13,6 +23,7 @@ class WordPressOrgPluginApiAdapter
      *
      * @param string $slug The plugin slug.
      * @return array<string, mixed> The plugin information.
+     * @since 1.0.0
      */
     public function getLastVersionInfo(string $slug): array
     {

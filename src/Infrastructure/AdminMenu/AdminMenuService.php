@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Admin menu service.
+ *
+ * @package PublishPress\Hub\Infrastructure\AdminMenu
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\AdminMenu;
@@ -33,6 +43,11 @@ class AdminMenuService implements AdminMenuServiceInterface, BootableInterface
 
     private ?string $mainMenuPageSlug;
 
+    /**
+     * @param AdminMenuAdapterInterface $adminMenuAdapter The admin menu adapter.
+     * @param HooksServiceInterface $hooksService The hooks service.
+     * @since 1.0.0
+     */
     public function __construct(
         AdminMenuAdapterInterface $adminMenuAdapter,
         HooksServiceInterface $hooksService
@@ -45,25 +60,48 @@ class AdminMenuService implements AdminMenuServiceInterface, BootableInterface
         $this->mainMenuPageSlug = null;
     }
 
+    /**
+     * @since 1.0.0
+     */
     protected function onLoad(): void
     {
     }
 
+    /**
+     * @since 1.0.0
+     */
     protected function onInit(): void
     {
         $this->hooksService->addAction(AbstractHooks::ACTION_ADMIN_MENU, [$this, 'registerAdminMenu']);
     }
 
+    /**
+     * Add a menu page.
+     *
+     * @param MenuPage $menuPage The menu page to add.
+     * @since 1.0.0
+     */
     public function addMenuPage(MenuPage $menuPage): void
     {
         $this->menuPages[$menuPage->getMenuSlug()] = $menuPage;
     }
 
+    /**
+     * Add a submenu page.
+     *
+     * @param SubmenuPage $submenuPage The submenu page to add.
+     * @since 1.0.0
+     */
     public function addSubmenuPage(SubmenuPage $submenuPage): void
     {
         $this->submenuPages[$submenuPage->getMenuSlug()] = $submenuPage;
     }
 
+    /**
+     * Register the admin menu.
+     *
+     * @since 1.0.0
+     */
     public function registerAdminMenu(): void
     {
         foreach ($this->menuPages as $menuPage) {
@@ -98,6 +136,12 @@ class AdminMenuService implements AdminMenuServiceInterface, BootableInterface
         }
     }
 
+    /**
+     * Set the main menu page.
+     *
+     * @param string $menuSlug The slug of the main menu page.
+     * @since 1.0.0
+     */
     public function setMainMenuPage(string $menuSlug): void
     {
         $this->mainMenuPageSlug = $menuSlug;

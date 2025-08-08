@@ -1,3 +1,13 @@
+/**
+ * Plugins dashboard.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 import { createRoot } from 'react-dom/client';
 
 import { PluginsDashboard } from './components/pages/plugins-dashboard';

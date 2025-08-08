@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Use case for activating a license.
+ *
+ * @package PublishPress\Hub\Application\UseCase\Plugin
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
@@ -20,6 +30,9 @@ class ActivateLicenseUseCase implements UseCaseInterface
 
     private LicenseManagementService $licenseManagement;
 
+    /**
+     * @since 1.0.0
+     */
     public function __construct(
         PluginStatusService $pluginStatusService,
         LicenseManagementService $licenseManagement
@@ -29,11 +42,16 @@ class ActivateLicenseUseCase implements UseCaseInterface
     }
 
     /**
+     * Activates a license for a plugin family and updates plugin status.
+     *
+     * @param WP_REST_Request $request Request containing familySlug and licenseKey parameters.
      * @throws PluginNotFoundException
      * @throws LicenseInvalidException
      * @throws PluginAlreadyInstalledException
      * @throws PluginInstallException
      * @throws LicenseException
+     * @return array<string, mixed> The response data with plugin slug and license status.
+     * @since 1.0.0
      */
     public function execute(WP_REST_Request $request): array
     {
@@ -51,8 +69,6 @@ class ActivateLicenseUseCase implements UseCaseInterface
         $downloadId = $plugin->getDownloadId();
 
         $this->licenseManagement->activateAndStoreLicense($licenseKey, $downloadId);
-
-        // Update plugin status after license activation to reflect current state
         $this->pluginStatusService->updatePluginStatus($plugin);
 
         return [

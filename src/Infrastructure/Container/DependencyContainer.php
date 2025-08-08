@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Dependency container.
+ *
+ * @package PublishPress\Hub\Infrastructure\Container
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container;
@@ -28,21 +38,18 @@ class DependencyContainer implements DependencyContainerInterface
      * @var array<callable|mixed>
      * @since 1.0.0
      */
-    private $resolvedDependencies = [];
+    private array $resolvedDependencies = [];
 
     /**
      * @var array<callable|mixed>
      * @since 1.0.0
      */
-    private $dependencies = [];
+    private array $dependencies = [];
+
+    private static self $instance;
 
     /**
-     * @var self
-     */
-    private static $instance;
-
-    /**
-     * @param array<callable|mixed> $dependencies
+     * @param array<callable|mixed> $dependencies The dependencies to register.
      * @since 1.0.0
      */
     public function __construct(array $dependencies = [])
@@ -67,7 +74,7 @@ class DependencyContainer implements DependencyContainerInterface
     }
 
     /**
-     * @param array<callable|mixed> $dependencies
+     * @param array<callable|mixed> $dependencies The dependencies to register.
      * @since 1.0.0
      */
     public function register(array $dependencies): void
@@ -83,9 +90,10 @@ class DependencyContainer implements DependencyContainerInterface
     /**
      * Finds an entry of the container by its identifier and returns it.
      *
-     * @return mixed dependency entry.
-     * @since 1.0.0
+     * @param string $dependencyId The identifier of the dependency to get.
      * @throws NotFoundException
+     * @return mixed The dependency entry.
+     * @since 1.0.0
      */
     public function get(string $dependencyId)
     {
@@ -121,6 +129,8 @@ class DependencyContainer implements DependencyContainerInterface
      * `has($dependencyId)` returning true does not mean that `get($dependencyId)` will not throw an exception.
      * It does however mean that `get($dependencyId)` will not throw a `NotFoundExceptionInterface`.
      *
+     * @param string $dependencyId The identifier of the dependency to check.
+     * @return bool True if the dependency is resolved, false otherwise.
      * @since 1.0.0
      */
     public function has(string $dependencyId): bool
@@ -130,6 +140,10 @@ class DependencyContainer implements DependencyContainerInterface
     }
 
     /**
+     * Checks if a dependency is resolved.
+     *
+     * @param string $dependencyId The identifier of the dependency to check.
+     * @return bool True if the dependency is resolved, false otherwise.
      * @since 1.0.0
      */
     private function isDependencyResolved(string $dependencyId): bool
@@ -138,6 +152,8 @@ class DependencyContainer implements DependencyContainerInterface
     }
 
     /**
+     * Clears the resolved dependencies.
+     *
      * @param array<string> $dependencyIds
      * @since 1.0.0
      */

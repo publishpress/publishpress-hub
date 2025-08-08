@@ -1,6 +1,12 @@
 /**
  * Theme Controller Utility
  * Manages theme switching, persistence, and system theme detection
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\utils
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
  */
 
 const THEME_STORAGE_KEY = 'pp-hub-theme';

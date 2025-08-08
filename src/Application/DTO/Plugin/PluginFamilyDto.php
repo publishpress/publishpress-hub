@@ -1,135 +1,51 @@
 <?php
 
+/**
+ * Plugin Family Data Transfer Object for REST API responses.
+ *
+ * @package PublishPress\Hub\Application\DTO\Plugin
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\DTO\Plugin;
 
 use PublishPress\Hub\Application\Contract\DtoInterface;
 
-/**
- * Plugin Family Data Transfer Object for REST API responses.
- *
- * @since 1.0.0
- */
 class PluginFamilyDto implements DtoInterface
 {
-    /**
-     * @since 1.0.0
-     */
     private string $name;
-
-    /**
-     * @since 1.0.0
-     */
     private string $slug;
-
-    /**
-     * @since 1.0.0
-     */
     private string $iconPath;
-
-    /**
-     * @since 1.0.0
-     */
     private string $description;
-
-    /**
-     * @since 1.0.0
-     */
     private string $changelogUrl;
-
-    /**
-     * @since 1.0.0
-     */
     private string $freePluginName;
-
-    /**
-     * @since 1.0.0
-     */
     private string $freePluginSlug;
-
-    /**
-     * @since 1.0.0
-     */
     private ?string $freePluginVersion;
-
-    /**
-     * @since 1.0.0
-     */
     private string $freePluginDetailsUrl;
-
-    /**
-     * @since 1.0.0
-     */
     private bool $freePluginIsInstalled;
-
-    /**
-     * @since 1.0.0
-     */
     private bool $freePluginIsActive;
-
-    /**
-     * @since 1.0.0
-     */
     private ?string $freePluginPath;
-
-    /**
-     * @since 1.0.0
-     */
     private string $proPluginName;
-
-    /**
-     * @since 1.0.0
-     */
     private string $proPluginSlug;
-
-    /**
-     * @since 1.0.0
-     */
     private ?string $proPluginVersion;
-
-    /**
-     * @since 1.0.0
-     */
     private string $proPluginDetailsUrl;
-
-    /**
-     * @since 1.0.0
-     */
     private bool $proPluginIsInstalled;
-
-    /**
-     * @since 1.0.0
-     */
     private bool $proPluginIsLicensed;
-
-    /**
-     * @since 1.0.0
-     */
     private bool $proPluginIsActive;
-
-    /**
-     * @since 1.0.0
-     */
     private ?string $proPluginPath;
-
-    /**
-     * @since 1.0.0
-     */
     private bool $hasAnyVersionInstalled;
-
-    /**
-     * @since 1.0.0
-     */
     private bool $hasAnyVersionActive;
-
-    /**
-     * @since 1.0.0
-     */
     private bool $hasConflictingInstallations;
 
     /**
-     * @return array
+     * Converts the plugin family data to an associative array for API responses.
+     *
+     * @since 1.0.0
+     * @return array<string, mixed>
      */
     public function toArray(): array
     {
@@ -164,138 +80,207 @@ class PluginFamilyDto implements DtoInterface
         ];
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setName(string $name): self
     {
         $this->name = $name;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setIconPath(string $iconPath): self
     {
         $this->iconPath = $iconPath;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setDescription(string $description): self
     {
         $this->description = $description;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setChangelogUrl(string $changelogUrl): self
     {
         $this->changelogUrl = $changelogUrl;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setFreePluginName(string $freePluginName): self
     {
         $this->freePluginName = $freePluginName;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setFreePluginSlug(string $freePluginSlug): self
     {
         $this->freePluginSlug = $freePluginSlug;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setFreePluginVersion(?string $freePluginVersion): self
     {
         $this->freePluginVersion = $freePluginVersion;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setFreePluginDetailsUrl(string $freePluginDetailsUrl): self
     {
         $this->freePluginDetailsUrl = $freePluginDetailsUrl;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setFreePluginIsInstalled(bool $freePluginIsInstalled): self
     {
         $this->freePluginIsInstalled = $freePluginIsInstalled;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setFreePluginIsActive(bool $freePluginIsActive): self
     {
         $this->freePluginIsActive = $freePluginIsActive;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setFreePluginPath(?string $freePluginPath): self
     {
         $this->freePluginPath = $freePluginPath;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setProPluginName(string $proPluginName): self
     {
         $this->proPluginName = $proPluginName;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setProPluginSlug(string $proPluginSlug): self
     {
         $this->proPluginSlug = $proPluginSlug;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setProPluginVersion(?string $proPluginVersion): self
     {
         $this->proPluginVersion = $proPluginVersion;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setProPluginDetailsUrl(string $proPluginDetailsUrl): self
     {
         $this->proPluginDetailsUrl = $proPluginDetailsUrl;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setProPluginIsInstalled(bool $proPluginIsInstalled): self
     {
         $this->proPluginIsInstalled = $proPluginIsInstalled;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setProPluginIsActive(bool $proPluginIsActive): self
     {
         $this->proPluginIsActive = $proPluginIsActive;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setProPluginIsLicensed(bool $proPluginIsLicensed): self
     {
         $this->proPluginIsLicensed = $proPluginIsLicensed;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setProPluginPath(?string $proPluginPath): self
     {
         $this->proPluginPath = $proPluginPath;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setIsAnyVersionInstalled(bool $hasAnyVersionInstalled): self
     {
         $this->hasAnyVersionInstalled = $hasAnyVersionInstalled;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setIsAnyVersionActive(bool $hasAnyVersionActive): self
     {
         $this->hasAnyVersionActive = $hasAnyVersionActive;
         return $this;
     }
 
+    /**
+     * @since 1.0.0
+     */
     public function setHasConflictingInstallations(bool $hasConflictingInstallations): self
     {
         $this->hasConflictingInstallations = $hasConflictingInstallations;

@@ -1,3 +1,13 @@
+/**
+ * Tooltip component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\tooltip
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 .pp-hub-tooltip {
     display: inline-block;
     background-color: var(--pp-hub-tooltip-bg);

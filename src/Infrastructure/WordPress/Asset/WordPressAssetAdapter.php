@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * WordPress asset adapter.
+ *
+ * @package PublishPress\Hub\Infrastructure\WordPress\Asset
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WordPress\Asset;
@@ -9,22 +19,16 @@ use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 
 class WordPressAssetAdapter implements AssetServiceInterface
 {
-    /**
-     * @since 1.0.0
-     */
     private string $assetBaseUrl;
 
-    /**
-     * @since 1.0.0
-     */
     private bool $scriptDebug = false;
 
-    /**
-     * @since 1.0.0
-     */
     private string $version;
 
     /**
+     * @param string $assetBaseUrl The asset base URL.
+     * @param string $version The version.
+     * @param bool $scriptDebug The script debug.
      * @since 1.0.0
      */
     public function __construct(string $assetBaseUrl, string $version, bool $scriptDebug = false)
@@ -35,8 +39,12 @@ class WordPressAssetAdapter implements AssetServiceInterface
     }
 
     /**
-     * @since 1.0.0
+     * Get a plugin asset URL.
+     *
+     * @param string $relativePath The relative path.
      * @throws InvalidArgumentException If the path is empty.
+     * @return string The plugin asset URL.
+     * @since 1.0.0
      */
     public function getPluginAssetUrl(string $relativePath): string
     {
@@ -69,6 +77,9 @@ class WordPressAssetAdapter implements AssetServiceInterface
     }
 
     /**
+     * Get the plugin assets base URL.
+     *
+     * @return string The plugin assets base URL.
      * @since 1.0.0
      */
     public function getPluginAssetsBaseUrl(): string
@@ -77,6 +88,12 @@ class WordPressAssetAdapter implements AssetServiceInterface
     }
 
     /**
+     * Enqueue a script.
+     *
+     * @param string $scriptHandle The script handle.
+     * @param string $scriptRelativePath The script relative path.
+     * @param array<string, mixed> $dependencies The dependencies.
+     * @param bool $inFooter The in footer.
      * @since 1.0.0
      */
     public function enqueueScript(
@@ -95,6 +112,12 @@ class WordPressAssetAdapter implements AssetServiceInterface
     }
 
     /**
+     * Register a script.
+     *
+     * @param string $scriptHandle The script handle.
+     * @param string $scriptRelativePath The script relative path.
+     * @param array<string, mixed> $dependencies The dependencies.
+     * @param bool $inFooter The in footer.
      * @since 1.0.0
      */
     public function registerScript(
@@ -113,6 +136,11 @@ class WordPressAssetAdapter implements AssetServiceInterface
     }
 
     /**
+     * Enqueue a style.
+     *
+     * @param string $styleHandle The style handle.
+     * @param string $styleRelativePath The style relative path.
+     * @param array<string, mixed> $dependencies The dependencies.
      * @since 1.0.0
      */
     public function enqueueStyle(
@@ -129,6 +157,11 @@ class WordPressAssetAdapter implements AssetServiceInterface
     }
 
     /**
+     * Register a style.
+     *
+     * @param string $styleHandle The style handle.
+     * @param string $styleRelativePath The style relative path.
+     * @param array<string, mixed> $dependencies The dependencies.
      * @since 1.0.0
      */
     public function registerStyle(
@@ -145,6 +178,11 @@ class WordPressAssetAdapter implements AssetServiceInterface
     }
 
     /**
+     * Localize a script.
+     *
+     * @param string $scriptHandle The script handle.
+     * @param string $variableName The variable name.
+     * @param array<string, mixed> $data The data.
      * @since 1.0.0
      */
     public function localizeScript(

@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Abstract hooks class.
+ *
+ * @package PublishPress\Hub\Infrastructure\Hooks
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Hooks;

@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * WordPress REST API adapter.
+ *
+ * @package PublishPress\Hub\Infrastructure\WordPress\RestApi
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WordPress\RestApi;
@@ -13,7 +23,11 @@ use WP_Error;
 class WordPressRestApiAdapter implements RestApiAdapterInterface
 {
     /**
-     * @param callable $callback
+     * Register a REST route.
+     *
+     * @param RestRoute $route The route.
+     * @param callable $callback The callback.
+     * @since 1.0.0
      */
     public function registerRoute(RestRoute $route, $callback): void
     {
@@ -30,6 +44,8 @@ class WordPressRestApiAdapter implements RestApiAdapterInterface
     }
 
     /**
+     * Create a response.
+     *
      * @param array<string, mixed> $data
      * @param int $status
      * @param array<string, string> $headers
@@ -47,8 +63,14 @@ class WordPressRestApiAdapter implements RestApiAdapterInterface
     }
 
     /**
-     * @param string|int $code
-     * @return WP_REST_Response|WP_Error
+     * Create an error response.
+     *
+     * @param string $message The message.
+     * @param int $status The status.
+     * @param string|int $code The code.
+     * @param array<string, mixed> $context The context.
+     * @return WP_REST_Response|WP_Error The response.
+     * @since 1.0.0
      */
     public function createErrorResponse(string $message, int $status = 400, $code = 'error', array $context = [])
     {
@@ -68,11 +90,27 @@ class WordPressRestApiAdapter implements RestApiAdapterInterface
         return $response;
     }
 
+    /**
+     * Get the request data.
+     *
+     * @param WP_REST_Request $request The request.
+     * @return array<string, mixed> The request data.
+     * @since 1.0.0
+     */
     public function getRequestData(WP_REST_Request $request): array
     {
         return $request->get_params();
     }
 
+    /**
+     * Get a request parameter.
+     *
+     * @param WP_REST_Request $request The request.
+     * @param string $param The parameter.
+     * @param mixed $default The default value.
+     * @return mixed The request parameter.
+     * @since 1.0.0
+     */
     public function getRequestParam(WP_REST_Request $request, string $param, $default = null)
     {
         return $request->get_param($param) ?? $default;

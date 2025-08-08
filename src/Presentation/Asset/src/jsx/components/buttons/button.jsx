@@ -1,3 +1,13 @@
+/**
+ * Button.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\buttons
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 import { Button as WPButton, Spinner } from "@wordpress/components";
 import { memo, useMemo } from '@wordpress/element';
 

@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Use case for uninstalling a plugin.
+ *
+ * @package PublishPress\Hub\Application\UseCase\Plugin
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
@@ -16,8 +26,12 @@ use WP_REST_Request;
 class UninstallPluginUseCase implements UseCaseInterface
 {
     private PluginStatusService $pluginStatusService;
+
     private WordPressPluginLifecycleAdapter $pluginLifecycle;
 
+    /**
+     * @since 1.0.0
+     */
     public function __construct(
         PluginStatusService $pluginStatusService,
         WordPressPluginLifecycleAdapter $pluginLifecycle
@@ -27,9 +41,15 @@ class UninstallPluginUseCase implements UseCaseInterface
     }
 
     /**
+     * Uninstalls a plugin.
+     *
+     * @param WP_REST_Request $request Request containing familySlug parameter.
      * @throws PluginNotFoundException
      * @throws PluginActivationException
      * @throws PluginFreeProConflictException
+     * @throws PluginNotInstalledException
+     * @return array<string, mixed> The response data with plugin slug.
+     * @since 1.0.0
      */
     public function execute(WP_REST_Request $request): array
     {

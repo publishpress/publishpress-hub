@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Service for bootstrapping the Hub plugin.
+ *
+ * @package PublishPress\Hub\Application\Service
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service;
@@ -18,28 +28,24 @@ class HubBootstrapService implements BootableInterface
 {
     use BootableTrait;
 
-    /**
-     * @var HooksServiceInterface
-     */
-    private $hooksService;
+    private HooksServiceInterface $hooksService;
 
     /**
-     * @var BootableInterface[]
+     * @var array<string, BootableInterface>
      */
-    private $servicesToInit = [];
+    private array $servicesToInit = [];
+
+    private MainMenuController $mainMenuController;
+
+    private PluginFamilyRepositoryInterface $pluginFamilyRepository;
 
     /**
-     * @var MainMenuController
-     */
-    private $mainMenuController;
-
-    /**
-     * @var PluginFamilyRepositoryInterface
-     */
-    private $pluginFamilyRepository;
-
-    /**
+     * @param HooksServiceInterface $hooksService
      * @param BootableInterface[] $servicesToInit
+     * @param MainMenuController $mainMenuController
+     * @param PluginFamilyRepositoryInterface $pluginFamilyRepository
+     *
+     * @since 1.0.0
      */
     public function __construct(
         HooksServiceInterface $hooksService,
@@ -53,6 +59,11 @@ class HubBootstrapService implements BootableInterface
         $this->pluginFamilyRepository = $pluginFamilyRepository;
     }
 
+    /**
+     * Loads the Hub Bootstrap service, preparing it for being initialized.
+     *
+     * @since 1.0.0
+     */
     protected function onLoad(): void
     {
         $this->addHooks();
@@ -63,6 +74,11 @@ class HubBootstrapService implements BootableInterface
         $this->pluginFamilyRepository->reset();
     }
 
+    /**
+     * Initializes the Hub Bootstrap service, making it ready for use.
+     *
+     * @since 1.0.0
+     */
     protected function onInit(): void
     {
         $this->initServices();
@@ -70,11 +86,21 @@ class HubBootstrapService implements BootableInterface
         $this->mainMenuController->init();
     }
 
+    /**
+     * Adds hooks to the Hub Bootstrap service.
+     *
+     * @since 1.0.0
+     */
     private function addHooks(): void
     {
         $this->hooksService->addAction(AbstractHooks::ACTION_INIT, [$this, 'init']);
     }
 
+    /**
+     * Loads the services for the Hub Bootstrap.
+     *
+     * @since 1.0.0
+     */
     private function loadServices(): void
     {
         foreach ($this->servicesToInit as $service) {
@@ -82,6 +108,11 @@ class HubBootstrapService implements BootableInterface
         }
     }
 
+    /**
+     * Initializes the services for the Hub Bootstrap.
+     *
+     * @since 1.0.0
+     */
     private function initServices(): void
     {
         foreach ($this->servicesToInit as $service) {
@@ -89,41 +120,86 @@ class HubBootstrapService implements BootableInterface
         }
     }
 
+    /**
+     * Registers the plugin families for the Hub Bootstrap.
+     *
+     * @since 1.0.0
+     */
     private function registerPluginFamilies(): void
     {
         $pluginFamilies = require __DIR__ . '/../../Domain/Plugin/plugin-families.php';
 
         foreach ($pluginFamilies as $pluginFamily) {
-            $family = new PluginFamily(
-                $pluginFamily['name'],
-                $pluginFamily['slug'],
-                $pluginFamily['icon_file_name'],
-                $pluginFamily['description'],
-                $pluginFamily['changelog_url']
-            );
-
-            $freePlugin = new FreePlugin(
-                $pluginFamily['free_name'],
-                $pluginFamily['free_slug'],
-                $pluginFamily['free_file_name'],
-                $pluginFamily['free_details_url']
-            );
-
-            $proPlugin = new ProPlugin(
-                $pluginFamily['pro_name'],
-                $pluginFamily['pro_slug'],
-                $pluginFamily['pro_file_name'],
-                $pluginFamily['pro_details_url'],
-                $pluginFamily['edd_item_id']
-            );
-
-            $freePlugin->setFamily($family);
-            $proPlugin->setFamily($family);
-
-            $family->setFreePlugin($freePlugin);
-            $family->setProPlugin($proPlugin);
-
+            $family = $this->createPluginFamily($pluginFamily);
             $this->pluginFamilyRepository->registerFamily($family);
         }
+    }
+
+    /**
+     * Creates a PluginFamily entity from configuration data.
+     *
+     * @param array<string, mixed> $pluginFamily
+     * @return PluginFamily
+     */
+    private function createPluginFamily(array $pluginFamily): PluginFamily
+    {
+        $family = new PluginFamily(
+            $pluginFamily['name'],
+            $pluginFamily['slug'],
+            $pluginFamily['icon_file_name'],
+            $pluginFamily['description'],
+            $pluginFamily['changelog_url']
+        );
+
+        $freePlugin = $this->createFreePlugin($pluginFamily, $family);
+        $proPlugin = $this->createProPlugin($pluginFamily, $family);
+
+        $family->setFreePlugin($freePlugin);
+        $family->setProPlugin($proPlugin);
+
+        return $family;
+    }
+
+    /**
+     * Creates a FreePlugin entity from configuration data.
+     *
+     * @param array<string, mixed> $pluginFamily
+     * @param PluginFamily $family
+     * @return FreePlugin
+     */
+    private function createFreePlugin(array $pluginFamily, PluginFamily $family): FreePlugin
+    {
+        $freePlugin = new FreePlugin(
+            $pluginFamily['free_name'],
+            $pluginFamily['free_slug'],
+            $pluginFamily['free_file_name'],
+            $pluginFamily['free_details_url']
+        );
+
+        $freePlugin->setFamily($family);
+
+        return $freePlugin;
+    }
+
+    /**
+     * Creates a ProPlugin entity from configuration data.
+     *
+     * @param array<string, mixed> $pluginFamily
+     * @param PluginFamily $family
+     * @return ProPlugin
+     */
+    private function createProPlugin(array $pluginFamily, PluginFamily $family): ProPlugin
+    {
+        $proPlugin = new ProPlugin(
+            $pluginFamily['pro_name'],
+            $pluginFamily['pro_slug'],
+            $pluginFamily['pro_file_name'],
+            $pluginFamily['pro_details_url'],
+            $pluginFamily['edd_item_id']
+        );
+
+        $proPlugin->setFamily($family);
+
+        return $proPlugin;
     }
 }

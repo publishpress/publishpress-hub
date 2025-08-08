@@ -1,18 +1,32 @@
 <?php
 
+/**
+ * HTTP Debugger utility for debugging HTTP requests and responses
+ *
+ * @package PublishPress\Hub\Infrastructure\Remote
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Remote;
 
-/**
- * HTTP Debugger utility for debugging HTTP requests and responses
- */
+use WP_Error;
+
 class HttpDebugger
 {
     private const DEBUG_PREFIX = 'HTTP_DEBUG';
 
     /**
      * Debug HTTP request details
+     *
+     * @param string $method The HTTP method.
+     * @param string $url The URL.
+     * @param array<string, mixed> $args The arguments.
+     * @since 1.0.0
      */
     public static function debugRequest(string $method, string $url, array $args): void
     {
@@ -37,6 +51,9 @@ class HttpDebugger
 
     /**
      * Debug HTTP response details
+     *
+     * @param array<string, mixed>|WP_Error $response The response.
+     * @since 1.0.0
      */
     public static function debugResponse($response): void
     {
@@ -65,6 +82,11 @@ class HttpDebugger
 
     /**
      * Debug raw HTTP request (for advanced debugging)
+     *
+     * @param string $method The HTTP method.
+     * @param string $url The URL.
+     * @param array<string, mixed> $args The arguments.
+     * @since 1.0.0
      */
     public static function debugRawRequest(string $method, string $url, array $args): void
     {
@@ -78,6 +100,12 @@ class HttpDebugger
 
     /**
      * Build a raw HTTP request string for debugging
+     *
+     * @param string $method The HTTP method.
+     * @param string $url The URL.
+     * @param array<string, mixed> $args The arguments.
+     * @return string The raw request.
+     * @since 1.0.0
      */
     private static function buildRawRequest(string $method, string $url, array $args): string
     {
@@ -111,6 +139,9 @@ class HttpDebugger
 
     /**
      * Check if debugging is enabled
+     *
+     * @return bool True if debugging is enabled, false otherwise.
+     * @since 1.0.0
      */
     private static function isDebugEnabled(): bool
     {
@@ -119,6 +150,10 @@ class HttpDebugger
 
     /**
      * Log debug information
+     *
+     * @param string $type The type.
+     * @param array<string, mixed> $data The data.
+     * @since 1.0.0
      */
     private static function log(string $type, array $data): void
     {
@@ -135,6 +170,12 @@ class HttpDebugger
 
     /**
      * Get debug information as array (useful for testing)
+     *
+     * @param string $method The HTTP method.
+     * @param string $url The URL.
+     * @param array<string, mixed> $args The arguments.
+     * @return array<string, mixed> The debug information.
+     * @since 1.0.0
      */
     public static function getDebugInfo(string $method, string $url, array $args): array
     {
@@ -152,6 +193,10 @@ class HttpDebugger
 
     /**
      * Format response for debugging
+     *
+     * @param array<string, mixed>|WP_Error $response The response.
+     * @return array<string, mixed> The formatted response.
+     * @since 1.0.0
      */
     public static function formatResponse($response): array
     {

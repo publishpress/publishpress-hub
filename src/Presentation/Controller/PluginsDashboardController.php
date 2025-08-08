@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Plugins dashboard controller.
+ *
+ * @package PublishPress\Hub\Presentation\Controller
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Presentation\Controller;
@@ -28,6 +38,16 @@ class PluginsDashboardController implements BootableInterface
 
     private SecurityServiceInterface $securityService;
 
+    /**
+     * Constructor.
+     *
+     * @param HooksServiceInterface $hooksService
+     * @param ViewServiceInterface $viewService
+     * @param AdminMenuServiceInterface $adminMenuService
+     * @param AssetServiceInterface $assetService
+     * @param SecurityServiceInterface $securityService
+     * @since 1.0.0
+     */
     public function __construct(
         HooksServiceInterface $hooksService,
         ViewServiceInterface $viewService,
@@ -42,21 +62,45 @@ class PluginsDashboardController implements BootableInterface
         $this->securityService = $securityService;
     }
 
+    /**
+     * On load.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     protected function onLoad(): void
     {
         $this->registerAdminMenu();
         $this->addHooks();
     }
 
+    /**
+     * On init.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     protected function onInit(): void
     {
     }
 
+    /**
+     * Add hooks.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     private function addHooks(): void
     {
         $this->hooksService->addAction(AbstractHooks::ACTION_ADMIN_ENQUEUE_SCRIPTS, [$this, 'enqueueAssets']);
     }
 
+    /**
+     * Register admin menu.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     private function registerAdminMenu(): void
     {
         $submenu = new SubmenuPage(
@@ -72,6 +116,12 @@ class PluginsDashboardController implements BootableInterface
         $this->adminMenuService->setMainMenuPage('publishpress-hub-plugins-dashboard');
     }
 
+    /**
+     * Show dashboard.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     public function showDashboard(): void
     {
         $this->viewService->render(
@@ -82,6 +132,13 @@ class PluginsDashboardController implements BootableInterface
         );
     }
 
+    /**
+     * Enqueue assets.
+     *
+     * @param string $hookSuffix
+     * @return void
+     * @since 1.0.0
+     */
     public function enqueueAssets(string $hookSuffix): void
     {
         if ('toplevel_page_publishpress-hub' !== $hookSuffix) {

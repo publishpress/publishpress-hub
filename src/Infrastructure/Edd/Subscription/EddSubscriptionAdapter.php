@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Edd subscription adapter.
+ *
+ * @package PublishPress\Hub\Infrastructure\Edd\Subscription
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Edd\Subscription;
@@ -36,31 +46,44 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
 
     private CacheServiceInterface $cacheService;
 
-    /**
-     * Cache TTL in seconds
-     */
-    private const CACHE_TTL = 10;
+    private const CACHE_TTL_IN_SECONDS = 10;
 
-    /**
-     * Timeout in seconds
-     */
-    private const TIMEOUT = 15;
+    private const TIMEOUT_IN_SECONDS = 15;
 
     private const LICENSE_STATUS_VALID = 'valid';
+
     private const LICENSE_STATUS_INACTIVE = 'inactive';
+
     private const LICENSE_STATUS_INVALID = 'invalid';
+
     private const LICENSE_STATUS_MISSING = 'missing';
+
     private const LICENSE_STATUS_NOT_ACTIVABLE = 'license_not_activable';
+
     private const LICENSE_STATUS_DISABLED = 'disabled';
+
     private const LICENSE_STATUS_NO_ACTIVATIONS_LEFT = 'no_activations_left';
+
     private const LICENSE_STATUS_EXPIRED = 'expired';
+
     private const LICENSE_STATUS_KEY_MISMATCH = 'key_mismatch';
+
     private const LICENSE_STATUS_INVALID_ITEM_ID = 'invalid_item_id';
+
     private const LICENSE_STATUS_ITEM_NAME_MISMATCH = 'item_name_mismatch';
+
     private const LICENSE_STATUS_SITE_INACTIVE = 'site_inactive';
 
     private string $userAgent;
 
+    /**
+     * @param string $eddSubscriptionApiUrl The URL of the Edd subscription API.
+     * @param string $siteUrl The URL of the site.
+     * @param string $userAgent The user agent.
+     * @param RemoteServiceInterface $remoteService The remote service.
+     * @param CacheServiceInterface $cacheService The cache service.
+     * @since 1.0.0
+     */
     public function __construct(
         string $eddSubscriptionApiUrl,
         string $siteUrl,
@@ -76,8 +99,15 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
     }
 
     /**
+     * Get the license info.
+     *
+     * @param string $licenseKey The license key.
+     * @param int $downloadId The download ID.
+     * @param bool $force Whether to force the license info to be fetched from the server.
      * @throws LicenseServerException
      * @throws LicenseServerInvalidResponseException
+     * @return array<string, mixed> The license info.
+     * @since 1.0.0
      */
     public function getLicenseInfo(string $licenseKey, int $downloadId, bool $force = false): array
     {
@@ -100,7 +130,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
 
         $requestArgs = [
             'body' => $requestBody,
-            'timeout' => self::TIMEOUT,
+            'timeout' => self::TIMEOUT_IN_SECONDS,
             'sslverify' => true,
             'headers' => $this->getRequestHeaders(),
         ];
@@ -137,12 +167,17 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
             ]);
         }
 
-        $this->cacheService->set($cacheKey, $data, self::CACHE_TTL);
+        $this->cacheService->set($cacheKey, $data, self::CACHE_TTL_IN_SECONDS);
 
         return $data;
     }
 
     /**
+     * Check if the license is valid.
+     *
+     * @param string $licenseKey The license key.
+     * @param int $downloadId The download ID.
+     * @param bool $force Whether to force the license info to be fetched from the server.
      * @throws LicenseServerException
      * @throws LicenseServerInvalidResponseException
      * @throws LicenseMissingException
@@ -156,6 +191,8 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
      * @throws LicenseInvalidItemNameException
      * @throws LicenseSiteInactiveException
      * @throws LicenseInvalidException
+     * @return bool True if the license is valid, false otherwise.
+     * @since 1.0.0
      */
     public function isLicenseValid(string $licenseKey, int $downloadId, bool $force = false): bool
     {
@@ -176,8 +213,15 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
     }
 
     /**
+     * Check if the license is active.
+     *
+     * @param string $licenseKey The license key.
+     * @param int $downloadId The download ID.
+     * @param bool $force Whether to force the license info to be fetched from the server.
      * @throws LicenseServerException
      * @throws LicenseServerInvalidResponseException
+     * @return bool True if the license is active, false otherwise.
+     * @since 1.0.0
      */
     public function isLicenseActive(string $licenseKey, int $downloadId, bool $force = false): bool
     {
@@ -187,6 +231,11 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
     }
 
     /**
+     * Activate the license.
+     *
+     * @param string $licenseKey The license key.
+     * @param int $downloadId The download ID.
+     * @param bool $force Whether to force the license info to be fetched from the server.
      * @throws LicenseServerException
      * @throws LicenseServerInvalidResponseException
      * @throws LicenseMissingException
@@ -200,6 +249,8 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
      * @throws LicenseInvalidItemNameException
      * @throws LicenseSiteInactiveException
      * @throws LicenseInvalidException
+     * @return bool True if the license is activated, false otherwise.
+     * @since 1.0.0
      */
     public function activateLicense(string $licenseKey, int $downloadId, bool $force = false): bool
     {
@@ -219,7 +270,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
 
             $requestArgs = [
                 'body' => $requestBody,
-                'timeout' => self::TIMEOUT,
+                'timeout' => self::TIMEOUT_IN_SECONDS,
                 'sslverify' => true,
                 'headers' => $this->getRequestHeaders(),
             ];
@@ -252,7 +303,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
                 ]);
             }
 
-            $this->cacheService->set($cacheKey, $data, self::CACHE_TTL);
+            $this->cacheService->set($cacheKey, $data, self::CACHE_TTL_IN_SECONDS);
         }
 
         $this->assertLicenseStatusOrThrow(
@@ -264,6 +315,14 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         return true;
     }
 
+    /**
+     * Deactivate the license.
+     *
+     * @param string $licenseKey The license key.
+     * @param int $downloadId The download ID.
+     * @return bool True if the license is deactivated, false otherwise.
+     * @since 1.0.0
+     */
     public function deactivateLicense(string $licenseKey, int $downloadId): bool
     {
         $operation = 'deactivate_license';
@@ -278,7 +337,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
 
         $requestArgs = [
             'body' => $requestBody,
-            'timeout' => self::TIMEOUT,
+            'timeout' => self::TIMEOUT_IN_SECONDS,
             'sslverify' => true,
             'headers' => $this->getRequestHeaders(),
         ];
@@ -315,6 +374,11 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
     }
 
     /**
+     * Assert the license status or throw an exception.
+     *
+     * @param string $license The license status.
+     * @param array<string> $acceptableResults The acceptable results.
+     * @param string $operation The operation.
      * @throws LicenseMissingException
      * @throws LicenseMissingUrlException
      * @throws LicenseNotActivableException
@@ -327,6 +391,8 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
      * @throws LicenseSiteInactiveException
      * @throws LicenseInvalidException
      * @throws LicenseServerException
+     * @return void
+     * @since 1.0.0
      */
     private function assertLicenseStatusOrThrow(
         string $license,
@@ -374,8 +440,15 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
     }
 
     /**
+     * Get the last version info.
+     *
+     * @param string $licenseKey The license key.
+     * @param int $downloadId The download ID.
+     * @param bool $force Whether to force the license info to be fetched from the server.
      * @throws LicenseServerException
      * @throws LicenseServerInvalidResponseException
+     * @return array<string, mixed> The last version info.
+     * @since 1.0.0
      */
     public function getLastVersionInfo(string $licenseKey, int $downloadId, bool $force = false): array
     {
@@ -398,7 +471,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
 
         $requestArgs = [
             'body' => $requestBody,
-            'timeout' => self::TIMEOUT,
+            'timeout' => self::TIMEOUT_IN_SECONDS,
             'sslverify' => true,
             'headers' => $this->getRequestHeaders(),
         ];
@@ -435,11 +508,17 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
             ]);
         }
 
-        $this->cacheService->set($cacheKey, $data, self::CACHE_TTL);
+        $this->cacheService->set($cacheKey, $data, self::CACHE_TTL_IN_SECONDS);
 
         return $data;
     }
 
+    /**
+     * Get the request headers.
+     *
+     * @return array<string, string> The request headers.
+     * @since 1.0.0
+     */
     private function getRequestHeaders(): array
     {
         return [
@@ -458,8 +537,14 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
     }
 
     /**
+     * Handle possible invalid response.
+     *
+     * @param array<string, mixed> $response The response.
+     * @param string $operation The operation.
      * @throws RemoteAccessDeniedException
      * @throws LicenseServerInvalidResponseException
+     * @return void
+     * @since 1.0.0
      */
     private function handlePossibleInvalidResponse(array $response, string $operation = ''): void
     {

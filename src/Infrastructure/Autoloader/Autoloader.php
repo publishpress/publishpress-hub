@@ -3,6 +3,10 @@
 /**
  * Autoloader for the PublishPress Hub library.
  *
+ * @package PublishPress\Hub\Infrastructure\Autoloader
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
  * @since 1.0.0
  */
 
@@ -11,6 +15,12 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Infrastructure\Autoloader;
 
 /**
+ * Autoloader for the PublishPress Hub library.
+ *
+ * @package PublishPress\Hub\Infrastructure\Autoloader
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
  * @since 1.0.0
  */
 abstract class Autoloader
@@ -21,12 +31,13 @@ abstract class Autoloader
      */
     private static array $namespaceBaseDirs = [];
 
-    /**
-     * @since 1.0.0
-     */
     private static bool $registered = false;
 
     /**
+     * Register a namespace prefix with a base directory.
+     *
+     * @param string $namespacePrefix The namespace prefix to register.
+     * @param string $baseDir The base directory to register.
      * @since 1.0.0
      */
     public static function register(string $namespacePrefix, string $baseDir): void
@@ -40,6 +51,8 @@ abstract class Autoloader
     }
 
     /**
+     * Unregister a namespace prefix.
+     *
      * @since 1.0.0
      */
     public static function unregister(): void
@@ -53,6 +66,9 @@ abstract class Autoloader
     }
 
     /**
+     * Autoload a class.
+     *
+     * @param string $fullyQualifiedClassName The fully qualified class name to autoload.
      * @since 1.0.0
      */
     public static function autoload(string $fullyQualifiedClassName): void

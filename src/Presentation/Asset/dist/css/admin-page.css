@@ -1,6 +1,16 @@
 /*!*****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/core/variables.css ***!
   \*****************************************************************************************************/
+/**
+ * Variables.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\core
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 :root {
     /* Brand Colors */
     --pp-hub-primary-color: #655997;
@@ -116,7 +126,15 @@
 /*!************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/core/base.css ***!
   \************************************************************************************************/
-/* Base styles and WordPress admin compatibility */
+/**
+ * Base styles and WordPress admin compatibility.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\core
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
 
 /* WordPress admin body adjustments */
 #wpcontent {
@@ -192,7 +210,15 @@
 /*!*****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/core/utilities.css ***!
   \*****************************************************************************************************/
-/* Utility Classes */
+/**
+ * Utility classes.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\core
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
 
 /* Spacing Utilities */
 .pp-hub-p-xs { padding: var(--pp-hub-spacing-xs); }
@@ -350,7 +376,16 @@
 /*!*****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/themes/default.css ***!
   \*****************************************************************************************************/
-/* Default Theme */
+/**
+ * Default theme.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\themes
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 [data-theme="default"] {
     --pp-hub-font-family-mono: monospace;
 
@@ -516,7 +551,16 @@
 /*!**************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/themes/dark.css ***!
   \**************************************************************************************************/
-/* Dark Theme */
+/**
+ * Dark theme.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\themes
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 [data-theme="dark"] {
     /* Brand Colors - Adjusted for dark mode */
     --pp-hub-primary-color: #8a7bc8;
@@ -638,6 +682,16 @@
 /*!**********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/wp-components/toggle.css ***!
   \**********************************************************************************************************************/
+/**
+ * Toggle component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\wp-components\toggle
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 .pp-hub-root .components-form-toggle.is-checked .components-form-toggle__track {
     background-color: var(--pp-hub-toggle-bg-checked);
     border-bottom-color: var(--pp-hub-toggle-bg-checked);
@@ -667,7 +721,15 @@
 /*!**********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/admin-page/container.css ***!
   \**********************************************************************************************************************/
-/* AdminPageContainer Component */
+/**
+ * Admin page container component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\admin-page\container
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
 
 .pp-hub-admin-page-container {
     min-height: 100vh;
@@ -715,7 +777,15 @@
 /*!*******************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/admin-page/header.css ***!
   \*******************************************************************************************************************/
-/* AdminPageHeader Component */
+/**
+ * Admin page header component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\admin-page\header
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
 
 .pp-hub-admin-page-header {
     display: flex;
@@ -812,6 +882,16 @@
 /*!*******************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/admin-page/layout.css ***!
   \*******************************************************************************************************************/
+/**
+ * Admin page layout component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\admin-page\layout
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 .pp-hub-admin-page-layout__content h1 {
     font-size: var(--pp-hub-font-size-3xl);
     font-weight: var(--pp-hub-font-weight-bold);
@@ -859,6 +939,16 @@
 /*!****************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/buttons/button.css ***!
   \****************************************************************************************************************/
+/**
+ * Button component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\buttons
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 .pp-hub-button {
     all: unset;
     cursor: pointer;
@@ -1087,7 +1177,15 @@
 /*!*********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/buttons/help-button.css ***!
   \*********************************************************************************************************************/
-/* HelpButton Component */
+/**
+ * Help button component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\buttons\help-button
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
 
 .pp-hub-help-button {
     display: inline-flex;
@@ -1227,6 +1325,16 @@
 /*!********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/plugins-list/modal.css ***!
   \********************************************************************************************************************/
+/**
+ * Modal component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\plugins-list\modal
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 .pp-hub-modal .components-modal__content > div:not(.components-modal__header) {
     display: flex;
     flex-direction: column;
@@ -1286,6 +1394,16 @@
 /*!***************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/plugins-list/plugins-list.css ***!
   \***************************************************************************************************************************/
+/**
+ * Plugins list component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\plugins-list
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 .pp-hub-plugins-list {
     display: flex;
     flex-direction: column;
@@ -1555,7 +1673,15 @@
 /*!***************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/filter/filter-buttons-bar.css ***!
   \***************************************************************************************************************************/
-/* FilterButtonsBar Component */
+/**
+ * Filter buttons bar component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\filter\filter-buttons-bar
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
 
 .publishpress-hub-filter-buttons-bar {
     display: flex;
@@ -1671,6 +1797,16 @@ button.publishpress-hub-filter-button:hover {
 /*!*****************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/tooltip/tooltip.css ***!
   \*****************************************************************************************************************/
+/**
+ * Tooltip component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\tooltip
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 .pp-hub-tooltip {
     display: inline-block;
     background-color: var(--pp-hub-tooltip-bg);
@@ -1715,6 +1851,16 @@ button.publishpress-hub-filter-button:hover {
 /*!*************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/badge/badge.css ***!
   \*************************************************************************************************************/
+/**
+ * Badge component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\badge
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 .pp-hub-badge {
     padding: 4px 10px;
     border-radius: 16px;
@@ -1812,6 +1958,16 @@ button.publishpress-hub-filter-button:hover {
 /*!*******************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/messages/messages.css ***!
   \*******************************************************************************************************************/
+/**
+ * Messages component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\messages
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 .pp-hub-message {
     padding: var(--pp-hub-spacing-md);
     border-radius: var(--pp-hub-radius-md);
@@ -1842,6 +1998,16 @@ button.publishpress-hub-filter-button:hover {
 /*!*****************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/notices/notices.css ***!
   \*****************************************************************************************************************/
+/**
+ * Notices component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\notices
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 .pp-hub-notices-list {
     display: flex;
     flex-direction: column;
@@ -1870,6 +2036,16 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
 /*!*************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/components/icons/icons.css ***!
   \*************************************************************************************************************/
+/**
+ * Icons component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\icons
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 .pp-hub-icon-warning {
     color: var(--pp-hub-text-warning);
 }
@@ -1877,7 +2053,15 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
 /*!*******************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/Presentation/Asset/src/css/main.css ***!
   \*******************************************************************************************/
-/* PublishPress Hub - Main CSS Entry Point */
+/**
+ * Main CSS entry point.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\main
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
 
 /* 1. Core Foundation */
 
@@ -1927,7 +2111,15 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
 /*!*******************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/Presentation/Asset/src/css/admin-page.css ***!
   \*******************************************************************************************************************************************/
-/* Import the complete CSS system */
+/**
+ * Admin page.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\admin-page
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
 
 .publishpress-hub-admin-page-loading {
     display: flex;

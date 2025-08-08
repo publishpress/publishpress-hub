@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * WordPress plugin lifecycle adapter.
+ *
+ * @package PublishPress\Hub\Infrastructure\WordPress\Plugin
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WordPress\Plugin;
@@ -12,11 +22,23 @@ class WordPressPluginLifecycleAdapter
 {
     private WordPressFileSystemAdapter $fileSystemAdapter;
 
+    /**
+     * @param WordPressFileSystemAdapter $fileSystemAdapter The file system adapter.
+     * @since 1.0.0
+     */
     public function __construct(WordPressFileSystemAdapter $fileSystemAdapter)
     {
         $this->fileSystemAdapter = $fileSystemAdapter;
     }
 
+    /**
+     * Install a plugin.
+     *
+     * @param string $slug The slug.
+     * @param string $downloadUrl The download URL.
+     * @return bool True if the plugin was installed, false otherwise.
+     * @since 1.0.0
+     */
     public function installPlugin(string $slug, string $downloadUrl): bool
     {
         $tmpFile = download_url($downloadUrl);
@@ -52,6 +74,13 @@ class WordPressPluginLifecycleAdapter
         return true;
     }
 
+    /**
+     * Activate a plugin.
+     *
+     * @param string $pluginPath The plugin path.
+     * @return bool True if the plugin was activated, false otherwise.
+     * @since 1.0.0
+     */
     public function activatePlugin(string $pluginPath): bool
     {
         $result = activate_plugin($pluginPath);
@@ -69,6 +98,13 @@ class WordPressPluginLifecycleAdapter
         return true;
     }
 
+    /**
+     * Deactivate a plugin.
+     *
+     * @param string $pluginPath The plugin path.
+     * @return bool True if the plugin was deactivated, false otherwise.
+     * @since 1.0.0
+     */
     public function deactivatePlugin(string $pluginPath): bool
     {
         deactivate_plugins($pluginPath);
@@ -82,7 +118,7 @@ class WordPressPluginLifecycleAdapter
      * This function will run the uninstallation process for a plugin.
      * It will not delete the plugin from the filesystem.
      *
-     * @param string $pluginPath
+     * @param string $pluginPath The plugin path.
      * @return bool True if the uninstall.php file has been found and included, false otherwise.
      * @throws RuntimeException
      * @see https://developer.wordpress.org/reference/functions/uninstall_plugin/
@@ -105,7 +141,7 @@ class WordPressPluginLifecycleAdapter
      * This function will delete a plugin from the filesystem.
      * It will not run the uninstallation process.
      *
-     * @param string $pluginPath
+     * @param string $pluginPath The plugin path.
      * @return bool True if the plugin has been deleted, false otherwise.
      * @throws RuntimeException
      * @see https://developer.wordpress.org/reference/functions/delete_plugins/

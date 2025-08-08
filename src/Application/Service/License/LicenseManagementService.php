@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Service for managing licenses.
+ *
+ * @package PublishPress\Hub\Application\Service\License
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\License;
@@ -12,6 +22,9 @@ class LicenseManagementService
     private LicenseApiServiceInterface $licenseApiService;
     private LicensePersistenceInterface $licensePersistence;
 
+    /**
+     * @since 1.0.0
+     */
     public function __construct(
         LicenseApiServiceInterface $licenseApiService,
         LicensePersistenceInterface $licensePersistence
@@ -39,7 +52,7 @@ class LicenseManagementService
         return $activated;
     }
 
-        /**
+    /**
      * Deactivate license via API and remove it from local storage.
      *
      * @param string $licenseKey The license key to deactivate

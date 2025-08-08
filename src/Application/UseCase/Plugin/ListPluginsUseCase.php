@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Use case for listing plugins.
+ *
+ * @package PublishPress\Hub\Application\UseCase\Plugin
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
@@ -18,6 +28,9 @@ class ListPluginsUseCase implements UseCaseInterface
 
     private LicensePersistenceInterface $licensePersistence;
 
+    /**
+     * @since 1.0.0
+     */
     public function __construct(
         PluginStatusService $pluginStatusService,
         LicensePersistenceInterface $licensePersistence
@@ -26,9 +39,15 @@ class ListPluginsUseCase implements UseCaseInterface
         $this->licensePersistence = $licensePersistence;
     }
 
+    /**
+     * Lists plugins.
+     *
+     * @param WP_REST_Request $request Request containing familySlug parameter.
+     * @return array<string, mixed> The response data with plugin slug and installation status.
+     * @since 1.0.0
+     */
     public function execute(WP_REST_Request $request): array
     {
-        // Get all plugin families with updated status from WordPress
         $families = $this->pluginStatusService->getAllPluginFamiliesWithUpdatedStatus();
 
         $plugins = [];
@@ -77,6 +96,13 @@ class ListPluginsUseCase implements UseCaseInterface
         ];
     }
 
+    /**
+     * Gets the license key for a given plugin.
+     *
+     * @param ProPluginInterface $proPlugin The plugin.
+     * @return string The license key.
+     * @since 1.0.0
+     */
     private function getLicenseKey(ProPluginInterface $proPlugin): string
     {
         return $this->licensePersistence->getLicenseKey($proPlugin->getDownloadId()) ?? '';

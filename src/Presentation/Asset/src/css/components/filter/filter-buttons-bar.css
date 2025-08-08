@@ -1,4 +1,12 @@
-/* FilterButtonsBar Component */
+/**
+ * Filter buttons bar component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\filter\filter-buttons-bar
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
 
 .publishpress-hub-filter-buttons-bar {
     display: flex;

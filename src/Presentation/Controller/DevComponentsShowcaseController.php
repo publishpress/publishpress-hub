@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Dev components showcase controller.
+ *
+ * @package PublishPress\Hub\Presentation\Controller
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Presentation\Controller;
@@ -25,6 +35,15 @@ class DevComponentsShowcaseController implements BootableInterface
 
     private AssetServiceInterface $assetService;
 
+    /**
+     * Constructor.
+     *
+     * @param HooksServiceInterface $hooksService
+     * @param ViewServiceInterface $viewService
+     * @param AdminMenuServiceInterface $adminMenuService
+     * @param AssetServiceInterface $assetService
+     * @since 1.0.0
+     */
     public function __construct(
         HooksServiceInterface $hooksService,
         ViewServiceInterface $viewService,
@@ -37,21 +56,45 @@ class DevComponentsShowcaseController implements BootableInterface
         $this->assetService = $assetService;
     }
 
+    /**
+     * On load.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     protected function onLoad(): void
     {
         $this->registerAdminMenu();
         $this->addHooks();
     }
 
+    /**
+     * On init.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     protected function onInit(): void
     {
     }
 
+    /**
+     * Add hooks.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     private function addHooks(): void
     {
         $this->hooksService->addAction(AbstractHooks::ACTION_ADMIN_ENQUEUE_SCRIPTS, [$this, 'enqueueAssets']);
     }
 
+    /**
+     * Register admin menu.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     private function registerAdminMenu(): void
     {
         $submenu = new SubmenuPage(
@@ -66,6 +109,12 @@ class DevComponentsShowcaseController implements BootableInterface
         $this->adminMenuService->addSubmenuPage($submenu);
     }
 
+    /**
+     * Show components showcase.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     public function showComponentsShowcase(): void
     {
         $this->viewService->render(
@@ -76,6 +125,13 @@ class DevComponentsShowcaseController implements BootableInterface
         );
     }
 
+    /**
+     * Enqueue assets.
+     *
+     * @param string $hookSuffix
+     * @return void
+     * @since 1.0.0
+     */
     public function enqueueAssets(string $hookSuffix): void
     {
         if ('publishpress-hub_page_publishpress-hub-dev-components-showcase' !== $hookSuffix) {

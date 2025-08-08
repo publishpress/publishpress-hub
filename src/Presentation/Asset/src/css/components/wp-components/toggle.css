@@ -1,3 +1,13 @@
+/**
+ * Toggle component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\wp-components\toggle
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 .pp-hub-root .components-form-toggle.is-checked .components-form-toggle__track {
     background-color: var(--pp-hub-toggle-bg-checked);
     border-bottom-color: var(--pp-hub-toggle-bg-checked);

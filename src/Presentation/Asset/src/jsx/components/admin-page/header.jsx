@@ -1,3 +1,13 @@
+/**
+ * Admin page header.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page\header
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 import { memo, useMemo } from '@wordpress/element';
 import Button from "../buttons/button";
 

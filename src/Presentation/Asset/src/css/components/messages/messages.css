@@ -1,3 +1,13 @@
+/**
+ * Messages component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\messages
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 .pp-hub-message {
     padding: var(--pp-hub-spacing-md);
     border-radius: var(--pp-hub-radius-md);

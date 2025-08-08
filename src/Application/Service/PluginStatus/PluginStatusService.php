@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Service for managing plugin status.
+ *
+ * @package PublishPress\Hub\Application\Service\PluginStatus
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\PluginStatus;
@@ -25,6 +35,9 @@ class PluginStatusService
     private PluginFamilyRepositoryInterface $pluginFamilyRepository;
     private LicensePersistenceInterface $licensePersistence;
 
+    /**
+     * @since 1.0.0
+     */
     public function __construct(
         WordPressPluginStatusAdapter $pluginStatusAdapter,
         PluginFamilyRepositoryInterface $pluginFamilyRepository,
@@ -40,6 +53,8 @@ class PluginStatusService
      *
      * This method fetches fresh status information from WordPress
      * and updates all plugin entities accordingly.
+     *
+     * @since 1.0.0
      */
     public function updateAllPluginStatuses(): void
     {
@@ -54,6 +69,8 @@ class PluginStatusService
      * Updates status for a specific plugin family.
      *
      * @param PluginFamilyInterface $family The plugin family to update
+     *
+     * @since 1.0.0
      */
     public function updatePluginFamilyStatus(PluginFamilyInterface $family): void
     {
@@ -69,6 +86,8 @@ class PluginStatusService
      *
      * @param string $familySlug The slug of the plugin family to update
      * @return PluginFamilyInterface|null The updated family or null if not found
+     *
+     * @since 1.0.0
      */
     public function updatePluginFamilyStatusBySlug(string $familySlug): ?PluginFamilyInterface
     {
@@ -87,6 +106,8 @@ class PluginStatusService
      * Updates status for a specific plugin.
      *
      * @param PluginInterface $plugin The plugin to update
+     *
+     * @since 1.0.0
      */
     public function updatePluginStatus(PluginInterface $plugin): void
     {
@@ -111,6 +132,8 @@ class PluginStatusService
      *
      * @param string $familySlug The slug of the plugin family
      * @return PluginFamilyInterface|null The family with updated status or null if not found
+     *
+     * @since 1.0.0
      */
     public function getPluginFamilyWithUpdatedStatus(string $familySlug): ?PluginFamilyInterface
     {
@@ -124,6 +147,8 @@ class PluginStatusService
      * their status is current before returning them.
      *
      * @return array Array of PluginFamilyInterface objects with updated status
+     *
+     * @since 1.0.0
      */
     public function getAllPluginFamiliesWithUpdatedStatus(): array
     {

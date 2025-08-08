@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Plugins controller.
+ *
+ * @package PublishPress\Hub\Presentation\Controller\RestApi
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Presentation\Controller\RestApi;
@@ -35,6 +45,20 @@ class PluginsController implements BootableInterface
     private ActivateLicenseUseCase $activateLicenseUseCase;
     private string $restApiNamespace;
 
+    /**
+     * @param string $restApiNamespace
+     * @param RestApiServiceInterface $restApiService
+     * @param ListPluginsUseCase $listPluginsUseCase
+     * @param InstallFreePluginUseCase $installFreePluginUseCase
+     * @param InstallProPluginUseCase $installProPluginUseCase
+     * @param ChangePluginActivationUseCase $changePluginActivationUseCase
+     * @param UninstallPluginUseCase $uninstallPluginUseCase
+     * @param UpgradePluginUseCase $upgradePluginUseCase
+     * @param ResolveConflictUseCase $resolveConflictUseCase
+     * @param DeactivateLicenseUseCase $deactivateLicenseUseCase
+     * @param ActivateLicenseUseCase $activateLicenseUseCase
+     * @since 1.0.0
+     */
     public function __construct(
         string $restApiNamespace,
         RestApiServiceInterface $restApiService,
@@ -61,15 +85,33 @@ class PluginsController implements BootableInterface
         $this->activateLicenseUseCase = $activateLicenseUseCase;
     }
 
+    /**
+     * On load.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     protected function onLoad(): void
     {
         $this->addRoutes();
     }
 
+    /**
+     * On init.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     protected function onInit(): void
     {
     }
 
+    /**
+     * Add routes.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     private function addRoutes(): void
     {
         // phpcs:disable Squiz.PHP.CommentedOutCode.Found
@@ -158,6 +200,12 @@ class PluginsController implements BootableInterface
         // phpcs:enable Squiz.PHP.CommentedOutCode.Found
     }
 
+    /**
+     * Check permissions.
+     *
+     * @return bool
+     * @since 1.0.0
+     */
     public function checkPermissions(): bool
     {
         return $this->restApiService->checkPermissions('manage_options');

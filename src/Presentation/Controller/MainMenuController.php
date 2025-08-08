@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Main menu controller.
+ *
+ * @package PublishPress\Hub\Presentation\Controller
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Presentation\Controller;
@@ -22,6 +32,14 @@ class MainMenuController implements BootableInterface
 
     private HooksServiceInterface $hooksService;
 
+    /**
+     * Constructor.
+     *
+     * @param AdminMenuServiceInterface $adminMenuService
+     * @param AssetServiceInterface $assetService
+     * @param HooksServiceInterface $hooksService
+     * @since 1.0.0
+     */
     public function __construct(
         AdminMenuServiceInterface $adminMenuService,
         AssetServiceInterface $assetService,
@@ -32,16 +50,34 @@ class MainMenuController implements BootableInterface
         $this->hooksService = $hooksService;
     }
 
+    /**
+     * On load.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     protected function onLoad(): void
     {
         $this->registerAdminMenu();
         $this->addHooks();
     }
 
+    /**
+     * On init.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     protected function onInit(): void
     {
     }
 
+    /**
+     * Register admin menu.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     private function registerAdminMenu(): void
     {
         $adminPage = new MenuPage(
@@ -62,6 +98,12 @@ class MainMenuController implements BootableInterface
         $this->adminMenuService->addMenuPage($adminPage);
     }
 
+    /**
+     * Add hooks.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     private function addHooks(): void
     {
         $this->hooksService->addAction(
@@ -70,6 +112,12 @@ class MainMenuController implements BootableInterface
         );
     }
 
+    /**
+     * Enqueue admin menu styles.
+     *
+     * @return void
+     * @since 1.0.0
+     */
     public function enqueueAdminMenuStyles(): void
     {
         $this->assetService->enqueueStyle(

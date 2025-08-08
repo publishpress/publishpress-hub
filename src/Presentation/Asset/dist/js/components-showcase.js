@@ -48,6 +48,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * Admin page container.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page\container
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 var AdminPageContainer = function AdminPageContainer(_ref) {
   var _ref$className = _ref.className,
@@ -84,6 +94,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/**
+ * Admin page header.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page\header
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -144,6 +164,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./layout */ "./src/Presentation/Asset/src/jsx/components/admin-page/layout.jsx");
 /* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./container */ "./src/Presentation/Asset/src/jsx/components/admin-page/container.jsx");
 /* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header */ "./src/Presentation/Asset/src/jsx/components/admin-page/header.jsx");
+/**
+ * Admin page.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -163,6 +193,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./container */ "./src/Presentation/Asset/src/jsx/components/admin-page/container.jsx");
 /* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header */ "./src/Presentation/Asset/src/jsx/components/admin-page/header.jsx");
+/**
+ * Admin page layout.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page\layout
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 var AdminPageLayout = function AdminPageLayout(_ref) {
@@ -196,6 +236,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * Badge.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\badge
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 var BadgeComponent = function BadgeComponent(_ref) {
   var className = _ref.className,
@@ -231,6 +281,16 @@ var _excluded = ["variant", "icon", "onClick", "href", "target", "rel", "classNa
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
 function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
+/**
+ * Button.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\buttons
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 var DEFAULT_TARGET = '_blank';
@@ -307,6 +367,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _admin_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../admin-page */ "./src/Presentation/Asset/src/jsx/components/admin-page/index.jsx");
 /* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
 /* harmony import */ var _badge_badge__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../badge/badge */ "./src/Presentation/Asset/src/jsx/components/badge/badge.jsx");
+/**
+ * Components showcase.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\pages
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -510,6 +580,16 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _components_pages_components_showcase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/pages/components-showcase */ "./src/Presentation/Asset/src/jsx/components/pages/components-showcase.jsx");
+/**
+ * Components showcase.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 var componentsShowcaseContainer = document.getElementById('publishpress-hub-components-showcase-container');

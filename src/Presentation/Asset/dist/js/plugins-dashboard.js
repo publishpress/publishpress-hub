@@ -4532,6 +4532,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * Admin page container.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page\container
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 var AdminPageContainer = function AdminPageContainer(_ref) {
   var _ref$className = _ref.className,
@@ -4569,6 +4579,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/**
+ * Admin page header.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page\header
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -4630,6 +4650,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./layout */ "./src/Presentation/Asset/src/jsx/components/admin-page/layout.jsx");
 /* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./container */ "./src/Presentation/Asset/src/jsx/components/admin-page/container.jsx");
 /* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header */ "./src/Presentation/Asset/src/jsx/components/admin-page/header.jsx");
+/**
+ * Admin page.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -4650,6 +4680,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./container */ "./src/Presentation/Asset/src/jsx/components/admin-page/container.jsx");
 /* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header */ "./src/Presentation/Asset/src/jsx/components/admin-page/header.jsx");
+/**
+ * Admin page layout.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page\layout
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 var AdminPageLayout = function AdminPageLayout(_ref) {
@@ -4684,6 +4724,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * Badge.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\badge
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 var BadgeComponent = function BadgeComponent(_ref) {
   var className = _ref.className,
@@ -4720,6 +4770,16 @@ var _excluded = ["variant", "icon", "onClick", "href", "target", "rel", "classNa
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
 function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
+/**
+ * Button.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\buttons
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 var DEFAULT_TARGET = '_blank';
@@ -4796,6 +4856,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/**
+ * Filter buttons bar.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\filter
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -4880,6 +4950,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * Base icon.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\icons
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 var BaseIcon = function BaseIcon(_ref) {
   var children = _ref.children,
@@ -4910,6 +4990,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   IconWarning: () => (/* binding */ IconWarning)
 /* harmony export */ });
 /* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ "./src/Presentation/Asset/src/jsx/components/icons/base.jsx");
+/**
+ * Icon warning.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\icons
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 /**
@@ -4949,6 +5039,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   IconWarning: () => (/* reexport safe */ _icon_warning__WEBPACK_IMPORTED_MODULE_0__.IconWarning)
 /* harmony export */ });
 /* harmony import */ var _icon_warning__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./icon-warning */ "./src/Presentation/Asset/src/jsx/components/icons/icon-warning.jsx");
+/**
+ * Icons.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\icons
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 /***/ }),
@@ -4968,6 +5068,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/**
+ * Message.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\message
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 var MessageComponent = function MessageComponent(_ref) {
@@ -5010,6 +5120,16 @@ var _excluded = ["children"],
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
 function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
+/**
+ * Modal.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\modal
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -5044,6 +5164,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
+/**
+ * Notices list.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\notices
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 /**
  * External dependencies
  */
@@ -5099,6 +5229,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
 /**
+ * Snackbar list.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\notices
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+/**
  * External dependencies
  */
 
@@ -5150,6 +5290,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _plugins_list__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../plugins-list */ "./src/Presentation/Asset/src/jsx/components/plugins-list/index.jsx");
 /* harmony import */ var _notices_NoticesList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../notices/NoticesList */ "./src/Presentation/Asset/src/jsx/components/notices/NoticesList.jsx");
 /* harmony import */ var _notices_SnackbarList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../notices/SnackbarList */ "./src/Presentation/Asset/src/jsx/components/notices/SnackbarList.jsx");
+/**
+ * Plugins dashboard.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\pages
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -5267,6 +5417,16 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+/**
+ * Action button.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -5390,6 +5550,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _action_button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./action-button */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/action-button.jsx");
 /* harmony import */ var _status_flag__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./status-flag */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/status-flag.jsx");
 /* harmony import */ var _license_key_control__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./license-key-control */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/license-key-control.jsx");
+/**
+ * Plugins list components.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -5431,6 +5601,16 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
 function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
+/**
+ * License key control.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -5509,6 +5689,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
 /* harmony import */ var _message_message__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../message/message */ "./src/Presentation/Asset/src/jsx/components/message/message.jsx");
 /* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../modal */ "./src/Presentation/Asset/src/jsx/components/modal/index.jsx");
+/**
+ * Modal confirmation.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -5568,6 +5758,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
 /* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../modal */ "./src/Presentation/Asset/src/jsx/components/modal/index.jsx");
+/**
+ * Modal installation type.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -5639,6 +5839,16 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+/**
+ * Modal license input.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -5734,6 +5944,16 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+/**
+ * Modal license management.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -5870,6 +6090,16 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+/**
+ * Modal renderer.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -6005,6 +6235,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
 /* harmony import */ var _message_message__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../message/message */ "./src/Presentation/Asset/src/jsx/components/message/message.jsx");
 /* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../modal */ "./src/Presentation/Asset/src/jsx/components/modal/index.jsx");
+/**
+ * Modal resolve conflict.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -6078,6 +6318,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../buttons/button */ "./src/Presentation/Asset/src/jsx/components/buttons/button.jsx");
 /* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../modal */ "./src/Presentation/Asset/src/jsx/components/modal/index.jsx");
+/**
+ * Modal upgrade.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -6152,6 +6402,16 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+/**
+ * Plugin item.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -6329,6 +6589,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _badge_badge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../badge/badge */ "./src/Presentation/Asset/src/jsx/components/badge/badge.jsx");
+/**
+ * Status flag.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -6466,6 +6736,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _use_action_buttons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./use-action-buttons */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx");
 /* harmony import */ var _use_plugin_display_info__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./use-plugin-display-info */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-plugin-display-info.jsx");
 /* harmony import */ var _use_screen_size__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./use-screen-size */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/use-screen-size.jsx");
+/**
+ * Plugins list hooks.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -6490,6 +6770,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/**
+ * Use action buttons.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 var useActionButtons = function useActionButtons(pluginFamily, status, loadingStates, handlers) {
@@ -6576,6 +6866,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * Use focus on action.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 /**
@@ -6634,6 +6934,16 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+/**
+ * Use modal manager.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 var MODAL_TYPES = {
   NONE: 'none',
@@ -6699,6 +7009,16 @@ function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present,
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+/**
+ * Use plugin actions.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -6900,6 +7220,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * Use plugin display info.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 var usePluginDisplayInfo = function usePluginDisplayInfo(pluginFamily, pluginIconBaseUrl, status) {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
@@ -6932,6 +7262,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/**
+ * Use plugin status.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -6991,6 +7331,16 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+/**
+ * Use screen size.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 var useScreenSize = function useScreenSize() {
   var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)({
@@ -7043,6 +7393,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../stores/plugins-dashboard */ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/index.jsx");
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components */ "./src/Presentation/Asset/src/jsx/components/plugins-list/components/index.jsx");
 /* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hooks */ "./src/Presentation/Asset/src/jsx/components/plugins-list/hooks/index.jsx");
+/**
+ * Plugins list.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -7172,6 +7532,16 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+/**
+ * Tooltip.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\tooltip
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 var CustomTooltipComponent = function CustomTooltipComponent(_ref) {
@@ -7401,6 +7771,16 @@ var _marked = /*#__PURE__*/_regenerator().m(setSelectedFilter),
   _marked18 = /*#__PURE__*/_regenerator().m(deactivateLicense),
   _marked19 = /*#__PURE__*/_regenerator().m(activateLicense),
   _marked20 = /*#__PURE__*/_regenerator().m(cleanupError);
+/**
+ * Plugins dashboard actions.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\stores\plugins-dashboard
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -8427,6 +8807,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reducer */ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/reducer.jsx");
 /* harmony import */ var _selectors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./selectors */ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/selectors.jsx");
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions */ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/actions.jsx");
+/**
+ * Plugins dashboard store.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\stores\plugins-dashboard
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 
@@ -8456,6 +8846,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   STORE_NAME: () => (/* binding */ STORE_NAME),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/**
+ * Plugins dashboard store name.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\stores\plugins-dashboard
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 var STORE_NAME = 'publishpress-hub/plugins-dashboard';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (STORE_NAME);
 
@@ -8481,6 +8881,16 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+/**
+ * Plugins dashboard reducer.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\stores\plugins-dashboard
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 var DEFAULT_STATE = {
   selectedFilter: 'all',
@@ -8856,6 +9266,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getSelectedFilter: () => (/* binding */ getSelectedFilter),
 /* harmony export */   getSelectedPluginForConflictResolution: () => (/* binding */ getSelectedPluginForConflictResolution)
 /* harmony export */ });
+/**
+ * Plugins dashboard selectors.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\stores\plugins-dashboard
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 var createMemoizedSelector = function createMemoizedSelector(selectorFn) {
   var lastArgs = null;
   var lastResult = null;
@@ -9047,6 +9467,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   apiReady: () => (/* binding */ apiReady),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/**
+ * API ready.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\utils
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 function apiReady() {
     return new Promise((resolve) => {
         if (document.readyState === "complete" || document.readyState === "interactive") {
@@ -9084,6 +9514,12 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Theme Controller Utility
  * Manages theme switching, persistence, and system theme detection
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\utils
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
  */
 
 const THEME_STORAGE_KEY = 'pp-hub-theme';
@@ -9438,6 +9874,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_pages_plugins_dashboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/pages/plugins-dashboard */ "./src/Presentation/Asset/src/jsx/components/pages/plugins-dashboard.jsx");
 /* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stores/plugins-dashboard */ "./src/Presentation/Asset/src/jsx/stores/plugins-dashboard/index.jsx");
 /* harmony import */ var _utils_themeController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/themeController */ "./src/Presentation/Asset/src/jsx/utils/themeController.js");
+/**
+ * Plugins dashboard.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 
 
 

@@ -1,4 +1,12 @@
-/* HelpButton Component */
+/**
+ * Help button component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\buttons\help-button
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
 
 .pp-hub-help-button {
     display: inline-flex;

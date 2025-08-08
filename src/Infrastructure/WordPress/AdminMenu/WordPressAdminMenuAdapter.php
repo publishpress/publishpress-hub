@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * WordPress admin menu adapter.
+ *
+ * @package PublishPress\Hub\Infrastructure\WordPress\AdminMenu
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WordPress\AdminMenu;
@@ -8,6 +18,18 @@ use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuAdapterInterface
 
 class WordPressAdminMenuAdapter implements AdminMenuAdapterInterface
 {
+    /**
+     * Add a menu page.
+     *
+     * @param string $pageTitle The page title.
+     * @param string $menuTitle The menu title.
+     * @param string $capability The capability.
+     * @param string $menuSlug The menu slug.
+     * @param callable $callback The callback.
+     * @param string $iconUrl The icon URL.
+     * @param int|null $position The position.
+     * @since 1.0.0
+     */
     public function addMenuPage(
         string $pageTitle,
         string $menuTitle,
@@ -28,6 +50,18 @@ class WordPressAdminMenuAdapter implements AdminMenuAdapterInterface
         );
     }
 
+    /**
+     * Add a submenu page.
+     *
+     * @param string $parentSlug The parent slug.
+     * @param string $pageTitle The page title.
+     * @param string $menuTitle The menu title.
+     * @param string $capability The capability.
+     * @param string $menuSlug The menu slug.
+     * @param callable $callback The callback.
+     * @param int|null $position The position.
+     * @since 1.0.0
+     */
     public function addSubmenuPage(
         string $parentSlug,
         string $pageTitle,

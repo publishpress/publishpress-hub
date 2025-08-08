@@ -5,7 +5,10 @@
  * It allow to centralize translations in a single .pot file, avoiding the need to pass
  * strings through global objects. WordPress i18n functions serve as fallback.
  *
- * @package PublishPressHub
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
  * @since 1.0.0
  */
 

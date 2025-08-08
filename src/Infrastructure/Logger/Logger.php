@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Logger class.
+ *
+ * @package PublishPress\Hub\Infrastructure\Logger
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Logger;
@@ -7,9 +17,6 @@ namespace PublishPress\Hub\Infrastructure\Logger;
 use PublishPress\Hub\Infrastructure\Logger\Contract\LoggerInterface;
 use Throwable;
 
-/**
- * @since 1.0.0
- */
 class Logger implements LoggerInterface
 {
     /**
@@ -25,6 +32,7 @@ class Logger implements LoggerInterface
     ];
 
     /**
+     * @param array<string, mixed> $config The config.
      * @since 1.0.0
      */
     public function __construct(array $config = [])
@@ -38,6 +46,9 @@ class Logger implements LoggerInterface
      * This is an static method so we can use it before the plugin is fully loaded
      * and the logger is not available as dependency in the container.
      *
+     * @param string $message The message.
+     * @param Throwable|null $e The exception.
+     * @param bool $addTrace Whether to add the trace to the message.
      * @since 1.0.0
      */
     public static function logException(string $message = '', ?Throwable $e = null, bool $addTrace = false): void
@@ -83,6 +94,11 @@ class Logger implements LoggerInterface
     }
 
     /**
+     * Log a message.
+     *
+     * @param string $message The message.
+     * @param Throwable|null $throwable The throwable.
+     * @return bool True if the message was logged, false otherwise.
      * @since 1.0.0
      */
     public function log(string $message, ?Throwable $throwable = null): bool
@@ -100,6 +116,11 @@ class Logger implements LoggerInterface
     }
 
     /**
+     * Log a message with trace.
+     *
+     * @param string $message The message.
+     * @param Throwable|null $throwable The throwable.
+     * @return bool True if the message was logged, false otherwise.
      * @since 1.0.0
      */
     public function logWithTrace(string $message, ?Throwable $throwable = null): bool
@@ -117,6 +138,9 @@ class Logger implements LoggerInterface
     }
 
     /**
+     * Check if the logger can log.
+     *
+     * @return bool True if the logger can log, false otherwise.
      * @since 1.0.0
      */
     public function canLog(): bool
@@ -129,6 +153,10 @@ class Logger implements LoggerInterface
     }
 
     /**
+     * Set the config.
+     *
+     * @param string $key The key.
+     * @param mixed $value The value.
      * @since 1.0.0
      */
     public function setConfig(string $key, $value): void
@@ -137,6 +165,11 @@ class Logger implements LoggerInterface
     }
 
     /**
+     * Get the config.
+     *
+     * @param string $key The key.
+     * @param mixed $default The default value.
+     * @return mixed The config value.
      * @since 1.0.0
      */
     public function getConfig(string $key, $default = null)
@@ -145,6 +178,12 @@ class Logger implements LoggerInterface
     }
 
     /**
+     * Build the log message.
+     *
+     * @param string $baseMessage The base message.
+     * @param Throwable|null $throwable The throwable.
+     * @param bool $includeTrace Whether to include the trace.
+     * @return string The log message.
      * @since 1.0.0
      */
     private function buildLogMessage(string $baseMessage, ?Throwable $throwable, bool $includeTrace): string
@@ -166,6 +205,10 @@ class Logger implements LoggerInterface
     }
 
     /**
+     * Format the throwable info.
+     *
+     * @param Throwable $throwable The throwable.
+     * @return string The throwable info.
      * @since 1.0.0
      */
     private function formatThrowableInfo(Throwable $throwable): string
@@ -186,6 +229,10 @@ class Logger implements LoggerInterface
     }
 
     /**
+     * Format the stack trace.
+     *
+     * @param Throwable $throwable The throwable.
+     * @return string The stack trace.
      * @since 1.0.0
      */
     private function formatStackTrace(Throwable $throwable): string
@@ -207,6 +254,10 @@ class Logger implements LoggerInterface
     }
 
     /**
+     * Format the trace item.
+     *
+     * @param array<string, mixed> $traceItem The trace item.
+     * @return string The trace item.
      * @since 1.0.0
      */
     private function formatTraceItem(array $traceItem): string
@@ -235,6 +286,8 @@ class Logger implements LoggerInterface
     /**
      * Sanitize log message by removing non-printable characters.
      *
+     * @param string $message The message.
+     * @return string The sanitized message.
      * @since 1.0.0
      */
     private function sanitizeMessage(string $message): string
@@ -243,6 +296,10 @@ class Logger implements LoggerInterface
     }
 
     /**
+     * Send the message to the error log.
+     *
+     * @param string $message The message.
+     * @return bool True if the message was logged, false otherwise.
      * @since 1.0.0
      */
     private function sendToErrorLog(string $message): bool

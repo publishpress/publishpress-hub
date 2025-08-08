@@ -1,9 +1,23 @@
 <?php
 
+/**
+ * Plugin families.
+ *
+ * @package PublishPress\Hub\Domain\Plugin
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin;
 
+/**
+ * @return array<array<string, mixed>> An array of plugin families.
+ * @since 1.0.0
+ */
 return [
     [
         'name' => 'PublishPress Checklists',

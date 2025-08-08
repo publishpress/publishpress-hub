@@ -1,4 +1,13 @@
-/* Import the complete CSS system */
+/**
+ * Admin page.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\admin-page
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 @import './main.css';
 
 .publishpress-hub-admin-page-loading {

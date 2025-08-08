@@ -1,25 +1,34 @@
 <?php
 
+/**
+ * Plugin not activated exception.
+ *
+ * @package PublishPress\Hub\Domain\Plugin\Exception
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
 use PublishPress\Hub\Domain\Exception\Base\DomainException;
 
-/**
- * Exception thrown when a plugin is not activated.
- *
- * @since 1.0.0
- */
 class PluginNotActivatedException extends DomainException
 {
     /**
+     * @param array<string, mixed> $context Optional context information
      * @since 1.0.0
      */
     public function __construct(array $context = [])
     {
         parent::__construct(
-            __('This action is not possible because the plugin is not activated. Please activate the plugin and try again.', 'publishpress-hub'),
+            esc_html__(
+                'This action is not possible because the plugin is not activated. Please activate the plugin and try again.', // phpcs:ignore Generic.Files.LineLength
+                'publishpress-hub'
+            ),
             $context
         );
     }

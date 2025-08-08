@@ -3,6 +3,10 @@
 /**
  * Template for the dev components showcase container.
  *
+ * @package PublishPress\Hub\Presentation\Template\Admin\DevComponentsShowcase
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
  * @since 1.0.0
  *
  * @var array<string, mixed> $context {

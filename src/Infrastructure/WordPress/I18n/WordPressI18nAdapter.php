@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * WordPress i18n adapter.
+ *
+ * @package PublishPress\Hub\Infrastructure\WordPress\I18n
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WordPress\I18n;
@@ -18,9 +28,6 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
 {
     use BootableTrait;
 
-    /**
-     * @since 1.0.0
-     */
     private string $textDomain;
 
     /**
@@ -44,6 +51,11 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
     private AssetServiceInterface $assetService;
 
     /**
+     * @param string $textDomain The text domain.
+     * @param string $scriptPath The script path.
+     * @param string $languagesPath The languages path.
+     * @param HooksServiceInterface $hooksService The hooks service.
+     * @param AssetServiceInterface $assetService The asset service.
      * @since 1.0.0
      */
     public function __construct(
@@ -60,6 +72,9 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
         $this->assetService = $assetService;
     }
 
+    /**
+     * @since 1.0.0
+     */
     protected function onLoad(): void
     {
         $this->hooksService->addAction(
@@ -69,12 +84,18 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
         );
     }
 
+    /**
+     * @since 1.0.0
+     */
     protected function onInit(): void
     {
         $this->loadTextDomain();
     }
 
     /**
+     * Get the text domain.
+     *
+     * @return string The text domain.
      * @since 1.0.0
      */
     public function getTextDomain(): string
@@ -83,6 +104,8 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
     }
 
     /**
+     * Load the text domain.
+     *
      * @since 1.0.0
      */
     public function loadTextDomain(): void
@@ -98,6 +121,9 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
     }
 
     /**
+     * Get the locale.
+     *
+     * @return string The locale.
      * @since 1.0.0
      */
     public function getLocale(): string
@@ -106,6 +132,9 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
     }
 
     /**
+     * Get the user locale.
+     *
+     * @return string The user locale.
      * @since 1.0.0
      */
     public function getUserLocale(): string
@@ -114,6 +143,8 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
     }
 
     /**
+     * Enqueue the translations script.
+     *
      * @since 1.0.0
      */
     public function enqueueTranslationsScript(): void
@@ -146,6 +177,12 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
         );
     }
 
+    /**
+     * Get the variable name from the text domain.
+     *
+     * @return string The variable name.
+     * @since 1.0.0
+     */
     private function getVariableNameFromTextDomain(): string
     {
         $variableName = preg_replace_callback(
@@ -161,7 +198,7 @@ class WordPressI18nAdapter implements I18nServiceInterface, BootableInterface
      * Get the localized translations from the JSON file and
      * return it as an array.
      *
-     * @return array<string, mixed>
+     * @return array<string, mixed> The localized translations.
      * @since 1.0.0
      */
     private function getLocalizedTranslations(): array

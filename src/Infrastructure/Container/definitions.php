@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Container definitions.
+ *
+ * @package PublishPress\Hub\Infrastructure\Container
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container;
@@ -306,7 +316,9 @@ return [
     // Presentation Services
     AbstractDependencies::MAIN_MENU_CONTROLLER =>
         fn(ContainerInterface $container) => new MainMenuController(
-            $container->get(AbstractDependencies::ADMIN_MENU_SERVICE)
+            $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
+            $container->get(AbstractDependencies::ASSET_SERVICE),
+            $container->get(AbstractDependencies::HOOKS_SERVICE)
         ),
 
     AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER =>

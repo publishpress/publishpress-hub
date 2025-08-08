@@ -1,19 +1,26 @@
 <?php
 
+/**
+ * Use case for resolving conflicts.
+ *
+ * @package PublishPress\Hub\Application\UseCase\Plugin
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
-use PublishPress\Hub\Domain\Exception\Contract\WithContextInterface;
-use PublishPress\Hub\Domain\Plugin\Exception\LicenseInvalidException;
-use PublishPress\Hub\Domain\Plugin\Exception\LicenseException;
-use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
+use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
+use PublishPress\Hub\Domain\Plugin\Contract\PluginInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginInstallException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotInstalledException;
-use PublishPress\Hub\Infrastructure\License\Contract\LicenseServiceInterface;
 use PublishPress\Hub\Infrastructure\WordPress\Plugin\WordPressPluginLifecycleAdapter;
 use WP_REST_Request;
 
@@ -22,6 +29,9 @@ class ResolveConflictUseCase implements UseCaseInterface
     private PluginStatusService $pluginStatusService;
     private WordPressPluginLifecycleAdapter $pluginLifecycle;
 
+    /**
+     * @since 1.0.0
+     */
     public function __construct(
         PluginStatusService $pluginStatusService,
         WordPressPluginLifecycleAdapter $pluginLifecycle
@@ -31,16 +41,21 @@ class ResolveConflictUseCase implements UseCaseInterface
     }
 
     /**
+     * Resolves a conflict by uninstalling the conflicting plugin
+     * according to the pluginToKeep parameter selected by the user.
+     *
+     * @param WP_REST_Request $request Request containing familySlug and pluginToKeep parameters.
      * @throws PluginNotFoundException
      * @throws PluginNotInstalledException
      * @throws PluginInstallException
+     * @return array<string, mixed> The response data with plugin slug and installation status.
+     * @since 1.0.0
      */
     public function execute(WP_REST_Request $request): array
     {
         $familySlug = $request->get_param('familySlug');
         $pluginTypeToKeep = $request->get_param('pluginToKeep');
 
-        // Get family with updated status to ensure we have current information
         $family = $this->pluginStatusService->getPluginFamilyWithUpdatedStatus($familySlug);
 
         if (!$family) {
@@ -51,13 +66,8 @@ class ResolveConflictUseCase implements UseCaseInterface
             throw new PluginNotInstalledException(['family_slug' => esc_html($familySlug)]);
         }
 
-        if ($pluginTypeToKeep === 'free') {
-            $pluginToUninstall = $family->getProPlugin();
-            $pluginToKeep = $family->getFreePlugin();
-        } else {
-            $pluginToUninstall = $family->getFreePlugin();
-            $pluginToKeep = $family->getProPlugin();
-        }
+        $pluginToUninstall = $this->getPluginToUninstall($family, $pluginTypeToKeep);
+        $pluginToKeep = $this->getPluginToKeep($family, $pluginTypeToKeep);
 
         if (! $pluginToUninstall->isInstalled()) {
             throw new PluginNotInstalledException(['plugin_slug' => esc_html($pluginToUninstall->getSlug())]);
@@ -70,12 +80,45 @@ class ResolveConflictUseCase implements UseCaseInterface
         $this->pluginLifecycle->uninstallPlugin($pluginToUninstallPath);
         $this->pluginLifecycle->deletePlugin($pluginToUninstallPath);
 
-        // Update plugin status after installation to reflect current state
         $this->pluginStatusService->updatePluginStatus($pluginToKeep);
 
         return [
             'slug' => esc_html($pluginToUninstallSlug),
             'installed' => $pluginToKeep->isInstalled(),
         ];
+    }
+
+    /**
+     * Gets the plugin to uninstall.
+     *
+     * @param PluginFamilyInterface $family The family.
+     * @param string $pluginTypeToKeep The type of plugin to keep.
+     * @return PluginInterface The plugin to uninstall.
+     * @since 1.0.0
+     */
+    private function getPluginToUninstall(PluginFamilyInterface $family, string $pluginTypeToKeep): PluginInterface
+    {
+        if ($pluginTypeToKeep === 'free') {
+            return $family->getProPlugin();
+        }
+
+        return $family->getFreePlugin();
+    }
+
+    /**
+     * Gets the plugin to keep.
+     *
+     * @param PluginFamilyInterface $family The family.
+     * @param string $pluginTypeToKeep The type of plugin to keep.
+     * @return PluginInterface The plugin to keep.
+     * @since 1.0.0
+     */
+    private function getPluginToKeep(PluginFamilyInterface $family, string $pluginTypeToKeep): PluginInterface
+    {
+        if ($pluginTypeToKeep === 'free') {
+            return $family->getFreePlugin();
+        }
+
+        return $family->getProPlugin();
     }
 }

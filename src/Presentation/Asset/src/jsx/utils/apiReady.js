@@ -1,3 +1,13 @@
+/**
+ * API ready.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\utils
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 export function apiReady() {
     return new Promise((resolve) => {
         if (document.readyState === "complete" || document.readyState === "interactive") {

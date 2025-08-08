@@ -1,3 +1,13 @@
+/**
+ * Admin page layout component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\admin-page\layout
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
 .pp-hub-admin-page-layout__content h1 {
     font-size: var(--pp-hub-font-size-3xl);
     font-weight: var(--pp-hub-font-weight-bold);
