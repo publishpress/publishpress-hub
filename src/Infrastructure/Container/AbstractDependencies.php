@@ -31,9 +31,9 @@ abstract class AbstractDependencies
 
     public const PLUGIN_URL = 'publishpress-hub.constants.plugin-url';
 
-    public const PLUGIN_ASSETS_PATH = 'publishpress-hub.constants.plugin-assets-path';
+    public const PLUGIN_RESOURCES_PATH = 'publishpress-hub.constants.plugin-assets-path';
 
-    public const PLUGIN_ASSETS_URL = 'publishpress-hub.constants.plugin-assets-url';
+    public const PLUGIN_RESOURCES_URL = 'publishpress-hub.constants.plugin-assets-url';
 
     public const PLUGIN_VENDOR_PATH = 'publishpress-hub.constants.plugin-vendor-path';
 

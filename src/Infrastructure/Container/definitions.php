@@ -64,9 +64,9 @@ return [
 
     AbstractDependencies::PLUGIN_URL => PUBLISHPRESS_HUB_URL,
 
-    AbstractDependencies::PLUGIN_ASSETS_PATH => PUBLISHPRESS_HUB_PATH . 'src/resources/Asset/dist/',
+    AbstractDependencies::PLUGIN_RESOURCES_PATH => PUBLISHPRESS_HUB_PATH . 'src/resources/dist/',
 
-    AbstractDependencies::PLUGIN_ASSETS_URL => PUBLISHPRESS_HUB_URL . 'src/resources/Asset/dist/',
+    AbstractDependencies::PLUGIN_RESOURCES_URL => PUBLISHPRESS_HUB_URL . 'src/resources/dist/',
 
     AbstractDependencies::PLUGIN_VERSION => PUBLISHPRESS_HUB_VERSION,
 
@@ -111,7 +111,7 @@ return [
 
     AbstractDependencies::ASSET_SERVICE =>
         fn(ContainerInterface $container) => new WPAssetAdapter(
-            $container->get(AbstractDependencies::PLUGIN_ASSETS_URL),
+            $container->get(AbstractDependencies::PLUGIN_RESOURCES_URL),
             $container->get(AbstractDependencies::PLUGIN_VERSION),
             $container->get(AbstractDependencies::SCRIPT_DEBUG)
         ),
