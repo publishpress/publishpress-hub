@@ -113,11 +113,8 @@ class PluginStatusService
     {
         $isInstalled = $this->pluginStatusAdapter->checkIfPluginIsInstalled($plugin);
         $isActive = $this->pluginStatusAdapter->checkIfPluginIsActive($plugin);
+        $isLicensed = $this->getPluginLicenseStatus($plugin);
         $version = $this->pluginStatusAdapter->getPluginVersion($plugin);
-
-        $isLicensed = ($plugin instanceof ProPluginInterface) ?
-            $this->licensePersistence->hasLicenseKey($plugin->getDownloadId()) :
-            false;
 
         $plugin->setInstalled($isInstalled, $version);
         $plugin->setActive($isActive);
@@ -154,5 +151,24 @@ class PluginStatusService
     {
         $this->updateAllPluginStatuses();
         return $this->pluginFamilyRepository->getAllFamilies();
+    }
+
+    /**
+     * Gets the license status for a specific plugin.
+     *
+     * @param PluginInterface $plugin The plugin to get the license status for
+     * @return bool The license status
+     * @since 1.0.0
+     */
+    private function getPluginLicenseStatus(PluginInterface $plugin): bool
+    {
+        if (!$plugin instanceof ProPluginInterface) {
+            return false;
+        }
+
+        $hasLicenseKey = $this->licensePersistence->hasLicenseKey($plugin->getDownloadId());
+        $isLicenseActivated = $this->licensePersistence->getLicenseStatus($plugin->getDownloadId());
+
+        return $hasLicenseKey && $isLicenseActivated;
     }
 }

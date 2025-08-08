@@ -32,7 +32,6 @@ use PublishPress\Hub\Infrastructure\AdminMenu\AdminMenuService;
 use PublishPress\Hub\Infrastructure\Cache\CacheService;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\EddSubscriptionAdapter;
 use PublishPress\Hub\Infrastructure\License\LicenseApiService;
-use PublishPress\Hub\Infrastructure\License\LicensePersistenceService;
 use PublishPress\Hub\Infrastructure\Logger\Logger;
 use PublishPress\Hub\Infrastructure\Remote\RemoteService;
 use PublishPress\Hub\Infrastructure\RestApi\RestApiService;
@@ -54,6 +53,7 @@ use PublishPress\Hub\Infrastructure\WP\Security\WPSecurityAdapter;
 use PublishPress\Hub\Admin\Page\ComponentsShowcaseController;
 use PublishPress\Hub\Admin\MenuController;
 use PublishPress\Hub\Admin\Page\PluginsDashboardController;
+use PublishPress\Hub\Infrastructure\License\PerPluginLicensePersistenceService;
 use PublishPress\Hub\Rest\PluginsController;
 use PublishPress\Psr\Container\ContainerInterface;
 
@@ -152,10 +152,11 @@ return [
             $container->get(AbstractDependencies::SECURITY_SERVICE)
         ),
 
+    // TODO: Swap back to CanonicalLicensePersistenceService after we update all the plugins to use Hub as dependency.
     AbstractDependencies::LICENSE_PERSISTENCE_SERVICE =>
-        fn(ContainerInterface $container) => new LicensePersistenceService(
+        fn(ContainerInterface $container) => new PerPluginLicensePersistenceService(
             $container->get(AbstractDependencies::OPTIONS_ADAPTER),
-            $container->get(AbstractDependencies::LICENSE_OPTION_PREFIX)
+            $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
         ),
 
     AbstractDependencies::LICENSE_API_SERVICE =>

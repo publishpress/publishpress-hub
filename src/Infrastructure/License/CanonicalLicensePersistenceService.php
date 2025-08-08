@@ -17,8 +17,10 @@ namespace PublishPress\Hub\Infrastructure\License;
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
 
-class LicensePersistenceService implements LicensePersistenceInterface
+class CanonicalLicensePersistenceService implements LicensePersistenceInterface
 {
+    private const OPTION_SUFFIX_STATUS = '_status';
+
     private WPOptionsAdapterInterface $optionsAdapter;
 
     private string $optionPrefix;
@@ -48,6 +50,19 @@ class LicensePersistenceService implements LicensePersistenceInterface
     }
 
     /**
+     * Store the license status.
+     *
+     * @param int $downloadId The download ID.
+     * @param bool $isLicenseValid The license status.
+     * @since 1.0.0
+     */
+    public function storeLicenseStatus(int $downloadId, bool $isLicenseValid): void
+    {
+        $optionName = $this->buildOptionName($downloadId, self::OPTION_SUFFIX_STATUS);
+        $this->optionsAdapter->updateOption($optionName, $isLicenseValid, true);
+    }
+
+    /**
      * Get the license key.
      *
      * @param int $downloadId The download ID.
@@ -63,14 +78,32 @@ class LicensePersistenceService implements LicensePersistenceInterface
     }
 
     /**
+     * Get the license status.
+     *
+     * @param int $downloadId The download ID.
+     * @return bool The license status.
+     * @since 1.0.0
+     */
+    public function getLicenseStatus(int $downloadId): bool
+    {
+        $optionName = $this->buildOptionName($downloadId, self::OPTION_SUFFIX_STATUS);
+        $licenseStatus = $this->optionsAdapter->getOption($optionName, null);
+
+        return $licenseStatus !== null && $licenseStatus !== false ? (bool)$licenseStatus : false;
+    }
+
+    /**
      * Remove the license key.
      *
      * @param int $downloadId The download ID.
      * @since 1.0.0
      */
-    public function removeLicenseKey(int $downloadId): void
+    public function removeLicense(int $downloadId): void
     {
         $optionName = $this->buildOptionName($downloadId);
+        $this->optionsAdapter->deleteOption($optionName);
+
+        $optionName = $this->buildOptionName($downloadId, self::OPTION_SUFFIX_STATUS);
         $this->optionsAdapter->deleteOption($optionName);
     }
 
@@ -121,9 +154,9 @@ class LicensePersistenceService implements LicensePersistenceInterface
      * @return string The option name
      * @since 1.0.0
      */
-    private function buildOptionName(int $downloadId): string
+    private function buildOptionName(int $downloadId, string $optionSuffix = ''): string
     {
-        return "{$this->optionPrefix}$downloadId";
+        return "{$this->optionPrefix}$downloadId$optionSuffix";
     }
 
     /**

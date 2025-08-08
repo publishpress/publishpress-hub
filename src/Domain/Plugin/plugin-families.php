@@ -21,7 +21,7 @@ namespace PublishPress\Hub\Domain\Plugin;
 return [
     [
         'name' => 'PublishPress Checklists',
-        'slug' => 'publishpress-checklists',
+        'slug' => 'checklists',
         'icon_file_name' => 'icon-checklists',
         'description' => __('Improve content quality with customizable editorial checklists.', 'publishpress-hub'),
         'changelog_url' => 'https://publishpress.com/knowledge-base/changelogs-checklists/',
@@ -37,7 +37,7 @@ return [
     ],
     [
         'name' => 'PublishPress Permissions',
-        'slug' => 'publishpress-permissions',
+        'slug' => 'permissions',
         'icon_file_name' => 'icon-permissions',
         'description' => __('Advanced user role and permission management.', 'publishpress-hub'),
         'changelog_url' => 'https://publishpress.com/knowledge-base/changelogs-for-permissions-pro/',
@@ -53,7 +53,7 @@ return [
     ],
     [
         'name' => 'PublishPress Authors',
-        'slug' => 'publishpress-authors',
+        'slug' => 'authors',
         'icon_file_name' => 'icon-authors',
         'description' => __('Add many authors to one WordPress post.', 'publishpress-hub'),
         'changelog_url' => 'https://publishpress.com/knowledge-base/changelogs-multiple-authors/',
@@ -69,7 +69,7 @@ return [
     ],
     [
         'name' => 'PublishPress Blocks',
-        'slug' => 'publishpress-blocks',
+        'slug' => 'blocks',
         'icon_file_name' => 'icon-blocks',
         'description' => __('Take the control of the new Gutenberg editor.', 'publishpress-hub'),
         'changelog_url' => 'https://publishpress.com/knowledge-base/changelogs-blocks/',
@@ -85,7 +85,7 @@ return [
     ],
     [
         'name' => 'PublishPress Capabilities',
-        'slug' => 'publishpress-capabilities',
+        'slug' => 'capabilities',
         'icon_file_name' => 'icon-capabilities',
         'description' => __('Fine-grained user role management for WordPress sites.', 'publishpress-hub'),
         'changelog_url' => 'https://publishpress.com/knowledge-base/changelogs-capabilities-pro/',
@@ -101,7 +101,7 @@ return [
     ],
     [
         'name' => 'PublishPress Future',
-        'slug' => 'publishpress-future',
+        'slug' => 'future',
         'icon_file_name' => 'icon-future',
         'description' => __('Automatically run actions on a scheduled future moment.', 'publishpress-hub'),
         'changelog_url' => 'https://publishpress.com/knowledge-base/changelogs-for-publishpress-future-pro/',
@@ -117,7 +117,7 @@ return [
     ],
     [
         'name' => 'PublishPress Planner',
-        'slug' => 'publishpress-planner',
+        'slug' => 'planner',
         'icon_file_name' => 'icon-planner',
         'description' => __('Organize, schedule and plan your WordPress content.', 'publishpress-hub'),
         'changelog_url' => 'https://publishpress.com/knowledge-base/changelogs-publishpress/',
@@ -133,7 +133,7 @@ return [
     ],
     [
         'name' => 'PublishPress Revisions',
-        'slug' => 'publishpress-revisions',
+        'slug' => 'revisions',
         'icon_file_name' => 'icon-revisions',
         'description' => __('Manage, schedule and approve WordPress revisions.', 'publishpress-hub'),
         'changelog_url' => 'https://publishpress.com/knowledge-base/changelogs-revisions-pro/',
@@ -149,7 +149,7 @@ return [
     ],
     [
         'name' => 'PublishPress Series',
-        'slug' => 'publishpress-series',
+        'slug' => 'series',
         'icon_file_name' => 'icon-series',
         'description' => __('Group WordPress content together into a series.', 'publishpress-hub'),
         'changelog_url' => 'https://publishpress.com/knowledge-base/changelogs-series-pro/',
@@ -165,7 +165,7 @@ return [
     ],
     [
         'name' => 'PublishPress Statuses',
-        'slug' => 'publishpress-statuses',
+        'slug' => 'statuses',
         'icon_file_name' => 'icon-statuses',
         'description' => __('Manage custom statuses for your WordPress posts.', 'publishpress-hub'),
         'changelog_url' => 'https://publishpress.com/knowledge-base/changelogs-for-publishpress-statuses-pro/',

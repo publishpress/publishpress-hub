@@ -26,6 +26,15 @@ interface LicensePersistenceInterface
     public function storeLicenseKey(int $downloadId, string $licenseKey): void;
 
     /**
+     * Store the license status for a specific download ID.
+     *
+     * @param int $downloadId The download ID to associate with the license status.
+     * @param bool $isLicenseValid The license status to store.
+     * @since 1.0.0
+     */
+    public function storeLicenseStatus(int $downloadId, bool $isLicenseValid): void;
+
+    /**
      * Retrieve a license key for a specific download ID.
      *
      * @param int $downloadId The download ID to look up.
@@ -35,12 +44,21 @@ interface LicensePersistenceInterface
     public function getLicenseKey(int $downloadId): ?string;
 
     /**
-     * Remove a license key for a specific download ID.
+     * Retrieve the license status for a specific download ID.
+     *
+     * @param int $downloadId The download ID to look up.
+     * @return bool The license status.
+     * @since 1.0.0
+     */
+    public function getLicenseStatus(int $downloadId): bool;
+
+    /**
+     * Remove a license key and status for a specific download ID.
      *
      * @param int $downloadId The download ID to remove the license key for.
      * @since 1.0.0
      */
-    public function removeLicenseKey(int $downloadId): void;
+    public function removeLicense(int $downloadId): void;
 
     /**
      * Check if a license key exists for a specific download ID.

@@ -14,10 +14,11 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\License;
 
+use PublishPress\Hub\Application\Service\License\Contract\LicenseManagementServiceInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseApiServiceInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 
-class LicenseManagementService
+class LicenseManagementService implements LicenseManagementServiceInterface
 {
     private LicenseApiServiceInterface $licenseApiService;
     private LicensePersistenceInterface $licensePersistence;
@@ -47,6 +48,7 @@ class LicenseManagementService
 
         if ($activated) {
             $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
+            $this->licensePersistence->storeLicenseStatus($downloadId, true);
         }
 
         return $activated;
@@ -64,7 +66,8 @@ class LicenseManagementService
         $deactivated = $this->licenseApiService->deactivateLicense($licenseKey, $downloadId);
 
         if ($deactivated) {
-            $this->licensePersistence->removeLicenseKey($downloadId);
+            $this->licensePersistence->removeLicense($downloadId);
+            $this->licensePersistence->storeLicenseStatus($downloadId, false);
         }
 
         return $deactivated;
@@ -89,7 +92,8 @@ class LicenseManagementService
             $allDownloadIdsUsingLicense = $this->licensePersistence->getDownloadIdsUsingLicenseKey($licenseKey);
 
             foreach ($allDownloadIdsUsingLicense as $affectedDownloadId) {
-                $this->licensePersistence->removeLicenseKey($affectedDownloadId);
+                $this->licensePersistence->removeLicense($affectedDownloadId);
+                $this->licensePersistence->storeLicenseStatus($affectedDownloadId, false);
             }
         }
 
@@ -115,6 +119,7 @@ class LicenseManagementService
 
         // Store the license key locally
         $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
+        $this->licensePersistence->storeLicenseStatus($downloadId, true);
 
         return true;
     }
@@ -128,6 +133,17 @@ class LicenseManagementService
     public function getStoredLicenseKey(int $downloadId): ?string
     {
         return $this->licensePersistence->getLicenseKey($downloadId);
+    }
+
+    /**
+     * Get stored license status for a download ID.
+     *
+     * @param int $downloadId The download ID
+     * @return bool The stored license status
+     */
+    public function getStoredLicenseStatus(int $downloadId): bool
+    {
+        return $this->licensePersistence->getLicenseStatus($downloadId);
     }
 
     /**
