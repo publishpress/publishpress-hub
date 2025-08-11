@@ -1,6 +1,177 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/@wordpress/escape-html/build-module/escape-greater.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@wordpress/escape-html/build-module/escape-greater.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ __unstableEscapeGreaterThan)
+/* harmony export */ });
+/**
+ * Returns a string with greater-than sign replaced.
+ *
+ * Note that if a resolution for Trac#45387 comes to fruition, it is no longer
+ * necessary for `__unstableEscapeGreaterThan` to exist.
+ *
+ * See: https://core.trac.wordpress.org/ticket/45387
+ *
+ * @param value Original string.
+ *
+ * @return Escaped string.
+ */
+function __unstableEscapeGreaterThan(value) {
+  return value.replace(/>/g, '&gt;');
+}
+//# sourceMappingURL=escape-greater.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/escape-html/build-module/index.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@wordpress/escape-html/build-module/index.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   escapeAmpersand: () => (/* binding */ escapeAmpersand),
+/* harmony export */   escapeAttribute: () => (/* binding */ escapeAttribute),
+/* harmony export */   escapeEditableHTML: () => (/* binding */ escapeEditableHTML),
+/* harmony export */   escapeHTML: () => (/* binding */ escapeHTML),
+/* harmony export */   escapeLessThan: () => (/* binding */ escapeLessThan),
+/* harmony export */   escapeQuotationMark: () => (/* binding */ escapeQuotationMark),
+/* harmony export */   isValidAttributeName: () => (/* binding */ isValidAttributeName)
+/* harmony export */ });
+/* harmony import */ var _escape_greater__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./escape-greater */ "./node_modules/@wordpress/escape-html/build-module/escape-greater.js");
+/**
+ * Internal dependencies
+ */
+
+
+/**
+ * Regular expression matching invalid attribute names.
+ *
+ * "Attribute names must consist of one or more characters other than controls,
+ * U+0020 SPACE, U+0022 ("), U+0027 ('), U+003E (>), U+002F (/), U+003D (=),
+ * and noncharacters."
+ *
+ * @see https://html.spec.whatwg.org/multipage/syntax.html#attributes-2
+ */
+const REGEXP_INVALID_ATTRIBUTE_NAME = /[\u007F-\u009F "'>/="\uFDD0-\uFDEF]/;
+
+/**
+ * Returns a string with ampersands escaped. Note that this is an imperfect
+ * implementation, where only ampersands which do not appear as a pattern of
+ * named, decimal, or hexadecimal character references are escaped. Invalid
+ * named references (i.e. ambiguous ampersand) are still permitted.
+ *
+ * @see https://w3c.github.io/html/syntax.html#character-references
+ * @see https://w3c.github.io/html/syntax.html#ambiguous-ampersand
+ * @see https://w3c.github.io/html/syntax.html#named-character-references
+ *
+ * @param value Original string.
+ *
+ * @return Escaped string.
+ */
+function escapeAmpersand(value) {
+  return value.replace(/&(?!([a-z0-9]+|#[0-9]+|#x[a-f0-9]+);)/gi, '&amp;');
+}
+
+/**
+ * Returns a string with quotation marks replaced.
+ *
+ * @param value Original string.
+ *
+ * @return Escaped string.
+ */
+function escapeQuotationMark(value) {
+  return value.replace(/"/g, '&quot;');
+}
+
+/**
+ * Returns a string with less-than sign replaced.
+ *
+ * @param value Original string.
+ *
+ * @return Escaped string.
+ */
+function escapeLessThan(value) {
+  return value.replace(/</g, '&lt;');
+}
+
+/**
+ * Returns an escaped attribute value.
+ *
+ * @see https://w3c.github.io/html/syntax.html#elements-attributes
+ *
+ * "[...] the text cannot contain an ambiguous ampersand [...] must not contain
+ * any literal U+0022 QUOTATION MARK characters (")"
+ *
+ * Note we also escape the greater than symbol, as this is used by wptexturize to
+ * split HTML strings. This is a WordPress specific fix
+ *
+ * Note that if a resolution for Trac#45387 comes to fruition, it is no longer
+ * necessary for `__unstableEscapeGreaterThan` to be used.
+ *
+ * See: https://core.trac.wordpress.org/ticket/45387
+ *
+ * @param value Attribute value.
+ *
+ * @return Escaped attribute value.
+ */
+function escapeAttribute(value) {
+  return (0,_escape_greater__WEBPACK_IMPORTED_MODULE_0__["default"])(escapeQuotationMark(escapeAmpersand(value)));
+}
+
+/**
+ * Returns an escaped HTML element value.
+ *
+ * @see https://w3c.github.io/html/syntax.html#writing-html-documents-elements
+ *
+ * "the text must not contain the character U+003C LESS-THAN SIGN (<) or an
+ * ambiguous ampersand."
+ *
+ * @param value Element value.
+ *
+ * @return Escaped HTML element value.
+ */
+function escapeHTML(value) {
+  return escapeLessThan(escapeAmpersand(value));
+}
+
+/**
+ * Returns an escaped Editable HTML element value. This is different from
+ * `escapeHTML`, because for editable HTML, ALL ampersands must be escaped in
+ * order to render the content correctly on the page.
+ *
+ * @param value Element value.
+ *
+ * @return Escaped HTML element value.
+ */
+function escapeEditableHTML(value) {
+  return escapeLessThan(value.replace(/&/g, '&amp;'));
+}
+
+/**
+ * Returns true if the given attribute name is valid, or false otherwise.
+ *
+ * @param name Attribute name to test.
+ *
+ * @return Whether attribute is valid.
+ */
+function isValidAttributeName(name) {
+  return !REGEXP_INVALID_ATTRIBUTE_NAME.test(name);
+}
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
 /***/ "./node_modules/classnames/index.js":
 /*!******************************************!*\
   !*** ./node_modules/classnames/index.js ***!
@@ -4562,6 +4733,85 @@ var AdminPageContainer = function AdminPageContainer(_ref) {
 
 /***/ }),
 
+/***/ "./resources/src/jsx/components/admin-page/footer.jsx":
+/*!************************************************************!*\
+  !*** ./resources/src/jsx/components/admin-page/footer.jsx ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Footer: () => (/* binding */ Footer)
+/* harmony export */ });
+/* harmony import */ var _wordpress_escape_html__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/escape-html */ "./node_modules/@wordpress/escape-html/build-module/index.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var FooterComponent = function FooterComponent(_ref) {
+  var pluginSlug = _ref.pluginSlug,
+    pluginName = _ref.pluginName,
+    pluginDocumentationUrl = _ref.pluginDocumentationUrl,
+    pluginAboutUrl = _ref.pluginAboutUrl,
+    pluginSupportUrl = _ref.pluginSupportUrl,
+    logoUrl = _ref.logoUrl;
+  var stars = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return Array(5).fill('<span class="dashicons dashicons-star-filled"></span>').join('');
+  }, []);
+  return /*#__PURE__*/React.createElement("footer", {
+    className: "pp-hub-footer"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-footer-rating"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "//wordpress.org/support/plugin/".concat(pluginSlug, "/reviews/#new-post"),
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, /*#__PURE__*/React.createElement("span", {
+    dangerouslySetInnerHTML: {
+      __html: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.sprintf)(/* translators: %s is the plugin name, %s is the rating */
+      (0,_wordpress_escape_html__WEBPACK_IMPORTED_MODULE_2__.escapeHTML)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('If you like %s please leave us a %s rating. Thank you!', 'publishpress-hub')), "<strong>".concat((0,_wordpress_escape_html__WEBPACK_IMPORTED_MODULE_2__.escapeHTML)(pluginName), "</strong>,"), "<span className=\"pp-hub-footer-stars\">".concat(stars, "</span>"))
+    }
+  }))), /*#__PURE__*/React.createElement("hr", {
+    className: "pp-hub-footer-separator"
+  }), /*#__PURE__*/React.createElement("nav", {
+    className: "pp-hub-footer-nav"
+  }, /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: pluginAboutUrl,
+    target: "_blank",
+    rel: "noopener noreferrer",
+    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.sprintf)(/* translators: %s is the plugin name */
+    (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('About %s', 'publishpress-hub'), pluginName)
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('About', 'publishpress-hub'))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: pluginDocumentationUrl,
+    target: "_blank",
+    rel: "noopener noreferrer",
+    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.sprintf)(/* translators: %s is the plugin name */
+    (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Documentation for %s', 'publishpress-hub'), pluginName)
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Documentation', 'publishpress-hub'))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: pluginSupportUrl,
+    target: "_blank",
+    rel: "noopener noreferrer",
+    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.sprintf)(/* translators: %s is the plugin name */
+    (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Contact the %s team', 'publishpress-hub'), pluginName)
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Contact', 'publishpress-hub'))))), /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-footer-logo"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "https://publishpress.com",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: logoUrl,
+    alt: "PublishPress"
+  }))));
+};
+var Footer = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(FooterComponent);
+
+/***/ }),
+
 /***/ "./resources/src/jsx/components/admin-page/header.jsx":
 /*!************************************************************!*\
   !*** ./resources/src/jsx/components/admin-page/header.jsx ***!
@@ -4645,11 +4895,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   AdminPageContainer: () => (/* reexport safe */ _container__WEBPACK_IMPORTED_MODULE_1__["default"]),
 /* harmony export */   AdminPageHeader: () => (/* reexport safe */ _header__WEBPACK_IMPORTED_MODULE_2__["default"]),
-/* harmony export */   AdminPageLayout: () => (/* reexport safe */ _layout__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   AdminPageLayout: () => (/* reexport safe */ _layout__WEBPACK_IMPORTED_MODULE_0__["default"]),
+/* harmony export */   Footer: () => (/* reexport safe */ _footer__WEBPACK_IMPORTED_MODULE_3__.Footer)
 /* harmony export */ });
 /* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./layout */ "./resources/src/jsx/components/admin-page/layout.jsx");
 /* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./container */ "./resources/src/jsx/components/admin-page/container.jsx");
 /* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header */ "./resources/src/jsx/components/admin-page/header.jsx");
+/* harmony import */ var _footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./footer */ "./resources/src/jsx/components/admin-page/footer.jsx");
 /**
  * Admin page.
  *
@@ -4659,6 +4911,7 @@ __webpack_require__.r(__webpack_exports__);
  * @license GPL v2 or later
  * @since 1.0.0
  */
+
 
 
 
@@ -5298,6 +5551,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _notices_NoticesList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../notices/NoticesList */ "./resources/src/jsx/components/notices/NoticesList.jsx");
 /* harmony import */ var _notices_SnackbarList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../notices/SnackbarList */ "./resources/src/jsx/components/notices/SnackbarList.jsx");
 /* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../buttons/button */ "./resources/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _admin_page_footer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../admin-page/footer */ "./resources/src/jsx/components/admin-page/footer.jsx");
 /**
  * Plugins dashboard.
  *
@@ -5307,6 +5561,7 @@ __webpack_require__.r(__webpack_exports__);
  * @license GPL v2 or later
  * @since 1.0.0
  */
+
 
 
 
@@ -5406,7 +5661,14 @@ var PluginsDashboardComponent = function PluginsDashboardComponent() {
     plugins: plugins,
     isLoading: isLoading,
     pluginIconBaseUrl: pluginIconBaseUrl
-  }), /*#__PURE__*/React.createElement(_notices_SnackbarList__WEBPACK_IMPORTED_MODULE_8__["default"], null)));
+  }), /*#__PURE__*/React.createElement(_notices_SnackbarList__WEBPACK_IMPORTED_MODULE_8__["default"], null)), /*#__PURE__*/React.createElement(_admin_page_footer__WEBPACK_IMPORTED_MODULE_10__.Footer, {
+    pluginSlug: 'publishpress-hub',
+    pluginName: 'PublishPress Hub',
+    pluginDocumentationUrl: 'https://publishpress.com/knowledge-base/',
+    pluginAboutUrl: 'https://publishpress.com/',
+    pluginSupportUrl: 'https://publishpress.com/contact/',
+    logoUrl: logoUrl
+  }));
 };
 var PluginsDashboard = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(PluginsDashboardComponent);
 

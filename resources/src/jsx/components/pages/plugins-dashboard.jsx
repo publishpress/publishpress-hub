@@ -20,6 +20,7 @@ import { PluginsList } from '../plugins-list';
 import NoticesList from '../notices/NoticesList';
 import SnackbarList from '../notices/SnackbarList';
 import { Button } from '../buttons/button';
+import { Footer } from '../admin-page/footer';
 
 const {
     logoUrl,
@@ -131,6 +132,14 @@ const PluginsDashboardComponent = () => {
                 />
                 <SnackbarList />
             </div>
+            <Footer
+                pluginSlug={'publishpress-hub'}
+                pluginName={'PublishPress Hub'}
+                pluginDocumentationUrl={'https://publishpress.com/knowledge-base/'}
+                pluginAboutUrl={'https://publishpress.com/'}
+                pluginSupportUrl={'https://publishpress.com/contact/'}
+                logoUrl={logoUrl}
+            />
         </AdminPageLayout>
     );
 };
