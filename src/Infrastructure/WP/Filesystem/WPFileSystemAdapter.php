@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Infrastructure\WP\Filesystem;
 
 use WP_Filesystem_Base;
+use WP_Error;
 
 class WPFileSystemAdapter
 {
@@ -72,7 +73,7 @@ class WPFileSystemAdapter
      *
      * @param string $source The source path.
      * @param string $destination The destination path.
-     * @return bool True if the file was unzipped, false otherwise.
+     * @return bool|WP_Error True if the file was unzipped, false otherwise.
      * @since 1.0.0
      */
     public function unzip(string $source, string $destination): bool

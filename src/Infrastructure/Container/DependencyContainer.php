@@ -19,8 +19,6 @@ use PublishPress\Hub\Infrastructure\Container\Contracts\DependencyContainerInter
 use PublishPress\Hub\Infrastructure\Container\Exception\NotFoundException;
 use RuntimeException;
 
-use function Symfony\Component\VarDumper\Dumper\esc;
-
 /**
  * PHP Dependency Injection Container PSR-11.
  * Services renamed to dependencies so we don't confuse with

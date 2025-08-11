@@ -17,6 +17,7 @@ namespace PublishPress\Hub\Infrastructure\RestApi\Contract;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use WP_REST_Response;
 use WP_REST_Request;
+use WP_Error;
 
 interface RestApiServiceInterface
 {
