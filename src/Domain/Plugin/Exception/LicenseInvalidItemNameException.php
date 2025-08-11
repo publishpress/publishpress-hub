@@ -22,9 +22,9 @@ class LicenseInvalidItemNameException extends LicenseException
      */
     public function __construct(array $context = [])
     {
-           parent::__construct(
+        parent::__construct(
             esc_html__(
-                'This license does not match the plugin you are trying to activate. Please contact support for assistance.', // phpcs:ignore Generic.Files.LineLength
+                'This license does not match the plugin you are trying to activate. Please contact support for assistance.',
                 'publishpress-hub'
             ),
             $context

@@ -74,7 +74,7 @@ class WPSecurityAdapter implements SecurityServiceInterface
         $nonce_field = wp_nonce_field($action, $name, $referer, false);
 
         if ($display) {
-            echo $nonce_field;
+            echo $nonce_field; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         }
 
         return $nonce_field;
@@ -106,7 +106,7 @@ class WPSecurityAdapter implements SecurityServiceInterface
         $referer_field = wp_referer_field(false);
 
         if ($display) {
-            echo $referer_field;
+            echo $referer_field; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         }
 
         return $referer_field;

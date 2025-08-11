@@ -90,7 +90,6 @@ class MenuController implements BootableInterface
              * by another service by setting setMainMenuPage().
              */
             '__return_empty_string',
-            // $this->assetService->getPluginAssetUrl('images/menu-publishpress-inverted.svg'),
             $this->assetService->getPluginAssetUrl('images/menu-publishpress-inverted.svg'),
             99
         );
