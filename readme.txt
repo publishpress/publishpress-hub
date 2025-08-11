@@ -28,7 +28,23 @@ This section describes how to install the plugin and get it working.
 
 == Screenshots ==
 
+1. Central dashboard showing all PublishPress plugins with versions, updates, and license status
+2. Installing a free PublishPress plugin directly from the Hub
+3. Installing and activating a Pro plugin by connecting your PublishPress license
+
 == Frequently Asked Questions ==
+
+= Can I install a free plugin? =
+
+Yes. You can install free PublishPress plugins directly from the Hub.
+
+= Can I install a Pro plugin? =
+
+Yes. Connect your PublishPress license in the Hub to install and activate Pro versions.
+
+= How do updates work? =
+
+The Hub shows available updates for your PublishPress plugins. You can update free plugins in one click. Pro updates require an active, connected license.
 
 == Changelog ==
 
