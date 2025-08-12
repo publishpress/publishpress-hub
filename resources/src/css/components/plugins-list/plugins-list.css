@@ -1,0 +1,277 @@
+/**
+ * Plugins list component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\plugins-list
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+@import './modal.css';
+
+.pp-hub-plugins-list {
+    display: flex;
+    flex-direction: column;
+    background: var(--pp-hub-bg-primary);
+    border-radius: var(--pp-hub-radius-sm);
+}
+
+.pp-hub-plugins-list-item {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-lg);
+    align-items: flex-start;
+    padding: var(--pp-hub-spacing-xl);
+    border: 1px solid transparent;
+    border-bottom: 1px solid var(--pp-hub-border-primary);
+    min-height: 142px;
+    transition: background-color 0.1s ease-in-out;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.pp-hub-plugins-list-item:hover {
+    background-color: var(--pp-hub-bg-secondary);
+    border: 1px solid var(--pp-hub-border-primary);
+}
+
+.pp-hub-plugins-list-item:first-child {
+    border-top-left-radius: var(--pp-hub-radius-sm);
+    border-top-right-radius: var(--pp-hub-radius-sm);
+}
+
+.pp-hub-plugins-list-item:last-child {
+    border-bottom-left-radius: var(--pp-hub-radius-sm);
+    border-bottom-right-radius: var(--pp-hub-radius-sm);
+}
+
+.pp-hub-plugins-list-item-content {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-lg);
+    align-items: flex-start;
+    width: 100%;
+}
+
+.pp-hub-plugins-list-item-icon {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.pp-hub-plugins-list-item-icon img {
+    object-fit: contain;
+    border-radius: var(--pp-hub-radius-sm);
+    width: 48px;
+    height: 48px;
+}
+
+.pp-hub-plugins-list-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-hub-spacing-sm);
+}
+
+.pp-hub-plugins-list-item-name {
+    font-size: var(--pp-hub-font-size-lg);
+    font-weight: var(--pp-hub-font-weight-bold);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--pp-hub-spacing-sm);
+    align-items: center;
+}
+
+.pp-hub-plugins-list-item-name .components-toggle-control {
+    margin: 0;
+    height: 24px;
+    padding-top: 4px;
+}
+
+.pp-hub-plugins-list-item-description {
+    font-size: var(--pp-hub-font-size-md);
+    color: var(--pp-hub-text-secondary);
+    height: 24px;
+    line-height: 24px;
+    min-height: 24px;
+    max-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pp-hub-plugins-list-item-status {
+    font-size: var(--pp-hub-font-size-sm);
+    color: var(--pp-hub-text-secondary);
+}
+
+.pp-hub-plugins-list-item-actions {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-sm);
+    width: 100%;
+    justify-content: flex-end;
+    min-width: 200px;
+    max-width: 200px;
+}
+
+.pp-hub-plugins-list-item-actions .pp-hub-button {
+    width: 200px;
+}
+
+.pp-hub-plugins-list-item .pp-hub-plugins-list-item-inline-actions {
+    display: none;
+}
+
+.pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-inline-actions {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-sm);
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.pp-hub-plugins-list-item-inline-actions .pp-hub-button.is-link {
+    padding: 0;
+}
+
+.pp-hub-plugins-list-item-inline-actions .pp-hub-button.is-link.is-danger {
+    color: var(--pp-hub-text-error);
+}
+
+.pp-hub-plugins-list-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: var(--pp-hub-spacing-xl);
+    border-radius: var(--pp-hub-radius-sm);
+    background-color: var(--pp-hub-bg-secondary);
+}
+
+/* Tablet Responsive Design */
+@media screen and (max-width: 1024px) {
+    .pp-hub-plugins-list-item {
+        padding: var(--pp-hub-spacing-lg);
+        gap: var(--pp-hub-spacing-md);
+        min-height: 120px;
+    }
+
+    .pp-hub-plugins-list-item-content {
+        gap: var(--pp-hub-spacing-md);
+    }
+
+    .pp-hub-plugins-list-item-actions {
+        min-width: 160px;
+        max-width: 160px;
+    }
+
+    .pp-hub-plugins-list-item-actions .pp-hub-button {
+        width: 160px;
+    }
+
+    .pp-hub-plugins-list-item-name {
+        font-size: var(--pp-hub-font-size-md);
+    }
+
+    .pp-hub-plugins-list-item-description {
+        font-size: var(--pp-hub-font-size-sm);
+    }
+}
+
+/* Mobile Responsive Design */
+@media screen and (max-width: 768px) {
+    .pp-hub-plugins-list-item {
+        flex-direction: column;
+        padding: var(--pp-hub-spacing-lg);
+        gap: var(--pp-hub-spacing-lg);
+        min-height: auto;
+        align-items: flex-start;
+    }
+
+    .pp-hub-plugins-list-item-content {
+        flex-direction: row;
+        gap: var(--pp-hub-spacing-md);
+        text-align: center;
+    }
+
+    .pp-hub-plugins-list-item-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .pp-hub-plugins-list-item-icon img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .pp-hub-plugins-list-item-info {
+        align-items: flex-start;
+        text-align: left;
+        width: 100%;
+    }
+
+    .pp-hub-plugins-list-item-name {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .pp-hub-plugins-list-item-description {
+        white-space: normal;
+        height: auto;
+        min-height: auto;
+        max-height: none;
+        line-height: 1.4;
+    }
+
+    .pp-hub-plugins-list-item-actions {
+        min-width: 100%;
+        max-width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .pp-hub-plugins-list-item-actions .pp-hub-button {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-inline-actions {
+        display: flex;
+        flex-direction: row;
+        gap: var(--pp-hub-spacing-sm);
+        justify-content: flex-start;
+        width: 100%;
+        margin-top: var(--pp-hub-spacing-sm);
+    }
+
+    .pp-hub-plugins-list-item-inline-actions .pp-hub-button {
+        justify-content: flex-start;
+    }
+}
+
+/* Small Mobile Responsive Design */
+@media screen and (max-width: 480px) {
+    .pp-hub-plugins-list-item {
+        padding: var(--pp-hub-spacing-xl);
+        gap: var(--pp-hub-spacing-xl);
+    }
+
+    .pp-hub-plugins-list-item-content {
+        gap: var(--pp-hub-spacing-sm);
+    }
+
+    .pp-hub-plugins-list-item-icon {
+        display: none;
+    }
+
+    .pp-hub-plugins-list-item-actions .pp-hub-button {
+        max-width: 100%;
+        font-size: var(--pp-hub-font-size-sm);
+        padding: var(--pp-hub-spacing-lg) var(--pp-hub-spacing-md);
+    }
+}

@@ -22,21 +22,47 @@
                 "query": "state:open repo:publishpress/publishpress-hub sort:updated-desc"
             }
         ],
+        "remote.SSH.defaultExtensions": [
+            "ms-vscode.php-debug"
+        ],
+        "php.debug.ideKey": "VSCODE",
+        "php.validate.enable": true,
+        "php.suggest.basic": false,
+        "files.associations": {
+            "*.php": "php"
+        },
+        "remote.SSH.remotePlatform": "linux",
+        "remote.SSH.connectTimeout": 60
     },
 	"launch": {
         "configurations": [
             {
-                "name": "Xdebug on wp_dev (dev-workspace)",
+                "name": "Xdebug with WordOps",
                 "type": "php",
                 "request": "launch",
                 "port": 9003,
+                "runtimeArgs": [
+                    "-dxdebug.start_with_request=yes"
+                ],
                 "pathMappings": {
-                    "/var/www/html": "${workspaceFolder}/dev-workspace/.cache/dev-wp/html",
-                    "/var/www/html/wp-content/plugins/dummy-plugin-1": "${workspaceFolder}/tests/plugins/dummy-plugin-1",
-					"/var/www/html/wp-content/plugins/dummy-plugin-2": "${workspaceFolder}/tests/plugins/dummy-plugin-2",
-                    "/var/www/html/wp-content/plugins/publishpress-hub": "${workspaceFolder}"
+                    "/var/www/publishpress-hub.dev.realcodelab.com/htdocs/wp-content/plugins/publishpress-hub": "/var/git-repos/publishpress/publishpress-hub"
                 },
-                "hostname": "0.0.0.0"
+                "hostname": "0.0.0.0",
+                "log": true
+            },
+            {
+                "name": "Xdebug CLI",
+                "type": "php",
+                "request": "launch",
+                "port": 9003,
+                "runtimeArgs": [
+                    "-dxdebug.start_with_request=yes"
+                ],
+                "pathMappings": {
+                    "/var/git-repos/publishpress/publishpress-hub": "/var/git-repos/publishpress/publishpress-hub"
+                },
+                "hostname": "0.0.0.0",
+                "log": true
             }
         ]
     }

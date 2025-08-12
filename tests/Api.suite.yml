@@ -1,6 +1,8 @@
 actor: ApiTester
 suite_namespace: Tests\Api
 bootstrap: _bootstrap.php
+params:
+    - .env
 modules:
     # enable helpers as array
     enabled:

@@ -13,9 +13,9 @@
 namespace PublishPress\Hub;
 
 use PublishPress\Hub\Infrastructure\Autoloader\Autoloader;
-use PublishPress\Hub\Infrastructure\Container\ServiceContainer;
-use PublishPress\Hub\Infrastructure\Container\Services;
-use PublishPress\Hub\Infrastructure\Hooks as InfrastructureHooks;
+use PublishPress\Hub\Infrastructure\Container\AbstractDependencies;
+use PublishPress\Hub\Infrastructure\Container\DependencyContainer;
+use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 
 /*
  * Check if the PHP and WP versions are compatible.
@@ -45,16 +45,11 @@ if (defined('PUBLISHPRESS_HUB_PATH')) {
 /*
  * Define the plugin constants.
  */
-define('PUBLISHPRESS_HUB_PATH', realpath(__DIR__ . '/../') . '/');
-define('PUBLISHPRESS_HUB_URL', plugin_dir_url(PUBLISHPRESS_HUB_PATH . 'publishpress-hub.php'));
-define('PUBLISHPRESS_HUB_ASSETS_PATH', PUBLISHPRESS_HUB_PATH . 'assets/');
-define('PUBLISHPRESS_HUB_ASSETS_URL', PUBLISHPRESS_HUB_URL . 'assets/');
-define('PUBLISHPRESS_HUB_VERSION', '1.0.0-alpha.2');
-define('PUBLISHPRESS_HUB_VENDOR_PATH', realpath(__DIR__ . '/../lib/vendor/') . '/');
+define('PUBLISHPRESS_HUB_VERSION', '1.0.0');
 define('PUBLISHPRESS_HUB_SRC_PATH', __DIR__ . '/');
-define('PUBLISHPRESS_HUB_LANGUAGES_PATH', PUBLISHPRESS_HUB_PATH . 'languages/');
-define('PUBLISHPRESS_HUB_TEMPLATES_PATH', PUBLISHPRESS_HUB_SRC_PATH . 'templates/');
-
+define('PUBLISHPRESS_HUB_PATH', realpath(PUBLISHPRESS_HUB_SRC_PATH . '/../') . '/');
+define('PUBLISHPRESS_HUB_URL', plugin_dir_url(PUBLISHPRESS_HUB_PATH . 'publishpress-hub.php'));
+define('PUBLISHPRESS_HUB_VENDOR_PATH', realpath(PUBLISHPRESS_HUB_PATH . '/lib/vendor/') . '/');
 
 /*
  * Load the dependencies.
@@ -75,13 +70,12 @@ if (! class_exists(__NAMESPACE__ . '\\Infrastructure\\Autoloader\\Autoloader')) 
 Autoloader::register(__NAMESPACE__, PUBLISHPRESS_HUB_SRC_PATH);
 
 /*
- * Initialize the plugin.
+ * Load the plugin.
  */
-add_action(InfrastructureHooks::ACTION_PLUGINS_LOADED, function () {
-    $serviceDefinitions = require_once PUBLISHPRESS_HUB_SRC_PATH . 'Infrastructure/Container/definitions.php';
+add_action(AbstractHooks::ACTION_PLUGINS_LOADED, function () {
+    $serviceDefinitions = require_once PUBLISHPRESS_HUB_SRC_PATH . 'definitions.php';
+    $container = new DependencyContainer($serviceDefinitions);
 
-    $container = ServiceContainer::getInstance($serviceDefinitions);
-    $coreHubService = $container->get(Services::CORE_HUB_SERVICE);
-
-    $coreHubService->initialize();
+    $pluginBootstrapService = $container->get(AbstractDependencies::HUB_BOOTSTRAP_SERVICE);
+    $pluginBootstrapService->load();
 }, 5);

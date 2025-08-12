@@ -1,0 +1,52 @@
+/**
+ * Admin page container component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\admin-page\container
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-admin-page-container {
+    min-height: 100vh;
+    font-family: var(--pp-hub-font-family-primary);
+    color: var(--pp-hub-text-primary);
+}
+
+.pp-hub-admin-page-container.pp-hub-fullwidth {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.pp-hub-admin-page-container.pp-hub-contained {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--pp-hub-spacing-xl);
+}
+
+/* Content area styling */
+.pp-hub-admin-page-container__content {
+    padding: var(--pp-hub-spacing-xl);
+    background-color: var(--pp-hub-bg-primary);
+    border-radius: var(--pp-hub-radius-lg);
+    box-shadow: var(--pp-hub-shadow-sm);
+}
+
+/* WordPress admin body reset */
+.pp-hub-admin-page-container #wpcontent {
+    padding-left: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .pp-hub-admin-page-container.pp-hub-contained {
+        padding: var(--pp-hub-spacing-md);
+    }
+
+    .pp-hub-admin-page-container__content {
+        padding: var(--pp-hub-spacing-lg);
+        border-radius: var(--pp-hub-radius-md);
+    }
+}

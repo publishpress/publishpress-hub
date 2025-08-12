@@ -5,24 +5,31 @@ declare(strict_types=1);
 
 namespace Tests\Api;
 
+use Exception;
 use lucatume\WPBrowser\Utils\Filesystem;
+use PublishPress\Hub\Domain\Plugin\Entity\FreePlugin as EntityFreePlugin;
+use PublishPress\Hub\Domain\Plugin\Entity\PluginFamily as EntityPluginFamily;
+use PublishPress\Hub\Domain\Plugin\Entity\ProPlugin as EntityProPlugin;
 use PublishPress\Hub\Domain\Plugin\FreePlugin;
-use PublishPress\Hub\Domain\Plugin\PluginBuilder;
 use PublishPress\Hub\Domain\Plugin\PluginFamily;
 use PublishPress\Hub\Domain\Plugin\ProPlugin;
-use PublishPress\Hub\Infrastructure\Container\ServiceContainer;
-use PublishPress\Hub\Infrastructure\Container\Services;
+use PublishPress\Hub\Infrastructure\Container\AbstractDependencies;
+use PublishPress\Hub\Infrastructure\Container\DependencyContainer;
 use Tests\Support\ApiTester;
 
 final class PluginsCest
 {
     private $authHash;
+    private $licenseKey;
 
     public function _before(ApiTester $I): void
     {
         $this->authHash = getenv('WP_TEST_AUTH_HASH');
         $I->haveHttpHeader('Authorization', 'Basic ' . $this->authHash);
         $I->haveHttpHeader('Content-Type', 'application/json');
+
+        // Store the license key for use in tests
+        $this->licenseKey = getenv('EDD_LICENSE_FOR_TESTS');
     }
 
     public function tryToGetPlugins(ApiTester $I): void
@@ -32,60 +39,62 @@ final class PluginsCest
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
         $I->seeResponseContainsJson(['success' => true,]);
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].slug');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].name');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].iconPath');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].description');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].changelogUrl');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.name');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.slug');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.version');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.detailsUrl');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.isInstalled');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.isActive');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].freePlugin.path');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.name');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.slug');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.version');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.detailsUrl');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.isInstalled');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.isActive');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.isLicensed');
-        $I->seeResponseJsonMatchesJsonPath('$.data[0].proPlugin.path');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].slug');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].name');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].iconPath');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].description');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].changelogUrl');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].freePlugin.name');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].freePlugin.slug');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].freePlugin.version');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].freePlugin.detailsUrl');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].freePlugin.isInstalled');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].freePlugin.isActive');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].freePlugin.path');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].proPlugin.name');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].proPlugin.slug');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].proPlugin.version');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].proPlugin.detailsUrl');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].proPlugin.isInstalled');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].proPlugin.isActive');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].proPlugin.isLicensed');
+        $I->seeResponseJsonMatchesJsonPath('$.plugins[0].proPlugin.path');
     }
 
-    public function testInstallPluginFreeWithInvalidSlug(ApiTester $I): void
+    public function testInstallPluginFreeWithInvalidSlugReturnsError(ApiTester $I): void
     {
         $I->sendPOST('publishpress-hub/v1/plugins/invalid-slug/install/free');
 
-        $I->seeResponseCodeIs(404);
+        $I->seeResponseCodeIs(400);
         $I->seeResponseIsJson();
         $I->seeResponseContainsJson(
             [
-                'code' => 'plugin_family_not_found',
+                'success' => false,
             ]
         );
     }
 
     public function testInstallFreePlugin(ApiTester $I): void
     {
-        $container = ServiceContainer::getInstance();
-        $pluginFamilyRepository = $container->get(Services::PLUGIN_FAMILY_REPOSITORY);
+        $container = DependencyContainer::getInstance();
+        $pluginFamilyRepository = $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY);
 
-        $pluginFamily = new PluginFamily(
+        $pluginFamily = new EntityPluginFamily(
+            'PublishPress Authors',
+            'publishpress-authors',
             'icon-authors',
             'A dummy plugin for testing purposes',
             'https://publishpress.com/knowledge-base/changelogs-publishpress-authors/'
         );
 
-        $freePlugin = new FreePlugin(
+        $freePlugin = new EntityFreePlugin(
             'PublishPress Authors',
             'publishpress-authors',
             'publishpress-authors.php',
             'https://publishpress.com/pricing/publishpress-authors/'
         );
 
-        $proPlugin = new ProPlugin(
+        $proPlugin = new EntityProPlugin(
             'PublishPress Authors Pro',
             'publishpress-authors-pro',
             'publishpress-authors-pro.php',
@@ -115,9 +124,9 @@ final class PluginsCest
             $filesystem->rrmdir($pluginPath);
         }
 
-        $container = ServiceContainer::getInstance();
-        $pluginRepository = $container->get(Services::PLUGIN_FAMILY_REPOSITORY);
-        $plugin = $pluginRepository->findBySlug('publishpress-checklists');
+        $container = DependencyContainer::getInstance();
+        $pluginRepository = $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY);
+        $plugin = $pluginRepository->findFamilyBySlug('publishpress-checklists');
 
         if ($plugin) {
             $plugin->unregister();
@@ -130,7 +139,61 @@ final class PluginsCest
         $I->seeResponseContainsJson(
             [
                 'success' => true,
-                'data' => ['plugin_slug' => 'publishpress-checklists'],
+                'slug' => 'publishpress-checklists',
+            ]
+        );
+    }
+
+    public function testInstallPluginProWithInvalidSlugReturnsError(ApiTester $I): void
+    {
+        $I->sendPOST('publishpress-hub/v1/plugins/invalid-slug/install/pro');
+
+        $I->seeResponseCodeIs(400);
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson(
+            [
+                'success' => false,
+            ]
+        );
+    }
+
+    public function testInstallPluginProWithInvalidLicenseKeyReturnsError(ApiTester $I): void
+    {
+        $I->sendPOST(
+            'publishpress-hub/v1/plugins/publishpress-checklists/install/pro',
+            [
+                'licenseKey' => '1234567890',
+            ]
+        );
+
+        $I->seeResponseCodeIs(400);
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson(
+            [
+                'success' => false,
+            ]
+        );
+    }
+
+    public function testInstallPluginProWithValidLicenseKey(ApiTester $I): void
+    {
+        if (!$this->licenseKey) {
+            throw new Exception('EDD_LICENSE_FOR_TESTS environment variable is not set');
+        }
+
+        $I->sendPOST(
+            'publishpress-hub/v1/plugins/publishpress-checklists/install/pro',
+            [
+                'licenseKey' => $this->licenseKey,
+            ]
+        );
+
+        $I->seeResponseCodeIs(200);
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson(
+            [
+                'success' => true,
+                'slug' => 'publishpress-checklists-pro',
             ]
         );
     }

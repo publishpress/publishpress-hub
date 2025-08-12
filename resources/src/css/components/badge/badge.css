@@ -1,0 +1,103 @@
+/**
+ * Badge component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\badge
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-badge {
+    padding: 4px 10px;
+    border-radius: 16px;
+    background-color: var(--pp-hub-badge-bg);
+    color: var(--pp-hub-badge-text);
+    box-sizing: border-box;
+    line-height: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: var(--pp-hub-spacing-md);
+    transition: background-color 0.1s ease-in-out;
+    display: inline-block;
+}
+
+.pp-hub-badge.installed {
+    background-color: var(--pp-hub-badge-bg-installed);
+    color: var(--pp-hub-badge-text-installed);
+}
+
+.pp-hub-badge.not-installed {
+    background-color: var(--pp-hub-badge-bg-not-installed);
+    color: var(--pp-hub-badge-text-not-installed);
+}
+
+.pp-hub-badge.free {
+    background-color: var(--pp-hub-badge-bg-free);
+    color: var(--pp-hub-badge-text-free);
+}
+
+.pp-hub-badge.licensed {
+    background-color: var(--pp-hub-badge-bg-licensed);
+    color: var(--pp-hub-badge-text-licensed);
+}
+
+.pp-hub-badge.unlicensed {
+    background-color: var(--pp-hub-badge-bg-unlicensed);
+    color: var(--pp-hub-badge-text-unlicensed);
+}
+
+.pp-hub-badge.installing {
+    background-color: var(--pp-hub-badge-bg-installing);
+    color: var(--pp-hub-badge-text-installing);
+}
+
+.pp-hub-badge.uninstalling {
+    background-color: var(--pp-hub-badge-bg-uninstalling);
+    color: var(--pp-hub-badge-text-uninstalling);
+}
+
+.pp-hub-badge.conflicting-installations {
+    background-color: var(--pp-hub-badge-bg-conflicting-installations);
+    color: var(--pp-hub-badge-text-conflicting-installations);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.installed {
+    background-color: var(--pp-hub-badge-bg-installed-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.not-installed {
+    background-color: var(--pp-hub-badge-bg-not-installed-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.free {
+    background-color: var(--pp-hub-badge-bg-free-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.licensed {
+    background-color: var(--pp-hub-badge-bg-licensed-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.unlicensed {
+    background-color: var(--pp-hub-badge-bg-unlicensed-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.installing {
+    background-color: var(--pp-hub-badge-bg-installing-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.uninstalling {
+    background-color: var(--pp-hub-badge-bg-uninstalling-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.conflicting-installations {
+    background-color: var(--pp-hub-badge-bg-conflicting-installations-hover);
+}
+
+.pp-hub-badge-icon .dashicons {
+    font-size: 12px;
+    line-height: 12px;
+    width: 12px;
+    height: 12px;
+    margin-right: 2px;
+}

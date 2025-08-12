@@ -1,10 +1,10 @@
 parameters:
     level: 8
     paths:
-    	- src
+        - ./src
     excludePaths:
-        - lib
-        - vendor
+        - /lib
+        - /vendor
         - .github
         - .vscode
         - .idea
@@ -12,12 +12,13 @@ parameters:
         - tests-old
         - .wordpress-org
         - bin
-        - vendor
-        - dist
-        - languages
+        - ./dist
+        - ./languages
         - node_modules
         - dev-workspace
         - cache
         - .cache
+        - ./src/Versions.php
+        - ./src/include.php
 rules:
     - Spatie\Ray\PHPStan\RemainingRayCallRule

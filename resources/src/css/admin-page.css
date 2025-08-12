@@ -1,0 +1,42 @@
+/**
+ * Admin page.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\admin-page
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+@import './main.css';
+
+.publishpress-hub-admin-page-loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    gap: 16px;
+}
+
+.publishpress-hub-admin-page-loading p {
+    font-size: 16px;
+    color: #50575e;
+    text-align: center;
+}
+
+.publishpress-hub-admin-page-loading::before {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 3px solid #e9ecef;
+    border-top: 3px solid #0073aa;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

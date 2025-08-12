@@ -1,4 +1,6 @@
-path: .
+path:
+  - src/
+  - publishpress-hub.php
 jobs: 10
 extensions:
   - php
@@ -6,15 +8,13 @@ exclude:
   - .github
   - .vscode
   - .idea
-  - tests
-  - tests-old
+  - /tests
   - .wordpress-org
   - bin
   - vendor
-  - dist
+  - /dist
   - languages
   - node_modules
   - dev-workspace
-  - cache
+  - /cache
   - .cache
-  - assets

@@ -1,0 +1,19 @@
+/**
+ * Admin menu.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\admin-menu
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+#toplevel_page_publishpress-hub .wp-menu-image img {
+    opacity: 1;
+    width: 20px;
+    margin-top: -3px;
+}
+
+#toplevel_page_publishpress-hub.wp-has-current-submenu .wp-menu-image img {
+    color: #72aee6;
+}

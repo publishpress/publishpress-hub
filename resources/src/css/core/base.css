@@ -1,0 +1,80 @@
+/**
+ * Base styles and WordPress admin compatibility.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\core
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+/* WordPress admin body adjustments */
+#wpcontent {
+    padding-left: 0;
+}
+
+/* Base typography */
+.pp-hub-root {
+    font-family: var(--pp-hub-font-family-primary);
+    font-size: var(--pp-hub-font-size-md);
+    line-height: var(--pp-hub-line-height-normal);
+    color: var(--pp-hub-text-primary);
+}
+
+/* Reset link styles */
+.pp-hub-root a {
+    color: var(--pp-hub-text-link);
+    text-decoration: none;
+    transition: color var(--pp-hub-transition-fast);
+}
+
+.pp-hub-root a:hover,
+.pp-hub-root a:focus {
+    color: var(--pp-hub-text-link-hover);
+}
+
+/* Focus management */
+.pp-hub-root *:focus {
+    outline: 2px solid var(--pp-hub-border-focus);
+    outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+.pp-hub-root *:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Smooth scrolling */
+.pp-hub-root {
+    scroll-behavior: smooth;
+}
+
+/* Container base */
+.pp-hub-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--pp-hub-spacing-lg);
+}
+
+/* Box model reset for consistent sizing */
+.pp-hub-root *,
+.pp-hub-root *::before,
+.pp-hub-root *::after {
+    box-sizing: border-box;
+}
+
+/* List styles */
+.pp-hub-list {
+    list-style: disc;
+    padding-left: 1em;
+}
+
+.pp-hub-list li {
+    margin-bottom: 0.5em;
+}
+
+.pp-hub-list-unstyled {
+    list-style: none;
+    padding-left: 0;
+}

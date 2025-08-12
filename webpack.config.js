@@ -3,18 +3,23 @@ const path = require("path");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
+
+const assetsBasePath = "./resources/src";
 
 module.exports = {
     mode: NODE_ENV,
     devtool: NODE_ENV === 'development' ? 'source-map' : false,
     entry: {
-        "plugins-dashboard": "./assets/src/jsx/plugins-dashboard.jsx",
-        "i18n": "./assets/src/jsx/i18n.jsx",
-        "components-showcase": "./assets/src/jsx/components-showcase.jsx",
-        "admin-page": "./assets/src/css/admin-page.css",
+        "plugins-dashboard": `${assetsBasePath}/jsx/plugins-dashboard.jsx`,
+        "i18n": `${assetsBasePath}/jsx/i18n.jsx`,
+        "components-showcase": `${assetsBasePath}/jsx/components-showcase.jsx`,
+        "admin-page": `${assetsBasePath}/css/admin-page.css`,
+        "admin-menu": `${assetsBasePath}/css/admin-menu.css`,
     },
+
     output: {
-        path: path.join(__dirname, "assets", "dist"),
+        path: path.join(__dirname, "resources", "dist"),
         filename: "js/" + (NODE_ENV === 'production' ? "[name].min.js" : "[name].js")
     },
     resolve: {
@@ -47,6 +52,7 @@ module.exports = {
         ],
     },
     plugins: [
+        new RemoveEmptyScriptsPlugin(),
         new MiniCssExtractPlugin({
             filename: "css/" + (NODE_ENV === 'production' ? "[name].min.css" : "[name].css"),
         }),
@@ -68,7 +74,7 @@ module.exports = {
         "@wordpress/api-fetch": "wp.apiFetch",
         "@wordpress/data-controls": "wp.dataControls",
         'wp': 'wp',
-        '@publishpress/hub-i18n': 'publishpressHub.i18n'
+        '@publishpress-hub/i18n': 'publishpressHub.i18n'
     },
 };
 

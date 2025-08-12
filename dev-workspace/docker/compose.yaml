@@ -19,7 +19,6 @@ services:
             - ../.cache/terminal/.bash_history:/root/.bash_history
             - ../.cache/terminal/.npm/_cacache:/root/.npm/_cacache
             - ../.cache/terminal/.npm/_logs:/root/.npm/_logs
-            - ../.cache/terminal/.oh-my-zsh/log:/root/.oh-my-zsh/log
             - ../.cache/terminal/.composer/cache:/root/.composer/cache
             - ../.cache/terminal/.composer/auth.json:/root/.composer/auth.json
     ##############################################################################
@@ -169,8 +168,6 @@ services:
         volumes:
           - ../.cache/dev-wp/html:/var/www/html/
           - ../.cache/dev-wp/tmp:/tmp/
-          - ../../tests/Support/Data/Plugins/dummy-plugin-1:/var/www/html/wp-content/plugins/dummy-plugin-1
-          - ../../tests/Support/Data/Plugins/dummy-plugin-2:/var/www/html/wp-content/plugins/dummy-plugin-2
           - ../../tests/Support/Data/Plugins/prototype:/var/www/html/wp-content/plugins/hub-prototype
           - ../../:/var/www/html/wp-content/plugins/publishpress-hub
           - ./wp/wordpress/conf.d/98-xdebug.ini:/usr/local/etc/php/conf.d/98-xdebug.ini
@@ -205,8 +202,6 @@ services:
         volumes:
             - ../.cache/dev-wp/html:/var/www/html/
             - ../.cache/dev-wpcli/tmp:/tmp/
-            - ../../tests/Support/Data/Plugins/dummy-plugin-1:/var/www/html/wp-content/plugins/dummy-plugin-1
-            - ../../tests/Support/Data/Plugins/dummy-plugin-2:/var/www/html/wp-content/plugins/dummy-plugin-2
             - ../../tests/Support/Data/Plugins/prototype:/var/www/html/wp-content/plugins/hub-prototype
             - ../../:/var/www/html/wp-content/plugins/publishpress-hub
             - ./wp/wpcli/prepare-wp.sh:/tmp/prepare-wp.sh

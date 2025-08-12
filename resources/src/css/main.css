@@ -1,0 +1,73 @@
+/**
+ * Main CSS entry point.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\main
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+/* 1. Core Foundation */
+@import './core/variables.css';
+@import './core/base.css';
+@import './core/utilities.css';
+
+/* 2. Theme System */
+@import './themes/default.css';
+@import './themes/dark.css';
+
+/* 3. Component Styles */
+@import './components/wp-components/toggle.css';
+@import './components/admin-page/container.css';
+@import './components/admin-page/header.css';
+@import './components/admin-page/footer.css';
+@import './components/admin-page/layout.css';
+@import './components/buttons/button.css';
+@import './components/buttons/help-button.css';
+@import './components/plugins-list/plugins-list.css';
+@import './components/filter/filter-buttons-bar.css';
+@import './components/tooltip/tooltip.css';
+@import './components/badge/badge.css';
+@import './components/messages/messages.css';
+@import './components/notices/notices.css';
+@import './components/icons/icons.css';
+
+/* 4. WordPress Admin Compatibility */
+/* Ensure our styles don't conflict with WordPress admin */
+.pp-hub-root {
+    /* Create an isolated styling context */
+    isolation: isolate;
+}
+
+/* Reset WordPress admin table styles that might interfere */
+.pp-hub-root table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.pp-hub-root th,
+.pp-hub-root td {
+    text-align: left;
+    vertical-align: top;
+}
+
+/* Override WordPress button styles in our context */
+.pp-hub-root .button,
+.pp-hub-root .button-primary,
+.pp-hub-root .button-secondary {
+    all: unset;
+}
+
+/* Responsive container queries support */
+@supports (container-type: inline-size) {
+    .pp-hub-container {
+        container-type: inline-size;
+    }
+
+    @container (max-width: 768px) {
+        .pp-hub-mobile-stack {
+            flex-direction: column;
+        }
+    }
+}

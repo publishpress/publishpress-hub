@@ -1,0 +1,65 @@
+/**
+ * Modal component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\plugins-list\modal
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-modal .components-modal__content > div:not(.components-modal__header) {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    border-radius: var(--pp-hub-radius-sm);
+}
+
+.pp-hub-modal .pp-hub-button.is-full-width {
+    width: 100%;
+    justify-content: center !important;
+}
+
+.pp-hub-modal .pp-hub-text-control input {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: var(--pp-hub-radius-sm);
+    border: 1px solid var(--pp-hub-border-primary);
+    padding: var(--pp-hub-spacing-md);
+    font-size: var(--pp-hub-font-size-lg);
+    color: var(--pp-hub-text-primary);
+    background-color: var(--pp-hub-bg-primary);
+    box-shadow: none;
+}
+
+.pp-hub-modal .pp-hub-modal-inline-links {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-sm);
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: var(--pp-hub-spacing-md);
+}
+
+.pp-hub-modal .pp-hub-license-input input {
+    font-family: var(--pp-hub-font-family-mono);
+    padding: var(--pp-hub-spacing-md);
+    line-height: 16px;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.pp-hub-modal .pp-hub-modal-actions {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-sm);
+    justify-content: center;
+    align-items: center;
+}
+
+.pp-hub-modal,
+.pp-hub-modal p {
+    font-size: var(--pp-hub-font-size-md);
+}

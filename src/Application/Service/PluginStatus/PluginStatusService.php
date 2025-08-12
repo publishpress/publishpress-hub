@@ -1,0 +1,174 @@
+<?php
+
+/**
+ * Service for managing plugin status.
+ *
+ * @package PublishPress\Hub\Application\Service\PluginStatus
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+declare(strict_types=1);
+
+namespace PublishPress\Hub\Application\Service\PluginStatus;
+
+use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
+use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
+use PublishPress\Hub\Domain\Plugin\Contract\PluginInterface;
+use PublishPress\Hub\Domain\Plugin\Contract\ProPluginInterface;
+use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
+use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginStatusAdapter;
+
+/**
+ * Application service responsible for managing plugin status across the system.
+ *
+ * This service centralizes the logic for updating plugin status from WordPress,
+ * ensuring consistent state across all use cases and avoiding code duplication.
+ *
+ * @since 1.0.0
+ */
+class PluginStatusService
+{
+    private WPPluginStatusAdapter $pluginStatusAdapter;
+    private PluginFamilyRepositoryInterface $pluginFamilyRepository;
+    private LicensePersistenceInterface $licensePersistence;
+
+    /**
+     * @since 1.0.0
+     */
+    public function __construct(
+        WPPluginStatusAdapter $pluginStatusAdapter,
+        PluginFamilyRepositoryInterface $pluginFamilyRepository,
+        LicensePersistenceInterface $licensePersistence
+    ) {
+        $this->pluginStatusAdapter = $pluginStatusAdapter;
+        $this->pluginFamilyRepository = $pluginFamilyRepository;
+        $this->licensePersistence = $licensePersistence;
+    }
+
+    /**
+     * Updates status for all plugin families from WordPress.
+     *
+     * This method fetches fresh status information from WordPress
+     * and updates all plugin entities accordingly.
+     *
+     * @since 1.0.0
+     */
+    public function updateAllPluginStatuses(): void
+    {
+        $families = $this->pluginFamilyRepository->getAllFamilies();
+
+        foreach ($families as $family) {
+            $this->updatePluginFamilyStatus($family);
+        }
+    }
+
+    /**
+     * Updates status for a specific plugin family.
+     *
+     * @param PluginFamilyInterface $family The plugin family to update
+     *
+     * @since 1.0.0
+     */
+    public function updatePluginFamilyStatus(PluginFamilyInterface $family): void
+    {
+        $freePlugin = $family->getFreePlugin();
+        $proPlugin = $family->getProPlugin();
+
+        $this->updatePluginStatus($freePlugin);
+        $this->updatePluginStatus($proPlugin);
+    }
+
+    /**
+     * Updates status for a specific plugin family by slug.
+     *
+     * @param string $familySlug The slug of the plugin family to update
+     * @return PluginFamilyInterface|null The updated family or null if not found
+     *
+     * @since 1.0.0
+     */
+    public function updatePluginFamilyStatusBySlug(string $familySlug): ?PluginFamilyInterface
+    {
+        $family = $this->pluginFamilyRepository->findFamilyBySlug($familySlug);
+
+        if (!$family) {
+            return null;
+        }
+
+        $this->updatePluginFamilyStatus($family);
+
+        return $family;
+    }
+
+    /**
+     * Updates status for a specific plugin.
+     *
+     * @param PluginInterface $plugin The plugin to update
+     *
+     * @since 1.0.0
+     */
+    public function updatePluginStatus(PluginInterface $plugin): void
+    {
+        $isInstalled = $this->pluginStatusAdapter->checkIfPluginIsInstalled($plugin);
+        $isActive = $this->pluginStatusAdapter->checkIfPluginIsActive($plugin);
+        $isLicensed = $this->getPluginLicenseStatus($plugin);
+        $version = $this->pluginStatusAdapter->getPluginVersion($plugin);
+
+        $plugin->setInstalled($isInstalled, $version);
+        $plugin->setActive($isActive);
+        $plugin->setLicensed($isLicensed);
+    }
+
+    /**
+     * Gets a plugin family with updated status information.
+     *
+     * This is a convenience method that fetches a family and ensures
+     * its status is current before returning it.
+     *
+     * @param string $familySlug The slug of the plugin family
+     * @return PluginFamilyInterface|null The family with updated status or null if not found
+     *
+     * @since 1.0.0
+     */
+    public function getPluginFamilyWithUpdatedStatus(string $familySlug): ?PluginFamilyInterface
+    {
+        return $this->updatePluginFamilyStatusBySlug($familySlug);
+    }
+
+    /**
+     * Gets all plugin families with updated status information.
+     *
+     * This is a convenience method that fetches all families and ensures
+     * their status is current before returning them.
+     *
+     * @return array Array of PluginFamilyInterface objects with updated status
+     *
+     * @since 1.0.0
+     */
+    public function getAllPluginFamiliesWithUpdatedStatus(): array
+    {
+        $this->updateAllPluginStatuses();
+        return $this->pluginFamilyRepository->getAllFamilies();
+    }
+
+    /**
+     * Gets the license status for a specific plugin.
+     *
+     * @param PluginInterface $plugin The plugin to get the license status for
+     * @return bool The license status
+     * @since 1.0.0
+     */
+    private function getPluginLicenseStatus(PluginInterface $plugin): bool
+    {
+        if (!$plugin instanceof ProPluginInterface) {
+            return false;
+        }
+
+        $hasLicenseKey = $this->licensePersistence->hasLicenseKey($plugin->getDownloadId());
+        $isLicenseActivated = $this->licensePersistence->getLicenseStatus($plugin->getDownloadId());
+
+        return $hasLicenseKey && $isLicenseActivated;
+    }
+}

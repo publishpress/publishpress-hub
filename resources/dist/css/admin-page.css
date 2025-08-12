@@ -1,0 +1,2313 @@
+/*!****************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/core/variables.css ***!
+  \****************************************************************************************/
+/**
+ * Variables.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\core
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+:root {
+    /* Brand Colors */
+    --pp-hub-primary-color: #655997;
+    --pp-hub-secondary-color: #ffb200;
+    --pp-hub-tertiary-color: #1b004f;
+    --pp-hub-accent-color: #00a0d2;
+
+    /* Semantic Colors */
+    --pp-hub-success-color: #46b450;
+    --pp-hub-warning-color: #ffb900;
+    --pp-hub-error-color: #dc3232;
+    --pp-hub-info-color: #00a0d2;
+
+    /* Background Colors */
+    --pp-hub-bg-primary: #ffffff;
+    --pp-hub-bg-secondary: #f6f7f7;
+    --pp-hub-bg-tertiary: #f1f1f1;
+    --pp-hub-bg-overlay: rgba(0, 0, 0, 0.6);
+
+    /* Text Colors */
+    --pp-hub-text-primary: #1e1e1e;
+    --pp-hub-text-secondary: #646970;
+    --pp-hub-text-tertiary: #8c8f94;
+    --pp-hub-text-inverse: #ffffff;
+    --pp-hub-text-link: var(--pp-hub-primary-color);
+    --pp-hub-text-link-hover: var(--pp-hub-tertiary-color);
+
+    /* Border Colors */
+    --pp-hub-border-primary: #dcdcde;
+    --pp-hub-border-secondary: #c3c4c7;
+    --pp-hub-border-focus: var(--pp-hub-primary-color);
+    --pp-hub-border-input: #d1d5db;
+    --pp-hub-border-input-focus: #111827;
+
+    /* Form Colors */
+    --pp-hub-form-bg: #ffffff;
+    --pp-hub-form-text: #111827;
+    --pp-hub-form-placeholder: #9ca3af;
+
+    /* Button States */
+    --pp-hub-button-padding-x: var(--pp-hub-spacing-lg);
+    --pp-hub-button-padding-y: var(--pp-hub-spacing-md);
+    --pp-hub-button-gap: var(--pp-hub-spacing-sm);
+
+    /* Filter Component Specific */
+    --pp-hub-filter-container-padding: var(--pp-hub-spacing-sm);
+    --pp-hub-filter-button-padding: var(--pp-hub-spacing-sm) var(--pp-hub-spacing-md);
+
+    /* Spacing Scale */
+    --pp-hub-spacing-xs: 0.25rem;    /* 4px */
+    --pp-hub-spacing-sm: 0.5rem;     /* 8px */
+    --pp-hub-spacing-md: 0.75rem;    /* 12px */
+    --pp-hub-spacing-lg: 1rem;       /* 16px */
+    --pp-hub-spacing-xl: 1.5rem;     /* 24px */
+    --pp-hub-spacing-2xl: 2rem;      /* 32px */
+    --pp-hub-spacing-3xl: 3rem;      /* 48px */
+
+    /* Typography */
+    --pp-hub-font-family-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    --pp-hub-font-family-mono: Consolas, Monaco, "Courier New", monospace;
+
+    /* Font Sizes */
+    /* Start of Selection */
+    --pp-hub-font-size-xs: 0.625rem;  /* 10px */
+    --pp-hub-font-size-sm: 0.75rem;   /* 12px */
+    --pp-hub-font-size-md: 0.875rem;  /* 14px */
+    --pp-hub-font-size-lg: 1rem;      /* 16px */
+    --pp-hub-font-size-xl: 1.125rem;  /* 18px */
+    --pp-hub-font-size-2xl: 1.25rem;  /* 20px */
+    --pp-hub-font-size-3xl: 1.5rem;   /* 24px */
+    /* End of Selection */
+
+    /* Font Weights */
+    --pp-hub-font-weight-normal: 400;
+    --pp-hub-font-weight-medium: 500;
+    --pp-hub-font-weight-semibold: 600;
+    --pp-hub-font-weight-bold: 700;
+
+    /* Line Heights */
+    --pp-hub-line-height-tight: 1.25;
+    --pp-hub-line-height-normal: 1.5;
+    --pp-hub-line-height-loose: 1.75;
+
+    /* Border Radius */
+    --pp-hub-radius-sm: 0.25rem;
+    --pp-hub-radius-md: 0.375rem;
+    --pp-hub-radius-lg: 0.5rem;
+    --pp-hub-radius-xl: 0.75rem;
+    --pp-hub-radius-full: 9999px;
+
+    /* Shadows */
+    --pp-hub-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --pp-hub-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --pp-hub-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    /* Z-Index Scale */
+    --pp-hub-z-dropdown: 1000;
+    --pp-hub-z-modal: 1050;
+    --pp-hub-z-tooltip: 1070;
+
+    /* Transitions */
+    --pp-hub-transition-fast: 150ms ease-in-out;
+    --pp-hub-transition-normal: 300ms ease-in-out;
+    --pp-hub-transition-slow: 500ms ease-in-out;
+
+    /* Breakpoints (for container queries) */
+    --pp-hub-breakpoint-sm: 640px;
+    --pp-hub-breakpoint-md: 768px;
+    --pp-hub-breakpoint-lg: 1024px;
+    --pp-hub-breakpoint-xl: 1280px;
+}
+
+/*!***********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/core/base.css ***!
+  \***********************************************************************************/
+/**
+ * Base styles and WordPress admin compatibility.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\core
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+/* WordPress admin body adjustments */
+#wpcontent {
+    padding-left: 0;
+}
+
+/* Base typography */
+.pp-hub-root {
+    font-family: var(--pp-hub-font-family-primary);
+    font-size: var(--pp-hub-font-size-md);
+    line-height: var(--pp-hub-line-height-normal);
+    color: var(--pp-hub-text-primary);
+}
+
+/* Reset link styles */
+.pp-hub-root a {
+    color: var(--pp-hub-text-link);
+    text-decoration: none;
+    transition: color var(--pp-hub-transition-fast);
+}
+
+.pp-hub-root a:hover,
+.pp-hub-root a:focus {
+    color: var(--pp-hub-text-link-hover);
+}
+
+/* Focus management */
+.pp-hub-root *:focus {
+    outline: 2px solid var(--pp-hub-border-focus);
+    outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+.pp-hub-root *:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Smooth scrolling */
+.pp-hub-root {
+    scroll-behavior: smooth;
+}
+
+/* Container base */
+.pp-hub-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--pp-hub-spacing-lg);
+}
+
+/* Box model reset for consistent sizing */
+.pp-hub-root *,
+.pp-hub-root *::before,
+.pp-hub-root *::after {
+    box-sizing: border-box;
+}
+
+/* List styles */
+.pp-hub-list {
+    list-style: disc;
+    padding-left: 1em;
+}
+
+.pp-hub-list li {
+    margin-bottom: 0.5em;
+}
+
+.pp-hub-list-unstyled {
+    list-style: none;
+    padding-left: 0;
+}
+
+/*!****************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/core/utilities.css ***!
+  \****************************************************************************************/
+/**
+ * Utility classes.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\core
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+/* Spacing Utilities */
+.pp-hub-p-xs { padding: var(--pp-hub-spacing-xs); }
+.pp-hub-p-sm { padding: var(--pp-hub-spacing-sm); }
+.pp-hub-p-md { padding: var(--pp-hub-spacing-md); }
+.pp-hub-p-lg { padding: var(--pp-hub-spacing-lg); }
+.pp-hub-p-xl { padding: var(--pp-hub-spacing-xl); }
+.pp-hub-p-2xl { padding: var(--pp-hub-spacing-2xl); }
+
+.pp-hub-m-0 { margin: 0; }
+.pp-hub-m-xs { margin: var(--pp-hub-spacing-xs); }
+.pp-hub-m-sm { margin: var(--pp-hub-spacing-sm); }
+.pp-hub-m-md { margin: var(--pp-hub-spacing-md); }
+.pp-hub-m-lg { margin: var(--pp-hub-spacing-lg); }
+.pp-hub-m-xl { margin: var(--pp-hub-spacing-xl); }
+.pp-hub-m-2xl { margin: var(--pp-hub-spacing-2xl); }
+
+.pp-hub-mr-0 { margin-right: 0; }
+.pp-hub-mr-xs { margin-right: var(--pp-hub-spacing-xs); }
+.pp-hub-mr-sm { margin-right: var(--pp-hub-spacing-sm); }
+.pp-hub-mr-md { margin-right: var(--pp-hub-spacing-md); }
+.pp-hub-mr-lg { margin-right: var(--pp-hub-spacing-lg); }
+.pp-hub-mr-xl { margin-right: var(--pp-hub-spacing-xl); }
+.pp-hub-mr-2xl { margin-right: var(--pp-hub-spacing-2xl); }
+
+.pp-hub-ml-0 { margin-left: 0; }
+.pp-hub-ml-xs { margin-left: var(--pp-hub-spacing-xs); }
+.pp-hub-ml-sm { margin-left: var(--pp-hub-spacing-sm); }
+.pp-hub-ml-md { margin-left: var(--pp-hub-spacing-md); }
+.pp-hub-ml-lg { margin-left: var(--pp-hub-spacing-lg); }
+.pp-hub-ml-xl { margin-left: var(--pp-hub-spacing-xl); }
+.pp-hub-ml-2xl { margin-left: var(--pp-hub-spacing-2xl); }
+
+.pp-hub-mt-0 { margin-top: 0; }
+.pp-hub-mt-xs { margin-top: var(--pp-hub-spacing-xs); }
+.pp-hub-mt-sm { margin-top: var(--pp-hub-spacing-sm); }
+.pp-hub-mt-md { margin-top: var(--pp-hub-spacing-md); }
+.pp-hub-mt-lg { margin-top: var(--pp-hub-spacing-lg); }
+.pp-hub-mt-xl { margin-top: var(--pp-hub-spacing-xl); }
+.pp-hub-mt-2xl { margin-top: var(--pp-hub-spacing-2xl); }
+
+.pp-hub-mb-0 { margin-bottom: 0; }
+.pp-hub-mb-xs { margin-bottom: var(--pp-hub-spacing-xs); }
+.pp-hub-mb-sm { margin-bottom: var(--pp-hub-spacing-sm); }
+.pp-hub-mb-md { margin-bottom: var(--pp-hub-spacing-md); }
+.pp-hub-mb-lg { margin-bottom: var(--pp-hub-spacing-lg); }
+.pp-hub-mb-xl { margin-bottom: var(--pp-hub-spacing-xl); }
+.pp-hub-mb-2xl { margin-bottom: var(--pp-hub-spacing-2xl); }
+
+/* Flexbox Utilities */
+.pp-hub-flex { display: flex; }
+.pp-hub-flex-col { flex-direction: column; }
+.pp-hub-flex-row { flex-direction: row; }
+.pp-hub-flex-wrap { flex-wrap: wrap; }
+.pp-hub-flex-nowrap { flex-wrap: nowrap; }
+
+.pp-hub-justify-start { justify-content: flex-start; }
+.pp-hub-justify-center { justify-content: center; }
+.pp-hub-justify-end { justify-content: flex-end; }
+.pp-hub-justify-between { justify-content: space-between; }
+.pp-hub-justify-around { justify-content: space-around; }
+
+.pp-hub-items-start { align-items: flex-start; }
+.pp-hub-items-center { align-items: center; }
+.pp-hub-items-end { align-items: flex-end; }
+.pp-hub-items-stretch { align-items: stretch; }
+
+.pp-hub-flex-1 { flex: 1; }
+.pp-hub-flex-auto { flex: auto; }
+.pp-hub-flex-none { flex: none; }
+
+/* Grid Utilities */
+.pp-hub-grid { display: grid; }
+.pp-hub-grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+.pp-hub-grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.pp-hub-grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.pp-hub-grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+.pp-hub-gap-xs { gap: var(--pp-hub-spacing-xs); }
+.pp-hub-gap-sm { gap: var(--pp-hub-spacing-sm); }
+.pp-hub-gap-md { gap: var(--pp-hub-spacing-md); }
+.pp-hub-gap-lg { gap: var(--pp-hub-spacing-lg); }
+.pp-hub-gap-xl { gap: var(--pp-hub-spacing-xl); }
+
+/* Typography Utilities */
+.pp-hub-text-xs { font-size: var(--pp-hub-font-size-xs); }
+.pp-hub-text-sm { font-size: var(--pp-hub-font-size-sm); }
+.pp-hub-text-md { font-size: var(--pp-hub-font-size-md); }
+.pp-hub-text-lg { font-size: var(--pp-hub-font-size-lg); }
+.pp-hub-text-xl { font-size: var(--pp-hub-font-size-xl); }
+.pp-hub-text-2xl { font-size: var(--pp-hub-font-size-2xl); }
+.pp-hub-text-3xl { font-size: var(--pp-hub-font-size-3xl); }
+
+.pp-hub-font-normal { font-weight: var(--pp-hub-font-weight-normal); }
+.pp-hub-font-medium { font-weight: var(--pp-hub-font-weight-medium); }
+.pp-hub-font-semibold { font-weight: var(--pp-hub-font-weight-semibold); }
+.pp-hub-font-bold { font-weight: var(--pp-hub-font-weight-bold); }
+
+.pp-hub-text-center { text-align: center; }
+.pp-hub-text-left { text-align: left; }
+.pp-hub-text-right { text-align: right; }
+
+.pp-hub-text-primary { color: var(--pp-hub-text-primary); }
+.pp-hub-text-secondary { color: var(--pp-hub-text-secondary); }
+.pp-hub-text-tertiary { color: var(--pp-hub-text-tertiary); }
+.pp-hub-text-inverse { color: var(--pp-hub-text-inverse); }
+
+/* Border Utilities */
+.pp-hub-border { border: 1px solid var(--pp-hub-border-primary); }
+.pp-hub-border-t { border-top: 1px solid var(--pp-hub-border-primary); }
+.pp-hub-border-b { border-bottom: 1px solid var(--pp-hub-border-primary); }
+.pp-hub-border-l { border-left: 1px solid var(--pp-hub-border-primary); }
+.pp-hub-border-r { border-right: 1px solid var(--pp-hub-border-primary); }
+
+.pp-hub-rounded-sm { border-radius: var(--pp-hub-radius-sm); }
+.pp-hub-rounded-md { border-radius: var(--pp-hub-radius-md); }
+.pp-hub-rounded-lg { border-radius: var(--pp-hub-radius-lg); }
+.pp-hub-rounded-xl { border-radius: var(--pp-hub-radius-xl); }
+.pp-hub-rounded-full { border-radius: var(--pp-hub-radius-full); }
+
+/* Background Utilities */
+.pp-hub-bg-primary { background-color: var(--pp-hub-bg-primary); }
+.pp-hub-bg-secondary { background-color: var(--pp-hub-bg-secondary); }
+.pp-hub-bg-tertiary { background-color: var(--pp-hub-bg-tertiary); }
+
+/* Shadow Utilities */
+.pp-hub-shadow-sm { box-shadow: var(--pp-hub-shadow-sm); }
+.pp-hub-shadow-md { box-shadow: var(--pp-hub-shadow-md); }
+.pp-hub-shadow-lg { box-shadow: var(--pp-hub-shadow-lg); }
+
+/* Display Utilities */
+.pp-hub-hidden { display: none; }
+.pp-hub-block { display: block; }
+.pp-hub-inline { display: inline; }
+.pp-hub-inline-block { display: inline-block; }
+
+/* Position Utilities */
+.pp-hub-relative { position: relative; }
+.pp-hub-absolute { position: absolute; }
+.pp-hub-fixed { position: fixed; }
+.pp-hub-sticky { position: sticky; }
+
+/* Overflow Utilities */
+.pp-hub-overflow-hidden { overflow: hidden; }
+.pp-hub-overflow-auto { overflow: auto; }
+.pp-hub-overflow-scroll { overflow: scroll; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pp-hub-mobile-hidden { display: none; }
+    .pp-hub-mobile-flex { display: flex; }
+    .pp-hub-mobile-block { display: block; }
+}
+
+/*!****************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/themes/default.css ***!
+  \****************************************************************************************/
+/**
+ * Default theme.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\themes
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+[data-theme="default"] {
+    --pp-hub-font-family-mono: monospace;
+
+    /* Brand Colors */
+    --pp-hub-primary-color: #655997;
+    --pp-hub-primary-color-darker: #473d76;
+    --pp-hub-primary-color-lighter: #8477bb;
+    --pp-hub-primary-color-disabled: #4c495b;
+
+    --pp-hub-secondary-color: #ffb200;
+    --pp-hub-secondary-color-darker: #e6a100;
+    --pp-hub-secondary-color-lighter: #ffcc55;
+    --pp-hub-secondary-color-disabled: #ceab62;
+
+    --pp-hub-tertiary-color: #1b004f;
+    --pp-hub-tertiary-color-darker: #150048;
+    --pp-hub-tertiary-color-lighter: #2f005e;
+    --pp-hub-tertiary-color-disabled: #0d0027;
+
+    --pp-hub-accent-color: #00a0d2;
+    --pp-hub-accent-color-darker: #0080b0;
+    --pp-hub-accent-color-lighter: #00b3e6;
+    --pp-hub-accent-color-disabled: #005066;
+
+    --pp-hub-disabled-color: #a7a7a7;
+
+    /* Semantic Colors */
+    --pp-hub-success-color: #46b450;
+    --pp-hub-warning-color: #ffb900;
+    --pp-hub-error-color: #dc3232;
+    --pp-hub-info-color: #00a0d2;
+
+    --pp-hub-error-color-lighter: #b32d2d;
+    --pp-hub-error-color-darker: #802020;
+    --pp-hub-error-color-disabled: #4c1a1a;
+
+    /* Background Colors */
+    --pp-hub-bg-primary: #ffffff;
+    --pp-hub-bg-secondary: #f6f7f7;
+    --pp-hub-bg-tertiary: #dfdfdf;
+    --pp-hub-bg-overlay: rgba(0, 0, 0, 0.6);
+    --pp-hub-bg-error: #f5d6d6;
+    --pp-hub-bg-success: #d6f5d6;
+    --pp-hub-bg-warning: #fcf8d6;
+    --pp-hub-bg-info: #d6e5f5;
+
+    /* Text Colors */
+    --pp-hub-text-primary: #1e1e1e;
+    --pp-hub-text-secondary: #646970;
+    --pp-hub-text-tertiary: #444548;
+    --pp-hub-text-inverse: #ffffff;
+    --pp-hub-text-disabled: #767b82;
+    --pp-hub-text-link: var(--pp-hub-primary-color);
+    --pp-hub-text-link-hover: var(--pp-hub-primary-color-lighter);
+    --pp-hub-text-error: var(--pp-hub-error-color);
+    --pp-hub-text-success: var(--pp-hub-success-color);
+    --pp-hub-text-warning: var(--pp-hub-warning-color);
+    --pp-hub-text-info: var(--pp-hub-info-color);
+
+    /* Border Colors */
+    --pp-hub-border-primary: #e7e7e7;
+    --pp-hub-border-secondary: #cfd0d5;
+    --pp-hub-border-tertiary: #cccccc;
+    --pp-hub-border-focus: var(--pp-hub-primary-color);
+
+    /* Button Colors */
+    --pp-hub-button-bg-primary: var(--pp-hub-primary-color);
+    --pp-hub-button-bg-primary-hover: var(--pp-hub-primary-color-lighter);
+    --pp-hub-button-bg-primary-active: var(--pp-hub-primary-color-darker);
+    --pp-hub-button-bg-primary-focus: var(--pp-hub-primary-color-lighter);
+    --pp-hub-button-bg-primary-disabled: var(--pp-hub-primary-color-disabled);
+
+    --pp-hub-button-bg-secondary: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-secondary-hover: var(--pp-hub-bg-secondary);
+    --pp-hub-button-bg-secondary-active: var(--pp-hub-bg-tertiary);
+    --pp-hub-button-bg-secondary-focus: var(--pp-hub-bg-tertiary);
+    --pp-hub-button-bg-secondary-disabled: transparent;
+
+    --pp-hub-button-bg-tertiary: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-tertiary-hover: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-tertiary-active: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-tertiary-focus: var(--pp-hub-bg-primary);
+    --pp-hub-button-bg-tertiary-disabled: var(--pp-hub-tertiary-color-disabled);
+
+    --pp-hub-button-bg-highlight: var(--pp-hub-secondary-color);
+    --pp-hub-button-bg-highlight-hover: var(--pp-hub-secondary-color-darker);
+    --pp-hub-button-bg-highlight-active: var(--pp-hub-secondary-color-darker);
+    --pp-hub-button-bg-highlight-focus: var(--pp-hub-secondary-color-lighter);
+    --pp-hub-button-bg-highlight-disabled: var(--pp-hub-secondary-color-disabled);
+
+    --pp-hub-button-bg-danger: var(--pp-hub-error-color);
+    --pp-hub-button-bg-danger-hover: var(--pp-hub-error-color-lighter);
+    --pp-hub-button-bg-danger-active: var(--pp-hub-error-color-darker);
+    --pp-hub-button-bg-danger-focus: var(--pp-hub-error-color-lighter);
+    --pp-hub-button-bg-danger-disabled: var(--pp-hub-error-color-disabled);
+
+    --pp-hub-button-text-primary: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-secondary: var(--pp-hub-primary-color);
+    --pp-hub-button-text-tertiary: var(--pp-hub-text-tertiary);
+    --pp-hub-button-text-highlight: var(--pp-hub-text-primary);
+    --pp-hub-button-text-inverse: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-disabled: var(--pp-hub-text-disabled);
+    --pp-hub-button-text-danger: var(--pp-hub-text-inverse);
+
+    --pp-hub-button-border-primary: var(--pp-hub-primary-color-darker);
+    --pp-hub-button-border-secondary: var(--pp-hub-primary-color);
+    --pp-hub-button-border-tertiary: var(--pp-hub-border-tertiary);
+    --pp-hub-button-border-highlight: #b37d00;
+    --pp-hub-button-border-disabled: var(--pp-hub-border-secondary);
+    --pp-hub-button-border-danger: var(--pp-hub-error-color);
+
+    --pp-hub-button-text-primary-hover: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-secondary-hover: var(--pp-hub-primary-color);
+    --pp-hub-button-text-tertiary-hover: var(--pp-hub-text-tertiary);
+    --pp-hub-button-text-highlight-hover: var(--pp-hub-text-primary);
+    --pp-hub-button-text-disabled-hover: var(--pp-hub-text-disabled);
+    --pp-hub-button-text-danger-hover: var(--pp-hub-text-inverse);
+
+    /* Status Colors */
+    --pp-hub-status-color-active: #46b450;
+    --pp-hub-status-color-inactive: #d4d4d4;
+
+    /* Tooltip Colors */
+    --pp-hub-tooltip-bg: #000000;
+    --pp-hub-tooltip-text: #ffffff;
+
+    /* Badge Colors */
+    --pp-hub-badge-bg: #f0f0f0;
+    --pp-hub-badge-bg-hover: #e5e7eb;
+    --pp-hub-badge-bg-installed: #46b450;
+    --pp-hub-badge-bg-installed-hover: #3f8f44;
+    --pp-hub-badge-bg-not-installed: #ededed;
+    --pp-hub-badge-bg-not-installed-hover: #dcdcdc;
+    --pp-hub-badge-bg-free: #d1cff1;
+    --pp-hub-badge-bg-free-hover: #c4c1e9;
+    --pp-hub-badge-bg-licensed: #cff1db;
+    --pp-hub-badge-bg-licensed-hover: #c7e9c1;
+    --pp-hub-badge-bg-unlicensed: #eff2c2;
+    --pp-hub-badge-bg-unlicensed-hover: #e7eab9;
+    --pp-hub-badge-bg-installing: #f3f4f6;
+    --pp-hub-badge-bg-installing-hover: #e8e8e8;
+    --pp-hub-badge-bg-uninstalling: #daa7a7;
+    --pp-hub-badge-bg-uninstalling-hover: #c79696;
+    --pp-hub-badge-bg-conflicting-installations: #c48080;
+    --pp-hub-badge-bg-conflicting-installations-hover: #bb7676;
+    --pp-hub-badge-text: #333;
+    --pp-hub-badge-text-installed: #ffffff;
+    --pp-hub-badge-text-not-installed: #989898;
+    --pp-hub-badge-text-free: #162665;
+    --pp-hub-badge-text-licensed: #166534;
+    --pp-hub-badge-text-unlicensed: #626516;
+    --pp-hub-badge-text-installing: #a7a7a7;
+    --pp-hub-badge-text-uninstalling: #6f5454;
+    --pp-hub-badge-text-conflicting-installations: #ffffff;
+
+    /* Toggle Colors */
+    --pp-hub-toggle-bg-checked: #00d084;
+    --pp-hub-toggle-bg-unchecked: #cccccc;
+    --pp-hub-toggle-thumb-checked: #ffffff;
+    --pp-hub-toggle-thumb-unchecked: #ffffff;
+}
+
+/*!*************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/themes/dark.css ***!
+  \*************************************************************************************/
+/**
+ * Dark theme.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\themes
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+[data-theme="dark"] {
+    --pp-hub-font-family-mono: monospace;
+    /* Brand Colors - Adjusted for dark mode */
+    --pp-hub-primary-color: #8a7bc8;
+    --pp-hub-primary-color-darker: #6b5b9a;
+    --pp-hub-primary-color-lighter: #a99dd4;
+    --pp-hub-primary-color-disabled: #5a4f7a;
+
+    --pp-hub-secondary-color: #ffd700;
+    --pp-hub-secondary-color-darker: #d4b800;
+    --pp-hub-secondary-color-lighter: #ffdd33;
+    --pp-hub-secondary-color-disabled: #b39b00;
+
+    --pp-hub-tertiary-color: #b19cd9;
+    --pp-hub-tertiary-color-darker: #8a7bc8;
+    --pp-hub-tertiary-color-lighter: #c4b3e6;
+    --pp-hub-tertiary-color-disabled: #7a6b9a;
+
+    --pp-hub-accent-color: #4fc3f7;
+    --pp-hub-accent-color-darker: #29b6f6;
+    --pp-hub-accent-color-lighter: #81d4fa;
+    --pp-hub-accent-color-disabled: #0277bd;
+
+    /* Generic Disabled */
+    --pp-hub-disabled-color: #666666;
+
+    /* Semantic Colors - Dark mode variants */
+    --pp-hub-success-color: #66bb6a;
+    --pp-hub-warning-color: #ffca28;
+    --pp-hub-error-color: #ef5350;
+    --pp-hub-info-color: #29b6f6;
+
+    /* Error color variants for danger states */
+    --pp-hub-error-color-lighter: #f36c69;
+    --pp-hub-error-color-darker: #c33c39;
+    --pp-hub-error-color-disabled: #5a2a2a;
+
+    /* Background Colors - Dark theme */
+    --pp-hub-bg-primary: #121212;
+    --pp-hub-bg-secondary: #1e1e1e;
+    --pp-hub-bg-tertiary: #2d2d2d;
+    --pp-hub-bg-overlay: rgba(0, 0, 0, 0.8);
+    --pp-hub-bg-error: #3d1e1e;
+    --pp-hub-bg-success: #1e3d1e;
+    --pp-hub-bg-warning: #3d3a1e;
+    --pp-hub-bg-info: #1e2a3d;
+
+    /* Text Colors - Inverted for dark mode */
+    --pp-hub-text-primary: #ffffff;
+    --pp-hub-text-secondary: #b3b3b3;
+    --pp-hub-text-tertiary: #808080;
+    --pp-hub-text-inverse: #121212;
+    --pp-hub-text-disabled: #666666;
+    --pp-hub-text-link: var(--pp-hub-primary-color);
+    --pp-hub-text-link-hover: var(--pp-hub-primary-color-lighter);
+    --pp-hub-text-error: var(--pp-hub-error-color);
+    --pp-hub-text-success: var(--pp-hub-success-color);
+    --pp-hub-text-warning: var(--pp-hub-warning-color);
+    --pp-hub-text-info: var(--pp-hub-info-color);
+
+    /* Border Colors - Dark theme */
+    --pp-hub-border-primary: #3c3c3c;
+    --pp-hub-border-secondary: #4a4a4a;
+    --pp-hub-border-tertiary: #555555;
+    --pp-hub-border-focus: var(--pp-hub-primary-color);
+
+    /* Button Colors - Dark theme variants */
+    --pp-hub-button-bg-primary: var(--pp-hub-primary-color);
+    --pp-hub-button-bg-primary-hover: var(--pp-hub-primary-color-lighter);
+    --pp-hub-button-bg-primary-active: var(--pp-hub-primary-color-darker);
+    --pp-hub-button-bg-primary-focus: var(--pp-hub-primary-color-lighter);
+    --pp-hub-button-bg-primary-disabled: var(--pp-hub-primary-color-disabled);
+
+    --pp-hub-button-bg-secondary: var(--pp-hub-bg-secondary);
+    --pp-hub-button-bg-secondary-hover: #2a2a2a;
+    --pp-hub-button-bg-secondary-active: var(--pp-hub-bg-tertiary);
+    --pp-hub-button-bg-secondary-focus: var(--pp-hub-bg-tertiary);
+    --pp-hub-button-bg-secondary-disabled: transparent;
+
+    --pp-hub-button-bg-tertiary: var(--pp-hub-bg-secondary);
+    --pp-hub-button-bg-tertiary-hover: var(--pp-hub-bg-secondary);
+    --pp-hub-button-bg-tertiary-active: var(--pp-hub-bg-secondary);
+    --pp-hub-button-bg-tertiary-focus: var(--pp-hub-bg-secondary);
+    --pp-hub-button-bg-tertiary-disabled: var(--pp-hub-tertiary-color-disabled);
+
+    --pp-hub-button-bg-highlight: var(--pp-hub-secondary-color);
+    --pp-hub-button-bg-highlight-hover: var(--pp-hub-secondary-color-lighter);
+    --pp-hub-button-bg-highlight-active: var(--pp-hub-secondary-color-darker);
+    --pp-hub-button-bg-highlight-focus: var(--pp-hub-secondary-color-lighter);
+    --pp-hub-button-bg-highlight-disabled: var(--pp-hub-secondary-color-disabled);
+
+    /* Danger button variants */
+    --pp-hub-button-bg-danger: var(--pp-hub-error-color);
+    --pp-hub-button-bg-danger-hover: var(--pp-hub-error-color-lighter);
+    --pp-hub-button-bg-danger-active: var(--pp-hub-error-color-darker);
+    --pp-hub-button-bg-danger-focus: var(--pp-hub-error-color-lighter);
+    --pp-hub-button-bg-danger-disabled: var(--pp-hub-error-color-disabled);
+
+    --pp-hub-button-text-primary: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-secondary: var(--pp-hub-primary-color);
+    --pp-hub-button-text-tertiary: var(--pp-hub-text-tertiary);
+    --pp-hub-button-text-highlight: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-inverse: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-disabled: var(--pp-hub-text-disabled);
+    --pp-hub-button-text-link: none;
+    --pp-hub-button-text-danger: var(--pp-hub-text-inverse);
+
+    --pp-hub-button-border-primary: var(--pp-hub-border-primary);
+    --pp-hub-button-border-secondary: var(--pp-hub-primary-color);
+    --pp-hub-button-border-tertiary: var(--pp-hub-border-tertiary);
+    --pp-hub-button-border-highlight: var(--pp-hub-border-tertiary);
+    --pp-hub-button-border-disabled: var(--pp-hub-border-secondary);
+    --pp-hub-button-border-danger: var(--pp-hub-error-color);
+
+    /* Button text hover colors */
+    --pp-hub-button-text-primary-hover: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-secondary-hover: var(--pp-hub-primary-color);
+    --pp-hub-button-text-tertiary-hover: var(--pp-hub-text-tertiary);
+    --pp-hub-button-text-highlight-hover: var(--pp-hub-text-inverse);
+    --pp-hub-button-text-disabled-hover: var(--pp-hub-text-disabled);
+    --pp-hub-button-text-danger-hover: var(--pp-hub-text-inverse);
+
+    /* Status Colors - Dark theme */
+    --pp-hub-status-color-active: #66bb6a;
+    --pp-hub-status-color-inactive: #555555;
+
+    /* Tooltip Colors - Dark theme */
+    --pp-hub-tooltip-bg: #000000;
+    --pp-hub-tooltip-text: #ffffff;
+
+    /* Badge Colors - Dark theme */
+    --pp-hub-badge-bg: #2a2a2a;
+    --pp-hub-badge-bg-hover: #333333;
+    --pp-hub-badge-bg-installed: #66bb6a;
+    --pp-hub-badge-bg-installed-hover: #57a65b;
+    --pp-hub-badge-bg-not-installed: #1e1e1e;
+    --pp-hub-badge-bg-not-installed-hover: #2a2a2a;
+    --pp-hub-badge-bg-free: #1e3a5c;
+    --pp-hub-badge-bg-free-hover: #24466d;
+    --pp-hub-badge-bg-licensed: #1e4d1e;
+    --pp-hub-badge-bg-licensed-hover: #245f24;
+    --pp-hub-badge-bg-unlicensed: #4d3a1e;
+    --pp-hub-badge-bg-unlicensed-hover: #5a4526;
+    --pp-hub-badge-bg-installing: #2a2a2a;
+    --pp-hub-badge-bg-installing-hover: #383838;
+    --pp-hub-badge-bg-uninstalling: #5a2e2e;
+    --pp-hub-badge-bg-uninstalling-hover: #6a3838;
+    --pp-hub-badge-bg-conflicting-installations: #c48080;
+    --pp-hub-badge-bg-conflicting-installations-hover: #bb7676;
+    --pp-hub-badge-text: #ffffff;
+    --pp-hub-badge-text-installed: #ffffff;
+    --pp-hub-badge-text-not-installed: #b3b3b3;
+    --pp-hub-badge-text-free: #81d4fa;
+    --pp-hub-badge-text-licensed: #a5d6a7;
+    --pp-hub-badge-text-unlicensed: #ffcc80;
+    --pp-hub-badge-text-installing: #a7a7a7;
+    --pp-hub-badge-text-uninstalling: #6f5454;
+    --pp-hub-badge-text-conflicting-installations: #ffffff;
+
+    /* Toggle Colors - Dark theme */
+    --pp-hub-toggle-bg-checked: #00d084;
+    --pp-hub-toggle-bg-unchecked: #555555;
+    --pp-hub-toggle-thumb-checked: #ffffff;
+    --pp-hub-toggle-thumb-unchecked: #ffffff;
+}
+
+/*!*********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/components/wp-components/toggle.css ***!
+  \*********************************************************************************************************/
+/**
+ * Toggle component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\wp-components\toggle
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-root .components-form-toggle.is-checked .components-form-toggle__track {
+    background-color: var(--pp-hub-toggle-bg-checked);
+    border-bottom-color: var(--pp-hub-toggle-bg-checked);
+    border-top-color: var(--pp-hub-toggle-bg-checked);
+    border-left-color: var(--pp-hub-toggle-bg-checked);
+    border-right-color: var(--pp-hub-toggle-bg-checked);
+}
+
+.pp-hub-root .components-form-toggle .components-form-toggle__track {
+    background-color: var(--pp-hub-toggle-bg-unchecked);
+    border-bottom-color: var(--pp-hub-toggle-bg-unchecked);
+    border-top-color: var(--pp-hub-toggle-bg-unchecked);
+    border-left-color: var(--pp-hub-toggle-bg-unchecked);
+    border-right-color: var(--pp-hub-toggle-bg-unchecked);
+}
+
+.pp-hub-root .components-form-toggle.is-checked .components-form-toggle__thumb {
+    background-color: var(--pp-hub-toggle-thumb-checked);
+    border-color: var(--pp-hub-toggle-thumb-checked);
+}
+
+.pp-hub-root .components-form-toggle .components-form-toggle__thumb {
+    background-color: var(--pp-hub-toggle-thumb-unchecked);
+    border-color: var(--pp-hub-toggle-thumb-unchecked);
+}
+
+/*!*********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/components/admin-page/container.css ***!
+  \*********************************************************************************************************/
+/**
+ * Admin page container component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\admin-page\container
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-admin-page-container {
+    min-height: 100vh;
+    font-family: var(--pp-hub-font-family-primary);
+    color: var(--pp-hub-text-primary);
+}
+
+.pp-hub-admin-page-container.pp-hub-fullwidth {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.pp-hub-admin-page-container.pp-hub-contained {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--pp-hub-spacing-xl);
+}
+
+/* Content area styling */
+.pp-hub-admin-page-container__content {
+    padding: var(--pp-hub-spacing-xl);
+    background-color: var(--pp-hub-bg-primary);
+    border-radius: var(--pp-hub-radius-lg);
+    box-shadow: var(--pp-hub-shadow-sm);
+}
+
+/* WordPress admin body reset */
+.pp-hub-admin-page-container #wpcontent {
+    padding-left: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .pp-hub-admin-page-container.pp-hub-contained {
+        padding: var(--pp-hub-spacing-md);
+    }
+
+    .pp-hub-admin-page-container__content {
+        padding: var(--pp-hub-spacing-lg);
+        border-radius: var(--pp-hub-radius-md);
+    }
+}
+
+/*!******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/components/admin-page/header.css ***!
+  \******************************************************************************************************/
+/**
+ * Admin page header component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\admin-page\header
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-admin-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--pp-hub-spacing-xl) var(--pp-hub-spacing-xl);
+    background-color: var(--pp-hub-bg-primary);
+    border-bottom: 1px solid var(--pp-hub-border-primary);
+}
+
+.pp-hub-admin-page-header__logo {
+    height: 40px;
+    width: auto;
+}
+
+.pp-hub-admin-page-header__logo-text {
+    font-size: 33px;
+    line-height: 40px;
+    font-weight: 600;
+    margin-left: var(--pp-hub-spacing-sm);
+    margin-top: var(--pp-hub-spacing-xs);
+}
+
+.pp-hub-admin-page-header__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: var(--pp-hub-spacing-lg);
+}
+
+.pp-hub-admin-page-header__title {
+    font-size: var(--pp-hub-font-size-2xl);
+    font-weight: var(--pp-hub-font-weight-bold);
+    color: var(--pp-hub-text-primary);
+    margin: 0;
+    line-height: var(--pp-hub-line-height-tight);
+}
+
+.pp-hub-admin-page-header__description {
+    font-size: var(--pp-hub-font-size-md);
+    color: var(--pp-hub-text-secondary);
+    margin: var(--pp-hub-spacing-xs) 0 0 0;
+    line-height: var(--pp-hub-line-height-normal);
+}
+
+.pp-hub-admin-page-header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--pp-hub-spacing-md);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .pp-hub-admin-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--pp-hub-spacing-lg);
+    }
+
+    .pp-hub-admin-page-header__logo {
+        margin-bottom: var(--pp-hub-spacing-md);
+        margin-right: 0;
+    }
+
+    .pp-hub-admin-page-header__content {
+        margin-right: 0;
+        margin-bottom: var(--pp-hub-spacing-md);
+        width: 100%;
+    }
+
+    .pp-hub-admin-page-header__actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .pp-hub-admin-page-header__title {
+        font-size: var(--pp-hub-font-size-xl);
+    }
+}
+
+/* Compact variant */
+.pp-hub-admin-page-header--compact {
+    padding: var(--pp-hub-spacing-lg) var(--pp-hub-spacing-xl);
+}
+
+.pp-hub-admin-page-header--compact .pp-hub-admin-page-header__title {
+    font-size: var(--pp-hub-font-size-xl);
+}
+
+.pp-hub-admin-page-header--compact .pp-hub-admin-page-header__logo {
+    height: 24px;
+}
+
+/*!******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/components/admin-page/footer.css ***!
+  \******************************************************************************************************/
+/* Footer */
+
+footer {
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    padding-top: 30px;
+}
+
+footer .pp-hub-rating {
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+footer .pp-hub-rating a,
+footer .pp-hub-rating a:visited,
+footer .pp-hub-rating a:active,
+footer .pp-hub-rating a:hover {
+    text-decoration: none;
+}
+
+.pp-hub-rating a:hover,
+.pp-hub-rating a:active,
+.pp-hub-rating a:focus,
+footer * {
+    color: #777;
+}
+
+footer hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #fafafa;
+}
+
+footer > nav {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+footer > nav ul {
+    list-style: none;
+}
+
+footer > nav ul > li {
+    display: inline-block;
+}
+
+footer > nav ul > li:not(:first-child) {
+    margin-left: 15px;
+}
+
+footer > nav ul > li > a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #777 !important;
+}
+
+footer > nav ul > li > a:hover,
+footer > nav ul > li > a:focus,
+footer > nav ul > li > a:active {
+    color: #655997;
+}
+
+footer > nav ul > li > a span.dashicons:hover,
+footer > nav ul > li > a span.dashicons:focus,
+footer > nav ul > li > a span.dashicons:active {
+    color: #655997;
+}
+
+footer .dashicons.dashicons-star-filled {
+    line-height: 18px;
+    font-size: 12px;
+    width: 12px;
+    height: 12px;
+    color: #ffb300 !important;
+    -webkit-transition: color 200ms ease-in-out;
+    -moz-transition: color 200ms ease-in-out;
+    -o-transition: color 200ms ease-in-out;
+    transition: color 200ms ease-in-out;
+}
+
+footer .pp-hub-footer-logo img {
+    width: 170px;
+}
+
+
+/*!******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/components/admin-page/layout.css ***!
+  \******************************************************************************************************/
+/**
+ * Admin page layout component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\admin-page\layout
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-admin-page-layout__content h1 {
+    font-size: var(--pp-hub-font-size-3xl);
+    font-weight: var(--pp-hub-font-weight-bold);
+    color: var(--pp-hub-text-primary);
+    margin: 0;
+    line-height: var(--pp-hub-line-height-tight);
+}
+
+.pp-hub-admin-page-layout__content h2 {
+    font-size: var(--pp-hub-font-size-2xl);
+    font-weight: var(--pp-hub-font-weight-bold);
+    color: var(--pp-hub-text-primary);
+    margin: 0;
+    line-height: var(--pp-hub-line-height-tight);
+}
+
+.pp-hub-admin-page-layout__content h3 {
+    font-size: var(--pp-hub-font-size-xl);
+    font-weight: var(--pp-hub-font-weight-bold);
+    color: var(--pp-hub-text-primary);
+    margin: 0;
+    line-height: var(--pp-hub-line-height-tight);
+}
+
+.pp-hub-admin-page-layout__content h4 {
+    font-size: var(--pp-hub-font-size-lg);
+    font-weight: var(--pp-hub-font-weight-bold);
+    color: var(--pp-hub-text-primary);
+    margin: 0;
+    line-height: var(--pp-hub-line-height-tight);
+}
+
+.pp-hub-admin-page-layout__content h5 {
+    font-size: var(--pp-hub-font-size-md);
+    font-weight: var(--pp-hub-font-weight-bold);
+    color: var(--pp-hub-text-primary);
+    margin: 0;
+    line-height: var(--pp-hub-line-height-tight);
+}
+
+.pp-hub-admin-page-layout__title {
+    margin-top: 0;
+    width: 60%;
+}
+
+.pp-hub-admin-page-layout__title-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+}
+
+.pp-hub-admin-page-layout__title-children {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+/*!***************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/components/buttons/button.css ***!
+  \***************************************************************************************************/
+/**
+ * Button component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\buttons
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-button {
+    all: unset;
+    cursor: pointer;
+    border-radius: var(--pp-hub-radius-sm);
+    padding: var(--pp-hub-spacing-sm) var(--pp-hub-spacing-md) !important;
+    text-align: center;
+    white-space: nowrap;
+    border: 1px solid var(--pp-hub-button-border-primary);
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+    box-shadow: none;
+    font-size: var(--pp-hub-font-size-md);
+    line-height: 2em;
+    box-sizing: border-box;
+}
+
+.components-button.is-primary,
+.components-button.is-secondary,
+.components-button.is-tertiary,
+.components-button.is-link {
+    box-shadow: none;
+}
+
+.components-button.is-primary:hover:not(:disabled),
+.components-button.is-secondary:hover:not(:disabled),
+.components-button.is-tertiary:hover:not(:disabled),
+.components-button.is-link:hover:not(:disabled) {
+    background: unset;
+    color: unset;
+    border-color: unset;
+}
+
+.pp-hub-button:disabled {
+    cursor: not-allowed;
+}
+
+.pp-hub-button,
+.components-button.is-secondary,
+.pp-hub-button.is-secondary {
+    background-color: var(--pp-hub-button-bg-secondary);
+    color: var(--pp-hub-button-text-secondary);
+    border-color: var(--pp-hub-button-border-secondary);
+    font-weight: var(--pp-hub-font-weight-medium);
+}
+
+.pp-hub-button:hover,
+.components-button.is-secondary:hover:not(:disabled),
+.pp-hub-button.is-secondary:hover {
+    background-color: var(--pp-hub-button-bg-secondary-hover);
+    color: var(--pp-hub-button-text-secondary-hover);
+}
+
+.pp-hub-button:active,
+.pp-hub-button.is-secondary:active {
+    background-color: var(--pp-hub-button-bg-secondary-active);
+}
+
+.pp-hub-button:focus,
+.pp-hub-button.is-secondary:focus {
+    background-color: var(--pp-hub-button-bg-secondary-hover);
+    border-color: var(--pp-hub-button-border-secondary);
+}
+
+.pp-hub-button:disabled,
+.pp-hub-button.is-secondary:disabled {
+    background-color: var(--pp-hub-button-bg-secondary-disabled);
+    color: var(--pp-hub-button-text-disabled);
+}
+
+.components-button.is-primary,
+.pp-hub-button.is-primary {
+    background-color: var(--pp-hub-button-bg-primary);
+    color: var(--pp-hub-button-text-primary);
+    border-color: var(--pp-hub-button-border-primary);
+}
+
+.components-button.is-primary:hover:not(:disabled),
+.pp-hub-button.is-primary:hover {
+    background-color: var(--pp-hub-button-bg-primary-hover);
+    border-color: var(--pp-hub-button-border-primary);
+    color: var(--pp-hub-button-text-primary-hover);
+    outline: 1px solid var(--pp-hub-button-border-primary);
+}
+
+.pp-hub-button.is-primary:active {
+    background-color: var(--pp-hub-button-bg-primary-active);
+    border-color: var(--pp-hub-button-border-primary);
+    outline: 1px solid var(--pp-hub-button-border-primary);
+}
+
+.pp-hub-button.is-primary:focus {
+    background-color: var(--pp-hub-button-bg-primary-hover);
+    border-color: var(--pp-hub-button-border-primary);
+    outline: 1px solid var(--pp-hub-button-border-primary);
+}
+
+.pp-hub-button.is-primary:disabled {
+    background-color: var(--pp-hub-button-bg-primary-disabled);
+    border-color: var(--pp-hub-button-border-primary);
+    color: var(--pp-hub-button-text-disabled);
+}
+
+.pp-hub-button.is-highlight {
+    background-color: var(--pp-hub-button-bg-highlight);
+    color: var(--pp-hub-button-text-highlight);
+    border-color: var(--pp-hub-button-border-highlight);
+}
+
+.pp-hub-button.is-highlight:hover {
+    background-color: var(--pp-hub-button-bg-highlight-hover);
+    color: var(--pp-hub-button-text-highlight-hover);
+    border-color: var(--pp-hub-button-border-highlight);
+    outline: 1px solid var(--pp-hub-button-border-highlight);
+}
+
+.pp-hub-button.is-highlight:active {
+    background-color: var(--pp-hub-button-bg-highlight-darker);
+    border-color: var(--pp-hub-button-border-highlight);
+    border-color: var(--pp-hub-button-border-highlight);
+    outline: 1px solid var(--pp-hub-button-border-highlight);
+}
+
+.pp-hub-button.is-highlight:focus {
+    background-color: var(--pp-hub-button-bg-highlight-hover);
+    border-color: var(--pp-hub-button-border-highlight);
+    border-color: var(--pp-hub-button-border-highlight);
+    outline: 1px solid var(--pp-hub-button-border-highlight);
+}
+
+.pp-hub-button.is-highlight:disabled {
+    background-color: var(--pp-hub-button-bg-highlight-disabled);
+    border-color: var(--pp-hub-button-border-highlight);
+    color: var(--pp-hub-button-text-disabled);
+}
+
+.pp-hub-button.is-tertiary {
+    background-color: var(--pp-hub-button-bg-tertiary);
+    color: var(--pp-hub-button-text-tertiary);
+    border-color: var(--pp-hub-button-border-tertiary);
+}
+
+.pp-hub-button.is-tertiary:hover {
+    background-color: var(--pp-hub-button-bg-tertiary-hover);
+    border-color: var(--pp-hub-button-border-tertiary);
+    color: var(--pp-hub-button-text-tertiary-hover);
+}
+
+.pp-hub-button.is-tertiary:active {
+    background-color: var(--pp-hub-button-bg-tertiary-active);
+    border-color: var(--pp-hub-button-border-tertiary);
+}
+
+.pp-hub-button.is-tertiary:focus {
+    background-color: var(--pp-hub-button-bg-tertiary-hover);
+    border-color: var(--pp-hub-button-border-tertiary);
+}
+
+.pp-hub-button.is-tertiary:disabled {
+    color: var(--pp-hub-button-text-disabled);
+}
+
+.pp-hub-button.is-danger {
+    background-color: var(--pp-hub-button-bg-danger);
+    color: var(--pp-hub-button-text-danger);
+    border-color: var(--pp-hub-button-border-danger);
+}
+
+.pp-hub-button.is-danger:hover {
+    background-color: var(--pp-hub-button-bg-danger-hover);
+    border-color: var(--pp-hub-button-border-danger);
+    color: var(--pp-hub-button-text-danger-hover);
+}
+
+.pp-hub-button.is-danger:active {
+    background-color: var(--pp-hub-button-bg-danger-active);
+    border-color: var(--pp-hub-button-border-danger);
+}
+
+.pp-hub-button.is-danger:focus {
+    background-color: var(--pp-hub-button-bg-danger-hover);
+    border-color: var(--pp-hub-button-border-danger);
+}
+
+.pp-hub-button.is-danger:disabled {
+    background-color: var(--pp-hub-button-bg-danger-disabled);
+    border-color: var(--pp-hub-button-border-danger);
+    color: var(--pp-hub-button-text-disabled);
+}
+
+
+.pp-hub-button.is-link {
+    background-color: unset;
+    color: var(--pp-hub-text-primary);
+    border: none;
+    padding: 0 !important;
+}
+
+.pp-hub-button.is-link:hover {
+    background-color: unset;
+    color: var(--pp-hub-text-link-hover);
+}
+
+.pp-hub-button.is-link:active {
+    background-color: unset;
+}
+
+.pp-hub-button.is-link:focus {
+    background-color: unset;
+    color: var(--pp-hub-text-link-hover);
+}
+
+.pp-hub-button.is-link:disabled {
+    background-color: unset;
+    color: var(--pp-hub-button-text-disabled);
+}
+
+.components-button.has-icon.has-text {
+    justify-content: center !important;
+}
+
+.components-button.is-link svg {
+    margin-right: 0;
+    width: 12px;
+    height: 12px;
+}
+
+.pp-hub-button.is-link-left svg {
+    margin-right: 8px;
+}
+
+/*!********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/components/buttons/help-button.css ***!
+  \********************************************************************************************************/
+/**
+ * Help button component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\buttons\help-button
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-help-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--pp-hub-spacing-sm) var(--pp-hub-spacing-lg);
+    font-size: var(--pp-hub-font-size-sm);
+    font-weight: var(--pp-hub-font-weight-medium);
+    line-height: 1;
+    text-decoration: none;
+    border: 1px solid var(--pp-hub-border-primary);
+    border-radius: var(--pp-hub-radius-md);
+    background-color: var(--pp-hub-bg-primary);
+    color: var(--pp-hub-text-primary);
+    cursor: pointer;
+    transition: all var(--pp-hub-transition-fast);
+    user-select: none;
+}
+
+/* Hover state */
+.pp-hub-help-button:hover {
+    background-color: var(--pp-hub-bg-secondary);
+    border-color: var(--pp-hub-border-secondary);
+    transform: translateY(-1px);
+    box-shadow: var(--pp-hub-shadow-sm);
+}
+
+/* Focus state */
+.pp-hub-help-button:focus {
+    outline: 2px solid var(--pp-hub-border-focus);
+    outline-offset: 2px;
+}
+
+/* Active state */
+.pp-hub-help-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Primary variant */
+.pp-hub-help-button--primary {
+    background-color: var(--pp-hub-primary-color);
+    color: var(--pp-hub-text-inverse);
+    border-color: var(--pp-hub-primary-color);
+}
+
+.pp-hub-help-button--primary:hover {
+    background-color: var(--pp-hub-tertiary-color);
+    border-color: var(--pp-hub-tertiary-color);
+}
+
+/* Secondary variant */
+.pp-hub-help-button--secondary {
+    background-color: var(--pp-hub-secondary-color);
+    color: var(--pp-hub-text-primary);
+    border-color: var(--pp-hub-secondary-color);
+}
+
+.pp-hub-help-button--secondary:hover {
+    background-color: #e6a000;
+    border-color: #e6a000;
+}
+
+/* Ghost variant */
+.pp-hub-help-button--ghost {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--pp-hub-text-secondary);
+}
+
+.pp-hub-help-button--ghost:hover {
+    background-color: var(--pp-hub-bg-secondary);
+    color: var(--pp-hub-text-primary);
+}
+
+/* Sizes */
+.pp-hub-help-button--small {
+    padding: var(--pp-hub-spacing-xs) var(--pp-hub-spacing-md);
+    font-size: var(--pp-hub-font-size-xs);
+}
+
+.pp-hub-help-button--large {
+    padding: var(--pp-hub-spacing-md) var(--pp-hub-spacing-xl);
+    font-size: var(--pp-hub-font-size-lg);
+}
+
+/* Disabled state */
+.pp-hub-help-button:disabled,
+.pp-hub-help-button--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Icon styling */
+.pp-hub-help-button__icon {
+    width: 16px;
+    height: 16px;
+    margin-right: var(--pp-hub-spacing-xs);
+}
+
+.pp-hub-help-button--icon-only .pp-hub-help-button__icon {
+    margin-right: 0;
+}
+
+/* Loading state */
+.pp-hub-help-button--loading {
+    position: relative;
+    color: transparent;
+}
+
+.pp-hub-help-button--loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    border-right-color: transparent;
+    animation: pp-hub-spinner 0.75s linear infinite;
+}
+
+@keyframes pp-hub-spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Full width variant */
+.pp-hub-help-button--full-width {
+    width: 100%;
+}
+
+/*!*******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/components/plugins-list/modal.css ***!
+  \*******************************************************************************************************/
+/**
+ * Modal component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\plugins-list\modal
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-modal .components-modal__content > div:not(.components-modal__header) {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    border-radius: var(--pp-hub-radius-sm);
+}
+
+.pp-hub-modal .pp-hub-button.is-full-width {
+    width: 100%;
+    justify-content: center !important;
+}
+
+.pp-hub-modal .pp-hub-text-control input {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: var(--pp-hub-radius-sm);
+    border: 1px solid var(--pp-hub-border-primary);
+    padding: var(--pp-hub-spacing-md);
+    font-size: var(--pp-hub-font-size-lg);
+    color: var(--pp-hub-text-primary);
+    background-color: var(--pp-hub-bg-primary);
+    box-shadow: none;
+}
+
+.pp-hub-modal .pp-hub-modal-inline-links {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-sm);
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: var(--pp-hub-spacing-md);
+}
+
+.pp-hub-modal .pp-hub-license-input input {
+    font-family: var(--pp-hub-font-family-mono);
+    padding: var(--pp-hub-spacing-md);
+    line-height: 16px;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.pp-hub-modal .pp-hub-modal-actions {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-sm);
+    justify-content: center;
+    align-items: center;
+}
+
+.pp-hub-modal,
+.pp-hub-modal p {
+    font-size: var(--pp-hub-font-size-md);
+}
+
+/*!**************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/components/plugins-list/plugins-list.css ***!
+  \**************************************************************************************************************/
+/**
+ * Plugins list component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\plugins-list
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-plugins-list {
+    display: flex;
+    flex-direction: column;
+    background: var(--pp-hub-bg-primary);
+    border-radius: var(--pp-hub-radius-sm);
+}
+
+.pp-hub-plugins-list-item {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-lg);
+    align-items: flex-start;
+    padding: var(--pp-hub-spacing-xl);
+    border: 1px solid transparent;
+    border-bottom: 1px solid var(--pp-hub-border-primary);
+    min-height: 142px;
+    transition: background-color 0.1s ease-in-out;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.pp-hub-plugins-list-item:hover {
+    background-color: var(--pp-hub-bg-secondary);
+    border: 1px solid var(--pp-hub-border-primary);
+}
+
+.pp-hub-plugins-list-item:first-child {
+    border-top-left-radius: var(--pp-hub-radius-sm);
+    border-top-right-radius: var(--pp-hub-radius-sm);
+}
+
+.pp-hub-plugins-list-item:last-child {
+    border-bottom-left-radius: var(--pp-hub-radius-sm);
+    border-bottom-right-radius: var(--pp-hub-radius-sm);
+}
+
+.pp-hub-plugins-list-item-content {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-lg);
+    align-items: flex-start;
+    width: 100%;
+}
+
+.pp-hub-plugins-list-item-icon {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.pp-hub-plugins-list-item-icon img {
+    object-fit: contain;
+    border-radius: var(--pp-hub-radius-sm);
+    width: 48px;
+    height: 48px;
+}
+
+.pp-hub-plugins-list-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-hub-spacing-sm);
+}
+
+.pp-hub-plugins-list-item-name {
+    font-size: var(--pp-hub-font-size-lg);
+    font-weight: var(--pp-hub-font-weight-bold);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--pp-hub-spacing-sm);
+    align-items: center;
+}
+
+.pp-hub-plugins-list-item-name .components-toggle-control {
+    margin: 0;
+    height: 24px;
+    padding-top: 4px;
+}
+
+.pp-hub-plugins-list-item-description {
+    font-size: var(--pp-hub-font-size-md);
+    color: var(--pp-hub-text-secondary);
+    height: 24px;
+    line-height: 24px;
+    min-height: 24px;
+    max-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pp-hub-plugins-list-item-status {
+    font-size: var(--pp-hub-font-size-sm);
+    color: var(--pp-hub-text-secondary);
+}
+
+.pp-hub-plugins-list-item-actions {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-sm);
+    width: 100%;
+    justify-content: flex-end;
+    min-width: 200px;
+    max-width: 200px;
+}
+
+.pp-hub-plugins-list-item-actions .pp-hub-button {
+    width: 200px;
+}
+
+.pp-hub-plugins-list-item .pp-hub-plugins-list-item-inline-actions {
+    display: none;
+}
+
+.pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-inline-actions {
+    display: flex;
+    flex-direction: row;
+    gap: var(--pp-hub-spacing-sm);
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.pp-hub-plugins-list-item-inline-actions .pp-hub-button.is-link {
+    padding: 0;
+}
+
+.pp-hub-plugins-list-item-inline-actions .pp-hub-button.is-link.is-danger {
+    color: var(--pp-hub-text-error);
+}
+
+.pp-hub-plugins-list-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: var(--pp-hub-spacing-xl);
+    border-radius: var(--pp-hub-radius-sm);
+    background-color: var(--pp-hub-bg-secondary);
+}
+
+/* Tablet Responsive Design */
+@media screen and (max-width: 1024px) {
+    .pp-hub-plugins-list-item {
+        padding: var(--pp-hub-spacing-lg);
+        gap: var(--pp-hub-spacing-md);
+        min-height: 120px;
+    }
+
+    .pp-hub-plugins-list-item-content {
+        gap: var(--pp-hub-spacing-md);
+    }
+
+    .pp-hub-plugins-list-item-actions {
+        min-width: 160px;
+        max-width: 160px;
+    }
+
+    .pp-hub-plugins-list-item-actions .pp-hub-button {
+        width: 160px;
+    }
+
+    .pp-hub-plugins-list-item-name {
+        font-size: var(--pp-hub-font-size-md);
+    }
+
+    .pp-hub-plugins-list-item-description {
+        font-size: var(--pp-hub-font-size-sm);
+    }
+}
+
+/* Mobile Responsive Design */
+@media screen and (max-width: 768px) {
+    .pp-hub-plugins-list-item {
+        flex-direction: column;
+        padding: var(--pp-hub-spacing-lg);
+        gap: var(--pp-hub-spacing-lg);
+        min-height: auto;
+        align-items: flex-start;
+    }
+
+    .pp-hub-plugins-list-item-content {
+        flex-direction: row;
+        gap: var(--pp-hub-spacing-md);
+        text-align: center;
+    }
+
+    .pp-hub-plugins-list-item-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .pp-hub-plugins-list-item-icon img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .pp-hub-plugins-list-item-info {
+        align-items: flex-start;
+        text-align: left;
+        width: 100%;
+    }
+
+    .pp-hub-plugins-list-item-name {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .pp-hub-plugins-list-item-description {
+        white-space: normal;
+        height: auto;
+        min-height: auto;
+        max-height: none;
+        line-height: 1.4;
+    }
+
+    .pp-hub-plugins-list-item-actions {
+        min-width: 100%;
+        max-width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .pp-hub-plugins-list-item-actions .pp-hub-button {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-inline-actions {
+        display: flex;
+        flex-direction: row;
+        gap: var(--pp-hub-spacing-sm);
+        justify-content: flex-start;
+        width: 100%;
+        margin-top: var(--pp-hub-spacing-sm);
+    }
+
+    .pp-hub-plugins-list-item-inline-actions .pp-hub-button {
+        justify-content: flex-start;
+    }
+}
+
+/* Small Mobile Responsive Design */
+@media screen and (max-width: 480px) {
+    .pp-hub-plugins-list-item {
+        padding: var(--pp-hub-spacing-xl);
+        gap: var(--pp-hub-spacing-xl);
+    }
+
+    .pp-hub-plugins-list-item-content {
+        gap: var(--pp-hub-spacing-sm);
+    }
+
+    .pp-hub-plugins-list-item-icon {
+        display: none;
+    }
+
+    .pp-hub-plugins-list-item-actions .pp-hub-button {
+        max-width: 100%;
+        font-size: var(--pp-hub-font-size-sm);
+        padding: var(--pp-hub-spacing-lg) var(--pp-hub-spacing-md);
+    }
+}
+
+/*!**************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/components/filter/filter-buttons-bar.css ***!
+  \**************************************************************************************************************/
+/**
+ * Filter buttons bar component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\filter\filter-buttons-bar
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.publishpress-hub-filter-buttons-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pp-hub-button-gap);
+    background-color: var(--pp-hub-bg-primary);
+}
+
+.publishpress-hub-filter-button {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--pp-hub-filter-button-padding) !important;
+    border-radius: var(--pp-hub-radius-sm);
+    font-size: var(--pp-hub-font-size-md);
+    font-weight: var(--pp-hub-font-weight-medium);
+    cursor: pointer;
+    transition: var(--pp-hub-transition-fast);
+    color: var(--pp-hub-text-primary);
+    background: transparent;
+    border: none !important;
+}
+
+button.publishpress-hub-filter-button:hover {
+    background: var(--pp-hub-bg-tertiary) !important;
+    color: var(--pp-hub-text-secondary) !important;
+}
+
+.publishpress-hub-filter-button.active {
+    background: var(--pp-hub-primary-color) !important;
+    color: var(--pp-hub-text-inverse) !important;
+    box-shadow: var(--pp-hub-shadow-md);
+}
+
+.publishpress-hub-filter-button.active:hover {
+    background: var(--pp-hub-primary-color) !important;
+    color: var(--pp-hub-text-inverse) !important;
+}
+
+.publishpress-hub-filter-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* FilterBar Component */
+.publishpress-hub-filter-container {
+    padding-bottom: var(--pp-hub-spacing-lg);
+    margin-top: var(--pp-hub-spacing-xl);
+}
+
+.publishpress-hub-filter-mobile {
+    display: block;
+}
+
+.publishpress-hub-filter-desktop {
+    display: none;
+    gap: var(--pp-hub-spacing-xs);
+    background: var(--pp-hub-bg-primary);
+    border-radius: var(--pp-hub-radius-sm);
+    padding: var(--pp-hub-filter-container-padding);
+    margin-bottom: var(--pp-hub-spacing-xl);
+    box-shadow: var(--pp-hub-shadow-sm);
+}
+
+.publishpress-hub-filter-label-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.publishpress-hub-filter-select {
+    display: block;
+    width: 100%;
+    max-width: none;
+    padding: var(--pp-hub-spacing-sm) 0;
+    font-size: var(--pp-hub-font-size-md);
+    line-height: var(--pp-hub-line-height-normal);
+    border: 1px solid var(--pp-hub-border-input);
+    border-radius: var(--pp-hub-radius-sm);
+    background-color: var(--pp-hub-form-bg);
+    color: var(--pp-hub-form-text);
+    font-family: var(--pp-hub-font-family-primary);
+    transition: var(--pp-hub-transition-fast);
+}
+
+.publishpress-hub-filter-select:focus {
+    outline: none;
+    border-color: var(--pp-hub-border-input-focus);
+    box-shadow: 0 0 0 1px var(--pp-hub-border-input-focus);
+}
+
+/* Responsive breakpoints */
+@media (min-width: 640px) {
+    .publishpress-hub-filter-mobile {
+        display: none;
+    }
+
+    .publishpress-hub-filter-desktop {
+        display: block;
+    }
+
+    .publishpress-hub-filter-select {
+        font-size: var(--pp-hub-font-size-sm);
+        line-height: var(--pp-hub-line-height-tight);
+    }
+}
+
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/components/tooltip/tooltip.css ***!
+  \****************************************************************************************************/
+/**
+ * Tooltip component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\tooltip
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-tooltip {
+    display: inline-block;
+    background-color: var(--pp-hub-tooltip-bg);
+    color: var(--pp-hub-tooltip-text);
+    padding: var(--pp-hub-spacing-sm);
+    border-radius: var(--pp-hub-radius-md);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.pp-hub-tooltip::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--pp-hub-tooltip-bg) transparent transparent transparent;
+}
+
+/* Custom tooltip that renders within the parent container */
+.pp-hub-tooltip--custom {
+    font-size: var(--pp-hub-font-size-sm);
+    line-height: var(--pp-hub-line-height-tight);
+    white-space: nowrap;
+    max-width: 200px;
+    word-wrap: break-word;
+    white-space: normal;
+    text-align: center;
+}
+
+/* Tooltip trigger container */
+.pp-hub-tooltip-trigger {
+    display: inline-block;
+}
+
+/* Ensure tooltip appears above other elements */
+.pp-hub-tooltip--custom {
+    z-index: var(--pp-hub-z-tooltip) !important;
+}
+
+/*!************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/components/badge/badge.css ***!
+  \************************************************************************************************/
+/**
+ * Badge component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\badge
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-badge {
+    padding: 4px 10px;
+    border-radius: 16px;
+    background-color: var(--pp-hub-badge-bg);
+    color: var(--pp-hub-badge-text);
+    box-sizing: border-box;
+    line-height: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: var(--pp-hub-spacing-md);
+    transition: background-color 0.1s ease-in-out;
+    display: inline-block;
+}
+
+.pp-hub-badge.installed {
+    background-color: var(--pp-hub-badge-bg-installed);
+    color: var(--pp-hub-badge-text-installed);
+}
+
+.pp-hub-badge.not-installed {
+    background-color: var(--pp-hub-badge-bg-not-installed);
+    color: var(--pp-hub-badge-text-not-installed);
+}
+
+.pp-hub-badge.free {
+    background-color: var(--pp-hub-badge-bg-free);
+    color: var(--pp-hub-badge-text-free);
+}
+
+.pp-hub-badge.licensed {
+    background-color: var(--pp-hub-badge-bg-licensed);
+    color: var(--pp-hub-badge-text-licensed);
+}
+
+.pp-hub-badge.unlicensed {
+    background-color: var(--pp-hub-badge-bg-unlicensed);
+    color: var(--pp-hub-badge-text-unlicensed);
+}
+
+.pp-hub-badge.installing {
+    background-color: var(--pp-hub-badge-bg-installing);
+    color: var(--pp-hub-badge-text-installing);
+}
+
+.pp-hub-badge.uninstalling {
+    background-color: var(--pp-hub-badge-bg-uninstalling);
+    color: var(--pp-hub-badge-text-uninstalling);
+}
+
+.pp-hub-badge.conflicting-installations {
+    background-color: var(--pp-hub-badge-bg-conflicting-installations);
+    color: var(--pp-hub-badge-text-conflicting-installations);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.installed {
+    background-color: var(--pp-hub-badge-bg-installed-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.not-installed {
+    background-color: var(--pp-hub-badge-bg-not-installed-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.free {
+    background-color: var(--pp-hub-badge-bg-free-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.licensed {
+    background-color: var(--pp-hub-badge-bg-licensed-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.unlicensed {
+    background-color: var(--pp-hub-badge-bg-unlicensed-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.installing {
+    background-color: var(--pp-hub-badge-bg-installing-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.uninstalling {
+    background-color: var(--pp-hub-badge-bg-uninstalling-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.conflicting-installations {
+    background-color: var(--pp-hub-badge-bg-conflicting-installations-hover);
+}
+
+.pp-hub-badge-icon .dashicons {
+    font-size: 12px;
+    line-height: 12px;
+    width: 12px;
+    height: 12px;
+    margin-right: 2px;
+}
+
+/*!******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/components/messages/messages.css ***!
+  \******************************************************************************************************/
+/**
+ * Messages component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\messages
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-message {
+    padding: var(--pp-hub-spacing-md);
+    border-radius: var(--pp-hub-radius-md);
+    background-color: var(--pp-hub-bg-secondary);
+    color: var(--pp-hub-text-primary);
+}
+
+.pp-hub-message.is-error {
+    background-color: var(--pp-hub-bg-error);
+    color: var(--pp-hub-text-error);
+}
+
+.pp-hub-message.is-success {
+    background-color: var(--pp-hub-bg-success);
+    color: var(--pp-hub-text-success);
+}
+
+.pp-hub-message.is-warning {
+    background-color: var(--pp-hub-bg-warning);
+    color: var(--pp-hub-text-warning);
+}
+
+.pp-hub-message.is-info {
+    background-color: var(--pp-hub-bg-info);
+    color: var(--pp-hub-text-info);
+}
+
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/components/notices/notices.css ***!
+  \****************************************************************************************************/
+/**
+ * Notices component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\notices
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-notices-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pp-hub-snackbar-list {
+    position: fixed;
+    bottom: 20px;
+    left: 175px;
+    z-index: 100000;
+}
+
+body.sticky-menu.folded .pp-hub-snackbar-list {
+    left: 50px;
+}
+
+.pp-hub-snackbar-list .components-snackbar__action {
+    color: var(--pp-hub-text-primary-inverted) !important;
+}
+
+.components-notice {
+    border-radius: var(--pp-hub-radius-md);
+}
+
+/*!************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/components/icons/icons.css ***!
+  \************************************************************************************************/
+/**
+ * Icons component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\icons
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-icon-warning {
+    color: var(--pp-hub-text-warning);
+}
+
+/*!******************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/main.css ***!
+  \******************************************************************************/
+/**
+ * Main CSS entry point.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\main
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+/* 1. Core Foundation */
+
+/* 2. Theme System */
+
+/* 3. Component Styles */
+
+/* 4. WordPress Admin Compatibility */
+/* Ensure our styles don't conflict with WordPress admin */
+.pp-hub-root {
+    /* Create an isolated styling context */
+    isolation: isolate;
+}
+
+/* Reset WordPress admin table styles that might interfere */
+.pp-hub-root table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.pp-hub-root th,
+.pp-hub-root td {
+    text-align: left;
+    vertical-align: top;
+}
+
+/* Override WordPress button styles in our context */
+.pp-hub-root .button,
+.pp-hub-root .button-primary,
+.pp-hub-root .button-secondary {
+    all: unset;
+}
+
+/* Responsive container queries support */
+@supports (container-type: inline-size) {
+    .pp-hub-container {
+        container-type: inline-size;
+    }
+
+    @container (max-width: 768px) {
+        .pp-hub-mobile-stack {
+            flex-direction: column;
+        }
+    }
+}
+
+/*!******************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./resources/src/css/admin-page.css ***!
+  \******************************************************************************************************************************/
+/**
+ * Admin page.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\admin-page
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.publishpress-hub-admin-page-loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    gap: 16px;
+}
+
+.publishpress-hub-admin-page-loading p {
+    font-size: 16px;
+    color: #50575e;
+    text-align: center;
+}
+
+.publishpress-hub-admin-page-loading::before {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 3px solid #e9ecef;
+    border-top: 3px solid #0073aa;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/*# sourceMappingURL=admin-page.css.map*/

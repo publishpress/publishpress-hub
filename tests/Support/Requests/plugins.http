@@ -9,14 +9,14 @@
 GET {{baseUrl}}
 Accept: application/json
 
-### Get Notifications with Application Password
+### Get Plugins
 GET {{baseUrl}}/{{apiPath}}/plugins
 Accept: application/json
 Content-Type: application/json
 Authorization: Basic {{passwordHash}}
 
 ### Try to install plugin with invalid slug
-POST {{baseUrl}}/{{apiPath}}/plugins/invalid-slug/install/free
+POST {{baseUrl}}/{{apiPath}}/plugins/woocommerce/install/free
 Accept: application/json
 Content-Type: application/json
 Authorization: Basic {{passwordHash}}
@@ -40,5 +40,5 @@ Content-Type: application/json
 Authorization: Basic {{passwordHash}}
 
 {
-    "license_key": "{{licenseKey}}"
+    "licenseKey": "{{licenseKey}}"
 }

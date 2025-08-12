@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Throwable error logger for the PublishPress Hub library.
+ * Logger class.
  *
+ * @package PublishPress\Hub\Infrastructure\Logger
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -13,34 +14,16 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Logger;
 
-use PublishPress\Hub\Infrastructure\Logger\Contracts\LoggerInterface;
+use PublishPress\Hub\Infrastructure\Logger\Contract\LoggerInterface;
 use Throwable;
 
-/**
- * Logger for throwable errors with configurable formatting and output.
- *
- * This class provides a centralized way to log errors in WordPress environments
- * with proper formatting, optional stack trace information, and extensible configuration.
- *
- * @since 1.0.0
- */
 class Logger implements LoggerInterface
 {
     /**
-     * Configuration options for the logger.
-     *
+     * @var array<string, mixed>
      * @since 1.0.0
-     * @var array
      */
-    private $config;
-
-    /**
-     * Default configuration values.
-     *
-     * @since 1.0.0
-     * @var array
-     */
-    private const DEFAULT_CONFIG = [
+    private $config = [
         'include_class_name' => true,
         'include_file_path' => true,
         'trace_separator' => ' > ',
@@ -49,23 +32,74 @@ class Logger implements LoggerInterface
     ];
 
     /**
-     * Constructor.
-     *
+     * @param array<string, mixed> $config The config.
      * @since 1.0.0
-     * @param array $config Optional configuration array.
      */
     public function __construct(array $config = [])
     {
-        $this->config = array_merge(self::DEFAULT_CONFIG, $config);
+        if (! empty($config)) {
+            $this->config = array_merge($this->config, $config);
+        }
     }
 
     /**
-     * Log a throwable error with basic information.
+     * This is an static method so we can use it before the plugin is fully loaded
+     * and the logger is not available as dependency in the container.
      *
+     * @param string $message The message.
+     * @param Throwable|null $e The exception.
+     * @param bool $addTrace Whether to add the trace to the message.
      * @since 1.0.0
-     * @param string $message The error message to log.
-     * @param Throwable|null $throwable The exception/error object to log.
-     * @return bool True if logged successfully, false otherwise.
+     */
+    public static function logException(string $message = '', ?Throwable $e = null, bool $addTrace = false): void
+    {
+        if (! function_exists('error_log')) {
+            return;
+        }
+
+        if (! defined('WP_DEBUG') || ! WP_DEBUG) {
+            return;
+        }
+
+        $message = ! empty($message) ? "$message - " : '';
+        $message .= sprintf(
+            'Caught %1$s: %2$s on file %3$s, line %4$d',
+            get_class($e),
+            $e->getMessage(),
+            $e->getFile(),
+            $e->getLine()
+        );
+
+        if ($addTrace && method_exists($e, 'getTrace')) {
+            // Add the backtrace to the log
+            $traceItems = array_map(
+                function ($item) {
+                    if (isset($item['file'])) {
+                        return $item['file'] . ':' . $item['line'] . ' ' . $item['function'] . '()';
+                    }
+
+                    return '';
+                },
+                $e->getTrace()
+            );
+
+            $message .= ' Trace: ' . implode(' > ', $traceItems);
+        }
+
+        // Make the log message binary safe removing any non-printable chars.
+        $message = addcslashes($message, "\000..\037\177..\377\\");
+
+        // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+        error_log($message);
+    }
+
+    /**
+     * Log a message.
+     *
+     * @param string $message The message.
+     * @param Throwable|null $throwable The throwable.
+     * @return bool True if the message was logged, false otherwise.
+     * @since 1.0.0
      */
     public function log(string $message, ?Throwable $throwable = null): bool
     {
@@ -78,16 +112,16 @@ class Logger implements LoggerInterface
         $logMessage = $this->buildLogMessage($message, $throwable, false);
         $sanitizedMessage = $this->sanitizeMessage($logMessage);
 
-        return $this->writeLog($sanitizedMessage);
+        return $this->sendToErrorLog($sanitizedMessage);
     }
 
     /**
-     * Log a throwable error with stack trace information.
+     * Log a message with trace.
      *
+     * @param string $message The message.
+     * @param Throwable|null $throwable The throwable.
+     * @return bool True if the message was logged, false otherwise.
      * @since 1.0.0
-     * @param string $message The error message to log.
-     * @param Throwable|null $throwable The exception/error object to log.
-     * @return bool True if logged successfully, false otherwise.
      */
     public function logWithTrace(string $message, ?Throwable $throwable = null): bool
     {
@@ -100,14 +134,14 @@ class Logger implements LoggerInterface
         $logMessage = $this->buildLogMessage($message, $throwable, true);
         $sanitizedMessage = $this->sanitizeMessage($logMessage);
 
-        return $this->writeLog($sanitizedMessage);
+        return $this->sendToErrorLog($sanitizedMessage);
     }
 
     /**
-     * Check if error logging is available and enabled.
+     * Check if the logger can log.
      *
+     * @return bool True if the logger can log, false otherwise.
      * @since 1.0.0
-     * @return bool True if logging is possible, false otherwise.
      */
     public function canLog(): bool
     {
@@ -119,12 +153,11 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * Set configuration option.
+     * Set the config.
      *
+     * @param string $key The key.
+     * @param mixed $value The value.
      * @since 1.0.0
-     * @param string $key Configuration key.
-     * @param mixed $value Configuration value.
-     * @return void
      */
     public function setConfig(string $key, $value): void
     {
@@ -132,12 +165,12 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * Get configuration option.
+     * Get the config.
      *
+     * @param string $key The key.
+     * @param mixed $default The default value.
+     * @return mixed The config value.
      * @since 1.0.0
-     * @param string $key Configuration key.
-     * @param mixed $default Default value if key doesn't exist.
-     * @return mixed Configuration value.
      */
     public function getConfig(string $key, $default = null)
     {
@@ -145,13 +178,13 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * Build the complete log message with throwable information and optional trace.
+     * Build the log message.
      *
+     * @param string $baseMessage The base message.
+     * @param Throwable|null $throwable The throwable.
+     * @param bool $includeTrace Whether to include the trace.
+     * @return string The log message.
      * @since 1.0.0
-     * @param string $baseMessage The base error message.
-     * @param Throwable|null $throwable The throwable object.
-     * @param bool $includeTrace Whether to include stack trace.
-     * @return string The formatted log message.
      */
     private function buildLogMessage(string $baseMessage, ?Throwable $throwable, bool $includeTrace): string
     {
@@ -172,11 +205,11 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * Format throwable information into a readable string.
+     * Format the throwable info.
      *
+     * @param Throwable $throwable The throwable.
+     * @return string The throwable info.
      * @since 1.0.0
-     * @param Throwable $throwable The throwable object.
-     * @return string Formatted throwable information.
      */
     private function formatThrowableInfo(Throwable $throwable): string
     {
@@ -196,11 +229,11 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * Format stack trace information into a readable string.
+     * Format the stack trace.
      *
+     * @param Throwable $throwable The throwable.
+     * @return string The stack trace.
      * @since 1.0.0
-     * @param Throwable $throwable The throwable object.
-     * @return string Formatted stack trace.
      */
     private function formatStackTrace(Throwable $throwable): string
     {
@@ -221,11 +254,11 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * Format a single trace item.
+     * Format the trace item.
      *
+     * @param array<string, mixed> $traceItem The trace item.
+     * @return string The trace item.
      * @since 1.0.0
-     * @param array $traceItem The trace item array.
-     * @return string Formatted trace item.
      */
     private function formatTraceItem(array $traceItem): string
     {
@@ -253,9 +286,9 @@ class Logger implements LoggerInterface
     /**
      * Sanitize log message by removing non-printable characters.
      *
-     * @since 1.0.0
-     * @param string $message The message to sanitize.
+     * @param string $message The message.
      * @return string The sanitized message.
+     * @since 1.0.0
      */
     private function sanitizeMessage(string $message): string
     {
@@ -263,13 +296,13 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * Write the log message to the error log.
+     * Send the message to the error log.
      *
+     * @param string $message The message.
+     * @return bool True if the message was logged, false otherwise.
      * @since 1.0.0
-     * @param string $message The sanitized message to log.
-     * @return bool True if logged successfully, false otherwise.
      */
-    private function writeLog(string $message): bool
+    private function sendToErrorLog(string $message): bool
     {
         $errorLogFunction = $this->config['error_log_function'];
 

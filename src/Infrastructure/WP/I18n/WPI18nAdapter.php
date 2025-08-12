@@ -1,0 +1,223 @@
+<?php
+
+/**
+ * WordPress i18n adapter.
+ *
+ * @package PublishPress\Hub\Infrastructure\WP\I18n
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+declare(strict_types=1);
+
+namespace PublishPress\Hub\Infrastructure\WP\I18n;
+
+use PublishPress\Hub\Application\Contract\BootableInterface;
+use PublishPress\Hub\Application\Traits\BootableTrait;
+use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
+use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
+use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
+use PublishPress\Hub\Infrastructure\I18n\Contract\I18nServiceInterface;
+
+/**
+ * TODO: Make this class reusable for other plugins, after the free plugin also has the Hub as requirement.
+ */
+class WPI18nAdapter implements I18nServiceInterface, BootableInterface
+{
+    use BootableTrait;
+
+    private string $textDomain;
+
+    /**
+     * @since 1.0.0
+     */
+    private string $scriptPath;
+
+    /**
+     * @since 1.0.0
+     */
+    private string $languagesPath;
+
+    /**
+     * @since 1.0.0
+     */
+    private HooksServiceInterface $hooksService;
+
+    /**
+     * @since 1.0.0
+     */
+    private AssetServiceInterface $assetService;
+
+    /**
+     * @param string $textDomain The text domain.
+     * @param string $scriptPath The script path.
+     * @param string $languagesPath The languages path.
+     * @param HooksServiceInterface $hooksService The hooks service.
+     * @param AssetServiceInterface $assetService The asset service.
+     * @since 1.0.0
+     */
+    public function __construct(
+        string $textDomain,
+        string $scriptPath,
+        string $languagesPath,
+        HooksServiceInterface $hooksService,
+        AssetServiceInterface $assetService
+    ) {
+        $this->textDomain = $textDomain;
+        $this->scriptPath = $scriptPath;
+        $this->languagesPath = $languagesPath;
+        $this->hooksService = $hooksService;
+        $this->assetService = $assetService;
+    }
+
+    /**
+     * @since 1.0.0
+     */
+    protected function onLoad(): void
+    {
+        $this->hooksService->addAction(
+            AbstractHooks::ACTION_ADMIN_ENQUEUE_SCRIPTS,
+            [$this, 'enqueueTranslationsScript'],
+            5
+        );
+    }
+
+    /**
+     * @since 1.0.0
+     */
+    protected function onInit(): void
+    {
+        $this->loadTextDomain();
+    }
+
+    /**
+     * Get the text domain.
+     *
+     * @return string The text domain.
+     * @since 1.0.0
+     */
+    public function getTextDomain(): string
+    {
+        return $this->textDomain;
+    }
+
+    /**
+     * Load the text domain.
+     *
+     * @since 1.0.0
+     */
+    public function loadTextDomain(): void
+    {
+        $pluginRelativePath = basename(dirname($this->languagesPath)) . '/' . basename($this->languagesPath);
+
+        // phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound
+        load_plugin_textdomain(
+            $this->textDomain,
+            false,
+            $pluginRelativePath
+        );
+    }
+
+    /**
+     * Get the locale.
+     *
+     * @return string The locale.
+     * @since 1.0.0
+     */
+    public function getLocale(): string
+    {
+        return get_locale();
+    }
+
+    /**
+     * Get the user locale.
+     *
+     * @return string The user locale.
+     * @since 1.0.0
+     */
+    public function getUserLocale(): string
+    {
+        return get_user_locale();
+    }
+
+    /**
+     * Enqueue the translations script.
+     *
+     * @since 1.0.0
+     */
+    public function enqueueTranslationsScript(): void
+    {
+        $handle = "{$this->textDomain}-i18n";
+
+        $this->assetService->registerScript(
+            $handle,
+            $this->scriptPath,
+            [
+                'wp-i18n',
+            ],
+            true
+        );
+
+        $json = $this->getLocalizedTranslations();
+
+        $variableName = $this->getVariableNameFromTextDomain();
+
+        if (empty($variableName)) {
+            return;
+        }
+
+        $this->assetService->localizeScript(
+            $handle,
+            $variableName,
+            [
+                'data' => $json,
+            ]
+        );
+    }
+
+    /**
+     * Get the variable name from the text domain.
+     *
+     * @return string The variable name.
+     * @since 1.0.0
+     */
+    private function getVariableNameFromTextDomain(): string
+    {
+        $variableName = preg_replace_callback(
+            '/-([a-z])/',
+            fn($matches) => strtoupper($matches[1]),
+            "{$this->textDomain}I18n"
+        );
+
+        return $variableName ?? '';
+    }
+
+    /**
+     * Get the localized translations from the JSON file and
+     * return it as an array.
+     *
+     * @return array<string, mixed> The localized translations.
+     * @since 1.0.0
+     */
+    private function getLocalizedTranslations(): array
+    {
+        $currentLocale = $this->getUserLocale();
+
+        $jsonPath = "{$this->languagesPath}{$this->textDomain}-{$currentLocale}.json";
+
+        if (! file_exists($jsonPath)) {
+            return [];
+        }
+
+        // phpcs:ignore WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown
+        $json = file_get_contents($jsonPath);
+
+        if (false === $json) {
+            return [];
+        }
+
+        return json_decode($json, true);
+    }
+}

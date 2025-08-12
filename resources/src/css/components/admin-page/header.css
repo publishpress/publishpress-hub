@@ -1,0 +1,101 @@
+/**
+ * Admin page header component.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\css\components\admin-page\header
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+.pp-hub-admin-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--pp-hub-spacing-xl) var(--pp-hub-spacing-xl);
+    background-color: var(--pp-hub-bg-primary);
+    border-bottom: 1px solid var(--pp-hub-border-primary);
+}
+
+.pp-hub-admin-page-header__logo {
+    height: 40px;
+    width: auto;
+}
+
+.pp-hub-admin-page-header__logo-text {
+    font-size: 33px;
+    line-height: 40px;
+    font-weight: 600;
+    margin-left: var(--pp-hub-spacing-sm);
+    margin-top: var(--pp-hub-spacing-xs);
+}
+
+.pp-hub-admin-page-header__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: var(--pp-hub-spacing-lg);
+}
+
+.pp-hub-admin-page-header__title {
+    font-size: var(--pp-hub-font-size-2xl);
+    font-weight: var(--pp-hub-font-weight-bold);
+    color: var(--pp-hub-text-primary);
+    margin: 0;
+    line-height: var(--pp-hub-line-height-tight);
+}
+
+.pp-hub-admin-page-header__description {
+    font-size: var(--pp-hub-font-size-md);
+    color: var(--pp-hub-text-secondary);
+    margin: var(--pp-hub-spacing-xs) 0 0 0;
+    line-height: var(--pp-hub-line-height-normal);
+}
+
+.pp-hub-admin-page-header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--pp-hub-spacing-md);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .pp-hub-admin-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--pp-hub-spacing-lg);
+    }
+
+    .pp-hub-admin-page-header__logo {
+        margin-bottom: var(--pp-hub-spacing-md);
+        margin-right: 0;
+    }
+
+    .pp-hub-admin-page-header__content {
+        margin-right: 0;
+        margin-bottom: var(--pp-hub-spacing-md);
+        width: 100%;
+    }
+
+    .pp-hub-admin-page-header__actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .pp-hub-admin-page-header__title {
+        font-size: var(--pp-hub-font-size-xl);
+    }
+}
+
+/* Compact variant */
+.pp-hub-admin-page-header--compact {
+    padding: var(--pp-hub-spacing-lg) var(--pp-hub-spacing-xl);
+}
+
+.pp-hub-admin-page-header--compact .pp-hub-admin-page-header__title {
+    font-size: var(--pp-hub-font-size-xl);
+}
+
+.pp-hub-admin-page-header--compact .pp-hub-admin-page-header__logo {
+    height: 24px;
+}

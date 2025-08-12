@@ -11,6 +11,12 @@ help:
 build-%:
 	docker compose -f docker/compose.yaml --env-file ../.env build $*
 
+build-terminal:
+	bash ./scripts/build-terminal.sh
+
+setup-user:
+	bash ./scripts/setup-user-permissions.sh
+
 build-wp:
 	$(MAKE) build-dev-wp
 
