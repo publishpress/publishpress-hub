@@ -3,7 +3,7 @@
 /**
  * Container definitions.
  *
- * @package PublishPress\Hub\Infrastructure\Container
+ * @package PublishPress\Hub
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -12,7 +12,7 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Infrastructure\Container;
+namespace PublishPress\Hub;
 
 use PublishPress\Hub\Application\Service\HubBootstrapService;
 use PublishPress\Hub\Application\Service\License\LicenseManagementService;
@@ -53,6 +53,7 @@ use PublishPress\Hub\Infrastructure\WP\Security\WPSecurityAdapter;
 use PublishPress\Hub\Admin\Page\ComponentsShowcaseController;
 use PublishPress\Hub\Admin\MenuController;
 use PublishPress\Hub\Admin\Page\PluginsDashboardController;
+use PublishPress\Hub\Infrastructure\Container\AbstractDependencies;
 use PublishPress\Hub\Infrastructure\License\PerPluginLicensePersistenceService;
 use PublishPress\Hub\Rest\PluginsController;
 use PublishPress\Psr\Container\ContainerInterface;
