@@ -2,22 +2,57 @@
 Contributors: publishpress, stevejburge, andergmartins
 Author: publishpress
 Author URI: https://publishpress.com
-Tags:
+Tags: publishpress, plugins, licensing, plugin management, publishing, editorial workflow
 Requires at least: 6.7
 Requires PHP: 7.4
 Tested up to: 6.8
 License: GPLv2 or later
 Stable tag: 1.0.0
 
-PublishPress Hub
+Streamline your WordPress publishing workflow with a centralized plugin management hub.
 
 == Description ==
 
-The PublishPress Hub...
+PublishPress Hub is your central command center for managing all PublishPress plugins from one convenient dashboard. Whether you're running a small blog or a large publishing operation, the Hub simplifies plugin management, licensing, and updates across your entire PublishPress ecosystem.
+
+**Streamlined Plugin Management**
+
+The Hub provides a unified interface to install, activate, update, and manage all your PublishPress plugins without navigating through multiple WordPress admin screens. View the status of all your publishing tools in one place, making it easier to maintain your content workflow.
+
+**Key Features:**
+
+* **Centralized Dashboard** - View all PublishPress plugins with their license information at a glance
+* **One-Click Installation** - Install free PublishPress plugins directly from the Hub without visiting the WordPress.org repository
+* **Pro Plugin Management** - Connect your PublishPress license to install and activate Pro versions seamlessly
+* **License Management** - Centralized license activation and management for all your Pro plugins
+* **Status Monitoring** - Real-time monitoring of plugin activation status, conflicts and compatibility
+
+**Supported PublishPress Plugins:**
+
+The Hub manages your entire PublishPress toolkit, including:
+
+* **PublishPress Planner** - Editorial calendar and content planning
+* **PublishPress Authors** - Multiple authors per post management
+* **PublishPress Checklists** - Content quality assurance workflows
+* **PublishPress Future** - Automated post expiration and scheduling
+* **PublishPress Permissions** - Advanced user role and permission management
+* **PublishPress Capabilities** - Fine-grained user capability control
+* **PublishPress Blocks** - Enhanced Gutenberg editor functionality
+* **PublishPress Revisions** - Advanced revision management and approval workflows
+* **PublishPress Series** - Group related content into organized series
+* **PublishPress Statuses** - Custom post status management
+
+**Perfect for Publishers, Content Teams, and WordPress Professionals**
+
+Whether you're managing a news site, corporate blog, magazine, or any content-driven WordPress site, PublishPress Hub eliminates the complexity of managing multiple plugins. It's designed for content creators, editors, publishers, and WordPress administrators who need reliable, professional publishing tools.
+
+**Professional Publishing Made Simple**
+
+Transform your WordPress site into a professional publishing platform with integrated editorial workflows, advanced user management, content planning tools, and automated publishing features - all managed from one central hub.
 
 = Bug Reports =
 
-Bug reports for PublishPress Future are welcomed in our [repository on GitHub](https://github.com/publishpress/publishpress-future). Please note that GitHub is not a support forum, and that issues that are not properly qualified as bugs will be closed.
+Bug reports for PublishPress Hub are welcomed in our [repository on GitHub](https://github.com/publishpress/publishpress-hub). Please note that GitHub is not a support forum, and that issues that are not properly qualified as bugs will be closed.
 
 == Installation ==
 
