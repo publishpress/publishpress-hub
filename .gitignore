@@ -5,6 +5,7 @@ node_modules
 ./logs
 codeceptjs/output
 .idea
+.zed
 .DS_Store
 /builder.yml
 /dist
