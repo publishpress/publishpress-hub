@@ -16,6 +16,7 @@ namespace PublishPress\Hub\Domain\Exception\Base;
 
 use Exception;
 use PublishPress\Hub\Domain\Exception\Contract\WithContextInterface;
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
 use PublishPress\Hub\Domain\Exception\Traits\ContextTrait;
 
 class DomainException extends Exception implements WithContextInterface
@@ -24,12 +25,17 @@ class DomainException extends Exception implements WithContextInterface
 
     /**
      * @param string $message The exception message.
+     * @param string $code The exception code.
      * @param array<string, mixed> $context The context of the exception.
      * @since 1.0.0
      */
-    public function __construct(string $message, array $context = [])
-    {
-        parent::__construct($message);
+    public function __construct(
+        string $message,
+        string $code = ExceptionCode::DOMAIN_GENERIC,
+        array $context = []
+    ) {
+        parent::__construct($message, 0);
         $this->setContext($context);
+        $this->code = $code;
     }
 }

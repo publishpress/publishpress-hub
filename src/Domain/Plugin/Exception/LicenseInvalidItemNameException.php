@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
+
 class LicenseInvalidItemNameException extends LicenseException
 {
     /**
@@ -27,6 +29,7 @@ class LicenseInvalidItemNameException extends LicenseException
                 'This license does not match the plugin you are trying to activate. Please contact support for assistance.',
                 'publishpress-hub'
             ),
+            ExceptionCode::LICENSE_INVALID_ITEM_NAME,
             $context
         );
     }

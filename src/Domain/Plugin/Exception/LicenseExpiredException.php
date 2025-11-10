@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
+
 class LicenseExpiredException extends LicenseException
 {
     /**
@@ -27,6 +29,7 @@ class LicenseExpiredException extends LicenseException
                 'This license has expired. Please contact support to renew it.',
                 'publishpress-hub'
             ),
+            ExceptionCode::LICENSE_EXPIRED,
             $context
         );
     }

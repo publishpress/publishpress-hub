@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
+
 class LicenseMissingUrlException extends LicenseException
 {
     /**
@@ -27,6 +29,7 @@ class LicenseMissingUrlException extends LicenseException
                 'Your site URL is required to activate the license. Please enter a valid site URL to continue.', // phpcs:ignore Generic.Files.LineLength
                 'publishpress-hub'
             ),
+            ExceptionCode::LICENSE_MISSING_URL,
             $context
         );
     }

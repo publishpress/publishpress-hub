@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
+
 class LicenseMissingException extends LicenseException
 {
     /**
@@ -27,6 +29,7 @@ class LicenseMissingException extends LicenseException
                 'No license key provided. Please enter a valid license key.',
                 'publishpress-hub'
             ),
+            ExceptionCode::LICENSE_MISSING,
             $context
         );
     }

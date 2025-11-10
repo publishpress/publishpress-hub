@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
+
 class LicenseInvalidItemIdException extends LicenseException
 {
     /**
@@ -27,6 +29,7 @@ class LicenseInvalidItemIdException extends LicenseException
                 'This license cannot be used for this plugin. Please contact support for help.',
                 'publishpress-hub'
             ),
+            ExceptionCode::LICENSE_INVALID_ITEM_ID,
             $context
         );
     }

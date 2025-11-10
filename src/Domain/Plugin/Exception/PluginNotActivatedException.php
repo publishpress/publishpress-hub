@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
 use PublishPress\Hub\Domain\Exception\Base\DomainException;
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
 
 class PluginNotActivatedException extends DomainException
 {
@@ -29,6 +30,7 @@ class PluginNotActivatedException extends DomainException
                 'This action is not possible because the plugin is not activated. Please activate the plugin and try again.', // phpcs:ignore Generic.Files.LineLength
                 'publishpress-hub'
             ),
+            ExceptionCode::PLUGIN_NOT_ACTIVATED,
             $context
         );
     }

@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
+
 class UnknownLicenseServerException extends LicenseException
 {
     /**
@@ -27,6 +29,7 @@ class UnknownLicenseServerException extends LicenseException
                 'Unknown license server error. Please try again later or contact support for help.',
                 'publishpress-hub'
             ),
+            ExceptionCode::LICENSE_SERVER_UNKNOWN,
             $context
         );
     }

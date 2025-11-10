@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
+
 class LicenseDisabledException extends LicenseException
 {
     /**
@@ -27,6 +29,7 @@ class LicenseDisabledException extends LicenseException
                 'This license is currently disabled. Please contact support for help.',
                 'publishpress-hub'
             ),
+            ExceptionCode::LICENSE_DISABLED,
             $context
         );
     }
