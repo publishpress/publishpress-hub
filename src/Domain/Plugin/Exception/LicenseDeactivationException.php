@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
+
 class LicenseDeactivationException extends LicenseException
 {
     /**
@@ -27,6 +29,7 @@ class LicenseDeactivationException extends LicenseException
                 'License deactivation error. Please try again later or contact support for help.',
                 'publishpress-hub'
             ),
+            ExceptionCode::LICENSE_DEACTIVATION_FAILED,
             $context
         );
     }

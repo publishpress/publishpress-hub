@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
 use PublishPress\Hub\Domain\Exception\Base\DomainException;
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
 
 class PluginAlreadyInstalledException extends DomainException
 {
@@ -29,6 +30,7 @@ class PluginAlreadyInstalledException extends DomainException
                 'This action is not possible because the plugin is already installed.',
                 'publishpress-hub'
             ),
+            ExceptionCode::PLUGIN_ALREADY_INSTALLED,
             $context
         );
     }

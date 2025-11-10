@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
+
 class LicenseInvalidException extends LicenseException
 {
     /**
@@ -27,6 +29,7 @@ class LicenseInvalidException extends LicenseException
                 'This license key is not authorized for this plugin. Please verify your license key or contact support for help.', // phpcs:ignore Generic.Files.LineLength
                 'publishpress-hub'
             ),
+            ExceptionCode::LICENSE_INVALID,
             $context
         );
     }

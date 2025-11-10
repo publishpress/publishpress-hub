@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
+
 class LicenseNotActivableException extends LicenseException
 {
     /**
@@ -27,6 +29,7 @@ class LicenseNotActivableException extends LicenseException
                 'This license cannot be activated. Please contact support for help.',
                 'publishpress-hub'
             ),
+            ExceptionCode::LICENSE_NOT_ACTIVABLE,
             $context
         );
     }

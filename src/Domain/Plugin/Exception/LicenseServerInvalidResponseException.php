@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
+
 class LicenseServerInvalidResponseException extends LicenseException
 {
     /**
@@ -27,6 +29,7 @@ class LicenseServerInvalidResponseException extends LicenseException
                 'The license server returned an invalid response. Please try again later or contact support for help.', // phpcs:ignore Generic.Files.LineLength
                 'publishpress-hub'
             ),
+            ExceptionCode::LICENSE_SERVER_INVALID_RESPONSE,
             $context
         );
     }

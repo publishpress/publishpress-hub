@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
+
 class LicenseSiteInactiveException extends LicenseException
 {
     /**
@@ -27,6 +29,7 @@ class LicenseSiteInactiveException extends LicenseException
                 'This license is inactive for this site. Please contact support for help.',
                 'publishpress-hub'
             ),
+            ExceptionCode::LICENSE_SITE_INACTIVE,
             $context
         );
     }

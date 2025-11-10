@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
+
 class LicenseKeyMismatchException extends LicenseException
 {
     /**
@@ -27,6 +29,7 @@ class LicenseKeyMismatchException extends LicenseException
                 'License key does not match our records. Please contact support for assistance.',
                 'publishpress-hub'
             ),
+            ExceptionCode::LICENSE_KEY_MISMATCH,
             $context
         );
     }

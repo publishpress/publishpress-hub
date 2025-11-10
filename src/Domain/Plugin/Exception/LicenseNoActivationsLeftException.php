@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
+
 class LicenseNoActivationsLeftException extends LicenseException
 {
     /**
@@ -27,6 +29,7 @@ class LicenseNoActivationsLeftException extends LicenseException
                 'License activation limit reached. Please contact support to upgrade or deactivate on another site.', // phpcs:ignore Generic.Files.LineLength
                 'publishpress-hub'
             ),
+            ExceptionCode::LICENSE_NO_ACTIVATIONS_LEFT,
             $context
         );
     }

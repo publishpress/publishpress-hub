@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
 use PublishPress\Hub\Domain\Exception\Base\DomainException;
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
 
 class PluginNotFoundException extends DomainException
 {
@@ -29,6 +30,7 @@ class PluginNotFoundException extends DomainException
                 'Plugin not found in our available plugins list. Please contact support for help.', // phpcs:ignore Generic.Files.LineLength
                 'publishpress-hub'
             ),
+            ExceptionCode::PLUGIN_NOT_FOUND,
             $context
         );
     }

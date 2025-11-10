@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
 use PublishPress\Hub\Domain\Exception\Base\DomainException;
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
 
 class PluginFamilyNotFoundException extends DomainException
 {
@@ -29,6 +30,7 @@ class PluginFamilyNotFoundException extends DomainException
                 'Plugin family not found. Please contact support for help.',
                 'publishpress-hub'
             ),
+            ExceptionCode::PLUGIN_FAMILY_NOT_FOUND,
             $context
         );
     }
