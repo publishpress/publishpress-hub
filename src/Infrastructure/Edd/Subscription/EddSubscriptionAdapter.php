@@ -525,7 +525,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
             'User-Agent' => $this->userAgent,
             'Accept' => 'application/json, text/plain, */*',
             'Accept-Language' => 'en-US,en;q=0.9',
-            'Accept-Encoding' => 'gzip, deflate, br',
+            'Accept-Encoding' => 'gzip, deflate',
             'Content-Type' => 'application/x-www-form-urlencoded',
             'Connection' => 'keep-alive',
             'Sec-Fetch-Dest' => 'empty',
