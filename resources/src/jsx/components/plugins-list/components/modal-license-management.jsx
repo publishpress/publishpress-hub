@@ -85,7 +85,7 @@ const ModalLicenseManagementComponent = ({
                         {__('Enter your license key to activate the Pro version of this plugin. You can find your license key in your PublishPress account dashboard.', 'publishpress-hub')}
                     </p>
                     <div className='pp-hub-modal-inline-links'>
-                        <Button variant='link' href='https://publishpress.com/subscriptions/' target='_blank' rel='noopener noreferrer'>
+                        <Button variant='link' href='https://publishpress.com/dashboard/?active_tab=licenses' target='_blank' rel='noopener noreferrer'>
                             {__('Go to my profile to get the license key', 'publishpress-hub')}
                         </Button>
                     </div>
