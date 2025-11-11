@@ -49,6 +49,7 @@ class LicenseManagementService implements LicenseManagementServiceInterface
         if ($activated) {
             $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
             $this->licensePersistence->storeLicenseStatus($downloadId, true);
+            $this->storeExpirationDateFromApi($licenseKey, $downloadId, $force);
         }
 
         return $activated;
@@ -120,6 +121,7 @@ class LicenseManagementService implements LicenseManagementServiceInterface
         // Store the license key locally
         $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
         $this->licensePersistence->storeLicenseStatus($downloadId, true);
+        $this->storeExpirationDateFromApi($licenseKey, $downloadId, $force);
 
         return true;
     }
@@ -220,5 +222,87 @@ class LicenseManagementService implements LicenseManagementServiceInterface
     public function getPluginsAffectedByLicenseDeactivation(string $licenseKey): array
     {
         return $this->licensePersistence->getDownloadIdsUsingLicenseKey($licenseKey);
+    }
+
+    /**
+     * Get stored license expiration date for a download ID.
+     *
+     * @param int $downloadId The download ID
+     * @return string|null The stored expiration date in ISO format (YYYY-MM-DD) or null if not found
+     */
+    public function getStoredLicenseExpirationDate(int $downloadId): ?string
+    {
+        return $this->licensePersistence->getLicenseExpirationDate($downloadId);
+    }
+
+    /**
+     * Store expiration date from API response.
+     * The expiration date is stored by license key, so it can be reused across plugins using the same key.
+     *
+     * @param string $licenseKey The license key
+     * @param int $downloadId The download ID
+     * @param bool $force Whether to force refresh
+     * @return void
+     */
+    private function storeExpirationDateFromApi(string $licenseKey, int $downloadId, bool $force = false): void
+    {
+        try {
+            // First check if we already have an expiration date for this license key
+            $existingExpirationDate = $this->licensePersistence->getLicenseExpirationDateByKey($licenseKey);
+
+            // If we have an existing expiration date and we're not forcing, reuse it
+            if ($existingExpirationDate !== null && !$force) {
+                $this->licensePersistence->storeLicenseExpirationDate($downloadId, $existingExpirationDate);
+                return;
+            }
+
+            // Otherwise, fetch from API
+            $licenseInfo = $this->licenseApiService->getLicenseInfo($licenseKey, $downloadId, $force);
+
+            if (isset($licenseInfo['expires'])) {
+                $expirationDate = $this->convertExpirationToIsoFormat($licenseInfo['expires']);
+
+                if ($expirationDate !== null) {
+                    // Store by license key so it can be reused
+                    $this->licensePersistence->storeLicenseExpirationDateByKey($licenseKey, $expirationDate);
+                    // Also store by download ID for backward compatibility
+                    $this->licensePersistence->storeLicenseExpirationDate($downloadId, $expirationDate);
+                }
+            }
+        } catch (\Exception $e) {
+            // Silently fail if we can't get expiration date - license is still activated
+        }
+    }
+
+    /**
+     * Convert expiration date from API format to ISO format (YYYY-MM-DD).
+     *
+     * @param mixed $expires The expiration value from API (could be timestamp, date string, or 'lifetime')
+     * @return string|null The expiration date in ISO format or null if lifetime/invalid
+     */
+    private function convertExpirationToIsoFormat($expires): ?string
+    {
+        if (empty($expires) || $expires === 'lifetime' || $expires === 'never') {
+            return null;
+        }
+
+        // If it's a numeric timestamp
+        if (is_numeric($expires)) {
+            $timestamp = (int) $expires;
+            // Check if it's a valid timestamp (not year 1970 or before)
+            if ($timestamp > 0 && $timestamp < 2147483647) {
+                return gmdate('Y-m-d', $timestamp);
+            }
+        }
+
+        // If it's already a date string, try to parse it
+        if (is_string($expires)) {
+            $timestamp = strtotime($expires);
+            if ($timestamp !== false && $timestamp > 0) {
+                return gmdate('Y-m-d', $timestamp);
+            }
+        }
+
+        return null;
     }
 }

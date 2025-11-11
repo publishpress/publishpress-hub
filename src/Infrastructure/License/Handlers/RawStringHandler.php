@@ -22,6 +22,7 @@ class RawStringHandler implements LicenseOptionHandlerInterface
 {
     private string $licenseOptionName;
     private string $statusOptionName;
+    private string $expirationOptionName;
 
     private string $licenseStatusValid;
 
@@ -39,6 +40,7 @@ class RawStringHandler implements LicenseOptionHandlerInterface
         $this->optionsAdapter = $optionsAdapter;
         $this->licenseOptionName = $licenseOptionName;
         $this->statusOptionName = $statusOptionName;
+        $this->expirationOptionName = $licenseOptionName . '_expiration';
         $this->licenseStatusValid = $licenseStatusValid ?? 'valid';
         $this->licenseStatusInvalid = $licenseStatusInvalid ?? 'invalid';
     }
@@ -120,6 +122,32 @@ class RawStringHandler implements LicenseOptionHandlerInterface
     }
 
     /**
+     * Store the license expiration date for a specific download ID.
+     *
+     * @param int $downloadId The download ID to associate with the expiration date.
+     * @param string|null $expirationDate The expiration date in ISO format (YYYY-MM-DD) or null.
+     * @since 1.0.0
+     */
+    public function storeLicenseExpirationDate(int $downloadId, ?string $expirationDate): void
+    {
+        $this->optionsAdapter->updateOption($this->expirationOptionName, $expirationDate);
+    }
+
+    /**
+     * Get the license expiration date for a specific download ID.
+     *
+     * @param int $downloadId The download ID to look up.
+     * @return string|null The expiration date in ISO format (YYYY-MM-DD) if found, null otherwise.
+     * @since 1.0.0
+     */
+    public function getLicenseExpirationDate(int $downloadId): ?string
+    {
+        $expirationDate = $this->optionsAdapter->getOption($this->expirationOptionName, null);
+
+        return $expirationDate !== null && $expirationDate !== false ? (string)$expirationDate : null;
+    }
+
+    /**
      * Remove the license key and status for a specific download ID.
      *
      * @param int $downloadId The download ID to remove the license key for.
@@ -131,5 +159,6 @@ class RawStringHandler implements LicenseOptionHandlerInterface
 
         $this->optionsAdapter->deleteOption($this->licenseOptionName);
         $this->optionsAdapter->deleteOption($this->statusOptionName);
+        $this->optionsAdapter->deleteOption($this->expirationOptionName);
     }
 }

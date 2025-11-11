@@ -14,6 +14,8 @@ import { __ } from '@publishpress-hub/i18n';
 
 import { Badge } from '../../badge/badge';
 
+const DAYS_UNTIL_EXPIRATION_DATE_THRESHOLD = 60;
+
 const STATUS_BADGE_CONFIGS = {
     installing: {
         text: __('Installing', 'publishpress-hub'),
@@ -123,7 +125,37 @@ const StatusFlagComponent = ({
         return null;
     }
 
-    return <Badge {...props}>{props.text}</Badge>;
+    // Display expiration date for licensed plugins
+    const expirationDate = useMemo(() => {
+        if (
+            props === STATUS_BADGE_CONFIGS.licensed &&
+            pluginFamily.proPlugin.isLicensed &&
+            pluginFamily.proPlugin.licenseExpirationDateFormatted
+        ) {
+            // Do not display expiration date if it is more than DAYS_UNTIL_EXPIRATION_DATE_THRESHOLD days away.
+            if (
+                pluginFamily.proPlugin.daysUntilExpiration
+                && pluginFamily.proPlugin.daysUntilExpiration >= DAYS_UNTIL_EXPIRATION_DATE_THRESHOLD
+            ) {
+                return null;
+            }
+
+            return pluginFamily.proPlugin.licenseExpirationDateFormatted;
+        }
+
+        return null;
+    }, [props, pluginFamily]);
+
+    return (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+            <Badge {...props}>{props.text}</Badge>
+            {expirationDate && (
+                <span style={{ fontSize: '12px', color: 'var(--pp-hub-text-secondary, #666)' }}>
+                    {__('Expires', 'publishpress-hub')} {expirationDate}
+                </span>
+            )}
+        </div>
+    );
 }
 
 StatusFlagComponent.displayName = 'StatusFlag';

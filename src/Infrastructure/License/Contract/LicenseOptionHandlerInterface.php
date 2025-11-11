@@ -59,4 +59,22 @@ interface LicenseOptionHandlerInterface
      * @since 1.0.0
      */
     public function remove(int $downloadId): void;
+
+    /**
+     * Store the license expiration date for a specific download ID.
+     *
+     * @param int $downloadId The download ID to associate with the expiration date.
+     * @param string|null $expirationDate The expiration date in ISO format (YYYY-MM-DD) or null.
+     * @since 1.0.0
+     */
+    public function storeLicenseExpirationDate(int $downloadId, ?string $expirationDate): void;
+
+    /**
+     * Retrieve the license expiration date for a specific download ID.
+     *
+     * @param int $downloadId The download ID to look up.
+     * @return string|null The expiration date in ISO format (YYYY-MM-DD) if found, null otherwise.
+     * @since 1.0.0
+     */
+    public function getLicenseExpirationDate(int $downloadId): ?string;
 }

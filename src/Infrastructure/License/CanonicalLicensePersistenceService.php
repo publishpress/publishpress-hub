@@ -20,6 +20,7 @@ use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterfac
 class CanonicalLicensePersistenceService implements LicensePersistenceInterface
 {
     private const OPTION_SUFFIX_STATUS = '_status';
+    private const OPTION_SUFFIX_EXPIRATION = '_expiration';
 
     private WPOptionsAdapterInterface $optionsAdapter;
 
@@ -100,11 +101,19 @@ class CanonicalLicensePersistenceService implements LicensePersistenceInterface
      */
     public function removeLicense(int $downloadId): void
     {
+        $licenseKey = $this->getLicenseKey($downloadId);
+
         $optionName = $this->buildOptionName($downloadId);
         $this->optionsAdapter->deleteOption($optionName);
 
         $optionName = $this->buildOptionName($downloadId, self::OPTION_SUFFIX_STATUS);
         $this->optionsAdapter->deleteOption($optionName);
+
+        $optionName = $this->buildOptionName($downloadId, self::OPTION_SUFFIX_EXPIRATION);
+        $this->optionsAdapter->deleteOption($optionName);
+
+        // Note: We don't delete the expiration date by license key here because
+        // other plugins might still be using the same license key
     }
 
     /**
@@ -157,6 +166,97 @@ class CanonicalLicensePersistenceService implements LicensePersistenceInterface
     private function buildOptionName(int $downloadId, string $optionSuffix = ''): string
     {
         return "{$this->optionPrefix}$downloadId$optionSuffix";
+    }
+
+    /**
+     * Store the license expiration date.
+     * The expiration date is stored by license key, so it can be reused across plugins using the same key.
+     *
+     * @param int $downloadId The download ID.
+     * @param string|null $expirationDate The expiration date in ISO format (YYYY-MM-DD) or null.
+     * @since 1.0.0
+     */
+    public function storeLicenseExpirationDate(int $downloadId, ?string $expirationDate): void
+    {
+        $licenseKey = $this->getLicenseKey($downloadId);
+
+        if ($licenseKey !== null) {
+            $this->storeLicenseExpirationDateByKey($licenseKey, $expirationDate);
+        }
+
+        // Also store by download ID for backward compatibility
+        $optionName = $this->buildOptionName($downloadId, self::OPTION_SUFFIX_EXPIRATION);
+        $this->optionsAdapter->updateOption($optionName, $expirationDate, true);
+    }
+
+    /**
+     * Get the license expiration date.
+     * The expiration date is retrieved by license key, so it's shared across plugins using the same key.
+     *
+     * @param int $downloadId The download ID.
+     * @return string|null The expiration date in ISO format (YYYY-MM-DD) or null.
+     * @since 1.0.0
+     */
+    public function getLicenseExpirationDate(int $downloadId): ?string
+    {
+        $licenseKey = $this->getLicenseKey($downloadId);
+
+        if ($licenseKey !== null) {
+            $expirationDate = $this->getLicenseExpirationDateByKey($licenseKey);
+            if ($expirationDate !== null) {
+                return $expirationDate;
+            }
+        }
+
+        // Fallback to download ID for backward compatibility
+        $optionName = $this->buildOptionName($downloadId, self::OPTION_SUFFIX_EXPIRATION);
+        $expirationDate = $this->optionsAdapter->getOption($optionName, null);
+
+        return $expirationDate !== null && $expirationDate !== false ? (string)$expirationDate : null;
+    }
+
+    /**
+     * Store the license expiration date for a specific license key.
+     * This allows the expiration date to be shared across all plugins using the same license key.
+     *
+     * @param string $licenseKey The license key to associate with the expiration date.
+     * @param string|null $expirationDate The expiration date in ISO format (YYYY-MM-DD) or null.
+     * @since 1.0.0
+     */
+    public function storeLicenseExpirationDateByKey(string $licenseKey, ?string $expirationDate): void
+    {
+        $optionName = $this->buildOptionNameByLicenseKey($licenseKey, self::OPTION_SUFFIX_EXPIRATION);
+        $this->optionsAdapter->updateOption($optionName, $expirationDate, true);
+    }
+
+    /**
+     * Retrieve the license expiration date for a specific license key.
+     *
+     * @param string $licenseKey The license key to look up.
+     * @return string|null The expiration date in ISO format (YYYY-MM-DD) if found, null otherwise.
+     * @since 1.0.0
+     */
+    public function getLicenseExpirationDateByKey(string $licenseKey): ?string
+    {
+        $optionName = $this->buildOptionNameByLicenseKey($licenseKey, self::OPTION_SUFFIX_EXPIRATION);
+        $expirationDate = $this->optionsAdapter->getOption($optionName, null);
+
+        return $expirationDate !== null && $expirationDate !== false ? (string)$expirationDate : null;
+    }
+
+    /**
+     * Build an option name for the given license key.
+     *
+     * @param string $licenseKey The license key
+     * @param string $optionSuffix The option suffix
+     * @return string The option name
+     * @since 1.0.0
+     */
+    private function buildOptionNameByLicenseKey(string $licenseKey, string $optionSuffix = ''): string
+    {
+        // Use a hash of the license key to avoid issues with special characters
+        $licenseKeyHash = md5($licenseKey);
+        return "{$this->optionPrefix}key_{$licenseKeyHash}{$optionSuffix}";
     }
 
     /**

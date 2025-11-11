@@ -38,6 +38,7 @@ class PluginFamilyDto implements DtoInterface
     private bool $proPluginIsLicensed;
     private bool $proPluginIsActive;
     private ?string $proPluginPath;
+    private ?string $proPluginLicenseExpirationDate;
     private bool $hasAnyVersionInstalled;
     private bool $hasAnyVersionActive;
     private bool $hasConflictingInstallations;
@@ -77,6 +78,7 @@ class PluginFamilyDto implements DtoInterface
                 'isActive' => $this->proPluginIsActive,
                 'isLicensed' => $this->proPluginIsLicensed,
                 'path' => $this->proPluginPath,
+                'licenseExpirationDate' => $this->proPluginLicenseExpirationDate,
             ],
         ];
     }
@@ -258,6 +260,15 @@ class PluginFamilyDto implements DtoInterface
     public function setProPluginPath(?string $proPluginPath): self
     {
         $this->proPluginPath = $proPluginPath;
+        return $this;
+    }
+
+    /**
+     * @since 1.0.0
+     */
+    public function setProPluginLicenseExpirationDate(?string $proPluginLicenseExpirationDate): self
+    {
+        $this->proPluginLicenseExpirationDate = $proPluginLicenseExpirationDate;
         return $this;
     }
 

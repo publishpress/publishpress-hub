@@ -75,6 +75,14 @@ interface LicenseManagementServiceInterface
     public function getStoredLicenseStatus(int $downloadId): bool;
 
     /**
+     * Get stored license expiration date for a download ID.
+     *
+     * @param int $downloadId The download ID
+     * @return string|null The stored expiration date in ISO format (YYYY-MM-DD) or null if not found
+     */
+    public function getStoredLicenseExpirationDate(int $downloadId): ?string;
+
+    /**
      * Check if a license key is stored locally.
      *
      * @param int $downloadId The download ID

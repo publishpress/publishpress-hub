@@ -178,6 +178,123 @@ class PerPluginLicensePersistenceService implements LicensePersistenceInterface
     }
 
     /**
+     * Store the license expiration date.
+     * The expiration date is stored by license key, so it can be reused across plugins using the same key.
+     *
+     * @param int $downloadId The download ID.
+     * @param string|null $expirationDate The expiration date in ISO format (YYYY-MM-DD) or null.
+     * @since 1.0.0
+     */
+    public function storeLicenseExpirationDate(int $downloadId, ?string $expirationDate): void
+    {
+        $licenseKey = $this->getLicenseKey($downloadId);
+
+        if ($licenseKey !== null) {
+            $this->storeLicenseExpirationDateByKey($licenseKey, $expirationDate);
+        }
+
+        // Also store by download ID for backward compatibility
+        $handler = $this->getHandlerByDownloadId($downloadId);
+
+        if (empty($handler)) {
+            return;
+        }
+
+        $handler->storeLicenseExpirationDate($downloadId, $expirationDate);
+    }
+
+    /**
+     * Get the license expiration date.
+     * The expiration date is retrieved by license key, so it's shared across plugins using the same key.
+     *
+     * @param int $downloadId The download ID.
+     * @return string|null The expiration date in ISO format (YYYY-MM-DD) or null.
+     * @since 1.0.0
+     */
+    public function getLicenseExpirationDate(int $downloadId): ?string
+    {
+        $licenseKey = $this->getLicenseKey($downloadId);
+
+        if ($licenseKey !== null) {
+            $expirationDate = $this->getLicenseExpirationDateByKey($licenseKey);
+            if ($expirationDate !== null) {
+                return $expirationDate;
+            }
+        }
+
+        // Fallback to download ID for backward compatibility
+        $handler = $this->getHandlerByDownloadId($downloadId);
+
+        if (empty($handler)) {
+            return null;
+        }
+
+        return $handler->getLicenseExpirationDate($downloadId);
+    }
+
+    /**
+     * Store the license expiration date for a specific license key.
+     * This allows the expiration date to be shared across all plugins using the same license key.
+     *
+     * @param string $licenseKey The license key to associate with the expiration date.
+     * @param string|null $expirationDate The expiration date in ISO format (YYYY-MM-DD) or null.
+     * @since 1.0.0
+     */
+    public function storeLicenseExpirationDateByKey(string $licenseKey, ?string $expirationDate): void
+    {
+        // Store in a canonical location that can be shared across all plugins
+        // We'll use the first handler we find, or create a shared option
+        $handlersList = array_keys($this->getHandlersList());
+
+        if (empty($handlersList)) {
+            return;
+        }
+
+        // Use the first handler to store the shared expiration date
+        $firstHandler = $this->getHandlerByFamilySlug($handlersList[0]);
+
+        if (empty($firstHandler)) {
+            return;
+        }
+
+        // Store using a special download ID that represents the license key
+        // We'll use a hash of the license key as a pseudo-download ID
+        $licenseKeyHash = md5($licenseKey);
+        $pseudoDownloadId = (int) hexdec(substr($licenseKeyHash, 0, 8));
+
+        $firstHandler->storeLicenseExpirationDate($pseudoDownloadId, $expirationDate);
+    }
+
+    /**
+     * Retrieve the license expiration date for a specific license key.
+     *
+     * @param string $licenseKey The license key to look up.
+     * @return string|null The expiration date in ISO format (YYYY-MM-DD) if found, null otherwise.
+     * @since 1.0.0
+     */
+    public function getLicenseExpirationDateByKey(string $licenseKey): ?string
+    {
+        $handlersList = array_keys($this->getHandlersList());
+
+        if (empty($handlersList)) {
+            return null;
+        }
+
+        // Use the first handler to retrieve the shared expiration date
+        $firstHandler = $this->getHandlerByFamilySlug($handlersList[0]);
+
+        if (empty($firstHandler)) {
+            return null;
+        }
+
+        // Retrieve using a special download ID that represents the license key
+        $licenseKeyHash = md5($licenseKey);
+        $pseudoDownloadId = (int) hexdec(substr($licenseKeyHash, 0, 8));
+
+        return $firstHandler->getLicenseExpirationDate($pseudoDownloadId);
+    }
+
+    /**
      * Get the plugin family slug by download ID.
      *
      * @param int $downloadId The download ID to get the plugin family slug for.
