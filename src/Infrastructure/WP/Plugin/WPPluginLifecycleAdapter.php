@@ -189,7 +189,7 @@ class WPPluginLifecycleAdapter
 
         $upgrader = new \Plugin_Upgrader();
 
-        $result = $upgrader->upgrade($pluginPath);
+        $result = $upgrader->upgrade([$pluginPath]);
 
         if (is_wp_error($result)) {
             throw new RuntimeException(
