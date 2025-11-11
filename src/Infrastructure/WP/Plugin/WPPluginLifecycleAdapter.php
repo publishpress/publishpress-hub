@@ -187,9 +187,40 @@ class WPPluginLifecycleAdapter
             require_once ABSPATH . 'wp-admin/includes/update.php';
         }
 
+        // Ensure update information is available
+        if (!function_exists('wp_update_plugins')) {
+            require_once ABSPATH . 'wp-admin/includes/update.php';
+        }
+
+        // Refresh update cache to ensure we have the latest update information
+        // This is asynchronous, so we need to wait for it to complete
+        $updateResult = wp_update_plugins();
+
+        // If wp_update_plugins returns an error, we still try to proceed
+        // as the update information might already be cached
+
+        // Verify the plugin has an update available
+        $updates = get_plugin_updates();
+        if (empty($updates) || !isset($updates[$pluginPath])) {
+            throw new RuntimeException(
+                esc_html__('No update available for this plugin', 'publishpress-hub')
+            );
+        }
+
+        // Ensure the update information is properly structured
+        $updateInfo = $updates[$pluginPath];
+        if (!is_object($updateInfo) || !isset($updateInfo->update)) {
+            throw new RuntimeException(
+                esc_html__('Invalid update information for this plugin', 'publishpress-hub')
+            );
+        }
+
         $upgrader = new \Plugin_Upgrader();
 
-        $result = $upgrader->upgrade([$pluginPath]);
+        // The upgrade method can accept either a string (single plugin) or array (multiple plugins)
+        // For a single plugin, pass as string to match WordPress core expectations
+        // The plugin path should be in the format 'plugin-folder/plugin-file.php'
+        $result = $upgrader->upgrade($pluginPath);
 
         if (is_wp_error($result)) {
             throw new RuntimeException(
