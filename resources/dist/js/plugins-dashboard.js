@@ -5655,6 +5655,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../buttons/button */ "./resources/src/jsx/components/buttons/button.jsx");
 /* harmony import */ var _admin_page_footer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../admin-page/footer */ "./resources/src/jsx/components/admin-page/footer.jsx");
 /* harmony import */ var _hooks_use_license_expiration_warning__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./hooks/use-license-expiration-warning */ "./resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 /**
  * Plugins dashboard.
  *
@@ -5746,9 +5752,33 @@ var PluginsDashboardComponent = function PluginsDashboardComponent() {
 
   // Check for licenses expiring within the specified days
   (0,_hooks_use_license_expiration_warning__WEBPACK_IMPORTED_MODULE_11__.useLicenseExpirationWarning)(plugins, 30);
+  var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    isAltPressed = _useState2[0],
+    setIsAltPressed = _useState2[1];
+
+  // Track ALT key state
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    var handleKeyDown = function handleKeyDown(event) {
+      if (event.key === 'Alt' || event.altKey) {
+        setIsAltPressed(true);
+      }
+    };
+    var handleKeyUp = function handleKeyUp(event) {
+      if (event.key === 'Alt' || !event.altKey) {
+        setIsAltPressed(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
+    return function () {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, []);
   var handleRefresh = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useCallback)(function () {
-    fetchPlugins();
-  }, [fetchPlugins]);
+    fetchPlugins(isAltPressed);
+  }, [fetchPlugins, isAltPressed]);
   return /*#__PURE__*/React.createElement(_admin_page__WEBPACK_IMPORTED_MODULE_3__.AdminPageLayout, {
     title: title,
     logoUrl: logoUrl,
@@ -5757,7 +5787,7 @@ var PluginsDashboardComponent = function PluginsDashboardComponent() {
       onClick: handleRefresh,
       isLoading: isLoading,
       spinnerPosition: "left"
-    }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Refresh', 'publishpress-hub'))
+    }, isAltPressed ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Force Refresh', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Refresh', 'publishpress-hub'))
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-dashboard"
   }, /*#__PURE__*/React.createElement(_notices_NoticesList__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/React.createElement(_filter_filter_buttons_bar__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -8343,18 +8373,17 @@ var _marked = /*#__PURE__*/_regenerator().m(setSelectedFilter),
   _marked9 = /*#__PURE__*/_regenerator().m(setIsUninstallConfirmationModalOpen),
   _marked0 = /*#__PURE__*/_regenerator().m(setIsUpgradeModalOpen),
   _marked1 = /*#__PURE__*/_regenerator().m(setIsResolveConflictModalOpen),
-  _marked10 = /*#__PURE__*/_regenerator().m(fetchPlugins),
-  _marked11 = /*#__PURE__*/_regenerator().m(installFreePlugin),
-  _marked12 = /*#__PURE__*/_regenerator().m(installProPlugin),
-  _marked13 = /*#__PURE__*/_regenerator().m(uninstallPlugin),
-  _marked14 = /*#__PURE__*/_regenerator().m(activatePlugin),
-  _marked15 = /*#__PURE__*/_regenerator().m(deactivatePlugin),
-  _marked16 = /*#__PURE__*/_regenerator().m(upgradePluginToPro),
-  _marked17 = /*#__PURE__*/_regenerator().m(resolveConflict),
-  _marked18 = /*#__PURE__*/_regenerator().m(deactivateLicense),
-  _marked19 = /*#__PURE__*/_regenerator().m(activateLicense),
-  _marked20 = /*#__PURE__*/_regenerator().m(updatePlugin),
-  _marked21 = /*#__PURE__*/_regenerator().m(cleanupError);
+  _marked10 = /*#__PURE__*/_regenerator().m(installFreePlugin),
+  _marked11 = /*#__PURE__*/_regenerator().m(installProPlugin),
+  _marked12 = /*#__PURE__*/_regenerator().m(uninstallPlugin),
+  _marked13 = /*#__PURE__*/_regenerator().m(activatePlugin),
+  _marked14 = /*#__PURE__*/_regenerator().m(deactivatePlugin),
+  _marked15 = /*#__PURE__*/_regenerator().m(upgradePluginToPro),
+  _marked16 = /*#__PURE__*/_regenerator().m(resolveConflict),
+  _marked17 = /*#__PURE__*/_regenerator().m(deactivateLicense),
+  _marked18 = /*#__PURE__*/_regenerator().m(activateLicense),
+  _marked19 = /*#__PURE__*/_regenerator().m(updatePlugin),
+  _marked20 = /*#__PURE__*/_regenerator().m(cleanupError);
 /**
  * Plugins dashboard actions.
  *
@@ -8552,65 +8581,69 @@ function setIsResolveConflictModalOpen(isOpen) {
   }, _marked1);
 }
 function fetchPlugins() {
-  var data, _t;
-  return _regenerator().w(function (_context10) {
-    while (1) switch (_context10.n) {
-      case 0:
-        _context10.p = 0;
-        _context10.n = 1;
-        return {
-          type: 'FETCH_PLUGINS_START'
-        };
-      case 1:
-        _context10.n = 2;
-        return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
-      case 2:
-        _context10.n = 3;
-        return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
-          path: "".concat(API_NAMESPACE, "/plugins")
-        });
-      case 3:
-        data = _context10.v;
-        if (!data.success) {
-          _context10.n = 5;
+  var forceCheck = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+  return /*#__PURE__*/_regenerator().m(function _callee() {
+    var path, data, _t;
+    return _regenerator().w(function (_context10) {
+      while (1) switch (_context10.n) {
+        case 0:
+          _context10.p = 0;
+          _context10.n = 1;
+          return {
+            type: 'FETCH_PLUGINS_START'
+          };
+        case 1:
+          _context10.n = 2;
+          return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
+        case 2:
+          path = forceCheck ? "".concat(API_NAMESPACE, "/plugins?force-check=1") : "".concat(API_NAMESPACE, "/plugins");
+          _context10.n = 3;
+          return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
+            path: path
+          });
+        case 3:
+          data = _context10.v;
+          if (!data.success) {
+            _context10.n = 5;
+            break;
+          }
+          _context10.n = 4;
+          return {
+            type: 'FETCH_PLUGINS_SUCCESS',
+            data: data.plugins
+          };
+        case 4:
+          return _context10.a(2, {
+            success: true,
+            data: data.plugins
+          });
+        case 5:
+          throw new Error(data.error || 'Failed to fetch plugins');
+        case 6:
+          _context10.n = 10;
           break;
-        }
-        _context10.n = 4;
-        return {
-          type: 'FETCH_PLUGINS_SUCCESS',
-          data: data.plugins
-        };
-      case 4:
-        return _context10.a(2, {
-          success: true,
-          data: data.plugins
-        });
-      case 5:
-        throw new Error(data.error || 'Failed to fetch plugins');
-      case 6:
-        _context10.n = 10;
-        break;
-      case 7:
-        _context10.p = 7;
-        _t = _context10.v;
-        _context10.n = 8;
-        return {
-          type: 'FETCH_PLUGINS_ERROR',
-          error: _t
-        };
-      case 8:
-        _context10.n = 9;
-        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Failed to fetch plugins', 'publishpress-hub'), 'error');
-      case 9:
-        _t = handleErrorMessageOnContext(_t);
-        return _context10.a(2, {
-          success: false,
-          error: _t
-        });
-      case 10:
-        return _context10.a(2);
-    }
-  }, _marked10, null, [[0, 7]]);
+        case 7:
+          _context10.p = 7;
+          _t = _context10.v;
+          _context10.n = 8;
+          return {
+            type: 'FETCH_PLUGINS_ERROR',
+            error: _t
+          };
+        case 8:
+          _context10.n = 9;
+          return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Failed to fetch plugins', 'publishpress-hub'), 'error');
+        case 9:
+          _t = handleErrorMessageOnContext(_t);
+          return _context10.a(2, {
+            success: false,
+            error: _t
+          });
+        case 10:
+          return _context10.a(2);
+      }
+    }, _callee, null, [[0, 7]]);
+  })();
 }
 function installFreePlugin(pluginFamilySlug) {
   var data, _t2;
@@ -8688,7 +8721,7 @@ function installFreePlugin(pluginFamilySlug) {
       case 12:
         return _context11.a(2);
     }
-  }, _marked11, null, [[0, 9]]);
+  }, _marked10, null, [[0, 9]]);
 }
 function installProPlugin(pluginFamilySlug, licenseKey) {
   var data, _t3;
@@ -8769,7 +8802,7 @@ function installProPlugin(pluginFamilySlug, licenseKey) {
       case 11:
         return _context12.a(2);
     }
-  }, _marked12, null, [[0, 9]]);
+  }, _marked11, null, [[0, 9]]);
 }
 function uninstallPlugin(pluginFamilySlug) {
   var data, _t4;
@@ -8847,7 +8880,7 @@ function uninstallPlugin(pluginFamilySlug) {
       case 12:
         return _context13.a(2);
     }
-  }, _marked13, null, [[0, 9]]);
+  }, _marked12, null, [[0, 9]]);
 }
 function activatePlugin(pluginFamilySlug) {
   var data, _t5;
@@ -8925,7 +8958,7 @@ function activatePlugin(pluginFamilySlug) {
       case 12:
         return _context14.a(2);
     }
-  }, _marked14, null, [[0, 9]]);
+  }, _marked13, null, [[0, 9]]);
 }
 function deactivatePlugin(pluginFamilySlug) {
   var data, _t6;
@@ -9003,7 +9036,7 @@ function deactivatePlugin(pluginFamilySlug) {
       case 12:
         return _context15.a(2);
     }
-  }, _marked15, null, [[0, 9]]);
+  }, _marked14, null, [[0, 9]]);
 }
 function upgradePluginToPro(pluginFamilySlug, licenseKey) {
   var data, _t7;
@@ -9085,7 +9118,7 @@ function upgradePluginToPro(pluginFamilySlug, licenseKey) {
       case 11:
         return _context16.a(2);
     }
-  }, _marked16, null, [[0, 9]]);
+  }, _marked15, null, [[0, 9]]);
 }
 function resolveConflict(pluginFamily, pluginToKeep) {
   var validPlugins, validPluginToKeep, data, _t8;
@@ -9176,7 +9209,7 @@ function resolveConflict(pluginFamily, pluginToKeep) {
       case 12:
         return _context17.a(2);
     }
-  }, _marked17, null, [[0, 10]]);
+  }, _marked16, null, [[0, 10]]);
 }
 function deactivateLicense(pluginFamily) {
   var data, _t9;
@@ -9251,7 +9284,7 @@ function deactivateLicense(pluginFamily) {
       case 11:
         return _context18.a(2);
     }
-  }, _marked18, null, [[0, 9]]);
+  }, _marked17, null, [[0, 9]]);
 }
 function activateLicense(pluginFamily, licenseKey) {
   var data, _t0;
@@ -9333,7 +9366,7 @@ function activateLicense(pluginFamily, licenseKey) {
       case 11:
         return _context19.a(2);
     }
-  }, _marked19, null, [[0, 9]]);
+  }, _marked18, null, [[0, 9]]);
 }
 function updatePlugin(pluginFamilySlug) {
   var data, _t1;
@@ -9411,7 +9444,7 @@ function updatePlugin(pluginFamilySlug) {
       case 12:
         return _context20.a(2);
     }
-  }, _marked20, null, [[0, 9]]);
+  }, _marked19, null, [[0, 9]]);
 }
 function cleanupError(pluginFamily) {
   return _regenerator().w(function (_context21) {
@@ -9427,7 +9460,7 @@ function cleanupError(pluginFamily) {
       case 1:
         return _context21.a(2);
     }
-  }, _marked21);
+  }, _marked20);
 }
 function handleErrorMessageOnContext(error) {
   var _error$context;

@@ -9,7 +9,7 @@
  */
 
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useCallback, useMemo, useEffect, memo } from '@wordpress/element';
+import { useCallback, useMemo, useEffect, memo, useState } from '@wordpress/element';
 
 import { __ } from '@publishpress-hub/i18n';
 
@@ -103,9 +103,34 @@ const PluginsDashboardComponent = () => {
     // Check for licenses expiring within the specified days
     useLicenseExpirationWarning(plugins, 30);
 
+    const [isAltPressed, setIsAltPressed] = useState(false);
+
+    // Track ALT key state
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === 'Alt' || event.altKey) {
+                setIsAltPressed(true);
+            }
+        };
+
+        const handleKeyUp = (event) => {
+            if (event.key === 'Alt' || !event.altKey) {
+                setIsAltPressed(false);
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        window.addEventListener('keyup', handleKeyUp);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('keyup', handleKeyUp);
+        };
+    }, []);
+
     const handleRefresh = useCallback(() => {
-        fetchPlugins();
-    }, [fetchPlugins]);
+        fetchPlugins(isAltPressed);
+    }, [fetchPlugins, isAltPressed]);
 
     return (
         <AdminPageLayout
@@ -118,7 +143,7 @@ const PluginsDashboardComponent = () => {
                     isLoading={isLoading}
                     spinnerPosition='left'
                 >
-                    {__('Refresh', 'publishpress-hub')}
+                    {isAltPressed ? __('Force Refresh', 'publishpress-hub') : __('Refresh', 'publishpress-hub')}
                 </Button>
             }
         >

@@ -130,14 +130,18 @@ export function* setIsResolveConflictModalOpen(isOpen) {
     };
 }
 
-export function* fetchPlugins() {
+export function* fetchPlugins(forceCheck = false) {
     try {
         yield {type: 'FETCH_PLUGINS_START'};
 
         yield apiReady();
 
+        const path = forceCheck 
+            ? `${API_NAMESPACE}/plugins?force-check=1`
+            : `${API_NAMESPACE}/plugins`;
+
         const data = yield apiFetch({
-            path: `${API_NAMESPACE}/plugins`,
+            path,
         });
 
         if (data.success) {
