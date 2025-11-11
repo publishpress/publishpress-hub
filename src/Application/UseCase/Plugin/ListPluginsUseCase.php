@@ -90,6 +90,11 @@ class ListPluginsUseCase implements UseCaseInterface
             $expirationDate = $this->getLicenseExpirationDate($proPlugin);
             $dto->setProPluginLicenseExpirationDate($expirationDate);
 
+            // Check for plugin updates
+            $updateInfo = $this->getPluginUpdateInfo($family);
+            $dto->setHasUpdate($updateInfo['hasUpdate'])
+                ->setAvailableVersion($updateInfo['availableVersion']);
+
             $pluginData = $dto->toArray();
 
             $licenseKey = $this->getLicenseKey($proPlugin);
@@ -174,5 +179,55 @@ class ListPluginsUseCase implements UseCaseInterface
         $expirationDate = $expirationDate->setTime(0, 0, 0, 0);
 
         return (int) $expirationDate->diff($today)->days;
+    }
+
+    /**
+     * Gets plugin update information.
+     *
+     * @param PluginFamilyInterface $family The plugin family.
+     * @return array<string, mixed> Update information with hasUpdate and availableVersion.
+     * @since 1.0.0
+     */
+    private function getPluginUpdateInfo(PluginFamilyInterface $family): array
+    {
+        if (!function_exists('get_plugin_updates')) {
+            require_once ABSPATH . 'wp-admin/includes/update.php';
+        }
+
+        $updates = get_plugin_updates();
+
+        if (empty($updates)) {
+            return [
+                'hasUpdate' => false,
+                'availableVersion' => null,
+            ];
+        }
+
+        // Determine which plugin is installed (free or pro)
+        $installedPlugin = $family->getInstalledPlugin();
+
+        if (!$installedPlugin) {
+            return [
+                'hasUpdate' => false,
+                'availableVersion' => null,
+            ];
+        }
+
+        $pluginPath = $installedPlugin->getPath();
+
+        // Check if this plugin has an update available
+        if (!isset($updates[$pluginPath])) {
+            return [
+                'hasUpdate' => false,
+                'availableVersion' => null,
+            ];
+        }
+
+        $update = $updates[$pluginPath];
+
+        return [
+            'hasUpdate' => true,
+            'availableVersion' => $update->update->new_version ?? null,
+        ];
     }
 }
