@@ -194,6 +194,15 @@ class ListPluginsUseCase implements UseCaseInterface
             require_once ABSPATH . 'wp-admin/includes/update.php';
         }
 
+        // Force refresh update cache if requested
+        if (isset($_GET['force-check']) && $_GET['force-check'] === '1') {
+            delete_site_transient('update_plugins');
+            
+            if (function_exists('wp_update_plugins')) {
+                wp_update_plugins();
+            }
+        }
+
         $updates = get_plugin_updates();
 
         if (empty($updates)) {
