@@ -5654,7 +5654,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _notices_SnackbarList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../notices/SnackbarList */ "./resources/src/jsx/components/notices/SnackbarList.jsx");
 /* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../buttons/button */ "./resources/src/jsx/components/buttons/button.jsx");
 /* harmony import */ var _admin_page_footer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../admin-page/footer */ "./resources/src/jsx/components/admin-page/footer.jsx");
-/* harmony import */ var _hooks_use_license_expiration_warning__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./hooks/use-license-expiration-warning */ "./resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx");
+/* harmony import */ var _tooltip__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../tooltip */ "./resources/src/jsx/components/tooltip/index.jsx");
+/* harmony import */ var _hooks_use_license_expiration_warning__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./hooks/use-license-expiration-warning */ "./resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -5670,6 +5671,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  * @license GPL v2 or later
  * @since 1.0.0
  */
+
 
 
 
@@ -5751,7 +5753,7 @@ var PluginsDashboardComponent = function PluginsDashboardComponent() {
   }, [fetchPlugins, plugins]);
 
   // Check for licenses expiring within the specified days
-  (0,_hooks_use_license_expiration_warning__WEBPACK_IMPORTED_MODULE_11__.useLicenseExpirationWarning)(plugins, 30);
+  (0,_hooks_use_license_expiration_warning__WEBPACK_IMPORTED_MODULE_12__.useLicenseExpirationWarning)(plugins, 30);
   var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     isAltPressed = _useState2[0],
@@ -5779,15 +5781,21 @@ var PluginsDashboardComponent = function PluginsDashboardComponent() {
   var handleRefresh = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useCallback)(function () {
     fetchPlugins(isAltPressed);
   }, [fetchPlugins, isAltPressed]);
+  var refreshButtonTooltip = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+    return (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Hold ALT and click to force refresh the update cache', 'publishpress-hub');
+  }, []);
   return /*#__PURE__*/React.createElement(_admin_page__WEBPACK_IMPORTED_MODULE_3__.AdminPageLayout, {
     title: title,
     logoUrl: logoUrl,
-    titleChildren: /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_9__.Button, {
+    titleChildren: /*#__PURE__*/React.createElement(_tooltip__WEBPACK_IMPORTED_MODULE_11__.Tooltip, {
+      text: refreshButtonTooltip,
+      placement: "top"
+    }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_9__.Button, {
       variant: "link",
       onClick: handleRefresh,
       isLoading: isLoading,
       spinnerPosition: "left"
-    }, isAltPressed ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Force Refresh', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Refresh', 'publishpress-hub'))
+    }, isAltPressed ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Force Refresh', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Refresh', 'publishpress-hub')))
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-dashboard"
   }, /*#__PURE__*/React.createElement(_notices_NoticesList__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/React.createElement(_filter_filter_buttons_bar__WEBPACK_IMPORTED_MODULE_4__["default"], {
