@@ -8,8 +8,17 @@
  * @since 1.0.0
  */
 
-import { memo, useMemo, Fragment, useState, useCallback, useEffect } from '@wordpress/element';
-import { ToggleControl } from '@wordpress/components';
+import {
+    memo,
+    useMemo,
+    Fragment,
+    useState,
+    useCallback
+} from '@wordpress/element';
+import {
+    ToggleControl,
+    __experimentalVStack as VStack
+} from '@wordpress/components';
 
 import { __ } from '@publishpress-hub/i18n';
 
@@ -182,15 +191,17 @@ const PluginItemComponent = ({
                 </div>
             </div>
             <div className='pp-hub-plugins-list-item-actions'>
-                <ActionButton
-                    pluginFamily={pluginFamily}
-                    inProgress={inProgress}
-                    onInstall={onInstall}
-                    onResolveConflict={onResolveConflict}
-                    onUpgradeToPro={onUpgradeToPro}
-                    onManageLicense={onManageLicense}
-                    onActivateLicense={onActivateLicense}
-                />
+                <VStack>
+                    <ActionButton
+                        pluginFamily={pluginFamily}
+                        inProgress={inProgress}
+                        onInstall={onInstall}
+                        onResolveConflict={onResolveConflict}
+                        onUpgradeToPro={onUpgradeToPro}
+                        onManageLicense={onManageLicense}
+                        onActivateLicense={onActivateLicense}
+                    />
+                </VStack>
             </div>
         </div>
     );

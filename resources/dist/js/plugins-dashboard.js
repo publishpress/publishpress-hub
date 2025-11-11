@@ -6957,7 +6957,7 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_6__.Button, buttonProps), index < actionButtonsData.length - 1 && /*#__PURE__*/React.createElement("span", null, "|"));
   })))), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-actions"
-  }, /*#__PURE__*/React.createElement(_action_button__WEBPACK_IMPORTED_MODULE_5__.ActionButton, {
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalVStack, null, /*#__PURE__*/React.createElement(_action_button__WEBPACK_IMPORTED_MODULE_5__.ActionButton, {
     pluginFamily: pluginFamily,
     inProgress: inProgress,
     onInstall: onInstall,
@@ -6965,7 +6965,7 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     onUpgradeToPro: onUpgradeToPro,
     onManageLicense: onManageLicense,
     onActivateLicense: onActivateLicense
-  })));
+  }))));
 };
 PluginItemComponent.displayName = 'PluginItem';
 var PluginItem = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(PluginItemComponent);
