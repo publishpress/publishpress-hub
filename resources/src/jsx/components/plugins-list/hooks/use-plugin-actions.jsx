@@ -125,8 +125,9 @@ export const usePluginActions = (modalManager) => {
         openModal(MODAL_TYPES.PLUGIN_INFO, pluginFamily);
     }, [openModal, MODAL_TYPES.PLUGIN_INFO]);
 
-    const handleUpdatePlugin = useCallback(async (pluginSlug) => {
-        const result = await updatePlugin(pluginSlug);
+    const handleUpdatePlugin = useCallback(async (pluginFamily) => {
+        const pluginFamilySlug = typeof pluginFamily === 'string' ? pluginFamily : pluginFamily.slug;
+        const result = await updatePlugin(pluginFamilySlug);
         if (result.success && !result.error) {
             closeModal();
         }
