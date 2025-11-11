@@ -20,6 +20,7 @@ import { ModalLicenseInput } from './modal-license-input';
 import { ModalLicenseManagement } from './modal-license-management';
 import { ModalResolveConflict } from './modal-resolve-conflict';
 import { ModalUpgrade } from './modal-upgrade';
+import { ModalPluginInfo } from './modal-plugin-info';
 
 const ModalRendererComponent = ({
     modalManager,
@@ -38,6 +39,7 @@ const ModalRendererComponent = ({
         handleBuyPlugin,
         handleDeactivateLicense,
         handleActivateLicense,
+        handleUpdatePlugin,
     } = pluginActions;
 
     if (!currentPluginFamily || activeModal === MODAL_TYPES.NONE) {
@@ -150,6 +152,15 @@ const ModalRendererComponent = ({
                     {...modalProps}
                     title={sprintf(__('Activate %s License', 'publishpress-hub'), currentPluginDisplayName)}
                     onActivate={(licenseKey) => handleActivateLicense(currentPluginFamily, licenseKey)}
+                />
+            )}
+
+            {isModalActive(MODAL_TYPES.PLUGIN_INFO) && (
+                <ModalPluginInfo
+                    {...modalProps}
+                    title={sprintf(__('More Info: %s', 'publishpress-hub'), currentPluginDisplayName)}
+                    pluginFamily={currentPluginFamily}
+                    onUpdate={(pluginFamily) => handleUpdatePlugin(pluginFamily.slug)}
                 />
             )}
         </>

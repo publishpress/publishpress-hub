@@ -26,6 +26,7 @@ export const usePluginActions = (modalManager) => {
         resolveConflict,
         deactivateLicense,
         activateLicense,
+        updatePlugin,
     } = useDispatch(store);
 
     const handleOpenInstallationTypeModal = useCallback((pluginFamily) => {
@@ -120,6 +121,18 @@ export const usePluginActions = (modalManager) => {
         closeModal();
     }, [closeModal]);
 
+    const handleOpenPluginInfoModal = useCallback((pluginFamily) => {
+        openModal(MODAL_TYPES.PLUGIN_INFO, pluginFamily);
+    }, [openModal, MODAL_TYPES.PLUGIN_INFO]);
+
+    const handleUpdatePlugin = useCallback(async (pluginSlug) => {
+        const result = await updatePlugin(pluginSlug);
+        if (result.success && !result.error) {
+            closeModal();
+        }
+        return result;
+    }, [updatePlugin, closeModal]);
+
     return {
         // Primary actions
         handleOpenInstallationTypeModal,
@@ -140,5 +153,7 @@ export const usePluginActions = (modalManager) => {
         handleUninstallPlugin,
         handleResolveConflictAction,
         handleBuyPlugin,
+        handleOpenPluginInfoModal,
+        handleUpdatePlugin,
     };
 };

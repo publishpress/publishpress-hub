@@ -557,6 +557,47 @@ export function* activateLicense(pluginFamily, licenseKey) {
     }
 }
 
+export function* updatePlugin(pluginFamilySlug) {
+    try {
+        yield {type: 'UPDATE_PLUGIN_START', data: {pluginFamilySlug}};
+
+        yield apiReady();
+
+        const data = yield apiFetch({
+            path: `${API_NAMESPACE}/plugins/${pluginFamilySlug}/update`,
+            method: 'POST',
+        });
+
+        if (data.success) {
+            yield fetchPlugins();
+
+            yield {type: 'UPDATE_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
+
+            yield createSnackbarNotice(__('Plugin updated successfully', 'publishpress-hub'), 'success');
+
+            return {
+                success: true,
+                pluginFamilySlug,
+                apiResponse: data,
+            };
+        } else {
+            throw new Error(data?.error || 'Plugin update failed');
+        }
+    } catch (error) {
+        yield {type: 'UPDATE_PLUGIN_ERROR', data: {pluginFamilySlug, error: error}};
+
+        yield createNotice(__('Plugin update failed', 'publishpress-hub'), 'error');
+
+        error = handleErrorMessageOnContext(error);
+
+        return {
+            success: false,
+            pluginFamilySlug,
+            error,
+        };
+    }
+}
+
 export function* cleanupError(pluginFamily) {
     yield {type: 'CLEANUP_ERROR', data: {pluginFamily}};
 }

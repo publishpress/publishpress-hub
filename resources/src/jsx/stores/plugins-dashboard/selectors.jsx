@@ -146,6 +146,10 @@ export const getPluginUpgradeInProgress = (state) => {
     return state.pluginUpgradeInProgress;
 }
 
+export const getPluginUpdateInProgress = (state) => {
+    return state.pluginUpdateInProgress;
+}
+
 export const getPluginResolveConflictInProgress = (state) => {
     return state.pluginResolveConflictInProgress;
 }

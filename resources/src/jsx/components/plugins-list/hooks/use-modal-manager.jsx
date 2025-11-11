@@ -20,6 +20,7 @@ const MODAL_TYPES = {
     UPGRADE_PLUGIN_TO_PRO: 'upgrade-plugin-to-pro',
     RESOLVE_CONFLICT: 'resolve-conflict',
     LICENSE_MANAGEMENT: 'license-management',
+    PLUGIN_INFO: 'plugin-info',
 };
 
 export const useModalManager = () => {

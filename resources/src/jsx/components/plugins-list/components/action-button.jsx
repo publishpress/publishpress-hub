@@ -46,6 +46,12 @@ const ACTION_BUTTON_CONFIGS = {
         loadingText: __('Resolving Conflict...', 'publishpress-hub'),
         icon: 'warning',
     },
+    update: {
+        variant: 'primary',
+        text: __('Update', 'publishpress-hub'),
+        loadingText: __('Updating...', 'publishpress-hub'),
+        icon: 'update',
+    },
 };
 
 const ActionButtonComponent = ({
@@ -56,12 +62,20 @@ const ActionButtonComponent = ({
     onManageLicense,
     onActivateLicense,
     onResolveConflict,
+    onUpdate,
 }) => {
     const getButtonProps = () => {
         if (pluginFamily.hasConflictingInstallations) {
             return {
                 ...ACTION_BUTTON_CONFIGS.conflict,
                 onClick: () => onResolveConflict(pluginFamily),
+            };
+        }
+
+        if (pluginFamily.hasUpdate && pluginFamily.hasAnyVersionInstalled && onUpdate) {
+            return {
+                ...ACTION_BUTTON_CONFIGS.update,
+                onClick: () => onUpdate(pluginFamily),
             };
         }
 

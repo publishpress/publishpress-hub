@@ -46,6 +46,8 @@ const PluginItemComponent = ({
     onUninstall,
     onResolveConflict,
     onDeactivateLicense,
+    onOpenPluginInfo,
+    onUpdate,
 }) => {
     const [isHovered, setIsHovered] = useState(false);
     const { isSmallMobile, isMobile } = useScreenSize();
@@ -57,6 +59,7 @@ const PluginItemComponent = ({
         isDeactivating,
         isActivating,
         isUpgrading,
+        isUpdating,
         isResolvingConflict,
         isActivatingLicense,
         isDeactivatingLicense,
@@ -84,11 +87,11 @@ const PluginItemComponent = ({
         onDeactivateLicense,
     }), [onDeactivate, onActivate, onUninstall, onDeactivateLicense]);
 
-    const actionButtonsData = useActionButtons(pluginFamily, status, loadingStates, handlers);
+    const actionButtonsData = useActionButtons(pluginFamily, status, loadingStates, handlers, onOpenPluginInfo);
 
     const inProgress = useMemo(() =>
-        isInstalling || isUpgrading || isResolvingConflict,
-        [isInstalling, isUpgrading, isResolvingConflict]
+        isInstalling || isUpgrading || isUpdating || isResolvingConflict,
+        [isInstalling, isUpgrading, isUpdating, isResolvingConflict]
     );
 
     const handleMouseEnter = useCallback(() => setIsHovered(true), []);
@@ -200,6 +203,7 @@ const PluginItemComponent = ({
                         onUpgradeToPro={onUpgradeToPro}
                         onManageLicense={onManageLicense}
                         onActivateLicense={onActivateLicense}
+                        onUpdate={onUpdate}
                     />
                 </VStack>
             </div>
