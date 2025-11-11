@@ -215,7 +215,25 @@ class WPPluginLifecycleAdapter
             );
         }
 
-        $upgrader = new \Plugin_Upgrader();
+        // Create a silent skin for the upgrader to avoid requiring admin functions
+        $skin = new class extends \WP_Upgrader_Skin {
+            public function feedback($string, ...$args)
+            {
+                // Silent - do nothing
+            }
+
+            public function header()
+            {
+                // Silent - do nothing
+            }
+
+            public function footer()
+            {
+                // Silent - do nothing
+            }
+        };
+
+        $upgrader = new \Plugin_Upgrader($skin);
 
         // The upgrade method can accept either a string (single plugin) or array (multiple plugins)
         // For a single plugin, pass as string to match WordPress core expectations
