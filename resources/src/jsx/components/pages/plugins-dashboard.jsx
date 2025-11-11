@@ -144,7 +144,7 @@ const PluginsDashboardComponent = () => {
             titleChildren={
                 <Tooltip
                     text={refreshButtonTooltip}
-                    placement='bottom'
+                    placement='top'
                 >
                     <Button
                         variant='link'
