@@ -101,7 +101,7 @@ const PluginsDashboardComponent = () => {
     }, [fetchPlugins, plugins]);
 
     // Check for licenses expiring within the specified days
-    useLicenseExpirationWarning(plugins, 5000);
+    useLicenseExpirationWarning(plugins, 30);
 
     const handleRefresh = useCallback(() => {
         fetchPlugins();

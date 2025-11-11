@@ -98,6 +98,7 @@ class ListPluginsUseCase implements UseCaseInterface
             // Format expiration date for display using WordPress date format
             if (!empty($expirationDate)) {
                 $pluginData['proPlugin']['licenseExpirationDateFormatted'] = $this->formatExpirationDate($expirationDate);
+                $pluginData['proPlugin']['daysUntilExpiration'] = $this->getDaysUntilExpiration($expirationDate);
             }
 
             $plugins[] = $pluginData;
@@ -149,5 +150,29 @@ class ListPluginsUseCase implements UseCaseInterface
         }
 
         return date_i18n(get_option('date_format'), $timestamp);
+    }
+
+    /**
+     * Gets the number of days until the expiration date.
+     *
+     * @param string $expirationDate The expiration date in ISO format (YYYY-MM-DD).
+     * @return int The number of days until the expiration date.
+     * @since 1.0.0
+     */
+    private function getDaysUntilExpiration(string $expirationDate): int
+    {
+        $timestamp = strtotime($expirationDate);
+
+        if ($timestamp === false) {
+            return 0;
+        }
+
+        $today = new \DateTimeImmutable();
+        $today = $today->setTime(0, 0, 0, 0);
+
+        $expirationDate = new \DateTimeImmutable($expirationDate);
+        $expirationDate = $expirationDate->setTime(0, 0, 0, 0);
+
+        return (int) $expirationDate->diff($today)->days;
     }
 }

@@ -5558,6 +5558,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var DAYS_UNTIL_EXPIRATION = 30;
+var MS_PER_DAY = 1000 * 60 * 60 * 24;
 
 /**
  * Hook to check for licenses expiring within the specified days and display a warning notice.
@@ -5585,7 +5586,7 @@ var useLicenseExpirationWarning = function useLicenseExpirationWarning(plugins) 
 
         // Check if expiration date is within the specified days and not in the past
         if (expirationDate >= today && expirationDate <= daysFromNow) {
-          var _daysUntilExpiration = Math.ceil((expirationDate - today) / (1000 * 60 * 60 * 24));
+          var _daysUntilExpiration = Math.ceil((expirationDate - today) / MS_PER_DAY);
           expiringPlugins.push({
             name: plugin.proPlugin.name,
             expirationDate: plugin.proPlugin.licenseExpirationDateFormatted || plugin.proPlugin.licenseExpirationDate,
@@ -5744,7 +5745,7 @@ var PluginsDashboardComponent = function PluginsDashboardComponent() {
   }, [fetchPlugins, plugins]);
 
   // Check for licenses expiring within the specified days
-  (0,_hooks_use_license_expiration_warning__WEBPACK_IMPORTED_MODULE_11__.useLicenseExpirationWarning)(plugins, 5000);
+  (0,_hooks_use_license_expiration_warning__WEBPACK_IMPORTED_MODULE_11__.useLicenseExpirationWarning)(plugins, 30);
   var handleRefresh = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useCallback)(function () {
     fetchPlugins();
   }, [fetchPlugins]);
@@ -7000,6 +7001,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var DAYS_UNTIL_EXPIRATION_DATE_THRESHOLD = 60;
 var STATUS_BADGE_CONFIGS = {
   installing: {
     text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Installing', 'publishpress-hub'),
@@ -7109,6 +7111,10 @@ var StatusFlagComponent = function StatusFlagComponent(_ref) {
   // Display expiration date for licensed plugins
   var expirationDate = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     if (props === STATUS_BADGE_CONFIGS.licensed && pluginFamily.proPlugin.isLicensed && pluginFamily.proPlugin.licenseExpirationDateFormatted) {
+      // Do not display expiration date if it is more than DAYS_UNTIL_EXPIRATION_DATE_THRESHOLD days away.
+      if (pluginFamily.proPlugin.daysUntilExpiration && pluginFamily.proPlugin.daysUntilExpiration >= DAYS_UNTIL_EXPIRATION_DATE_THRESHOLD) {
+        return null;
+      }
       return pluginFamily.proPlugin.licenseExpirationDateFormatted;
     }
     return null;

@@ -14,6 +14,7 @@ import { useDispatch } from '@wordpress/data';
 import { __, sprintf } from '@publishpress-hub/i18n';
 
 const DAYS_UNTIL_EXPIRATION = 30;
+const MS_PER_DAY = 1000 * 60 * 60 * 24;
 
 /**
  * Hook to check for licenses expiring within the specified days and display a warning notice.
@@ -49,7 +50,7 @@ export const useLicenseExpirationWarning = (plugins, daysUntilExpiration = DAYS_
                     expirationDate <= daysFromNow
                 ) {
                     const daysUntilExpiration = Math.ceil(
-                        (expirationDate - today) / (1000 * 60 * 60 * 24)
+                        (expirationDate - today) / MS_PER_DAY
                     );
                     expiringPlugins.push({
                         name: plugin.proPlugin.name,

@@ -14,6 +14,8 @@ import { __ } from '@publishpress-hub/i18n';
 
 import { Badge } from '../../badge/badge';
 
+const DAYS_UNTIL_EXPIRATION_DATE_THRESHOLD = 60;
+
 const STATUS_BADGE_CONFIGS = {
     installing: {
         text: __('Installing', 'publishpress-hub'),
@@ -130,8 +132,17 @@ const StatusFlagComponent = ({
             pluginFamily.proPlugin.isLicensed &&
             pluginFamily.proPlugin.licenseExpirationDateFormatted
         ) {
+            // Do not display expiration date if it is more than DAYS_UNTIL_EXPIRATION_DATE_THRESHOLD days away.
+            if (
+                pluginFamily.proPlugin.daysUntilExpiration
+                && pluginFamily.proPlugin.daysUntilExpiration >= DAYS_UNTIL_EXPIRATION_DATE_THRESHOLD
+            ) {
+                return null;
+            }
+
             return pluginFamily.proPlugin.licenseExpirationDateFormatted;
         }
+
         return null;
     }, [props, pluginFamily]);
 
