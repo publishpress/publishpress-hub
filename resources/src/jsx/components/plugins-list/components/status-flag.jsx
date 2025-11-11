@@ -123,7 +123,28 @@ const StatusFlagComponent = ({
         return null;
     }
 
-    return <Badge {...props}>{props.text}</Badge>;
+    // Display expiration date for licensed plugins
+    const expirationDate = useMemo(() => {
+        if (
+            props === STATUS_BADGE_CONFIGS.licensed &&
+            pluginFamily.proPlugin.isLicensed &&
+            pluginFamily.proPlugin.licenseExpirationDateFormatted
+        ) {
+            return pluginFamily.proPlugin.licenseExpirationDateFormatted;
+        }
+        return null;
+    }, [props, pluginFamily]);
+
+    return (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+            <Badge {...props}>{props.text}</Badge>
+            {expirationDate && (
+                <span style={{ fontSize: '12px', color: 'var(--pp-hub-text-secondary, #666)' }}>
+                    {__('Expires', 'publishpress-hub')} {expirationDate}
+                </span>
+            )}
+        </div>
+    );
 }
 
 StatusFlagComponent.displayName = 'StatusFlag';

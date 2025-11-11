@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
 use PublishPress\Hub\Application\DTO\Plugin\PluginFamilyDto;
+use PublishPress\Hub\Application\Service\License\Contract\LicenseManagementServiceInterface;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
@@ -28,15 +29,19 @@ class ListPluginsUseCase implements UseCaseInterface
 
     private LicensePersistenceInterface $licensePersistence;
 
+    private LicenseManagementServiceInterface $licenseManagement;
+
     /**
      * @since 1.0.0
      */
     public function __construct(
         PluginStatusService $pluginStatusService,
-        LicensePersistenceInterface $licensePersistence
+        LicensePersistenceInterface $licensePersistence,
+        LicenseManagementServiceInterface $licenseManagement
     ) {
         $this->pluginStatusService = $pluginStatusService;
         $this->licensePersistence = $licensePersistence;
+        $this->licenseManagement = $licenseManagement;
     }
 
     /**
@@ -82,10 +87,18 @@ class ListPluginsUseCase implements UseCaseInterface
                 ->setIsAnyVersionActive($family->hasAnyVersionActive())
                 ->setHasConflictingInstallations($family->hasConflictingInstallations());
 
+            $expirationDate = $this->getLicenseExpirationDate($proPlugin);
+            $dto->setProPluginLicenseExpirationDate($expirationDate);
+
             $pluginData = $dto->toArray();
 
             $licenseKey = $this->getLicenseKey($proPlugin);
             $pluginData['proPlugin']['licenseKey'] = esc_html($licenseKey);
+
+            // Format expiration date for display using WordPress date format
+            if (!empty($expirationDate)) {
+                $pluginData['proPlugin']['licenseExpirationDateFormatted'] = $this->formatExpirationDate($expirationDate);
+            }
 
             $plugins[] = $pluginData;
         }
@@ -106,5 +119,35 @@ class ListPluginsUseCase implements UseCaseInterface
     private function getLicenseKey(ProPluginInterface $proPlugin): string
     {
         return $this->licensePersistence->getLicenseKey($proPlugin->getDownloadId()) ?? '';
+    }
+
+    /**
+     * Gets the license expiration date for a given plugin.
+     *
+     * @param ProPluginInterface $proPlugin The plugin.
+     * @return string|null The expiration date in ISO format (YYYY-MM-DD) or null.
+     * @since 1.0.0
+     */
+    private function getLicenseExpirationDate(ProPluginInterface $proPlugin): ?string
+    {
+        return $this->licenseManagement->getStoredLicenseExpirationDate($proPlugin->getDownloadId());
+    }
+
+    /**
+     * Formats the expiration date using WordPress date format.
+     *
+     * @param string $expirationDate The expiration date in ISO format (YYYY-MM-DD).
+     * @return string The formatted date.
+     * @since 1.0.0
+     */
+    private function formatExpirationDate(string $expirationDate): string
+    {
+        $timestamp = strtotime($expirationDate);
+
+        if ($timestamp === false) {
+            return $expirationDate;
+        }
+
+        return date_i18n(get_option('date_format'), $timestamp);
     }
 }

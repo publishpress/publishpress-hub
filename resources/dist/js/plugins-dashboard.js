@@ -5527,6 +5527,107 @@ var SnackbarList = function SnackbarList() {
 
 /***/ }),
 
+/***/ "./resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx":
+/*!*************************************************************************************!*\
+  !*** ./resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useLicenseExpirationWarning: () => (/* binding */ useLicenseExpirationWarning)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/**
+ * Use license expiration warning hook.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\pages\hooks
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+
+
+
+var DAYS_UNTIL_EXPIRATION = 30;
+
+/**
+ * Hook to check for licenses expiring within the specified days and display a warning notice.
+ *
+ * @param {Array} plugins The plugins array to check for expiring licenses.
+ * @since 1.0.0
+ */
+var useLicenseExpirationWarning = function useLicenseExpirationWarning(plugins) {
+  var daysUntilExpiration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DAYS_UNTIL_EXPIRATION;
+  var _useDispatch = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useDispatch)('core/notices'),
+    createNotice = _useDispatch.createNotice;
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!plugins || plugins.length === 0) {
+      return;
+    }
+    var expiringPlugins = [];
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    var daysFromNow = new Date(today);
+    daysFromNow.setDate(today.getDate() + daysUntilExpiration);
+    plugins.forEach(function (plugin) {
+      if (plugin.proPlugin.isLicensed && plugin.proPlugin.licenseExpirationDate) {
+        var expirationDate = new Date(plugin.proPlugin.licenseExpirationDate);
+        expirationDate.setHours(0, 0, 0, 0);
+
+        // Check if expiration date is within the specified days and not in the past
+        if (expirationDate >= today && expirationDate <= daysFromNow) {
+          var _daysUntilExpiration = Math.ceil((expirationDate - today) / (1000 * 60 * 60 * 24));
+          expiringPlugins.push({
+            name: plugin.proPlugin.name,
+            expirationDate: plugin.proPlugin.licenseExpirationDateFormatted || plugin.proPlugin.licenseExpirationDate,
+            daysUntilExpiration: _daysUntilExpiration
+          });
+        }
+      }
+    });
+    if (expiringPlugins.length > 0) {
+      var expirationDates = expiringPlugins.map(function (p) {
+        return "".concat(p.name, " (").concat(p.expirationDate, ")");
+      }).join(', ');
+      var baseMessage;
+      if (expiringPlugins.length === 1) {
+        var plugin = expiringPlugins[0];
+        baseMessage = (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(
+        // translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
+        (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Warning: The license for %1$s expires on %2$s (%3$d days remaining).', 'publishpress-hub'), plugin.name, plugin.expirationDate, plugin.daysUntilExpiration);
+      } else {
+        baseMessage = (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(
+        // translators: %1$d is the number of plugins, %2$d is the number of days, %3$s is the list of plugins and expiration dates
+        (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Warning: %1$d plugin(s) have licenses expiring within %2$d days: %3$s', 'publishpress-hub'), expiringPlugins.length, daysUntilExpiration, expirationDates);
+      }
+
+      // Add renewal link
+      var renewUrl = 'https://publishpress.com/dashboard/?active_tab=subscriptions';
+      var renewLink = "<div class=\"pp-hub-renew-link\"><a href=\"".concat(renewUrl, "\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"components-button pp-hub-button is-secondary has-text has-icon\"><span class=\"dashicons dashicons-cart\"></span> ").concat((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Renew now', 'publishpress-hub'), "</a></div>");
+
+      // translators: %1$s is the base warning, %2$s is a renew link.
+      var message = baseMessage + '<br/>' + renewLink;
+      createNotice('warning', message, {
+        id: 'pp-hub-license-expiration-warning',
+        isDismissible: true,
+        // Allow HTML for the renew link
+        __unstableHTML: true
+      });
+    }
+  }, [plugins, createNotice, daysUntilExpiration]);
+};
+
+/***/ }),
+
 /***/ "./resources/src/jsx/components/pages/plugins-dashboard.jsx":
 /*!******************************************************************!*\
   !*** ./resources/src/jsx/components/pages/plugins-dashboard.jsx ***!
@@ -5552,6 +5653,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _notices_SnackbarList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../notices/SnackbarList */ "./resources/src/jsx/components/notices/SnackbarList.jsx");
 /* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../buttons/button */ "./resources/src/jsx/components/buttons/button.jsx");
 /* harmony import */ var _admin_page_footer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../admin-page/footer */ "./resources/src/jsx/components/admin-page/footer.jsx");
+/* harmony import */ var _hooks_use_license_expiration_warning__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./hooks/use-license-expiration-warning */ "./resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx");
 /**
  * Plugins dashboard.
  *
@@ -5561,6 +5663,7 @@ __webpack_require__.r(__webpack_exports__);
  * @license GPL v2 or later
  * @since 1.0.0
  */
+
 
 
 
@@ -5639,6 +5742,9 @@ var PluginsDashboardComponent = function PluginsDashboardComponent() {
       fetchPlugins();
     }
   }, [fetchPlugins, plugins]);
+
+  // Check for licenses expiring within the specified days
+  (0,_hooks_use_license_expiration_warning__WEBPACK_IMPORTED_MODULE_11__.useLicenseExpirationWarning)(plugins, 5000);
   var handleRefresh = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useCallback)(function () {
     fetchPlugins();
   }, [fetchPlugins]);
@@ -6999,7 +7105,27 @@ var StatusFlagComponent = function StatusFlagComponent(_ref) {
   if (!props) {
     return null;
   }
-  return /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_2__.Badge, props, props.text);
+
+  // Display expiration date for licensed plugins
+  var expirationDate = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    if (props === STATUS_BADGE_CONFIGS.licensed && pluginFamily.proPlugin.isLicensed && pluginFamily.proPlugin.licenseExpirationDateFormatted) {
+      return pluginFamily.proPlugin.licenseExpirationDateFormatted;
+    }
+    return null;
+  }, [props, pluginFamily]);
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
+      flexWrap: 'wrap'
+    }
+  }, /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_2__.Badge, props, props.text), expirationDate && /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: '12px',
+      color: 'var(--pp-hub-text-secondary, #666)'
+    }
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Expires', 'publishpress-hub'), " ", expirationDate));
 };
 StatusFlagComponent.displayName = 'StatusFlag';
 var StatusFlag = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(StatusFlagComponent);

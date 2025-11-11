@@ -21,6 +21,7 @@ import NoticesList from '../notices/NoticesList';
 import SnackbarList from '../notices/SnackbarList';
 import { Button } from '../buttons/button';
 import { Footer } from '../admin-page/footer';
+import { useLicenseExpirationWarning } from './hooks/use-license-expiration-warning';
 
 const {
     logoUrl,
@@ -98,6 +99,9 @@ const PluginsDashboardComponent = () => {
             fetchPlugins();
         }
     }, [fetchPlugins, plugins]);
+
+    // Check for licenses expiring within the specified days
+    useLicenseExpirationWarning(plugins, 5000);
 
     const handleRefresh = useCallback(() => {
         fetchPlugins();

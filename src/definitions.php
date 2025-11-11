@@ -257,7 +257,8 @@ return [
     AbstractDependencies::LIST_PLUGINS_USE_CASE =>
         fn(ContainerInterface $container) => new ListPluginsUseCase(
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
         ),
 
     AbstractDependencies::INSTALL_FREE_PLUGIN_USE_CASE =>

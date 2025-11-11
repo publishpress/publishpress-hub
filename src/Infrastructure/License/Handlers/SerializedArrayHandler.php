@@ -23,6 +23,7 @@ class SerializedArrayHandler implements LicenseOptionHandlerInterface
     private string $optionName;
     private string $licenseKeyKey;
     private string $licenseStatusKey;
+    private string $licenseExpirationKey;
     private string $licenseStatusInvalid;
     private string $licenseStatusValid;
 
@@ -40,6 +41,7 @@ class SerializedArrayHandler implements LicenseOptionHandlerInterface
         $this->optionName = $optionName;
         $this->licenseKeyKey = $licenseKeyKey ?? 'license_key';
         $this->licenseStatusKey = $licenseStatusKey ?? 'license_status';
+        $this->licenseExpirationKey = 'license_expiration';
         $this->licenseStatusValid = $licenseStatusValid ?? 'valid';
         $this->licenseStatusInvalid = $licenseStatusInvalid ?? 'invalid';
     }
@@ -124,6 +126,44 @@ class SerializedArrayHandler implements LicenseOptionHandlerInterface
     }
 
     /**
+     * Store the license expiration date for a specific download ID.
+     *
+     * @param int $downloadId The download ID to associate with the expiration date.
+     * @param string|null $expirationDate The expiration date in ISO format (YYYY-MM-DD) or null.
+     * @since 1.0.0
+     */
+    public function storeLicenseExpirationDate(int $downloadId, ?string $expirationDate): void
+    {
+        $currentValue = $this->optionsAdapter->getOption($this->optionName);
+
+        if (empty($currentValue)) {
+            $currentValue = [];
+        }
+
+        $currentValue[$this->licenseExpirationKey] = $expirationDate;
+
+        $this->optionsAdapter->updateOption($this->optionName, $currentValue);
+    }
+
+    /**
+     * Get the license expiration date for a specific download ID.
+     *
+     * @param int $downloadId The download ID to look up.
+     * @return string|null The expiration date in ISO format (YYYY-MM-DD) if found, null otherwise.
+     * @since 1.0.0
+     */
+    public function getLicenseExpirationDate(int $downloadId): ?string
+    {
+        $currentValue = $this->optionsAdapter->getOption($this->optionName);
+
+        if (empty($currentValue)) {
+            return null;
+        }
+
+        return $currentValue[$this->licenseExpirationKey] ?? null;
+    }
+
+    /**
      * Remove the license key and status for a specific download ID.
      *
      * @param int $downloadId The download ID to remove the license key for.
@@ -139,6 +179,7 @@ class SerializedArrayHandler implements LicenseOptionHandlerInterface
 
         unset($currentValue[$this->licenseKeyKey]);
         unset($currentValue[$this->licenseStatusKey]);
+        unset($currentValue[$this->licenseExpirationKey]);
 
         $this->optionsAdapter->updateOption($this->optionName, $currentValue);
     }
