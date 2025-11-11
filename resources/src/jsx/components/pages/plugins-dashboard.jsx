@@ -21,6 +21,7 @@ import NoticesList from '../notices/NoticesList';
 import SnackbarList from '../notices/SnackbarList';
 import { Button } from '../buttons/button';
 import { Footer } from '../admin-page/footer';
+import { Tooltip } from '../tooltip';
 import { useLicenseExpirationWarning } from './hooks/use-license-expiration-warning';
 
 const {
@@ -132,19 +133,28 @@ const PluginsDashboardComponent = () => {
         fetchPlugins(isAltPressed);
     }, [fetchPlugins, isAltPressed]);
 
+    const refreshButtonTooltip = useMemo(() => {
+        return __('Hold ALT and click to force refresh the update cache', 'publishpress-hub');
+    }, []);
+
     return (
         <AdminPageLayout
             title={title}
             logoUrl={logoUrl}
             titleChildren={
-                <Button
-                    variant='link'
-                    onClick={handleRefresh}
-                    isLoading={isLoading}
-                    spinnerPosition='left'
+                <Tooltip
+                    text={refreshButtonTooltip}
+                    placement='bottom'
                 >
-                    {isAltPressed ? __('Force Refresh', 'publishpress-hub') : __('Refresh', 'publishpress-hub')}
-                </Button>
+                    <Button
+                        variant='link'
+                        onClick={handleRefresh}
+                        isLoading={isLoading}
+                        spinnerPosition='left'
+                    >
+                        {isAltPressed ? __('Force Refresh', 'publishpress-hub') : __('Refresh', 'publishpress-hub')}
+                    </Button>
+                </Tooltip>
             }
         >
             <div className="pp-hub-plugins-dashboard">
