@@ -122,6 +122,8 @@ abstract class AbstractDependencies
 
     public const UPGRADE_PLUGIN_USE_CASE = 'publishpress-hub.application.use-case.plugin.upgrade';
 
+    public const UPDATE_PLUGIN_USE_CASE = 'publishpress-hub.application.use-case.plugin.update';
+
     public const RESOLVE_CONFLICT_USE_CASE = 'publishpress-hub.application.use-case.plugin.resolve-conflict';
 
     public const DEACTIVATE_LICENSE_USE_CASE = 'publishpress-hub.application.use-case.plugin.deactivate-license';

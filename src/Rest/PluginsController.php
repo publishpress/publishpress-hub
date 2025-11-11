@@ -22,6 +22,7 @@ use PublishPress\Hub\Application\UseCase\Plugin\InstallFreePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UninstallPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UpgradePluginUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\UpdatePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ResolveConflictUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\DeactivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ActivateLicenseUseCase;
@@ -40,6 +41,7 @@ class PluginsController implements BootableInterface
     private ChangePluginActivationUseCase $changePluginActivationUseCase;
     private UninstallPluginUseCase $uninstallPluginUseCase;
     private UpgradePluginUseCase $upgradePluginUseCase;
+    private UpdatePluginUseCase $updatePluginUseCase;
     private ResolveConflictUseCase $resolveConflictUseCase;
     private DeactivateLicenseUseCase $deactivateLicenseUseCase;
     private ActivateLicenseUseCase $activateLicenseUseCase;
@@ -54,6 +56,7 @@ class PluginsController implements BootableInterface
      * @param ChangePluginActivationUseCase $changePluginActivationUseCase
      * @param UninstallPluginUseCase $uninstallPluginUseCase
      * @param UpgradePluginUseCase $upgradePluginUseCase
+     * @param UpdatePluginUseCase $updatePluginUseCase
      * @param ResolveConflictUseCase $resolveConflictUseCase
      * @param DeactivateLicenseUseCase $deactivateLicenseUseCase
      * @param ActivateLicenseUseCase $activateLicenseUseCase
@@ -68,6 +71,7 @@ class PluginsController implements BootableInterface
         ChangePluginActivationUseCase $changePluginActivationUseCase,
         UninstallPluginUseCase $uninstallPluginUseCase,
         UpgradePluginUseCase $upgradePluginUseCase,
+        UpdatePluginUseCase $updatePluginUseCase,
         ResolveConflictUseCase $resolveConflictUseCase,
         DeactivateLicenseUseCase $deactivateLicenseUseCase,
         ActivateLicenseUseCase $activateLicenseUseCase
@@ -79,6 +83,7 @@ class PluginsController implements BootableInterface
         $this->changePluginActivationUseCase = $changePluginActivationUseCase;
         $this->uninstallPluginUseCase = $uninstallPluginUseCase;
         $this->upgradePluginUseCase = $upgradePluginUseCase;
+        $this->updatePluginUseCase = $updatePluginUseCase;
         $this->resolveConflictUseCase = $resolveConflictUseCase;
         $this->restApiNamespace = $restApiNamespace;
         $this->deactivateLicenseUseCase = $deactivateLicenseUseCase;
@@ -167,6 +172,15 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/upgrade',
             WP_REST_Server::CREATABLE,
             $this->upgradePluginUseCase,
+            [$this, 'checkPermissions']
+        ));
+
+        // POST /plugins/{familySlug}/update
+        $this->restApiService->addRoute(new RestRoute(
+            $this->restApiNamespace,
+            '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/update',
+            WP_REST_Server::CREATABLE,
+            $this->updatePluginUseCase,
             [$this, 'checkPermissions']
         ));
 

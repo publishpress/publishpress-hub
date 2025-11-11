@@ -166,4 +166,47 @@ class WPPluginLifecycleAdapter
 
         return true;
     }
+
+    /**
+     * Update a plugin.
+     *
+     * This function will update a plugin using WordPress native Plugin_Upgrader.
+     *
+     * @param string $pluginPath The plugin path.
+     * @return bool True if the plugin was updated, false otherwise.
+     * @throws RuntimeException
+     * @since 1.0.0
+     */
+    public function updatePlugin(string $pluginPath): bool
+    {
+        if (!class_exists('Plugin_Upgrader')) {
+            require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+        }
+
+        if (!function_exists('get_plugin_updates')) {
+            require_once ABSPATH . 'wp-admin/includes/update.php';
+        }
+
+        $upgrader = new \Plugin_Upgrader();
+
+        $result = $upgrader->upgrade($pluginPath);
+
+        if (is_wp_error($result)) {
+            throw new RuntimeException(
+                sprintf(
+                    // translators: %s is the error message
+                    esc_html__('Failed to update plugin: %s', 'publishpress-hub'),
+                    esc_html($result->get_error_message())
+                )
+            );
+        }
+
+        if ($result === false) {
+            throw new RuntimeException(
+                esc_html__('Plugin update failed', 'publishpress-hub')
+            );
+        }
+
+        return true;
+    }
 }
