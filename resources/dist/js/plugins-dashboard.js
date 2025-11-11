@@ -7773,13 +7773,14 @@ var usePluginActions = function usePluginActions(modalManager) {
     openModal(MODAL_TYPES.PLUGIN_INFO, pluginFamily);
   }, [openModal, MODAL_TYPES.PLUGIN_INFO]);
   var handleUpdatePlugin = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(/*#__PURE__*/function () {
-    var _ref6 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6(pluginSlug) {
-      var result;
+    var _ref6 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6(pluginFamily) {
+      var pluginFamilySlug, result;
       return _regenerator().w(function (_context6) {
         while (1) switch (_context6.n) {
           case 0:
+            pluginFamilySlug = typeof pluginFamily === 'string' ? pluginFamily : pluginFamily.slug;
             _context6.n = 1;
-            return updatePlugin(pluginSlug);
+            return updatePlugin(pluginFamilySlug);
           case 1:
             result = _context6.v;
             if (result.success && !result.error) {
