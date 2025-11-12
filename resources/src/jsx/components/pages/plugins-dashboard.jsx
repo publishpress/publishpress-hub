@@ -68,6 +68,11 @@ const createFilterOptions = (filterCounts) => [
         value: 'notInstalled',
         total: filterCounts.notInstalled,
     },
+    {
+        label: __('Updates available', 'publishpress-hub'),
+        value: 'updatesAvailable',
+        total: filterCounts.updatesAvailable,
+    },
 ];
 
 const PluginsDashboardComponent = () => {
@@ -92,7 +97,7 @@ const PluginsDashboardComponent = () => {
     // Optimize filterOptions memoization with stable reference
     const filterOptions = useMemo(() => {
         return createFilterOptions(filterCounts);
-    }, [filterCounts.all, filterCounts.unlicensed, filterCounts.active, filterCounts.inactive, filterCounts.notInstalled]);
+    }, [filterCounts.all, filterCounts.unlicensed, filterCounts.active, filterCounts.inactive, filterCounts.notInstalled, filterCounts.updatesAvailable]);
 
     useEffect(() => {
         // Improved approach: Check if plugins are already available before fetching
