@@ -5723,6 +5723,10 @@ var createFilterOptions = function createFilterOptions(filterCounts) {
     label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Not installed', 'publishpress-hub'),
     value: 'notInstalled',
     total: filterCounts.notInstalled
+  }, {
+    label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Updates available', 'publishpress-hub'),
+    value: 'updatesAvailable',
+    total: filterCounts.updatesAvailable
   }];
 };
 var PluginsDashboardComponent = function PluginsDashboardComponent() {
@@ -5744,7 +5748,7 @@ var PluginsDashboardComponent = function PluginsDashboardComponent() {
   // Optimize filterOptions memoization with stable reference
   var filterOptions = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
     return createFilterOptions(filterCounts);
-  }, [filterCounts.all, filterCounts.unlicensed, filterCounts.active, filterCounts.inactive, filterCounts.notInstalled]);
+  }, [filterCounts.all, filterCounts.unlicensed, filterCounts.active, filterCounts.inactive, filterCounts.notInstalled, filterCounts.updatesAvailable]);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     // Improved approach: Check if plugins are already available before fetching
     if (!plugins || plugins.length === 0) {
@@ -6540,6 +6544,7 @@ __webpack_require__.r(__webpack_exports__);
 var ModalPluginInfoComponent = function ModalPluginInfoComponent(_ref) {
   var onClose = _ref.onClose,
     onUpdate = _ref.onUpdate,
+    onCheckForUpdates = _ref.onCheckForUpdates,
     error = _ref.error,
     buttonInProgress = _ref.buttonInProgress,
     pluginFamily = _ref.pluginFamily,
@@ -6548,6 +6553,7 @@ var ModalPluginInfoComponent = function ModalPluginInfoComponent(_ref) {
   var currentVersion = installedPlugin.version || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Unknown', 'publishpress-hub');
   var hasUpdate = pluginFamily.hasUpdate || false;
   var availableVersion = pluginFamily.availableVersion || null;
+  var isInstalled = pluginFamily.hasAnyVersionInstalled || false;
   return /*#__PURE__*/React.createElement(_modal__WEBPACK_IMPORTED_MODULE_4__.Modal, {
     title: title || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Plugin Information', 'publishpress-hub'),
     className: "pp-hub-modal-plugin-info",
@@ -6573,7 +6579,14 @@ var ModalPluginInfoComponent = function ModalPluginInfoComponent(_ref) {
       return onUpdate(pluginFamily);
     },
     isLoading: buttonInProgress
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Update Plugin', 'publishpress-hub')));
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Update Plugin', 'publishpress-hub')), !hasUpdate && isInstalled && onCheckForUpdates && /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "secondary",
+    icon: "update",
+    onClick: function onClick() {
+      return onCheckForUpdates();
+    },
+    isLoading: buttonInProgress
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Check for Updates', 'publishpress-hub')));
 };
 var ModalPluginInfo = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(ModalPluginInfoComponent);
 
@@ -6652,12 +6665,16 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     handleBuyPlugin = pluginActions.handleBuyPlugin,
     handleDeactivateLicense = pluginActions.handleDeactivateLicense,
     handleActivateLicense = pluginActions.handleActivateLicense,
-    handleUpdatePlugin = pluginActions.handleUpdatePlugin;
+    handleUpdatePlugin = pluginActions.handleUpdatePlugin,
+    handleCheckForUpdates = pluginActions.handleCheckForUpdates;
   if (!currentPluginFamily || activeModal === MODAL_TYPES.NONE) {
     return null;
   }
   var _useDispatch = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useDispatch)(_stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_3__.store),
     cleanupError = _useDispatch.cleanupError;
+  var isLoading = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useSelect)(function (select) {
+    return select(_stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_3__.store).getIsLoading();
+  }, []);
   var processedError = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     var _error$context;
     if (!currentPluginState.error) return null;
@@ -6668,15 +6685,17 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     return error;
   }, [currentPluginState.error]);
   var modalProps = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    // For plugin info modal, include isLoading state for "Check for Updates" button
+    var buttonInProgress = isModalActive(MODAL_TYPES.PLUGIN_INFO) ? currentPluginState.inProgress || isLoading : currentPluginState.inProgress;
     return {
       onClose: function onClose() {
         closeModal();
         cleanupError(currentPluginFamily);
       },
       error: processedError,
-      buttonInProgress: currentPluginState.inProgress
+      buttonInProgress: buttonInProgress
     };
-  }, [currentPluginFamily, closeModal, cleanupError, currentPluginState.inProgress, processedError]);
+  }, [currentPluginFamily, closeModal, cleanupError, currentPluginState.inProgress, processedError, isLoading, isModalActive, MODAL_TYPES.PLUGIN_INFO]);
   return /*#__PURE__*/React.createElement(React.Fragment, null, isModalActive(MODAL_TYPES.INSTALLATION_TYPE) && /*#__PURE__*/React.createElement(_modal_installation_type__WEBPACK_IMPORTED_MODULE_5__.ModalInstallationType, _extends({}, modalProps, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Install %s', 'publishpress-hub'), currentPluginDisplayName),
     onProClick: function onProClick() {
@@ -6747,7 +6766,8 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     pluginFamily: currentPluginFamily,
     onUpdate: function onUpdate(pluginFamily) {
       return handleUpdatePlugin(pluginFamily.slug);
-    }
+    },
+    onCheckForUpdates: handleCheckForUpdates
   })));
 };
 var ModalRenderer = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(ModalRendererComponent);
@@ -7060,10 +7080,6 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     alt: pluginFamily.name
   })), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-info"
-  }, /*#__PURE__*/React.createElement(_tooltip__WEBPACK_IMPORTED_MODULE_3__.Tooltip, {
-    text: tooltipText,
-    placement: "top",
-    useCustom: true
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-name"
   }, shouldShowToggle && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
@@ -7076,14 +7092,23 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
         onDeactivate(pluginFamily);
       }
     }
-  }), /*#__PURE__*/React.createElement("span", null, displayName), /*#__PURE__*/React.createElement(_status_flag__WEBPACK_IMPORTED_MODULE_4__.StatusFlag, {
+  }), /*#__PURE__*/React.createElement(_tooltip__WEBPACK_IMPORTED_MODULE_3__.Tooltip, {
+    text: tooltipText,
+    placement: "top",
+    useCustom: true
+  }, /*#__PURE__*/React.createElement("span", null, displayName)), pluginFamily.hasUpdate && pluginFamily.hasAnyVersionInstalled && /*#__PURE__*/React.createElement(_tooltip__WEBPACK_IMPORTED_MODULE_3__.Tooltip, {
+    text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Update available: %s', 'publishpress-hub'), pluginFamily.availableVersion || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('New version available', 'publishpress-hub')),
+    placement: "top"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pp-hub-plugin-update-indicator dashicons dashicons-warning"
+  })), /*#__PURE__*/React.createElement(_status_flag__WEBPACK_IMPORTED_MODULE_4__.StatusFlag, {
     pluginFamily: pluginFamily,
     isInstalling: isInstalling,
     isUninstalling: isUninstalling,
     isUpgrading: isUpgrading,
     isDeactivating: isDeactivating,
     isActivating: isActivating
-  }))), /*#__PURE__*/React.createElement("div", {
+  })), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-description"
   }, pluginFamily.description), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-inline-actions"
@@ -7622,7 +7647,8 @@ var usePluginActions = function usePluginActions(modalManager) {
     resolveConflict = _useDispatch.resolveConflict,
     deactivateLicense = _useDispatch.deactivateLicense,
     activateLicense = _useDispatch.activateLicense,
-    updatePlugin = _useDispatch.updatePlugin;
+    updatePlugin = _useDispatch.updatePlugin,
+    fetchPlugins = _useDispatch.fetchPlugins;
   var handleOpenInstallationTypeModal = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (pluginFamily) {
     openModal(MODAL_TYPES.INSTALLATION_TYPE, pluginFamily);
   }, [openModal, MODAL_TYPES]);
@@ -7794,6 +7820,19 @@ var usePluginActions = function usePluginActions(modalManager) {
       return _ref6.apply(this, arguments);
     };
   }(), [updatePlugin, closeModal]);
+  var handleCheckForUpdates = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7() {
+    var result;
+    return _regenerator().w(function (_context7) {
+      while (1) switch (_context7.n) {
+        case 0:
+          _context7.n = 1;
+          return fetchPlugins(true);
+        case 1:
+          result = _context7.v;
+          return _context7.a(2, result);
+      }
+    }, _callee7);
+  })), [fetchPlugins]);
   return {
     // Primary actions
     handleOpenInstallationTypeModal: handleOpenInstallationTypeModal,
@@ -7815,7 +7854,8 @@ var usePluginActions = function usePluginActions(modalManager) {
     handleResolveConflictAction: handleResolveConflictAction,
     handleBuyPlugin: handleBuyPlugin,
     handleOpenPluginInfoModal: handleOpenPluginInfoModal,
-    handleUpdatePlugin: handleUpdatePlugin
+    handleUpdatePlugin: handleUpdatePlugin,
+    handleCheckForUpdates: handleCheckForUpdates
   };
 };
 
@@ -10144,7 +10184,8 @@ var getFilterCounts = createMemoizedSelector(function (state) {
     unlicensed: [],
     active: [],
     inactive: [],
-    notInstalled: []
+    notInstalled: [],
+    updatesAvailable: []
   };
 
   // Single pass through plugins to calculate all filters
@@ -10161,6 +10202,9 @@ var getFilterCounts = createMemoizedSelector(function (state) {
       } else {
         filterResults.inactive.push(plugin);
       }
+      if (plugin.hasUpdate && plugin.hasAnyVersionInstalled) {
+        filterResults.updatesAvailable.push(plugin);
+      }
     }
   });
   return {
@@ -10168,7 +10212,8 @@ var getFilterCounts = createMemoizedSelector(function (state) {
     unlicensed: filterResults.unlicensed.length,
     active: filterResults.active.length,
     inactive: filterResults.inactive.length,
-    notInstalled: filterResults.notInstalled.length
+    notInstalled: filterResults.notInstalled.length,
+    updatesAvailable: filterResults.updatesAvailable.length
   };
 });
 var filterPlugin = function filterPlugin(plugin, selectedFilter) {
@@ -10181,6 +10226,8 @@ var filterPlugin = function filterPlugin(plugin, selectedFilter) {
       return plugin.hasAnyVersionActive && plugin.hasAnyVersionInstalled;
     case 'inactive':
       return !plugin.hasAnyVersionActive && plugin.hasAnyVersionInstalled;
+    case 'updatesAvailable':
+      return plugin.hasUpdate && plugin.hasAnyVersionInstalled;
     default:
       return true;
   }
