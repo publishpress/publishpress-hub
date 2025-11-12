@@ -9,7 +9,7 @@
  */
 
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useCallback, useMemo, useEffect, memo } from '@wordpress/element';
+import { useCallback, useMemo, useEffect, memo, useState } from '@wordpress/element';
 
 import { __ } from '@publishpress-hub/i18n';
 
@@ -21,6 +21,7 @@ import NoticesList from '../notices/NoticesList';
 import SnackbarList from '../notices/SnackbarList';
 import { Button } from '../buttons/button';
 import { Footer } from '../admin-page/footer';
+import { Tooltip } from '../tooltip';
 import { useLicenseExpirationWarning } from './hooks/use-license-expiration-warning';
 
 const {
@@ -67,6 +68,11 @@ const createFilterOptions = (filterCounts) => [
         value: 'notInstalled',
         total: filterCounts.notInstalled,
     },
+    {
+        label: __('Updates available', 'publishpress-hub'),
+        value: 'updatesAvailable',
+        total: filterCounts.updatesAvailable,
+    },
 ];
 
 const PluginsDashboardComponent = () => {
@@ -91,7 +97,7 @@ const PluginsDashboardComponent = () => {
     // Optimize filterOptions memoization with stable reference
     const filterOptions = useMemo(() => {
         return createFilterOptions(filterCounts);
-    }, [filterCounts.all, filterCounts.unlicensed, filterCounts.active, filterCounts.inactive, filterCounts.notInstalled]);
+    }, [filterCounts.all, filterCounts.unlicensed, filterCounts.active, filterCounts.inactive, filterCounts.notInstalled, filterCounts.updatesAvailable]);
 
     useEffect(() => {
         // Improved approach: Check if plugins are already available before fetching
@@ -103,23 +109,57 @@ const PluginsDashboardComponent = () => {
     // Check for licenses expiring within the specified days
     useLicenseExpirationWarning(plugins, 30);
 
+    const [isAltPressed, setIsAltPressed] = useState(false);
+
+    // Track ALT key state
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === 'Alt' || event.altKey) {
+                setIsAltPressed(true);
+            }
+        };
+
+        const handleKeyUp = (event) => {
+            if (event.key === 'Alt' || !event.altKey) {
+                setIsAltPressed(false);
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        window.addEventListener('keyup', handleKeyUp);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('keyup', handleKeyUp);
+        };
+    }, []);
+
     const handleRefresh = useCallback(() => {
-        fetchPlugins();
-    }, [fetchPlugins]);
+        fetchPlugins(isAltPressed);
+    }, [fetchPlugins, isAltPressed]);
+
+    const refreshButtonTooltip = useMemo(() => {
+        return __('Hold ALT and click to force refresh the update cache', 'publishpress-hub');
+    }, []);
 
     return (
         <AdminPageLayout
             title={title}
             logoUrl={logoUrl}
             titleChildren={
-                <Button
-                    variant='link'
-                    onClick={handleRefresh}
-                    isLoading={isLoading}
-                    spinnerPosition='left'
+                <Tooltip
+                    text={refreshButtonTooltip}
+                    placement='top'
                 >
-                    {__('Refresh', 'publishpress-hub')}
-                </Button>
+                    <Button
+                        variant='link'
+                        onClick={handleRefresh}
+                        isLoading={isLoading}
+                        spinnerPosition='left'
+                    >
+                        {isAltPressed ? __('Force Refresh', 'publishpress-hub') : __('Refresh', 'publishpress-hub')}
+                    </Button>
+                </Tooltip>
             }
         >
             <div className="pp-hub-plugins-dashboard">

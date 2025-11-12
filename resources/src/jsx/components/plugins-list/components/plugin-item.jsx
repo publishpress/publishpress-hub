@@ -8,10 +8,19 @@
  * @since 1.0.0
  */
 
-import { memo, useMemo, Fragment, useState, useCallback, useEffect } from '@wordpress/element';
-import { ToggleControl } from '@wordpress/components';
+import {
+    memo,
+    useMemo,
+    Fragment,
+    useState,
+    useCallback
+} from '@wordpress/element';
+import {
+    ToggleControl,
+    __experimentalVStack as VStack
+} from '@wordpress/components';
 
-import { __ } from '@publishpress-hub/i18n';
+import { __, sprintf } from '@publishpress-hub/i18n';
 
 import { Tooltip } from '../../tooltip';
 import { StatusFlag } from './status-flag';
@@ -37,6 +46,8 @@ const PluginItemComponent = ({
     onUninstall,
     onResolveConflict,
     onDeactivateLicense,
+    onOpenPluginInfo,
+    onUpdate,
 }) => {
     const [isHovered, setIsHovered] = useState(false);
     const { isSmallMobile, isMobile } = useScreenSize();
@@ -48,6 +59,7 @@ const PluginItemComponent = ({
         isDeactivating,
         isActivating,
         isUpgrading,
+        isUpdating,
         isResolvingConflict,
         isActivatingLicense,
         isDeactivatingLicense,
@@ -75,11 +87,11 @@ const PluginItemComponent = ({
         onDeactivateLicense,
     }), [onDeactivate, onActivate, onUninstall, onDeactivateLicense]);
 
-    const actionButtonsData = useActionButtons(pluginFamily, status, loadingStates, handlers);
+    const actionButtonsData = useActionButtons(pluginFamily, status, loadingStates, handlers, onOpenPluginInfo);
 
     const inProgress = useMemo(() =>
-        isInstalling || isUpgrading || isResolvingConflict,
-        [isInstalling, isUpgrading, isResolvingConflict]
+        isInstalling || isUpgrading || isUpdating || isResolvingConflict,
+        [isInstalling, isUpgrading, isUpdating, isResolvingConflict]
     );
 
     const handleMouseEnter = useCallback(() => setIsHovered(true), []);
@@ -126,36 +138,44 @@ const PluginItemComponent = ({
                     <img src={iconSrc} alt={pluginFamily.name} />
                 </div>
                 <div className='pp-hub-plugins-list-item-info'>
-                    <Tooltip
-                        text={tooltipText}
-                        placement='top'
-                        useCustom={true}
-                    >
-                        <div className='pp-hub-plugins-list-item-name'>
-                            {shouldShowToggle && (
-                                <ToggleControl
-                                    disabled={status.hasConflictingInstallations}
-                                    checked={pluginFamily.hasAnyVersionActive}
-                                    onChange={(newValue) => {
-                                        if (newValue) {
-                                            onActivate(pluginFamily);
-                                        } else {
-                                            onDeactivate(pluginFamily);
-                                        }
-                                    }}
-                                />
-                            )}
-                            <span>{displayName}</span>
-                            <StatusFlag
-                                pluginFamily={pluginFamily}
-                                isInstalling={isInstalling}
-                                isUninstalling={isUninstalling}
-                                isUpgrading={isUpgrading}
-                                isDeactivating={isDeactivating}
-                                isActivating={isActivating}
+                    <div className='pp-hub-plugins-list-item-name'>
+                        {shouldShowToggle && (
+                            <ToggleControl
+                                disabled={status.hasConflictingInstallations}
+                                checked={pluginFamily.hasAnyVersionActive}
+                                onChange={(newValue) => {
+                                    if (newValue) {
+                                        onActivate(pluginFamily);
+                                    } else {
+                                        onDeactivate(pluginFamily);
+                                    }
+                                }}
                             />
-                        </div>
-                    </Tooltip>
+                        )}
+                        <Tooltip
+                            text={tooltipText}
+                            placement='top'
+                            useCustom={true}
+                        >
+                            <span>{displayName}</span>
+                        </Tooltip>
+                        {pluginFamily.hasUpdate && pluginFamily.hasAnyVersionInstalled && (
+                            <Tooltip
+                                text={sprintf(__('Update available: %s', 'publishpress-hub'), pluginFamily.availableVersion || __('New version available', 'publishpress-hub'))}
+                                placement='top'
+                            >
+                                <span className="pp-hub-plugin-update-indicator dashicons dashicons-warning" />
+                            </Tooltip>
+                        )}
+                        <StatusFlag
+                            pluginFamily={pluginFamily}
+                            isInstalling={isInstalling}
+                            isUninstalling={isUninstalling}
+                            isUpgrading={isUpgrading}
+                            isDeactivating={isDeactivating}
+                            isActivating={isActivating}
+                        />
+                    </div>
                     <div className='pp-hub-plugins-list-item-description'>
                         {pluginFamily.description}
                     </div>
@@ -182,15 +202,18 @@ const PluginItemComponent = ({
                 </div>
             </div>
             <div className='pp-hub-plugins-list-item-actions'>
-                <ActionButton
-                    pluginFamily={pluginFamily}
-                    inProgress={inProgress}
-                    onInstall={onInstall}
-                    onResolveConflict={onResolveConflict}
-                    onUpgradeToPro={onUpgradeToPro}
-                    onManageLicense={onManageLicense}
-                    onActivateLicense={onActivateLicense}
-                />
+                <VStack>
+                    <ActionButton
+                        pluginFamily={pluginFamily}
+                        inProgress={inProgress}
+                        onInstall={onInstall}
+                        onResolveConflict={onResolveConflict}
+                        onUpgradeToPro={onUpgradeToPro}
+                        onManageLicense={onManageLicense}
+                        onActivateLicense={onActivateLicense}
+                        onUpdate={onUpdate}
+                    />
+                </VStack>
             </div>
         </div>
     );

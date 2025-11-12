@@ -166,4 +166,96 @@ class WPPluginLifecycleAdapter
 
         return true;
     }
+
+    /**
+     * Update a plugin.
+     *
+     * This function will update a plugin using WordPress native Plugin_Upgrader.
+     *
+     * @param string $pluginPath The plugin path.
+     * @return bool True if the plugin was updated, false otherwise.
+     * @throws RuntimeException
+     * @since 1.0.0
+     */
+    public function updatePlugin(string $pluginPath): bool
+    {
+        if (!class_exists('Plugin_Upgrader')) {
+            require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+        }
+
+        if (!function_exists('get_plugin_updates')) {
+            require_once ABSPATH . 'wp-admin/includes/update.php';
+        }
+
+        // Ensure update information is available
+        if (!function_exists('wp_update_plugins')) {
+            require_once ABSPATH . 'wp-admin/includes/update.php';
+        }
+
+        // Refresh update cache to ensure we have the latest update information
+        // This is asynchronous, so we need to wait for it to complete
+        $updateResult = wp_update_plugins();
+
+        // If wp_update_plugins returns an error, we still try to proceed
+        // as the update information might already be cached
+
+        // Verify the plugin has an update available
+        $updates = get_plugin_updates();
+        if (empty($updates) || !isset($updates[$pluginPath])) {
+            throw new RuntimeException(
+                esc_html__('No update available for this plugin', 'publishpress-hub')
+            );
+        }
+
+        // Ensure the update information is properly structured
+        $updateInfo = $updates[$pluginPath];
+        if (!is_object($updateInfo) || !isset($updateInfo->update)) {
+            throw new RuntimeException(
+                esc_html__('Invalid update information for this plugin', 'publishpress-hub')
+            );
+        }
+
+        // Create a silent skin for the upgrader to avoid requiring admin functions
+        $skin = new class extends \WP_Upgrader_Skin {
+            public function feedback($string, ...$args)
+            {
+                // Silent - do nothing
+            }
+
+            public function header()
+            {
+                // Silent - do nothing
+            }
+
+            public function footer()
+            {
+                // Silent - do nothing
+            }
+        };
+
+        $upgrader = new \Plugin_Upgrader($skin);
+
+        // The upgrade method can accept either a string (single plugin) or array (multiple plugins)
+        // For a single plugin, pass as string to match WordPress core expectations
+        // The plugin path should be in the format 'plugin-folder/plugin-file.php'
+        $result = $upgrader->upgrade($pluginPath);
+
+        if (is_wp_error($result)) {
+            throw new RuntimeException(
+                sprintf(
+                    // translators: %s is the error message
+                    esc_html__('Failed to update plugin: %s', 'publishpress-hub'),
+                    esc_html($result->get_error_message())
+                )
+            );
+        }
+
+        if ($result === false) {
+            throw new RuntimeException(
+                esc_html__('Plugin update failed', 'publishpress-hub')
+            );
+        }
+
+        return true;
+    }
 }

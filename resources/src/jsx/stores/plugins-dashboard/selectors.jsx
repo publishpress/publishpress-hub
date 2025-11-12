@@ -146,6 +146,10 @@ export const getPluginUpgradeInProgress = (state) => {
     return state.pluginUpgradeInProgress;
 }
 
+export const getPluginUpdateInProgress = (state) => {
+    return state.pluginUpdateInProgress;
+}
+
 export const getPluginResolveConflictInProgress = (state) => {
     return state.pluginResolveConflictInProgress;
 }
@@ -168,6 +172,7 @@ export const getFilterCounts = createMemoizedSelector((state) => {
         active: [],
         inactive: [],
         notInstalled: [],
+        updatesAvailable: [],
     };
 
     // Single pass through plugins to calculate all filters
@@ -186,6 +191,10 @@ export const getFilterCounts = createMemoizedSelector((state) => {
             } else {
                 filterResults.inactive.push(plugin);
             }
+
+            if (plugin.hasUpdate && plugin.hasAnyVersionInstalled) {
+                filterResults.updatesAvailable.push(plugin);
+            }
         }
     });
 
@@ -195,6 +204,7 @@ export const getFilterCounts = createMemoizedSelector((state) => {
         active: filterResults.active.length,
         inactive: filterResults.inactive.length,
         notInstalled: filterResults.notInstalled.length,
+        updatesAvailable: filterResults.updatesAvailable.length,
     };
 });
 
@@ -208,6 +218,8 @@ const filterPlugin = (plugin, selectedFilter) => {
             return plugin.hasAnyVersionActive && plugin.hasAnyVersionInstalled;
         case 'inactive':
             return !plugin.hasAnyVersionActive && plugin.hasAnyVersionInstalled;
+        case 'updatesAvailable':
+            return plugin.hasUpdate && plugin.hasAnyVersionInstalled;
         default:
             return true;
     }

@@ -16,7 +16,8 @@ export const useActionButtons = (
     pluginFamily,
     status,
     loadingStates,
-    handlers
+    handlers,
+    onOpenPluginInfo
 ) => {
     const {
         isActive,
@@ -91,6 +92,15 @@ export const useActionButtons = (
             text: __('Changelogs', 'publishpress-hub'),
         });
 
+        if (isInstalled && !hasConflictingInstallations && onOpenPluginInfo) {
+            buttons.push({
+                key: 'more-info',
+                variant: 'link',
+                text: __('More Info', 'publishpress-hub'),
+                onClick: () => onOpenPluginInfo(pluginFamily),
+            });
+        }
+
         return buttons;
     }, [
         isInstalled,
@@ -103,5 +113,6 @@ export const useActionButtons = (
         onDeactivate,
         onActivate,
         onUninstall,
+        onOpenPluginInfo,
     ]);
 };

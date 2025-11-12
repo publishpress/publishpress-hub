@@ -23,6 +23,7 @@ export const DEFAULT_STATE = {
     pluginLicenseActivationInProgress: {},
     pluginLicenseDeactivationInProgress: {},
     pluginUpgradeInProgress: {},
+    pluginUpdateInProgress: {},
     pluginResolveConflictInProgress: {},
     selectedPluginForConflictResolution: null,
     pluginErrors: {},
@@ -449,6 +450,48 @@ const activateLicenseError = (state, data) => {
     }
 }
 
+const updatePluginStart = (state, data) => {
+    return {
+        ...state,
+        pluginUpdateInProgress: {
+            ...state.pluginUpdateInProgress,
+            [data.pluginFamilySlug]: true,
+        },
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginFamilySlug]: null,
+        },
+    }
+}
+
+const updatePluginSuccess = (state, data) => {
+    return {
+        ...state,
+        pluginUpdateInProgress: {
+            ...state.pluginUpdateInProgress,
+            [data.pluginFamilySlug]: false,
+        },
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginFamilySlug]: null,
+        },
+    }
+}
+
+const updatePluginError = (state, data) => {
+    return {
+        ...state,
+        pluginUpdateInProgress: {
+            ...state.pluginUpdateInProgress,
+            [data.pluginFamilySlug]: false,
+        },
+        pluginErrors: {
+            ...state.pluginErrors,
+            [data.pluginFamilySlug]: data.error,
+        },
+    }
+}
+
 const cleanupError = (state, data) => {
     return {
         ...state,
@@ -541,6 +584,12 @@ export const reducer = (state = DEFAULT_STATE, action) => {
             return activateLicenseSuccess(state, action.data);
         case 'ACTIVATE_LICENSE_ERROR':
             return activateLicenseError(state, action.data);
+        case 'UPDATE_PLUGIN_START':
+            return updatePluginStart(state, action.data);
+        case 'UPDATE_PLUGIN_SUCCESS':
+            return updatePluginSuccess(state, action.data);
+        case 'UPDATE_PLUGIN_ERROR':
+            return updatePluginError(state, action.data);
         case 'CLEANUP_ERROR':
             return cleanupError(state, action.data);
         default:

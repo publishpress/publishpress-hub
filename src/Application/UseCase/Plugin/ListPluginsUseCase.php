@@ -90,6 +90,11 @@ class ListPluginsUseCase implements UseCaseInterface
             $expirationDate = $this->getLicenseExpirationDate($proPlugin);
             $dto->setProPluginLicenseExpirationDate($expirationDate);
 
+            // Check for plugin updates
+            $updateInfo = $this->getPluginUpdateInfo($family);
+            $dto->setHasUpdate($updateInfo['hasUpdate'])
+                ->setAvailableVersion($updateInfo['availableVersion']);
+
             $pluginData = $dto->toArray();
 
             $licenseKey = $this->getLicenseKey($proPlugin);
@@ -174,5 +179,105 @@ class ListPluginsUseCase implements UseCaseInterface
         $expirationDate = $expirationDate->setTime(0, 0, 0, 0);
 
         return (int) $expirationDate->diff($today)->days;
+    }
+
+    /**
+     * Gets plugin update information.
+     *
+     * @param PluginFamilyInterface $family The plugin family.
+     * @return array<string, mixed> Update information with hasUpdate and availableVersion.
+     * @since 1.0.0
+     */
+    private function getPluginUpdateInfo(PluginFamilyInterface $family): array
+    {
+        if (!function_exists('get_plugin_updates')) {
+            require_once ABSPATH . 'wp-admin/includes/update.php';
+        }
+
+        // Force refresh update cache if requested
+        if (isset($_GET['force-check']) && $_GET['force-check'] === '1') {
+            // Clear the main update transient
+            delete_site_transient('update_plugins');
+
+            // Clear any EDD-specific update transients
+            // EDD plugins store update info with various transient keys
+            global $wpdb;
+            $edd_patterns = [
+                '_site_transient_edd_sl_%',
+                '_site_transient_edd_api_request_%',
+                '_transient_edd_sl_%',
+                '_transient_edd_api_request_%',
+                '_site_transient_timeout_edd_sl_%',
+                '_site_transient_timeout_edd_api_request_%',
+                '_transient_timeout_edd_sl_%',
+                '_transient_timeout_edd_api_request_%',
+            ];
+
+            if (is_multisite()) {
+                foreach ($edd_patterns as $pattern) {
+                    $wpdb->query(
+                        $wpdb->prepare(
+                            "DELETE FROM {$wpdb->sitemeta} WHERE meta_key LIKE %s",
+                            $pattern
+                        )
+                    );
+                }
+            } else {
+                foreach ($edd_patterns as $pattern) {
+                    $wpdb->query(
+                        $wpdb->prepare(
+                            "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s",
+                            $pattern
+                        )
+                    );
+                }
+            }
+
+            // Force immediate update check by using set_site_transient with a very short timeout
+            // This tricks WordPress into thinking the cache is expired
+            set_site_transient('update_plugins', (object) ['last_checked' => 0], 1);
+
+            // Call wp_update_plugins to trigger the update check
+            // Note: This is still asynchronous, but clearing EDD transients should help
+            if (function_exists('wp_update_plugins')) {
+                wp_update_plugins();
+            }
+        }
+
+        $updates = get_plugin_updates();
+
+        if (empty($updates)) {
+            return [
+                'hasUpdate' => false,
+                'availableVersion' => null,
+            ];
+        }
+
+        // Determine which plugin is installed (free or pro)
+        $installedPlugin = $family->getInstalledPlugin();
+
+        if (!$installedPlugin) {
+            return [
+                'hasUpdate' => false,
+                'availableVersion' => null,
+            ];
+        }
+
+        $pluginPath = $installedPlugin->getPath();
+
+        // Check if this plugin has an update available
+        if (!isset($updates[$pluginPath])) {
+            return [
+                'hasUpdate' => false,
+                'availableVersion' => null,
+            ];
+        }
+
+        $update = $updates[$pluginPath];
+
+        return [
+            'hasUpdate' => true,
+            'availableVersion' => $update->update->new_version ?? null,
+        ];
     }
 }

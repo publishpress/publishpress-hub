@@ -130,14 +130,18 @@ export function* setIsResolveConflictModalOpen(isOpen) {
     };
 }
 
-export function* fetchPlugins() {
+export function* fetchPlugins(forceCheck = false) {
     try {
         yield {type: 'FETCH_PLUGINS_START'};
 
         yield apiReady();
 
+        const path = forceCheck 
+            ? `${API_NAMESPACE}/plugins?force-check=1`
+            : `${API_NAMESPACE}/plugins`;
+
         const data = yield apiFetch({
-            path: `${API_NAMESPACE}/plugins`,
+            path,
         });
 
         if (data.success) {
@@ -552,6 +556,47 @@ export function* activateLicense(pluginFamily, licenseKey) {
             success: false,
             pluginFamily,
             licenseKey,
+            error,
+        };
+    }
+}
+
+export function* updatePlugin(pluginFamilySlug) {
+    try {
+        yield {type: 'UPDATE_PLUGIN_START', data: {pluginFamilySlug}};
+
+        yield apiReady();
+
+        const data = yield apiFetch({
+            path: `${API_NAMESPACE}/plugins/${pluginFamilySlug}/update`,
+            method: 'POST',
+        });
+
+        if (data.success) {
+            yield fetchPlugins();
+
+            yield {type: 'UPDATE_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
+
+            yield createSnackbarNotice(__('Plugin updated successfully', 'publishpress-hub'), 'success');
+
+            return {
+                success: true,
+                pluginFamilySlug,
+                apiResponse: data,
+            };
+        } else {
+            throw new Error(data?.error || 'Plugin update failed');
+        }
+    } catch (error) {
+        yield {type: 'UPDATE_PLUGIN_ERROR', data: {pluginFamilySlug, error: error}};
+
+        yield createNotice(__('Plugin update failed', 'publishpress-hub'), 'error');
+
+        error = handleErrorMessageOnContext(error);
+
+        return {
+            success: false,
+            pluginFamilySlug,
             error,
         };
     }
