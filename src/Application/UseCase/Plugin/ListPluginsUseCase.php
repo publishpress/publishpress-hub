@@ -196,8 +196,49 @@ class ListPluginsUseCase implements UseCaseInterface
 
         // Force refresh update cache if requested
         if (isset($_GET['force-check']) && $_GET['force-check'] === '1') {
+            // Clear the main update transient
             delete_site_transient('update_plugins');
-            
+
+            // Clear any EDD-specific update transients
+            // EDD plugins store update info with various transient keys
+            global $wpdb;
+            $edd_patterns = [
+                '_site_transient_edd_sl_%',
+                '_site_transient_edd_api_request_%',
+                '_transient_edd_sl_%',
+                '_transient_edd_api_request_%',
+                '_site_transient_timeout_edd_sl_%',
+                '_site_transient_timeout_edd_api_request_%',
+                '_transient_timeout_edd_sl_%',
+                '_transient_timeout_edd_api_request_%',
+            ];
+
+            if (is_multisite()) {
+                foreach ($edd_patterns as $pattern) {
+                    $wpdb->query(
+                        $wpdb->prepare(
+                            "DELETE FROM {$wpdb->sitemeta} WHERE meta_key LIKE %s",
+                            $pattern
+                        )
+                    );
+                }
+            } else {
+                foreach ($edd_patterns as $pattern) {
+                    $wpdb->query(
+                        $wpdb->prepare(
+                            "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s",
+                            $pattern
+                        )
+                    );
+                }
+            }
+
+            // Force immediate update check by using set_site_transient with a very short timeout
+            // This tricks WordPress into thinking the cache is expired
+            set_site_transient('update_plugins', (object) ['last_checked' => 0], 1);
+
+            // Call wp_update_plugins to trigger the update check
+            // Note: This is still asynchronous, but clearing EDD transients should help
             if (function_exists('wp_update_plugins')) {
                 wp_update_plugins();
             }
