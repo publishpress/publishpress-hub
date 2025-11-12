@@ -9,7 +9,7 @@
  */
 
 import { memo, useMemo } from '@wordpress/element';
-import { useDispatch } from '@wordpress/data';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 import { __, sprintf } from '@publishpress-hub/i18n';
 import { store } from '../../../stores/plugins-dashboard';
@@ -51,6 +51,10 @@ const ModalRendererComponent = ({
         cleanupError,
     } = useDispatch(store);
 
+    const isLoading = useSelect((select) => {
+        return select(store).getIsLoading();
+    }, []);
+
     const processedError = useMemo(() => {
         if (!currentPluginState.error) return null;
 
@@ -63,15 +67,20 @@ const ModalRendererComponent = ({
     }, [currentPluginState.error]);
 
     const modalProps = useMemo(() => {
+        // For plugin info modal, include isLoading state for "Check for Updates" button
+        const buttonInProgress = isModalActive(MODAL_TYPES.PLUGIN_INFO)
+            ? (currentPluginState.inProgress || isLoading)
+            : currentPluginState.inProgress;
+
         return {
             onClose: () => {
                 closeModal();
                 cleanupError(currentPluginFamily);
             },
             error: processedError,
-            buttonInProgress: currentPluginState.inProgress,
+            buttonInProgress,
         }
-    }, [currentPluginFamily, closeModal, cleanupError, currentPluginState.inProgress, processedError]);
+    }, [currentPluginFamily, closeModal, cleanupError, currentPluginState.inProgress, processedError, isLoading, isModalActive, MODAL_TYPES.PLUGIN_INFO]);
 
     return (
         <>
