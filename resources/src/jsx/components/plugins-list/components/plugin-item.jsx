@@ -20,7 +20,7 @@ import {
     __experimentalVStack as VStack
 } from '@wordpress/components';
 
-import { __ } from '@publishpress-hub/i18n';
+import { __, sprintf } from '@publishpress-hub/i18n';
 
 import { Tooltip } from '../../tooltip';
 import { StatusFlag } from './status-flag';
@@ -158,6 +158,14 @@ const PluginItemComponent = ({
                                 />
                             )}
                             <span>{displayName}</span>
+                            {pluginFamily.hasUpdate && pluginFamily.hasAnyVersionInstalled && (
+                                <Tooltip
+                                    text={sprintf(__('Update available: %s', 'publishpress-hub'), pluginFamily.availableVersion || __('New version available', 'publishpress-hub'))}
+                                    placement='top'
+                                >
+                                    <span className="pp-hub-plugin-update-indicator dashicons dashicons-warning" />
+                                </Tooltip>
+                            )}
                             <StatusFlag
                                 pluginFamily={pluginFamily}
                                 isInstalling={isInstalling}
