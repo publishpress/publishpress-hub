@@ -138,44 +138,44 @@ const PluginItemComponent = ({
                     <img src={iconSrc} alt={pluginFamily.name} />
                 </div>
                 <div className='pp-hub-plugins-list-item-info'>
-                    <Tooltip
-                        text={tooltipText}
-                        placement='top'
-                        useCustom={true}
-                    >
-                        <div className='pp-hub-plugins-list-item-name'>
-                            {shouldShowToggle && (
-                                <ToggleControl
-                                    disabled={status.hasConflictingInstallations}
-                                    checked={pluginFamily.hasAnyVersionActive}
-                                    onChange={(newValue) => {
-                                        if (newValue) {
-                                            onActivate(pluginFamily);
-                                        } else {
-                                            onDeactivate(pluginFamily);
-                                        }
-                                    }}
-                                />
-                            )}
-                            <span>{displayName}</span>
-                            {pluginFamily.hasUpdate && pluginFamily.hasAnyVersionInstalled && (
-                                <Tooltip
-                                    text={sprintf(__('Update available: %s', 'publishpress-hub'), pluginFamily.availableVersion || __('New version available', 'publishpress-hub'))}
-                                    placement='top'
-                                >
-                                    <span className="pp-hub-plugin-update-indicator dashicons dashicons-warning" />
-                                </Tooltip>
-                            )}
-                            <StatusFlag
-                                pluginFamily={pluginFamily}
-                                isInstalling={isInstalling}
-                                isUninstalling={isUninstalling}
-                                isUpgrading={isUpgrading}
-                                isDeactivating={isDeactivating}
-                                isActivating={isActivating}
+                    <div className='pp-hub-plugins-list-item-name'>
+                        {shouldShowToggle && (
+                            <ToggleControl
+                                disabled={status.hasConflictingInstallations}
+                                checked={pluginFamily.hasAnyVersionActive}
+                                onChange={(newValue) => {
+                                    if (newValue) {
+                                        onActivate(pluginFamily);
+                                    } else {
+                                        onDeactivate(pluginFamily);
+                                    }
+                                }}
                             />
-                        </div>
-                    </Tooltip>
+                        )}
+                        <Tooltip
+                            text={tooltipText}
+                            placement='top'
+                            useCustom={true}
+                        >
+                            <span>{displayName}</span>
+                        </Tooltip>
+                        {pluginFamily.hasUpdate && pluginFamily.hasAnyVersionInstalled && (
+                            <Tooltip
+                                text={sprintf(__('Update available: %s', 'publishpress-hub'), pluginFamily.availableVersion || __('New version available', 'publishpress-hub'))}
+                                placement='top'
+                            >
+                                <span className="pp-hub-plugin-update-indicator dashicons dashicons-warning" />
+                            </Tooltip>
+                        )}
+                        <StatusFlag
+                            pluginFamily={pluginFamily}
+                            isInstalling={isInstalling}
+                            isUninstalling={isUninstalling}
+                            isUpgrading={isUpgrading}
+                            isDeactivating={isDeactivating}
+                            isActivating={isActivating}
+                        />
+                    </div>
                     <div className='pp-hub-plugins-list-item-description'>
                         {pluginFamily.description}
                     </div>
