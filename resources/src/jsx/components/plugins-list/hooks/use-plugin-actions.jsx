@@ -27,6 +27,7 @@ export const usePluginActions = (modalManager) => {
         deactivateLicense,
         activateLicense,
         updatePlugin,
+        fetchPlugins,
     } = useDispatch(store);
 
     const handleOpenInstallationTypeModal = useCallback((pluginFamily) => {
@@ -134,6 +135,12 @@ export const usePluginActions = (modalManager) => {
         return result;
     }, [updatePlugin, closeModal]);
 
+    const handleCheckForUpdates = useCallback(async () => {
+        // Force refresh the plugins list to check for updates
+        const result = await fetchPlugins(true);
+        return result;
+    }, [fetchPlugins]);
+
     return {
         // Primary actions
         handleOpenInstallationTypeModal,
@@ -156,5 +163,6 @@ export const usePluginActions = (modalManager) => {
         handleBuyPlugin,
         handleOpenPluginInfoModal,
         handleUpdatePlugin,
+        handleCheckForUpdates,
     };
 };

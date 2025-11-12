@@ -19,6 +19,7 @@ import { Modal } from '../../modal';
 const ModalPluginInfoComponent = ({
     onClose,
     onUpdate,
+    onCheckForUpdates,
     error,
     buttonInProgress,
     pluginFamily,
@@ -31,6 +32,7 @@ const ModalPluginInfoComponent = ({
     const currentVersion = installedPlugin.version || __('Unknown', 'publishpress-hub');
     const hasUpdate = pluginFamily.hasUpdate || false;
     const availableVersion = pluginFamily.availableVersion || null;
+    const isInstalled = pluginFamily.hasAnyVersionInstalled || false;
 
     return (
         <Modal
@@ -78,6 +80,17 @@ const ModalPluginInfoComponent = ({
                     isLoading={buttonInProgress}
                 >
                     {__('Update Plugin', 'publishpress-hub')}
+                </Button>
+            )}
+
+            {!hasUpdate && isInstalled && onCheckForUpdates && (
+                <Button
+                    variant='secondary'
+                    icon='update'
+                    onClick={() => onCheckForUpdates()}
+                    isLoading={buttonInProgress}
+                >
+                    {__('Check for Updates', 'publishpress-hub')}
                 </Button>
             )}
         </Modal>

@@ -40,6 +40,7 @@ const ModalRendererComponent = ({
         handleDeactivateLicense,
         handleActivateLicense,
         handleUpdatePlugin,
+        handleCheckForUpdates,
     } = pluginActions;
 
     if (!currentPluginFamily || activeModal === MODAL_TYPES.NONE) {
@@ -161,6 +162,7 @@ const ModalRendererComponent = ({
                     title={sprintf(__('More Info: %s', 'publishpress-hub'), currentPluginDisplayName)}
                     pluginFamily={currentPluginFamily}
                     onUpdate={(pluginFamily) => handleUpdatePlugin(pluginFamily.slug)}
+                    onCheckForUpdates={handleCheckForUpdates}
                 />
             )}
         </>
