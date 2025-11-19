@@ -554,16 +554,18 @@ class Updater
      */
     public function show_changelog()
     {
-
-        if (empty($_REQUEST['edd_sl_action']) || 'view_plugin_changelog' !== $_REQUEST['edd_sl_action']) {
+        $edd_sl_action = isset($_REQUEST['edd_sl_action']) ? sanitize_text_field($_REQUEST['edd_sl_action']) : '';
+        if (empty($edd_sl_action) || 'view_plugin_changelog' !== $edd_sl_action) {
             return;
         }
 
-        if (empty($_REQUEST['plugin'])) {
+        $plugin = isset($_REQUEST['plugin']) ? sanitize_text_field($_REQUEST['plugin']) : '';
+        if (empty($plugin)) {
             return;
         }
 
-        if (empty($_REQUEST['slug']) || $this->slug !== $_REQUEST['slug']) {
+        $slug = isset($_REQUEST['slug']) ? sanitize_text_field($_REQUEST['slug']) : '';
+        if (empty($slug) || $this->slug !== $slug) {
             return;
         }
 
