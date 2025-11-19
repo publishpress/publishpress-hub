@@ -1645,6 +1645,15 @@ footer .pp-hub-footer-logo img {
     padding-top: 4px;
 }
 
+.pp-hub-plugin-update-indicator {
+    color: var(--pp-hub-color-warning, #f0b849);
+    font-size: 18px;
+    line-height: 1;
+    cursor: help;
+    margin-left: var(--pp-hub-spacing-xs, 4px);
+    vertical-align: middle;
+}
+
 .pp-hub-plugins-list-item-description {
     font-size: var(--pp-hub-font-size-md);
     color: var(--pp-hub-text-secondary);
