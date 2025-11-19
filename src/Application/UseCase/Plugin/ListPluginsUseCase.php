@@ -91,7 +91,7 @@ class ListPluginsUseCase implements UseCaseInterface
             $dto->setProPluginLicenseExpirationDate($expirationDate);
 
             // Check for plugin updates
-            $updateInfo = $this->getPluginUpdateInfo($family);
+            $updateInfo = $this->getPluginUpdateInfo($family, $request);
             $dto->setHasUpdate($updateInfo['hasUpdate'])
                 ->setAvailableVersion($updateInfo['availableVersion']);
 
@@ -185,17 +185,19 @@ class ListPluginsUseCase implements UseCaseInterface
      * Gets plugin update information.
      *
      * @param PluginFamilyInterface $family The plugin family.
+     * @param WP_REST_Request $request The REST request object.
      * @return array<string, mixed> Update information with hasUpdate and availableVersion.
      * @since 1.0.0
      */
-    private function getPluginUpdateInfo(PluginFamilyInterface $family): array
+    private function getPluginUpdateInfo(PluginFamilyInterface $family, WP_REST_Request $request): array
     {
         if (!function_exists('get_plugin_updates')) {
             require_once ABSPATH . 'wp-admin/includes/update.php';
         }
 
         // Force refresh update cache if requested
-        if (isset($_GET['force-check']) && $_GET['force-check'] === '1') {
+        $forceCheck = $request->get_param('force-check');
+        if ($forceCheck === '1' || $forceCheck === 1) {
             // Clear the main update transient
             delete_site_transient('update_plugins');
 
