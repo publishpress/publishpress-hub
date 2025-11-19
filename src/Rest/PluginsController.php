@@ -112,6 +112,24 @@ class PluginsController implements BootableInterface
     }
 
     /**
+     * Get the familySlug argument definition.
+     *
+     * @return array<string, mixed> The argument definition.
+     * @since 1.0.0
+     */
+    private function getFamilySlugArg(): array
+    {
+        return [
+            'required' => true,
+            'type' => 'string',
+            'sanitize_callback' => 'sanitize_key',
+            'validate_callback' => function($param) {
+                return preg_match('/^[a-zA-Z0-9-]+$/', $param) === 1;
+            },
+        ];
+    }
+
+    /**
      * Add routes.
      *
      * @return void
@@ -127,7 +145,17 @@ class PluginsController implements BootableInterface
             '/plugins',
             WP_REST_Server::READABLE,
             $this->listPluginsUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'force-check' => [
+                    'required' => false,
+                    'type' => 'string',
+                    'sanitize_callback' => 'sanitize_text_field',
+                    'validate_callback' => function($param) {
+                        return $param === null || $param === '' || $param === '1' || $param === 1;
+                    },
+                ],
+            ]
         ));
 
         // POST /plugins/install/{familySlug}/free
@@ -136,7 +164,10 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/install/free',
             WP_REST_Server::CREATABLE,
             $this->installFreePluginUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+            ]
         ));
 
         // POST /plugins/install/{familySlug}/pro
@@ -145,7 +176,18 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/install/pro',
             WP_REST_Server::CREATABLE,
             $this->installProPluginUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+                'licenseKey' => [
+                    'required' => true,
+                    'type' => 'string',
+                    'sanitize_callback' => 'sanitize_text_field',
+                    'validate_callback' => function($param) {
+                        return !empty($param) && is_string($param);
+                    },
+                ],
+            ]
         ));
 
         // POST /plugins/{familySlug}/(activate|deactivate)
@@ -154,7 +196,18 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/(?P<action>activate|deactivate)',
             WP_REST_Server::CREATABLE,
             $this->changePluginActivationUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+                'action' => [
+                    'required' => true,
+                    'type' => 'string',
+                    'sanitize_callback' => 'sanitize_key',
+                    'validate_callback' => function($param) {
+                        return in_array($param, ['activate', 'deactivate'], true);
+                    },
+                ],
+            ]
         ));
 
         // POST /plugins/{familySlug}/uninstall
@@ -163,7 +216,10 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/uninstall',
             WP_REST_Server::CREATABLE,
             $this->uninstallPluginUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+            ]
         ));
 
         // POST /plugins/{familySlug}/upgrade
@@ -172,7 +228,18 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/upgrade',
             WP_REST_Server::CREATABLE,
             $this->upgradePluginUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+                'licenseKey' => [
+                    'required' => true,
+                    'type' => 'string',
+                    'sanitize_callback' => 'sanitize_text_field',
+                    'validate_callback' => function($param) {
+                        return !empty($param) && is_string($param);
+                    },
+                ],
+            ]
         ));
 
         // POST /plugins/{familySlug}/update
@@ -181,7 +248,10 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/update',
             WP_REST_Server::CREATABLE,
             $this->updatePluginUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+            ]
         ));
 
         // POST /plugins/{familySlug}/resolve-conflict
@@ -190,7 +260,18 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/resolve-conflict',
             WP_REST_Server::CREATABLE,
             $this->resolveConflictUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+                'pluginToKeep' => [
+                    'required' => true,
+                    'type' => 'string',
+                    'sanitize_callback' => 'sanitize_key',
+                    'validate_callback' => function($param) {
+                        return in_array($param, ['free', 'pro'], true);
+                    },
+                ],
+            ]
         ));
 
         // POST /plugins/{familySlug}/deactivate-license
@@ -199,7 +280,10 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/deactivate-license',
             WP_REST_Server::CREATABLE,
             $this->deactivateLicenseUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+            ]
         ));
 
         // POST /plugins/{familySlug}/activate-license
@@ -208,7 +292,18 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/activate-license',
             WP_REST_Server::CREATABLE,
             $this->activateLicenseUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+                'licenseKey' => [
+                    'required' => true,
+                    'type' => 'string',
+                    'sanitize_callback' => 'sanitize_text_field',
+                    'validate_callback' => function($param) {
+                        return !empty($param) && is_string($param);
+                    },
+                ],
+            ]
         ));
 
         // phpcs:enable Squiz.PHP.CommentedOutCode.Found
