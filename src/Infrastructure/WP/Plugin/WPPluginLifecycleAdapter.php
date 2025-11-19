@@ -37,15 +37,61 @@ class WPPluginLifecycleAdapter
      * @param string $slug The slug.
      * @param string $downloadUrl The download URL.
      * @return bool True if the plugin was installed, false otherwise.
+     * @throws InvalidArgumentException When the download URL is invalid or from an untrusted domain.
      * @since 1.0.0
      */
     public function installPlugin(string $slug, string $downloadUrl): bool
     {
-        $tmpFile = download_url($downloadUrl);
+        // Validate URL format
+        if (!filter_var($downloadUrl, FILTER_VALIDATE_URL)) {
+            throw new InvalidArgumentException(
+                esc_html__('Invalid download URL provided', 'publishpress-hub')
+            );
+        }
+
+        // Parse URL to extract host and validate scheme
+        $urlParts = parse_url($downloadUrl);
+        if (!isset($urlParts['scheme']) || !in_array($urlParts['scheme'], ['http', 'https'], true)) {
+            throw new InvalidArgumentException(
+                esc_html__('Download URL must use HTTP or HTTPS protocol', 'publishpress-hub')
+            );
+        }
+
+        // Whitelist allowed domains for plugin downloads
+        $allowedDomains = [
+            'publishpress.com',
+            'pkg.publishpress.com',
+            'wordpress.org',
+            'downloads.wordpress.org',
+        ];
+
+        $host = $urlParts['host'] ?? '';
+        if (!in_array($host, $allowedDomains, true)) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    // translators: %s is the hostname
+                    esc_html__('Download URL is not from an allowed domain: %s', 'publishpress-hub'),
+                    esc_html($host)
+                )
+            );
+        }
+
+        // Additional validation using WordPress function if available
+        if (function_exists('wp_http_validate_url')) {
+            $validatedUrl = wp_http_validate_url($downloadUrl);
+            if (!$validatedUrl) {
+                throw new InvalidArgumentException(
+                    esc_html__('Download URL failed WordPress validation', 'publishpress-hub')
+                );
+            }
+            $downloadUrl = $validatedUrl;
+        }
 
         if (!function_exists('download_url')) {
             require_once ABSPATH . 'wp-admin/includes/file.php';
         }
+
+        $tmpFile = download_url($downloadUrl);
 
         if (is_wp_error($tmpFile)) {
             throw new RuntimeException(
