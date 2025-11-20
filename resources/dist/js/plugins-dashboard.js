@@ -8409,30 +8409,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _utils_apiReady__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/apiReady */ "./resources/src/jsx/utils/apiReady.js");
+/* harmony import */ var _name__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./name */ "./resources/src/jsx/stores/plugins-dashboard/name.jsx");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorValues(e) { if (null != e) { var t = e["function" == typeof Symbol && Symbol.iterator || "@@iterator"], r = 0; if (t) return t.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) return { next: function next() { return e && r >= e.length && (e = void 0), { value: e && e[r++], done: !e }; } }; } throw new TypeError(_typeof(e) + " is not iterable"); }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
-var _marked = /*#__PURE__*/_regenerator().m(setSelectedFilter),
-  _marked2 = /*#__PURE__*/_regenerator().m(setPlugins),
-  _marked3 = /*#__PURE__*/_regenerator().m(setLoading),
-  _marked4 = /*#__PURE__*/_regenerator().m(setError),
-  _marked5 = /*#__PURE__*/_regenerator().m(setCurrentFilter),
-  _marked6 = /*#__PURE__*/_regenerator().m(setLicenseInputModalOpen),
-  _marked7 = /*#__PURE__*/_regenerator().m(setLicenseInputModalOpenForUpgrade),
-  _marked8 = /*#__PURE__*/_regenerator().m(setInstallationTypeModalOpen),
-  _marked9 = /*#__PURE__*/_regenerator().m(setIsUninstallConfirmationModalOpen),
-  _marked0 = /*#__PURE__*/_regenerator().m(setIsUpgradeModalOpen),
-  _marked1 = /*#__PURE__*/_regenerator().m(setIsResolveConflictModalOpen),
-  _marked10 = /*#__PURE__*/_regenerator().m(installFreePlugin),
-  _marked11 = /*#__PURE__*/_regenerator().m(installProPlugin),
-  _marked12 = /*#__PURE__*/_regenerator().m(uninstallPlugin),
-  _marked13 = /*#__PURE__*/_regenerator().m(activatePlugin),
-  _marked14 = /*#__PURE__*/_regenerator().m(deactivatePlugin),
-  _marked15 = /*#__PURE__*/_regenerator().m(upgradePluginToPro),
-  _marked16 = /*#__PURE__*/_regenerator().m(resolveConflict),
-  _marked17 = /*#__PURE__*/_regenerator().m(deactivateLicense),
-  _marked18 = /*#__PURE__*/_regenerator().m(activateLicense),
-  _marked19 = /*#__PURE__*/_regenerator().m(updatePlugin),
-  _marked20 = /*#__PURE__*/_regenerator().m(cleanupError);
+var _marked = /*#__PURE__*/_regenerator().m(getPluginName),
+  _marked2 = /*#__PURE__*/_regenerator().m(setSelectedFilter),
+  _marked3 = /*#__PURE__*/_regenerator().m(setPlugins),
+  _marked4 = /*#__PURE__*/_regenerator().m(setLoading),
+  _marked5 = /*#__PURE__*/_regenerator().m(setError),
+  _marked6 = /*#__PURE__*/_regenerator().m(setCurrentFilter),
+  _marked7 = /*#__PURE__*/_regenerator().m(setLicenseInputModalOpen),
+  _marked8 = /*#__PURE__*/_regenerator().m(setLicenseInputModalOpenForUpgrade),
+  _marked9 = /*#__PURE__*/_regenerator().m(setInstallationTypeModalOpen),
+  _marked0 = /*#__PURE__*/_regenerator().m(setIsUninstallConfirmationModalOpen),
+  _marked1 = /*#__PURE__*/_regenerator().m(setIsUpgradeModalOpen),
+  _marked10 = /*#__PURE__*/_regenerator().m(setIsResolveConflictModalOpen),
+  _marked11 = /*#__PURE__*/_regenerator().m(installFreePlugin),
+  _marked12 = /*#__PURE__*/_regenerator().m(installProPlugin),
+  _marked13 = /*#__PURE__*/_regenerator().m(uninstallPlugin),
+  _marked14 = /*#__PURE__*/_regenerator().m(activatePlugin),
+  _marked15 = /*#__PURE__*/_regenerator().m(deactivatePlugin),
+  _marked16 = /*#__PURE__*/_regenerator().m(upgradePluginToPro),
+  _marked17 = /*#__PURE__*/_regenerator().m(resolveConflict),
+  _marked18 = /*#__PURE__*/_regenerator().m(deactivateLicense),
+  _marked19 = /*#__PURE__*/_regenerator().m(activateLicense),
+  _marked20 = /*#__PURE__*/_regenerator().m(updatePlugin),
+  _marked21 = /*#__PURE__*/_regenerator().m(cleanupError);
 /**
  * Plugins dashboard actions.
  *
@@ -8442,6 +8446,7 @@ var _marked = /*#__PURE__*/_regenerator().m(setSelectedFilter),
  * @license GPL v2 or later
  * @since 1.0.0
  */
+
 
 
 
@@ -8475,97 +8480,128 @@ var createSnackbarNotice = function createSnackbarNotice(message, type) {
     isDismissible: true
   });
 };
-function setSelectedFilter(selectedFilter) {
+
+/**
+ * Gets the plugin name from the plugin family slug.
+ *
+ * @param {string} pluginFamilySlug The plugin family slug.
+ * @return {string} The plugin name or fallback to slug.
+ */
+function getPluginName(pluginFamilySlug) {
+  var plugins, pluginFamily;
   return _regenerator().w(function (_context) {
     while (1) switch (_context.n) {
       case 0:
         _context.n = 1;
-        return {
-          type: 'SET_SELECTED_FILTER',
-          selectedFilter: selectedFilter
-        };
+        return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.select)(_name__WEBPACK_IMPORTED_MODULE_4__.STORE_NAME, 'getPlugins');
       case 1:
-        return _context.a(2);
+        plugins = _context.v;
+        pluginFamily = plugins.find(function (plugin) {
+          return plugin.slug === pluginFamilySlug;
+        });
+        if (pluginFamily) {
+          _context.n = 2;
+          break;
+        }
+        return _context.a(2, pluginFamilySlug);
+      case 2:
+        if (!pluginFamily.hasAnyVersionInstalled) {
+          _context.n = 4;
+          break;
+        }
+        if (!pluginFamily.proPlugin.isInstalled) {
+          _context.n = 3;
+          break;
+        }
+        return _context.a(2, pluginFamily.proPlugin.name);
+      case 3:
+        if (!pluginFamily.freePlugin.isInstalled) {
+          _context.n = 4;
+          break;
+        }
+        return _context.a(2, pluginFamily.freePlugin.name);
+      case 4:
+        return _context.a(2, pluginFamily.name || pluginFamilySlug);
     }
   }, _marked);
 }
-function setPlugins(plugins) {
+function setSelectedFilter(selectedFilter) {
   return _regenerator().w(function (_context2) {
     while (1) switch (_context2.n) {
       case 0:
         _context2.n = 1;
         return {
-          type: 'SET_PLUGINS',
-          plugins: plugins
+          type: 'SET_SELECTED_FILTER',
+          selectedFilter: selectedFilter
         };
       case 1:
         return _context2.a(2);
     }
   }, _marked2);
 }
-function setLoading(isLoading) {
+function setPlugins(plugins) {
   return _regenerator().w(function (_context3) {
     while (1) switch (_context3.n) {
       case 0:
         _context3.n = 1;
         return {
-          type: 'SET_LOADING',
-          isLoading: isLoading
+          type: 'SET_PLUGINS',
+          plugins: plugins
         };
       case 1:
         return _context3.a(2);
     }
   }, _marked3);
 }
-function setError(error) {
+function setLoading(isLoading) {
   return _regenerator().w(function (_context4) {
     while (1) switch (_context4.n) {
       case 0:
         _context4.n = 1;
         return {
-          type: 'SET_ERROR',
-          error: error
+          type: 'SET_LOADING',
+          isLoading: isLoading
         };
       case 1:
         return _context4.a(2);
     }
   }, _marked4);
 }
-function setCurrentFilter(currentFilter) {
+function setError(error) {
   return _regenerator().w(function (_context5) {
     while (1) switch (_context5.n) {
       case 0:
         _context5.n = 1;
         return {
-          type: 'SET_CURRENT_FILTER',
-          currentFilter: currentFilter
+          type: 'SET_ERROR',
+          error: error
         };
       case 1:
         return _context5.a(2);
     }
   }, _marked5);
 }
-function setLicenseInputModalOpen(isOpen) {
+function setCurrentFilter(currentFilter) {
   return _regenerator().w(function (_context6) {
     while (1) switch (_context6.n) {
       case 0:
         _context6.n = 1;
         return {
-          type: 'SET_LICENSE_INPUT_MODAL_OPEN',
-          isOpen: isOpen
+          type: 'SET_CURRENT_FILTER',
+          currentFilter: currentFilter
         };
       case 1:
         return _context6.a(2);
     }
   }, _marked6);
 }
-function setLicenseInputModalOpenForUpgrade(isOpen) {
+function setLicenseInputModalOpen(isOpen) {
   return _regenerator().w(function (_context7) {
     while (1) switch (_context7.n) {
       case 0:
         _context7.n = 1;
         return {
-          type: 'SET_LICENSE_INPUT_MODAL_OPEN_FOR_UPGRADE',
+          type: 'SET_LICENSE_INPUT_MODAL_OPEN',
           isOpen: isOpen
         };
       case 1:
@@ -8573,13 +8609,13 @@ function setLicenseInputModalOpenForUpgrade(isOpen) {
     }
   }, _marked7);
 }
-function setInstallationTypeModalOpen(isOpen) {
+function setLicenseInputModalOpenForUpgrade(isOpen) {
   return _regenerator().w(function (_context8) {
     while (1) switch (_context8.n) {
       case 0:
         _context8.n = 1;
         return {
-          type: 'SET_INSTALLATION_TYPE_MODAL_OPEN',
+          type: 'SET_LICENSE_INPUT_MODAL_OPEN_FOR_UPGRADE',
           isOpen: isOpen
         };
       case 1:
@@ -8587,13 +8623,13 @@ function setInstallationTypeModalOpen(isOpen) {
     }
   }, _marked8);
 }
-function setIsUninstallConfirmationModalOpen(isOpen) {
+function setInstallationTypeModalOpen(isOpen) {
   return _regenerator().w(function (_context9) {
     while (1) switch (_context9.n) {
       case 0:
         _context9.n = 1;
         return {
-          type: 'SET_IS_UNINSTALL_CONFIRMATION_MODAL_OPEN',
+          type: 'SET_INSTALLATION_TYPE_MODAL_OPEN',
           isOpen: isOpen
         };
       case 1:
@@ -8601,13 +8637,13 @@ function setIsUninstallConfirmationModalOpen(isOpen) {
     }
   }, _marked9);
 }
-function setIsUpgradeModalOpen(isOpen) {
+function setIsUninstallConfirmationModalOpen(isOpen) {
   return _regenerator().w(function (_context0) {
     while (1) switch (_context0.n) {
       case 0:
         _context0.n = 1;
         return {
-          type: 'SET_IS_UPGRADE_MODAL_OPEN',
+          type: 'SET_IS_UNINSTALL_CONFIRMATION_MODAL_OPEN',
           isOpen: isOpen
         };
       case 1:
@@ -8615,13 +8651,13 @@ function setIsUpgradeModalOpen(isOpen) {
     }
   }, _marked0);
 }
-function setIsResolveConflictModalOpen(isOpen) {
+function setIsUpgradeModalOpen(isOpen) {
   return _regenerator().w(function (_context1) {
     while (1) switch (_context1.n) {
       case 0:
         _context1.n = 1;
         return {
-          type: 'SET_IS_RESOLVE_CONFLICT_MODAL_OPEN',
+          type: 'SET_IS_UPGRADE_MODAL_OPEN',
           isOpen: isOpen
         };
       case 1:
@@ -8629,151 +8665,87 @@ function setIsResolveConflictModalOpen(isOpen) {
     }
   }, _marked1);
 }
+function setIsResolveConflictModalOpen(isOpen) {
+  return _regenerator().w(function (_context10) {
+    while (1) switch (_context10.n) {
+      case 0:
+        _context10.n = 1;
+        return {
+          type: 'SET_IS_RESOLVE_CONFLICT_MODAL_OPEN',
+          isOpen: isOpen
+        };
+      case 1:
+        return _context10.a(2);
+    }
+  }, _marked10);
+}
 function fetchPlugins() {
   var forceCheck = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
   return /*#__PURE__*/_regenerator().m(function _callee() {
     var path, data, _t;
-    return _regenerator().w(function (_context10) {
-      while (1) switch (_context10.n) {
+    return _regenerator().w(function (_context11) {
+      while (1) switch (_context11.n) {
         case 0:
-          _context10.p = 0;
-          _context10.n = 1;
+          _context11.p = 0;
+          _context11.n = 1;
           return {
             type: 'FETCH_PLUGINS_START'
           };
         case 1:
-          _context10.n = 2;
+          _context11.n = 2;
           return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
         case 2:
           path = forceCheck ? "".concat(API_NAMESPACE, "/plugins?force-check=1") : "".concat(API_NAMESPACE, "/plugins");
-          _context10.n = 3;
+          _context11.n = 3;
           return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
             path: path
           });
         case 3:
-          data = _context10.v;
+          data = _context11.v;
           if (!data.success) {
-            _context10.n = 5;
+            _context11.n = 5;
             break;
           }
-          _context10.n = 4;
+          _context11.n = 4;
           return {
             type: 'FETCH_PLUGINS_SUCCESS',
             data: data.plugins
           };
         case 4:
-          return _context10.a(2, {
+          return _context11.a(2, {
             success: true,
             data: data.plugins
           });
         case 5:
           throw new Error(data.error || 'Failed to fetch plugins');
         case 6:
-          _context10.n = 10;
+          _context11.n = 10;
           break;
         case 7:
-          _context10.p = 7;
-          _t = _context10.v;
-          _context10.n = 8;
+          _context11.p = 7;
+          _t = _context11.v;
+          _context11.n = 8;
           return {
             type: 'FETCH_PLUGINS_ERROR',
             error: _t
           };
         case 8:
-          _context10.n = 9;
+          _context11.n = 9;
           return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Failed to fetch plugins', 'publishpress-hub'), 'error');
         case 9:
           _t = handleErrorMessageOnContext(_t);
-          return _context10.a(2, {
+          return _context11.a(2, {
             success: false,
             error: _t
           });
         case 10:
-          return _context10.a(2);
+          return _context11.a(2);
       }
     }, _callee, null, [[0, 7]]);
   })();
 }
 function installFreePlugin(pluginFamilySlug) {
-  var data, _t2;
-  return _regenerator().w(function (_context11) {
-    while (1) switch (_context11.n) {
-      case 0:
-        _context11.p = 0;
-        _context11.n = 1;
-        return {
-          type: 'INSTALL_PLUGIN_START',
-          data: {
-            pluginFamilySlug: pluginFamilySlug
-          }
-        };
-      case 1:
-        _context11.n = 2;
-        return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
-      case 2:
-        _context11.n = 3;
-        return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
-          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/install/free"),
-          method: 'POST'
-        });
-      case 3:
-        data = _context11.v;
-        if (!data.success) {
-          _context11.n = 7;
-          break;
-        }
-        _context11.n = 4;
-        return fetchPlugins();
-      case 4:
-        _context11.n = 5;
-        return {
-          type: 'INSTALL_PLUGIN_SUCCESS',
-          data: {
-            pluginFamilySlug: pluginFamilySlug
-          }
-        };
-      case 5:
-        _context11.n = 6;
-        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugin installed successfully', 'publishpress-hub'), 'success');
-      case 6:
-        return _context11.a(2, {
-          success: true,
-          pluginFamilySlug: pluginFamilySlug,
-          apiResponse: data
-        });
-      case 7:
-        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin installation failed');
-      case 8:
-        _context11.n = 12;
-        break;
-      case 9:
-        _context11.p = 9;
-        _t2 = _context11.v;
-        _context11.n = 10;
-        return {
-          type: 'INSTALL_PLUGIN_ERROR',
-          data: {
-            pluginFamilySlug: pluginFamilySlug,
-            error: _t2
-          }
-        };
-      case 10:
-        _context11.n = 11;
-        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugin installation failed', 'publishpress-hub'), 'error');
-      case 11:
-        _t2 = handleErrorMessageOnContext(_t2);
-        return _context11.a(2, {
-          success: false,
-          pluginFamilySlug: pluginFamilySlug,
-          error: _t2
-        });
-      case 12:
-        return _context11.a(2);
-    }
-  }, _marked10, null, [[0, 9]]);
-}
-function installProPlugin(pluginFamilySlug, licenseKey) {
-  var data, _t3;
+  var data, pluginName, _pluginName, _t2;
   return _regenerator().w(function (_context12) {
     while (1) switch (_context12.n) {
       case 0:
@@ -8789,19 +8761,15 @@ function installProPlugin(pluginFamilySlug, licenseKey) {
         _context12.n = 2;
         return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
       case 2:
-        licenseKey = licenseKey.trim();
         _context12.n = 3;
         return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
-          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/install/pro"),
-          method: 'POST',
-          data: {
-            licenseKey: licenseKey
-          }
+          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/install/free"),
+          method: 'POST'
         });
       case 3:
         data = _context12.v;
         if (!data.success) {
-          _context12.n = 7;
+          _context12.n = 8;
           break;
         }
         _context12.n = 4;
@@ -8815,53 +8783,60 @@ function installProPlugin(pluginFamilySlug, licenseKey) {
           }
         };
       case 5:
-        _context12.n = 6;
-        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugin installed successfully', 'publishpress-hub'), 'success');
+        return _context12.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 6);
       case 6:
+        pluginName = _context12.v;
+        _context12.n = 7;
+        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s installed successfully', 'publishpress-hub'), pluginName), 'success');
+      case 7:
         return _context12.a(2, {
           success: true,
           pluginFamilySlug: pluginFamilySlug,
-          licenseKey: licenseKey,
           apiResponse: data
         });
-      case 7:
-        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin installation failed');
       case 8:
-        _context12.n = 11;
-        break;
+        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin installation failed');
       case 9:
-        _context12.p = 9;
-        _t3 = _context12.v;
-        _context12.n = 10;
+        _context12.n = 14;
+        break;
+      case 10:
+        _context12.p = 10;
+        _t2 = _context12.v;
+        _context12.n = 11;
         return {
           type: 'INSTALL_PLUGIN_ERROR',
           data: {
             pluginFamilySlug: pluginFamilySlug,
-            error: _t3
+            error: _t2
           }
         };
-      case 10:
-        _t3 = handleErrorMessageOnContext(_t3);
+      case 11:
+        return _context12.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 12);
+      case 12:
+        _pluginName = _context12.v;
+        _context12.n = 13;
+        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s installation failed', 'publishpress-hub'), _pluginName), 'error');
+      case 13:
+        _t2 = handleErrorMessageOnContext(_t2);
         return _context12.a(2, {
           success: false,
           pluginFamilySlug: pluginFamilySlug,
-          licenseKey: licenseKey,
-          error: _t3
+          error: _t2
         });
-      case 11:
+      case 14:
         return _context12.a(2);
     }
-  }, _marked11, null, [[0, 9]]);
+  }, _marked11, null, [[0, 10]]);
 }
-function uninstallPlugin(pluginFamilySlug) {
-  var data, _t4;
+function installProPlugin(pluginFamilySlug, licenseKey) {
+  var data, pluginName, _pluginName2, _t3;
   return _regenerator().w(function (_context13) {
     while (1) switch (_context13.n) {
       case 0:
         _context13.p = 0;
         _context13.n = 1;
         return {
-          type: 'UNINSTALL_PLUGIN_START',
+          type: 'INSTALL_PLUGIN_START',
           data: {
             pluginFamilySlug: pluginFamilySlug
           }
@@ -8870,15 +8845,19 @@ function uninstallPlugin(pluginFamilySlug) {
         _context13.n = 2;
         return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
       case 2:
+        licenseKey = licenseKey.trim();
         _context13.n = 3;
         return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
-          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/uninstall"),
-          method: 'POST'
+          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/install/pro"),
+          method: 'POST',
+          data: {
+            licenseKey: licenseKey
+          }
         });
       case 3:
         data = _context13.v;
         if (!data.success) {
-          _context13.n = 7;
+          _context13.n = 8;
           break;
         }
         _context13.n = 4;
@@ -8886,29 +8865,118 @@ function uninstallPlugin(pluginFamilySlug) {
       case 4:
         _context13.n = 5;
         return {
-          type: 'UNINSTALL_PLUGIN_SUCCESS',
+          type: 'INSTALL_PLUGIN_SUCCESS',
           data: {
             pluginFamilySlug: pluginFamilySlug
           }
         };
       case 5:
-        _context13.n = 6;
-        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugin uninstalled successfully', 'publishpress-hub'), 'success');
+        return _context13.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 6);
       case 6:
+        pluginName = _context13.v;
+        _context13.n = 7;
+        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s installed successfully', 'publishpress-hub'), pluginName), 'success');
+      case 7:
         return _context13.a(2, {
+          success: true,
+          pluginFamilySlug: pluginFamilySlug,
+          licenseKey: licenseKey,
+          apiResponse: data
+        });
+      case 8:
+        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin installation failed');
+      case 9:
+        _context13.n = 14;
+        break;
+      case 10:
+        _context13.p = 10;
+        _t3 = _context13.v;
+        _context13.n = 11;
+        return {
+          type: 'INSTALL_PLUGIN_ERROR',
+          data: {
+            pluginFamilySlug: pluginFamilySlug,
+            error: _t3
+          }
+        };
+      case 11:
+        return _context13.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 12);
+      case 12:
+        _pluginName2 = _context13.v;
+        _context13.n = 13;
+        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s installation failed', 'publishpress-hub'), _pluginName2), 'error');
+      case 13:
+        _t3 = handleErrorMessageOnContext(_t3);
+        return _context13.a(2, {
+          success: false,
+          pluginFamilySlug: pluginFamilySlug,
+          licenseKey: licenseKey,
+          error: _t3
+        });
+      case 14:
+        return _context13.a(2);
+    }
+  }, _marked12, null, [[0, 10]]);
+}
+function uninstallPlugin(pluginFamilySlug) {
+  var pluginName, data, _t4;
+  return _regenerator().w(function (_context14) {
+    while (1) switch (_context14.n) {
+      case 0:
+        return _context14.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 1);
+      case 1:
+        pluginName = _context14.v;
+        _context14.p = 2;
+        _context14.n = 3;
+        return {
+          type: 'UNINSTALL_PLUGIN_START',
+          data: {
+            pluginFamilySlug: pluginFamilySlug
+          }
+        };
+      case 3:
+        _context14.n = 4;
+        return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
+      case 4:
+        _context14.n = 5;
+        return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
+          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/uninstall"),
+          method: 'POST'
+        });
+      case 5:
+        data = _context14.v;
+        if (!data.success) {
+          _context14.n = 9;
+          break;
+        }
+        _context14.n = 6;
+        return fetchPlugins();
+      case 6:
+        _context14.n = 7;
+        return {
+          type: 'UNINSTALL_PLUGIN_SUCCESS',
+          data: {
+            pluginFamilySlug: pluginFamilySlug
+          }
+        };
+      case 7:
+        _context14.n = 8;
+        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s uninstalled successfully', 'publishpress-hub'), pluginName), 'success');
+      case 8:
+        return _context14.a(2, {
           success: true,
           pluginFamilySlug: pluginFamilySlug,
           apiResponse: data
         });
-      case 7:
-        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin uninstall failed');
-      case 8:
-        _context13.n = 12;
-        break;
       case 9:
-        _context13.p = 9;
-        _t4 = _context13.v;
-        _context13.n = 10;
+        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin uninstall failed');
+      case 10:
+        _context14.n = 14;
+        break;
+      case 11:
+        _context14.p = 11;
+        _t4 = _context14.v;
+        _context14.n = 12;
         return {
           type: 'UNINSTALL_PLUGIN_ERROR',
           data: {
@@ -8916,108 +8984,30 @@ function uninstallPlugin(pluginFamilySlug) {
             error: _t4
           }
         };
-      case 10:
-        _context13.n = 11;
-        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugin uninstall failed', 'publishpress-hub'), 'error');
-      case 11:
+      case 12:
+        _context14.n = 13;
+        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s uninstall failed', 'publishpress-hub'), pluginName), 'error');
+      case 13:
         _t4 = handleErrorMessageOnContext(_t4);
-        return _context13.a(2, {
+        return _context14.a(2, {
           success: false,
           pluginFamilySlug: pluginFamilySlug,
           error: _t4
         });
-      case 12:
-        return _context13.a(2);
-    }
-  }, _marked12, null, [[0, 9]]);
-}
-function activatePlugin(pluginFamilySlug) {
-  var data, _t5;
-  return _regenerator().w(function (_context14) {
-    while (1) switch (_context14.n) {
-      case 0:
-        _context14.p = 0;
-        _context14.n = 1;
-        return {
-          type: 'ACTIVATE_PLUGIN_START',
-          data: {
-            pluginFamilySlug: pluginFamilySlug
-          }
-        };
-      case 1:
-        _context14.n = 2;
-        return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
-      case 2:
-        _context14.n = 3;
-        return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
-          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/activate"),
-          method: 'POST'
-        });
-      case 3:
-        data = _context14.v;
-        if (!data.success) {
-          _context14.n = 7;
-          break;
-        }
-        _context14.n = 4;
-        return fetchPlugins();
-      case 4:
-        _context14.n = 5;
-        return {
-          type: 'ACTIVATE_PLUGIN_SUCCESS',
-          data: {
-            pluginFamilySlug: pluginFamilySlug
-          }
-        };
-      case 5:
-        _context14.n = 6;
-        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugin activated successfully', 'publishpress-hub'), 'success');
-      case 6:
-        return _context14.a(2, {
-          success: true,
-          pluginFamilySlug: pluginFamilySlug,
-          apiResponse: data
-        });
-      case 7:
-        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin activation failed');
-      case 8:
-        _context14.n = 12;
-        break;
-      case 9:
-        _context14.p = 9;
-        _t5 = _context14.v;
-        _context14.n = 10;
-        return {
-          type: 'ACTIVATE_PLUGIN_ERROR',
-          data: {
-            pluginFamilySlug: pluginFamilySlug,
-            error: _t5
-          }
-        };
-      case 10:
-        _context14.n = 11;
-        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugin activation failed', 'publishpress-hub'), 'error');
-      case 11:
-        _t5 = handleErrorMessageOnContext(_t5);
-        return _context14.a(2, {
-          success: false,
-          pluginFamilySlug: pluginFamilySlug,
-          error: _t5
-        });
-      case 12:
+      case 14:
         return _context14.a(2);
     }
-  }, _marked13, null, [[0, 9]]);
+  }, _marked13, null, [[2, 11]]);
 }
-function deactivatePlugin(pluginFamilySlug) {
-  var data, _t6;
+function activatePlugin(pluginFamilySlug) {
+  var data, pluginName, _pluginName3, _t5;
   return _regenerator().w(function (_context15) {
     while (1) switch (_context15.n) {
       case 0:
         _context15.p = 0;
         _context15.n = 1;
         return {
-          type: 'DEACTIVATE_PLUGIN_START',
+          type: 'ACTIVATE_PLUGIN_START',
           data: {
             pluginFamilySlug: pluginFamilySlug
           }
@@ -9028,13 +9018,13 @@ function deactivatePlugin(pluginFamilySlug) {
       case 2:
         _context15.n = 3;
         return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
-          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/deactivate"),
+          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/activate"),
           method: 'POST'
         });
       case 3:
         data = _context15.v;
         if (!data.success) {
-          _context15.n = 7;
+          _context15.n = 8;
           break;
         }
         _context15.n = 4;
@@ -9042,29 +9032,116 @@ function deactivatePlugin(pluginFamilySlug) {
       case 4:
         _context15.n = 5;
         return {
+          type: 'ACTIVATE_PLUGIN_SUCCESS',
+          data: {
+            pluginFamilySlug: pluginFamilySlug
+          }
+        };
+      case 5:
+        return _context15.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 6);
+      case 6:
+        pluginName = _context15.v;
+        _context15.n = 7;
+        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s activated successfully', 'publishpress-hub'), pluginName), 'success');
+      case 7:
+        return _context15.a(2, {
+          success: true,
+          pluginFamilySlug: pluginFamilySlug,
+          apiResponse: data
+        });
+      case 8:
+        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin activation failed');
+      case 9:
+        _context15.n = 14;
+        break;
+      case 10:
+        _context15.p = 10;
+        _t5 = _context15.v;
+        _context15.n = 11;
+        return {
+          type: 'ACTIVATE_PLUGIN_ERROR',
+          data: {
+            pluginFamilySlug: pluginFamilySlug,
+            error: _t5
+          }
+        };
+      case 11:
+        return _context15.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 12);
+      case 12:
+        _pluginName3 = _context15.v;
+        _context15.n = 13;
+        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s activation failed', 'publishpress-hub'), _pluginName3), 'error');
+      case 13:
+        _t5 = handleErrorMessageOnContext(_t5);
+        return _context15.a(2, {
+          success: false,
+          pluginFamilySlug: pluginFamilySlug,
+          error: _t5
+        });
+      case 14:
+        return _context15.a(2);
+    }
+  }, _marked14, null, [[0, 10]]);
+}
+function deactivatePlugin(pluginFamilySlug) {
+  var data, pluginName, _pluginName4, _t6;
+  return _regenerator().w(function (_context16) {
+    while (1) switch (_context16.n) {
+      case 0:
+        _context16.p = 0;
+        _context16.n = 1;
+        return {
+          type: 'DEACTIVATE_PLUGIN_START',
+          data: {
+            pluginFamilySlug: pluginFamilySlug
+          }
+        };
+      case 1:
+        _context16.n = 2;
+        return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
+      case 2:
+        _context16.n = 3;
+        return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
+          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/deactivate"),
+          method: 'POST'
+        });
+      case 3:
+        data = _context16.v;
+        if (!data.success) {
+          _context16.n = 8;
+          break;
+        }
+        _context16.n = 4;
+        return fetchPlugins();
+      case 4:
+        _context16.n = 5;
+        return {
           type: 'DEACTIVATE_PLUGIN_SUCCESS',
           data: {
             pluginFamilySlug: pluginFamilySlug
           }
         };
       case 5:
-        _context15.n = 6;
-        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugin deactivated successfully', 'publishpress-hub'), 'success');
+        return _context16.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 6);
       case 6:
-        return _context15.a(2, {
+        pluginName = _context16.v;
+        _context16.n = 7;
+        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s deactivated successfully', 'publishpress-hub'), pluginName), 'success');
+      case 7:
+        return _context16.a(2, {
           success: true,
           pluginFamilySlug: pluginFamilySlug,
           apiResponse: data
         });
-      case 7:
-        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin deactivation failed');
       case 8:
-        _context15.n = 12;
-        break;
+        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin deactivation failed');
       case 9:
-        _context15.p = 9;
-        _t6 = _context15.v;
-        _context15.n = 10;
+        _context16.n = 14;
+        break;
+      case 10:
+        _context16.p = 10;
+        _t6 = _context16.v;
+        _context16.n = 11;
         return {
           type: 'DEACTIVATE_PLUGIN_ERROR',
           data: {
@@ -9072,28 +9149,31 @@ function deactivatePlugin(pluginFamilySlug) {
             error: _t6
           }
         };
-      case 10:
-        _context15.n = 11;
-        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugin deactivation failed', 'publishpress-hub'), 'error');
       case 11:
+        return _context16.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 12);
+      case 12:
+        _pluginName4 = _context16.v;
+        _context16.n = 13;
+        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s deactivation failed', 'publishpress-hub'), _pluginName4), 'error');
+      case 13:
         _t6 = handleErrorMessageOnContext(_t6);
-        return _context15.a(2, {
+        return _context16.a(2, {
           success: false,
           pluginFamilySlug: pluginFamilySlug,
           error: _t6
         });
-      case 12:
-        return _context15.a(2);
+      case 14:
+        return _context16.a(2);
     }
-  }, _marked14, null, [[0, 9]]);
+  }, _marked15, null, [[0, 10]]);
 }
 function upgradePluginToPro(pluginFamilySlug, licenseKey) {
-  var data, _t7;
-  return _regenerator().w(function (_context16) {
-    while (1) switch (_context16.n) {
+  var data, pluginName, _pluginName5, _t7;
+  return _regenerator().w(function (_context17) {
+    while (1) switch (_context17.n) {
       case 0:
-        _context16.p = 0;
-        _context16.n = 1;
+        _context17.p = 0;
+        _context17.n = 1;
         return {
           type: 'UPGRADE_PLUGIN_TO_PRO_START',
           data: {
@@ -9102,11 +9182,11 @@ function upgradePluginToPro(pluginFamilySlug, licenseKey) {
           }
         };
       case 1:
-        _context16.n = 2;
+        _context17.n = 2;
         return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
       case 2:
         licenseKey = licenseKey.trim();
-        _context16.n = 3;
+        _context17.n = 3;
         return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
           path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/upgrade"),
           method: 'POST',
@@ -9115,15 +9195,15 @@ function upgradePluginToPro(pluginFamilySlug, licenseKey) {
           }
         });
       case 3:
-        data = _context16.v;
+        data = _context17.v;
         if (!data.success) {
-          _context16.n = 7;
+          _context17.n = 8;
           break;
         }
-        _context16.n = 4;
+        _context17.n = 4;
         return fetchPlugins();
       case 4:
-        _context16.n = 5;
+        _context17.n = 5;
         return {
           type: 'UPGRADE_PLUGIN_TO_PRO_SUCCESS',
           data: {
@@ -9131,24 +9211,27 @@ function upgradePluginToPro(pluginFamilySlug, licenseKey) {
           }
         };
       case 5:
-        _context16.n = 6;
-        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugin upgraded to Pro successfully', 'publishpress-hub'), 'success');
+        return _context17.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 6);
       case 6:
-        return _context16.a(2, {
+        pluginName = _context17.v;
+        _context17.n = 7;
+        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s upgraded to Pro successfully', 'publishpress-hub'), pluginName), 'success');
+      case 7:
+        return _context17.a(2, {
           success: true,
           pluginFamilySlug: pluginFamilySlug,
           licenseKey: licenseKey,
           apiResponse: data
         });
-      case 7:
-        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin upgrade to Pro failed');
       case 8:
-        _context16.n = 11;
-        break;
+        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin upgrade to Pro failed');
       case 9:
-        _context16.p = 9;
-        _t7 = _context16.v;
-        _context16.n = 10;
+        _context17.n = 14;
+        break;
+      case 10:
+        _context17.p = 10;
+        _t7 = _context17.v;
+        _context17.n = 11;
         return {
           type: 'UPGRADE_PLUGIN_TO_PRO_ERROR',
           data: {
@@ -9156,34 +9239,40 @@ function upgradePluginToPro(pluginFamilySlug, licenseKey) {
             error: _t7
           }
         };
-      case 10:
+      case 11:
+        return _context17.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 12);
+      case 12:
+        _pluginName5 = _context17.v;
+        _context17.n = 13;
+        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s upgrade to Pro failed', 'publishpress-hub'), _pluginName5), 'error');
+      case 13:
         _t7 = handleErrorMessageOnContext(_t7);
-        return _context16.a(2, {
+        return _context17.a(2, {
           success: false,
           pluginFamilySlug: pluginFamilySlug,
           licenseKey: licenseKey,
           error: _t7
         });
-      case 11:
-        return _context16.a(2);
+      case 14:
+        return _context17.a(2);
     }
-  }, _marked15, null, [[0, 9]]);
+  }, _marked16, null, [[0, 10]]);
 }
 function resolveConflict(pluginFamily, pluginToKeep) {
   var validPlugins, validPluginToKeep, data, _t8;
-  return _regenerator().w(function (_context17) {
-    while (1) switch (_context17.n) {
+  return _regenerator().w(function (_context18) {
+    while (1) switch (_context18.n) {
       case 0:
-        _context17.p = 0;
+        _context18.p = 0;
         validPlugins = ['free', 'pro'];
         validPluginToKeep = validPlugins.includes(pluginToKeep) ? pluginToKeep : null;
         if (validPluginToKeep) {
-          _context17.n = 1;
+          _context18.n = 1;
           break;
         }
         throw new Error('Invalid plugin to keep');
       case 1:
-        _context17.n = 2;
+        _context18.n = 2;
         return {
           type: 'RESOLVE_CONFLICT_START',
           data: {
@@ -9192,10 +9281,10 @@ function resolveConflict(pluginFamily, pluginToKeep) {
           }
         };
       case 2:
-        _context17.n = 3;
+        _context18.n = 3;
         return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
       case 3:
-        _context17.n = 4;
+        _context18.n = 4;
         return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
           path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamily.slug, "/resolve-conflict"),
           method: 'POST',
@@ -9204,15 +9293,15 @@ function resolveConflict(pluginFamily, pluginToKeep) {
           }
         });
       case 4:
-        data = _context17.v;
+        data = _context18.v;
         if (!data.success) {
-          _context17.n = 8;
+          _context18.n = 8;
           break;
         }
-        _context17.n = 5;
+        _context18.n = 5;
         return fetchPlugins();
       case 5:
-        _context17.n = 6;
+        _context18.n = 6;
         return {
           type: 'RESOLVE_CONFLICT_SUCCESS',
           data: {
@@ -9221,10 +9310,10 @@ function resolveConflict(pluginFamily, pluginToKeep) {
           }
         };
       case 6:
-        _context17.n = 7;
-        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Conflict resolved successfully', 'publishpress-hub'), 'success');
+        _context18.n = 7;
+        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Conflict resolved successfully for %s', 'publishpress-hub'), pluginFamily.name), 'success');
       case 7:
-        return _context17.a(2, {
+        return _context18.a(2, {
           success: true,
           pluginFamily: pluginFamily,
           pluginToKeep: pluginToKeep,
@@ -9233,12 +9322,12 @@ function resolveConflict(pluginFamily, pluginToKeep) {
       case 8:
         throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Failed to resolve conflict');
       case 9:
-        _context17.n = 12;
+        _context18.n = 13;
         break;
       case 10:
-        _context17.p = 10;
-        _t8 = _context17.v;
-        _context17.n = 11;
+        _context18.p = 10;
+        _t8 = _context18.v;
+        _context18.n = 11;
         return {
           type: 'RESOLVE_CONFLICT_ERROR',
           data: {
@@ -9248,105 +9337,32 @@ function resolveConflict(pluginFamily, pluginToKeep) {
           }
         };
       case 11:
+        _context18.n = 12;
+        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Failed to resolve conflict for %s', 'publishpress-hub'), pluginFamily.name), 'error');
+      case 12:
         _t8 = handleErrorMessageOnContext(_t8);
-        return _context17.a(2, {
+        return _context18.a(2, {
           success: false,
           pluginFamily: pluginFamily,
           pluginToKeep: pluginToKeep,
           error: _t8
         });
-      case 12:
-        return _context17.a(2);
+      case 13:
+        return _context18.a(2);
     }
-  }, _marked16, null, [[0, 10]]);
+  }, _marked17, null, [[0, 10]]);
 }
 function deactivateLicense(pluginFamily) {
   var data, _t9;
-  return _regenerator().w(function (_context18) {
-    while (1) switch (_context18.n) {
-      case 0:
-        _context18.p = 0;
-        _context18.n = 1;
-        return {
-          type: 'DEACTIVATE_LICENSE_START',
-          data: {
-            pluginFamily: pluginFamily
-          }
-        };
-      case 1:
-        _context18.n = 2;
-        return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
-      case 2:
-        _context18.n = 3;
-        return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
-          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamily.slug, "/deactivate-license"),
-          method: 'POST'
-        });
-      case 3:
-        data = _context18.v;
-        if (!data.success) {
-          _context18.n = 7;
-          break;
-        }
-        _context18.n = 4;
-        return fetchPlugins();
-      case 4:
-        _context18.n = 5;
-        return {
-          type: 'DEACTIVATE_LICENSE_SUCCESS',
-          data: {
-            pluginFamily: pluginFamily
-          }
-        };
-      case 5:
-        _context18.n = 6;
-        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('License deactivated successfully', 'publishpress-hub'), 'success');
-      case 6:
-        return _context18.a(2, {
-          success: true,
-          pluginFamily: pluginFamily,
-          apiResponse: data
-        });
-      case 7:
-        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'License deactivation failed');
-      case 8:
-        _context18.n = 11;
-        break;
-      case 9:
-        _context18.p = 9;
-        _t9 = _context18.v;
-        _context18.n = 10;
-        return {
-          type: 'DEACTIVATE_LICENSE_ERROR',
-          data: {
-            pluginFamily: pluginFamily,
-            error: _t9
-          }
-        };
-      case 10:
-        _t9 = handleErrorMessageOnContext(_t9);
-        return _context18.a(2, {
-          success: false,
-          pluginFamily: pluginFamily,
-          error: _t9
-        });
-      case 11:
-        return _context18.a(2);
-    }
-  }, _marked17, null, [[0, 9]]);
-}
-function activateLicense(pluginFamily, licenseKey) {
-  var data, _t0;
   return _regenerator().w(function (_context19) {
     while (1) switch (_context19.n) {
       case 0:
         _context19.p = 0;
         _context19.n = 1;
         return {
-          type: 'ACTIVATE_LICENSE_START',
+          type: 'DEACTIVATE_LICENSE_START',
           data: {
-            pluginFamily: pluginFamily,
-            licenseKey: licenseKey
+            pluginFamily: pluginFamily
           }
         };
       case 1:
@@ -9355,11 +9371,8 @@ function activateLicense(pluginFamily, licenseKey) {
       case 2:
         _context19.n = 3;
         return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
-          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamily.slug, "/activate-license"),
-          method: 'POST',
-          data: {
-            licenseKey: licenseKey
-          }
+          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamily.slug, "/deactivate-license"),
+          method: 'POST'
         });
       case 3:
         data = _context19.v;
@@ -9372,62 +9385,63 @@ function activateLicense(pluginFamily, licenseKey) {
       case 4:
         _context19.n = 5;
         return {
-          type: 'ACTIVATE_LICENSE_SUCCESS',
+          type: 'DEACTIVATE_LICENSE_SUCCESS',
           data: {
-            pluginFamily: pluginFamily,
-            licenseKey: licenseKey
+            pluginFamily: pluginFamily
           }
         };
       case 5:
         _context19.n = 6;
-        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('License activated successfully', 'publishpress-hub'), 'success');
+        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s license deactivated successfully', 'publishpress-hub'), pluginFamily.name), 'success');
       case 6:
         return _context19.a(2, {
           success: true,
-          pluginSlug: pluginFamily,
+          pluginFamily: pluginFamily,
           apiResponse: data
         });
       case 7:
-        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'License activation failed');
+        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'License deactivation failed');
       case 8:
-        _context19.n = 11;
+        _context19.n = 12;
         break;
       case 9:
         _context19.p = 9;
-        _t0 = _context19.v;
+        _t9 = _context19.v;
         _context19.n = 10;
         return {
-          type: 'ACTIVATE_LICENSE_ERROR',
+          type: 'DEACTIVATE_LICENSE_ERROR',
           data: {
             pluginFamily: pluginFamily,
-            licenseKey: licenseKey,
-            error: _t0
+            error: _t9
           }
         };
       case 10:
-        _t0 = handleErrorMessageOnContext(_t0);
+        _context19.n = 11;
+        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s license deactivation failed', 'publishpress-hub'), pluginFamily.name), 'error');
+      case 11:
+        _t9 = handleErrorMessageOnContext(_t9);
         return _context19.a(2, {
           success: false,
           pluginFamily: pluginFamily,
-          licenseKey: licenseKey,
-          error: _t0
+          error: _t9
         });
-      case 11:
+      case 12:
         return _context19.a(2);
     }
   }, _marked18, null, [[0, 9]]);
 }
-function updatePlugin(pluginFamilySlug) {
-  var data, _t1;
+function activateLicense(pluginFamily, licenseKey) {
+  var data, _t0;
   return _regenerator().w(function (_context20) {
     while (1) switch (_context20.n) {
       case 0:
         _context20.p = 0;
         _context20.n = 1;
         return {
-          type: 'UPDATE_PLUGIN_START',
+          type: 'ACTIVATE_LICENSE_START',
           data: {
-            pluginFamilySlug: pluginFamilySlug
+            pluginFamily: pluginFamily,
+            licenseKey: licenseKey
           }
         };
       case 1:
@@ -9436,8 +9450,11 @@ function updatePlugin(pluginFamilySlug) {
       case 2:
         _context20.n = 3;
         return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
-          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/update"),
-          method: 'POST'
+          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamily.slug, "/activate-license"),
+          method: 'POST',
+          data: {
+            licenseKey: licenseKey
+          }
         });
       case 3:
         data = _context20.v;
@@ -9450,29 +9467,113 @@ function updatePlugin(pluginFamilySlug) {
       case 4:
         _context20.n = 5;
         return {
+          type: 'ACTIVATE_LICENSE_SUCCESS',
+          data: {
+            pluginFamily: pluginFamily,
+            licenseKey: licenseKey
+          }
+        };
+      case 5:
+        _context20.n = 6;
+        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s license activated successfully', 'publishpress-hub'), pluginFamily.name), 'success');
+      case 6:
+        return _context20.a(2, {
+          success: true,
+          pluginSlug: pluginFamily,
+          apiResponse: data
+        });
+      case 7:
+        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'License activation failed');
+      case 8:
+        _context20.n = 12;
+        break;
+      case 9:
+        _context20.p = 9;
+        _t0 = _context20.v;
+        _context20.n = 10;
+        return {
+          type: 'ACTIVATE_LICENSE_ERROR',
+          data: {
+            pluginFamily: pluginFamily,
+            licenseKey: licenseKey,
+            error: _t0
+          }
+        };
+      case 10:
+        _context20.n = 11;
+        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s license activation failed', 'publishpress-hub'), pluginFamily.name), 'error');
+      case 11:
+        _t0 = handleErrorMessageOnContext(_t0);
+        return _context20.a(2, {
+          success: false,
+          pluginFamily: pluginFamily,
+          licenseKey: licenseKey,
+          error: _t0
+        });
+      case 12:
+        return _context20.a(2);
+    }
+  }, _marked19, null, [[0, 9]]);
+}
+function updatePlugin(pluginFamilySlug) {
+  var data, pluginName, _pluginName6, _t1;
+  return _regenerator().w(function (_context21) {
+    while (1) switch (_context21.n) {
+      case 0:
+        _context21.p = 0;
+        _context21.n = 1;
+        return {
+          type: 'UPDATE_PLUGIN_START',
+          data: {
+            pluginFamilySlug: pluginFamilySlug
+          }
+        };
+      case 1:
+        _context21.n = 2;
+        return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
+      case 2:
+        _context21.n = 3;
+        return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
+          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/update"),
+          method: 'POST'
+        });
+      case 3:
+        data = _context21.v;
+        if (!data.success) {
+          _context21.n = 8;
+          break;
+        }
+        _context21.n = 4;
+        return fetchPlugins();
+      case 4:
+        _context21.n = 5;
+        return {
           type: 'UPDATE_PLUGIN_SUCCESS',
           data: {
             pluginFamilySlug: pluginFamilySlug
           }
         };
       case 5:
-        _context20.n = 6;
-        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugin updated successfully', 'publishpress-hub'), 'success');
+        return _context21.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 6);
       case 6:
-        return _context20.a(2, {
+        pluginName = _context21.v;
+        _context21.n = 7;
+        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s updated successfully', 'publishpress-hub'), pluginName), 'success');
+      case 7:
+        return _context21.a(2, {
           success: true,
           pluginFamilySlug: pluginFamilySlug,
           apiResponse: data
         });
-      case 7:
-        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin update failed');
       case 8:
-        _context20.n = 12;
-        break;
+        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin update failed');
       case 9:
-        _context20.p = 9;
-        _t1 = _context20.v;
-        _context20.n = 10;
+        _context21.n = 14;
+        break;
+      case 10:
+        _context21.p = 10;
+        _t1 = _context21.v;
+        _context21.n = 11;
         return {
           type: 'UPDATE_PLUGIN_ERROR',
           data: {
@@ -9480,26 +9581,29 @@ function updatePlugin(pluginFamilySlug) {
             error: _t1
           }
         };
-      case 10:
-        _context20.n = 11;
-        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugin update failed', 'publishpress-hub'), 'error');
       case 11:
+        return _context21.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 12);
+      case 12:
+        _pluginName6 = _context21.v;
+        _context21.n = 13;
+        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s update failed', 'publishpress-hub'), _pluginName6), 'error');
+      case 13:
         _t1 = handleErrorMessageOnContext(_t1);
-        return _context20.a(2, {
+        return _context21.a(2, {
           success: false,
           pluginFamilySlug: pluginFamilySlug,
           error: _t1
         });
-      case 12:
-        return _context20.a(2);
+      case 14:
+        return _context21.a(2);
     }
-  }, _marked19, null, [[0, 9]]);
+  }, _marked20, null, [[0, 10]]);
 }
 function cleanupError(pluginFamily) {
-  return _regenerator().w(function (_context21) {
-    while (1) switch (_context21.n) {
+  return _regenerator().w(function (_context22) {
+    while (1) switch (_context22.n) {
       case 0:
-        _context21.n = 1;
+        _context22.n = 1;
         return {
           type: 'CLEANUP_ERROR',
           data: {
@@ -9507,9 +9611,9 @@ function cleanupError(pluginFamily) {
           }
         };
       case 1:
-        return _context21.a(2);
+        return _context22.a(2);
     }
-  }, _marked20);
+  }, _marked21);
 }
 function handleErrorMessageOnContext(error) {
   var _error$context;
