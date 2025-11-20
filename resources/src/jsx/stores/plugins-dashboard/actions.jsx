@@ -8,12 +8,13 @@
  * @since 1.0.0
  */
 
-import { apiFetch } from '@wordpress/data-controls';
+import { apiFetch, select } from '@wordpress/data-controls';
 import { dispatch } from '@wordpress/data';
 
 import { __, sprintf } from '@publishpress-hub/i18n';
 
 import apiReady from '../../utils/apiReady';
+import { STORE_NAME } from './name';
 
 const API_NAMESPACE = '/publishpress-hub/v1';
 
@@ -51,6 +52,34 @@ const createSnackbarNotice = (message, type) => {
             isDismissible: true,
         }
     );
+}
+
+/**
+ * Gets the plugin name from the plugin family slug.
+ *
+ * @param {string} pluginFamilySlug The plugin family slug.
+ * @return {string} The plugin name or fallback to slug.
+ */
+function* getPluginName(pluginFamilySlug) {
+    const plugins = yield select(STORE_NAME, 'getPlugins');
+    const pluginFamily = plugins.find(plugin => plugin.slug === pluginFamilySlug);
+
+    if (!pluginFamily) {
+        return pluginFamilySlug;
+    }
+
+    // Use the installed plugin's name if available, otherwise use family name
+    if (pluginFamily.hasAnyVersionInstalled) {
+        if (pluginFamily.proPlugin.isInstalled) {
+            return pluginFamily.proPlugin.name;
+        }
+        if (pluginFamily.freePlugin.isInstalled) {
+            return pluginFamily.freePlugin.name;
+        }
+    }
+
+    // Fallback to family name
+    return pluginFamily.name || pluginFamilySlug;
 }
 
 export function* setSelectedFilter(selectedFilter) {
@@ -136,7 +165,7 @@ export function* fetchPlugins(forceCheck = false) {
 
         yield apiReady();
 
-        const path = forceCheck 
+        const path = forceCheck
             ? `${API_NAMESPACE}/plugins?force-check=1`
             : `${API_NAMESPACE}/plugins`;
 
@@ -184,7 +213,11 @@ export function* installFreePlugin(pluginFamilySlug) {
 
             yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 
-            yield createSnackbarNotice(__('Plugin installed successfully', 'publishpress-hub'), 'success');
+            const pluginName = yield* getPluginName(pluginFamilySlug);
+            yield createSnackbarNotice(
+                sprintf(__('%s installed successfully', 'publishpress-hub'), pluginName),
+                'success'
+            );
 
             return {
                 success: true,
@@ -197,7 +230,11 @@ export function* installFreePlugin(pluginFamilySlug) {
     } catch (error) {
         yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginFamilySlug, error: error}};
 
-        yield createNotice(__('Plugin installation failed', 'publishpress-hub'), 'error');
+        const pluginName = yield* getPluginName(pluginFamilySlug);
+        yield createNotice(
+            sprintf(__('%s installation failed', 'publishpress-hub'), pluginName),
+            'error'
+        );
 
         error = handleErrorMessageOnContext(error);
 
@@ -230,7 +267,11 @@ export function* installProPlugin(pluginFamilySlug, licenseKey) {
 
             yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 
-            yield createSnackbarNotice(__('Plugin installed successfully', 'publishpress-hub'), 'success');
+            const pluginName = yield* getPluginName(pluginFamilySlug);
+            yield createSnackbarNotice(
+                sprintf(__('%s installed successfully', 'publishpress-hub'), pluginName),
+                'success'
+            );
 
             // Return context along with the API response
             return {
@@ -245,6 +286,12 @@ export function* installProPlugin(pluginFamilySlug, licenseKey) {
     } catch (error) {
         yield {type: 'INSTALL_PLUGIN_ERROR', data: {pluginFamilySlug, error: error}};
 
+        const pluginName = yield* getPluginName(pluginFamilySlug);
+        yield createNotice(
+            sprintf(__('%s installation failed', 'publishpress-hub'), pluginName),
+            'error'
+        );
+
         error = handleErrorMessageOnContext(error);
 
         return {
@@ -258,6 +305,9 @@ export function* installProPlugin(pluginFamilySlug, licenseKey) {
 
 
 export function* uninstallPlugin(pluginFamilySlug) {
+    // Get plugin name before uninstall, as it won't be available after
+    const pluginName = yield* getPluginName(pluginFamilySlug);
+
     try {
         yield {type: 'UNINSTALL_PLUGIN_START', data: {pluginFamilySlug}};
 
@@ -273,7 +323,10 @@ export function* uninstallPlugin(pluginFamilySlug) {
 
             yield {type: 'UNINSTALL_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 
-            yield createSnackbarNotice(__('Plugin uninstalled successfully', 'publishpress-hub'), 'success');
+            yield createSnackbarNotice(
+                sprintf(__('%s uninstalled successfully', 'publishpress-hub'), pluginName),
+                'success'
+            );
 
             return {
                 success: true,
@@ -286,7 +339,10 @@ export function* uninstallPlugin(pluginFamilySlug) {
     } catch (error) {
         yield {type: 'UNINSTALL_PLUGIN_ERROR', data: {pluginFamilySlug, error: error}};
 
-        yield createNotice(__('Plugin uninstall failed', 'publishpress-hub'), 'error');
+        yield createNotice(
+            sprintf(__('%s uninstall failed', 'publishpress-hub'), pluginName),
+            'error'
+        );
 
         error = handleErrorMessageOnContext(error);
 
@@ -314,7 +370,11 @@ export function* activatePlugin(pluginFamilySlug) {
 
             yield {type: 'ACTIVATE_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 
-            yield createSnackbarNotice(__('Plugin activated successfully', 'publishpress-hub'), 'success');
+            const pluginName = yield* getPluginName(pluginFamilySlug);
+            yield createSnackbarNotice(
+                sprintf(__('%s activated successfully', 'publishpress-hub'), pluginName),
+                'success'
+            );
 
             return {
                 success: true,
@@ -327,7 +387,11 @@ export function* activatePlugin(pluginFamilySlug) {
     } catch (error) {
         yield {type: 'ACTIVATE_PLUGIN_ERROR', data: {pluginFamilySlug, error: error}};
 
-        yield createNotice(__('Plugin activation failed', 'publishpress-hub'), 'error');
+        const pluginName = yield* getPluginName(pluginFamilySlug);
+        yield createNotice(
+            sprintf(__('%s activation failed', 'publishpress-hub'), pluginName),
+            'error'
+        );
 
         error = handleErrorMessageOnContext(error);
 
@@ -355,7 +419,11 @@ export function* deactivatePlugin(pluginFamilySlug) {
 
             yield {type: 'DEACTIVATE_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 
-            yield createSnackbarNotice(__('Plugin deactivated successfully', 'publishpress-hub'), 'success');
+            const pluginName = yield* getPluginName(pluginFamilySlug);
+            yield createSnackbarNotice(
+                sprintf(__('%s deactivated successfully', 'publishpress-hub'), pluginName),
+                'success'
+            );
 
             return {
                 success: true,
@@ -368,7 +436,11 @@ export function* deactivatePlugin(pluginFamilySlug) {
     } catch (error) {
         yield {type: 'DEACTIVATE_PLUGIN_ERROR', data: {pluginFamilySlug, error: error}};
 
-        yield createNotice(__('Plugin deactivation failed', 'publishpress-hub'), 'error');
+        const pluginName = yield* getPluginName(pluginFamilySlug);
+        yield createNotice(
+            sprintf(__('%s deactivation failed', 'publishpress-hub'), pluginName),
+            'error'
+        );
 
         error = handleErrorMessageOnContext(error);
 
@@ -401,7 +473,11 @@ export function* upgradePluginToPro(pluginFamilySlug, licenseKey) {
 
             yield {type: 'UPGRADE_PLUGIN_TO_PRO_SUCCESS', data: {pluginFamilySlug}};
 
-            yield createSnackbarNotice(__('Plugin upgraded to Pro successfully', 'publishpress-hub'), 'success');
+            const pluginName = yield* getPluginName(pluginFamilySlug);
+            yield createSnackbarNotice(
+                sprintf(__('%s upgraded to Pro successfully', 'publishpress-hub'), pluginName),
+                'success'
+            );
 
             // Return context along with the API response
             return {
@@ -415,6 +491,12 @@ export function* upgradePluginToPro(pluginFamilySlug, licenseKey) {
         }
     } catch (error) {
         yield {type: 'UPGRADE_PLUGIN_TO_PRO_ERROR', data: {pluginFamilySlug, error: error}};
+
+        const pluginName = yield* getPluginName(pluginFamilySlug);
+        yield createNotice(
+            sprintf(__('%s upgrade to Pro failed', 'publishpress-hub'), pluginName),
+            'error'
+        );
 
         error = handleErrorMessageOnContext(error);
 
@@ -453,7 +535,10 @@ export function* resolveConflict(pluginFamily, pluginToKeep) {
 
             yield {type: 'RESOLVE_CONFLICT_SUCCESS', data: {pluginFamily, pluginToKeep}};
 
-            yield createSnackbarNotice(__('Conflict resolved successfully', 'publishpress-hub'), 'success');
+            yield createSnackbarNotice(
+                sprintf(__('Conflict resolved successfully for %s', 'publishpress-hub'), pluginFamily.name),
+                'success'
+            );
 
             return {
                 success: true,
@@ -466,6 +551,11 @@ export function* resolveConflict(pluginFamily, pluginToKeep) {
         }
     } catch (error) {
         yield {type: 'RESOLVE_CONFLICT_ERROR', data: {pluginFamily, pluginToKeep, error: error}};
+
+        yield createNotice(
+            sprintf(__('Failed to resolve conflict for %s', 'publishpress-hub'), pluginFamily.name),
+            'error'
+        );
 
         error = handleErrorMessageOnContext(error);
 
@@ -494,7 +584,10 @@ export function* deactivateLicense(pluginFamily) {
 
             yield {type: 'DEACTIVATE_LICENSE_SUCCESS', data: {pluginFamily}};
 
-            yield createSnackbarNotice(__('License deactivated successfully', 'publishpress-hub'), 'success');
+            yield createSnackbarNotice(
+                sprintf(__('%s license deactivated successfully', 'publishpress-hub'), pluginFamily.name),
+                'success'
+            );
 
             return {
                 success: true,
@@ -506,6 +599,11 @@ export function* deactivateLicense(pluginFamily) {
         }
     } catch (error) {
         yield {type: 'DEACTIVATE_LICENSE_ERROR', data: {pluginFamily, error: error}};
+
+        yield createNotice(
+            sprintf(__('%s license deactivation failed', 'publishpress-hub'), pluginFamily.name),
+            'error'
+        );
 
         error = handleErrorMessageOnContext(error);
 
@@ -537,7 +635,10 @@ export function* activateLicense(pluginFamily, licenseKey) {
 
             yield {type: 'ACTIVATE_LICENSE_SUCCESS', data: {pluginFamily, licenseKey}};
 
-            yield createSnackbarNotice(__('License activated successfully', 'publishpress-hub'), 'success');
+            yield createSnackbarNotice(
+                sprintf(__('%s license activated successfully', 'publishpress-hub'), pluginFamily.name),
+                'success'
+            );
 
             return {
                 success: true,
@@ -549,6 +650,11 @@ export function* activateLicense(pluginFamily, licenseKey) {
         }
     } catch (error) {
         yield {type: 'ACTIVATE_LICENSE_ERROR', data: {pluginFamily, licenseKey, error: error}};
+
+        yield createNotice(
+            sprintf(__('%s license activation failed', 'publishpress-hub'), pluginFamily.name),
+            'error'
+        );
 
         error = handleErrorMessageOnContext(error);
 
@@ -577,7 +683,11 @@ export function* updatePlugin(pluginFamilySlug) {
 
             yield {type: 'UPDATE_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 
-            yield createSnackbarNotice(__('Plugin updated successfully', 'publishpress-hub'), 'success');
+            const pluginName = yield* getPluginName(pluginFamilySlug);
+            yield createSnackbarNotice(
+                sprintf(__('%s updated successfully', 'publishpress-hub'), pluginName),
+                'success'
+            );
 
             return {
                 success: true,
@@ -590,7 +700,11 @@ export function* updatePlugin(pluginFamilySlug) {
     } catch (error) {
         yield {type: 'UPDATE_PLUGIN_ERROR', data: {pluginFamilySlug, error: error}};
 
-        yield createNotice(__('Plugin update failed', 'publishpress-hub'), 'error');
+        const pluginName = yield* getPluginName(pluginFamilySlug);
+        yield createNotice(
+            sprintf(__('%s update failed', 'publishpress-hub'), pluginName),
+            'error'
+        );
 
         error = handleErrorMessageOnContext(error);
 
