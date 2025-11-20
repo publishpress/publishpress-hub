@@ -142,6 +142,8 @@ abstract class AbstractDependencies
     // Presentation Services
     public const MAIN_MENU_CONTROLLER = 'publishpress-hub.presentation.main-menu.controller';
 
+    public const WELCOME_PAGE_CONTROLLER = 'publishpress-hub.presentation.welcome-page.controller';
+
     public const PLUGINS_DASHBOARD_CONTROLLER = 'publishpress-hub.presentation.plugins-dashboard.controller';
 
     public const DEV_COMPONENTS_SHOWCASE_CONTROLLER = 'publishpress-hub.presentation.dev-components-showcase.controller';

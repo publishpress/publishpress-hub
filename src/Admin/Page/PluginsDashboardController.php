@@ -70,7 +70,6 @@ class PluginsDashboardController implements BootableInterface
      */
     protected function onLoad(): void
     {
-        $this->registerAdminMenu();
         $this->addHooks();
     }
 
@@ -82,6 +81,7 @@ class PluginsDashboardController implements BootableInterface
      */
     protected function onInit(): void
     {
+        $this->registerAdminMenu();
     }
 
     /**
@@ -113,7 +113,21 @@ class PluginsDashboardController implements BootableInterface
         );
 
         $this->adminMenuService->addSubmenuPage($submenu);
-        $this->adminMenuService->setMainMenuPage('publishpress-hub-plugins-dashboard');
+
+        if ($this->isWelcomePageDisabled()) {
+            $this->adminMenuService->setMainMenuPage('publishpress-hub-plugins-dashboard');
+        }
+    }
+
+    /**
+     * Check if welcome page is disabled.
+     *
+     * @return bool
+     * @since 1.0.0
+     */
+    private function isWelcomePageDisabled(): bool
+    {
+        return \PublishPress\Hub\Admin\Page\WelcomePageController::checkIfWelcomePageDisabled();
     }
 
     /**
@@ -141,7 +155,12 @@ class PluginsDashboardController implements BootableInterface
      */
     public function enqueueAssets(string $hookSuffix): void
     {
-        if ('toplevel_page_publishpress-hub' !== $hookSuffix) {
+        // When welcome page is disabled, Plugins is the main menu page
+        $isMainMenuPage = 'toplevel_page_publishpress-hub' === $hookSuffix && $this->isWelcomePageDisabled();
+        // When welcome page is enabled, Plugins is a submenu page
+        $isSubmenuPage = 'publishpress_page_publishpress-hub-plugins-dashboard' === $hookSuffix;
+
+        if (! $isMainMenuPage && ! $isSubmenuPage) {
             return;
         }
 

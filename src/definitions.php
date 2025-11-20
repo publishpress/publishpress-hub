@@ -54,6 +54,7 @@ use PublishPress\Hub\Infrastructure\WP\Security\WPSecurityAdapter;
 use PublishPress\Hub\Admin\Page\ComponentsShowcaseController;
 use PublishPress\Hub\Admin\MenuController;
 use PublishPress\Hub\Admin\Page\PluginsDashboardController;
+use PublishPress\Hub\Admin\Page\WelcomePageController;
 use PublishPress\Hub\Infrastructure\Container\AbstractDependencies;
 use PublishPress\Hub\Infrastructure\License\PerPluginLicensePersistenceService;
 use PublishPress\Hub\Rest\PluginsController;
@@ -207,10 +208,15 @@ return [
             $servicesToInit = [
                 $container->get(AbstractDependencies::I18N_SERVICE),
                 $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
-                $container->get(AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER),
-                $container->get(AbstractDependencies::REST_API_SERVICE),
-                $container->get(AbstractDependencies::REST_API_PLUGINS_CONTROLLER),
             ];
+
+            if (!defined('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE') || !constant('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE')) {
+                $servicesToInit[] = $container->get(AbstractDependencies::WELCOME_PAGE_CONTROLLER);
+            }
+
+            $servicesToInit[] = $container->get(AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER);
+            $servicesToInit[] = $container->get(AbstractDependencies::REST_API_SERVICE);
+            $servicesToInit[] = $container->get(AbstractDependencies::REST_API_PLUGINS_CONTROLLER);
 
             if (defined('PUBLISHPRESS_HUB_DEV_MODE') && constant('PUBLISHPRESS_HUB_DEV_MODE')) {
                 $servicesToInit[] = $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER);
@@ -325,6 +331,16 @@ return [
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
             $container->get(AbstractDependencies::ASSET_SERVICE),
             $container->get(AbstractDependencies::HOOKS_SERVICE)
+        ),
+
+    AbstractDependencies::WELCOME_PAGE_CONTROLLER =>
+        fn(ContainerInterface $container) => new WelcomePageController(
+            $container->get(AbstractDependencies::HOOKS_SERVICE),
+            $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
+            $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
+            $container->get(AbstractDependencies::ASSET_SERVICE),
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER),
+            $container->get(AbstractDependencies::SECURITY_SERVICE)
         ),
 
     AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER =>
