@@ -233,15 +233,47 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
 
             return $this->createSuccessResponse($response);
         } catch (WithContextInterface $e) {
+            // Sanitize the message for client consumption
+            $safeMessage = $this->sanitizeErrorMessage($e->getMessage());
+
+            // Filter context to remove sensitive information
+            $safeContext = $this->sanitizeContext($e->getContext());
+
+            // Log full details server-side for debugging
+            if (defined('WP_DEBUG') && WP_DEBUG) {
+                error_log(
+                    sprintf(
+                        'REST API Error: %s | Code: %s | Context: %s',
+                        $e->getMessage(),
+                        $this->getErrorCodeFromException($e),
+                        wp_json_encode($e->getContext())
+                    )
+                );
+            }
+
             return $this->createErrorResponse(
-                $e->getMessage(),
+                $safeMessage,
                 400,
                 $this->getErrorCodeFromException($e),
-                $e->getContext()
+                $safeContext
             );
         } catch (Exception $e) {
+            // Sanitize generic exceptions
+            $safeMessage = $this->sanitizeErrorMessage($e->getMessage());
+
+            // Log full details server-side
+            if (defined('WP_DEBUG') && WP_DEBUG) {
+                error_log(
+                    sprintf(
+                        'REST API Unknown Error: %s | Trace: %s',
+                        $e->getMessage(),
+                        $e->getTraceAsString()
+                    )
+                );
+            }
+
             return $this->createErrorResponse(
-                $e->getMessage(),
+                $safeMessage,
                 400,
                 ExceptionCode::UNKNOWN_ERROR
             );
@@ -309,5 +341,71 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
         }
 
         return $e->getMessage();
+    }
+
+    /**
+     * Sanitize error messages for client consumption.
+     *
+     * @param string $message The original error message.
+     * @return string The sanitized error message.
+     * @since 1.0.0
+     */
+    private function sanitizeErrorMessage(string $message): string
+    {
+        // Remove file paths
+        $message = preg_replace('/\/[^\s]+\.php:\d+/', '[file]', $message);
+
+        // Remove absolute paths
+        if (defined('ABSPATH')) {
+            $message = preg_replace('/' . preg_quote(ABSPATH, '/') . '[^\s]+/', '[path]', $message);
+        }
+
+        // Remove database connection strings
+        $message = preg_replace('/mysql:\/\/[^\s]+/', '[database]', $message);
+
+        // Remove stack traces
+        $message = preg_replace('/Stack trace:.*/s', '', $message);
+
+        // If message is empty or too technical, return generic message
+        if (empty($message) || strlen($message) > 500) {
+            return esc_html__('An error occurred while processing your request.', 'publishpress-hub');
+        }
+
+        return esc_html($message);
+    }
+
+    /**
+     * Sanitize context to remove sensitive information.
+     *
+     * @param array<string, mixed> $context The original context.
+     * @return array<string, mixed> The sanitized context.
+     * @since 1.0.0
+     */
+    private function sanitizeContext(array $context): array
+    {
+        $safeContext = [];
+        $sensitiveKeys = ['password', 'secret', 'key', 'token', 'api_key', 'file_path', 'database'];
+
+        foreach ($context as $key => $value) {
+            $lowerKey = strtolower($key);
+
+            // Skip sensitive keys
+            foreach ($sensitiveKeys as $sensitive) {
+                if (strpos($lowerKey, $sensitive) !== false) {
+                    continue 2; // Skip this key
+                }
+            }
+
+            // Sanitize values
+            if (is_string($value)) {
+                $safeContext[$key] = esc_html($value);
+            } elseif (is_array($value)) {
+                $safeContext[$key] = $this->sanitizeContext($value);
+            } else {
+                $safeContext[$key] = $value;
+            }
+        }
+
+        return $safeContext;
     }
 }
