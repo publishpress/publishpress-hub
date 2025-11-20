@@ -107,7 +107,16 @@ class WPOptionsAdapter implements WPOptionsAdapterInterface
 
         $options = [];
         foreach ($results as $row) {
-            $options[$row['option_name']] = maybe_unserialize($row['option_value']);
+            $unserialized = maybe_unserialize($row['option_value']);
+            // Validate the unserialized data structure - only allow arrays and scalar values
+            // This prevents object injection if the database is compromised
+            if (is_array($unserialized) || is_scalar($unserialized)) {
+                $options[$row['option_name']] = $unserialized;
+            } else {
+                // If unserialized data is an object or other unexpected type, use original value
+                // This prevents potential object injection while maintaining functionality
+                $options[$row['option_name']] = $row['option_value'];
+            }
         }
 
         return $options;

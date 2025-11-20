@@ -632,17 +632,44 @@ class Updater
         $request = json_decode(wp_remote_retrieve_body($request));
 
         if ($request && isset($request->sections)) {
-            $request->sections = maybe_unserialize($request->sections);
+            // Validate that sections is a string before unserializing
+            if (is_string($request->sections)) {
+                $request->sections = maybe_unserialize($request->sections);
+                // Additional validation: ensure sections is an array after unserialization
+                if (!is_array($request->sections)) {
+                    $request->sections = [];
+                }
+            } else {
+                $request->sections = [];
+            }
         } else {
             $request = false;
         }
 
         if ($request && isset($request->banners)) {
-            $request->banners = maybe_unserialize($request->banners);
+            // Validate that banners is a string before unserializing
+            if (is_string($request->banners)) {
+                $request->banners = maybe_unserialize($request->banners);
+                // Additional validation: ensure banners is an array after unserialization
+                if (!is_array($request->banners)) {
+                    $request->banners = [];
+                }
+            } else {
+                $request->banners = [];
+            }
         }
 
         if ($request && isset($request->icons)) {
-            $request->icons = maybe_unserialize($request->icons);
+            // Validate that icons is a string before unserializing
+            if (is_string($request->icons)) {
+                $request->icons = maybe_unserialize($request->icons);
+                // Additional validation: ensure icons is an array after unserialization
+                if (!is_array($request->icons)) {
+                    $request->icons = [];
+                }
+            } else {
+                $request->icons = [];
+            }
         }
 
         if (! empty($request->sections)) {
