@@ -34,6 +34,16 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
 {
     use BootableTrait;
 
+    /**
+     * Maximum number of requests allowed per window.
+     */
+    private const RATE_LIMIT_MAX_REQUESTS = 10;
+
+    /**
+     * Time window in seconds for rate limiting.
+     */
+    private const RATE_LIMIT_WINDOW_SECONDS = 60;
+
     private HooksServiceInterface $hooksService;
     private RestApiAdapterInterface $restApiAdapter;
     private SecurityServiceInterface $securityService;
@@ -212,6 +222,12 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
      */
     public function executeUseCase(WP_REST_Request $request, UseCaseInterface $useCase)
     {
+        // Check rate limit before executing use case
+        $rateLimitCheck = $this->checkRateLimit($request);
+        if (is_wp_error($rateLimitCheck)) {
+            return $rateLimitCheck;
+        }
+
         try {
             $response = $useCase->execute($request);
 
@@ -230,6 +246,37 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
                 ExceptionCode::UNKNOWN_ERROR
             );
         }
+    }
+
+    /**
+     * Check rate limit for a request.
+     *
+     * @param WP_REST_Request $request The request.
+     * @return bool|WP_Error True if within rate limit, WP_Error if rate limit exceeded.
+     * @since 1.0.0
+     */
+    private function checkRateLimit(WP_REST_Request $request)
+    {
+        $user_id = get_current_user_id();
+        $endpoint = $request->get_route();
+        $key = 'rate_limit_' . md5($user_id . $endpoint);
+
+        $attempts = get_transient($key);
+        if ($attempts === false) {
+            $attempts = 0;
+        }
+
+        if ($attempts >= self::RATE_LIMIT_MAX_REQUESTS) {
+            return new WP_Error(
+                'rate_limit_exceeded',
+                esc_html__('Too many requests. Please try again later.', 'publishpress-hub'),
+                ['status' => 429]
+            );
+        }
+
+        set_transient($key, $attempts + 1, self::RATE_LIMIT_WINDOW_SECONDS);
+
+        return true;
     }
 
     /**
