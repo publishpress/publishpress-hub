@@ -42,6 +42,9 @@ declare(strict_types=1);
                 <a href="#features" class="pp-hub-welcome-page__tab-link" data-tab="features">
                     <?php esc_html_e('Features', 'publishpress-hub'); ?>
                 </a>
+                <a href="#documentation" class="pp-hub-welcome-page__tab-link" data-tab="documentation">
+                    <?php esc_html_e('Documentation', 'publishpress-hub'); ?>
+                </a>
             </nav>
 
             <div class="pp-hub-welcome-page__tabs-content">
@@ -133,6 +136,17 @@ declare(strict_types=1);
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div id="documentation" class="pp-hub-welcome-page__tab-panel">
+                    <div class="pp-hub-welcome-page__content">
+                        <h2 class="pp-hub-welcome-page__tab-content-title">
+                            <?php esc_html_e('Documentation', 'publishpress-hub'); ?>
+                        </h2>
+                        <p class="pp-hub-welcome-page__message">
+                            <?php esc_html_e('Documentation content will be added here.', 'publishpress-hub'); ?>
+                        </p>
                     </div>
                 </div>
             </div>
