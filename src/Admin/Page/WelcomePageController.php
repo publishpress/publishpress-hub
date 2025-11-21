@@ -219,6 +219,12 @@ class WelcomePageController implements BootableInterface
             [
                 'dismiss_url' => $dismissUrl,
                 'welcome_image_url' => $this->assetService->getPluginAssetUrl('images/welcome-1.png'),
+                'logo_url' => $this->assetService->getPluginAssetUrl('images/publishpress-logo.png'),
+                'plugin_slug' => 'publishpress-hub',
+                'plugin_name' => __('PublishPress Hub', 'publishpress-hub'),
+                'plugin_documentation_url' => 'https://publishpress.com/knowledge-base/',
+                'plugin_about_url' => 'https://publishpress.com/',
+                'plugin_support_url' => 'https://publishpress.com/contact/',
             ]
         );
     }

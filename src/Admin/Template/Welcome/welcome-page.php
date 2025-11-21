@@ -152,7 +152,46 @@ declare(strict_types=1);
             </div>
         </div>
 
-        <div class="pp-hub-welcome-page__content">
+
+        <footer class="pp-hub-welcome-page__footer">
+            <div class="pp-hub-welcome-page__footer-rating">
+                <a href="//wordpress.org/support/plugin/<?php echo esc_attr($context['plugin_slug']); ?>/reviews/#new-post" target="_blank" rel="noopener noreferrer">
+                    <?php
+                    printf(
+                        /* translators: %1$s: Plugin name, %2$s: Star icons */
+                        esc_html__('If you like %1$s, please leave us a %2$s rating. Thank you!', 'publishpress-hub'),
+                        '<strong>' . esc_html($context['plugin_name']) . '</strong>',
+                        '<span class="pp-hub-welcome-page__footer-stars">' . str_repeat('<span class="dashicons dashicons-star-filled"></span>', 5) . '</span>'
+                    );
+                    ?>
+                </a>
+            </div>
+            <hr class="pp-hub-welcome-page__footer-separator" />
+            <nav class="pp-hub-welcome-page__footer-nav">
+                <ul>
+                    <li>
+                        <a href="<?php echo esc_url($context['plugin_about_url']); ?>" target="_blank" rel="noopener noreferrer" title="<?php echo esc_attr(sprintf(/* translators: %s: Plugin name */ __('About %s', 'publishpress-hub'), $context['plugin_name'])); ?>">
+                            <?php esc_html_e('About', 'publishpress-hub'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo esc_url($context['plugin_documentation_url']); ?>" target="_blank" rel="noopener noreferrer" title="<?php echo esc_attr(sprintf(/* translators: %s: Plugin name */ __('Documentation for %s', 'publishpress-hub'), $context['plugin_name'])); ?>">
+                            <?php esc_html_e('Documentation', 'publishpress-hub'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo esc_url($context['plugin_support_url']); ?>" target="_blank" rel="noopener noreferrer" title="<?php echo esc_attr(sprintf(/* translators: %s: Plugin name */ __('Contact the %s team', 'publishpress-hub'), $context['plugin_name'])); ?>">
+                            <?php esc_html_e('Contact', 'publishpress-hub'); ?>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="pp-hub-welcome-page__footer-logo">
+                <a href="https://publishpress.com" target="_blank" rel="noopener noreferrer">
+                    <img src="<?php echo esc_url($context['logo_url']); ?>" alt="PublishPress" />
+                </a>
+            </div>
+
             <p class="pp-hub-welcome-page__dismiss">
             <?php
             printf(
@@ -162,7 +201,7 @@ declare(strict_types=1);
             );
             ?>
             </p>
-        </div>
+        </footer>
     </div>
 </div>
 
@@ -315,8 +354,7 @@ declare(strict_types=1);
     line-height: 1.6;
     color: #646970;
     margin: 30px 0 0;
-    padding-top: 30px;
-    border-top: 1px solid #dcdcde;
+    text-align: center;
 }
 
 .pp-hub-welcome-page__dismiss a {
@@ -405,6 +443,105 @@ declare(strict_types=1);
 
     .pp-hub-welcome-page__tab-content-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+.pp-hub-welcome-page__footer {
+    background: #ffffff;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 40px;
+}
+
+.pp-hub-welcome-page__footer-rating {
+    margin-bottom: 20px;
+}
+
+.pp-hub-welcome-page__footer-rating a {
+    color: #646970;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.pp-hub-welcome-page__footer-rating a:hover {
+    color: #2271b1;
+}
+
+.pp-hub-welcome-page__footer-rating strong {
+    color: #646970;
+    font-weight: 600;
+}
+
+.pp-hub-welcome-page__footer-stars {
+    color: #f0b849;
+    margin: 0 4px;
+}
+
+.pp-hub-welcome-page__footer-stars .dashicons {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.pp-hub-welcome-page__footer-separator {
+    border: none;
+    border-top: 1px solid #dcdcde;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.pp-hub-welcome-page__footer-nav {
+    margin: 20px 0;
+}
+
+.pp-hub-welcome-page__footer-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.pp-hub-welcome-page__footer-nav li {
+    margin: 0;
+    padding: 0;
+}
+
+.pp-hub-welcome-page__footer-nav a {
+    color: #646970;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.pp-hub-welcome-page__footer-nav a:hover {
+    color: #2271b1;
+    text-decoration: underline;
+}
+
+.pp-hub-welcome-page__footer-logo {
+    margin-top: 30px;
+}
+
+.pp-hub-welcome-page__footer-logo a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.pp-hub-welcome-page__footer-logo img {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .pp-hub-welcome-page__footer-nav ul {
+        flex-direction: column;
+        gap: 10px;
     }
 }
 </style>
