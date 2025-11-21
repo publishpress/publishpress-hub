@@ -34,89 +34,112 @@ declare(strict_types=1);
             </div>
         </div>
 
-    <div class="pp-hub-welcome-page__content">
-        <h2 class="pp-hub-welcome-page__subtitle">
-            <?php esc_html_e('Thank you for giving PublishPress Hub a try!', 'publishpress-hub'); ?>
-        </h2>
-        <p class="pp-hub-welcome-page__message">
-            <?php esc_html_e('Our plugins are designed to make managing your publishing workflow as simple as possible, and PublishPress Hub is the key to facilitate that. Whether you\'re just getting started or looking to streamline your existing setup, you\'ll find everything you need to install, update, and manage your PublishPress plugins from one central location. We\'re here to help you build a publishing system that works perfectly for your team.', 'publishpress-hub'); ?>
-        </p>
+        <div class="pp-hub-welcome-page__tabs">
+            <nav class="pp-hub-welcome-page__tabs-nav">
+                <a href="#overview" class="pp-hub-welcome-page__tab-link active" data-tab="overview">
+                    <?php esc_html_e('Overview', 'publishpress-hub'); ?>
+                </a>
+                <a href="#features" class="pp-hub-welcome-page__tab-link" data-tab="features">
+                    <?php esc_html_e('Features', 'publishpress-hub'); ?>
+                </a>
+            </nav>
 
-        <div class="pp-hub-welcome-page__features">
-            <h2 class="pp-hub-welcome-page__features-title">
-                <?php esc_html_e('What you can do with PublishPress Hub', 'publishpress-hub'); ?>
-            </h2>
-
-            <div class="pp-hub-welcome-page__features-grid">
-                <div class="pp-hub-welcome-page__feature">
-                    <div class="pp-hub-welcome-page__feature-icon">📊</div>
-                    <h3 class="pp-hub-welcome-page__feature-title">
-                        <?php esc_html_e('Centralized Dashboard', 'publishpress-hub'); ?>
-                    </h3>
-                    <p class="pp-hub-welcome-page__feature-description">
-                        <?php esc_html_e('View all your PublishPress plugins with their license information, versions, and status in one convenient place.', 'publishpress-hub'); ?>
-                    </p>
+            <div class="pp-hub-welcome-page__tabs-content">
+                <div id="overview" class="pp-hub-welcome-page__tab-panel active">
+                    <div class="pp-hub-welcome-page__content">
+                        <h2 class="pp-hub-welcome-page__subtitle">
+                            <?php esc_html_e('Thank you for giving PublishPress Hub a try!', 'publishpress-hub'); ?>
+                        </h2>
+                        <p class="pp-hub-welcome-page__message">
+                            <?php esc_html_e('Our plugins are designed to make managing your publishing workflow as simple as possible, and PublishPress Hub is the key to facilitate that.', 'publishpress-hub'); ?>
+                        </p>
+                        <p class="pp-hub-welcome-page__message">
+                            <?php esc_html_e('Whether you\'re just getting started or looking to streamline your existing setup, you\'ll find everything you need to install, update, and manage your PublishPress plugins from one central location. We\'re here to help you build a publishing system that works perfectly for your team.', 'publishpress-hub'); ?>
+                        </p>
+                    </div>
                 </div>
 
-                <div class="pp-hub-welcome-page__feature">
-                    <div class="pp-hub-welcome-page__feature-icon">⚡</div>
-                    <h3 class="pp-hub-welcome-page__feature-title">
-                        <?php esc_html_e('One-Click Installation', 'publishpress-hub'); ?>
-                    </h3>
-                    <p class="pp-hub-welcome-page__feature-description">
-                        <?php esc_html_e('Install free PublishPress plugins directly from the Hub without visiting the WordPress.org repository.', 'publishpress-hub'); ?>
-                    </p>
-                </div>
+                <div id="features" class="pp-hub-welcome-page__tab-panel">
+                    <div class="pp-hub-welcome-page__content">
+                        <h2 class="pp-hub-welcome-page__tab-content-title">
+                            <?php esc_html_e('What you can do with PublishPress Hub', 'publishpress-hub'); ?>
+                        </h2>
 
-                <div class="pp-hub-welcome-page__feature">
-                    <div class="pp-hub-welcome-page__feature-icon">🔑</div>
-                    <h3 class="pp-hub-welcome-page__feature-title">
-                        <?php esc_html_e('License Management', 'publishpress-hub'); ?>
-                    </h3>
-                    <p class="pp-hub-welcome-page__feature-description">
-                        <?php esc_html_e('Connect your PublishPress license to install and activate Pro versions seamlessly, all from one place.', 'publishpress-hub'); ?>
-                    </p>
-                </div>
+                        <div class="pp-hub-welcome-page__tab-content-grid">
+                                <div class="pp-hub-welcome-page__tab-content-item">
+                                    <div class="pp-hub-welcome-page__tab-content-icon">📊</div>
+                                    <h3 class="pp-hub-welcome-page__tab-content-item-title">
+                                        <?php esc_html_e('Centralized Dashboard', 'publishpress-hub'); ?>
+                                    </h3>
+                                    <p class="pp-hub-welcome-page__tab-content-item-description">
+                                        <?php esc_html_e('View all your PublishPress plugins with their license information, versions, and status in one convenient place.', 'publishpress-hub'); ?>
+                                    </p>
+                                </div>
 
-                <div class="pp-hub-welcome-page__feature">
-                    <div class="pp-hub-welcome-page__feature-icon">🔄</div>
-                    <h3 class="pp-hub-welcome-page__feature-title">
-                        <?php esc_html_e('Easy Updates', 'publishpress-hub'); ?>
-                    </h3>
-                    <p class="pp-hub-welcome-page__feature-description">
-                        <?php esc_html_e('Keep all your PublishPress plugins up to date with real-time monitoring and one-click updates.', 'publishpress-hub'); ?>
-                    </p>
-                </div>
+                                <div class="pp-hub-welcome-page__tab-content-item">
+                                    <div class="pp-hub-welcome-page__tab-content-icon">⚡</div>
+                                    <h3 class="pp-hub-welcome-page__tab-content-item-title">
+                                        <?php esc_html_e('One-Click Installation', 'publishpress-hub'); ?>
+                                    </h3>
+                                    <p class="pp-hub-welcome-page__tab-content-item-description">
+                                        <?php esc_html_e('Install free PublishPress plugins directly from the Hub without visiting the WordPress.org repository.', 'publishpress-hub'); ?>
+                                    </p>
+                                </div>
 
-                <div class="pp-hub-welcome-page__feature">
-                    <div class="pp-hub-welcome-page__feature-icon">✅</div>
-                    <h3 class="pp-hub-welcome-page__feature-title">
-                        <?php esc_html_e('Status Monitoring', 'publishpress-hub'); ?>
-                    </h3>
-                    <p class="pp-hub-welcome-page__feature-description">
-                        <?php esc_html_e('Monitor plugin activation status, detect conflicts, and ensure compatibility across your publishing tools.', 'publishpress-hub'); ?>
-                    </p>
-                </div>
+                                <div class="pp-hub-welcome-page__tab-content-item">
+                                    <div class="pp-hub-welcome-page__tab-content-icon">🔑</div>
+                                    <h3 class="pp-hub-welcome-page__tab-content-item-title">
+                                        <?php esc_html_e('License Management', 'publishpress-hub'); ?>
+                                    </h3>
+                                    <p class="pp-hub-welcome-page__tab-content-item-description">
+                                        <?php esc_html_e('Connect your PublishPress license to install and activate Pro versions seamlessly, all from one place.', 'publishpress-hub'); ?>
+                                    </p>
+                                </div>
 
-                <div class="pp-hub-welcome-page__feature">
-                    <div class="pp-hub-welcome-page__feature-icon">🚀</div>
-                    <h3 class="pp-hub-welcome-page__feature-title">
-                        <?php esc_html_e('Get Started', 'publishpress-hub'); ?>
-                    </h3>
-                    <p class="pp-hub-welcome-page__feature-description">
-                        <?php
-                        printf(
-                            /* translators: %s: Link to plugins dashboard */
-                            esc_html__('Ready to explore? Visit the %s to see all available PublishPress plugins.', 'publishpress-hub'),
-                            '<a href="' . esc_url(admin_url('admin.php?page=publishpress-hub-plugins-dashboard')) . '">' . esc_html__('Plugins Dashboard', 'publishpress-hub') . '</a>'
-                        );
-                        ?>
-                    </p>
+                                <div class="pp-hub-welcome-page__tab-content-item">
+                                    <div class="pp-hub-welcome-page__tab-content-icon">🔄</div>
+                                    <h3 class="pp-hub-welcome-page__tab-content-item-title">
+                                        <?php esc_html_e('Easy Updates', 'publishpress-hub'); ?>
+                                    </h3>
+                                    <p class="pp-hub-welcome-page__tab-content-item-description">
+                                        <?php esc_html_e('Keep all your PublishPress plugins up to date with real-time monitoring and one-click updates.', 'publishpress-hub'); ?>
+                                    </p>
+                                </div>
+
+                                <div class="pp-hub-welcome-page__tab-content-item">
+                                    <div class="pp-hub-welcome-page__tab-content-icon">✅</div>
+                                    <h3 class="pp-hub-welcome-page__tab-content-item-title">
+                                        <?php esc_html_e('Status Monitoring', 'publishpress-hub'); ?>
+                                    </h3>
+                                    <p class="pp-hub-welcome-page__tab-content-item-description">
+                                        <?php esc_html_e('Monitor plugin activation status, detect conflicts, and ensure compatibility across your publishing tools.', 'publishpress-hub'); ?>
+                                    </p>
+                                </div>
+
+                                <div class="pp-hub-welcome-page__tab-content-item">
+                                    <div class="pp-hub-welcome-page__tab-content-icon">🚀</div>
+                                    <h3 class="pp-hub-welcome-page__tab-content-item-title">
+                                        <?php esc_html_e('Get Started', 'publishpress-hub'); ?>
+                                    </h3>
+                                    <p class="pp-hub-welcome-page__tab-content-item-description">
+                                        <?php
+                                        printf(
+                                            /* translators: %s: Link to plugins dashboard */
+                                            esc_html__('Ready to explore? Visit the %s to see all available PublishPress plugins.', 'publishpress-hub'),
+                                            '<a href="' . esc_url(admin_url('admin.php?page=publishpress-hub-plugins-dashboard')) . '">' . esc_html__('Plugins Dashboard', 'publishpress-hub') . '</a>'
+                                        );
+                                        ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <p class="pp-hub-welcome-page__dismiss">
+        <div class="pp-hub-welcome-page__content">
+            <p class="pp-hub-welcome-page__dismiss">
             <?php
             printf(
                 /* translators: %s: Dismiss link */
@@ -124,10 +147,36 @@ declare(strict_types=1);
                 '<a href="' . esc_url($context['dismiss_url']) . '">' . esc_html__('dismiss this page', 'publishpress-hub') . '</a>'
             );
             ?>
-        </p>
-    </div>
+            </p>
+        </div>
     </div>
 </div>
+
+<script>
+(function() {
+    const tabLinks = document.querySelectorAll('.pp-hub-welcome-page__tab-link');
+    const tabPanels = document.querySelectorAll('.pp-hub-welcome-page__tab-panel');
+
+    tabLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetTab = this.getAttribute('data-tab');
+
+            // Remove active class from all links and panels
+            tabLinks.forEach(function(l) {
+                l.classList.remove('active');
+            });
+            tabPanels.forEach(function(p) {
+                p.classList.remove('active');
+            });
+
+            // Add active class to clicked link and corresponding panel
+            this.classList.add('active');
+            document.getElementById(targetTab).classList.add('active');
+        });
+    });
+})();
+</script>
 
 <style>
 #wpbody-content {
@@ -179,11 +228,57 @@ declare(strict_types=1);
     color: #1d2327 !important;
 }
 
+.pp-hub-welcome-page__tabs {
+    background: #ffffff;
+    margin: 0;
+}
+
+.pp-hub-welcome-page__tabs-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #dcdcde;
+    padding: 0 20px;
+    margin: 0;
+    justify-content: center;
+}
+
+.pp-hub-welcome-page__tab-link {
+    display: inline-block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #646970;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+    transition: all 0.2s ease;
+}
+
+.pp-hub-welcome-page__tab-link:hover {
+    color: #2271b1;
+}
+
+.pp-hub-welcome-page__tab-link.active {
+    color: #2271b1;
+    border-bottom-color: #2271b1;
+}
+
+.pp-hub-welcome-page__tabs-content {
+    position: relative;
+}
+
+.pp-hub-welcome-page__tab-panel {
+    display: none;
+}
+
+.pp-hub-welcome-page__tab-panel.active {
+    display: block;
+}
+
 .pp-hub-welcome-page__content {
     max-width: 800px;
     margin: 0 auto;
     padding: 40px 20px;
-    background: #ffffff;
 }
 
 .pp-hub-welcome-page__subtitle {
@@ -206,6 +301,8 @@ declare(strict_types=1);
     line-height: 1.6;
     color: #646970;
     margin: 30px 0 0;
+    padding-top: 30px;
+    border-top: 1px solid #dcdcde;
 }
 
 .pp-hub-welcome-page__dismiss a {
@@ -218,13 +315,7 @@ declare(strict_types=1);
     text-decoration: underline;
 }
 
-.pp-hub-welcome-page__features {
-    margin: 40px 0;
-    padding: 30px 0;
-    border-top: 1px solid #dcdcde;
-}
-
-.pp-hub-welcome-page__features-title {
+.pp-hub-welcome-page__tab-content-title {
     font-size: 24px;
     font-weight: 600;
     line-height: 1.3;
@@ -232,27 +323,27 @@ declare(strict_types=1);
     color: #1d2327;
 }
 
-.pp-hub-welcome-page__features-grid {
+.pp-hub-welcome-page__tab-content-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
     margin-bottom: 20px;
 }
 
-.pp-hub-welcome-page__feature {
+.pp-hub-welcome-page__tab-content-item {
     padding: 20px;
     background: #f6f7f7;
     border-radius: 8px;
     border: 1px solid #dcdcde;
 }
 
-.pp-hub-welcome-page__feature-icon {
+.pp-hub-welcome-page__tab-content-icon {
     font-size: 32px;
     margin-bottom: 12px;
     line-height: 1;
 }
 
-.pp-hub-welcome-page__feature-title {
+.pp-hub-welcome-page__tab-content-item-title {
     font-size: 18px;
     font-weight: 600;
     line-height: 1.3;
@@ -260,19 +351,19 @@ declare(strict_types=1);
     color: #1d2327;
 }
 
-.pp-hub-welcome-page__feature-description {
+.pp-hub-welcome-page__tab-content-item-description {
     font-size: 14px;
     line-height: 1.6;
     color: #50575e;
     margin: 0;
 }
 
-.pp-hub-welcome-page__feature-description a {
+.pp-hub-welcome-page__tab-content-item-description a {
     color: #2271b1;
     text-decoration: none;
 }
 
-.pp-hub-welcome-page__feature-description a:hover {
+.pp-hub-welcome-page__tab-content-item-description a:hover {
     color: #135e96;
     text-decoration: underline;
 }
@@ -298,7 +389,7 @@ declare(strict_types=1);
         padding: 30px 20px;
     }
 
-    .pp-hub-welcome-page__features-grid {
+    .pp-hub-welcome-page__tab-content-grid {
         grid-template-columns: 1fr;
     }
 }
