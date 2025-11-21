@@ -34,41 +34,23 @@ declare(strict_types=1);
             </div>
         </div>
 
-        <div class="pp-hub-welcome-page__tabs">
-            <nav class="pp-hub-welcome-page__tabs-nav">
-                <a href="#overview" class="pp-hub-welcome-page__tab-link active" data-tab="overview">
-                    <?php esc_html_e('Overview', 'publishpress-hub'); ?>
-                </a>
-                <a href="#features" class="pp-hub-welcome-page__tab-link" data-tab="features">
-                    <?php esc_html_e('Features', 'publishpress-hub'); ?>
-                </a>
-                <a href="#documentation" class="pp-hub-welcome-page__tab-link" data-tab="documentation">
-                    <?php esc_html_e('Documentation', 'publishpress-hub'); ?>
-                </a>
-            </nav>
+        <div class="pp-hub-welcome-page__content">
+            <h2 class="pp-hub-welcome-page__subtitle">
+                <?php esc_html_e('Thank you for giving PublishPress Hub a try!', 'publishpress-hub'); ?>
+            </h2>
+            <p class="pp-hub-welcome-page__message">
+                <?php esc_html_e('Our plugins are designed to make managing your publishing workflow as simple as possible, and PublishPress Hub is the key to facilitate that.', 'publishpress-hub'); ?>
+            </p>
+            <p class="pp-hub-welcome-page__message">
+                <?php esc_html_e('Whether you\'re just getting started or looking to streamline your existing setup, you\'ll find everything you need to install, update, and manage your PublishPress plugins from one central location. We\'re here to help you build a publishing system that works perfectly for your team.', 'publishpress-hub'); ?>
+            </p>
 
-            <div class="pp-hub-welcome-page__tabs-content">
-                <div id="overview" class="pp-hub-welcome-page__tab-panel active">
-                    <div class="pp-hub-welcome-page__content">
-                        <h2 class="pp-hub-welcome-page__subtitle">
-                            <?php esc_html_e('Thank you for giving PublishPress Hub a try!', 'publishpress-hub'); ?>
-                        </h2>
-                        <p class="pp-hub-welcome-page__message">
-                            <?php esc_html_e('Our plugins are designed to make managing your publishing workflow as simple as possible, and PublishPress Hub is the key to facilitate that.', 'publishpress-hub'); ?>
-                        </p>
-                        <p class="pp-hub-welcome-page__message">
-                            <?php esc_html_e('Whether you\'re just getting started or looking to streamline your existing setup, you\'ll find everything you need to install, update, and manage your PublishPress plugins from one central location. We\'re here to help you build a publishing system that works perfectly for your team.', 'publishpress-hub'); ?>
-                        </p>
-                    </div>
-                </div>
+            <div class="pp-hub-welcome-page__features">
+                <h2 class="pp-hub-welcome-page__tab-content-title">
+                    <?php esc_html_e('What you can do with PublishPress Hub', 'publishpress-hub'); ?>
+                </h2>
 
-                <div id="features" class="pp-hub-welcome-page__tab-panel">
-                    <div class="pp-hub-welcome-page__content">
-                        <h2 class="pp-hub-welcome-page__tab-content-title">
-                            <?php esc_html_e('What you can do with PublishPress Hub', 'publishpress-hub'); ?>
-                        </h2>
-
-                        <div class="pp-hub-welcome-page__tab-content-grid">
+                <div class="pp-hub-welcome-page__tab-content-grid">
                                 <div class="pp-hub-welcome-page__tab-content-item">
                                     <div class="pp-hub-welcome-page__tab-content-icon">📊</div>
                                     <h3 class="pp-hub-welcome-page__tab-content-item-title">
@@ -136,20 +118,6 @@ declare(strict_types=1);
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div id="documentation" class="pp-hub-welcome-page__tab-panel">
-                    <div class="pp-hub-welcome-page__content">
-                        <h2 class="pp-hub-welcome-page__tab-content-title">
-                            <?php esc_html_e('Documentation', 'publishpress-hub'); ?>
-                        </h2>
-                        <p class="pp-hub-welcome-page__message">
-                            <?php esc_html_e('Documentation content will be added here.', 'publishpress-hub'); ?>
-                        </p>
-                    </div>
-                </div>
-            </div>
         </div>
 
 
@@ -281,51 +249,8 @@ declare(strict_types=1);
     color: #1d2327 !important;
 }
 
-.pp-hub-welcome-page__tabs {
-    background: #ffffff;
-    margin: 0;
-}
-
-.pp-hub-welcome-page__tabs-nav {
-    display: flex;
-    gap: 0;
-    border-bottom: 1px solid #dcdcde;
-    padding: 0 20px;
-    margin: 0;
-    justify-content: center;
-}
-
-.pp-hub-welcome-page__tab-link {
-    display: inline-block;
-    padding: 15px 20px;
-    text-decoration: none;
-    color: #646970;
-    font-size: 14px;
-    font-weight: 500;
-    border-bottom: 3px solid transparent;
-    margin-bottom: -1px;
-    transition: all 0.2s ease;
-}
-
-.pp-hub-welcome-page__tab-link:hover {
-    color: #2271b1;
-}
-
-.pp-hub-welcome-page__tab-link.active {
-    color: #2271b1;
-    border-bottom-color: #2271b1;
-}
-
-.pp-hub-welcome-page__tabs-content {
-    position: relative;
-}
-
-.pp-hub-welcome-page__tab-panel {
-    display: none;
-}
-
-.pp-hub-welcome-page__tab-panel.active {
-    display: block;
+.pp-hub-welcome-page__features {
+    margin-top: 40px;
 }
 
 .pp-hub-welcome-page__content {
