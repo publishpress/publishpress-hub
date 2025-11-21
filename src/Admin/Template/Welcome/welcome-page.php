@@ -12,6 +12,7 @@
  * @var array<string, mixed> $context {
  *     Template context data.
  *     @type string $dismiss_url The URL to dismiss the welcome page.
+ *     @type string $welcome_image_url The URL to the welcome image.
  * }
  */
 
@@ -21,12 +22,22 @@ declare(strict_types=1);
 <div class="wrap">
     <div class="pp-hub-welcome-page">
         <div class="pp-hub-welcome-page__header">
-            <h1 class="pp-hub-welcome-page__title">
-                <?php esc_html_e('Thank you for giving PublishPress Hub a try!', 'publishpress-hub'); ?>
-            </h1>
+            <div class="pp-hub-welcome-page__header-content">
+                <div class="pp-hub-welcome-page__header-text">
+                    <h1 class="pp-hub-welcome-page__title">
+                        <?php esc_html_e('Welcome to PublishPress Hub!', 'publishpress-hub'); ?>
+                    </h1>
+                </div>
+                <div class="pp-hub-welcome-page__header-image">
+                    <img src="<?php echo esc_url($context['welcome_image_url']); ?>" alt="<?php esc_attr_e('Welcome to PublishPress Hub', 'publishpress-hub'); ?>" />
+                </div>
+            </div>
         </div>
 
     <div class="pp-hub-welcome-page__content">
+        <h2 class="pp-hub-welcome-page__subtitle">
+            <?php esc_html_e('Thank you for giving PublishPress Hub a try!', 'publishpress-hub'); ?>
+        </h2>
         <p class="pp-hub-welcome-page__message">
             <?php esc_html_e('Our plugins are designed to make managing your publishing workflow as simple as possible, and PublishPress Hub is the key to facilitate that. Whether you\'re just getting started or looking to streamline your existing setup, you\'ll find everything you need to install, update, and manage your PublishPress plugins from one central location. We\'re here to help you build a publishing system that works perfectly for your team.', 'publishpress-hub'); ?>
         </p>
@@ -119,26 +130,68 @@ declare(strict_types=1);
 </div>
 
 <style>
+#wpbody-content {
+    background: #ffffff;
+}
+
 .pp-hub-welcome-page {
-    max-width: 800px;
-    margin: 40px auto 0;
-    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
 }
 
 .pp-hub-welcome-page__header {
-    margin-bottom: 30px;
+    padding: 40px 20px;
+    margin: 0 0 0;
+}
+
+.pp-hub-welcome-page__header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.pp-hub-welcome-page__header-image {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.pp-hub-welcome-page__header-text {
+    width: 100%;
+    text-align: center;
+}
+
+.pp-hub-welcome-page__header-image img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .pp-hub-welcome-page__title {
-    font-size: 32px;
+    font-size: 48px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+    color: #1d2327 !important;
+}
+
+.pp-hub-welcome-page__content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: #ffffff;
+}
+
+.pp-hub-welcome-page__subtitle {
+    font-size: 24px;
     font-weight: 600;
     line-height: 1.3;
     margin: 0 0 20px;
     color: #1d2327;
-}
-
-.pp-hub-welcome-page__content {
-    margin-top: 30px;
 }
 
 .pp-hub-welcome-page__message {
@@ -225,6 +278,26 @@ declare(strict_types=1);
 }
 
 @media (max-width: 768px) {
+    .pp-hub-welcome-page__header {
+        padding: 30px 20px;
+    }
+
+    .pp-hub-welcome-page__header-content {
+        gap: 20px;
+    }
+
+    .pp-hub-welcome-page__header-image {
+        max-width: 100%;
+    }
+
+    .pp-hub-welcome-page__title {
+        font-size: 32px !important;
+    }
+
+    .pp-hub-welcome-page__content {
+        padding: 30px 20px;
+    }
+
     .pp-hub-welcome-page__features-grid {
         grid-template-columns: 1fr;
     }

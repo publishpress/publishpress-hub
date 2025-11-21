@@ -218,6 +218,7 @@ class WelcomePageController implements BootableInterface
             'Welcome/welcome-page',
             [
                 'dismiss_url' => $dismissUrl,
+                'welcome_image_url' => $this->assetService->getPluginAssetUrl('images/welcome-1.png'),
             ]
         );
     }
