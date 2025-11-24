@@ -12,86 +12,164 @@
  */
 
 .pp-hub-welcome-page {
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
     padding: 0;
 }
 
-.pp-hub-welcome-page__header {
+.pp-hub-welcome-page__container {
+    max-width: 960px;
+    margin: 0 auto;
     padding: 40px 20px;
-    margin: 0 0 0;
 }
 
-.pp-hub-welcome-page__header-content {
-    max-width: 1200px;
-    margin: 0 auto;
+.pp-hub-welcome-page__header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.pp-hub-welcome-page__title {
+    font-size: 36px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    margin: 0 0 12px 0 !important;
+    color: #1d2327 !important;
+}
+
+.pp-hub-welcome-page__subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    color: #50575e;
+}
+
+.pp-hub-welcome-page__box {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin-bottom: 24px;
+}
+
+.pp-hub-welcome-page__box h2 {
+    margin-bottom: 16px;
+}
+
+.pp-hub-welcome-page__intro {
     display: flex;
     flex-direction: column;
+    gap: 40px;
     align-items: center;
-    gap: 30px;
 }
 
-.pp-hub-welcome-page__header-image {
+.pp-hub-welcome-page__intro-image {
     width: 100%;
-    max-width: 600px;
+    max-width: 500px;
     text-align: center;
 }
 
-.pp-hub-welcome-page__header-text {
-    width: 100%;
-    text-align: center;
-}
-
-.pp-hub-welcome-page__header-image img {
+.pp-hub-welcome-page__intro-image img {
     width: 100%;
     height: auto;
     display: block;
 }
 
-.pp-hub-welcome-page__title {
-    font-size: 48px !important;
-    font-weight: 600 !important;
-    line-height: 1.2 !important;
-    margin: 0 !important;
-    color: #1d2327 !important;
+.pp-hub-welcome-page__intro-text {
+    width: 100%;
+    text-align: center;
 }
 
-.pp-hub-welcome-page__features {
-    margin-top: 40px;
-}
-
-.pp-hub-welcome-page__content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
-
-.pp-hub-welcome-page__subtitle {
+.pp-hub-welcome-page__intro-title {
     font-size: 24px;
     font-weight: 600;
     line-height: 1.3;
-    margin: 0 0 20px;
+    margin: 0 0 36px;
     color: #1d2327;
 }
 
 .pp-hub-welcome-page__message {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.6;
     color: #50575e;
-    margin: 0 0 30px;
+    margin: 0 0 16px;
+}
+
+.pp-hub-welcome-page__message:last-child {
+    margin-bottom: 0;
+}
+
+.pp-hub-welcome-page__features-title {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0 0 48px;
+    color: #1d2327;
+    text-align: center;
+}
+
+.pp-hub-welcome-page__features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.pp-hub-welcome-page__feature-item {
+    padding: 24px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    border: 1px solid #e5e5e5;
+    transition: all 0.2s ease;
+}
+
+.pp-hub-welcome-page__feature-item:hover {
+    background: #f6f7f7;
+    border-color: #dcdcde;
+}
+
+.pp-hub-welcome-page__feature-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+    line-height: 1;
+}
+
+.pp-hub-welcome-page__feature-title {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0 0 14px;
+    color: #1d2327;
+}
+
+.pp-hub-welcome-page__feature-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #50575e;
+    margin: 0;
+}
+
+.pp-hub-welcome-page__feature-description a {
+    color: #2271b1;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.pp-hub-welcome-page__feature-description a:hover {
+    color: #135e96;
+    text-decoration: underline;
 }
 
 .pp-hub-welcome-page__dismiss {
     font-size: 14px;
     line-height: 1.6;
     color: #646970;
-    margin: 30px 0 0;
+    margin: 24px 0 0;
     text-align: center;
 }
 
 .pp-hub-welcome-page__dismiss a {
     color: #2271b1;
     text-decoration: none;
+    font-weight: 500;
 }
 
 .pp-hub-welcome-page__dismiss a:hover {
@@ -99,184 +177,54 @@
     text-decoration: underline;
 }
 
-.pp-hub-welcome-page__tab-content-title {
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 1.3;
-    margin: 0 0 30px;
-    color: #1d2327;
-}
-
-.pp-hub-welcome-page__tab-content-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    margin-bottom: 20px;
-}
-
-.pp-hub-welcome-page__tab-content-item {
-    padding: 20px;
-    background: #f6f7f7;
-    border-radius: 8px;
-    border: 1px solid #dcdcde;
-}
-
-.pp-hub-welcome-page__tab-content-icon {
-    font-size: 32px;
-    margin-bottom: 12px;
-    line-height: 1;
-}
-
-.pp-hub-welcome-page__tab-content-item-title {
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 1.3;
-    margin: 0 0 10px;
-    color: #1d2327;
-}
-
-.pp-hub-welcome-page__tab-content-item-description {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #50575e;
-    margin: 0;
-}
-
-.pp-hub-welcome-page__tab-content-item-description a {
-    color: #2271b1;
-    text-decoration: none;
-}
-
-.pp-hub-welcome-page__tab-content-item-description a:hover {
-    color: #135e96;
-    text-decoration: underline;
-}
-
 @media (max-width: 768px) {
+    .pp-hub-welcome-page__container {
+        padding: 24px 16px;
+    }
+
     .pp-hub-welcome-page__header {
-        padding: 30px 20px;
-    }
-
-    .pp-hub-welcome-page__header-content {
-        gap: 20px;
-    }
-
-    .pp-hub-welcome-page__header-image {
-        max-width: 100%;
+        margin-bottom: 24px;
     }
 
     .pp-hub-welcome-page__title {
-        font-size: 32px !important;
+        font-size: 28px !important;
     }
 
-    .pp-hub-welcome-page__content {
-        padding: 30px 20px;
+    .pp-hub-welcome-page__subtitle {
+        font-size: 15px;
     }
 
-    .pp-hub-welcome-page__tab-content-grid {
+    .pp-hub-welcome-page__box {
+        padding: 24px;
+        margin-bottom: 16px;
+    }
+
+    .pp-hub-welcome-page__intro {
+        gap: 24px;
+    }
+
+    .pp-hub-welcome-page__intro-image {
+        max-width: 320px;
+    }
+
+    .pp-hub-welcome-page__intro-title {
+        font-size: 20px;
+    }
+
+    .pp-hub-welcome-page__features-title {
+        font-size: 20px;
+        margin-bottom: 40px;
+    }
+
+    .pp-hub-welcome-page__features-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .pp-hub-welcome-page__feature-item {
+        padding: 20px;
     }
 }
-
-.pp-hub-welcome-page__footer {
-    background: #ffffff;
-    padding: 40px 20px;
-    text-align: center;
-    margin-top: 40px;
-    padding-top: 40px;
-}
-
-.pp-hub-welcome-page__footer-rating {
-    margin-bottom: 20px;
-}
-
-.pp-hub-welcome-page__footer-rating a {
-    color: #646970;
-    text-decoration: none;
-    font-size: 14px;
-    display: inline-block;
-}
-
-.pp-hub-welcome-page__footer-rating a:hover {
-    color: #2271b1;
-}
-
-.pp-hub-welcome-page__footer-rating strong {
-    color: #646970;
-    font-weight: 600;
-}
-
-.pp-hub-welcome-page__footer-stars {
-    color: #f0b849;
-    margin: 0 4px;
-}
-
-.pp-hub-welcome-page__footer-stars .dashicons {
-    width: 16px;
-    height: 16px;
-    font-size: 16px;
-    line-height: 1;
-}
-
-.pp-hub-welcome-page__footer-separator {
-    border: none;
-    border-top: 1px solid #dcdcde;
-    margin: 20px auto;
-    max-width: 600px;
-}
-
-.pp-hub-welcome-page__footer-nav {
-    margin: 20px 0;
-}
-
-.pp-hub-welcome-page__footer-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.pp-hub-welcome-page__footer-nav li {
-    margin: 0;
-    padding: 0;
-}
-
-.pp-hub-welcome-page__footer-nav a {
-    color: #646970;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.pp-hub-welcome-page__footer-nav a:hover {
-    color: #2271b1;
-    text-decoration: underline;
-}
-
-.pp-hub-welcome-page__footer-logo {
-    margin-top: 30px;
-}
-
-.pp-hub-welcome-page__footer-logo a {
-    display: inline-block;
-    text-decoration: none;
-}
-
-.pp-hub-welcome-page__footer-logo img {
-    height: 40px;
-    width: auto;
-    display: block;
-}
-
-@media (max-width: 768px) {
-    .pp-hub-welcome-page__footer-nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
 
 
 /*# sourceMappingURL=welcome-page-styles.css.map*/

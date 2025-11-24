@@ -613,87 +613,91 @@ var WelcomePageComponent = function WelcomePageComponent() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-welcome-page"
   }, /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-welcome-page__container"
+  }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-welcome-page__header"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__header-content"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__header-text"
   }, /*#__PURE__*/React.createElement("h1", {
     className: "pp-hub-welcome-page__title"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Welcome to PublishPress Hub!', 'publishpress-hub'))), /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__header-image"
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Welcome to PublishPress Hub!', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
+    className: "pp-hub-welcome-page__subtitle"
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Get started with PublishPress Hub in a few simple steps.', 'publishpress-hub'))), /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-welcome-page__box"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-welcome-page__intro"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-welcome-page__intro-image"
   }, /*#__PURE__*/React.createElement("img", {
     src: welcomeImageUrl,
     alt: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Welcome to PublishPress Hub', 'publishpress-hub')
-  })))), /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__content"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-welcome-page__intro-text"
   }, /*#__PURE__*/React.createElement("h2", {
-    className: "pp-hub-welcome-page__subtitle"
+    className: "pp-hub-welcome-page__intro-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Thank you for giving PublishPress Hub a try!', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
     className: "pp-hub-welcome-page__message"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Our plugins are designed to make managing your publishing workflow as simple as possible, and PublishPress Hub is the key to facilitate that.', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Our plugins are designed to make managing your publishing workflow as simple as possible, and PublishPress Hub is the key to facilitate that.', 'publishpress-hub'))))), /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-welcome-page__box"
+  }, /*#__PURE__*/React.createElement("h2", {
+    className: "pp-hub-welcome-page__features-title"
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('What you can do with PublishPress Hub', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
     className: "pp-hub-welcome-page__message"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Whether you\'re just getting started or looking to streamline your existing setup, you\'ll find everything you need to install, update, and manage your PublishPress plugins from one central location. We\'re here to help you build a publishing system that works perfectly for your team.', 'publishpress-hub')), /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__features"
-  }, /*#__PURE__*/React.createElement("h2", {
-    className: "pp-hub-welcome-page__tab-content-title"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('What you can do with PublishPress Hub', 'publishpress-hub')), /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__tab-content-grid"
+    className: "pp-hub-welcome-page__features-grid"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__tab-content-item"
+    className: "pp-hub-welcome-page__feature-item"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__tab-content-icon"
+    className: "pp-hub-welcome-page__feature-icon"
   }, "\uD83D\uDCCA"), /*#__PURE__*/React.createElement("h3", {
-    className: "pp-hub-welcome-page__tab-content-item-title"
+    className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Centralized Dashboard', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
-    className: "pp-hub-welcome-page__tab-content-item-description"
+    className: "pp-hub-welcome-page__feature-description"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('View all your PublishPress plugins with their license information, versions, and status in one convenient place.', 'publishpress-hub'))), /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__tab-content-item"
+    className: "pp-hub-welcome-page__feature-item"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__tab-content-icon"
+    className: "pp-hub-welcome-page__feature-icon"
   }, "\u26A1"), /*#__PURE__*/React.createElement("h3", {
-    className: "pp-hub-welcome-page__tab-content-item-title"
+    className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('One-Click Installation', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
-    className: "pp-hub-welcome-page__tab-content-item-description"
+    className: "pp-hub-welcome-page__feature-description"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Install free PublishPress plugins directly from the Hub without visiting the WordPress.org repository.', 'publishpress-hub'))), /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__tab-content-item"
+    className: "pp-hub-welcome-page__feature-item"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__tab-content-icon"
+    className: "pp-hub-welcome-page__feature-icon"
   }, "\uD83D\uDD11"), /*#__PURE__*/React.createElement("h3", {
-    className: "pp-hub-welcome-page__tab-content-item-title"
+    className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('License Management', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
-    className: "pp-hub-welcome-page__tab-content-item-description"
+    className: "pp-hub-welcome-page__feature-description"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Connect your PublishPress license to install and activate Pro versions seamlessly, all from one place.', 'publishpress-hub'))), /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__tab-content-item"
+    className: "pp-hub-welcome-page__feature-item"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__tab-content-icon"
+    className: "pp-hub-welcome-page__feature-icon"
   }, "\uD83D\uDD04"), /*#__PURE__*/React.createElement("h3", {
-    className: "pp-hub-welcome-page__tab-content-item-title"
+    className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Easy Updates', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
-    className: "pp-hub-welcome-page__tab-content-item-description"
+    className: "pp-hub-welcome-page__feature-description"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Keep all your PublishPress plugins up to date with real-time monitoring and one-click updates.', 'publishpress-hub'))), /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__tab-content-item"
+    className: "pp-hub-welcome-page__feature-item"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__tab-content-icon"
+    className: "pp-hub-welcome-page__feature-icon"
   }, "\u2705"), /*#__PURE__*/React.createElement("h3", {
-    className: "pp-hub-welcome-page__tab-content-item-title"
+    className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Status Monitoring', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
-    className: "pp-hub-welcome-page__tab-content-item-description"
+    className: "pp-hub-welcome-page__feature-description"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Monitor plugin activation status, detect conflicts, and ensure compatibility across your publishing tools.', 'publishpress-hub'))), /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__tab-content-item"
+    className: "pp-hub-welcome-page__feature-item"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__tab-content-icon"
+    className: "pp-hub-welcome-page__feature-icon"
   }, "\uD83D\uDE80"), /*#__PURE__*/React.createElement("h3", {
-    className: "pp-hub-welcome-page__tab-content-item-title"
+    className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Get Started', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
-    className: "pp-hub-welcome-page__tab-content-item-description"
+    className: "pp-hub-welcome-page__feature-description"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Ready to explore? Visit the ', 'publishpress-hub'), /*#__PURE__*/React.createElement("a", {
     href: window.ppHubWelcomePageConfig.pluginsDashboardUrl
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Plugins Dashboard', 'publishpress-hub')), (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(' to see all available PublishPress plugins.', 'publishpress-hub'))))))), /*#__PURE__*/React.createElement("p", {
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Plugins Dashboard', 'publishpress-hub')), (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(' to see all available PublishPress plugins.', 'publishpress-hub'))))), /*#__PURE__*/React.createElement("p", {
     className: "pp-hub-welcome-page__dismiss"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Already know what you\'re doing? Great! You can ', 'publishpress-hub'), /*#__PURE__*/React.createElement("a", {
     href: dismissUrl
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('dismiss this page', 'publishpress-hub')), (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('.', 'publishpress-hub')), /*#__PURE__*/React.createElement(_admin_page_footer__WEBPACK_IMPORTED_MODULE_3__.Footer, {
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('dismiss this page', 'publishpress-hub')), (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('.', 'publishpress-hub')))), /*#__PURE__*/React.createElement(_admin_page_footer__WEBPACK_IMPORTED_MODULE_3__.Footer, {
     pluginSlug: pluginSlug,
     pluginName: pluginName,
     pluginDocumentationUrl: pluginDocumentationUrl,
