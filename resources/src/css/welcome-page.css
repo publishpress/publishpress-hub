@@ -95,6 +95,18 @@
     margin-bottom: 0;
 }
 
+.pp-hub-welcome-page__cta {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.pp-hub-welcome-page__cta-button {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 32px;
+    min-height: 44px;
+}
+
 .pp-hub-welcome-page__features-title {
     font-size: 24px;
     font-weight: 600;
@@ -206,6 +218,15 @@
 
     .pp-hub-welcome-page__intro-title {
         font-size: 20px;
+    }
+
+    .pp-hub-welcome-page__cta {
+        margin-top: 24px;
+    }
+
+    .pp-hub-welcome-page__cta-button {
+        width: 100%;
+        padding: 12px 24px;
     }
 
     .pp-hub-welcome-page__features-title {

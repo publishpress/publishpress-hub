@@ -14,6 +14,7 @@ import { __ } from '@publishpress-hub/i18n';
 
 import { AdminPageLayout } from '../admin-page';
 import { Footer } from '../admin-page/footer';
+import { Button } from '../buttons/button';
 
 const {
     logoUrl,
@@ -130,6 +131,17 @@ const WelcomePageComponent = () => {
                                     {__(' to see all available PublishPress plugins.', 'publishpress-hub')}
                                 </p>
                             </div>
+                        </div>
+                        <div className="pp-hub-welcome-page__cta">
+                            <Button
+                                variant="primary"
+                                href={window.ppHubWelcomePageConfig.pluginsDashboardUrl}
+                                target="_self"
+                                isFullWidth={false}
+                                className="pp-hub-welcome-page__cta-button"
+                            >
+                                {__('View Plugins Dashboard', 'publishpress-hub')}
+                            </Button>
                         </div>
                     </div>
 

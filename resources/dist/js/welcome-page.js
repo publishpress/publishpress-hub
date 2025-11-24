@@ -584,6 +584,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _admin_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../admin-page */ "./resources/src/jsx/components/admin-page/index.jsx");
 /* harmony import */ var _admin_page_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../admin-page/footer */ "./resources/src/jsx/components/admin-page/footer.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../buttons/button */ "./resources/src/jsx/components/buttons/button.jsx");
 /**
  * Welcome page.
  *
@@ -593,6 +594,7 @@ __webpack_require__.r(__webpack_exports__);
  * @license GPL v2 or later
  * @since 1.0.0
  */
+
 
 
 
@@ -693,7 +695,15 @@ var WelcomePageComponent = function WelcomePageComponent() {
     className: "pp-hub-welcome-page__feature-description"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Ready to explore? Visit the ', 'publishpress-hub'), /*#__PURE__*/React.createElement("a", {
     href: window.ppHubWelcomePageConfig.pluginsDashboardUrl
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Plugins Dashboard', 'publishpress-hub')), (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(' to see all available PublishPress plugins.', 'publishpress-hub'))))), /*#__PURE__*/React.createElement("p", {
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Plugins Dashboard', 'publishpress-hub')), (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(' to see all available PublishPress plugins.', 'publishpress-hub')))), /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-welcome-page__cta"
+  }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
+    variant: "primary",
+    href: window.ppHubWelcomePageConfig.pluginsDashboardUrl,
+    target: "_self",
+    isFullWidth: false,
+    className: "pp-hub-welcome-page__cta-button"
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('View Plugins Dashboard', 'publishpress-hub')))), /*#__PURE__*/React.createElement("p", {
     className: "pp-hub-welcome-page__dismiss"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Already know what you\'re doing? Great! You can ', 'publishpress-hub'), /*#__PURE__*/React.createElement("a", {
     href: dismissUrl
