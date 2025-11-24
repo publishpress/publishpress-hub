@@ -207,24 +207,10 @@ class WelcomePageController implements BootableInterface
      */
     public function showWelcomePage(): void
     {
-        // Use the main menu page for the dismiss action, not the welcome page itself
-        // This ensures the action works even if the page structure changes
-        $dismissUrl = $this->securityService->getNonceUrl(
-            admin_url('admin.php?page=publishpress-hub&action=' . self::DISMISS_ACTION),
-            self::DISMISS_ACTION
-        );
-
         $this->viewService->render(
             'Welcome/welcome-page',
             [
-                'dismiss_url' => $dismissUrl,
-                'welcome_image_url' => $this->assetService->getPluginAssetUrl('images/welcome-1.png'),
-                'logo_url' => $this->assetService->getPluginAssetUrl('images/publishpress-logo.png'),
-                'plugin_slug' => 'publishpress-hub',
-                'plugin_name' => __('PublishPress Hub', 'publishpress-hub'),
-                'plugin_documentation_url' => 'https://publishpress.com/knowledge-base/',
-                'plugin_about_url' => 'https://publishpress.com/',
-                'plugin_support_url' => 'https://publishpress.com/contact/',
+                'loading_message' => __('Please wait while we load the welcome page...', 'publishpress-hub'),
             ]
         );
     }
@@ -247,6 +233,42 @@ class WelcomePageController implements BootableInterface
             'css/admin-page.css',
             [
                 'wp-components',
+            ]
+        );
+
+        $this->assetService->enqueueStyle(
+            'publishpress-hub-welcome-page-styles',
+            'css/welcome-page-styles.css'
+        );
+
+        $this->assetService->enqueueScript(
+            'publishpress-hub-welcome-page',
+            'js/welcome-page.js',
+            [
+                'publishpress-hub-i18n',
+                'wp-element',
+                'wp-components',
+            ]
+        );
+
+        $dismissUrl = $this->securityService->getNonceUrl(
+            admin_url('admin.php?page=publishpress-hub&action=' . self::DISMISS_ACTION),
+            self::DISMISS_ACTION
+        );
+
+        $this->assetService->localizeScript(
+            'publishpress-hub-welcome-page',
+            'ppHubWelcomePageConfig',
+            [
+                'logoUrl' => $this->assetService->getPluginAssetUrl('images/publishpress-logo.png'),
+                'welcomeImageUrl' => $this->assetService->getPluginAssetUrl('images/welcome-1.png'),
+                'dismissUrl' => $dismissUrl,
+                'pluginSlug' => 'publishpress-hub',
+                'pluginName' => __('PublishPress Hub', 'publishpress-hub'),
+                'pluginDocumentationUrl' => 'https://publishpress.com/knowledge-base/',
+                'pluginAboutUrl' => 'https://publishpress.com/',
+                'pluginSupportUrl' => 'https://publishpress.com/contact/',
+                'pluginsDashboardUrl' => admin_url('admin.php?page=publishpress-hub-plugins-dashboard'),
             ]
         );
     }

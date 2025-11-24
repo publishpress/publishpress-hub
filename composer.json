@@ -105,6 +105,7 @@
             "@build:js-prod",
             "@build:js-dev"
         ],
+        "build:js:watch": "cross-env NODE_ENV=development npx webpack --watch --progress",
         "profile:js": "cross-env NODE_ENV=production npx webpack --profile",
         "watch": "cross-env NODE_ENV=development npx webpack --watch --progress",
         "watch:prototype": "cross-env NODE_ENV=development npx webpack --watch --progress --config webpack.prototype.config.js",
