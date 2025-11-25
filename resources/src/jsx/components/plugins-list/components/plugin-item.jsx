@@ -127,6 +127,21 @@ const PluginItemComponent = ({
         return status.isInstalled && !status.hasConflictingInstallations;
     }, [status.isInstalled, isSmallMobile]);
 
+    // Get current installed version for update badge
+    const getUpdateBadgeInfo = useMemo(() => {
+        if (!pluginFamily.hasUpdate || !pluginFamily.hasAnyVersionInstalled) {
+            return null;
+        }
+
+        const installedPlugin = pluginFamily.freePlugin.isInstalled
+            ? pluginFamily.freePlugin
+            : pluginFamily.proPlugin;
+        const currentVersion = installedPlugin.version || __('Unknown', 'publishpress-hub');
+        const availableVersion = pluginFamily.availableVersion || __('New version available', 'publishpress-hub');
+
+        return { currentVersion, availableVersion };
+    }, [pluginFamily]);
+
     return (
         <div
             className={responsiveClasses}
@@ -159,14 +174,6 @@ const PluginItemComponent = ({
                         >
                             <span>{displayName}</span>
                         </Tooltip>
-                        {pluginFamily.hasUpdate && pluginFamily.hasAnyVersionInstalled && (
-                            <Tooltip
-                                text={sprintf(__('Update available: %s', 'publishpress-hub'), pluginFamily.availableVersion || __('New version available', 'publishpress-hub'))}
-                                placement='top'
-                            >
-                                <span className="pp-hub-plugin-update-indicator dashicons dashicons-warning" />
-                            </Tooltip>
-                        )}
                         <StatusFlag
                             pluginFamily={pluginFamily}
                             isInstalling={isInstalling}
@@ -176,6 +183,14 @@ const PluginItemComponent = ({
                             isActivating={isActivating}
                         />
                     </div>
+                    {getUpdateBadgeInfo && (
+                        <div className="pp-hub-plugin-update-badge">
+                            <span className="pp-hub-plugin-update-badge-icon dashicons dashicons-update" />
+                            <span className="pp-hub-plugin-update-badge-text">
+                                {sprintf(__('Update available: %s → %s', 'publishpress-hub'), getUpdateBadgeInfo.currentVersion, getUpdateBadgeInfo.availableVersion)}
+                            </span>
+                        </div>
+                    )}
                     <div className='pp-hub-plugins-list-item-description'>
                         {pluginFamily.description}
                     </div>
