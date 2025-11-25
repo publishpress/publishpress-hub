@@ -7067,6 +7067,20 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     // Show toggle on larger screens
     return status.isInstalled && !status.hasConflictingInstallations;
   }, [status.isInstalled, isSmallMobile]);
+
+  // Get current installed version for update badge
+  var getUpdateBadgeInfo = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    if (!pluginFamily.hasUpdate || !pluginFamily.hasAnyVersionInstalled) {
+      return null;
+    }
+    var installedPlugin = pluginFamily.freePlugin.isInstalled ? pluginFamily.freePlugin : pluginFamily.proPlugin;
+    var currentVersion = installedPlugin.version || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Unknown', 'publishpress-hub');
+    var availableVersion = pluginFamily.availableVersion || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('New version available', 'publishpress-hub');
+    return {
+      currentVersion: currentVersion,
+      availableVersion: availableVersion
+    };
+  }, [pluginFamily]);
   return /*#__PURE__*/React.createElement("div", {
     className: responsiveClasses,
     onMouseEnter: handleMouseEnter,
@@ -7096,19 +7110,20 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     text: tooltipText,
     placement: "top",
     useCustom: true
-  }, /*#__PURE__*/React.createElement("span", null, displayName)), pluginFamily.hasUpdate && pluginFamily.hasAnyVersionInstalled && /*#__PURE__*/React.createElement(_tooltip__WEBPACK_IMPORTED_MODULE_3__.Tooltip, {
-    text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Update available: %s', 'publishpress-hub'), pluginFamily.availableVersion || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('New version available', 'publishpress-hub')),
-    placement: "top"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "pp-hub-plugin-update-indicator dashicons dashicons-warning"
-  })), /*#__PURE__*/React.createElement(_status_flag__WEBPACK_IMPORTED_MODULE_4__.StatusFlag, {
+  }, /*#__PURE__*/React.createElement("span", null, displayName)), /*#__PURE__*/React.createElement(_status_flag__WEBPACK_IMPORTED_MODULE_4__.StatusFlag, {
     pluginFamily: pluginFamily,
     isInstalling: isInstalling,
     isUninstalling: isUninstalling,
     isUpgrading: isUpgrading,
     isDeactivating: isDeactivating,
     isActivating: isActivating
-  })), /*#__PURE__*/React.createElement("div", {
+  })), getUpdateBadgeInfo && /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-plugin-update-badge"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pp-hub-plugin-update-badge-icon dashicons dashicons-update"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "pp-hub-plugin-update-badge-text"
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Update available: %s → %s', 'publishpress-hub'), getUpdateBadgeInfo.currentVersion, getUpdateBadgeInfo.availableVersion))), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-description"
   }, pluginFamily.description), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-inline-actions"
