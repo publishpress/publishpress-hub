@@ -167,7 +167,7 @@ const StatusFlagComponent = ({
     ) : null;
 
     return (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+        <div className='pp-hub-status-flag' style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
             <Badge {...statusBadgeProps}>{statusBadgeProps.text}</Badge>
             {updateBadge}
             {expirationDate && (
