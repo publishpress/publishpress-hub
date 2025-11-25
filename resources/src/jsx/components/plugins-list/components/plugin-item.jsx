@@ -188,7 +188,7 @@ const PluginItemComponent = ({
                     <div className='pp-hub-plugins-list-item-description'>
                         {pluginFamily.description}
                     </div>
-                    <div className='pp-hub-plugins-list-item-footer-actions'>
+                    <div className='pp-hub-plugins-list-item-inline-actions'>
                         {actionButtonsData.map((buttonProps, index) => {
                             if (buttonProps.key === 'activate' && !isSmallMobile) {
                                 return null;
