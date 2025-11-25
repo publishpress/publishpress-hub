@@ -7116,14 +7116,10 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     isUninstalling: isUninstalling,
     isUpgrading: isUpgrading,
     isDeactivating: isDeactivating,
-    isActivating: isActivating
-  })), getUpdateBadgeInfo && /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-plugin-update-badge"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "pp-hub-plugin-update-badge-icon dashicons dashicons-update"
-  }), /*#__PURE__*/React.createElement("span", {
-    className: "pp-hub-plugin-update-badge-text"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Update available: %s → %s', 'publishpress-hub'), getUpdateBadgeInfo.currentVersion, getUpdateBadgeInfo.availableVersion))), /*#__PURE__*/React.createElement("div", {
+    isActivating: isActivating,
+    hasUpdate: pluginFamily.hasUpdate && pluginFamily.hasAnyVersionInstalled,
+    updateBadgeTooltip: getUpdateBadgeInfo ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Update available: %s → %s', 'publishpress-hub'), getUpdateBadgeInfo.currentVersion, getUpdateBadgeInfo.availableVersion) : null
+  })), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-description"
   }, pluginFamily.description), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-inline-actions"
@@ -7171,6 +7167,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _badge_badge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../badge/badge */ "./resources/src/jsx/components/badge/badge.jsx");
+/* harmony import */ var _tooltip__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../tooltip */ "./resources/src/jsx/components/tooltip/index.jsx");
 /**
  * Status flag.
  *
@@ -7180,6 +7177,7 @@ __webpack_require__.r(__webpack_exports__);
  * @license GPL v2 or later
  * @since 1.0.0
  */
+
 
 
 
@@ -7240,6 +7238,13 @@ var STATUS_BADGE_CONFIGS = {
   hasConflictingInstallations: {
     text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Conflicting Installations', 'publishpress-hub'),
     className: 'conflicting-installations'
+  },
+  updateAvailable: {
+    text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Update Available', 'publishpress-hub'),
+    className: 'update-available',
+    icon: /*#__PURE__*/React.createElement("span", {
+      className: "dashicons dashicons-warning"
+    })
   }
 };
 var StatusFlagComponent = function StatusFlagComponent(_ref) {
@@ -7248,7 +7253,9 @@ var StatusFlagComponent = function StatusFlagComponent(_ref) {
     isUninstalling = _ref.isUninstalling,
     isUpgrading = _ref.isUpgrading,
     isDeactivating = _ref.isDeactivating,
-    isActivating = _ref.isActivating;
+    isActivating = _ref.isActivating,
+    hasUpdate = _ref.hasUpdate,
+    updateBadgeTooltip = _ref.updateBadgeTooltip;
   // Extract the countInstalledPlugins calculation to avoid nesting useMemo hooks
   var countInstalledPlugins = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     var count = 0;
@@ -7260,7 +7267,7 @@ var StatusFlagComponent = function StatusFlagComponent(_ref) {
     }
     return count;
   }, [pluginFamily]);
-  var props = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+  var statusBadgeProps = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     if (pluginFamily.hasConflictingInstallations) {
       return STATUS_BADGE_CONFIGS.hasConflictingInstallations;
     }
@@ -7287,13 +7294,13 @@ var StatusFlagComponent = function StatusFlagComponent(_ref) {
     }
     return STATUS_BADGE_CONFIGS.free;
   }, [pluginFamily, isInstalling, isUninstalling, isUpgrading, isDeactivating, isActivating, countInstalledPlugins]);
-  if (!props) {
+  if (!statusBadgeProps) {
     return null;
   }
 
   // Display expiration date for licensed plugins
   var expirationDate = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    if (props === STATUS_BADGE_CONFIGS.licensed && pluginFamily.proPlugin.isLicensed && pluginFamily.proPlugin.licenseExpirationDateFormatted) {
+    if (statusBadgeProps === STATUS_BADGE_CONFIGS.licensed && pluginFamily.proPlugin.isLicensed && pluginFamily.proPlugin.licenseExpirationDateFormatted) {
       // Do not display expiration date if it is more than DAYS_UNTIL_EXPIRATION_DATE_THRESHOLD days away.
       if (pluginFamily.proPlugin.daysUntilExpiration && pluginFamily.proPlugin.daysUntilExpiration >= DAYS_UNTIL_EXPIRATION_DATE_THRESHOLD) {
         return null;
@@ -7301,15 +7308,22 @@ var StatusFlagComponent = function StatusFlagComponent(_ref) {
       return pluginFamily.proPlugin.licenseExpirationDateFormatted;
     }
     return null;
-  }, [props, pluginFamily]);
+  }, [statusBadgeProps, pluginFamily]);
+  var updateBadgeProps = hasUpdate ? STATUS_BADGE_CONFIGS.updateAvailable : null;
+  var updateBadge = updateBadgeProps ? updateBadgeTooltip ? /*#__PURE__*/React.createElement(_tooltip__WEBPACK_IMPORTED_MODULE_3__.Tooltip, {
+    text: updateBadgeTooltip,
+    placement: "top",
+    useCustom: true
+  }, /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_2__.Badge, updateBadgeProps, updateBadgeProps.text)) : /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_2__.Badge, updateBadgeProps, updateBadgeProps.text) : null;
   return /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-status-flag",
     style: {
       display: 'flex',
       alignItems: 'center',
       gap: '8px',
       flexWrap: 'wrap'
     }
-  }, /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_2__.Badge, props, props.text), expirationDate && /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_2__.Badge, statusBadgeProps, statusBadgeProps.text), updateBadge, expirationDate && /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: '12px',
       color: 'var(--pp-hub-text-secondary, #666)'
