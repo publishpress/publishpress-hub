@@ -29,13 +29,13 @@ const ACTION_BUTTON_CONFIGS = {
         icon: 'unlock',
     },
     manageLicense: {
-        variant: 'secondary',
+        variant: 'tertiary',
         text: __('Manage License', 'publishpress-hub'),
         loadingText: __('Managing License...', 'publishpress-hub'),
         icon: 'admin-generic',
     },
     activateLicense: {
-        variant: 'secondary',
+        variant: 'tertiary',
         text: __('Activate License', 'publishpress-hub'),
         loadingText: __('Activating License...', 'publishpress-hub'),
         icon: 'yes',
