@@ -13,6 +13,7 @@ import { memo, useMemo } from '@wordpress/element';
 import { __ } from '@publishpress-hub/i18n';
 
 import { Badge } from '../../badge/badge';
+import { Tooltip } from '../../tooltip';
 
 const DAYS_UNTIL_EXPIRATION_DATE_THRESHOLD = 60;
 
@@ -62,6 +63,11 @@ const STATUS_BADGE_CONFIGS = {
         text: __('Conflicting Installations', 'publishpress-hub'),
         className: 'conflicting-installations',
     },
+    updateAvailable: {
+        text: __('Update Available', 'publishpress-hub'),
+        className: 'update-available',
+        icon: <span className="dashicons dashicons-warning" />,
+    },
 };
 
 const StatusFlagComponent = ({
@@ -71,6 +77,8 @@ const StatusFlagComponent = ({
     isUpgrading,
     isDeactivating,
     isActivating,
+    hasUpdate,
+    updateBadgeTooltip,
 }) => {
     // Extract the countInstalledPlugins calculation to avoid nesting useMemo hooks
     const countInstalledPlugins = useMemo(() => {
@@ -85,7 +93,7 @@ const StatusFlagComponent = ({
         return count;
     }, [pluginFamily]);
 
-    const props = useMemo(() => {
+    const statusBadgeProps = useMemo(() => {
         if (pluginFamily.hasConflictingInstallations) {
             return STATUS_BADGE_CONFIGS.hasConflictingInstallations;
         }
@@ -121,14 +129,14 @@ const StatusFlagComponent = ({
         return STATUS_BADGE_CONFIGS.free;
     }, [pluginFamily, isInstalling, isUninstalling, isUpgrading, isDeactivating, isActivating, countInstalledPlugins]);
 
-    if (!props) {
+    if (!statusBadgeProps) {
         return null;
     }
 
     // Display expiration date for licensed plugins
     const expirationDate = useMemo(() => {
         if (
-            props === STATUS_BADGE_CONFIGS.licensed &&
+            statusBadgeProps === STATUS_BADGE_CONFIGS.licensed &&
             pluginFamily.proPlugin.isLicensed &&
             pluginFamily.proPlugin.licenseExpirationDateFormatted
         ) {
@@ -144,11 +152,24 @@ const StatusFlagComponent = ({
         }
 
         return null;
-    }, [props, pluginFamily]);
+    }, [statusBadgeProps, pluginFamily]);
+
+    const updateBadgeProps = hasUpdate ? STATUS_BADGE_CONFIGS.updateAvailable : null;
+
+    const updateBadge = updateBadgeProps ? (
+        updateBadgeTooltip ? (
+            <Tooltip text={updateBadgeTooltip} placement='top' useCustom={true}>
+                <Badge {...updateBadgeProps}>{updateBadgeProps.text}</Badge>
+            </Tooltip>
+        ) : (
+            <Badge {...updateBadgeProps}>{updateBadgeProps.text}</Badge>
+        )
+    ) : null;
 
     return (
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-            <Badge {...props}>{props.text}</Badge>
+            <Badge {...statusBadgeProps}>{statusBadgeProps.text}</Badge>
+            {updateBadge}
             {expirationDate && (
                 <span style={{ fontSize: '12px', color: 'var(--pp-hub-text-secondary, #666)' }}>
                     {__('Expires', 'publishpress-hub')} {expirationDate}

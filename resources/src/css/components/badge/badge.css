@@ -17,7 +17,6 @@
     line-height: 12px;
     font-size: 12px;
     font-weight: 600;
-    margin-right: var(--pp-hub-spacing-md);
     transition: background-color 0.1s ease-in-out;
     display: inline-block;
 }
@@ -92,6 +91,17 @@
 
 .pp-hub-plugins-list-item:hover .pp-hub-badge.conflicting-installations {
     background-color: var(--pp-hub-badge-bg-conflicting-installations-hover);
+}
+
+.pp-hub-badge.update-available {
+    background-color: rgba(255, 152, 0, 0.15);
+    color: #e65100;
+    border: 1px solid rgba(255, 152, 0, 0.4);
+    cursor: help;
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.update-available {
+    background-color: rgba(255, 152, 0, 0.2);
 }
 
 .pp-hub-badge-icon .dashicons {

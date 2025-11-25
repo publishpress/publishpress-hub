@@ -181,20 +181,14 @@ const PluginItemComponent = ({
                             isUpgrading={isUpgrading}
                             isDeactivating={isDeactivating}
                             isActivating={isActivating}
+                            hasUpdate={pluginFamily.hasUpdate && pluginFamily.hasAnyVersionInstalled}
+                            updateBadgeTooltip={getUpdateBadgeInfo ? sprintf(__('Update available: %s → %s', 'publishpress-hub'), getUpdateBadgeInfo.currentVersion, getUpdateBadgeInfo.availableVersion) : null}
                         />
                     </div>
-                    {getUpdateBadgeInfo && (
-                        <div className="pp-hub-plugin-update-badge">
-                            <span className="pp-hub-plugin-update-badge-icon dashicons dashicons-update" />
-                            <span className="pp-hub-plugin-update-badge-text">
-                                {sprintf(__('Update available: %s → %s', 'publishpress-hub'), getUpdateBadgeInfo.currentVersion, getUpdateBadgeInfo.availableVersion)}
-                            </span>
-                        </div>
-                    )}
                     <div className='pp-hub-plugins-list-item-description'>
                         {pluginFamily.description}
                     </div>
-                    <div className='pp-hub-plugins-list-item-inline-actions'>
+                    <div className='pp-hub-plugins-list-item-footer-actions'>
                         {actionButtonsData.map((buttonProps, index) => {
                             if (buttonProps.key === 'activate' && !isSmallMobile) {
                                 return null;
