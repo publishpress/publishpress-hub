@@ -5874,13 +5874,13 @@ var ACTION_BUTTON_CONFIGS = {
     icon: 'unlock'
   },
   manageLicense: {
-    variant: 'secondary',
+    variant: 'tertiary',
     text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Manage License', 'publishpress-hub'),
     loadingText: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Managing License...', 'publishpress-hub'),
     icon: 'admin-generic'
   },
   activateLicense: {
-    variant: 'secondary',
+    variant: 'tertiary',
     text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate License', 'publishpress-hub'),
     loadingText: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activating License...', 'publishpress-hub'),
     icon: 'yes'
