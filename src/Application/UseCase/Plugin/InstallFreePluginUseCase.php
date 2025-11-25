@@ -74,9 +74,6 @@ class InstallFreePluginUseCase implements UseCaseInterface
         // Update plugin status after installation to reflect current state
         $this->pluginStatusService->updatePluginStatus($plugin);
 
-        // Activating the plugin ensures it is immediately usable after installation
-        $this->pluginLifecycle->activatePlugin($plugin->getPath());
-
         return [
             'slug' => esc_html($pluginSlug),
             'installed' => $plugin->isInstalled(),
