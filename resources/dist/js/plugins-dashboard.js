@@ -5558,73 +5558,139 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var DAYS_UNTIL_EXPIRATION = 30;
-var MS_PER_DAY = 1000 * 60 * 60 * 24;
 
 /**
- * Hook to check for licenses expiring within the specified days and display a warning notice.
+ * Hook to check for licenses expiring within the specified days and expired licenses,
+ * displaying appropriate warning notices.
  *
- * @param {Array} plugins The plugins array to check for expiring licenses.
+ * Uses the license status data from the new license services (isExpired, daysUntilExpiration).
+ *
+ * @param {Array} plugins The plugins array to check for expiring/expired licenses.
+ * @param {number} daysUntilExpiration Number of days before expiration to show warning (default: 30).
  * @since 1.0.0
  */
 var useLicenseExpirationWarning = function useLicenseExpirationWarning(plugins) {
   var daysUntilExpiration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DAYS_UNTIL_EXPIRATION;
   var _useDispatch = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useDispatch)('core/notices'),
-    createNotice = _useDispatch.createNotice;
+    createNotice = _useDispatch.createNotice,
+    removeNotice = _useDispatch.removeNotice;
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (!plugins || plugins.length === 0) {
       return;
     }
     var expiringPlugins = [];
-    var today = new Date();
-    today.setHours(0, 0, 0, 0);
-    var daysFromNow = new Date(today);
-    daysFromNow.setDate(today.getDate() + daysUntilExpiration);
+    var expiredPlugins = [];
     plugins.forEach(function (plugin) {
-      if (plugin.proPlugin.isLicensed && plugin.proPlugin.licenseExpirationDate) {
-        var expirationDate = new Date(plugin.proPlugin.licenseExpirationDate);
-        expirationDate.setHours(0, 0, 0, 0);
-
-        // Check if expiration date is within the specified days and not in the past
-        if (expirationDate >= today && expirationDate <= daysFromNow) {
-          var _daysUntilExpiration = Math.ceil((expirationDate - today) / MS_PER_DAY);
-          expiringPlugins.push({
-            name: plugin.proPlugin.name,
-            expirationDate: plugin.proPlugin.licenseExpirationDateFormatted || plugin.proPlugin.licenseExpirationDate,
-            daysUntilExpiration: _daysUntilExpiration
-          });
-        }
+      // Check for expired licenses using the isExpired flag from license services
+      // This takes priority over expiring licenses
+      if (plugin.proPlugin.isInstalled && plugin.proPlugin.isExpired && plugin.proPlugin.detailsUrl) {
+        expiredPlugins.push({
+          name: plugin.proPlugin.name,
+          expirationDate: plugin.proPlugin.licenseExpirationDateFormatted || plugin.proPlugin.licenseExpirationDate || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('N/A', 'publishpress-hub'),
+          detailsUrl: plugin.proPlugin.detailsUrl
+        });
+      }
+      // Check for licenses expiring within the specified days
+      // Use daysUntilExpiration from the plugin data (calculated by backend)
+      // Only check if not already expired
+      else if (plugin.proPlugin.isLicensed && !plugin.proPlugin.isExpired && plugin.proPlugin.daysUntilExpiration !== undefined && plugin.proPlugin.daysUntilExpiration >= 0 && plugin.proPlugin.daysUntilExpiration <= daysUntilExpiration) {
+        expiringPlugins.push({
+          name: plugin.proPlugin.name,
+          expirationDate: plugin.proPlugin.licenseExpirationDateFormatted || plugin.proPlugin.licenseExpirationDate,
+          daysUntilExpiration: plugin.proPlugin.daysUntilExpiration,
+          detailsUrl: plugin.proPlugin.detailsUrl
+        });
       }
     });
-    if (expiringPlugins.length > 0) {
-      var expirationDates = expiringPlugins.map(function (p) {
-        return "".concat(p.name, " (").concat(p.expirationDate, ")");
-      }).join(', ');
-      var baseMessage;
-      if (expiringPlugins.length === 1) {
-        var plugin = expiringPlugins[0];
-        baseMessage = (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(
-        // translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
-        (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Warning: The license for %1$s expires on %2$s (%3$d days remaining).', 'publishpress-hub'), plugin.name, plugin.expirationDate, plugin.daysUntilExpiration);
-      } else {
-        baseMessage = (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(
-        // translators: %1$d is the number of plugins, %2$d is the number of days, %3$s is the list of plugins and expiration dates
-        (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Warning: %1$d plugin(s) have licenses expiring within %2$d days: %3$s', 'publishpress-hub'), expiringPlugins.length, daysUntilExpiration, expirationDates);
-      }
 
-      // Add renewal link
+    // Remove existing notices first
+    removeNotice('pp-hub-license-expiration-warning');
+    removeNotice('pp-hub-license-expired-warning');
+
+    // Display expired license notice (error level - highest priority)
+    if (expiredPlugins.length > 0) {
+      // Group plugins by expiration date
+      var pluginsByDate = {};
+      expiredPlugins.forEach(function (plugin) {
+        var date = plugin.expirationDate;
+        if (!pluginsByDate[date]) {
+          pluginsByDate[date] = [];
+        }
+        pluginsByDate[date].push(plugin);
+      });
+
+      // Build message with grouped plugins
+      var dateGroups = Object.keys(pluginsByDate).map(function (date) {
+        var plugins = pluginsByDate[date];
+        var pluginNames = plugins.map(function (p) {
+          return "<strong>".concat(p.name, "</strong>");
+        }).join(', ');
+        if (plugins.length === 1) {
+          return (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(
+          // translators: %1$s is the plugin name, %2$s is the expiration date
+          (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The license for %1$s expired on %2$s', 'publishpress-hub'), pluginNames, date);
+        } else {
+          return (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(
+          // translators: %1$s is the list of plugin names, %2$s is the expiration date
+          (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The licenses for %1$s expired on %2$s', 'publishpress-hub'), pluginNames, date);
+        }
+      });
+      var baseMessage = dateGroups.join('. ') + '.';
+
+      // Add single renewal link (use dashboard subscriptions URL)
       var renewUrl = 'https://publishpress.com/dashboard/?active_tab=subscriptions';
-      var renewLink = "<div class=\"pp-hub-renew-link\"><a href=\"".concat(renewUrl, "\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"components-button pp-hub-button is-secondary has-text has-icon\"><span class=\"dashicons dashicons-cart\"></span> ").concat((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Renew now', 'publishpress-hub'), "</a></div>");
-
-      // translators: %1$s is the base warning, %2$s is a renew link.
-      var message = baseMessage + '<br/>' + renewLink;
-      createNotice('warning', message, {
-        id: 'pp-hub-license-expiration-warning',
+      var renewLink = "<a href=\"".concat(renewUrl, "\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"pp-hub-renew-link\">").concat((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Renew now', 'publishpress-hub'), "</a>");
+      var message = baseMessage + ' ' + renewLink;
+      createNotice('error', message, {
+        id: 'pp-hub-license-expired-warning',
         isDismissible: true,
-        // Allow HTML for the renew link
         __unstableHTML: true
       });
     }
-  }, [plugins, createNotice, daysUntilExpiration]);
+
+    // Display expiring license notice (warning level)
+    if (expiringPlugins.length > 0) {
+      // Group plugins by expiration date
+      var _pluginsByDate = {};
+      expiringPlugins.forEach(function (plugin) {
+        var date = plugin.expirationDate;
+        if (!_pluginsByDate[date]) {
+          _pluginsByDate[date] = [];
+        }
+        _pluginsByDate[date].push(plugin);
+      });
+
+      // Build message with grouped plugins
+      var _dateGroups = Object.keys(_pluginsByDate).map(function (date) {
+        var plugins = _pluginsByDate[date];
+        var pluginNames = plugins.map(function (p) {
+          return p.name;
+        }).join(', ');
+        var daysRemaining = plugins[0].daysUntilExpiration; // All plugins in group have same days remaining
+
+        if (plugins.length === 1) {
+          return (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(
+          // translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
+          (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The license for %1$s expires on %2$s (%3$d days remaining)', 'publishpress-hub'), pluginNames, date, daysRemaining);
+        } else {
+          return (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(
+          // translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
+          (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The licenses for %1$s expire on %2$s (%3$d days remaining)', 'publishpress-hub'), pluginNames, date, daysRemaining);
+        }
+      });
+      var _baseMessage = (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Warning:', 'publishpress-hub') + ' ' + _dateGroups.join('. ') + '.';
+
+      // Add single renewal link (use dashboard subscriptions URL)
+      var _renewUrl = 'https://publishpress.com/dashboard/?active_tab=subscriptions';
+      var _renewLink = "<a href=\"".concat(_renewUrl, "\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"pp-hub-renew-link\">").concat((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Renew now', 'publishpress-hub'), "</a>");
+      var _message = _baseMessage + '<br/>' + _renewLink;
+      createNotice('warning', _message, {
+        id: 'pp-hub-license-expiration-warning',
+        isDismissible: true,
+        __unstableHTML: true
+      });
+    }
+  }, [plugins, createNotice, removeNotice, daysUntilExpiration]);
 };
 
 /***/ }),
@@ -7207,6 +7273,10 @@ var STATUS_BADGE_CONFIGS = {
     text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Unlicensed', 'publishpress-hub'),
     className: 'unlicensed'
   },
+  expired: {
+    text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Expired', 'publishpress-hub'),
+    className: 'expired'
+  },
   uninstalling: {
     text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Uninstalling', 'publishpress-hub'),
     className: 'uninstalling',
@@ -7290,6 +7360,10 @@ var StatusFlagComponent = function StatusFlagComponent(_ref) {
       return STATUS_BADGE_CONFIGS.notInstalled;
     }
     if (pluginFamily.proPlugin.isInstalled) {
+      // Check if expired first (before checking if licensed)
+      if (pluginFamily.proPlugin.isExpired) {
+        return STATUS_BADGE_CONFIGS.expired;
+      }
       return pluginFamily.proPlugin.isLicensed ? STATUS_BADGE_CONFIGS.licensed : STATUS_BADGE_CONFIGS.unlicensed;
     }
     return STATUS_BADGE_CONFIGS.free;
@@ -7415,6 +7489,27 @@ var useActionButtons = function useActionButtons(pluginFamily, status, loadingSt
     onUninstall = handlers.onUninstall;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     var buttons = [];
+
+    // Add renewal link if license is expired (show first in row actions)
+    if (pluginFamily.proPlugin.isInstalled && pluginFamily.proPlugin.isExpired && pluginFamily.proPlugin.detailsUrl) {
+      buttons.push({
+        key: 'renew',
+        variant: 'link',
+        href: pluginFamily.proPlugin.detailsUrl,
+        className: 'is-renew-link',
+        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Renew', 'publishpress-hub')
+      });
+    }
+    // Add renewal link if license is expiring within 30 days (show first in row actions)
+    else if (pluginFamily.proPlugin.isInstalled && pluginFamily.proPlugin.isLicensed && !pluginFamily.proPlugin.isExpired && pluginFamily.proPlugin.daysUntilExpiration !== undefined && pluginFamily.proPlugin.daysUntilExpiration >= 0 && pluginFamily.proPlugin.daysUntilExpiration <= 30 && pluginFamily.proPlugin.detailsUrl) {
+      buttons.push({
+        key: 'renew',
+        variant: 'link',
+        href: pluginFamily.proPlugin.detailsUrl,
+        className: 'is-renew-link',
+        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Renew', 'publishpress-hub')
+      });
+    }
     if (isInstalled && !hasConflictingInstallations) {
       if (isActive) {
         buttons.push({

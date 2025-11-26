@@ -46,6 +46,12 @@
     color: var(--pp-hub-badge-text-unlicensed);
 }
 
+.pp-hub-badge.expired {
+    background-color: rgba(220, 38, 38, 0.15);
+    color: #dc2626;
+    border: 1px solid rgba(220, 38, 38, 0.4);
+}
+
 .pp-hub-badge.installing {
     background-color: var(--pp-hub-badge-bg-installing);
     color: var(--pp-hub-badge-text-installing);
@@ -79,6 +85,10 @@
 
 .pp-hub-plugins-list-item:hover .pp-hub-badge.unlicensed {
     background-color: var(--pp-hub-badge-bg-unlicensed-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.expired {
+    background-color: rgba(220, 38, 38, 0.25);
 }
 
 .pp-hub-plugins-list-item:hover .pp-hub-badge.installing {

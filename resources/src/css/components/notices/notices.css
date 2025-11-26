@@ -32,3 +32,48 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
 .components-notice {
     border-radius: var(--pp-hub-radius-md);
 }
+
+/* Renew link styling in notices */
+.components-notice .pp-hub-renew-link {
+    display: inline-block;
+    margin-left: 12px;
+    padding: 6px 12px;
+    font-weight: 600;
+    color: var(--pp-hub-secondary-color);
+    background-color: rgba(255, 178, 0, 0.1);
+    border: 1px solid var(--pp-hub-secondary-color);
+    border-radius: var(--pp-hub-radius-sm);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.components-notice .pp-hub-renew-link:hover {
+    color: var(--pp-hub-secondary-color-darker);
+    background-color: rgba(255, 178, 0, 0.15);
+    border-color: var(--pp-hub-secondary-color-darker);
+    text-decoration: none;
+}
+
+.components-notice.is-error .pp-hub-renew-link {
+    color: var(--pp-hub-secondary-color);
+    background-color: rgba(255, 178, 0, 0.1);
+    border-color: var(--pp-hub-secondary-color);
+}
+
+.components-notice.is-error .pp-hub-renew-link:hover {
+    color: var(--pp-hub-secondary-color-darker);
+    background-color: rgba(255, 178, 0, 0.15);
+    border-color: var(--pp-hub-secondary-color-darker);
+}
+
+.components-notice.is-warning .pp-hub-renew-link {
+    color: var(--pp-hub-secondary-color);
+    background-color: rgba(255, 178, 0, 0.1);
+    border-color: var(--pp-hub-secondary-color);
+}
+
+.components-notice.is-warning .pp-hub-renew-link:hover {
+    color: var(--pp-hub-secondary-color-darker);
+    background-color: rgba(255, 178, 0, 0.15);
+    border-color: var(--pp-hub-secondary-color-darker);
+}

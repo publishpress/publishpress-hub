@@ -26,6 +26,7 @@ use PublishPress\Hub\Application\UseCase\Plugin\UpdatePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ResolveConflictUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\DeactivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ActivateLicenseUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\ValidateLicensesUseCase;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use WP_REST_Server;
@@ -45,6 +46,7 @@ class PluginsController implements BootableInterface
     private ResolveConflictUseCase $resolveConflictUseCase;
     private DeactivateLicenseUseCase $deactivateLicenseUseCase;
     private ActivateLicenseUseCase $activateLicenseUseCase;
+    private ValidateLicensesUseCase $validateLicensesUseCase;
     private string $restApiNamespace;
 
     /**
@@ -60,6 +62,7 @@ class PluginsController implements BootableInterface
      * @param ResolveConflictUseCase $resolveConflictUseCase
      * @param DeactivateLicenseUseCase $deactivateLicenseUseCase
      * @param ActivateLicenseUseCase $activateLicenseUseCase
+     * @param ValidateLicensesUseCase $validateLicensesUseCase
      * @since 1.0.0
      */
     public function __construct(
@@ -74,7 +77,8 @@ class PluginsController implements BootableInterface
         UpdatePluginUseCase $updatePluginUseCase,
         ResolveConflictUseCase $resolveConflictUseCase,
         DeactivateLicenseUseCase $deactivateLicenseUseCase,
-        ActivateLicenseUseCase $activateLicenseUseCase
+        ActivateLicenseUseCase $activateLicenseUseCase,
+        ValidateLicensesUseCase $validateLicensesUseCase
     ) {
         $this->restApiService = $restApiService;
         $this->listPluginsUseCase = $listPluginsUseCase;
@@ -88,6 +92,7 @@ class PluginsController implements BootableInterface
         $this->restApiNamespace = $restApiNamespace;
         $this->deactivateLicenseUseCase = $deactivateLicenseUseCase;
         $this->activateLicenseUseCase = $activateLicenseUseCase;
+        $this->validateLicensesUseCase = $validateLicensesUseCase;
     }
 
     /**
@@ -301,6 +306,25 @@ class PluginsController implements BootableInterface
                     'sanitize_callback' => 'sanitize_text_field',
                     'validate_callback' => function($param) {
                         return !empty($param) && is_string($param);
+                    },
+                ],
+            ]
+        ));
+
+        // POST /plugins/validate-licenses
+        $this->restApiService->addRoute(new RestRoute(
+            $this->restApiNamespace,
+            '/plugins/validate-licenses',
+            WP_REST_Server::CREATABLE,
+            $this->validateLicensesUseCase,
+            [$this, 'checkPermissions'],
+            [
+                'force-check' => [
+                    'required' => false,
+                    'type' => 'string',
+                    'sanitize_callback' => 'sanitize_text_field',
+                    'validate_callback' => function($param) {
+                        return $param === null || $param === '' || $param === '1' || $param === 1;
                     },
                 ],
             ]

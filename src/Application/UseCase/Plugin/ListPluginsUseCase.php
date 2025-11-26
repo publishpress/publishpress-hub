@@ -16,6 +16,7 @@ namespace PublishPress\Hub\Application\UseCase\Plugin;
 
 use PublishPress\Hub\Application\DTO\Plugin\PluginFamilyDto;
 use PublishPress\Hub\Application\Service\License\Contract\LicenseManagementServiceInterface;
+use PublishPress\Hub\Application\Service\License\LicenseStatusStorageService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
@@ -31,17 +32,21 @@ class ListPluginsUseCase implements UseCaseInterface
 
     private LicenseManagementServiceInterface $licenseManagement;
 
+    private LicenseStatusStorageService $licenseStatusStorage;
+
     /**
      * @since 1.0.0
      */
     public function __construct(
         PluginStatusService $pluginStatusService,
         LicensePersistenceInterface $licensePersistence,
-        LicenseManagementServiceInterface $licenseManagement
+        LicenseManagementServiceInterface $licenseManagement,
+        LicenseStatusStorageService $licenseStatusStorage
     ) {
         $this->pluginStatusService = $pluginStatusService;
         $this->licensePersistence = $licensePersistence;
         $this->licenseManagement = $licenseManagement;
+        $this->licenseStatusStorage = $licenseStatusStorage;
     }
 
     /**
@@ -105,6 +110,10 @@ class ListPluginsUseCase implements UseCaseInterface
                 $pluginData['proPlugin']['licenseExpirationDateFormatted'] = $this->formatExpirationDate($expirationDate);
                 $pluginData['proPlugin']['daysUntilExpiration'] = $this->getDaysUntilExpiration($expirationDate);
             }
+
+            // Check if license is expired
+            $isExpired = $this->isLicenseExpired($proPlugin);
+            $pluginData['proPlugin']['isExpired'] = $isExpired;
 
             $plugins[] = $pluginData;
         }
@@ -281,5 +290,36 @@ class ListPluginsUseCase implements UseCaseInterface
             'hasUpdate' => true,
             'availableVersion' => $update->update->new_version ?? null,
         ];
+    }
+
+    /**
+     * Check if license is expired.
+     *
+     * @param ProPluginInterface $proPlugin The plugin.
+     * @return bool True if license is expired, false otherwise.
+     * @since 1.0.0
+     */
+    private function isLicenseExpired(ProPluginInterface $proPlugin): bool
+    {
+        $downloadId = $proPlugin->getDownloadId();
+
+        // First check stored expiration status
+        $storedStatus = $this->licenseStatusStorage->getLicenseExpirationStatus($downloadId);
+
+        if ($storedStatus !== null && isset($storedStatus['isExpired'])) {
+            return (bool) $storedStatus['isExpired'];
+        }
+
+        // Fallback to calculating from expiration date
+        $expirationDate = $this->getLicenseExpirationDate($proPlugin);
+
+        // If no expiration date, it's likely a lifetime license - never expired
+        if (empty($expirationDate)) {
+            return false;
+        }
+
+        $daysUntilExpiration = $this->getDaysUntilExpiration($expirationDate);
+
+        return $daysUntilExpiration < 0;
     }
 }

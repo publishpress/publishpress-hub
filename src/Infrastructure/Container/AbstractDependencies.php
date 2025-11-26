@@ -59,6 +59,8 @@ abstract class AbstractDependencies
 
     public const CACHE_GROUP = 'publishpress-hub.constants.cache-group';
 
+    public const LICENSE_VALIDATION_POLL_INTERVAL_SECONDS = 'publishpress-hub.constants.license-validation-poll-interval-seconds';
+
     // Infrastructure Services
     public const HOOKS_SERVICE = 'publishpress-hub.infrastructure.hooks.service';
 
@@ -91,6 +93,18 @@ abstract class AbstractDependencies
     public const LICENSE_PERSISTENCE_SERVICE = 'publishpress-hub.infrastructure.license.persistence.service';
 
     public const LICENSE_MANAGEMENT_SERVICE = 'publishpress-hub.application.license.management.service';
+
+    public const LICENSE_STATUS_STORAGE_SERVICE = 'publishpress-hub.application.license.status-storage.service';
+
+    public const SCHEDULED_LICENSE_VALIDATION_SERVICE = 'publishpress-hub.application.license.scheduled-validation.service';
+
+    public const LICENSE_EXPIRATION_NOTICE_SERVICE = 'publishpress-hub.application.license.expiration-notice.service';
+
+    public const LICENSE_VALIDATION_ACTION_HANDLER = 'publishpress-hub.infrastructure.license.validation-action-handler';
+
+    public const LICENSE_VALIDATION_BOOTSTRAP_SERVICE = 'publishpress-hub.application.license.validation-bootstrap.service';
+
+    public const VALIDATE_LICENSES_USE_CASE = 'publishpress-hub.application.use-case.plugin.validate-licenses';
 
     public const EDD_SUBSCRIPTION_ADAPTER = 'publishpress-hub.infrastructure.edd-subscription.adapter';
 

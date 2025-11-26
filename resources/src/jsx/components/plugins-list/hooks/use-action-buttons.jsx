@@ -40,6 +40,39 @@ export const useActionButtons = (
     return useMemo(() => {
         const buttons = [];
 
+        // Add renewal link if license is expired (show first in row actions)
+        if (
+            pluginFamily.proPlugin.isInstalled &&
+            pluginFamily.proPlugin.isExpired &&
+            pluginFamily.proPlugin.detailsUrl
+        ) {
+            buttons.push({
+                key: 'renew',
+                variant: 'link',
+                href: pluginFamily.proPlugin.detailsUrl,
+                className: 'is-renew-link',
+                text: __('Renew', 'publishpress-hub'),
+            });
+        }
+        // Add renewal link if license is expiring within 30 days (show first in row actions)
+        else if (
+            pluginFamily.proPlugin.isInstalled &&
+            pluginFamily.proPlugin.isLicensed &&
+            !pluginFamily.proPlugin.isExpired &&
+            pluginFamily.proPlugin.daysUntilExpiration !== undefined &&
+            pluginFamily.proPlugin.daysUntilExpiration >= 0 &&
+            pluginFamily.proPlugin.daysUntilExpiration <= 30 &&
+            pluginFamily.proPlugin.detailsUrl
+        ) {
+            buttons.push({
+                key: 'renew',
+                variant: 'link',
+                href: pluginFamily.proPlugin.detailsUrl,
+                className: 'is-renew-link',
+                text: __('Renew', 'publishpress-hub'),
+            });
+        }
+
         if (isInstalled && !hasConflictingInstallations) {
             if (isActive) {
                 buttons.push({

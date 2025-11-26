@@ -223,6 +223,18 @@
     color: var(--pp-hub-button-text-disabled);
 }
 
+.pp-hub-button.is-link.is-renew-link {
+    color: var(--pp-hub-secondary-color);
+}
+
+.pp-hub-button.is-link.is-renew-link:hover {
+    color: var(--pp-hub-secondary-color-darker);
+}
+
+.pp-hub-button.is-link.is-renew-link:focus {
+    color: var(--pp-hub-secondary-color-darker);
+}
+
 .components-button.has-icon.has-text {
     justify-content: center !important;
 }

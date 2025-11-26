@@ -39,6 +39,10 @@ const STATUS_BADGE_CONFIGS = {
         text: __('Unlicensed', 'publishpress-hub'),
         className: 'unlicensed',
     },
+    expired: {
+        text: __('Expired', 'publishpress-hub'),
+        className: 'expired',
+    },
     uninstalling: {
         text: __('Uninstalling', 'publishpress-hub'),
         className: 'uninstalling',
@@ -123,6 +127,10 @@ const StatusFlagComponent = ({
         }
 
         if (pluginFamily.proPlugin.isInstalled) {
+            // Check if expired first (before checking if licensed)
+            if (pluginFamily.proPlugin.isExpired) {
+                return STATUS_BADGE_CONFIGS.expired;
+            }
             return pluginFamily.proPlugin.isLicensed ? STATUS_BADGE_CONFIGS.licensed : STATUS_BADGE_CONFIGS.unlicensed;
         }
 

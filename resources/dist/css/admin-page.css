@@ -1321,6 +1321,18 @@ footer .pp-hub-footer-logo img {
     color: var(--pp-hub-button-text-disabled);
 }
 
+.pp-hub-button.is-link.is-renew-link {
+    color: var(--pp-hub-secondary-color);
+}
+
+.pp-hub-button.is-link.is-renew-link:hover {
+    color: var(--pp-hub-secondary-color-darker);
+}
+
+.pp-hub-button.is-link.is-renew-link:focus {
+    color: var(--pp-hub-secondary-color-darker);
+}
+
 .components-button.has-icon.has-text {
     justify-content: center !important;
 }
@@ -2063,6 +2075,12 @@ button.publishpress-hub-filter-button:hover {
     color: var(--pp-hub-badge-text-unlicensed);
 }
 
+.pp-hub-badge.expired {
+    background-color: rgba(220, 38, 38, 0.15);
+    color: #dc2626;
+    border: 1px solid rgba(220, 38, 38, 0.4);
+}
+
 .pp-hub-badge.installing {
     background-color: var(--pp-hub-badge-bg-installing);
     color: var(--pp-hub-badge-text-installing);
@@ -2096,6 +2114,10 @@ button.publishpress-hub-filter-button:hover {
 
 .pp-hub-plugins-list-item:hover .pp-hub-badge.unlicensed {
     background-color: var(--pp-hub-badge-bg-unlicensed-hover);
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.expired {
+    background-color: rgba(220, 38, 38, 0.25);
 }
 
 .pp-hub-plugins-list-item:hover .pp-hub-badge.installing {
@@ -2211,6 +2233,51 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
 
 .components-notice {
     border-radius: var(--pp-hub-radius-md);
+}
+
+/* Renew link styling in notices */
+.components-notice .pp-hub-renew-link {
+    display: inline-block;
+    margin-left: 12px;
+    padding: 6px 12px;
+    font-weight: 600;
+    color: var(--pp-hub-secondary-color);
+    background-color: rgba(255, 178, 0, 0.1);
+    border: 1px solid var(--pp-hub-secondary-color);
+    border-radius: var(--pp-hub-radius-sm);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.components-notice .pp-hub-renew-link:hover {
+    color: var(--pp-hub-secondary-color-darker);
+    background-color: rgba(255, 178, 0, 0.15);
+    border-color: var(--pp-hub-secondary-color-darker);
+    text-decoration: none;
+}
+
+.components-notice.is-error .pp-hub-renew-link {
+    color: var(--pp-hub-secondary-color);
+    background-color: rgba(255, 178, 0, 0.1);
+    border-color: var(--pp-hub-secondary-color);
+}
+
+.components-notice.is-error .pp-hub-renew-link:hover {
+    color: var(--pp-hub-secondary-color-darker);
+    background-color: rgba(255, 178, 0, 0.15);
+    border-color: var(--pp-hub-secondary-color-darker);
+}
+
+.components-notice.is-warning .pp-hub-renew-link {
+    color: var(--pp-hub-secondary-color);
+    background-color: rgba(255, 178, 0, 0.1);
+    border-color: var(--pp-hub-secondary-color);
+}
+
+.components-notice.is-warning .pp-hub-renew-link:hover {
+    color: var(--pp-hub-secondary-color-darker);
+    background-color: rgba(255, 178, 0, 0.15);
+    border-color: var(--pp-hub-secondary-color-darker);
 }
 
 /*!************************************************************************************************!*\

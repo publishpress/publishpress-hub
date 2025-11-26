@@ -15,7 +15,11 @@ declare(strict_types=1);
 namespace PublishPress\Hub;
 
 use PublishPress\Hub\Application\Service\HubBootstrapService;
+use PublishPress\Hub\Application\Service\License\LicenseExpirationNoticeService;
 use PublishPress\Hub\Application\Service\License\LicenseManagementService;
+use PublishPress\Hub\Application\Service\License\LicenseStatusStorageService;
+use PublishPress\Hub\Application\Service\License\LicenseValidationBootstrapService;
+use PublishPress\Hub\Application\Service\License\ScheduledLicenseValidationService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Plugin\ActivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
@@ -27,6 +31,7 @@ use PublishPress\Hub\Application\UseCase\Plugin\ResolveConflictUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UninstallPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UpgradePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UpdatePluginUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\ValidateLicensesUseCase;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Repository\PluginFamilyRepository;
 use PublishPress\Hub\Infrastructure\AdminMenu\AdminMenuService;
@@ -56,6 +61,7 @@ use PublishPress\Hub\Admin\MenuController;
 use PublishPress\Hub\Admin\Page\PluginsDashboardController;
 use PublishPress\Hub\Admin\Page\WelcomePageController;
 use PublishPress\Hub\Infrastructure\Container\AbstractDependencies;
+use PublishPress\Hub\Infrastructure\License\Handler\LicenseValidationActionHandler;
 use PublishPress\Hub\Infrastructure\License\PerPluginLicensePersistenceService;
 use PublishPress\Hub\Rest\PluginsController;
 use PublishPress\Psr\Container\ContainerInterface;
@@ -88,6 +94,11 @@ return [
     AbstractDependencies::CACHE_GROUP => 'publishpress-hub',
 
     AbstractDependencies::LICENSE_OPTION_PREFIX => 'publishpress_hub_license_',
+
+    AbstractDependencies::LICENSE_VALIDATION_POLL_INTERVAL_SECONDS =>
+        defined('PUBLISHPRESS_HUB_LICENSE_VALIDATION_POLL_INTERVAL_SECONDS')
+            ? (int) constant('PUBLISHPRESS_HUB_LICENSE_VALIDATION_POLL_INTERVAL_SECONDS')
+            : 43200, // Default: 12 hours
 
     AbstractDependencies::USER_AGENT =>
         fn(ContainerInterface $container) => sprintf(
@@ -173,6 +184,41 @@ return [
             $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
 
+    AbstractDependencies::LICENSE_STATUS_STORAGE_SERVICE =>
+        fn(ContainerInterface $container) => new LicenseStatusStorageService(
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER)
+        ),
+
+    AbstractDependencies::SCHEDULED_LICENSE_VALIDATION_SERVICE =>
+        fn(ContainerInterface $container) => new ScheduledLicenseValidationService(
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_STATUS_STORAGE_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE),
+            $container->get(AbstractDependencies::LOGGER_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_VALIDATION_POLL_INTERVAL_SECONDS)
+        ),
+
+    AbstractDependencies::LICENSE_VALIDATION_ACTION_HANDLER =>
+        fn(ContainerInterface $container) => new LicenseValidationActionHandler(
+            $container->get(AbstractDependencies::SCHEDULED_LICENSE_VALIDATION_SERVICE)
+        ),
+
+    AbstractDependencies::LICENSE_EXPIRATION_NOTICE_SERVICE =>
+        fn(ContainerInterface $container) => new LicenseExpirationNoticeService(
+            $container->get(AbstractDependencies::LICENSE_STATUS_STORAGE_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::HOOKS_SERVICE)
+        ),
+
+    AbstractDependencies::LICENSE_VALIDATION_BOOTSTRAP_SERVICE =>
+        fn(ContainerInterface $container) => new LicenseValidationBootstrapService(
+            $container->get(AbstractDependencies::SCHEDULED_LICENSE_VALIDATION_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_VALIDATION_ACTION_HANDLER),
+            $container->get(AbstractDependencies::LICENSE_EXPIRATION_NOTICE_SERVICE),
+            $container->get(AbstractDependencies::HOOKS_SERVICE)
+        ),
+
     AbstractDependencies::EDD_SUBSCRIPTION_ADAPTER =>
         fn(ContainerInterface $container) => new EddSubscriptionAdapter(
             $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
@@ -217,6 +263,7 @@ return [
             $servicesToInit[] = $container->get(AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_PLUGINS_CONTROLLER);
+            $servicesToInit[] = $container->get(AbstractDependencies::LICENSE_VALIDATION_BOOTSTRAP_SERVICE);
 
             if (defined('PUBLISHPRESS_HUB_DEV_MODE') && constant('PUBLISHPRESS_HUB_DEV_MODE')) {
                 $servicesToInit[] = $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER);
@@ -265,7 +312,8 @@ return [
         fn(ContainerInterface $container) => new ListPluginsUseCase(
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
             $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE),
-            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_STATUS_STORAGE_SERVICE)
         ),
 
     AbstractDependencies::INSTALL_FREE_PLUGIN_USE_CASE =>
@@ -325,6 +373,12 @@ return [
             $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
         ),
 
+    AbstractDependencies::VALIDATE_LICENSES_USE_CASE =>
+        fn(ContainerInterface $container) => new ValidateLicensesUseCase(
+            $container->get(AbstractDependencies::SCHEDULED_LICENSE_VALIDATION_SERVICE),
+            $container->get(AbstractDependencies::LIST_PLUGINS_USE_CASE)
+        ),
+
     // Admin Services
     AbstractDependencies::MAIN_MENU_CONTROLLER =>
         fn(ContainerInterface $container) => new MenuController(
@@ -374,6 +428,7 @@ return [
             $container->get(AbstractDependencies::UPDATE_PLUGIN_USE_CASE),
             $container->get(AbstractDependencies::RESOLVE_CONFLICT_USE_CASE),
             $container->get(AbstractDependencies::DEACTIVATE_LICENSE_USE_CASE),
-            $container->get(AbstractDependencies::ACTIVATE_LICENSE_USE_CASE)
+            $container->get(AbstractDependencies::ACTIVATE_LICENSE_USE_CASE),
+            $container->get(AbstractDependencies::VALIDATE_LICENSES_USE_CASE)
         ),
 ];

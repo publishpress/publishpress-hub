@@ -12,6 +12,7 @@
     "require": {
         "php": ">=7.4",
         "ext-json": "*",
-        "publishpress/psr-container": "^2.0"
+        "publishpress/psr-container": "^2.0",
+        "woocommerce/action-scheduler": "^3.7"
     }
 }
