@@ -16,18 +16,6 @@ if (! function_exists('add_action')) {
     return;
 }
 
-/*
- * Load Action Scheduler library early, before plugins_loaded hook.
- * This ensures Actions Scheduler can register its hooks and initialize properly.
- */
-if (!class_exists('ActionScheduler', false)) {
-    $vendorPath = realpath(__DIR__ . '/../lib/vendor/') . '/';
-    $actionSchedulerPath = $vendorPath . 'woocommerce/action-scheduler/action-scheduler.php';
-    if (file_exists($actionSchedulerPath)) {
-        require_once $actionSchedulerPath;
-    }
-}
-
 if (! function_exists(__NAMESPACE__ . '\register1Dot0Dot0')) {
     if (! defined('PUBLISHPRESS_HUB_INCLUDED')) {
         define('PUBLISHPRESS_HUB_INCLUDED', __DIR__);

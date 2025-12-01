@@ -158,6 +158,8 @@ abstract class AbstractDependencies
 
     public const WELCOME_PAGE_CONTROLLER = 'publishpress-hub.presentation.welcome-page.controller';
 
+    public const ACTIVATION_REDIRECT_SERVICE = 'publishpress-hub.application.service.activation-redirect';
+
     public const PLUGINS_DASHBOARD_CONTROLLER = 'publishpress-hub.presentation.plugins-dashboard.controller';
 
     public const DEV_COMPONENTS_SHOWCASE_CONTROLLER = 'publishpress-hub.presentation.dev-components-showcase.controller';

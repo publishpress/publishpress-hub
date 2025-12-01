@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub;
 
+use PublishPress\Hub\Application\Service\ActivationRedirectService;
 use PublishPress\Hub\Application\Service\HubBootstrapService;
 use PublishPress\Hub\Application\Service\License\LicenseExpirationNoticeService;
 use PublishPress\Hub\Application\Service\License\LicenseManagementService;
@@ -264,6 +265,7 @@ return [
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_PLUGINS_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::LICENSE_VALIDATION_BOOTSTRAP_SERVICE);
+            $servicesToInit[] = $container->get(AbstractDependencies::ACTIVATION_REDIRECT_SERVICE);
 
             if (defined('PUBLISHPRESS_HUB_DEV_MODE') && constant('PUBLISHPRESS_HUB_DEV_MODE')) {
                 $servicesToInit[] = $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER);
@@ -395,6 +397,14 @@ return [
             $container->get(AbstractDependencies::ASSET_SERVICE),
             $container->get(AbstractDependencies::OPTIONS_ADAPTER),
             $container->get(AbstractDependencies::SECURITY_SERVICE)
+        ),
+
+    AbstractDependencies::ACTIVATION_REDIRECT_SERVICE =>
+        fn(ContainerInterface $container) => new ActivationRedirectService(
+            $container->get(AbstractDependencies::HOOKS_SERVICE),
+            $container->get(AbstractDependencies::SECURITY_SERVICE),
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER),
+            $container->get(AbstractDependencies::ENVIRONMENT_SERVICE)
         ),
 
     AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER =>
