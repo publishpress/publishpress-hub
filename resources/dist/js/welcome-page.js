@@ -583,8 +583,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _admin_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../admin-page */ "./resources/src/jsx/components/admin-page/index.jsx");
-/* harmony import */ var _admin_page_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../admin-page/footer */ "./resources/src/jsx/components/admin-page/footer.jsx");
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../buttons/button */ "./resources/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../buttons/button */ "./resources/src/jsx/components/buttons/button.jsx");
 /**
  * Welcome page.
  *
@@ -599,16 +598,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _window$ppHubWelcomeP = window.ppHubWelcomePageConfig,
   logoUrl = _window$ppHubWelcomeP.logoUrl,
   welcomeImageUrl = _window$ppHubWelcomeP.welcomeImageUrl,
-  dismissUrl = _window$ppHubWelcomeP.dismissUrl,
-  pluginSlug = _window$ppHubWelcomeP.pluginSlug,
-  pluginName = _window$ppHubWelcomeP.pluginName,
-  pluginAboutUrl = _window$ppHubWelcomeP.pluginAboutUrl,
-  pluginDocumentationUrl = _window$ppHubWelcomeP.pluginDocumentationUrl,
-  pluginSupportUrl = _window$ppHubWelcomeP.pluginSupportUrl;
+  dismissUrl = _window$ppHubWelcomeP.dismissUrl;
 var WelcomePageComponent = function WelcomePageComponent() {
   return /*#__PURE__*/React.createElement(_admin_page__WEBPACK_IMPORTED_MODULE_2__.AdminPageLayout, {
     logoUrl: logoUrl
@@ -697,7 +690,7 @@ var WelcomePageComponent = function WelcomePageComponent() {
     href: window.ppHubWelcomePageConfig.pluginsDashboardUrl
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Plugins Dashboard', 'publishpress-hub')), (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(' to see all available PublishPress plugins.', 'publishpress-hub')))), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-welcome-page__cta"
-  }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
+  }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     variant: "primary",
     href: window.ppHubWelcomePageConfig.pluginsDashboardUrl,
     target: "_self",
@@ -707,14 +700,7 @@ var WelcomePageComponent = function WelcomePageComponent() {
     className: "pp-hub-welcome-page__dismiss"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Already know what you\'re doing? Great! You can ', 'publishpress-hub'), /*#__PURE__*/React.createElement("a", {
     href: dismissUrl
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('dismiss this page', 'publishpress-hub')), (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('.', 'publishpress-hub')))), /*#__PURE__*/React.createElement(_admin_page_footer__WEBPACK_IMPORTED_MODULE_3__.Footer, {
-    pluginSlug: pluginSlug,
-    pluginName: pluginName,
-    pluginDocumentationUrl: pluginDocumentationUrl,
-    pluginAboutUrl: pluginAboutUrl,
-    pluginSupportUrl: pluginSupportUrl,
-    logoUrl: logoUrl
-  }));
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('dismiss this page', 'publishpress-hub')), (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('.', 'publishpress-hub')))));
 };
 var WelcomePage = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(WelcomePageComponent);
 

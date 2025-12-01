@@ -13,18 +13,12 @@ import { memo } from '@wordpress/element';
 import { __ } from '@publishpress-hub/i18n';
 
 import { AdminPageLayout } from '../admin-page';
-import { Footer } from '../admin-page/footer';
 import { Button } from '../buttons/button';
 
 const {
     logoUrl,
     welcomeImageUrl,
-    dismissUrl,
-    pluginSlug,
-    pluginName,
-    pluginAboutUrl,
-    pluginDocumentationUrl,
-    pluginSupportUrl,
+    dismissUrl
 } = window.ppHubWelcomePageConfig;
 
 const WelcomePageComponent = () => {
@@ -154,14 +148,6 @@ const WelcomePageComponent = () => {
                     </p>
                 </div>
             </div>
-            <Footer
-                pluginSlug={pluginSlug}
-                pluginName={pluginName}
-                pluginDocumentationUrl={pluginDocumentationUrl}
-                pluginAboutUrl={pluginAboutUrl}
-                pluginSupportUrl={pluginSupportUrl}
-                logoUrl={logoUrl}
-            />
         </AdminPageLayout>
     );
 };
