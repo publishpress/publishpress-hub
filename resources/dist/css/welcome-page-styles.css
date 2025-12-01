@@ -60,12 +60,12 @@
     flex-direction: column;
     gap: 40px;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .pp-hub-welcome-page__intro-image {
     width: 100%;
-    max-width: 500px;
+    max-width: 380px;
     text-align: center;
 }
 
