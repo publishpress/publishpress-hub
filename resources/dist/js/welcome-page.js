@@ -624,15 +624,7 @@ var WelcomePageComponent = function WelcomePageComponent() {
   }, /*#__PURE__*/React.createElement("img", {
     src: welcomeImageUrl,
     alt: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Welcome to PublishPress Hub', 'publishpress-hub')
-  })), /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__intro-text"
-  }, /*#__PURE__*/React.createElement("h2", {
-    className: "pp-hub-welcome-page__intro-title"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Thank you for giving PublishPress Hub a try!', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
-    className: "pp-hub-welcome-page__message"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Our plugins are designed to make managing your publishing workflow as simple as possible, and PublishPress Hub is the key to facilitate that.', 'publishpress-hub'))))), /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__box"
-  }, /*#__PURE__*/React.createElement("h2", {
+  }))), /*#__PURE__*/React.createElement("h2", {
     className: "pp-hub-welcome-page__features-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('What you can do with PublishPress Hub', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
     className: "pp-hub-welcome-page__message"
