@@ -42,18 +42,8 @@ const WelcomePageComponent = () => {
                             <div className="pp-hub-welcome-page__intro-image">
                                 <img src={welcomeImageUrl} alt={__('Welcome to PublishPress Hub', 'publishpress-hub')} />
                             </div>
-                            <div className="pp-hub-welcome-page__intro-text">
-                                <h2 className="pp-hub-welcome-page__intro-title">
-                                    {__('Thank you for giving PublishPress Hub a try!', 'publishpress-hub')}
-                                </h2>
-                                <p className="pp-hub-welcome-page__message">
-                                    {__('Our plugins are designed to make managing your publishing workflow as simple as possible, and PublishPress Hub is the key to facilitate that.', 'publishpress-hub')}
-                                </p>
-                            </div>
                         </div>
-                    </div>
 
-                    <div className="pp-hub-welcome-page__box">
                         <h2 className="pp-hub-welcome-page__features-title">
                             {__('What you can do with PublishPress Hub', 'publishpress-hub')}
                         </h2>
