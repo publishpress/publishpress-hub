@@ -64,6 +64,16 @@ define('PUBLISHPRESS_HUB_VENDOR_PATH', realpath(PUBLISHPRESS_HUB_PATH . '/lib/ve
 require_once PUBLISHPRESS_HUB_VENDOR_PATH . 'publishpress/psr-container/lib/include.php';
 
 /*
+ * Load Actions Scheduler library.
+ *
+ * This must be loaded early so that its functions are available
+ * when the plugin services try to use them.
+ */
+if (file_exists(PUBLISHPRESS_HUB_VENDOR_PATH . 'woocommerce/action-scheduler/action-scheduler.php')) {
+    require_once PUBLISHPRESS_HUB_VENDOR_PATH . 'woocommerce/action-scheduler/action-scheduler.php';
+}
+
+/*
  * Load the autoloader and register the plugin's namespace.
  */
 if (! class_exists(__NAMESPACE__ . '\\Infrastructure\\Autoloader\\Autoloader')) {
