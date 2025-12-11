@@ -13,7 +13,7 @@
  * Requires PHP: 7.4
  */
 
- declare(strict_types=1);
+declare(strict_types=1);
 
 use function PublishPress\Hub\registerActivationHook;
 
