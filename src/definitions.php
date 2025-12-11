@@ -60,6 +60,7 @@ use PublishPress\Hub\Infrastructure\WP\Security\WPSecurityAdapter;
 use PublishPress\Hub\Admin\Page\ComponentsShowcaseController;
 use PublishPress\Hub\Admin\MenuController;
 use PublishPress\Hub\Admin\Page\PluginsDashboardController;
+use PublishPress\Hub\Admin\Page\SettingsPageController;
 use PublishPress\Hub\Admin\Page\WelcomePageController;
 use PublishPress\Hub\Infrastructure\Container\AbstractDependencies;
 use PublishPress\Hub\Infrastructure\License\Handler\LicenseValidationActionHandler;
@@ -262,6 +263,7 @@ return [
             }
 
             $servicesToInit[] = $container->get(AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER);
+            $servicesToInit[] = $container->get(AbstractDependencies::SETTINGS_PAGE_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_PLUGINS_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::LICENSE_VALIDATION_BOOTSTRAP_SERVICE);
@@ -414,6 +416,14 @@ return [
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
             $container->get(AbstractDependencies::ASSET_SERVICE),
             $container->get(AbstractDependencies::SECURITY_SERVICE)
+        ),
+
+    AbstractDependencies::SETTINGS_PAGE_CONTROLLER =>
+        fn(ContainerInterface $container) => new SettingsPageController(
+            $container->get(AbstractDependencies::HOOKS_SERVICE),
+            $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
+            $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
+            $container->get(AbstractDependencies::ASSET_SERVICE)
         ),
 
     AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER =>

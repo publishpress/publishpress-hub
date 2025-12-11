@@ -162,6 +162,8 @@ abstract class AbstractDependencies
 
     public const PLUGINS_DASHBOARD_CONTROLLER = 'publishpress-hub.presentation.plugins-dashboard.controller';
 
+    public const SETTINGS_PAGE_CONTROLLER = 'publishpress-hub.presentation.settings-page.controller';
+
     public const DEV_COMPONENTS_SHOWCASE_CONTROLLER = 'publishpress-hub.presentation.dev-components-showcase.controller';
 
     public const REST_API_PLUGINS_CONTROLLER = 'publishpress-hub.presentation.rest-api.plugins.controller';
