@@ -9670,7 +9670,7 @@ function updatePlugin(pluginFamilySlug) {
           break;
         }
         _context21.n = 4;
-        return fetchPlugins();
+        return fetchPlugins(true);
       case 4:
         _context21.n = 5;
         return {

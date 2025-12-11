@@ -686,7 +686,9 @@ export function* updatePlugin(pluginFamilySlug) {
         });
 
         if (data.success) {
-            yield fetchPlugins();
+            // Force refresh to ensure update status is checked for all plugins
+            // WordPress clears the update_plugins transient during plugin upgrades
+            yield fetchPlugins(true);
 
             yield {type: 'UPDATE_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 
