@@ -213,14 +213,14 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
     }
 
     /**
-     * Execute a use case.
+     * Execute a callback (use case or callable).
      *
      * @param WP_REST_Request $request The request.
-     * @param UseCaseInterface $useCase The use case.
+     * @param UseCaseInterface|callable $callback The use case or callable.
      * @return WP_REST_Response|WP_Error The response.
      * @since 1.0.0
      */
-    public function executeUseCase(WP_REST_Request $request, UseCaseInterface $useCase)
+    public function executeUseCase(WP_REST_Request $request, $callback)
     {
         // Check rate limit before executing use case
         $rateLimitCheck = $this->checkRateLimit($request);
@@ -229,7 +229,11 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
         }
 
         try {
-            $response = $useCase->execute($request);
+            if ($callback instanceof UseCaseInterface) {
+                $response = $callback->execute($request);
+            } else {
+                $response = call_user_func($callback, $request);
+            }
 
             return $this->createSuccessResponse($response);
         } catch (WithContextInterface $e) {

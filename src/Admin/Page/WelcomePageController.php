@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Admin\Page;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
+use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
 use PublishPress\Hub\Infrastructure\AdminMenu\Entity\SubmenuPage;
@@ -189,7 +190,7 @@ class WelcomePageController implements BootableInterface
             'publishpress-hub',
             __('Welcome', 'publishpress-hub'),
             __('Welcome', 'publishpress-hub'),
-            'manage_options',
+            HubAccessService::CAPABILITY,
             'publishpress-hub-welcome',
             [$this, 'showWelcomePage'],
             0

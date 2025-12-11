@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service;
 
+use PublishPress\Hub\Application\Contract\AccessInterface;
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
@@ -23,7 +24,6 @@ use PublishPress\Hub\Domain\Plugin\Entity\ProPlugin;
 use PublishPress\Hub\Infrastructure\Environment\Contract\EnvironmentServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
-use PublishPress\Hub\Admin\MenuController;
 
 class HubBootstrapService implements BootableInterface
 {
@@ -36,32 +36,33 @@ class HubBootstrapService implements BootableInterface
      */
     private array $servicesToInit = [];
 
-    private MenuController $mainMenuController;
-
     private PluginFamilyRepositoryInterface $pluginFamilyRepository;
 
     private EnvironmentServiceInterface $environmentService;
 
+    private AccessInterface $accessService;
+
     /**
      * @param HooksServiceInterface $hooksService
      * @param BootableInterface[] $servicesToInit
-     * @param MenuController $mainMenuController
      * @param PluginFamilyRepositoryInterface $pluginFamilyRepository
+     * @param EnvironmentServiceInterface $environmentService
+     * @param AccessInterface $accessService
      *
      * @since 1.0.0
      */
     public function __construct(
         HooksServiceInterface $hooksService,
         array $servicesToInit,
-        MenuController $mainMenuController,
         PluginFamilyRepositoryInterface $pluginFamilyRepository,
-        EnvironmentServiceInterface $environmentService
+        EnvironmentServiceInterface $environmentService,
+        AccessInterface $accessService
     ) {
         $this->hooksService = $hooksService;
         $this->servicesToInit = $servicesToInit;
-        $this->mainMenuController = $mainMenuController;
         $this->pluginFamilyRepository = $pluginFamilyRepository;
         $this->environmentService = $environmentService;
+        $this->accessService = $accessService;
     }
 
     /**
@@ -75,10 +76,6 @@ class HubBootstrapService implements BootableInterface
         $this->loadServices();
 
         $this->pluginFamilyRepository->reset();
-
-        if ($this->environmentService->isAdminArea()) {
-            $this->mainMenuController->load();
-        }
     }
 
     /**
@@ -90,10 +87,6 @@ class HubBootstrapService implements BootableInterface
     {
         $this->initServices();
         $this->registerPluginFamilies();
-
-        if ($this->environmentService->isAdminArea()) {
-            $this->mainMenuController->init();
-        }
     }
 
     /**
@@ -114,6 +107,11 @@ class HubBootstrapService implements BootableInterface
     private function loadServices(): void
     {
         foreach ($this->servicesToInit as $service) {
+            // Skip admin controllers if user can't view the Hub
+            if ($this->shouldSkipAdminService($service)) {
+                continue;
+            }
+
             $service->load();
         }
     }
@@ -126,8 +124,38 @@ class HubBootstrapService implements BootableInterface
     private function initServices(): void
     {
         foreach ($this->servicesToInit as $service) {
+            // Skip admin controllers if user can't view the Hub
+            if ($this->shouldSkipAdminService($service)) {
+                continue;
+            }
+
             $service->init();
         }
+    }
+
+    /**
+     * Check if an admin service should be skipped based on user permissions.
+     *
+     * @param BootableInterface $service
+     * @return bool
+     * @since 1.0.0
+     */
+    private function shouldSkipAdminService(BootableInterface $service): bool
+    {
+        // Only check in admin area
+        if (!$this->environmentService->isAdminArea()) {
+            return false;
+        }
+
+        // Check if this service is in the Hub\Admin namespace (admin controllers)
+        $serviceClass = get_class($service);
+        $isAdminService = strpos($serviceClass, 'PublishPress\\Hub\\Admin\\') === 0;
+
+        if ($isAdminService) {
+            return !$this->accessService->canUserViewHub();
+        }
+
+        return false;
     }
 
     /**

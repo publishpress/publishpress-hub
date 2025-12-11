@@ -29,4 +29,6 @@ abstract class AbstractHooks
     public const ACTION_ADMIN_INIT = 'admin_init';
 
     public const ACTION_REST_API_INIT = 'rest_api_init';
+
+    public const FILTER_PLUGIN_CAPABILITIES = 'cme_plugin_capabilities';
 }

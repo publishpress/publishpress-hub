@@ -15,14 +15,15 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Admin\Page;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
+use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
 use PublishPress\Hub\Infrastructure\AdminMenu\Entity\SubmenuPage;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
-use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
 use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
+use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
 
 class PluginsDashboardController implements BootableInterface
 {
@@ -107,7 +108,7 @@ class PluginsDashboardController implements BootableInterface
             'publishpress-hub',
             'Plugins',
             'Plugins',
-            'manage_options',
+            HubAccessService::CAPABILITY,
             'publishpress-hub-plugins-dashboard',
             [$this, 'showDashboard']
         );

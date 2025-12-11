@@ -80,7 +80,7 @@ if (! class_exists(__NAMESPACE__ . '\\Infrastructure\\Autoloader\\Autoloader')) 
     require_once PUBLISHPRESS_HUB_SRC_PATH . 'Infrastructure/Autoloader/Autoloader.php';
 }
 
-Autoloader::register(__NAMESPACE__, PUBLISHPRESS_HUB_SRC_PATH);
+Autoloader::register(__NAMESPACE__ . '\\', PUBLISHPRESS_HUB_SRC_PATH);
 
 /*
  * Load the plugin.

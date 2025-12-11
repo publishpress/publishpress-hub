@@ -1,0 +1,152 @@
+<?php
+
+/**
+ * Hub access service.
+ *
+ * @package PublishPress\Hub\Application\Service\Access
+ * @author PublishPress
+ * @copyright Copyright (c) 2025, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+declare(strict_types=1);
+
+namespace PublishPress\Hub\Application\Service\Access;
+
+use PublishPress\Hub\Application\Contract\AccessInterface;
+use PublishPress\Hub\Application\Contract\BootableInterface;
+use PublishPress\Hub\Application\Traits\BootableTrait;
+use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
+use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
+use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
+
+class HubAccessService implements AccessInterface, BootableInterface
+{
+    use BootableTrait;
+
+    public const CAPABILITY = 'publishpress_hub_view';
+
+    public const PLUGIN_NAME = 'PublishPress Hub';
+
+    public const VIEWER_ROLE = 'publishpress_hub_viewer';
+
+    public const VIEWER_ROLE_DISPLAY_NAME = 'PublishPress Hub Viewer';
+
+    public const ADMIN_ROLE = 'administrator';
+
+    private SecurityServiceInterface $securityService;
+
+    private HooksServiceInterface $hooksService;
+
+    /**
+     * Constructor.
+     *
+     * @param SecurityServiceInterface $securityService
+     * @since 1.0.0
+     */
+    public function __construct(
+        SecurityServiceInterface $securityService,
+        HooksServiceInterface $hooksService
+    ) {
+        $this->securityService = $securityService;
+        $this->hooksService = $hooksService;
+    }
+
+    /**
+     * On load.
+     *
+     * @return void
+     * @since 1.0.0
+     */
+    protected function onLoad(): void
+    {
+        $this->hooksService->addFilter(
+            AbstractHooks::FILTER_PLUGIN_CAPABILITIES,
+            [self::class, 'filterCmePluginCapabilities']
+        );
+    }
+
+    /**
+     * On init.
+     *
+     * @return void
+     * @since 1.0.0
+     */
+    protected function onInit(): void
+    {
+    }
+
+    /**
+     * Check if current user can view the Hub.
+     *
+     * @param int|\WP_User|null $user Optional user ID or WP_User object.
+     * @return bool
+     * @since 1.0.0
+     */
+    public function canUserViewHub($user = null): bool
+    {
+        return $this->securityService->userCan(self::CAPABILITY, $user);
+    }
+
+    /**
+     * Register capabilities for PublishPress Capabilities plugin.
+     *
+     * @param array<string, array<string>> $pluginCaps Existing plugin capabilities.
+     * @return array<string, array<string>> Modified plugin capabilities.
+     * @since 1.0.0
+     */
+    public static function filterCmePluginCapabilities(array $pluginCaps): array
+    {
+        $pluginCaps[self::PLUGIN_NAME] = [
+            self::CAPABILITY,
+        ];
+
+        return $pluginCaps;
+    }
+
+    /**
+     * Setup the capability and role. This resets user's customizations related
+     * to the capability and role.
+     *
+     * @return void
+     * @since 1.0.0
+     */
+    public static function setupCapabilityAndRole(): void
+    {
+        self::createUserRole(self::VIEWER_ROLE, self::VIEWER_ROLE_DISPLAY_NAME);
+        self::addRoleCapability(self::ADMIN_ROLE, self::CAPABILITY);
+    }
+
+    /**
+     * Create a user role.
+     *
+     * @param string $role The name of the role.
+     * @param string $roleDisplayName The display name of the role.
+     * @return void
+     * @since 1.0.0
+     */
+    private static function createUserRole(string $role, string $roleDisplayName): void
+    {
+        $roleInstance = get_role($role);
+        if (!$roleInstance) {
+            $roleInstance = add_role($role, $roleDisplayName, [self::CAPABILITY => true]);
+        }
+    }
+
+    /**
+     * Add a capability to a role.
+     *
+     * @param string $role The name of the role.
+     * @param string $capability The capability to add.
+     * @return void
+     * @since 1.0.0
+     */
+    private static function addRoleCapability(string $role, string $capability): void
+    {
+        $roleInstance = get_role($role);
+        if ($roleInstance && ! $roleInstance->has_cap($capability)) {
+            $roleInstance->add_cap($capability);
+        }
+    }
+}

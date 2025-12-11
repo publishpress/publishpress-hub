@@ -15,12 +15,14 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Admin\Page;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
+use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
 use PublishPress\Hub\Infrastructure\AdminMenu\Entity\SubmenuPage;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
+use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
 use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
 
 class SettingsPageController implements BootableInterface
@@ -35,6 +37,8 @@ class SettingsPageController implements BootableInterface
 
     private AssetServiceInterface $assetService;
 
+    private SecurityServiceInterface $securityService;
+
     /**
      * Constructor.
      *
@@ -42,18 +46,21 @@ class SettingsPageController implements BootableInterface
      * @param ViewServiceInterface $viewService
      * @param AdminMenuServiceInterface $adminMenuService
      * @param AssetServiceInterface $assetService
+     * @param SecurityServiceInterface $securityService
      * @since 1.0.0
      */
     public function __construct(
         HooksServiceInterface $hooksService,
         ViewServiceInterface $viewService,
         AdminMenuServiceInterface $adminMenuService,
-        AssetServiceInterface $assetService
+        AssetServiceInterface $assetService,
+        SecurityServiceInterface $securityService
     ) {
         $this->hooksService = $hooksService;
         $this->viewService = $viewService;
         $this->adminMenuService = $adminMenuService;
         $this->assetService = $assetService;
+        $this->securityService = $securityService;
     }
 
     /**
@@ -75,7 +82,8 @@ class SettingsPageController implements BootableInterface
      */
     protected function onInit(): void
     {
-        $this->registerAdminMenu();
+        // Disabled until we have settings to show
+        // $this->registerAdminMenu();
     }
 
     /**
@@ -101,7 +109,7 @@ class SettingsPageController implements BootableInterface
             'publishpress-hub',
             __('Settings', 'publishpress-hub'),
             __('Settings', 'publishpress-hub'),
-            'manage_options',
+            HubAccessService::CAPABILITY,
             'publishpress-hub-settings',
             [$this, 'showSettingsPage']
         );

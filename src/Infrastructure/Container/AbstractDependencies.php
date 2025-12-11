@@ -98,6 +98,8 @@ abstract class AbstractDependencies
 
     public const SCHEDULED_LICENSE_VALIDATION_SERVICE = 'publishpress-hub.application.license.scheduled-validation.service';
 
+    public const HUB_ACCESS_SERVICE = 'publishpress-hub.application.access.service';
+
     public const LICENSE_EXPIRATION_NOTICE_SERVICE = 'publishpress-hub.application.license.expiration-notice.service';
 
     public const LICENSE_VALIDATION_ACTION_HANDLER = 'publishpress-hub.infrastructure.license.validation-action-handler';
@@ -154,8 +156,6 @@ abstract class AbstractDependencies
     public const ADMIN_MENU_ADAPTER = 'publishpress-hub.infrastructure.admin-menu.adapter';
 
     // Presentation Services
-    public const MAIN_MENU_CONTROLLER = 'publishpress-hub.presentation.main-menu.controller';
-
     public const WELCOME_PAGE_CONTROLLER = 'publishpress-hub.presentation.welcome-page.controller';
 
     public const ACTIVATION_REDIRECT_SERVICE = 'publishpress-hub.application.service.activation-redirect';

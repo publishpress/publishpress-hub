@@ -16,6 +16,7 @@ namespace PublishPress\Hub;
 
 use PublishPress\Hub\Application\Service\ActivationRedirectService;
 use PublishPress\Hub\Application\Service\HubBootstrapService;
+use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Service\License\LicenseExpirationNoticeService;
 use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use PublishPress\Hub\Application\Service\License\LicenseStatusStorageService;
@@ -58,7 +59,6 @@ use PublishPress\Hub\Infrastructure\WP\Remote\WPRemoteAdapter;
 use PublishPress\Hub\Infrastructure\WP\RestApi\WPRestApiAdapter;
 use PublishPress\Hub\Infrastructure\WP\Security\WPSecurityAdapter;
 use PublishPress\Hub\Admin\Page\ComponentsShowcaseController;
-use PublishPress\Hub\Admin\MenuController;
 use PublishPress\Hub\Admin\Page\PluginsDashboardController;
 use PublishPress\Hub\Admin\Page\SettingsPageController;
 use PublishPress\Hub\Admin\Page\WelcomePageController;
@@ -145,6 +145,7 @@ return [
         fn(ContainerInterface $container) => new AdminMenuService(
             $container->get(AbstractDependencies::ADMIN_MENU_ADAPTER),
             $container->get(AbstractDependencies::HOOKS_SERVICE),
+            $container->get(AbstractDependencies::ASSET_SERVICE)
         ),
 
     AbstractDependencies::ADMIN_VIEW_SERVICE =>
@@ -201,6 +202,12 @@ return [
             $container->get(AbstractDependencies::LICENSE_VALIDATION_POLL_INTERVAL_SECONDS)
         ),
 
+    AbstractDependencies::HUB_ACCESS_SERVICE =>
+        fn(ContainerInterface $container) => new HubAccessService(
+            $container->get(AbstractDependencies::SECURITY_SERVICE),
+            $container->get(AbstractDependencies::HOOKS_SERVICE)
+        ),
+
     AbstractDependencies::LICENSE_VALIDATION_ACTION_HANDLER =>
         fn(ContainerInterface $container) => new LicenseValidationActionHandler(
             $container->get(AbstractDependencies::SCHEDULED_LICENSE_VALIDATION_SERVICE)
@@ -254,6 +261,7 @@ return [
     AbstractDependencies::HUB_BOOTSTRAP_SERVICE =>
         function (ContainerInterface $container) {
             $servicesToInit = [
+                $container->get(AbstractDependencies::HUB_ACCESS_SERVICE),
                 $container->get(AbstractDependencies::I18N_SERVICE),
                 $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
             ];
@@ -276,9 +284,9 @@ return [
             return new HubBootstrapService(
                 $container->get(AbstractDependencies::HOOKS_SERVICE),
                 $servicesToInit,
-                $container->get(AbstractDependencies::MAIN_MENU_CONTROLLER),
                 $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
-                $container->get(AbstractDependencies::ENVIRONMENT_SERVICE)
+                $container->get(AbstractDependencies::ENVIRONMENT_SERVICE),
+                $container->get(AbstractDependencies::HUB_ACCESS_SERVICE)
             );
         },
 
@@ -384,13 +392,6 @@ return [
         ),
 
     // Admin Services
-    AbstractDependencies::MAIN_MENU_CONTROLLER =>
-        fn(ContainerInterface $container) => new MenuController(
-            $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
-            $container->get(AbstractDependencies::ASSET_SERVICE),
-            $container->get(AbstractDependencies::HOOKS_SERVICE)
-        ),
-
     AbstractDependencies::WELCOME_PAGE_CONTROLLER =>
         fn(ContainerInterface $container) => new WelcomePageController(
             $container->get(AbstractDependencies::HOOKS_SERVICE),
@@ -423,7 +424,8 @@ return [
             $container->get(AbstractDependencies::HOOKS_SERVICE),
             $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
-            $container->get(AbstractDependencies::ASSET_SERVICE)
+            $container->get(AbstractDependencies::ASSET_SERVICE),
+            $container->get(AbstractDependencies::SECURITY_SERVICE)
         ),
 
     AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER =>
@@ -450,5 +452,5 @@ return [
             $container->get(AbstractDependencies::DEACTIVATE_LICENSE_USE_CASE),
             $container->get(AbstractDependencies::ACTIVATE_LICENSE_USE_CASE),
             $container->get(AbstractDependencies::VALIDATE_LICENSES_USE_CASE)
-        ),
+        )
 ];
