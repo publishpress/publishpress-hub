@@ -13,31 +13,11 @@
  * Requires PHP: 7.4
  */
 
+ declare(strict_types=1);
+
+use function PublishPress\Hub\registerActivationHook;
+
 require_once __DIR__ . '/src/include.php';
+require_once __DIR__ . '/src/activation.php';
 
-if (! defined('PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT')) {
-    define('PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT', 'publishpress_hub_activation_redirect');
-}
-
-/**
- * Handle plugin activation - set transient for welcome page redirect.
- *
- * This must be in the main plugin file because register_activation_hook
- * needs to be called during plugin load, before any hooks fire.
- */
-register_activation_hook(__FILE__, function () {
-    // Check if redirect is disabled via constant
-    if (defined('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE_REDIRECT')
-        && constant('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE_REDIRECT')) {
-        return;
-    }
-
-    // Check if welcome page is disabled
-    if (defined('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE')
-        && constant('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE')) {
-        return;
-    }
-
-    // Set transient to trigger redirect on next admin page load
-    set_transient(PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT, true, 30);
-});
+registerActivationHook(__FILE__);
