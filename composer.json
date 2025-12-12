@@ -141,6 +141,19 @@
         "sync:local": "bash ./dev-workspace/scripts/local-sync.sh",
         "sync:local:watch": "bash ./dev-workspace/scripts/local-sync.sh --watch",
         "config:phpcs": "phpcs --config-set installed_paths \"../../phpcsstandards/phpcsutils,../../phpcsstandards/phpcsextra,../../automattic/vipwpcs,../../phpcompatibility/php-compatibility,../../sirbrillig/phpcs-variable-analysis,../../publishpress/publishpress-phpcs-standards/standards,../../wp-coding-standards/wpcs\"",
+        "test": "vendor/bin/codecept run $@",
+        "test:up": [
+            "bash dev-workspace/scripts/env.sh up test",
+            "@test:info"
+        ],
+        "test:down": "bash dev-workspace/scripts/env.sh down test",
+        "test:restart": "bash dev-workspace/scripts/env.sh restart test",
+        "test:stop": "bash dev-workspace/scripts/env.sh stop test",
+        "test:clean": [
+            "bash dev-workspace/scripts/env.sh cleanup test",
+            "@test:clean-cache",
+            "composer codecept clean"
+        ],
         "post-install-cmd": [
             "@config:phpcs"
         ],

@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Domain\Plugin;
 
-use PublishPress\Hub\Application\Service\PluginStatusService;
+use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Domain\Plugin\Entity\FreePlugin;
+use PublishPress\Hub\Domain\Plugin\Repository\PluginFamilyRepository;
+use PublishPress\Hub\Infrastructure\License\PerPluginLicensePersistenceService;
+use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;
+use PublishPress\Hub\Infrastructure\WP\Options\WPOptionsAdapter;
 use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginStatusAdapter;
 use Tests\NoTransactionWPTestCase;
 
@@ -20,8 +24,12 @@ class FreePluginTest extends NoTransactionWPTestCase
     {
         parent::setUp();
 
-        $pluginChecker = new WPPluginStatusAdapter();
-        $this->pluginStatusService = new PluginStatusService($pluginChecker);
+        $fileSystemAdapter = new WPFileSystemAdapter();
+        $pluginChecker = new WPPluginStatusAdapter($fileSystemAdapter);
+        $pluginFamilyRepository = new PluginFamilyRepository();
+        $optionsAdapter = new WPOptionsAdapter();
+        $licensePersistence = new PerPluginLicensePersistenceService($optionsAdapter, $pluginFamilyRepository);
+        $this->pluginStatusService = new PluginStatusService($pluginChecker, $pluginFamilyRepository, $licensePersistence);
     }
 
     public function testConstructorWithValidParameters(): void
@@ -126,7 +134,7 @@ class FreePluginTest extends NoTransactionWPTestCase
         $this->createPluginFile($plugin, '1.0.0');
 
         // Refresh status from WordPress
-        $this->pluginStatusService->refreshPluginStatus($plugin);
+        $this->pluginStatusService->updatePluginStatus($plugin);
 
         // Should now be installed but not active
         $this->assertTrue($plugin->isInstalled());
@@ -148,7 +156,7 @@ class FreePluginTest extends NoTransactionWPTestCase
         activate_plugin($plugin->getPath());
 
         // Refresh status from WordPress
-        $this->pluginStatusService->refreshPluginStatus($plugin);
+        $this->pluginStatusService->updatePluginStatus($plugin);
 
         // Should be both installed and active
         $this->assertTrue($plugin->isInstalled());
@@ -168,8 +176,10 @@ class FreePluginTest extends NoTransactionWPTestCase
         $this->deletePluginFile($plugin);
 
         // Check without updating entity state
-        $this->assertFalse($this->pluginStatusService->isPluginInstalled($plugin));
-        $this->assertFalse($this->pluginStatusService->isPluginActive($plugin));
+        $fileSystemAdapter = new WPFileSystemAdapter();
+        $pluginChecker = new WPPluginStatusAdapter($fileSystemAdapter);
+        $this->assertFalse($pluginChecker->checkIfPluginIsInstalled($plugin));
+        $this->assertFalse($pluginChecker->checkIfPluginIsActive($plugin));
 
         // Entity state should remain unchanged
         $this->assertFalse($plugin->isInstalled());
@@ -179,8 +189,10 @@ class FreePluginTest extends NoTransactionWPTestCase
         $this->createPluginFile($plugin, '1.0.0');
 
         // Check again
-        $this->assertTrue($this->pluginStatusService->isPluginInstalled($plugin));
-        $this->assertFalse($this->pluginStatusService->isPluginActive($plugin));
+        $fileSystemAdapter = new WPFileSystemAdapter();
+        $pluginChecker = new WPPluginStatusAdapter($fileSystemAdapter);
+        $this->assertTrue($pluginChecker->checkIfPluginIsInstalled($plugin));
+        $this->assertFalse($pluginChecker->checkIfPluginIsActive($plugin));
 
         // Entity state should still be unchanged
         $this->assertFalse($plugin->isInstalled());
