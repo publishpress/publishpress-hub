@@ -105,7 +105,7 @@ show_status "Admin email verification bypassed"
 show_header "Updating configuration"
 echo -e "${YELLOW}Setting debug options...${NC}"
 wp config set WP_DEBUG true --raw
-wp config set WP_DEBUG_LOG "/var/www/html/wp-content/debug.log" --raw
+wp config set WP_DEBUG_LOG "/var/www/html/wp-content/debug.log"
 wp config set WP_DEBUG_DISPLAY false --raw
 wp config set SCRIPT_DEBUG true --raw
 show_status "Debug configuration completed"
