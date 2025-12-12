@@ -10,7 +10,7 @@
 
 import { memo } from '@wordpress/element';
 
-import { __ } from '@publishpress-hub/i18n';
+import { __, sprintf } from '@publishpress-hub/i18n';
 
 import { Button } from '../../buttons/button';
 import { Message } from '../../message/message';
