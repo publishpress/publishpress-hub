@@ -20,18 +20,32 @@ if (! defined('PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT')) {
  */
 function registerActivationHook($pluginFile) {
     register_activation_hook($pluginFile, function () {
+        registerAutoloader();
         setupActivationAccessSetup();
         setupActivationWelcomeRedirect();
     });
 }
 
-function setupActivationAccessSetup() {
+function registerAutoloader() {
     // Load the autoloader for activation hook (runs before plugins_loaded)
     $vendorPath = realpath(__DIR__ . '/../lib/vendor/') . '/';
     if (file_exists($vendorPath . 'autoload.php')) {
         require_once $vendorPath . 'autoload.php';
     }
 
+    if (!class_exists('PublishPress\Hub\Application\Service\Access\HubAccessService')) {
+        $autoloaderPath = __DIR__ . '/Infrastructure/Autoloader/Autoloader.php';
+        if (file_exists($autoloaderPath)) {
+            require_once $autoloaderPath;
+            \PublishPress\Hub\Infrastructure\Autoloader\Autoloader::register(
+                __NAMESPACE__ . '\\',
+                __DIR__ . '/'
+            );
+        }
+    }
+}
+
+function setupActivationAccessSetup() {
     // We only setup capability and role if not disabled by the user, to avoid overriding user's customizations.
     if (
         ! defined('PUBLISHPRESS_HUB_DISABLE_ACCESS_SETUP')
