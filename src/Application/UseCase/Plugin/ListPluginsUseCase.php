@@ -181,18 +181,21 @@ class ListPluginsUseCase implements UseCaseInterface
     private function getDaysUntilExpiration(string $expirationDate): int
     {
         $timestamp = strtotime($expirationDate);
-
         if ($timestamp === false) {
             return 0;
         }
 
-        $today = new \DateTimeImmutable();
-        $today = $today->setTime(0, 0, 0, 0);
+        $timezone = function_exists('wp_timezone')
+            ? wp_timezone()
+            : new \DateTimeZone((string) date_default_timezone_get());
 
-        $expirationDate = new \DateTimeImmutable($expirationDate);
-        $expirationDate = $expirationDate->setTime(0, 0, 0, 0);
+        $today = (new \DateTimeImmutable('now', $timezone))->setTime(0, 0, 0, 0);
+        $expiresAt = (new \DateTimeImmutable($expirationDate, $timezone))->setTime(0, 0, 0, 0);
 
-        return (int) $expirationDate->diff($today)->days;
+        $diff = $today->diff($expiresAt);
+        $days = (int) $diff->days;
+
+        return $diff->invert === 1 ? -$days : $days;
     }
 
     /**
