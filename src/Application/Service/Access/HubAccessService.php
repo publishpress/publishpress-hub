@@ -25,13 +25,13 @@ class HubAccessService implements AccessInterface, BootableInterface
 {
     use BootableTrait;
 
-    public const CAPABILITY = 'publishpress_hub_view';
+    public const CAPABILITY = 'manage_publishpress_hub';
 
     public const PLUGIN_NAME = 'PublishPress Hub';
 
-    public const VIEWER_ROLE = 'publishpress_hub_viewer';
+    public const VIEWER_ROLE = 'publishpress_hub_manager';
 
-    public const VIEWER_ROLE_DISPLAY_NAME = 'PublishPress Hub Viewer';
+    public const VIEWER_ROLE_DISPLAY_NAME = 'PublishPress Hub Manager';
 
     public const ADMIN_ROLE = 'administrator';
 
