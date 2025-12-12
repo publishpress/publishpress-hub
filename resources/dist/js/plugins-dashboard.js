@@ -6475,13 +6475,14 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
     onDeactivate = _ref.onDeactivate,
     error = _ref.error,
     buttonInProgress = _ref.buttonInProgress,
-    initialLicenseKey = _ref.initialLicenseKey,
+    initialLicenseKeyMasked = _ref.initialLicenseKeyMasked,
+    hasLicenseKey = _ref.hasLicenseKey,
     title = _ref.title;
-  var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialLicenseKey || ''),
+  var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState2 = _slicedToArray(_useState, 2),
     licenseKey = _useState2[0],
     setLicenseKey = _useState2[1];
-  var _useState3 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(licenseKey === '' ? ACTIONS.EDIT : ACTIONS.VIEW),
+  var _useState3 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(hasLicenseKey ? ACTIONS.VIEW : ACTIONS.EDIT),
     _useState4 = _slicedToArray(_useState3, 2),
     currentAction = _useState4[0],
     setCurrentAction = _useState4[1];
@@ -6490,10 +6491,6 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
     activationAttempted = _useState6[0],
     setActivationAttempted = _useState6[1];
   var setFocusRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  var getObfuscatedLicenseKey = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (licenseKey) {
-    var length = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5;
-    return licenseKey.replace(/./g, '*').slice(0, length) + licenseKey.slice(-length);
-  }, []);
   var handleFocusReady = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (setFocus) {
     setFocusRef.current = setFocus;
   }, []);
@@ -6502,6 +6499,7 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
     onActivate(licenseKey);
   }, [onActivate, licenseKey]);
   var handleSwitchToEdit = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    setLicenseKey('');
     setCurrentAction(ACTIONS.EDIT);
     // Focus the input after switching to edit mode
     setTimeout(function () {
@@ -6540,7 +6538,7 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
     autoFocus: true,
     onEnterKeyDown: handleActivate,
     onFocusReady: handleFocusReady
-  })), currentAction === ACTIONS.VIEW && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Your license key is: ', 'publishpress-hub'), " ", getObfuscatedLicenseKey(licenseKey))), error && /*#__PURE__*/React.createElement(_message_message__WEBPACK_IMPORTED_MODULE_3__.Message, {
+  })), currentAction === ACTIONS.VIEW && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Your license key is: ', 'publishpress-hub'), " ", initialLicenseKeyMasked || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('(hidden)', 'publishpress-hub'))), error && /*#__PURE__*/React.createElement(_message_message__WEBPACK_IMPORTED_MODULE_3__.Message, {
     variant: "error"
   }, error.message), currentAction === ACTIONS.EDIT && /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "primary",
@@ -6812,7 +6810,8 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     onDeactivate: function onDeactivate() {
       return handleDeactivateLicense(currentPluginFamily);
     },
-    initialLicenseKey: currentPluginFamily.proPlugin.licenseKey
+    hasLicenseKey: currentPluginFamily.proPlugin.hasLicenseKey,
+    initialLicenseKeyMasked: currentPluginFamily.proPlugin.licenseKeyMasked
   })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_ACTIVATING_LICENSE) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_6__.ModalLicenseInput, _extends({}, modalProps, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Activate %s License', 'publishpress-hub'), currentPluginDisplayName),
     onActivate: function onActivate(licenseKey) {
@@ -10930,9 +10929,11 @@ var __webpack_exports__ = {};
   \*************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var _components_pages_plugins_dashboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/pages/plugins-dashboard */ "./resources/src/jsx/components/pages/plugins-dashboard.jsx");
-/* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stores/plugins-dashboard */ "./resources/src/jsx/stores/plugins-dashboard/index.jsx");
-/* harmony import */ var _utils_themeController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/themeController */ "./resources/src/jsx/utils/themeController.js");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_pages_plugins_dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/pages/plugins-dashboard */ "./resources/src/jsx/components/pages/plugins-dashboard.jsx");
+/* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stores/plugins-dashboard */ "./resources/src/jsx/stores/plugins-dashboard/index.jsx");
+/* harmony import */ var _utils_themeController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/themeController */ "./resources/src/jsx/utils/themeController.js");
 /**
  * Plugins dashboard.
  *
@@ -10947,12 +10948,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+var _ref = window.ppHubPluginsDashboardConfig || {},
+  apiNonce = _ref.apiNonce;
 var pluginsDashboardContainer = document.getElementById('publishpress-hub-plugins-dashboard-container');
 if (pluginsDashboardContainer) {
+  // Ensure REST requests use a nonce (prevents CSRF for cookie-authenticated requests).
+  if (apiNonce) {
+    _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default().use(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default().createNonceMiddleware(apiNonce));
+  }
   var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(pluginsDashboardContainer);
-  root.render(/*#__PURE__*/React.createElement(_components_pages_plugins_dashboard__WEBPACK_IMPORTED_MODULE_1__.PluginsDashboard, null));
-  var currentTheme = (0,_utils_themeController__WEBPACK_IMPORTED_MODULE_3__.getCurrentTheme)();
-  (0,_utils_themeController__WEBPACK_IMPORTED_MODULE_3__.setTheme)(currentTheme);
+  root.render(/*#__PURE__*/React.createElement(_components_pages_plugins_dashboard__WEBPACK_IMPORTED_MODULE_2__.PluginsDashboard, null));
+  var currentTheme = (0,_utils_themeController__WEBPACK_IMPORTED_MODULE_4__.getCurrentTheme)();
+  (0,_utils_themeController__WEBPACK_IMPORTED_MODULE_4__.setTheme)(currentTheme);
 }
 })();
 
