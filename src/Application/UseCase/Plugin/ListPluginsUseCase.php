@@ -103,7 +103,12 @@ class ListPluginsUseCase implements UseCaseInterface
             $pluginData = $dto->toArray();
 
             $licenseKey = $this->getLicenseKey($proPlugin);
-            $pluginData['proPlugin']['licenseKey'] = esc_html($licenseKey);
+            // Never expose raw license keys to the client (prevents accidental disclosure via XSS/logging).
+            $pluginData['proPlugin']['licenseKey'] = '';
+            $pluginData['proPlugin']['hasLicenseKey'] = !empty($licenseKey);
+            $pluginData['proPlugin']['licenseKeyMasked'] = !empty($licenseKey)
+                ? $this->maskLicenseKey($licenseKey)
+                : '';
 
             // Format expiration date for display using WordPress date format
             if (!empty($expirationDate)) {
@@ -321,5 +326,29 @@ class ListPluginsUseCase implements UseCaseInterface
         $daysUntilExpiration = $this->getDaysUntilExpiration($expirationDate);
 
         return $daysUntilExpiration < 0;
+    }
+
+    /**
+     * Mask a license key for safe client display.
+     *
+     * @param string $licenseKey The raw license key.
+     * @param int $visibleSuffix The number of visible characters at the end.
+     * @return string The masked license key.
+     * @since 1.0.0
+     */
+    private function maskLicenseKey(string $licenseKey, int $visibleSuffix = 5): string
+    {
+        $licenseKey = trim($licenseKey);
+
+        if ($licenseKey === '') {
+            return '';
+        }
+
+        $length = strlen($licenseKey);
+        if ($length <= $visibleSuffix) {
+            return str_repeat('*', $length);
+        }
+
+        return str_repeat('*', max(0, $length - $visibleSuffix)) . substr($licenseKey, -$visibleSuffix);
     }
 }

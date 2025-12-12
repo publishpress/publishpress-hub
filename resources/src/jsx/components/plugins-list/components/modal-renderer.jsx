@@ -153,7 +153,8 @@ const ModalRendererComponent = ({
                     title={sprintf(__('Manage %s License', 'publishpress-hub'), currentPluginDisplayName)}
                     onActivate={(licenseKey) => handleActivateLicense(currentPluginFamily, licenseKey)}
                     onDeactivate={() => handleDeactivateLicense(currentPluginFamily)}
-                    initialLicenseKey={currentPluginFamily.proPlugin.licenseKey}
+                    hasLicenseKey={currentPluginFamily.proPlugin.hasLicenseKey}
+                    initialLicenseKeyMasked={currentPluginFamily.proPlugin.licenseKeyMasked}
                 />
             )}
 

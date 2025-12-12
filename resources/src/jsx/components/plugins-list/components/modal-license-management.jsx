@@ -34,17 +34,14 @@ const ModalLicenseManagementComponent = ({
     onDeactivate,
     error,
     buttonInProgress,
-    initialLicenseKey,
+    initialLicenseKeyMasked,
+    hasLicenseKey,
     title,
 }) => {
-    const [licenseKey, setLicenseKey] = useState(initialLicenseKey || '');
-    const [currentAction, setCurrentAction] = useState(licenseKey === '' ? ACTIONS.EDIT : ACTIONS.VIEW);
+    const [licenseKey, setLicenseKey] = useState('');
+    const [currentAction, setCurrentAction] = useState(hasLicenseKey ? ACTIONS.VIEW : ACTIONS.EDIT);
     const [activationAttempted, setActivationAttempted] = useState(false);
     const setFocusRef = useRef(null);
-
-    const getObfuscatedLicenseKey = useCallback((licenseKey, length = 5) => {
-        return licenseKey.replace(/./g, '*').slice(0, length) + licenseKey.slice(-length);
-    }, []);
 
     const handleFocusReady = useCallback((setFocus) => {
         setFocusRef.current = setFocus;
@@ -56,6 +53,7 @@ const ModalLicenseManagementComponent = ({
     }, [onActivate, licenseKey]);
 
     const handleSwitchToEdit = useCallback(() => {
+        setLicenseKey('');
         setCurrentAction(ACTIONS.EDIT);
         // Focus the input after switching to edit mode
         setTimeout(() => {
@@ -105,7 +103,7 @@ const ModalLicenseManagementComponent = ({
             {currentAction === ACTIONS.VIEW && (
                 <>
                     <p>
-                        {__('Your license key is: ', 'publishpress-hub')} {getObfuscatedLicenseKey(licenseKey)}
+                        {__('Your license key is: ', 'publishpress-hub')} {initialLicenseKeyMasked || __('(hidden)', 'publishpress-hub')}
                     </p>
                 </>
             )}
