@@ -528,9 +528,8 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
             'Accept-Encoding' => 'gzip, deflate',
             'Content-Type' => 'application/x-www-form-urlencoded',
             'Connection' => 'keep-alive',
-            'Sec-Fetch-Dest' => 'empty',
-            'Sec-Fetch-Mode' => 'cors',
-            'Sec-Fetch-Site' => 'same-origin',
+            'Referer' => $this->siteUrl,
+            'Origin' => $this->siteUrl,
             'Cache-Control' => 'no-cache',
             'Pragma' => 'no-cache',
         ];
