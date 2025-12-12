@@ -151,7 +151,7 @@ class WPI18nAdapter implements I18nServiceInterface, BootableInterface
     {
         $handle = "{$this->textDomain}-i18n";
 
-        $this->assetService->registerScript(
+        $this->assetService->enqueueScript(
             $handle,
             $this->scriptPath,
             [
