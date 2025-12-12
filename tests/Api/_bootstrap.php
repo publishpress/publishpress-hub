@@ -22,6 +22,16 @@ codecept_debug('Updating .env file with auth hash');
 putenv("WP_TEST_AUTH_HASH={$authHash}");
 putenv("WP_TEST_APP_PASSWORD={$password}");
 
+// Load EDD_LICENSE_FOR_TESTS from .env file if it exists
+if (preg_match('/^EDD_LICENSE_FOR_TESTS=(.*)$/m', $envFile, $matches)) {
+    $licenseKey = trim($matches[1]);
+    // Remove surrounding quotes if present (handles both "value" and 'value')
+    $licenseKey = trim($licenseKey, '"\'');
+    if (!empty($licenseKey)) {
+        putenv("EDD_LICENSE_FOR_TESTS={$licenseKey}");
+    }
+}
+
 require_once __DIR__ . '/../../src/autoload.php';
 
 do_action('plugins_loaded');
