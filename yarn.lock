@@ -2795,19 +2795,17 @@
     react "^18.3.0"
     react-dom "^18.3.0"
 
-"@wordpress/escape-html@^3.1.0":
-  version "3.28.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/escape-html/-/escape-html-3.28.0.tgz#418e24ee42c3dcea0c8df11d645c36afcdc9644a"
-  integrity sha512-LDcr26vX7OkcvHMjAFxg0vNmI7cP5lzLs+HbnwM1H9h0dsj3svIWXXFF/7lQl7sbI9+rjF0GkR1Fgd+DvF7zxw==
-  dependencies:
-    "@babel/runtime" "7.25.7"
-
 "@wordpress/escape-html@^3.25.0":
   version "3.25.0"
   resolved "https://registry.yarnpkg.com/@wordpress/escape-html/-/escape-html-3.25.0.tgz#caa945c7bae291c4f1052d38c593fc92cb8c9cba"
   integrity sha512-sQ3graObu5K/RWrngk9bsULJ+9E7QLC6gMG34ja0Jm1LdeRjVgHv3FqP/uIkL36EvxEkjQ0LSbgbZsdV/E1q0w==
   dependencies:
     "@babel/runtime" "7.25.7"
+
+"@wordpress/escape-html@^3.36.0":
+  version "3.36.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/escape-html/-/escape-html-3.36.0.tgz#6493e82a3b3c98008f507d375a5f3fb7ab2f3bad"
+  integrity sha512-0FvvlVPv+7X8lX5ExcTh6ib/xckGIuVXdnHglR3rZC1MJI682cx4JRUR0Igk6nKyPS8UiSQCKtN3U1aSPtZaCg==
 
 "@wordpress/eslint-plugin@^22.11.0":
   version "22.11.0"

@@ -10,7 +10,11 @@
 
 import { memo } from '@wordpress/element';
 
-import { __ } from '@publishpress-hub/i18n';
+import { __, sprintf } from '@publishpress-hub/i18n';
+import {
+    escapeHTML,
+    escapeAttribute
+} from '@wordpress/escape-html';
 
 import { AdminPageLayout } from '../admin-page';
 import { Button } from '../buttons/button';
@@ -48,7 +52,7 @@ const WelcomePageComponent = () => {
                             {__('What you can do with PublishPress Hub', 'publishpress-hub')}
                         </h2>
                         <p className="pp-hub-welcome-page__message">
-                            {__('Whether you\'re just getting started or looking to streamline your existing setup, you\'ll find everything you need to install, update, and manage your PublishPress plugins from one central location. We\'re here to help you build a publishing system that works perfectly for your team.', 'publishpress-hub')}
+                            {__('PublishPress Hub has everything you need to install, update, and manage your PublishPress plugins. We\'re here to help you build a publishing system that works perfectly for your team.', 'publishpress-hub')}
                         </p>
 
                         <div className="pp-hub-welcome-page__features-grid">
@@ -58,7 +62,7 @@ const WelcomePageComponent = () => {
                                     {__('Centralized Dashboard', 'publishpress-hub')}
                                 </h3>
                                 <p className="pp-hub-welcome-page__feature-description">
-                                    {__('View all your PublishPress plugins with their license information, versions, and status in one convenient place.', 'publishpress-hub')}
+                                    {__('View all your PublishPress plugins with their licenses, versions, and key details.', 'publishpress-hub')}
                                 </p>
                             </div>
 
@@ -68,7 +72,7 @@ const WelcomePageComponent = () => {
                                     {__('One-Click Installation', 'publishpress-hub')}
                                 </h3>
                                 <p className="pp-hub-welcome-page__feature-description">
-                                    {__('Install free PublishPress plugins directly from the Hub without visiting the WordPress.org repository.', 'publishpress-hub')}
+                                    {__('Install free PublishPress plugins directly from the Hub without visiting WordPress.org.', 'publishpress-hub')}
                                 </p>
                             </div>
 
@@ -78,7 +82,7 @@ const WelcomePageComponent = () => {
                                     {__('License Management', 'publishpress-hub')}
                                 </h3>
                                 <p className="pp-hub-welcome-page__feature-description">
-                                    {__('Connect your PublishPress license to install and activate Pro versions seamlessly, all from one place.', 'publishpress-hub')}
+                                    {__('Connect your PublishPress licenses to easily install and activate Pro versions.', 'publishpress-hub')}
                                 </p>
                             </div>
 
@@ -88,7 +92,7 @@ const WelcomePageComponent = () => {
                                     {__('Easy Updates', 'publishpress-hub')}
                                 </h3>
                                 <p className="pp-hub-welcome-page__feature-description">
-                                    {__('Keep all your PublishPress plugins up to date with real-time monitoring and one-click updates.', 'publishpress-hub')}
+                                    {__('Keep all your PublishPress plugins up to date with one-click updates.', 'publishpress-hub')}
                                 </p>
                             </div>
 
@@ -98,7 +102,7 @@ const WelcomePageComponent = () => {
                                     {__('Status Monitoring', 'publishpress-hub')}
                                 </h3>
                                 <p className="pp-hub-welcome-page__feature-description">
-                                    {__('Monitor plugin activation status, detect conflicts, and ensure compatibility across your publishing tools.', 'publishpress-hub')}
+                                    {__('Monitor plugin activation status, detect conflicts, and ensure compatibility.', 'publishpress-hub')}
                                 </p>
                             </div>
 
@@ -107,12 +111,11 @@ const WelcomePageComponent = () => {
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('Get Started', 'publishpress-hub')}
                                 </h3>
-                                <p className="pp-hub-welcome-page__feature-description">
-                                    {__('Ready to explore? Visit the ', 'publishpress-hub')}
-                                    <a href={window.ppHubWelcomePageConfig.pluginsDashboardUrl}>
-                                        {__('Plugins Dashboard', 'publishpress-hub')}
-                                    </a>
-                                    {__(' to see all available PublishPress plugins.', 'publishpress-hub')}
+                                <p className="pp-hub-welcome-page__feature-description" dangerouslySetInnerHTML={{ __html: sprintf(
+                                    escapeHTML(__('Ready to explore? Visit the %s to see all available PublishPress plugins.', 'publishpress-hub')),
+                                        '<a href="' + escapeAttribute(window.ppHubWelcomePageConfig.pluginsDashboardUrl) + '">' + escapeHTML(__('Plugins Dashboard', 'publishpress-hub')) + '</a>'
+                                    ) }}>
+
                                 </p>
                             </div>
                         </div>
