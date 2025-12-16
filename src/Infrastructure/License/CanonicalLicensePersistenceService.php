@@ -282,4 +282,53 @@ class CanonicalLicensePersistenceService implements LicensePersistenceInterface
 
         return (int) $downloadIdString;
     }
+
+    /**
+     * Check if a license is currently from a constant.
+     *
+     * @param int $downloadId The download ID to check.
+     * @return bool True if license is from constant, false otherwise.
+     * @since 1.0.0
+     */
+    public function isLicenseFromConstant(int $downloadId): bool
+    {
+        $optionName = $this->buildOptionName($downloadId, '_from_constant');
+        $isFromConstant = $this->optionsAdapter->getOption($optionName, false);
+
+        return (bool) $isFromConstant;
+    }
+
+    /**
+     * Check if a license was ever from a constant (even if constant is now removed).
+     *
+     * @param int $downloadId The download ID to check.
+     * @return bool True if license was from constant, false otherwise.
+     * @since 1.0.0
+     */
+    public function wasLicenseFromConstant(int $downloadId): bool
+    {
+        $optionName = $this->buildOptionName($downloadId, '_was_from_constant');
+        $wasFromConstant = $this->optionsAdapter->getOption($optionName, false);
+
+        return (bool) $wasFromConstant;
+    }
+
+    /**
+     * Mark a license as from constant or not.
+     *
+     * @param int $downloadId The download ID to mark.
+     * @param bool $fromConstant Whether the license is from constant.
+     * @since 1.0.0
+     */
+    public function markLicenseFromConstant(int $downloadId, bool $fromConstant): void
+    {
+        $optionName = $this->buildOptionName($downloadId, '_from_constant');
+        $this->optionsAdapter->updateOption($optionName, $fromConstant, true);
+
+        // Also track historical state
+        if ($fromConstant) {
+            $wasFromConstantOptionName = $this->buildOptionName($downloadId, '_was_from_constant');
+            $this->optionsAdapter->updateOption($wasFromConstantOptionName, true, true);
+        }
+    }
 }

@@ -139,4 +139,24 @@ interface LicenseManagementServiceInterface
      * @return int[] Array of download IDs that use this license key
      */
     public function getPluginsAffectedByLicenseDeactivation(string $licenseKey): array;
+
+    /**
+     * Check if a license is from a constant.
+     *
+     * @param int $downloadId The download ID
+     * @return bool True if license is from constant
+     * @since 1.0.0
+     */
+    public function isLicenseFromConstant(int $downloadId): bool;
+
+    /**
+     * Sync license from constant without API validation.
+     * Stores the license key and marks it as licensed/active.
+     *
+     * @param string $licenseKey The license key from constant
+     * @param int $downloadId The download ID for the plugin
+     * @return void
+     * @since 1.0.0
+     */
+    public function syncLicenseFromConstant(string $licenseKey, int $downloadId): void;
 }

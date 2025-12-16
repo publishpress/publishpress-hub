@@ -59,11 +59,23 @@ class DeactivateLicenseUseCase implements UseCaseInterface
         $familySlug = $request->get_param('familySlug');
 
         $plugin = $this->getPlugin($familySlug);
+        $downloadId = $plugin->getDownloadId();
+
+        // Check if license is from constant
+        if ($this->licenseManagement->isLicenseFromConstant($downloadId)) {
+            throw new LicenseInvalidException([
+                'message' => esc_html__(
+                    'This license key is managed via wp-config.php constant and cannot be deactivated.',
+                    'publishpress-hub'
+                ),
+            ]);
+        }
+
         $licenseKey = $this->getLicenseKey($plugin);
 
         $this->licenseManagement->deactivateAndRemoveLicenseFromAllPlugins(
             $licenseKey,
-            $plugin->getDownloadId()
+            $downloadId
         );
 
         $this->pluginStatusService->updatePluginStatus($plugin);

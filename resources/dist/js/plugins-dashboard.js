@@ -6282,14 +6282,30 @@ var ModalInstallationTypeComponent = function ModalInstallationTypeComponent(_re
     freeDetailsUrl = _ref.freeDetailsUrl,
     proDetailsUrl = _ref.proDetailsUrl,
     changelogUrl = _ref.changelogUrl,
-    title = _ref.title;
+    title = _ref.title,
+    _ref$hasConstantLicen = _ref.hasConstantLicense,
+    hasConstantLicense = _ref$hasConstantLicen === void 0 ? false : _ref$hasConstantLicen;
   return /*#__PURE__*/React.createElement(_modal__WEBPACK_IMPORTED_MODULE_3__.Modal, {
     title: title || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Install Plugin', 'publishpress-hub'),
     className: "pp-hub-modal-installation-type",
     onRequestClose: function onRequestClose() {
       return onClose();
     }
-  }, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select how you would like to install this plugin. You can install the Pro version if you have a license, or the Free version to get started.', 'publishpress-hub')), /*#__PURE__*/React.createElement("div", {
+  }, hasConstantLicense ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('A license key has been configured for this plugin. The Pro version will be installed automatically.', 'publishpress-hub')), /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-modal-inline-links"
+  }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "link",
+    href: proDetailsUrl
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pro Details', 'publishpress-hub')), /*#__PURE__*/React.createElement("span", null, "|"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "link",
+    href: changelogUrl
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Changelogs', 'publishpress-hub'))), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "primary",
+    icon: "download",
+    onClick: function onClick() {
+      return onProClick();
+    }
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Install Pro version', 'publishpress-hub'))) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select how you would like to install this plugin. You can install the Pro version if you have a license, or the Free version to get started.', 'publishpress-hub')), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-modal-inline-links"
   }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "link",
@@ -6312,7 +6328,7 @@ var ModalInstallationTypeComponent = function ModalInstallationTypeComponent(_re
     onClick: function onClick() {
       return onFreeClick();
     }
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('I don\'t have a license, install the Free version', 'publishpress-hub')));
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('I don\'t have a license, install the Free version', 'publishpress-hub'))));
 };
 var ModalInstallationType = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(ModalInstallationTypeComponent);
 
@@ -6364,8 +6380,14 @@ var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
     onActivate = _ref.onActivate,
     error = _ref.error,
     buttonInProgress = _ref.buttonInProgress,
-    title = _ref.title;
-  var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    title = _ref.title,
+    _ref$initialLicenseKe = _ref.initialLicenseKey,
+    initialLicenseKey = _ref$initialLicenseKe === void 0 ? '' : _ref$initialLicenseKe,
+    _ref$isLicenseFromCon = _ref.isLicenseFromConstant,
+    isLicenseFromConstant = _ref$isLicenseFromCon === void 0 ? false : _ref$isLicenseFromCon,
+    _ref$licenseKeyMasked = _ref.licenseKeyMasked,
+    licenseKeyMasked = _ref$licenseKeyMasked === void 0 ? '' : _ref$licenseKeyMasked;
+  var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialLicenseKey),
     _useState2 = _slicedToArray(_useState, 2),
     licenseKey = _useState2[0],
     setLicenseKey = _useState2[1];
@@ -6377,10 +6399,19 @@ var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
   var handleFocusReady = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (setFocus) {
     setFocusRef.current = setFocus;
   }, []);
+
+  // Update license key when initialLicenseKey prop changes
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (initialLicenseKey) {
+      setLicenseKey(initialLicenseKey);
+    }
+  }, [initialLicenseKey]);
   var handleActivate = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
     setActivationAttempted(true);
-    onActivate(licenseKey);
-  }, [onActivate, licenseKey]);
+    // Use initialLicenseKey if from constant, otherwise use state
+    var keyToUse = isLicenseFromConstant ? initialLicenseKey : licenseKey;
+    onActivate(keyToUse);
+  }, [onActivate, licenseKey, initialLicenseKey, isLicenseFromConstant]);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (activationAttempted && error && setFocusRef.current) {
       setTimeout(function () {
@@ -6394,7 +6425,14 @@ var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
     onRequestClose: function onRequestClose() {
       return onClose();
     }
-  }, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter your license key to activate the Pro version of this plugin. You can find your license key in your PublishPress account dashboard.', 'publishpress-hub')), /*#__PURE__*/React.createElement("div", {
+  }, isLicenseFromConstant ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('A license key has been configured for this plugin via wp-config.php constant.', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('License key: ', 'publishpress-hub'), " ", /*#__PURE__*/React.createElement("strong", null, licenseKeyMasked || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('(hidden)', 'publishpress-hub'))), error && /*#__PURE__*/React.createElement(_message_message__WEBPACK_IMPORTED_MODULE_3__.Message, {
+    variant: "error"
+  }, error.message), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "primary",
+    icon: "download",
+    onClick: handleActivate,
+    isLoading: buttonInProgress
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Install Pro version', 'publishpress-hub'))) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter your license key to activate the Pro version of this plugin. You can find your license key in your PublishPress account dashboard.', 'publishpress-hub')), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-modal-inline-links"
   }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "link",
@@ -6418,7 +6456,7 @@ var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
     icon: "check",
     onClick: handleActivate,
     isLoading: buttonInProgress
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate and install the plugin', 'publishpress-hub')));
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate and install the plugin', 'publishpress-hub'))));
 };
 var ModalLicenseInput = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(ModalLicenseInputComponent);
 
@@ -6477,6 +6515,8 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
     buttonInProgress = _ref.buttonInProgress,
     initialLicenseKeyMasked = _ref.initialLicenseKeyMasked,
     hasLicenseKey = _ref.hasLicenseKey,
+    _ref$isLicenseFromCon = _ref.isLicenseFromConstant,
+    isLicenseFromConstant = _ref$isLicenseFromCon === void 0 ? false : _ref$isLicenseFromCon,
     title = _ref.title;
   var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState2 = _slicedToArray(_useState, 2),
@@ -6538,14 +6578,16 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
     autoFocus: true,
     onEnterKeyDown: handleActivate,
     onFocusReady: handleFocusReady
-  })), currentAction === ACTIONS.VIEW && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Your license key is: ', 'publishpress-hub'), " ", initialLicenseKeyMasked || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('(hidden)', 'publishpress-hub'))), error && /*#__PURE__*/React.createElement(_message_message__WEBPACK_IMPORTED_MODULE_3__.Message, {
+  })), currentAction === ACTIONS.VIEW && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Your license key is: ', 'publishpress-hub'), " ", initialLicenseKeyMasked || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('(hidden)', 'publishpress-hub')), isLicenseFromConstant && /*#__PURE__*/React.createElement(_message_message__WEBPACK_IMPORTED_MODULE_3__.Message, {
+    variant: "info"
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('This license key is managed via wp-config.php constant and cannot be changed or deactivated here. The license is automatically considered valid.', 'publishpress-hub'))), error && /*#__PURE__*/React.createElement(_message_message__WEBPACK_IMPORTED_MODULE_3__.Message, {
     variant: "error"
   }, error.message), currentAction === ACTIONS.EDIT && /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "primary",
     icon: "check",
     onClick: handleActivate,
     isLoading: buttonInProgress
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate the license key for this site', 'publishpress-hub')), currentAction === ACTIONS.VIEW && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate the license key for this site', 'publishpress-hub')), currentAction === ACTIONS.VIEW && /*#__PURE__*/React.createElement(React.Fragment, null, !isLicenseFromConstant && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "primary",
     icon: "edit",
     onClick: handleSwitchToEdit,
@@ -6557,7 +6599,7 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
       return onDeactivate();
     },
     isLoading: buttonInProgress
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Deactivate the license key for this site', 'publishpress-hub'))));
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Deactivate the license key for this site', 'publishpress-hub')))));
 };
 var ModalLicenseManagement = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(ModalLicenseManagementComponent);
 
@@ -6754,24 +6796,36 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
   return /*#__PURE__*/React.createElement(React.Fragment, null, isModalActive(MODAL_TYPES.INSTALLATION_TYPE) && /*#__PURE__*/React.createElement(_modal_installation_type__WEBPACK_IMPORTED_MODULE_5__.ModalInstallationType, _extends({}, modalProps, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Install %s', 'publishpress-hub'), currentPluginDisplayName),
     onProClick: function onProClick() {
-      return modalManager.openModal(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO, currentPluginFamily);
+      // If constant license exists, skip license input and go directly to install
+      if (currentPluginFamily.proPlugin.isLicenseFromConstant && currentPluginFamily.proPlugin.licenseKey) {
+        handleInstallPro(currentPluginFamily.slug, currentPluginFamily.proPlugin.licenseKey);
+      } else {
+        modalManager.openModal(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO, currentPluginFamily);
+      }
     },
     onFreeClick: function onFreeClick() {
       return handleInstallFree(currentPluginFamily.slug);
     },
     freeDetailsUrl: currentPluginFamily.freeDetailsUrl,
     proDetailsUrl: currentPluginFamily.proDetailsUrl,
-    changelogUrl: currentPluginFamily.changelogUrl
+    changelogUrl: currentPluginFamily.changelogUrl,
+    hasConstantLicense: currentPluginFamily.proPlugin.isLicenseFromConstant || false
   })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_6__.ModalLicenseInput, _extends({}, modalProps, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Install %s Pro', 'publishpress-hub'), currentPluginDisplayName),
     onActivate: function onActivate(licenseKey) {
       return handleInstallPro(currentPluginFamily.slug, licenseKey);
-    }
+    },
+    initialLicenseKey: currentPluginFamily.proPlugin.licenseKey || '',
+    isLicenseFromConstant: currentPluginFamily.proPlugin.isLicenseFromConstant || false,
+    licenseKeyMasked: currentPluginFamily.proPlugin.licenseKeyMasked || ''
   })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_UPGRADE) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_6__.ModalLicenseInput, _extends({}, modalProps, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Upgrade %s to Pro', 'publishpress-hub'), currentPluginDisplayName),
     onActivate: function onActivate(licenseKey) {
       return handleUpgradePluginToPro(currentPluginFamily.slug, licenseKey);
-    }
+    },
+    initialLicenseKey: currentPluginFamily.proPlugin.licenseKey || '',
+    isLicenseFromConstant: currentPluginFamily.proPlugin.isLicenseFromConstant || false,
+    licenseKeyMasked: currentPluginFamily.proPlugin.licenseKeyMasked || ''
   })), isModalActive(MODAL_TYPES.UNINSTALL_CONFIRMATION) && /*#__PURE__*/React.createElement(_modal_confirmation__WEBPACK_IMPORTED_MODULE_4__.ModalConfirmation, _extends({}, modalProps, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Uninstall %s', 'publishpress-hub'), currentPluginDisplayName),
     message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Are you sure you want to uninstall %s?', 'publishpress-hub'), currentPluginDisplayName),
@@ -6811,7 +6865,8 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
       return handleDeactivateLicense(currentPluginFamily);
     },
     hasLicenseKey: currentPluginFamily.proPlugin.hasLicenseKey,
-    initialLicenseKeyMasked: currentPluginFamily.proPlugin.licenseKeyMasked
+    initialLicenseKeyMasked: currentPluginFamily.proPlugin.licenseKeyMasked,
+    isLicenseFromConstant: currentPluginFamily.proPlugin.isLicenseFromConstant || false
   })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_ACTIVATING_LICENSE) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_6__.ModalLicenseInput, _extends({}, modalProps, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Activate %s License', 'publishpress-hub'), currentPluginDisplayName),
     onActivate: function onActivate(licenseKey) {

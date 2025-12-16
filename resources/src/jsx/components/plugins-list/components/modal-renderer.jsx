@@ -88,11 +88,19 @@ const ModalRendererComponent = ({
                 <ModalInstallationType
                     {...modalProps}
                     title={sprintf(__('Install %s', 'publishpress-hub'), currentPluginDisplayName)}
-                    onProClick={() => modalManager.openModal(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO, currentPluginFamily)}
+                    onProClick={() => {
+                        // If constant license exists, skip license input and go directly to install
+                        if (currentPluginFamily.proPlugin.isLicenseFromConstant && currentPluginFamily.proPlugin.licenseKey) {
+                            handleInstallPro(currentPluginFamily.slug, currentPluginFamily.proPlugin.licenseKey);
+                        } else {
+                            modalManager.openModal(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO, currentPluginFamily);
+                        }
+                    }}
                     onFreeClick={() => handleInstallFree(currentPluginFamily.slug)}
                     freeDetailsUrl={currentPluginFamily.freeDetailsUrl}
                     proDetailsUrl={currentPluginFamily.proDetailsUrl}
                     changelogUrl={currentPluginFamily.changelogUrl}
+                    hasConstantLicense={currentPluginFamily.proPlugin.isLicenseFromConstant || false}
                 />
             )}
 
@@ -101,6 +109,9 @@ const ModalRendererComponent = ({
                     {...modalProps}
                     title={sprintf(__('Install %s Pro', 'publishpress-hub'), currentPluginDisplayName)}
                     onActivate={(licenseKey) => handleInstallPro(currentPluginFamily.slug, licenseKey)}
+                    initialLicenseKey={currentPluginFamily.proPlugin.licenseKey || ''}
+                    isLicenseFromConstant={currentPluginFamily.proPlugin.isLicenseFromConstant || false}
+                    licenseKeyMasked={currentPluginFamily.proPlugin.licenseKeyMasked || ''}
                 />
             )}
 
@@ -109,6 +120,9 @@ const ModalRendererComponent = ({
                     {...modalProps}
                     title={sprintf(__('Upgrade %s to Pro', 'publishpress-hub'), currentPluginDisplayName)}
                     onActivate={(licenseKey) => handleUpgradePluginToPro(currentPluginFamily.slug, licenseKey)}
+                    initialLicenseKey={currentPluginFamily.proPlugin.licenseKey || ''}
+                    isLicenseFromConstant={currentPluginFamily.proPlugin.isLicenseFromConstant || false}
+                    licenseKeyMasked={currentPluginFamily.proPlugin.licenseKeyMasked || ''}
                 />
             )}
 
@@ -155,6 +169,7 @@ const ModalRendererComponent = ({
                     onDeactivate={() => handleDeactivateLicense(currentPluginFamily)}
                     hasLicenseKey={currentPluginFamily.proPlugin.hasLicenseKey}
                     initialLicenseKeyMasked={currentPluginFamily.proPlugin.licenseKeyMasked}
+                    isLicenseFromConstant={currentPluginFamily.proPlugin.isLicenseFromConstant || false}
                 />
             )}
 

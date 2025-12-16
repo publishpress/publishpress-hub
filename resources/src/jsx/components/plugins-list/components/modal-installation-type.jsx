@@ -23,6 +23,7 @@ const ModalInstallationTypeComponent = ({
     proDetailsUrl,
     changelogUrl,
     title,
+    hasConstantLicense = false,
 }) => {
     return (
         <Modal
@@ -30,22 +31,40 @@ const ModalInstallationTypeComponent = ({
             className='pp-hub-modal-installation-type'
             onRequestClose={() => onClose()}
         >
-            <p>
-                {__('Select how you would like to install this plugin. You can install the Pro version if you have a license, or the Free version to get started.', 'publishpress-hub')}
-            </p>
-            <div className='pp-hub-modal-inline-links'>
-                <Button variant='link' href={freeDetailsUrl}>{__('Free Details', 'publishpress-hub')}</Button>
-                <span>|</span>
-                <Button variant='link' href={proDetailsUrl}>{__('Pro Details', 'publishpress-hub')}</Button>
-                <span>|</span>
-                <Button variant='link' href={changelogUrl}>{__('Changelogs', 'publishpress-hub')}</Button>
-            </div>
-            <Button variant='secondary' icon='unlock' onClick={() => onProClick()}>
-                {__('I have a license, install the Pro version', 'publishpress-hub')}
-            </Button>
-            <Button variant='primary' icon='download' onClick={() => onFreeClick()}>
-                {__('I don\'t have a license, install the Free version', 'publishpress-hub')}
-            </Button>
+            {hasConstantLicense ? (
+                <>
+                    <p>
+                        {__('A license key has been configured for this plugin. The Pro version will be installed automatically.', 'publishpress-hub')}
+                    </p>
+                    <div className='pp-hub-modal-inline-links'>
+                        <Button variant='link' href={proDetailsUrl}>{__('Pro Details', 'publishpress-hub')}</Button>
+                        <span>|</span>
+                        <Button variant='link' href={changelogUrl}>{__('Changelogs', 'publishpress-hub')}</Button>
+                    </div>
+                    <Button variant='primary' icon='download' onClick={() => onProClick()}>
+                        {__('Install Pro version', 'publishpress-hub')}
+                    </Button>
+                </>
+            ) : (
+                <>
+                    <p>
+                        {__('Select how you would like to install this plugin. You can install the Pro version if you have a license, or the Free version to get started.', 'publishpress-hub')}
+                    </p>
+                    <div className='pp-hub-modal-inline-links'>
+                        <Button variant='link' href={freeDetailsUrl}>{__('Free Details', 'publishpress-hub')}</Button>
+                        <span>|</span>
+                        <Button variant='link' href={proDetailsUrl}>{__('Pro Details', 'publishpress-hub')}</Button>
+                        <span>|</span>
+                        <Button variant='link' href={changelogUrl}>{__('Changelogs', 'publishpress-hub')}</Button>
+                    </div>
+                    <Button variant='secondary' icon='unlock' onClick={() => onProClick()}>
+                        {__('I have a license, install the Pro version', 'publishpress-hub')}
+                    </Button>
+                    <Button variant='primary' icon='download' onClick={() => onFreeClick()}>
+                        {__('I don\'t have a license, install the Free version', 'publishpress-hub')}
+                    </Button>
+                </>
+            )}
         </Modal>
     );
 }

@@ -108,6 +108,12 @@ abstract class AbstractDependencies
 
     public const VALIDATE_LICENSES_USE_CASE = 'publishpress-hub.application.use-case.plugin.validate-licenses';
 
+    public const WP_CONFIG_LICENSE_READER_SERVICE = 'publishpress-hub.application.license.wp-config-reader.service';
+
+    public const WP_CONFIG_LICENSE_SYNC_SERVICE = 'publishpress-hub.application.license.wp-config-sync.service';
+
+    public const WP_CONFIG_LICENSE_SYNC_BOOTSTRAP_SERVICE = 'publishpress-hub.application.license.wp-config-sync-bootstrap.service';
+
     public const EDD_SUBSCRIPTION_ADAPTER = 'publishpress-hub.infrastructure.edd-subscription.adapter';
 
     public const REMOTE_SERVICE = 'publishpress-hub.infrastructure.remote.service';

@@ -17,6 +17,7 @@ namespace PublishPress\Hub\Application\UseCase\Plugin;
 use PublishPress\Hub\Application\DTO\Plugin\PluginFamilyDto;
 use PublishPress\Hub\Application\Service\License\Contract\LicenseManagementServiceInterface;
 use PublishPress\Hub\Application\Service\License\LicenseStatusStorageService;
+use PublishPress\Hub\Application\Service\License\WpConfigLicenseReaderService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
@@ -103,12 +104,25 @@ class ListPluginsUseCase implements UseCaseInterface
             $pluginData = $dto->toArray();
 
             $licenseKey = $this->getLicenseKey($proPlugin);
+            $isFromConstant = $this->licenseManagement->isLicenseFromConstant($proPlugin->getDownloadId());
+
+            // Check if constant exists to pre-fill license key in upgrade/install flows
+            $constantLicenseKey = $this->getConstantLicenseKey($family->getSlug());
+            $hasConstant = $constantLicenseKey !== null;
+
+            // If constant exists, use it for pre-filling (even if not yet synced to DB)
+            if ($hasConstant) {
+                $licenseKey = $constantLicenseKey;
+            }
+
             // Never expose raw license keys to the client (prevents accidental disclosure via XSS/logging).
-            $pluginData['proPlugin']['licenseKey'] = '';
+            // Exception: If constant exists, expose it so it can be pre-filled in upgrade/install flows.
+            $pluginData['proPlugin']['licenseKey'] = $hasConstant && !empty($licenseKey) ? $licenseKey : '';
             $pluginData['proPlugin']['hasLicenseKey'] = !empty($licenseKey);
             $pluginData['proPlugin']['licenseKeyMasked'] = !empty($licenseKey)
                 ? $this->maskLicenseKey($licenseKey)
                 : '';
+            $pluginData['proPlugin']['isLicenseFromConstant'] = $isFromConstant || $hasConstant;
 
             // Format expiration date for display using WordPress date format
             if (!empty($expirationDate)) {
@@ -329,6 +343,35 @@ class ListPluginsUseCase implements UseCaseInterface
         $daysUntilExpiration = $this->getDaysUntilExpiration($expirationDate);
 
         return $daysUntilExpiration < 0;
+    }
+
+    /**
+     * Get license key from WordPress constant.
+     *
+     * @param string $familySlug The plugin family slug
+     * @return string|null The license key if constant is defined, null otherwise
+     * @since 1.0.0
+     */
+    private function getConstantLicenseKey(string $familySlug): ?string
+    {
+        // Check per-plugin constant first (takes precedence)
+        $perPluginConstant = WpConfigLicenseReaderService::PER_PLUGIN_LICENSE_CONSTANT_PREFIX . strtoupper($familySlug);
+        if (defined($perPluginConstant)) {
+            $value = constant($perPluginConstant);
+            if (!empty($value) && is_string($value)) {
+                return trim($value);
+            }
+        }
+
+        // Fall back to global constant
+        if (defined(WpConfigLicenseReaderService::GLOBAL_LICENSE_CONSTANT)) {
+            $value = constant(WpConfigLicenseReaderService::GLOBAL_LICENSE_CONSTANT);
+            if (!empty($value) && is_string($value)) {
+                return trim($value);
+            }
+        }
+
+        return null;
     }
 
     /**

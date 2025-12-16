@@ -22,6 +22,9 @@ use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use PublishPress\Hub\Application\Service\License\LicenseStatusStorageService;
 use PublishPress\Hub\Application\Service\License\LicenseValidationBootstrapService;
 use PublishPress\Hub\Application\Service\License\ScheduledLicenseValidationService;
+use PublishPress\Hub\Application\Service\License\WpConfigLicenseReaderService;
+use PublishPress\Hub\Application\Service\License\WpConfigLicenseSyncService;
+use PublishPress\Hub\Application\Service\License\WpConfigLicenseSyncBootstrapService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Plugin\ActivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
@@ -187,6 +190,25 @@ return [
             $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
 
+    AbstractDependencies::WP_CONFIG_LICENSE_READER_SERVICE =>
+        fn(ContainerInterface $container) => new WpConfigLicenseReaderService(
+            $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
+        ),
+
+    AbstractDependencies::WP_CONFIG_LICENSE_SYNC_SERVICE =>
+        fn(ContainerInterface $container) => new WpConfigLicenseSyncService(
+            $container->get(AbstractDependencies::WP_CONFIG_LICENSE_READER_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
+        ),
+
+    AbstractDependencies::WP_CONFIG_LICENSE_SYNC_BOOTSTRAP_SERVICE =>
+        fn(ContainerInterface $container) => new WpConfigLicenseSyncBootstrapService(
+            $container->get(AbstractDependencies::HOOKS_SERVICE),
+            $container->get(AbstractDependencies::WP_CONFIG_LICENSE_SYNC_SERVICE),
+            $container->get(AbstractDependencies::ENVIRONMENT_SERVICE)
+        ),
+
     AbstractDependencies::LICENSE_STATUS_STORAGE_SERVICE =>
         fn(ContainerInterface $container) => new LicenseStatusStorageService(
             $container->get(AbstractDependencies::OPTIONS_ADAPTER)
@@ -275,6 +297,7 @@ return [
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_PLUGINS_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::LICENSE_VALIDATION_BOOTSTRAP_SERVICE);
+            $servicesToInit[] = $container->get(AbstractDependencies::WP_CONFIG_LICENSE_SYNC_BOOTSTRAP_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::ACTIVATION_REDIRECT_SERVICE);
 
             if (defined('PUBLISHPRESS_HUB_DEV_MODE') && constant('PUBLISHPRESS_HUB_DEV_MODE')) {

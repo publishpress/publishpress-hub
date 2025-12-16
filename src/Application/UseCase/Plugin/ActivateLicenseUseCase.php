@@ -22,6 +22,7 @@ use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginInstallException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Application\Service\License\LicenseManagementService;
+use PublishPress\Hub\Application\Service\License\WpConfigLicenseReaderService;
 use WP_REST_Request;
 
 class ActivateLicenseUseCase implements UseCaseInterface
@@ -68,12 +69,76 @@ class ActivateLicenseUseCase implements UseCaseInterface
         $plugin = $family->getProPlugin();
         $downloadId = $plugin->getDownloadId();
 
-        $this->licenseManagement->activateAndStoreLicense($licenseKey, $downloadId);
+        // Check if license is from constant
+        if ($this->licenseManagement->isLicenseFromConstant($downloadId)) {
+            // Get constant value directly
+            $constantLicenseKey = $this->getConstantLicenseKey($familySlug);
+
+            if ($constantLicenseKey === null) {
+                throw new LicenseInvalidException([
+                    'message' => esc_html__(
+                        'License constant is not defined in wp-config.php.',
+                        'publishpress-hub'
+                    ),
+                ]);
+            }
+
+            // If no key provided, use constant value
+            if (empty($licenseKey)) {
+                $licenseKey = $constantLicenseKey;
+            }
+
+            // Verify provided key matches constant value
+            if ($licenseKey !== $constantLicenseKey) {
+                throw new LicenseInvalidException([
+                    'message' => esc_html__(
+                        'This license key is managed via wp-config.php constant. You cannot use a different license key.',
+                        'publishpress-hub'
+                    ),
+                ]);
+            }
+
+            // Sync from constant (no API validation)
+            $this->licenseManagement->syncLicenseFromConstant($licenseKey, $downloadId);
+        } else {
+            // Normal activation with API validation
+            $this->licenseManagement->activateAndStoreLicense($licenseKey, $downloadId);
+        }
+
         $this->pluginStatusService->updatePluginStatus($plugin);
 
         return [
             'slug' => esc_html($plugin->getSlug()),
             'licensed' => $plugin->isLicensed(),
         ];
+    }
+
+    /**
+     * Get license key from WordPress constant.
+     *
+     * @param string $familySlug The plugin family slug
+     * @return string|null The license key if constant is defined, null otherwise
+     * @since 1.0.0
+     */
+    private function getConstantLicenseKey(string $familySlug): ?string
+    {
+        // Check per-plugin constant first (takes precedence)
+        $perPluginConstant = WpConfigLicenseReaderService::PER_PLUGIN_LICENSE_CONSTANT_PREFIX . strtoupper($familySlug);
+        if (defined($perPluginConstant)) {
+            $value = constant($perPluginConstant);
+            if (!empty($value) && is_string($value)) {
+                return trim($value);
+            }
+        }
+
+        // Fall back to global constant
+        if (defined(WpConfigLicenseReaderService::GLOBAL_LICENSE_CONSTANT)) {
+            $value = constant(WpConfigLicenseReaderService::GLOBAL_LICENSE_CONSTANT);
+            if (!empty($value) && is_string($value)) {
+                return trim($value);
+            }
+        }
+
+        return null;
     }
 }

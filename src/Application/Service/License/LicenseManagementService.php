@@ -61,9 +61,16 @@ class LicenseManagementService implements LicenseManagementServiceInterface
      * @param string $licenseKey The license key to deactivate
      * @param int $downloadId The download ID for the plugin
      * @return bool True if deactivation was successful
+     * @throws \Exception If license is from constant
      */
     public function deactivateAndRemoveLicense(string $licenseKey, int $downloadId): bool
     {
+        if ($this->isLicenseFromConstant($downloadId)) {
+            throw new \Exception(
+                __('This license key is managed via wp-config.php constant and cannot be deactivated.', 'publishpress-hub')
+            );
+        }
+
         $deactivated = $this->licenseApiService->deactivateLicense($licenseKey, $downloadId);
 
         if ($deactivated) {
@@ -272,6 +279,35 @@ class LicenseManagementService implements LicenseManagementServiceInterface
         } catch (\Exception $e) {
             // Silently fail if we can't get expiration date - license is still activated
         }
+    }
+
+    /**
+     * Check if a license is from a constant.
+     *
+     * @param int $downloadId The download ID
+     * @return bool True if license is from constant
+     * @since 1.0.0
+     */
+    public function isLicenseFromConstant(int $downloadId): bool
+    {
+        return $this->licensePersistence->isLicenseFromConstant($downloadId);
+    }
+
+    /**
+     * Sync license from constant without API validation.
+     * Stores the license key and marks it as licensed/active.
+     *
+     * @param string $licenseKey The license key from constant
+     * @param int $downloadId The download ID for the plugin
+     * @return void
+     * @since 1.0.0
+     */
+    public function syncLicenseFromConstant(string $licenseKey, int $downloadId): void
+    {
+        // Store license key and mark as licensed (no API validation)
+        $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
+        $this->licensePersistence->storeLicenseStatus($downloadId, true);
+        $this->licensePersistence->markLicenseFromConstant($downloadId, true);
     }
 
     /**

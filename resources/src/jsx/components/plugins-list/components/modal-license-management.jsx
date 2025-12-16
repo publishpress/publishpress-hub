@@ -36,6 +36,7 @@ const ModalLicenseManagementComponent = ({
     buttonInProgress,
     initialLicenseKeyMasked,
     hasLicenseKey,
+    isLicenseFromConstant = false,
     title,
 }) => {
     const [licenseKey, setLicenseKey] = useState('');
@@ -105,6 +106,11 @@ const ModalLicenseManagementComponent = ({
                     <p>
                         {__('Your license key is: ', 'publishpress-hub')} {initialLicenseKeyMasked || __('(hidden)', 'publishpress-hub')}
                     </p>
+                    {isLicenseFromConstant && (
+                        <Message variant='info'>
+                            {__('This license key is managed via wp-config.php constant and cannot be changed or deactivated here. The license is automatically considered valid.', 'publishpress-hub')}
+                        </Message>
+                    )}
                 </>
             )}
 
@@ -122,12 +128,16 @@ const ModalLicenseManagementComponent = ({
 
             {currentAction === ACTIONS.VIEW && (
                 <>
-                    <Button variant='primary' icon='edit' onClick={handleSwitchToEdit} isLoading={buttonInProgress}>
-                        {__('Edit the license key', 'publishpress-hub')}
-                    </Button>
-                    <Button variant='secondary' icon='trash' onClick={() => onDeactivate()} isLoading={buttonInProgress}>
-                        {__('Deactivate the license key for this site', 'publishpress-hub')}
-                    </Button>
+                    {!isLicenseFromConstant && (
+                        <>
+                            <Button variant='primary' icon='edit' onClick={handleSwitchToEdit} isLoading={buttonInProgress}>
+                                {__('Edit the license key', 'publishpress-hub')}
+                            </Button>
+                            <Button variant='secondary' icon='trash' onClick={() => onDeactivate()} isLoading={buttonInProgress}>
+                                {__('Deactivate the license key for this site', 'publishpress-hub')}
+                            </Button>
+                        </>
+                    )}
                 </>
             )}
         </Modal>

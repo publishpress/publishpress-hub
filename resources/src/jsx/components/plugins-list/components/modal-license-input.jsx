@@ -23,8 +23,11 @@ const ModalLicenseInputComponent = ({
     error,
     buttonInProgress,
     title,
+    initialLicenseKey = '',
+    isLicenseFromConstant = false,
+    licenseKeyMasked = '',
 }) => {
-    const [licenseKey, setLicenseKey] = useState('');
+    const [licenseKey, setLicenseKey] = useState(initialLicenseKey);
     const [activationAttempted, setActivationAttempted] = useState(false);
 
     const setFocusRef = useRef(null);
@@ -32,10 +35,19 @@ const ModalLicenseInputComponent = ({
         setFocusRef.current = setFocus;
     }, []);
 
+    // Update license key when initialLicenseKey prop changes
+    useEffect(() => {
+        if (initialLicenseKey) {
+            setLicenseKey(initialLicenseKey);
+        }
+    }, [initialLicenseKey]);
+
     const handleActivate = useCallback(() => {
         setActivationAttempted(true);
-        onActivate(licenseKey);
-    }, [onActivate, licenseKey]);
+        // Use initialLicenseKey if from constant, otherwise use state
+        const keyToUse = isLicenseFromConstant ? initialLicenseKey : licenseKey;
+        onActivate(keyToUse);
+    }, [onActivate, licenseKey, initialLicenseKey, isLicenseFromConstant]);
 
     useEffect(() => {
         if (activationAttempted && error && setFocusRef.current) {
@@ -51,34 +63,55 @@ const ModalLicenseInputComponent = ({
             className='pp-hub-modal-license-input'
             onRequestClose={() => onClose()}
         >
-            <p>
-                {__('Enter your license key to activate the Pro version of this plugin. You can find your license key in your PublishPress account dashboard.', 'publishpress-hub')}
-            </p>
-            <div className='pp-hub-modal-inline-links'>
-                <Button variant='link' href='https://publishpress.com/dashboard/?active_tab=licenses' target='_blank' rel='noopener noreferrer'>
-                    {__('Go to my profile to get the license key', 'publishpress-hub')}
-                </Button>
-            </div>
+            {isLicenseFromConstant ? (
+                <>
+                    <p>
+                        {__('A license key has been configured for this plugin via wp-config.php constant.', 'publishpress-hub')}
+                    </p>
+                    <p>
+                        {__('License key: ', 'publishpress-hub')} <strong>{licenseKeyMasked || __('(hidden)', 'publishpress-hub')}</strong>
+                    </p>
+                    {error && (
+                        <Message variant='error'>
+                            {error.message}
+                        </Message>
+                    )}
+                    <Button variant='primary' icon='download' onClick={handleActivate} isLoading={buttonInProgress}>
+                        {__('Install Pro version', 'publishpress-hub')}
+                    </Button>
+                </>
+            ) : (
+                <>
+                    <p>
+                        {__('Enter your license key to activate the Pro version of this plugin. You can find your license key in your PublishPress account dashboard.', 'publishpress-hub')}
+                    </p>
+                    <div className='pp-hub-modal-inline-links'>
+                        <Button variant='link' href='https://publishpress.com/dashboard/?active_tab=licenses' target='_blank' rel='noopener noreferrer'>
+                            {__('Go to my profile to get the license key', 'publishpress-hub')}
+                        </Button>
+                    </div>
 
-            <LicenseKeyControl
-                value={licenseKey}
-                className='pp-hub-text-control pp-hub-license-input'
-                placeholder={__('Enter your license key here', 'publishpress-hub')}
-                onChange={(value) => setLicenseKey(value)}
-                autoFocus={true}
-                onEnterKeyDown={handleActivate}
-                onFocusReady={handleFocusReady}
-            />
+                    <LicenseKeyControl
+                        value={licenseKey}
+                        className='pp-hub-text-control pp-hub-license-input'
+                        placeholder={__('Enter your license key here', 'publishpress-hub')}
+                        onChange={(value) => setLicenseKey(value)}
+                        autoFocus={true}
+                        onEnterKeyDown={handleActivate}
+                        onFocusReady={handleFocusReady}
+                    />
 
-            {error && (
-                <Message variant='error'>
-                    {error.message}
-                </Message>
+                    {error && (
+                        <Message variant='error'>
+                            {error.message}
+                        </Message>
+                    )}
+
+                    <Button variant='primary' icon='check' onClick={handleActivate} isLoading={buttonInProgress}>
+                        {__('Activate and install the plugin', 'publishpress-hub')}
+                    </Button>
+                </>
             )}
-
-            <Button variant='primary' icon='check' onClick={handleActivate} isLoading={buttonInProgress}>
-                {__('Activate and install the plugin', 'publishpress-hub')}
-            </Button>
         </Modal>
     );
 }

@@ -295,6 +295,79 @@ class PerPluginLicensePersistenceService implements LicensePersistenceInterface
     }
 
     /**
+     * Check if a license is currently from a constant.
+     *
+     * @param int $downloadId The download ID to check.
+     * @return bool True if license is from constant, false otherwise.
+     * @since 1.0.0
+     */
+    public function isLicenseFromConstant(int $downloadId): bool
+    {
+        $optionName = $this->getLicenseSourceOptionName($downloadId);
+        $isFromConstant = $this->optionsAdapter->getOption($optionName, false);
+
+        return (bool) $isFromConstant;
+    }
+
+    /**
+     * Check if a license was ever from a constant (even if constant is now removed).
+     *
+     * @param int $downloadId The download ID to check.
+     * @return bool True if license was from constant, false otherwise.
+     * @since 1.0.0
+     */
+    public function wasLicenseFromConstant(int $downloadId): bool
+    {
+        $optionName = $this->getLicenseWasFromConstantOptionName($downloadId);
+        $wasFromConstant = $this->optionsAdapter->getOption($optionName, false);
+
+        return (bool) $wasFromConstant;
+    }
+
+    /**
+     * Mark a license as from constant or not.
+     *
+     * @param int $downloadId The download ID to mark.
+     * @param bool $fromConstant Whether the license is from constant.
+     * @since 1.0.0
+     */
+    public function markLicenseFromConstant(int $downloadId, bool $fromConstant): void
+    {
+        $optionName = $this->getLicenseSourceOptionName($downloadId);
+        $this->optionsAdapter->updateOption($optionName, $fromConstant);
+
+        // Also track historical state
+        if ($fromConstant) {
+            $wasFromConstantOptionName = $this->getLicenseWasFromConstantOptionName($downloadId);
+            $this->optionsAdapter->updateOption($wasFromConstantOptionName, true);
+        }
+    }
+
+    /**
+     * Get the option name for license source tracking.
+     *
+     * @param int $downloadId The download ID.
+     * @return string The option name.
+     * @since 1.0.0
+     */
+    private function getLicenseSourceOptionName(int $downloadId): string
+    {
+        return "publishpress_hub_license_source_{$downloadId}";
+    }
+
+    /**
+     * Get the option name for historical license source tracking.
+     *
+     * @param int $downloadId The download ID.
+     * @return string The option name.
+     * @since 1.0.0
+     */
+    private function getLicenseWasFromConstantOptionName(int $downloadId): string
+    {
+        return "publishpress_hub_license_was_from_constant_{$downloadId}";
+    }
+
+    /**
      * Get the plugin family slug by download ID.
      *
      * @param int $downloadId The download ID to get the plugin family slug for.
