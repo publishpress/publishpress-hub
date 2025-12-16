@@ -140,9 +140,45 @@
 }
 
 .pp-hub-welcome-page__feature-icon {
-    font-size: 32px;
+    font-size: 48px;
     margin-bottom: 16px;
     line-height: 1;
+}
+
+.pp-hub-welcome-page__feature-icon .dashicons {
+    width: 48px;
+    height: 48px;
+    font-size: 48px;
+}
+
+/* Chart bar - Analytics/Dashboard - Blue */
+.pp-hub-welcome-page__feature-icon .dashicons-chart-bar {
+    color: #2271b1;
+}
+
+/* Admin plugins - Installation - Green */
+.pp-hub-welcome-page__feature-icon .dashicons-admin-plugins {
+    color: #00a32a;
+}
+
+/* Admin network - License Management - Orange/Amber */
+.pp-hub-welcome-page__feature-icon .dashicons-admin-network {
+    color: #dba617;
+}
+
+/* Update - Easy Updates - Purple */
+.pp-hub-welcome-page__feature-icon .dashicons-update {
+    color: #826eb4;
+}
+
+/* Yes alt - Status Monitoring - Teal */
+.pp-hub-welcome-page__feature-icon .dashicons-yes-alt {
+    color: #00a0d2;
+}
+
+/* Admin tools - Get Started - Dark Blue */
+.pp-hub-welcome-page__feature-icon .dashicons-admin-tools {
+    color: #135e96;
 }
 
 .pp-hub-welcome-page__feature-title {

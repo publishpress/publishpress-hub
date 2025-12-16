@@ -57,7 +57,9 @@ const WelcomePageComponent = () => {
 
                         <div className="pp-hub-welcome-page__features-grid">
                             <div className="pp-hub-welcome-page__feature-item">
-                                <div className="pp-hub-welcome-page__feature-icon">📊</div>
+                                <div className="pp-hub-welcome-page__feature-icon">
+                                    <span className="dashicons dashicons-chart-bar" />
+                                </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('Centralized Dashboard', 'publishpress-hub')}
                                 </h3>
@@ -67,7 +69,9 @@ const WelcomePageComponent = () => {
                             </div>
 
                             <div className="pp-hub-welcome-page__feature-item">
-                                <div className="pp-hub-welcome-page__feature-icon">⚡</div>
+                                <div className="pp-hub-welcome-page__feature-icon">
+                                    <span className="dashicons dashicons-admin-plugins" />
+                                </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('One-Click Installation', 'publishpress-hub')}
                                 </h3>
@@ -77,7 +81,9 @@ const WelcomePageComponent = () => {
                             </div>
 
                             <div className="pp-hub-welcome-page__feature-item">
-                                <div className="pp-hub-welcome-page__feature-icon">🔑</div>
+                                <div className="pp-hub-welcome-page__feature-icon">
+                                    <span className="dashicons dashicons-admin-network" />
+                                </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('License Management', 'publishpress-hub')}
                                 </h3>
@@ -87,7 +93,9 @@ const WelcomePageComponent = () => {
                             </div>
 
                             <div className="pp-hub-welcome-page__feature-item">
-                                <div className="pp-hub-welcome-page__feature-icon">🔄</div>
+                                <div className="pp-hub-welcome-page__feature-icon">
+                                    <span className="dashicons dashicons-update" />
+                                </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('Easy Updates', 'publishpress-hub')}
                                 </h3>
@@ -97,7 +105,9 @@ const WelcomePageComponent = () => {
                             </div>
 
                             <div className="pp-hub-welcome-page__feature-item">
-                                <div className="pp-hub-welcome-page__feature-icon">✅</div>
+                                <div className="pp-hub-welcome-page__feature-icon">
+                                    <span className="dashicons dashicons-yes-alt" />
+                                </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('Status Monitoring', 'publishpress-hub')}
                                 </h3>
@@ -107,7 +117,9 @@ const WelcomePageComponent = () => {
                             </div>
 
                             <div className="pp-hub-welcome-page__feature-item">
-                                <div className="pp-hub-welcome-page__feature-icon">🚀</div>
+                                <div className="pp-hub-welcome-page__feature-icon">
+                                    <span className="dashicons dashicons-admin-tools" />
+                                </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('Get Started', 'publishpress-hub')}
                                 </h3>
