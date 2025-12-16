@@ -75,6 +75,7 @@ class HubAccessService implements AccessInterface, BootableInterface
      */
     protected function onInit(): void
     {
+        return;
     }
 
     /**
@@ -130,7 +131,11 @@ class HubAccessService implements AccessInterface, BootableInterface
     {
         $roleInstance = get_role($role);
         if (!$roleInstance) {
-            $roleInstance = add_role($role, $roleDisplayName, [self::CAPABILITY => true]);
+            if (function_exists('wpcom_vip_add_role')) {
+                $roleInstance = call_user_func('wpcom_vip_add_role', $role, $roleDisplayName, [self::CAPABILITY => true]);
+            } else {
+                $roleInstance = add_role($role, $roleDisplayName, [self::CAPABILITY => true]); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.custom_role_add_role
+            }
         }
     }
 

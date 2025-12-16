@@ -75,7 +75,7 @@ class ActivationRedirectService implements BootableInterface
      */
     protected function onInit(): void
     {
-        // No initialization needed
+        return;
     }
 
     /**
@@ -87,8 +87,10 @@ class ActivationRedirectService implements BootableInterface
     public function handleActivationRedirect(): void
     {
         // Check if redirect is disabled via constant
-        if (defined('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE_REDIRECT')
-            && constant('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE_REDIRECT')) {
+        if (
+            defined('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE_REDIRECT')
+            && constant('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE_REDIRECT')
+        ) {
             return;
         }
 
@@ -98,7 +100,7 @@ class ActivationRedirectService implements BootableInterface
         }
 
         // Check if we're already on the welcome page
-        if (isset($_GET['page']) && 'publishpress-hub' === $_GET['page']) {
+        if (isset($_GET['page']) && 'publishpress-hub' === sanitize_key($_GET['page'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
             delete_transient(PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT);
             return;
         }
@@ -142,8 +144,10 @@ class ActivationRedirectService implements BootableInterface
     private function isWelcomePageDisabled(): bool
     {
         // Check constant first
-        if (defined('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE')
-            && constant('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE')) {
+        if (
+            defined('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE')
+            && constant('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE')
+        ) {
             return true;
         }
 
@@ -151,4 +155,3 @@ class ActivationRedirectService implements BootableInterface
         return (bool) $this->optionsAdapter->getOption(self::WELCOME_PAGE_OPTION_NAME, false);
     }
 }
-

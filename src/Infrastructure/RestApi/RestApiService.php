@@ -245,13 +245,13 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
 
             // Log full details server-side for debugging
             if (defined('WP_DEBUG') && WP_DEBUG) {
-                error_log(
-                    sprintf(
+                error_log( // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+                    esc_html(sprintf(
                         'REST API Error: %s | Code: %s | Context: %s',
                         $e->getMessage(),
                         $this->getErrorCodeFromException($e),
                         wp_json_encode($e->getContext())
-                    )
+                    ))
                 );
             }
 
@@ -267,12 +267,12 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
 
             // Log full details server-side
             if (defined('WP_DEBUG') && WP_DEBUG) {
-                error_log(
-                    sprintf(
+                error_log( // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+                    esc_html(sprintf(
                         'REST API Unknown Error: %s | Trace: %s',
                         $e->getMessage(),
                         $e->getTraceAsString()
-                    )
+                    ))
                 );
             }
 

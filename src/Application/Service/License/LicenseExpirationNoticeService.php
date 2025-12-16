@@ -15,8 +15,6 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Application\Service\License;
 
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
-use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
-use PublishPress\Hub\Domain\Plugin\Contract\ProPluginInterface;
 use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 
 class LicenseExpirationNoticeService
@@ -68,10 +66,13 @@ class LicenseExpirationNoticeService
 
         // Don't show on the plugins list dashboard page
         $screen = get_current_screen();
-        if ($screen && (
-            $screen->id === 'publishpress_page_publishpress-hub-plugins-dashboard' ||
-            $screen->id === 'toplevel_page_publishpress-hub'
-        )) {
+        if (
+            $screen &&
+            (
+                $screen->id === 'publishpress_page_publishpress-hub-plugins-dashboard' ||
+                $screen->id === 'toplevel_page_publishpress-hub'
+            )
+        ) {
             return;
         }
 
@@ -147,4 +148,3 @@ class LicenseExpirationNoticeService
         return $expiredLicenses;
     }
 }
-

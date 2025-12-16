@@ -124,8 +124,10 @@ class WelcomePageController implements BootableInterface
     public static function checkIfWelcomePageDisabled(?WPOptionsAdapterInterface $optionsAdapter = null): bool
     {
         // Check constant first
-        if (defined('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE')
-            && constant('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE')) {
+        if (
+            defined('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE') &&
+            constant('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE')
+        ) {
             return true;
         }
 
@@ -274,4 +276,3 @@ class WelcomePageController implements BootableInterface
         );
     }
 }
-

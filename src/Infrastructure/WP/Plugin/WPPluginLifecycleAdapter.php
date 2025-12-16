@@ -50,7 +50,7 @@ class WPPluginLifecycleAdapter
         }
 
         // Parse URL to extract host and validate scheme
-        $urlParts = parse_url($downloadUrl);
+        $urlParts = wp_parse_url($downloadUrl);
         if (!isset($urlParts['scheme']) || !in_array($urlParts['scheme'], ['http', 'https'], true)) {
             throw new InvalidArgumentException(
                 esc_html__('Download URL must use HTTP or HTTPS protocol', 'publishpress-hub')

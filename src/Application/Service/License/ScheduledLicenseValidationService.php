@@ -248,4 +248,3 @@ class ScheduledLicenseValidationService
         return null;
     }
 }
-

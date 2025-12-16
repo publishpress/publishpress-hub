@@ -18,7 +18,8 @@ if (! defined('PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT')) {
  *
  * @param string $pluginFile The main plugin file path.
  */
-function registerActivationHook($pluginFile) {
+function registerActivationHook($pluginFile)
+{
     register_activation_hook($pluginFile, function () {
         registerAutoloader();
         setupActivationAccessSetup();
@@ -26,7 +27,8 @@ function registerActivationHook($pluginFile) {
     });
 }
 
-function registerAutoloader() {
+function registerAutoloader()
+{
     // Load the autoloader for activation hook (runs before plugins_loaded)
     $vendorPath = realpath(__DIR__ . '/../lib/vendor/') . '/';
     if (file_exists($vendorPath . 'autoload.php')) {
@@ -45,7 +47,8 @@ function registerAutoloader() {
     }
 }
 
-function setupActivationAccessSetup() {
+function setupActivationAccessSetup()
+{
     // We only setup capability and role if not disabled by the user, to avoid overriding user's customizations.
     if (
         ! defined('PUBLISHPRESS_HUB_DISABLE_ACCESS_SETUP')
@@ -56,16 +59,21 @@ function setupActivationAccessSetup() {
     }
 }
 
-function setupActivationWelcomeRedirect() {
+function setupActivationWelcomeRedirect()
+{
     // Check if redirect is disabled via constant
-    if (defined('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE_REDIRECT')
-        && constant('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE_REDIRECT')) {
+    if (
+        defined('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE_REDIRECT')
+        && constant('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE_REDIRECT')
+    ) {
         return;
     }
 
     // Check if welcome page is disabled
-    if (defined('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE')
-        && constant('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE')) {
+    if (
+        defined('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE')
+        && constant('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE')
+    ) {
         return;
     }
 

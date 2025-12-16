@@ -214,7 +214,7 @@ class WPRemoteAdapter implements RemoteServiceInterface
             if (is_array($headers)) {
                 $headersArray = $headers;
             } elseif (is_object($headers)) {
-                // Try getAll() method if available
+                // Try getAll method if available
                 if (method_exists($headers, 'getAll')) {
                     try {
                         $headersArray = $headers->getAll();
@@ -244,7 +244,7 @@ class WPRemoteAdapter implements RemoteServiceInterface
         } catch (\Throwable $e) {
             // If header access fails, fall through to body parsing
             if (defined('WP_DEBUG') && WP_DEBUG) {
-                error_log('Error accessing headers in getCloudflareRayId: ' . $e->getMessage());
+                error_log(esc_html('Error accessing headers in getCloudflareRayId: ' . $e->getMessage())); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
             }
         }
 
@@ -260,7 +260,7 @@ class WPRemoteAdapter implements RemoteServiceInterface
             }
         } catch (\Throwable $e) {
             if (defined('WP_DEBUG') && WP_DEBUG) {
-                error_log('Error parsing response body in getCloudflareRayId: ' . $e->getMessage());
+                error_log(esc_html('Error parsing response body in getCloudflareRayId: ' . $e->getMessage())); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
             }
         }
 

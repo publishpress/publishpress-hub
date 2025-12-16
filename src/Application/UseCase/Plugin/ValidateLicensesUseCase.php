@@ -52,4 +52,3 @@ class ValidateLicensesUseCase implements UseCaseInterface
         return $this->listPluginsUseCase->execute($request);
     }
 }
-

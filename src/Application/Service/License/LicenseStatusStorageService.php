@@ -120,4 +120,3 @@ class LicenseStatusStorageService
         return $statuses;
     }
 }
-

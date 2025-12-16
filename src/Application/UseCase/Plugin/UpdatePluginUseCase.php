@@ -82,4 +82,3 @@ class UpdatePluginUseCase implements UseCaseInterface
         ];
     }
 }
-

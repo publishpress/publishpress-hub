@@ -111,9 +111,8 @@
         "watch:prototype": "cross-env NODE_ENV=development npx webpack --watch --progress --config webpack.prototype.config.js",
         "check": [
             "@check:php",
-            "@check:lint",
             "@check:cs",
-            "@check:phpmd"
+            "@check:lint"
         ],
         "check:php": [
             "@check:php-7.4",

@@ -39,4 +39,3 @@ class LicenseValidationActionHandler
         $this->scheduledLicenseValidationService->validateAllLicenses();
     }
 }
-
