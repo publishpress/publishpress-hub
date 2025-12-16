@@ -86,6 +86,12 @@ echo -e "${YELLOW}Configuring environment type in wp-config.php...${NC}"
 wp config set WP_ENVIRONMENT_TYPE "local"
 show_status "Environment type set to 'local'"
 
+# Enable HTTP mocking for test environment
+if [ "$ENVIRONMENT_TYPE" = "TEST" ]; then
+    wp config set PP_HUB_ENABLE_HTTP_MOCK "true" --raw
+    show_status "HTTP mocking enabled for test environment"
+fi
+
 # Update MailHog options
 show_header "Updating MailHog options"
 wp config set WP_MAILHOG_SMTP_HOST "mailhog"

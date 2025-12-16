@@ -83,6 +83,15 @@ if (! class_exists(__NAMESPACE__ . '\\Infrastructure\\Autoloader\\Autoloader')) 
 Autoloader::register(__NAMESPACE__ . '\\', PUBLISHPRESS_HUB_SRC_PATH);
 
 /*
+ * Enable HTTP mocking for tests (only when PP_HUB_ENABLE_HTTP_MOCK is set).
+ * This intercepts HTTP requests to publishpress.com and returns mock responses.
+ */
+if (defined('PP_HUB_ENABLE_HTTP_MOCK') && PP_HUB_ENABLE_HTTP_MOCK) {
+    require_once PUBLISHPRESS_HUB_SRC_PATH . 'Testing/HttpMock.php';
+    Testing\HttpMock::enable();
+}
+
+/*
  * Load the plugin.
  */
 add_action(AbstractHooks::ACTION_PLUGINS_LOADED, function () {
