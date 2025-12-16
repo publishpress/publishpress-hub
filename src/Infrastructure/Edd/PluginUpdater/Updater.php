@@ -11,6 +11,8 @@ if (! class_exists('PublishPress\\Hub\\Infrastructure\\Edd\\PluginUpdater\\EDD_S
     return;
 }
 
+// phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+
 /**
  * Allows plugins to use their own update API.
  * Based on the EDD_SL_Plugin_Updater class from Easy Digital Downloads.
@@ -265,8 +267,8 @@ class Updater
 
         printf(
             '<tr class="plugin-update-tr %3$s" id="%1$s-update" data-slug="%1$s" data-plugin="%2$s">',
-            $this->slug,
-            $file,
+            esc_attr($this->slug),
+            esc_attr($file),
             in_array($this->name, $this->get_active_plugins(), true) ? 'active' : 'inactive'
         );
 
@@ -278,6 +280,7 @@ class Updater
             $changelog_link = add_query_arg(
                 array(
                     'edd_sl_action' => 'view_plugin_changelog',
+                    'nonce'         => wp_create_nonce('view-plugin-changelog'),
                     'plugin'        => urlencode($this->name),
                     'slug'          => urlencode($this->slug),
                     'TB_iframe'     => 'true',
@@ -291,6 +294,7 @@ class Updater
             array(
                 'action' => 'upgrade-plugin',
                 'plugin' => urlencode($this->name),
+                'nonce'  => wp_create_nonce('upgrade-plugin'),
             ),
             self_admin_url('update.php')
         );
@@ -308,7 +312,7 @@ class Updater
             echo ' ';
             printf(
                 /* translators: 1. opening anchor tag, do not translate 2. the new plugin version 3. closing anchor tag, do not translate. */
-                __('%1$sView version %2$s details%3$s.', 'easy-digital-downloads'),
+                esc_html__('%1$sView version %2$s details%3$s.', 'easy-digital-downloads'),
                 '<a target="_blank" class="thickbox open-plugin-details-modal" href="' . esc_url($changelog_link) . '">',
                 esc_html($update_cache->response[$this->name]->new_version),
                 '</a>'
@@ -316,17 +320,17 @@ class Updater
         } elseif (! empty($changelog_link)) {
             echo ' ';
             printf(
-                __('%1$sView version %2$s details%3$s or %4$supdate now%5$s.', 'easy-digital-downloads'),
+                esc_html__('%1$sView version %2$s details%3$s or %4$supdate now%5$s.', 'easy-digital-downloads'),
                 '<a target="_blank" class="thickbox open-plugin-details-modal" href="' . esc_url($changelog_link) . '">',
                 esc_html($update_cache->response[$this->name]->new_version),
                 '</a>',
-                '<a target="_blank" class="update-link" href="' . esc_url(wp_nonce_url($update_link, 'upgrade-plugin_' . $file)) . '">',
+                '<a target="_blank" class="update-link" href="' . esc_url(wp_nonce_url($update_link, 'upgrade-plugin_' . esc_attr($file))) . '">',
                 '</a>'
             );
         } else {
             printf(
                 ' %1$s%2$s%3$s',
-                '<a target="_blank" class="update-link" href="' . esc_url(wp_nonce_url($update_link, 'upgrade-plugin_' . $file)) . '">',
+                '<a target="_blank" class="update-link" href="' . esc_url(wp_nonce_url($update_link, 'upgrade-plugin_' . esc_attr($file))) . '">',
                 esc_html__('Update now.', 'easy-digital-downloads'),
                 '</a>'
             );
@@ -364,12 +368,10 @@ class Updater
     {
 
         if ('plugin_information' !== $_action) {
-
             return $_data;
         }
 
         if (! isset($_args->slug) || ($_args->slug !== $this->slug)) {
-
             return $_data;
         }
 
@@ -388,7 +390,6 @@ class Updater
 
         //If we have no transient-saved value, run the API, set a fresh transient with the API value, and return that value too right now.
         if (empty($edd_api_request_transient)) {
-
             $api_response = $this->api_request('plugin_information', $to_send);
 
             // Expires in 3 hours
@@ -554,6 +555,10 @@ class Updater
      */
     public function show_changelog()
     {
+        if (! isset($_REQUEST['nonce']) || ! wp_verify_nonce(sanitize_key($_REQUEST['nonce']), 'view-plugin-changelog')) {
+            return;
+        }
+
         $edd_sl_action = isset($_REQUEST['edd_sl_action']) ? sanitize_text_field($_REQUEST['edd_sl_action']) : '';
         if (empty($edd_sl_action) || 'view_plugin_changelog' !== $edd_sl_action) {
             return;
@@ -617,7 +622,7 @@ class Updater
         $request = wp_remote_post(
             $this->api_url,
             array(
-                'timeout'   => 15,
+                'timeout'   => 15, // phpcs:ignore WordPressVIPMinimum.Performance.RemoteRequestTimeout.timeout_timeout
                 'sslverify' => $this->verify_ssl(),
                 'body'      => $api_params,
             )
@@ -731,7 +736,7 @@ class Updater
         update_option($cache_key, $data, 'no');
 
         // Delete the duplicate option
-        delete_option('edd_api_request_' . md5(serialize($this->slug . $this->api_data['license'] . $this->beta)));
+        delete_option('edd_api_request_' . md5(maybe_serialize($this->slug . $this->api_data['license'] . $this->beta)));
     }
 
     /**
@@ -755,6 +760,6 @@ class Updater
     {
         $string = $this->slug . $this->api_data['license'] . $this->beta;
 
-        return 'edd_sl_' . md5(serialize($string));
+        return 'edd_sl_' . md5(maybe_serialize($string));
     }
 }

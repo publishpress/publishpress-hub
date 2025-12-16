@@ -114,6 +114,7 @@ class PluginsController implements BootableInterface
      */
     protected function onInit(): void
     {
+        return;
     }
 
     /**
@@ -128,7 +129,7 @@ class PluginsController implements BootableInterface
             'required' => true,
             'type' => 'string',
             'sanitize_callback' => 'sanitize_key',
-            'validate_callback' => function($param) {
+            'validate_callback' => function ($param) {
                 return preg_match('/^[a-zA-Z0-9-]+$/', $param) === 1;
             },
         ];
@@ -156,7 +157,7 @@ class PluginsController implements BootableInterface
                     'required' => false,
                     'type' => 'string',
                     'sanitize_callback' => 'sanitize_text_field',
-                    'validate_callback' => function($param) {
+                    'validate_callback' => function ($param) {
                         return $param === null || $param === '' || $param === '1' || $param === 1;
                     },
                 ],
@@ -188,7 +189,7 @@ class PluginsController implements BootableInterface
                     'required' => true,
                     'type' => 'string',
                     'sanitize_callback' => 'sanitize_text_field',
-                    'validate_callback' => function($param) {
+                    'validate_callback' => function ($param) {
                         return !empty($param) && is_string($param);
                     },
                 ],
@@ -208,7 +209,7 @@ class PluginsController implements BootableInterface
                     'required' => true,
                     'type' => 'string',
                     'sanitize_callback' => 'sanitize_key',
-                    'validate_callback' => function($param) {
+                    'validate_callback' => function ($param) {
                         return in_array($param, ['activate', 'deactivate'], true);
                     },
                 ],
@@ -240,7 +241,7 @@ class PluginsController implements BootableInterface
                     'required' => true,
                     'type' => 'string',
                     'sanitize_callback' => 'sanitize_text_field',
-                    'validate_callback' => function($param) {
+                    'validate_callback' => function ($param) {
                         return !empty($param) && is_string($param);
                     },
                 ],
@@ -272,7 +273,7 @@ class PluginsController implements BootableInterface
                     'required' => true,
                     'type' => 'string',
                     'sanitize_callback' => 'sanitize_key',
-                    'validate_callback' => function($param) {
+                    'validate_callback' => function ($param) {
                         return in_array($param, ['free', 'pro'], true);
                     },
                 ],
@@ -304,7 +305,7 @@ class PluginsController implements BootableInterface
                     'required' => true,
                     'type' => 'string',
                     'sanitize_callback' => 'sanitize_text_field',
-                    'validate_callback' => function($param) {
+                    'validate_callback' => function ($param) {
                         return !empty($param) && is_string($param);
                     },
                 ],
@@ -323,7 +324,7 @@ class PluginsController implements BootableInterface
                     'required' => false,
                     'type' => 'string',
                     'sanitize_callback' => 'sanitize_text_field',
-                    'validate_callback' => function($param) {
+                    'validate_callback' => function ($param) {
                         return $param === null || $param === '' || $param === '1' || $param === 1;
                     },
                 ],

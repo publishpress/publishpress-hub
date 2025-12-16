@@ -39,4 +39,3 @@ class InfrastructureException extends Exception implements WithContextInterface
         $this->code = $code;
     }
 }
-

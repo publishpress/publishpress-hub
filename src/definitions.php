@@ -100,7 +100,7 @@ return [
     AbstractDependencies::LICENSE_VALIDATION_POLL_INTERVAL_SECONDS =>
         defined('PUBLISHPRESS_HUB_LICENSE_VALIDATION_POLL_INTERVAL_SECONDS')
             ? (int) constant('PUBLISHPRESS_HUB_LICENSE_VALIDATION_POLL_INTERVAL_SECONDS')
-            : 43200, // Default: 12 hours
+            : 12 * HOUR_IN_SECONDS,
 
     AbstractDependencies::USER_AGENT =>
         fn(ContainerInterface $container) => sprintf(
