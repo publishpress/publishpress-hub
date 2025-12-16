@@ -2,21 +2,21 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Hub 1.0.0-beta.2\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"Project-Id-Version: PublishPress Hub 1.0.0-beta.5\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/publishpress-hub\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-11-28T20:52:05+00:00\n"
+"POT-Creation-Date: 2025-12-16T23:35:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 
 #. Plugin Name of the plugin
 #: publishpress-hub.php
-#: src/Admin/Page/WelcomePageController.php:267
+#: src/Admin/Page/WelcomePageController.php:270
 msgid "PublishPress Hub"
 msgstr ""
 
@@ -39,36 +39,46 @@ msgstr ""
 msgid "Please wait while we load the components showcase..."
 msgstr ""
 
-#: src/Admin/Page/PluginsDashboardController.php:144
+#: src/Admin/Page/PluginsDashboardController.php:145
 msgid "Please wait while we load the plugins dashboard..."
 msgstr ""
 
-#: src/Admin/Page/WelcomePageController.php:153
+#: src/Admin/Page/SettingsPageController.php:110
+#: src/Admin/Page/SettingsPageController.php:111
+#: resources/src/jsx/components/pages/settings-page.jsx:22
+msgid "Settings"
+msgstr ""
+
+#: src/Admin/Page/SettingsPageController.php:131
+msgid "Please wait while we load the settings page..."
+msgstr ""
+
+#: src/Admin/Page/WelcomePageController.php:156
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: src/Admin/Page/WelcomePageController.php:190
-#: src/Admin/Page/WelcomePageController.php:191
+#: src/Admin/Page/WelcomePageController.php:193
+#: src/Admin/Page/WelcomePageController.php:194
 msgid "Welcome"
 msgstr ""
 
-#: src/Admin/Page/WelcomePageController.php:213
+#: src/Admin/Page/WelcomePageController.php:216
 msgid "Please wait while we load the welcome page..."
 msgstr ""
 
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:90
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:91
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr ""
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:92
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:106
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:93
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:107
 msgid "Manage licenses"
 msgstr ""
 
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:103
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:104
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr ""
@@ -194,43 +204,43 @@ msgid "Unknown license server error. Please try again later or contact support f
 msgstr ""
 
 #: src/Domain/Plugin/plugin-families.php:26
-msgid "Improve content quality with customizable editorial checklists."
+msgid "Define tasks that authors must complete before publishing."
 msgstr ""
 
 #: src/Domain/Plugin/plugin-families.php:42
-msgid "Advanced user role and permission management."
+msgid "Control who can edit and view your content."
 msgstr ""
 
 #: src/Domain/Plugin/plugin-families.php:58
-msgid "Add many authors to one WordPress post."
+msgid "Create, manage and display authors for your content."
 msgstr ""
 
 #: src/Domain/Plugin/plugin-families.php:74
-msgid "Take the control of the new Gutenberg editor."
+msgid "All the tools you need to improve the block editor."
 msgstr ""
 
 #: src/Domain/Plugin/plugin-families.php:90
-msgid "Fine-grained user role management for WordPress sites."
+msgid "Control your admin area and user roles."
 msgstr ""
 
 #: src/Domain/Plugin/plugin-families.php:106
-msgid "Automatically run actions on a scheduled future moment."
+msgid "Schedule changes to your posts."
 msgstr ""
 
 #: src/Domain/Plugin/plugin-families.php:122
-msgid "Organize, schedule and plan your WordPress content."
+msgid "Organize, schedule, and plan your publishing."
 msgstr ""
 
 #: src/Domain/Plugin/plugin-families.php:138
-msgid "Manage, schedule and approve WordPress revisions."
+msgid "Approve and schedule new versions to your published posts."
 msgstr ""
 
 #: src/Domain/Plugin/plugin-families.php:154
-msgid "Group WordPress content together into a series."
+msgid "Organize your posts into issues or series."
 msgstr ""
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Manage custom statuses for your WordPress posts."
+msgid "Create custom statuses and publishing workflows."
 msgstr ""
 
 #. translators: %s is the dependency ID.
@@ -251,11 +261,11 @@ msgstr ""
 msgid "Error getting license info: %s"
 msgstr ""
 
-#: src/Infrastructure/RestApi/RestApiService.php:304
+#: src/Infrastructure/RestApi/RestApiService.php:308
 msgid "Too many requests. Please try again later."
 msgstr ""
 
-#: src/Infrastructure/RestApi/RestApiService.php:371
+#: src/Infrastructure/RestApi/RestApiService.php:375
 msgid "An error occurred while processing your request."
 msgstr ""
 
@@ -426,114 +436,110 @@ msgstr ""
 msgid "Warning:"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:47
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:46
 msgid "All"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:52
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:51
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:39
 msgid "Unlicensed"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:57
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:56
 msgid "Active"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:62
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:61
 msgid "Inactive"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:67
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:66
 msgid "Not installed"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:72
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:71
 msgid "Updates available"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:95
-#: resources/src/jsx/components/pages/welcome-page.jsx:129
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:94
+#: resources/src/jsx/components/pages/welcome-page.jsx:128
 msgid "Plugins Dashboard"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:142
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:141
 msgid "Hold ALT and click to force refresh the update cache"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:160
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:159
 msgid "Force Refresh"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:160
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:159
 msgid "Refresh"
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:39
+#: resources/src/jsx/components/pages/settings-page.jsx:33
+msgid "Settings page content will be available here."
+msgstr ""
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:37
 msgid "Welcome to PublishPress Hub!"
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:42
+#: resources/src/jsx/components/pages/welcome-page.jsx:40
 msgid "Get started with PublishPress Hub in a few simple steps."
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:49
+#: resources/src/jsx/components/pages/welcome-page.jsx:47
 msgid "Welcome to PublishPress Hub"
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:53
-msgid "Thank you for giving PublishPress Hub a try!"
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:56
-msgid "Our plugins are designed to make managing your publishing workflow as simple as possible, and PublishPress Hub is the key to facilitate that."
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:64
+#: resources/src/jsx/components/pages/welcome-page.jsx:52
 msgid "What you can do with PublishPress Hub"
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:67
-msgid "Whether you're just getting started or looking to streamline your existing setup, you'll find everything you need to install, update, and manage your PublishPress plugins from one central location. We're here to help you build a publishing system that works perfectly for your team."
+#: resources/src/jsx/components/pages/welcome-page.jsx:55
+msgid "PublishPress Hub has everything you need to install, update, and manage your PublishPress plugins. We're here to help you build a publishing system that works perfectly for your team."
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:74
+#: resources/src/jsx/components/pages/welcome-page.jsx:64
 msgid "Centralized Dashboard"
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:77
-msgid "View all your PublishPress plugins with their license information, versions, and status in one convenient place."
+#: resources/src/jsx/components/pages/welcome-page.jsx:67
+msgid "View all your PublishPress plugins with their licenses, versions, and key details."
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:84
+#: resources/src/jsx/components/pages/welcome-page.jsx:76
 msgid "One-Click Installation"
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:87
-msgid "Install free PublishPress plugins directly from the Hub without visiting the WordPress.org repository."
+#: resources/src/jsx/components/pages/welcome-page.jsx:79
+msgid "Install free PublishPress plugins directly from the Hub without visiting WordPress.org."
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:94
+#: resources/src/jsx/components/pages/welcome-page.jsx:88
 msgid "License Management"
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:97
-msgid "Connect your PublishPress license to install and activate Pro versions seamlessly, all from one place."
+#: resources/src/jsx/components/pages/welcome-page.jsx:91
+msgid "Connect your PublishPress licenses to easily install and activate Pro versions."
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:104
+#: resources/src/jsx/components/pages/welcome-page.jsx:100
 msgid "Easy Updates"
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:107
-msgid "Keep all your PublishPress plugins up to date with real-time monitoring and one-click updates."
+#: resources/src/jsx/components/pages/welcome-page.jsx:103
+msgid "Keep all your PublishPress plugins up to date with one-click updates."
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:114
+#: resources/src/jsx/components/pages/welcome-page.jsx:112
 msgid "Status Monitoring"
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:117
-msgid "Monitor plugin activation status, detect conflicts, and ensure compatibility across your publishing tools."
+#: resources/src/jsx/components/pages/welcome-page.jsx:115
+msgid "Monitor plugin activation status, detect conflicts, and ensure compatibility."
 msgstr ""
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:124
@@ -541,26 +547,23 @@ msgid "Get Started"
 msgstr ""
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:127
-msgid "Ready to explore? Visit the "
+#, js-format
+msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:131
-msgid " to see all available PublishPress plugins."
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:143
+#: resources/src/jsx/components/pages/welcome-page.jsx:142
 msgid "View Plugins Dashboard"
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:149
+#: resources/src/jsx/components/pages/welcome-page.jsx:148
 msgid "Already know what you're doing? Great! You can "
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:151
+#: resources/src/jsx/components/pages/welcome-page.jsx:150
 msgid "dismiss this page"
 msgstr ""
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:153
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
 msgid "."
 msgstr ""
 
@@ -666,17 +669,17 @@ msgid "Enter your license key"
 msgstr ""
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:55
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:85
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
 msgid "Enter your license key to activate the Pro version of this plugin. You can find your license key in your PublishPress account dashboard."
 msgstr ""
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:89
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
 msgid "Go to my profile to get the license key"
 msgstr ""
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:66
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:96
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:94
 msgid "Enter your license key here"
 msgstr ""
 
@@ -684,23 +687,27 @@ msgstr ""
 msgid "Activate and install the plugin"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:78
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:76
 msgid "Manage your license"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:108
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
 msgid "Your license key is: "
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:121
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
+msgid "(hidden)"
+msgstr ""
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:119
 msgid "Activate the license key for this site"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:128
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:126
 msgid "Edit the license key"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:131
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:129
 msgid "Deactivate the license key for this site"
 msgstr ""
 
@@ -773,12 +780,12 @@ msgstr ""
 msgid "Manage %s License"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:163
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:164
 #, js-format
 msgid "Activate %s License"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:171
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:172
 #, js-format
 msgid "More Info: %s"
 msgstr ""
@@ -1009,21 +1016,21 @@ msgstr ""
 msgid "%s license activation failed"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:695
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:697
 #, js-format
 msgid "%s updated successfully"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:712
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:714
 #, js-format
 msgid "%s update failed"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:774
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:776
 msgid "Too many requests. Please wait a few seconds and try again."
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:784
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:786
 #, js-format
 msgid "Cloudflare Ray ID: %s"
 msgstr ""
