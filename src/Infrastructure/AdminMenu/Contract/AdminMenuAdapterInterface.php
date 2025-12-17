@@ -57,6 +57,6 @@ interface AdminMenuAdapterInterface
         string $capability,
         string $menuSlug,
         callable $callback,
-        int $position = null
+        ?int $position = null
     ): void;
 }
