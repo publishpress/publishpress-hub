@@ -10,7 +10,7 @@
 
 import { memo, useMemo } from '@wordpress/element';
 
-import { __ } from '@publishpress-hub/i18n';
+import { __, sprintf } from '@publishpress-hub/i18n';
 
 import { Badge } from '../../badge/badge';
 import { Tooltip } from '../../tooltip';
@@ -162,22 +162,20 @@ const StatusFlagComponent = ({
         return null;
     }, [statusBadgeProps, pluginFamily]);
 
-    const updateBadgeProps = hasUpdate ? STATUS_BADGE_CONFIGS.updateAvailable : null;
-
-    const updateBadge = updateBadgeProps ? (
-        updateBadgeTooltip ? (
-            <Tooltip text={updateBadgeTooltip} placement='top' useCustom={true}>
-                <Badge {...updateBadgeProps}>{updateBadgeProps.text}</Badge>
-            </Tooltip>
-        ) : (
-            <Badge {...updateBadgeProps}>{updateBadgeProps.text}</Badge>
-        )
-    ) : null;
-
     return (
         <div className='pp-hub-status-flag' style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
             <Badge {...statusBadgeProps}>{statusBadgeProps.text}</Badge>
-            {updateBadge}
+            {hasUpdate && (
+                <Tooltip
+                    text={updateBadgeTooltip || __('Update Available', 'publishpress-hub')}
+                    placement='top'
+                    useCustom={true}
+                >
+                    <Badge {...STATUS_BADGE_CONFIGS.updateAvailable}>
+                        {STATUS_BADGE_CONFIGS.updateAvailable.text}
+                    </Badge>
+                </Tooltip>
+            )}
             {expirationDate && (
                 <span style={{ fontSize: '12px', color: 'var(--pp-hub-text-secondary, #666)' }}>
                     {__('Expires', 'publishpress-hub')} {expirationDate}

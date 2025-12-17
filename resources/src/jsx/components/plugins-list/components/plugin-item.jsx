@@ -72,13 +72,12 @@ const PluginItemComponent = ({
         isDeactivating,
         isActivating,
         isUninstalling,
-        isDeactivating,
-        isActivating,
+        isUpdating,
         isUpgrading,
         isResolvingConflict,
         isActivatingLicense,
         isDeactivatingLicense,
-    }), [isDeactivating, isActivating, isUninstalling, isActivatingLicense, isDeactivatingLicense]);
+    }), [isDeactivating, isActivating, isUninstalling, isUpdating, isActivatingLicense, isDeactivatingLicense]);
 
     const handlers = useMemo(() => ({
         onDeactivate,
@@ -87,11 +86,11 @@ const PluginItemComponent = ({
         onDeactivateLicense,
     }), [onDeactivate, onActivate, onUninstall, onDeactivateLicense]);
 
-    const actionButtonsData = useActionButtons(pluginFamily, status, loadingStates, handlers, onOpenPluginInfo);
+    const actionButtonsData = useActionButtons(pluginFamily, status, loadingStates, handlers, onOpenPluginInfo, onUpdate, isUpdating);
 
     const inProgress = useMemo(() =>
-        isInstalling || isUpgrading || isUpdating || isResolvingConflict,
-        [isInstalling, isUpgrading, isUpdating, isResolvingConflict]
+        isInstalling || isUpgrading || isResolvingConflict,
+        [isInstalling, isUpgrading, isResolvingConflict]
     );
 
     const handleMouseEnter = useCallback(() => setIsHovered(true), []);

@@ -72,13 +72,6 @@ const ActionButtonComponent = ({
             };
         }
 
-        if (pluginFamily.hasUpdate && pluginFamily.hasAnyVersionInstalled && onUpdate) {
-            return {
-                ...ACTION_BUTTON_CONFIGS.update,
-                onClick: () => onUpdate(pluginFamily),
-            };
-        }
-
         if (!pluginFamily.hasAnyVersionInstalled) {
             return {
                 ...ACTION_BUTTON_CONFIGS.install,

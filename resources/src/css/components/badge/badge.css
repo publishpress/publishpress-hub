@@ -106,14 +106,14 @@
 
 
 .pp-hub-badge.update-available {
-    background-color: rgba(255, 152, 0, 0.15);
-    color: #e65100;
-    border: 1px solid rgba(255, 152, 0, 0.4);
+    background-color: rgba(147, 51, 234, 0.85);
+    color: #ffffff;
     cursor: help;
+    font-weight: 700;
 }
 
 .pp-hub-plugins-list-item:hover .pp-hub-badge.update-available {
-    background-color: rgba(255, 152, 0, 0.2);
+    background-color: rgba(147, 51, 234, 0.95);
 }
 
 .pp-hub-badge-icon .dashicons {

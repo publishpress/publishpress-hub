@@ -150,6 +150,28 @@
     color: var(--pp-hub-text-error);
 }
 
+.pp-hub-plugin-update-button {
+    font-size: 12px !important;
+    padding: 4px 10px !important;
+    height: auto !important;
+    line-height: 1.2 !important;
+    min-height: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+}
+
+.pp-hub-plugin-update-button svg,
+.pp-hub-plugin-update-button .dashicons {
+    width: 14px !important;
+    height: 14px !important;
+    font-size: 14px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    vertical-align: middle !important;
+}
+
+
 .pp-hub-plugins-list-message {
     display: flex;
     justify-content: center;

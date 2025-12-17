@@ -5872,13 +5872,6 @@ var ActionButtonComponent = function ActionButtonComponent(_ref) {
         }
       });
     }
-    if (pluginFamily.hasUpdate && pluginFamily.hasAnyVersionInstalled && onUpdate) {
-      return _objectSpread(_objectSpread({}, ACTION_BUTTON_CONFIGS.update), {}, {
-        onClick: function onClick() {
-          return onUpdate(pluginFamily);
-        }
-      });
-    }
     if (!pluginFamily.hasAnyVersionInstalled) {
       return _objectSpread(_objectSpread({}, ACTION_BUTTON_CONFIGS.install), {}, {
         onClick: function onClick() {
@@ -6906,10 +6899,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _action_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./action-button */ "./resources/src/jsx/components/plugins-list/components/action-button.jsx");
 /* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../buttons/button */ "./resources/src/jsx/components/buttons/button.jsx");
 /* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks */ "./resources/src/jsx/components/plugins-list/hooks/index.jsx");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -6972,12 +6961,17 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     iconSrc = _usePluginDisplayInfo.iconSrc,
     displayName = _usePluginDisplayInfo.displayName;
   var loadingStates = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    return _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty({
+    return {
       isDeactivating: isDeactivating,
       isActivating: isActivating,
-      isUninstalling: isUninstalling
-    }, "isDeactivating", isDeactivating), "isActivating", isActivating), "isUpgrading", isUpgrading), "isResolvingConflict", isResolvingConflict), "isActivatingLicense", isActivatingLicense), "isDeactivatingLicense", isDeactivatingLicense);
-  }, [isDeactivating, isActivating, isUninstalling, isActivatingLicense, isDeactivatingLicense]);
+      isUninstalling: isUninstalling,
+      isUpdating: isUpdating,
+      isUpgrading: isUpgrading,
+      isResolvingConflict: isResolvingConflict,
+      isActivatingLicense: isActivatingLicense,
+      isDeactivatingLicense: isDeactivatingLicense
+    };
+  }, [isDeactivating, isActivating, isUninstalling, isUpdating, isActivatingLicense, isDeactivatingLicense]);
   var handlers = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     return {
       onDeactivate: onDeactivate,
@@ -6986,10 +6980,10 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
       onDeactivateLicense: onDeactivateLicense
     };
   }, [onDeactivate, onActivate, onUninstall, onDeactivateLicense]);
-  var actionButtonsData = (0,_hooks__WEBPACK_IMPORTED_MODULE_7__.useActionButtons)(pluginFamily, status, loadingStates, handlers, onOpenPluginInfo);
+  var actionButtonsData = (0,_hooks__WEBPACK_IMPORTED_MODULE_7__.useActionButtons)(pluginFamily, status, loadingStates, handlers, onOpenPluginInfo, onUpdate, isUpdating);
   var inProgress = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    return isInstalling || isUpgrading || isUpdating || isResolvingConflict;
-  }, [isInstalling, isUpgrading, isUpdating, isResolvingConflict]);
+    return isInstalling || isUpgrading || isResolvingConflict;
+  }, [isInstalling, isUpgrading, isResolvingConflict]);
   var handleMouseEnter = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
     return setIsHovered(true);
   }, []);
@@ -7273,12 +7267,6 @@ var StatusFlagComponent = function StatusFlagComponent(_ref) {
     }
     return null;
   }, [statusBadgeProps, pluginFamily]);
-  var updateBadgeProps = hasUpdate ? STATUS_BADGE_CONFIGS.updateAvailable : null;
-  var updateBadge = updateBadgeProps ? updateBadgeTooltip ? /*#__PURE__*/React.createElement(_tooltip__WEBPACK_IMPORTED_MODULE_3__.Tooltip, {
-    text: updateBadgeTooltip,
-    placement: "top",
-    useCustom: true
-  }, /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_2__.Badge, updateBadgeProps, updateBadgeProps.text)) : /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_2__.Badge, updateBadgeProps, updateBadgeProps.text) : null;
   return /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-status-flag",
     style: {
@@ -7287,7 +7275,11 @@ var StatusFlagComponent = function StatusFlagComponent(_ref) {
       gap: '8px',
       flexWrap: 'wrap'
     }
-  }, /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_2__.Badge, statusBadgeProps, statusBadgeProps.text), updateBadge, expirationDate && /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_2__.Badge, statusBadgeProps, statusBadgeProps.text), hasUpdate && /*#__PURE__*/React.createElement(_tooltip__WEBPACK_IMPORTED_MODULE_3__.Tooltip, {
+    text: updateBadgeTooltip || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Update Available', 'publishpress-hub'),
+    placement: "top",
+    useCustom: true
+  }, /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_2__.Badge, STATUS_BADGE_CONFIGS.updateAvailable, STATUS_BADGE_CONFIGS.updateAvailable.text)), expirationDate && /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: '12px',
       color: 'var(--pp-hub-text-secondary, #666)'
@@ -7367,7 +7359,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var useActionButtons = function useActionButtons(pluginFamily, status, loadingStates, handlers, onOpenPluginInfo) {
+var useActionButtons = function useActionButtons(pluginFamily, status, loadingStates, handlers, onOpenPluginInfo, onUpdate, isUpdating) {
   var isActive = status.isActive,
     isInstalled = status.isInstalled,
     hasConflictingInstallations = status.hasConflictingInstallations;
@@ -7380,24 +7372,42 @@ var useActionButtons = function useActionButtons(pluginFamily, status, loadingSt
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     var buttons = [];
 
-    // Add renewal link if license is expired (show first in row actions)
+    // Add update button if update is available (show first in row actions)
+    if (pluginFamily.hasUpdate && pluginFamily.hasAnyVersionInstalled && onUpdate) {
+      var installedPlugin = pluginFamily.freePlugin.isInstalled ? pluginFamily.freePlugin : pluginFamily.proPlugin;
+      var currentVersion = installedPlugin.version || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Unknown', 'publishpress-hub');
+      var availableVersion = pluginFamily.availableVersion || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('latest', 'publishpress-hub');
+      buttons.push({
+        key: 'update',
+        variant: 'link',
+        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Update to v%s', 'publishpress-hub'), availableVersion),
+        isLoading: isUpdating,
+        onClick: function onClick() {
+          return onUpdate(pluginFamily);
+        }
+      });
+    }
+
+    // Add renewal link if license is expired (show first in row actions after update)
     if (pluginFamily.proPlugin.isInstalled && pluginFamily.proPlugin.isExpired && pluginFamily.proPlugin.detailsUrl) {
       buttons.push({
         key: 'renew',
         variant: 'link',
         href: pluginFamily.proPlugin.detailsUrl,
         className: 'is-renew-link',
-        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Renew', 'publishpress-hub')
+        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Renew', 'publishpress-hub'),
+        disabled: isUpdating ? false : undefined
       });
     }
-    // Add renewal link if license is expiring within 30 days (show first in row actions)
+    // Add renewal link if license is expiring within 30 days (show first in row actions after update)
     else if (pluginFamily.proPlugin.isInstalled && pluginFamily.proPlugin.isLicensed && !pluginFamily.proPlugin.isExpired && pluginFamily.proPlugin.daysUntilExpiration !== undefined && pluginFamily.proPlugin.daysUntilExpiration >= 0 && pluginFamily.proPlugin.daysUntilExpiration <= 30 && pluginFamily.proPlugin.detailsUrl) {
       buttons.push({
         key: 'renew',
         variant: 'link',
         href: pluginFamily.proPlugin.detailsUrl,
         className: 'is-renew-link',
-        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Renew', 'publishpress-hub')
+        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Renew', 'publishpress-hub'),
+        disabled: isUpdating ? false : undefined
       });
     }
     if (isInstalled && !hasConflictingInstallations) {
@@ -7407,6 +7417,7 @@ var useActionButtons = function useActionButtons(pluginFamily, status, loadingSt
           variant: 'link',
           text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Deactivate', 'publishpress-hub'),
           isLoading: isDeactivating,
+          disabled: isUpdating ? false : undefined,
           onClick: function onClick() {
             return onDeactivate(pluginFamily);
           }
@@ -7417,6 +7428,7 @@ var useActionButtons = function useActionButtons(pluginFamily, status, loadingSt
           variant: 'link',
           text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate', 'publishpress-hub'),
           isLoading: isActivating,
+          disabled: isUpdating ? false : undefined,
           onClick: function onClick() {
             return onActivate(pluginFamily);
           }
@@ -7427,6 +7439,7 @@ var useActionButtons = function useActionButtons(pluginFamily, status, loadingSt
         variant: 'link',
         text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Uninstall', 'publishpress-hub'),
         isLoading: isUninstalling,
+        disabled: isUpdating ? false : undefined,
         className: 'is-danger',
         onClick: function onClick() {
           return onUninstall(pluginFamily);
@@ -7438,33 +7451,37 @@ var useActionButtons = function useActionButtons(pluginFamily, status, loadingSt
         key: 'free-details',
         variant: 'link',
         href: pluginFamily.freePlugin.detailsUrl,
-        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Free Details', 'publishpress-hub')
+        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Free Details', 'publishpress-hub'),
+        disabled: isUpdating ? false : undefined
       });
       buttons.push({
         key: 'pro-details',
         variant: 'link',
         href: pluginFamily.proPlugin.detailsUrl,
-        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pro Details', 'publishpress-hub')
+        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pro Details', 'publishpress-hub'),
+        disabled: isUpdating ? false : undefined
       });
     }
     buttons.push({
       key: 'changelogs',
       variant: 'link',
       href: pluginFamily.changelogUrl,
-      text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Changelogs', 'publishpress-hub')
+      text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Changelogs', 'publishpress-hub'),
+      disabled: isUpdating ? false : undefined
     });
     if (isInstalled && !hasConflictingInstallations && onOpenPluginInfo) {
       buttons.push({
         key: 'more-info',
         variant: 'link',
         text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('More Info', 'publishpress-hub'),
+        disabled: isUpdating ? false : undefined,
         onClick: function onClick() {
           return onOpenPluginInfo(pluginFamily);
         }
       });
     }
     return buttons;
-  }, [isInstalled, isActive, hasConflictingInstallations, isDeactivating, isActivating, isUninstalling, pluginFamily, onDeactivate, onActivate, onUninstall, onOpenPluginInfo]);
+  }, [isInstalled, isActive, hasConflictingInstallations, isDeactivating, isActivating, isUninstalling, isUpdating, pluginFamily, onDeactivate, onActivate, onUninstall, onOpenPluginInfo, onUpdate]);
 };
 
 /***/ }),
