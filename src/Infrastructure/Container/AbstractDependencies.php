@@ -121,6 +121,7 @@ abstract class AbstractDependencies
     // Application Services
     public const HUB_BOOTSTRAP_SERVICE = 'publishpress-hub.application.hub.bootstrap.service';
 
+    public const VERSION_SERVICE = 'publishpress-hub.application.version.service';
 
     public const PLUGIN_FAMILY_REPOSITORY = 'publishpress-hub.domain.plugin-family.repository';
 

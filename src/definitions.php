@@ -23,6 +23,7 @@ use PublishPress\Hub\Application\Service\License\LicenseStatusStorageService;
 use PublishPress\Hub\Application\Service\License\LicenseValidationBootstrapService;
 use PublishPress\Hub\Application\Service\License\ScheduledLicenseValidationService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
+use PublishPress\Hub\Application\Service\VersionService;
 use PublishPress\Hub\Application\UseCase\Plugin\ActivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\DeactivateLicenseUseCase;
@@ -206,6 +207,12 @@ return [
         fn(ContainerInterface $container) => new HubAccessService(
             $container->get(AbstractDependencies::SECURITY_SERVICE),
             $container->get(AbstractDependencies::HOOKS_SERVICE)
+        ),
+
+    AbstractDependencies::VERSION_SERVICE =>
+        fn(ContainerInterface $container) => new VersionService(
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER),
+            $container->get(AbstractDependencies::PLUGIN_VERSION)
         ),
 
     AbstractDependencies::LICENSE_VALIDATION_ACTION_HANDLER =>
