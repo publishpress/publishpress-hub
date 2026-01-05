@@ -41,6 +41,8 @@ use PublishPress\Hub\Infrastructure\AdminMenu\AdminMenuService;
 use PublishPress\Hub\Infrastructure\Cache\CacheService;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\EddSubscriptionAdapter;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\LicenseActivationService;
+use PublishPress\Hub\Infrastructure\Edd\Subscription\LicenseDeactivationService;
+use PublishPress\Hub\Infrastructure\Edd\Subscription\LicenseInfoService;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\LicenseStatusValidator;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\VersionCheckService;
 use PublishPress\Hub\Infrastructure\License\LicenseApiService;
@@ -297,14 +299,66 @@ return [
     AbstractDependencies::LICENSE_STATUS_VALIDATOR =>
         fn(ContainerInterface $container) => new LicenseStatusValidator(),
 
+    AbstractDependencies::LICENSE_INFO_SERVICE =>
+        function (ContainerInterface $container) {
+            $eddSubscriptionApiUrl = $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL);
+            $siteUrl = $container->get(AbstractDependencies::SITE_URL);
+            $userAgent = $container->get(AbstractDependencies::USER_AGENT);
+
+            $requestHeaders = [
+                'User-Agent' => $userAgent,
+                'Accept' => 'application/json, text/plain, */*',
+                'Accept-Language' => 'en-US,en;q=0.9',
+                'Accept-Encoding' => 'gzip, deflate',
+                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Connection' => 'keep-alive',
+                'Referer' => $siteUrl,
+                'Origin' => $siteUrl,
+                'Cache-Control' => 'no-cache',
+                'Pragma' => 'no-cache',
+            ];
+
+            return new LicenseInfoService(
+                $eddSubscriptionApiUrl,
+                $siteUrl,
+                $container->get(AbstractDependencies::REMOTE_SERVICE),
+                $container->get(AbstractDependencies::CACHE_SERVICE),
+                $requestHeaders
+            );
+        },
+
+    AbstractDependencies::LICENSE_DEACTIVATION_SERVICE =>
+        function (ContainerInterface $container) {
+            $eddSubscriptionApiUrl = $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL);
+            $siteUrl = $container->get(AbstractDependencies::SITE_URL);
+            $userAgent = $container->get(AbstractDependencies::USER_AGENT);
+
+            $requestHeaders = [
+                'User-Agent' => $userAgent,
+                'Accept' => 'application/json, text/plain, */*',
+                'Accept-Language' => 'en-US,en;q=0.9',
+                'Accept-Encoding' => 'gzip, deflate',
+                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Connection' => 'keep-alive',
+                'Referer' => $siteUrl,
+                'Origin' => $siteUrl,
+                'Cache-Control' => 'no-cache',
+                'Pragma' => 'no-cache',
+            ];
+
+            return new LicenseDeactivationService(
+                $eddSubscriptionApiUrl,
+                $siteUrl,
+                $container->get(AbstractDependencies::REMOTE_SERVICE),
+                $requestHeaders
+            );
+        },
+
     AbstractDependencies::EDD_SUBSCRIPTION_ADAPTER =>
         fn(ContainerInterface $container) => new EddSubscriptionAdapter(
-            $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
-            $container->get(AbstractDependencies::SITE_URL),
-            $container->get(AbstractDependencies::USER_AGENT),
-            $container->get(AbstractDependencies::REMOTE_SERVICE),
-            $container->get(AbstractDependencies::CACHE_SERVICE),
             $container->get(AbstractDependencies::LICENSE_ACTIVATION_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_DEACTIVATION_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_INFO_SERVICE),
             $container->get(AbstractDependencies::VERSION_CHECK_SERVICE),
             $container->get(AbstractDependencies::LICENSE_STATUS_VALIDATOR)
         ),
