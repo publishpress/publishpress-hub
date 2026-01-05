@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Edd\Subscription;
 
-use PublishPress\Hub\Domain\Plugin\Exception\LicenseActivationException;
-use PublishPress\Hub\Domain\Plugin\Exception\LicenseDeactivationException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseDisabledException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseExpiredException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseInvalidException;
@@ -29,7 +27,6 @@ use PublishPress\Hub\Domain\Plugin\Exception\LicenseNotActivableException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseServerException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseServerInvalidResponseException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseSiteInactiveException;
-use PublishPress\Hub\Domain\Plugin\Exception\UnknownLicenseServerException;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\Contract\LicenseActivationServiceInterface;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\Contract\LicenseDeactivationServiceInterface;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\Contract\LicenseInfoServiceInterface;
