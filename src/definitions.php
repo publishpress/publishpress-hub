@@ -41,6 +41,7 @@ use PublishPress\Hub\Infrastructure\AdminMenu\AdminMenuService;
 use PublishPress\Hub\Infrastructure\Cache\CacheService;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\EddSubscriptionAdapter;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\LicenseActivationService;
+use PublishPress\Hub\Infrastructure\Edd\Subscription\LicenseStatusValidator;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\VersionCheckService;
 use PublishPress\Hub\Infrastructure\License\LicenseApiService;
 use PublishPress\Hub\Infrastructure\Logger\Logger;
@@ -293,6 +294,9 @@ return [
             );
         },
 
+    AbstractDependencies::LICENSE_STATUS_VALIDATOR =>
+        fn(ContainerInterface $container) => new LicenseStatusValidator(),
+
     AbstractDependencies::EDD_SUBSCRIPTION_ADAPTER =>
         fn(ContainerInterface $container) => new EddSubscriptionAdapter(
             $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
@@ -301,7 +305,8 @@ return [
             $container->get(AbstractDependencies::REMOTE_SERVICE),
             $container->get(AbstractDependencies::CACHE_SERVICE),
             $container->get(AbstractDependencies::LICENSE_ACTIVATION_SERVICE),
-            $container->get(AbstractDependencies::VERSION_CHECK_SERVICE)
+            $container->get(AbstractDependencies::VERSION_CHECK_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_STATUS_VALIDATOR)
         ),
 
     AbstractDependencies::REMOTE_SERVICE =>

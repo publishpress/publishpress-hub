@@ -52,6 +52,8 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
 
     private VersionCheckServiceInterface $versionCheckService;
 
+    private LicenseStatusValidator $licenseStatusValidator;
+
     private const CACHE_TTL_IN_SECONDS = 10;
 
     private const TIMEOUT_IN_SECONDS = 15;
@@ -90,6 +92,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
      * @param CacheServiceInterface $cacheService The cache service.
      * @param LicenseActivationServiceInterface $licenseActivationService The license activation service.
      * @param VersionCheckServiceInterface $versionCheckService The version check service.
+     * @param LicenseStatusValidator $licenseStatusValidator The license status validator.
      * @since 1.0.0
      */
     public function __construct(
@@ -99,7 +102,8 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         RemoteServiceInterface $remoteService,
         CacheServiceInterface $cacheService,
         LicenseActivationServiceInterface $licenseActivationService,
-        VersionCheckServiceInterface $versionCheckService
+        VersionCheckServiceInterface $versionCheckService,
+        LicenseStatusValidator $licenseStatusValidator
     ) {
         $this->eddSubscriptionApiUrl = $eddSubscriptionApiUrl;
         $this->siteUrl = $siteUrl;
@@ -108,6 +112,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         $this->userAgent = $userAgent;
         $this->licenseActivationService = $licenseActivationService;
         $this->versionCheckService = $versionCheckService;
+        $this->licenseStatusValidator = $licenseStatusValidator;
     }
 
     /**
@@ -211,7 +216,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         $data = $this->getLicenseInfo($licenseKey, $downloadId, $force);
         $operation = 'is_license_valid';
 
-        $this->assertLicenseStatusOrThrow(
+        $this->licenseStatusValidator->assertLicenseStatusOrThrow(
             $data['license'],
             [
                 self::LICENSE_STATUS_VALID,
@@ -268,7 +273,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
     {
         $data = $this->licenseActivationService->activateLicense($licenseKey, $downloadId, $force);
 
-        $this->assertLicenseStatusOrThrow(
+        $this->licenseStatusValidator->assertLicenseStatusOrThrow(
             $data['license'],
             [self::LICENSE_STATUS_VALID],
             'activate_license'
@@ -333,72 +338,6 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         }
 
         return true;
-    }
-
-    /**
-     * Assert the license status or throw an exception.
-     *
-     * @param string $license The license status.
-     * @param array<string> $acceptableResults The acceptable results.
-     * @param string $operation The operation.
-     * @throws LicenseMissingException
-     * @throws LicenseMissingUrlException
-     * @throws LicenseNotActivableException
-     * @throws LicenseDisabledException
-     * @throws LicenseNoActivationsLeftException
-     * @throws LicenseExpiredException
-     * @throws LicenseKeyMismatchException
-     * @throws LicenseInvalidItemIdException
-     * @throws LicenseInvalidItemNameException
-     * @throws LicenseSiteInactiveException
-     * @throws LicenseInvalidException
-     * @throws LicenseServerException
-     * @return void
-     * @since 1.0.0
-     */
-    private function assertLicenseStatusOrThrow(
-        string $license,
-        array $acceptableResults,
-        string $operation = ''
-    ): void {
-        if (in_array($license, $acceptableResults)) {
-            return;
-        }
-
-        $context = [];
-
-        if ($operation) {
-            $context['operation'] = esc_html($operation);
-        }
-
-        // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
-        switch ($license) {
-            case 'missing':
-                throw new LicenseMissingException($context);
-            case 'missing_url':
-                throw new LicenseMissingUrlException($context);
-            case 'license_not_activable':
-                throw new LicenseNotActivableException($context);
-            case 'disabled':
-                throw new LicenseDisabledException($context);
-            case 'no_activations_left':
-                throw new LicenseNoActivationsLeftException($context);
-            case 'expired':
-                throw new LicenseExpiredException($context);
-            case 'key_mismatch':
-                throw new LicenseKeyMismatchException($context);
-            case 'invalid_item_id':
-                throw new LicenseInvalidItemIdException($context);
-            case 'item_name_mismatch':
-                throw new LicenseInvalidItemNameException($context);
-            case 'site_inactive':
-                throw new LicenseSiteInactiveException($context);
-            case 'invalid':
-                throw new LicenseInvalidException($context);
-            default:
-                throw new UnknownLicenseServerException($context);
-        }
-        // phpcs:enable WordPress.Security.EscapeOutput.ExceptionNotEscaped
     }
 
     /**
