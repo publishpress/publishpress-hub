@@ -40,6 +40,7 @@ use PublishPress\Hub\Domain\Plugin\Repository\PluginFamilyRepository;
 use PublishPress\Hub\Infrastructure\AdminMenu\AdminMenuService;
 use PublishPress\Hub\Infrastructure\Cache\CacheService;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\EddSubscriptionAdapter;
+use PublishPress\Hub\Infrastructure\Edd\Subscription\LicenseActivationService;
 use PublishPress\Hub\Infrastructure\License\LicenseApiService;
 use PublishPress\Hub\Infrastructure\Logger\Logger;
 use PublishPress\Hub\Infrastructure\Remote\RemoteService;
@@ -235,13 +236,42 @@ return [
             $container->get(AbstractDependencies::HOOKS_SERVICE)
         ),
 
+    AbstractDependencies::LICENSE_ACTIVATION_SERVICE =>
+        function (ContainerInterface $container) {
+            $eddSubscriptionApiUrl = $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL);
+            $siteUrl = $container->get(AbstractDependencies::SITE_URL);
+            $userAgent = $container->get(AbstractDependencies::USER_AGENT);
+
+            $requestHeaders = [
+                'User-Agent' => $userAgent,
+                'Accept' => 'application/json, text/plain, */*',
+                'Accept-Language' => 'en-US,en;q=0.9',
+                'Accept-Encoding' => 'gzip, deflate',
+                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Connection' => 'keep-alive',
+                'Referer' => $siteUrl,
+                'Origin' => $siteUrl,
+                'Cache-Control' => 'no-cache',
+                'Pragma' => 'no-cache',
+            ];
+
+            return new LicenseActivationService(
+                $eddSubscriptionApiUrl,
+                $siteUrl,
+                $container->get(AbstractDependencies::REMOTE_SERVICE),
+                $container->get(AbstractDependencies::CACHE_SERVICE),
+                $requestHeaders
+            );
+        },
+
     AbstractDependencies::EDD_SUBSCRIPTION_ADAPTER =>
         fn(ContainerInterface $container) => new EddSubscriptionAdapter(
             $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
             $container->get(AbstractDependencies::SITE_URL),
             $container->get(AbstractDependencies::USER_AGENT),
             $container->get(AbstractDependencies::REMOTE_SERVICE),
-            $container->get(AbstractDependencies::CACHE_SERVICE)
+            $container->get(AbstractDependencies::CACHE_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_ACTIVATION_SERVICE)
         ),
 
     AbstractDependencies::REMOTE_SERVICE =>

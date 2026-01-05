@@ -31,6 +31,7 @@ use PublishPress\Hub\Domain\Plugin\Exception\LicenseServerInvalidResponseExcepti
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseSiteInactiveException;
 use PublishPress\Hub\Domain\Plugin\Exception\UnknownLicenseServerException;
 use PublishPress\Hub\Infrastructure\Cache\Contract\CacheServiceInterface;
+use PublishPress\Hub\Infrastructure\Edd\Subscription\Contract\LicenseActivationServiceInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseAdapterInterface;
 use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
 use PublishPress\Hub\Infrastructure\Remote\Exception\RemoteAccessDeniedException;
@@ -45,6 +46,8 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
     private RemoteServiceInterface $remoteService;
 
     private CacheServiceInterface $cacheService;
+
+    private LicenseActivationServiceInterface $licenseActivationService;
 
     private const CACHE_TTL_IN_SECONDS = 10;
 
@@ -82,6 +85,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
      * @param string $userAgent The user agent.
      * @param RemoteServiceInterface $remoteService The remote service.
      * @param CacheServiceInterface $cacheService The cache service.
+     * @param LicenseActivationServiceInterface $licenseActivationService The license activation service.
      * @since 1.0.0
      */
     public function __construct(
@@ -89,13 +93,15 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         string $siteUrl,
         string $userAgent,
         RemoteServiceInterface $remoteService,
-        CacheServiceInterface $cacheService
+        CacheServiceInterface $cacheService,
+        LicenseActivationServiceInterface $licenseActivationService
     ) {
         $this->eddSubscriptionApiUrl = $eddSubscriptionApiUrl;
         $this->siteUrl = $siteUrl;
         $this->remoteService = $remoteService;
         $this->cacheService = $cacheService;
         $this->userAgent = $userAgent;
+        $this->licenseActivationService = $licenseActivationService;
     }
 
     /**
@@ -254,62 +260,12 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
      */
     public function activateLicense(string $licenseKey, int $downloadId, bool $force = false): bool
     {
-        $cacheKey = md5("edd_activate_license_{$licenseKey}_$downloadId");
-        $operation = 'activate_license';
-
-        $data = $this->cacheService->get($cacheKey);
-
-        if (empty($data) || $force) {
-            // Prepare request parameters
-            $requestBody = [
-                'edd_action' => 'activate_license',
-                'license' => $licenseKey,
-                'item_id' => $downloadId,
-                'url' => $this->siteUrl,
-            ];
-
-            $requestArgs = [
-                'body' => $requestBody,
-                'timeout' => self::TIMEOUT_IN_SECONDS,
-                'sslverify' => true,
-                'headers' => $this->getRequestHeaders(),
-            ];
-
-            // Debug: Log request details
-            HttpDebugger::debugRequest('POST', $this->eddSubscriptionApiUrl, $requestArgs);
-
-            $response = $this->remoteService->post(
-                $this->eddSubscriptionApiUrl,
-                $requestArgs
-            );
-
-            // Debug: Log response details
-            HttpDebugger::debugResponse($response);
-
-            if (is_wp_error($response)) {
-                throw new LicenseActivationException([
-                    'error_message' => esc_html($response->get_error_message()),
-                    'operation' => esc_html($operation),
-                ]);
-            }
-
-            $this->handlePossibleInvalidResponse($response, $operation);
-
-            $data = $this->remoteService->getDecodedBodyFromResponse($response);
-
-            if (empty($data) || !isset($data['license'])) {
-                throw new LicenseServerInvalidResponseException([
-                    'operation' => esc_html($operation),
-                ]);
-            }
-
-            $this->cacheService->set($cacheKey, $data, self::CACHE_TTL_IN_SECONDS);
-        }
+        $data = $this->licenseActivationService->activateLicense($licenseKey, $downloadId, $force);
 
         $this->assertLicenseStatusOrThrow(
             $data['license'],
             [self::LICENSE_STATUS_VALID],
-            $operation
+            'activate_license'
         );
 
         return true;
