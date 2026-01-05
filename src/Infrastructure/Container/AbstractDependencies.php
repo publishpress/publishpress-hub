@@ -112,6 +112,8 @@ abstract class AbstractDependencies
 
     public const LICENSE_ACTIVATION_SERVICE = 'publishpress-hub.infrastructure.edd.license-activation.service';
 
+    public const VERSION_CHECK_SERVICE = 'publishpress-hub.infrastructure.edd.version-check.service';
+
     public const REMOTE_SERVICE = 'publishpress-hub.infrastructure.remote.service';
 
     public const REMOTE_ADAPTER = 'publishpress-hub.infrastructure.remote.adapter';

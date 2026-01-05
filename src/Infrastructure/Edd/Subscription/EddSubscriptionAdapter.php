@@ -32,6 +32,7 @@ use PublishPress\Hub\Domain\Plugin\Exception\LicenseSiteInactiveException;
 use PublishPress\Hub\Domain\Plugin\Exception\UnknownLicenseServerException;
 use PublishPress\Hub\Infrastructure\Cache\Contract\CacheServiceInterface;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\Contract\LicenseActivationServiceInterface;
+use PublishPress\Hub\Infrastructure\Edd\Subscription\Contract\VersionCheckServiceInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseAdapterInterface;
 use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
 use PublishPress\Hub\Infrastructure\Remote\Exception\RemoteAccessDeniedException;
@@ -48,6 +49,8 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
     private CacheServiceInterface $cacheService;
 
     private LicenseActivationServiceInterface $licenseActivationService;
+
+    private VersionCheckServiceInterface $versionCheckService;
 
     private const CACHE_TTL_IN_SECONDS = 10;
 
@@ -86,6 +89,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
      * @param RemoteServiceInterface $remoteService The remote service.
      * @param CacheServiceInterface $cacheService The cache service.
      * @param LicenseActivationServiceInterface $licenseActivationService The license activation service.
+     * @param VersionCheckServiceInterface $versionCheckService The version check service.
      * @since 1.0.0
      */
     public function __construct(
@@ -94,7 +98,8 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         string $userAgent,
         RemoteServiceInterface $remoteService,
         CacheServiceInterface $cacheService,
-        LicenseActivationServiceInterface $licenseActivationService
+        LicenseActivationServiceInterface $licenseActivationService,
+        VersionCheckServiceInterface $versionCheckService
     ) {
         $this->eddSubscriptionApiUrl = $eddSubscriptionApiUrl;
         $this->siteUrl = $siteUrl;
@@ -102,6 +107,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         $this->cacheService = $cacheService;
         $this->userAgent = $userAgent;
         $this->licenseActivationService = $licenseActivationService;
+        $this->versionCheckService = $versionCheckService;
     }
 
     /**
@@ -408,65 +414,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
      */
     public function getLastVersionInfo(string $licenseKey, int $downloadId, bool $force = false): array
     {
-        $cacheKey = md5("edd_get_plugin_info_{$licenseKey}_$downloadId");
-        $operation = 'get_last_version_info';
-
-        $data = $this->cacheService->get($cacheKey);
-
-        if (!empty($data) && !$force) {
-            return $data;
-        }
-
-        // Prepare request parameters
-        $requestBody = [
-            'edd_action' => 'get_version',
-            'item_id' => $downloadId,
-            'license' => $licenseKey,
-            'url' => $this->siteUrl,
-        ];
-
-        $requestArgs = [
-            'body' => $requestBody,
-            'timeout' => self::TIMEOUT_IN_SECONDS,
-            'sslverify' => true,
-            'headers' => $this->getRequestHeaders(),
-        ];
-
-        // Debug: Log request details
-        HttpDebugger::debugRequest('POST', $this->eddSubscriptionApiUrl, $requestArgs);
-
-        $response = $this->remoteService->post(
-            $this->eddSubscriptionApiUrl,
-            $requestArgs
-        );
-
-        // Debug: Log response details
-        HttpDebugger::debugResponse($response);
-
-        if (is_wp_error($response)) {
-            throw new LicenseServerException([
-                'error_message' => sprintf(
-                    // translators: %s is the error message
-                    esc_html__('Error getting license info: %s', 'publishpress-hub'),
-                    esc_html($response->get_error_message())
-                ),
-                'operation' => esc_html($operation),
-            ]);
-        }
-
-        $this->handlePossibleInvalidResponse($response, $operation);
-
-        $data = $this->remoteService->getDecodedBodyFromResponse($response);
-
-        if (empty($data)) {
-            throw new LicenseServerInvalidResponseException([
-                'operation' => esc_html($operation),
-            ]);
-        }
-
-        $this->cacheService->set($cacheKey, $data, self::CACHE_TTL_IN_SECONDS);
-
-        return $data;
+        return $this->versionCheckService->getLastVersionInfo($licenseKey, $downloadId, $force);
     }
 
     /**
