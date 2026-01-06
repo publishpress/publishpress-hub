@@ -6,7 +6,7 @@
  * Intercepts HTTP requests to external services and returns mock responses.
  * Only enabled in local/test environments.
  *
- * @package PublishPress\Hub\Testing
+ * @package Tests\Support
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
  * @license GPL v2 or later
@@ -15,7 +15,7 @@
 
 declare(strict_types=1);
 
-namespace PublishPress\Hub\Testing;
+namespace Tests\Support;
 
 /**
  * HTTP Mock class for intercepting external HTTP requests during tests.
