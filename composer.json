@@ -16,7 +16,7 @@
         "version-constant": "PUBLISHPRESS_HUB_VERSION",
         "generator":{
             "namespace": "PublishPress\\Hub",
-            "lib-class-test": "class_exists('PublishPress\\Hub\\Infrastructure\\Container\\ServiceContainer')",
+            "lib-class-test": "class_exists('PublishPress\\Hub\\Infrastructure\\Container\\DependencyContainer')",
             "action-initialize-priority": "-240",
             "action-register-priority": "-250",
             "src-dir": "src",
