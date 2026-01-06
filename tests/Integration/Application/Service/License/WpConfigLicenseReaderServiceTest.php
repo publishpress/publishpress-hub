@@ -43,6 +43,9 @@ class WpConfigLicenseReaderServiceTest extends NoTransactionWPTestCase
 
     /**
      * Test reading global license constant.
+     *
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testReadGlobalLicenseConstant(): void
     {
@@ -62,6 +65,9 @@ class WpConfigLicenseReaderServiceTest extends NoTransactionWPTestCase
 
     /**
      * Test reading per-plugin license constant.
+     *
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testReadPerPluginLicenseConstant(): void
     {
@@ -79,15 +85,29 @@ class WpConfigLicenseReaderServiceTest extends NoTransactionWPTestCase
 
     /**
      * Test per-plugin constant takes precedence over global.
+     *
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testPerPluginConstantTakesPrecedence(): void
     {
-        // Define both global and per-plugin constants
-        if (!defined(WpConfigLicenseReaderService::GLOBAL_LICENSE_CONSTANT)) {
+        // Skip if constants are already defined with wrong values
+        if (defined(WpConfigLicenseReaderService::GLOBAL_LICENSE_CONSTANT)) {
+            $value = constant(WpConfigLicenseReaderService::GLOBAL_LICENSE_CONSTANT);
+            if ($value !== 'global-key') {
+                $this->markTestSkipped('Global constant already defined with unexpected value');
+            }
+        } else {
             define(WpConfigLicenseReaderService::GLOBAL_LICENSE_CONSTANT, 'global-key');
         }
+
         $perPluginConstant = WpConfigLicenseReaderService::PER_PLUGIN_LICENSE_CONSTANT_PREFIX . 'TEST_PLUGIN';
-        if (!defined($perPluginConstant)) {
+        if (defined($perPluginConstant)) {
+            $value = constant($perPluginConstant);
+            if ($value !== 'plugin-key') {
+                $this->markTestSkipped('Per-plugin constant already defined with unexpected value');
+            }
+        } else {
             define($perPluginConstant, 'plugin-key');
         }
 
@@ -101,9 +121,21 @@ class WpConfigLicenseReaderServiceTest extends NoTransactionWPTestCase
 
     /**
      * Test reading returns empty array when no constants defined.
+     *
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testReadReturnsEmptyWhenNoConstantsDefined(): void
     {
+        // Skip if constants are already defined from previous tests
+        if (defined(WpConfigLicenseReaderService::GLOBAL_LICENSE_CONSTANT)) {
+            $this->markTestSkipped('Global constant already defined, cannot test empty state');
+        }
+        $perPluginConstant = WpConfigLicenseReaderService::PER_PLUGIN_LICENSE_CONSTANT_PREFIX . 'TEST_PLUGIN';
+        if (defined($perPluginConstant)) {
+            $this->markTestSkipped('Per-plugin constant already defined, cannot test empty state');
+        }
+
         // Don't define any constants
         $licenseKeys = $this->readerService->readLicenseKeysFromConstants();
 
@@ -113,10 +145,19 @@ class WpConfigLicenseReaderServiceTest extends NoTransactionWPTestCase
 
     /**
      * Test reading handles empty constant values.
+     *
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testReadHandlesEmptyConstantValues(): void
     {
-        if (!defined(WpConfigLicenseReaderService::GLOBAL_LICENSE_CONSTANT)) {
+        // Skip if constant is already defined with a non-empty value
+        if (defined(WpConfigLicenseReaderService::GLOBAL_LICENSE_CONSTANT)) {
+            $value = constant(WpConfigLicenseReaderService::GLOBAL_LICENSE_CONSTANT);
+            if (!empty($value)) {
+                $this->markTestSkipped('Global constant already defined with non-empty value, cannot test empty handling');
+            }
+        } else {
             define(WpConfigLicenseReaderService::GLOBAL_LICENSE_CONSTANT, '');
         }
 
@@ -131,56 +172,12 @@ class WpConfigLicenseReaderServiceTest extends NoTransactionWPTestCase
      */
     private function registerTestPluginFamilies(): void
     {
-        $pluginFamilies = require __DIR__ . '/../../../../src/Domain/Plugin/plugin-families.php';
-
-        foreach ($pluginFamilies as $pluginFamily) {
-            // Only register test plugins for testing
-            if (in_array($pluginFamily['slug'], ['checklists', 'authors'], true)) {
-                $family = $this->createPluginFamilyFromArray($pluginFamily);
-                $this->repository->registerFamily($family);
-            }
-        }
-
-        // Also register a test plugin family
+        // Only register test plugin families for isolated testing
         $testFamily = $this->createTestPluginFamily('test-plugin', 1000);
         $this->repository->registerFamily($testFamily);
 
         $testFamily2 = $this->createTestPluginFamily('test-plugin-2', 2000);
         $this->repository->registerFamily($testFamily2);
-    }
-
-    /**
-     * Create plugin family from array.
-     */
-    private function createPluginFamilyFromArray(array $data): \PublishPress\Hub\Domain\Plugin\Entity\PluginFamily
-    {
-        $family = new \PublishPress\Hub\Domain\Plugin\Entity\PluginFamily(
-            $data['name'],
-            $data['slug'],
-            $data['icon_file_name'],
-            $data['description'],
-            $data['changelog_url']
-        );
-
-        $freePlugin = new \PublishPress\Hub\Domain\Plugin\Entity\FreePlugin(
-            $data['free_name'],
-            $data['free_slug'],
-            $data['free_file_name'],
-            $data['free_details_url']
-        );
-
-        $proPlugin = new \PublishPress\Hub\Domain\Plugin\Entity\ProPlugin(
-            $data['pro_name'],
-            $data['pro_slug'],
-            $data['pro_file_name'],
-            $data['pro_details_url'],
-            $data['edd_item_id']
-        );
-
-        $family->setFreePlugin($freePlugin);
-        $family->setProPlugin($proPlugin);
-
-        return $family;
     }
 
     /**

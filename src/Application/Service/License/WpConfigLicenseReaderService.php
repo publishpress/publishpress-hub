@@ -93,7 +93,9 @@ class WpConfigLicenseReaderService
      */
     private function getPerPluginLicenseKey(string $slug): ?string
     {
-        $constantName = self::PER_PLUGIN_LICENSE_CONSTANT_PREFIX . strtoupper($slug);
+        // Convert slug to uppercase and replace hyphens with underscores for valid constant name
+        $constantSuffix = str_replace('-', '_', strtoupper($slug));
+        $constantName = self::PER_PLUGIN_LICENSE_CONSTANT_PREFIX . $constantSuffix;
 
         if (!defined($constantName)) {
             return null;

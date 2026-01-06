@@ -295,6 +295,33 @@ class PerPluginLicensePersistenceService implements LicensePersistenceInterface
     }
 
     /**
+     * Mark a license as coming from a constant or not.
+     *
+     * @param int $downloadId The download ID.
+     * @param bool $isFromConstant Whether the license comes from a constant.
+     * @since 1.0.0
+     */
+    public function markLicenseAsFromConstant(int $downloadId, bool $isFromConstant): void
+    {
+        $optionKey = 'publishpress_hub_license_source_' . $downloadId;
+        $this->optionsAdapter->updateOption($optionKey, $isFromConstant ? 'constant' : 'manual');
+    }
+
+    /**
+     * Check if a license comes from a constant.
+     *
+     * @param int $downloadId The download ID.
+     * @return bool True if the license comes from a constant, false otherwise.
+     * @since 1.0.0
+     */
+    public function isLicenseFromConstant(int $downloadId): bool
+    {
+        $optionKey = 'publishpress_hub_license_source_' . $downloadId;
+        $source = $this->optionsAdapter->getOption($optionKey);
+        return $source === 'constant';
+    }
+
+    /**
      * Get the plugin family slug by download ID.
      *
      * @param int $downloadId The download ID to get the plugin family slug for.

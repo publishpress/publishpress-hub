@@ -133,6 +133,7 @@
         "check:cs": "phpcs",
         "check:stan": "phpstan analyse . --memory-limit=1024M",
         "check:phpmd": "phpmd src ansi phpmd.ruleset.xml",
+        "check:longpath": "bash -c \"if [ ! -d 'dist/publishpress-hub' ]; then composer build:dir; fi && longpath dist/publishpress-hub/\"",
         "fix:cs": "phpcbf --standard=.phpcs.xml",
         "fix:php": [
             "php-cs-fixer fix .",
