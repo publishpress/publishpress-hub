@@ -31,4 +31,3 @@ interface LicenseDeactivationServiceInterface
      */
     public function deactivateLicense(string $licenseKey, int $downloadId): array;
 }
-

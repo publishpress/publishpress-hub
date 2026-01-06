@@ -108,4 +108,3 @@ class WpConfigLicenseReaderService
         return trim($value);
     }
 }
-

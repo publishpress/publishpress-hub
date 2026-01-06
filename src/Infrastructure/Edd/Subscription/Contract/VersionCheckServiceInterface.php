@@ -32,4 +32,3 @@ interface VersionCheckServiceInterface
      */
     public function getLastVersionInfo(string $licenseKey, int $downloadId, bool $force = false): array;
 }
-
