@@ -54,7 +54,7 @@ jobs:
       - name: Fix permissions
         run: |
           docker ps
-          docker exec publishpress-hub_env_wp_test chmod -R 777 /var/www/html/wp-content
+          docker exec publishpress-hub-env-test-wp chmod -R 777 /var/www/html/wp-content
 
       - name: Run Unit Tests
         run: |
