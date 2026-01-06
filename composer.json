@@ -106,6 +106,7 @@
             "@build:js-dev"
         ],
         "build:js:watch": "cross-env NODE_ENV=development npx webpack --watch --progress",
+        "info:versions": "bash ./dev-workspace/scripts/dependency-versions.sh",
         "profile:js": "cross-env NODE_ENV=production npx webpack --profile",
         "watch": "cross-env NODE_ENV=development npx webpack --watch --progress",
         "watch:prototype": "cross-env NODE_ENV=development npx webpack --watch --progress --config webpack.prototype.config.js",
@@ -130,7 +131,7 @@
         "check:php-8.4": "phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.4",
         "check:lint": "phplint --no-cache",
         "check:cs": "phpcs",
-        "check:stan": "phpstan",
+        "check:stan": "phpstan analyse . --memory-limit=1024M",
         "check:phpmd": "phpmd src ansi phpmd.ruleset.xml",
         "fix:cs": "phpcbf --standard=.phpcs.xml",
         "fix:php": [
