@@ -50,6 +50,10 @@ jobs:
       - name: Start services
         run: |
           composer test:up
+        timeout-minutes: 10
+        env:
+          WP_READY_MAX_ATTEMPTS: 60
+          WP_READY_INTERVAL: 5
 
       - name: Fix permissions
         run: |
@@ -59,13 +63,26 @@ jobs:
       - name: Run Unit Tests
         run: |
           composer test Unit
+        timeout-minutes: 5
 
       - name: Run Integration Tests
         run: |
           composer test Integration
+        timeout-minutes: 10
 
       - name: Run API Tests
         run: |
           composer test API
+        timeout-minutes: 5
+
+      - name: Show container logs on failure
+        if: failure()
+        run: |
+          echo "=== Test WordPress Container Logs ==="
+          docker logs publishpress-hub-env-test-wp || true
+          echo "=== Test WP-CLI Container Logs ==="
+          docker logs publishpress-hub-env-test-wpcli || true
+          echo "=== Test DB Container Logs ==="
+          docker logs publishpress-hub-env-test-db || true
 
 
