@@ -149,6 +149,7 @@
         ],
         "test:down": "bash dev-workspace/scripts/env.sh down test",
         "test:restart": "bash dev-workspace/scripts/env.sh restart test",
+        "test:info": "bash dev-workspace/scripts/env.sh info test",
         "test:stop": "bash dev-workspace/scripts/env.sh stop test",
         "test:clean": [
             "bash dev-workspace/scripts/env.sh cleanup test",
