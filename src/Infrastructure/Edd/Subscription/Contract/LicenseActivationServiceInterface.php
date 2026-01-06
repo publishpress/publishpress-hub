@@ -56,4 +56,3 @@ interface LicenseActivationServiceInterface
      */
     public function activateLicense(string $licenseKey, int $downloadId, bool $force = false): array;
 }
-

@@ -151,4 +151,3 @@ class VersionService
         return $version !== false ? $version : '';
     }
 }
-

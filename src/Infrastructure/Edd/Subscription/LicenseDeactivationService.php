@@ -145,4 +145,3 @@ class LicenseDeactivationService implements LicenseDeactivationServiceInterface
         }
     }
 }
-

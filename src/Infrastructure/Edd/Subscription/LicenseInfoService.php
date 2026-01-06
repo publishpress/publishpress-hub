@@ -184,4 +184,3 @@ class LicenseInfoService implements LicenseInfoServiceInterface
         }
     }
 }
-

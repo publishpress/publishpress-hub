@@ -167,4 +167,3 @@ class VersionCheckService implements VersionCheckServiceInterface
         }
     }
 }
-

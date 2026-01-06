@@ -225,8 +225,10 @@ class WPFileSystemAdapter
         // Ensure the resolved path is within one of the allowed base directories
         $isAllowed = false;
         foreach ($this->allowedBasePaths as $basePath) {
-            if (strpos(trailingslashit($absolutePath), $basePath) === 0 ||
-                strpos($absolutePath, rtrim($basePath, '/\\')) === 0) {
+            if (
+                strpos(trailingslashit($absolutePath), $basePath) === 0 ||
+                strpos($absolutePath, rtrim($basePath, '/\\')) === 0
+            ) {
                 $isAllowed = true;
                 break;
             }

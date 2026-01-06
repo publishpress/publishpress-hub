@@ -32,4 +32,3 @@ interface LicenseInfoServiceInterface
      */
     public function getLicenseInfo(string $licenseKey, int $downloadId, bool $force = false): array;
 }
-

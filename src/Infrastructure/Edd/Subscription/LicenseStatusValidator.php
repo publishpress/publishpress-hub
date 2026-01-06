@@ -114,4 +114,3 @@ class LicenseStatusValidator
         // phpcs:enable WordPress.Security.EscapeOutput.ExceptionNotEscaped
     }
 }
-

@@ -178,4 +178,3 @@ class LicenseActivationService implements LicenseActivationServiceInterface
         }
     }
 }
-

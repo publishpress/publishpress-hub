@@ -212,5 +212,4 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
     {
         return $this->versionCheckService->getLastVersionInfo($licenseKey, $downloadId, $force);
     }
-
 }
