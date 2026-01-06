@@ -116,7 +116,8 @@ class ScheduledLicenseValidationService
         $this->logger->log('Starting scheduled license validation');
 
         try {
-            // Get all plugin families with updated status
+            // Retrieve all plugin families with their current installation/activation status
+            // This ensures we only validate licenses for plugins that are actually installed
             $families = $this->pluginStatusService->getAllPluginFamiliesWithUpdatedStatus();
 
             $validatedCount = 0;
@@ -125,7 +126,8 @@ class ScheduledLicenseValidationService
             foreach ($families as $family) {
                 $proPlugin = $family->getProPlugin();
 
-                // Only validate if plugin is installed and has a license key
+                // Skip validation if plugin is not installed or doesn't have a license yet
+                // This prevents unnecessary API calls for unlicensed plugins
                 if (!$proPlugin->isInstalled() || !$proPlugin->isLicensed()) {
                     continue;
                 }
@@ -133,50 +135,62 @@ class ScheduledLicenseValidationService
                 $downloadId = $proPlugin->getDownloadId();
                 $licenseKey = $this->licensePersistence->getLicenseKey($downloadId);
 
+                // Double-check license key exists (isLicensed() might be cached)
                 if (empty($licenseKey)) {
                     continue;
                 }
 
                 try {
-                    // Make one API request per license key
+                    // Force fresh API call to get latest license status from EDD server
+                    // This bypasses cache to ensure scheduled validation uses real-time data
                     $licenseInfo = $this->licenseManagement->getLicenseInfo($licenseKey, $downloadId, true);
 
-                    // Extract expiration date from license info
+                    // Parse expiration date from API response
+                    // EDD can return various formats: timestamp, date string, 'lifetime', 'never', or empty
                     $expirationDate = null;
                     $isLifetime = false;
                     if (isset($licenseInfo['expires'])) {
                         $expiresValue = $licenseInfo['expires'];
-                        // Check if it's a lifetime license
+
+                        // Detect lifetime licenses (no expiration)
+                        // EDD uses different values to indicate lifetime: empty, 'lifetime', or 'never'
                         if (empty($expiresValue) || $expiresValue === 'lifetime' || $expiresValue === 'never') {
                             $isLifetime = true;
                             $expirationDate = null;
                         } else {
+                            // Convert whatever format EDD sends to ISO format (YYYY-MM-DD)
                             $expirationDate = $this->convertExpirationToIsoFormat($expiresValue);
                         }
                     }
 
-                    // Determine if license is expired
-                    // Lifetime licenses are never expired
+                    // Calculate if license has expired by comparing dates at midnight
+                    // Using midnight comparison ensures consistent day-level expiration
+                    // (a license expiring "2025-01-05" expires at start of that day, not end)
                     $isExpired = false;
                     if (!$isLifetime && $expirationDate !== null) {
+                        // Normalize both dates to midnight to compare days, not times
                         $today = new \DateTimeImmutable();
                         $today = $today->setTime(0, 0, 0, 0);
                         $expiration = new \DateTimeImmutable($expirationDate);
                         $expiration = $expiration->setTime(0, 0, 0, 0);
+
+                        // License is expired if expiration date is in the past
                         $isExpired = $expiration < $today;
                     }
 
-                    // Store expiration status
+                    // Store expiration status in transient for quick access by UI
+                    // This allows the dashboard to show expiration warnings without API calls
                     $this->licenseStatusStorage->storeLicenseExpirationStatus(
                         $downloadId,
                         $isExpired,
                         $expirationDate
                     );
 
-                    // Update expiration date in persistence
-                    // For lifetime licenses, clear any previously stored expiration date
+                    // Persist expiration date to WordPress options for permanent storage
+                    // Lifetime licenses store null to indicate no expiration
                     if ($isLifetime) {
-                        // Clear stored expiration date for lifetime licenses
+                        // Clear any previously stored expiration date for lifetime licenses
+                        // This handles case where license was upgraded from annual to lifetime
                         $this->licensePersistence->storeLicenseExpirationDate($downloadId, null);
                     } elseif ($expirationDate !== null) {
                         $this->licensePersistence->storeLicenseExpirationDate($downloadId, $expirationDate);
@@ -193,7 +207,8 @@ class ScheduledLicenseValidationService
                         ),
                         $e
                     );
-                    // Continue with next license
+                    // Continue with next license even if one fails
+                    // This ensures one problematic license doesn't block validation of others
                 }
             }
 
@@ -224,20 +239,26 @@ class ScheduledLicenseValidationService
      */
     private function convertExpirationToIsoFormat($expires): ?string
     {
+        // Handle lifetime licenses or invalid values
         if (empty($expires) || $expires === 'lifetime' || $expires === 'never') {
             return null;
         }
 
-        // If it's a numeric timestamp
+        // Handle numeric Unix timestamps from EDD
+        // EDD typically sends timestamps for expiration dates
         if (is_numeric($expires)) {
             $timestamp = (int) $expires;
-            // Check if it's a valid timestamp (not year 1970 or before)
+
+            // Validate timestamp is in reasonable range
+            // Reject timestamps before 1970 or after 2038 (32-bit Unix timestamp limit)
             if ($timestamp > 0 && $timestamp < 2147483647) {
+                // Use gmdate for UTC consistency across servers
                 return gmdate('Y-m-d', $timestamp);
             }
         }
 
-        // If it's already a date string, try to parse it
+        // Handle date strings (fallback for non-standard EDD responses)
+        // EDD might send dates as "2025-12-31" or "December 31, 2025"
         if (is_string($expires)) {
             $timestamp = strtotime($expires);
             if ($timestamp !== false && $timestamp > 0) {
@@ -245,6 +266,8 @@ class ScheduledLicenseValidationService
             }
         }
 
+        // Return null if format is unrecognized
+        // Caller should handle this as invalid expiration data
         return null;
     }
 }

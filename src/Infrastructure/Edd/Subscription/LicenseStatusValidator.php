@@ -55,41 +55,60 @@ class LicenseStatusValidator
         array $acceptableResults,
         string $operation = ''
     ): void {
+        // Early return if license status matches expected results
+        // This allows callers to define what statuses are acceptable for their specific operation
         if (in_array($license, $acceptableResults, true)) {
             return;
         }
 
+        // Build exception context to help identify where the error occurred
         $context = [];
 
         if ($operation) {
             $context['operation'] = esc_html($operation);
         }
 
+        // Map EDD license status codes to domain-specific exceptions
+        // These status codes come from EDD Software Licensing API responses
+        // and represent different business constraints and error conditions
         // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
         switch ($license) {
             case 'missing':
+                // License key was not provided in the API request
                 throw new LicenseMissingException($context);
             case 'missing_url':
+                // Site URL was not provided in the API request (required for site-specific activation)
                 throw new LicenseMissingUrlException($context);
             case 'license_not_activable':
+                // License exists but cannot be activated (e.g., draft status in EDD)
                 throw new LicenseNotActivableException($context);
             case 'disabled':
+                // License was manually disabled by store administrator
                 throw new LicenseDisabledException($context);
             case 'no_activations_left':
+                // All available site activations for this license have been used
                 throw new LicenseNoActivationsLeftException($context);
             case 'expired':
+                // License subscription has expired and is no longer valid
                 throw new LicenseExpiredException($context);
             case 'key_mismatch':
+                // Provided license key doesn't match the one stored for this site
                 throw new LicenseKeyMismatchException($context);
             case 'invalid_item_id':
+                // Download ID doesn't match the product associated with this license
                 throw new LicenseInvalidItemIdException($context);
             case 'item_name_mismatch':
+                // Product name doesn't match the one associated with this license
                 throw new LicenseInvalidItemNameException($context);
             case 'site_inactive':
+                // This site was previously activated but is now inactive (deactivated)
                 throw new LicenseSiteInactiveException($context);
             case 'invalid':
+                // License key doesn't exist in the EDD system
                 throw new LicenseInvalidException($context);
             default:
+                // Received an unexpected status code from EDD API
+                // This may indicate API changes or network issues
                 throw new UnknownLicenseServerException($context);
         }
         // phpcs:enable WordPress.Security.EscapeOutput.ExceptionNotEscaped
