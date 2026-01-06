@@ -88,6 +88,7 @@
             "@build:loader",
             "/scripts/pbuild build"
         ],
+        "build:dir": "/scripts/pbuild build-dir",
         "build:loader": "vendor/bin/version-loader-generator",
         "build:lang-pot": "wp i18n make-pot . ./languages/publishpress-hub.pot --domain=publishpress-hub --exclude=dev-workspace,.wordpress-org,.github,dist,tests,lib,tmp,doc,*.js,*.js.map --allow-root",
         "build:lang-mo": "wp i18n make-mo ./languages ./languages --allow-root",
