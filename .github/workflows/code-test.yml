@@ -90,7 +90,7 @@ jobs:
 
       - name: Run API Tests
         run: |
-          composer test API
+          composer test Api
         timeout-minutes: 5
 
       - name: Show container logs on failure
