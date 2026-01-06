@@ -42,6 +42,16 @@ jobs:
         run: |
           cp $GITHUB_WORKSPACE/.env.example $GITHUB_WORKSPACE/.env
 
+      - name: Prepare cache directories
+        run: |
+          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/test-wp/html
+          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/test-wp/tmp
+          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/test-wpcli/tmp
+          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/test-db/mysql
+          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/test-db/logs
+          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/mailhog/maildir
+          chmod -R 777 $GITHUB_WORKSPACE/dev-workspace/.cache
+
       - name: Prepare composer
         run: |
           $GITHUB_WORKSPACE/dev-workspace/run composer validate
@@ -55,10 +65,11 @@ jobs:
           WP_READY_MAX_ATTEMPTS: 60
           WP_READY_INTERVAL: 5
 
-      - name: Fix permissions
+      - name: Verify container status
         run: |
           docker ps
-          docker exec publishpress-hub-env-test-wp chmod -R 777 /var/www/html/wp-content
+          echo "Checking marker file..."
+          ls -la $GITHUB_WORKSPACE/dev-workspace/.cache/test-wpcli/tmp/ || true
 
       - name: Run Unit Tests
         run: |
