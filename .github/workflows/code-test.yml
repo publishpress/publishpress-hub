@@ -74,6 +74,10 @@ jobs:
           sudo chown -R $(id -u):$(id -g) $GITHUB_WORKSPACE/dev-workspace/.cache
           sudo chmod -R 777 $GITHUB_WORKSPACE/dev-workspace/.cache
 
+      - name: Build Codeception support classes
+        run: |
+          vendor/bin/codecept build
+
       - name: Run Unit Tests
         run: |
           composer test Unit
