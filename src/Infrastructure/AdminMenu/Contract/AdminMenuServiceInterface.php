@@ -15,26 +15,24 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Infrastructure\AdminMenu\Contract;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
-use PublishPress\Hub\Infrastructure\AdminMenu\Entity\MenuPage;
-use PublishPress\Hub\Infrastructure\AdminMenu\Entity\SubmenuPage;
 
 interface AdminMenuServiceInterface extends BootableInterface
 {
     /**
      * Add a menu page.
      *
-     * @param MenuPage $menuPage The menu page to add.
+     * @param array<string, mixed> $menuPage The menu page to add.
      * @since 1.0.0
      */
-    public function addMenuPage(MenuPage $menuPage): void;
+    public function addMenuPage(array $menuPage): void;
 
     /**
      * Add a submenu page.
      *
-     * @param SubmenuPage $submenuPage The submenu page to add.
+     * @param array<string, mixed> $submenuPage The submenu page to add.
      * @since 1.0.0
      */
-    public function addSubmenuPage(SubmenuPage $submenuPage): void;
+    public function addSubmenuPage(array $submenuPage): void;
 
     /**
      * Set the main menu page.
