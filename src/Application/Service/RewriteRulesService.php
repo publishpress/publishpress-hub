@@ -41,7 +41,11 @@ class RewriteRulesService implements BootableInterface
      */
     protected function onLoad(): void
     {
-        $this->hooksService->addAction(AbstractHooks::ACTION_INIT, [$this, 'maybeFlushRewriteRules']);
+        // Hook into our custom action that fires after REST routes are registered
+        $this->hooksService->addAction(
+            AbstractHooks::ACTION_REST_ROUTES_REGISTERED,
+            [$this, 'maybeFlushRewriteRules']
+        );
     }
 
     /**
@@ -54,14 +58,19 @@ class RewriteRulesService implements BootableInterface
     /**
      * Check if rewrite rules need to be flushed and flush them.
      *
-     * This is called on the init hook to ensure all routes are registered
-     * before flushing. This is the WordPress recommended approach.
+     * This is called after REST routes are registered to ensure routes are
+     * available before flushing. This approach ensures:
+     * - Routes are guaranteed to be registered first
+     * - Only flushes once after activation
+     * - No performance impact from checking on every page load
      *
      * @since 1.0.0
      */
     public function maybeFlushRewriteRules(): void
     {
         if (get_option(self::FLUSH_OPTION_KEY)) {
+            // Considering we are using a custom action to flush rewrite rules, we can safely ignore the WordPress VIP restricted function warning.
+            // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.flush_rewrite_rules_flush_rewrite_rules
             flush_rewrite_rules();
             delete_option(self::FLUSH_OPTION_KEY);
         }

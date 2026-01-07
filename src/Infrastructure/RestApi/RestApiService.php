@@ -105,6 +105,9 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
         foreach ($this->routes as $route) {
             $this->restApiAdapter->registerRoute($route, [$this, 'executeUseCase']);
         }
+
+        // Fire action after all routes are registered
+        $this->hooksService->doAction(AbstractHooks::ACTION_REST_ROUTES_REGISTERED);
     }
 
     /**

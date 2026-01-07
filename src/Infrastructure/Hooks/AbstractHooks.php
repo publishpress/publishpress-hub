@@ -30,5 +30,7 @@ abstract class AbstractHooks
 
     public const ACTION_REST_API_INIT = 'rest_api_init';
 
+    public const ACTION_REST_ROUTES_REGISTERED = 'publishpress_hub_rest_routes_registered';
+
     public const FILTER_PLUGIN_CAPABILITIES = 'cme_plugin_capabilities';
 }

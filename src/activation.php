@@ -93,11 +93,12 @@ function setupActivationWelcomeRedirect()
 }
 
 /**
- * Set flag to flush rewrite rules on next init.
+ * Set flag to flush rewrite rules after REST routes are registered.
  *
  * WordPress best practice is to NOT flush rewrite rules directly during activation,
- * but to set a flag and flush on the next init hook. This ensures all routes are
- * properly registered before flushing.
+ * but to set a flag and flush after routes are registered. The RewriteRulesService
+ * hooks into AbstractHooks::ACTION_REST_ROUTES_REGISTERED to flush only when
+ * the flag is set, ensuring routes are available before flushing.
  */
 function setupActivationRewriteRulesFlush()
 {
