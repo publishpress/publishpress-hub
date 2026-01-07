@@ -1,5 +1,4 @@
 parameters:
-    memoryLimit: 512M
     level: 8
     paths:
         - ./src
