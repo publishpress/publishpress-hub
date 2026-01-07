@@ -161,6 +161,15 @@ export function* setIsResolveConflictModalOpen(isOpen) {
 
 export function* fetchPlugins(forceCheck = false) {
     try {
+        // Prevent concurrent fetches - check if already loading
+        const isLoading = yield select(STORE_NAME, 'getIsLoading');
+        if (isLoading) {
+            return {
+                success: true,
+                data: yield select(STORE_NAME, 'getPlugins'),
+            };
+        }
+
         yield {type: 'FETCH_PLUGINS_START'};
 
         yield apiReady();
