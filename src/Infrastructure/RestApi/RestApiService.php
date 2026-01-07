@@ -37,7 +37,7 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
     /**
      * Maximum number of requests allowed per window.
      */
-    private const RATE_LIMIT_MAX_REQUESTS = 40;
+    private const RATE_LIMIT_MAX_REQUESTS = 60;
 
     /**
      * Time window in seconds for rate limiting.
