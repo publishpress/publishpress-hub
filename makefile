@@ -224,6 +224,18 @@ sync-stop:
 	@echo "Stopping sync process..."
 	@pkill -f "sync-plugin-remote.sh" || true
 
+local-sync:
+	@echo "Syncing plugin files locally..."
+	@./dev-workspace/scripts/local-sync.sh --watch
+
+local-sync-once:
+	@echo "Syncing plugin files locally once..."
+	@./dev-workspace/scripts/local-sync.sh --once
+
+local-sync-stop:
+	@echo "Stopping local sync process..."
+	@pkill -f "local-sync.sh" || true
+
 # Dev-workspace commands
 
 watch:
