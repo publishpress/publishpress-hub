@@ -237,8 +237,6 @@ export function* installFreePlugin(pluginFamilySlug) {
         });
 
         if (data.success) {
-            yield fetchPlugins();
-
             yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 
             const pluginName = yield* getPluginName(pluginFamilySlug);
@@ -247,8 +245,11 @@ export function* installFreePlugin(pluginFamilySlug) {
                 'success'
             );
 
-            // Activate the plugin after successful installation
-            yield* activatePlugin(pluginFamilySlug);
+            // Activate the plugin after successful installation (skip refresh during activation)
+            yield* activatePlugin(pluginFamilySlug, true);
+
+            // Refresh once after both install and activate complete
+            yield fetchPlugins();
 
             return {
                 success: true,
@@ -294,8 +295,6 @@ export function* installProPlugin(pluginFamilySlug, licenseKey) {
         });
 
         if (data.success) {
-            yield fetchPlugins();
-
             yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 
             const pluginName = yield* getPluginName(pluginFamilySlug);
@@ -304,8 +303,11 @@ export function* installProPlugin(pluginFamilySlug, licenseKey) {
                 'success'
             );
 
-            // Activate the plugin after successful installation
-            yield* activatePlugin(pluginFamilySlug);
+            // Activate the plugin after successful installation (skip refresh during activation)
+            yield* activatePlugin(pluginFamilySlug, true);
+
+            // Refresh once after both install and activate complete
+            yield fetchPlugins();
 
             // Return context along with the API response
             return {
@@ -388,7 +390,7 @@ export function* uninstallPlugin(pluginFamilySlug) {
     }
 }
 
-export function* activatePlugin(pluginFamilySlug) {
+export function* activatePlugin(pluginFamilySlug, skipRefresh = false) {
     try {
         yield {type: 'ACTIVATE_PLUGIN_START', data: {pluginFamilySlug}};
 
@@ -400,9 +402,12 @@ export function* activatePlugin(pluginFamilySlug) {
         });
 
         if (data.success) {
-            yield fetchPlugins();
+            yield {type: 'ACTIVATE_PLUGIN_SUCCESS', data: {pluginFamilySlug, slug: data.slug, active: data.active}};
 
-            yield {type: 'ACTIVATE_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
+            // Only refresh if not skipped (to allow batching)
+            if (!skipRefresh) {
+                yield fetchPlugins();
+            }
 
             const pluginName = yield* getPluginName(pluginFamilySlug);
             yield createSnackbarNotice(
@@ -436,7 +441,7 @@ export function* activatePlugin(pluginFamilySlug) {
     }
 }
 
-export function* deactivatePlugin(pluginFamilySlug) {
+export function* deactivatePlugin(pluginFamilySlug, skipRefresh = false) {
     try {
         yield {type: 'DEACTIVATE_PLUGIN_START', data: {pluginFamilySlug}};
 
@@ -448,9 +453,12 @@ export function* deactivatePlugin(pluginFamilySlug) {
         });
 
         if (data.success) {
-            yield fetchPlugins();
+            yield {type: 'DEACTIVATE_PLUGIN_SUCCESS', data: {pluginFamilySlug, slug: data.slug, active: data.active}};
 
-            yield {type: 'DEACTIVATE_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
+            // Only refresh if not skipped (to allow batching)
+            if (!skipRefresh) {
+                yield fetchPlugins();
+            }
 
             const pluginName = yield* getPluginName(pluginFamilySlug);
             yield createSnackbarNotice(
@@ -501,8 +509,6 @@ export function* upgradePluginToPro(pluginFamilySlug, licenseKey) {
         });
 
         if (data.success) {
-            yield fetchPlugins();
-
             yield {type: 'UPGRADE_PLUGIN_TO_PRO_SUCCESS', data: {pluginFamilySlug}};
 
             const pluginName = yield* getPluginName(pluginFamilySlug);
@@ -511,7 +517,11 @@ export function* upgradePluginToPro(pluginFamilySlug, licenseKey) {
                 'success'
             );
 
-            yield* activatePlugin(pluginFamilySlug);
+            // Activate the plugin after successful upgrade (skip refresh during activation)
+            yield* activatePlugin(pluginFamilySlug, true);
+
+            // Refresh once after both upgrade and activate complete
+            yield fetchPlugins();
 
             // Return context along with the API response
             return {

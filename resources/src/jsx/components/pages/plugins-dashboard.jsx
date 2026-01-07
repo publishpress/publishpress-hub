@@ -98,12 +98,11 @@ const PluginsDashboardComponent = () => {
         return createFilterOptions(filterCounts);
     }, [filterCounts.all, filterCounts.unlicensed, filterCounts.active, filterCounts.inactive, filterCounts.notInstalled, filterCounts.updatesAvailable]);
 
+    // Fetch plugins only once on mount
     useEffect(() => {
-        // Improved approach: Check if plugins are already available before fetching
-        if (!plugins || plugins.length === 0) {
-            fetchPlugins();
-        }
-    }, [fetchPlugins, plugins]);
+        fetchPlugins();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     // Check for licenses expiring within the specified days
     useLicenseExpirationWarning(plugins, 30);

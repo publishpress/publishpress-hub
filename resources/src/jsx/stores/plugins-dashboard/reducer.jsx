@@ -230,8 +230,35 @@ const activatePluginStart = (state, data) => {
 }
 
 const activatePluginSuccess = (state, data) => {
+    // Optimistically update the plugin's active state
+    const updatedPlugins = state.plugins.map(plugin => {
+        if (plugin.slug === data.pluginFamilySlug) {
+            // Update the active status of the installed version
+            if (plugin.proPlugin?.isInstalled) {
+                return {
+                    ...plugin,
+                    proPlugin: {
+                        ...plugin.proPlugin,
+                        isActive: data.active !== undefined ? data.active : true,
+                    },
+                };
+            }
+            if (plugin.freePlugin?.isInstalled) {
+                return {
+                    ...plugin,
+                    freePlugin: {
+                        ...plugin.freePlugin,
+                        isActive: data.active !== undefined ? data.active : true,
+                    },
+                };
+            }
+        }
+        return plugin;
+    });
+
     return {
         ...state,
+        plugins: updatedPlugins,
         pluginActivationInProgress: {
             ...state.pluginActivationInProgress,
             [data.pluginFamilySlug]: false,
@@ -260,8 +287,35 @@ const deactivatePluginStart = (state, data) => {
 }
 
 const deactivatePluginSuccess = (state, data) => {
+    // Optimistically update the plugin's active state
+    const updatedPlugins = state.plugins.map(plugin => {
+        if (plugin.slug === data.pluginFamilySlug) {
+            // Update the active status of the installed version
+            if (plugin.proPlugin?.isInstalled) {
+                return {
+                    ...plugin,
+                    proPlugin: {
+                        ...plugin.proPlugin,
+                        isActive: data.active !== undefined ? data.active : false,
+                    },
+                };
+            }
+            if (plugin.freePlugin?.isInstalled) {
+                return {
+                    ...plugin,
+                    freePlugin: {
+                        ...plugin.freePlugin,
+                        isActive: data.active !== undefined ? data.active : false,
+                    },
+                };
+            }
+        }
+        return plugin;
+    });
+
     return {
         ...state,
+        plugins: updatedPlugins,
         pluginDeactivationInProgress: {
             ...state.pluginDeactivationInProgress,
             [data.pluginFamilySlug]: false,
