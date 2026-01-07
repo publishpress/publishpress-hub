@@ -249,3 +249,21 @@ build:
 
 build-lang:
 	./dev-workspace/run composer build:lang
+
+# Code quality checks
+check-lint:
+	./dev-workspace/run composer check:lint
+
+check-php:
+	./dev-workspace/run composer check:php
+
+check-cs:
+	./dev-workspace/run composer check:cs
+
+# Pre-commit hooks
+pre-commit:
+	@make check-lint
+	@make check-php
+	@make check-cs
+	@make test-unit
+	@make test-integration
