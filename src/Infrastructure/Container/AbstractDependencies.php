@@ -171,6 +171,8 @@ abstract class AbstractDependencies
 
     public const ACTIVATION_REDIRECT_SERVICE = 'publishpress-hub.application.service.activation-redirect';
 
+    public const REWRITE_RULES_SERVICE = 'publishpress-hub.application.service.rewrite-rules';
+
     public const PLUGINS_DASHBOARD_CONTROLLER = 'publishpress-hub.presentation.plugins-dashboard.controller';
 
     public const SETTINGS_PAGE_CONTROLLER = 'publishpress-hub.presentation.settings-page.controller';

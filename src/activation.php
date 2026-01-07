@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub;
 
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
+use PublishPress\Hub\Application\Service\RewriteRulesService;
 use PublishPress\Hub\Application\Service\VersionService;
 use PublishPress\Hub\Infrastructure\WP\Options\WPOptionsAdapter;
 
@@ -26,6 +27,7 @@ function registerActivationHook($pluginFile)
         registerAutoloader();
         setupActivationAccessSetup();
         setupActivationWelcomeRedirect();
+        setupActivationRewriteRulesFlush();
     });
 }
 
@@ -88,4 +90,16 @@ function setupActivationWelcomeRedirect()
 
     // Set transient to trigger redirect on next admin page load
     set_transient(PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT, true, 30);
+}
+
+/**
+ * Set flag to flush rewrite rules on next init.
+ *
+ * WordPress best practice is to NOT flush rewrite rules directly during activation,
+ * but to set a flag and flush on the next init hook. This ensures all routes are
+ * properly registered before flushing.
+ */
+function setupActivationRewriteRulesFlush()
+{
+    RewriteRulesService::setFlushOption();
 }
