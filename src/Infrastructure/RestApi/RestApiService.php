@@ -33,12 +33,12 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
     use BootableTrait;
 
     /**
-     * Maximum number of requests allowed per window.
+     * Maximum number of requests allowed per window for a user.
      */
     private const RATE_LIMIT_MAX_REQUESTS = 60;
 
     /**
-     * Time window in seconds for rate limiting.
+     * Time window in seconds for per-user rate limiting.
      */
     private const RATE_LIMIT_WINDOW_SECONDS = 60;
 
@@ -278,7 +278,7 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
     }
 
     /**
-     * Check rate limit for a request.
+     * Check rate limit for a request using sliding window algorithm.
      *
      * @param WP_REST_Request $request The request.
      * @return bool|WP_Error True if within rate limit, WP_Error if rate limit exceeded.
@@ -289,13 +289,24 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
         $user_id = get_current_user_id();
         $endpoint = $request->get_route();
         $key = 'rate_limit_' . md5($user_id . $endpoint);
+        $now = time();
 
-        $attempts = get_transient($key);
-        if ($attempts === false) {
-            $attempts = 0;
+        // Get existing timestamps
+        $timestamps = get_transient($key);
+        if ($timestamps === false || !is_array($timestamps)) {
+            $timestamps = [];
         }
 
-        if ($attempts >= self::RATE_LIMIT_MAX_REQUESTS) {
+        // Filter out timestamps outside the current window
+        $timestamps = array_filter(
+            $timestamps,
+            function ($timestamp) use ($now) {
+                return ($now - $timestamp) < self::RATE_LIMIT_WINDOW_SECONDS;
+            }
+        );
+
+        // Check if limit exceeded
+        if (count($timestamps) >= self::RATE_LIMIT_MAX_REQUESTS) {
             return new WP_Error(
                 'rate_limit_exceeded',
                 esc_html__('Too many requests. Please try again later.', 'publishpress-hub'),
@@ -303,7 +314,11 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
             );
         }
 
-        set_transient($key, $attempts + 1, self::RATE_LIMIT_WINDOW_SECONDS);
+        // Add current request timestamp
+        $timestamps[] = $now;
+
+        // Store updated timestamps with extended expiration to prevent premature cleanup
+        set_transient($key, $timestamps, self::RATE_LIMIT_WINDOW_SECONDS * 2);
 
         return true;
     }
