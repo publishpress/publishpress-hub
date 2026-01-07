@@ -20,6 +20,9 @@ const API_NAMESPACE = '/publishpress-hub/v1';
 
 const { createSuccessNotice, createErrorNotice } = dispatch('core/notices');
 
+// Track the current fetch abort controller to cancel pending requests
+let currentFetchController = null;
+
 const createNotice = (message, type) => {
     if (type === 'success') {
         createSuccessNotice(message, {
@@ -161,14 +164,14 @@ export function* setIsResolveConflictModalOpen(isOpen) {
 
 export function* fetchPlugins(forceCheck = false) {
     try {
-        // Prevent concurrent fetches - check if already loading
-        const isLoading = yield select(STORE_NAME, 'getIsLoading');
-        if (isLoading) {
-            return {
-                success: true,
-                data: yield select(STORE_NAME, 'getPlugins'),
-            };
+        // Cancel any pending fetch request
+        if (currentFetchController) {
+            currentFetchController.abort();
         }
+
+        // Create new abort controller for this request
+        currentFetchController = new AbortController();
+        const signal = currentFetchController.signal;
 
         yield {type: 'FETCH_PLUGINS_START'};
 
@@ -180,7 +183,11 @@ export function* fetchPlugins(forceCheck = false) {
 
         const data = yield apiFetch({
             path,
+            signal,
         });
+
+        // Clear the controller after successful fetch
+        currentFetchController = null;
 
         if (data.success) {
             yield {type: 'FETCH_PLUGINS_SUCCESS', data: data.plugins};
@@ -193,6 +200,17 @@ export function* fetchPlugins(forceCheck = false) {
             throw new Error(data.error || 'Failed to fetch plugins');
         }
     } catch (error) {
+        // Clear controller on error
+        currentFetchController = null;
+
+        // Don't show error for aborted requests
+        if (error.name === 'AbortError' || error.code === 'FETCH_ERROR') {
+            return {
+                success: false,
+                aborted: true,
+            };
+        }
+
         yield {type: 'FETCH_PLUGINS_ERROR', error: error};
 
         const errorMessage = getErrorMessage(error, __('Failed to fetch plugins', 'publishpress-hub'));
