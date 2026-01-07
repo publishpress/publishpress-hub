@@ -24,7 +24,6 @@ use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiAdapterInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
-use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
 use WP_REST_Request;
 use WP_REST_Response;
 use WP_Error;
@@ -44,7 +43,6 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
     private const RATE_LIMIT_WINDOW_SECONDS = 60;
 
     private RestApiAdapterInterface $restApiAdapter;
-    private SecurityServiceInterface $securityService;
 
     /**
      * @var array<RestRoute>
@@ -53,15 +51,12 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
 
     /**
      * @param RestApiAdapterInterface $restApiAdapter The rest API adapter.
-     * @param SecurityServiceInterface $securityService The security service.
      * @since 1.0.0
      */
     public function __construct(
-        RestApiAdapterInterface $restApiAdapter,
-        SecurityServiceInterface $securityService
+        RestApiAdapterInterface $restApiAdapter
     ) {
         $this->restApiAdapter = $restApiAdapter;
-        $this->securityService = $securityService;
     }
 
     /**
@@ -194,7 +189,7 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
      */
     public function checkPermissions(string $capability = 'manage_options'): bool
     {
-        return $this->securityService->userCan($capability);
+        return current_user_can($capability);
     }
 
     /**
@@ -207,7 +202,7 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
      */
     public function verifyNonce(string $nonce, string $action = 'wp_rest'): bool
     {
-        return $this->securityService->verifyNonce($nonce, $action);
+        return (bool) wp_verify_nonce($nonce, $action);
     }
 
     /**

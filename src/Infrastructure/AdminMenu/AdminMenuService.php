@@ -20,8 +20,6 @@ use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
-use PublishPress\Hub\Infrastructure\AdminMenu\Entity\MenuPage;
-use PublishPress\Hub\Infrastructure\AdminMenu\Entity\SubmenuPage;
 
 class AdminMenuService implements AdminMenuServiceInterface, BootableInterface
 {
@@ -36,12 +34,12 @@ class AdminMenuService implements AdminMenuServiceInterface, BootableInterface
     private AssetServiceInterface $assetService;
 
     /**
-     * @var array<MenuPage>
+     * @var array<string, array>
      */
     private array $menuPages;
 
     /**
-     * @var array<SubmenuPage>
+     * @var array<string, array>
      */
     private array $submenuPages;
 
@@ -91,19 +89,19 @@ class AdminMenuService implements AdminMenuServiceInterface, BootableInterface
     {
         $iconDataUri = 'data:image/svg+xml;base64,' . base64_encode(self::MENU_ICON);
 
-        $adminPage = new MenuPage(
-            'PublishPress',
-            'PublishPress',
-            HubAccessService::CAPABILITY,
-            self::MENU_SLUG,
+        $adminPage = [
+            'page_title' => 'PublishPress',
+            'menu_title' => 'PublishPress',
+            'capability' => HubAccessService::CAPABILITY,
+            'menu_slug' => self::MENU_SLUG,
             /*
              * This is a placeholder for the callback. It will be overridden
              * by another service by setting setMainMenuPage().
              */
-            '__return_empty_string',
-            $iconDataUri,
-            99
-        );
+            'callback' => '__return_empty_string',
+            'icon_url' => $iconDataUri,
+            'position' => 99,
+        ];
 
         $this->addMenuPage($adminPage);
     }
@@ -125,23 +123,23 @@ class AdminMenuService implements AdminMenuServiceInterface, BootableInterface
     /**
      * Add a menu page.
      *
-     * @param MenuPage $menuPage The menu page to add.
+     * @param array<string, mixed> $menuPage The menu page to add.
      * @since 1.0.0
      */
-    public function addMenuPage(MenuPage $menuPage): void
+    public function addMenuPage(array $menuPage): void
     {
-        $this->menuPages[$menuPage->getMenuSlug()] = $menuPage;
+        $this->menuPages[$menuPage['menu_slug']] = $menuPage;
     }
 
     /**
      * Add a submenu page.
      *
-     * @param SubmenuPage $submenuPage The submenu page to add.
+     * @param array<string, mixed> $submenuPage The submenu page to add.
      * @since 1.0.0
      */
-    public function addSubmenuPage(SubmenuPage $submenuPage): void
+    public function addSubmenuPage(array $submenuPage): void
     {
-        $this->submenuPages[$submenuPage->getMenuSlug()] = $submenuPage;
+        $this->submenuPages[$submenuPage['menu_slug']] = $submenuPage;
     }
 
     /**
@@ -153,32 +151,32 @@ class AdminMenuService implements AdminMenuServiceInterface, BootableInterface
     {
         foreach ($this->menuPages as $menuPage) {
             add_menu_page(
-                $menuPage->getPageTitle(),
-                $menuPage->getMenuTitle(),
-                $menuPage->getCapability(),
-                $menuPage->getMenuSlug(),
-                $menuPage->getCallback(),
-                $menuPage->getIconUrl(),
-                $menuPage->getPosition()
+                $menuPage['page_title'],
+                $menuPage['menu_title'],
+                $menuPage['capability'],
+                $menuPage['menu_slug'],
+                $menuPage['callback'],
+                $menuPage['icon_url'],
+                $menuPage['position']
             );
         }
 
         foreach ($this->submenuPages as $submenuPage) {
-            $menuSlug = $submenuPage->getMenuSlug();
+            $menuSlug = $submenuPage['menu_slug'];
 
             // If the submenu page is the main menu page, use the parent slug to override the menu page.
             if ($this->mainMenuPageSlug === $menuSlug) {
-                $menuSlug = $submenuPage->getParentSlug();
+                $menuSlug = $submenuPage['parent_slug'];
             }
 
             add_submenu_page(
-                $submenuPage->getParentSlug(),
-                $submenuPage->getPageTitle(),
-                $submenuPage->getMenuTitle(),
-                $submenuPage->getCapability(),
+                $submenuPage['parent_slug'],
+                $submenuPage['page_title'],
+                $submenuPage['menu_title'],
+                $submenuPage['capability'],
                 $menuSlug,
-                $submenuPage->getCallback(),
-                $submenuPage->getPosition()
+                $submenuPage['callback'],
+                $submenuPage['position']
             );
         }
     }

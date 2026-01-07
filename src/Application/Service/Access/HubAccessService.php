@@ -18,7 +18,6 @@ use PublishPress\Hub\Application\Contract\AccessInterface;
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
-use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
 
 class HubAccessService implements AccessInterface, BootableInterface
 {
@@ -33,20 +32,6 @@ class HubAccessService implements AccessInterface, BootableInterface
     public const VIEWER_ROLE_DISPLAY_NAME = 'PublishPress Hub Manager';
 
     public const ADMIN_ROLE = 'administrator';
-
-    private SecurityServiceInterface $securityService;
-
-    /**
-     * Constructor.
-     *
-     * @param SecurityServiceInterface $securityService
-     * @since 1.0.0
-     */
-    public function __construct(
-        SecurityServiceInterface $securityService
-    ) {
-        $this->securityService = $securityService;
-    }
 
     /**
      * On load.
@@ -82,7 +67,11 @@ class HubAccessService implements AccessInterface, BootableInterface
      */
     public function canUserViewHub($user = null): bool
     {
-        return $this->securityService->userCan(self::CAPABILITY, $user);
+        if (empty($user)) {
+            return current_user_can(self::CAPABILITY);
+        }
+
+        return user_can($user, self::CAPABILITY);
     }
 
     /**

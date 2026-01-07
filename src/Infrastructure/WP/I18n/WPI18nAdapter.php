@@ -112,28 +112,6 @@ class WPI18nAdapter implements I18nServiceInterface, BootableInterface
     }
 
     /**
-     * Get the locale.
-     *
-     * @return string The locale.
-     * @since 1.0.0
-     */
-    public function getLocale(): string
-    {
-        return get_locale();
-    }
-
-    /**
-     * Get the user locale.
-     *
-     * @return string The user locale.
-     * @since 1.0.0
-     */
-    public function getUserLocale(): string
-    {
-        return get_user_locale();
-    }
-
-    /**
      * Enqueue the translations script.
      *
      * @since 1.0.0
@@ -194,7 +172,7 @@ class WPI18nAdapter implements I18nServiceInterface, BootableInterface
      */
     private function getLocalizedTranslations(): array
     {
-        $currentLocale = $this->getUserLocale();
+        $currentLocale = get_user_locale();
 
         $jsonPath = "{$this->languagesPath}{$this->textDomain}-{$currentLocale}.json";
 

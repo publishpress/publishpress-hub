@@ -17,7 +17,6 @@ namespace PublishPress\Hub\Admin\Page;
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
-use PublishPress\Hub\Infrastructure\AdminMenu\Entity\SubmenuPage;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
@@ -91,14 +90,15 @@ class ComponentsShowcaseController implements BootableInterface
      */
     private function registerAdminMenu(): void
     {
-        $submenu = new SubmenuPage(
-            'publishpress-hub',
-            'Components Showcase',
-            'Components Showcase',
-            'manage_options',
-            'publishpress-hub-dev-components-showcase',
-            [$this, 'showComponentsShowcase']
-        );
+        $submenu = [
+            'parent_slug' => 'publishpress-hub',
+            'page_title' => 'Components Showcase',
+            'menu_title' => 'Components Showcase',
+            'capability' => 'manage_options',
+            'menu_slug' => 'publishpress-hub-dev-components-showcase',
+            'callback' => [$this, 'showComponentsShowcase'],
+            'position' => null,
+        ];
 
         $this->adminMenuService->addSubmenuPage($submenu);
     }

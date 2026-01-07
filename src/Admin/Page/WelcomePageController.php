@@ -18,10 +18,8 @@ use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
-use PublishPress\Hub\Infrastructure\AdminMenu\Entity\SubmenuPage;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
-use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
 use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
 use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
 
@@ -37,8 +35,6 @@ class WelcomePageController implements BootableInterface
 
     private WPOptionsAdapterInterface $optionsAdapter;
 
-    private SecurityServiceInterface $securityService;
-
     private const OPTION_NAME = 'publishpress_hub_welcome_page_disabled';
 
     private const DISMISS_ACTION = 'publishpress_hub_dismiss_welcome_page';
@@ -50,21 +46,18 @@ class WelcomePageController implements BootableInterface
      * @param AdminMenuServiceInterface $adminMenuService
      * @param AssetServiceInterface $assetService
      * @param WPOptionsAdapterInterface $optionsAdapter
-     * @param SecurityServiceInterface $securityService
      * @since 1.0.0
      */
     public function __construct(
         ViewServiceInterface $viewService,
         AdminMenuServiceInterface $adminMenuService,
         AssetServiceInterface $assetService,
-        WPOptionsAdapterInterface $optionsAdapter,
-        SecurityServiceInterface $securityService
+        WPOptionsAdapterInterface $optionsAdapter
     ) {
         $this->viewService = $viewService;
         $this->adminMenuService = $adminMenuService;
         $this->assetService = $assetService;
         $this->optionsAdapter = $optionsAdapter;
-        $this->securityService = $securityService;
     }
 
     /**
@@ -182,15 +175,15 @@ class WelcomePageController implements BootableInterface
      */
     private function registerAdminMenu(): void
     {
-        $submenu = new SubmenuPage(
-            'publishpress-hub',
-            __('Welcome', 'publishpress-hub'),
-            __('Welcome', 'publishpress-hub'),
-            HubAccessService::CAPABILITY,
-            'publishpress-hub-welcome',
-            [$this, 'showWelcomePage'],
-            0
-        );
+        $submenu = [
+            'parent_slug' => 'publishpress-hub',
+            'page_title' => __('Welcome', 'publishpress-hub'),
+            'menu_title' => __('Welcome', 'publishpress-hub'),
+            'capability' => HubAccessService::CAPABILITY,
+            'menu_slug' => 'publishpress-hub-welcome',
+            'callback' => [$this, 'showWelcomePage'],
+            'position' => 0,
+        ];
 
         $this->adminMenuService->addSubmenuPage($submenu);
         $this->adminMenuService->setMainMenuPage('publishpress-hub-welcome');

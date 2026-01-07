@@ -18,10 +18,8 @@ use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
-use PublishPress\Hub\Infrastructure\AdminMenu\Entity\SubmenuPage;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
-use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
 use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
 
 class SettingsPageController implements BootableInterface
@@ -34,27 +32,22 @@ class SettingsPageController implements BootableInterface
 
     private AssetServiceInterface $assetService;
 
-    private SecurityServiceInterface $securityService;
-
     /**
      * Constructor.
      *
      * @param ViewServiceInterface $viewService
      * @param AdminMenuServiceInterface $adminMenuService
      * @param AssetServiceInterface $assetService
-     * @param SecurityServiceInterface $securityService
      * @since 1.0.0
      */
     public function __construct(
         ViewServiceInterface $viewService,
         AdminMenuServiceInterface $adminMenuService,
-        AssetServiceInterface $assetService,
-        SecurityServiceInterface $securityService
+        AssetServiceInterface $assetService
     ) {
         $this->viewService = $viewService;
         $this->adminMenuService = $adminMenuService;
         $this->assetService = $assetService;
-        $this->securityService = $securityService;
     }
 
     /**
@@ -99,14 +92,15 @@ class SettingsPageController implements BootableInterface
      */
     private function registerAdminMenu(): void
     {
-        $submenu = new SubmenuPage(
-            'publishpress-hub',
-            __('Settings', 'publishpress-hub'),
-            __('Settings', 'publishpress-hub'),
-            HubAccessService::CAPABILITY,
-            'publishpress-hub-settings',
-            [$this, 'showSettingsPage']
-        );
+        $submenu = [
+            'parent_slug' => 'publishpress-hub',
+            'page_title' => __('Settings', 'publishpress-hub'),
+            'menu_title' => __('Settings', 'publishpress-hub'),
+            'capability' => HubAccessService::CAPABILITY,
+            'menu_slug' => 'publishpress-hub-settings',
+            'callback' => [$this, 'showSettingsPage'],
+            'position' => null,
+        ];
 
         $this->adminMenuService->addSubmenuPage($submenu);
     }

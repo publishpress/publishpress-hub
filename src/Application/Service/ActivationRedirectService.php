@@ -17,7 +17,6 @@ namespace PublishPress\Hub\Application\Service;
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
-use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
 use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
 
 class ActivationRedirectService implements BootableInterface
@@ -26,20 +25,15 @@ class ActivationRedirectService implements BootableInterface
 
     private const WELCOME_PAGE_OPTION_NAME = 'publishpress_hub_welcome_page_disabled';
 
-    private SecurityServiceInterface $securityService;
-
     private WPOptionsAdapterInterface $optionsAdapter;
 
     /**
-     * @param SecurityServiceInterface $securityService
      * @param WPOptionsAdapterInterface $optionsAdapter
      * @since 1.0.0
      */
     public function __construct(
-        SecurityServiceInterface $securityService,
         WPOptionsAdapterInterface $optionsAdapter
     ) {
-        $this->securityService = $securityService;
         $this->optionsAdapter = $optionsAdapter;
     }
 

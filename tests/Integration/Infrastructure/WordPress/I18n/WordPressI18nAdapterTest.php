@@ -41,9 +41,4 @@ class WordPressI18nAdapterTest extends WPTestCase
     {
         $this->assertEquals('publishpress-hub', $this->i18nAdapter->getTextDomain());
     }
-
-    public function testGetLocale(): void
-    {
-        $this->assertEquals('en_US', $this->i18nAdapter->getLocale());
-    }
 }

@@ -150,16 +150,12 @@ return [
             $container->get(AbstractDependencies::ADMIN_TEMPLATES_BASE_PATH)
         ),
 
-    AbstractDependencies::SECURITY_SERVICE =>
-        fn(ContainerInterface $container) => new WPSecurityAdapter(),
-
     AbstractDependencies::REST_API_ADAPTER =>
         fn(ContainerInterface $container) => new WPRestApiAdapter(),
 
     AbstractDependencies::REST_API_SERVICE =>
         fn(ContainerInterface $container) => new RestApiService(
-            $container->get(AbstractDependencies::REST_API_ADAPTER),
-            $container->get(AbstractDependencies::SECURITY_SERVICE)
+            $container->get(AbstractDependencies::REST_API_ADAPTER)
         ),
 
     // TODO: Swap back to CanonicalLicensePersistenceService after we update all the plugins to use Hub as dependency.
@@ -196,9 +192,7 @@ return [
         ),
 
     AbstractDependencies::HUB_ACCESS_SERVICE =>
-        fn(ContainerInterface $container) => new HubAccessService(
-            $container->get(AbstractDependencies::SECURITY_SERVICE)
-        ),
+        fn(ContainerInterface $container) => new HubAccessService(),
 
     AbstractDependencies::VERSION_SERVICE =>
         fn(ContainerInterface $container) => new VersionService(
@@ -499,13 +493,11 @@ return [
             $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
             $container->get(AbstractDependencies::ASSET_SERVICE),
-            $container->get(AbstractDependencies::OPTIONS_ADAPTER),
-            $container->get(AbstractDependencies::SECURITY_SERVICE)
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER)
         ),
 
     AbstractDependencies::ACTIVATION_REDIRECT_SERVICE =>
         fn(ContainerInterface $container) => new ActivationRedirectService(
-            $container->get(AbstractDependencies::SECURITY_SERVICE),
             $container->get(AbstractDependencies::OPTIONS_ADAPTER)
         ),
 
@@ -516,16 +508,14 @@ return [
         fn(ContainerInterface $container) => new PluginsDashboardController(
             $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
-            $container->get(AbstractDependencies::ASSET_SERVICE),
-            $container->get(AbstractDependencies::SECURITY_SERVICE)
+            $container->get(AbstractDependencies::ASSET_SERVICE)
         ),
 
     AbstractDependencies::SETTINGS_PAGE_CONTROLLER =>
         fn(ContainerInterface $container) => new SettingsPageController(
             $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
-            $container->get(AbstractDependencies::ASSET_SERVICE),
-            $container->get(AbstractDependencies::SECURITY_SERVICE)
+            $container->get(AbstractDependencies::ASSET_SERVICE)
         ),
 
     AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER =>
