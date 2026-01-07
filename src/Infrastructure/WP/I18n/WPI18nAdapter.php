@@ -18,7 +18,6 @@ use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
-use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\I18n\Contract\I18nServiceInterface;
 
 /**
@@ -43,18 +42,12 @@ class WPI18nAdapter implements I18nServiceInterface, BootableInterface
     /**
      * @since 1.0.0
      */
-    private HooksServiceInterface $hooksService;
-
-    /**
-     * @since 1.0.0
-     */
     private AssetServiceInterface $assetService;
 
     /**
      * @param string $textDomain The text domain.
      * @param string $scriptPath The script path.
      * @param string $languagesPath The languages path.
-     * @param HooksServiceInterface $hooksService The hooks service.
      * @param AssetServiceInterface $assetService The asset service.
      * @since 1.0.0
      */
@@ -62,13 +55,11 @@ class WPI18nAdapter implements I18nServiceInterface, BootableInterface
         string $textDomain,
         string $scriptPath,
         string $languagesPath,
-        HooksServiceInterface $hooksService,
         AssetServiceInterface $assetService
     ) {
         $this->textDomain = $textDomain;
         $this->scriptPath = $scriptPath;
         $this->languagesPath = $languagesPath;
-        $this->hooksService = $hooksService;
         $this->assetService = $assetService;
     }
 
@@ -77,7 +68,7 @@ class WPI18nAdapter implements I18nServiceInterface, BootableInterface
      */
     protected function onLoad(): void
     {
-        $this->hooksService->addAction(
+        add_action(
             AbstractHooks::ACTION_ADMIN_ENQUEUE_SCRIPTS,
             [$this, 'enqueueTranslationsScript'],
             5

@@ -21,7 +21,6 @@ use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use PublishPress\Hub\Domain\Exception\Contract\WithContextInterface;
 use PublishPress\Hub\Domain\Exception\ExceptionCode;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
-use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiAdapterInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
@@ -44,7 +43,6 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
      */
     private const RATE_LIMIT_WINDOW_SECONDS = 60;
 
-    private HooksServiceInterface $hooksService;
     private RestApiAdapterInterface $restApiAdapter;
     private SecurityServiceInterface $securityService;
 
@@ -54,17 +52,14 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
     private array $routes = [];
 
     /**
-     * @param HooksServiceInterface $hooksService The hooks service.
      * @param RestApiAdapterInterface $restApiAdapter The rest API adapter.
      * @param SecurityServiceInterface $securityService The security service.
      * @since 1.0.0
      */
     public function __construct(
-        HooksServiceInterface $hooksService,
         RestApiAdapterInterface $restApiAdapter,
         SecurityServiceInterface $securityService
     ) {
-        $this->hooksService = $hooksService;
         $this->restApiAdapter = $restApiAdapter;
         $this->securityService = $securityService;
     }
@@ -74,7 +69,7 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
      */
     protected function onLoad(): void
     {
-        $this->hooksService->addAction(AbstractHooks::ACTION_REST_API_INIT, [$this, 'registerRoutes']);
+        add_action(AbstractHooks::ACTION_REST_API_INIT, [$this, 'registerRoutes']);
     }
 
     /**
@@ -107,7 +102,7 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
         }
 
         // Fire action after all routes are registered
-        $this->hooksService->doAction(AbstractHooks::ACTION_REST_ROUTES_REGISTERED);
+        do_action(AbstractHooks::ACTION_REST_ROUTES_REGISTERED);
     }
 
     /**

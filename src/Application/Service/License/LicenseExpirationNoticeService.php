@@ -15,28 +15,23 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Application\Service\License;
 
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
-use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 
 class LicenseExpirationNoticeService
 {
     private LicenseStatusStorageService $licenseStatusStorage;
     private PluginStatusService $pluginStatusService;
-    private HooksServiceInterface $hooksService;
 
     /**
      * @param LicenseStatusStorageService $licenseStatusStorage
      * @param PluginStatusService $pluginStatusService
-     * @param HooksServiceInterface $hooksService
      * @since 1.0.0
      */
     public function __construct(
         LicenseStatusStorageService $licenseStatusStorage,
-        PluginStatusService $pluginStatusService,
-        HooksServiceInterface $hooksService
+        PluginStatusService $pluginStatusService
     ) {
         $this->licenseStatusStorage = $licenseStatusStorage;
         $this->pluginStatusService = $pluginStatusService;
-        $this->hooksService = $hooksService;
     }
 
     /**
@@ -46,7 +41,7 @@ class LicenseExpirationNoticeService
      */
     public function init(): void
     {
-        $this->hooksService->addAction('admin_notices', [$this, 'displayExpiredLicenseNotices']);
+        add_action('admin_notices', [$this, 'displayExpiredLicenseNotices']);
     }
 
     /**

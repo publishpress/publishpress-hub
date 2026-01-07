@@ -21,15 +21,11 @@ use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Entity\FreePlugin;
 use PublishPress\Hub\Domain\Plugin\Entity\PluginFamily;
 use PublishPress\Hub\Domain\Plugin\Entity\ProPlugin;
-use PublishPress\Hub\Infrastructure\Environment\Contract\EnvironmentServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
-use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 
 class HubBootstrapService implements BootableInterface
 {
     use BootableTrait;
-
-    private HooksServiceInterface $hooksService;
 
     /**
      * @var array<string, BootableInterface>
@@ -38,30 +34,22 @@ class HubBootstrapService implements BootableInterface
 
     private PluginFamilyRepositoryInterface $pluginFamilyRepository;
 
-    private EnvironmentServiceInterface $environmentService;
-
     private AccessInterface $accessService;
 
     /**
-     * @param HooksServiceInterface $hooksService
      * @param BootableInterface[] $servicesToInit
      * @param PluginFamilyRepositoryInterface $pluginFamilyRepository
-     * @param EnvironmentServiceInterface $environmentService
      * @param AccessInterface $accessService
      *
      * @since 1.0.0
      */
     public function __construct(
-        HooksServiceInterface $hooksService,
         array $servicesToInit,
         PluginFamilyRepositoryInterface $pluginFamilyRepository,
-        EnvironmentServiceInterface $environmentService,
         AccessInterface $accessService
     ) {
-        $this->hooksService = $hooksService;
         $this->servicesToInit = $servicesToInit;
         $this->pluginFamilyRepository = $pluginFamilyRepository;
-        $this->environmentService = $environmentService;
         $this->accessService = $accessService;
     }
 
@@ -96,7 +84,7 @@ class HubBootstrapService implements BootableInterface
      */
     private function addHooks(): void
     {
-        $this->hooksService->addAction(AbstractHooks::ACTION_INIT, [$this, 'init']);
+        add_action(AbstractHooks::ACTION_INIT, [$this, 'init']);
     }
 
     /**
@@ -143,7 +131,7 @@ class HubBootstrapService implements BootableInterface
     private function shouldSkipAdminService(BootableInterface $service): bool
     {
         // Only check in admin area
-        if (!$this->environmentService->isAdminArea()) {
+        if (!is_admin()) {
             return false;
         }
 

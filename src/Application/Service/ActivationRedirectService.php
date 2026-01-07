@@ -16,9 +16,7 @@ namespace PublishPress\Hub\Application\Service;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
-use PublishPress\Hub\Infrastructure\Environment\Contract\EnvironmentServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
-use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
 use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
 
@@ -28,31 +26,21 @@ class ActivationRedirectService implements BootableInterface
 
     private const WELCOME_PAGE_OPTION_NAME = 'publishpress_hub_welcome_page_disabled';
 
-    private HooksServiceInterface $hooksService;
-
     private SecurityServiceInterface $securityService;
 
     private WPOptionsAdapterInterface $optionsAdapter;
 
-    private EnvironmentServiceInterface $environmentService;
-
     /**
-     * @param HooksServiceInterface $hooksService
      * @param SecurityServiceInterface $securityService
      * @param WPOptionsAdapterInterface $optionsAdapter
-     * @param EnvironmentServiceInterface $environmentService
      * @since 1.0.0
      */
     public function __construct(
-        HooksServiceInterface $hooksService,
         SecurityServiceInterface $securityService,
-        WPOptionsAdapterInterface $optionsAdapter,
-        EnvironmentServiceInterface $environmentService
+        WPOptionsAdapterInterface $optionsAdapter
     ) {
-        $this->hooksService = $hooksService;
         $this->securityService = $securityService;
         $this->optionsAdapter = $optionsAdapter;
-        $this->environmentService = $environmentService;
     }
 
     /**
@@ -60,11 +48,11 @@ class ActivationRedirectService implements BootableInterface
      */
     protected function onLoad(): void
     {
-        if (!$this->environmentService->isAdminArea()) {
+        if (!is_admin()) {
             return;
         }
 
-        $this->hooksService->addAction(
+        add_action(
             AbstractHooks::ACTION_ADMIN_INIT,
             [$this, 'handleActivationRedirect']
         );

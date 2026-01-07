@@ -21,15 +21,12 @@ use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface
 use PublishPress\Hub\Infrastructure\AdminMenu\Entity\SubmenuPage;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
-use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
 use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
 
 class SettingsPageController implements BootableInterface
 {
     use BootableTrait;
-
-    private HooksServiceInterface $hooksService;
 
     private ViewServiceInterface $viewService;
 
@@ -42,7 +39,6 @@ class SettingsPageController implements BootableInterface
     /**
      * Constructor.
      *
-     * @param HooksServiceInterface $hooksService
      * @param ViewServiceInterface $viewService
      * @param AdminMenuServiceInterface $adminMenuService
      * @param AssetServiceInterface $assetService
@@ -50,13 +46,11 @@ class SettingsPageController implements BootableInterface
      * @since 1.0.0
      */
     public function __construct(
-        HooksServiceInterface $hooksService,
         ViewServiceInterface $viewService,
         AdminMenuServiceInterface $adminMenuService,
         AssetServiceInterface $assetService,
         SecurityServiceInterface $securityService
     ) {
-        $this->hooksService = $hooksService;
         $this->viewService = $viewService;
         $this->adminMenuService = $adminMenuService;
         $this->assetService = $assetService;
@@ -94,7 +88,7 @@ class SettingsPageController implements BootableInterface
      */
     private function addHooks(): void
     {
-        $this->hooksService->addAction(AbstractHooks::ACTION_ADMIN_ENQUEUE_SCRIPTS, [$this, 'enqueueAssets']);
+        add_action(AbstractHooks::ACTION_ADMIN_ENQUEUE_SCRIPTS, [$this, 'enqueueAssets']);
     }
 
     /**

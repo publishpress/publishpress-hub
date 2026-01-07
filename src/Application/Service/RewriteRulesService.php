@@ -16,7 +16,6 @@ namespace PublishPress\Hub\Application\Service;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
-use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 
 class RewriteRulesService implements BootableInterface
@@ -25,24 +24,13 @@ class RewriteRulesService implements BootableInterface
 
     public const FLUSH_OPTION_KEY = 'publishpress_hub_flush_rewrite_rules';
 
-    private HooksServiceInterface $hooksService;
-
-    /**
-     * @param HooksServiceInterface $hooksService
-     * @since 1.0.0
-     */
-    public function __construct(HooksServiceInterface $hooksService)
-    {
-        $this->hooksService = $hooksService;
-    }
-
     /**
      * @since 1.0.0
      */
     protected function onLoad(): void
     {
         // Hook into our custom action that fires after REST routes are registered
-        $this->hooksService->addAction(
+        add_action(
             AbstractHooks::ACTION_REST_ROUTES_REGISTERED,
             [$this, 'maybeFlushRewriteRules']
         );

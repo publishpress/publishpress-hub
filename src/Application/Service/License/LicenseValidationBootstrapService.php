@@ -17,7 +17,6 @@ namespace PublishPress\Hub\Application\Service\License;
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\License\ScheduledLicenseValidationService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
-use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\License\Handler\LicenseValidationActionHandler;
 
 class LicenseValidationBootstrapService implements BootableInterface
@@ -29,25 +28,21 @@ class LicenseValidationBootstrapService implements BootableInterface
     private ScheduledLicenseValidationService $scheduledLicenseValidationService;
     private LicenseValidationActionHandler $licenseValidationActionHandler;
     private LicenseExpirationNoticeService $licenseExpirationNoticeService;
-    private HooksServiceInterface $hooksService;
 
     /**
      * @param ScheduledLicenseValidationService $scheduledLicenseValidationService
      * @param LicenseValidationActionHandler $licenseValidationActionHandler
      * @param LicenseExpirationNoticeService $licenseExpirationNoticeService
-     * @param HooksServiceInterface $hooksService
      * @since 1.0.0
      */
     public function __construct(
         ScheduledLicenseValidationService $scheduledLicenseValidationService,
         LicenseValidationActionHandler $licenseValidationActionHandler,
-        LicenseExpirationNoticeService $licenseExpirationNoticeService,
-        HooksServiceInterface $hooksService
+        LicenseExpirationNoticeService $licenseExpirationNoticeService
     ) {
         $this->scheduledLicenseValidationService = $scheduledLicenseValidationService;
         $this->licenseValidationActionHandler = $licenseValidationActionHandler;
         $this->licenseExpirationNoticeService = $licenseExpirationNoticeService;
-        $this->hooksService = $hooksService;
     }
 
     /**
@@ -66,7 +61,7 @@ class LicenseValidationBootstrapService implements BootableInterface
     {
         // Register action handler for Actions Scheduler
         if (function_exists('as_schedule_recurring_action')) {
-            $this->hooksService->addAction(
+            add_action(
                 self::ACTION_HOOK,
                 [$this->licenseValidationActionHandler, 'handle']
             );

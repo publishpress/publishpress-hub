@@ -52,12 +52,8 @@ use PublishPress\Hub\Infrastructure\Remote\RemoteService;
 use PublishPress\Hub\Infrastructure\RestApi\RestApiService;
 use PublishPress\Hub\Infrastructure\View\ViewService;
 use PublishPress\Hub\Infrastructure\WPOrg\Api\WPOrgPluginApiAdapter;
-use PublishPress\Hub\Infrastructure\WP\AdminMenu\WPAdminMenuAdapter;
 use PublishPress\Hub\Infrastructure\WP\Asset\WPAssetAdapter;
-use PublishPress\Hub\Infrastructure\WP\Cache\WPCacheAdapter;
-use PublishPress\Hub\Infrastructure\WP\Environment\WPEnvironmentAdapter;
 use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;
-use PublishPress\Hub\Infrastructure\WP\Hooks\WPHooksAdapter;
 use PublishPress\Hub\Infrastructure\WP\I18n\WPI18nAdapter;
 use PublishPress\Hub\Infrastructure\WP\Options\WPOptionsAdapter;
 use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginLifecycleAdapter;
@@ -120,15 +116,11 @@ return [
         fn(ContainerInterface $container) => defined('SCRIPT_DEBUG') && constant('SCRIPT_DEBUG'),
 
     // Infrastructure Services
-    AbstractDependencies::HOOKS_SERVICE =>
-        fn(ContainerInterface $container) => new WPHooksAdapter(),
-
     AbstractDependencies::I18N_SERVICE =>
         fn(ContainerInterface $container) => new WPI18nAdapter(
             $container->get(AbstractDependencies::PLUGIN_TEXT_DOMAIN),
             $container->get(AbstractDependencies::PLUGIN_I18N_SCRIPT_PATH),
             $container->get(AbstractDependencies::PLUGIN_LANGUAGES_PATH),
-            $container->get(AbstractDependencies::HOOKS_SERVICE),
             $container->get(AbstractDependencies::ASSET_SERVICE)
         ),
 
@@ -150,8 +142,6 @@ return [
 
     AbstractDependencies::ADMIN_MENU_SERVICE =>
         fn(ContainerInterface $container) => new AdminMenuService(
-            $container->get(AbstractDependencies::ADMIN_MENU_ADAPTER),
-            $container->get(AbstractDependencies::HOOKS_SERVICE),
             $container->get(AbstractDependencies::ASSET_SERVICE)
         ),
 
@@ -163,15 +153,11 @@ return [
     AbstractDependencies::SECURITY_SERVICE =>
         fn(ContainerInterface $container) => new WPSecurityAdapter(),
 
-    AbstractDependencies::ENVIRONMENT_SERVICE =>
-        fn(ContainerInterface $container) => new WPEnvironmentAdapter(),
-
     AbstractDependencies::REST_API_ADAPTER =>
         fn(ContainerInterface $container) => new WPRestApiAdapter(),
 
     AbstractDependencies::REST_API_SERVICE =>
         fn(ContainerInterface $container) => new RestApiService(
-            $container->get(AbstractDependencies::HOOKS_SERVICE),
             $container->get(AbstractDependencies::REST_API_ADAPTER),
             $container->get(AbstractDependencies::SECURITY_SERVICE)
         ),
@@ -211,8 +197,7 @@ return [
 
     AbstractDependencies::HUB_ACCESS_SERVICE =>
         fn(ContainerInterface $container) => new HubAccessService(
-            $container->get(AbstractDependencies::SECURITY_SERVICE),
-            $container->get(AbstractDependencies::HOOKS_SERVICE)
+            $container->get(AbstractDependencies::SECURITY_SERVICE)
         ),
 
     AbstractDependencies::VERSION_SERVICE =>
@@ -229,16 +214,14 @@ return [
     AbstractDependencies::LICENSE_EXPIRATION_NOTICE_SERVICE =>
         fn(ContainerInterface $container) => new LicenseExpirationNoticeService(
             $container->get(AbstractDependencies::LICENSE_STATUS_STORAGE_SERVICE),
-            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-            $container->get(AbstractDependencies::HOOKS_SERVICE)
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE)
         ),
 
     AbstractDependencies::LICENSE_VALIDATION_BOOTSTRAP_SERVICE =>
         fn(ContainerInterface $container) => new LicenseValidationBootstrapService(
             $container->get(AbstractDependencies::SCHEDULED_LICENSE_VALIDATION_SERVICE),
             $container->get(AbstractDependencies::LICENSE_VALIDATION_ACTION_HANDLER),
-            $container->get(AbstractDependencies::LICENSE_EXPIRATION_NOTICE_SERVICE),
-            $container->get(AbstractDependencies::HOOKS_SERVICE)
+            $container->get(AbstractDependencies::LICENSE_EXPIRATION_NOTICE_SERVICE)
         ),
 
     AbstractDependencies::LICENSE_ACTIVATION_SERVICE =>
@@ -374,12 +357,8 @@ return [
 
     AbstractDependencies::CACHE_SERVICE =>
         fn(ContainerInterface $container) => new CacheService(
-            $container->get(AbstractDependencies::CACHE_GROUP),
-            $container->get(AbstractDependencies::CACHE_ADAPTER)
+            $container->get(AbstractDependencies::CACHE_GROUP)
         ),
-
-    AbstractDependencies::CACHE_ADAPTER =>
-        fn(ContainerInterface $container) => new WPCacheAdapter(),
 
     AbstractDependencies::FREE_PLUGIN_API =>
         fn(ContainerInterface $container) => new WPOrgPluginApiAdapter(),
@@ -410,10 +389,8 @@ return [
             }
 
             return new HubBootstrapService(
-                $container->get(AbstractDependencies::HOOKS_SERVICE),
                 $servicesToInit,
                 $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
-                $container->get(AbstractDependencies::ENVIRONMENT_SERVICE),
                 $container->get(AbstractDependencies::HUB_ACCESS_SERVICE)
             );
         },
@@ -443,9 +420,6 @@ return [
 
     AbstractDependencies::OPTIONS_ADAPTER =>
         fn(ContainerInterface $container) => new WPOptionsAdapter(),
-
-    AbstractDependencies::ADMIN_MENU_ADAPTER =>
-        fn(ContainerInterface $container) => new WPAdminMenuAdapter(),
 
     // Use Cases
     AbstractDependencies::LIST_PLUGINS_USE_CASE =>
@@ -522,7 +496,6 @@ return [
     // Admin Services
     AbstractDependencies::WELCOME_PAGE_CONTROLLER =>
         fn(ContainerInterface $container) => new WelcomePageController(
-            $container->get(AbstractDependencies::HOOKS_SERVICE),
             $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
             $container->get(AbstractDependencies::ASSET_SERVICE),
@@ -532,20 +505,15 @@ return [
 
     AbstractDependencies::ACTIVATION_REDIRECT_SERVICE =>
         fn(ContainerInterface $container) => new ActivationRedirectService(
-            $container->get(AbstractDependencies::HOOKS_SERVICE),
             $container->get(AbstractDependencies::SECURITY_SERVICE),
-            $container->get(AbstractDependencies::OPTIONS_ADAPTER),
-            $container->get(AbstractDependencies::ENVIRONMENT_SERVICE)
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER)
         ),
 
     AbstractDependencies::REWRITE_RULES_SERVICE =>
-        fn(ContainerInterface $container) => new RewriteRulesService(
-            $container->get(AbstractDependencies::HOOKS_SERVICE)
-        ),
+        fn(ContainerInterface $container) => new RewriteRulesService(),
 
     AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER =>
         fn(ContainerInterface $container) => new PluginsDashboardController(
-            $container->get(AbstractDependencies::HOOKS_SERVICE),
             $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
             $container->get(AbstractDependencies::ASSET_SERVICE),
@@ -554,7 +522,6 @@ return [
 
     AbstractDependencies::SETTINGS_PAGE_CONTROLLER =>
         fn(ContainerInterface $container) => new SettingsPageController(
-            $container->get(AbstractDependencies::HOOKS_SERVICE),
             $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
             $container->get(AbstractDependencies::ASSET_SERVICE),
@@ -563,7 +530,6 @@ return [
 
     AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER =>
         fn(ContainerInterface $container) => new ComponentsShowcaseController(
-            $container->get(AbstractDependencies::HOOKS_SERVICE),
             $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
             $container->get(AbstractDependencies::ASSET_SERVICE)

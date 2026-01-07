@@ -6,7 +6,6 @@ declare(strict_types=1);
 namespace Tests\Integration\Infrastructure\WP\I18n;
 
 use PublishPress\Hub\Infrastructure\WP\Asset\WPAssetAdapter;
-use PublishPress\Hub\Infrastructure\WP\Hooks\WPHooksAdapter;
 use PublishPress\Hub\Infrastructure\WP\I18n\WPI18nAdapter;
 use Tests\WPTestCase;
 
@@ -25,7 +24,6 @@ class WordPressI18nAdapterTest extends WPTestCase
             'publishpress-hub',
             __DIR__ . '/../../../../../',
             'languages',
-            new WPHooksAdapter(),
             new WPAssetAdapter(
                 'http://localhost/publishpress-hub/assets/',
                 '1.0.0',

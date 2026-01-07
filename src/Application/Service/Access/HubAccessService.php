@@ -18,7 +18,6 @@ use PublishPress\Hub\Application\Contract\AccessInterface;
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
-use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
 
 class HubAccessService implements AccessInterface, BootableInterface
@@ -37,8 +36,6 @@ class HubAccessService implements AccessInterface, BootableInterface
 
     private SecurityServiceInterface $securityService;
 
-    private HooksServiceInterface $hooksService;
-
     /**
      * Constructor.
      *
@@ -46,11 +43,9 @@ class HubAccessService implements AccessInterface, BootableInterface
      * @since 1.0.0
      */
     public function __construct(
-        SecurityServiceInterface $securityService,
-        HooksServiceInterface $hooksService
+        SecurityServiceInterface $securityService
     ) {
         $this->securityService = $securityService;
-        $this->hooksService = $hooksService;
     }
 
     /**
@@ -61,7 +56,7 @@ class HubAccessService implements AccessInterface, BootableInterface
      */
     protected function onLoad(): void
     {
-        $this->hooksService->addFilter(
+        add_filter(
             AbstractHooks::FILTER_PLUGIN_CAPABILITIES,
             [self::class, 'filterCmePluginCapabilities']
         );
