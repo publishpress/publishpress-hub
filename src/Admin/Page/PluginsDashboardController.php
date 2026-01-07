@@ -179,7 +179,7 @@ class PluginsDashboardController implements BootableInterface
             'ppHubPluginsDashboardConfig',
             [
                 'logoUrl' => $this->assetService->getPluginAssetUrl('images/publishpress-logo.png'),
-                'apiNonce' => $this->securityService->createNonceForRest(),
+                'apiNonce' => wp_create_nonce('wp_rest'),
                 'pluginIconBaseUrl' => $this->assetService->getPluginAssetsBaseUrl(),
             ]
         );

@@ -93,7 +93,7 @@ class ActivationRedirectService implements BootableInterface
         }
 
         // Only redirect for users with manage_options capability
-        if (!$this->securityService->userCan('manage_options')) {
+        if (!current_user_can('manage_options')) {
             delete_transient(PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT);
             return;
         }

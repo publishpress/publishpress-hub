@@ -139,7 +139,7 @@ class WelcomePageController implements BootableInterface
             return;
         }
 
-        if (! $this->securityService->userCan('manage_options')) {
+        if (! current_user_can('manage_options')) {
             wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'publishpress-hub'));
             return;
         }
@@ -241,7 +241,7 @@ class WelcomePageController implements BootableInterface
             ]
         );
 
-        $dismissUrl = $this->securityService->getNonceUrl(
+        $dismissUrl = wp_nonce_url(
             admin_url('admin.php?page=publishpress-hub&action=' . self::DISMISS_ACTION),
             self::DISMISS_ACTION
         );
