@@ -5458,6 +5458,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var DAYS_UNTIL_EXPIRATION = 30;
+var RENEW_NOW_URL = 'https://publishpress.com/links/hub-renew-now';
 
 /**
  * Hook to check for licenses expiring within the specified days and expired licenses,
@@ -5538,8 +5539,7 @@ var useLicenseExpirationWarning = function useLicenseExpirationWarning(plugins) 
       var baseMessage = dateGroups.join('. ') + '.';
 
       // Add single renewal link (use dashboard subscriptions URL)
-      var renewUrl = 'https://publishpress.com/dashboard/?active_tab=subscriptions';
-      var renewLink = "<a href=\"".concat(renewUrl, "\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"pp-hub-renew-link\">").concat((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Renew now', 'publishpress-hub'), "</a>");
+      var renewLink = "<a href=\"".concat(RENEW_NOW_URL, "\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"pp-hub-renew-link\">").concat((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Renew now', 'publishpress-hub'), "</a>");
       var message = baseMessage + ' ' + renewLink;
       createNotice('error', message, {
         id: 'pp-hub-license-expired-warning',
@@ -5581,8 +5581,7 @@ var useLicenseExpirationWarning = function useLicenseExpirationWarning(plugins) 
       var _baseMessage = (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Warning:', 'publishpress-hub') + ' ' + _dateGroups.join('. ') + '.';
 
       // Add single renewal link (use dashboard subscriptions URL)
-      var _renewUrl = 'https://publishpress.com/dashboard/?active_tab=subscriptions';
-      var _renewLink = "<a href=\"".concat(_renewUrl, "\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"pp-hub-renew-link\">").concat((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Renew now', 'publishpress-hub'), "</a>");
+      var _renewLink = "<a href=\"".concat(RENEW_NOW_URL, "\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"pp-hub-renew-link\">").concat((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Renew now', 'publishpress-hub'), "</a>");
       var _message = _baseMessage + '<br/>' + _renewLink;
       createNotice('warning', _message, {
         id: 'pp-hub-license-expiration-warning',
