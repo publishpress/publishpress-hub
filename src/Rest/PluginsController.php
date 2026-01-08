@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Rest;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
+use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallProPluginUseCase;
@@ -342,6 +343,6 @@ class PluginsController implements BootableInterface
      */
     public function checkPermissions(): bool
     {
-        return $this->restApiService->checkPermissions('manage_options');
+        return current_user_can(HubAccessService::CAPABILITY);
     }
 }

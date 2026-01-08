@@ -181,31 +181,6 @@ class RestApiService implements RestApiServiceInterface, BootableInterface
     }
 
     /**
-     * Check permissions.
-     *
-     * @param string $capability The capability.
-     * @return bool True if the user has the capability, false otherwise.
-     * @since 1.0.0
-     */
-    public function checkPermissions(string $capability = 'manage_options'): bool
-    {
-        return current_user_can($capability);
-    }
-
-    /**
-     * Verify a nonce.
-     *
-     * @param string $nonce The nonce.
-     * @param string $action The action.
-     * @return bool True if the nonce is valid, false otherwise.
-     * @since 1.0.0
-     */
-    public function verifyNonce(string $nonce, string $action = 'wp_rest'): bool
-    {
-        return (bool) wp_verify_nonce($nonce, $action);
-    }
-
-    /**
      * Execute a callback (use case or callable).
      *
      * @param WP_REST_Request $request The request.

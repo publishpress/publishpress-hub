@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\License;
 
+use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 
 class LicenseExpirationNoticeService
@@ -47,7 +48,7 @@ class LicenseExpirationNoticeService
     /**
      * Display admin notices for expired licenses.
      *
-     * Only displays to users with manage_options capability (administrators).
+     * Only displays to users with Hub access capability (administrators).
      * Does not display on the plugins list dashboard page.
      *
      * @since 1.0.0
@@ -55,7 +56,7 @@ class LicenseExpirationNoticeService
     public function displayExpiredLicenseNotices(): void
     {
         // Only show to administrators
-        if (!current_user_can('manage_options')) {
+        if (!current_user_can(HubAccessService::CAPABILITY)) {
             return;
         }
 

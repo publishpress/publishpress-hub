@@ -139,7 +139,7 @@ class WelcomePageController implements BootableInterface
             return;
         }
 
-        if (! current_user_can('manage_options')) {
+        if (! current_user_can(HubAccessService::CAPABILITY)) {
             wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'publishpress-hub'));
             return;
         }

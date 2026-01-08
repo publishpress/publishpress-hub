@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Application\Service;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
+use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
@@ -92,8 +93,8 @@ class ActivationRedirectService implements BootableInterface
             return;
         }
 
-        // Only redirect for users with manage_options capability
-        if (!current_user_can('manage_options')) {
+        // Only redirect for users with Hub access capability
+        if (!current_user_can(HubAccessService::CAPABILITY)) {
             delete_transient(PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT);
             return;
         }

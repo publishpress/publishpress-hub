@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Admin\Page;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
+use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
@@ -94,7 +95,7 @@ class ComponentsShowcaseController implements BootableInterface
             'parent_slug' => 'publishpress-hub',
             'page_title' => 'Components Showcase',
             'menu_title' => 'Components Showcase',
-            'capability' => 'manage_options',
+            'capability' => HubAccessService::CAPABILITY,
             'menu_slug' => 'publishpress-hub-dev-components-showcase',
             'callback' => [$this, 'showComponentsShowcase'],
             'position' => null,
