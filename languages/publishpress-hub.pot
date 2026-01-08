@@ -1,22 +1,22 @@
-# Copyright (C) 2025 PublishPress
+# Copyright (C) 2026 PublishPress
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Hub 1.0.0-beta.5\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/publishpress-hub\n"
+"Project-Id-Version: PublishPress Hub 1.0.0-beta.9\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-12-16T23:35:01+00:00\n"
+"POT-Creation-Date: 2026-01-08T22:06:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 
 #. Plugin Name of the plugin
 #: publishpress-hub.php
-#: src/Admin/Page/WelcomePageController.php:270
+#: src/Admin/Page/WelcomePageController.php:257
 msgid "PublishPress Hub"
 msgstr ""
 
@@ -35,50 +35,50 @@ msgstr ""
 msgid "https://publishpress.com"
 msgstr ""
 
-#: src/Admin/Page/ComponentsShowcaseController.php:123
+#: src/Admin/Page/ComponentsShowcaseController.php:118
 msgid "Please wait while we load the components showcase..."
 msgstr ""
 
-#: src/Admin/Page/PluginsDashboardController.php:145
+#: src/Admin/Page/PluginsDashboardController.php:133
 msgid "Please wait while we load the plugins dashboard..."
 msgstr ""
 
-#: src/Admin/Page/SettingsPageController.php:110
-#: src/Admin/Page/SettingsPageController.php:111
+#: src/Admin/Page/SettingsPageController.php:97
+#: src/Admin/Page/SettingsPageController.php:98
 #: resources/src/jsx/components/pages/settings-page.jsx:22
 msgid "Settings"
 msgstr ""
 
-#: src/Admin/Page/SettingsPageController.php:131
+#: src/Admin/Page/SettingsPageController.php:119
 msgid "Please wait while we load the settings page..."
 msgstr ""
 
-#: src/Admin/Page/WelcomePageController.php:156
+#: src/Admin/Page/WelcomePageController.php:143
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: src/Admin/Page/WelcomePageController.php:193
-#: src/Admin/Page/WelcomePageController.php:194
+#: src/Admin/Page/WelcomePageController.php:180
+#: src/Admin/Page/WelcomePageController.php:181
 msgid "Welcome"
 msgstr ""
 
-#: src/Admin/Page/WelcomePageController.php:216
+#: src/Admin/Page/WelcomePageController.php:203
 msgid "Please wait while we load the welcome page..."
 msgstr ""
 
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:91
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:87
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr ""
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:93
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:107
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:89
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:103
 msgid "Manage licenses"
 msgstr ""
 
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:104
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:100
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr ""
@@ -92,13 +92,13 @@ msgid "No license key found"
 msgstr ""
 
 #. translators: %s is the plugin family slug
-#: src/Domain/Plugin/Entity/PluginFamily.php:126
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr ""
 
 #. translators: %s is the plugin family slug
-#: src/Domain/Plugin/Entity/PluginFamily.php:146
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr ""
@@ -250,22 +250,22 @@ msgid "Dependency \"%s\" not found in container."
 msgstr ""
 
 #. translators: %s is the error message
-#: src/Infrastructure/Edd/Subscription/EddSubscriptionAdapter.php:153
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:123
 #, php-format
 msgid "Error validating license: %s"
 msgstr ""
 
 #. translators: %s is the error message
-#: src/Infrastructure/Edd/Subscription/EddSubscriptionAdapter.php:494
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:117
 #, php-format
 msgid "Error getting license info: %s"
 msgstr ""
 
-#: src/Infrastructure/RestApi/RestApiService.php:308
+#: src/Infrastructure/RestApi/RestApiService.php:287
 msgid "Too many requests. Please try again later."
 msgstr ""
 
-#: src/Infrastructure/RestApi/RestApiService.php:375
+#: src/Infrastructure/RestApi/RestApiService.php:358
 msgid "An error occurred while processing your request."
 msgstr ""
 
@@ -281,6 +281,28 @@ msgstr ""
 
 #: src/Infrastructure/WP/Asset/WPAssetAdapter.php:64
 msgid "File extension cannot be empty"
+msgstr ""
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:183
+msgid "Invalid file path: null byte detected"
+msgstr ""
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:192
+msgid "Invalid file path: directory traversal detected"
+msgstr ""
+
+#. translators: %s is the directory path
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
+#, php-format
+msgid "Invalid file path: parent directory does not exist: %s"
+msgstr ""
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:220
+msgid "Invalid file path: unable to resolve path"
+msgstr ""
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:239
+msgid "Invalid file path: operation not allowed outside permitted directories"
 msgstr ""
 
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:48
@@ -466,15 +488,15 @@ msgstr ""
 msgid "Plugins Dashboard"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:141
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
 msgid "Hold ALT and click to force refresh the update cache"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:159
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
 msgid "Force Refresh"
 msgstr ""
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:159
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
 msgid "Refresh"
 msgstr ""
 
@@ -642,17 +664,17 @@ msgid "Select how you would like to install this plugin. You can install the Pro
 msgstr ""
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:110
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
 msgid "Free Details"
 msgstr ""
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
 msgid "Pro Details"
 msgstr ""
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
 msgid "Changelogs"
 msgstr ""
 
@@ -712,7 +734,8 @@ msgid "Deactivate the license key for this site"
 msgstr ""
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:139
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
 msgid "Unknown"
 msgstr ""
 
@@ -832,11 +855,11 @@ msgstr ""
 msgid "Upgrade to Pro and boost your productivity"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:140
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:139
 msgid "New version available"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:185
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:184
 #, js-format
 msgid "Update available: %s → %s"
 msgstr ""
@@ -882,31 +905,41 @@ msgid "Conflicting Installations"
 msgstr ""
 
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:170
 msgid "Update Available"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:181
 msgid "Expires"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:72
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
+msgid "latest"
+msgstr ""
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
+#, js-format
+msgid "Update to v%s"
+msgstr ""
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
 msgid "Renew"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:81
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
 msgid "Deactivate"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:89
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
 msgid "Activate"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:98
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
 msgid "Uninstall"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:132
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
 msgid "More Info"
 msgstr ""
 
@@ -930,107 +963,107 @@ msgstr ""
 msgid "Loading plugins..."
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:189
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:216
 msgid "Failed to fetch plugins"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:219
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:276
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
 #, js-format
 msgid "%s installed successfully"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:239
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:298
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
 #, js-format
 msgid "%s installation failed"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:334
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
 #, js-format
 msgid "%s uninstalled successfully"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:350
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
 #, js-format
 msgid "%s uninstall failed"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:382
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
 #, js-format
 msgid "%s activated successfully"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:398
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
 #, js-format
 msgid "%s activation failed"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
 #, js-format
 msgid "%s deactivated successfully"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:446
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
 #, js-format
 msgid "%s deactivation failed"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:483
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
 #, js-format
 msgid "%s upgraded to Pro successfully"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:504
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
 #, js-format
 msgid "%s upgrade to Pro failed"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:546
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
 #, js-format
 msgid "Conflict resolved successfully for %s"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:563
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
 #, js-format
 msgid "Failed to resolve conflict for %s"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:595
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
 #, js-format
 msgid "%s license deactivated successfully"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:611
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
 #, js-format
 msgid "%s license deactivation failed"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:646
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
 #, js-format
 msgid "%s license activated successfully"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:662
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
 #, js-format
 msgid "%s license activation failed"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:697
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
 #, js-format
 msgid "%s updated successfully"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:714
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
 #, js-format
 msgid "%s update failed"
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:776
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
 msgid "Too many requests. Please wait a few seconds and try again."
 msgstr ""
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:786
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
 #, js-format
 msgid "Cloudflare Ray ID: %s"
 msgstr ""
