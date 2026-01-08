@@ -15,6 +15,8 @@ import { __, sprintf } from '@publishpress-hub/i18n';
 
 const DAYS_UNTIL_EXPIRATION = 30;
 
+const RENEW_NOW_URL = 'https://publishpress.com/links/hub-renew-now';
+
 /**
  * Hook to check for licenses expiring within the specified days and expired licenses,
  * displaying appropriate warning notices.
@@ -110,8 +112,7 @@ export const useLicenseExpirationWarning = (plugins, daysUntilExpiration = DAYS_
             const baseMessage = dateGroups.join('. ') + '.';
 
             // Add single renewal link (use dashboard subscriptions URL)
-            const renewUrl = 'https://publishpress.com/dashboard/?active_tab=subscriptions';
-            const renewLink = `<a href="${renewUrl}" target="_blank" rel="noopener noreferrer" class="pp-hub-renew-link">${__('Renew now', 'publishpress-hub')}</a>`;
+            const renewLink = `<a href="${RENEW_NOW_URL}" target="_blank" rel="noopener noreferrer" class="pp-hub-renew-link">${__('Renew now', 'publishpress-hub')}</a>`;
 
             const message = baseMessage + ' ' + renewLink;
 
@@ -166,8 +167,7 @@ export const useLicenseExpirationWarning = (plugins, daysUntilExpiration = DAYS_
             const baseMessage = __('Warning:', 'publishpress-hub') + ' ' + dateGroups.join('. ') + '.';
 
             // Add single renewal link (use dashboard subscriptions URL)
-            const renewUrl = 'https://publishpress.com/dashboard/?active_tab=subscriptions';
-            const renewLink = `<a href="${renewUrl}" target="_blank" rel="noopener noreferrer" class="pp-hub-renew-link">${__('Renew now', 'publishpress-hub')}</a>`;
+            const renewLink = `<a href="${RENEW_NOW_URL}" target="_blank" rel="noopener noreferrer" class="pp-hub-renew-link">${__('Renew now', 'publishpress-hub')}</a>`;
 
             const message = baseMessage + '<br/>' + renewLink;
 

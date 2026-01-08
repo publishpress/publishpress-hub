@@ -32,7 +32,7 @@ return [
         'pro_name' => 'PublishPress Checklists Pro',
         'pro_slug' => 'publishpress-checklists-pro',
         'pro_file_name' => 'publishpress-checklists-pro.php',
-        'pro_details_url' => 'https://publishpress.com/checklists/',
+        'pro_details_url' => 'https://publishpress.com/links/hub-checklists',
         'edd_item_id' => 6465,
     ],
     [
@@ -48,7 +48,7 @@ return [
         'pro_name' => 'PublishPress Permissions Pro',
         'pro_slug' => 'presspermit-pro',
         'pro_file_name' => 'presspermit-pro.php',
-        'pro_details_url' => 'https://publishpress.com/permissions/',
+        'pro_details_url' => 'https://publishpress.com/links/hub-permissions',
         'edd_item_id' => 34506,
     ],
     [
@@ -64,7 +64,7 @@ return [
         'pro_name' => 'PublishPress Authors Pro',
         'pro_slug' => 'publishpress-authors-pro',
         'pro_file_name' => 'publishpress-authors-pro.php',
-        'pro_details_url' => 'https://publishpress.com/authors/',
+        'pro_details_url' => 'https://publishpress.com/links/hub-authors',
         'edd_item_id' => 7203,
     ],
     [
@@ -80,7 +80,7 @@ return [
         'pro_name' => 'PublishPress Blocks Pro',
         'pro_slug' => 'advanced-gutenberg-pro',
         'pro_file_name' => 'advanced-gutenberg-pro.php',
-        'pro_details_url' => 'https://publishpress.com/blocks/',
+        'pro_details_url' => 'https://publishpress.com/links/hub-blocks',
         'edd_item_id' => 98972,
     ],
     [
@@ -96,7 +96,7 @@ return [
         'pro_name' => 'PublishPress Capabilities Pro',
         'pro_slug' => 'capabilities-pro',
         'pro_file_name' => 'capabilities-pro.php',
-        'pro_details_url' => 'https://publishpress.com/capabilities/',
+        'pro_details_url' => 'https://publishpress.com/links/hub-capabilities',
         'edd_item_id' => 44811,
     ],
     [
@@ -112,7 +112,7 @@ return [
         'pro_name' => 'PublishPress Future Pro',
         'pro_slug' => 'publishpress-future-pro',
         'pro_file_name' => 'publishpress-future-pro.php',
-        'pro_details_url' => 'https://publishpress.com/future/',
+        'pro_details_url' => 'https://publishpress.com/links/hub-future',
         'edd_item_id' => 129032,
     ],
     [
@@ -128,7 +128,7 @@ return [
         'pro_name' => 'PublishPress Planner Pro',
         'pro_slug' => 'publishpress-pro',
         'pro_file_name' => 'publishpress-pro.php',
-        'pro_details_url' => 'https://publishpress.com/planner/',
+        'pro_details_url' => 'https://publishpress.com/links/hub-planner',
         'edd_item_id' => 49742,
     ],
     [
@@ -144,7 +144,7 @@ return [
         'pro_name' => 'PublishPress Revisions Pro',
         'pro_slug' => 'revisionary-pro',
         'pro_file_name' => 'revisionary-pro.php',
-        'pro_details_url' => 'https://publishpress.com/revisions/',
+        'pro_details_url' => 'https://publishpress.com/links/hub-revisions',
         'edd_item_id' => 40280,
     ],
     [
@@ -160,7 +160,7 @@ return [
         'pro_name' => 'PublishPress Series Pro',
         'pro_slug' => 'publishpress-series-pro',
         'pro_file_name' => 'publishpress-series-pro.php',
-        'pro_details_url' => 'https://publishpress.com/series/',
+        'pro_details_url' => 'https://publishpress.com/links/hub-series',
         'edd_item_id' => 110550,
     ],
     [
@@ -176,7 +176,7 @@ return [
         'pro_name' => 'PublishPress Statuses Pro',
         'pro_slug' => 'publishpress-statuses-pro',
         'pro_file_name' => 'publishpress-statuses-pro.php',
-        'pro_details_url' => 'https://publishpress.com/statuses/',
+        'pro_details_url' => 'https://publishpress.com/links/hub-statuses',
         'edd_item_id' => 336700,
     ],
 ];
