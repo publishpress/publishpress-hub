@@ -261,7 +261,7 @@ check-cs:
 	./dev-workspace/run composer check:cs
 
 # Pre-commit hooks
-pre-commit:
+pre-commit-check:
 	@make check-lint
 	@make check-php
 	@make check-cs
