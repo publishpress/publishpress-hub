@@ -122,7 +122,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page\container
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -246,7 +246,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page\header
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -318,7 +318,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -348,7 +348,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page\layout
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -396,7 +396,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\badge
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -441,7 +441,7 @@ function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t =
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\buttons
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -529,7 +529,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\pages
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -748,7 +748,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */

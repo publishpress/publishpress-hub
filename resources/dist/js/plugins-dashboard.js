@@ -4608,7 +4608,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page\container
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -4734,7 +4734,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page\header
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -4807,7 +4807,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -4838,7 +4838,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\admin-page\layout
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -4887,7 +4887,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\badge
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -4933,7 +4933,7 @@ function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t =
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\buttons
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -5021,7 +5021,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\filter
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -5115,7 +5115,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\icons
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -5155,7 +5155,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\icons
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -5204,7 +5204,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\icons
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -5233,7 +5233,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\message
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -5285,7 +5285,7 @@ function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t =
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\modal
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -5329,7 +5329,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\notices
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -5393,7 +5393,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\notices
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -5449,7 +5449,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\pages\hooks
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -5632,7 +5632,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\pages
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -5808,7 +5808,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -5950,7 +5950,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -6002,7 +6002,7 @@ function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t =
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -6090,7 +6090,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -6159,7 +6159,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -6241,7 +6241,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -6347,7 +6347,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -6479,7 +6479,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -6577,7 +6577,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -6746,7 +6746,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -6829,7 +6829,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -6910,7 +6910,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -7123,7 +7123,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -7318,7 +7318,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -7352,7 +7352,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -7504,7 +7504,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -7572,7 +7572,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -7656,7 +7656,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -7910,7 +7910,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -7952,7 +7952,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -8021,7 +8021,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -8083,7 +8083,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -8229,7 +8229,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\tooltip
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -8471,7 +8471,7 @@ var _marked = /*#__PURE__*/_regenerator().m(getPluginName),
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\stores\plugins-dashboard
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -9794,7 +9794,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\stores\plugins-dashboard
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -9833,7 +9833,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\stores\plugins-dashboard
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -9868,7 +9868,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\stores\plugins-dashboard
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -10325,7 +10325,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\stores\plugins-dashboard
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -10951,7 +10951,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
