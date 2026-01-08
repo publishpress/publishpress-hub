@@ -15,19 +15,16 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Admin\Page;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
+use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
-use PublishPress\Hub\Infrastructure\AdminMenu\Entity\SubmenuPage;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
-use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
 
 class ComponentsShowcaseController implements BootableInterface
 {
     use BootableTrait;
-
-    private HooksServiceInterface $hooksService;
 
     private ViewServiceInterface $viewService;
 
@@ -38,19 +35,16 @@ class ComponentsShowcaseController implements BootableInterface
     /**
      * Constructor.
      *
-     * @param HooksServiceInterface $hooksService
      * @param ViewServiceInterface $viewService
      * @param AdminMenuServiceInterface $adminMenuService
      * @param AssetServiceInterface $assetService
      * @since 1.0.0
      */
     public function __construct(
-        HooksServiceInterface $hooksService,
         ViewServiceInterface $viewService,
         AdminMenuServiceInterface $adminMenuService,
         AssetServiceInterface $assetService
     ) {
-        $this->hooksService = $hooksService;
         $this->viewService = $viewService;
         $this->adminMenuService = $adminMenuService;
         $this->assetService = $assetService;
@@ -86,7 +80,7 @@ class ComponentsShowcaseController implements BootableInterface
      */
     private function addHooks(): void
     {
-        $this->hooksService->addAction(AbstractHooks::ACTION_ADMIN_ENQUEUE_SCRIPTS, [$this, 'enqueueAssets']);
+        add_action(AbstractHooks::ACTION_ADMIN_ENQUEUE_SCRIPTS, [$this, 'enqueueAssets']);
     }
 
     /**
@@ -97,14 +91,15 @@ class ComponentsShowcaseController implements BootableInterface
      */
     private function registerAdminMenu(): void
     {
-        $submenu = new SubmenuPage(
-            'publishpress-hub',
-            'Components Showcase',
-            'Components Showcase',
-            'manage_options',
-            'publishpress-hub-dev-components-showcase',
-            [$this, 'showComponentsShowcase']
-        );
+        $submenu = [
+            'parent_slug' => 'publishpress-hub',
+            'page_title' => 'Components Showcase',
+            'menu_title' => 'Components Showcase',
+            'capability' => HubAccessService::CAPABILITY,
+            'menu_slug' => 'publishpress-hub-dev-components-showcase',
+            'callback' => [$this, 'showComponentsShowcase'],
+            'position' => null,
+        ];
 
         $this->adminMenuService->addSubmenuPage($submenu);
     }

@@ -31,7 +31,7 @@ if (! function_exists(__NAMESPACE__ . '\register1Dot0Dot0')) {
 
     function register1Dot0Dot0()
     {
-        if (! class_exists('PublishPress\Hub\Infrastructure\Container\ServiceContainer')) {
+        if (! class_exists('PublishPress\Hub\Infrastructure\Container\DependencyContainer')) {
             $versions = Versions::getInstance();
             $versions->register('1.0.0', __NAMESPACE__ . '\initialize1Dot0Dot0');
         }

@@ -3,7 +3,7 @@
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\notices
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -16,7 +16,7 @@ import filter from 'lodash/filter';
 /**
  * WordPress dependencies
  */
-import { NoticeList, SnackbarList } from '@wordpress/components';
+import { NoticeList } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
 
 export default function NoticesList() {

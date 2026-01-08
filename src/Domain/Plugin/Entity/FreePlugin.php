@@ -3,6 +3,13 @@
 /**
  * Free plugin entity.
  *
+ * Business Rules:
+ * - Free plugins do not require licenses for installation or updates
+ * - Updates are sourced from WordPress.org repository, not license server
+ * - Free plugins can be installed without any license validation
+ * - Licensed status is always false for free plugins (no EDD license needed)
+ * - Free plugins serve as base version, with pro plugins offering premium features
+ *
  * @package PublishPress\Hub\Domain\Plugin\Entity
  * @author PublishPress
  * @copyright Copyright (c) 2025, PublishPress
@@ -20,6 +27,8 @@ use PublishPress\Hub\Domain\Plugin\ValueObject\PluginState;
 
 class FreePlugin implements PluginInterface
 {
+    // Uses composition with PluginState value object for immutability and consistency
+    // Free plugins share same state structure as pro plugins but without license requirements
     private PluginState $state;
 
     /**
@@ -145,6 +154,9 @@ class FreePlugin implements PluginInterface
      */
     public function isLicensed(): bool
     {
+        // Free plugins never require licenses
+        // This method exists for interface compatibility but typically returns false
+        // Updates for free plugins come from WordPress.org, not license server
         return $this->state->isLicensed();
     }
 
@@ -185,6 +197,9 @@ class FreePlugin implements PluginInterface
      */
     public function setLicensed(bool $licensed): self
     {
+        // Method exists for interface compatibility but should not be used for free plugins
+        // Free plugins don't require licenses and updates come from WordPress.org
+        // This is typically only called to explicitly set status to false
         $this->state = $this->state->withLicensed($licensed);
         return $this;
     }

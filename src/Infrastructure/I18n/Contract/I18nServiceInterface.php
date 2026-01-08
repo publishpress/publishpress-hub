@@ -19,22 +19,6 @@ use PublishPress\Hub\Application\Contract\BootableInterface;
 interface I18nServiceInterface extends BootableInterface
 {
     /**
-     * Get the locale.
-     *
-     * @return string The locale.
-     * @since 1.0.0
-     */
-    public function getLocale(): string;
-
-    /**
-     * Get the user locale.
-     *
-     * @return string The user locale.
-     * @since 1.0.0
-     */
-    public function getUserLocale(): string;
-
-    /**
      * Get the text domain.
      *
      * @return string The text domain.

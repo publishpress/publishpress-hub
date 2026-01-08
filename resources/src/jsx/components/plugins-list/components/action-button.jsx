@@ -3,7 +3,7 @@
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -19,32 +19,38 @@ const ACTION_BUTTON_CONFIGS = {
     install: {
         variant: 'secondary',
         text: __('Install', 'publishpress-hub'),
-        loadingText: __('Installing...', 'publishpress-hub'),
+        loadingtext: __('Installing...', 'publishpress-hub'),
         icon: 'download',
     },
     upgradeToPro: {
         variant: 'highlight',
         text: __('Upgrade to Pro', 'publishpress-hub'),
-        loadingText: __('Upgrading to Pro...', 'publishpress-hub'),
+        loadingtext: __('Upgrading to Pro...', 'publishpress-hub'),
         icon: 'unlock',
     },
     manageLicense: {
-        variant: 'secondary',
+        variant: 'tertiary',
         text: __('Manage License', 'publishpress-hub'),
-        loadingText: __('Managing License...', 'publishpress-hub'),
+        loadingtext: __('Managing License...', 'publishpress-hub'),
         icon: 'admin-generic',
     },
     activateLicense: {
-        variant: 'secondary',
+        variant: 'tertiary',
         text: __('Activate License', 'publishpress-hub'),
-        loadingText: __('Activating License...', 'publishpress-hub'),
+        loadingtext: __('Activating License...', 'publishpress-hub'),
         icon: 'yes',
     },
     conflict: {
         variant: 'primary',
         text: __('Resolve Conflict', 'publishpress-hub'),
-        loadingText: __('Resolving Conflict...', 'publishpress-hub'),
+        loadingtext: __('Resolving Conflict...', 'publishpress-hub'),
         icon: 'warning',
+    },
+    update: {
+        variant: 'primary',
+        text: __('Update', 'publishpress-hub'),
+        loadingtext: __('Updating...', 'publishpress-hub'),
+        icon: 'update',
     },
 };
 
@@ -56,6 +62,7 @@ const ActionButtonComponent = ({
     onManageLicense,
     onActivateLicense,
     onResolveConflict,
+    onUpdate,
 }) => {
     const getButtonProps = () => {
         if (pluginFamily.hasConflictingInstallations) {
@@ -96,7 +103,7 @@ const ActionButtonComponent = ({
 
     if (inProgress) {
         buttonProps.isLoading = true;
-        buttonProps.text = buttonProps.loadingText;
+        buttonProps.text = buttonProps.loadingtext;
     }
 
     return (

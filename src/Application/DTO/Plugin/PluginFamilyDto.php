@@ -42,6 +42,8 @@ class PluginFamilyDto implements DtoInterface
     private bool $hasAnyVersionInstalled;
     private bool $hasAnyVersionActive;
     private bool $hasConflictingInstallations;
+    private bool $hasUpdate = false;
+    private ?string $availableVersion = null;
 
     /**
      * Converts the plugin family data to an associative array for API responses.
@@ -60,6 +62,8 @@ class PluginFamilyDto implements DtoInterface
             'hasAnyVersionInstalled' => $this->hasAnyVersionInstalled,
             'hasAnyVersionActive' => $this->hasAnyVersionActive,
             'hasConflictingInstallations' => $this->hasConflictingInstallations,
+            'hasUpdate' => $this->hasUpdate,
+            'availableVersion' => $this->availableVersion,
             'freePlugin' => [
                 'name' => $this->freePluginName,
                 'slug' => $this->freePluginSlug,
@@ -296,6 +300,24 @@ class PluginFamilyDto implements DtoInterface
     public function setHasConflictingInstallations(bool $hasConflictingInstallations): self
     {
         $this->hasConflictingInstallations = $hasConflictingInstallations;
+        return $this;
+    }
+
+    /**
+     * @since 1.0.0
+     */
+    public function setHasUpdate(bool $hasUpdate): self
+    {
+        $this->hasUpdate = $hasUpdate;
+        return $this;
+    }
+
+    /**
+     * @since 1.0.0
+     */
+    public function setAvailableVersion(?string $availableVersion): self
+    {
+        $this->availableVersion = $availableVersion;
         return $this;
     }
 }

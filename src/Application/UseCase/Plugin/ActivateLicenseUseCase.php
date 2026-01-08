@@ -22,6 +22,7 @@ use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginInstallException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Application\Service\License\LicenseManagementService;
+use PublishPress\Hub\Application\Service\License\ScheduledLicenseValidationService;
 use WP_REST_Request;
 
 class ActivateLicenseUseCase implements UseCaseInterface
@@ -30,15 +31,22 @@ class ActivateLicenseUseCase implements UseCaseInterface
 
     private LicenseManagementService $licenseManagement;
 
+    private ScheduledLicenseValidationService $licenseValidation;
+
     /**
+     * @param PluginStatusService $pluginStatusService
+     * @param LicenseManagementService $licenseManagement
+     * @param ScheduledLicenseValidationService $licenseValidation
      * @since 1.0.0
      */
     public function __construct(
         PluginStatusService $pluginStatusService,
-        LicenseManagementService $licenseManagement
+        LicenseManagementService $licenseManagement,
+        ScheduledLicenseValidationService $licenseValidation
     ) {
         $this->pluginStatusService = $pluginStatusService;
         $this->licenseManagement = $licenseManagement;
+        $this->licenseValidation = $licenseValidation;
     }
 
     /**
@@ -70,6 +78,11 @@ class ActivateLicenseUseCase implements UseCaseInterface
 
         $this->licenseManagement->activateAndStoreLicense($licenseKey, $downloadId);
         $this->pluginStatusService->updatePluginStatus($plugin);
+
+        // Trigger immediate license validation to check expiration status
+        // This ensures the UI shows current license status (expired/active)
+        // without waiting for the next scheduled validation.
+        $this->licenseValidation->validateAllLicenses();
 
         return [
             'slug' => esc_html($plugin->getSlug()),

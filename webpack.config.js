@@ -12,10 +12,13 @@ module.exports = {
     devtool: NODE_ENV === 'development' ? 'source-map' : false,
     entry: {
         "plugins-dashboard": `${assetsBasePath}/jsx/plugins-dashboard.jsx`,
+        "welcome-page": `${assetsBasePath}/jsx/welcome-page.jsx`,
+        "settings-page": `${assetsBasePath}/jsx/settings-page.jsx`,
         "i18n": `${assetsBasePath}/jsx/i18n.jsx`,
         "components-showcase": `${assetsBasePath}/jsx/components-showcase.jsx`,
         "admin-page": `${assetsBasePath}/css/admin-page.css`,
         "admin-menu": `${assetsBasePath}/css/admin-menu.css`,
+        "welcome-page-styles": `${assetsBasePath}/css/welcome-page.css`,
     },
 
     output: {

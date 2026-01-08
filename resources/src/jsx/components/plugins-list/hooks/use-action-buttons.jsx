@@ -3,20 +3,23 @@
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
 
 import { useMemo } from '@wordpress/element';
 
-import { __ } from '@publishpress-hub/i18n';
+import { __, sprintf } from '@publishpress-hub/i18n';
 
 export const useActionButtons = (
     pluginFamily,
     status,
     loadingStates,
-    handlers
+    handlers,
+    onOpenPluginInfo,
+    onUpdate,
+    isUpdating
 ) => {
     const {
         isActive,
@@ -39,6 +42,62 @@ export const useActionButtons = (
     return useMemo(() => {
         const buttons = [];
 
+        // Add update button if update is available (show first in row actions)
+        if (
+            pluginFamily.hasUpdate &&
+            pluginFamily.hasAnyVersionInstalled &&
+            onUpdate
+        ) {
+            const installedPlugin = pluginFamily.freePlugin.isInstalled
+                ? pluginFamily.freePlugin
+                : pluginFamily.proPlugin;
+            const currentVersion = installedPlugin.version || __('Unknown', 'publishpress-hub');
+            const availableVersion = pluginFamily.availableVersion || __('latest', 'publishpress-hub');
+
+            buttons.push({
+                key: 'update',
+                variant: 'link',
+                text: sprintf(__('Update to v%s', 'publishpress-hub'), availableVersion),
+                isLoading: isUpdating,
+                onClick: () => onUpdate(pluginFamily),
+            });
+        }
+
+        // Add renewal link if license is expired (show first in row actions after update)
+        if (
+            pluginFamily.proPlugin.isInstalled &&
+            pluginFamily.proPlugin.isExpired &&
+            pluginFamily.proPlugin.detailsUrl
+        ) {
+            buttons.push({
+                key: 'renew',
+                variant: 'link',
+                href: pluginFamily.proPlugin.detailsUrl,
+                className: 'is-renew-link',
+                text: __('Renew', 'publishpress-hub'),
+                disabled: isUpdating ? false : undefined,
+            });
+        }
+        // Add renewal link if license is expiring within 30 days (show first in row actions after update)
+        else if (
+            pluginFamily.proPlugin.isInstalled &&
+            pluginFamily.proPlugin.isLicensed &&
+            !pluginFamily.proPlugin.isExpired &&
+            pluginFamily.proPlugin.daysUntilExpiration !== undefined &&
+            pluginFamily.proPlugin.daysUntilExpiration >= 0 &&
+            pluginFamily.proPlugin.daysUntilExpiration <= 30 &&
+            pluginFamily.proPlugin.detailsUrl
+        ) {
+            buttons.push({
+                key: 'renew',
+                variant: 'link',
+                href: pluginFamily.proPlugin.detailsUrl,
+                className: 'is-renew-link',
+                text: __('Renew', 'publishpress-hub'),
+                disabled: isUpdating ? false : undefined,
+            });
+        }
+
         if (isInstalled && !hasConflictingInstallations) {
             if (isActive) {
                 buttons.push({
@@ -46,6 +105,7 @@ export const useActionButtons = (
                     variant: 'link',
                     text: __('Deactivate', 'publishpress-hub'),
                     isLoading: isDeactivating,
+                    disabled: isUpdating ? false : undefined,
                     onClick: () => onDeactivate(pluginFamily),
                 });
             } else {
@@ -54,6 +114,7 @@ export const useActionButtons = (
                     variant: 'link',
                     text: __('Activate', 'publishpress-hub'),
                     isLoading: isActivating,
+                    disabled: isUpdating ? false : undefined,
                     onClick: () => onActivate(pluginFamily),
                 });
             }
@@ -63,6 +124,7 @@ export const useActionButtons = (
                 variant: 'link',
                 text: __('Uninstall', 'publishpress-hub'),
                 isLoading: isUninstalling,
+                disabled: isUpdating ? false : undefined,
                 className: 'is-danger',
                 onClick: () => onUninstall(pluginFamily),
             });
@@ -74,6 +136,7 @@ export const useActionButtons = (
                 variant: 'link',
                 href: pluginFamily.freePlugin.detailsUrl,
                 text: __('Free Details', 'publishpress-hub'),
+                disabled: isUpdating ? false : undefined,
             });
 
             buttons.push({
@@ -81,6 +144,7 @@ export const useActionButtons = (
                 variant: 'link',
                 href: pluginFamily.proPlugin.detailsUrl,
                 text: __('Pro Details', 'publishpress-hub'),
+                disabled: isUpdating ? false : undefined,
             });
         }
 
@@ -89,7 +153,18 @@ export const useActionButtons = (
             variant: 'link',
             href: pluginFamily.changelogUrl,
             text: __('Changelogs', 'publishpress-hub'),
+            disabled: isUpdating ? false : undefined,
         });
+
+        if (isInstalled && !hasConflictingInstallations && onOpenPluginInfo) {
+            buttons.push({
+                key: 'more-info',
+                variant: 'link',
+                text: __('More Info', 'publishpress-hub'),
+                disabled: isUpdating ? false : undefined,
+                onClick: () => onOpenPluginInfo(pluginFamily),
+            });
+        }
 
         return buttons;
     }, [
@@ -99,9 +174,12 @@ export const useActionButtons = (
         isDeactivating,
         isActivating,
         isUninstalling,
+        isUpdating,
         pluginFamily,
         onDeactivate,
         onActivate,
         onUninstall,
+        onOpenPluginInfo,
+        onUpdate,
     ]);
 };

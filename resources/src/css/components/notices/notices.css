@@ -29,6 +29,24 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
     color: var(--pp-hub-text-primary-inverted) !important;
 }
 
-.components-notice {
-    border-radius: var(--pp-hub-radius-md);
+/* Renew link styling in notices */
+.components-notice .pp-hub-renew-link {
+    display: inline-block;
+    text-decoration: underline;
+}
+
+/* Notice  */
+.components-notice.is-info,
+.components-notice.is-success,
+.components-notice.is-warning,
+.components-notice.is-error {
+    background-color: var(--pp-hub-bg-primary);
+    padding: 0 12px;
+    border-top: 1px solid var(--pp-hub-border-secondary);
+    border-right: 1px solid var(--pp-hub-border-secondary);
+    border-bottom: 1px solid var(--pp-hub-border-secondary);
+}
+
+.components-notice .components-notice__dismiss {
+    margin-top: 12px;
 }

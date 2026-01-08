@@ -22,11 +22,19 @@ use PublishPress\Hub\Domain\Plugin\ValueObject\PluginState;
  * Pro plugin entity.
  * Uses composition with PluginState value object for better Clean Code practices.
  *
+ * Business Rules:
+ * - Pro plugins require a valid license key for updates
+ * - Each pro plugin has a unique downloadId that identifies it in the EDD system
+ * - Licensed status determines whether plugin can receive updates from license server
+ *
  * @since 1.0.0
  */
 class ProPlugin implements ProPluginInterface
 {
     private PluginState $state;
+
+    // Download ID uniquely identifies this product in the EDD Software Licensing system
+    // This is required for license activation, version checks, and update downloads
     private int $downloadId = 0;
 
     /**
@@ -166,6 +174,9 @@ class ProPlugin implements ProPluginInterface
      */
     public function isLicensed(): bool
     {
+        // Returns whether plugin has a valid license key stored
+        // This is critical for determining if plugin can receive updates
+        // Note: This only checks if key exists, not if it's valid/active on server
         return $this->state->isLicensed();
     }
 
@@ -180,6 +191,9 @@ class ProPlugin implements ProPluginInterface
      */
     public function setInstalled(bool $installed, ?string $version = null, ?string $filePath = null): self
     {
+        // Update installation status with version and file path
+        // Version is used for update checks to determine if newer version is available
+        // FilePath is required for plugin activation/deactivation operations
         $this->state = $this->state->withInstalled($installed, $version, $filePath);
         return $this;
     }
@@ -206,6 +220,9 @@ class ProPlugin implements ProPluginInterface
      */
     public function setLicensed(bool $licensed): self
     {
+        // Update licensed status when license key is added or removed
+        // Setting to true enables update checks from license server
+        // Setting to false prevents unauthorized access to premium updates
         $this->state = $this->state->withLicensed($licensed);
         return $this;
     }

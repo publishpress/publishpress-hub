@@ -3,7 +3,7 @@
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -26,6 +26,8 @@ export const usePluginActions = (modalManager) => {
         resolveConflict,
         deactivateLicense,
         activateLicense,
+        updatePlugin,
+        fetchPlugins,
     } = useDispatch(store);
 
     const handleOpenInstallationTypeModal = useCallback((pluginFamily) => {
@@ -120,6 +122,25 @@ export const usePluginActions = (modalManager) => {
         closeModal();
     }, [closeModal]);
 
+    const handleOpenPluginInfoModal = useCallback((pluginFamily) => {
+        openModal(MODAL_TYPES.PLUGIN_INFO, pluginFamily);
+    }, [openModal, MODAL_TYPES.PLUGIN_INFO]);
+
+    const handleUpdatePlugin = useCallback(async (pluginFamily) => {
+        const pluginFamilySlug = typeof pluginFamily === 'string' ? pluginFamily : pluginFamily.slug;
+        const result = await updatePlugin(pluginFamilySlug);
+        if (result.success && !result.error) {
+            closeModal();
+        }
+        return result;
+    }, [updatePlugin, closeModal]);
+
+    const handleCheckForUpdates = useCallback(async () => {
+        // Force refresh the plugins list to check for updates
+        const result = await fetchPlugins(true);
+        return result;
+    }, [fetchPlugins]);
+
     return {
         // Primary actions
         handleOpenInstallationTypeModal,
@@ -140,5 +161,8 @@ export const usePluginActions = (modalManager) => {
         handleUninstallPlugin,
         handleResolveConflictAction,
         handleBuyPlugin,
+        handleOpenPluginInfoModal,
+        handleUpdatePlugin,
+        handleCheckForUpdates,
     };
 };

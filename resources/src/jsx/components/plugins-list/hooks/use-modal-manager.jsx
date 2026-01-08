@@ -3,7 +3,7 @@
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\hooks
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -20,6 +20,7 @@ const MODAL_TYPES = {
     UPGRADE_PLUGIN_TO_PRO: 'upgrade-plugin-to-pro',
     RESOLVE_CONFLICT: 'resolve-conflict',
     LICENSE_MANAGEMENT: 'license-management',
+    PLUGIN_INFO: 'plugin-info',
 };
 
 export const useModalManager = () => {

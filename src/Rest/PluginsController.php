@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Rest;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
+use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallProPluginUseCase;
@@ -22,9 +23,11 @@ use PublishPress\Hub\Application\UseCase\Plugin\InstallFreePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UninstallPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UpgradePluginUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\UpdatePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ResolveConflictUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\DeactivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ActivateLicenseUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\ValidateLicensesUseCase;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use WP_REST_Server;
@@ -40,9 +43,11 @@ class PluginsController implements BootableInterface
     private ChangePluginActivationUseCase $changePluginActivationUseCase;
     private UninstallPluginUseCase $uninstallPluginUseCase;
     private UpgradePluginUseCase $upgradePluginUseCase;
+    private UpdatePluginUseCase $updatePluginUseCase;
     private ResolveConflictUseCase $resolveConflictUseCase;
     private DeactivateLicenseUseCase $deactivateLicenseUseCase;
     private ActivateLicenseUseCase $activateLicenseUseCase;
+    private ValidateLicensesUseCase $validateLicensesUseCase;
     private string $restApiNamespace;
 
     /**
@@ -54,9 +59,11 @@ class PluginsController implements BootableInterface
      * @param ChangePluginActivationUseCase $changePluginActivationUseCase
      * @param UninstallPluginUseCase $uninstallPluginUseCase
      * @param UpgradePluginUseCase $upgradePluginUseCase
+     * @param UpdatePluginUseCase $updatePluginUseCase
      * @param ResolveConflictUseCase $resolveConflictUseCase
      * @param DeactivateLicenseUseCase $deactivateLicenseUseCase
      * @param ActivateLicenseUseCase $activateLicenseUseCase
+     * @param ValidateLicensesUseCase $validateLicensesUseCase
      * @since 1.0.0
      */
     public function __construct(
@@ -68,9 +75,11 @@ class PluginsController implements BootableInterface
         ChangePluginActivationUseCase $changePluginActivationUseCase,
         UninstallPluginUseCase $uninstallPluginUseCase,
         UpgradePluginUseCase $upgradePluginUseCase,
+        UpdatePluginUseCase $updatePluginUseCase,
         ResolveConflictUseCase $resolveConflictUseCase,
         DeactivateLicenseUseCase $deactivateLicenseUseCase,
-        ActivateLicenseUseCase $activateLicenseUseCase
+        ActivateLicenseUseCase $activateLicenseUseCase,
+        ValidateLicensesUseCase $validateLicensesUseCase
     ) {
         $this->restApiService = $restApiService;
         $this->listPluginsUseCase = $listPluginsUseCase;
@@ -79,10 +88,12 @@ class PluginsController implements BootableInterface
         $this->changePluginActivationUseCase = $changePluginActivationUseCase;
         $this->uninstallPluginUseCase = $uninstallPluginUseCase;
         $this->upgradePluginUseCase = $upgradePluginUseCase;
+        $this->updatePluginUseCase = $updatePluginUseCase;
         $this->resolveConflictUseCase = $resolveConflictUseCase;
         $this->restApiNamespace = $restApiNamespace;
         $this->deactivateLicenseUseCase = $deactivateLicenseUseCase;
         $this->activateLicenseUseCase = $activateLicenseUseCase;
+        $this->validateLicensesUseCase = $validateLicensesUseCase;
     }
 
     /**
@@ -104,6 +115,25 @@ class PluginsController implements BootableInterface
      */
     protected function onInit(): void
     {
+        return;
+    }
+
+    /**
+     * Get the familySlug argument definition.
+     *
+     * @return array<string, mixed> The argument definition.
+     * @since 1.0.0
+     */
+    private function getFamilySlugArg(): array
+    {
+        return [
+            'required' => true,
+            'type' => 'string',
+            'sanitize_callback' => 'sanitize_key',
+            'validate_callback' => function ($param) {
+                return preg_match('/^[a-zA-Z0-9-]+$/', $param) === 1;
+            },
+        ];
     }
 
     /**
@@ -122,7 +152,17 @@ class PluginsController implements BootableInterface
             '/plugins',
             WP_REST_Server::READABLE,
             $this->listPluginsUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'force-check' => [
+                    'required' => false,
+                    'type' => 'string',
+                    'sanitize_callback' => 'sanitize_text_field',
+                    'validate_callback' => function ($param) {
+                        return $param === null || $param === '' || $param === '1' || $param === 1;
+                    },
+                ],
+            ]
         ));
 
         // POST /plugins/install/{familySlug}/free
@@ -131,7 +171,10 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/install/free',
             WP_REST_Server::CREATABLE,
             $this->installFreePluginUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+            ]
         ));
 
         // POST /plugins/install/{familySlug}/pro
@@ -140,7 +183,18 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/install/pro',
             WP_REST_Server::CREATABLE,
             $this->installProPluginUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+                'licenseKey' => [
+                    'required' => true,
+                    'type' => 'string',
+                    'sanitize_callback' => 'sanitize_text_field',
+                    'validate_callback' => function ($param) {
+                        return !empty($param) && is_string($param);
+                    },
+                ],
+            ]
         ));
 
         // POST /plugins/{familySlug}/(activate|deactivate)
@@ -149,7 +203,18 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/(?P<action>activate|deactivate)',
             WP_REST_Server::CREATABLE,
             $this->changePluginActivationUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+                'action' => [
+                    'required' => true,
+                    'type' => 'string',
+                    'sanitize_callback' => 'sanitize_key',
+                    'validate_callback' => function ($param) {
+                        return in_array($param, ['activate', 'deactivate'], true);
+                    },
+                ],
+            ]
         ));
 
         // POST /plugins/{familySlug}/uninstall
@@ -158,7 +223,10 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/uninstall',
             WP_REST_Server::CREATABLE,
             $this->uninstallPluginUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+            ]
         ));
 
         // POST /plugins/{familySlug}/upgrade
@@ -167,7 +235,30 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/upgrade',
             WP_REST_Server::CREATABLE,
             $this->upgradePluginUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+                'licenseKey' => [
+                    'required' => true,
+                    'type' => 'string',
+                    'sanitize_callback' => 'sanitize_text_field',
+                    'validate_callback' => function ($param) {
+                        return !empty($param) && is_string($param);
+                    },
+                ],
+            ]
+        ));
+
+        // POST /plugins/{familySlug}/update
+        $this->restApiService->addRoute(new RestRoute(
+            $this->restApiNamespace,
+            '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/update',
+            WP_REST_Server::CREATABLE,
+            $this->updatePluginUseCase,
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+            ]
         ));
 
         // POST /plugins/{familySlug}/resolve-conflict
@@ -176,7 +267,18 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/resolve-conflict',
             WP_REST_Server::CREATABLE,
             $this->resolveConflictUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+                'pluginToKeep' => [
+                    'required' => true,
+                    'type' => 'string',
+                    'sanitize_callback' => 'sanitize_key',
+                    'validate_callback' => function ($param) {
+                        return in_array($param, ['free', 'pro'], true);
+                    },
+                ],
+            ]
         ));
 
         // POST /plugins/{familySlug}/deactivate-license
@@ -185,7 +287,10 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/deactivate-license',
             WP_REST_Server::CREATABLE,
             $this->deactivateLicenseUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+            ]
         ));
 
         // POST /plugins/{familySlug}/activate-license
@@ -194,7 +299,37 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/activate-license',
             WP_REST_Server::CREATABLE,
             $this->activateLicenseUseCase,
-            [$this, 'checkPermissions']
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
+                'licenseKey' => [
+                    'required' => true,
+                    'type' => 'string',
+                    'sanitize_callback' => 'sanitize_text_field',
+                    'validate_callback' => function ($param) {
+                        return !empty($param) && is_string($param);
+                    },
+                ],
+            ]
+        ));
+
+        // POST /plugins/validate-licenses
+        $this->restApiService->addRoute(new RestRoute(
+            $this->restApiNamespace,
+            '/plugins/validate-licenses',
+            WP_REST_Server::CREATABLE,
+            $this->validateLicensesUseCase,
+            [$this, 'checkPermissions'],
+            [
+                'force-check' => [
+                    'required' => false,
+                    'type' => 'string',
+                    'sanitize_callback' => 'sanitize_text_field',
+                    'validate_callback' => function ($param) {
+                        return $param === null || $param === '' || $param === '1' || $param === 1;
+                    },
+                ],
+            ]
         ));
 
         // phpcs:enable Squiz.PHP.CommentedOutCode.Found
@@ -208,6 +343,6 @@ class PluginsController implements BootableInterface
      */
     public function checkPermissions(): bool
     {
-        return $this->restApiService->checkPermissions('manage_options');
+        return current_user_can(HubAccessService::CAPABILITY);
     }
 }

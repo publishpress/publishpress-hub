@@ -3,16 +3,17 @@
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
 
 import { memo, useMemo } from '@wordpress/element';
 
-import { __ } from '@publishpress-hub/i18n';
+import { __, sprintf } from '@publishpress-hub/i18n';
 
 import { Badge } from '../../badge/badge';
+import { Tooltip } from '../../tooltip';
 
 const DAYS_UNTIL_EXPIRATION_DATE_THRESHOLD = 60;
 
@@ -38,6 +39,10 @@ const STATUS_BADGE_CONFIGS = {
         text: __('Unlicensed', 'publishpress-hub'),
         className: 'unlicensed',
     },
+    expired: {
+        text: __('Expired', 'publishpress-hub'),
+        className: 'expired',
+    },
     uninstalling: {
         text: __('Uninstalling', 'publishpress-hub'),
         className: 'uninstalling',
@@ -62,6 +67,11 @@ const STATUS_BADGE_CONFIGS = {
         text: __('Conflicting Installations', 'publishpress-hub'),
         className: 'conflicting-installations',
     },
+    updateAvailable: {
+        text: __('Update Available', 'publishpress-hub'),
+        className: 'update-available',
+        icon: <span className="dashicons dashicons-warning" />,
+    },
 };
 
 const StatusFlagComponent = ({
@@ -71,6 +81,8 @@ const StatusFlagComponent = ({
     isUpgrading,
     isDeactivating,
     isActivating,
+    hasUpdate,
+    updateBadgeTooltip,
 }) => {
     // Extract the countInstalledPlugins calculation to avoid nesting useMemo hooks
     const countInstalledPlugins = useMemo(() => {
@@ -85,7 +97,7 @@ const StatusFlagComponent = ({
         return count;
     }, [pluginFamily]);
 
-    const props = useMemo(() => {
+    const statusBadgeProps = useMemo(() => {
         if (pluginFamily.hasConflictingInstallations) {
             return STATUS_BADGE_CONFIGS.hasConflictingInstallations;
         }
@@ -115,20 +127,24 @@ const StatusFlagComponent = ({
         }
 
         if (pluginFamily.proPlugin.isInstalled) {
+            // Check if expired first (before checking if licensed)
+            if (pluginFamily.proPlugin.isExpired) {
+                return STATUS_BADGE_CONFIGS.expired;
+            }
             return pluginFamily.proPlugin.isLicensed ? STATUS_BADGE_CONFIGS.licensed : STATUS_BADGE_CONFIGS.unlicensed;
         }
 
         return STATUS_BADGE_CONFIGS.free;
     }, [pluginFamily, isInstalling, isUninstalling, isUpgrading, isDeactivating, isActivating, countInstalledPlugins]);
 
-    if (!props) {
+    if (!statusBadgeProps) {
         return null;
     }
 
     // Display expiration date for licensed plugins
     const expirationDate = useMemo(() => {
         if (
-            props === STATUS_BADGE_CONFIGS.licensed &&
+            statusBadgeProps === STATUS_BADGE_CONFIGS.licensed &&
             pluginFamily.proPlugin.isLicensed &&
             pluginFamily.proPlugin.licenseExpirationDateFormatted
         ) {
@@ -144,11 +160,22 @@ const StatusFlagComponent = ({
         }
 
         return null;
-    }, [props, pluginFamily]);
+    }, [statusBadgeProps, pluginFamily]);
 
     return (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-            <Badge {...props}>{props.text}</Badge>
+        <div className='pp-hub-status-flag' style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+            <Badge {...statusBadgeProps}>{statusBadgeProps.text}</Badge>
+            {hasUpdate && (
+                <Tooltip
+                    text={updateBadgeTooltip || __('Update Available', 'publishpress-hub')}
+                    placement='top'
+                    useCustom={true}
+                >
+                    <Badge {...STATUS_BADGE_CONFIGS.updateAvailable}>
+                        {STATUS_BADGE_CONFIGS.updateAvailable.text}
+                    </Badge>
+                </Tooltip>
+            )}
             {expirationDate && (
                 <span style={{ fontSize: '12px', color: 'var(--pp-hub-text-secondary, #666)' }}>
                     {__('Expires', 'publishpress-hub')} {expirationDate}

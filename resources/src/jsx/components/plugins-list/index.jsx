@@ -3,7 +3,7 @@
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -29,6 +29,7 @@ const selectProgressStates = (select) => {
         pluginDeactivationInProgress: storeSelect.getPluginDeactivationInProgress(),
         pluginActivationInProgress: storeSelect.getPluginActivationInProgress(),
         pluginUpgradeInProgress: storeSelect.getPluginUpgradeInProgress(),
+        pluginUpdateInProgress: storeSelect.getPluginUpdateInProgress(),
         pluginResolveConflictInProgress: storeSelect.getPluginResolveConflictInProgress(),
         pluginLicenseActivationInProgress: storeSelect.getPluginLicenseActivationInProgress(),
         pluginLicenseDeactivationInProgress: storeSelect.getPluginLicenseDeactivationInProgress(),
@@ -60,6 +61,7 @@ const PluginsListComponent = ({
         pluginDeactivationInProgress,
         pluginActivationInProgress,
         pluginUpgradeInProgress,
+        pluginUpdateInProgress,
         pluginResolveConflictInProgress,
         pluginLicenseActivationInProgress,
         pluginLicenseDeactivationInProgress,
@@ -86,6 +88,7 @@ const PluginsListComponent = ({
                 pluginDeactivationInProgress[slug] ||
                 pluginActivationInProgress[slug] ||
                 pluginUpgradeInProgress[slug] ||
+                pluginUpdateInProgress[slug] ||
                 pluginResolveConflictInProgress[slug] ||
                 pluginLicenseActivationInProgress[slug] ||
                 pluginLicenseDeactivationInProgress[slug]
@@ -108,6 +111,7 @@ const PluginsListComponent = ({
             isDeactivating: pluginDeactivationInProgress[slug] || false,
             isActivating: pluginActivationInProgress[slug] || false,
             isUpgrading: pluginUpgradeInProgress[slug] || false,
+            isUpdating: pluginUpdateInProgress[slug] || false,
             isResolvingConflict: pluginResolveConflictInProgress[slug] || false,
             isActivatingLicense: pluginLicenseActivationInProgress[slug] || false,
             isDeactivatingLicense: pluginLicenseDeactivationInProgress[slug] || false,
@@ -128,6 +132,8 @@ const PluginsListComponent = ({
                 onActivateLicense={pluginActions.handleOpenLicenseInputForActivatingLicenseModal}
                 onUninstall={pluginActions.handleOpenUninstallConfirmationModal}
                 onDeactivateLicense={pluginActions.handleDeactivateLicense}
+                onOpenPluginInfo={pluginActions.handleOpenPluginInfoModal}
+                onUpdate={pluginActions.handleUpdatePlugin}
             />
         );
     }, [
@@ -137,6 +143,7 @@ const PluginsListComponent = ({
         pluginDeactivationInProgress,
         pluginActivationInProgress,
         pluginUpgradeInProgress,
+        pluginUpdateInProgress,
         pluginResolveConflictInProgress,
         pluginLicenseActivationInProgress,
         pluginLicenseDeactivationInProgress,

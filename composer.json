@@ -16,7 +16,7 @@
         "version-constant": "PUBLISHPRESS_HUB_VERSION",
         "generator":{
             "namespace": "PublishPress\\Hub",
-            "lib-class-test": "class_exists('PublishPress\\Hub\\Infrastructure\\Container\\ServiceContainer')",
+            "lib-class-test": "class_exists('PublishPress\\Hub\\Infrastructure\\Container\\DependencyContainer')",
             "action-initialize-priority": "-240",
             "action-register-priority": "-250",
             "src-dir": "src",
@@ -81,13 +81,15 @@
         "knplabs/github-api": "^3.16",
         "symfony/http-client": "^7.1",
         "nyholm/psr7": "^1.8",
-        "publishpress/version-loader-generator": "^1.2"
+        "publishpress/version-loader-generator": "^1.2",
+        "phpmetrics/phpmetrics": "^2.9"
     },
     "scripts": {
         "build": [
             "@build:loader",
             "/scripts/pbuild build"
         ],
+        "build:dir": "/scripts/pbuild build-dir",
         "build:loader": "vendor/bin/version-loader-generator",
         "build:lang-pot": "wp i18n make-pot . ./languages/publishpress-hub.pot --domain=publishpress-hub --exclude=dev-workspace,.wordpress-org,.github,dist,tests,lib,tmp,doc,*.js,*.js.map --allow-root",
         "build:lang-mo": "wp i18n make-mo ./languages ./languages --allow-root",
@@ -105,14 +107,15 @@
             "@build:js-prod",
             "@build:js-dev"
         ],
+        "build:js:watch": "cross-env NODE_ENV=development npx webpack --watch --progress",
+        "info:versions": "bash ./dev-workspace/scripts/dependency-versions.sh",
         "profile:js": "cross-env NODE_ENV=production npx webpack --profile",
         "watch": "cross-env NODE_ENV=development npx webpack --watch --progress",
         "watch:prototype": "cross-env NODE_ENV=development npx webpack --watch --progress --config webpack.prototype.config.js",
         "check": [
             "@check:php",
-            "@check:lint",
             "@check:cs",
-            "@check:phpmd"
+            "@check:lint"
         ],
         "check:php": [
             "@check:php-7.4",
@@ -130,16 +133,32 @@
         "check:php-8.4": "phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.4",
         "check:lint": "phplint --no-cache",
         "check:cs": "phpcs",
-        "check:stan": "phpstan",
+        "check:stan": "phpstan analyse . --memory-limit=1024M",
         "check:phpmd": "phpmd src ansi phpmd.ruleset.xml",
+        "check:longpath": "bash -c \"if [ ! -d 'dist/publishpress-hub' ]; then composer build:dir; fi && longpath dist/publishpress-hub/\"",
         "fix:cs": "phpcbf --standard=.phpcs.xml",
         "fix:php": [
             "php-cs-fixer fix .",
             "@fix:cs"
         ],
+        "metrics": "phpmetrics --report-html=metrics --exclude=vendor,lib/vendor,tests,dist,dev-workspace,.claude,.cursor,.github,.wordpress-org,.git,.zed,docs,languages .",
         "sync:local": "bash ./dev-workspace/scripts/local-sync.sh",
         "sync:local:watch": "bash ./dev-workspace/scripts/local-sync.sh --watch",
         "config:phpcs": "phpcs --config-set installed_paths \"../../phpcsstandards/phpcsutils,../../phpcsstandards/phpcsextra,../../automattic/vipwpcs,../../phpcompatibility/php-compatibility,../../sirbrillig/phpcs-variable-analysis,../../publishpress/publishpress-phpcs-standards/standards,../../wp-coding-standards/wpcs\"",
+        "test": "vendor/bin/codecept run",
+        "test:up": [
+            "bash dev-workspace/scripts/env.sh up test",
+            "@test:info"
+        ],
+        "test:down": "bash dev-workspace/scripts/env.sh down test",
+        "test:restart": "bash dev-workspace/scripts/env.sh restart test",
+        "test:info": "bash dev-workspace/scripts/env.sh info test",
+        "test:stop": "bash dev-workspace/scripts/env.sh stop test",
+        "test:clean": [
+            "bash dev-workspace/scripts/env.sh cleanup test",
+            "@test:clean-cache",
+            "composer codecept clean"
+        ],
         "post-install-cmd": [
             "@config:phpcs"
         ],

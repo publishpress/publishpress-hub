@@ -1,4 +1,5 @@
 - .babelrc
+- .claude
 - .distignore
 - .env
 - .env.example
@@ -12,12 +13,15 @@
 - .phpcs.xml
 - .phplint-cache
 - .phplint.yml
+- .rsync-filters-dev-sync
+- .rsync-filters-sync
 - .vscode
 - .wordpress-org
+- .zed
 - *.code-workspace
 - /.cache
-- /.github
 - /.cursor
+- /.github
 - /bin
 - /builder
 - /cache
@@ -41,6 +45,7 @@
 - Gruntfile.js
 - jsconfig.json
 - makefile
+- metrics
 - package-lock.json
 - package.json
 - phpstan.neon

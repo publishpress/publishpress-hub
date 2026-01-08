@@ -36,7 +36,7 @@ class WPRestApiAdapter implements RestApiAdapterInterface
             $route->getRoute(),
             [
                 'methods' => $route->getMethods(),
-                'callback' => fn(WP_REST_Request $request) => $callback($request, $route->getUseCase()),
+                'callback' => fn(WP_REST_Request $request) => $callback($request, $route->getCallback()),
                 'permission_callback' => $route->getPermissionCallback(),
                 'args' => $route->getArgs(),
             ]

@@ -35,3 +35,7 @@ gh_token.txt
 publishpress-hub.code-workspace
 
 .phpactor.json
+security-audit/
+SECURITY_AUDIT.md
+
+/metrics

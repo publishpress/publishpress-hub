@@ -51,3 +51,4 @@ codeception.yml export-ignore
 /.cursor export-ignore
 phpmd.ruleset.xml export-ignore
 makefile export-ignore
+.claude export-ignore

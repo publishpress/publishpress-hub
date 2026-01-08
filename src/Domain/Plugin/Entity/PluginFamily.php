@@ -119,6 +119,8 @@ class PluginFamily implements PluginFamilyInterface
      */
     public function getFreePlugin(): PluginInterface
     {
+        // Enforce that family must have a free plugin configured before use
+        // This is a business rule: every plugin family must have at least a free version
         if ($this->freePlugin === null) {
             throw new \RuntimeException(
                 sprintf(
@@ -139,6 +141,8 @@ class PluginFamily implements PluginFamilyInterface
      */
     public function getProPlugin(): ProPluginInterface
     {
+        // Enforce that family must have a pro plugin configured before use
+        // This is a business rule: every plugin family must have a pro version
         if ($this->proPlugin === null) {
             throw new \RuntimeException(
                 sprintf(
@@ -183,6 +187,10 @@ class PluginFamily implements PluginFamilyInterface
      */
     public function hasConflictingInstallations(): bool
     {
+        // Detect when both free and pro versions are installed simultaneously
+        // This is a business constraint violation: only one version should be installed
+        // Having both installed can cause: plugin conflicts, duplicate functionality,
+        // confusing user experience, and potential data inconsistencies
         return ($this->freePlugin && $this->freePlugin->isInstalled()) &&
                ($this->proPlugin && $this->proPlugin->isInstalled());
     }
@@ -260,6 +268,9 @@ class PluginFamily implements PluginFamilyInterface
      */
     public function getInstalledPlugin(): ?PluginInterface
     {
+        // Return the installed plugin, preferring free over pro if both exist
+        // Priority order matters: free plugin is checked first because it's the base version
+        // If user has both installed (conflict state), we prefer showing free plugin info
         if ($this->freePlugin && $this->freePlugin->isInstalled()) {
             return $this->freePlugin;
         }

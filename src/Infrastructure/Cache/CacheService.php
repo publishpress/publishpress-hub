@@ -14,24 +14,19 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Cache;
 
-use PublishPress\Hub\Infrastructure\Cache\Contract\CacheAdapterInterface;
 use PublishPress\Hub\Infrastructure\Cache\Contract\CacheServiceInterface;
 
 class CacheService implements CacheServiceInterface
 {
-    private CacheAdapterInterface $cacheAdapter;
-
     private string $group;
 
     /**
      * @param string $group The group of the cache.
-     * @param CacheAdapterInterface $cacheAdapter The cache adapter.
      * @since 1.0.0
      */
-    public function __construct(string $group, CacheAdapterInterface $cacheAdapter)
+    public function __construct(string $group)
     {
         $this->group = $group;
-        $this->cacheAdapter = $cacheAdapter;
     }
 
     /**
@@ -44,7 +39,7 @@ class CacheService implements CacheServiceInterface
      */
     public function get(string $key, $default = null)
     {
-        return $this->cacheAdapter->get($key, $this->group, $default);
+        return wp_cache_get($key, $this->group, false, $default);
     }
 
     /**
@@ -57,7 +52,8 @@ class CacheService implements CacheServiceInterface
      */
     public function set(string $key, $value, int $ttl = 0): void
     {
-        $this->cacheAdapter->set($key, $value, $this->group, $ttl);
+        // phpcs:ignore WordPressVIPMinimum.Performance.LowExpiryCacheTime.CacheTimeUndetermined
+        wp_cache_set($key, $value, $this->group, $ttl);
     }
 
     /**
@@ -68,7 +64,7 @@ class CacheService implements CacheServiceInterface
      */
     public function delete(string $key): void
     {
-        $this->cacheAdapter->delete($key, $this->group);
+        wp_cache_delete($key, $this->group);
     }
 
     /**
@@ -78,6 +74,6 @@ class CacheService implements CacheServiceInterface
      */
     public function clear(): void
     {
-        $this->cacheAdapter->clear();
+        wp_cache_flush();
     }
 }

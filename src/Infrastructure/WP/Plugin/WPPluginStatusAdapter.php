@@ -48,7 +48,13 @@ class WPPluginStatusAdapter
         $pluginPath = $plugin->getPath();
         $fullPath = WP_PLUGIN_DIR . '/' . $pluginPath;
 
-        return $this->fileSystemAdapter->exists($fullPath);
+        try {
+            return $this->fileSystemAdapter->exists($fullPath);
+        } catch (\InvalidArgumentException $e) {
+            // If path validation fails (e.g. parent directory doesn't exist),
+            // the plugin is not installed
+            return false;
+        }
     }
 
     /**
@@ -98,6 +104,11 @@ class WPPluginStatusAdapter
         $pluginPath = $plugin->getPath();
         $fullPath = WP_PLUGIN_DIR . '/' . $pluginPath;
 
-        return $this->fileSystemAdapter->exists($fullPath) ? $fullPath : null;
+        try {
+            return $this->fileSystemAdapter->exists($fullPath) ? $fullPath : null;
+        } catch (\InvalidArgumentException $e) {
+            // If path validation fails, the plugin file doesn't exist
+            return null;
+        }
     }
 }

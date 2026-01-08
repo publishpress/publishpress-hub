@@ -116,4 +116,22 @@ interface LicensePersistenceInterface
      * @since 1.0.0
      */
     public function getLicenseExpirationDateByKey(string $licenseKey): ?string;
+
+    /**
+     * Mark a license as coming from a constant or not.
+     *
+     * @param int $downloadId The download ID.
+     * @param bool $isFromConstant Whether the license comes from a constant.
+     * @since 1.0.0
+     */
+    public function markLicenseAsFromConstant(int $downloadId, bool $isFromConstant): void;
+
+    /**
+     * Check if a license comes from a constant.
+     *
+     * @param int $downloadId The download ID.
+     * @return bool True if the license comes from a constant, false otherwise.
+     * @since 1.0.0
+     */
+    public function isLicenseFromConstant(int $downloadId): bool;
 }

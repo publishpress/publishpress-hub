@@ -88,4 +88,3 @@ final class ExceptionCode
         return in_array($code, self::getAllCodes(), true);
     }
 }
-

@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Domain\Plugin;
 
-use PublishPress\Hub\Application\Service\PluginStatusService;
+use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Domain\Plugin\Entity\ProPlugin;
+use PublishPress\Hub\Domain\Plugin\Repository\PluginFamilyRepository;
+use PublishPress\Hub\Infrastructure\License\PerPluginLicensePersistenceService;
+use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;
+use PublishPress\Hub\Infrastructure\WP\Options\WPOptionsAdapter;
 use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginStatusAdapter;
 use Tests\NoTransactionWPTestCase;
 
@@ -20,8 +24,12 @@ class ProPluginTest extends NoTransactionWPTestCase
     {
         parent::setUp();
 
-        $pluginChecker = new WPPluginStatusAdapter();
-        $this->pluginStatusService = new PluginStatusService($pluginChecker);
+        $fileSystemAdapter = new WPFileSystemAdapter();
+        $pluginChecker = new WPPluginStatusAdapter($fileSystemAdapter);
+        $pluginFamilyRepository = new PluginFamilyRepository();
+        $optionsAdapter = new WPOptionsAdapter();
+        $licensePersistence = new PerPluginLicensePersistenceService($optionsAdapter, $pluginFamilyRepository);
+        $this->pluginStatusService = new PluginStatusService($pluginChecker, $pluginFamilyRepository, $licensePersistence);
     }
 
     public function testConstructorWithValidParameters(): void
@@ -30,7 +38,8 @@ class ProPluginTest extends NoTransactionWPTestCase
             'Test Pro Plugin',
             'test-pro-plugin',
             'test-pro-plugin.php',
-            'https://publishpress.com/pricing/test-pro-plugin/'
+            'https://publishpress.com/pricing/test-pro-plugin/',
+            0
         );
 
         $this->assertEquals('Test Pro Plugin', $plugin->getName());
@@ -46,7 +55,8 @@ class ProPluginTest extends NoTransactionWPTestCase
             'Test Pro Plugin',
             'test-pro-plugin',
             'test-pro-plugin.php',
-            'https://publishpress.com/pricing/test-pro-plugin/'
+            'https://publishpress.com/pricing/test-pro-plugin/',
+            0
         );
 
         $this->assertNull($plugin->getFamily());
@@ -58,7 +68,8 @@ class ProPluginTest extends NoTransactionWPTestCase
             'Test Pro Plugin',
             'test-pro-plugin',
             'test-pro-plugin.php',
-            'https://publishpress.com/pricing/test-pro-plugin/'
+            'https://publishpress.com/pricing/test-pro-plugin/',
+            0
         );
 
         $this->assertFalse($plugin->isInstalled());
@@ -72,7 +83,8 @@ class ProPluginTest extends NoTransactionWPTestCase
             'Test Pro Plugin',
             'test-pro-plugin',
             'test-pro-plugin.php',
-            'https://publishpress.com/pricing/test-pro-plugin/'
+            'https://publishpress.com/pricing/test-pro-plugin/',
+            0
         );
 
         $plugin->setInstalled(true, '1.0.3', 'custom/path/test-pro-plugin.php');
@@ -88,7 +100,8 @@ class ProPluginTest extends NoTransactionWPTestCase
             'Test Pro Plugin',
             'test-pro-plugin',
             'test-pro-plugin.php',
-            'https://publishpress.com/pricing/test-pro-plugin/'
+            'https://publishpress.com/pricing/test-pro-plugin/',
+            0
         );
 
         $plugin->setActive(true);
@@ -102,7 +115,8 @@ class ProPluginTest extends NoTransactionWPTestCase
             'Test Pro Plugin',
             'test-pro-plugin',
             'test-pro-plugin.php',
-            'https://publishpress.com/pricing/test-pro-plugin/'
+            'https://publishpress.com/pricing/test-pro-plugin/',
+            0
         );
 
         $plugin->setLicensed(true);
@@ -116,7 +130,8 @@ class ProPluginTest extends NoTransactionWPTestCase
             'Test Pro Plugin',
             'test-pro-plugin',
             'test-pro-plugin.php',
-            'https://publishpress.com/pricing/test-pro-plugin/'
+            'https://publishpress.com/pricing/test-pro-plugin/',
+            0
         );
 
         // Initial download ID should be 0
@@ -134,7 +149,8 @@ class ProPluginTest extends NoTransactionWPTestCase
             'Test Pro Plugin',
             'test-pro-plugin',
             'test-pro-plugin.php',
-            'https://publishpress.com/pricing/test-pro-plugin/'
+            'https://publishpress.com/pricing/test-pro-plugin/',
+            0
         );
 
         // Initially not installed
@@ -144,7 +160,7 @@ class ProPluginTest extends NoTransactionWPTestCase
         $this->createPluginFile($plugin, '1.0.0');
 
         // Refresh status from WordPress
-        $this->pluginStatusService->refreshPluginStatus($plugin);
+        $this->pluginStatusService->updatePluginStatus($plugin);
 
         // Should now be installed but not active
         $this->assertTrue($plugin->isInstalled());
@@ -158,7 +174,8 @@ class ProPluginTest extends NoTransactionWPTestCase
             'Test Pro Plugin Active',
             'test-pro-plugin-active',
             'test-pro-plugin-active.php',
-            'https://publishpress.com/pricing/test-pro-plugin-active/'
+            'https://publishpress.com/pricing/test-pro-plugin-active/',
+            0
         );
 
         // Create and activate the plugin
@@ -166,7 +183,7 @@ class ProPluginTest extends NoTransactionWPTestCase
         activate_plugin($plugin->getPath());
 
         // Refresh status from WordPress
-        $this->pluginStatusService->refreshPluginStatus($plugin);
+        $this->pluginStatusService->updatePluginStatus($plugin);
 
         // Should be both installed and active
         $this->assertTrue($plugin->isInstalled());
@@ -179,15 +196,18 @@ class ProPluginTest extends NoTransactionWPTestCase
             'Test Pro Plugin Infrastructure',
             'test-pro-plugin-infrastructure',
             'test-pro-plugin-infrastructure.php',
-            'https://publishpress.com/pricing/test-pro-plugin-infrastructure/'
+            'https://publishpress.com/pricing/test-pro-plugin-infrastructure/',
+            0
         );
 
         // Ensure no file exists initially
         $this->deletePluginFile($plugin);
 
         // Check without updating entity state
-        $this->assertFalse($this->pluginStatusService->isPluginInstalled($plugin));
-        $this->assertFalse($this->pluginStatusService->isPluginActive($plugin));
+        $fileSystemAdapter = new WPFileSystemAdapter();
+        $pluginChecker = new WPPluginStatusAdapter($fileSystemAdapter);
+        $this->assertFalse($pluginChecker->checkIfPluginIsInstalled($plugin));
+        $this->assertFalse($pluginChecker->checkIfPluginIsActive($plugin));
 
         // Entity state should remain unchanged
         $this->assertFalse($plugin->isInstalled());
@@ -197,8 +217,10 @@ class ProPluginTest extends NoTransactionWPTestCase
         $this->createPluginFile($plugin, '1.0.0');
 
         // Check again
-        $this->assertTrue($this->pluginStatusService->isPluginInstalled($plugin));
-        $this->assertFalse($this->pluginStatusService->isPluginActive($plugin));
+        $fileSystemAdapter = new WPFileSystemAdapter();
+        $pluginChecker = new WPPluginStatusAdapter($fileSystemAdapter);
+        $this->assertTrue($pluginChecker->checkIfPluginIsInstalled($plugin));
+        $this->assertFalse($pluginChecker->checkIfPluginIsActive($plugin));
 
         // Entity state should still be unchanged
         $this->assertFalse($plugin->isInstalled());

@@ -166,8 +166,9 @@ class PluginStatusService
             return false;
         }
 
-        $hasLicenseKey = $this->licensePersistence->hasLicenseKey($plugin->getDownloadId());
-        $isLicenseActivated = $this->licensePersistence->getLicenseStatus($plugin->getDownloadId());
+        $downloadId = $plugin->getDownloadId();
+        $hasLicenseKey = $this->licensePersistence->hasLicenseKey($downloadId);
+        $isLicenseActivated = $this->licensePersistence->getLicenseStatus($downloadId);
 
         return $hasLicenseKey && $isLicenseActivated;
     }

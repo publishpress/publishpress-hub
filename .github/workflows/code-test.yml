@@ -1,0 +1,107 @@
+name: Unit and Integration Tests
+on:
+  push:
+    branches:
+      - 'master'
+      - 'development'
+      - 'release/*'
+      - 'release-*'
+
+  pull_request:
+    branches:
+      - '*'
+
+  workflow_call:
+
+  workflow_dispatch:
+    inputs:
+      tmate_enabled:
+        type: boolean
+        description: 'Enable "tmate" for debugging'
+        required: false
+        default: false
+jobs:
+  check:
+    name: Test the code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup tmate session for Debugging, if inputs.tmate_enabled is true
+        uses: mxschmitt/action-tmate@v3
+        if: ${{ inputs.tmate_enabled }}
+        timeout-minutes: 10
+        with:
+          detached: true
+
+      - name: Checkout code
+        uses: actions/checkout@master
+
+      - name: Verify Docker installation
+        run: docker --version
+
+      - name: Create .env file
+        run: |
+          cp $GITHUB_WORKSPACE/.env.example $GITHUB_WORKSPACE/.env
+
+      - name: Prepare cache directories
+        run: |
+          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/test-wp/html
+          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/test-wp/tmp
+          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/test-wpcli/tmp
+          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/test-db/mysql
+          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/test-db/logs
+          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/mailhog/maildir
+          chmod -R 777 $GITHUB_WORKSPACE/dev-workspace/.cache
+
+      - name: Prepare composer
+        run: |
+          $GITHUB_WORKSPACE/dev-workspace/run composer validate
+          $GITHUB_WORKSPACE/dev-workspace/run composer install
+
+      - name: Start services
+        run: |
+          composer test:up
+        timeout-minutes: 10
+        env:
+          WP_READY_MAX_ATTEMPTS: 60
+          WP_READY_INTERVAL: 5
+
+      - name: Verify container status and fix permissions
+        run: |
+          docker ps
+          echo "Checking marker file..."
+          ls -la $GITHUB_WORKSPACE/dev-workspace/.cache/test-wpcli/tmp/ || true
+          echo "Fixing permissions for test runner..."
+          sudo chown -R $(id -u):$(id -g) $GITHUB_WORKSPACE/dev-workspace/.cache
+          sudo chmod -R 777 $GITHUB_WORKSPACE/dev-workspace/.cache
+
+      - name: Build Codeception support classes
+        run: |
+          vendor/bin/codecept build
+
+      - name: Run Unit Tests
+        run: |
+          composer test Unit
+        timeout-minutes: 5
+
+      - name: Run Integration Tests
+        run: |
+          composer test Integration
+        timeout-minutes: 10
+
+      # - name: Run API Tests
+      #   run: |
+      #     composer test Api
+      #   timeout-minutes: 5
+      # Temporarily disabled API tests on Github Actions; they are not working yet.
+
+      - name: Show container logs on failure
+        if: failure()
+        run: |
+          echo "=== Test WordPress Container Logs ==="
+          docker logs publishpress-hub-env-test-wp || true
+          echo "=== Test WP-CLI Container Logs ==="
+          docker logs publishpress-hub-env-test-wpcli || true
+          echo "=== Test DB Container Logs ==="
+          docker logs publishpress-hub-env-test-db || true
+
+

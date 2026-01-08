@@ -85,7 +85,6 @@ class InstallProPluginUseCase implements UseCaseInterface
 
         $this->pluginLifecycle->installPlugin($plugin->getSlug(), $downloadUrl);
         $this->pluginStatusService->updatePluginStatus($plugin);
-        $this->pluginLifecycle->activatePlugin($plugin->getPath());
 
         return [
             'slug' => esc_html($plugin->getSlug()),
