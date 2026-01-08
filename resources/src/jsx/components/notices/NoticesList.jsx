@@ -16,7 +16,7 @@ import filter from 'lodash/filter';
 /**
  * WordPress dependencies
  */
-import { NoticeList, SnackbarList } from '@wordpress/components';
+import { NoticeList } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
 
 export default function NoticesList() {
