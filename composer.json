@@ -81,7 +81,8 @@
         "knplabs/github-api": "^3.16",
         "symfony/http-client": "^7.1",
         "nyholm/psr7": "^1.8",
-        "publishpress/version-loader-generator": "^1.2"
+        "publishpress/version-loader-generator": "^1.2",
+        "phpmetrics/phpmetrics": "^2.9"
     },
     "scripts": {
         "build": [
@@ -140,6 +141,7 @@
             "php-cs-fixer fix .",
             "@fix:cs"
         ],
+        "metrics": "phpmetrics --report-html=metrics --exclude=vendor,lib/vendor,tests,dist,dev-workspace,.claude,.cursor,.github,.wordpress-org,.git,.zed,docs,languages .",
         "sync:local": "bash ./dev-workspace/scripts/local-sync.sh",
         "sync:local:watch": "bash ./dev-workspace/scripts/local-sync.sh --watch",
         "config:phpcs": "phpcs --config-set installed_paths \"../../phpcsstandards/phpcsutils,../../phpcsstandards/phpcsextra,../../automattic/vipwpcs,../../phpcompatibility/php-compatibility,../../sirbrillig/phpcs-variable-analysis,../../publishpress/publishpress-phpcs-standards/standards,../../wp-coding-standards/wpcs\"",

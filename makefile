@@ -267,3 +267,8 @@ pre-commit:
 	@make check-cs
 	@make test-unit
 	@make test-integration
+
+# Metrics
+
+metrics:
+	./dev-workspace/run composer metrics
