@@ -150,7 +150,9 @@ class ListPluginsUseCase implements UseCaseInterface
      */
     private function getLicenseExpirationDate(ProPluginInterface $proPlugin): ?string
     {
-        return $this->licenseManagement->getStoredLicenseExpirationDate($proPlugin->getDownloadId());
+        $downloadId = $proPlugin->getDownloadId();
+
+        return $this->licenseManagement->getStoredLicenseExpirationDate($downloadId);
     }
 
     /**

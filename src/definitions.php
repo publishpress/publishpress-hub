@@ -478,7 +478,8 @@ return [
     AbstractDependencies::ACTIVATE_LICENSE_USE_CASE =>
         fn(ContainerInterface $container) => new ActivateLicenseUseCase(
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE),
+            $container->get(AbstractDependencies::SCHEDULED_LICENSE_VALIDATION_SERVICE)
         ),
 
     AbstractDependencies::VALIDATE_LICENSES_USE_CASE =>

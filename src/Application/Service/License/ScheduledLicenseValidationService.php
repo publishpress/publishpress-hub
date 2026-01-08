@@ -125,14 +125,13 @@ class ScheduledLicenseValidationService
 
             foreach ($families as $family) {
                 $proPlugin = $family->getProPlugin();
+                $downloadId = $proPlugin->getDownloadId();
 
                 // Skip validation if plugin is not installed or doesn't have a license yet
                 // This prevents unnecessary API calls for unlicensed plugins
                 if (!$proPlugin->isInstalled() || !$proPlugin->isLicensed()) {
                     continue;
                 }
-
-                $downloadId = $proPlugin->getDownloadId();
                 $licenseKey = $this->licensePersistence->getLicenseKey($downloadId);
 
                 // Double-check license key exists (isLicensed() might be cached)

@@ -49,7 +49,9 @@ class LicenseManagementService implements LicenseManagementServiceInterface
         if ($activated) {
             $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
             $this->licensePersistence->storeLicenseStatus($downloadId, true);
-            $this->storeExpirationDateFromApi($licenseKey, $downloadId, $force);
+
+            // Always force fetch expiration date when activating to ensure we get the latest from EDD
+            $this->storeExpirationDateFromApi($licenseKey, $downloadId, true);
         }
 
         return $activated;
@@ -121,7 +123,8 @@ class LicenseManagementService implements LicenseManagementServiceInterface
         // Store the license key locally
         $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
         $this->licensePersistence->storeLicenseStatus($downloadId, true);
-        $this->storeExpirationDateFromApi($licenseKey, $downloadId, $force);
+        // Always force fetch expiration date when activating to ensure we get the latest from EDD
+        $this->storeExpirationDateFromApi($licenseKey, $downloadId, true);
 
         return true;
     }
@@ -260,17 +263,19 @@ class LicenseManagementService implements LicenseManagementServiceInterface
             $licenseInfo = $this->licenseApiService->getLicenseInfo($licenseKey, $downloadId, $force);
 
             if (isset($licenseInfo['expires'])) {
-                $expirationDate = $this->convertExpirationToIsoFormat($licenseInfo['expires']);
+                $rawExpires = $licenseInfo['expires'];
+
+                $expirationDate = $this->convertExpirationToIsoFormat($rawExpires);
 
                 if ($expirationDate !== null) {
                     // Store by license key so it can be reused
                     $this->licensePersistence->storeLicenseExpirationDateByKey($licenseKey, $expirationDate);
+
                     // Also store by download ID for backward compatibility
                     $this->licensePersistence->storeLicenseExpirationDate($downloadId, $expirationDate);
                 }
             }
         } catch (\Exception $e) {
-            // Silently fail if we can't get expiration date - license is still activated
         }
     }
 

@@ -242,27 +242,24 @@ class PerPluginLicensePersistenceService implements LicensePersistenceInterface
      */
     public function storeLicenseExpirationDateByKey(string $licenseKey, ?string $expirationDate): void
     {
-        // Store in a canonical location that can be shared across all plugins
-        // We'll use the first handler we find, or create a shared option
-        $handlersList = array_keys($this->getHandlersList());
+        // Store in a dedicated option that supports multiple license keys
+        // This fixes the bug where SerializedObjectHandler was overwriting the single expiration field
+        $optionName = 'publishpress_hub_license_expirations';
+        $expirations = $this->optionsAdapter->getOption($optionName, []);
 
-        if (empty($handlersList)) {
-            return;
+        if (!is_array($expirations)) {
+            $expirations = [];
         }
 
-        // Use the first handler to store the shared expiration date
-        $firstHandler = $this->getHandlerByFamilySlug($handlersList[0]);
-
-        if (empty($firstHandler)) {
-            return;
-        }
-
-        // Store using a special download ID that represents the license key
-        // We'll use a hash of the license key as a pseudo-download ID
         $licenseKeyHash = md5($licenseKey);
-        $pseudoDownloadId = (int) hexdec(substr($licenseKeyHash, 0, 8));
 
-        $firstHandler->storeLicenseExpirationDate($pseudoDownloadId, $expirationDate);
+        if ($expirationDate === null) {
+            unset($expirations[$licenseKeyHash]);
+        } else {
+            $expirations[$licenseKeyHash] = $expirationDate;
+        }
+
+        $this->optionsAdapter->updateOption($optionName, $expirations);
     }
 
     /**
@@ -274,24 +271,18 @@ class PerPluginLicensePersistenceService implements LicensePersistenceInterface
      */
     public function getLicenseExpirationDateByKey(string $licenseKey): ?string
     {
-        $handlersList = array_keys($this->getHandlersList());
+        // Retrieve from the dedicated option that supports multiple license keys
+        $optionName = 'publishpress_hub_license_expirations';
+        $expirations = $this->optionsAdapter->getOption($optionName, []);
 
-        if (empty($handlersList)) {
-            return null;
+        if (!is_array($expirations)) {
+            $expirations = [];
         }
 
-        // Use the first handler to retrieve the shared expiration date
-        $firstHandler = $this->getHandlerByFamilySlug($handlersList[0]);
-
-        if (empty($firstHandler)) {
-            return null;
-        }
-
-        // Retrieve using a special download ID that represents the license key
         $licenseKeyHash = md5($licenseKey);
-        $pseudoDownloadId = (int) hexdec(substr($licenseKeyHash, 0, 8));
+        $expiration = $expirations[$licenseKeyHash] ?? null;
 
-        return $firstHandler->getLicenseExpirationDate($pseudoDownloadId);
+        return $expiration;
     }
 
     /**
