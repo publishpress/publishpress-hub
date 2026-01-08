@@ -15,20 +15,16 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Admin\Page;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
+use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
-use PublishPress\Hub\Infrastructure\AdminMenu\Entity\SubmenuPage;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
-use PublishPress\Hub\Infrastructure\Hooks\Contract\HooksServiceInterface;
 use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
-use PublishPress\Hub\Infrastructure\Security\Contract\SecurityServiceInterface;
 
 class PluginsDashboardController implements BootableInterface
 {
     use BootableTrait;
-
-    private HooksServiceInterface $hooksService;
 
     private ViewServiceInterface $viewService;
 
@@ -36,30 +32,22 @@ class PluginsDashboardController implements BootableInterface
 
     private AssetServiceInterface $assetService;
 
-    private SecurityServiceInterface $securityService;
-
     /**
      * Constructor.
      *
-     * @param HooksServiceInterface $hooksService
      * @param ViewServiceInterface $viewService
      * @param AdminMenuServiceInterface $adminMenuService
      * @param AssetServiceInterface $assetService
-     * @param SecurityServiceInterface $securityService
      * @since 1.0.0
      */
     public function __construct(
-        HooksServiceInterface $hooksService,
         ViewServiceInterface $viewService,
         AdminMenuServiceInterface $adminMenuService,
-        AssetServiceInterface $assetService,
-        SecurityServiceInterface $securityService
+        AssetServiceInterface $assetService
     ) {
-        $this->hooksService = $hooksService;
         $this->viewService = $viewService;
         $this->adminMenuService = $adminMenuService;
         $this->assetService = $assetService;
-        $this->securityService = $securityService;
     }
 
     /**
@@ -70,7 +58,6 @@ class PluginsDashboardController implements BootableInterface
      */
     protected function onLoad(): void
     {
-        $this->registerAdminMenu();
         $this->addHooks();
     }
 
@@ -82,6 +69,7 @@ class PluginsDashboardController implements BootableInterface
      */
     protected function onInit(): void
     {
+        $this->registerAdminMenu();
     }
 
     /**
@@ -92,7 +80,7 @@ class PluginsDashboardController implements BootableInterface
      */
     private function addHooks(): void
     {
-        $this->hooksService->addAction(AbstractHooks::ACTION_ADMIN_ENQUEUE_SCRIPTS, [$this, 'enqueueAssets']);
+        add_action(AbstractHooks::ACTION_ADMIN_ENQUEUE_SCRIPTS, [$this, 'enqueueAssets']);
     }
 
     /**
@@ -103,17 +91,32 @@ class PluginsDashboardController implements BootableInterface
      */
     private function registerAdminMenu(): void
     {
-        $submenu = new SubmenuPage(
-            'publishpress-hub',
-            'Plugins',
-            'Plugins',
-            'manage_options',
-            'publishpress-hub-plugins-dashboard',
-            [$this, 'showDashboard']
-        );
+        $submenu = [
+            'parent_slug' => 'publishpress-hub',
+            'page_title' => 'Plugins',
+            'menu_title' => 'Plugins',
+            'capability' => HubAccessService::CAPABILITY,
+            'menu_slug' => 'publishpress-hub-plugins-dashboard',
+            'callback' => [$this, 'showDashboard'],
+            'position' => null,
+        ];
 
         $this->adminMenuService->addSubmenuPage($submenu);
-        $this->adminMenuService->setMainMenuPage('publishpress-hub-plugins-dashboard');
+
+        if ($this->isWelcomePageDisabled()) {
+            $this->adminMenuService->setMainMenuPage('publishpress-hub-plugins-dashboard');
+        }
+    }
+
+    /**
+     * Check if welcome page is disabled.
+     *
+     * @return bool
+     * @since 1.0.0
+     */
+    private function isWelcomePageDisabled(): bool
+    {
+        return \PublishPress\Hub\Admin\Page\WelcomePageController::checkIfWelcomePageDisabled();
     }
 
     /**
@@ -141,7 +144,12 @@ class PluginsDashboardController implements BootableInterface
      */
     public function enqueueAssets(string $hookSuffix): void
     {
-        if ('toplevel_page_publishpress-hub' !== $hookSuffix) {
+        // When welcome page is disabled, Plugins is the main menu page
+        $isMainMenuPage = 'toplevel_page_publishpress-hub' === $hookSuffix && $this->isWelcomePageDisabled();
+        // When welcome page is enabled, Plugins is a submenu page
+        $isSubmenuPage = 'publishpress_page_publishpress-hub-plugins-dashboard' === $hookSuffix;
+
+        if (! $isMainMenuPage && ! $isSubmenuPage) {
             return;
         }
 
@@ -171,7 +179,7 @@ class PluginsDashboardController implements BootableInterface
             'ppHubPluginsDashboardConfig',
             [
                 'logoUrl' => $this->assetService->getPluginAssetUrl('images/publishpress-logo.png'),
-                'apiNonce' => $this->securityService->createNonceForRest(),
+                'apiNonce' => wp_create_nonce('wp_rest'),
                 'pluginIconBaseUrl' => $this->assetService->getPluginAssetsBaseUrl(),
             ]
         );

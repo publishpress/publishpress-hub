@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
 use PublishPress\Hub\Domain\Exception\Base\DomainException;
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
 
 class PluginFreeProConflictException extends DomainException
 {
@@ -29,6 +30,7 @@ class PluginFreeProConflictException extends DomainException
                 'This action is not possible because both free and pro versions are installed. Please uninstall one version to continue.', // phpcs:ignore Generic.Files.LineLength
                 'publishpress-hub'
             ),
+            ExceptionCode::PLUGIN_FREE_PRO_CONFLICT,
             $context
         );
     }

@@ -77,4 +77,61 @@ interface LicensePersistenceInterface
      * @since 1.0.0
      */
     public function getDownloadIdsUsingLicenseKey(string $licenseKey): array;
+
+    /**
+     * Store the license expiration date for a specific download ID.
+     * The expiration date is stored by license key, so it can be reused across plugins using the same key.
+     *
+     * @param int $downloadId The download ID to associate with the expiration date.
+     * @param string|null $expirationDate The expiration date in ISO format (YYYY-MM-DD) or null.
+     * @since 1.0.0
+     */
+    public function storeLicenseExpirationDate(int $downloadId, ?string $expirationDate): void;
+
+    /**
+     * Retrieve the license expiration date for a specific download ID.
+     * The expiration date is retrieved by license key, so it's shared across plugins using the same key.
+     *
+     * @param int $downloadId The download ID to look up.
+     * @return string|null The expiration date in ISO format (YYYY-MM-DD) if found, null otherwise.
+     * @since 1.0.0
+     */
+    public function getLicenseExpirationDate(int $downloadId): ?string;
+
+    /**
+     * Store the license expiration date for a specific license key.
+     * This allows the expiration date to be shared across all plugins using the same license key.
+     *
+     * @param string $licenseKey The license key to associate with the expiration date.
+     * @param string|null $expirationDate The expiration date in ISO format (YYYY-MM-DD) or null.
+     * @since 1.0.0
+     */
+    public function storeLicenseExpirationDateByKey(string $licenseKey, ?string $expirationDate): void;
+
+    /**
+     * Retrieve the license expiration date for a specific license key.
+     *
+     * @param string $licenseKey The license key to look up.
+     * @return string|null The expiration date in ISO format (YYYY-MM-DD) if found, null otherwise.
+     * @since 1.0.0
+     */
+    public function getLicenseExpirationDateByKey(string $licenseKey): ?string;
+
+    /**
+     * Mark a license as coming from a constant or not.
+     *
+     * @param int $downloadId The download ID.
+     * @param bool $isFromConstant Whether the license comes from a constant.
+     * @since 1.0.0
+     */
+    public function markLicenseAsFromConstant(int $downloadId, bool $isFromConstant): void;
+
+    /**
+     * Check if a license comes from a constant.
+     *
+     * @param int $downloadId The download ID.
+     * @return bool True if the license comes from a constant, false otherwise.
+     * @since 1.0.0
+     */
+    public function isLicenseFromConstant(int $downloadId): bool;
 }

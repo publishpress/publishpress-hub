@@ -174,11 +174,26 @@ class WPRemoteAdapter implements RemoteServiceInterface
      * @param array<string, mixed> $response The response.
      * @return array The response headers.
      * @since 1.0.0
-     * @return array
      */
     public function getResponseHeaders(array $response): array
     {
-        return wp_remote_retrieve_headers($response);
+        $headers = wp_remote_retrieve_headers($response);
+
+        // WordPress returns WpOrg\Requests\Utility\CaseInsensitiveDictionary, convert to array
+        if (is_array($headers)) {
+            return $headers;
+        }
+
+        // Convert CaseInsensitiveDictionary to array
+        if (is_object($headers)) {
+            if (method_exists($headers, 'getAll')) {
+                return $headers->getAll();
+            }
+            // Fallback: convert object to array
+            return (array) $headers;
+        }
+
+        return [];
     }
 
     /**
@@ -190,13 +205,63 @@ class WPRemoteAdapter implements RemoteServiceInterface
      */
     public function getCloudflareRayId(array $response): ?string
     {
-        $body = $this->getResponseBody($response);
+        try {
+            // First check response headers (most reliable)
+            $headers = $this->getResponseHeaders($response);
 
-        if (strpos($body, '_cf_chl_opt') !== false || strpos($body, 'ray=') !== false) {
-            preg_match('/ray=(.*?)\';/', $body, $matches);
-            $rayId = $matches[1] ?? null;
+            // Convert headers to array if it's an object
+            $headersArray = [];
+            if (is_array($headers)) {
+                $headersArray = $headers;
+            } elseif (is_object($headers)) {
+                // Try getAll method if available
+                if (method_exists($headers, 'getAll')) {
+                    try {
+                        $headersArray = $headers->getAll();
+                    } catch (\Throwable $e) {
+                        // If getAll() fails, try direct array access
+                        if (isset($headers['cf-ray'])) {
+                            $cfRay = $headers['cf-ray'];
+                            return is_array($cfRay) ? $cfRay[0] : $cfRay;
+                        }
+                    }
+                } elseif (isset($headers['cf-ray'])) {
+                    // Try direct access if object supports array access
+                    $cfRay = $headers['cf-ray'];
+                    return is_array($cfRay) ? $cfRay[0] : $cfRay;
+                }
+            }
 
-            return $rayId;
+            // Check for cf-ray header (case-insensitive)
+            if (!empty($headersArray)) {
+                foreach (['cf-ray', 'CF-Ray', 'Cf-Ray'] as $headerName) {
+                    if (isset($headersArray[$headerName])) {
+                        $cfRay = $headersArray[$headerName];
+                        return is_array($cfRay) ? $cfRay[0] : $cfRay;
+                    }
+                }
+            }
+        } catch (\Throwable $e) {
+            // If header access fails, fall through to body parsing
+            if (defined('WP_DEBUG') && WP_DEBUG) {
+                error_log(esc_html('Error accessing headers in getCloudflareRayId: ' . $e->getMessage())); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+            }
+        }
+
+        // Fallback to parsing response body
+        try {
+            $body = $this->getResponseBody($response);
+
+            if (strpos($body, '_cf_chl_opt') !== false || strpos($body, 'ray=') !== false) {
+                preg_match('/ray=(.*?)\';/', $body, $matches);
+                $rayId = $matches[1] ?? null;
+
+                return $rayId;
+            }
+        } catch (\Throwable $e) {
+            if (defined('WP_DEBUG') && WP_DEBUG) {
+                error_log(esc_html('Error parsing response body in getCloudflareRayId: ' . $e->getMessage())); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+            }
         }
 
         return null;

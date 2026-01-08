@@ -30,4 +30,4 @@ require_once __DIR__ . '/../../lib/vendor/publishpress/psr-container/lib/psr/con
 
 require_once __DIR__ . '/../../src/Infrastructure/Autoloader/Autoloader.php';
 
-Autoloader::register('PublishPress\Hub', __DIR__ . '/../../src');
+Autoloader::register('PublishPress\\Hub\\', __DIR__ . '/../../src/');

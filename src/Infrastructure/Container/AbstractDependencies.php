@@ -59,6 +59,8 @@ abstract class AbstractDependencies
 
     public const CACHE_GROUP = 'publishpress-hub.constants.cache-group';
 
+    public const LICENSE_VALIDATION_POLL_INTERVAL_SECONDS = 'publishpress-hub.constants.license-validation-poll-interval-seconds';
+
     // Infrastructure Services
     public const HOOKS_SERVICE = 'publishpress-hub.infrastructure.hooks.service';
 
@@ -92,7 +94,31 @@ abstract class AbstractDependencies
 
     public const LICENSE_MANAGEMENT_SERVICE = 'publishpress-hub.application.license.management.service';
 
+    public const LICENSE_STATUS_STORAGE_SERVICE = 'publishpress-hub.application.license.status-storage.service';
+
+    public const SCHEDULED_LICENSE_VALIDATION_SERVICE = 'publishpress-hub.application.license.scheduled-validation.service';
+
+    public const HUB_ACCESS_SERVICE = 'publishpress-hub.application.access.service';
+
+    public const LICENSE_EXPIRATION_NOTICE_SERVICE = 'publishpress-hub.application.license.expiration-notice.service';
+
+    public const LICENSE_VALIDATION_ACTION_HANDLER = 'publishpress-hub.infrastructure.license.validation-action-handler';
+
+    public const LICENSE_VALIDATION_BOOTSTRAP_SERVICE = 'publishpress-hub.application.license.validation-bootstrap.service';
+
+    public const VALIDATE_LICENSES_USE_CASE = 'publishpress-hub.application.use-case.plugin.validate-licenses';
+
     public const EDD_SUBSCRIPTION_ADAPTER = 'publishpress-hub.infrastructure.edd-subscription.adapter';
+
+    public const LICENSE_ACTIVATION_SERVICE = 'publishpress-hub.infrastructure.edd.license-activation.service';
+
+    public const VERSION_CHECK_SERVICE = 'publishpress-hub.infrastructure.edd.version-check.service';
+
+    public const LICENSE_STATUS_VALIDATOR = 'publishpress-hub.infrastructure.edd.license-status-validator';
+
+    public const LICENSE_INFO_SERVICE = 'publishpress-hub.infrastructure.edd.license-info.service';
+
+    public const LICENSE_DEACTIVATION_SERVICE = 'publishpress-hub.infrastructure.edd.license-deactivation.service';
 
     public const REMOTE_SERVICE = 'publishpress-hub.infrastructure.remote.service';
 
@@ -105,6 +131,7 @@ abstract class AbstractDependencies
     // Application Services
     public const HUB_BOOTSTRAP_SERVICE = 'publishpress-hub.application.hub.bootstrap.service';
 
+    public const VERSION_SERVICE = 'publishpress-hub.application.version.service';
 
     public const PLUGIN_FAMILY_REPOSITORY = 'publishpress-hub.domain.plugin-family.repository';
 
@@ -122,6 +149,8 @@ abstract class AbstractDependencies
 
     public const UPGRADE_PLUGIN_USE_CASE = 'publishpress-hub.application.use-case.plugin.upgrade';
 
+    public const UPDATE_PLUGIN_USE_CASE = 'publishpress-hub.application.use-case.plugin.update';
+
     public const RESOLVE_CONFLICT_USE_CASE = 'publishpress-hub.application.use-case.plugin.resolve-conflict';
 
     public const DEACTIVATE_LICENSE_USE_CASE = 'publishpress-hub.application.use-case.plugin.deactivate-license';
@@ -138,9 +167,15 @@ abstract class AbstractDependencies
     public const ADMIN_MENU_ADAPTER = 'publishpress-hub.infrastructure.admin-menu.adapter';
 
     // Presentation Services
-    public const MAIN_MENU_CONTROLLER = 'publishpress-hub.presentation.main-menu.controller';
+    public const WELCOME_PAGE_CONTROLLER = 'publishpress-hub.presentation.welcome-page.controller';
+
+    public const ACTIVATION_REDIRECT_SERVICE = 'publishpress-hub.application.service.activation-redirect';
+
+    public const REWRITE_RULES_SERVICE = 'publishpress-hub.application.service.rewrite-rules';
 
     public const PLUGINS_DASHBOARD_CONTROLLER = 'publishpress-hub.presentation.plugins-dashboard.controller';
+
+    public const SETTINGS_PAGE_CONTROLLER = 'publishpress-hub.presentation.settings-page.controller';
 
     public const DEV_COMPONENTS_SHOWCASE_CONTROLLER = 'publishpress-hub.presentation.dev-components-showcase.controller';
 

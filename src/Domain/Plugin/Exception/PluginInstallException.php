@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
 use PublishPress\Hub\Domain\Exception\Base\DomainException;
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
 
 class PluginInstallException extends DomainException
 {
@@ -29,6 +30,7 @@ class PluginInstallException extends DomainException
                 'Plugin installation failed. Please contact support for help.',
                 'publishpress-hub'
             ),
+            ExceptionCode::PLUGIN_INSTALL_FAILED,
             $context
         );
     }

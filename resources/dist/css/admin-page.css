@@ -1317,6 +1317,18 @@ footer .pp-hub-footer-logo img {
     color: var(--pp-hub-button-text-disabled);
 }
 
+.pp-hub-button.is-link.is-renew-link {
+    color: var(--pp-hub-secondary-color);
+}
+
+.pp-hub-button.is-link.is-renew-link:hover {
+    color: var(--pp-hub-secondary-color-darker);
+}
+
+.pp-hub-button.is-link.is-renew-link:focus {
+    color: var(--pp-hub-secondary-color-darker);
+}
+
 .components-button.has-icon.has-text {
     justify-content: center !important;
 }
@@ -1576,7 +1588,7 @@ footer .pp-hub-footer-logo img {
     padding: var(--pp-hub-spacing-xl);
     border: 1px solid transparent;
     border-bottom: 1px solid var(--pp-hub-border-primary);
-    min-height: 142px;
+    min-height: 100px;
     transition: background-color 0.1s ease-in-out;
     box-sizing: border-box;
     justify-content: space-between;
@@ -1623,6 +1635,7 @@ footer .pp-hub-footer-logo img {
     display: flex;
     flex-direction: column;
     gap: var(--pp-hub-spacing-sm);
+    flex: 1;
 }
 
 .pp-hub-plugins-list-item-name {
@@ -1632,7 +1645,6 @@ footer .pp-hub-footer-logo img {
     flex-direction: row;
     align-items: center;
     gap: var(--pp-hub-spacing-sm);
-    align-items: center;
 }
 
 .pp-hub-plugins-list-item-name .components-toggle-control {
@@ -1651,6 +1663,10 @@ footer .pp-hub-footer-logo img {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-description {
+    display: none;
 }
 
 .pp-hub-plugins-list-item-status {
@@ -1673,16 +1689,20 @@ footer .pp-hub-footer-logo img {
     width: 200px;
 }
 
-.pp-hub-plugins-list-item .pp-hub-plugins-list-item-inline-actions {
+.pp-hub-plugins-list-item-inline-actions {
     display: none;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--pp-hub-spacing-sm);
+    justify-content: flex-start;
+    height: 24px;
+    line-height: 24px;
+    min-height: 24px;
+    max-height: 24px;
 }
 
 .pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-inline-actions {
     display: flex;
-    flex-direction: row;
-    gap: var(--pp-hub-spacing-sm);
-    justify-content: flex-start;
-    width: 100%;
 }
 
 .pp-hub-plugins-list-item-inline-actions .pp-hub-button.is-link {
@@ -1692,6 +1712,28 @@ footer .pp-hub-footer-logo img {
 .pp-hub-plugins-list-item-inline-actions .pp-hub-button.is-link.is-danger {
     color: var(--pp-hub-text-error);
 }
+
+.pp-hub-plugin-update-button {
+    font-size: 12px !important;
+    padding: 4px 10px !important;
+    height: auto !important;
+    line-height: 1.2 !important;
+    min-height: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+}
+
+.pp-hub-plugin-update-button svg,
+.pp-hub-plugin-update-button .dashicons {
+    width: 14px !important;
+    height: 14px !important;
+    font-size: 14px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    vertical-align: middle !important;
+}
+
 
 .pp-hub-plugins-list-message {
     display: flex;
@@ -1709,7 +1751,7 @@ footer .pp-hub-footer-logo img {
     .pp-hub-plugins-list-item {
         padding: var(--pp-hub-spacing-lg);
         gap: var(--pp-hub-spacing-md);
-        min-height: 120px;
+        min-height: 90px;
     }
 
     .pp-hub-plugins-list-item-content {
@@ -1793,11 +1835,6 @@ footer .pp-hub-footer-logo img {
 
     .pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-inline-actions {
         display: flex;
-        flex-direction: row;
-        gap: var(--pp-hub-spacing-sm);
-        justify-content: flex-start;
-        width: 100%;
-        margin-top: var(--pp-hub-spacing-sm);
     }
 
     .pp-hub-plugins-list-item-inline-actions .pp-hub-button {
@@ -2019,7 +2056,7 @@ button.publishpress-hub-filter-button:hover {
  */
 
 .pp-hub-badge {
-    padding: 4px 10px;
+    padding: 4px 8px;
     border-radius: 16px;
     background-color: var(--pp-hub-badge-bg);
     color: var(--pp-hub-badge-text);
@@ -2027,7 +2064,6 @@ button.publishpress-hub-filter-button:hover {
     line-height: 12px;
     font-size: 12px;
     font-weight: 600;
-    margin-right: var(--pp-hub-spacing-md);
     transition: background-color 0.1s ease-in-out;
     display: inline-block;
 }
@@ -2055,6 +2091,12 @@ button.publishpress-hub-filter-button:hover {
 .pp-hub-badge.unlicensed {
     background-color: var(--pp-hub-badge-bg-unlicensed);
     color: var(--pp-hub-badge-text-unlicensed);
+}
+
+.pp-hub-badge.expired {
+    background-color: rgba(220, 38, 38, 0.15);
+    color: #dc2626;
+    border: 1px solid rgba(220, 38, 38, 0.4);
 }
 
 .pp-hub-badge.installing {
@@ -2092,6 +2134,10 @@ button.publishpress-hub-filter-button:hover {
     background-color: var(--pp-hub-badge-bg-unlicensed-hover);
 }
 
+.pp-hub-plugins-list-item:hover .pp-hub-badge.expired {
+    background-color: rgba(220, 38, 38, 0.25);
+}
+
 .pp-hub-plugins-list-item:hover .pp-hub-badge.installing {
     background-color: var(--pp-hub-badge-bg-installing-hover);
 }
@@ -2104,12 +2150,29 @@ button.publishpress-hub-filter-button:hover {
     background-color: var(--pp-hub-badge-bg-conflicting-installations-hover);
 }
 
+
+
+.pp-hub-badge.update-available {
+    background-color: rgba(147, 51, 234, 0.85);
+    color: #ffffff;
+    cursor: help;
+    font-weight: 700;
+}
+
+.pp-hub-plugins-list-item:hover .pp-hub-badge.update-available {
+    background-color: rgba(147, 51, 234, 0.95);
+}
+
 .pp-hub-badge-icon .dashicons {
     font-size: 12px;
     line-height: 12px;
     width: 12px;
     height: 12px;
     margin-right: 2px;
+}
+
+.pp-hub-status-flag .pp-hub-tooltip-trigger {
+    margin-top: -2px;
 }
 
 /*!******************************************************************************************************!*\
@@ -2186,8 +2249,26 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
     color: var(--pp-hub-text-primary-inverted) !important;
 }
 
-.components-notice {
-    border-radius: var(--pp-hub-radius-md);
+/* Renew link styling in notices */
+.components-notice .pp-hub-renew-link {
+    display: inline-block;
+    text-decoration: underline;
+}
+
+/* Notice  */
+.components-notice.is-info,
+.components-notice.is-success,
+.components-notice.is-warning,
+.components-notice.is-error {
+    background-color: var(--pp-hub-bg-primary);
+    padding: 0 12px;
+    border-top: 1px solid var(--pp-hub-border-secondary);
+    border-right: 1px solid var(--pp-hub-border-secondary);
+    border-bottom: 1px solid var(--pp-hub-border-secondary);
+}
+
+.components-notice .components-notice__dismiss {
+    margin-top: 12px;
 }
 
 /*!************************************************************************************************!*\

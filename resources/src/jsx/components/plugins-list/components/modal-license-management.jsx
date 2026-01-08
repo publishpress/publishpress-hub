@@ -3,7 +3,7 @@
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\plugins-list\components
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */
@@ -34,17 +34,14 @@ const ModalLicenseManagementComponent = ({
     onDeactivate,
     error,
     buttonInProgress,
-    initialLicenseKey,
+    initialLicenseKeyMasked,
+    hasLicenseKey,
     title,
 }) => {
-    const [licenseKey, setLicenseKey] = useState(initialLicenseKey || '');
-    const [currentAction, setCurrentAction] = useState(licenseKey === '' ? ACTIONS.EDIT : ACTIONS.VIEW);
+    const [licenseKey, setLicenseKey] = useState('');
+    const [currentAction, setCurrentAction] = useState(hasLicenseKey ? ACTIONS.VIEW : ACTIONS.EDIT);
     const [activationAttempted, setActivationAttempted] = useState(false);
     const setFocusRef = useRef(null);
-
-    const getObfuscatedLicenseKey = useCallback((licenseKey, length = 5) => {
-        return licenseKey.replace(/./g, '*').slice(0, length) + licenseKey.slice(-length);
-    }, []);
 
     const handleFocusReady = useCallback((setFocus) => {
         setFocusRef.current = setFocus;
@@ -56,6 +53,7 @@ const ModalLicenseManagementComponent = ({
     }, [onActivate, licenseKey]);
 
     const handleSwitchToEdit = useCallback(() => {
+        setLicenseKey('');
         setCurrentAction(ACTIONS.EDIT);
         // Focus the input after switching to edit mode
         setTimeout(() => {
@@ -85,7 +83,7 @@ const ModalLicenseManagementComponent = ({
                         {__('Enter your license key to activate the Pro version of this plugin. You can find your license key in your PublishPress account dashboard.', 'publishpress-hub')}
                     </p>
                     <div className='pp-hub-modal-inline-links'>
-                        <Button variant='link' href='https://publishpress.com/subscriptions/' target='_blank' rel='noopener noreferrer'>
+                        <Button variant='link' href='https://publishpress.com/dashboard/?active_tab=licenses' target='_blank' rel='noopener noreferrer'>
                             {__('Go to my profile to get the license key', 'publishpress-hub')}
                         </Button>
                     </div>
@@ -105,7 +103,7 @@ const ModalLicenseManagementComponent = ({
             {currentAction === ACTIONS.VIEW && (
                 <>
                     <p>
-                        {__('Your license key is: ', 'publishpress-hub')} {getObfuscatedLicenseKey(licenseKey)}
+                        {__('Your license key is: ', 'publishpress-hub')} {initialLicenseKeyMasked || __('(hidden)', 'publishpress-hub')}
                     </p>
                 </>
             )}

@@ -13,4 +13,11 @@
  * Requires PHP: 7.4
  */
 
+declare(strict_types=1);
+
+use function PublishPress\Hub\registerActivationHook;
+
 require_once __DIR__ . '/src/include.php';
+require_once __DIR__ . '/src/activation.php';
+
+registerActivationHook(__FILE__);

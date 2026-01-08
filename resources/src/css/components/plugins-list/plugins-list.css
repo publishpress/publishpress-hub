@@ -25,7 +25,7 @@
     padding: var(--pp-hub-spacing-xl);
     border: 1px solid transparent;
     border-bottom: 1px solid var(--pp-hub-border-primary);
-    min-height: 142px;
+    min-height: 100px;
     transition: background-color 0.1s ease-in-out;
     box-sizing: border-box;
     justify-content: space-between;
@@ -72,6 +72,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--pp-hub-spacing-sm);
+    flex: 1;
 }
 
 .pp-hub-plugins-list-item-name {
@@ -81,7 +82,6 @@
     flex-direction: row;
     align-items: center;
     gap: var(--pp-hub-spacing-sm);
-    align-items: center;
 }
 
 .pp-hub-plugins-list-item-name .components-toggle-control {
@@ -100,6 +100,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-description {
+    display: none;
 }
 
 .pp-hub-plugins-list-item-status {
@@ -122,16 +126,20 @@
     width: 200px;
 }
 
-.pp-hub-plugins-list-item .pp-hub-plugins-list-item-inline-actions {
+.pp-hub-plugins-list-item-inline-actions {
     display: none;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--pp-hub-spacing-sm);
+    justify-content: flex-start;
+    height: 24px;
+    line-height: 24px;
+    min-height: 24px;
+    max-height: 24px;
 }
 
 .pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-inline-actions {
     display: flex;
-    flex-direction: row;
-    gap: var(--pp-hub-spacing-sm);
-    justify-content: flex-start;
-    width: 100%;
 }
 
 .pp-hub-plugins-list-item-inline-actions .pp-hub-button.is-link {
@@ -141,6 +149,28 @@
 .pp-hub-plugins-list-item-inline-actions .pp-hub-button.is-link.is-danger {
     color: var(--pp-hub-text-error);
 }
+
+.pp-hub-plugin-update-button {
+    font-size: 12px !important;
+    padding: 4px 10px !important;
+    height: auto !important;
+    line-height: 1.2 !important;
+    min-height: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+}
+
+.pp-hub-plugin-update-button svg,
+.pp-hub-plugin-update-button .dashicons {
+    width: 14px !important;
+    height: 14px !important;
+    font-size: 14px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    vertical-align: middle !important;
+}
+
 
 .pp-hub-plugins-list-message {
     display: flex;
@@ -158,7 +188,7 @@
     .pp-hub-plugins-list-item {
         padding: var(--pp-hub-spacing-lg);
         gap: var(--pp-hub-spacing-md);
-        min-height: 120px;
+        min-height: 90px;
     }
 
     .pp-hub-plugins-list-item-content {
@@ -242,11 +272,6 @@
 
     .pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-inline-actions {
         display: flex;
-        flex-direction: row;
-        gap: var(--pp-hub-spacing-sm);
-        justify-content: flex-start;
-        width: 100%;
-        margin-top: var(--pp-hub-spacing-sm);
     }
 
     .pp-hub-plugins-list-item-inline-actions .pp-hub-button {

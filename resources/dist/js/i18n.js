@@ -2,15 +2,15 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "@wordpress/i18n":
+/***/ "@wordpress/i18n"
 /*!**************************!*\
   !*** external "wp.i18n" ***!
   \**************************/
-/***/ ((module) => {
+(module) {
 
 module.exports = wp.i18n;
 
-/***/ })
+/***/ }
 
 /******/ 	});
 /************************************************************************/
@@ -23,6 +23,12 @@ module.exports = wp.i18n;
 /******/ 		var cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
 /******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Check if module exists (development only)
+/******/ 		if (__webpack_modules__[moduleId] === undefined) {
+/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 			e.code = 'MODULE_NOT_FOUND';
+/******/ 			throw e;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
@@ -120,7 +126,7 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
  *
  * @package PublishPress\Hub\Presentation\Asset\src\jsx
  * @author PublishPress
- * @copyright Copyright (c) 2025, PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  * @since 1.0.0
  */

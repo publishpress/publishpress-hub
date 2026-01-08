@@ -14,8 +14,9 @@ if [[ $# -eq 0 ]] || [[ $1 == "-h" ]]; then
   exit 1
 fi
 
-WP_READY_MAX_ATTEMPTS=30
-WP_READY_INTERVAL=3
+# Allow overriding via environment variables (useful for CI)
+WP_READY_MAX_ATTEMPTS=${WP_READY_MAX_ATTEMPTS:-30}
+WP_READY_INTERVAL=${WP_READY_INTERVAL:-3}
 
 PROFILE="${2:-dev}"
 WP_ADMIN_USER="admin"
@@ -100,9 +101,22 @@ get_container_id() {
 }
 
 is_wp_ready() {
-  if [[ -f "$CACHE_BASE_PATH/${PROFILE}-wpcli/tmp/prepare-wp.sh.done" ]]; then
+  local marker_file="$CACHE_BASE_PATH/${PROFILE}-wpcli/tmp/prepare-wp.sh.done"
+
+  if [[ -f "$marker_file" ]]; then
     return 0
   else
+    # Additional diagnostics for troubleshooting
+    if [[ ! -d "$CACHE_BASE_PATH/${PROFILE}-wpcli/tmp" ]]; then
+      echo "  → Cache directory does not exist: $CACHE_BASE_PATH/${PROFILE}-wpcli/tmp" >&2
+    elif [[ -d "$CACHE_BASE_PATH/${PROFILE}-wpcli/tmp" ]]; then
+      echo "  → Waiting for marker file: $marker_file" >&2
+      # List files in tmp directory for debugging (only show first few attempts)
+      if [[ ${i:-1} -le 3 ]] || [[ $((${i:-1} % 10)) -eq 0 ]]; then
+        echo "  → Files in tmp directory:" >&2
+        ls -la "$CACHE_BASE_PATH/${PROFILE}-wpcli/tmp/" 2>&1 | head -10 >&2 || true
+      fi
+    fi
     return 1
   fi
 }
@@ -120,7 +134,24 @@ wait_for_wp_ready() {
 
 check_wp_ready() {
   if ! is_wp_ready; then
-    echo "WordPress failed to become ready."
+    echo "=========================================="
+    echo "WordPress failed to become ready after $WP_READY_MAX_ATTEMPTS attempts."
+    echo "=========================================="
+    echo ""
+    echo "Diagnostic information:"
+    echo "  Cache base path: $CACHE_BASE_PATH"
+    echo "  Profile: ${PROFILE}"
+    echo "  Expected marker: $CACHE_BASE_PATH/${PROFILE}-wpcli/tmp/prepare-wp.sh.done"
+    echo ""
+    echo "Container status:"
+    docker compose -f $COMPOSE_FILE ps || true
+    echo ""
+    echo "Recent logs from ${PROFILE}-wpcli container:"
+    docker compose -f $COMPOSE_FILE logs --tail=50 ${PROFILE}-wpcli || true
+    echo ""
+    echo "Recent logs from ${PROFILE}-wp container:"
+    docker compose -f $COMPOSE_FILE logs --tail=30 ${PROFILE}-wp || true
+    echo "=========================================="
     exit 1
   else
     echo "WordPress is ready."

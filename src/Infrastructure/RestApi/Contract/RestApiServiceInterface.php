@@ -82,23 +82,4 @@ interface RestApiServiceInterface
      * @since 1.0.0
      */
     public function getRequestParam(WP_REST_Request $request, string $param, $default = null);
-
-    /**
-     * Check permissions.
-     *
-     * @param string $capability The capability.
-     * @return bool True if the user has the capability, false otherwise.
-     * @since 1.0.0
-     */
-    public function checkPermissions(string $capability = 'manage_options'): bool;
-
-    /**
-     * Verify a nonce.
-     *
-     * @param string $nonce The nonce.
-     * @param string $action The action.
-     * @return bool True if the nonce is valid, false otherwise.
-     * @since 1.0.0
-     */
-    public function verifyNonce(string $nonce, string $action = 'wp_rest'): bool;
 }

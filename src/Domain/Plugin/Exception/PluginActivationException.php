@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
 use PublishPress\Hub\Domain\Exception\Base\DomainException;
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
 
 class PluginActivationException extends DomainException
 {
@@ -29,6 +30,7 @@ class PluginActivationException extends DomainException
                 'Plugin activation failed. Please try again later or contact support for help.',
                 'publishpress-hub'
             ),
+            ExceptionCode::PLUGIN_ACTIVATION_FAILED,
             $context
         );
     }

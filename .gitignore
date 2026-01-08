@@ -5,6 +5,7 @@ node_modules
 ./logs
 codeceptjs/output
 .idea
+.zed
 .DS_Store
 /builder.yml
 /dist
@@ -34,3 +35,7 @@ gh_token.txt
 publishpress-hub.code-workspace
 
 .phpactor.json
+security-audit/
+SECURITY_AUDIT.md
+
+/metrics

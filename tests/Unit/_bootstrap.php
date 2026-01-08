@@ -20,3 +20,15 @@ if (! function_exists('__')) {
         return $text;
     }
 }
+
+if (! function_exists('esc_html__')) {
+    function esc_html__($text, $domain = 'publishpress-hub') {
+        return htmlspecialchars(__($text, $domain), ENT_QUOTES, 'UTF-8');
+    }
+}
+
+if (! function_exists('esc_html')) {
+    function esc_html($text) {
+        return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+    }
+}

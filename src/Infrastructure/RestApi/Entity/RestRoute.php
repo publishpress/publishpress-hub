@@ -24,7 +24,10 @@ class RestRoute
 
     private string $methods;
 
-    private UseCaseInterface $useCase;
+    /**
+     * @var UseCaseInterface|callable
+     */
+    private $callback;
 
     /**
      * @var callable
@@ -37,7 +40,7 @@ class RestRoute
      * @param string $namespace The namespace.
      * @param string $route The route.
      * @param string $methods The methods.
-     * @param UseCaseInterface $useCase The use case.
+     * @param UseCaseInterface|callable $callback The use case or callable.
      * @param callable $permissionCallback The permission callback.
      * @param array<string, mixed> $args The arguments.
      * @since 1.0.0
@@ -46,14 +49,14 @@ class RestRoute
         string $namespace,
         string $route,
         string $methods,
-        UseCaseInterface $useCase,
+        $callback,
         callable $permissionCallback,
         array $args = []
     ) {
         $this->namespace = $namespace;
         $this->route = $route;
         $this->methods = $methods;
-        $this->useCase = $useCase;
+        $this->callback = $callback;
         $this->permissionCallback = $permissionCallback;
         $this->args = $args;
     }
@@ -92,14 +95,37 @@ class RestRoute
     }
 
     /**
+     * Get the callback (use case or callable).
+     *
+     * @return UseCaseInterface|callable The callback.
+     * @since 1.0.0
+     */
+    public function getCallback()
+    {
+        return $this->callback;
+    }
+
+    /**
+     * Check if the callback is a use case.
+     *
+     * @return bool True if the callback is a use case.
+     * @since 1.0.0
+     */
+    public function isUseCase(): bool
+    {
+        return $this->callback instanceof UseCaseInterface;
+    }
+
+    /**
      * Get the use case.
      *
      * @return UseCaseInterface The use case.
+     * @deprecated Use getCallback() instead.
      * @since 1.0.0
      */
     public function getUseCase(): UseCaseInterface
     {
-        return $this->useCase;
+        return $this->callback;
     }
 
     /**

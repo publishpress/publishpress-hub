@@ -38,9 +38,12 @@ class PluginFamilyDto implements DtoInterface
     private bool $proPluginIsLicensed;
     private bool $proPluginIsActive;
     private ?string $proPluginPath;
+    private ?string $proPluginLicenseExpirationDate;
     private bool $hasAnyVersionInstalled;
     private bool $hasAnyVersionActive;
     private bool $hasConflictingInstallations;
+    private bool $hasUpdate = false;
+    private ?string $availableVersion = null;
 
     /**
      * Converts the plugin family data to an associative array for API responses.
@@ -59,6 +62,8 @@ class PluginFamilyDto implements DtoInterface
             'hasAnyVersionInstalled' => $this->hasAnyVersionInstalled,
             'hasAnyVersionActive' => $this->hasAnyVersionActive,
             'hasConflictingInstallations' => $this->hasConflictingInstallations,
+            'hasUpdate' => $this->hasUpdate,
+            'availableVersion' => $this->availableVersion,
             'freePlugin' => [
                 'name' => $this->freePluginName,
                 'slug' => $this->freePluginSlug,
@@ -77,6 +82,7 @@ class PluginFamilyDto implements DtoInterface
                 'isActive' => $this->proPluginIsActive,
                 'isLicensed' => $this->proPluginIsLicensed,
                 'path' => $this->proPluginPath,
+                'licenseExpirationDate' => $this->proPluginLicenseExpirationDate,
             ],
         ];
     }
@@ -264,6 +270,15 @@ class PluginFamilyDto implements DtoInterface
     /**
      * @since 1.0.0
      */
+    public function setProPluginLicenseExpirationDate(?string $proPluginLicenseExpirationDate): self
+    {
+        $this->proPluginLicenseExpirationDate = $proPluginLicenseExpirationDate;
+        return $this;
+    }
+
+    /**
+     * @since 1.0.0
+     */
     public function setIsAnyVersionInstalled(bool $hasAnyVersionInstalled): self
     {
         $this->hasAnyVersionInstalled = $hasAnyVersionInstalled;
@@ -285,6 +300,24 @@ class PluginFamilyDto implements DtoInterface
     public function setHasConflictingInstallations(bool $hasConflictingInstallations): self
     {
         $this->hasConflictingInstallations = $hasConflictingInstallations;
+        return $this;
+    }
+
+    /**
+     * @since 1.0.0
+     */
+    public function setHasUpdate(bool $hasUpdate): self
+    {
+        $this->hasUpdate = $hasUpdate;
+        return $this;
+    }
+
+    /**
+     * @since 1.0.0
+     */
+    public function setAvailableVersion(?string $availableVersion): self
+    {
+        $this->availableVersion = $availableVersion;
         return $this;
     }
 }

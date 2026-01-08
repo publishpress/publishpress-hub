@@ -14,21 +14,21 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Remote\Exception;
 
-use Exception;
-use PublishPress\Hub\Domain\Exception\Contract\WithContextInterface;
-use PublishPress\Hub\Domain\Exception\Traits\ContextTrait;
+use PublishPress\Hub\Domain\Exception\ExceptionCode;
+use PublishPress\Hub\Infrastructure\Exception\Base\InfrastructureException;
 
-class RemoteAccessDeniedException extends Exception implements WithContextInterface
+class RemoteAccessDeniedException extends InfrastructureException
 {
-    use ContextTrait;
-
     /**
      * @param array<string, mixed> $context The context.
      * @since 1.0.0
      */
     public function __construct(array $context = [])
     {
-        parent::__construct('Remote access denied.');
-        $this->setContext($context);
+        parent::__construct(
+            'Remote access denied.',
+            ExceptionCode::REMOTE_ACCESS_DENIED,
+            $context
+        );
     }
 }
