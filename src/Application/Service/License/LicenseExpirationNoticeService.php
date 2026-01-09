@@ -16,9 +16,30 @@ namespace PublishPress\Hub\Application\Service\License;
 
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
+use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 
 class LicenseExpirationNoticeService
 {
+    /**
+     * Duration in seconds for which a dismissed notice stays hidden (1 month = 30 days).
+     */
+    private const DISMISSAL_DURATION = 30 * DAY_IN_SECONDS;
+
+    /**
+     * Query parameter name for dismissing notices.
+     */
+    public const DISMISS_PARAM = 'pp_hub_dismiss_license_notice';
+
+    /**
+     * Nonce action name for dismissing notices.
+     */
+    public const DISMISS_NONCE_ACTION = 'pp_hub_dismiss_license_notice';
+
+    /**
+     * User meta key for storing dismissal data.
+     */
+    public const DISMISS_META_KEY = 'pp_hub_license_notice_dismissed';
+
     private LicenseStatusStorageService $licenseStatusStorage;
     private PluginStatusService $pluginStatusService;
 
@@ -36,13 +57,14 @@ class LicenseExpirationNoticeService
     }
 
     /**
-     * Initialize the service by hooking into admin_notices.
+     * Initialize the service by hooking into admin_init and admin_notices.
      *
      * @since 1.0.0
      */
     public function init(): void
     {
-        add_action('admin_notices', [$this, 'displayExpiredLicenseNotices']);
+        add_action(AbstractHooks::ACTION_ADMIN_INIT, [$this, 'handleDismissRequest']);
+        add_action(AbstractHooks::ACTION_ADMIN_NOTICES, [$this, 'displayExpiredLicenseNotices']);
     }
 
     /**
@@ -78,6 +100,11 @@ class LicenseExpirationNoticeService
             return;
         }
 
+        // Check if user has dismissed this notice
+        if ($this->isNoticeDismissed()) {
+            return;
+        }
+
         $pluginsDashboardUrl = admin_url('admin.php?page=publishpress-hub-plugins-dashboard');
 
         if (count($expiredLicenses) === 1) {
@@ -104,9 +131,23 @@ class LicenseExpirationNoticeService
             );
         }
 
+        $dismissUrl = add_query_arg(
+            [
+                self::DISMISS_PARAM => '1',
+                'nonce' => wp_create_nonce(self::DISMISS_NONCE_ACTION)
+            ],
+            sanitize_url($_SERVER['REQUEST_URI'] ?? '')
+        );
+
+        $dismissLink = sprintf(
+            ' | <a href="%s">%s</a>',
+            esc_url($dismissUrl),
+            esc_html__('Dismiss', 'publishpress-hub')
+        );
+
         printf(
-            '<div class="notice notice-error is-dismissible"><p>%s</p></div>',
-            wp_kses_post($message)
+            '<div class="notice notice-error"><p>%s</p></div>',
+            wp_kses_post($message . $dismissLink)
         );
     }
 
@@ -142,5 +183,118 @@ class LicenseExpirationNoticeService
         }
 
         return $expiredLicenses;
+    }
+
+    /**
+     * Handle GET request to dismiss the notice.
+     *
+     * @since 1.0.0
+     */
+    public function handleDismissRequest(): void
+    {
+        if (!isset($_GET[self::DISMISS_PARAM])) {
+            return;
+        }
+
+        if (
+            !isset($_GET['nonce'])
+            || !wp_verify_nonce(sanitize_key($_GET['nonce']), self::DISMISS_NONCE_ACTION)
+        ) {
+            return;
+        }
+
+        if (!current_user_can(HubAccessService::CAPABILITY)) {
+            return;
+        }
+
+        $this->setNoticeDismissed();
+
+        // Redirect to clean URL without query parameters
+        $redirectUrl = remove_query_arg([self::DISMISS_PARAM, 'nonce']);
+        wp_safe_redirect($redirectUrl);
+        exit;
+    }
+
+    /**
+     * Check if the notice has been dismissed by the current user.
+     *
+     * @since 1.0.0
+     */
+    private function isNoticeDismissed(): bool
+    {
+        $userId = get_current_user_id();
+        $dismissalData = get_user_meta($userId, self::DISMISS_META_KEY, true);
+
+        if (!$dismissalData || !is_array($dismissalData)) {
+            return false;
+        }
+
+        // Check if dismissal has expired (older than 1 month)
+        $dismissedAt = $dismissalData['dismissed_at'] ?? 0;
+        $expiresAt = $dismissedAt + self::DISMISSAL_DURATION;
+
+        if (time() > $expiresAt) {
+            $this->clearDismissedNotice();
+            return false;
+        }
+
+        // Clear dismissal if expired licenses have changed
+        $expiredLicenses = $this->getExpiredLicensesForNotice();
+        $currentHash = $this->generateLicensesHash($expiredLicenses);
+        $storedHash = $dismissalData['hash'] ?? '';
+
+        if ($storedHash !== $currentHash) {
+            $this->clearDismissedNotice();
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Mark the notice as dismissed for the current user.
+     *
+     * Stores the dismissal with a timestamp and hash of expired licenses.
+     * The dismissal will expire after DISMISSAL_DURATION (1 month).
+     *
+     * @since 1.0.0
+     */
+    private function setNoticeDismissed(): void
+    {
+        $userId = get_current_user_id();
+        $expiredLicenses = $this->getExpiredLicensesForNotice();
+        $hash = $this->generateLicensesHash($expiredLicenses);
+
+        $dismissalData = [
+            'hash' => $hash,
+            'dismissed_at' => time(),
+            'expires_at' => time() + self::DISMISSAL_DURATION
+        ];
+
+        update_user_meta($userId, self::DISMISS_META_KEY, $dismissalData);
+    }
+
+    /**
+     * Clear dismissed notice state for the current user.
+     *
+     * @since 1.0.0
+     */
+    private function clearDismissedNotice(): void
+    {
+        $userId = get_current_user_id();
+        delete_user_meta($userId, self::DISMISS_META_KEY);
+    }
+
+    /**
+     * Generate a hash of expired licenses for comparison.
+     *
+     * @param array<int, array<string, string>> $licenses
+     * @since 1.0.0
+     */
+    private function generateLicensesHash(array $licenses): string
+    {
+        $downloadIds = array_column($licenses, 'downloadId');
+        sort($downloadIds);
+        return md5(implode(',', $downloadIds));
     }
 }
