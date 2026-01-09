@@ -47,7 +47,7 @@ if (defined('PUBLISHPRESS_HUB_PATH')) {
 /*
  * Define the plugin constants.
  */
-define('PUBLISHPRESS_HUB_VERSION', '1.0.0');
+define('PUBLISHPRESS_HUB_VERSION', '1.0.1');
 define('PUBLISHPRESS_HUB_SRC_PATH', __DIR__ . '/');
 define('PUBLISHPRESS_HUB_PATH', realpath(PUBLISHPRESS_HUB_SRC_PATH . '/../') . '/');
 define('PUBLISHPRESS_HUB_PLUGIN_FILE', PUBLISHPRESS_HUB_PATH . 'publishpress-hub.php');
@@ -71,6 +71,13 @@ require_once PUBLISHPRESS_HUB_VENDOR_PATH . 'publishpress/psr-container/lib/incl
  */
 if (file_exists(PUBLISHPRESS_HUB_VENDOR_PATH . 'woocommerce/action-scheduler/action-scheduler.php')) {
     require_once PUBLISHPRESS_HUB_VENDOR_PATH . 'woocommerce/action-scheduler/action-scheduler.php';
+}
+
+/*
+ * Load EDD Plugin Updater library.
+ */
+if (file_exists(PUBLISHPRESS_HUB_VENDOR_PATH . 'alledia/edd-sl-plugin-updater/EDD_SL_Plugin_Updater.php')) {
+    require_once PUBLISHPRESS_HUB_VENDOR_PATH . 'alledia/edd-sl-plugin-updater/EDD_SL_Plugin_Updater.php';
 }
 
 /*

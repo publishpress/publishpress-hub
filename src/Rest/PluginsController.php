@@ -28,9 +28,12 @@ use PublishPress\Hub\Application\UseCase\Plugin\ResolveConflictUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\DeactivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ActivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ValidateLicensesUseCase;
+use PublishPress\Hub\Application\Service\License\LicenseExpirationNoticeService;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use WP_REST_Server;
+use WP_REST_Request;
+use WP_REST_Response;
 
 class PluginsController implements BootableInterface
 {
@@ -48,6 +51,7 @@ class PluginsController implements BootableInterface
     private DeactivateLicenseUseCase $deactivateLicenseUseCase;
     private ActivateLicenseUseCase $activateLicenseUseCase;
     private ValidateLicensesUseCase $validateLicensesUseCase;
+    private LicenseExpirationNoticeService $licenseExpirationNoticeService;
     private string $restApiNamespace;
 
     /**
@@ -64,6 +68,7 @@ class PluginsController implements BootableInterface
      * @param DeactivateLicenseUseCase $deactivateLicenseUseCase
      * @param ActivateLicenseUseCase $activateLicenseUseCase
      * @param ValidateLicensesUseCase $validateLicensesUseCase
+     * @param LicenseExpirationNoticeService $licenseExpirationNoticeService
      * @since 1.0.0
      */
     public function __construct(
@@ -79,7 +84,8 @@ class PluginsController implements BootableInterface
         ResolveConflictUseCase $resolveConflictUseCase,
         DeactivateLicenseUseCase $deactivateLicenseUseCase,
         ActivateLicenseUseCase $activateLicenseUseCase,
-        ValidateLicensesUseCase $validateLicensesUseCase
+        ValidateLicensesUseCase $validateLicensesUseCase,
+        LicenseExpirationNoticeService $licenseExpirationNoticeService
     ) {
         $this->restApiService = $restApiService;
         $this->listPluginsUseCase = $listPluginsUseCase;
@@ -94,6 +100,7 @@ class PluginsController implements BootableInterface
         $this->deactivateLicenseUseCase = $deactivateLicenseUseCase;
         $this->activateLicenseUseCase = $activateLicenseUseCase;
         $this->validateLicensesUseCase = $validateLicensesUseCase;
+        $this->licenseExpirationNoticeService = $licenseExpirationNoticeService;
     }
 
     /**
@@ -332,6 +339,35 @@ class PluginsController implements BootableInterface
             ]
         ));
 
+        // POST /license-notices/dismiss
+        $this->restApiService->addRoute(new RestRoute(
+            $this->restApiNamespace,
+            '/license-notices/dismiss',
+            WP_REST_Server::CREATABLE,
+            [$this, 'dismissLicenseNotice'],
+            [$this, 'checkPermissions'],
+            [
+                'noticeType' => [
+                    'required' => true,
+                    'type' => 'string',
+                    'sanitize_callback' => 'sanitize_key',
+                    'validate_callback' => function ($param) {
+                        return in_array($param, ['expired', 'expiring'], true);
+                    },
+                ],
+            ]
+        ));
+
+        // GET /license-notices/dismissal-status
+        $this->restApiService->addRoute(new RestRoute(
+            $this->restApiNamespace,
+            '/license-notices/dismissal-status',
+            WP_REST_Server::READABLE,
+            [$this, 'getDismissalStatus'],
+            [$this, 'checkPermissions'],
+            []
+        ));
+
         // phpcs:enable Squiz.PHP.CommentedOutCode.Found
     }
 
@@ -344,5 +380,40 @@ class PluginsController implements BootableInterface
     public function checkPermissions(): bool
     {
         return current_user_can(HubAccessService::CAPABILITY);
+    }
+
+    /**
+     * Dismiss a license notice.
+     *
+     * @param WP_REST_Request $request The request.
+     * @return array<string, mixed>
+     * @since 1.0.0
+     */
+    public function dismissLicenseNotice(WP_REST_Request $request): array
+    {
+        $noticeType = $request->get_param('noticeType');
+
+        $this->licenseExpirationNoticeService->dismissDashboardNotice($noticeType);
+
+        return [
+            'dismissed' => true,
+            'noticeType' => $noticeType,
+        ];
+    }
+
+    /**
+     * Get dismissal status for license notices.
+     *
+     * @param WP_REST_Request $request The request.
+     * @return array<string, mixed>
+     * @since 1.0.0
+     */
+    public function getDismissalStatus(WP_REST_Request $request): array
+    {
+        $status = $this->licenseExpirationNoticeService->getDashboardNoticeDismissalStatus();
+
+        return [
+            'dismissalStatus' => $status,
+        ];
     }
 }

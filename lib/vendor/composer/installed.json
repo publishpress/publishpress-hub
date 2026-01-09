@@ -1,6 +1,63 @@
 {
     "packages": [
         {
+            "name": "alledia/edd-sl-plugin-updater",
+            "version": "1.6.24",
+            "version_normalized": "1.6.24.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/publishpress/edd-sl-plugin-updater.git",
+                "reference": "d3f92cd47a858da15feede854eb4b984fcf28856"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/publishpress/edd-sl-plugin-updater/zipball/d3f92cd47a858da15feede854eb4b984fcf28856",
+                "reference": "d3f92cd47a858da15feede854eb4b984fcf28856",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=5.6.20"
+            },
+            "time": "2026-01-09T19:19:53+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "EDD_SL_Plugin_Updater.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "EasyDigitalDownloads",
+                    "email": "contact@easydigitaldownloads.com"
+                },
+                {
+                    "name": "PublishPress",
+                    "email": "help@publishpress.com"
+                },
+                {
+                    "name": "Alledia",
+                    "email": "help@alledia.com"
+                }
+            ],
+            "description": "EDD Updates Handler for WordPress Plugins",
+            "keywords": [
+                "edd",
+                "updates",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/publishpress/edd-sl-plugin-updater/issues",
+                "source": "https://github.com/publishpress/edd-sl-plugin-updater/tree/1.6.24"
+            },
+            "install-path": "../alledia/edd-sl-plugin-updater"
+        },
+        {
             "name": "publishpress/psr-container",
             "version": "2.0.2.1",
             "version_normalized": "2.0.2.1",

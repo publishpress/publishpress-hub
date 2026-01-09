@@ -8,14 +8,17 @@
  * @since 1.0.0
  */
 
-import { useEffect } from '@wordpress/element';
+import { useEffect, useState, useCallback } from '@wordpress/element';
 import { useDispatch } from '@wordpress/data';
+import apiFetch from '@wordpress/api-fetch';
 
 import { __, sprintf } from '@publishpress-hub/i18n';
 
 const DAYS_UNTIL_EXPIRATION = 30;
 
 const RENEW_NOW_URL = 'https://publishpress.com/links/hub-renew-now';
+
+const API_NAMESPACE = '/publishpress-hub/v1';
 
 /**
  * Hook to check for licenses expiring within the specified days and expired licenses,
@@ -29,6 +32,45 @@ const RENEW_NOW_URL = 'https://publishpress.com/links/hub-renew-now';
  */
 export const useLicenseExpirationWarning = (plugins, daysUntilExpiration = DAYS_UNTIL_EXPIRATION) => {
     const { createNotice, removeNotice } = useDispatch('core/notices');
+    const [dismissalStatus, setDismissalStatus] = useState({ expired: false, expiring: false });
+
+    // Fetch dismissal status on mount
+    useEffect(() => {
+        const fetchDismissalStatus = async () => {
+            try {
+                const response = await apiFetch({
+                    path: `${API_NAMESPACE}/license-notices/dismissal-status`,
+                    method: 'GET',
+                });
+                setDismissalStatus(response.dismissalStatus || { expired: false, expiring: false });
+            } catch (error) {
+                // eslint-disable-next-line no-console
+                console.error('Error fetching dismissal status:', error);
+            }
+        };
+
+        fetchDismissalStatus();
+    }, []);
+
+    // Handle notice dismissal
+    const handleNoticeDismiss = useCallback(async (noticeType) => {
+        try {
+            await apiFetch({
+                path: `${API_NAMESPACE}/license-notices/dismiss`,
+                method: 'POST',
+                data: { noticeType },
+            });
+
+            // Update local dismissal status
+            setDismissalStatus(prev => ({
+                ...prev,
+                [noticeType]: true,
+            }));
+        } catch (error) {
+            // eslint-disable-next-line no-console
+            console.error('Error dismissing notice:', error);
+        }
+    }, []);
 
     useEffect(() => {
         if (!plugins || plugins.length === 0) {
@@ -76,7 +118,7 @@ export const useLicenseExpirationWarning = (plugins, daysUntilExpiration = DAYS_
         removeNotice('pp-hub-license-expired-warning');
 
         // Display expired license notice (error level - highest priority)
-        if (expiredPlugins.length > 0) {
+        if (expiredPlugins.length > 0 && !dismissalStatus.expired) {
             // Group plugins by expiration date
             const pluginsByDate = {};
             expiredPlugins.forEach((plugin) => {
@@ -123,12 +165,13 @@ export const useLicenseExpirationWarning = (plugins, daysUntilExpiration = DAYS_
                     id: 'pp-hub-license-expired-warning',
                     isDismissible: true,
                     __unstableHTML: true,
+                    onDismiss: () => handleNoticeDismiss('expired'),
                 }
             );
         }
 
         // Display expiring license notice (warning level)
-        if (expiringPlugins.length > 0) {
+        if (expiringPlugins.length > 0 && !dismissalStatus.expiring) {
             // Group plugins by expiration date
             const pluginsByDate = {};
             expiringPlugins.forEach((plugin) => {
@@ -178,10 +221,11 @@ export const useLicenseExpirationWarning = (plugins, daysUntilExpiration = DAYS_
                     id: 'pp-hub-license-expiration-warning',
                     isDismissible: true,
                     __unstableHTML: true,
+                    onDismiss: () => handleNoticeDismiss('expiring'),
                 }
             );
         }
 
-    }, [plugins, createNotice, removeNotice, daysUntilExpiration]);
+    }, [plugins, createNotice, removeNotice, daysUntilExpiration, dismissalStatus, handleNoticeDismiss]);
 };
 

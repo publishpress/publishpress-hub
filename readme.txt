@@ -7,7 +7,7 @@ Requires at least: 6.7
 Requires PHP: 7.4
 Tested up to: 6.9
 License: GPLv2 or later
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Streamline your WordPress publishing workflow with a centralized plugin management hub.
@@ -98,13 +98,4 @@ Yes. The Hub connects to `https://publishpress.com` to validate licenses and fet
 
 == Changelog ==
 
-= 1.0.0 =
-
-- Initial release of PublishPress Hub with centralized plugin management and licensing.
-
-The full changelog can be found on [GitHub](https://github.com/publishpress/PublishPress-Hub/blob/main/CHANGELOG.md).
-
-== Upgrade Notice ==
-
-= 1.0.0 =
-Initial release of the PublishPress Hub with centralized plugin management and licensing.
+The full changelog can be found on [GitHub](https://github.com/publishpress/PublishPress-Hub/blob/master/CHANGELOG.md).

@@ -835,3 +835,51 @@ function handleErrorMessageOnContext(error) {
 
     return error;
 }
+
+/**
+ * Dismiss a license notice.
+ *
+ * @param {string} noticeType The notice type ('expired' or 'expiring').
+ * @since 1.0.0
+ */
+export function* dismissLicenseNotice(noticeType) {
+    yield apiReady();
+
+    try {
+        yield apiFetch({
+            path: `${API_NAMESPACE}/license-notices/dismiss`,
+            method: 'POST',
+            data: {
+                noticeType,
+            },
+        });
+    } catch (error) {
+        // Silently fail - dismissal is not critical
+        // eslint-disable-next-line no-console
+        console.error('Error dismissing license notice:', error);
+    }
+}
+
+/**
+ * Fetch license notice dismissal status.
+ *
+ * @return {Object} The dismissal status object with 'expired' and 'expiring' keys.
+ * @since 1.0.0
+ */
+export function* fetchLicenseNoticeDismissalStatus() {
+    yield apiReady();
+
+    try {
+        const response = yield apiFetch({
+            path: `${API_NAMESPACE}/license-notices/dismissal-status`,
+            method: 'GET',
+        });
+
+        return response.dismissalStatus || { expired: false, expiring: false };
+    } catch (error) {
+        // Silently fail and return default status
+        // eslint-disable-next-line no-console
+        console.error('Error fetching dismissal status:', error);
+        return { expired: false, expiring: false };
+    }
+}
