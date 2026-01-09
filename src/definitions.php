@@ -562,6 +562,7 @@ return [
             $container->get(AbstractDependencies::RESOLVE_CONFLICT_USE_CASE),
             $container->get(AbstractDependencies::DEACTIVATE_LICENSE_USE_CASE),
             $container->get(AbstractDependencies::ACTIVATE_LICENSE_USE_CASE),
-            $container->get(AbstractDependencies::VALIDATE_LICENSES_USE_CASE)
+            $container->get(AbstractDependencies::VALIDATE_LICENSES_USE_CASE),
+            $container->get(AbstractDependencies::LICENSE_EXPIRATION_NOTICE_SERVICE)
         )
 ];
