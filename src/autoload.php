@@ -74,6 +74,13 @@ if (file_exists(PUBLISHPRESS_HUB_VENDOR_PATH . 'woocommerce/action-scheduler/act
 }
 
 /*
+ * Load EDD Plugin Updater library.
+ */
+if (file_exists(PUBLISHPRESS_HUB_VENDOR_PATH . 'alledia/edd-sl-plugin-updater/EDD_SL_Plugin_Updater.php')) {
+    require_once PUBLISHPRESS_HUB_VENDOR_PATH . 'alledia/edd-sl-plugin-updater/EDD_SL_Plugin_Updater.php';
+}
+
+/*
  * Load the autoloader and register the plugin's namespace.
  */
 if (! class_exists(__NAMESPACE__ . '\\Infrastructure\\Autoloader\\Autoloader')) {
