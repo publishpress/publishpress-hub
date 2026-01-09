@@ -98,13 +98,4 @@ Yes. The Hub connects to `https://publishpress.com` to validate licenses and fet
 
 == Changelog ==
 
-= 1.0.0 =
-
-- Initial release of PublishPress Hub with centralized plugin management and licensing.
-
-The full changelog can be found on [GitHub](https://github.com/publishpress/PublishPress-Hub/blob/main/CHANGELOG.md).
-
-== Upgrade Notice ==
-
-= 1.0.0 =
-Initial release of the PublishPress Hub with centralized plugin management and licensing.
+The full changelog can be found on [GitHub](https://github.com/publishpress/PublishPress-Hub/blob/master/CHANGELOG.md).
