@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "alledia/edd-sl-plugin-updater",
-            "version": "v1.6.23",
+            "version": "1.6.24",
             "source": {
                 "type": "git",
-                "url": "https://github.com/publishpress/EDD-SL-Plugin-Updater.git",
-                "reference": "38253d04ac8875a88f62a3ebdca8034473f77418"
+                "url": "https://github.com/publishpress/edd-sl-plugin-updater.git",
+                "reference": "d3f92cd47a858da15feede854eb4b984fcf28856"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/EDD-SL-Plugin-Updater/zipball/38253d04ac8875a88f62a3ebdca8034473f77418",
-                "reference": "38253d04ac8875a88f62a3ebdca8034473f77418",
+                "url": "https://api.github.com/repos/publishpress/edd-sl-plugin-updater/zipball/d3f92cd47a858da15feede854eb4b984fcf28856",
+                "reference": "d3f92cd47a858da15feede854eb4b984fcf28856",
                 "shasum": ""
             },
             "require": {
@@ -55,10 +55,10 @@
                 "wordpress"
             ],
             "support": {
-                "issues": "https://github.com/publishpress/EDD-SL-Plugin-Updater/issues",
-                "source": "https://github.com/publishpress/EDD-SL-Plugin-Updater/tree/v1.6.23"
+                "issues": "https://github.com/publishpress/edd-sl-plugin-updater/issues",
+                "source": "https://github.com/publishpress/edd-sl-plugin-updater/tree/1.6.24"
             },
-            "time": "2023-08-30T19:32:16+00:00"
+            "time": "2026-01-09T19:19:53+00:00"
         },
         {
             "name": "publishpress/psr-container",
@@ -214,5 +214,5 @@
         "ext-json": "*"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.6.0"
 }
