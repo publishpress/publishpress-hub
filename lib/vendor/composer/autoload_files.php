@@ -6,5 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'c92bf23a32412037ecdc51806b458c36' => $vendorDir . '/alledia/edd-sl-plugin-updater/EDD_SL_Plugin_Updater.php',
     '3b1e1688e889525de91ac2456aba9efd' => $vendorDir . '/publishpress/psr-container/lib/include.php',
 );

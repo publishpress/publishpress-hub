@@ -31,3 +31,6 @@ require_once __DIR__ . '/../../lib/vendor/publishpress/psr-container/lib/psr/con
 require_once __DIR__ . '/../../src/Infrastructure/Autoloader/Autoloader.php';
 
 Autoloader::register('PublishPress\\Hub\\', __DIR__ . '/../../src/');
+
+// Load the lib vendor autoloader for EDD and other dependencies
+require_once __DIR__ . '/../../lib/vendor/autoload.php';

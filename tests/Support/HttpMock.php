@@ -120,7 +120,7 @@ class HttpMock
         }
 
         // Check for WordPress.org API calls
-        if (strpos($url, 'api.wordpress.org') !== false) {
+        if (strpos($url, 'wordpress.org') !== false) {
             return self::mockWpOrgResponse($url, $args);
         }
 
@@ -129,7 +129,15 @@ class HttpMock
             return self::mockPluginDownload($url);
         }
 
-        return $preempt;
+        // For any other HTTP request, return an empty but valid response
+        // This prevents WordPress from generating warnings about connection failures
+        return [
+            'headers' => [],
+            'body' => '',
+            'response' => ['code' => 200, 'message' => 'OK'],
+            'cookies' => [],
+            'filename' => null,
+        ];
     }
 
     /**
@@ -228,24 +236,62 @@ class HttpMock
                         'error' => 'Invalid license key',
                     ], 400);
                 }
-                $responseData = [
-                    'new_version' => '1.0.0',
-                    'stable_version' => '1.0.0',
-                    'name' => 'Test Plugin Pro',
-                    'slug' => 'test-plugin-pro',
-                    'url' => 'https://publishpress.com/test-plugin/',
-                    'package' => 'https://pkg.publishpress.com/test-plugin-pro.zip',
-                    'download_link' => 'https://pkg.publishpress.com/test-plugin-pro.zip',
-                    'sections' => [
-                        'description' => 'Test plugin description',
-                        'changelog' => 'Test changelog',
-                    ],
-                    'banners' => [],
-                    'icons' => [],
-                    'tested' => '6.4',
-                    'requires' => '5.0',
-                    'requires_php' => '7.4',
-                ];
+
+                // Handle PublishPress Hub (item 404405) specifically
+                if ($downloadId === 404405) {
+                    // Check if test has set a specific version to return
+                    $mockVersion = get_transient('publishpress_hub_mock_edd_version');
+                    
+                    if ($mockVersion === false) {
+                        // No specific version set, use current version + 1 major as default
+                        $currentVersion = defined('PUBLISHPRESS_HUB_VERSION') ? PUBLISHPRESS_HUB_VERSION : '1.0.0';
+                        $versionParts = explode('.', $currentVersion);
+                        $majorVersion = isset($versionParts[0]) ? (int)$versionParts[0] : 1;
+                        $mockVersion = ($majorVersion + 1) . '.0.0';
+                    }
+                    
+                    $responseData = [
+                        'new_version' => $mockVersion,
+                        'stable_version' => $mockVersion,
+                        'name' => 'PublishPress Hub',
+                        'slug' => 'publishpress-hub',
+                        'plugin' => 'publishpress-hub/publishpress-hub.php',
+                        'url' => 'https://publishpress.com/publishpress-hub/',
+                        'package' => 'https://pkg.publishpress.com/publishpress-hub.zip',
+                        'download_link' => 'https://pkg.publishpress.com/publishpress-hub.zip',
+                        'sections' => [
+                            'description' => 'Centralized management hub for all PublishPress plugins',
+                            'changelog' => '<h4>' . $mockVersion . '</h4><ul><li>New release</li></ul>',
+                        ],
+                        'banners' => [],
+                        'icons' => [],
+                        'tested' => '6.7',
+                        'requires' => '6.1',
+                        'requires_php' => '7.4',
+                        'homepage' => 'https://publishpress.com/publishpress-hub/',
+                        'author' => 'PublishPress',
+                    ];
+                } else {
+                    // Generic response for other plugins
+                    $responseData = [
+                        'new_version' => '1.0.0',
+                        'stable_version' => '1.0.0',
+                        'name' => 'Test Plugin Pro',
+                        'slug' => 'test-plugin-pro',
+                        'url' => 'https://publishpress.com/test-plugin/',
+                        'package' => 'https://pkg.publishpress.com/test-plugin-pro.zip',
+                        'download_link' => 'https://pkg.publishpress.com/test-plugin-pro.zip',
+                        'sections' => [
+                            'description' => 'Test plugin description',
+                            'changelog' => 'Test changelog',
+                        ],
+                        'banners' => [],
+                        'icons' => [],
+                        'tested' => '6.4',
+                        'requires' => '5.0',
+                        'requires_php' => '7.4',
+                    ];
+                }
                 break;
 
             default:
@@ -270,6 +316,23 @@ class HttpMock
      */
     private static function mockWpOrgResponse(string $url, array $args): array
     {
+        // Handle plugin update check endpoint
+        if (strpos($url, 'update-check') !== false || strpos($url, 'update.php') !== false) {
+            // Return an empty plugins object (no updates available)
+            $responseData = (object) [
+                'plugins' => (object) [],
+                'no_update' => (object) [],
+            ];
+
+            return [
+                'headers' => ['content-type' => 'application/php-serialized'],
+                'body' => maybe_serialize($responseData),
+                'response' => ['code' => 200, 'message' => 'OK'],
+                'cookies' => [],
+                'filename' => null,
+            ];
+        }
+
         // Extract plugin slug from URL
         $slug = '';
         if (preg_match('/plugins\/info\/[^\/]+\/([^\/\?]+)/', $url, $matches)) {
