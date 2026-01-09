@@ -40,6 +40,11 @@ class LicenseExpirationNoticeService
      */
     public const DISMISS_META_KEY = 'pp_hub_license_notice_dismissed';
 
+    /**
+     * User meta key for storing dashboard notice dismissal data.
+     */
+    public const DASHBOARD_DISMISS_META_KEY = 'pp_hub_dashboard_license_notice_dismissed';
+
     private LicenseStatusStorageService $licenseStatusStorage;
     private PluginStatusService $pluginStatusService;
 
@@ -65,6 +70,8 @@ class LicenseExpirationNoticeService
     {
         add_action(AbstractHooks::ACTION_ADMIN_INIT, [$this, 'handleDismissRequest']);
         add_action(AbstractHooks::ACTION_ADMIN_NOTICES, [$this, 'displayExpiredLicenseNotices']);
+        add_action(AbstractHooks::ACTION_ADMIN_ENQUEUE_SCRIPTS, [$this, 'enqueueNoticeScript']);
+        add_action('wp_ajax_pp_hub_dismiss_admin_license_notice', [$this, 'handleAjaxDismissRequest']);
     }
 
     /**
@@ -131,30 +138,19 @@ class LicenseExpirationNoticeService
             );
         }
 
-        $dismissUrl = add_query_arg(
-            [
-                self::DISMISS_PARAM => '1',
-                'nonce' => wp_create_nonce(self::DISMISS_NONCE_ACTION)
-            ],
-            sanitize_url($_SERVER['REQUEST_URI'] ?? '')
-        );
-
-        $dismissLink = sprintf(
-            ' | <a href="%s">%s</a>',
-            esc_url($dismissUrl),
-            esc_html__('Dismiss', 'publishpress-hub')
-        );
+        $nonce = wp_create_nonce('pp_hub_dismiss_admin_license_notice');
 
         printf(
-            '<div class="notice notice-error"><p>%s</p></div>',
-            wp_kses_post($message . $dismissLink)
+            '<div class="notice notice-error is-dismissible pp-hub-admin-license-notice" data-nonce="%s"><p>%s</p></div>',
+            esc_attr($nonce),
+            wp_kses_post($message)
         );
     }
 
     /**
      * Get expired licenses formatted for notice display.
      *
-     * @return array<int, array<string, string>> Array of expired license data with 'name' and 'downloadId'.
+     * @return array<int, array<string, string>> Array of expired license data with 'name', 'downloadId', and 'expirationDate'.
      * @since 1.0.0
      */
     public function getExpiredLicensesForNotice(): array
@@ -178,6 +174,7 @@ class LicenseExpirationNoticeService
                 $expiredLicenses[] = [
                     'name' => $proPlugin->getName(),
                     'downloadId' => (string) $downloadId,
+                    'expirationDate' => $expiredStatuses[$downloadId]['expirationDate'] ?? '',
                 ];
             }
         }
@@ -288,13 +285,212 @@ class LicenseExpirationNoticeService
     /**
      * Generate a hash of expired licenses for comparison.
      *
+     * Includes both download IDs and expiration dates to detect changes when licenses are renewed.
+     *
      * @param array<int, array<string, string>> $licenses
      * @since 1.0.0
      */
     private function generateLicensesHash(array $licenses): string
     {
-        $downloadIds = array_column($licenses, 'downloadId');
-        sort($downloadIds);
-        return md5(implode(',', $downloadIds));
+        $hashData = [];
+
+        foreach ($licenses as $license) {
+            $hashData[] = $license['downloadId'] . ':' . ($license['expirationDate'] ?? '');
+        }
+
+        sort($hashData);
+        return md5(implode('|', $hashData));
+    }
+
+    /**
+     * Enqueue script for handling admin notice dismissal.
+     *
+     * @since 1.0.0
+     */
+    public function enqueueNoticeScript(): void
+    {
+        // Only enqueue on pages where we show the notice
+        if (!current_user_can(HubAccessService::CAPABILITY)) {
+            return;
+        }
+
+        $screen = get_current_screen();
+        if (
+            $screen &&
+            (
+                $screen->id === 'publishpress_page_publishpress-hub-plugins-dashboard' ||
+                $screen->id === 'toplevel_page_publishpress-hub'
+            )
+        ) {
+            return;
+        }
+
+        // Only enqueue if there are expired licenses to show
+        $expiredLicenses = $this->getExpiredLicensesForNotice();
+        if (empty($expiredLicenses) || $this->isNoticeDismissed()) {
+            return;
+        }
+
+        wp_add_inline_script(
+            'common',
+            "
+            jQuery(document).ready(function($) {
+                $(document).on('click', '.pp-hub-admin-license-notice .notice-dismiss', function(e) {
+                    var notice = $(this).closest('.pp-hub-admin-license-notice');
+                    var nonce = notice.data('nonce');
+
+                    $.post(ajaxurl, {
+                        action: 'pp_hub_dismiss_admin_license_notice',
+                        nonce: nonce
+                    });
+                });
+            });
+            "
+        );
+    }
+
+    /**
+     * Handle AJAX request to dismiss admin notice.
+     *
+     * @since 1.0.0
+     */
+    public function handleAjaxDismissRequest(): void
+    {
+        check_ajax_referer('pp_hub_dismiss_admin_license_notice', 'nonce');
+
+        if (!current_user_can(HubAccessService::CAPABILITY)) {
+            wp_send_json_error(['message' => 'Unauthorized'], 403);
+            return;
+        }
+
+        $this->setNoticeDismissed();
+
+        wp_send_json_success(['dismissed' => true]);
+    }
+
+    /**
+     * Check if dashboard notice has been dismissed.
+     *
+     * @param string $noticeType The notice type ('expired' or 'expiring').
+     * @since 1.0.0
+     */
+    public function isDashboardNoticeDismissed(string $noticeType): bool
+    {
+        $userId = get_current_user_id();
+        $dismissalData = get_user_meta($userId, self::DASHBOARD_DISMISS_META_KEY, true);
+
+        if (!$dismissalData || !is_array($dismissalData)) {
+            return false;
+        }
+
+        if (!isset($dismissalData[$noticeType])) {
+            return false;
+        }
+
+        $typeData = $dismissalData[$noticeType];
+
+        // Check if dismissal has expired (older than 1 month)
+        $dismissedAt = $typeData['dismissed_at'] ?? 0;
+        $expiresAt = $dismissedAt + self::DISMISSAL_DURATION;
+
+        if (time() > $expiresAt) {
+            $this->clearDashboardDismissedNotice($noticeType);
+            return false;
+        }
+
+        // Get current licenses for this notice type
+        $currentLicenses = $this->getLicensesForNoticeType($noticeType);
+        $currentHash = $this->generateLicensesHash($currentLicenses);
+        $storedHash = $typeData['hash'] ?? '';
+
+        if ($storedHash !== $currentHash) {
+            $this->clearDashboardDismissedNotice($noticeType);
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Dismiss dashboard notice.
+     *
+     * @param string $noticeType The notice type ('expired' or 'expiring').
+     * @since 1.0.0
+     */
+    public function dismissDashboardNotice(string $noticeType): void
+    {
+        $userId = get_current_user_id();
+        $dismissalData = get_user_meta($userId, self::DASHBOARD_DISMISS_META_KEY, true);
+
+        if (!is_array($dismissalData)) {
+            $dismissalData = [];
+        }
+
+        $currentLicenses = $this->getLicensesForNoticeType($noticeType);
+        $hash = $this->generateLicensesHash($currentLicenses);
+
+        $dismissalData[$noticeType] = [
+            'hash' => $hash,
+            'dismissed_at' => time(),
+            'expires_at' => time() + self::DISMISSAL_DURATION
+        ];
+
+        update_user_meta($userId, self::DASHBOARD_DISMISS_META_KEY, $dismissalData);
+    }
+
+    /**
+     * Clear dashboard dismissed notice for specific type.
+     *
+     * @param string $noticeType The notice type ('expired' or 'expiring').
+     * @since 1.0.0
+     */
+    private function clearDashboardDismissedNotice(string $noticeType): void
+    {
+        $userId = get_current_user_id();
+        $dismissalData = get_user_meta($userId, self::DASHBOARD_DISMISS_META_KEY, true);
+
+        if (is_array($dismissalData) && isset($dismissalData[$noticeType])) {
+            unset($dismissalData[$noticeType]);
+
+            if (empty($dismissalData)) {
+                delete_user_meta($userId, self::DASHBOARD_DISMISS_META_KEY);
+            } else {
+                update_user_meta($userId, self::DASHBOARD_DISMISS_META_KEY, $dismissalData);
+            }
+        }
+    }
+
+    /**
+     * Get licenses for a specific notice type.
+     *
+     * @param string $noticeType The notice type ('expired' or 'expiring').
+     * @return array<int, array<string, string>>
+     * @since 1.0.0
+     */
+    private function getLicensesForNoticeType(string $noticeType): array
+    {
+        if ($noticeType === 'expired') {
+            return $this->getExpiredLicensesForNotice();
+        }
+
+        // For 'expiring' notices, we would need to implement getExpiringLicensesForNotice
+        // For now, we'll return an empty array as the frontend handles expiring logic
+        return [];
+    }
+
+    /**
+     * Get dashboard notice dismissal status.
+     *
+     * Returns an array with dismissal status for both expired and expiring notices.
+     *
+     * @return array<string, bool>
+     * @since 1.0.0
+     */
+    public function getDashboardNoticeDismissalStatus(): array
+    {
+        return [
+            'expired' => $this->isDashboardNoticeDismissed('expired'),
+            'expiring' => $this->isDashboardNoticeDismissed('expiring'),
+        ];
     }
 }
