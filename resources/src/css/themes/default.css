@@ -135,33 +135,55 @@
     --pp-hub-tooltip-text: #ffffff;
 
     /* Badge Colors */
-    --pp-hub-badge-bg: #f0f0f0;
+    --pp-hub-badge-bg: #f3f4f6;
     --pp-hub-badge-bg-hover: #e5e7eb;
-    --pp-hub-badge-bg-installed: #46b450;
-    --pp-hub-badge-bg-installed-hover: #3f8f44;
-    --pp-hub-badge-bg-not-installed: #ededed;
-    --pp-hub-badge-bg-not-installed-hover: #dcdcdc;
-    --pp-hub-badge-bg-free: #d1cff1;
-    --pp-hub-badge-bg-free-hover: #c4c1e9;
-    --pp-hub-badge-bg-licensed: #cff1db;
-    --pp-hub-badge-bg-licensed-hover: #c7e9c1;
-    --pp-hub-badge-bg-unlicensed: #eff2c2;
-    --pp-hub-badge-bg-unlicensed-hover: #e7eab9;
-    --pp-hub-badge-bg-installing: #f3f4f6;
-    --pp-hub-badge-bg-installing-hover: #e8e8e8;
-    --pp-hub-badge-bg-uninstalling: #daa7a7;
-    --pp-hub-badge-bg-uninstalling-hover: #c79696;
-    --pp-hub-badge-bg-conflicting-installations: #c48080;
-    --pp-hub-badge-bg-conflicting-installations-hover: #bb7676;
-    --pp-hub-badge-text: #333;
-    --pp-hub-badge-text-installed: #ffffff;
-    --pp-hub-badge-text-not-installed: #989898;
-    --pp-hub-badge-text-free: #162665;
-    --pp-hub-badge-text-licensed: #166534;
-    --pp-hub-badge-text-unlicensed: #626516;
-    --pp-hub-badge-text-installing: #a7a7a7;
-    --pp-hub-badge-text-uninstalling: #6f5454;
-    --pp-hub-badge-text-conflicting-installations: #ffffff;
+    --pp-hub-badge-text: #374151;
+
+    /* Installed - Soft success green with dark text for better contrast */
+    --pp-hub-badge-bg-installed: #86efac;
+    --pp-hub-badge-bg-installed-hover: #6ee7a0;
+    --pp-hub-badge-text-installed: #14532d;
+
+    /* Not Installed - Neutral muted gray */
+    --pp-hub-badge-bg-not-installed: #e5e7eb;
+    --pp-hub-badge-bg-not-installed-hover: #d1d5db;
+    --pp-hub-badge-text-not-installed: #6b7280;
+
+    /* Free - Brand-related soft violet */
+    --pp-hub-badge-bg-free: #e9e7f8;
+    --pp-hub-badge-bg-free-hover: #ddd9f4;
+    --pp-hub-badge-text-free: #4338ca;
+
+    /* Licensed - Soft teal/emerald (active/valid) */
+    --pp-hub-badge-bg-licensed: #d1fae5;
+    --pp-hub-badge-bg-licensed-hover: #a7f3d0;
+    --pp-hub-badge-text-licensed: #065f46;
+
+    /* Unlicensed - Warm amber (needs attention) */
+    --pp-hub-badge-bg-unlicensed: #fef3c7;
+    --pp-hub-badge-bg-unlicensed-hover: #fde68a;
+    --pp-hub-badge-text-unlicensed: #92400e;
+
+    /* Installing - Soft sky blue (processing) */
+    --pp-hub-badge-bg-installing: #e0f2fe;
+    --pp-hub-badge-bg-installing-hover: #bae6fd;
+    --pp-hub-badge-text-installing: #0369a1;
+
+    /* Uninstalling - Soft rose (transitional warning) */
+    --pp-hub-badge-bg-uninstalling: #ffe4e6;
+    --pp-hub-badge-bg-uninstalling-hover: #fecdd3;
+    --pp-hub-badge-text-uninstalling: #9f1239;
+
+    /* Conflicting Installations - Light red (error state) */
+    --pp-hub-badge-bg-conflicting-installations: #fecaca;
+    --pp-hub-badge-bg-conflicting-installations-hover: #fca5a5;
+    --pp-hub-badge-text-conflicting-installations: #991b1b;
+
+    /* Expired - Soft red with border (problem state) */
+    --pp-hub-badge-bg-expired: #fee2e2;
+    --pp-hub-badge-bg-expired-hover: #fecaca;
+    --pp-hub-badge-text-expired: #dc2626;
+    --pp-hub-badge-border-expired: rgba(220, 38, 38, 0.35);
 
     /* Toggle Colors */
     --pp-hub-toggle-bg-checked: #00d084;
