@@ -2,7 +2,7 @@ ARG NODE_VERSION=18
 
 FROM node:$NODE_VERSION-alpine AS node
 
-FROM publishpress/dev-workspace-terminal:generic-4.3.7
+FROM publishpress/dev-workspace-terminal:generic-5.0.0
 
 ENV PLUGIN_NAME="PublishPress Hub"
 

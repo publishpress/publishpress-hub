@@ -87,9 +87,9 @@
     "scripts": {
         "build": [
             "@build:loader",
-            "/scripts/pbuild build"
+            "/scripts/build zip"
         ],
-        "build:dir": "/scripts/pbuild build-dir",
+        "build:dir": "/scripts/build dir",
         "build:loader": "vendor/bin/version-loader-generator",
         "build:lang-pot": "wp i18n make-pot . ./languages/publishpress-hub.pot --domain=publishpress-hub --exclude=dev-workspace,.wordpress-org,.github,dist,tests,lib,tmp,doc,*.js,*.js.map --allow-root",
         "build:lang-mo": "wp i18n make-mo ./languages ./languages --allow-root",
@@ -123,14 +123,16 @@
             "@check:php-8.1",
             "@check:php-8.2",
             "@check:php-8.3",
-            "@check:php-8.4"
+            "@check:php-8.4",
+            "@check:php-8.5"
         ],
-        "check:php-7.4": "vendor/bin/phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 7.4",
-        "check:php-8.0": "vendor/bin/phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.0",
-        "check:php-8.1": "vendor/bin/phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.1",
-        "check:php-8.2": "vendor/bin/phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.2",
-        "check:php-8.3": "vendor/bin/phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.3",
-        "check:php-8.4": "vendor/bin/phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.4",
+        "check:php-7.4": "phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 7.4",
+        "check:php-8.0": "phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.0",
+        "check:php-8.1": "phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.1",
+        "check:php-8.2": "phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.2",
+        "check:php-8.3": "phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.3",
+        "check:php-8.4": "phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.4",
+        "check:php-8.5": "phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.5",
         "check:lint": "phplint --no-cache",
         "check:cs": "vendor/bin/phpcs",
         "check:stan": "phpstan analyse . --memory-limit=1024M",
