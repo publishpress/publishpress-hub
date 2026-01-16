@@ -146,7 +146,7 @@
         "metrics": "phpmetrics --report-html=metrics --exclude=vendor,lib/vendor,tests,dist,dev-workspace,.claude,.cursor,.github,.wordpress-org,.git,.zed,docs,languages .",
         "sync:local": "bash ./dev-workspace/scripts/local-sync.sh",
         "sync:local:watch": "bash ./dev-workspace/scripts/local-sync.sh --watch",
-        "config:phpcs": "vendor/bin/phpcs --config-set installed_paths \"../../phpcsstandards/phpcsutils,../../phpcsstandards/phpcsextra,../../automattic/vipwpcs,../../phpcompatibility/php-compatibility,../../sirbrillig/phpcs-variable-analysis,../../publishpress/publishpress-phpcs-standards/standards,../../wp-coding-standards/wpcs\"",
+        "config:phpcs": "bash -c '[ -f vendor/bin/phpcs ] && vendor/bin/phpcs --config-set installed_paths \"../../phpcsstandards/phpcsutils,../../phpcsstandards/phpcsextra,../../automattic/vipwpcs,../../phpcompatibility/php-compatibility,../../sirbrillig/phpcs-variable-analysis,../../publishpress/publishpress-phpcs-standards/standards,../../wp-coding-standards/wpcs\" || true'",
         "test": "vendor/bin/codecept run",
         "test:up": [
             "bash dev-workspace/scripts/env.sh up test",
