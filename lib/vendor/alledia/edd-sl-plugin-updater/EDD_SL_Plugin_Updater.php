@@ -104,7 +104,8 @@ class EDD_SL_Plugin_Updater
      */
     public function check_update($_transient_data)
     {
-
+        var_dump('check_update');
+        die;
         global $pagenow;
 
         if (! is_object($_transient_data)) {

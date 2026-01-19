@@ -7,8 +7,24 @@ namespace Composer\Autoload;
 class ComposerStaticInitPublishPressHub
 {
     public static $files = array (
-        'c92bf23a32412037ecdc51806b458c36' => __DIR__ . '/..' . '/alledia/edd-sl-plugin-updater/EDD_SL_Plugin_Updater.php',
         '3b1e1688e889525de91ac2456aba9efd' => __DIR__ . '/..' . '/publishpress/psr-container/lib/include.php',
+        'c92bf23a32412037ecdc51806b458c36' => __DIR__ . '/..' . '/alledia/edd-sl-plugin-updater/EDD_SL_Plugin_Updater.php',
+        '24b27b1b9a32bf58eda571c3e5ae3480' => __DIR__ . '/..' . '/publishpress/pimple-pimple/lib/include.php',
+        '9c8ea886233d3b80c33afe505e877a57' => __DIR__ . '/..' . '/publishpress/wordpress-edd-license/src/include.php',
+    );
+
+    public static $prefixLengthsPsr4 = array (
+        'P' =>
+        array (
+            'PublishPress\\WordPressEDDLicense\\' => 33,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'PublishPress\\WordPressEDDLicense\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/publishpress/wordpress-edd-license/src/classes',
+        ),
     );
 
     public static $classMap = array (
@@ -18,6 +34,8 @@ class ComposerStaticInitPublishPressHub
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInitPublishPressHub::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitPublishPressHub::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInitPublishPressHub::$classMap;
 
         }, null, ClassLoader::class);

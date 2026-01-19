@@ -6,6 +6,8 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'c92bf23a32412037ecdc51806b458c36' => $vendorDir . '/alledia/edd-sl-plugin-updater/EDD_SL_Plugin_Updater.php',
     '3b1e1688e889525de91ac2456aba9efd' => $vendorDir . '/publishpress/psr-container/lib/include.php',
+    'c92bf23a32412037ecdc51806b458c36' => $vendorDir . '/alledia/edd-sl-plugin-updater/EDD_SL_Plugin_Updater.php',
+    '24b27b1b9a32bf58eda571c3e5ae3480' => $vendorDir . '/publishpress/pimple-pimple/lib/include.php',
+    '9c8ea886233d3b80c33afe505e877a57' => $vendorDir . '/publishpress/wordpress-edd-license/src/include.php',
 );
