@@ -17,6 +17,10 @@ declare(strict_types=1);
 
 use function PublishPress\Hub\registerActivationHook;
 
+if (! defined('ComposerAutoloaderInitPublishPressHub')) {
+    require_once __DIR__ . '/lib/vendor/autoload.php';
+}
+
 require_once __DIR__ . '/src/include.php';
 require_once __DIR__ . '/src/activation.php';
 
