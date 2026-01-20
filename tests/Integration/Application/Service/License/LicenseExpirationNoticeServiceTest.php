@@ -229,6 +229,8 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
 
         $_SERVER['REQUEST_URI'] = '/wp-admin/index.php';
         $userId = $this->factory()->user->create(['role' => 'administrator']);
+        $user = get_user_by('id', $userId);
+        $user->add_cap('manage_publishpress_hub');
         wp_set_current_user($userId);
         set_current_screen('dashboard');
 
@@ -252,9 +254,19 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
             $this->pluginStatusService
         );
 
+        // Generate hash the same way the service does: downloadId:expirationDate
+        // Since expirationDate is not set in the mock, it will be empty
+        $expiredLicenses = $service->getExpiredLicensesForNotice();
+        $hashData = [];
+        foreach ($expiredLicenses as $license) {
+            $hashData[] = $license['downloadId'] . ':' . ($license['expirationDate'] ?? '');
+        }
+        sort($hashData);
+        $expectedHash = md5(implode('|', $hashData));
+
         // Set dismissed state with timestamp (not expired)
         $dismissalData = [
-            'hash' => md5((string) $downloadId),
+            'hash' => $expectedHash,
             'dismissed_at' => time(),
             'expires_at' => time() + (30 * DAY_IN_SECONDS)
         ];

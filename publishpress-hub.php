@@ -3,7 +3,7 @@
 /**
  * Plugin Name: PublishPress Hub
  * Description: Centralized management hub for all PublishPress plugins - install, update, and manage licenses from one dashboard.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: PublishPress
  * Author URI: https://publishpress.com
  * License: GPL2
@@ -16,6 +16,10 @@
 declare(strict_types=1);
 
 use function PublishPress\Hub\registerActivationHook;
+
+if (! defined('ComposerAutoloaderInitPublishPressHub')) {
+    require_once __DIR__ . '/lib/vendor/autoload.php';
+}
 
 require_once __DIR__ . '/src/include.php';
 require_once __DIR__ . '/src/activation.php';

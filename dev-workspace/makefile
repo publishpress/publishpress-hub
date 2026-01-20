@@ -11,9 +11,6 @@ help:
 build-%:
 	docker compose -f docker/compose.yaml --env-file ../.env build $*
 
-build-terminal:
-	bash ./scripts/build-terminal.sh
-
 setup-user:
 	bash ./scripts/setup-user-permissions.sh
 
@@ -28,14 +25,8 @@ build:
 	$(MAKE) build-wpcli
 
 push:
-	$(MAKE) push-terminal "$$@"
 	$(MAKE) push-wp "$$@"
 	$(MAKE) push-wpcli "$$@"
-
-push-terminal:
-	source ../.env && \
-	export TERMINAL_IMAGE_NAME="$${TERMINAL_IMAGE_NAME}" && \
-	bash ./scripts/build-push-image.sh "$${TERMINAL_IMAGE_NAME}" ./docker/terminal "$$@"
 
 push-wp:
 	source ../.env && \

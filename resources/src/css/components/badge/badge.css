@@ -47,9 +47,9 @@
 }
 
 .pp-hub-badge.expired {
-    background-color: rgba(220, 38, 38, 0.15);
-    color: #dc2626;
-    border: 1px solid rgba(220, 38, 38, 0.4);
+    background-color: var(--pp-hub-badge-bg-expired);
+    color: var(--pp-hub-badge-text-expired);
+    border: 1px solid var(--pp-hub-badge-border-expired);
 }
 
 .pp-hub-badge.installing {
@@ -88,7 +88,7 @@
 }
 
 .pp-hub-plugins-list-item:hover .pp-hub-badge.expired {
-    background-color: rgba(220, 38, 38, 0.25);
+    background-color: var(--pp-hub-badge-bg-expired-hover);
 }
 
 .pp-hub-plugins-list-item:hover .pp-hub-badge.installing {
