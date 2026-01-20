@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "20d3c1f3b8244893e78e0acd33228a80",
+    "content-hash": "f9eb2d4b6c97bf13cb0dd84bd363b093",
     "packages": [],
     "packages-dev": [
         {
@@ -3071,16 +3071,16 @@
         },
         {
             "name": "lucatume/wp-browser",
-            "version": "4.5.10",
+            "version": "4.5.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lucatume/wp-browser.git",
-                "reference": "4d5cc38076d3b9eeeaeac471a120715cb396329c"
+                "reference": "ed294eebf327e5b941e49f33d25dd7bc87e005b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/4d5cc38076d3b9eeeaeac471a120715cb396329c",
-                "reference": "4d5cc38076d3b9eeeaeac471a120715cb396329c",
+                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/ed294eebf327e5b941e49f33d25dd7bc87e005b3",
+                "reference": "ed294eebf327e5b941e49f33d25dd7bc87e005b3",
                 "shasum": ""
             },
             "require": {
@@ -3106,8 +3106,10 @@
                 "vlucas/phpdotenv": "^5.0"
             },
             "require-dev": {
+                "automattic/vipwpcs": "^3.0",
                 "gumlet/php-image-resize": "^1.6",
                 "lucatume/codeception-snapshot-assertions": "^1.3.0",
+                "phpcompatibility/php-compatibility": "^10.0.0@dev",
                 "phpstan/extension-installer": "^1.3",
                 "phpstan/phpstan": "1.10.56",
                 "phpstan/phpstan-symfony": "^1.3",
@@ -3159,7 +3161,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lucatume/wp-browser/issues",
-                "source": "https://github.com/lucatume/wp-browser/tree/4.5.10"
+                "source": "https://github.com/lucatume/wp-browser/tree/4.5.11"
             },
             "funding": [
                 {
@@ -3167,7 +3169,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-11-21T08:48:55+00:00"
+            "time": "2026-01-20T09:51:26+00:00"
         },
         {
             "name": "marc-mabe/php-enum",
