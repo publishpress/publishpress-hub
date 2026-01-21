@@ -69,50 +69,69 @@ class ActivationRedirectService implements BootableInterface
      */
     public function handleActivationRedirect(): void
     {
-        // Check if redirect is disabled via constant
-        if (
-            defined('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE_REDIRECT')
-            && constant('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE_REDIRECT')
-        ) {
+        if (!$this->shouldRedirect()) {
             return;
         }
 
-        // Don't redirect if welcome page is disabled
+        $this->clearActivationRedirectFlag();
+        $this->redirectToWelcomePage();
+    }
+
+    private function shouldRedirect(): bool
+    {
+        if ($this->isRedirectDisabled()) {
+            return false;
+        }
+
         if ($this->isWelcomePageDisabled()) {
-            return;
+            return false;
         }
 
-        // Check if we're already on the welcome page
-        if (isset($_GET['page']) && 'publishpress-hub' === sanitize_key($_GET['page'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-            delete_transient(PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT);
-            return;
+        if ($this->isOnWelcomePage()) {
+            $this->clearActivationRedirectFlag();
+            return false;
         }
 
-        // Check if activation redirect transient exists
-        if (!get_transient(PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT)) {
-            return;
+        if (!$this->hasActivationRedirectFlag()) {
+            return false;
         }
 
-        // Only redirect for users with Hub access capability
         if (!current_user_can(HubAccessService::CAPABILITY)) {
-            delete_transient(PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT);
-            return;
+            $this->clearActivationRedirectFlag();
+            return false;
         }
 
-        // Don't redirect during AJAX requests
-        if (wp_doing_ajax()) {
-            return;
+        if (wp_doing_ajax() || wp_doing_cron()) {
+            return false;
         }
 
-        // Don't redirect during cron
-        if (wp_doing_cron()) {
-            return;
-        }
+        return true;
+    }
 
-        // Delete the transient
+    private function isRedirectDisabled(): bool
+    {
+        return defined('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE_REDIRECT')
+            && constant('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE_REDIRECT');
+    }
+
+    private function isOnWelcomePage(): bool
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        return isset($_GET['page']) && 'publishpress-hub' === sanitize_key($_GET['page']);
+    }
+
+    private function hasActivationRedirectFlag(): bool
+    {
+        return (bool) get_transient(PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT);
+    }
+
+    private function clearActivationRedirectFlag(): void
+    {
         delete_transient(PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT);
+    }
 
-        // Redirect to welcome page
+    private function redirectToWelcomePage(): void
+    {
         $redirectUrl = admin_url('admin.php?page=publishpress-hub');
         wp_safe_redirect($redirectUrl);
         exit;
