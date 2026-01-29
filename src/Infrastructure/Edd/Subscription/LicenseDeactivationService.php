@@ -18,7 +18,6 @@ use PublishPress\Hub\Domain\Plugin\Exception\LicenseDeactivationException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseServerInvalidResponseException;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\Contract\LicenseDeactivationServiceInterface;
 use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
-use PublishPress\Hub\Infrastructure\Remote\HttpDebugger;
 
 class LicenseDeactivationService implements LicenseDeactivationServiceInterface
 {
@@ -83,16 +82,10 @@ class LicenseDeactivationService implements LicenseDeactivationServiceInterface
             'headers' => $this->requestHeaders,
         ];
 
-        // Debug: Log request details
-        HttpDebugger::debugRequest('POST', $this->eddSubscriptionApiUrl, $requestArgs);
-
         $response = $this->remoteService->post(
             $this->eddSubscriptionApiUrl,
             $requestArgs
         );
-
-        // Debug: Log response details
-        HttpDebugger::debugResponse($response);
 
         if (is_wp_error($response)) {
             throw new LicenseDeactivationException([

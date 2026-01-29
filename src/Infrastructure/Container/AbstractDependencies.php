@@ -183,6 +183,8 @@ abstract class AbstractDependencies
 
     public const EDD_PLUGIN_UPDATE_SERVICE = 'publishpress-hub.application.service.edd-plugin-update';
 
+    public const STATISTICS_SERVICE = 'publishpress-hub.application.service.statistics';
+
     public const PLUGINS_DASHBOARD_CONTROLLER = 'publishpress-hub.presentation.plugins-dashboard.controller';
 
     public const SETTINGS_PAGE_CONTROLLER = 'publishpress-hub.presentation.settings-page.controller';

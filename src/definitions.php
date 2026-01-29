@@ -18,6 +18,7 @@ use PublishPress\Hub\Application\Service\ActivationRedirectService;
 use PublishPress\Hub\Application\Service\EddPluginUpdateService;
 use PublishPress\Hub\Application\Service\HubBootstrapService;
 use PublishPress\Hub\Application\Service\RewriteRulesService;
+use PublishPress\Hub\Application\Service\Statistics\StatisticsService;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Service\License\LicenseExpirationNoticeService;
 use PublishPress\Hub\Application\Service\License\LicenseManagementService;
@@ -101,7 +102,8 @@ return [
 
     AbstractDependencies::HUB_REST_API_NAMESPACE => 'publishpress-hub/v1',
 
-    AbstractDependencies::EDD_SUBSCRIPTION_API_URL => 'https://publishpress.com',
+    // AbstractDependencies::EDD_SUBSCRIPTION_API_URL => 'https://publishpress.com',
+    AbstractDependencies::EDD_SUBSCRIPTION_API_URL => 'https://stg-publishpress-staging.kinsta.cloud',
 
     AbstractDependencies::SITE_URL => home_url(),
 
@@ -387,6 +389,7 @@ return [
             $servicesToInit[] = $container->get(AbstractDependencies::ACTIVATION_REDIRECT_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::REWRITE_RULES_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::EDD_PLUGIN_UPDATE_SERVICE);
+            $servicesToInit[] = $container->get(AbstractDependencies::STATISTICS_SERVICE);
 
             if (defined('PUBLISHPRESS_HUB_DEV_MODE') && constant('PUBLISHPRESS_HUB_DEV_MODE')) {
                 $servicesToInit[] = $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER);
@@ -524,6 +527,12 @@ return [
             $container->get(AbstractDependencies::PLUGIN_AUTHOR),
             $container->get(AbstractDependencies::HUB_UPDATER_VALUE),
             $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+        ),
+
+    AbstractDependencies::STATISTICS_SERVICE =>
+        fn(ContainerInterface $container) => new StatisticsService(
+            $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
+            $container->get(AbstractDependencies::PLUGIN_VERSION)
         ),
 
     AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER =>
