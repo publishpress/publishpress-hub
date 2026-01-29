@@ -1,4 +1,4 @@
-# Coding Agent Skill
+# Coder Skill
 
 ## Purpose
 Launch a specialized coding agent to implement changes in the PublishPress Hub Statistics codebase following project conventions and best practices.
