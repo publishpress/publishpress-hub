@@ -2,14 +2,14 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Hub 1.0.2\n"
+"Project-Id-Version: PublishPress Hub 1.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-01-19T23:46:51+00:00\n"
+"POT-Creation-Date: 2026-02-02T21:36:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
@@ -250,13 +250,13 @@ msgid "Dependency \"%s\" not found in container."
 msgstr ""
 
 #. translators: %s is the error message
-#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:123
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #, php-format
 msgid "Error validating license: %s"
 msgstr ""
 
 #. translators: %s is the error message
-#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:117
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #, php-format
 msgid "Error getting license info: %s"
 msgstr ""
@@ -314,52 +314,74 @@ msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr ""
 
 #. translators: %s is the hostname
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:73
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:74
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr ""
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:84
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:85
 msgid "Download URL failed WordPress validation"
 msgstr ""
 
 #. translators: %s is the error message
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:100
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:101
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr ""
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:116
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:110
+msgid "Downloaded plugin file does not exist"
+msgstr ""
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:118
+msgid "Downloaded plugin file is empty"
+msgstr ""
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:127
+msgid "Cannot read downloaded plugin file"
+msgstr ""
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:137
+msgid "Downloaded file is not a valid ZIP archive. The download URL may be returning an error page."
+msgstr ""
+
+#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:153
+#, php-format
+msgid "Failed to unzip plugin file: %s"
+msgstr ""
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:161
 msgid "Failed to unzip plugin file"
 msgstr ""
 
 #. translators: %s is the error message
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:138
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:183
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr ""
 
 #. translators: %s is the error message
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:207
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:252
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr ""
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:252
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:297
 msgid "No update available for this plugin"
 msgstr ""
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:260
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:305
 msgid "Invalid update information for this plugin"
 msgstr ""
 
 #. translators: %s is the error message
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:293
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:338
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr ""
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:301
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:346
 msgid "Plugin update failed"
 msgstr ""
 
