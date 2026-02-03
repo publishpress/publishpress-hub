@@ -57,6 +57,7 @@ class StatisticsService implements StatisticsServiceInterface, BootableInterface
      */
     protected function onLoad(): void
     {
+        // phpcs:ignore WordPressVIPMinimum.Hooks.RestrictedHooks.http_request_args
         add_filter(
             'http_request_args',
             [$this, 'filterHttpRequestArgs'],
