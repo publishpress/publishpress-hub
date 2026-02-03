@@ -55,6 +55,8 @@ abstract class AbstractDependencies
 
     public const EDD_SUBSCRIPTION_API_URL = 'publishpress-hub.constants.edd-subscription-api-url';
 
+    public const ALLOWED_DOWNLOAD_DOMAINS = 'publishpress-hub.constants.allowed-download-domains';
+
     public const SITE_URL = 'publishpress-hub.constants.site-url';
 
     public const CACHE_GROUP = 'publishpress-hub.constants.cache-group';
