@@ -63,6 +63,7 @@ class WPPluginLifecycleAdapter
             'pkg.publishpress.com',
             'wordpress.org',
             'downloads.wordpress.org',
+            'pkg.stg-publishpress-staging.kinsta.cloud',
         ];
 
         $host = $urlParts['host'] ?? '';
@@ -103,15 +104,59 @@ class WPPluginLifecycleAdapter
             );
         }
 
+        // Validate the downloaded file is a valid ZIP archive
+        if (!file_exists($tmpFile)) {
+            throw new RuntimeException(
+                esc_html__('Downloaded plugin file does not exist', 'publishpress-hub')
+            );
+        }
+
+        $fileSize = filesize($tmpFile);
+        if ($fileSize === false || $fileSize === 0) {
+            @unlink($tmpFile);
+            throw new RuntimeException(
+                esc_html__('Downloaded plugin file is empty', 'publishpress-hub')
+            );
+        }
+
+        // Check ZIP file signature (magic bytes: PK\x03\x04)
+        $fileHandle = fopen($tmpFile, 'rb');
+        if ($fileHandle === false) {
+            @unlink($tmpFile);
+            throw new RuntimeException(
+                esc_html__('Cannot read downloaded plugin file', 'publishpress-hub')
+            );
+        }
+
+        $magicBytes = fread($fileHandle, 4);
+        fclose($fileHandle);
+
+        if ($magicBytes !== "PK\x03\x04") {
+            @unlink($tmpFile);
+            throw new RuntimeException(
+                esc_html__('Downloaded file is not a valid ZIP archive. The download URL may be returning an error page.', 'publishpress-hub')
+            );
+        }
+
         // Delete the plugin folder if exists
         if ($this->fileSystemAdapter->exists(WP_PLUGIN_DIR . '/' . $slug)) {
             $this->fileSystemAdapter->delete(WP_PLUGIN_DIR . '/' . $slug, true);
         }
 
-        $unzipfile = $this->fileSystemAdapter->unzip($tmpFile, WP_PLUGIN_DIR);
+        $unzipResult = $this->fileSystemAdapter->unzip($tmpFile, WP_PLUGIN_DIR);
         $this->fileSystemAdapter->delete($tmpFile);
 
-        if (!$unzipfile) {
+        if (is_wp_error($unzipResult)) {
+            throw new RuntimeException(
+                sprintf(
+                    // translators: %s is the error message
+                    esc_html__('Failed to unzip plugin file: %s', 'publishpress-hub'),
+                    esc_html($unzipResult->get_error_message())
+                )
+            );
+        }
+
+        if (!$unzipResult) {
             throw new RuntimeException(
                 esc_html__('Failed to unzip plugin file', 'publishpress-hub')
             );

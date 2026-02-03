@@ -19,7 +19,6 @@ use PublishPress\Hub\Domain\Plugin\Exception\LicenseServerInvalidResponseExcepti
 use PublishPress\Hub\Infrastructure\Cache\Contract\CacheServiceInterface;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\Contract\VersionCheckServiceInterface;
 use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
-use PublishPress\Hub\Infrastructure\Remote\HttpDebugger;
 
 class VersionCheckService implements VersionCheckServiceInterface
 {
@@ -99,16 +98,10 @@ class VersionCheckService implements VersionCheckServiceInterface
             'headers' => $this->requestHeaders,
         ];
 
-        // Debug: Log request details
-        HttpDebugger::debugRequest('POST', $this->eddSubscriptionApiUrl, $requestArgs);
-
         $response = $this->remoteService->post(
             $this->eddSubscriptionApiUrl,
             $requestArgs
         );
-
-        // Debug: Log response details
-        HttpDebugger::debugResponse($response);
 
         if (is_wp_error($response)) {
             throw new LicenseServerException([

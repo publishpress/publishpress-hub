@@ -22,6 +22,7 @@ use PublishPress\Hub\Domain\Plugin\Entity\FreePlugin;
 use PublishPress\Hub\Domain\Plugin\Entity\PluginFamily;
 use PublishPress\Hub\Domain\Plugin\Entity\ProPlugin;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
+use PublishPress\Hub\Infrastructure\Remote\HttpDebugger;
 
 class HubBootstrapService implements BootableInterface
 {
@@ -60,6 +61,9 @@ class HubBootstrapService implements BootableInterface
      */
     protected function onLoad(): void
     {
+        // Initialize HTTP debugger (hooks into http_api_debug when debugging is enabled)
+        HttpDebugger::initialize();
+
         $this->addHooks();
         $this->loadServices();
 

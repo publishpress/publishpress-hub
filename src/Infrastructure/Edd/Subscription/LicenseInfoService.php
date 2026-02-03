@@ -19,7 +19,6 @@ use PublishPress\Hub\Domain\Plugin\Exception\LicenseServerInvalidResponseExcepti
 use PublishPress\Hub\Infrastructure\Cache\Contract\CacheServiceInterface;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\Contract\LicenseInfoServiceInterface;
 use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
-use PublishPress\Hub\Infrastructure\Remote\HttpDebugger;
 
 class LicenseInfoService implements LicenseInfoServiceInterface
 {
@@ -103,17 +102,11 @@ class LicenseInfoService implements LicenseInfoServiceInterface
             'headers' => $this->requestHeaders,
         ];
 
-        // Debug: Log request details
-        HttpDebugger::debugRequest('GET', $this->eddSubscriptionApiUrl, $requestArgs);
-
         // GET request because we're only retrieving information, not modifying state
         $response = $this->remoteService->get(
             $this->eddSubscriptionApiUrl,
             $requestArgs
         );
-
-        // Debug: Log response details
-        HttpDebugger::debugResponse($response);
 
         // Handle WordPress HTTP API errors (network failures, timeouts, DNS issues)
         if (is_wp_error($response)) {
