@@ -101,11 +101,11 @@ class WPFileSystemAdapter
      *
      * @param string $source The source path.
      * @param string $destination The destination path.
-     * @return bool|WP_Error True if the file was unzipped, false otherwise.
+     * @return bool|WP_Error True if the file was unzipped, WP_Error on failure.
      * @throws InvalidArgumentException When path validation fails.
      * @since 1.0.0
      */
-    public function unzip(string $source, string $destination): bool
+    public function unzip(string $source, string $destination)
     {
         $this->validatePath($source);
         $this->validatePath($destination);

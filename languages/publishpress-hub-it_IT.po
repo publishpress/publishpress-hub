@@ -1,0 +1,1152 @@
+# Copyright (C) 2026 PublishPress
+# This file is distributed under the GPL2.
+msgid ""
+msgstr ""
+"Project-Id-Version: PublishPress Hub 1.0.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"POT-Creation-Date: 2026-01-19T23:46:51+00:00\n"
+"PO-Revision-Date: 2026-01-27 18:58+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.7\n"
+"X-Domain: publishpress-hub\n"
+
+#. Plugin Name of the plugin
+#: publishpress-hub.php src/Admin/Page/WelcomePageController.php:257
+msgid "PublishPress Hub"
+msgstr "PublishPress Hub"
+
+#. Description of the plugin
+#: publishpress-hub.php
+msgid ""
+"Centralized management hub for all PublishPress plugins - install, update, "
+"and manage licenses from one dashboard."
+msgstr ""
+"Hub di gestione centralizzata per tutti i plugin PublishPress - installa, "
+"aggiorna e gestisci le licenze da un’unica bacheca."
+
+#. Author of the plugin
+#: publishpress-hub.php
+msgid "PublishPress"
+msgstr "PublishPress"
+
+#. Author URI of the plugin
+#: publishpress-hub.php
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
+
+#: src/Admin/Page/ComponentsShowcaseController.php:118
+msgid "Please wait while we load the components showcase..."
+msgstr "Attendi mentre carichiamo la vetrina dei componenti…"
+
+#: src/Admin/Page/PluginsDashboardController.php:133
+msgid "Please wait while we load the plugins dashboard..."
+msgstr "Attendi mentre carichiamo la bacheca dei plugin…"
+
+#: src/Admin/Page/SettingsPageController.php:97
+#: src/Admin/Page/SettingsPageController.php:98
+#: resources/src/jsx/components/pages/settings-page.jsx:22
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: src/Admin/Page/SettingsPageController.php:119
+msgid "Please wait while we load the settings page..."
+msgstr "Attendi mentre carichiamo la pagina delle impostazioni…"
+
+#: src/Admin/Page/WelcomePageController.php:143
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Non hai i permessi sufficienti per accedere a questa pagina."
+
+#: src/Admin/Page/WelcomePageController.php:180
+#: src/Admin/Page/WelcomePageController.php:181
+msgid "Welcome"
+msgstr "Benvenuto"
+
+#: src/Admin/Page/WelcomePageController.php:203
+msgid "Please wait while we load the welcome page..."
+msgstr "Attendi mentre carichiamo la pagina di benvenuto…"
+
+#. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
+#, php-format
+msgid "Warning: The license for %1$s has expired. %2$s"
+msgstr "Attenzione: la licenza di %1$s è scaduta. %2$s"
+
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:123
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:137
+msgid "Manage licenses"
+msgstr "Gestisci licenze"
+
+#. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
+#, php-format
+msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
+msgstr "Attenzione: %1$d plugin hanno le licenze scadute: %2$s. %3$s"
+
+#: src/Application/Traits/BootableTrait.php:75
+msgid "Object must be loaded before initializing."
+msgstr "L’oggetto deve essere caricato prima dell’inizializzazione."
+
+#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:110
+msgid "No license key found"
+msgstr "Nessuna chiave di licenza trovata"
+
+#. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
+#, php-format
+msgid "Free plugin not set for plugin family: %s"
+msgstr "Plugin gratuito non definito per la famiglia del plugin: %s"
+
+#. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
+#, php-format
+msgid "Pro plugin not set for plugin family: %s"
+msgstr "Plugin Pro non definito per la famiglia di plugin: %s"
+
+#: src/Domain/Plugin/Exception/LicenseActivationException.php:28
+msgid ""
+"License activation error. Please try again later or contact support for help."
+msgstr ""
+"Errore di attivazione della licenza. Riprova più tardi o contatta "
+"l’assistenza per un aiuto."
+
+#: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
+msgid ""
+"License deactivation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Errore di disattivazione della licenza. Riprova più tardi o contatta "
+"l’assistenza per un aiuto."
+
+#: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
+msgid "This license is currently disabled. Please contact support for help."
+msgstr ""
+"Questa licenza è attualmente disabilitata. Contatta l’assistenza per un "
+"aiuto."
+
+#: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
+msgid "This license has expired. Please contact support to renew it."
+msgstr "Questa licenza è scaduta. Contatta l’assistenza per il rinnovo"
+
+#: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
+msgid ""
+"This license key is not authorized for this plugin. Please verify your "
+"license key or contact support for help."
+msgstr ""
+"Questa chiave di licenza non è autorizzata per questo plugin. Verifica la "
+"tua chiave di licenza o contatta l’assistenza per un aiuto."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
+msgid ""
+"This license cannot be used for this plugin. Please contact support for help."
+msgstr ""
+"Questa licenza non può essere usata per questo plugin. Contatta l’assistenza "
+"per un aiuto."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
+msgid ""
+"This license does not match the plugin you are trying to activate. Please "
+"contact support for assistance."
+msgstr ""
+"Questa licenza non coincide con il plugin che vorresti attivare. Contatta "
+"l’assistenza per un aiuto."
+
+#: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
+msgid ""
+"License key does not match our records. Please contact support for "
+"assistance."
+msgstr ""
+"La chiave di licenza non coincide con le nostre registrazioni. Contatta il "
+"supporto per l’assistenza."
+
+#: src/Domain/Plugin/Exception/LicenseMissingException.php:28
+msgid "No license key provided. Please enter a valid license key."
+msgstr ""
+"Nessuna chiave di licenza fornita. Inserisci una chiave di licenza valida."
+
+#: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
+msgid ""
+"Your site URL is required to activate the license. Please enter a valid site "
+"URL to continue."
+msgstr ""
+"L’URL del tuo sito è obbligatorio per attivare la licenza. Inserisci un URL "
+"di sito valido per continuare."
+
+#: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
+msgid ""
+"License activation limit reached. Please contact support to upgrade or "
+"deactivate on another site."
+msgstr ""
+"Raggiunto il limite di attivazione della licenza. Contatta l’assistenza per "
+"l’aggiornamento oppure disattivala da un altro sito."
+
+#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
+msgid "This license cannot be activated. Please contact support for help."
+msgstr ""
+"Questa licenza non può essere attivata. Contatta l’assistenza per un aiuto."
+
+#: src/Domain/Plugin/Exception/LicenseServerException.php:28
+msgid ""
+"License server error. Please try again later or contact support for help."
+msgstr ""
+"Errore del server della licenza. Riprova più tardi o contatta l’assistenza "
+"per un aiuto."
+
+#: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
+msgid ""
+"The license server returned an invalid response. Please try again later or "
+"contact support for help."
+msgstr ""
+"Il server della licenza ha inviato una risposta non valida. Riprova più "
+"tardi o contatta l’assistenza per un aiuto."
+
+#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
+msgid ""
+"This license is inactive for this site. Please contact support for help."
+msgstr ""
+"Questa licenza è inattiva per questo sito. Contatta l’assistenza per un "
+"aiuto."
+
+#: src/Domain/Plugin/Exception/PluginActivationException.php:29
+msgid ""
+"Plugin activation failed. Please try again later or contact support for help."
+msgstr ""
+"Attivazione del plugin fallita. Riprova più tardi o contatta l’assistenza "
+"per un aiuto."
+
+#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
+msgid "This action is not possible because the plugin is already installed."
+msgstr "Questa azione non è possibile perché il plugin è già installato."
+
+#: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
+msgid ""
+"Plugin deactivation failed. Please try again later or contact support for "
+"help."
+msgstr ""
+"Disattivazione del plugin fallita. Riprova più tardi o contatta l’assistenza "
+"per un aiuto."
+
+#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
+msgid "Plugin family not found. Please contact support for help."
+msgstr "Famiglia di plugin non trovata. Contatta l’assistenza per un aiuto."
+
+#: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
+msgid ""
+"This action is not possible because both free and pro versions are "
+"installed. Please uninstall one version to continue."
+msgstr ""
+"Questa azione non è possibile perché entrambe le versioni gratuita e pro "
+"sono installate. Disinstalla una versione per continuare."
+
+#: src/Domain/Plugin/Exception/PluginInstallException.php:29
+msgid "Plugin installation failed. Please contact support for help."
+msgstr "Installazione del plugin fallita. Contatta l’assistenza per un aiuto."
+
+#: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
+msgid ""
+"This action is not possible because the plugin is not activated. Please "
+"activate the plugin and try again."
+msgstr ""
+"Questa azione non è possibile perché il plugin non è attivato. Attiva il "
+"plugin e riprova."
+
+#: src/Domain/Plugin/Exception/PluginNotFoundException.php:29
+msgid ""
+"Plugin not found in our available plugins list. Please contact support for "
+"help."
+msgstr ""
+"Plugin non trovato nell’elenco dei nostri plugin disponibili. Contatta "
+"l’assistenza per un aiuto."
+
+#: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
+msgid ""
+"This action is not possible because the plugin is not installed. Please "
+"install the plugin and try again."
+msgstr ""
+"Questa azione non è possibile perché il plugin non è installato. Installa il "
+"plugin e riprova."
+
+#: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
+msgid ""
+"Unknown license server error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Errore sconosciuto del server delle licenze. Riprova più tardi o contatta "
+"l’assistenza per un aiuto."
+
+#: src/Domain/Plugin/plugin-families.php:26
+msgid "Define tasks that authors must complete before publishing."
+msgstr ""
+"Definisci le attività che gli autori devono completare prima della "
+"pubblicazione."
+
+#: src/Domain/Plugin/plugin-families.php:42
+msgid "Control who can edit and view your content."
+msgstr "Controlla chi può modificare e vedere il tuo contenuto."
+
+#: src/Domain/Plugin/plugin-families.php:58
+msgid "Create, manage and display authors for your content."
+msgstr "Crea , gestisci e visualizza gli autori dei tuoi contenuti."
+
+#: src/Domain/Plugin/plugin-families.php:74
+msgid "All the tools you need to improve the block editor."
+msgstr ""
+"Tutti gli strumenti che ti occorrono per migliorare l’editor a blocchi."
+
+#: src/Domain/Plugin/plugin-families.php:90
+msgid "Control your admin area and user roles."
+msgstr "Controlla la tua area di amministrazione e i tuoli utente."
+
+#: src/Domain/Plugin/plugin-families.php:106
+msgid "Schedule changes to your posts."
+msgstr "Programma le modifiche dei tuoi articoli."
+
+#: src/Domain/Plugin/plugin-families.php:122
+msgid "Organize, schedule, and plan your publishing."
+msgstr "Organizza , programma e pianifica le tue pubblicazioni."
+
+#: src/Domain/Plugin/plugin-families.php:138
+msgid "Approve and schedule new versions to your published posts."
+msgstr "Approva e programma le nuove versioni dei tuoi articoli pubblicati."
+
+#: src/Domain/Plugin/plugin-families.php:154
+msgid "Organize your posts into issues or series."
+msgstr "Organizza i tuoi articoli in collezioni o serie."
+
+#: src/Domain/Plugin/plugin-families.php:170
+msgid "Create custom statuses and publishing workflows."
+msgstr "Crea stati personalizzati e flussi di lavoro di pubblicazione."
+
+#. translators: %s is the dependency ID.
+#: src/Infrastructure/Container/DependencyContainer.php:102
+#, php-format
+msgid "Dependency \"%s\" not found in container."
+msgstr "La dipendenza \"%s\" non è stata trovata nel contenitore."
+
+#. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:123
+#, php-format
+msgid "Error validating license: %s"
+msgstr "Errore nella convalida della licenza: %s"
+
+#. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:117
+#, php-format
+msgid "Error getting license info: %s"
+msgstr "Errore nel recupero delle informazioni sulla licenza: %s"
+
+#: src/Infrastructure/RestApi/RestApiService.php:287
+msgid "Too many requests. Please try again later."
+msgstr "Troppe richieste. Riprova più tardi."
+
+#: src/Infrastructure/RestApi/RestApiService.php:358
+msgid "An error occurred while processing your request."
+msgstr "Si è verificato un errore durante l’elaborazione della tua richiesta."
+
+#. translators: %s is the template path
+#: src/Infrastructure/View/ViewService.php:48
+#, php-format
+msgid "Template not found: %s"
+msgstr "Template non trovato: %s"
+
+#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:55
+msgid "Path cannot be empty"
+msgstr "Il percorso non può essere vuoto"
+
+#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:64
+msgid "File extension cannot be empty"
+msgstr "L’estensione del file non può essere vuota"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:183
+msgid "Invalid file path: null byte detected"
+msgstr "Percorso del file non valido: rilevato byte null"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:192
+msgid "Invalid file path: directory traversal detected"
+msgstr "Percorso del file non valido: rilevato attraversamento della directory"
+
+#. translators: %s is the directory path
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
+#, php-format
+msgid "Invalid file path: parent directory does not exist: %s"
+msgstr "Percorso del file non valido: la directory genitore non esiste: %s"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:220
+msgid "Invalid file path: unable to resolve path"
+msgstr "Percorso del file non valido: impossibile determinare il percorso"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:239
+msgid "Invalid file path: operation not allowed outside permitted directories"
+msgstr ""
+"Percorso del file non valido: operazione non consentita fuori dalle "
+"directory permesse"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:48
+msgid "Invalid download URL provided"
+msgstr "L’URL di download fornita non è valida"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:56
+msgid "Download URL must use HTTP or HTTPS protocol"
+msgstr "L’URL di download deve utilizzare il protocollo HTTP or HTTPS"
+
+#. translators: %s is the hostname
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:73
+#, php-format
+msgid "Download URL is not from an allowed domain: %s"
+msgstr "L’URL di download non proviene da un dominio consentito: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:84
+msgid "Download URL failed WordPress validation"
+msgstr "Convalida WordPress dell’URL di download non riuscita"
+
+#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:100
+#, php-format
+msgid "Failed to download plugin: %s"
+msgstr "Impossibile scaricare il plugin: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:116
+msgid "Failed to unzip plugin file"
+msgstr "Impossibile decomprimere il file del plugin"
+
+#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:138
+#, php-format
+msgid "Failed to activate plugin: %s"
+msgstr "Impossibile attivare il plugin: %s"
+
+#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:207
+#, php-format
+msgid "Failed to delete plugin: %s"
+msgstr "Impossibile eliminare il plugin: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:252
+msgid "No update available for this plugin"
+msgstr "Non ci sono aggiornamenti disponibili per questo plugin"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:260
+msgid "Invalid update information for this plugin"
+msgstr "Informazioni di aggiornamento non valide per questo plugin"
+
+#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:293
+#, php-format
+msgid "Failed to update plugin: %s"
+msgstr "Impossibile aggiornare il plugin: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:301
+msgid "Plugin update failed"
+msgstr "Aggiornamento del plugin fallito."
+
+#. translators: %s is the error message
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
+#, php-format
+msgid "Failed to get plugin information: %s"
+msgstr "Impossibile recuperare le informazioni sul plugin: %s"
+
+#. translators: %s is the plugin name, %s is the rating
+#: resources/src/jsx/components/admin-page/footer.jsx:26
+msgid "If you like %s please leave us a %s rating. Thank you!"
+msgstr "Se %s ti piace, lasciaci una valutazione a %s. Grazie!"
+
+#. translators: %s is the plugin name
+#: resources/src/jsx/components/admin-page/footer.jsx:43
+msgid "About %s"
+msgstr "Informazioni su %s"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:45
+msgid "About"
+msgstr "Chi siamo"
+
+#. translators: %s is the plugin name
+#: resources/src/jsx/components/admin-page/footer.jsx:54
+msgid "Documentation for %s"
+msgstr "Documentazione di %s"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:56
+msgid "Documentation"
+msgstr "Documentazione"
+
+#. translators: %s is the plugin name
+#: resources/src/jsx/components/admin-page/footer.jsx:65
+msgid "Contact the %s team"
+msgstr "Contatta il team di %s"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:67
+msgid "Contact"
+msgstr "Contatti"
+
+#: resources/src/jsx/components/admin-page/header.jsx:50
+msgid "Get Support"
+msgstr "Ottieni assistenza"
+
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
+msgid "Select an option"
+msgstr "Seleziona un’opzione"
+
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
+msgid "Options"
+msgstr "Opzioni"
+
+#: resources/src/jsx/components/pages/components-showcase.jsx:26
+msgid "Components Showcase"
+msgstr "Vetrina dei componenti"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
+msgid "N/A"
+msgstr "N/D"
+
+#. translators: %1$s is the plugin name, %2$s is the expiration date
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
+msgid "The license for %1$s expired on %2$s"
+msgstr "La licenza di %1$s è scaduta il %2$s"
+
+#. translators: %1$s is the list of plugin names, %2$s is the expiration date
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
+msgid "The licenses for %1$s expired on %2$s"
+msgstr "Le licenze di %1$s sono scadute il %2$s"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:157
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:213
+msgid "Renew now"
+msgstr "Rinnova adesso"
+
+#. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
+msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
+msgstr "La licenza di %1$s scade il %2$s (%3$d giorni rimasti)"
+
+#. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
+msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
+msgstr "Le licenze di %1$s scadono il %2$s (%3$d giorni rimasti)"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:210
+msgid "Warning:"
+msgstr "Attenzione:"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:46
+msgid "All"
+msgstr "Tutto"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:51
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:39
+msgid "Unlicensed"
+msgstr "Senza licenza"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:56
+msgid "Active"
+msgstr "Attivo"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:61
+msgid "Inactive"
+msgstr "Inattivo"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:66
+msgid "Not installed"
+msgstr "Non installato"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:71
+msgid "Updates available"
+msgstr "Aggiornamento disponibile"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:94
+#: resources/src/jsx/components/pages/welcome-page.jsx:128
+msgid "Plugins Dashboard"
+msgstr "Bacheca dei plugin"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
+msgid "Hold ALT and click to force refresh the update cache"
+msgstr "Tieni premuto ALT e clicca per forzare l’aggiornamento della cache."
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
+msgid "Force Refresh"
+msgstr "Forza l’aggiornamento"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
+msgid "Refresh"
+msgstr "Ricarica"
+
+#: resources/src/jsx/components/pages/settings-page.jsx:33
+msgid "Settings page content will be available here."
+msgstr "Il contenuto della pagina delle impostazioni sarà disponibile qui."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:37
+msgid "Welcome to PublishPress Hub!"
+msgstr "Benvenuto in PublishPress Hub!"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:40
+msgid "Get started with PublishPress Hub in a few simple steps."
+msgstr "Come iniziare con PublishPress Hub in pochi e semplici passaggi."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:47
+msgid "Welcome to PublishPress Hub"
+msgstr "Benvenuto in PublishPress Hub"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:52
+msgid "What you can do with PublishPress Hub"
+msgstr "Cosa puoi fare con PublishPress Hub"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:55
+msgid ""
+"PublishPress Hub has everything you need to install, update, and manage your "
+"PublishPress plugins. We're here to help you build a publishing system that "
+"works perfectly for your team."
+msgstr ""
+"PublishPress Hub possiede tutto ciò che ti serve per installare, aggiornare "
+"e gestire update, i tuoi plugin PublishPresss. Siamo qui per aiutarti a "
+"costruire un sistema di pubblicazione che funzioni perfettamente per il tuo "
+"team."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:64
+msgid "Centralized Dashboard"
+msgstr "Bacheca centralizzata"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:67
+msgid ""
+"View all your PublishPress plugins with their licenses, versions, and key "
+"details."
+msgstr ""
+"Visualizza tutti i tuoi plugin PublishPress con le loro licenze, versioni e "
+"dettagli delle chiavi."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:76
+msgid "One-Click Installation"
+msgstr "Installazione con un clic"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:79
+msgid ""
+"Install free PublishPress plugins directly from the Hub without visiting "
+"WordPress.org."
+msgstr ""
+"Installa i plugin PublishPress gratuiti direttamente dall’hub senza visitare "
+"WordPress.org."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:88
+msgid "License Management"
+msgstr "Gestione licenza"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:91
+msgid ""
+"Connect your PublishPress licenses to easily install and activate Pro "
+"versions."
+msgstr ""
+"Collega le tue licenze PublishPress per installare e attivare facilmente le "
+"versioni Pro."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:100
+msgid "Easy Updates"
+msgstr "Aggiornamenti facili"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:103
+msgid "Keep all your PublishPress plugins up to date with one-click updates."
+msgstr ""
+"Mantieni aggiornati tutti i tuoi plugin PublishPress con un clic per "
+"aggiornare."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:112
+msgid "Status Monitoring"
+msgstr "Monitorizzazione dello stato"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:115
+msgid ""
+"Monitor plugin activation status, detect conflicts, and ensure compatibility."
+msgstr ""
+"Controlla lo stato di attivazione dei plugin, rileva eventuali conflitti e "
+"garantisci la compatibilità."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:124
+msgid "Get Started"
+msgstr "Come iniziare"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:127
+msgid ""
+"Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgstr ""
+"Pronto per l’esplorazione? Visita %s per vedere tutti i plugin PublishPress "
+"disponibili."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:142
+msgid "View Plugins Dashboard"
+msgstr "Visualizza la bacheca dei plugin"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:148
+msgid "Already know what you're doing? Great! You can "
+msgstr "Sai già cosa stai facendo? Ottimo! Tu puoi "
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:150
+msgid "dismiss this page"
+msgstr "ignora questa pagina"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
+msgid "."
+msgstr "."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
+msgid "Install"
+msgstr "Installa"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:22
+msgid "Installing..."
+msgstr "Installazione in corso…"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28
+msgid "Upgrade to Pro"
+msgstr "Aggiorna a Pro"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:28
+msgid "Upgrading to Pro..."
+msgstr "Aggiornamento a Pro in corso…"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
+msgid "Manage License"
+msgstr "Gestisci licenza"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:34
+msgid "Managing License..."
+msgstr "Gestione della licenza in corso…"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
+msgid "Activate License"
+msgstr "Attiva licenza"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:40
+msgid "Activating License..."
+msgstr "Attivazione della licenza in corso…"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
+msgid "Resolve Conflict"
+msgstr "Risolvi il conflitto"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
+msgid "Resolving Conflict..."
+msgstr "Risoluzione del conflitto in corso…"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
+msgid "Update"
+msgstr "Aggiorna"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
+msgid "Updating..."
+msgstr "Aggiornamento in corso…"
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:31
+msgid "Confirmation"
+msgstr "Conferma"
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:36
+msgid "Are you sure you want to continue?"
+msgstr "Vuoi davvero continuare?"
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:49
+msgid "Continue"
+msgstr "Continua"
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:52
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:98
+msgid "Cancel"
+msgstr "Annulla"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29
+msgid "Install Plugin"
+msgstr "Installa plugin"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
+msgid ""
+"Select how you would like to install this plugin. You can install the Pro "
+"version if you have a license, or the Free version to get started."
+msgstr ""
+"Seleziona come desideri installare questo plugin. Puoi installare la "
+"versione Pro se disponi di una licenza, oppure la versione gratuita per "
+"iniziare."
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+msgid "Free Details"
+msgstr "Dettagli versione gratuita"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+msgid "Pro Details"
+msgstr "Dettagli versione Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
+msgid "Changelogs"
+msgstr "Registro delle modifiche"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44
+msgid "I have a license, install the Pro version"
+msgstr "Ho una licenza, installa la versione Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47
+msgid "I don't have a license, install the Free version"
+msgstr "Non ho una licenza, installa la versione gratuita"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:50
+msgid "Enter your license key"
+msgstr "Inserisci la tua chiave di licenza"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:55
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
+msgid ""
+"Enter your license key to activate the Pro version of this plugin. You can "
+"find your license key in your PublishPress account dashboard."
+msgstr ""
+"Inserisci la tua chiave di licenza per attivare la versione Pro di questo "
+"plugin. Puoi trovare la tua chiave di licenza nella bacheca del tuo account "
+"PublishPress."
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
+msgid "Go to my profile to get the license key"
+msgstr "Vai a \"mio profilo\" per ottenere la chiave di licenza"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:66
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:94
+msgid "Enter your license key here"
+msgstr "Inserisci qui la tua chiave di licenza"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:80
+msgid "Activate and install the plugin"
+msgstr "Attiva e installa il plugin"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:76
+msgid "Manage your license"
+msgstr "Gestisci la tua licenza"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
+msgid "Your license key is: "
+msgstr "La tua chiave di licenza è: "
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
+msgid "(hidden)"
+msgstr "(nascosto)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:119
+msgid "Activate the license key for this site"
+msgstr "Attiva la chiave di licenza per questo sito"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:126
+msgid "Edit the license key"
+msgstr "Modifica la chiave di licenza"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:129
+msgid "Deactivate the license key for this site"
+msgstr "Disattiva la licenza per questo sito"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+msgid "Unknown"
+msgstr "Sconosciuto"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:39
+msgid "Plugin Information"
+msgstr "Informazioni sul plugin"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:45
+msgid "Name:"
+msgstr "Nome:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:51
+msgid "Description:"
+msgstr "Descrizione:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:57
+msgid "Current Version:"
+msgstr "Versione attuale:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:63
+msgid "Available Version:"
+msgstr "Versione disponibile:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:82
+msgid "Update Plugin"
+msgstr "Aggiorna plugin"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:93
+msgid "Check for Updates"
+msgstr "Controlla gli aggiornamenti"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:90
+msgid "Install %s"
+msgstr "Installa %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:102
+msgid "Install %s Pro"
+msgstr "Installa %s Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:110
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:129
+msgid "Upgrade %s to Pro"
+msgstr "Aggiorna %s a Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:118
+msgid "Uninstall %s"
+msgstr "Disinstalla %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:119
+msgid "Are you sure you want to uninstall %s?"
+msgstr "Vuoi davvero disinstallare %s?"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:140
+msgid "Resolve Conflict for %s"
+msgstr "Risolvi il conflitto per %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:153
+msgid "Manage %s License"
+msgstr "Gestisci licenza di %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:164
+msgid "Activate %s License"
+msgstr "Attiva la licenza di %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:172
+msgid "More Info: %s"
+msgstr "Maggiori informazioni: %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:34
+msgid "Resolve Plugin Conflict"
+msgstr "Risolvi il conflitto del plugin"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
+msgid "Free version: %s (%s)"
+msgstr "Versione gratuita: %s (%s)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
+msgid "Pro version: %s (%s)"
+msgstr "Versione Pro: %s (%s)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:79
+msgid "Keep the Pro version (Recommended)"
+msgstr "Mantieni la versione Pro (raccomandato)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:89
+msgid "Keep the Free version"
+msgstr "Mantieni la versione gratuita"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
+msgid ""
+"Unlock the full potential of this plugin with the Pro version. Enjoy "
+"advanced features, priority support, and exclusive benefits designed to help "
+"you get the most out of your workflow."
+msgstr ""
+"Sblocca tutto il potenziale di questo plugin con la versione Pro. Approfitta "
+"delle caratteristiche avanzate, dell’assistenza prioritaria e dei vantaggi "
+"esclusivi pensati per aiutarti a ottenere il massimo dal tuo flusso di "
+"lavoro."
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
+msgid "Discover all Pro features"
+msgstr "Scopri tutte le caratteristiche Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "Registro della modifica"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
+msgid "Already have a license? Install Pro now"
+msgstr "Hai già una licenza? Installa Pro adesso"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
+msgid "Upgrade to Pro and boost your productivity"
+msgstr "Aggiorna a Pro e aumenta la tua produttività"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:139
+msgid "New version available"
+msgstr "Nuova versione disponibile"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:184
+msgid "Update available: %s → %s"
+msgstr "Aggiornamento disponibile: %s → %s"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:22
+msgid "Installing"
+msgstr "Installando"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:27
+msgid "Not Installed"
+msgstr "Non installato"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:31
+msgid "Free"
+msgstr "Gratuito"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:35
+msgid "Licensed"
+msgstr "Licenza attiva"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:43
+msgid "Expired"
+msgstr "Scaduta"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:47
+msgid "Uninstalling"
+msgstr "Disinstallando"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:52
+msgid "Upgrading"
+msgstr "Aggiornando"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:57
+msgid "Deactivating"
+msgstr "Disattivazione"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:62
+msgid "Activating"
+msgstr "Attivazione"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:67
+msgid "Conflicting Installations"
+msgstr "Installazioni in conflitto"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:170
+msgid "Update Available"
+msgstr "Aggiornamento disponibile"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:181
+msgid "Expires"
+msgstr "Scade"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
+msgid "latest"
+msgstr "la più recente"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
+msgid "Update to v%s"
+msgstr "Aggiorna alla v%s"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+msgid "Renew"
+msgstr "Rinnova"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+msgid "Deactivate"
+msgstr "Disattiva"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+msgid "Activate"
+msgstr "Attiva"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+msgid "Uninstall"
+msgstr "Disinstalla"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+msgid "More Info"
+msgstr "Maggiori informazioni"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
+msgid "This plugin is not installed."
+msgstr "Questo plugin non è installato."
+
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40
+msgid "This plugin is active."
+msgstr "Questo plugin è attivo."
+
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41
+msgid "This plugin is not active."
+msgstr "Questo plugin non è attivo."
+
+#: resources/src/jsx/components/plugins-list/index.jsx:159
+msgid "No plugins found."
+msgstr "Nessun plugin trovato."
+
+#: resources/src/jsx/components/plugins-list/index.jsx:165
+msgid "Loading plugins..."
+msgstr "Caricamento dei plugin in corso…"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:216
+msgid "Failed to fetch plugins"
+msgstr "Impossibile recuperare il plugin: %s"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
+msgid "%s installed successfully"
+msgstr "%s installato correttamente"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
+msgid "%s installation failed"
+msgstr "Installazione di %s fallita"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
+msgid "%s uninstalled successfully"
+msgstr "%s disinstallato correttamente"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
+msgid "%s uninstall failed"
+msgstr "Disinstallazione di %s fallita"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
+msgid "%s activated successfully"
+msgstr "%s attivato correttamente"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
+msgid "%s activation failed"
+msgstr "Attivazione di %s fallita"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
+msgid "%s deactivated successfully"
+msgstr "%s disattivato correttamente"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
+msgid "%s deactivation failed"
+msgstr "Disattivazione di %s fallita"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
+msgid "%s upgraded to Pro successfully"
+msgstr "%s aggiornato a Pro correttamente"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
+msgid "%s upgrade to Pro failed"
+msgstr "Aggiornamento di %s a Pro fallito"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
+msgid "Conflict resolved successfully for %s"
+msgstr "Conflitto risolto correttamente per %s"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
+msgid "Failed to resolve conflict for %s"
+msgstr "Impossibile risolvere il conflitto per %s"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
+msgid "%s license deactivated successfully"
+msgstr "Licenza di %s disattivata correttamente"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
+msgid "%s license deactivation failed"
+msgstr "Disattivazione licenza di %s fallita"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
+msgid "%s license activated successfully"
+msgstr "Licenza di %s attivata correttamente"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
+msgid "%s license activation failed"
+msgstr "Attivazione licenza di %s fallita"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
+msgid "%s updated successfully"
+msgstr "%s aggiornato correttamente"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
+msgid "%s update failed"
+msgstr "Aggiornamento di %s fallito"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
+msgid "Too many requests. Please wait a few seconds and try again."
+msgstr "Troppe richieste. Attendi alcuni secondi e riprova."
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
+msgid "Cloudflare Ray ID: %s"
+msgstr "ID Cloudflare Ray: %s"

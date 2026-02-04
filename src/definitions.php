@@ -18,6 +18,7 @@ use PublishPress\Hub\Application\Service\ActivationRedirectService;
 use PublishPress\Hub\Application\Service\EddPluginUpdateService;
 use PublishPress\Hub\Application\Service\HubBootstrapService;
 use PublishPress\Hub\Application\Service\RewriteRulesService;
+use PublishPress\Hub\Application\Service\Statistics\StatisticsService;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Service\License\LicenseExpirationNoticeService;
 use PublishPress\Hub\Application\Service\License\LicenseManagementService;
@@ -61,12 +62,12 @@ use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginLifecycleAdapter;
 use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginStatusAdapter;
 use PublishPress\Hub\Infrastructure\WP\Remote\WPRemoteAdapter;
 use PublishPress\Hub\Infrastructure\WP\RestApi\WPRestApiAdapter;
-use PublishPress\Hub\Infrastructure\WP\Security\WPSecurityAdapter;
 use PublishPress\Hub\Admin\Page\ComponentsShowcaseController;
 use PublishPress\Hub\Admin\Page\PluginsDashboardController;
 use PublishPress\Hub\Admin\Page\SettingsPageController;
 use PublishPress\Hub\Admin\Page\WelcomePageController;
 use PublishPress\Hub\Infrastructure\Container\AbstractDependencies;
+use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\License\Handler\LicenseValidationActionHandler;
 use PublishPress\Hub\Infrastructure\License\PerPluginLicensePersistenceService;
 use PublishPress\Hub\Rest\PluginsController;
@@ -101,7 +102,17 @@ return [
 
     AbstractDependencies::HUB_REST_API_NAMESPACE => 'publishpress-hub/v1',
 
-    AbstractDependencies::EDD_SUBSCRIPTION_API_URL => 'https://publishpress.com',
+    AbstractDependencies::EDD_SUBSCRIPTION_API_URL =>
+        fn(ContainerInterface $container): string => apply_filters(
+            AbstractHooks::FILTER_EDD_SUBSCRIPTION_API_URL,
+            'https://publishpress.com'
+        ),
+
+    AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS =>
+        fn(ContainerInterface $container): array => apply_filters(
+            AbstractHooks::FILTER_ALLOWED_DOWNLOAD_DOMAINS,
+            ['publishpress.com', 'pkg.publishpress.com', 'wordpress.org', 'downloads.wordpress.org']
+        ),
 
     AbstractDependencies::SITE_URL => home_url(),
 
@@ -387,6 +398,7 @@ return [
             $servicesToInit[] = $container->get(AbstractDependencies::ACTIVATION_REDIRECT_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::REWRITE_RULES_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::EDD_PLUGIN_UPDATE_SERVICE);
+            $servicesToInit[] = $container->get(AbstractDependencies::STATISTICS_SERVICE);
 
             if (defined('PUBLISHPRESS_HUB_DEV_MODE') && constant('PUBLISHPRESS_HUB_DEV_MODE')) {
                 $servicesToInit[] = $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER);
@@ -416,7 +428,8 @@ return [
 
     AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER =>
         fn(ContainerInterface $container) => new WPPluginLifecycleAdapter(
-            $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER)
+            $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER),
+            $container->get(AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS)
         ),
 
     AbstractDependencies::FILE_SYSTEM_ADAPTER =>
@@ -524,6 +537,12 @@ return [
             $container->get(AbstractDependencies::PLUGIN_AUTHOR),
             $container->get(AbstractDependencies::HUB_UPDATER_VALUE),
             $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+        ),
+
+    AbstractDependencies::STATISTICS_SERVICE =>
+        fn(ContainerInterface $container) => new StatisticsService(
+            $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
+            $container->get(AbstractDependencies::PLUGIN_VERSION)
         ),
 
     AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER =>

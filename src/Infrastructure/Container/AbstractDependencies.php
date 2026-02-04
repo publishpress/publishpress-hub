@@ -55,6 +55,8 @@ abstract class AbstractDependencies
 
     public const EDD_SUBSCRIPTION_API_URL = 'publishpress-hub.constants.edd-subscription-api-url';
 
+    public const ALLOWED_DOWNLOAD_DOMAINS = 'publishpress-hub.constants.allowed-download-domains';
+
     public const SITE_URL = 'publishpress-hub.constants.site-url';
 
     public const CACHE_GROUP = 'publishpress-hub.constants.cache-group';
@@ -182,6 +184,8 @@ abstract class AbstractDependencies
     public const REWRITE_RULES_SERVICE = 'publishpress-hub.application.service.rewrite-rules';
 
     public const EDD_PLUGIN_UPDATE_SERVICE = 'publishpress-hub.application.service.edd-plugin-update';
+
+    public const STATISTICS_SERVICE = 'publishpress-hub.application.service.statistics';
 
     public const PLUGINS_DASHBOARD_CONTROLLER = 'publishpress-hub.presentation.plugins-dashboard.controller';
 

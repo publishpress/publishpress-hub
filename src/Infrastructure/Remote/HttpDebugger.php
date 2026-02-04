@@ -20,9 +20,68 @@ class HttpDebugger
 {
     private const DEBUG_PREFIX = 'HTTP_DEBUG';
 
+    private static bool $initialized = false;
+
     /**
-     * Debug HTTP request details
+     * Initialize HTTP debugging hooks.
      *
+     * This method hooks into WordPress's http_api_debug action to log requests
+     * and responses AFTER all filters have been applied, ensuring we see the
+     * actual data being sent over the wire.
+     *
+     * @return void
+     * @since 1.0.0
+     */
+    public static function initialize(): void
+    {
+        if (self::$initialized || !self::isDebugEnabled()) {
+            return;
+        }
+
+        add_action('http_api_debug', [self::class, 'debugHttpApiRequest'], 10, 5);
+        self::$initialized = true;
+    }
+
+    /**
+     * Debug HTTP API request (called by WordPress after all filters).
+     *
+     * @param array<string, mixed>|\WP_Error $response The response or WP_Error on failure.
+     * @param string $context Context under which the hook is fired.
+     * @param string $class HTTP transport used.
+     * @param array<string, mixed> $parsed_args HTTP request arguments.
+     * @param string $url The request URL.
+     * @return void
+     * @since 1.0.0
+     */
+    public static function debugHttpApiRequest($response, string $context, string $class, array $parsed_args, string $url): void
+    {
+        if (!self::isDebugEnabled()) {
+            return;
+        }
+
+        // Log request (with final args after all filters)
+        $debugInfo = [
+            'timestamp' => gmdate('Y-m-d H:i:s'),
+            'method' => $parsed_args['method'] ?? 'GET',
+            'url' => $url,
+            'body' => $parsed_args['body'] ?? [],
+            'timeout' => $parsed_args['timeout'] ?? null,
+            'sslverify' => $parsed_args['sslverify'] ?? null,
+            'headers' => $parsed_args['headers'] ?? [],
+            'cookies' => $parsed_args['cookies'] ?? [],
+            'user_agent' => $parsed_args['user-agent'] ?? null,
+        ];
+
+        self::log('REQUEST', $debugInfo);
+
+        // Log response
+        self::debugResponse($response);
+    }
+
+    /**
+     * Debug HTTP request details (deprecated - use initialize() instead).
+     *
+     * @deprecated 1.0.3 Use initialize() to hook into http_api_debug instead.
      * @param string $method The HTTP method.
      * @param string $url The URL.
      * @param array<string, mixed> $args The arguments.
@@ -30,32 +89,17 @@ class HttpDebugger
      */
     public static function debugRequest(string $method, string $url, array $args): void
     {
-        if (!self::isDebugEnabled()) {
-            return;
-        }
-
-        $debugInfo = [
-            'timestamp' => gmdate('Y-m-d H:i:s'),
-            'method' => $method,
-            'url' => $url,
-            'body' => $args['body'] ?? [],
-            'timeout' => $args['timeout'] ?? null,
-            'sslverify' => $args['sslverify'] ?? null,
-            'headers' => $args['headers'] ?? [],
-            'cookies' => $args['cookies'] ?? [],
-            'user_agent' => $args['user-agent'] ?? null,
-        ];
-
-        self::log('REQUEST', $debugInfo);
+        // This method is deprecated but kept for backward compatibility
+        // It's no longer needed since we now hook into http_api_debug
     }
 
     /**
-     * Debug HTTP response details
+     * Debug HTTP response details (private - called by debugHttpApiRequest).
      *
-     * @param array<string, mixed>|WP_Error $response The response.
+     * @param array<string, mixed>|\WP_Error $response The response.
      * @since 1.0.0
      */
-    public static function debugResponse($response): void
+    private static function debugResponse($response): void
     {
         if (!self::isDebugEnabled()) {
             return;

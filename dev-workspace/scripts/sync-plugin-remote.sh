@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# PublishPress Hub Plugin Remote Sync Script
+# PublishPress Hub Statistics Plugin Remote Sync Script
 # Watches for changes in the plugin directory and syncs to remote WordPress site via SSH
 
 set -a
@@ -12,10 +12,10 @@ SOURCE_DIR=$REMOTE_SYNC_SOURCE_DIR
 REMOTE_HOST=$REMOTE_SYNC_REMOTE_HOST
 REMOTE_PORT=$REMOTE_SYNC_REMOTE_PORT
 REMOTE_TARGET_DIR=$REMOTE_SYNC_REMOTE_TARGET_DIR
+SSH_KEY_PATH=$REMOTE_SYNC_SSH_KEY_PATH
 EXCLUDE_FILE=".rsync-filters-sync"
 
 # SSH Configuration
-SSH_KEY_PATH="/home/anderson/.ssh/id_rsa"
 SSH_OPTIONS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o GlobalKnownHostsFile=/dev/null -o ServerAliveInterval=600 -o ServerAliveCountMax=5 -o LogLevel=ERROR"
 
 # Colors for output
@@ -44,13 +44,30 @@ sync_files() {
     fi
 }
 
-# Function to check if inotifywait is available
-check_inotify() {
-    if ! command -v inotifywait &> /dev/null; then
-        echo -e "${RED}Error: inotifywait is not installed.${NC}"
-        echo "Please install it with: sudo apt-get install inotify-tools"
+# Detect OS and set file watching tool
+detect_os() {
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        FILE_WATCHER="fswatch"
+    else
+        FILE_WATCHER="inotifywait"
+    fi
+}
+
+# Function to check if file watching tool is available
+check_file_watcher() {
+    detect_os
+
+    if ! command -v "$FILE_WATCHER" &> /dev/null; then
+        echo -e "${RED}Error: $FILE_WATCHER is not installed.${NC}"
+        if [[ "$FILE_WATCHER" == "fswatch" ]]; then
+            echo "Please install it with: brew install fswatch"
+        else
+            echo "Please install it with: sudo apt-get install inotify-tools"
+        fi
         exit 1
     fi
+
+    echo -e "${GREEN}Using file watcher: $FILE_WATCHER${NC}"
 }
 
 # Function to test SSH connection
@@ -144,10 +161,10 @@ if [ "$TEST_SSH" = true ]; then
     exit $?
 fi
 
-# Check if inotifywait is available
-check_inotify
+# Check if file watcher is available
+check_file_watcher
 
-echo -e "${BLUE}PublishPress Hub Plugin Remote Sync Script${NC}"
+echo -e "${BLUE}PublishPress Hub Statistics Plugin Remote Sync Script${NC}"
 echo -e "${BLUE}Source: $SOURCE_DIR${NC}"
 echo -e "${BLUE}Remote: $REMOTE_HOST:$REMOTE_TARGET_DIR${NC}"
 echo -e "${BLUE}SSH Key: $SSH_KEY_PATH${NC}"
@@ -170,18 +187,37 @@ fi
 echo -e "${YELLOW}Watching for changes... (Press Ctrl+C to stop)${NC}"
 echo ""
 
-# Watch for changes
-inotifywait -m -r -e modify,create,delete,move "$SOURCE_DIR" --format '%w%f %e' | while read file event; do
-    # Skip certain file types and directories
-    if [[ "$file" =~ \.(git|node_modules|vendor|dev-workspace|tests|cursor|github|dist|log|env|babelrc|webpack|package|yarn|composer|makefile|codeception|phpcs|phplint|phpstan|phpmd|gitignore|gitattributes|gitmodules|distignore|rsync-filters|jsconfig|code-workspace|changelog|readme|license|mockups|docs|languages|lib) ]]; then
-        continue
-    fi
+# Watch for changes based on OS
+if [[ "$FILE_WATCHER" == "fswatch" ]]; then
+    # macOS: Use fswatch
+    fswatch -r "$SOURCE_DIR" | while read file; do
+        # Skip certain file types and directories
+        if [[ "$file" =~ \.(git|node_modules|vendor|dev-workspace|tests|cursor|github|dist|log|env|babelrc|webpack|package|yarn|composer|makefile|codeception|phpcs|phplint|phpstan|phpmd|gitignore|gitattributes|gitmodules|distignore|rsync-filters|jsconfig|code-workspace|changelog|readme|license|mockups|docs|languages|lib) ]]; then
+            continue
+        fi
 
-    # Skip if it's a directory we want to exclude
-    if [[ "$file" =~ /(\.git|node_modules|vendor|dev-workspace|tests|\.cursor|\.github|dist|mockups|docs|languages|lib)/ ]]; then
-        continue
-    fi
+        # Skip if it's a directory we want to exclude
+        if [[ "$file" =~ /(\.git|node_modules|vendor|dev-workspace|tests|\.cursor|\.github|dist|mockups|docs|languages|lib)/ ]]; then
+            continue
+        fi
 
-    echo -e "${YELLOW}[$(date '+%Y-%m-%d %H:%M:%S')] Change detected: $file ($event)${NC}"
-    sync_files
-done
+        echo -e "${YELLOW}[$(date '+%Y-%m-%d %H:%M:%S')] Change detected: $file${NC}"
+        sync_files
+    done
+else
+    # Linux: Use inotifywait
+    inotifywait -m -r -e modify,create,delete,move "$SOURCE_DIR" --format '%w%f %e' | while read file event; do
+        # Skip certain file types and directories
+        if [[ "$file" =~ \.(git|node_modules|vendor|dev-workspace|tests|cursor|github|dist|log|env|babelrc|webpack|package|yarn|composer|makefile|codeception|phpcs|phplint|phpstan|phpmd|gitignore|gitattributes|gitmodules|distignore|rsync-filters|jsconfig|code-workspace|changelog|readme|license|mockups|docs|languages|lib) ]]; then
+            continue
+        fi
+
+        # Skip if it's a directory we want to exclude
+        if [[ "$file" =~ /(\.git|node_modules|vendor|dev-workspace|tests|\.cursor|\.github|dist|mockups|docs|languages|lib)/ ]]; then
+            continue
+        fi
+
+        echo -e "${YELLOW}[$(date '+%Y-%m-%d %H:%M:%S')] Change detected: $file ($event)${NC}"
+        sync_files
+    done
+fi

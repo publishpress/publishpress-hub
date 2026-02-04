@@ -19,7 +19,6 @@ use PublishPress\Hub\Domain\Plugin\Exception\LicenseServerInvalidResponseExcepti
 use PublishPress\Hub\Infrastructure\Cache\Contract\CacheServiceInterface;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\Contract\LicenseActivationServiceInterface;
 use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
-use PublishPress\Hub\Infrastructure\Remote\HttpDebugger;
 
 class LicenseActivationService implements LicenseActivationServiceInterface
 {
@@ -100,17 +99,11 @@ class LicenseActivationService implements LicenseActivationServiceInterface
                 'headers' => $this->requestHeaders,
             ];
 
-            // Debug: Log request details
-            HttpDebugger::debugRequest('POST', $this->eddSubscriptionApiUrl, $requestArgs);
-
             // POST request because activation modifies server state (records site activation)
             $response = $this->remoteService->post(
                 $this->eddSubscriptionApiUrl,
                 $requestArgs
             );
-
-            // Debug: Log response details
-            HttpDebugger::debugResponse($response);
 
             // Handle WordPress HTTP API errors (network failures, timeouts, DNS issues)
             if (is_wp_error($response)) {
