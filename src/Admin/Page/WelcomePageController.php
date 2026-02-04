@@ -235,9 +235,11 @@ class WelcomePageController implements BootableInterface
             'publishpress-hub-welcome-page',
             'js/welcome-page.js',
             [
-                'publishpress-hub-i18n',
                 'wp-element',
                 'wp-components',
+                'wp-data',
+                'wp-primitives',
+                'publishpress-hub-i18n',
             ]
         );
 

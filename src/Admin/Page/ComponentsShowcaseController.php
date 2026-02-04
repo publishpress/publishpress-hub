@@ -145,10 +145,12 @@ class ComponentsShowcaseController implements BootableInterface
             'publishpress-hub-components-showcase',
             'js/components-showcase.js',
             [
-                'publishpress-hub-i18n',
                 'wp-element',
                 'wp-components',
+                'wp-data',
                 'wp-notices',
+                'wp-primitives',
+                'publishpress-hub-i18n',
             ]
         );
 

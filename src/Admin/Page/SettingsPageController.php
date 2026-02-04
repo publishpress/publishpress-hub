@@ -146,9 +146,11 @@ class SettingsPageController implements BootableInterface
             'publishpress-hub-settings-page',
             'js/settings-page.js',
             [
-                'publishpress-hub-i18n',
                 'wp-element',
                 'wp-components',
+                'wp-data',
+                'wp-primitives',
+                'publishpress-hub-i18n',
             ]
         );
 

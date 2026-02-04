@@ -69,15 +69,18 @@ require_once PUBLISHPRESS_HUB_VENDOR_PATH . 'publishpress/psr-container/lib/incl
  * This must be loaded early so that its functions are available
  * when the plugin services try to use them.
  */
-if (file_exists(PUBLISHPRESS_HUB_VENDOR_PATH . 'woocommerce/action-scheduler/action-scheduler.php')) {
+if (
+    !class_exists('ActionScheduler')
+    && file_exists(PUBLISHPRESS_HUB_VENDOR_PATH . 'woocommerce/action-scheduler/action-scheduler.php')
+) {
     require_once PUBLISHPRESS_HUB_VENDOR_PATH . 'woocommerce/action-scheduler/action-scheduler.php';
 }
 
 /*
  * Load EDD Plugin Updater library.
  */
-if (file_exists(PUBLISHPRESS_HUB_VENDOR_PATH . 'alledia/edd-sl-plugin-updater/EDD_SL_Plugin_Updater.php')) {
-    require_once PUBLISHPRESS_HUB_VENDOR_PATH . 'alledia/edd-sl-plugin-updater/EDD_SL_Plugin_Updater.php';
+if (file_exists(PUBLISHPRESS_HUB_VENDOR_PATH . 'publishpress/wordpress-edd-license/include.php')) {
+    require_once PUBLISHPRESS_HUB_VENDOR_PATH . 'publishpress/wordpress-edd-license/include.php';
 }
 
 /*

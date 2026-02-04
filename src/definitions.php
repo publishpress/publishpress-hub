@@ -62,12 +62,12 @@ use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginLifecycleAdapter;
 use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginStatusAdapter;
 use PublishPress\Hub\Infrastructure\WP\Remote\WPRemoteAdapter;
 use PublishPress\Hub\Infrastructure\WP\RestApi\WPRestApiAdapter;
-use PublishPress\Hub\Infrastructure\WP\Security\WPSecurityAdapter;
 use PublishPress\Hub\Admin\Page\ComponentsShowcaseController;
 use PublishPress\Hub\Admin\Page\PluginsDashboardController;
 use PublishPress\Hub\Admin\Page\SettingsPageController;
 use PublishPress\Hub\Admin\Page\WelcomePageController;
 use PublishPress\Hub\Infrastructure\Container\AbstractDependencies;
+use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\License\Handler\LicenseValidationActionHandler;
 use PublishPress\Hub\Infrastructure\License\PerPluginLicensePersistenceService;
 use PublishPress\Hub\Rest\PluginsController;
@@ -102,8 +102,17 @@ return [
 
     AbstractDependencies::HUB_REST_API_NAMESPACE => 'publishpress-hub/v1',
 
-    // AbstractDependencies::EDD_SUBSCRIPTION_API_URL => 'https://publishpress.com',
-    AbstractDependencies::EDD_SUBSCRIPTION_API_URL => 'https://stg-publishpress-staging.kinsta.cloud',
+    AbstractDependencies::EDD_SUBSCRIPTION_API_URL =>
+        fn(ContainerInterface $container): string => apply_filters(
+            AbstractHooks::FILTER_EDD_SUBSCRIPTION_API_URL,
+            'https://publishpress.com'
+        ),
+
+    AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS =>
+        fn(ContainerInterface $container): array => apply_filters(
+            AbstractHooks::FILTER_ALLOWED_DOWNLOAD_DOMAINS,
+            ['publishpress.com', 'pkg.publishpress.com', 'wordpress.org', 'downloads.wordpress.org']
+        ),
 
     AbstractDependencies::SITE_URL => home_url(),
 
@@ -419,7 +428,8 @@ return [
 
     AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER =>
         fn(ContainerInterface $container) => new WPPluginLifecycleAdapter(
-            $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER)
+            $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER),
+            $container->get(AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS)
         ),
 
     AbstractDependencies::FILE_SYSTEM_ADAPTER =>

@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Infrastructure\WP\Plugin;
 
 use InvalidArgumentException;
+use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;
 use RuntimeException;
 
@@ -22,13 +23,16 @@ class WPPluginLifecycleAdapter
 {
     private WPFileSystemAdapter $fileSystemAdapter;
 
+    private array $allowedDownloadDomains;
+
     /**
      * @param WPFileSystemAdapter $fileSystemAdapter The file system adapter.
      * @since 1.0.0
      */
-    public function __construct(WPFileSystemAdapter $fileSystemAdapter)
+    public function __construct(WPFileSystemAdapter $fileSystemAdapter, array $allowedDownloadDomains)
     {
         $this->fileSystemAdapter = $fileSystemAdapter;
+        $this->allowedDownloadDomains = $allowedDownloadDomains;
     }
 
     /**
@@ -57,17 +61,8 @@ class WPPluginLifecycleAdapter
             );
         }
 
-        // Whitelist allowed domains for plugin downloads
-        $allowedDomains = [
-            'publishpress.com',
-            'pkg.publishpress.com',
-            'wordpress.org',
-            'downloads.wordpress.org',
-            'pkg.stg-publishpress-staging.kinsta.cloud',
-        ];
-
         $host = $urlParts['host'] ?? '';
-        if (!in_array($host, $allowedDomains, true)) {
+        if (!in_array($host, $this->allowedDownloadDomains, true)) {
             throw new InvalidArgumentException(
                 sprintf(
                     // translators: %s is the hostname
@@ -113,26 +108,26 @@ class WPPluginLifecycleAdapter
 
         $fileSize = filesize($tmpFile);
         if ($fileSize === false || $fileSize === 0) {
-            @unlink($tmpFile);
+            @unlink($tmpFile); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_unlink
             throw new RuntimeException(
                 esc_html__('Downloaded plugin file is empty', 'publishpress-hub')
             );
         }
 
         // Check ZIP file signature (magic bytes: PK\x03\x04)
-        $fileHandle = fopen($tmpFile, 'rb');
+        $fileHandle = fopen($tmpFile, 'rb'); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
         if ($fileHandle === false) {
-            @unlink($tmpFile);
+            @unlink($tmpFile); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_unlink
             throw new RuntimeException(
                 esc_html__('Cannot read downloaded plugin file', 'publishpress-hub')
             );
         }
 
-        $magicBytes = fread($fileHandle, 4);
+        $magicBytes = fread($fileHandle, 4); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fread
         fclose($fileHandle);
 
         if ($magicBytes !== "PK\x03\x04") {
-            @unlink($tmpFile);
+            @unlink($tmpFile); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_unlink
             throw new RuntimeException(
                 esc_html__('Downloaded file is not a valid ZIP archive. The download URL may be returning an error page.', 'publishpress-hub')
             );
