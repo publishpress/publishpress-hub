@@ -7,7 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added: Statistics service to collect anonymous data on API requests, now sending only the Hub plugin version to the server.
 - Changed: Updated EDD subscription API URL handling with dynamic configuration support.
 - Changed: Added validation for allowed download domains during plugins installation.
-- Changed: Updated publishpress/wordpress-edd-license to version 3.0.3.
+- Changed: Updated publishpress/wordpress-edd-license to version 3.0.4.
+- Fixed: Resolved fatal error caused by EDD_SL_Plugin_Updater class conflict when multiple PublishPress plugins are active.
+- Fixed: Corrected missing WordPress script dependencies preventing Welcome page from loading properly.
+- Fixed: Enhanced plugin installation with ZIP file validation and improved error handling.
 
 [1.0.2] 19 Jan, 2026
 
