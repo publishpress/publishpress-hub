@@ -165,12 +165,14 @@ class PluginsDashboardController implements BootableInterface
             'publishpress-hub-plugins-dashboard',
             'js/plugins-dashboard.js',
             [
-                'publishpress-hub-i18n',
                 'wp-element',
                 'wp-components',
+                'wp-data',
                 'wp-data-controls',
                 'wp-api-fetch',
                 'wp-notices',
+                'wp-primitives',
+                'publishpress-hub-i18n',
             ]
         );
 
