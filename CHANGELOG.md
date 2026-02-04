@@ -4,7 +4,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.0.3] 03 Feb, 2026
 
 - Added: Italian language translation.
-- Added: Anonymous statistics service to track API requests sending only the version of the plugin.
+- Added: Statistics service to collect anonymous data on API requests, now sending only the Hub plugin version to the server.
 - Changed: Updated EDD subscription API URL handling with dynamic configuration support.
 - Changed: Added validation for allowed download domains during plugins installation.
 - Changed: Updated publishpress/wordpress-edd-license to version 3.0.3.
