@@ -259,16 +259,16 @@
         },
         {
             "name": "publishpress/wordpress-edd-license",
-            "version": "3.0.3",
+            "version": "3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/library-wordpress-edd-license.git",
-                "reference": "f97b44c4b55eac42c561c6bd3ef9a7ee38a82609"
+                "reference": "98d22c29bd2d3db701e45b05581fb2d3c6c016f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/library-wordpress-edd-license/zipball/f97b44c4b55eac42c561c6bd3ef9a7ee38a82609",
-                "reference": "f97b44c4b55eac42c561c6bd3ef9a7ee38a82609",
+                "url": "https://api.github.com/repos/publishpress/library-wordpress-edd-license/zipball/98d22c29bd2d3db701e45b05581fb2d3c6c016f4",
+                "reference": "98d22c29bd2d3db701e45b05581fb2d3c6c016f4",
                 "shasum": ""
             },
             "require": {
@@ -325,9 +325,9 @@
             ],
             "support": {
                 "issues": "https://github.com/publishpress/library-wordpress-edd-license/issues",
-                "source": "https://github.com/publishpress/library-wordpress-edd-license/tree/3.0.3"
+                "source": "https://github.com/publishpress/library-wordpress-edd-license/tree/3.0.4"
             },
-            "time": "2026-01-19T21:45:17+00:00"
+            "time": "2026-02-04T14:46:59+00:00"
         },
         {
             "name": "woocommerce/action-scheduler",
