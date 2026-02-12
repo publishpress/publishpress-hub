@@ -20,24 +20,6 @@ use PublishPress\Hub\Infrastructure\Container\DependencyContainer;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 
 /*
- * Check if the PHP and WP versions are compatible.
- */
-$minPHPVersion = '7.4';
-$minWPVersion  = '6.7';
-
-global $wp_version;
-
-/*
- * If the PHP or WP version is not compatible, terminate the plugin execution.
- */
-$invalidPHPVersion = version_compare(phpversion(), $minPHPVersion, '<');
-$invalidWPVersion = empty($wp_version) || version_compare($wp_version, $minWPVersion, '<');
-
-if ($invalidPHPVersion || $invalidWPVersion) {
-    return;
-}
-
-/*
  * Do not load the plugin twice.
  */
 if (defined('PUBLISHPRESS_HUB_PATH')) {
