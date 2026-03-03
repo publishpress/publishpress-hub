@@ -9,17 +9,50 @@
  */
 
 import { memo } from '@wordpress/element';
+import { TabPanel } from '@wordpress/components';
 
 import { __ } from '@publishpress-hub/i18n';
 
 import { AdminPageLayout } from '../admin-page';
+import { DiagnosticsTab } from './settings/DiagnosticsTab';
+import { DebugLogTab } from './settings/DebugLogTab';
 
 const {
     logoUrl,
+    debugModeEnabled,
 } = window.ppHubSettingsPageConfig || {};
+
+const buildTabs = () => {
+    const tabs = [
+        {
+            name: 'diagnostics',
+            title: __('Diagnostics', 'publishpress-hub'),
+            className: 'pp-hub-settings-tab',
+        },
+    ];
+
+    if (debugModeEnabled) {
+        tabs.push({
+            name: 'debug-log',
+            title: __('Debug Log', 'publishpress-hub'),
+            className: 'pp-hub-settings-tab',
+        });
+    }
+
+    return tabs;
+};
+
+const renderTab = (tab) => {
+    if (tab.name === 'debug-log') {
+        return <DebugLogTab />;
+    }
+
+    return <DiagnosticsTab />;
+};
 
 const SettingsPageComponent = () => {
     const title = __('Settings', 'publishpress-hub');
+    const tabs = buildTabs();
 
     return (
         <AdminPageLayout
@@ -27,13 +60,13 @@ const SettingsPageComponent = () => {
             logoUrl={logoUrl}
         >
             <div className="pp-hub-settings-page">
-                <div className="pp-hub-settings-page__container">
-                    <div className="pp-hub-settings-page__content">
-                        <p className="pp-hub-settings-page__message">
-                            {__('Settings page content will be available here.', 'publishpress-hub')}
-                        </p>
-                    </div>
-                </div>
+                <TabPanel
+                    className="pp-hub-settings-tabs"
+                    tabs={tabs}
+                    onSelect={() => {}}
+                >
+                    {renderTab}
+                </TabPanel>
             </div>
         </AdminPageLayout>
     );

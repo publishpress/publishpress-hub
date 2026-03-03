@@ -480,9 +480,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
-/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _admin_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../admin-page */ "./resources/src/jsx/components/admin-page/index.jsx");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _admin_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../admin-page */ "./resources/src/jsx/components/admin-page/index.jsx");
+/* harmony import */ var _settings_DiagnosticsTab__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./settings/DiagnosticsTab */ "./resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx");
+/* harmony import */ var _settings_DebugLogTab__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./settings/DebugLogTab */ "./resources/src/jsx/components/pages/settings/DebugLogTab.jsx");
 /**
  * Settings page.
  *
@@ -496,24 +500,396 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var _ref = window.ppHubSettingsPageConfig || {},
-  logoUrl = _ref.logoUrl;
+  logoUrl = _ref.logoUrl,
+  debugModeEnabled = _ref.debugModeEnabled;
+var buildTabs = function buildTabs() {
+  var tabs = [{
+    name: 'diagnostics',
+    title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Diagnostics', 'publishpress-hub'),
+    className: 'pp-hub-settings-tab'
+  }];
+  if (debugModeEnabled) {
+    tabs.push({
+      name: 'debug-log',
+      title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Debug Log', 'publishpress-hub'),
+      className: 'pp-hub-settings-tab'
+    });
+  }
+  return tabs;
+};
+var renderTab = function renderTab(tab) {
+  if (tab.name === 'debug-log') {
+    return /*#__PURE__*/React.createElement(_settings_DebugLogTab__WEBPACK_IMPORTED_MODULE_5__.DebugLogTab, null);
+  }
+  return /*#__PURE__*/React.createElement(_settings_DiagnosticsTab__WEBPACK_IMPORTED_MODULE_4__.DiagnosticsTab, null);
+};
 var SettingsPageComponent = function SettingsPageComponent() {
-  var title = (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Settings', 'publishpress-hub');
-  return /*#__PURE__*/React.createElement(_admin_page__WEBPACK_IMPORTED_MODULE_2__.AdminPageLayout, {
+  var title = (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Settings', 'publishpress-hub');
+  var tabs = buildTabs();
+  return /*#__PURE__*/React.createElement(_admin_page__WEBPACK_IMPORTED_MODULE_3__.AdminPageLayout, {
     title: title,
     logoUrl: logoUrl
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-settings-page"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-settings-page__container"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-settings-page__content"
-  }, /*#__PURE__*/React.createElement("p", {
-    className: "pp-hub-settings-page__message"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Settings page content will be available here.', 'publishpress-hub'))))));
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TabPanel, {
+    className: "pp-hub-settings-tabs",
+    tabs: tabs,
+    onSelect: function onSelect() {}
+  }, renderTab)));
 };
 var SettingsPage = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(SettingsPageComponent);
+
+/***/ },
+
+/***/ "./resources/src/jsx/components/pages/settings/DebugLogTab.jsx"
+/*!*********************************************************************!*\
+  !*** ./resources/src/jsx/components/pages/settings/DebugLogTab.jsx ***!
+  \*********************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DebugLogTab: () => (/* binding */ DebugLogTab)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__);
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+/**
+ * Debug log viewer tab.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\pages\settings
+ * @author PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+
+
+
+
+var DebugLogTabComponent = function DebugLogTabComponent() {
+  var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState2 = _slicedToArray(_useState, 2),
+    logContent = _useState2[0],
+    setLogContent = _useState2[1];
+  var _useState3 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    isLoading = _useState4[0],
+    setIsLoading = _useState4[1];
+  var _useState5 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    isClearing = _useState6[0],
+    setIsClearing = _useState6[1];
+  var _useState7 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState8 = _slicedToArray(_useState7, 2),
+    notice = _useState8[0],
+    setNotice = _useState8[1];
+  var fetchLog = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+    var response, _t;
+    return _regenerator().w(function (_context) {
+      while (1) switch (_context.p = _context.n) {
+        case 0:
+          setIsLoading(true);
+          setNotice(null);
+          _context.p = 1;
+          _context.n = 2;
+          return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
+            path: '/publishpress-hub/v1/settings/debug-log'
+          });
+        case 2:
+          response = _context.v;
+          setLogContent(response.log || '');
+          _context.n = 4;
+          break;
+        case 3:
+          _context.p = 3;
+          _t = _context.v;
+          setNotice({
+            status: 'error',
+            message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to load the debug log. Please try again.', 'publishpress-hub')
+          });
+        case 4:
+          _context.p = 4;
+          setIsLoading(false);
+          return _context.f(4);
+        case 5:
+          return _context.a(2);
+      }
+    }, _callee, null, [[1, 3, 4, 5]]);
+  })), []);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchLog();
+  }, [fetchLog]);
+  var handleClearLog = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
+      var _t2;
+      return _regenerator().w(function (_context2) {
+        while (1) switch (_context2.p = _context2.n) {
+          case 0:
+            setIsClearing(true);
+            setNotice(null);
+            _context2.p = 1;
+            _context2.n = 2;
+            return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
+              path: '/publishpress-hub/v1/settings/debug-log/clear',
+              method: 'POST'
+            });
+          case 2:
+            setLogContent('');
+            setNotice({
+              status: 'success',
+              message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug log cleared successfully.', 'publishpress-hub')
+            });
+            _context2.n = 4;
+            break;
+          case 3:
+            _context2.p = 3;
+            _t2 = _context2.v;
+            setNotice({
+              status: 'error',
+              message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to clear the debug log. Please try again.', 'publishpress-hub')
+            });
+          case 4:
+            _context2.p = 4;
+            setIsClearing(false);
+            return _context2.f(4);
+          case 5:
+            return _context2.a(2);
+        }
+      }, _callee2, null, [[1, 3, 4, 5]]);
+    }));
+    return function handleClearLog() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var handleCopyToClipboard = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
+      var _t3;
+      return _regenerator().w(function (_context3) {
+        while (1) switch (_context3.p = _context3.n) {
+          case 0:
+            if (logContent) {
+              _context3.n = 1;
+              break;
+            }
+            return _context3.a(2);
+          case 1:
+            _context3.p = 1;
+            _context3.n = 2;
+            return navigator.clipboard.writeText(logContent);
+          case 2:
+            setNotice({
+              status: 'success',
+              message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Log copied to clipboard.', 'publishpress-hub')
+            });
+            _context3.n = 4;
+            break;
+          case 3:
+            _context3.p = 3;
+            _t3 = _context3.v;
+            setNotice({
+              status: 'error',
+              message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to copy log to clipboard.', 'publishpress-hub')
+            });
+          case 4:
+            return _context3.a(2);
+        }
+      }, _callee3, null, [[1, 3]]);
+    }));
+    return function handleCopyToClipboard() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  var isEmpty = !logContent;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-debug-log-tab"
+  }, notice && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Notice, {
+    status: notice.status,
+    isDismissible: true,
+    onRemove: function onRemove() {
+      return setNotice(null);
+    }
+  }, notice.message), /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-debug-log-tab__toolbar"
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    variant: "secondary",
+    onClick: fetchLog,
+    isBusy: isLoading,
+    disabled: isLoading
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Refresh', 'publishpress-hub')), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    variant: "secondary",
+    onClick: handleCopyToClipboard,
+    disabled: isEmpty || isLoading
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Copy to Clipboard', 'publishpress-hub')), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    variant: "secondary",
+    isDestructive: true,
+    onClick: handleClearLog,
+    isBusy: isClearing,
+    disabled: isEmpty || isLoading || isClearing
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Clear Log', 'publishpress-hub'))), /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-debug-log-tab__viewer"
+  }, isLoading && /*#__PURE__*/React.createElement("p", {
+    className: "pp-hub-debug-log-tab__loading"
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Loading log...', 'publishpress-hub')), !isLoading && isEmpty && /*#__PURE__*/React.createElement("p", {
+    className: "pp-hub-debug-log-tab__empty"
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('The debug log is empty. Perform some actions (e.g. activate a license) and refresh to see entries.', 'publishpress-hub')), !isLoading && !isEmpty && /*#__PURE__*/React.createElement("pre", {
+    className: "pp-hub-debug-log-tab__content"
+  }, logContent)));
+};
+var DebugLogTab = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(DebugLogTabComponent);
+
+/***/ },
+
+/***/ "./resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx"
+/*!************************************************************************!*\
+  !*** ./resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx ***!
+  \************************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DiagnosticsTab: () => (/* binding */ DiagnosticsTab)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
+/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__);
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+/**
+ * Diagnostics settings tab.
+ *
+ * @package PublishPress\Hub\Presentation\Asset\src\jsx\components\pages\settings
+ * @author PublishPress
+ * @copyright Copyright (c) 2026, PublishPress
+ * @license GPL v2 or later
+ * @since 1.0.0
+ */
+
+
+
+
+
+var _ref = window.ppHubSettingsPageConfig || {},
+  initialDebugMode = _ref.debugModeEnabled;
+var DiagnosticsTabComponent = function DiagnosticsTabComponent() {
+  var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(Boolean(initialDebugMode)),
+    _useState2 = _slicedToArray(_useState, 2),
+    debugMode = _useState2[0],
+    setDebugMode = _useState2[1];
+  var _useState3 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    isSaving = _useState4[0],
+    setIsSaving = _useState4[1];
+  var _useState5 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState6 = _slicedToArray(_useState5, 2),
+    notice = _useState6[0],
+    setNotice = _useState6[1];
+  var handleDebugModeChange = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(newValue) {
+      var _t;
+      return _regenerator().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            setIsSaving(true);
+            setNotice(null);
+            _context.p = 1;
+            _context.n = 2;
+            return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
+              path: '/publishpress-hub/v1/settings/diagnostics',
+              method: 'POST',
+              data: {
+                debug_mode: newValue
+              }
+            });
+          case 2:
+            setDebugMode(newValue);
+            setNotice({
+              status: 'success',
+              message: newValue ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug mode enabled. A "Debug Log" tab is now available.', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug mode disabled.', 'publishpress-hub')
+            });
+            if (newValue !== Boolean(initialDebugMode)) {
+              window.location.reload();
+            }
+            _context.n = 4;
+            break;
+          case 3:
+            _context.p = 3;
+            _t = _context.v;
+            setNotice({
+              status: 'error',
+              message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to save the setting. Please try again.', 'publishpress-hub')
+            });
+          case 4:
+            _context.p = 4;
+            setIsSaving(false);
+            return _context.f(4);
+          case 5:
+            return _context.a(2);
+        }
+      }, _callee, null, [[1, 3, 4, 5]]);
+    }));
+    return function handleDebugModeChange(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  return /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-diagnostics-tab"
+  }, notice && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Notice, {
+    status: notice.status,
+    isDismissible: true,
+    onRemove: function onRemove() {
+      return setNotice(null);
+    }
+  }, notice.message), /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-diagnostics-tab__section"
+  }, /*#__PURE__*/React.createElement("h3", {
+    className: "pp-hub-diagnostics-tab__section-title"
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug Mode', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
+    className: "pp-hub-diagnostics-tab__description"
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('When enabled, all HTTP requests and responses to remote services (license activation, plugin downloads, etc.) are logged to a dedicated log file. Use the Debug Log tab to inspect the captured data.', 'publishpress-hub')), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Enable Debug Mode', 'publishpress-hub'),
+    checked: debugMode,
+    onChange: handleDebugModeChange,
+    disabled: isSaving,
+    __nextHasNoMarginBottom: true
+  }), debugMode && /*#__PURE__*/React.createElement("p", {
+    className: "pp-hub-diagnostics-tab__hint"
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug logging is active. Switch to the "Debug Log" tab to view captured data.', 'publishpress-hub'))));
+};
+var DiagnosticsTab = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(DiagnosticsTabComponent);
 
 /***/ },
 
@@ -724,6 +1100,16 @@ module.exports = publishpressHub.i18n;
 
 /***/ },
 
+/***/ "@wordpress/api-fetch"
+/*!******************************!*\
+  !*** external "wp.apiFetch" ***!
+  \******************************/
+(module) {
+
+module.exports = wp.apiFetch;
+
+/***/ },
+
 /***/ "@wordpress/components"
 /*!********************************!*\
   !*** external "wp.components" ***!
@@ -836,8 +1222,10 @@ var __webpack_exports__ = {};
   \*********************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var _components_pages_settings_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/pages/settings-page */ "./resources/src/jsx/components/pages/settings-page.jsx");
-/* harmony import */ var _utils_themeController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/themeController */ "./resources/src/jsx/utils/themeController.js");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_pages_settings_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/pages/settings-page */ "./resources/src/jsx/components/pages/settings-page.jsx");
+/* harmony import */ var _utils_themeController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/themeController */ "./resources/src/jsx/utils/themeController.js");
 /**
  * Settings page.
  *
@@ -851,12 +1239,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+var _ref = window.ppHubSettingsPageConfig || {},
+  apiNonce = _ref.apiNonce;
 var settingsPageContainer = document.getElementById('publishpress-hub-settings-page-container');
 if (settingsPageContainer) {
+  if (apiNonce) {
+    _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default().use(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default().createNonceMiddleware(apiNonce));
+  }
   var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(settingsPageContainer);
-  root.render(/*#__PURE__*/React.createElement(_components_pages_settings_page__WEBPACK_IMPORTED_MODULE_1__.SettingsPage, null));
-  var currentTheme = (0,_utils_themeController__WEBPACK_IMPORTED_MODULE_2__.getCurrentTheme)();
-  (0,_utils_themeController__WEBPACK_IMPORTED_MODULE_2__.setTheme)(currentTheme);
+  root.render(/*#__PURE__*/React.createElement(_components_pages_settings_page__WEBPACK_IMPORTED_MODULE_2__.SettingsPage, null));
+  var currentTheme = (0,_utils_themeController__WEBPACK_IMPORTED_MODULE_3__.getCurrentTheme)();
+  (0,_utils_themeController__WEBPACK_IMPORTED_MODULE_3__.setTheme)(currentTheme);
 }
 })();
 

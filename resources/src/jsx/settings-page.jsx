@@ -9,13 +9,20 @@
  */
 
 import { createRoot } from 'react-dom/client';
+import apiFetch from '@wordpress/api-fetch';
 
 import { SettingsPage } from './components/pages/settings-page';
 import { getCurrentTheme, setTheme } from './utils/themeController';
 
+const { apiNonce } = window.ppHubSettingsPageConfig || {};
+
 const settingsPageContainer = document.getElementById('publishpress-hub-settings-page-container');
 
 if (settingsPageContainer) {
+    if (apiNonce) {
+        apiFetch.use(apiFetch.createNonceMiddleware(apiNonce));
+    }
+
     const root = createRoot(settingsPageContainer);
     root.render(<SettingsPage/>);
 

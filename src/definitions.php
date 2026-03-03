@@ -28,6 +28,11 @@ use PublishPress\Hub\Application\Service\License\ScheduledLicenseValidationServi
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\Service\VersionService;
 use PublishPress\Hub\Application\UseCase\Plugin\ActivateLicenseUseCase;
+use PublishPress\Hub\Application\UseCase\Settings\ClearDebugLogUseCase;
+use PublishPress\Hub\Application\UseCase\Settings\GetDebugLogUseCase;
+use PublishPress\Hub\Application\UseCase\Settings\GetDiagnosticsSettingsUseCase;
+use PublishPress\Hub\Application\UseCase\Settings\UpdateDiagnosticsSettingsUseCase;
+use PublishPress\Hub\Infrastructure\Debug\DebugLogService;
 use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\DeactivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallFreePluginUseCase;
@@ -66,6 +71,7 @@ use PublishPress\Hub\Admin\Page\ComponentsShowcaseController;
 use PublishPress\Hub\Admin\Page\PluginsDashboardController;
 use PublishPress\Hub\Admin\Page\SettingsPageController;
 use PublishPress\Hub\Admin\Page\WelcomePageController;
+use PublishPress\Hub\Rest\SettingsController;
 use PublishPress\Hub\Infrastructure\Container\AbstractDependencies;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\License\Handler\LicenseValidationActionHandler;
@@ -394,6 +400,7 @@ return [
             $servicesToInit[] = $container->get(AbstractDependencies::SETTINGS_PAGE_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_PLUGINS_CONTROLLER);
+            $servicesToInit[] = $container->get(AbstractDependencies::REST_API_SETTINGS_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::LICENSE_VALIDATION_BOOTSTRAP_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::ACTIVATION_REDIRECT_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::REWRITE_RULES_SERVICE);
@@ -407,7 +414,8 @@ return [
             return new HubBootstrapService(
                 $servicesToInit,
                 $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
-                $container->get(AbstractDependencies::HUB_ACCESS_SERVICE)
+                $container->get(AbstractDependencies::HUB_ACCESS_SERVICE),
+                $container->get(AbstractDependencies::DEBUG_LOG_SERVICE)
             );
         },
 
@@ -556,7 +564,8 @@ return [
         fn(ContainerInterface $container) => new SettingsPageController(
             $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
-            $container->get(AbstractDependencies::ASSET_SERVICE)
+            $container->get(AbstractDependencies::ASSET_SERVICE),
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER)
         ),
 
     AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER =>
@@ -564,6 +573,39 @@ return [
             $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
             $container->get(AbstractDependencies::ASSET_SERVICE)
+        ),
+
+    AbstractDependencies::DEBUG_LOG_SERVICE =>
+        fn(ContainerInterface $container) => new DebugLogService(),
+
+    AbstractDependencies::GET_DIAGNOSTICS_SETTINGS_USE_CASE =>
+        fn(ContainerInterface $container) => new GetDiagnosticsSettingsUseCase(
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER)
+        ),
+
+    AbstractDependencies::UPDATE_DIAGNOSTICS_SETTINGS_USE_CASE =>
+        fn(ContainerInterface $container) => new UpdateDiagnosticsSettingsUseCase(
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER)
+        ),
+
+    AbstractDependencies::GET_DEBUG_LOG_USE_CASE =>
+        fn(ContainerInterface $container) => new GetDebugLogUseCase(
+            $container->get(AbstractDependencies::DEBUG_LOG_SERVICE)
+        ),
+
+    AbstractDependencies::CLEAR_DEBUG_LOG_USE_CASE =>
+        fn(ContainerInterface $container) => new ClearDebugLogUseCase(
+            $container->get(AbstractDependencies::DEBUG_LOG_SERVICE)
+        ),
+
+    AbstractDependencies::REST_API_SETTINGS_CONTROLLER =>
+        fn(ContainerInterface $container) => new SettingsController(
+            $container->get(AbstractDependencies::HUB_REST_API_NAMESPACE),
+            $container->get(AbstractDependencies::REST_API_SERVICE),
+            $container->get(AbstractDependencies::GET_DIAGNOSTICS_SETTINGS_USE_CASE),
+            $container->get(AbstractDependencies::UPDATE_DIAGNOSTICS_SETTINGS_USE_CASE),
+            $container->get(AbstractDependencies::GET_DEBUG_LOG_USE_CASE),
+            $container->get(AbstractDependencies::CLEAR_DEBUG_LOG_USE_CASE)
         ),
 
     // Rest API Services

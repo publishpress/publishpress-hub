@@ -21,10 +21,13 @@ use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
+use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
 
 class SettingsPageController implements BootableInterface
 {
     use BootableTrait;
+
+    private const DEBUG_MODE_OPTION = 'publishpress_hub_debug_mode';
 
     private ViewServiceInterface $viewService;
 
@@ -32,22 +35,27 @@ class SettingsPageController implements BootableInterface
 
     private AssetServiceInterface $assetService;
 
+    private WPOptionsAdapterInterface $optionsAdapter;
+
     /**
      * Constructor.
      *
      * @param ViewServiceInterface $viewService
      * @param AdminMenuServiceInterface $adminMenuService
      * @param AssetServiceInterface $assetService
+     * @param WPOptionsAdapterInterface $optionsAdapter
      * @since 1.0.0
      */
     public function __construct(
         ViewServiceInterface $viewService,
         AdminMenuServiceInterface $adminMenuService,
-        AssetServiceInterface $assetService
+        AssetServiceInterface $assetService,
+        WPOptionsAdapterInterface $optionsAdapter
     ) {
         $this->viewService = $viewService;
         $this->adminMenuService = $adminMenuService;
         $this->assetService = $assetService;
+        $this->optionsAdapter = $optionsAdapter;
     }
 
     /**
@@ -69,8 +77,7 @@ class SettingsPageController implements BootableInterface
      */
     protected function onInit(): void
     {
-        // Disabled until we have settings to show
-        // $this->registerAdminMenu();
+        $this->registerAdminMenu();
     }
 
     /**
@@ -149,16 +156,21 @@ class SettingsPageController implements BootableInterface
                 'wp-element',
                 'wp-components',
                 'wp-data',
+                'wp-api-fetch',
                 'wp-primitives',
                 'publishpress-hub-i18n',
             ]
         );
+
+        $debugModeEnabled = (bool) $this->optionsAdapter->getOption(self::DEBUG_MODE_OPTION, false);
 
         $this->assetService->localizeScript(
             'publishpress-hub-settings-page',
             'ppHubSettingsPageConfig',
             [
                 'logoUrl' => $this->assetService->getPluginAssetUrl('images/publishpress-logo.png'),
+                'apiNonce' => wp_create_nonce('wp_rest'),
+                'debugModeEnabled' => $debugModeEnabled,
             ]
         );
     }
