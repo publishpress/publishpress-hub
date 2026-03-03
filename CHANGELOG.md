@@ -1,6 +1,11 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[UNRELEASED]
+
+- Changed: Updated alledia/edd-sl-plugin-updater to version 1.6.25.
+- Changed: Updated publishpress/wordpress-edd-license to version 3.0.5.
+
 [1.0.3] - 03 Feb, 2026
 
 - Added: Italian language translation.
