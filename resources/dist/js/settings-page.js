@@ -778,9 +778,13 @@ var DebugLogTabComponent = function DebugLogTabComponent() {
     className: "pp-hub-debug-log-tab__loading"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Loading log...', 'publishpress-hub')), !isLoading && isEmpty && /*#__PURE__*/React.createElement("p", {
     className: "pp-hub-debug-log-tab__empty"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('The debug log is empty. Perform some actions (e.g. activate a license) and refresh to see entries.', 'publishpress-hub')), !isLoading && !isEmpty && /*#__PURE__*/React.createElement("pre", {
-    className: "pp-hub-debug-log-tab__content"
-  }, logContent)));
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('The debug log is empty. Perform some actions (e.g. activate a license) and refresh to see entries.', 'publishpress-hub')), /*#__PURE__*/React.createElement("textarea", {
+    className: "pp-hub-debug-log-tab__textarea",
+    value: logContent,
+    readOnly: true,
+    spellCheck: false,
+    "aria-label": (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug log contents', 'publishpress-hub')
+  })));
 };
 var DebugLogTab = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(DebugLogTabComponent);
 

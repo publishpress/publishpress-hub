@@ -2438,5 +2438,26 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
     margin-top: var(--pp-hub-spacing-lg);
 }
 
+.pp-hub-debug-log-tab {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-hub-spacing-md);
+    min-height: calc(100vh - 240px);
+}
+
+.pp-hub-debug-log-tab__viewer {
+    flex: 1 1 auto;
+    min-height: calc(100vh - 320px);
+}
+
+.pp-hub-debug-log-tab__textarea {
+    width: 100%;
+    min-height: 520px;
+    resize: vertical;
+    overflow: auto;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    line-height: 1.4;
+}
+
 
 /*# sourceMappingURL=admin-page.css.map*/

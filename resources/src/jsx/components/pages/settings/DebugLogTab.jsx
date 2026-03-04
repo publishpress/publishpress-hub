@@ -144,11 +144,13 @@ const DebugLogTabComponent = () => {
                     </p>
                 )}
 
-                {!isLoading && !isEmpty && (
-                    <pre className="pp-hub-debug-log-tab__content">
-                        {logContent}
-                    </pre>
-                )}
+                <textarea
+                    className="pp-hub-debug-log-tab__textarea"
+                    value={logContent}
+                    readOnly
+                    spellCheck={false}
+                    aria-label={__('Debug log contents', 'publishpress-hub')}
+                />
             </div>
         </div>
     );

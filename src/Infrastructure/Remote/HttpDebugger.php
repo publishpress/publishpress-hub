@@ -69,7 +69,7 @@ class HttpDebugger
      */
     public static function initialize(): void
     {
-        if (self::$initialized || !self::isDebugEnabled()) {
+        if (self::$initialized) {
             return;
         }
 
@@ -239,14 +239,16 @@ class HttpDebugger
      */
     private static function log(string $type, array $data): void
     {
+        $directionPrefix = self::getDirectionPrefix($type);
         $logMessage = sprintf(
             '[%s] %s: %s',
             self::DEBUG_PREFIX,
-            $type,
+            $directionPrefix . ' ' . $type,
             wp_json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
         );
 
         if (self::$logFilePath !== null) {
+            self::ensureLogDirectoryExists(dirname(self::$logFilePath));
             // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
             file_put_contents(self::$logFilePath, $logMessage . "\n", FILE_APPEND | LOCK_EX);
             return;
@@ -254,6 +256,43 @@ class HttpDebugger
 
         // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
         error_log($logMessage);
+    }
+
+    /**
+     * Returns a visual direction prefix for request/response log entries.
+     *
+     * @param string $type Log entry type.
+     * @return string Direction marker.
+     * @since 1.0.0
+     */
+    private static function getDirectionPrefix(string $type): string
+    {
+        if ($type === 'REQUEST' || $type === 'RAW_REQUEST') {
+            return '->';
+        }
+
+        if ($type === 'RESPONSE') {
+            return '<-';
+        }
+
+        return '--';
+    }
+
+    /**
+     * Ensure the target log directory exists before writing logs.
+     *
+     * @param string $logDir Absolute path to the log directory.
+     * @return void
+     * @since 1.0.0
+     */
+    private static function ensureLogDirectoryExists(string $logDir): void
+    {
+        if (is_dir($logDir)) {
+            return;
+        }
+
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_mkdir, WordPressVIPMinimum.Functions.RestrictedFunctions.directory_mkdir
+        mkdir($logDir, 0755, true);
     }
 
     /**
