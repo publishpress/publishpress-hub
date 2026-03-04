@@ -98,7 +98,7 @@ class HttpDebugger
             'timestamp' => self::timestamp(),
             'method' => $parsed_args['method'] ?? 'GET',
             'url' => $url,
-            'body' => $parsed_args['body'] ?? [],
+            'body' => self::redactSensitiveFields($parsed_args['body'] ?? []),
             'timeout' => $parsed_args['timeout'] ?? null,
             'sslverify' => $parsed_args['sslverify'] ?? null,
             'headers' => $parsed_args['headers'] ?? [],
@@ -256,6 +256,43 @@ class HttpDebugger
 
         // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
         error_log($logMessage);
+    }
+
+    /**
+     * Redacts sensitive fields from a request body before logging.
+     *
+     * Any field whose key matches a known sensitive name is replaced with
+     * a masked value that preserves the first and last characters so the
+     * key can still be identified in the log without exposing the full value.
+     *
+     * @param mixed $body The raw request body (array or string).
+     * @return mixed The sanitized body.
+     * @since 1.0.0
+     */
+    private static function redactSensitiveFields($body)
+    {
+        if (!is_array($body)) {
+            return $body;
+        }
+
+        $sensitiveKeys = ['license', 'license_key', 'key', 'secret', 'password', 'token', 'api_key'];
+
+        foreach ($body as $field => $value) {
+            if (!in_array(strtolower((string) $field), $sensitiveKeys, true)) {
+                continue;
+            }
+
+            $value = (string) $value;
+            $length = strlen($value);
+
+            if ($length <= 4) {
+                $body[$field] = str_repeat('*', $length);
+            } else {
+                $body[$field] = $value[0] . str_repeat('*', $length - 2) . $value[$length - 1];
+            }
+        }
+
+        return $body;
     }
 
     /**
