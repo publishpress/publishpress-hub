@@ -22,6 +22,8 @@ const {
     debugModeEnabled,
 } = window.ppHubSettingsPageConfig || {};
 
+const TAB_QUERY_PARAM = 'tab';
+
 const buildTabs = () => {
     const tabs = [
         {
@@ -42,6 +44,30 @@ const buildTabs = () => {
     return tabs;
 };
 
+const getInitialTabName = (tabs) => {
+    const defaultTab = tabs[0]?.name || '';
+
+    if (!defaultTab) {
+        return '';
+    }
+
+    const currentUrl = new URL(window.location.href);
+    const selectedTab = currentUrl.searchParams.get(TAB_QUERY_PARAM);
+    const hasSelectedTab = tabs.some((tab) => tab.name === selectedTab);
+
+    return hasSelectedTab ? selectedTab : defaultTab;
+};
+
+const updateSelectedTabInUrl = (tabName) => {
+    if (!tabName) {
+        return;
+    }
+
+    const currentUrl = new URL(window.location.href);
+    currentUrl.searchParams.set(TAB_QUERY_PARAM, tabName);
+    window.history.replaceState({}, '', currentUrl.toString());
+};
+
 const renderTab = (tab) => {
     if (tab.name === 'debug-log') {
         return <DebugLogTab />;
@@ -53,6 +79,7 @@ const renderTab = (tab) => {
 const SettingsPageComponent = () => {
     const title = __('Settings', 'publishpress-hub');
     const tabs = buildTabs();
+    const initialTabName = getInitialTabName(tabs);
 
     return (
         <AdminPageLayout
@@ -63,7 +90,8 @@ const SettingsPageComponent = () => {
                 <TabPanel
                     className="pp-hub-settings-tabs"
                     tabs={tabs}
-                    onSelect={() => {}}
+                    initialTabName={initialTabName}
+                    onSelect={(tabName) => updateSelectedTabInUrl(tabName)}
                 >
                     {renderTab}
                 </TabPanel>

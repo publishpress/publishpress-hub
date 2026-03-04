@@ -506,6 +506,7 @@ __webpack_require__.r(__webpack_exports__);
 var _ref = window.ppHubSettingsPageConfig || {},
   logoUrl = _ref.logoUrl,
   debugModeEnabled = _ref.debugModeEnabled;
+var TAB_QUERY_PARAM = 'tab';
 var buildTabs = function buildTabs() {
   var tabs = [{
     name: 'diagnostics',
@@ -521,6 +522,27 @@ var buildTabs = function buildTabs() {
   }
   return tabs;
 };
+var getInitialTabName = function getInitialTabName(tabs) {
+  var _tabs$;
+  var defaultTab = ((_tabs$ = tabs[0]) === null || _tabs$ === void 0 ? void 0 : _tabs$.name) || '';
+  if (!defaultTab) {
+    return '';
+  }
+  var currentUrl = new URL(window.location.href);
+  var selectedTab = currentUrl.searchParams.get(TAB_QUERY_PARAM);
+  var hasSelectedTab = tabs.some(function (tab) {
+    return tab.name === selectedTab;
+  });
+  return hasSelectedTab ? selectedTab : defaultTab;
+};
+var updateSelectedTabInUrl = function updateSelectedTabInUrl(tabName) {
+  if (!tabName) {
+    return;
+  }
+  var currentUrl = new URL(window.location.href);
+  currentUrl.searchParams.set(TAB_QUERY_PARAM, tabName);
+  window.history.replaceState({}, '', currentUrl.toString());
+};
 var renderTab = function renderTab(tab) {
   if (tab.name === 'debug-log') {
     return /*#__PURE__*/React.createElement(_settings_DebugLogTab__WEBPACK_IMPORTED_MODULE_5__.DebugLogTab, null);
@@ -530,6 +552,7 @@ var renderTab = function renderTab(tab) {
 var SettingsPageComponent = function SettingsPageComponent() {
   var title = (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Settings', 'publishpress-hub');
   var tabs = buildTabs();
+  var initialTabName = getInitialTabName(tabs);
   return /*#__PURE__*/React.createElement(_admin_page__WEBPACK_IMPORTED_MODULE_3__.AdminPageLayout, {
     title: title,
     logoUrl: logoUrl
@@ -538,7 +561,10 @@ var SettingsPageComponent = function SettingsPageComponent() {
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TabPanel, {
     className: "pp-hub-settings-tabs",
     tabs: tabs,
-    onSelect: function onSelect() {}
+    initialTabName: initialTabName,
+    onSelect: function onSelect(tabName) {
+      return updateSelectedTabInUrl(tabName);
+    }
   }, renderTab)));
 };
 var SettingsPage = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(SettingsPageComponent);

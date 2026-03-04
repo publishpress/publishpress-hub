@@ -2434,5 +2434,9 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
     100% { transform: rotate(360deg); }
 }
 
+.pp-hub-settings-tabs .components-tab-panel__tab-content {
+    margin-top: var(--pp-hub-spacing-lg);
+}
+
 
 /*# sourceMappingURL=admin-page.css.map*/
