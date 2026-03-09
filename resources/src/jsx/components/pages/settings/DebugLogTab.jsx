@@ -196,8 +196,27 @@ const DebugLogTabComponent = () => {
             return;
         }
 
+        // navigator.clipboard requires a secure context (HTTPS).
+        // Fall back to the legacy execCommand approach for HTTP dev environments.
+        const copyViaExecCommand = () => {
+            const el = document.createElement('textarea');
+            el.value = logContent;
+            el.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
+            document.body.appendChild(el);
+            el.focus();
+            el.select();
+            const success = document.execCommand('copy');
+            document.body.removeChild(el);
+            return success;
+        };
+
         try {
-            await navigator.clipboard.writeText(logContent);
+            if (navigator.clipboard?.writeText) {
+                await navigator.clipboard.writeText(logContent);
+            } else if (!copyViaExecCommand()) {
+                throw new Error('execCommand copy failed');
+            }
+
             setNotice({
                 status: 'success',
                 message: __('Log copied to clipboard.', 'publishpress-hub'),

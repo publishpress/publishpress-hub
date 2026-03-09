@@ -971,7 +971,7 @@ var DebugLogTabComponent = function DebugLogTabComponent() {
   }();
   var handleCopyToClipboard = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
-      var _t4;
+      var copyViaExecCommand, _navigator$clipboard, _t4;
       return _regenerator().w(function (_context4) {
         while (1) switch (_context4.p = _context4.n) {
           case 0:
@@ -981,27 +981,53 @@ var DebugLogTabComponent = function DebugLogTabComponent() {
             }
             return _context4.a(2);
           case 1:
-            _context4.p = 1;
-            _context4.n = 2;
+            // navigator.clipboard requires a secure context (HTTPS).
+            // Fall back to the legacy execCommand approach for HTTP dev environments.
+            copyViaExecCommand = function copyViaExecCommand() {
+              var el = document.createElement('textarea');
+              el.value = logContent;
+              el.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
+              document.body.appendChild(el);
+              el.focus();
+              el.select();
+              var success = document.execCommand('copy');
+              document.body.removeChild(el);
+              return success;
+            };
+            _context4.p = 2;
+            if (!((_navigator$clipboard = navigator.clipboard) !== null && _navigator$clipboard !== void 0 && _navigator$clipboard.writeText)) {
+              _context4.n = 4;
+              break;
+            }
+            _context4.n = 3;
             return navigator.clipboard.writeText(logContent);
-          case 2:
+          case 3:
+            _context4.n = 5;
+            break;
+          case 4:
+            if (copyViaExecCommand()) {
+              _context4.n = 5;
+              break;
+            }
+            throw new Error('execCommand copy failed');
+          case 5:
             setNotice({
               status: 'success',
               message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Log copied to clipboard.', 'publishpress-hub')
             });
-            _context4.n = 4;
+            _context4.n = 7;
             break;
-          case 3:
-            _context4.p = 3;
+          case 6:
+            _context4.p = 6;
             _t4 = _context4.v;
             setNotice({
               status: 'error',
               message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to copy log to clipboard.', 'publishpress-hub')
             });
-          case 4:
+          case 7:
             return _context4.a(2);
         }
-      }, _callee4, null, [[1, 3]]);
+      }, _callee4, null, [[2, 6]]);
     }));
     return function handleCopyToClipboard() {
       return _ref4.apply(this, arguments);
