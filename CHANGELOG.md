@@ -1,6 +1,11 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[UNRELEASED]
+
+- Added: New settings menu page for improved configuration.
+- Added: Debug log feature to assist with troubleshooting and support.
+
 [1.0.3] - 03 Feb, 2026
 
 - Added: Italian language translation.
