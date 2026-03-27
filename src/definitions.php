@@ -79,6 +79,8 @@ use PublishPress\Hub\Infrastructure\License\PerPluginLicensePersistenceService;
 use PublishPress\Hub\Rest\PluginsController;
 use PublishPress\Psr\Container\ContainerInterface;
 
+$assetsDistRelativePath = 'resources/dist/';
+
 return [
     AbstractDependencies::PLUGIN_PATH => PUBLISHPRESS_HUB_PATH,
 
@@ -86,9 +88,9 @@ return [
 
     AbstractDependencies::PLUGIN_URL => PUBLISHPRESS_HUB_URL,
 
-    AbstractDependencies::PLUGIN_RESOURCES_PATH => PUBLISHPRESS_HUB_PATH . 'resources/dist/',
+    AbstractDependencies::PLUGIN_RESOURCES_PATH => PUBLISHPRESS_HUB_PATH . $assetsDistRelativePath,
 
-    AbstractDependencies::PLUGIN_RESOURCES_URL => PUBLISHPRESS_HUB_URL . 'resources/dist/',
+    AbstractDependencies::PLUGIN_RESOURCES_URL => PUBLISHPRESS_HUB_URL . $assetsDistRelativePath,
 
     AbstractDependencies::PLUGIN_VERSION => PUBLISHPRESS_HUB_VERSION,
 
