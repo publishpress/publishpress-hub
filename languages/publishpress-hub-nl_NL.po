@@ -1,0 +1,1118 @@
+# Copyright (C) 2026 PublishPress
+# This file is distributed under the GPL2.
+msgid ""
+msgstr ""
+"Project-Id-Version: PublishPress Hub 1.0.4-beta.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
+"PO-Revision-Date: 2026-03-27 15:32+0000\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: publishpress-hub\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl-NL\n"
+
+#: publishpress-hub.php:4
+#: publishpress-hub.php:4
+#: src/Admin/Page/WelcomePageController.php:259, fuzzy
+#. Plugin Name of the plugin
+msgid "PublishPress Hub"
+msgstr "PublishPress Hub"
+
+#: publishpress-hub.php:5
+#. Description of the plugin
+msgid "PublishPress"
+msgstr "PublishPress"
+
+#: publishpress-hub.php:8, fuzzy
+#. Author URI of the plugin
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
+
+#: src/Admin/Page/ComponentsShowcaseController.php:118
+msgid "Please wait while we load the components showcase..."
+msgstr "Even geduld terwijl we de componenten showcase laden..."
+
+#: src/Admin/Page/PluginsDashboardController.php:133
+msgid "Please wait while we load the plugins dashboard..."
+msgstr "Even geduld terwijl we het plugins dashboard laden..."
+
+#: src/Admin/Page/SettingsPageController.php:104
+#: src/Admin/Page/SettingsPageController.php:105
+#: resources/src/jsx/components/pages/settings-page.jsx:80
+msgid "Settings"
+msgstr "Instellingen"
+
+#: src/Admin/Page/SettingsPageController.php:126
+msgid "Please wait while we load the settings page..."
+msgstr "Even geduld terwijl we de instellingenpagina laden..."
+
+#: src/Admin/Page/WelcomePageController.php:143
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Je hebt niet voldoende permissies om deze pagina te openen."
+
+#: src/Admin/Page/WelcomePageController.php:180
+#: src/Admin/Page/WelcomePageController.php:181
+msgid "Welcome"
+msgstr "Welkom"
+
+#: src/Admin/Page/WelcomePageController.php:203
+msgid "Please wait while we load the welcome page..."
+msgstr "Even geduld terwijl we de welkomstpagina laden..."
+
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
+#. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
+#, php-format
+msgid "Warning: The license for %1$s has expired. %2$s"
+msgstr "Waarschuwing: De licentie voor %1$s is verlopen. %2$s"
+
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:123
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:137
+msgid "Manage licenses"
+msgstr "Beheer licenties"
+
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
+#. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
+#, php-format
+msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
+msgstr "Waarschuwing: %1$d plugin(s) hebben verlopen licenties: %2$s. %3$s"
+
+#: src/Application/Traits/BootableTrait.php:75
+msgid "Object must be loaded before initializing."
+msgstr "Object moet worden geladen voordat het wordt geïnitialiseerd."
+
+#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:110
+msgid "No license key found"
+msgstr "Geen licentiesleutel gevonden"
+
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
+#. translators: %s is the plugin family slug
+#, php-format
+msgid "Free plugin not set for plugin family: %s"
+msgstr "Gratis plugin niet ingesteld voor pluginfamilie: %s"
+
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
+#. translators: %s is the plugin family slug
+#, php-format
+msgid "Pro plugin not set for plugin family: %s"
+msgstr "Pro-plugin niet ingesteld voor pluginfamilie: %s"
+
+#: src/Domain/Plugin/Exception/LicenseActivationException.php:28
+msgid "This license is currently disabled. Please contact support for help."
+msgstr ""
+"Deze licentie is momenteel uitgeschakeld. Neem contact op met de "
+"ondersteuning voor hulp."
+
+#: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
+msgid "This license has expired. Please contact support to renew it."
+msgstr ""
+"Deze licentie is verlopen. Neem contact op met de ondersteuning om deze te "
+"verlengen."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
+msgid "No license key provided. Please enter a valid license key."
+msgstr "Geen licentiesleutel opgegeven. Voer een geldige licentiesleutel in."
+
+#: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
+msgid "This license cannot be activated. Please contact support for help."
+msgstr ""
+"Deze licentie kan niet worden geactiveerd. Neem contact op met de "
+"ondersteuning voor hulp."
+
+#: src/Domain/Plugin/Exception/LicenseServerException.php:28
+msgid "License server error. Please try again later or contact support for help."
+msgstr ""
+"Fout op de licentieserver. Probeer het later opnieuw of neem contact op met "
+"de ondersteuning voor hulp."
+
+#: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
+msgid "This license is inactive for this site. Please contact support for help."
+msgstr ""
+"Deze licentie is inactief voor deze site. Neem contact op met de "
+"ondersteuning voor hulp."
+
+#: src/Domain/Plugin/Exception/PluginActivationException.php:29
+msgid "This action is not possible because the plugin is already installed."
+msgstr "Deze actie is niet mogelijk omdat de plugin al is geïnstalleerd."
+
+#: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
+msgid "Plugin family not found. Please contact support for help."
+msgstr "Pluginfamilie niet gevonden. Neem contact op met de ondersteuning voor hulp."
+
+#: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
+msgid "Plugin installation failed. Please contact support for help."
+msgstr ""
+"Installatie van de plugin is mislukt. Neem contact op met de ondersteuning "
+"voor hulp."
+
+#: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
+msgid "Define tasks that authors must complete before publishing."
+msgstr "Definieer taken die auteurs moeten voltooien voordat ze publiceren."
+
+#: src/Domain/Plugin/plugin-families.php:42
+msgid "Control who can edit and view your content."
+msgstr "Beheer wie uw inhoud kan bewerken en bekijken."
+
+#: src/Domain/Plugin/plugin-families.php:58
+msgid "Create, manage and display authors for your content."
+msgstr "Maak, beheer en toon auteurs voor uw inhoud."
+
+#: src/Domain/Plugin/plugin-families.php:74
+msgid "All the tools you need to improve the block editor."
+msgstr "Alle tools die u nodig heeft om de blokeditor te verbeteren."
+
+#: src/Domain/Plugin/plugin-families.php:90
+msgid "Control your admin area and user roles."
+msgstr "Beheer uw admingebied en gebruikersrollen."
+
+#: src/Domain/Plugin/plugin-families.php:106
+msgid "Schedule changes to your posts."
+msgstr "Plan wijzigingen voor uw berichten."
+
+#: src/Domain/Plugin/plugin-families.php:122
+msgid "Organize, schedule, and plan your publishing."
+msgstr "Organiseer, plan en plan uw publicatie."
+
+#: src/Domain/Plugin/plugin-families.php:138
+msgid "Approve and schedule new versions to your published posts."
+msgstr "Goedkeuren en plannen van nieuwe versies van uw gepubliceerde berichten."
+
+#: src/Domain/Plugin/plugin-families.php:154
+msgid "Create shortlinks for your posts."
+msgstr "Maak shortlinks voor uw berichten."
+
+#: src/Domain/Plugin/plugin-families.php:170
+msgid "Organize your posts into issues or series."
+msgstr "Organiseer uw berichten in nummers of series."
+
+#: src/Domain/Plugin/plugin-families.php:186
+msgid "Create custom statuses and publishing workflows."
+msgstr "Maak aangepaste statussen en publicatieworkflows."
+
+#: src/Infrastructure/Container/DependencyContainer.php:102
+#. translators: %s is the dependency ID.
+#, php-format
+msgid "Dependency \"%s\" not found in container."
+msgstr "Afhankelijkheid \"%s\" niet gevonden in container."
+
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
+#. translators: %s is the error message
+#, php-format
+msgid "Error validating license: %s"
+msgstr "Fout bij het valideren van de licentie: %s"
+
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
+#. translators: %s is the error message
+#, php-format
+msgid "Error getting license info: %s"
+msgstr "Fout bij het ophalen van licentie-informatie: %s"
+
+#: src/Infrastructure/RestApi/RestApiService.php:287
+msgid "Too many requests. Please try again later."
+msgstr "Te veel verzoeken. Probeer het later opnieuw."
+
+#: src/Infrastructure/RestApi/RestApiService.php:358
+msgid "An error occurred while processing your request."
+msgstr "Er is een fout opgetreden bij het verwerken van uw verzoek."
+
+#: src/Infrastructure/View/ViewService.php:48
+#. translators: %s is the template path
+#, php-format
+msgid "Template not found: %s"
+msgstr "Sjabloon niet gevonden: %s"
+
+#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:55
+msgid "Path cannot be empty"
+msgstr "Pad mag niet leeg zijn"
+
+#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:64
+msgid "File extension cannot be empty"
+msgstr "Bestandsextensie mag niet leeg zijn"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:183
+msgid "Invalid file path: null byte detected"
+msgstr "Ongeldig bestandspad: null-byte gedetecteerd"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:192
+msgid "Invalid file path: directory traversal detected"
+msgstr "Ongeldig bestandspad: directory traversie gedetecteerd"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
+#. translators: %s is the directory path
+#, php-format
+msgid "Invalid file path: parent directory does not exist: %s"
+msgstr "Ongeldig bestandspad: bovenliggende map bestaat niet: %s"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:220
+msgid "Invalid file path: unable to resolve path"
+msgstr "Ongeldig bestandspad: kan pad niet oplossen"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:239
+msgid "Invalid file path: operation not allowed outside permitted directories"
+msgstr "Ongeldig bestandspad: bewerking niet toegestaan buiten toegestane mappen"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:52
+msgid "Invalid download URL provided"
+msgstr "Ongeldig download-URL opgegeven"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:60
+msgid "Download URL must use HTTP or HTTPS protocol"
+msgstr "Download-URL moet het HTTP- of HTTPS-protocol gebruiken"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
+#. translators: %s is the hostname
+#, php-format
+msgid "Download URL is not from an allowed domain: %s"
+msgstr "Download-URL is niet van een toegestane domein: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:80
+msgid "Download URL failed WordPress validation"
+msgstr "Download-URL is niet geslaagd voor WordPress-validatie"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
+#. translators: %s is the error message
+#, php-format
+msgid "Failed to download plugin: %s"
+msgstr "Kon plugin niet downloaden: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:105
+msgid "Downloaded plugin file does not exist"
+msgstr "Gedownloade pluginbestand bestaat niet"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:113
+msgid "Downloaded plugin file is empty"
+msgstr "Gedownloade pluginbestand is leeg"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:122
+msgid "Cannot read downloaded plugin file"
+msgstr "Kan gedownloade pluginbestand niet lezen"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:132
+msgid "Failed to unzip plugin file: %s"
+msgstr "Kon pluginbestand niet uitpakken: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:156
+msgid "Failed to unzip plugin file"
+msgstr "Kon pluginbestand niet uitpakken"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
+#. translators: %s is the error message
+#, php-format
+msgid "Failed to activate plugin: %s"
+msgstr "Kon plugin niet activeren: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
+#. translators: %s is the error message
+#, php-format
+msgid "Failed to delete plugin: %s"
+msgstr "Kon plugin niet verwijderen: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:292
+msgid "No update available for this plugin"
+msgstr "Geen update beschikbaar voor deze plugin"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:300
+msgid "Invalid update information for this plugin"
+msgstr "Ongeldige update-informatie voor deze plugin"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
+#. translators: %s is the error message
+#, php-format
+msgid "Failed to update plugin: %s"
+msgstr "Bijwerken van de plugin is mislukt: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:341
+msgid "Plugin update failed"
+msgstr "Plugin-update mislukt"
+
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
+#. translators: %s is the error message
+#, php-format
+msgid "Failed to get plugin information: %s"
+msgstr "Bijwerken van de plugin-informatie is mislukt: %s"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:26
+#. translators: %s is the plugin name, %s is the rating
+#, js-format
+msgid "If you like %s please leave us a %s rating. Thank you!"
+msgstr "Als je %s leuk vindt, laat ons dan een %s beoordeling achter. Bedankt!"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:43
+#. translators: %s is the plugin name
+#, js-format
+msgid "About %s"
+msgstr "Over %s"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:45
+msgid "About"
+msgstr "Over"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:54
+#. translators: %s is the plugin name
+#, js-format
+msgid "Documentation for %s"
+msgstr "Documentatie voor %s"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:56
+msgid "Documentation"
+msgstr "Documentatie"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:65
+#. translators: %s is the plugin name
+#, js-format
+msgid "Contact the %s team"
+msgstr "Neem contact op met het %s-team"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:67, fuzzy
+msgid "Contact"
+msgstr "Contact"
+
+#: resources/src/jsx/components/admin-page/header.jsx:50
+msgid "Get Support"
+msgstr "Krijg ondersteuning"
+
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
+msgid "Select an option"
+msgstr "Selecteer een optie"
+
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
+msgid "Options"
+msgstr "Opties"
+
+#: resources/src/jsx/components/pages/components-showcase.jsx:26
+msgid "Components Showcase"
+msgstr "Componenten Showcase"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
+msgid "N/A"
+msgstr "N.v.t."
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
+#. translators: %1$s is the plugin name, %2$s is the expiration date
+#, js-format
+msgid "The license for %1$s expired on %2$s"
+msgstr "De licentie voor %1$s is verlopen op %2$s"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
+#. translators: %1$s is the list of plugin names, %2$s is the expiration date
+#, js-format
+msgid "The licenses for %1$s expired on %2$s"
+msgstr "De licenties voor %1$s zijn verlopen op %2$s"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:157
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:213
+msgid "Renew now"
+msgstr "Verleng nu"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
+#. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
+#, js-format
+msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
+msgstr "De licentie voor %1$s verloopt op %2$s (%3$d dagen resterend)"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
+#. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
+#, js-format
+msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
+msgstr "De licenties voor %1$s verlopen op %2$s (%3$d dagen resterend)"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:210
+msgid "Warning:"
+msgstr "Waarschuwing:"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:46
+msgid "All"
+msgstr "Alles"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:51
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:39
+msgid "Unlicensed"
+msgstr "Ongelicensed"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:56
+msgid "Active"
+msgstr "Actief"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:61
+msgid "Inactive"
+msgstr "Inactief"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:66
+msgid "Not installed"
+msgstr "Niet geïnstalleerd"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:71
+msgid "Updates available"
+msgstr "Updates beschikbaar"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:94
+#: resources/src/jsx/components/pages/welcome-page.jsx:128, fuzzy
+msgid "Plugins Dashboard"
+msgstr "Plugins Dashboard"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
+msgid "Hold ALT and click to force refresh the update cache"
+msgstr "Houd ALT ingedrukt en klik om de updatecache geforceerd te vernieuwen"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
+msgid "Force Refresh"
+msgstr "Geforceerd vernieuwen"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:300
+msgid "Refresh"
+msgstr "Vernieuwen"
+
+#: resources/src/jsx/components/pages/settings-page.jsx:31
+msgid "Diagnostics"
+msgstr "Diagnostiek"
+
+#: resources/src/jsx/components/pages/settings-page.jsx:39
+msgid "Debug Log"
+msgstr "Debug-log"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:108
+msgid "Failed to load the debug log. Please try again."
+msgstr "Kon de debug-log niet laden. Probeer het opnieuw."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:182
+msgid "Debug log cleared successfully."
+msgstr "Debug-log met succes gewist."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
+msgid "Failed to clear the debug log. Please try again."
+msgstr "Kon de debug-log niet wissen. Probeer het opnieuw."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222
+msgid "Log copied to clipboard."
+msgstr "Log naar het klembord gekopieerd."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
+msgid "Failed to copy log to clipboard."
+msgstr "Kon log niet naar het klembord kopiëren."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:253
+msgid "Requests"
+msgstr "Verzoeken"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:260
+msgid "Full Log"
+msgstr "Volledige Log"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:271
+msgid "Auto-refresh is on — click to stop"
+msgstr "Automatisch vernieuwen is aan - klik om te stoppen"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:272
+msgid "Enable auto-refresh"
+msgstr "Automatisch vernieuwen inschakelen"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:277
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
+msgid "Auto-refresh"
+msgstr "Automatisch vernieuwen"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:286
+msgid "Auto-refresh interval"
+msgstr "Interval voor automatisch vernieuwen"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:308
+msgid "Copy to Clipboard"
+msgstr "Kopiëren naar Klembord"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:318
+msgid "Clear Log"
+msgstr "Log wissen"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:326
+msgid "Loading log..."
+msgstr "Log aan het laden..."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:332
+msgid "Debug log contents"
+msgstr "Inhoud van het debuglog"
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
+msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
+msgstr "Debugmodus ingeschakeld. Een \"Debug Log\" tabblad is nu beschikbaar."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
+msgid "Debug mode disabled."
+msgstr "Debugmodus uitgeschakeld."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:50
+msgid "Failed to save the setting. Please try again."
+msgstr "Het is niet gelukt om de instelling op te slaan. Probeer het opnieuw."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
+msgid "Debug Mode"
+msgstr "Debugmodus"
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
+msgid "Enable Debug Mode"
+msgstr "Debugmodus inschakelen"
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
+msgid "ERR"
+msgstr "ERR"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:106
+msgid "Request"
+msgstr "Verzoek"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:113
+msgid "Response"
+msgstr "Antwoord"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:119
+msgid "No response recorded for this request."
+msgstr "Geen antwoord geregistreerd voor dit verzoek."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:144
+msgid "No requests found in the log."
+msgstr "Geen verzoeken gevonden in het logboek."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:153
+msgid "1 request recorded"
+msgstr "1 verzoek geregistreerd"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
+#, js-format
+msgid "%d requests recorded"
+msgstr "%d verzoeken geregistreerd"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:37
+msgid "Welcome to PublishPress Hub!"
+msgstr "Welkom bij PublishPress Hub!"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:40
+msgid "Get started with PublishPress Hub in a few simple steps."
+msgstr "Begin met PublishPress Hub in een paar eenvoudige stappen."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:47
+msgid "Welcome to PublishPress Hub"
+msgstr "Welkom bij PublishPress Hub"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:52
+msgid "What you can do with PublishPress Hub"
+msgstr "Wat je kunt doen met PublishPress Hub"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:55
+msgid "Centralized Dashboard"
+msgstr "Gecentraliseerd Dashboard"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:67
+msgid "One-Click Installation"
+msgstr "Eén-Klik Installatie"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:79
+msgid "License Management"
+msgstr "Licentiebeheer"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:91
+msgid "Easy Updates"
+msgstr "Eenvoudige Updates"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:103
+msgid "Keep all your PublishPress plugins up to date with one-click updates."
+msgstr "Houd al je PublishPress-plugins up-to-date met één-klik updates."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:112
+msgid "Status Monitoring"
+msgstr "Statusmonitoring"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:115
+msgid "Get Started"
+msgstr "Aan de slag"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:127
+#, js-format
+msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgstr ""
+"Klaar om te verkennen? Bezoek de %s om alle beschikbare "
+"PublishPress-plugins te zien."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:142
+msgid "View Plugins Dashboard"
+msgstr "Bekijk Plugins Dashboard"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:148
+msgid "Already know what you're doing? Great! You can "
+msgstr "Weet je al wat je doet? Geweldig! Je kunt "
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:150
+msgid "dismiss this page"
+msgstr "deze pagina sluiten"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+msgid "."
+msgstr "."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
+msgid "Install"
+msgstr "Installeren"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:22
+msgid "Installing..."
+msgstr "Bezig met installeren..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28
+msgid "Upgrade to Pro"
+msgstr "Upgrade naar Pro"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:28
+msgid "Upgrading to Pro..."
+msgstr "Bezig met upgraden naar Pro..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
+msgid "Manage License"
+msgstr "Beheer Licentie"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:34
+msgid "Managing License..."
+msgstr "Bezig met licentiebeheer..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
+msgid "Activate License"
+msgstr "Activeer Licentie"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:40
+msgid "Activating License..."
+msgstr "Bezig met activeren van licentie..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
+msgid "Resolve Conflict"
+msgstr "Los Conflict op"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
+msgid "Resolving Conflict..."
+msgstr "Bezig met oplossen van conflict..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
+msgid "Update"
+msgstr "Bijwerken"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
+msgid "Updating..."
+msgstr "Bezig met bijwerken..."
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:31
+msgid "Confirmation"
+msgstr "Bevestiging"
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:36
+msgid "Are you sure you want to continue?"
+msgstr "Weet je zeker dat je wilt doorgaan?"
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:49
+msgid "Continue"
+msgstr "Doorgaan"
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:52
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:98
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29
+msgid "Install Plugin"
+msgstr "Plugin Installeren"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
+msgid "Free Details"
+msgstr "Gratis Details"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146, fuzzy
+msgid "Pro Details"
+msgstr "Pro Details"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155, fuzzy
+msgid "Changelogs"
+msgstr "Changelogs"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44
+msgid "I have a license, install the Pro version"
+msgstr "Ik heb een licentie, installeer de Pro-versie"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47
+msgid "I don't have a license, install the Free version"
+msgstr "Ik heb geen licentie, installeer de Gratis versie"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:50
+msgid "Enter your license key"
+msgstr "Voer uw licentiesleutel in"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:55
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
+msgid "Go to my profile to get the license key"
+msgstr "Ga naar mijn profiel om de licentiesleutel te krijgen"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:66
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:94
+msgid "Enter your license key here"
+msgstr "Voer uw licentiesleutel hier in"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:80
+msgid "Activate and install the plugin"
+msgstr "Activeer en installeer de plugin"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:76
+msgid "Manage your license"
+msgstr "Beheer uw licentie"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
+msgid "Your license key is: "
+msgstr "Uw licentiesleutel is: "
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
+msgid "(hidden)"
+msgstr "(verborgen)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:119
+msgid "Activate the license key for this site"
+msgstr "Activeer de licentiesleutel voor deze site"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:126
+msgid "Edit the license key"
+msgstr "Bewerk de licentiesleutel"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:129
+msgid "Deactivate the license key for this site"
+msgstr "Deactiveer de licentiesleutel voor deze site"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:39
+msgid "Plugin Information"
+msgstr "Plugin Informatie"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:45
+msgid "Name:"
+msgstr "Naam:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:51
+msgid "Description:"
+msgstr "Beschrijving:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:57
+msgid "Current Version:"
+msgstr "Huidige Versie:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:63
+msgid "Available Version:"
+msgstr "Beschikbare Versie:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:82
+msgid "Update Plugin"
+msgstr "Plugin Bijwerken"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:93
+msgid "Check for Updates"
+msgstr "Controleren op Updates"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:90
+#, js-format
+msgid "Install %s"
+msgstr "Installeer %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:102
+#, js-format
+msgid "Install %s Pro"
+msgstr "Installeer %s Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:110
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:129
+#, js-format
+msgid "Upgrade %s to Pro"
+msgstr "Upgrade %s naar Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:118
+#, js-format
+msgid "Uninstall %s"
+msgstr "Verwijder %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:119
+#, js-format
+msgid "Are you sure you want to uninstall %s?"
+msgstr "Weet u zeker dat u %s wilt verwijderen?"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:140
+#, js-format
+msgid "Resolve Conflict for %s"
+msgstr "Conflict Oplossen voor %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:153
+#, js-format
+msgid "Manage %s License"
+msgstr "Beheer %s Licentie"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:164
+#, js-format
+msgid "Activate %s License"
+msgstr "Activeer %s Licentie"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:172
+#, js-format
+msgid "More Info: %s"
+msgstr "Meer Informatie: %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:34
+msgid "Resolve Plugin Conflict"
+msgstr "Plugin Conflict Oplossen"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
+#, js-format
+msgid "Free version: %s (%s)"
+msgstr "Gratis versie: %s (%s)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
+#, js-format
+msgid "Pro version: %s (%s)"
+msgstr "Pro versie: %s (%s)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:79
+msgid "Keep the Pro version (Recommended)"
+msgstr "Houd de Pro-versie (Aanbevolen)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:89
+msgid "Keep the Free version"
+msgstr "Houd de Gratis versie"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
+msgid "Discover all Pro features"
+msgstr "Ontdek alle Pro-functies"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44, fuzzy
+msgid "Changelog"
+msgstr "Changelog"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
+msgid "Already have a license? Install Pro now"
+msgstr "Heeft u al een licentie? Installeer Pro nu"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
+msgid "Upgrade to Pro and boost your productivity"
+msgstr "Upgrade naar Pro en verhoog uw productiviteit"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:139
+msgid "New version available"
+msgstr "Nieuwe versie beschikbaar"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:184
+#, js-format
+msgid "Update available: %s → %s"
+msgstr "Update beschikbaar: %s → %s"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:22
+msgid "Installing"
+msgstr "Installeren"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:27
+msgid "Not Installed"
+msgstr "Niet Geïnstalleerd"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:31
+msgid "Free"
+msgstr "Gratis"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:35
+msgid "Licensed"
+msgstr "Gelicenseerd"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:43
+msgid "Expired"
+msgstr "Verlopen"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:47
+msgid "Uninstalling"
+msgstr "Verwijderen"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:52
+msgid "Upgrading"
+msgstr "Upgraden"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:57
+msgid "Deactivating"
+msgstr "Deactiveren"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:62
+msgid "Activating"
+msgstr "Activeren"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:67
+msgid "Conflicting Installations"
+msgstr "Conflictueuze Installaties"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:168
+msgid "Update Available"
+msgstr "Update Beschikbaar"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:179
+msgid "Expires"
+msgstr "Verloopt"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
+msgid "latest"
+msgstr "laatste"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
+#, js-format
+msgid "Update to v%s"
+msgstr "Bijwerken naar v%s"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+msgid "Renew"
+msgstr "Vernieuwen"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+msgid "Deactivate"
+msgstr "Deactiveren"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+msgid "Activate"
+msgstr "Activeren"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+msgid "Uninstall"
+msgstr "Verwijderen"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+msgid "More Info"
+msgstr "Meer info"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
+msgid "This plugin is not installed."
+msgstr "Deze plugin is niet geïnstalleerd."
+
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40
+msgid "This plugin is active."
+msgstr "Deze plugin is actief."
+
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41
+msgid "This plugin is not active."
+msgstr "Deze plugin is niet actief."
+
+#: resources/src/jsx/components/plugins-list/index.jsx:159
+msgid "No plugins found."
+msgstr "Geen plugins gevonden."
+
+#: resources/src/jsx/components/plugins-list/index.jsx:165
+msgid "Loading plugins..."
+msgstr "Plugins laden..."
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:216
+msgid "Failed to fetch plugins"
+msgstr "Kon plugins niet ophalen"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
+#, js-format
+msgid "%s installed successfully"
+msgstr "%s succesvol geïnstalleerd"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
+#, js-format
+msgid "%s installation failed"
+msgstr "%s installatie is mislukt"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
+#, js-format
+msgid "%s uninstalled successfully"
+msgstr "%s succesvol verwijderd"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
+#, js-format
+msgid "%s uninstall failed"
+msgstr "%s verwijderen is mislukt"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
+#, js-format
+msgid "%s activated successfully"
+msgstr "%s succesvol geactiveerd"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
+#, js-format
+msgid "%s activation failed"
+msgstr "%s activering is mislukt"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
+#, js-format
+msgid "%s deactivated successfully"
+msgstr "%s is succesvol gedeactiveerd"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
+#, js-format
+msgid "%s deactivation failed"
+msgstr "%s deactivatie is mislukt"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
+#, js-format
+msgid "%s upgraded to Pro successfully"
+msgstr "%s is succesvol geüpgraded naar Pro"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
+#, js-format
+msgid "%s upgrade to Pro failed"
+msgstr "%s upgrade naar Pro is mislukt"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
+#, js-format
+msgid "Conflict resolved successfully for %s"
+msgstr "Conflict succesvol opgelost voor %s"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
+#, js-format
+msgid "Failed to resolve conflict for %s"
+msgstr "Conflict oplossen voor %s is mislukt"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
+#, js-format
+msgid "%s license deactivated successfully"
+msgstr "%s licentie is succesvol gedeactiveerd"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
+#, js-format
+msgid "%s license deactivation failed"
+msgstr "%s licentie deactivatie is mislukt"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
+#, js-format
+msgid "%s license activated successfully"
+msgstr "%s licentie is succesvol geactiveerd"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
+#, js-format
+msgid "%s license activation failed"
+msgstr "%s licentie activatie is mislukt"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
+#, js-format
+msgid "%s updated successfully"
+msgstr "%s is succesvol bijgewerkt"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
+#, js-format
+msgid "%s update failed"
+msgstr "%s update is mislukt"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
+msgid "Too many requests. Please wait a few seconds and try again."
+msgstr "Te veel verzoeken. Wacht een paar seconden en probeer het opnieuw."
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
+#, fuzzy, js-format
+msgid "Cloudflare Ray ID: %s"
+msgstr "Cloudflare Ray ID: %s"
