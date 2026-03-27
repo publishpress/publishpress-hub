@@ -3,6 +3,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 [UNRELEASED]
 
+- Added: New settings menu page for improved configuration.
+- Added: Debug log feature to assist with troubleshooting and support.
 - Changed: Updated alledia/edd-sl-plugin-updater to version 1.6.25.
 - Changed: Updated publishpress/wordpress-edd-license to version 3.0.5.
 
