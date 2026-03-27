@@ -7359,7 +7359,6 @@ var StatusFlagComponent = function StatusFlagComponent(_ref) {
       }
       return pluginFamily.proPlugin.isLicensed ? STATUS_BADGE_CONFIGS.licensed : STATUS_BADGE_CONFIGS.unlicensed;
     }
-    return STATUS_BADGE_CONFIGS.free;
   }, [pluginFamily, isInstalling, isUninstalling, isUpgrading, isDeactivating, isActivating, countInstalledPlugins]);
   if (!statusBadgeProps) {
     return null;
@@ -8027,14 +8026,15 @@ __webpack_require__.r(__webpack_exports__);
 
 var usePluginDisplayInfo = function usePluginDisplayInfo(pluginFamily, pluginIconBaseUrl, status) {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    var isPro = status.isPro;
+    var isPro = status.isPro,
+      isInstalled = status.isInstalled;
     var iconSrc = "".concat(pluginIconBaseUrl, "images/plugin-icons/").concat(pluginFamily.iconPath, "-96x96.png");
-    var displayName = isPro ? pluginFamily.proPlugin.name : pluginFamily.freePlugin.name;
+    var displayName = isInstalled ? isPro ? pluginFamily.proPlugin.name : pluginFamily.freePlugin.name : pluginFamily.name;
     return {
       iconSrc: iconSrc,
       displayName: displayName
     };
-  }, [pluginFamily, pluginIconBaseUrl, status.isPro]);
+  }, [pluginFamily, pluginIconBaseUrl, status.isPro, status.isInstalled]);
 };
 
 /***/ },

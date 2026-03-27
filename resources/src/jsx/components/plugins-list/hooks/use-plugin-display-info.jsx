@@ -12,12 +12,12 @@ import { useMemo } from '@wordpress/element';
 
 export const usePluginDisplayInfo = (pluginFamily, pluginIconBaseUrl, status) => {
     return useMemo(() => {
-        const { isPro } = status;
+        const { isPro, isInstalled } = status;
         const iconSrc = `${pluginIconBaseUrl}images/plugin-icons/${pluginFamily.iconPath}-96x96.png`;
-        const displayName = isPro ?
-            pluginFamily.proPlugin.name :
-            pluginFamily.freePlugin.name;
+        const displayName = isInstalled ?
+            isPro ? pluginFamily.proPlugin.name : pluginFamily.freePlugin.name
+            : pluginFamily.name;
 
         return { iconSrc, displayName };
-    }, [pluginFamily, pluginIconBaseUrl, status.isPro]);
+    }, [pluginFamily, pluginIconBaseUrl, status.isPro, status.isInstalled]);
 };

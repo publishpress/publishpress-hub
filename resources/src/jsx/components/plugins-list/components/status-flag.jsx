@@ -133,8 +133,6 @@ const StatusFlagComponent = ({
             }
             return pluginFamily.proPlugin.isLicensed ? STATUS_BADGE_CONFIGS.licensed : STATUS_BADGE_CONFIGS.unlicensed;
         }
-
-        return STATUS_BADGE_CONFIGS.free;
     }, [pluginFamily, isInstalling, isUninstalling, isUpgrading, isDeactivating, isActivating, countInstalledPlugins]);
 
     if (!statusBadgeProps) {
