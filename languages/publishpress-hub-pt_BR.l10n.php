@@ -1,2 +1,2 @@
 <?php
-return ['domain'=>'publishpress-hub','plural-forms'=>NULL,'language'=>'pt_BR','project-id-version'=>'','pot-creation-date'=>'2025-06-13T19:03:57+00:00','po-revision-date'=>'2025-06-13 16:06-0300','x-generator'=>'Poedit 3.6','messages'=>['Service "%s" not found in container.'=>'O serviço “%s” não foi encontrado.','Dashboard'=>'Painel de Controle']];
+return ['domain'=>'publishpress-hub','plural-forms'=>'nplurals=2; plural=n > 1;','language'=>'pt_BR','project-id-version'=>'PublishPress Hub 1.0.4-beta.2','pot-creation-date'=>'2026-03-27T15:15:46+00:00','po-revision-date'=>'YEAR-MO-DA HO:MI+ZONE','x-generator'=>'WP-CLI 2.12.0','messages'=>[]];
