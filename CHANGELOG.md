@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added: New settings menu page for improved configuration.
 - Added: Debug log feature to assist with troubleshooting and support.
 - Added: Display plugin version number in the actions row when installed.
+- Added: Integrated the new Shortlinks plugin.
 - Added: Translations for Dutch, Filipino, Finnish, French, German, Indonesian, Japanese, Korean, Russian, Spanish, and Yoruba.
 - Changed: Updated alledia/edd-sl-plugin-updater to version 1.6.25.
 - Changed: Updated publishpress/wordpress-edd-license to version 3.0.5.
