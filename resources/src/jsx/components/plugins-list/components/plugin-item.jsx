@@ -141,6 +141,22 @@ const PluginItemComponent = ({
         return { currentVersion, availableVersion };
     }, [pluginFamily]);
 
+    const installedVersionLabel = useMemo(() => {
+        if (!status.isInstalled || status.hasConflictingInstallations) {
+            return null;
+        }
+
+        const installedPlugin = pluginFamily.freePlugin.isInstalled
+            ? pluginFamily.freePlugin
+            : (pluginFamily.proPlugin.isInstalled ? pluginFamily.proPlugin : null);
+
+        if (!installedPlugin || !installedPlugin.version) {
+            return null;
+        }
+
+        return sprintf(__('Version %s', 'publishpress-hub'), installedPlugin.version);
+    }, [pluginFamily, status.isInstalled, status.hasConflictingInstallations]);
+
     return (
         <div
             className={responsiveClasses}
@@ -200,6 +216,12 @@ const PluginItemComponent = ({
                             return (
                                 <Fragment key={buttonProps.key}>
                                     <Button {...buttonProps} />
+                                    {buttonProps.key === 'more-info' && installedVersionLabel && (
+                                        <>
+                                            <span>&bull;</span>
+                                            <span className='pp-hub-plugin-current-version'>{installedVersionLabel}</span>
+                                        </>
+                                    )}
                                     {index < actionButtonsData.length - 1 && (
                                         <span>|</span>
                                     )}
