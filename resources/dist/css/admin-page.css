@@ -1757,6 +1757,11 @@ footer .pp-hub-footer-logo img {
     color: var(--pp-hub-text-error);
 }
 
+.pp-hub-plugin-current-version {
+    color: #646970;
+    font-size: 14px;
+}
+
 .pp-hub-plugin-update-button {
     font-size: 12px !important;
     padding: 4px 10px !important;
