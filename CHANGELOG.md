@@ -3,12 +3,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 [UNRELEASED]
 
-- Added: Hide admin notices on the Plugins screen, Dashboard, and Hub Welcome and Plugins pages.
 - Added: New settings menu page for improved configuration.
 - Added: Debug log feature to assist with troubleshooting and support.
 - Added: Display plugin version number in the actions row when installed.
 - Added: Integrated the new Shortlinks plugin.
 - Added: Translations for Dutch, Filipino, Finnish, French, German, Indonesian, Japanese, Korean, Russian, Spanish, and Yoruba.
+- Added: Hide admin notices on the Plugins screen, Dashboard, and Hub Welcome and Plugins pages.
 - Changed: Updated alledia/edd-sl-plugin-updater to version 1.6.25.
 - Changed: Updated publishpress/wordpress-edd-license to version 3.0.5.
 - Changed: Improved and expanded existing language translations.
