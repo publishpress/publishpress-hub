@@ -3,6 +3,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 [UNRELEASED]
 
+- Added: Hide admin notices on the Plugins screen, Dashboard, and Hub Welcome and Plugins pages.
 - Added: New settings menu page for improved configuration.
 - Added: Debug log feature to assist with troubleshooting and support.
 - Added: Display plugin version number in the actions row when installed.

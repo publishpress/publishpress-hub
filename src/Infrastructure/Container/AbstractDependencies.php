@@ -110,6 +110,8 @@ abstract class AbstractDependencies
 
     public const HUB_ACCESS_SERVICE = 'publishpress-hub.application.access.service';
 
+    public const ADMIN_NOTICE_VISIBILITY_SERVICE = 'publishpress-hub.application.admin-notice-visibility.service';
+
     public const LICENSE_EXPIRATION_NOTICE_SERVICE = 'publishpress-hub.application.license.expiration-notice.service';
 
     public const LICENSE_VALIDATION_ACTION_HANDLER = 'publishpress-hub.infrastructure.license.validation-action-handler';
