@@ -6726,9 +6726,6 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     handleActivateLicense = pluginActions.handleActivateLicense,
     handleUpdatePlugin = pluginActions.handleUpdatePlugin,
     handleCheckForUpdates = pluginActions.handleCheckForUpdates;
-  if (!currentPluginFamily || activeModal === MODAL_TYPES.NONE) {
-    return null;
-  }
   var _useDispatch = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useDispatch)(_stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_3__.store),
     cleanupError = _useDispatch.cleanupError;
   var isLoading = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useSelect)(function (select) {
@@ -6744,17 +6741,24 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     return error;
   }, [currentPluginState.error]);
   var modalProps = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var hasActiveModal = currentPluginFamily && activeModal !== MODAL_TYPES.NONE;
+
     // For plugin info modal, include isLoading state for "Check for Updates" button
     var buttonInProgress = isModalActive(MODAL_TYPES.PLUGIN_INFO) ? currentPluginState.inProgress || isLoading : currentPluginState.inProgress;
     return {
       onClose: function onClose() {
         closeModal();
-        cleanupError(currentPluginFamily);
+        if (currentPluginFamily) {
+          cleanupError(currentPluginFamily);
+        }
       },
-      error: processedError,
+      error: hasActiveModal ? processedError : null,
       buttonInProgress: buttonInProgress
     };
-  }, [currentPluginFamily, closeModal, cleanupError, currentPluginState.inProgress, processedError, isLoading, isModalActive, MODAL_TYPES.PLUGIN_INFO]);
+  }, [currentPluginFamily, activeModal, closeModal, cleanupError, currentPluginState.inProgress, processedError, isLoading, isModalActive, MODAL_TYPES.NONE, MODAL_TYPES.PLUGIN_INFO]);
+  if (!currentPluginFamily || activeModal === MODAL_TYPES.NONE) {
+    return null;
+  }
   return /*#__PURE__*/React.createElement(React.Fragment, null, isModalActive(MODAL_TYPES.INSTALLATION_TYPE) && /*#__PURE__*/React.createElement(_modal_installation_type__WEBPACK_IMPORTED_MODULE_5__.ModalInstallationType, _extends({}, modalProps, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Install %s', 'publishpress-hub'), currentPluginDisplayName),
     onProClick: function onProClick() {
