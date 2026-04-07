@@ -7374,12 +7374,12 @@ var StatusFlagComponent = function StatusFlagComponent(_ref) {
       return pluginFamily.proPlugin.isLicensed ? STATUS_BADGE_CONFIGS.licensed : STATUS_BADGE_CONFIGS.unlicensed;
     }
   }, [pluginFamily, isInstalling, isUninstalling, isUpgrading, isDeactivating, isActivating, countInstalledPlugins]);
-  if (!statusBadgeProps) {
-    return null;
-  }
-
-  // Display expiration date for licensed plugins
   var expirationDate = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    if (!statusBadgeProps) {
+      return null;
+    }
+
+    // Display expiration date for licensed plugins
     if (statusBadgeProps === STATUS_BADGE_CONFIGS.licensed && pluginFamily.proPlugin.isLicensed && pluginFamily.proPlugin.licenseExpirationDateFormatted) {
       // Do not display expiration date if it is more than DAYS_UNTIL_EXPIRATION_DATE_THRESHOLD days away.
       if (pluginFamily.proPlugin.daysUntilExpiration && pluginFamily.proPlugin.daysUntilExpiration >= DAYS_UNTIL_EXPIRATION_DATE_THRESHOLD) {
@@ -7389,6 +7389,9 @@ var StatusFlagComponent = function StatusFlagComponent(_ref) {
     }
     return null;
   }, [statusBadgeProps, pluginFamily]);
+  if (!statusBadgeProps) {
+    return null;
+  }
   return /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-status-flag",
     style: {

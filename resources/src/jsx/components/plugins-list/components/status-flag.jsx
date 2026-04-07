@@ -135,12 +135,12 @@ const StatusFlagComponent = ({
         }
     }, [pluginFamily, isInstalling, isUninstalling, isUpgrading, isDeactivating, isActivating, countInstalledPlugins]);
 
-    if (!statusBadgeProps) {
-        return null;
-    }
-
-    // Display expiration date for licensed plugins
     const expirationDate = useMemo(() => {
+        if (!statusBadgeProps) {
+            return null;
+        }
+
+        // Display expiration date for licensed plugins
         if (
             statusBadgeProps === STATUS_BADGE_CONFIGS.licensed &&
             pluginFamily.proPlugin.isLicensed &&
@@ -159,6 +159,10 @@ const StatusFlagComponent = ({
 
         return null;
     }, [statusBadgeProps, pluginFamily]);
+
+    if (!statusBadgeProps) {
+        return null;
+    }
 
     return (
         <div className='pp-hub-status-flag' style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
