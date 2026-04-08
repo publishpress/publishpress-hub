@@ -10,13 +10,12 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-03-27 15:20+0000\n"
+"PO-Revision-Date: 2026-04-08 14:34+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: de-DE\n"
 
-#: publishpress-hub.php:4
 #: publishpress-hub.php:4
 #: src/Admin/Page/WelcomePageController.php:259, fuzzy
 #. Plugin Name of the plugin
@@ -25,6 +24,15 @@ msgstr "PublishPress Hub"
 
 #: publishpress-hub.php:5
 #. Description of the plugin
+msgid ""
+"Centralized management hub for all PublishPress plugins - install, update, "
+"and manage licenses from one dashboard."
+msgstr ""
+"Zentralisierte Verwaltungszentrale für alle PublishPress-Plugins - "
+"installieren, aktualisieren und Lizenzen von einem Dashboard aus verwalten."
+
+#: publishpress-hub.php:7, fuzzy
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
@@ -102,6 +110,23 @@ msgid "Pro plugin not set for plugin family: %s"
 msgstr "Pro-Plugin für Plugin-Familie nicht festgelegt: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
+msgid ""
+"License activation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Lizenzserverfehler. Bitte versuchen Sie es später noch einmal oder "
+"kontaktieren Sie den Support für Hilfe."
+
+#: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
+#, fuzzy
+msgid ""
+"License deactivation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Lizenzserverfehler. Bitte versuchen Sie es später noch einmal oder "
+"kontaktieren Sie den Support für Hilfe."
+
+#: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
 msgstr ""
 "Diese Lizenz ist derzeit deaktiviert. Bitte kontaktieren Sie den Support "
@@ -114,12 +139,65 @@ msgstr ""
 "erneuern."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
+#, fuzzy
+msgid ""
+"This license key is not authorized for this plugin. Please verify your "
+"license key or contact support for help."
+msgstr ""
+"Diese Lizenz ist für diese Site inaktiv. Bitte kontaktieren Sie den Support "
+"für Hilfe."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
+#, fuzzy
+msgid ""
+"This license cannot be used for this plugin. Please contact support for "
+"help."
+msgstr ""
+"Diese Lizenz kann nicht aktiviert werden. Bitte kontaktieren Sie den "
+"Support für Hilfe."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
+#, fuzzy
+msgid ""
+"This license does not match the plugin you are trying to activate. Please "
+"contact support for assistance."
+msgstr ""
+"Diese Lizenz ist für diese Site inaktiv. Bitte kontaktieren Sie den Support "
+"für Hilfe."
+
+#: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
+#, fuzzy
+msgid ""
+"License key does not match our records. Please contact support for "
+"assistance."
+msgstr ""
+"Diese Lizenz ist derzeit deaktiviert. Bitte kontaktieren Sie den Support "
+"für Hilfe."
+
+#: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
 msgstr ""
 "Kein Lizenzschlüssel angegeben. Bitte geben Sie einen gültigen "
 "Lizenzschlüssel ein."
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
+msgid ""
+"Your site URL is required to activate the license. Please enter a valid "
+"site URL to continue."
+msgstr ""
+"Ihre Website-URL ist erforderlich, um die Lizenz zu aktivieren. Bitte geben "
+"Sie eine gültige Website-URL ein, um fortzufahren."
+
+#: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
+#, fuzzy
+msgid ""
+"License activation limit reached. Please contact support to upgrade or "
+"deactivate on another site."
+msgstr ""
+"Diese Lizenz ist abgelaufen. Bitte kontaktieren Sie den Support, um sie zu "
+"erneuern."
+
+#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
 msgid "This license cannot be activated. Please contact support for help."
 msgstr ""
 "Diese Lizenz kann nicht aktiviert werden. Bitte kontaktieren Sie den "
@@ -132,26 +210,90 @@ msgstr ""
 "kontaktieren Sie den Support für Hilfe."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
+#, fuzzy
+msgid ""
+"The license server returned an invalid response. Please try again later or "
+"contact support for help."
+msgstr ""
+"Lizenzserverfehler. Bitte versuchen Sie es später noch einmal oder "
+"kontaktieren Sie den Support für Hilfe."
+
+#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
 msgid "This license is inactive for this site. Please contact support for help."
 msgstr ""
 "Diese Lizenz ist für diese Site inaktiv. Bitte kontaktieren Sie den Support "
 "für Hilfe."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
+#, fuzzy
+msgid ""
+"Plugin activation failed. Please try again later or contact support for "
+"help."
+msgstr ""
+"Plugin-Installation fehlgeschlagen. Bitte kontaktieren Sie den Support für "
+"Hilfe."
+
+#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
 msgid "This action is not possible because the plugin is already installed."
 msgstr "Diese Aktion ist nicht möglich, da das Plugin bereits installiert ist."
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
+#, fuzzy
+msgid ""
+"Plugin deactivation failed. Please try again later or contact support for "
+"help."
+msgstr ""
+"Lizenzserverfehler. Bitte versuchen Sie es später noch einmal oder "
+"kontaktieren Sie den Support für Hilfe."
+
+#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
 msgid "Plugin family not found. Please contact support for help."
 msgstr "Plugin-Familie nicht gefunden. Bitte kontaktieren Sie den Support für Hilfe."
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because both free and pro versions are "
+"installed. Please uninstall one version to continue."
+msgstr "Diese Aktion ist nicht möglich, da das Plugin bereits installiert ist."
+
+#: src/Domain/Plugin/Exception/PluginInstallException.php:29
 msgid "Plugin installation failed. Please contact support for help."
 msgstr ""
 "Plugin-Installation fehlgeschlagen. Bitte kontaktieren Sie den Support für "
 "Hilfe."
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because the plugin is not activated. Please "
+"activate the plugin and try again."
+msgstr "Diese Aktion ist nicht möglich, da das Plugin bereits installiert ist."
+
+#: src/Domain/Plugin/Exception/PluginNotFoundException.php:29
+#, fuzzy
+msgid ""
+"Plugin not found in our available plugins list. Please contact support for "
+"help."
+msgstr "Plugin-Familie nicht gefunden. Bitte kontaktieren Sie den Support für Hilfe."
+
+#: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because the plugin is not installed. Please "
+"install the plugin and try again."
+msgstr "Diese Aktion ist nicht möglich, da das Plugin bereits installiert ist."
+
+#: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
+#, fuzzy
+msgid ""
+"Unknown license server error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Lizenzserverfehler. Bitte versuchen Sie es später noch einmal oder "
+"kontaktieren Sie den Support für Hilfe."
+
+#: src/Domain/Plugin/plugin-families.php:26
 msgid "Define tasks that authors must complete before publishing."
 msgstr ""
 "Definieren Sie Aufgaben, die Autoren vor der Veröffentlichung abschließen "
@@ -298,6 +440,16 @@ msgid "Cannot read downloaded plugin file"
 msgstr "Kann die heruntergeladene Plugin-Datei nicht lesen"
 
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:132
+msgid ""
+"Downloaded file is not a valid ZIP archive. The download URL may be "
+"returning an error page."
+msgstr ""
+"Die heruntergeladene Datei ist kein gültiges ZIP-Archiv. Die Download-URL "
+"könnte eine Fehlerseite zurückgeben."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
+#. translators: %s is the error message
+#, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "Fehler beim Entpacken der Plugin-Datei: %s"
 
@@ -541,6 +693,14 @@ msgid "Loading log..."
 msgstr "Lade Protokoll..."
 
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:332
+msgid ""
+"The debug log is empty. Perform some actions (e.g. activate a license) and "
+"refresh to see entries."
+msgstr ""
+"Das Debug-Protokoll ist leer. Führen Sie einige Aktionen aus (z. B. eine "
+"Lizenz aktivieren) und aktualisieren Sie, um Einträge zu sehen."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
 msgid "Debug log contents"
 msgstr "Inhalte des Debug-Protokolls"
 
@@ -563,10 +723,29 @@ msgid "Debug Mode"
 msgstr "Debug-Modus"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
+msgid ""
+"When enabled, all HTTP requests and responses to remote services (license "
+"activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
+"the Debug Log tab to inspect the captured data."
+msgstr ""
+"Wenn aktiviert, werden alle HTTP-Anfragen und -Antworten an entfernte "
+"Dienste (Lizenzaktivierung, Plugin-Downloads usw.) in einer speziellen "
+"Protokolldatei protokolliert. Verwenden Sie die Registerkarte "
+"\"Debug-Protokoll\", um die erfassten Daten zu überprüfen."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
 msgid "Enable Debug Mode"
 msgstr "Debug-Modus aktivieren"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
+msgid ""
+"Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
+"data."
+msgstr ""
+"Das Debug-Protokoll ist aktiv. Wechseln Sie zur Registerkarte "
+"\"Debug-Protokoll\", um die erfassten Daten anzuzeigen."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
 msgid "ERR"
 msgstr "FEHLER"
 
@@ -612,18 +791,54 @@ msgid "What you can do with PublishPress Hub"
 msgstr "Was Sie mit PublishPress Hub tun können"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
+msgid ""
+"PublishPress Hub has everything you need to install, update, and manage "
+"your PublishPress plugins. We're here to help you build a publishing system "
+"that works perfectly for your team."
+msgstr ""
+"PublishPress Hub hat alles, was Sie benötigen, um Ihre PublishPress-Plugins "
+"zu installieren, zu aktualisieren und zu verwalten. Wir sind hier, um Ihnen "
+"zu helfen, ein Publikationssystem aufzubauen, das perfekt für Ihr Team "
+"funktioniert."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:64
 msgid "Centralized Dashboard"
 msgstr "Zentralisiertes Dashboard"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:67
+#, fuzzy
+msgid ""
+"View all your PublishPress plugins with their licenses, versions, and key "
+"details."
+msgstr ""
+"Halten Sie alle Ihre PublishPress-Plugins mit Ein-Klick-Updates auf dem "
+"neuesten Stand."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:76
 msgid "One-Click Installation"
 msgstr "Ein-Klick-Installation"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:79
+msgid ""
+"Install free PublishPress plugins directly from the Hub without visiting "
+"WordPress.org."
+msgstr ""
+"Installieren Sie kostenlose PublishPress-Plugins direkt über das Hub, ohne "
+"WordPress.org zu besuchen."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:88
 msgid "License Management"
 msgstr "Lizenzverwaltung"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:91
+msgid ""
+"Connect your PublishPress licenses to easily install and activate Pro "
+"versions."
+msgstr ""
+"Verbinden Sie Ihre PublishPress-Lizenzen, um Pro-Versionen einfach zu "
+"installieren und zu aktivieren."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:100
 msgid "Easy Updates"
 msgstr "Einfache Updates"
 
@@ -638,6 +853,14 @@ msgid "Status Monitoring"
 msgstr "Statusüberwachung"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
+msgid ""
+"Monitor plugin activation status, detect conflicts, and ensure "
+"compatibility."
+msgstr ""
+"Überwachen Sie den Aktivierungsstatus von Plugins, erkennen Sie Konflikte "
+"und stellen Sie die Kompatibilität sicher."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:124
 msgid "Get Started"
 msgstr "Loslegen"
 
@@ -735,6 +958,16 @@ msgid "Install Plugin"
 msgstr "Plugin installieren"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
+msgid ""
+"Select how you would like to install this plugin. You can install the Pro "
+"version if you have a license, or the Free version to get started."
+msgstr ""
+"Wählen Sie aus, wie Sie dieses Plugin installieren möchten. Sie können die "
+"Pro-Version installieren, wenn Sie eine Lizenz haben, oder die kostenlose "
+"Version, um zu beginnen."
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
 msgid "Free Details"
 msgstr "Kostenlose Details"
 
@@ -762,6 +995,16 @@ msgstr "Geben Sie Ihren Lizenzschlüssel ein"
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:55
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
+msgid ""
+"Enter your license key to activate the Pro version of this plugin. You can "
+"find your license key in your PublishPress account dashboard."
+msgstr ""
+"Geben Sie Ihren Lizenzschlüssel ein, um die Pro-Version dieses Plugins zu "
+"aktivieren. Sie finden Ihren Lizenzschlüssel in Ihrem "
+"PublishPress-Konto-Dashboard."
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
 msgid "Go to my profile to get the license key"
 msgstr "Gehen Sie zu meinem Profil, um den Lizenzschlüssel zu erhalten"
 
@@ -901,6 +1144,16 @@ msgid "Keep the Free version"
 msgstr "Kostenlose Version beibehalten"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
+msgid ""
+"Unlock the full potential of this plugin with the Pro version. Enjoy "
+"advanced features, priority support, and exclusive benefits designed to "
+"help you get the most out of your workflow."
+msgstr ""
+"Entfalten Sie das volle Potenzial dieses Plugins mit der Pro-Version. "
+"Genießen Sie erweiterte Funktionen, priorisierten Support und exklusive "
+"Vorteile, die Ihnen helfen, das Beste aus Ihrem Workflow herauszuholen."
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "Alle Pro-Funktionen entdecken"
 
@@ -1127,6 +1380,6 @@ msgstr ""
 "erneut."
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
-#, fuzzy, js-format
+#, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
