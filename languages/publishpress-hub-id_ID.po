@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-04-08 14:34+0000\n"
+"PO-Revision-Date: 2026-04-08 14:42+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -118,7 +118,6 @@ msgstr ""
 "untuk bantuan."
 
 #: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
-#, fuzzy
 msgid ""
 "License deactivation error. Please try again later or contact support for "
 "help."
@@ -1358,3 +1357,655 @@ msgstr "Terlalu banyak permintaan. Silakan tunggu beberapa detik dan coba lagi."
 #, js-format
 msgid "Cloudflare Ray ID: %s"
 msgstr "ID Ray Cloudflare: %s"
+
+#: dev-workspace-cache/wp_test/wp-includes/blocks/widget-group/block.json
+msgctxt "block title"
+msgid "Widget Group"
+msgstr "Grup Widget"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Color name"
+msgid "Base"
+msgstr "Dasar"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Color name"
+msgid "Contrast"
+msgstr "Kontras"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Color name"
+msgid "Accent 1"
+msgstr "Aksen 1"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Color name"
+msgid "Accent 2"
+msgstr "Aksen 2"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Color name"
+msgid "Accent 3"
+msgstr "Aksen 3"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Color name"
+msgid "Accent 4"
+msgstr "Aksen 4"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Color name"
+msgid "Accent 5"
+msgstr "Aksen 5"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Color name"
+msgid "Accent 6"
+msgstr "Aksen 6"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Color name"
+msgid "Base / Two"
+msgstr "Dasar / Dua"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Color name"
+msgid "Contrast / Two"
+msgstr "Kontras / Dua"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Color name"
+msgid "Contrast / Three"
+msgstr "Kontras / Tiga"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Color name"
+msgid "Accent"
+msgstr "Aksen"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Color name"
+msgid "Accent / Two"
+msgstr "Aksen / Dua"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Color name"
+msgid "Accent / Three"
+msgstr "Aksen / Tiga"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Color name"
+msgid "Accent / Four"
+msgstr "Aksen / Empat"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Color name"
+msgid "Accent / Five"
+msgstr "Aksen / Lima"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr "Primer"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Color name"
+msgid "Secondary"
+msgstr "Sekunder"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Color name"
+msgid "Tertiary"
+msgstr "Tersier"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Black"
+msgstr "Hitam"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Cyan bluish gray"
+msgstr "Abu-abu kebiruan cyan"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "White"
+msgstr "Putih"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Pale pink"
+msgstr "Merah muda pucat"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Vivid red"
+msgstr "Merah cerah"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Luminous vivid orange"
+msgstr "Oranye cerah bercahaya"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Luminous vivid amber"
+msgstr "Amber cerah bercahaya"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Light green cyan"
+msgstr "Hijau muda cyan"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Vivid green cyan"
+msgstr "Hijau cerah cyan"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Pale cyan blue"
+msgstr "Biru cyan pucat"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Vivid cyan blue"
+msgstr "Biru cyan cerah"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Vivid purple"
+msgstr "Ungu cerah"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Space size name"
+msgid "1"
+msgstr "1"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Space size name"
+msgid "2"
+msgstr "2"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Space size name"
+msgid "3"
+msgstr "3"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Space size name"
+msgid "4"
+msgstr "4"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Space size name"
+msgid "5"
+msgstr "5"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Space size name"
+msgid "6"
+msgstr "6"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Space size name"
+msgid "Tiny"
+msgstr "Kecil sekali"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Space size name"
+msgid "X-Small"
+msgstr "Sangat Kecil"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Space size name"
+msgid "Small"
+msgstr "Kecil"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Space size name"
+msgid "Regular"
+msgstr "Reguler"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Space size name"
+msgid "Large"
+msgstr "Besar"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Space size name"
+msgid "X-Large"
+msgstr "X-Besar"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Space size name"
+msgid "XX-Large"
+msgstr "XX-Besar"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "Kecil"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr "Sedang"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr "Besar"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Font size name"
+msgid "Extra Large"
+msgstr "Ekstra Besar"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Font size name"
+msgid "Extra Extra Large"
+msgstr "Ekstra Ekstra Besar"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
+msgctxt "Font family name"
+msgid "Manrope"
+msgstr "Manrope"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
+msgctxt "Font family name"
+msgid "Fira Code"
+msgstr "Fira Code"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Font family name"
+msgid "Inter"
+msgstr "Inter"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json, fuzzy
+msgctxt "Font family name"
+msgid "Cardo"
+msgstr "Cardo"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Font family name"
+msgid "System Sans-serif"
+msgstr "Sans-serif Sistem"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Font family name"
+msgid "System Serif"
+msgstr "Serif Sistem"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Font family name"
+msgid "DM Sans"
+msgstr "DM Sans"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Font family name"
+msgid "IBM Plex Mono"
+msgstr "IBM Plex Mono"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Font family name"
+msgid "System Font"
+msgstr "Font Sistem"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Font family name"
+msgid "Source Serif Pro"
+msgstr "Source Serif Pro"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Template part name"
+msgid "Header"
+msgstr "Header"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Template part name"
+msgid "Vertical site header"
+msgstr "Header situs vertikal"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Template part name"
+msgid "Header with large title"
+msgstr "Header dengan judul besar"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "Footer"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Template part name"
+msgid "Footer Columns"
+msgstr "Kolom Footer"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Template part name"
+msgid "Footer Newsletter"
+msgstr "Newsletter Footer"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json, fuzzy
+msgctxt "Template part name"
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Template part name"
+msgid "Post Meta"
+msgstr "Meta Post"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Template part name"
+msgid "Comments Template Part"
+msgstr "Bagian Template Komentar"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Custom template name"
+msgid "404"
+msgstr "404"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Custom template name"
+msgid "Page No Title"
+msgstr "Halaman Tanpa Judul"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Custom template name"
+msgid "Page with Sidebar"
+msgstr "Halaman dengan Sidebar"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Custom template name"
+msgid "Page with Wide Image"
+msgstr "Halaman dengan Gambar Lebar"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Custom template name"
+msgid "Single with Sidebar"
+msgstr "Single dengan Sidebar"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Custom template name"
+msgid "Blank"
+msgstr "Kosong"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Custom template name"
+msgid "Blog (Alternative)"
+msgstr "Blog (Alternatif)"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Duotone name"
+msgid "Black and white"
+msgstr "Hitam dan putih"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Duotone name"
+msgid "Black and sandstone"
+msgstr "Hitam dan pasir"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Duotone name"
+msgid "Black and rust"
+msgstr "Hitam dan karat"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Duotone name"
+msgid "Black and sage"
+msgstr "Hitam dan sage"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Duotone name"
+msgid "Black and pastel blue"
+msgstr "Hitam dan biru pastel"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Duotone name"
+msgid "Dark grayscale"
+msgstr "Grayscale gelap"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json, fuzzy
+msgctxt "Duotone name"
+msgid "Grayscale"
+msgstr "Grayscale"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Duotone name"
+msgid "Purple and yellow"
+msgstr "Ungu dan kuning"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Duotone name"
+msgid "Blue and red"
+msgstr "Biru dan merah"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Duotone name"
+msgid "Midnight"
+msgstr "Tengah malam"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Duotone name"
+msgid "Magenta and yellow"
+msgstr "Magenta dan kuning"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Duotone name"
+msgid "Purple and green"
+msgstr "Ungu dan hijau"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Duotone name"
+msgid "Blue and orange"
+msgstr "Biru dan oranye"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft beige to white"
+msgstr "Beige lembut vertikal ke putih"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft sandstone to white"
+msgstr "Pasir lembut vertikal ke putih"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft rust to white"
+msgstr "Karatan lembut vertikal ke putih"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft sage to white"
+msgstr "Sage lembut vertikal ke putih"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft mint to white"
+msgstr "Mint lembut vertikal ke putih"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft pewter to white"
+msgstr "Pewter lembut vertikal ke putih"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard beige to white"
+msgstr "Beige keras vertikal ke putih"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard sandstone to white"
+msgstr "Pasir keras vertikal ke putih"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard rust to white"
+msgstr "Karatan keras vertikal ke putih"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard sage to white"
+msgstr "Sage keras vertikal ke putih"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard mint to white"
+msgstr "Mint keras vertikal ke putih"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard pewter to white"
+msgstr "Pewter keras vertikal menjadi putih"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Vivid cyan blue to vivid purple"
+msgstr "Biru cyan cerah menjadi ungu cerah"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Light green cyan to vivid green cyan"
+msgstr "Hijau cyan muda menjadi hijau cyan cerah"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Luminous vivid amber to luminous vivid orange"
+msgstr "Amber cerah yang bercahaya menjadi oranye cerah yang bercahaya"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Luminous vivid orange to vivid red"
+msgstr "Oranye cerah yang bercahaya menjadi merah cerah"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Very light gray to cyan bluish gray"
+msgstr "Abu-abu sangat muda menjadi abu-abu kebiruan cyan"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Cool to warm spectrum"
+msgstr "Spektrum dingin ke hangat"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Blush light purple"
+msgstr "Ungu muda blush"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Blush bordeaux"
+msgstr "Bordeaux blush"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Luminous dusk"
+msgstr "Senja yang bercahaya"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Pale ocean"
+msgstr "Samudera pucat"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Electric grass"
+msgstr "Rumput elektrik"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Midnight"
+msgstr "Tengah malam"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Aspect ratio name"
+msgid "Square - 1:1"
+msgstr "Persegi - 1:1"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Aspect ratio name"
+msgid "Standard - 4:3"
+msgstr "Standar - 4:3"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Aspect ratio name"
+msgid "Portrait - 3:4"
+msgstr "Potret - 3:4"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Aspect ratio name"
+msgid "Classic - 3:2"
+msgstr "Klasik - 3:2"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Aspect ratio name"
+msgid "Classic Portrait - 2:3"
+msgstr "Potret Klasik - 2:3"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Aspect ratio name"
+msgid "Wide - 16:9"
+msgstr "Lebar - 16:9"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Aspect ratio name"
+msgid "Tall - 9:16"
+msgstr "Tinggi - 9:16"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Shadow name"
+msgid "Natural"
+msgstr "Alami"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Shadow name"
+msgid "Deep"
+msgstr "Dalam"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Shadow name"
+msgid "Sharp"
+msgstr "Tajam"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Shadow name"
+msgid "Outlined"
+msgstr "Berkontur"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Shadow name"
+msgid "Crisp"
+msgstr "Jelas"

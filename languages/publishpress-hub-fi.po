@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-04-08 14:34+0000\n"
+"PO-Revision-Date: 2026-04-08 14:41+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -118,7 +118,6 @@ msgstr ""
 "yhteyttä tukeen saadaksesi apua."
 
 #: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
-#, fuzzy
 msgid ""
 "License deactivation error. Please try again later or contact support for "
 "help."
@@ -1382,3 +1381,655 @@ msgstr "Liian monta pyyntöä. Odota muutama sekunti ja yritä uudelleen."
 #, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
+
+#: dev-workspace-cache/wp_test/wp-includes/blocks/widget-group/block.json
+msgctxt "block title"
+msgid "Widget Group"
+msgstr "Widget-ryhmä"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Color name"
+msgid "Base"
+msgstr "Perus"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Color name"
+msgid "Contrast"
+msgstr "Kontrasti"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Color name"
+msgid "Accent 1"
+msgstr "Korostus 1"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Color name"
+msgid "Accent 2"
+msgstr "Korostus 2"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Color name"
+msgid "Accent 3"
+msgstr "Korostus 3"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Color name"
+msgid "Accent 4"
+msgstr "Korostus 4"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Color name"
+msgid "Accent 5"
+msgstr "Korostus 5"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Color name"
+msgid "Accent 6"
+msgstr "Korostus 6"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Color name"
+msgid "Base / Two"
+msgstr "Perus / Kaksi"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Color name"
+msgid "Contrast / Two"
+msgstr "Kontrasti / Kaksi"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Color name"
+msgid "Contrast / Three"
+msgstr "Kontrasti / Kolme"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Color name"
+msgid "Accent"
+msgstr "Korostus"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Color name"
+msgid "Accent / Two"
+msgstr "Korostus / Kaksi"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Color name"
+msgid "Accent / Three"
+msgstr "Korostus / Kolme"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Color name"
+msgid "Accent / Four"
+msgstr "Korostus / Neljä"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Color name"
+msgid "Accent / Five"
+msgstr "Korostus / Viisi"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr "Pää"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Color name"
+msgid "Secondary"
+msgstr "Toissijainen"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Color name"
+msgid "Tertiary"
+msgstr "Kolmas"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Black"
+msgstr "Musta"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Cyan bluish gray"
+msgstr "Syanoosin harmaa"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "White"
+msgstr "Valkoinen"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Pale pink"
+msgstr "Vaalea vaaleanpunainen"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Vivid red"
+msgstr "Elävä punainen"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Luminous vivid orange"
+msgstr "Hehkuva elävä oranssi"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Luminous vivid amber"
+msgstr "Hehkuva elävä meri"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Light green cyan"
+msgstr "Vaalea vihreä syanoosi"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Vivid green cyan"
+msgstr "Elävä vihreä syanoosi"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Pale cyan blue"
+msgstr "Vaalea syanoosin sininen"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Vivid cyan blue"
+msgstr "Elävä syanoosin sininen"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Color name"
+msgid "Vivid purple"
+msgstr "Elävä violetti"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Space size name"
+msgid "1"
+msgstr "1"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Space size name"
+msgid "2"
+msgstr "2"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Space size name"
+msgid "3"
+msgstr "3"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Space size name"
+msgid "4"
+msgstr "4"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Space size name"
+msgid "5"
+msgstr "5"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Space size name"
+msgid "6"
+msgstr "6"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Space size name"
+msgid "Tiny"
+msgstr "Pieni"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Space size name"
+msgid "X-Small"
+msgstr "X-Pieni"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Space size name"
+msgid "Small"
+msgstr "Pieni"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Space size name"
+msgid "Regular"
+msgstr "Normaali"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Space size name"
+msgid "Large"
+msgstr "Suuri"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Space size name"
+msgid "X-Large"
+msgstr "X-Suuri"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Space size name"
+msgid "XX-Large"
+msgstr "XX-Suuri"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "Pieni"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr "Keskikokoinen"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr "Suuri"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Font size name"
+msgid "Extra Large"
+msgstr "Erityisen suuri"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Font size name"
+msgid "Extra Extra Large"
+msgstr "Erityisen erityisen suuri"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
+msgctxt "Font family name"
+msgid "Manrope"
+msgstr "Manrope"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
+msgctxt "Font family name"
+msgid "Fira Code"
+msgstr "Fira Code"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Font family name"
+msgid "Inter"
+msgstr "Inter"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json, fuzzy
+msgctxt "Font family name"
+msgid "Cardo"
+msgstr "Cardo"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Font family name"
+msgid "System Sans-serif"
+msgstr "Järjestelmä Sans-serif"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Font family name"
+msgid "System Serif"
+msgstr "Järjestelmä Serif"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Font family name"
+msgid "DM Sans"
+msgstr "DM Sans"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Font family name"
+msgid "IBM Plex Mono"
+msgstr "IBM Plex Mono"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Font family name"
+msgid "System Font"
+msgstr "Järjestelmäfontti"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Font family name"
+msgid "Source Serif Pro"
+msgstr "Source Serif Pro"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "Otsikko"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Template part name"
+msgid "Vertical site header"
+msgstr "Pystysuuntainen sivuston otsikko"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Template part name"
+msgid "Header with large title"
+msgstr "Otsikko suurilla kirjaimilla"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "Alatunniste"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Template part name"
+msgid "Footer Columns"
+msgstr "Alatunnisteen sarakkeet"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+msgctxt "Template part name"
+msgid "Footer Newsletter"
+msgstr "Alatunnisteen uutiskirje"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Template part name"
+msgid "Sidebar"
+msgstr "Sivupalkki"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Template part name"
+msgid "Post Meta"
+msgstr "Julkaisun metatiedot"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Template part name"
+msgid "Comments Template Part"
+msgstr "Kommenttien malliosa"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
+msgctxt "Custom template name"
+msgid "404"
+msgstr "404"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Custom template name"
+msgid "Page No Title"
+msgstr "Sivu ilman otsikkoa"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Custom template name"
+msgid "Page with Sidebar"
+msgstr "Sivu sivupalkilla"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Custom template name"
+msgid "Page with Wide Image"
+msgstr "Sivu laajalla kuvalla"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Custom template name"
+msgid "Single with Sidebar"
+msgstr "Yksittäinen sivu sivupalkilla"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Custom template name"
+msgid "Blank"
+msgstr "Tyhjää"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
+msgctxt "Custom template name"
+msgid "Blog (Alternative)"
+msgstr "Blogi (vaihtoehtoinen)"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Duotone name"
+msgid "Black and white"
+msgstr "Musta ja valkoinen"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Duotone name"
+msgid "Black and sandstone"
+msgstr "Musta ja hiekkakivi"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Duotone name"
+msgid "Black and rust"
+msgstr "Musta ja ruoste"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Duotone name"
+msgid "Black and sage"
+msgstr "Musta ja salvia"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Duotone name"
+msgid "Black and pastel blue"
+msgstr "Mustaa ja pastellinsinistä"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Duotone name"
+msgid "Dark grayscale"
+msgstr "Tumma harmaasävy"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Duotone name"
+msgid "Grayscale"
+msgstr "Harmaasävy"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Duotone name"
+msgid "Purple and yellow"
+msgstr "Purppuraa ja keltaista"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Duotone name"
+msgid "Blue and red"
+msgstr "Sinistä ja punaista"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Duotone name"
+msgid "Midnight"
+msgstr "Keskiyö"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Duotone name"
+msgid "Magenta and yellow"
+msgstr "Magenta ja keltainen"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Duotone name"
+msgid "Purple and green"
+msgstr "Purppura ja vihreä"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Duotone name"
+msgid "Blue and orange"
+msgstr "Sininen ja oranssi"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft beige to white"
+msgstr "Pystysuora pehmeä beigen sävy valkoiseen"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft sandstone to white"
+msgstr "Pystysuora pehmeä hiekkakiven sävy valkoiseen"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft rust to white"
+msgstr "Pystysuora pehmeä ruosteen sävy valkoiseen"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft sage to white"
+msgstr "Pystysuora pehmeä salvia valkoiseen"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft mint to white"
+msgstr "Pystysuora pehmeä minttu valkoiseen"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft pewter to white"
+msgstr "Pystysuora pehmeä tina valkoiseen"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard beige to white"
+msgstr "Pystysuora kova beige valkoiseen"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard sandstone to white"
+msgstr "Pystysuora kova hiekkakivi valkoiseen"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard rust to white"
+msgstr "Pystysuora kova ruoste valkoiseen"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard sage to white"
+msgstr "Pystysuora kova salvia valkoiseen"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard mint to white"
+msgstr "Pystysuora kova minttu valkoiseen"
+
+#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard pewter to white"
+msgstr "Pystysuora kovametalli valkoiseksi"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Vivid cyan blue to vivid purple"
+msgstr "Elävä syvänsininen kirkkaaksi purppuraksi"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Light green cyan to vivid green cyan"
+msgstr "Vaalea vihreä syanivihreäksi"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Luminous vivid amber to luminous vivid orange"
+msgstr "Loistava elävä amber-keltainen loistavaksi eläväksi oranssiksi"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Luminous vivid orange to vivid red"
+msgstr "Loistava elävä oranssi kirkkaaksi punaiseksi"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Very light gray to cyan bluish gray"
+msgstr "Erittäin vaalea harmaa syaninvihreäksi harmaaksi"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Cool to warm spectrum"
+msgstr "Kylmästä lämpimään spektriin"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Blush light purple"
+msgstr "Poskipuna vaaleanvioletti"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Blush bordeaux"
+msgstr "Poskipuna bordeaux"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Luminous dusk"
+msgstr "Loistava hämärä"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Pale ocean"
+msgstr "Vaalea valtameri"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Electric grass"
+msgstr "Sähkönvihreä"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Gradient name"
+msgid "Midnight"
+msgstr "Keskiyö"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Aspect ratio name"
+msgid "Square - 1:1"
+msgstr "Neliö - 1:1"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Aspect ratio name"
+msgid "Standard - 4:3"
+msgstr "Standardi - 4:3"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Aspect ratio name"
+msgid "Portrait - 3:4"
+msgstr "Pysty - 3:4"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Aspect ratio name"
+msgid "Classic - 3:2"
+msgstr "Klassinen - 3:2"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Aspect ratio name"
+msgid "Classic Portrait - 2:3"
+msgstr "Klassinen pysty - 2:3"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Aspect ratio name"
+msgid "Wide - 16:9"
+msgstr "Laaja - 16:9"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Aspect ratio name"
+msgid "Tall - 9:16"
+msgstr "Korkea - 9:16"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Shadow name"
+msgid "Natural"
+msgstr "Luonnollinen"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Shadow name"
+msgid "Deep"
+msgstr "Syvä"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Shadow name"
+msgid "Sharp"
+msgstr "Terävä"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Shadow name"
+msgid "Outlined"
+msgstr "Kuvioitu"
+
+#: dev-workspace-cache/wp_test/wp-includes/theme.json
+msgctxt "Shadow name"
+msgid "Crisp"
+msgstr "Kirkas"
