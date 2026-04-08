@@ -10,13 +10,12 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-03-27 15:22+0000\n"
+"PO-Revision-Date: 2026-04-08 14:34+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: fi\n"
 
-#: publishpress-hub.php:4
 #: publishpress-hub.php:4
 #: src/Admin/Page/WelcomePageController.php:259, fuzzy
 #. Plugin Name of the plugin
@@ -25,6 +24,15 @@ msgstr "PublishPress Hub"
 
 #: publishpress-hub.php:5
 #. Description of the plugin
+msgid ""
+"Centralized management hub for all PublishPress plugins - install, update, "
+"and manage licenses from one dashboard."
+msgstr ""
+"Keskitetty hallintakeskus kaikille PublishPress-plugineille - asenna, "
+"päivitä ja hallitse lisenssejä yhdestä ohjauspaneelista."
+
+#: publishpress-hub.php:7, fuzzy
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
@@ -102,6 +110,23 @@ msgid "Pro plugin not set for plugin family: %s"
 msgstr "Pro-lisäosa ei ole asetettu lisäosaperheelle: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
+msgid ""
+"License activation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Lisenssipalvelimen virhe. Ole hyvä ja yritä uudelleen myöhemmin tai ota "
+"yhteyttä tukeen saadaksesi apua."
+
+#: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
+#, fuzzy
+msgid ""
+"License deactivation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Lisenssipalvelimen virhe. Ole hyvä ja yritä uudelleen myöhemmin tai ota "
+"yhteyttä tukeen saadaksesi apua."
+
+#: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
 msgstr ""
 "Tämä lisenssi on tällä hetkellä pois käytöstä. Ole hyvä ja ota yhteyttä "
@@ -114,12 +139,65 @@ msgstr ""
 "uusimiseksi."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
+#, fuzzy
+msgid ""
+"This license key is not authorized for this plugin. Please verify your "
+"license key or contact support for help."
+msgstr ""
+"Tämä lisenssi on passiivinen tälle sivustolle. Ole hyvä ja ota yhteyttä "
+"tukeen saadaksesi apua."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
+#, fuzzy
+msgid ""
+"This license cannot be used for this plugin. Please contact support for "
+"help."
+msgstr ""
+"Tätä lisenssiä ei voi aktivoida. Ole hyvä ja ota yhteyttä tukeen saadaksesi "
+"apua."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
+#, fuzzy
+msgid ""
+"This license does not match the plugin you are trying to activate. Please "
+"contact support for assistance."
+msgstr ""
+"Tämä lisenssi on passiivinen tälle sivustolle. Ole hyvä ja ota yhteyttä "
+"tukeen saadaksesi apua."
+
+#: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
+#, fuzzy
+msgid ""
+"License key does not match our records. Please contact support for "
+"assistance."
+msgstr ""
+"Tämä lisenssi on tällä hetkellä pois käytöstä. Ole hyvä ja ota yhteyttä "
+"tukeen saadaksesi apua."
+
+#: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
 msgstr ""
 "Lisenssiavainta ei ole annettu. Ole hyvä ja syötä voimassa oleva "
 "lisenssiavain."
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
+msgid ""
+"Your site URL is required to activate the license. Please enter a valid "
+"site URL to continue."
+msgstr ""
+"Verkkosivustosi URL-osoite on vaadittu lisenssin aktivoimiseksi. Anna "
+"voimassa oleva verkkosivuston URL-osoite jatkaaksesi."
+
+#: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
+#, fuzzy
+msgid ""
+"License activation limit reached. Please contact support to upgrade or "
+"deactivate on another site."
+msgstr ""
+"Tämän lisenssin voimassaolo on päättynyt. Ole hyvä ja ota yhteyttä tukeen "
+"uusimiseksi."
+
+#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
 msgid "This license cannot be activated. Please contact support for help."
 msgstr ""
 "Tätä lisenssiä ei voi aktivoida. Ole hyvä ja ota yhteyttä tukeen saadaksesi "
@@ -132,28 +210,94 @@ msgstr ""
 "yhteyttä tukeen saadaksesi apua."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
+#, fuzzy
+msgid ""
+"The license server returned an invalid response. Please try again later or "
+"contact support for help."
+msgstr ""
+"Lisenssipalvelimen virhe. Ole hyvä ja yritä uudelleen myöhemmin tai ota "
+"yhteyttä tukeen saadaksesi apua."
+
+#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
 msgid "This license is inactive for this site. Please contact support for help."
 msgstr ""
 "Tämä lisenssi on passiivinen tälle sivustolle. Ole hyvä ja ota yhteyttä "
 "tukeen saadaksesi apua."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
+#, fuzzy
+msgid ""
+"Plugin activation failed. Please try again later or contact support for "
+"help."
+msgstr ""
+"Liitännäisen asennus epäonnistui. Ole hyvä ja ota yhteyttä tukeen "
+"saadaksesi apua."
+
+#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
 msgid "This action is not possible because the plugin is already installed."
 msgstr "Tämä toiminto ei ole mahdollista, koska liitännäinen on jo asennettu."
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
+#, fuzzy
+msgid ""
+"Plugin deactivation failed. Please try again later or contact support for "
+"help."
+msgstr ""
+"Lisenssipalvelimen virhe. Ole hyvä ja yritä uudelleen myöhemmin tai ota "
+"yhteyttä tukeen saadaksesi apua."
+
+#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
 msgid "Plugin family not found. Please contact support for help."
 msgstr ""
 "Liitännäisperhettä ei löytynyt. Ole hyvä ja ota yhteyttä tukeen saadaksesi "
 "apua."
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because both free and pro versions are "
+"installed. Please uninstall one version to continue."
+msgstr "Tämä toiminto ei ole mahdollista, koska liitännäinen on jo asennettu."
+
+#: src/Domain/Plugin/Exception/PluginInstallException.php:29
 msgid "Plugin installation failed. Please contact support for help."
 msgstr ""
 "Liitännäisen asennus epäonnistui. Ole hyvä ja ota yhteyttä tukeen "
 "saadaksesi apua."
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because the plugin is not activated. Please "
+"activate the plugin and try again."
+msgstr "Tämä toiminto ei ole mahdollista, koska liitännäinen on jo asennettu."
+
+#: src/Domain/Plugin/Exception/PluginNotFoundException.php:29
+#, fuzzy
+msgid ""
+"Plugin not found in our available plugins list. Please contact support for "
+"help."
+msgstr ""
+"Liitännäisperhettä ei löytynyt. Ole hyvä ja ota yhteyttä tukeen saadaksesi "
+"apua."
+
+#: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because the plugin is not installed. Please "
+"install the plugin and try again."
+msgstr "Tämä toiminto ei ole mahdollista, koska liitännäinen on jo asennettu."
+
+#: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
+#, fuzzy
+msgid ""
+"Unknown license server error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Lisenssipalvelimen virhe. Ole hyvä ja yritä uudelleen myöhemmin tai ota "
+"yhteyttä tukeen saadaksesi apua."
+
+#: src/Domain/Plugin/plugin-families.php:26
 msgid "Define tasks that authors must complete before publishing."
 msgstr "Määritä tehtävät, jotka kirjoittajien on suoritettava ennen julkaisua."
 
@@ -298,6 +442,16 @@ msgid "Cannot read downloaded plugin file"
 msgstr "Ladattua laajennustiedostoa ei voida lukea"
 
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:132
+msgid ""
+"Downloaded file is not a valid ZIP archive. The download URL may be "
+"returning an error page."
+msgstr ""
+"Ladattu tiedosto ei ole voimassa oleva ZIP-arkisto. Lataus-URL-osoite "
+"saattaa palauttaa virhesivun."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
+#. translators: %s is the error message
+#, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "Laajennustiedoston purkaminen epäonnistui: %s"
 
@@ -541,6 +695,14 @@ msgid "Loading log..."
 msgstr "Ladataan lokia..."
 
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:332
+msgid ""
+"The debug log is empty. Perform some actions (e.g. activate a license) and "
+"refresh to see entries."
+msgstr ""
+"Vianmääritysloki on tyhjää. Suorita joitain toimintoja (esim. aktivoi "
+"lisenssi) ja päivitä nähdäksesi merkinnät."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
 msgid "Debug log contents"
 msgstr "Vianetsintälokin sisältö"
 
@@ -563,10 +725,29 @@ msgid "Debug Mode"
 msgstr "Vianetsintätila"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
+msgid ""
+"When enabled, all HTTP requests and responses to remote services (license "
+"activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
+"the Debug Log tab to inspect the captured data."
+msgstr ""
+"Kun se on käytössä, kaikki HTTP-pyynnöt ja -vastaukset etäpalveluille "
+"(lisenssin aktivointi, plugin-lataukset jne.) tallennetaan erilliseen "
+"lokitiedostoon. Käytä Vianmääritysloki-välilehteä tarkastellaksesi "
+"tallennettuja tietoja."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
 msgid "Enable Debug Mode"
 msgstr "Ota vianetsintätila käyttöön"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
+msgid ""
+"Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
+"data."
+msgstr ""
+"Vianmäärityslokitus on aktiivinen. Siirry \"Vianmääritysloki\" -välilehteen "
+"nähdäksesi tallennettuja tietoja."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70, fuzzy
 msgid "ERR"
 msgstr "ERR"
 
@@ -612,18 +793,54 @@ msgid "What you can do with PublishPress Hub"
 msgstr "Mitä voit tehdä PublishPress Hubilla"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
+msgid ""
+"PublishPress Hub has everything you need to install, update, and manage "
+"your PublishPress plugins. We're here to help you build a publishing system "
+"that works perfectly for your team."
+msgstr ""
+"PublishPress Hubissa on kaikki, mitä tarvitset PublishPress-pluginesi "
+"asentamiseen, päivittämiseen ja hallintaan. Olemme täällä auttaaksemme "
+"sinua rakentamaan julkaisujärjestelmän, joka toimii täydellisesti "
+"tiimillesi."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:64
 msgid "Centralized Dashboard"
 msgstr "Keskitetty ohjausnäkymä"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:67
+#, fuzzy
+msgid ""
+"View all your PublishPress plugins with their licenses, versions, and key "
+"details."
+msgstr ""
+"Pidä kaikki PublishPress-laajennuksesi ajan tasalla yhden napsautuksen "
+"päivityksillä."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:76
 msgid "One-Click Installation"
 msgstr "Yhden napsautuksen asennus"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:79
+msgid ""
+"Install free PublishPress plugins directly from the Hub without visiting "
+"WordPress.org."
+msgstr ""
+"Asenna ilmaiset PublishPress-pluginit suoraan Hubista vierailematta "
+"WordPress.org:ssa."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:88
 msgid "License Management"
 msgstr "Lisenssien hallinta"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:91
+msgid ""
+"Connect your PublishPress licenses to easily install and activate Pro "
+"versions."
+msgstr ""
+"Yhdistä PublishPress-lisenssisi voidaksesi helposti asentaa ja aktivoida "
+"Pro-versiot."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:100
 msgid "Easy Updates"
 msgstr "Helpot päivitykset"
 
@@ -638,6 +855,14 @@ msgid "Status Monitoring"
 msgstr "Tilamonitorointi"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
+msgid ""
+"Monitor plugin activation status, detect conflicts, and ensure "
+"compatibility."
+msgstr ""
+"Seuraa pluginin aktivointitilaa, havaitse konflikteja ja varmista "
+"yhteensopivuus."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:124
 msgid "Get Started"
 msgstr "Aloita"
 
@@ -735,6 +960,15 @@ msgid "Install Plugin"
 msgstr "Asenna liitännäinen"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
+msgid ""
+"Select how you would like to install this plugin. You can install the Pro "
+"version if you have a license, or the Free version to get started."
+msgstr ""
+"Valitse, miten haluat asentaa tämän plugini. Voit asentaa Pro-version, jos "
+"sinulla on lisenssi, tai Ilmaisen version aloittaaksesi."
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
 msgid "Free Details"
 msgstr "Ilmaiset tiedot"
 
@@ -762,6 +996,15 @@ msgstr "Syötä lisenssiavain"
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:55
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
+msgid ""
+"Enter your license key to activate the Pro version of this plugin. You can "
+"find your license key in your PublishPress account dashboard."
+msgstr ""
+"Syötä lisenssiavain aktivoidaksesi tämän plugini Pro-version. Löydät "
+"lisenssiavaimesi PublishPress-tilisi ohjauspaneelista."
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
 msgid "Go to my profile to get the license key"
 msgstr "Siirry profiiliini saadaksesi lisenssiavaimen"
 
@@ -901,6 +1144,17 @@ msgid "Keep the Free version"
 msgstr "Pidä Ilmainen versio"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
+msgid ""
+"Unlock the full potential of this plugin with the Pro version. Enjoy "
+"advanced features, priority support, and exclusive benefits designed to "
+"help you get the most out of your workflow."
+msgstr ""
+"Hyödynnä tämän plugini koko potentiaali Pro-version avulla. Nauti "
+"edistyksellisistä ominaisuuksista, ensisijaisesta tuesta ja "
+"yksinoikeudellisista eduista, jotka on suunniteltu auttamaan sinua saamaan "
+"paras hyöty työnkulustasi."
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "Tutustu kaikkiin Pro-ominaisuuksiin"
 
@@ -1125,6 +1379,6 @@ msgid "Too many requests. Please wait a few seconds and try again."
 msgstr "Liian monta pyyntöä. Odota muutama sekunti ja yritä uudelleen."
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
-#, fuzzy, js-format
+#, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"

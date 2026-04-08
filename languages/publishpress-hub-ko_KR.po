@@ -10,13 +10,12 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-03-27 15:30+0000\n"
+"PO-Revision-Date: 2026-04-08 14:35+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Language: ko_KR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: publishpress-hub.php:4
 #: publishpress-hub.php:4
 #: src/Admin/Page/WelcomePageController.php:259
 #. Plugin Name of the plugin
@@ -25,6 +24,13 @@ msgstr "퍼블리시프레스 허브"
 
 #: publishpress-hub.php:5
 #. Description of the plugin
+msgid ""
+"Centralized management hub for all PublishPress plugins - install, update, "
+"and manage licenses from one dashboard."
+msgstr "모든 PublishPress 플러그인을 위한 중앙 집중식 관리 허브 - 하나의 대시보드에서 설치, 업데이트 및 라이센스를 관리합니다."
+
+#: publishpress-hub.php:7
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "퍼블리시프레스"
 
@@ -102,6 +108,19 @@ msgid "Pro plugin not set for plugin family: %s"
 msgstr "플러그인 가족에 대해 설정되지 않은 프로 플러그인: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
+msgid ""
+"License activation error. Please try again later or contact support for "
+"help."
+msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
+
+#: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
+#, fuzzy
+msgid ""
+"License deactivation error. Please try again later or contact support for "
+"help."
+msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
+
+#: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
 msgstr "이 라이선스는 현재 비활성화되어 있습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
@@ -110,10 +129,51 @@ msgid "This license has expired. Please contact support to renew it."
 msgstr "이 라이선스는 만료되었습니다. 갱신을 원하시면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
+#, fuzzy
+msgid ""
+"This license key is not authorized for this plugin. Please verify your "
+"license key or contact support for help."
+msgstr "이 라이선스는 이 사이트에 대해 비활성 상태입니다. 도움을 받으시려면 지원팀에 문의하십시오."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
+#, fuzzy
+msgid ""
+"This license cannot be used for this plugin. Please contact support for "
+"help."
+msgstr "이 라이선스는 활성화할 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
+#, fuzzy
+msgid ""
+"This license does not match the plugin you are trying to activate. Please "
+"contact support for assistance."
+msgstr "이 라이선스는 이 사이트에 대해 비활성 상태입니다. 도움을 받으시려면 지원팀에 문의하십시오."
+
+#: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
+#, fuzzy
+msgid ""
+"License key does not match our records. Please contact support for "
+"assistance."
+msgstr "이 라이선스는 현재 비활성화되어 있습니다. 도움을 받으시려면 지원팀에 문의하십시오."
+
+#: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
 msgstr "제공된 라이선스 키가 없습니다. 유효한 라이선스 키를 입력하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
+msgid ""
+"Your site URL is required to activate the license. Please enter a valid "
+"site URL to continue."
+msgstr "라이센스를 활성화하려면 사이트 URL이 필요합니다. 계속하려면 유효한 사이트 URL을 입력하세요."
+
+#: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
+#, fuzzy
+msgid ""
+"License activation limit reached. Please contact support to upgrade or "
+"deactivate on another site."
+msgstr "이 라이선스는 만료되었습니다. 갱신을 원하시면 지원팀에 문의하십시오."
+
+#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
 msgid "This license cannot be activated. Please contact support for help."
 msgstr "이 라이선스는 활성화할 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
@@ -122,22 +182,78 @@ msgid "License server error. Please try again later or contact support for help.
 msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
+#, fuzzy
+msgid ""
+"The license server returned an invalid response. Please try again later or "
+"contact support for help."
+msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
+
+#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
 msgid "This license is inactive for this site. Please contact support for help."
 msgstr "이 라이선스는 이 사이트에 대해 비활성 상태입니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
+#, fuzzy
+msgid ""
+"Plugin activation failed. Please try again later or contact support for "
+"help."
+msgstr "플러그인 설치에 실패했습니다. 도움을 받으시려면 지원팀에 문의하십시오."
+
+#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
 msgid "This action is not possible because the plugin is already installed."
 msgstr "플러그인이 이미 설치되어 있어 이 작업을 수행할 수 없습니다."
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
+#, fuzzy
+msgid ""
+"Plugin deactivation failed. Please try again later or contact support for "
+"help."
+msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
+
+#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
 msgid "Plugin family not found. Please contact support for help."
 msgstr "플러그인 패밀리를 찾을 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because both free and pro versions are "
+"installed. Please uninstall one version to continue."
+msgstr "플러그인이 이미 설치되어 있어 이 작업을 수행할 수 없습니다."
+
+#: src/Domain/Plugin/Exception/PluginInstallException.php:29
 msgid "Plugin installation failed. Please contact support for help."
 msgstr "플러그인 설치에 실패했습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because the plugin is not activated. Please "
+"activate the plugin and try again."
+msgstr "플러그인이 이미 설치되어 있어 이 작업을 수행할 수 없습니다."
+
+#: src/Domain/Plugin/Exception/PluginNotFoundException.php:29
+#, fuzzy
+msgid ""
+"Plugin not found in our available plugins list. Please contact support for "
+"help."
+msgstr "플러그인 패밀리를 찾을 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
+
+#: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because the plugin is not installed. Please "
+"install the plugin and try again."
+msgstr "플러그인이 이미 설치되어 있어 이 작업을 수행할 수 없습니다."
+
+#: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
+#, fuzzy
+msgid ""
+"Unknown license server error. Please try again later or contact support for "
+"help."
+msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
+
+#: src/Domain/Plugin/plugin-families.php:26
 msgid "Define tasks that authors must complete before publishing."
 msgstr "저자들이 게시하기 전에 완료해야 하는 작업을 정의하세요."
 
@@ -280,6 +396,14 @@ msgid "Cannot read downloaded plugin file"
 msgstr "다운로드된 플러그인 파일을 읽을 수 없습니다"
 
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:132
+msgid ""
+"Downloaded file is not a valid ZIP archive. The download URL may be "
+"returning an error page."
+msgstr "다운로드한 파일은 유효한 ZIP 아카이브가 아닙니다. 다운로드 URL이 오류 페이지를 반환할 수 있습니다."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
+#. translators: %s is the error message
+#, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "플러그인 파일 압축 해제에 실패했습니다: %s"
 
@@ -521,6 +645,12 @@ msgid "Loading log..."
 msgstr "로그 로딩 중..."
 
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:332
+msgid ""
+"The debug log is empty. Perform some actions (e.g. activate a license) and "
+"refresh to see entries."
+msgstr "디버그 로그가 비어 있습니다. 일부 작업(예: 라이센스 활성화)을 수행하고 새로 고침하여 항목을 확인하세요."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
 msgid "Debug log contents"
 msgstr "디버그 로그 내용"
 
@@ -541,10 +671,25 @@ msgid "Debug Mode"
 msgstr "디버그 모드"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
+msgid ""
+"When enabled, all HTTP requests and responses to remote services (license "
+"activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
+"the Debug Log tab to inspect the captured data."
+msgstr ""
+"활성화되면 모든 HTTP 요청 및 원격 서비스에 대한 응답(라이센스 활성화, 플러그인 다운로드 등)이 전용 로그 파일에 기록됩니다. "
+"캡처된 데이터를 확인하려면 디버그 로그 탭을 사용하세요."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
 msgid "Enable Debug Mode"
 msgstr "디버그 모드 활성화"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
+msgid ""
+"Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
+"data."
+msgstr "디버그 로깅이 활성화되었습니다. 캡처된 데이터를 보려면 \"디버그 로그\" 탭으로 전환하세요."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
 msgid "ERR"
 msgstr "오류"
 
@@ -590,18 +735,46 @@ msgid "What you can do with PublishPress Hub"
 msgstr "PublishPress 허브로 할 수 있는 것"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
+msgid ""
+"PublishPress Hub has everything you need to install, update, and manage "
+"your PublishPress plugins. We're here to help you build a publishing system "
+"that works perfectly for your team."
+msgstr ""
+"PublishPress Hub는 PublishPress 플러그인을 설치, 업데이트 및 관리하는 데 필요한 모든 것을 제공합니다. 팀에 "
+"적합한 퍼블리싱 시스템을 구축하는 데 도움을 드리겠습니다."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:64
 msgid "Centralized Dashboard"
 msgstr "중앙 집중식 대시보드"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:67
+#, fuzzy
+msgid ""
+"View all your PublishPress plugins with their licenses, versions, and key "
+"details."
+msgstr "원클릭 업데이트로 모든 PublishPress 플러그인을 최신 상태로 유지하세요."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:76
 msgid "One-Click Installation"
 msgstr "원클릭 설치"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:79
+msgid ""
+"Install free PublishPress plugins directly from the Hub without visiting "
+"WordPress.org."
+msgstr "WordPress.org를 방문하지 않고 허브에서 무료 PublishPress 플러그인을 직접 설치하세요."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:88
 msgid "License Management"
 msgstr "라이선스 관리"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:91
+msgid ""
+"Connect your PublishPress licenses to easily install and activate Pro "
+"versions."
+msgstr "PublishPress 라이센스를 연결하여 Pro 버전을 쉽게 설치하고 활성화하세요."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:100
 msgid "Easy Updates"
 msgstr "쉬운 업데이트"
 
@@ -614,6 +787,12 @@ msgid "Status Monitoring"
 msgstr "상태 모니터링"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
+msgid ""
+"Monitor plugin activation status, detect conflicts, and ensure "
+"compatibility."
+msgstr "플러그인 활성화 상태를 모니터링하고, 충돌을 감지하며, 호환성을 보장합니다."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:124
 msgid "Get Started"
 msgstr "시작하기"
 
@@ -709,6 +888,15 @@ msgid "Install Plugin"
 msgstr "플러그인 설치"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
+msgid ""
+"Select how you would like to install this plugin. You can install the Pro "
+"version if you have a license, or the Free version to get started."
+msgstr ""
+"이 플러그인을 설치하는 방법을 선택하세요. 라이센스가 있는 경우 Pro 버전을 설치할 수 있으며, 시작하려면 무료 버전을 선택할 수 "
+"있습니다."
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
 msgid "Free Details"
 msgstr "무료 세부정보"
 
@@ -736,6 +924,15 @@ msgstr "라이센스 키를 입력하세요"
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:55
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
+msgid ""
+"Enter your license key to activate the Pro version of this plugin. You can "
+"find your license key in your PublishPress account dashboard."
+msgstr ""
+"이 플러그인의 Pro 버전을 활성화하려면 라이센스 키를 입력하세요. PublishPress 계정 대시보드에서 라이센스 키를 찾을 수 "
+"있습니다."
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
 msgid "Go to my profile to get the license key"
 msgstr "라이센스 키를 얻으려면 내 프로필로 가세요"
 
@@ -875,6 +1072,15 @@ msgid "Keep the Free version"
 msgstr "무료 버전 유지하기"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
+msgid ""
+"Unlock the full potential of this plugin with the Pro version. Enjoy "
+"advanced features, priority support, and exclusive benefits designed to "
+"help you get the most out of your workflow."
+msgstr ""
+"Pro 버전으로 이 플러그인의 모든 잠재력을 활용하세요. 고급 기능, 우선 지원 및 워크플로우를 최대한 활용할 수 있도록 설계된 독점 "
+"혜택을 즐기세요."
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "모든 프로 기능 알아보기"
 
@@ -1099,6 +1305,6 @@ msgid "Too many requests. Please wait a few seconds and try again."
 msgstr "요청이 너무 많습니다. 몇 초 기다린 후 다시 시도해 주세요."
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
-#, fuzzy, js-format
+#, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
