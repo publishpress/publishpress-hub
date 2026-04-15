@@ -1,13 +1,13 @@
 ---
-name: Release the Pro version (team only)
-about: Step-by-step checklist for releasing the Pro plugin version.
-title: Release Pro Plugin v[VERSION]
+name: Release Checklist (team only)
+about: Step-by-step checklist for releasing the plugin.
+title: Release v[VERSION]
 labels: release
 assignees: ''
 type: task
 ---
 
-Before releasing the Pro plugin, ensure every step in this checklist is completed.
+Before releasing the plugin, ensure every step in this checklist is completed.
 
 > **Release principle:** Prioritize quality over velocity for all standard releases.
 > For urgent/security releases, maintain essential quality and security checks while balancing delivery speed responsibly.
@@ -31,7 +31,6 @@ Before releasing the Pro plugin, ensure every step in this checklist is complete
 - [ ] Update any required dependencies with `composer update <vendor/package>:"<version-constraint>"`
 - [ ] List all dependency changes (with versions) in `CHANGELOG.md`
 - [ ] Review and resolve open Dependabot pull requests and alerts
-- [ ] Update the reference for the Free plugin package in the `lib/composer.json` file to use the recently released version tag (e.g., `4.7.0`) instead of a branch reference. This ensures the Pro plugin uses the stable release of the Free plugin.
 
 **Build Assets**
 
@@ -39,7 +38,7 @@ Before releasing the Pro plugin, ensure every step in this checklist is complete
 
 **Code Quality**
 
-- [ ] Run `composer check` to verify the codebase has no warnings or errors
+- [ ] Run `composer check:all` to verify the codebase has no warnings or errors
 - [ ] Run `composer test Unit` to execute Unit tests and confirm all tests pass (if applicable)
 - [ ] Run `composer test Integration` to execute Integration tests and confirm all tests pass (if applicable)
 
