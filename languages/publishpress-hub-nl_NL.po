@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-04-08 14:45+0000\n"
+"PO-Revision-Date: 2026-04-15 21:12+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -138,7 +138,6 @@ msgstr ""
 "verlengen."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
-#, fuzzy
 msgid ""
 "This license key is not authorized for this plugin. Please verify your "
 "license key or contact support for help."
@@ -147,7 +146,6 @@ msgstr ""
 "ondersteuning voor hulp."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
-#, fuzzy
 msgid ""
 "This license cannot be used for this plugin. Please contact support for "
 "help."
@@ -156,7 +154,6 @@ msgstr ""
 "ondersteuning voor hulp."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
-#, fuzzy
 msgid ""
 "This license does not match the plugin you are trying to activate. Please "
 "contact support for assistance."
@@ -165,7 +162,6 @@ msgstr ""
 "ondersteuning voor hulp."
 
 #: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
-#, fuzzy
 msgid ""
 "License key does not match our records. Please contact support for "
 "assistance."
@@ -323,12 +319,12 @@ msgid "Approve and schedule new versions to your published posts."
 msgstr "Goedkeuren en plannen van nieuwe versies van uw gepubliceerde berichten."
 
 #: src/Domain/Plugin/plugin-families.php:154
-msgid "Create shortlinks for your posts."
-msgstr "Maak shortlinks voor uw berichten."
-
-#: src/Domain/Plugin/plugin-families.php:170
 msgid "Organize your posts into issues or series."
 msgstr "Organiseer uw berichten in nummers of series."
+
+#: src/Domain/Plugin/plugin-families.php:170
+msgid "Create shortlinks for your posts."
+msgstr "Maak shortlinks voor uw berichten."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -1058,48 +1054,48 @@ msgstr "Plugin Bijwerken"
 msgid "Check for Updates"
 msgstr "Controleren op Updates"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:90
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
 #, js-format
 msgid "Install %s"
 msgstr "Installeer %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:102
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
 #, js-format
 msgid "Install %s Pro"
 msgstr "Installeer %s Pro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:110
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:129
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
 #, js-format
 msgid "Upgrade %s to Pro"
 msgstr "Upgrade %s naar Pro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:118
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
 #, js-format
 msgid "Uninstall %s"
 msgstr "Verwijder %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:119
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
 #, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "Weet u zeker dat u %s wilt verwijderen?"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:140
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
 #, js-format
 msgid "Resolve Conflict for %s"
 msgstr "Conflict Oplossen voor %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:153
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
 #, js-format
 msgid "Manage %s License"
 msgstr "Beheer %s Licentie"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:164
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
 #, js-format
 msgid "Activate %s License"
 msgstr "Activeer %s Licentie"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:172
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
 #, js-format
 msgid "More Info: %s"
 msgstr "Meer Informatie: %s"
@@ -1157,7 +1153,12 @@ msgstr "Upgrade naar Pro en verhoog uw productiviteit"
 msgid "New version available"
 msgstr "Nieuwe versie beschikbaar"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:184
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#, js-format
+msgid "Version %s"
+msgstr "Versie %s"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
 #, js-format
 msgid "Update available: %s → %s"
 msgstr "Update beschikbaar: %s → %s"
@@ -1203,11 +1204,11 @@ msgid "Conflicting Installations"
 msgstr "Conflictueuze Installaties"
 
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:168
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
 msgid "Update Available"
 msgstr "Update Beschikbaar"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:179
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
 msgid "Expires"
 msgstr "Verloopt"
 
@@ -1365,655 +1366,3 @@ msgstr "Te veel verzoeken. Wacht een paar seconden en probeer het opnieuw."
 #, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
-
-#: dev-workspace-cache/wp_test/wp-includes/blocks/widget-group/block.json
-msgctxt "block title"
-msgid "Widget Group"
-msgstr "Widgetgroep"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Base"
-msgstr "Basis"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Color name"
-msgid "Contrast"
-msgstr "Contrast"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
-msgctxt "Color name"
-msgid "Accent 1"
-msgstr "Accent 1"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
-msgctxt "Color name"
-msgid "Accent 2"
-msgstr "Accent 2"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
-msgctxt "Color name"
-msgid "Accent 3"
-msgstr "Accent 3"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
-msgctxt "Color name"
-msgid "Accent 4"
-msgstr "Accent 4"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
-msgctxt "Color name"
-msgid "Accent 5"
-msgstr "Accent 5"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
-msgctxt "Color name"
-msgid "Accent 6"
-msgstr "Accent 6"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Base / Two"
-msgstr "Basis / Twee"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Contrast / Two"
-msgstr "Contrast / Twee"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Contrast / Three"
-msgstr "Contrast / Drie"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json, fuzzy
-msgctxt "Color name"
-msgid "Accent"
-msgstr "Accent"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Two"
-msgstr "Accent / Twee"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Three"
-msgstr "Accent / Drie"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Four"
-msgstr "Accent / Vier"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Five"
-msgstr "Accent / Vijf"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Primary"
-msgstr "Primair"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Secondary"
-msgstr "Secundair"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Tertiary"
-msgstr "Tertiair"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Black"
-msgstr "Zwart"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Cyan bluish gray"
-msgstr "Cyaan blauwgrijs"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "White"
-msgstr "Wit"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Pale pink"
-msgstr "Fletsroze"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid red"
-msgstr "Levendig rood"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Luminous vivid orange"
-msgstr "Luminous levendig oranje"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Luminous vivid amber"
-msgstr "Luminous levendig amber"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Light green cyan"
-msgstr "Lichtgroen cyaan"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid green cyan"
-msgstr "Levendig groen cyaan"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Pale cyan blue"
-msgstr "Flets cyaan blauw"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid cyan blue"
-msgstr "Levendig cyaan blauw"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid purple"
-msgstr "Levendig paars"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "1"
-msgstr "1"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "2"
-msgstr "2"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "3"
-msgstr "3"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "4"
-msgstr "4"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "5"
-msgstr "5"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "6"
-msgstr "6"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Tiny"
-msgstr "Mini"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "X-Small"
-msgstr "X-Small"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Small"
-msgstr "Klein"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Regular"
-msgstr "Normaal"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Large"
-msgstr "Groot"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "X-Large"
-msgstr "X-Groot"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "XX-Large"
-msgstr "XX-Groot"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Small"
-msgstr "Klein"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Medium"
-msgstr "Middelgroot"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Large"
-msgstr "Groot"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Extra Large"
-msgstr "Extra Groot"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Font size name"
-msgid "Extra Extra Large"
-msgstr "Extra Extra Groot"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "Manrope"
-msgstr "Manrope"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "Fira Code"
-msgstr "Fira Code"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "Inter"
-msgstr "Inter"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "Cardo"
-msgstr "Cardo"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Font family name"
-msgid "System Sans-serif"
-msgstr "Systeem Sans-serif"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Font family name"
-msgid "System Serif"
-msgstr "Systeem Serif"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "DM Sans"
-msgstr "DM Sans"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "IBM Plex Mono"
-msgstr "IBM Plex Mono"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Font family name"
-msgid "System Font"
-msgstr "Systeem Lettertype"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "Source Serif Pro"
-msgstr "Source Serif Pro"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Header"
-msgstr "Koptekst"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Vertical site header"
-msgstr "Verticale sitekop"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Header with large title"
-msgstr "Koptekst met grote titel"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Footer"
-msgstr "Voettekst"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Footer Columns"
-msgstr "Voettekst Kolommen"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Footer Newsletter"
-msgstr "Voettekst Nieuwsbrief"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Template part name"
-msgid "Sidebar"
-msgstr "Zijbalk"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Post Meta"
-msgstr "Bericht Meta"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Comments Template Part"
-msgstr "Reacties Sjabloon Onderdeel"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Custom template name"
-msgid "404"
-msgstr "404"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Page No Title"
-msgstr "Pagina Zonder Titel"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Page with Sidebar"
-msgstr "Pagina met Zijbalk"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Page with Wide Image"
-msgstr "Pagina met Brede Afbeelding"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Single with Sidebar"
-msgstr "Enkele met Zijbalk"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Custom template name"
-msgid "Blank"
-msgstr "Leeg"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Custom template name"
-msgid "Blog (Alternative)"
-msgstr "Blog (Alternatief)"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and white"
-msgstr "Zwart en wit"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and sandstone"
-msgstr "Zwart en zandsteen"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and rust"
-msgstr "Zwart en roest"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and sage"
-msgstr "Zwart en salie"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and pastel blue"
-msgstr "Zwart en pastelblauw"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Dark grayscale"
-msgstr "Donker grijswaarden"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Grayscale"
-msgstr "Grijswaarden"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Purple and yellow"
-msgstr "Paars en geel"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Blue and red"
-msgstr "Blauw en rood"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Midnight"
-msgstr "Middernacht"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Magenta and yellow"
-msgstr "Magenta en geel"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Purple and green"
-msgstr "Paars en groen"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Blue and orange"
-msgstr "Blauw en oranje"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft beige to white"
-msgstr "Verticale zachte beige naar wit"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft sandstone to white"
-msgstr "Verticale zachte zandsteen naar wit"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft rust to white"
-msgstr "Verticale zachte roest naar wit"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft sage to white"
-msgstr "Verticale zachte salie naar wit"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft mint to white"
-msgstr "Verticale zachte munt naar wit"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft pewter to white"
-msgstr "Verticale zachte tin naar wit"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard beige to white"
-msgstr "Verticale harde beige naar wit"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard sandstone to white"
-msgstr "Verticale harde zandsteen naar wit"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard rust to white"
-msgstr "Verticale harde roest naar wit"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard sage to white"
-msgstr "Verticale harde salie naar wit"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard mint to white"
-msgstr "Verticale harde munt naar wit"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard pewter to white"
-msgstr "Verticale hard tin naar wit"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Vivid cyan blue to vivid purple"
-msgstr "Levendig cyaanblauw naar levendig paars"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Light green cyan to vivid green cyan"
-msgstr "Lichtgroen cyaan naar levendig groen cyaan"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Luminous vivid amber to luminous vivid orange"
-msgstr "Luminous levendig amber naar luminous levendig oranje"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Luminous vivid orange to vivid red"
-msgstr "Luminous levendig oranje naar levendig rood"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Very light gray to cyan bluish gray"
-msgstr "Zeer lichtgrijs naar cyaanblauwgrijs"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Cool to warm spectrum"
-msgstr "Koel naar warm spectrum"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Blush light purple"
-msgstr "Blush lichtpaars"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json, fuzzy
-msgctxt "Gradient name"
-msgid "Blush bordeaux"
-msgstr "Blush bordeaux"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Luminous dusk"
-msgstr "Luminous schemering"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Pale ocean"
-msgstr "Vaal oceaan"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Electric grass"
-msgstr "Elektrisch gras"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Midnight"
-msgstr "Middernacht"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Square - 1:1"
-msgstr "Vierkant - 1:1"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Standard - 4:3"
-msgstr "Standaard - 4:3"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Portrait - 3:4"
-msgstr "Portret - 3:4"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Classic - 3:2"
-msgstr "Klassiek - 3:2"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Classic Portrait - 2:3"
-msgstr "Klassiek Portret - 2:3"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Wide - 16:9"
-msgstr "Breed - 16:9"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Tall - 9:16"
-msgstr "Lang - 9:16"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Natural"
-msgstr "Natuurlijk"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Deep"
-msgstr "Diep"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Sharp"
-msgstr "Scherp"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Outlined"
-msgstr "Omrande"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Crisp"
-msgstr "Helder"

@@ -1,0 +1,1363 @@
+# Copyright (C) 2026 PublishPress
+# This file is distributed under the GPL2.
+msgid ""
+msgstr ""
+"Project-Id-Version: PublishPress Hub 1.0.4-beta.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
+"PO-Revision-Date: 2026-04-15 21:16+0000\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: publishpress-hub\n"
+"Language: th\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: publishpress-hub.php:4
+#: src/Admin/Page/WelcomePageController.php:259, fuzzy
+#. Plugin Name of the plugin
+msgid "PublishPress Hub"
+msgstr "PublishPress Hub"
+
+#: publishpress-hub.php:5
+#. Description of the plugin
+msgid ""
+"Centralized management hub for all PublishPress plugins - install, update, "
+"and manage licenses from one dashboard."
+msgstr ""
+"ศูนย์กลางการจัดการสำหรับปลั๊กอิน PublishPress ทั้งหมด - ติดตั้ง, อัปเดต, "
+"และจัดการใบอนุญาตจากแดชบอร์ดเดียว."
+
+#: publishpress-hub.php:7, fuzzy
+#. Author of the plugin
+msgid "PublishPress"
+msgstr "PublishPress"
+
+#: publishpress-hub.php:8, fuzzy
+#. Author URI of the plugin
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
+
+#: src/Admin/Page/ComponentsShowcaseController.php:118
+msgid "Please wait while we load the components showcase..."
+msgstr "โปรดรอสักครู่ในขณะที่เรากำลังโหลดตัวอย่างส่วนประกอบ..."
+
+#: src/Admin/Page/PluginsDashboardController.php:133
+msgid "Please wait while we load the plugins dashboard..."
+msgstr "โปรดรอสักครู่ในขณะที่เรากำลังโหลดแดชบอร์ดปลั๊กอิน..."
+
+#: src/Admin/Page/SettingsPageController.php:104
+#: src/Admin/Page/SettingsPageController.php:105
+#: resources/src/jsx/components/pages/settings-page.jsx:80
+msgid "Settings"
+msgstr "การตั้งค่า"
+
+#: src/Admin/Page/SettingsPageController.php:126
+msgid "Please wait while we load the settings page..."
+msgstr "โปรดรอสักครู่ในขณะที่เรากำลังโหลดหน้าการตั้งค่า..."
+
+#: src/Admin/Page/WelcomePageController.php:143
+msgid "You do not have sufficient permissions to access this page."
+msgstr "คุณไม่มีสิทธิ์เข้าถึงหน้านี้เพียงพอ."
+
+#: src/Admin/Page/WelcomePageController.php:180
+#: src/Admin/Page/WelcomePageController.php:181
+msgid "Welcome"
+msgstr "ยินดีต้อนรับ"
+
+#: src/Admin/Page/WelcomePageController.php:203
+msgid "Please wait while we load the welcome page..."
+msgstr "โปรดรอสักครู่ในขณะที่เรากำลังโหลดหน้าแรก..."
+
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
+#. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
+#, php-format
+msgid "Warning: The license for %1$s has expired. %2$s"
+msgstr "คำเตือน: ใบอนุญาตสำหรับ %1$s หมดอายุแล้ว. %2$s"
+
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:123
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:137
+msgid "Manage licenses"
+msgstr "จัดการใบอนุญาต"
+
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
+#. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
+#, php-format
+msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
+msgstr "คำเตือน: %1$d ปลั๊กอินมีใบอนุญาตที่หมดอายุ: %2$s. %3$s"
+
+#: src/Application/Traits/BootableTrait.php:75
+msgid "Object must be loaded before initializing."
+msgstr "วัตถุต้องถูกโหลดก่อนที่จะเริ่มการใช้งาน."
+
+#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:110
+msgid "No license key found"
+msgstr "ไม่พบคีย์ใบอนุญาต"
+
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
+#. translators: %s is the plugin family slug
+#, php-format
+msgid "Free plugin not set for plugin family: %s"
+msgstr "ปลั๊กอินฟรีไม่ได้ตั้งค่าสำหรับครอบครัวปลั๊กอิน: %s"
+
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
+#. translators: %s is the plugin family slug
+#, php-format
+msgid "Pro plugin not set for plugin family: %s"
+msgstr "ปลั๊กอินโปรไม่ได้ตั้งค่าสำหรับครอบครัวปลั๊กอิน: %s"
+
+#: src/Domain/Plugin/Exception/LicenseActivationException.php:28
+msgid ""
+"License activation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"เกิดข้อผิดพลาดในการเปิดใช้งานใบอนุญาต "
+"กรุณาลองอีกครั้งภายหลังหรือติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
+msgid ""
+"License deactivation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"เกิดข้อผิดพลาดในการปิดใช้งานใบอนุญาต "
+"กรุณาลองอีกครั้งภายหลังหรือติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
+msgid "This license is currently disabled. Please contact support for help."
+msgstr ""
+"ใบอนุญาตนี้ถูกปิดการใช้งานในขณะนี้ "
+"กรุณาติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
+msgid "This license has expired. Please contact support to renew it."
+msgstr "ใบอนุญาตนี้หมดอายุแล้ว กรุณาติดต่อฝ่ายสนับสนุนเพื่อขอทำการต่ออายุ."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
+msgid ""
+"This license key is not authorized for this plugin. Please verify your "
+"license key or contact support for help."
+msgstr ""
+"กุญแจใบอนุญาตนี้ไม่ได้รับอนุญาตสำหรับปลั๊กอินนี้ "
+"กรุณาตรวจสอบกุญแจใบอนุญาตของคุณหรือ ติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
+msgid ""
+"This license cannot be used for this plugin. Please contact support for "
+"help."
+msgstr ""
+"ใบอนุญาตนี้ไม่สามารถใช้กับปลั๊กอินนี้ได้ "
+"กรุณาติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
+msgid ""
+"This license does not match the plugin you are trying to activate. Please "
+"contact support for assistance."
+msgstr ""
+"ใบอนุญาตนี้ไม่ตรงกับปลั๊กอินที่คุณพยายามเปิดใช้งาน "
+"กรุณาติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
+msgid ""
+"License key does not match our records. Please contact support for "
+"assistance."
+msgstr ""
+"กุญแจใบอนุญาตไม่ตรงกับบันทึกของเรา "
+"กรุณาติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/Exception/LicenseMissingException.php:28
+msgid "No license key provided. Please enter a valid license key."
+msgstr "ไม่มีรหัสใบอนุญาตที่ระบุ กรุณาใส่รหัสใบอนุญาตที่ถูกต้อง."
+
+#: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
+msgid ""
+"Your site URL is required to activate the license. Please enter a valid "
+"site URL to continue."
+msgstr ""
+"URL ของเว็บไซต์ของคุณจำเป็นต้องใช้เพื่อเปิดใช้งานใบอนุญาต กรุณาใส่ URL "
+"ของเว็บไซต์ที่ถูกต้องเพื่อดำเนินการต่อ."
+
+#: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
+msgid ""
+"License activation limit reached. Please contact support to upgrade or "
+"deactivate on another site."
+msgstr ""
+"ถึงขีดจำกัดการเปิดใช้งานใบอนุญาตแล้ว "
+"กรุณาติดต่อฝ่ายสนับสนุนเพื่ออัปเกรดหรือปิดใช้งานบนเว็บไซต์อื่น."
+
+#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
+msgid "This license cannot be activated. Please contact support for help."
+msgstr ""
+"ใบอนุญาตนี้ไม่สามารถเปิดใช้งานได้ "
+"กรุณาติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/Exception/LicenseServerException.php:28
+msgid "License server error. Please try again later or contact support for help."
+msgstr ""
+"เกิดข้อผิดพลาดที่เซิร์ฟเวอร์ใบอนุญาต "
+"กรุณาลองอีกครั้งในภายหลังหรือติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
+msgid ""
+"The license server returned an invalid response. Please try again later or "
+"contact support for help."
+msgstr ""
+"เซิร์ฟเวอร์ใบอนุญาตส่งคืนการตอบสนองที่ไม่ถูกต้อง "
+"กรุณาลองอีกครั้งภายหลังหรือ ติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
+msgid "This license is inactive for this site. Please contact support for help."
+msgstr ""
+"ใบอนุญาตนี้ไม่มีการใช้งานสำหรับเว็บไซต์นี้ "
+"กรุณาติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/Exception/PluginActivationException.php:29
+msgid ""
+"Plugin activation failed. Please try again later or contact support for "
+"help."
+msgstr ""
+"การเปิดใช้งานปลั๊กอินล้มเหลว กรุณาลองอีกครั้งภายหลังหรือ "
+"ติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
+msgid "This action is not possible because the plugin is already installed."
+msgstr "การดำเนินการนี้ไม่สามารถทำได้เนื่องจากปลั๊กอินได้ถูกติดตั้งแล้ว."
+
+#: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
+msgid ""
+"Plugin deactivation failed. Please try again later or contact support for "
+"help."
+msgstr ""
+"การปิดใช้งานปลั๊กอินล้มเหลว กรุณาลองอีกครั้งภายหลังหรือ "
+"ติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
+msgid "Plugin family not found. Please contact support for help."
+msgstr "ไม่พบครอบครัวปลั๊กอิน กรุณาติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
+msgid ""
+"This action is not possible because both free and pro versions are "
+"installed. Please uninstall one version to continue."
+msgstr ""
+"ไม่สามารถดำเนินการนี้ได้เนื่องจากมีการติดตั้งทั้งเวอร์ชันฟรีและโปร "
+"กรุณาลบเวอร์ชันหนึ่งเพื่อดำเนินการต่อ."
+
+#: src/Domain/Plugin/Exception/PluginInstallException.php:29
+msgid "Plugin installation failed. Please contact support for help."
+msgstr "การติดตั้งปลั๊กอินล้มเหลว กรุณาติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
+msgid ""
+"This action is not possible because the plugin is not activated. Please "
+"activate the plugin and try again."
+msgstr ""
+"ไม่สามารถดำเนินการนี้ได้เนื่องจากปลั๊กอินยังไม่ได้รับการเปิดใช้งาน "
+"กรุณาเปิดใช้งานปลั๊กอินและลองอีกครั้ง."
+
+#: src/Domain/Plugin/Exception/PluginNotFoundException.php:29
+msgid ""
+"Plugin not found in our available plugins list. Please contact support for "
+"help."
+msgstr ""
+"ไม่พบปลั๊กอินในรายการปลั๊กอินที่เรามี "
+"กรุณาติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
+msgid ""
+"This action is not possible because the plugin is not installed. Please "
+"install the plugin and try again."
+msgstr ""
+"ไม่สามารถดำเนินการนี้ได้เนื่องจากปลั๊กอินยังไม่ได้รับการติดตั้ง "
+"กรุณาติดตั้งปลั๊กอินและลองอีกครั้ง."
+
+#: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
+msgid ""
+"Unknown license server error. Please try again later or contact support for "
+"help."
+msgstr ""
+"เกิดข้อผิดพลาดเซิร์ฟเวอร์ใบอนุญาตที่ไม่รู้จัก กรุณาลองอีกครั้งภายหลังหรือ "
+"ติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ."
+
+#: src/Domain/Plugin/plugin-families.php:26
+msgid "Define tasks that authors must complete before publishing."
+msgstr "กำหนดงานที่ผู้เขียนต้องทำให้เสร็จก่อนการเผยแพร่."
+
+#: src/Domain/Plugin/plugin-families.php:42
+msgid "Control who can edit and view your content."
+msgstr "ควบคุมว่าใครสามารถแก้ไขและดูเนื้อหาของคุณได้."
+
+#: src/Domain/Plugin/plugin-families.php:58
+msgid "Create, manage and display authors for your content."
+msgstr "สร้าง จัดการ และแสดงผู้เขียนสำหรับเนื้อหาของคุณ."
+
+#: src/Domain/Plugin/plugin-families.php:74
+msgid "All the tools you need to improve the block editor."
+msgstr "เครื่องมือทั้งหมดที่คุณต้องการในการปรับปรุงบล็อกเอดิเตอร์."
+
+#: src/Domain/Plugin/plugin-families.php:90
+msgid "Control your admin area and user roles."
+msgstr "ควบคุมพื้นที่ผู้ดูแลระบบและบทบาทของผู้ใช้ของคุณ."
+
+#: src/Domain/Plugin/plugin-families.php:106
+msgid "Schedule changes to your posts."
+msgstr "กำหนดการเปลี่ยนแปลงในโพสต์ของคุณ."
+
+#: src/Domain/Plugin/plugin-families.php:122
+msgid "Organize, schedule, and plan your publishing."
+msgstr "จัดระเบียบ กำหนดเวลา และวางแผนการเผยแพร่ของคุณ."
+
+#: src/Domain/Plugin/plugin-families.php:138
+msgid "Approve and schedule new versions to your published posts."
+msgstr "อนุมัติและกำหนดเวลาเวอร์ชันใหม่ให้กับโพสต์ที่เผยแพร่ของคุณ."
+
+#: src/Domain/Plugin/plugin-families.php:154
+msgid "Organize your posts into issues or series."
+msgstr "จัดระเบียบโพสต์ของคุณให้อยู่ในประเด็นหรือชุด."
+
+#: src/Domain/Plugin/plugin-families.php:170
+msgid "Create shortlinks for your posts."
+msgstr "สร้างลิงก์สั้นสำหรับโพสต์ของคุณ."
+
+#: src/Domain/Plugin/plugin-families.php:186
+msgid "Create custom statuses and publishing workflows."
+msgstr "สร้างสถานะที่กำหนดเองและกระบวนการทำงานในการเผยแพร่."
+
+#: src/Infrastructure/Container/DependencyContainer.php:102
+#. translators: %s is the dependency ID.
+#, php-format
+msgid "Dependency \"%s\" not found in container."
+msgstr "ไม่พบการพึ่งพา \"%s\" ในคอนเทนเนอร์."
+
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
+#. translators: %s is the error message
+#, php-format
+msgid "Error validating license: %s"
+msgstr "เกิดข้อผิดพลาดในการตรวจสอบใบอนุญาต: %s"
+
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
+#. translators: %s is the error message
+#, php-format
+msgid "Error getting license info: %s"
+msgstr "เกิดข้อผิดพลาดในการดึงข้อมูลใบอนุญาต: %s"
+
+#: src/Infrastructure/RestApi/RestApiService.php:287
+msgid "Too many requests. Please try again later."
+msgstr "มีคำขอมากเกินไป กรุณาลองอีกครั้งในภายหลัง."
+
+#: src/Infrastructure/RestApi/RestApiService.php:358
+msgid "An error occurred while processing your request."
+msgstr "เกิดข้อผิดพลาดขณะประมวลผลคำขอของคุณ."
+
+#: src/Infrastructure/View/ViewService.php:48
+#. translators: %s is the template path
+#, php-format
+msgid "Template not found: %s"
+msgstr "ไม่พบเทมเพลต: %s"
+
+#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:55
+msgid "Path cannot be empty"
+msgstr "เส้นทางไม่สามารถว่างเปล่าได้"
+
+#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:64
+msgid "File extension cannot be empty"
+msgstr "นามสกุลไฟล์ไม่สามารถว่างเปล่าได้"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:183
+msgid "Invalid file path: null byte detected"
+msgstr "เส้นทางไฟล์ไม่ถูกต้อง: ตรวจพบไบต์ null"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:192
+msgid "Invalid file path: directory traversal detected"
+msgstr "เส้นทางไฟล์ไม่ถูกต้อง: ตรวจพบการข้ามไดเรกทอรี"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
+#. translators: %s is the directory path
+#, php-format
+msgid "Invalid file path: parent directory does not exist: %s"
+msgstr "เส้นทางไฟล์ไม่ถูกต้อง: ไดเรกทอรีหลักไม่มีอยู่: %s"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:220
+msgid "Invalid file path: unable to resolve path"
+msgstr "เส้นทางไฟล์ไม่ถูกต้อง: ไม่สามารถแก้ไขเส้นทางได้"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:239
+msgid "Invalid file path: operation not allowed outside permitted directories"
+msgstr "เส้นทางไฟล์ไม่ถูกต้อง: การดำเนินการไม่อนุญาตนอกไดเรกทอรีที่อนุญาต"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:52
+msgid "Invalid download URL provided"
+msgstr "URL สำหรับดาวน์โหลดไม่ถูกต้อง"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:60
+msgid "Download URL must use HTTP or HTTPS protocol"
+msgstr "URL สำหรับดาวน์โหลดต้องใช้โปรโตคอล HTTP หรือ HTTPS"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
+#. translators: %s is the hostname
+#, php-format
+msgid "Download URL is not from an allowed domain: %s"
+msgstr "URL สำหรับดาวน์โหลดมาจากโดเมนที่ไม่ได้รับอนุญาต: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:80
+msgid "Download URL failed WordPress validation"
+msgstr "URL สำหรับดาวน์โหลดไม่ผ่านการตรวจสอบของ WordPress"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
+#. translators: %s is the error message
+#, php-format
+msgid "Failed to download plugin: %s"
+msgstr "ไม่สามารถดาวน์โหลดปลั๊กอิน: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:105
+msgid "Downloaded plugin file does not exist"
+msgstr "ไฟล์ปลั๊กอินที่ดาวน์โหลดไม่มีอยู่"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:113
+msgid "Downloaded plugin file is empty"
+msgstr "ไฟล์ปลั๊กอินที่ดาวน์โหลดว่างเปล่า"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:122
+msgid "Cannot read downloaded plugin file"
+msgstr "ไม่สามารถอ่านไฟล์ปลั๊กอินที่ดาวน์โหลด"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:132
+msgid ""
+"Downloaded file is not a valid ZIP archive. The download URL may be "
+"returning an error page."
+msgstr ""
+"ไฟล์ที่ดาวน์โหลดไม่ใช่ ZIP archive ที่ถูกต้อง URL "
+"สำหรับดาวน์โหลดอาจส่งคืนหน้าแสดงข้อผิดพลาด."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
+#. translators: %s is the error message
+#, php-format
+msgid "Failed to unzip plugin file: %s"
+msgstr "ไม่สามารถแตกไฟล์ปลั๊กอิน: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:156
+msgid "Failed to unzip plugin file"
+msgstr "ไม่สามารถแตกไฟล์ปลั๊กอิน"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
+#. translators: %s is the error message
+#, php-format
+msgid "Failed to activate plugin: %s"
+msgstr "ไม่สามารถเปิดใช้งานปลั๊กอิน: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
+#. translators: %s is the error message
+#, php-format
+msgid "Failed to delete plugin: %s"
+msgstr "ไม่สามารถลบปลั๊กอิน: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:292
+msgid "No update available for this plugin"
+msgstr "ไม่มีการอัปเดตสำหรับปลั๊กอินนี้"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:300
+msgid "Invalid update information for this plugin"
+msgstr "ข้อมูลการอัปเดตไม่ถูกต้องสำหรับปลั๊กอินนี้"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
+#. translators: %s is the error message
+#, php-format
+msgid "Failed to update plugin: %s"
+msgstr "ไม่สามารถอัปเดตปลั๊กอิน: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:341
+msgid "Plugin update failed"
+msgstr "การอัปเดตปลั๊กอินล้มเหลว"
+
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
+#. translators: %s is the error message
+#, php-format
+msgid "Failed to get plugin information: %s"
+msgstr "ไม่สามารถดึงข้อมูลปลั๊กอิน: %s"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:26
+#. translators: %s is the plugin name, %s is the rating
+#, js-format
+msgid "If you like %s please leave us a %s rating. Thank you!"
+msgstr "หากคุณชอบ %s กรุณาทิ้งคะแนน %s ให้เรา ขอบคุณ!"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:43
+#. translators: %s is the plugin name
+#, js-format
+msgid "About %s"
+msgstr "เกี่ยวกับ %s"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:45
+msgid "About"
+msgstr "เกี่ยวกับ"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:54
+#. translators: %s is the plugin name
+#, js-format
+msgid "Documentation for %s"
+msgstr "เอกสารสำหรับ %s"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:56
+msgid "Documentation"
+msgstr "เอกสาร"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:65
+#. translators: %s is the plugin name
+#, js-format
+msgid "Contact the %s team"
+msgstr "ติดต่อทีม %s"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:67
+msgid "Contact"
+msgstr "ติดต่อ"
+
+#: resources/src/jsx/components/admin-page/header.jsx:50
+msgid "Get Support"
+msgstr "รับการสนับสนุน"
+
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
+msgid "Select an option"
+msgstr "เลือกตัวเลือก"
+
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
+msgid "Options"
+msgstr "ตัวเลือก"
+
+#: resources/src/jsx/components/pages/components-showcase.jsx:26
+msgid "Components Showcase"
+msgstr "แสดงส่วนประกอบ"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
+msgid "N/A"
+msgstr "ไม่เกี่ยวข้อง"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
+#. translators: %1$s is the plugin name, %2$s is the expiration date
+#, js-format
+msgid "The license for %1$s expired on %2$s"
+msgstr "ใบอนุญาตสำหรับ %1$s หมดอายุเมื่อ %2$s"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
+#. translators: %1$s is the list of plugin names, %2$s is the expiration date
+#, js-format
+msgid "The licenses for %1$s expired on %2$s"
+msgstr "ใบอนุญาตสำหรับ %1$s หมดอายุเมื่อ %2$s"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:157
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:213
+msgid "Renew now"
+msgstr "ต่ออายุเดี๋ยวนี้"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
+#. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
+#, js-format
+msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
+msgstr "ใบอนุญาตสำหรับ %1$s หมดอายุในวันที่ %2$s (%3$d วันเหลือ)"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
+#. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
+#, js-format
+msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
+msgstr "ใบอนุญาตสำหรับ %1$s หมดอายุในวันที่ %2$s (%3$d วันเหลือ)"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:210
+msgid "Warning:"
+msgstr "คำเตือน:"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:46
+msgid "All"
+msgstr "ทั้งหมด"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:51
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:39
+msgid "Unlicensed"
+msgstr "ไม่มีใบอนุญาต"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:56
+msgid "Active"
+msgstr "ใช้งานอยู่"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:61
+msgid "Inactive"
+msgstr "ไม่ทำงาน"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:66
+msgid "Not installed"
+msgstr "ไม่ได้ติดตั้ง"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:71
+msgid "Updates available"
+msgstr "มีการอัปเดตที่พร้อมใช้งาน"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:94
+#: resources/src/jsx/components/pages/welcome-page.jsx:128
+msgid "Plugins Dashboard"
+msgstr "แดชบอร์ดปลั๊กอิน"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
+msgid "Hold ALT and click to force refresh the update cache"
+msgstr "กด ALT และคลิกเพื่อบังคับรีเฟรชแคชการอัปเดต"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
+msgid "Force Refresh"
+msgstr "บังคับรีเฟรช"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:300
+msgid "Refresh"
+msgstr "รีเฟรช"
+
+#: resources/src/jsx/components/pages/settings-page.jsx:31
+msgid "Diagnostics"
+msgstr "การวินิจฉัย"
+
+#: resources/src/jsx/components/pages/settings-page.jsx:39
+msgid "Debug Log"
+msgstr "บันทึกดีบัก"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:108
+msgid "Failed to load the debug log. Please try again."
+msgstr "ไม่สามารถโหลดบันทึกดีบักได้ กรุณาลองอีกครั้ง."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:182
+msgid "Debug log cleared successfully."
+msgstr "ล้างบันทึกดีบักเรียบร้อยแล้ว."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
+msgid "Failed to clear the debug log. Please try again."
+msgstr "ไม่สามารถล้างบันทึกดีบักได้ กรุณาลองอีกครั้ง."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222
+msgid "Log copied to clipboard."
+msgstr "บันทึกถูกคัดลอกไปยังคลิปบอร์ด."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
+msgid "Failed to copy log to clipboard."
+msgstr "ไม่สามารถคัดลอกบันทึกไปยังคลิปบอร์ดได้."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:253
+msgid "Requests"
+msgstr "คำขอ"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:260
+msgid "Full Log"
+msgstr "บันทึกทั้งหมด"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:271
+msgid "Auto-refresh is on — click to stop"
+msgstr "เปิดการรีเฟรชอัตโนมัติ — คลิกเพื่อหยุด"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:272
+msgid "Enable auto-refresh"
+msgstr "เปิดใช้งานการรีเฟรชอัตโนมัติ"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:277
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
+msgid "Auto-refresh"
+msgstr "การรีเฟรชอัตโนมัติ"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:286
+msgid "Auto-refresh interval"
+msgstr "ช่วงเวลาการรีเฟรชอัตโนมัติ"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:308
+msgid "Copy to Clipboard"
+msgstr "คัดลอกไปยังคลิปบอร์ด"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:318
+msgid "Clear Log"
+msgstr "ล้างบันทึก"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:326
+msgid "Loading log..."
+msgstr "กำลังโหลดบันทึก..."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:332
+msgid ""
+"The debug log is empty. Perform some actions (e.g. activate a license) and "
+"refresh to see entries."
+msgstr ""
+"บันทึกการดีบั๊กว่างเปล่า กรุณาทำการดำเนินการบางอย่าง (เช่น "
+"เปิดใช้งานใบอนุญาต) และรีเฟรชเพื่อดูรายการ."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
+msgid "Debug log contents"
+msgstr "เนื้อหาบันทึกข้อผิดพลาด"
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
+msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
+msgstr "เปิดใช้งานโหมดดีบัก แท็บ \"บันทึกข้อผิดพลาด\" พร้อมให้บริการแล้ว."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
+msgid "Debug mode disabled."
+msgstr "ปิดโหมดดีบัก."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:50
+msgid "Failed to save the setting. Please try again."
+msgstr "บันทึกการตั้งค่าไม่สำเร็จ กรุณาลองใหม่อีกครั้ง."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
+msgid "Debug Mode"
+msgstr "โหมดดีบัก"
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
+msgid ""
+"When enabled, all HTTP requests and responses to remote services (license "
+"activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
+"the Debug Log tab to inspect the captured data."
+msgstr ""
+"เมื่อเปิดใช้งานแล้ว การร้องขอและการตอบสนอง HTTP ทั้งหมดต่อบริการระยะไกล "
+"(การเปิดใช้งานใบอนุญาต, การดาวน์โหลดปลั๊กอิน ฯลฯ) "
+"จะถูกบันทึกลงในไฟล์บันทึกเฉพาะ "
+"ใช้แท็บบันทึกการดีบั๊กเพื่อตรวจสอบข้อมูลที่ถูกจับ."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
+msgid "Enable Debug Mode"
+msgstr "เปิดใช้งานโหมดดีบัก"
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
+msgid ""
+"Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
+"data."
+msgstr ""
+"การบันทึกข้อมูลดีบักถูกเปิดใช้งานแล้ว สลับไปที่แท็บ \"Debug Log\" "
+"เพื่อดูข้อมูลที่ถูกบันทึกไว้."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70, fuzzy
+msgid "ERR"
+msgstr "ERR"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:106
+msgid "Request"
+msgstr "คำขอ"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:113
+msgid "Response"
+msgstr "การตอบสนอง"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:119
+msgid "No response recorded for this request."
+msgstr "ไม่มีการตอบสนองที่บันทึกไว้สำหรับคำขอนี้。"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:144
+msgid "No requests found in the log."
+msgstr "ไม่พบคำขอในบันทึก。"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:153
+msgid "1 request recorded"
+msgstr "บันทึกคำขอ 1 รายการ"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
+#, js-format
+msgid "%d requests recorded"
+msgstr "%d รายการที่บันทึกไว้"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:37
+msgid "Welcome to PublishPress Hub!"
+msgstr "ยินดีต้อนรับสู่ PublishPress Hub!"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:40
+msgid "Get started with PublishPress Hub in a few simple steps."
+msgstr "เริ่มต้นใช้งาน PublishPress Hub ในไม่กี่ขั้นตอนง่ายๆ。"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:47
+msgid "Welcome to PublishPress Hub"
+msgstr "ยินดีต้อนรับสู่ PublishPress Hub"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:52
+msgid "What you can do with PublishPress Hub"
+msgstr "สิ่งที่คุณสามารถทำได้ด้วย PublishPress Hub"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:55
+msgid ""
+"PublishPress Hub has everything you need to install, update, and manage "
+"your PublishPress plugins. We're here to help you build a publishing system "
+"that works perfectly for your team."
+msgstr ""
+"PublishPress Hub มีทุกอย่างที่คุณต้องการในการติดตั้ง อัปเดต "
+"และจัดการปลั๊กอิน PublishPress ของคุณ "
+"เราพร้อมช่วยคุณสร้างระบบการเผยแพร่ที่ทำงานได้อย่างสมบูรณ์แบบสำหรับทีมของคุณ."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:64
+msgid "Centralized Dashboard"
+msgstr "แดชบอร์ดที่รวมศูนย์"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:67
+msgid ""
+"View all your PublishPress plugins with their licenses, versions, and key "
+"details."
+msgstr ""
+"ดูปลั๊กอิน PublishPress ทั้งหมดของคุณพร้อมใบอนุญาต เวอร์ชัน "
+"และรายละเอียดสำคัญ."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:76
+msgid "One-Click Installation"
+msgstr "การติดตั้งด้วยคลิกเดียว"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:79
+msgid ""
+"Install free PublishPress plugins directly from the Hub without visiting "
+"WordPress.org."
+msgstr "ติดตั้งปลั๊กอิน PublishPress ฟรีโดยตรงจาก Hub โดยไม่ต้องไปที่ WordPress.org."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:88
+msgid "License Management"
+msgstr "การจัดการใบอนุญาต"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:91
+msgid ""
+"Connect your PublishPress licenses to easily install and activate Pro "
+"versions."
+msgstr ""
+"เชื่อมต่อใบอนุญาต PublishPress ของคุณเพื่อให้ติดตั้งและเปิดใช้งานเวอร์ชัน "
+"Pro ได้อย่างง่ายดาย."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:100
+msgid "Easy Updates"
+msgstr "การอัปเดตที่ง่าย"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:103
+msgid "Keep all your PublishPress plugins up to date with one-click updates."
+msgstr ""
+"รักษาปลั๊กอิน PublishPress "
+"ทั้งหมดของคุณให้ทันสมัยด้วยการอัปเดตเพียงคลิกเดียว"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:112
+msgid "Status Monitoring"
+msgstr "การตรวจสอบสถานะ"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:115
+msgid ""
+"Monitor plugin activation status, detect conflicts, and ensure "
+"compatibility."
+msgstr ""
+"ติดตามสถานะการเปิดใช้งานปลั๊กอิน ตรวจจับความขัดแย้ง "
+"และตรวจสอบความเข้ากันได้."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:124
+msgid "Get Started"
+msgstr "เริ่มต้น"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:127
+#, js-format
+msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgstr ""
+"พร้อมที่จะสำรวจแล้วหรือ? เยี่ยมชม %s เพื่อดูปลั๊กอิน PublishPress "
+"ทั้งหมดที่มีให้บริการ."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:142
+msgid "View Plugins Dashboard"
+msgstr "ดูแดชบอร์ดปลั๊กอิน"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:148
+msgid "Already know what you're doing? Great! You can "
+msgstr "รู้แล้วว่าคุณกำลังทำอะไรอยู่? ยอดเยี่ยม! คุณสามารถ "
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:150
+msgid "dismiss this page"
+msgstr "ปิดหน้านี้"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+msgid "."
+msgstr "."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
+msgid "Install"
+msgstr "ติดตั้ง"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:22
+msgid "Installing..."
+msgstr "กำลังติดตั้ง..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28
+msgid "Upgrade to Pro"
+msgstr "อัปเกรดเป็น Pro"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:28
+msgid "Upgrading to Pro..."
+msgstr "กำลังอัปเกรดเป็น Pro..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
+msgid "Manage License"
+msgstr "จัดการใบอนุญาต"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:34
+msgid "Managing License..."
+msgstr "กำลังจัดการใบอนุญาต..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
+msgid "Activate License"
+msgstr "เปิดใช้งานใบอนุญาต"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:40
+msgid "Activating License..."
+msgstr "กำลังเปิดใช้งานใบอนุญาต..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
+msgid "Resolve Conflict"
+msgstr "แก้ไขความขัดแย้ง"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
+msgid "Resolving Conflict..."
+msgstr "กำลังแก้ไขความขัดแย้ง..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
+msgid "Update"
+msgstr "อัปเดต"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
+msgid "Updating..."
+msgstr "กำลังอัปเดต..."
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:31
+msgid "Confirmation"
+msgstr "การยืนยัน"
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:36
+msgid "Are you sure you want to continue?"
+msgstr "คุณแน่ใจหรือว่าต้องการดำเนินการต่อ?"
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:49
+msgid "Continue"
+msgstr "ดำเนินการต่อ"
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:52
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:98
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29
+msgid "Install Plugin"
+msgstr "ติดตั้งปลั๊กอิน"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
+msgid ""
+"Select how you would like to install this plugin. You can install the Pro "
+"version if you have a license, or the Free version to get started."
+msgstr ""
+"เลือกวิธีที่คุณต้องการติดตั้งปลั๊กอินนี้ คุณสามารถติดตั้งเวอร์ชัน Pro "
+"หากคุณมีใบอนุญาต หรือเวอร์ชันฟรีเพื่อเริ่มต้น."
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+msgid "Free Details"
+msgstr "รายละเอียดฟรี"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+msgid "Pro Details"
+msgstr "รายละเอียด Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
+msgid "Changelogs"
+msgstr "บันทึกการเปลี่ยนแปลง"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44
+msgid "I have a license, install the Pro version"
+msgstr "ฉันมีใบอนุญาต ติดตั้งเวอร์ชัน Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47
+msgid "I don't have a license, install the Free version"
+msgstr "ฉันไม่มีใบอนุญาต ติดตั้งเวอร์ชันฟรี"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:50
+msgid "Enter your license key"
+msgstr "กรอกคีย์ใบอนุญาตของคุณ"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:55
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
+msgid ""
+"Enter your license key to activate the Pro version of this plugin. You can "
+"find your license key in your PublishPress account dashboard."
+msgstr ""
+"กรอกรหัสใบอนุญาตของคุณเพื่อเปิดใช้งานเวอร์ชัน Pro ของปลั๊กอินนี้ "
+"คุณสามารถหาค่ารหัสใบอนุญาตของคุณได้ในแดชบอร์ดบัญชี PublishPress ของคุณ."
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
+msgid "Go to my profile to get the license key"
+msgstr "ไปที่โปรไฟล์ของฉันเพื่อรับคีย์ใบอนุญาต"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:66
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:94
+msgid "Enter your license key here"
+msgstr "กรอกคีย์ใบอนุญาตของคุณที่นี่"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:80
+msgid "Activate and install the plugin"
+msgstr "เปิดใช้งานและติดตั้งปลั๊กอิน"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:76
+msgid "Manage your license"
+msgstr "จัดการใบอนุญาตของคุณ"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
+msgid "Your license key is: "
+msgstr "คีย์ใบอนุญาตของคุณคือ: "
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
+msgid "(hidden)"
+msgstr "(ซ่อน)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:119
+msgid "Activate the license key for this site"
+msgstr "เปิดใช้งานคีย์ใบอนุญาตสำหรับเว็บไซต์นี้"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:126
+msgid "Edit the license key"
+msgstr "แก้ไขคีย์ใบอนุญาต"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:129
+msgid "Deactivate the license key for this site"
+msgstr "ยกเลิกการเปิดใช้งานคีย์ใบอนุญาตสำหรับเว็บไซต์นี้"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+msgid "Unknown"
+msgstr "ไม่ทราบ"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:39
+msgid "Plugin Information"
+msgstr "ข้อมูลปลั๊กอิน"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:45
+msgid "Name:"
+msgstr "ชื่อ:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:51
+msgid "Description:"
+msgstr "คำอธิบาย:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:57
+msgid "Current Version:"
+msgstr "รุ่นปัจจุบัน:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:63
+msgid "Available Version:"
+msgstr "รุ่นที่มีให้ใช้งาน:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:82
+msgid "Update Plugin"
+msgstr "อัปเดตปลั๊กอิน"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:93
+msgid "Check for Updates"
+msgstr "ตรวจสอบการอัปเดต"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
+#, js-format
+msgid "Install %s"
+msgstr "ติดตั้ง %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
+#, js-format
+msgid "Install %s Pro"
+msgstr "ติดตั้ง %s Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
+#, js-format
+msgid "Upgrade %s to Pro"
+msgstr "อัปเกรด %s เป็น Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
+#, js-format
+msgid "Uninstall %s"
+msgstr "ถอนการติดตั้ง %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
+#, js-format
+msgid "Are you sure you want to uninstall %s?"
+msgstr "คุณแน่ใจหรือว่าต้องการถอนการติดตั้ง %s?"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
+#, js-format
+msgid "Resolve Conflict for %s"
+msgstr "แก้ไขข้อขัดแย้งสำหรับ %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
+#, js-format
+msgid "Manage %s License"
+msgstr "จัดการใบอนุญาต %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
+#, js-format
+msgid "Activate %s License"
+msgstr "เปิดใช้งานใบอนุญาต %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
+#, js-format
+msgid "More Info: %s"
+msgstr "ข้อมูลเพิ่มเติม: %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:34
+msgid "Resolve Plugin Conflict"
+msgstr "แก้ไขข้อขัดแย้งของปลั๊กอิน"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
+#, js-format
+msgid "Free version: %s (%s)"
+msgstr "รุ่นฟรี: %s (%s)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
+#, js-format
+msgid "Pro version: %s (%s)"
+msgstr "รุ่น Pro: %s (%s)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:79
+msgid "Keep the Pro version (Recommended)"
+msgstr "รักษาเวอร์ชัน Pro (แนะนำ)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:89
+msgid "Keep the Free version"
+msgstr "รักษาเวอร์ชันฟรี"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
+msgid ""
+"Unlock the full potential of this plugin with the Pro version. Enjoy "
+"advanced features, priority support, and exclusive benefits designed to "
+"help you get the most out of your workflow."
+msgstr ""
+"ปลดล็อกศักยภาพเต็มรูปแบบของปลั๊กอินนี้ด้วยเวอร์ชัน Pro "
+"เพลิดเพลินกับฟีเจอร์ขั้นสูง การสนับสนุนลำดับความสำคัญ "
+"และสิทธิประโยชน์พิเศษที่ออกแบบมาเพื่อช่วยให้คุณได้รับประโยชน์สูงสุดจากการทำง"
+"านของคุณ."
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
+msgid "Discover all Pro features"
+msgstr "ค้นพบฟีเจอร์ Pro ทั้งหมด"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "บันทึกการเปลี่ยนแปลง"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
+msgid "Already have a license? Install Pro now"
+msgstr "มีใบอนุญาตอยู่แล้ว? ติดตั้ง Pro ตอนนี้"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
+msgid "Upgrade to Pro and boost your productivity"
+msgstr "อัปเกรดเป็น Pro และเพิ่มประสิทธิภาพการทำงานของคุณ"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:139
+msgid "New version available"
+msgstr "มีเวอร์ชันใหม่ให้บริการ"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#, js-format
+msgid "Version %s"
+msgstr "เวอร์ชัน %s"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
+#, js-format
+msgid "Update available: %s → %s"
+msgstr "มีการอัปเดต: %s → %s"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:22
+msgid "Installing"
+msgstr "กำลังติดตั้ง"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:27
+msgid "Not Installed"
+msgstr "ยังไม่ติดตั้ง"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:31
+msgid "Free"
+msgstr "ฟรี"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:35
+msgid "Licensed"
+msgstr "มีใบอนุญาต"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:43
+msgid "Expired"
+msgstr "หมดอายุ"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:47
+msgid "Uninstalling"
+msgstr "กำลังถอนการติดตั้ง"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:52
+msgid "Upgrading"
+msgstr "กำลังอัปเกรด"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:57
+msgid "Deactivating"
+msgstr "กำลังปิดการใช้งาน"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:62
+msgid "Activating"
+msgstr "กำลังเปิดใช้งาน"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:67
+msgid "Conflicting Installations"
+msgstr "การติดตั้งที่ขัดแย้งกัน"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
+msgid "Update Available"
+msgstr "มีการอัปเดต"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
+msgid "Expires"
+msgstr "หมดอายุ"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
+msgid "latest"
+msgstr "ล่าสุด"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
+#, js-format
+msgid "Update to v%s"
+msgstr "อัปเดตเป็น v%s"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+msgid "Renew"
+msgstr "ต่ออายุ"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+msgid "Deactivate"
+msgstr "ปิดการใช้งาน"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+msgid "Activate"
+msgstr "เปิดการใช้งาน"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+msgid "Uninstall"
+msgstr "ถอนการติดตั้ง"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+msgid "More Info"
+msgstr "ข้อมูลเพิ่มเติม"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
+msgid "This plugin is not installed."
+msgstr "ปลั๊กอินนี้ยังไม่ได้ติดตั้ง"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40
+msgid "This plugin is active."
+msgstr "ปลั๊กอินนี้เปิดใช้งาน"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41
+msgid "This plugin is not active."
+msgstr "ปลั๊กอินนี้ยังไม่เปิดใช้งาน"
+
+#: resources/src/jsx/components/plugins-list/index.jsx:159
+msgid "No plugins found."
+msgstr "ไม่พบปลั๊กอิน"
+
+#: resources/src/jsx/components/plugins-list/index.jsx:165
+msgid "Loading plugins..."
+msgstr "กำลังโหลดปลั๊กอิน..."
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:216
+msgid "Failed to fetch plugins"
+msgstr "ไม่สามารถดึงข้อมูลปลั๊กอินได้"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
+#, js-format
+msgid "%s installed successfully"
+msgstr "%s ติดตั้งสำเร็จ"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
+#, js-format
+msgid "%s installation failed"
+msgstr "%s การติดตั้งล้มเหลว"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
+#, js-format
+msgid "%s uninstalled successfully"
+msgstr "%s ถอนการติดตั้งสำเร็จ"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
+#, js-format
+msgid "%s uninstall failed"
+msgstr "%s การถอนการติดตั้งล้มเหลว"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
+#, js-format
+msgid "%s activated successfully"
+msgstr "%s เปิดใช้งานสำเร็จ"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
+#, js-format
+msgid "%s activation failed"
+msgstr "%s การเปิดใช้งานล้มเหลว"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
+#, js-format
+msgid "%s deactivated successfully"
+msgstr "%s ปิดการใช้งานสำเร็จ"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
+#, js-format
+msgid "%s deactivation failed"
+msgstr "%s การปิดการใช้งานล้มเหลว"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
+#, js-format
+msgid "%s upgraded to Pro successfully"
+msgstr "%s อัปเกรดเป็น Pro สำเร็จ"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
+#, js-format
+msgid "%s upgrade to Pro failed"
+msgstr "%s การอัปเกรดเป็น Pro ล้มเหลว"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
+#, js-format
+msgid "Conflict resolved successfully for %s"
+msgstr "แก้ไขความขัดแย้งสำเร็จสำหรับ %s"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
+#, js-format
+msgid "Failed to resolve conflict for %s"
+msgstr "ไม่สามารถแก้ไขความขัดแย้งสำหรับ %s"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
+#, js-format
+msgid "%s license deactivated successfully"
+msgstr "%s การปิดการใช้งานใบอนุญาตสำเร็จ"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
+#, js-format
+msgid "%s license deactivation failed"
+msgstr "%s การปิดการใช้งานใบอนุญาตล้มเหลว"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
+#, js-format
+msgid "%s license activated successfully"
+msgstr "%s การเปิดใช้งานใบอนุญาตสำเร็จ"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
+#, js-format
+msgid "%s license activation failed"
+msgstr "%s การเปิดใช้งานใบอนุญาตล้มเหลว"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
+#, js-format
+msgid "%s updated successfully"
+msgstr "%s อัปเดตสำเร็จ"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
+#, js-format
+msgid "%s update failed"
+msgstr "%s การอัปเดตล้มเหลว"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
+msgid "Too many requests. Please wait a few seconds and try again."
+msgstr "มีคำขอมากเกินไป โปรดรอสักครู่แล้วลองใหม่อีกครั้ง"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
+#, fuzzy
+msgid "Cloudflare Ray ID: %s"
+msgstr "Cloudflare Ray ID: %s"

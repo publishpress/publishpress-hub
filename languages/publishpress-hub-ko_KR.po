@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-04-08 14:44+0000\n"
+"PO-Revision-Date: 2026-04-15 21:12+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Language: ko_KR\n"
@@ -128,28 +128,24 @@ msgid "This license has expired. Please contact support to renew it."
 msgstr "이 라이선스는 만료되었습니다. 갱신을 원하시면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
-#, fuzzy
 msgid ""
 "This license key is not authorized for this plugin. Please verify your "
 "license key or contact support for help."
 msgstr "이 라이선스는 이 사이트에 대해 비활성 상태입니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
-#, fuzzy
 msgid ""
 "This license cannot be used for this plugin. Please contact support for "
 "help."
 msgstr "이 라이선스는 활성화할 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
-#, fuzzy
 msgid ""
 "This license does not match the plugin you are trying to activate. Please "
 "contact support for assistance."
 msgstr "이 라이선스는 이 사이트에 대해 비활성 상태입니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
-#, fuzzy
 msgid ""
 "License key does not match our records. Please contact support for "
 "assistance."
@@ -285,12 +281,12 @@ msgid "Approve and schedule new versions to your published posts."
 msgstr "게시된 게시물에 대한 새 버전을 승인하고 예약하세요."
 
 #: src/Domain/Plugin/plugin-families.php:154
-msgid "Create shortlinks for your posts."
-msgstr "게시물에 대한 단축 링크를 생성하세요."
-
-#: src/Domain/Plugin/plugin-families.php:170
 msgid "Organize your posts into issues or series."
 msgstr "게시물을 이슈나 시리즈로 조직하세요."
+
+#: src/Domain/Plugin/plugin-families.php:170
+msgid "Create shortlinks for your posts."
+msgstr "게시물에 대한 단축 링크를 생성하세요."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -1002,48 +998,48 @@ msgstr "플러그인 업데이트"
 msgid "Check for Updates"
 msgstr "업데이트 확인"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:90
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
 #, js-format
 msgid "Install %s"
 msgstr "%s 설치"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:102
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
 #, js-format
 msgid "Install %s Pro"
 msgstr "%s Pro 설치"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:110
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:129
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
 #, js-format
 msgid "Upgrade %s to Pro"
 msgstr "%s를 Pro로 업그레이드"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:118
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
 #, js-format
 msgid "Uninstall %s"
 msgstr "%s 제거"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:119
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
 #, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "%s를 제거하시겠습니까?"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:140
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
 #, js-format
 msgid "Resolve Conflict for %s"
 msgstr "%s에 대한 충돌 해결"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:153
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
 #, js-format
 msgid "Manage %s License"
 msgstr "%s 라이센스 관리"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:164
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
 #, js-format
 msgid "Activate %s License"
 msgstr "%s 라이센스 활성화"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:172
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
 #, js-format
 msgid "More Info: %s"
 msgstr "추가 정보: %s"
@@ -1099,7 +1095,12 @@ msgstr "프로로 업그레이드하여 생산성 향상하기"
 msgid "New version available"
 msgstr "새 버전 사용 가능"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:184
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#, js-format
+msgid "Version %s"
+msgstr "버전 %s"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
 #, js-format
 msgid "Update available: %s → %s"
 msgstr "업데이트 가능: %s → %s"
@@ -1145,11 +1146,11 @@ msgid "Conflicting Installations"
 msgstr "충돌하는 설치"
 
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:168
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
 msgid "Update Available"
 msgstr "업데이트 가능"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:179
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
 msgid "Expires"
 msgstr "만료됨"
 
@@ -1307,655 +1308,3 @@ msgstr "요청이 너무 많습니다. 몇 초 기다린 후 다시 시도해 �
 #, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
-
-#: dev-workspace-cache/wp_test/wp-includes/blocks/widget-group/block.json
-msgctxt "block title"
-msgid "Widget Group"
-msgstr "위젯 그룹"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Base"
-msgstr "기본"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Contrast"
-msgstr "대비"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 1"
-msgstr "강조 1"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 2"
-msgstr "강조 2"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 3"
-msgstr "강조 3"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 4"
-msgstr "강조 4"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 5"
-msgstr "강조 5"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 6"
-msgstr "강조 6"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Base / Two"
-msgstr "기본 / 두 개"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Contrast / Two"
-msgstr "대비 / 두 개"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Contrast / Three"
-msgstr "대비 / 세 개"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent"
-msgstr "강조"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Two"
-msgstr "강조 / 두 개"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Three"
-msgstr "강조 / 세 개"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Four"
-msgstr "강조 / 네 개"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Five"
-msgstr "강조 / 다섯 개"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Primary"
-msgstr "주색"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Secondary"
-msgstr "부색"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Tertiary"
-msgstr "제3색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Black"
-msgstr "검은색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Cyan bluish gray"
-msgstr "청록색이 감도는 회색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "White"
-msgstr "흰색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Pale pink"
-msgstr "연한 분홍색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid red"
-msgstr "선명한 빨간색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Luminous vivid orange"
-msgstr "빛나는 선명한 주황색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Luminous vivid amber"
-msgstr "빛나는 선명한 호박색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Light green cyan"
-msgstr "연한 초록색 청록색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid green cyan"
-msgstr "선명한 초록색 청록색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Pale cyan blue"
-msgstr "연한 청록색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid cyan blue"
-msgstr "선명한 청록색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid purple"
-msgstr "선명한 보라색"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "1"
-msgstr "1"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "2"
-msgstr "2"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "3"
-msgstr "3"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "4"
-msgstr "4"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "5"
-msgstr "5"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "6"
-msgstr "6"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Tiny"
-msgstr "아주 작음"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "X-Small"
-msgstr "X-작음"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Small"
-msgstr "작은"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Regular"
-msgstr "보통"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Large"
-msgstr "큰"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "X-Large"
-msgstr "특대"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "XX-Large"
-msgstr "더블 특대"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Small"
-msgstr "작은"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Medium"
-msgstr "중간"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Large"
-msgstr "큰"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Extra Large"
-msgstr "엑스트라 라지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Font size name"
-msgid "Extra Extra Large"
-msgstr "엑스트라 엑스트라 라지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Font family name"
-msgid "Manrope"
-msgstr "맨로프"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Font family name"
-msgid "Fira Code"
-msgstr "피라 코드"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Font family name"
-msgid "Inter"
-msgstr "인터"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Font family name"
-msgid "Cardo"
-msgstr "카르도"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Font family name"
-msgid "System Sans-serif"
-msgstr "시스템 산세리프"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Font family name"
-msgid "System Serif"
-msgstr "시스템 세리프"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Font family name"
-msgid "DM Sans"
-msgstr "DM 산스"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Font family name"
-msgid "IBM Plex Mono"
-msgstr "IBM 플렉스 모노"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Font family name"
-msgid "System Font"
-msgstr "시스템 글꼴"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Font family name"
-msgid "Source Serif Pro"
-msgstr "소스 세리프 프로"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Header"
-msgstr "헤더"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Vertical site header"
-msgstr "수직 사이트 헤더"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Header with large title"
-msgstr "큰 제목이 있는 헤더"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Footer"
-msgstr "푸터"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Footer Columns"
-msgstr "푸터 열"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Footer Newsletter"
-msgstr "푸터 뉴스레터"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Template part name"
-msgid "Sidebar"
-msgstr "사이드바"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Post Meta"
-msgstr "게시물 메타"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Comments Template Part"
-msgstr "댓글 템플릿 부분"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Custom template name"
-msgid "404"
-msgstr "404"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Page No Title"
-msgstr "제목 없는 페이지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Page with Sidebar"
-msgstr "사이드바가 있는 페이지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Page with Wide Image"
-msgstr "넓은 이미지가 있는 페이지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Single with Sidebar"
-msgstr "사이드바가 있는 단일 페이지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Custom template name"
-msgid "Blank"
-msgstr "빈 페이지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Custom template name"
-msgid "Blog (Alternative)"
-msgstr "블로그 (대체)"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and white"
-msgstr "흑백"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and sandstone"
-msgstr "검은색과 사암색"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and rust"
-msgstr "검은색과 녹슬음"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and sage"
-msgstr "검은색과 세이지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and pastel blue"
-msgstr "검정색과 파스텔 블루"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Dark grayscale"
-msgstr "어두운 그레이 스케일"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Grayscale"
-msgstr "그레이 스케일"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Purple and yellow"
-msgstr "보라색과 노란색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Blue and red"
-msgstr "파란색과 빨간색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Midnight"
-msgstr "한밤중"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Magenta and yellow"
-msgstr "마젠타와 노란색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Purple and green"
-msgstr "보라색과 초록색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Blue and orange"
-msgstr "파란색과 오렌지색"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft beige to white"
-msgstr "수직 부드러운 베이지색에서 흰색까지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft sandstone to white"
-msgstr "수직 부드러운 샌드스톤에서 흰색까지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft rust to white"
-msgstr "수직 부드러운 녹슨색에서 흰색까지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft sage to white"
-msgstr "수직 부드러운 세이지색에서 흰색까지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft mint to white"
-msgstr "수직 부드러운 민트색에서 흰색까지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft pewter to white"
-msgstr "수직 부드러운 주석색에서 흰색까지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard beige to white"
-msgstr "수직 단단한 베이지색에서 흰색까지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard sandstone to white"
-msgstr "수직 단단한 샌드스톤에서 흰색까지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard rust to white"
-msgstr "수직 단단한 녹슨색에서 흰색까지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard sage to white"
-msgstr "수직 단단한 세이지색에서 흰색까지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard mint to white"
-msgstr "수직 단단한 민트색에서 흰색까지"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard pewter to white"
-msgstr "수직 강납을 흰색으로"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Vivid cyan blue to vivid purple"
-msgstr "선명한 시안 블루를 선명한 보라색으로"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Light green cyan to vivid green cyan"
-msgstr "연한 초록 시안을 선명한 초록 시안으로"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Luminous vivid amber to luminous vivid orange"
-msgstr "빛나는 선명한 호박색을 빛나는 선명한 주황색으로"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Luminous vivid orange to vivid red"
-msgstr "빛나는 선명한 주황색을 선명한 빨간색으로"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Very light gray to cyan bluish gray"
-msgstr "매우 연한 회색을 시안이 감도는 회색으로"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Cool to warm spectrum"
-msgstr "차가운 스펙트럼에서 따뜻한 스펙트럼으로"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Blush light purple"
-msgstr "블러쉬 연한 보라색"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Blush bordeaux"
-msgstr "블러쉬 보르도"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Luminous dusk"
-msgstr "빛나는 황혼"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Pale ocean"
-msgstr "연한 바다"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Electric grass"
-msgstr "일렉트릭 풀잎"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Midnight"
-msgstr "자정"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Square - 1:1"
-msgstr "정사각형 - 1:1"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Standard - 4:3"
-msgstr "표준 - 4:3"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Portrait - 3:4"
-msgstr "세로 - 3:4"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Classic - 3:2"
-msgstr "클래식 - 3:2"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Classic Portrait - 2:3"
-msgstr "클래식 초상화 - 2:3"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Wide - 16:9"
-msgstr "와이드 - 16:9"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Tall - 9:16"
-msgstr "세로 - 9:16"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Natural"
-msgstr "자연스러운"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Deep"
-msgstr "깊은"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Sharp"
-msgstr "날카로운"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Outlined"
-msgstr "윤곽이 있는"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Crisp"
-msgstr "선명한"

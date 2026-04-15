@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-04-08 14:43+0000\n"
+"PO-Revision-Date: 2026-04-15 21:12+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Language: ja\n"
@@ -271,12 +271,12 @@ msgid "Approve and schedule new versions to your published posts."
 msgstr "公開された投稿に新しいバージョンを承認し、スケジュールします。"
 
 #: src/Domain/Plugin/plugin-families.php:154
-msgid "Create shortlinks for your posts."
-msgstr "投稿のショートリンクを作成します。"
-
-#: src/Domain/Plugin/plugin-families.php:170
 msgid "Organize your posts into issues or series."
 msgstr "投稿を号またはシリーズに整理します。"
+
+#: src/Domain/Plugin/plugin-families.php:170
+msgid "Create shortlinks for your posts."
+msgstr "投稿のショートリンクを作成します。"
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -988,48 +988,48 @@ msgstr "プラグインを更新"
 msgid "Check for Updates"
 msgstr "更新をチェック"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:90
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
 #, js-format
 msgid "Install %s"
 msgstr "%sをインストール"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:102
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
 #, js-format
 msgid "Install %s Pro"
 msgstr "%s Proをインストール"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:110
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:129
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
 #, js-format
 msgid "Upgrade %s to Pro"
 msgstr "%sをProにアップグレード"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:118
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
 #, js-format
 msgid "Uninstall %s"
 msgstr "%sをアンインストール"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:119
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
 #, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "%sをアンインストールしてもよろしいですか？"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:140
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
 #, js-format
 msgid "Resolve Conflict for %s"
 msgstr "%sの競合を解決"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:153
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
 #, js-format
 msgid "Manage %s License"
 msgstr "%sライセンスを管理"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:164
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
 #, js-format
 msgid "Activate %s License"
 msgstr "%sライセンスを有効化"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:172
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
 #, js-format
 msgid "More Info: %s"
 msgstr "詳細情報：%s"
@@ -1085,7 +1085,12 @@ msgstr "Proにアップグレードして生産性を向上させる"
 msgid "New version available"
 msgstr "新しいバージョンが利用可能です"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:184
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#, js-format
+msgid "Version %s"
+msgstr "バージョン %s"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
 #, js-format
 msgid "Update available: %s → %s"
 msgstr "更新が利用可能です：%s → %s"
@@ -1131,11 +1136,11 @@ msgid "Conflicting Installations"
 msgstr "競合するインストール"
 
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:168
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
 msgid "Update Available"
 msgstr "更新が利用可能"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:179
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
 msgid "Expires"
 msgstr "期限切れ"
 
@@ -1293,655 +1298,3 @@ msgstr "リクエストが多すぎます。数秒待ってから再試行して
 #, fuzzy, js-format
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
-
-#: dev-workspace-cache/wp_test/wp-includes/blocks/widget-group/block.json
-msgctxt "block title"
-msgid "Widget Group"
-msgstr "ウィジェットグループ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Base"
-msgstr "ベース"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Contrast"
-msgstr "コントラスト"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 1"
-msgstr "アクセント 1"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 2"
-msgstr "アクセント 2"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 3"
-msgstr "アクセント 3"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 4"
-msgstr "アクセント 4"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 5"
-msgstr "アクセント 5"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 6"
-msgstr "アクセント 6"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Base / Two"
-msgstr "ベース / ツー"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Contrast / Two"
-msgstr "コントラスト / ツー"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Contrast / Three"
-msgstr "コントラスト / スリー"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent"
-msgstr "アクセント"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Two"
-msgstr "アクセント / ツー"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Three"
-msgstr "アクセント / スリー"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Four"
-msgstr "アクセント / フォー"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Five"
-msgstr "アクセント / ファイブ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Primary"
-msgstr "プライマリー"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Secondary"
-msgstr "セカンダリー"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Tertiary"
-msgstr "ターシャリー"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Black"
-msgstr "黒"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Cyan bluish gray"
-msgstr "シアンがかった灰色"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "White"
-msgstr "白"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Pale pink"
-msgstr "淡いピンク"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid red"
-msgstr "鮮やかな赤"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Luminous vivid orange"
-msgstr "光り輝く鮮やかなオレンジ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Luminous vivid amber"
-msgstr "光り輝く鮮やかなアンバー"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Light green cyan"
-msgstr "淡い緑色のシアン"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid green cyan"
-msgstr "鮮やかな緑色のシアン"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Pale cyan blue"
-msgstr "淡いシアンブルー"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid cyan blue"
-msgstr "鮮やかなシアンブルー"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid purple"
-msgstr "鮮やかな紫"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "1"
-msgstr "1"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "2"
-msgstr "2"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "3"
-msgstr "3"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "4"
-msgstr "4"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "5"
-msgstr "5"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "6"
-msgstr "6"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Tiny"
-msgstr "小さな"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "X-Small"
-msgstr "特小"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Small"
-msgstr "スモール"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Regular"
-msgstr "レギュラー"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Large"
-msgstr "ラージ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "X-Large"
-msgstr "X-ラージ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "XX-Large"
-msgstr "XX-ラージ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Small"
-msgstr "スモール"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Medium"
-msgstr "ミディアム"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Large"
-msgstr "ラージ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Extra Large"
-msgstr "エクストララージ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Font size name"
-msgid "Extra Extra Large"
-msgstr "エクストラエクストララージ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Font family name"
-msgid "Manrope"
-msgstr "マンロープ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Font family name"
-msgid "Fira Code"
-msgstr "フィラコード"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Font family name"
-msgid "Inter"
-msgstr "インター"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Font family name"
-msgid "Cardo"
-msgstr "カルド"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Font family name"
-msgid "System Sans-serif"
-msgstr "システムサンセリフ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Font family name"
-msgid "System Serif"
-msgstr "システムセリフ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Font family name"
-msgid "DM Sans"
-msgstr "DMサンズ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Font family name"
-msgid "IBM Plex Mono"
-msgstr "IBMプレックスモノ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Font family name"
-msgid "System Font"
-msgstr "システムフォント"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Font family name"
-msgid "Source Serif Pro"
-msgstr "ソースセリフプロ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Header"
-msgstr "ヘッダー"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Vertical site header"
-msgstr "縦型サイトヘッダー"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Header with large title"
-msgstr "大きなタイトルのヘッダー"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Footer"
-msgstr "フッター"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Footer Columns"
-msgstr "フッターコラム"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Footer Newsletter"
-msgstr "フッターニュースレター"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Template part name"
-msgid "Sidebar"
-msgstr "サイドバー"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Post Meta"
-msgstr "投稿メタ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Comments Template Part"
-msgstr "コメントテンプレートパート"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Custom template name"
-msgid "404"
-msgstr "404"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Page No Title"
-msgstr "タイトルなしページ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Page with Sidebar"
-msgstr "サイドバー付きページ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Page with Wide Image"
-msgstr "ワイドイメージ付きページ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Single with Sidebar"
-msgstr "サイドバー付きシングル"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Custom template name"
-msgid "Blank"
-msgstr "空白"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Custom template name"
-msgid "Blog (Alternative)"
-msgstr "ブログ（代替）"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and white"
-msgstr "白黒"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and sandstone"
-msgstr "黒と砂岩"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and rust"
-msgstr "黒と錆"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and sage"
-msgstr "黒とセージ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and pastel blue"
-msgstr "黒とパステルブルー"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Dark grayscale"
-msgstr "ダークグレースケール"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Grayscale"
-msgstr "グレースケール"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Purple and yellow"
-msgstr "紫と黄色"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Blue and red"
-msgstr "青と赤"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Midnight"
-msgstr "真夜中"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Magenta and yellow"
-msgstr "マゼンタと黄色"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Purple and green"
-msgstr "紫と緑"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Blue and orange"
-msgstr "青とオレンジ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft beige to white"
-msgstr "縦の柔らかいベージュから白へ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft sandstone to white"
-msgstr "縦の柔らかい砂岩から白へ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft rust to white"
-msgstr "縦の柔らかい錆から白へ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft sage to white"
-msgstr "縦の柔らかいセージから白へ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft mint to white"
-msgstr "縦の柔らかいミントから白へ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft pewter to white"
-msgstr "縦の柔らかい鉛から白へ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard beige to white"
-msgstr "縦の硬いベージュから白へ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard sandstone to white"
-msgstr "縦の硬い砂岩から白へ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard rust to white"
-msgstr "縦の硬い錆から白へ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard sage to white"
-msgstr "縦の硬いセージから白へ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard mint to white"
-msgstr "縦の硬いミントから白へ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard pewter to white"
-msgstr "垂直の硬い錫から白へ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Vivid cyan blue to vivid purple"
-msgstr "鮮やかなシアンブルーから鮮やかな紫へ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Light green cyan to vivid green cyan"
-msgstr "明るい緑のシアンから鮮やかな緑のシアンへ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Luminous vivid amber to luminous vivid orange"
-msgstr "輝く鮮やかなアンバーから輝く鮮やかなオレンジへ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Luminous vivid orange to vivid red"
-msgstr "輝く鮮やかなオレンジから鮮やかな赤へ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Very light gray to cyan bluish gray"
-msgstr "とても明るいグレーからシアンがかったグレーへ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Cool to warm spectrum"
-msgstr "クールからウォームスペクトルへ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Blush light purple"
-msgstr "淡い紫"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Blush bordeaux"
-msgstr "淡いボルドー"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Luminous dusk"
-msgstr "輝く夕暮れ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Pale ocean"
-msgstr "淡い海"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Electric grass"
-msgstr "エレクトリックグラス"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Midnight"
-msgstr "真夜中"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Square - 1:1"
-msgstr "正方形 - 1:1"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Standard - 4:3"
-msgstr "標準 - 4:3"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Portrait - 3:4"
-msgstr "ポートレート - 3:4"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Classic - 3:2"
-msgstr "クラシック - 3:2"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Classic Portrait - 2:3"
-msgstr "クラシックポートレート - 2:3"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Wide - 16:9"
-msgstr "ワイド - 16:9"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Tall - 9:16"
-msgstr "タテ - 9:16"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Natural"
-msgstr "ナチュラル"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Deep"
-msgstr "ディープ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Sharp"
-msgstr "シャープ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Outlined"
-msgstr "アウトライン"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Crisp"
-msgstr "クリスプ"

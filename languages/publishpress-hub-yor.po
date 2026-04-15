@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-04-08 14:46+0000\n"
+"POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
+"PO-Revision-Date: 2026-04-15 21:12+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Language: yor\n"
@@ -134,14 +134,12 @@ msgid "This license has expired. Please contact support to renew it."
 msgstr "Iwe-aṣẹ yii ti parẹ. Jọwọ kan si atilẹyin lati tun un ṣe."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
-#, fuzzy
 msgid ""
 "This license key is not authorized for this plugin. Please verify your "
 "license key or contact support for help."
 msgstr "Iwe-aṣẹ yii ko ṣiṣẹ fun aaye yii. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
-#, fuzzy
 msgid ""
 "This license cannot be used for this plugin. Please contact support for "
 "help."
@@ -301,12 +299,12 @@ msgid "Approve and schedule new versions to your published posts."
 msgstr "Fọwọsi ati ṣeto awọn ẹya tuntun si awọn ifiweranṣẹ ti a tẹjade rẹ."
 
 #: src/Domain/Plugin/plugin-families.php:154
-msgid "Create shortlinks for your posts."
-msgstr "Ṣẹda awọn ọna asopọ kukuru fun awọn ifiweranṣẹ rẹ."
-
-#: src/Domain/Plugin/plugin-families.php:170
 msgid "Organize your posts into issues or series."
 msgstr "Ṣeto awọn ifiweranṣẹ rẹ sinu awọn iṣoro tabi jara."
+
+#: src/Domain/Plugin/plugin-families.php:170
+msgid "Create shortlinks for your posts."
+msgstr "Ṣẹda awọn ọna asopọ kukuru fun awọn ifiweranṣẹ rẹ."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -1039,48 +1037,48 @@ msgstr "Muu Plugin ṣiṣẹ"
 msgid "Check for Updates"
 msgstr "Ṣayẹwo fun Awọn imudojuiwọn"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:90
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
 #, js-format
 msgid "Install %s"
 msgstr "Fi %s sori ẹrọ"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:102
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
 #, js-format
 msgid "Install %s Pro"
 msgstr "Fi %s Pro sori ẹrọ"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:110
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:129
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
 #, js-format
 msgid "Upgrade %s to Pro"
 msgstr "Dara %s si Pro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:118
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
 #, js-format
 msgid "Uninstall %s"
 msgstr "Yọ %s kuro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:119
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
 #, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "Ṣe o daada pe o fẹ yọ %s kuro?"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:140
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
 #, js-format
 msgid "Resolve Conflict for %s"
 msgstr "Yanju Ija fun %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:153
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
 #, js-format
 msgid "Manage %s License"
 msgstr "Ṣakoso Iwe-aṣẹ %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:164
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
 #, js-format
 msgid "Activate %s License"
 msgstr "Muu Iwe-aṣẹ %s ṣiṣẹ"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:172
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
 #, js-format
 msgid "More Info: %s"
 msgstr "Alaye diẹ sii: %s"
@@ -1137,7 +1135,12 @@ msgstr "Gbigbe si Pro ki o mu iṣelọpọ rẹ pọ si"
 msgid "New version available"
 msgstr "Ẹya tuntun wa"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:184
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#, fuzzy
+msgid "Version %s"
+msgstr "Ẹya Pro: %s (%s)"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
 #, js-format
 msgid "Update available: %s → %s"
 msgstr "Imudojuiwọn wa: %s → %s"
@@ -1183,11 +1186,11 @@ msgid "Conflicting Installations"
 msgstr "Fifi sori ẹrọ ti o ni ija"
 
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:168
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
 msgid "Update Available"
 msgstr "Imudojuiwọn Wa"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:179
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
 msgid "Expires"
 msgstr "Pari"
 
@@ -1347,655 +1350,3 @@ msgstr ""
 #, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
-
-#: dev-workspace-cache/wp_test/wp-includes/blocks/widget-group/block.json
-msgctxt "block title"
-msgid "Widget Group"
-msgstr "Ẹgbẹ Widget"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Base"
-msgstr "Ipele"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Contrast"
-msgstr "Iyatọ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 1"
-msgstr "Iyatọ 1"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 2"
-msgstr "Iyatọ 2"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 3"
-msgstr "Iyatọ 3"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 4"
-msgstr "Iyatọ 4"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 5"
-msgstr "Iyatọ 5"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 6"
-msgstr "Iyatọ 6"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Base / Two"
-msgstr "Ipele / Meji"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Contrast / Two"
-msgstr "Iyatọ / Meji"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Contrast / Three"
-msgstr "Iyatọ / Mẹta"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent"
-msgstr "Iyatọ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Two"
-msgstr "Iyatọ / Meji"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Three"
-msgstr "Iyatọ / Mẹta"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Four"
-msgstr "Iyatọ / Mẹrin"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Five"
-msgstr "Iyatọ / Marun"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Primary"
-msgstr "Pataki"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Secondary"
-msgstr "Keji"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Tertiary"
-msgstr "Kẹta"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Black"
-msgstr "Dúdú"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Cyan bluish gray"
-msgstr "Cyan grẹy to ni awọ bluish"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "White"
-msgstr "Funfun"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Pale pink"
-msgstr "Pẹlẹbẹ róse"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid red"
-msgstr "Pupa to dára"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Luminous vivid orange"
-msgstr "Ọránjé to tan imọlẹ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Luminous vivid amber"
-msgstr "Àmbar to tan imọlẹ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Light green cyan"
-msgstr "Alawọ ewe pẹrẹsẹ cyan"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid green cyan"
-msgstr "Alawọ ewe to dára cyan"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Pale cyan blue"
-msgstr "Cyan bulu pẹlẹbẹ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid cyan blue"
-msgstr "Cyan bulu to dára"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid purple"
-msgstr "Pupa to dára"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "1"
-msgstr "1"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "2"
-msgstr "2"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "3"
-msgstr "3"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "4"
-msgstr "4"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "5"
-msgstr "5"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "6"
-msgstr "6"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Tiny"
-msgstr "Kekere"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "X-Small"
-msgstr "X-Kekere"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Small"
-msgstr "Kekere"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Regular"
-msgstr "Iye deede"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Large"
-msgstr "Nla"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "X-Large"
-msgstr "X-Nla"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "XX-Large"
-msgstr "XX-Nla"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Small"
-msgstr "Kekere"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Medium"
-msgstr "Aarin"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Large"
-msgstr "Nla"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Extra Large"
-msgstr "Extra Nla"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Font size name"
-msgid "Extra Extra Large"
-msgstr "Extra Extra Nla"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "Manrope"
-msgstr "Manrope"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "Fira Code"
-msgstr "Fira Code"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "Inter"
-msgstr "Inter"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "Cardo"
-msgstr "Cardo"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "System Sans-serif"
-msgstr "System Sans-serif"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "System Serif"
-msgstr "System Serif"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "DM Sans"
-msgstr "DM Sans"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "IBM Plex Mono"
-msgstr "IBM Plex Mono"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "System Font"
-msgstr "System Font"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "Source Serif Pro"
-msgstr "Source Serif Pro"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Header"
-msgstr "Ọkọ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Vertical site header"
-msgstr "Ọkọ oju opo wẹẹbu iha"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Header with large title"
-msgstr "Ọkọ pẹlu akọle nla"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Footer"
-msgstr "Iṣalẹ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Footer Columns"
-msgstr "Iṣalẹ Awọn ikọkọ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Footer Newsletter"
-msgstr "Iṣalẹ Iwe iroyin"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Template part name"
-msgid "Sidebar"
-msgstr "Ita ẹgbẹ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Post Meta"
-msgstr "Meta Ifiweranṣẹ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Comments Template Part"
-msgstr "Apẹrẹ Awọn ọrọìwòye"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Custom template name"
-msgid "404"
-msgstr "404"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Page No Title"
-msgstr "Oju-iwe Ko ni Akọle"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Page with Sidebar"
-msgstr "Oju-iwe Pẹlu Ita ẹgbẹ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Page with Wide Image"
-msgstr "Oju-iwe Pẹlu Aworan Gbooro"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Single with Sidebar"
-msgstr "Ẹyọkan Pẹlu Ita ẹgbẹ"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Custom template name"
-msgid "Blank"
-msgstr "Ofin"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Custom template name"
-msgid "Blog (Alternative)"
-msgstr "Blog (Ayanfẹ)"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and white"
-msgstr "Dudu ati funfun"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and sandstone"
-msgstr "Dudu ati sandstone"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and rust"
-msgstr "Dudu ati rust"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and sage"
-msgstr "Dudu ati sage"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and pastel blue"
-msgstr "Dúdú àti buluu pastel"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Dark grayscale"
-msgstr "Dudu grayscale"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json, fuzzy
-msgctxt "Duotone name"
-msgid "Grayscale"
-msgstr "Grayscale"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Purple and yellow"
-msgstr "Púrpura àti ofeefee"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Blue and red"
-msgstr "Buluu àti pupa"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Midnight"
-msgstr "Aarin ọsan"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Magenta and yellow"
-msgstr "Magenta àti ofeefee"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Purple and green"
-msgstr "Púrpura àti alawọ ewe"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Blue and orange"
-msgstr "Buluu àti orombo"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft beige to white"
-msgstr "Iwọn oníle pẹlẹbẹ beige sí funfun"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft sandstone to white"
-msgstr "Iwọn oníle pẹlẹbẹ sandstone sí funfun"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft rust to white"
-msgstr "Iwọn oníle pẹlẹbẹ rust sí funfun"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft sage to white"
-msgstr "Iwọn oníle pẹlẹbẹ sage sí funfun"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft mint to white"
-msgstr "Iwọn oníle pẹlẹbẹ mint sí funfun"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft pewter to white"
-msgstr "Iwọn oníle pẹlẹbẹ pewter sí funfun"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard beige to white"
-msgstr "Iwọn oníle lile beige sí funfun"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard sandstone to white"
-msgstr "Iwọn oníle lile sandstone sí funfun"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard rust to white"
-msgstr "Iwọn oníle lile rust sí funfun"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard sage to white"
-msgstr "Iwọn oníle lile sage sí funfun"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard mint to white"
-msgstr "Iwọn oníle lile mint sí funfun"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard pewter to white"
-msgstr "Pewter oníṣòro pẹtẹlẹ si funfun"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Vivid cyan blue to vivid purple"
-msgstr "Cyan buluu tó lágbára si pupa tó lágbára"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Light green cyan to vivid green cyan"
-msgstr "Cyan alawọ ewe fẹẹrẹ si cyan alawọ ewe tó lágbára"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Luminous vivid amber to luminous vivid orange"
-msgstr "Amber tó lágbára si oranj tó lágbára"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Luminous vivid orange to vivid red"
-msgstr "Oranj tó lágbára si pupa tó lágbára"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Very light gray to cyan bluish gray"
-msgstr "Gray fẹẹrẹ pupọ si gray buluu-cyan"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Cool to warm spectrum"
-msgstr "Ibi-ọwọ tó tutu si ibi-ọwọ tó gbona"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Blush light purple"
-msgstr "Pupa fẹẹrẹ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Blush bordeaux"
-msgstr "Bordeaux fẹẹrẹ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Luminous dusk"
-msgstr "Dusk tó tan imọlẹ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Pale ocean"
-msgstr "Oceani fẹẹrẹ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Electric grass"
-msgstr "Grass eletiriki"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Midnight"
-msgstr "Ọsan irọlẹ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Square - 1:1"
-msgstr "Onigun - 1:1"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Standard - 4:3"
-msgstr "Ipele - 4:3"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Portrait - 3:4"
-msgstr "Aworan - 3:4"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Classic - 3:2"
-msgstr "Ipele - 3:2"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Classic Portrait - 2:3"
-msgstr "Aworan Ipele - 2:3"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Wide - 16:9"
-msgstr "Giga - 16:9"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Tall - 9:16"
-msgstr "Giga - 9:16"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Natural"
-msgstr "Ibi ẹda"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json, fuzzy
-msgctxt "Shadow name"
-msgid "Deep"
-msgstr "Deep"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Sharp"
-msgstr "Kíkọ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Outlined"
-msgstr "Àwọn àgbékalẹ"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Crisp"
-msgstr "Krisp"

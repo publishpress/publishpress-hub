@@ -1,2 +1,2 @@
 <?php
-return ['domain'=>'publishpress-hub','plural-forms'=>'nplurals=2; plural=n > 1;','language'=>'pt_BR','project-id-version'=>'PublishPress Hub 1.0.4-beta.2','pot-creation-date'=>'2026-03-27T15:15:46+00:00','po-revision-date'=>'YEAR-MO-DA HO:MI+ZONE','x-generator'=>'WP-CLI 2.12.0','messages'=>[]];
+return ['domain'=>'publishpress-hub','plural-forms'=>'nplurals=2; plural=n > 1;','language'=>'pt_BR','project-id-version'=>'PublishPress Hub 1.0.4-beta.2','pot-creation-date'=>'2026-04-14T19:28:02+00:00','po-revision-date'=>'YEAR-MO-DA HO:MI+ZONE','x-generator'=>'WP-CLI 2.12.0','messages'=>[]];

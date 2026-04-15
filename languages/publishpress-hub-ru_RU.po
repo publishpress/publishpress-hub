@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-04-08 14:45+0000\n"
+"PO-Revision-Date: 2026-04-15 21:12+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 ">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
@@ -140,7 +140,6 @@ msgid "This license has expired. Please contact support to renew it."
 msgstr "Эта лицензия истекла. Пожалуйста, свяжитесь с поддержкой для её продления."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
-#, fuzzy
 msgid ""
 "This license key is not authorized for this plugin. Please verify your "
 "license key or contact support for help."
@@ -149,7 +148,6 @@ msgstr ""
 "для получения помощи."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
-#, fuzzy
 msgid ""
 "This license cannot be used for this plugin. Please contact support for "
 "help."
@@ -158,7 +156,6 @@ msgstr ""
 "для получения помощи."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
-#, fuzzy
 msgid ""
 "This license does not match the plugin you are trying to activate. Please "
 "contact support for assistance."
@@ -167,7 +164,6 @@ msgstr ""
 "для получения помощи."
 
 #: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
-#, fuzzy
 msgid ""
 "License key does not match our records. Please contact support for "
 "assistance."
@@ -329,12 +325,12 @@ msgid "Approve and schedule new versions to your published posts."
 msgstr "Одобряйте и планируйте новые версии ваших опубликованных записей."
 
 #: src/Domain/Plugin/plugin-families.php:154
-msgid "Create shortlinks for your posts."
-msgstr "Создавайте короткие ссылки для ваших записей."
-
-#: src/Domain/Plugin/plugin-families.php:170
 msgid "Organize your posts into issues or series."
 msgstr "Организуйте ваши записи по выпускам или сериям."
+
+#: src/Domain/Plugin/plugin-families.php:170
+msgid "Create shortlinks for your posts."
+msgstr "Создавайте короткие ссылки для ваших записей."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -1068,48 +1064,48 @@ msgstr "Обновить плагин"
 msgid "Check for Updates"
 msgstr "Проверить наличие обновлений"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:90
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
 #, js-format
 msgid "Install %s"
 msgstr "Установить %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:102
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
 #, js-format
 msgid "Install %s Pro"
 msgstr "Установить %s Pro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:110
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:129
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
 #, js-format
 msgid "Upgrade %s to Pro"
 msgstr "Обновить %s до Pro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:118
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
 #, js-format
 msgid "Uninstall %s"
 msgstr "Удалить %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:119
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
 #, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "Вы уверены, что хотите удалить %s?"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:140
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
 #, js-format
 msgid "Resolve Conflict for %s"
 msgstr "Разрешить конфликт для %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:153
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
 #, js-format
 msgid "Manage %s License"
 msgstr "Управление лицензией %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:164
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
 #, js-format
 msgid "Activate %s License"
 msgstr "Активировать лицензию %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:172
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
 #, js-format
 msgid "More Info: %s"
 msgstr "Больше информации: %s"
@@ -1167,7 +1163,12 @@ msgstr "Перейдите на Pro и увеличьте свою продук�
 msgid "New version available"
 msgstr "Доступна новая версия"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:184
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#, js-format
+msgid "Version %s"
+msgstr "Версия %s"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
 #, js-format
 msgid "Update available: %s → %s"
 msgstr "Доступно обновление: %s → %s"
@@ -1213,11 +1214,11 @@ msgid "Conflicting Installations"
 msgstr "Конфликтующие установки"
 
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:168
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
 msgid "Update Available"
 msgstr "Доступно обновление"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:179
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
 msgid "Expires"
 msgstr "Истекает"
 
@@ -1377,655 +1378,3 @@ msgstr ""
 #, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
-
-#: dev-workspace-cache/wp_test/wp-includes/blocks/widget-group/block.json
-msgctxt "block title"
-msgid "Widget Group"
-msgstr "Группа Виджетов"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Base"
-msgstr "Базовый"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Contrast"
-msgstr "Контраст"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 1"
-msgstr "Акцент 1"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 2"
-msgstr "Акцент 2"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 3"
-msgstr "Акцент 3"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 4"
-msgstr "Акцент 4"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 5"
-msgstr "Акцент 5"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Color name"
-msgid "Accent 6"
-msgstr "Акцент 6"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Base / Two"
-msgstr "Базовый / Два"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Contrast / Two"
-msgstr "Контраст / Два"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Contrast / Three"
-msgstr "Контраст / Три"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent"
-msgstr "Акцент"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Two"
-msgstr "Акцент / Два"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Three"
-msgstr "Акцент / Три"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Four"
-msgstr "Акцент / Четыре"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Color name"
-msgid "Accent / Five"
-msgstr "Акцент / Пять"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Primary"
-msgstr "Первичный"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Secondary"
-msgstr "Вторичный"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Color name"
-msgid "Tertiary"
-msgstr "Третичный"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Black"
-msgstr "Чёрный"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Cyan bluish gray"
-msgstr "Циан с голубоватым оттенком серого"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "White"
-msgstr "Белый"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Pale pink"
-msgstr "Бледно-розовый"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid red"
-msgstr "Ярко-красный"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Luminous vivid orange"
-msgstr "Ярко-оранжевый с сиянием"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Luminous vivid amber"
-msgstr "Ярко-янтарный с сиянием"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Light green cyan"
-msgstr "Светло-зелёный циан"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid green cyan"
-msgstr "Ярко-зелёный циан"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Pale cyan blue"
-msgstr "Бледно-цианово-синий"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid cyan blue"
-msgstr "Ярко-цианово-синий"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Color name"
-msgid "Vivid purple"
-msgstr "Ярко-фиолетовый"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "1"
-msgstr "1"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "2"
-msgstr "2"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "3"
-msgstr "3"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "4"
-msgstr "4"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "5"
-msgstr "5"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Space size name"
-msgid "6"
-msgstr "6"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Tiny"
-msgstr "Маленький"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "X-Small"
-msgstr "X-Маленький"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Small"
-msgstr "Маленький"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Regular"
-msgstr "Обычный"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "Large"
-msgstr "Большой"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "X-Large"
-msgstr "Очень большой"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Space size name"
-msgid "XX-Large"
-msgstr "Дважды очень большой"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Small"
-msgstr "Маленький"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Medium"
-msgstr "Средний"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Large"
-msgstr "Большой"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Font size name"
-msgid "Extra Large"
-msgstr "Дополнительный большой"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Font size name"
-msgid "Extra Extra Large"
-msgstr "Двойной дополнительный большой"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "Manrope"
-msgstr "Manrope"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "Fira Code"
-msgstr "Fira Code"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "Inter"
-msgstr "Inter"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "Cardo"
-msgstr "Cardo"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Font family name"
-msgid "System Sans-serif"
-msgstr "Системный без засечек"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Font family name"
-msgid "System Serif"
-msgstr "Системный с засечками"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "DM Sans"
-msgstr "DM Sans"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "IBM Plex Mono"
-msgstr "IBM Plex Mono"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Font family name"
-msgid "System Font"
-msgstr "Системный шрифт"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Font family name"
-msgid "Source Serif Pro"
-msgstr "Source Serif Pro"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Header"
-msgstr "Заголовок"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Vertical site header"
-msgstr "Вертикальный заголовок сайта"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Header with large title"
-msgstr "Заголовок с большим заголовком"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Footer"
-msgstr "Футер"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Footer Columns"
-msgstr "Столбцы футера"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-msgctxt "Template part name"
-msgid "Footer Newsletter"
-msgstr "Рассылка футера"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Template part name"
-msgid "Sidebar"
-msgstr "Боковая панель"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Post Meta"
-msgstr "Метаданные поста"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Template part name"
-msgid "Comments Template Part"
-msgstr "Шаблон комментариев"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json, fuzzy
-msgctxt "Custom template name"
-msgid "404"
-msgstr "404"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfive/theme.json
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Page No Title"
-msgstr "Страница без заголовка"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Page with Sidebar"
-msgstr "Страница с боковой панелью"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Page with Wide Image"
-msgstr "Страница с широким изображением"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Custom template name"
-msgid "Single with Sidebar"
-msgstr "Одиночный с боковой панелью"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Custom template name"
-msgid "Blank"
-msgstr "Пусто"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentythree/theme.json
-msgctxt "Custom template name"
-msgid "Blog (Alternative)"
-msgstr "Блог (альтернативный)"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and white"
-msgstr "Черно-белый"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and sandstone"
-msgstr "Черный и песчаник"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and rust"
-msgstr "Черный и ржавчина"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and sage"
-msgstr "Черный и шалфей"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Duotone name"
-msgid "Black and pastel blue"
-msgstr "Чёрный и пастельный синий"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Dark grayscale"
-msgstr "Тёмный градиент серого"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Grayscale"
-msgstr "Градиент серого"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Purple and yellow"
-msgstr "Фиолетовый и жёлтый"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Blue and red"
-msgstr "Синий и красный"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Midnight"
-msgstr "Полночный"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Magenta and yellow"
-msgstr "Пурпурный и жёлтый"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Purple and green"
-msgstr "Фиолетовый и зелёный"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Duotone name"
-msgid "Blue and orange"
-msgstr "Синий и оранжевый"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft beige to white"
-msgstr "Вертикальный мягкий бежевый до белого"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft sandstone to white"
-msgstr "Вертикальный мягкий песчаник до белого"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft rust to white"
-msgstr "Вертикальный мягкий ржавый до белого"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft sage to white"
-msgstr "Вертикальный мягкий шалфей до белого"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft mint to white"
-msgstr "Вертикальный мягкий мятный до белого"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical soft pewter to white"
-msgstr "Вертикальный мягкий оловянный до белого"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard beige to white"
-msgstr "Вертикальный твёрдый бежевый до белого"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard sandstone to white"
-msgstr "Вертикальный твёрдый песчаник до белого"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard rust to white"
-msgstr "Вертикальный твёрдый ржавый до белого"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard sage to white"
-msgstr "Вертикальный твёрдый шалфей до белого"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard mint to white"
-msgstr "Вертикальный твёрдый мятный до белого"
-
-#: dev-workspace-cache/wp_test/wp-content/themes/twentytwentyfour/theme.json
-msgctxt "Gradient name"
-msgid "Vertical hard pewter to white"
-msgstr "Вертикальный жесткий олово до белого"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Vivid cyan blue to vivid purple"
-msgstr "Яркий циан синим до яркого пурпурного"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Light green cyan to vivid green cyan"
-msgstr "Светлый зеленый циан до яркого зеленого циана"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Luminous vivid amber to luminous vivid orange"
-msgstr "Сияющий яркий янтарь до сияющего яркого оранжевого"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Luminous vivid orange to vivid red"
-msgstr "Сияющий яркий оранжевый до яркого красного"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Very light gray to cyan bluish gray"
-msgstr "Очень светлый серый до цианового серо-голубого"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Cool to warm spectrum"
-msgstr "Холодный к теплому спектру"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Blush light purple"
-msgstr "Румяный светлый пурпурный"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Blush bordeaux"
-msgstr "Румяный бордовый"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Luminous dusk"
-msgstr "Сияющий сумерки"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Pale ocean"
-msgstr "Бледный океан"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Electric grass"
-msgstr "Электрическая трава"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Gradient name"
-msgid "Midnight"
-msgstr "Полночь"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Square - 1:1"
-msgstr "Квадрат - 1:1"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Standard - 4:3"
-msgstr "Стандартный - 4:3"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Portrait - 3:4"
-msgstr "Портрет - 3:4"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Classic - 3:2"
-msgstr "Классический - 3:2"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Classic Portrait - 2:3"
-msgstr "Классический портрет - 2:3"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Wide - 16:9"
-msgstr "Широкий - 16:9"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Aspect ratio name"
-msgid "Tall - 9:16"
-msgstr "Высокий - 9:16"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Natural"
-msgstr "Естественный"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Deep"
-msgstr "Глубокий"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Sharp"
-msgstr "Резкий"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Outlined"
-msgstr "Контурный"
-
-#: dev-workspace-cache/wp_test/wp-includes/theme.json
-msgctxt "Shadow name"
-msgid "Crisp"
-msgstr "Четкий"
