@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b0cc4241ec81a92b7bcec94deedfda34",
+    "content-hash": "e7438b2596a7105837c46a02c6c67bbc",
     "packages": [],
     "packages-dev": [
         {
@@ -1122,53 +1122,6 @@
                 "source": "https://github.com/Codeception/module-rest/tree/3.4.3"
             },
             "time": "2025-12-22T14:13:56+00:00"
-        },
-        {
-            "name": "codeception/module-sequence",
-            "version": "3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Codeception/module-sequence.git",
-                "reference": "9738e2eb06035a0975171a0aa3fce00d284b4dfb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-sequence/zipball/9738e2eb06035a0975171a0aa3fce00d284b4dfb",
-                "reference": "9738e2eb06035a0975171a0aa3fce00d284b4dfb",
-                "shasum": ""
-            },
-            "require": {
-                "codeception/codeception": "^5.0",
-                "php": "^8.0"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/Codeception/Util/sq.php"
-                ],
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Bodnarchuk"
-                }
-            ],
-            "description": "Sequence module for Codeception",
-            "homepage": "https://codeception.com/",
-            "keywords": [
-                "codeception"
-            ],
-            "support": {
-                "issues": "https://github.com/Codeception/module-sequence/issues",
-                "source": "https://github.com/Codeception/module-sequence/tree/3.0.0"
-            },
-            "time": "2022-05-31T05:45:36+00:00"
         },
         {
             "name": "codeception/module-webdriver",
@@ -5867,16 +5820,16 @@
         },
         {
             "name": "publishpress/dev-workspace",
-            "version": "1.1.7",
+            "version": "dev-development",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/dev-workspace.git",
-                "reference": "27603e4e7025d7d158ef1b12cc9bd985f28508a5"
+                "reference": "72bb3f6d3d3b28678f7099f90dc8e8df03bd7178"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/dev-workspace/zipball/27603e4e7025d7d158ef1b12cc9bd985f28508a5",
-                "reference": "27603e4e7025d7d158ef1b12cc9bd985f28508a5",
+                "url": "https://api.github.com/repos/publishpress/dev-workspace/zipball/72bb3f6d3d3b28678f7099f90dc8e8df03bd7178",
+                "reference": "72bb3f6d3d3b28678f7099f90dc8e8df03bd7178",
                 "shasum": ""
             },
             "require": {
@@ -5888,7 +5841,6 @@
                 "codeception/module-filesystem": "^3",
                 "codeception/module-phpbrowser": "^3",
                 "codeception/module-rest": "^3",
-                "codeception/module-sequence": "^3",
                 "codeception/module-webdriver": "^3",
                 "codeception/util-universalframework": "^1",
                 "composer-plugin-api": "^2.0",
@@ -5917,6 +5869,7 @@
                 "wp-cli/wp-cli-bundle": "^2.10",
                 "wp-coding-standards/wpcs": "^3"
             },
+            "default-branch": true,
             "type": "composer-plugin",
             "extra": {
                 "class": "PublishPress\\DevWorkspace\\Plugin"
@@ -5933,9 +5886,9 @@
             "description": "Shared Composer scripts for PublishPress plugins",
             "support": {
                 "issues": "https://github.com/publishpress/dev-workspace/issues",
-                "source": "https://github.com/publishpress/dev-workspace/tree/1.1.7"
+                "source": "https://github.com/publishpress/dev-workspace/tree/development"
             },
-            "time": "2026-04-15T13:42:56+00:00"
+            "time": "2026-04-15T15:07:59+00:00"
         },
         {
             "name": "publishpress/publishpress-phpcs-standards",
@@ -9566,7 +9519,7 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.35.0",
+            "version": "v1.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -9625,7 +9578,7 @@
                 "portable"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.35.0"
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.36.0"
             },
             "funding": [
                 {
@@ -9649,7 +9602,7 @@
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
-            "version": "v1.35.0",
+            "version": "v1.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
@@ -9707,7 +9660,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.35.0"
+                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.36.0"
             },
             "funding": [
                 {
@@ -9731,7 +9684,7 @@
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
-            "version": "v1.35.0",
+            "version": "v1.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
@@ -9792,7 +9745,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.35.0"
+                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.36.0"
             },
             "funding": [
                 {
@@ -9816,7 +9769,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.35.0",
+            "version": "v1.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
@@ -9877,7 +9830,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.35.0"
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.36.0"
             },
             "funding": [
                 {
@@ -9901,7 +9854,7 @@
         },
         {
             "name": "symfony/polyfill-php73",
-            "version": "v1.35.0",
+            "version": "v1.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php73.git",
@@ -9957,7 +9910,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php73/tree/v1.35.0"
+                "source": "https://github.com/symfony/polyfill-php73/tree/v1.36.0"
             },
             "funding": [
                 {
@@ -9981,7 +9934,7 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.35.0",
+            "version": "v1.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
@@ -10041,7 +9994,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.35.0"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.36.0"
             },
             "funding": [
                 {
@@ -10065,7 +10018,7 @@
         },
         {
             "name": "symfony/polyfill-php81",
-            "version": "v1.35.0",
+            "version": "v1.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php81.git",
@@ -10121,7 +10074,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php81/tree/v1.35.0"
+                "source": "https://github.com/symfony/polyfill-php81/tree/v1.36.0"
             },
             "funding": [
                 {
@@ -10145,7 +10098,7 @@
         },
         {
             "name": "symfony/polyfill-php83",
-            "version": "v1.35.0",
+            "version": "v1.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php83.git",
@@ -10201,7 +10154,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php83/tree/v1.35.0"
+                "source": "https://github.com/symfony/polyfill-php83/tree/v1.36.0"
             },
             "funding": [
                 {
@@ -10225,7 +10178,7 @@
         },
         {
             "name": "symfony/polyfill-php84",
-            "version": "v1.35.0",
+            "version": "v1.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php84.git",
@@ -10281,7 +10234,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php84/tree/v1.35.0"
+                "source": "https://github.com/symfony/polyfill-php84/tree/v1.36.0"
             },
             "funding": [
                 {
@@ -13507,7 +13460,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "publishpress/dev-workspace": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
