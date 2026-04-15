@@ -7,7 +7,7 @@ Requires at least: 6.7
 Requires PHP: 7.4
 Tested up to: 6.9
 License: GPLv2 or later
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Streamline your WordPress publishing workflow with a centralized plugin management hub.
