@@ -5867,16 +5867,16 @@
         },
         {
             "name": "publishpress/dev-workspace",
-            "version": "1.1.6",
+            "version": "1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/dev-workspace.git",
-                "reference": "198d2443b255403aec4802972364f47be057ba6c"
+                "reference": "27603e4e7025d7d158ef1b12cc9bd985f28508a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/dev-workspace/zipball/198d2443b255403aec4802972364f47be057ba6c",
-                "reference": "198d2443b255403aec4802972364f47be057ba6c",
+                "url": "https://api.github.com/repos/publishpress/dev-workspace/zipball/27603e4e7025d7d158ef1b12cc9bd985f28508a5",
+                "reference": "27603e4e7025d7d158ef1b12cc9bd985f28508a5",
                 "shasum": ""
             },
             "require": {
@@ -5933,9 +5933,9 @@
             "description": "Shared Composer scripts for PublishPress plugins",
             "support": {
                 "issues": "https://github.com/publishpress/dev-workspace/issues",
-                "source": "https://github.com/publishpress/dev-workspace/tree/1.1.6"
+                "source": "https://github.com/publishpress/dev-workspace/tree/1.1.7"
             },
-            "time": "2026-04-14T19:26:19+00:00"
+            "time": "2026-04-15T13:42:56+00:00"
         },
         {
             "name": "publishpress/publishpress-phpcs-standards",
