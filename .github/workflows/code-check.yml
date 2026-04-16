@@ -35,6 +35,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
 
+      - name: Install PHP Extensions
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y php8.3-redis php8.3-zmq php8.3-memcached php8.3-zip php8.3-mysqli
+
       - name: Create .env file
         run: |
           cp $GITHUB_WORKSPACE/.env.example $GITHUB_WORKSPACE/.env
