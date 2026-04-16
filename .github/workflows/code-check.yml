@@ -47,6 +47,7 @@ jobs:
 
       - name: Composer prepare
         run: |
+          git config --global --add safe.directory /project
           composer validate
           composer install
 
