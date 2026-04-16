@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Changed: Updated alledia/edd-sl-plugin-updater to version 1.6.25.
 - Changed: Updated publishpress/wordpress-edd-license to version 3.0.5.
 - Changed: Improved and expanded existing language translations.
+- Fixed: Resolved inconsistency in "Update Available" badges on the plugins dashboard.
 
 [1.0.3] - 03 Feb, 2026
 

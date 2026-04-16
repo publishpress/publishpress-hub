@@ -7393,7 +7393,7 @@ var StatusFlagComponent = function StatusFlagComponent(_ref) {
     }
     return null;
   }, [statusBadgeProps, pluginFamily]);
-  if (!statusBadgeProps) {
+  if (!statusBadgeProps && !hasUpdate) {
     return null;
   }
   return /*#__PURE__*/React.createElement("div", {
@@ -7404,7 +7404,7 @@ var StatusFlagComponent = function StatusFlagComponent(_ref) {
       gap: '8px',
       flexWrap: 'wrap'
     }
-  }, /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_2__.Badge, statusBadgeProps, statusBadgeProps.text), hasUpdate && /*#__PURE__*/React.createElement(_tooltip__WEBPACK_IMPORTED_MODULE_3__.Tooltip, {
+  }, statusBadgeProps && /*#__PURE__*/React.createElement(_badge_badge__WEBPACK_IMPORTED_MODULE_2__.Badge, statusBadgeProps, statusBadgeProps.text), hasUpdate && /*#__PURE__*/React.createElement(_tooltip__WEBPACK_IMPORTED_MODULE_3__.Tooltip, {
     text: updateBadgeTooltip || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Update Available', 'publishpress-hub'),
     placement: "top",
     useCustom: true
