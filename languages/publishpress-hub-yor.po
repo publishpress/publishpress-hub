@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
-"PO-Revision-Date: 2026-04-16 14:33+0000\n"
+"PO-Revision-Date: 2026-04-16 21:56+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Language: yor\n"
@@ -152,7 +152,6 @@ msgid ""
 msgstr "Iwe-aṣẹ yii ko ṣiṣẹ fun aaye yii. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
-#, fuzzy
 msgid ""
 "License key does not match our records. Please contact support for "
 "assistance."
@@ -171,7 +170,6 @@ msgstr ""
 "tẹsiwaju."
 
 #: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
-#, fuzzy
 msgid ""
 "License activation limit reached. Please contact support to upgrade or "
 "deactivate on another site."
@@ -929,17 +927,18 @@ msgstr ""
 "ba ni iwe-aṣẹ, tabi ẹya Ọfẹ lati bẹrẹ."
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
 msgid "Free Details"
 msgstr "Alaye Free"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
 msgid "Pro Details"
 msgstr "Alaye Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Awọn ayipada"
 
@@ -1004,7 +1003,8 @@ msgstr "Dena iwe-aṣẹ fun aaye yii"
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
 msgid "Unknown"
 msgstr "Aimọ"
 
@@ -1118,10 +1118,6 @@ msgstr ""
 msgid "Discover all Pro features"
 msgstr "Ṣawari gbogbo awọn ẹya Pro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
-msgid "Changelog"
-msgstr "Ayipada iwe"
-
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"
 msgstr "Ṣe o ti ni iwe-aṣẹ tẹlẹ? Fi Pro sori bayi"
@@ -1135,9 +1131,10 @@ msgid "New version available"
 msgstr "Ẹya tuntun wa"
 
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
-#, fuzzy
-msgid "Version %s"
-msgstr "Ẹya Pro: %s (%s)"
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
+#, fuzzy, js-format
+msgid "v%s"
+msgstr "v%s"
 
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
 #, js-format
@@ -1193,35 +1190,36 @@ msgstr "Imudojuiwọn Wa"
 msgid "Expires"
 msgstr "Pari"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
-msgid "latest"
-msgstr "tuntun"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
-#, js-format
-msgid "Update to v%s"
-msgstr "Ṣe imudojuiwọn si v%s"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
 msgid "Renew"
 msgstr "Tunṣe"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
 msgid "Deactivate"
 msgstr "Pa a ṣiṣẹ"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
 msgid "Activate"
 msgstr "Mú a ṣiṣẹ"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
 msgid "Uninstall"
 msgstr "Yọ kuro"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
 msgid "More Info"
 msgstr "Alaye diẹ sii"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
+msgid "latest"
+msgstr "tuntun"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+#, js-format
+msgid "Update to v%s"
+msgstr "Ṣe imudojuiwọn si v%s"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
 msgid "This plugin is not installed."

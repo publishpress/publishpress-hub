@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-15T21:04:03+00:00\n"
-"PO-Revision-Date: 2026-04-16 14:33+0000\n"
+"POT-Creation-Date: 2026-04-16T21:46:44+00:00\n"
+"PO-Revision-Date: 2026-04-16 21:56+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Language: en-US\n"
@@ -931,17 +931,18 @@ msgstr ""
 "version if you have a license, or the Free version to get started."
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117, fuzzy
 msgid "Free Details"
 msgstr "Free Details"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125, fuzzy
 msgid "Pro Details"
 msgstr "Pro Details"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134, fuzzy
 msgid "Changelogs"
 msgstr "Changelogs"
 
@@ -1006,7 +1007,8 @@ msgstr "Deactivate the license key for this site"
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175, fuzzy
 msgid "Unknown"
 msgstr "Unknown"
 
@@ -1120,10 +1122,6 @@ msgstr ""
 msgid "Discover all Pro features"
 msgstr "Discover all Pro features"
 
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44, fuzzy
-msgid "Changelog"
-msgstr "Changelog"
-
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48, fuzzy
 msgid "Already have a license? Install Pro now"
 msgstr "Already have a license? Install Pro now"
@@ -1137,9 +1135,10 @@ msgid "New version available"
 msgstr "New version available"
 
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
 #, fuzzy, js-format
-msgid "Version %s"
-msgstr "Version %s"
+msgid "v%s"
+msgstr "v%s"
 
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
 #, fuzzy, js-format
@@ -1195,35 +1194,36 @@ msgstr "Update Available"
 msgid "Expires"
 msgstr "Expires"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55, fuzzy
-msgid "latest"
-msgstr "latest"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
-#, fuzzy, js-format
-msgid "Update to v%s"
-msgstr "Update to v%s"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75, fuzzy
 msgid "Renew"
 msgstr "Renew"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85, fuzzy
 msgid "Deactivate"
 msgstr "Deactivate"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94, fuzzy
 msgid "Activate"
 msgstr "Activate"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104, fuzzy
 msgid "Uninstall"
 msgstr "Uninstall"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142, fuzzy
 msgid "More Info"
 msgstr "More Info"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176, fuzzy
+msgid "latest"
+msgstr "latest"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+#, fuzzy, js-format
+msgid "Update to v%s"
+msgstr "Update to v%s"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37, fuzzy
 msgid "This plugin is not installed."

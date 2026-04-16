@@ -16,7 +16,7 @@ msgstr ""
 "X-Domain: publishpress-hub\n"
 
 #. Plugin Name of the plugin
-#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259, fuzzy
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
@@ -35,7 +35,7 @@ msgid "PublishPress"
 msgstr "PublishPress"
 
 #. Author URI of the plugin
-#: publishpress-hub.php:8
+#: publishpress-hub.php:8, fuzzy
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -864,7 +864,7 @@ msgstr "¿Ya sabes lo que vas a hacer? ¡Genial! Puedes "
 msgid "dismiss this page"
 msgstr "descartar esta página"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152
+#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
 msgid "."
 msgstr "."
 

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
-"PO-Revision-Date: 2026-04-16 14:31+0000\n"
+"PO-Revision-Date: 2026-04-16 21:56+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "|| n % 10 == 6 || n % 10 == 9);\n"
@@ -167,7 +167,6 @@ msgstr ""
 "makipag-ugnayan sa suporta para sa tulong."
 
 #: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
-#, fuzzy
 msgid ""
 "License key does not match our records. Please contact support for "
 "assistance."
@@ -190,7 +189,6 @@ msgstr ""
 "Mangyaring maglagay ng wastong URL ng site upang magpatuloy."
 
 #: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
-#, fuzzy
 msgid ""
 "License activation limit reached. Please contact support to upgrade or "
 "deactivate on another site."
@@ -970,17 +968,18 @@ msgstr ""
 "bersyon upang makapagsimula."
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
 msgid "Free Details"
 msgstr "Mga Detalye ng Libre"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
 msgid "Pro Details"
 msgstr "Mga Detalye ng Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Mga Changelog"
 
@@ -1046,7 +1045,8 @@ msgstr "I-deactivate ang license key para sa site na ito"
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
 msgid "Unknown"
 msgstr "Hindi"
 
@@ -1161,10 +1161,6 @@ msgstr ""
 msgid "Discover all Pro features"
 msgstr "Tuklasin ang lahat ng Pro na tampok"
 
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
-msgid "Changelog"
-msgstr "Talaan ng mga pagbabago"
-
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"
 msgstr "May lisensya na? I-install ang Pro ngayon"
@@ -1178,9 +1174,10 @@ msgid "New version available"
 msgstr "Bagong bersyon na available"
 
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
-#, fuzzy
-msgid "Version %s"
-msgstr "Pro bersyon: %s (%s)"
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
+#, fuzzy, js-format
+msgid "v%s"
+msgstr "v%s"
 
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
 #, js-format
@@ -1236,35 +1233,36 @@ msgstr "Available ang Update"
 msgid "Expires"
 msgstr "Nagtatapos"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
-msgid "latest"
-msgstr "pinakabago"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
-#, js-format
-msgid "Update to v%s"
-msgstr "I-update sa v%s"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
 msgid "Renew"
 msgstr "I-renew"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
 msgid "Deactivate"
 msgstr "I-deactivate"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
 msgid "Activate"
 msgstr "I-activate"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
 msgid "Uninstall"
 msgstr "I-uninstall"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
 msgid "More Info"
 msgstr "Higit pang Impormasyon"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
+msgid "latest"
+msgstr "pinakabago"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+#, js-format
+msgid "Update to v%s"
+msgstr "I-update sa v%s"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
 msgid "This plugin is not installed."

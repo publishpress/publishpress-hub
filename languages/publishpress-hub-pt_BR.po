@@ -4,27 +4,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
-"POT-Creation-Date: 2026-04-15T21:04:03+00:00\n"
-"PO-Revision-Date: 2026-04-16 14:45+0000\n"
-"Last-Translator: Anderson <anderson@publishpress.com>\n"
-"Language-Team: Portuguese (Brazil) <https://weblate.publishpress.com/"
-"projects/publishpress-hub/publishpress-hub/pt_BR/>\n"
-"Language: pt_BR\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Portuguese (Brazil) "
+"<https://weblate.publishpress.com/projects/publishpress-hub/publishpress-"
+"hub/pt_BR/>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"POT-Creation-Date: 2026-04-15T21:04:03+00:00\n"
+"PO-Revision-Date: 2026-04-16 21:56+0000\n"
 "X-Generator: Weblate 5.14.3\n"
 "X-Domain: publishpress-hub\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"Language: pt-BR\n"
 
-#. Plugin Name of the plugin
 #: publishpress-hub.php:4
 #: src/Admin/Page/WelcomePageController.php:259, fuzzy
+#. Plugin Name of the plugin
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
-#. Description of the plugin
 #: publishpress-hub.php:5
+#. Description of the plugin
 msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
@@ -32,13 +33,13 @@ msgstr ""
 "Centralizado hub de gerenciamento para todos os plugins PublishPress - "
 "instale, atualize e gerencie licenças a partir de um dashboard."
 
-#. Author of the plugin
 #: publishpress-hub.php:7
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#. Author URI of the plugin
 #: publishpress-hub.php:8, fuzzy
+#. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -73,8 +74,8 @@ msgstr "Bem-vindo"
 msgid "Please wait while we load the welcome page..."
 msgstr "Por favor, aguarde enquanto carregamos a página de boas-vindas..."
 
-#. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
 #: src/Application/Service/License/LicenseExpirationNoticeService.php:121
+#. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "Aviso: A licença para %1$s expirou. %2$s"
@@ -84,8 +85,8 @@ msgstr "Aviso: A licença para %1$s expirou. %2$s"
 msgid "Manage licenses"
 msgstr "Gerenciar licenças"
 
-#. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
 #: src/Application/Service/License/LicenseExpirationNoticeService.php:134
+#. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "Aviso: %1$d plugin(s) têm licenças expiradas: %2$s. %3$s"
@@ -98,14 +99,14 @@ msgstr "O objeto deve ser carregado antes da inicialização."
 msgid "No license key found"
 msgstr "Nenhuma chave de licença encontrada"
 
-#. translators: %s is the plugin family slug
 #: src/Domain/Plugin/Entity/PluginFamily.php:128
+#. translators: %s is the plugin family slug
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr "Plugin gratuito não definido para a família de plugins: %s"
 
-#. translators: %s is the plugin family slug
 #: src/Domain/Plugin/Entity/PluginFamily.php:150
+#. translators: %s is the plugin family slug
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr "Plugin Pro não definido para a família de plugins: %s"
@@ -335,20 +336,20 @@ msgstr "Crie links curtos para suas postagens."
 msgid "Create custom statuses and publishing workflows."
 msgstr "Crie status personalizados e fluxos de trabalho de publicação."
 
-#. translators: %s is the dependency ID.
 #: src/Infrastructure/Container/DependencyContainer.php:102
+#. translators: %s is the dependency ID.
 #, php-format
 msgid "Dependency \"%s\" not found in container."
 msgstr "Dependência \"%s\" não encontrada no contêiner."
 
-#. translators: %s is the error message
 #: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
+#. translators: %s is the error message
 #, php-format
 msgid "Error validating license: %s"
 msgstr "Erro ao validar licença: %s"
 
-#. translators: %s is the error message
 #: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
+#. translators: %s is the error message
 #, php-format
 msgid "Error getting license info: %s"
 msgstr "Erro ao obter informações da licença: %s"
@@ -361,8 +362,8 @@ msgstr "Muitas solicitações. Por favor, tente novamente mais tarde."
 msgid "An error occurred while processing your request."
 msgstr "Ocorreu um erro ao processar sua solicitação."
 
-#. translators: %s is the template path
 #: src/Infrastructure/View/ViewService.php:48
+#. translators: %s is the template path
 #, php-format
 msgid "Template not found: %s"
 msgstr "Modelo não encontrado: %s"
@@ -383,8 +384,8 @@ msgstr "Caminho de arquivo inválido: byte nulo detectado"
 msgid "Invalid file path: directory traversal detected"
 msgstr "Caminho de arquivo inválido: travessia de diretório detectada"
 
-#. translators: %s is the directory path
 #: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
+#. translators: %s is the directory path
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "Caminho de arquivo inválido: diretório pai não existe: %s"
@@ -407,8 +408,8 @@ msgstr "URL de download inválida fornecida"
 msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr "A URL de download deve usar o protocolo HTTP ou HTTPS"
 
-#. translators: %s is the hostname
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
+#. translators: %s is the hostname
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr "A URL de download não é de um domínio permitido: %s"
@@ -417,8 +418,8 @@ msgstr "A URL de download não é de um domínio permitido: %s"
 msgid "Download URL failed WordPress validation"
 msgstr "A URL de download falhou na validação do WordPress"
 
-#. translators: %s is the error message
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
+#. translators: %s is the error message
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr "Falha ao baixar o plugin: %s"
@@ -443,8 +444,8 @@ msgstr ""
 "O arquivo baixado não é um arquivo ZIP válido. A URL de download pode estar "
 "retornando uma página de erro."
 
-#. translators: %s is the error message
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
+#. translators: %s is the error message
 #, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "Falha ao descompactar o arquivo do plugin: %s"
@@ -453,14 +454,14 @@ msgstr "Falha ao descompactar o arquivo do plugin: %s"
 msgid "Failed to unzip plugin file"
 msgstr "Falha ao descompactar o arquivo do plugin"
 
-#. translators: %s is the error message
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
+#. translators: %s is the error message
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "Falha ao ativar o plugin: %s"
 
-#. translators: %s is the error message
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
+#. translators: %s is the error message
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "Falha ao excluir o plugin: %s"
@@ -473,8 +474,8 @@ msgstr "Nenhuma atualização disponível para este plugin"
 msgid "Invalid update information for this plugin"
 msgstr "Informações de atualização inválidas para este plugin"
 
-#. translators: %s is the error message
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
+#. translators: %s is the error message
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "Falha ao atualizar o plugin: %s"
@@ -483,20 +484,20 @@ msgstr "Falha ao atualizar o plugin: %s"
 msgid "Plugin update failed"
 msgstr "Atualização do plugin falhou"
 
-#. translators: %s is the error message
 #: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
+#. translators: %s is the error message
 #, php-format
 msgid "Failed to get plugin information: %s"
 msgstr "Falha ao obter informações do plugin: %s"
 
-#. translators: %s is the plugin name, %s is the rating
 #: resources/src/jsx/components/admin-page/footer.jsx:26
+#. translators: %s is the plugin name, %s is the rating
 #, js-format
 msgid "If you like %s please leave us a %s rating. Thank you!"
 msgstr "Se você gosta de %s, por favor, nos deixe uma avaliação de %s. Obrigado!"
 
-#. translators: %s is the plugin name
 #: resources/src/jsx/components/admin-page/footer.jsx:43
+#. translators: %s is the plugin name
 #, js-format
 msgid "About %s"
 msgstr "Sobre %s"
@@ -505,8 +506,8 @@ msgstr "Sobre %s"
 msgid "About"
 msgstr "Sobre"
 
-#. translators: %s is the plugin name
 #: resources/src/jsx/components/admin-page/footer.jsx:54
+#. translators: %s is the plugin name
 #, js-format
 msgid "Documentation for %s"
 msgstr "Documentação para %s"
@@ -515,8 +516,8 @@ msgstr "Documentação para %s"
 msgid "Documentation"
 msgstr "Documentação"
 
-#. translators: %s is the plugin name
 #: resources/src/jsx/components/admin-page/footer.jsx:65
+#. translators: %s is the plugin name
 #, js-format
 msgid "Contact the %s team"
 msgstr "Entre em contato com a equipe %s"
@@ -545,14 +546,14 @@ msgstr "Exibição de Componentes"
 msgid "N/A"
 msgstr "N/A"
 
-#. translators: %1$s is the plugin name, %2$s is the expiration date
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
+#. translators: %1$s is the plugin name, %2$s is the expiration date
 #, js-format
 msgid "The license for %1$s expired on %2$s"
 msgstr "A licença para %1$s expirou em %2$s"
 
-#. translators: %1$s is the list of plugin names, %2$s is the expiration date
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
+#. translators: %1$s is the list of plugin names, %2$s is the expiration date
 #, js-format
 msgid "The licenses for %1$s expired on %2$s"
 msgstr "As licenças para %1$s expiraram em %2$s"
@@ -562,14 +563,14 @@ msgstr "As licenças para %1$s expiraram em %2$s"
 msgid "Renew now"
 msgstr "Renovar agora"
 
-#. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
+#. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
 #, js-format
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr "A licença para %1$s expira em %2$s (%3$d dias restantes)"
 
-#. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
+#. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
 #, js-format
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr "As licenças para %1$s expiram em %2$s (%3$d dias restantes)"
@@ -961,17 +962,18 @@ msgstr ""
 "versão Pro se tiver uma licença, ou a versão Gratuita para começar."
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
 msgid "Free Details"
 msgstr "Detalhes Gratuitos"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
 msgid "Pro Details"
 msgstr "Detalhes Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Notas de versão"
 
@@ -1036,7 +1038,8 @@ msgstr "Desativar a chave de licença para este site"
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
 msgid "Unknown"
 msgstr "Desconhecido"
 
@@ -1150,10 +1153,6 @@ msgstr ""
 msgid "Discover all Pro features"
 msgstr "Descubra todos os recursos Pro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
-msgid "Changelog"
-msgstr "Registro de alterações"
-
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"
 msgstr "Já possui uma licença? Instale o Pro agora"
@@ -1167,9 +1166,10 @@ msgid "New version available"
 msgstr "Nova versão disponível"
 
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
-#, js-format
-msgid "Version %s"
-msgstr "Versão %s"
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
+#, fuzzy, js-format
+msgid "v%s"
+msgstr "v%s"
 
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
 #, js-format
@@ -1225,35 +1225,36 @@ msgstr "Atualização Disponível"
 msgid "Expires"
 msgstr "Expira"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
-msgid "latest"
-msgstr "mais recente"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
-#, js-format
-msgid "Update to v%s"
-msgstr "Atualizar para v%s"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
 msgid "Renew"
 msgstr "Renovar"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
 msgid "Deactivate"
 msgstr "Desativar"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
 msgid "Activate"
 msgstr "Ativar"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
 msgid "Uninstall"
 msgstr "Desinstalar"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
 msgid "More Info"
 msgstr "Mais Informações"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
+msgid "latest"
+msgstr "mais recente"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+#, js-format
+msgid "Update to v%s"
+msgstr "Atualizar para v%s"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
 msgid "This plugin is not installed."

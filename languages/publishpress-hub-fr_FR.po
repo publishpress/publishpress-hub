@@ -18,7 +18,7 @@ msgstr ""
 "X-Domain: publishpress-hub\n"
 
 #. Plugin Name of the plugin
-#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259, fuzzy
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
@@ -38,7 +38,7 @@ msgid "PublishPress"
 msgstr "PublishPress"
 
 #. Author URI of the plugin
-#: publishpress-hub.php:8
+#: publishpress-hub.php:8, fuzzy
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -508,7 +508,7 @@ msgstr "À propos"
 msgid "Documentation for %s"
 msgstr "Documentation de %s"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:56
+#: resources/src/jsx/components/admin-page/footer.jsx:56, fuzzy
 msgid "Documentation"
 msgstr "Documentation"
 
@@ -517,7 +517,7 @@ msgstr "Documentation"
 msgid "Contact the %s team"
 msgstr "Contacter l’équipe %s"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:67
+#: resources/src/jsx/components/admin-page/footer.jsx:67, fuzzy
 msgid "Contact"
 msgstr "Contact"
 
@@ -529,7 +529,7 @@ msgstr "Obtenir de l’aide"
 msgid "Select an option"
 msgstr "Sélectionner une option"
 
-#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52, fuzzy
 msgid "Options"
 msgstr "Options"
 
@@ -579,11 +579,11 @@ msgstr "Tout"
 msgid "Unlicensed"
 msgstr "Sans licence"
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:56
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:56, fuzzy
 msgid "Active"
 msgstr "Active"
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:61
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:61, fuzzy
 msgid "Inactive"
 msgstr "Inactive"
 
@@ -867,7 +867,7 @@ msgstr "Vous savez déjà ce que vous faites ? Super ! Vous pouvez "
 msgid "dismiss this page"
 msgstr "ignorer cette page"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152
+#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
 msgid "."
 msgstr "."
 
@@ -920,7 +920,7 @@ msgstr "Mettre à jour"
 msgid "Updating..."
 msgstr "Mise à jour cours…"
 
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:31
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:31, fuzzy
 msgid "Confirmation"
 msgstr "Confirmation"
 
@@ -1146,7 +1146,7 @@ msgstr "Passez en version Pro et augmentez votre productivité"
 msgid "New version available"
 msgstr "Nouvelle version disponible"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157, fuzzy
 msgid "Version %s"
 msgstr "Version %s"
 

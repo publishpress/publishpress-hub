@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Plugin Name of the plugin
-#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259, fuzzy
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
@@ -36,7 +36,7 @@ msgid "PublishPress"
 msgstr "PublishPress"
 
 #. Author URI of the plugin
-#: publishpress-hub.php:8
+#: publishpress-hub.php:8, fuzzy
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -534,7 +534,7 @@ msgstr "Lehetőségek"
 msgid "Components Showcase"
 msgstr "Komponens bemutató"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93, fuzzy
 msgid "N/A"
 msgstr "N/A"
 
@@ -863,7 +863,7 @@ msgstr "Már tudod, mit csinálsz? Szuper! Akkor "
 msgid "dismiss this page"
 msgstr "elutasíthatod ezt az oldalt"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152
+#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
 msgid "."
 msgstr "."
 

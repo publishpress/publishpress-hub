@@ -18,7 +18,7 @@ msgstr ""
 "20)) ? 1 : 2);\n"
 
 #. Plugin Name of the plugin
-#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259, fuzzy
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
@@ -38,7 +38,7 @@ msgid "PublishPress"
 msgstr "PublishPress"
 
 #. Author URI of the plugin
-#: publishpress-hub.php:8
+#: publishpress-hub.php:8, fuzzy
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -521,7 +521,7 @@ msgstr "Documentație"
 msgid "Contact the %s team"
 msgstr "Contactează echipa %s"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:67
+#: resources/src/jsx/components/admin-page/footer.jsx:67, fuzzy
 msgid "Contact"
 msgstr "Contact"
 
@@ -541,7 +541,7 @@ msgstr "Opțiuni"
 msgid "Components Showcase"
 msgstr "Vitrinele componentelor"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93, fuzzy
 msgid "N/A"
 msgstr "N/A"
 
@@ -741,7 +741,7 @@ msgstr ""
 "Jurnalizarea de depanare este activă. Comutați la tab-ul \"Jurnal de "
 "depanare\" pentru a vizualiza datele capturate."
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70, fuzzy
 msgid "ERR"
 msgstr "ERR"
 
@@ -876,7 +876,7 @@ msgstr "Știți deja ce faceți? Grozav! Puteți "
 msgid "dismiss this page"
 msgstr "închide această pagină"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152
+#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
 msgid "."
 msgstr "."
 

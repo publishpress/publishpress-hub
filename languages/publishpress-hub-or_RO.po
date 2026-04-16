@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-15T21:04:03+00:00\n"
-"PO-Revision-Date: 2026-04-16 14:36+0000\n"
+"PO-Revision-Date: 2026-04-16 21:57+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -24,6 +24,15 @@ msgstr "PublishPress Hub"
 
 #: publishpress-hub.php:5
 #. Description of the plugin
+msgid ""
+"Centralized management hub for all PublishPress plugins - install, update, "
+"and manage licenses from one dashboard."
+msgstr ""
+"ସମସ୍ତ PublishPress ପ୍ଲଗଇନମାନଙ୍କର କେନ୍ଦ୍ରୀୟ ପରିଚାଳନା କେନ୍ଦ୍ର - ଏକ "
+"ଡ୍ୟାଶବୋର୍ଡରୁ ସ୍ଥାପନ, ଅଦ୍ୟତନ, ଏବଂ ଲାଇସେନ୍ସଗୁଡିକୁ ପରିଚାଳନା କରନ୍ତୁ।"
+
+#: publishpress-hub.php:7
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
@@ -101,6 +110,22 @@ msgid "Pro plugin not set for plugin family: %s"
 msgstr "ପ୍ରୋ ପ୍ଲଗଇନ୍ ପରିବାର ପାଇଁ ସୋଯା ପ୍ଲଗଇନ୍ ସେଟ୍‌ ହୋଇନି: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
+msgid ""
+"License activation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"ଲାଇସେନ୍ସ କ୍ରିୟାନ୍ବୟ ତ୍ରୁଟି। କୃପୟା ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ ପାଇଁ "
+"ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
+msgid ""
+"License deactivation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"ଲାଇସେନ୍ସ ଅକ୍ରିୟ କରିବା ତ୍ରୁଟି। କୃପୟା ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ ପାଇଁ "
+"ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
 msgstr ""
 "ଏହି ଲାଇସେନ୍ସ ବର୍ତ୍ତମାନ ବିକ୍ରିତ ହୋଇଛି। କୃପୟା ସହୟୋଗ ପାଇଁ ସମର୍ଥନ ସହିତ ସଂଯୋଗ "
@@ -113,10 +138,56 @@ msgstr ""
 "କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
+msgid ""
+"This license key is not authorized for this plugin. Please verify your "
+"license key or contact support for help."
+msgstr ""
+"ଏହି ଲାଇସେନ୍ସ କୀ ଏହି ପ୍ଲଗଇନ ପାଇଁ ଅଧିକୃତ ନୁହେଁ। କୃପୟା ଆପଣଙ୍କର ଲାଇସେନ୍ସ କୀ "
+"ଯାଞ୍ଚ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
+msgid ""
+"This license cannot be used for this plugin. Please contact support for "
+"help."
+msgstr ""
+"ଏହି ଲାଇସେନ୍ସ ଏହି ପ୍ଲଗଇନ ପାଇଁ ବ୍ୟବହୃତ ହେବାର ଅନୁମତି ନାହିଁ। ସାହାଯ୍ୟ ପାଇଁ "
+"ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
+msgid ""
+"This license does not match the plugin you are trying to activate. Please "
+"contact support for assistance."
+msgstr ""
+"ଏହି ଲାଇସେନ୍ସ ତାଳିକାରେ ଅନ୍ୟ ଏକ ପ୍ଲଗଇନ ଯାହାକୁ ଆପଣ କ୍ରିୟାନ୍ବୟ କରିବାକୁ "
+"ଚାହାଁଛନ୍ତି, ସହିତ ମେଳ ନହେଁ। ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
+msgid ""
+"License key does not match our records. Please contact support for "
+"assistance."
+msgstr "ଲାଇସେନ୍ସ କୀ ଆମର ରେକର୍ଡସହିତ ମେଳ ନହେଁ। ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
 msgstr "କୌଣସି ଲାଇସେନ୍ସ କୀ ଦିଆଯାଇନି। କୃପୟା ଏକ ମାନ୍ୟ ଲାଇସେନ୍ସ କୀ ପ୍ରବେଶ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
+msgid ""
+"Your site URL is required to activate the license. Please enter a valid "
+"site URL to continue."
+msgstr ""
+"ଲାଇସେନ୍ସ କ୍ରିୟାନ୍ବୟ କରିବା ପାଇଁ ଆପଣଙ୍କର ସାଇଟ୍ URL ଆବଶ୍ୟକ। ଆଗକୁ ଯିବା ପାଇଁ ଏକ "
+"ବୌଲିଡ୍ ସାଇଟ୍ URL ଦିଅନ୍ତୁ।"
+
+#: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
+msgid ""
+"License activation limit reached. Please contact support to upgrade or "
+"deactivate on another site."
+msgstr ""
+"ଲାଇସେନ୍ସ କ୍ରିୟାନ୍ବୟ ସୀମା ପହଞ୍ଚିଛି। ଅନ୍ୟ ସାଇଟ୍ରେ ଅପଗ୍ରେଡ୍ କରିବା କିମ୍ବା "
+"ଅକ୍ରିୟ କରିବା ପାଇଁ ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
 msgid "This license cannot be activated. Please contact support for help."
 msgstr "ଏହି ଲାଇସେନ୍ସ ଚାଲୁ କରାଯିବ ନାହିଁ। କୃପୟା ସହୟୋଗ ପାଇଁ ସହୟୋଗ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
 
@@ -127,24 +198,88 @@ msgstr ""
 "ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
+msgid ""
+"The license server returned an invalid response. Please try again later or "
+"contact support for help."
+msgstr ""
+"ଲାଇସେନ୍ସ ସର୍ଭର ଏକ ଅବୈଧ ପ୍ରତିକ୍ରିୟା ଫେରାଇଛି। କୃପୟା ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ କିମ୍ବା "
+"ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
 msgid "This license is inactive for this site. Please contact support for help."
 msgstr ""
 "ଏହି ଲାଇସେନ୍ସ ଏହି ସାଇଟ୍ ପାଇଁ ଅକ୍ଷିପ୍ତ। କୃପୟା ସହୟୋଗ ପାଇଁ ସହୟୋଗ ସହିତ ସଂଯୋଗ "
 "କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
+msgid ""
+"Plugin activation failed. Please try again later or contact support for "
+"help."
+msgstr ""
+"ପ୍ଲଗଇନ୍ କ୍ରିୟାନ୍ବୟ ବିଫଳ ହୋଇଛି। କୃପୟା ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ ପାଇଁ "
+"ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
 msgid "This action is not possible because the plugin is already installed."
 msgstr "ଏହି କାର୍ଯ୍ୟ ସମ୍ଭବ ନୁହେଁ କାରଣ ପ୍ଲଗିନ୍ ପ୍ରଥମରୁ ଇନ୍ସ୍ଟଲ୍ ହୋଇଛି।"
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
+msgid ""
+"Plugin deactivation failed. Please try again later or contact support for "
+"help."
+msgstr ""
+"ପ୍ଲଗଇନ୍ ଅକ୍ରିୟ କରିବା ବିଫଳ ହୋଇଛି। କୃପୟା ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ "
+"ପାଇଁ ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
 msgid "Plugin family not found. Please contact support for help."
 msgstr "ପ୍ଲଗିନ୍ ପରିବାର ମିଳୁନି। କୃପୟା ସହୟୋଗ ପାଇଁ ସହୟୋଗ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
+msgid ""
+"This action is not possible because both free and pro versions are "
+"installed. Please uninstall one version to continue."
+msgstr ""
+"ଏହି କାର୍ଯ୍ୟ ସମ୍ଭବ ନୁହେଁ କାରଣ ଦୁଇଟି ମୁକ୍ତ ଏବଂ ପ୍ରୋ ସଂସ୍କରଣ ଥିବାରୁ। ଆଗକୁ ଯିବା "
+"ପାଇଁ ଗୋଟିଏ ସଂସ୍କରଣ ଅନଇନସ୍ଟଲ୍ କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/Exception/PluginInstallException.php:29
 msgid "Plugin installation failed. Please contact support for help."
 msgstr "ପ୍ଲଗିନ୍ ଇନ୍ସ୍ଟଲେସନ୍ ବିଫଳ ହେଲା। କୃପୟା ସହୟୋଗ ପାଇଁ ସହୟୋଗ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
+msgid ""
+"This action is not possible because the plugin is not activated. Please "
+"activate the plugin and try again."
+msgstr ""
+"ଏହି କାର୍ଯ୍ୟ ସମ୍ଭବ ନୁହେଁ କାରଣ ପ୍ଲଗଇନ୍ କ୍ରିୟାନ୍ବୟ ହୋଇନି। କୃପୟା ପ୍ଲଗଇନ୍ "
+"କ୍ରିୟାନ୍ବୟ କରନ୍ତୁ ଏବଂ ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/Exception/PluginNotFoundException.php:29
+msgid ""
+"Plugin not found in our available plugins list. Please contact support for "
+"help."
+msgstr ""
+"ଆମର ଉପଲବ୍ଧ ପ୍ଲଗଇନ୍ ତାଳିକାରେ ପ୍ଲଗଇନ୍ ମିଳିଲା ନାହିଁ। ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ "
+"ସଂପର୍କ କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
+msgid ""
+"This action is not possible because the plugin is not installed. Please "
+"install the plugin and try again."
+msgstr ""
+"ଏହି କାର୍ଯ୍ୟ ସମ୍ଭବ ନୁହେଁ କାରଣ ପ୍ଲଗଇନ୍ ଥିବା ନାହିଁ। ପ୍ଲଗଇନ୍ ସ୍ଥାପନ କରନ୍ତୁ ଏବଂ "
+"ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
+msgid ""
+"Unknown license server error. Please try again later or contact support for "
+"help."
+msgstr ""
+"ଅଜଣା ଲାଇସେନ୍ସ ସର୍ଭର ତ୍ରୁଟି। କୃପୟା ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ ପାଇଁ "
+"ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/plugin-families.php:26
 msgid "Define tasks that authors must complete before publishing."
 msgstr ""
 "ଲେଖକମାନେ ପ୍ରକାଶିତ କରିବା ପୂର୍ବରୁ ସମ୍ପୂର୍ଣ୍ଣ କରିବାକୁ ହେବା ଦାୟିତ୍ବଗୁଡିକୁ "
@@ -293,6 +428,16 @@ msgid "Cannot read downloaded plugin file"
 msgstr "ଡାଉନଲୋଡ୍ କରାଯାଇଥିବା ପ୍ଲଗିନ୍ ଫାଇଲ୍ ପଢ଼ିବାକୁ ସମର୍ଥ ନୁହେଁ"
 
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:132
+msgid ""
+"Downloaded file is not a valid ZIP archive. The download URL may be "
+"returning an error page."
+msgstr ""
+"ଡାଉନଲୋଡ୍ କରାଯାଇଥିବା ଫାଇଲ୍ ଏକ ମୌଜୁଦ ଜିପ୍ ଆର୍କାଇଭ୍ ନୁହେଁ। ଡାଉନଲୋଡ୍ URL ଏକ "
+"ତ୍ରୁଟି ପୃଷ୍ଠା ଫେରାଇପାରେ।"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
+#. translators: %s is the error message
+#, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "ପ୍ଲଗିନ୍ ଫାଇଲ୍ ଅଜିର କରିବାରେ ବିଫଳ: %s"
 
@@ -534,6 +679,14 @@ msgid "Loading log..."
 msgstr "ଲଗ୍ ଲୋଡ୍ ହେଉଛି..."
 
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:332
+msgid ""
+"The debug log is empty. Perform some actions (e.g. activate a license) and "
+"refresh to see entries."
+msgstr ""
+"ଡିବଗ୍ ଲଗ୍ ଖାଲି। କିଛି କାର୍ଯ୍ୟ କରନ୍ତୁ (ଯଥା: ଏକ ଲାଇସେନ୍ସ କ୍ରିୟାନ୍ବୟ କରନ୍ତୁ) "
+"ଏବଂ ଏଣ୍ଟ୍ରୀଗୁଡିକୁ ଦେଖିବା ପାଇଁ ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ।"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
 msgid "Debug log contents"
 msgstr "ଡିବଗ୍ ଲଗ୍ ସାମଗ୍ରୀ"
 
@@ -554,10 +707,28 @@ msgid "Debug Mode"
 msgstr "ଡିବଗ୍ ମୋଡ୍"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
+msgid ""
+"When enabled, all HTTP requests and responses to remote services (license "
+"activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
+"the Debug Log tab to inspect the captured data."
+msgstr ""
+"ସକ୍ରିୟ ହେଲେ, ସମସ୍ତ HTTP ଅନୁରୋଧ ଏବଂ ଦ୍ୱାରା ଦେଖାଯାଉଥିବା ପ୍ରତିକ୍ରିୟା (ଲାଇସେନ୍ସ "
+"କ୍ରିୟାନ୍ବୟ, ପ୍ଲଗଇନ୍ ଡାଉନଲୋଡ୍, ଇତ୍ୟାଦି) ଏକ ବିଶେଷ ଲଗ୍ ଫାଇଲ୍କୁ ଲଗ୍ କରାଯିବ। ଧରା "
+"ଡିବଗ୍ ଲଗ୍ ଟାବ୍ ବ୍ୟବହାର କରନ୍ତୁ ଧରା ତଥ୍ୟ ଯାଞ୍ଚ କରିବା ପାଇଁ।"
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
 msgid "Enable Debug Mode"
 msgstr "ଡିବଗ୍ ମୋଡ୍ ସକ୍ରିୟ କରନ୍ତୁ"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
+msgid ""
+"Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
+"data."
+msgstr ""
+"ଡିବଗ୍ ଲଗିଂ ସକ୍ରିୟ ଅଛି। ଧରାଯାଇଥିବା ତଥ୍ୟ ଦେଖିବାକୁ \"ଡିବଗ୍ ଲଗ\" ଟ୍ୟାବକୁ ସ୍ୱିଚ୍ "
+"କରନ୍ତୁ।"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70, fuzzy
 msgid "ERR"
 msgstr "ERR"
 
@@ -603,18 +774,52 @@ msgid "What you can do with PublishPress Hub"
 msgstr "PublishPress Hub ସହିତ ଆପଣ କଣ କରିପାରିବେ"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
+msgid ""
+"PublishPress Hub has everything you need to install, update, and manage "
+"your PublishPress plugins. We're here to help you build a publishing system "
+"that works perfectly for your team."
+msgstr ""
+"PublishPress Hub ଆପଣଙ୍କର PublishPress ପ୍ଲଗଇନ୍ ଇନ୍ସ୍ଟଲ୍, ଅପଡେଟ୍, ଏବଂ "
+"ପରିଚାଳନା ପାଇଁ ଆପଣଙ୍କୁ ଆବଶ୍ୟକ ସମସ୍ତ କିଛି ରହିଛି। ଆମେ ଏଠାରେ ଆପଣଙ୍କୁ ଏକ ପ୍ରକାଶନ "
+"ସିଷ୍ଟମ୍ ତିଆରି କରିବାରେ ସାହାଯ୍ୟ କରିବାକୁ ଅଛୁ।"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:64
 msgid "Centralized Dashboard"
 msgstr "କେନ୍ଦ୍ରୀୟ ଡ୍ୟାଶବୋର୍ଡ"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:67
+msgid ""
+"View all your PublishPress plugins with their licenses, versions, and key "
+"details."
+msgstr ""
+"ଆପଣଙ୍କର ସମସ୍ତ PublishPress ପ୍ଲଗଇନ୍, ତାଙ୍କର ଲାଇସେନ୍ସ, ସଂସ୍କରଣ, ଏବଂ କି ତଥ୍ୟ "
+"ଦେଖନ୍ତୁ।"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:76
 msgid "One-Click Installation"
 msgstr "ଏକ-କ୍ଲିକ୍ ସ୍ଥାପନ"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:79
+msgid ""
+"Install free PublishPress plugins directly from the Hub without visiting "
+"WordPress.org."
+msgstr ""
+"WordPress.orgକୁ ଯାଇନାହିଁ, Hubରୁ ସିଧାସିଧି ମୁକ୍ତ PublishPress ପ୍ଲଗଇନ୍ "
+"ଇନ୍ସ୍ଟଲ୍ କରନ୍ତୁ।"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:88
 msgid "License Management"
 msgstr "ଲାଇସେନ୍ସ ପରିଚାଳନା"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:91
+msgid ""
+"Connect your PublishPress licenses to easily install and activate Pro "
+"versions."
+msgstr ""
+"Pro ସଂସ୍କରଣଗୁଡିକୁ ସହଜରେ ଇନ୍ସ୍ଟଲ୍ ଏବଂ ସକ୍ରିୟ କରିବାକୁ ଆପଣଙ୍କର PublishPress "
+"ଲାଇସେନ୍ସ ସଂଯୋଗ କରନ୍ତୁ।"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:100
 msgid "Easy Updates"
 msgstr "ସହଜ ଅଦ୍ୟତନ"
 
@@ -629,6 +834,14 @@ msgid "Status Monitoring"
 msgstr "ସ୍ଥିତି ସମୀକ୍ଷା"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
+msgid ""
+"Monitor plugin activation status, detect conflicts, and ensure "
+"compatibility."
+msgstr ""
+"ପ୍ଲଗଇନ୍ ସକ୍ରିୟତା ସ୍ଥିତିକୁ ନିରୀକ୍ଷଣ କରନ୍ତୁ, ବିବାଦ ଚିହ୍ନଟ କରନ୍ତୁ, ଏବଂ "
+"ସମାନ୍ୟତା ସୁନିଶ୍ଚିତ କରନ୍ତୁ।"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:124
 msgid "Get Started"
 msgstr "ଆରମ୍ଭ କରନ୍ତୁ"
 
@@ -726,16 +939,27 @@ msgid "Install Plugin"
 msgstr "Install Plugin"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
+msgid ""
+"Select how you would like to install this plugin. You can install the Pro "
+"version if you have a license, or the Free version to get started."
+msgstr ""
+"ଆପଣ କିପରି ଏହି ପ୍ଲଗଇନ୍ ଇନ୍ସ୍ଟଲ୍ କରିବାକୁ ଚାହାଁତି, ତାହା ଚୟନ କରନ୍ତୁ। ଯଦି "
+"ଆପଣଙ୍କର ଲାଇସେନ୍ସ ଅଛି ତେବେ Pro ସଂସ୍କରଣ ଇନ୍ସ୍ଟଲ୍ କରନ୍ତୁ, କିମ୍ବା ଆରମ୍ଭ କରିବାକୁ "
+"ମୁକ୍ତ ସଂସ୍କରଣ ଇନ୍ସ୍ଟଲ୍ କରନ୍ତୁ।"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117, fuzzy
 msgid "Free Details"
 msgstr "Free Details"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125, fuzzy
 msgid "Pro Details"
 msgstr "Pro Details"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134, fuzzy
 msgid "Changelogs"
 msgstr "Changelogs"
 
@@ -753,6 +977,15 @@ msgstr "Enter your license key"
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:55
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
+msgid ""
+"Enter your license key to activate the Pro version of this plugin. You can "
+"find your license key in your PublishPress account dashboard."
+msgstr ""
+"Pro ସଂସ୍କରଣ ସକ୍ରିୟ କରିବା ପାଇଁ ଆପଣଙ୍କର ଲାଇସେନ୍ସ କୀ ପ୍ରବେଶ କରନ୍ତୁ। ଆପଣ "
+"ଆପଣଙ୍କର PublishPress ଆକାଉଣ୍ଟ ଡ୍ୟାଶବୋର୍ଡରେ ଆପଣଙ୍କର ଲାଇସେନ୍ସ କୀ ମିଳାଇପାରିବେ।"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87, fuzzy
 msgid "Go to my profile to get the license key"
 msgstr "Go to my profile to get the license key"
 
@@ -791,7 +1024,8 @@ msgstr "Deactivate the license key for this site"
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
 msgid "Unknown"
 msgstr "ଅଜଣା"
 
@@ -892,12 +1126,18 @@ msgid "Keep the Free version"
 msgstr "ମାଗଣା ସଂସ୍କରଣ ରଖନ୍ତୁ"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
+msgid ""
+"Unlock the full potential of this plugin with the Pro version. Enjoy "
+"advanced features, priority support, and exclusive benefits designed to "
+"help you get the most out of your workflow."
+msgstr ""
+"Pro ସଂସ୍କରଣ ସହିତ ଏହି ପ୍ଲଗଇନ୍ର ସମ୍ପୂର୍ଣ୍ଣ ସମ୍ଭାବନାକୁ ଅନଲକ୍ କରନ୍ତୁ। ଉନ୍ନତ "
+"ବିଶେଷତା, ପ୍ରାଥମିକତା ସମର୍ଥନ, ଏବଂ ଆପଣଙ୍କର କାମକାଜରୁ ସର୍ବାଧିକ ଲାଭ ଉଠିବାକୁ "
+"ନିର୍ମିତ ବିଶେଷ କଳା ଉପକାର ଉପଭୋଗ କରନ୍ତୁ।"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "ସମସ୍ତ ପ୍ରୋ ବୈଶିଷ୍ଟ୍ୟ ଖୋଜନ୍ତୁ"
-
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
-msgid "Changelog"
-msgstr "ଚେଞ୍ଜଲଗ"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"
@@ -912,9 +1152,10 @@ msgid "New version available"
 msgstr "ନୂତନ ସଂସ୍କରଣ ଉପଲବ୍ଧ"
 
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
-#, js-format
-msgid "Version %s"
-msgstr "ସଂସ୍କରଣ %s"
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
+#, fuzzy, js-format
+msgid "v%s"
+msgstr "v%s"
 
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
 #, js-format
@@ -970,35 +1211,36 @@ msgstr "ଅଦ୍ୟତନ ଉପଲବ୍ଧ"
 msgid "Expires"
 msgstr "ବିସ୍ମୃତ"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
-msgid "latest"
-msgstr "ସବୁଠୁ ନୂତନ"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
-#, js-format
-msgid "Update to v%s"
-msgstr "v%s କୁ ଅଦ୍ୟତନ କରନ୍ତୁ"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
 msgid "Renew"
 msgstr "ପୁନର୍ନବୀକରଣ କରନ୍ତୁ"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
 msgid "Deactivate"
 msgstr "ନିଷ୍କ୍ରିୟ କରନ୍ତୁ"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
 msgid "Activate"
 msgstr "ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
 msgid "Uninstall"
 msgstr "ଅନଇନ୍ସ୍ଟଲ୍ କରନ୍ତୁ"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
 msgid "More Info"
 msgstr "ଆରୋ ତଥ୍ୟ"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
+msgid "latest"
+msgstr "ସବୁଠୁ ନୂତନ"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+#, js-format
+msgid "Update to v%s"
+msgstr "v%s କୁ ଅଦ୍ୟତନ କରନ୍ତୁ"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
 msgid "This plugin is not installed."
