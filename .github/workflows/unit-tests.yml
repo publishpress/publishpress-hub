@@ -1,4 +1,4 @@
-name: Unit and Integration Tests
+name: Unit Tests
 on:
   push:
     branches:
@@ -21,8 +21,8 @@ on:
         required: false
         default: false
 jobs:
-  check:
-    name: Test the code
+  unit-tests:
+    name: Run Unit Tests
     runs-on: ubuntu-latest
     steps:
       - name: Setup tmate session for Debugging, if inputs.tmate_enabled is true
@@ -33,7 +33,7 @@ jobs:
           detached: true
 
       - name: Checkout code
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
 
       - name: Verify Docker installation
         run: docker --version
@@ -61,42 +61,6 @@ jobs:
           composer validate
           composer install
 
-      - name: Start services
-        run: |
-          composer test:up
-        timeout-minutes: 10
-        env:
-          WP_READY_MAX_ATTEMPTS: 60
-          WP_READY_INTERVAL: 5
-
-      - name: Verify container status and fix permissions
-        run: |
-          docker ps
-          echo "Checking marker file..."
-          ls -la $GITHUB_WORKSPACE/dev-workspace-cache/wp_test/wp-content/plugins/publishpress-hub || true
-          sleep 15
-          echo "Fixing permissions for test runner..."
-          sudo chown -R $(id -u):$(id -g) $GITHUB_WORKSPACE/dev-workspace-cache
-          sudo chmod -R 777 $GITHUB_WORKSPACE/dev-workspace-cache
-
-      - name: Build Codeception support classes
-        run: |
-          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh bash -c "git config --global --add safe.directory /project && composer build"
-
       - name: Run Unit Tests
         run: |
           composer test Unit
-
-      - name: Run Intergration Tests
-        run: |
-          composer test Integration
-
-      - name: Show container logs on failure
-        if: failure()
-        run: |
-          echo "=== Test WordPress Container Logs ==="
-          docker logs publishpress-hub-env-wp_test
-          echo "=== Test DB Container Logs ==="
-          docker logs publishpress-hub-env-db_test || true
-
-
