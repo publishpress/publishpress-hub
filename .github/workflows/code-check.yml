@@ -47,22 +47,21 @@ jobs:
 
       - name: Composer prepare
         run: |
-          git config --global --add safe.directory /project
           composer validate
           composer install
 
       - name: Show version of tools inside the dev-workspace
         run: |
-          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer info:versions
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh bash -c "git config --global --add safe.directory /project && composer info:versions"
 
       - name: Run PHP check
         run: |
-          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer check:php
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh bash -c "git config --global --add safe.directory /project && composer check:php"
 
       - name: Run PHP Lint
         run: |
-          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer lint:php
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh bash -c "git config --global --add safe.directory /project && composer lint:php"
 
       - name: Run PHPCS check
         run: |
-          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer check:cs
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh bash -c "git config --global --add safe.directory /project && composer check:cs"
