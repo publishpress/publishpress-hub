@@ -26,7 +26,7 @@ jobs:
     name: Deploy the new tag
     needs: [code-check, code-test]
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
     steps:
       - name: Install linux packages
         run: |
@@ -46,21 +46,21 @@ jobs:
       - name: Prepare composer
         run: |
           composer config --global github-oauth.github.com ${{ secrets.ACCESS_TOKEN }}
-          $GITHUB_WORKSPACE/dev-workspace/run composer validate
-          $GITHUB_WORKSPACE/dev-workspace/run composer install
+          composer validate
+          composer install
 
       - name: Show version of tools inside the dev-workspace
         run: |
-          $GITHUB_WORKSPACE/dev-workspace/run composer info:versions
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer info:versions
 
       - name: Build the package using ./dev-workspace
         run: |
-          $GITHUB_WORKSPACE/dev-workspace/run composer build
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer build
 
       - name: Get the plugin version number
         id: get-version
         run: |
-          VERSION=$($GITHUB_WORKSPACE/dev-workspace/run pversion)
+          VERSION=$($GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh pversion)
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
       - name: Upload release asset

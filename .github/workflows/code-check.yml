@@ -39,27 +39,33 @@ jobs:
         run: |
           cp $GITHUB_WORKSPACE/.env.example $GITHUB_WORKSPACE/.env
 
-      - name: Prepare composer
-        run: |
-          $GITHUB_WORKSPACE/dev-workspace/run composer validate
-          $GITHUB_WORKSPACE/dev-workspace/run composer install
+      - name: Composer validation
+        uses: php-actions/composer@v6
+        with:
+          php_version: "8.4"
+          version: "2.8.1"
+          php_extensions: zip mysqli
+          command: validate
+
+      - name: Composer install
+        uses: php-actions/composer@v6
+        with:
+          php_version: "8.4"
+          version: "2.8.1"
+          php_extensions: zip mysqli
 
       - name: Show version of tools inside the dev-workspace
         run: |
-          $GITHUB_WORKSPACE/dev-workspace/run composer info:versions
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer info:versions
 
       - name: Run PHP check
         run: |
-          $GITHUB_WORKSPACE/dev-workspace/run composer check:php
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer check:php
 
-      - name: Run Lint check
+      - name: Run PHP Lint
         run: |
-          $GITHUB_WORKSPACE/dev-workspace/run composer check:lint
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer lint:php
 
       - name: Run PHPCS check
         run: |
-          $GITHUB_WORKSPACE/dev-workspace/run composer check:cs
-
-      - name: Run Long Path check
-        run: |
-          $GITHUB_WORKSPACE/dev-workspace/run composer check:longpath
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer check:cs

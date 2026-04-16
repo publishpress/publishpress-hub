@@ -44,18 +44,26 @@ jobs:
 
       - name: Prepare cache directories
         run: |
-          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/test-wp/html
-          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/test-wp/tmp
-          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/test-wpcli/tmp
-          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/test-db/mysql
-          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/test-db/logs
-          mkdir -p $GITHUB_WORKSPACE/dev-workspace/.cache/mailhog/maildir
-          chmod -R 777 $GITHUB_WORKSPACE/dev-workspace/.cache
+          mkdir -p $GITHUB_WORKSPACE/dev-workspace-cache/wp_test
+          mkdir -p $GITHUB_WORKSPACE/dev-workspace-cache/db_test/mysql
+          mkdir -p $GITHUB_WORKSPACE/dev-workspace-cache/logs/db_test
+          mkdir -p $GITHUB_WORKSPACE/dev-workspace-cache/mailhog/maildir
+          chmod -R 777 $GITHUB_WORKSPACE/dev-workspace-cache
 
-      - name: Prepare composer
-        run: |
-          $GITHUB_WORKSPACE/dev-workspace/run composer validate
-          $GITHUB_WORKSPACE/dev-workspace/run composer install
+      - name: Composer validation
+        uses: php-actions/composer@v6
+        with:
+          php_version: "8.4"
+          version: "2.8.1"
+          php_extensions: zip mysqli
+          command: validate
+
+      - name: Composer install
+        uses: php-actions/composer@v6
+        with:
+          php_version: "8.4"
+          version: "2.8.1"
+          php_extensions: zip mysqli
 
       - name: Start services
         run: |
@@ -69,38 +77,36 @@ jobs:
         run: |
           docker ps
           echo "Checking marker file..."
-          ls -la $GITHUB_WORKSPACE/dev-workspace/.cache/test-wpcli/tmp/ || true
+          ls -la $GITHUB_WORKSPACE/dev-workspace-cache/wp_test/ || true
           echo "Fixing permissions for test runner..."
-          sudo chown -R $(id -u):$(id -g) $GITHUB_WORKSPACE/dev-workspace/.cache
-          sudo chmod -R 777 $GITHUB_WORKSPACE/dev-workspace/.cache
+          sudo chown -R $(id -u):$(id -g) $GITHUB_WORKSPACE/dev-workspace-cache
+          sudo chmod -R 777 $GITHUB_WORKSPACE/dev-workspace-cache
 
       - name: Build Codeception support classes
         run: |
-          vendor/bin/codecept build
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer build
 
       - name: Run Unit Tests
-        run: |
-          composer test Unit
-        timeout-minutes: 5
+        uses: php-actions/composer@v6
+        with:
+          command: test Unit
+          php_version: "8.4"
+          version: "2.8.1"
+          php_extensions: zip mysqli
 
-      - name: Run Integration Tests
-        run: |
-          composer test Integration
-        timeout-minutes: 10
-
-      # - name: Run API Tests
-      #   run: |
-      #     composer test Api
-      #   timeout-minutes: 5
-      # Temporarily disabled API tests on Github Actions; they are not working yet.
+      - name: Run Intergration Tests
+        uses: php-actions/composer@v6
+        with:
+          command: test Integration
+          php_version: "8.4"
+          version: "2.8.1"
+          php_extensions: zip mysqli
 
       - name: Show container logs on failure
         if: failure()
         run: |
           echo "=== Test WordPress Container Logs ==="
-          docker logs publishpress-hub-env-test-wp || true
-          echo "=== Test WP-CLI Container Logs ==="
-          docker logs publishpress-hub-env-test-wpcli || true
+          docker logs publishpress-hub-env-test-wp
           echo "=== Test DB Container Logs ==="
           docker logs publishpress-hub-env-test-db || true
 
