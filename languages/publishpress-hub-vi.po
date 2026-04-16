@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
-"PO-Revision-Date: 2026-04-15 21:16+0000\n"
+"PO-Revision-Date: 2026-04-16 14:36+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Language: vi\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Trung tâm quản lý tập trung cho tất cả các plugin PublishPress - cài đặt, "
 "cập nhật và quản lý giấy phép từ một bảng điều khiển duy nhất."
 
-#: publishpress-hub.php:7, fuzzy
+#: publishpress-hub.php:7
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"

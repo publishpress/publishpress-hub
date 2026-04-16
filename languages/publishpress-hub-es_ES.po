@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
-"POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
+"POT-Creation-Date: 2026-04-15T21:04:03+00:00\n"
 "PO-Revision-Date: 2026-04-15 17:15+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,9 +16,7 @@ msgstr ""
 "X-Domain: publishpress-hub\n"
 
 #. Plugin Name of the plugin
-#. Plugin Name of the plugin
-#. Plugin Name of the plugin
-#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259, fuzzy
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
@@ -32,12 +30,12 @@ msgstr ""
 "actualiza y gestiona licencias desde un único escritorio."
 
 #. Author of the plugin
-#: publishpress-hub.php:7, fuzzy
+#: publishpress-hub.php:7
 msgid "PublishPress"
 msgstr "PublishPress"
 
 #. Author URI of the plugin
-#: publishpress-hub.php:8, fuzzy
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -866,7 +864,7 @@ msgstr "¿Ya sabes lo que vas a hacer? ¡Genial! Puedes "
 msgid "dismiss this page"
 msgstr "descartar esta página"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
 msgid "."
 msgstr "."
 

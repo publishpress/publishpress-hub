@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-04-15 21:12+0000\n"
+"PO-Revision-Date: 2026-04-16 14:31+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Language: ja\n"
@@ -28,7 +28,7 @@ msgid ""
 "and manage licenses from one dashboard."
 msgstr "すべてのPublishPressプラグインのための集中管理ハブ - 1つのダッシュボードからインストール、更新、およびライセンスを管理します。"
 
-#: publishpress-hub.php:7, fuzzy
+#: publishpress-hub.php:7
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"

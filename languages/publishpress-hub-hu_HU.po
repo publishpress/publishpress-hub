@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
-"POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
+"POT-Creation-Date: 2026-04-15T21:04:03+00:00\n"
 "PO-Revision-Date: 2026-04-15 15:19+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,9 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Plugin Name of the plugin
-#. Plugin Name of the plugin
-#. Plugin Name of the plugin
-#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259, fuzzy
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
@@ -33,12 +31,12 @@ msgstr ""
 "telepítés, frissítés és licenc kezelés egy irányítópulton."
 
 #. Author of the plugin
-#: publishpress-hub.php:7, fuzzy
+#: publishpress-hub.php:7
 msgid "PublishPress"
 msgstr "PublishPress"
 
 #. Author URI of the plugin
-#: publishpress-hub.php:8, fuzzy
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -536,7 +534,7 @@ msgstr "Lehetőségek"
 msgid "Components Showcase"
 msgstr "Komponens bemutató"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93, fuzzy
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
 msgid "N/A"
 msgstr "N/A"
 
@@ -865,7 +863,7 @@ msgstr "Már tudod, mit csinálsz? Szuper! Akkor "
 msgid "dismiss this page"
 msgstr "elutasíthatod ezt az oldalt"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
 msgid "."
 msgstr "."
 

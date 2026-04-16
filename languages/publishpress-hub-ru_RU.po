@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-04-15 21:12+0000\n"
+"PO-Revision-Date: 2026-04-16 14:33+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 ">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
@@ -35,7 +35,7 @@ msgstr ""
 "устанавливайте, обновляйте и управляйте лицензиями из одной панели "
 "управления."
 
-#: publishpress-hub.php:7, fuzzy
+#: publishpress-hub.php:7
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
@@ -186,7 +186,6 @@ msgstr ""
 "действительный URL сайта, чтобы продолжить."
 
 #: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
-#, fuzzy
 msgid ""
 "License activation limit reached. Please contact support to upgrade or "
 "deactivate on another site."
