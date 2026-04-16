@@ -7,16 +7,15 @@ bootstrap: _bootstrap.php
 modules:
     enabled:
         - lucatume\WPBrowser\Module\WPLoader
-        - Sequence
         - Tests\Support\Helper\WPHooks
     config:
         lucatume\WPBrowser\Module\WPLoader:
-            wpRootFolder: "%WP_TEST_ROOT_DIR%"
-            dbUrl: "%WP_TEST_DB_URL%"
+            wpRootFolder: "dev-workspace-cache/wp_test"
+            dbUrl: "mysql://root:root@127.0.0.1:%DB_TESTS_PORT%/wordpress"
             wpDebug: true
-            tablePrefix: '%WP_TEST_TEST_TABLE_PREFIX%'
-            domain: '%WP_TEST_DOMAIN%'
-            adminEmail: 'admin@%WP_TEST_DOMAIN%'
+            tablePrefix: '%WP_TESTS_TEST_TABLE_PREFIX%'
+            domain: 'localhost:%WP_TESTS_HTTP_PORT%'
+            adminEmail: 'admin@localhost'
             dump: 'tests/Support/Data/dump.sql'
             title: 'Integration Tests'
             theme: 'twentytwentyfive'

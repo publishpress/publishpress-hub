@@ -4,24 +4,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
-"POT-Creation-Date: 2026-01-19T23:46:51+00:00\n"
-"PO-Revision-Date: 2026-01-27 18:58+0100\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: it_IT\n"
+"POT-Creation-Date: 2026-04-15T21:04:03+00:00\n"
+"PO-Revision-Date: 2026-04-15 17:15+0200\n"
+"Last-Translator: Angelo Giammarresi <info@wocmultimedia.biz>\n"
+"Language-Team: Italian <https://weblate.publishpress.com/projects/"
+"publishpress-hub/publishpress-hub/it/>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 3.7\n"
 "X-Domain: publishpress-hub\n"
 
 #. Plugin Name of the plugin
-#: publishpress-hub.php src/Admin/Page/WelcomePageController.php:257
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
 #. Description of the plugin
-#: publishpress-hub.php
+#: publishpress-hub.php:5
 msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
@@ -30,12 +32,12 @@ msgstr ""
 "aggiorna e gestisci le licenze da un’unica bacheca."
 
 #. Author of the plugin
-#: publishpress-hub.php
+#: publishpress-hub.php:7
 msgid "PublishPress"
 msgstr "PublishPress"
 
 #. Author URI of the plugin
-#: publishpress-hub.php
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -47,13 +49,13 @@ msgstr "Attendi mentre carichiamo la vetrina dei componenti…"
 msgid "Please wait while we load the plugins dashboard..."
 msgstr "Attendi mentre carichiamo la bacheca dei plugin…"
 
-#: src/Admin/Page/SettingsPageController.php:97
-#: src/Admin/Page/SettingsPageController.php:98
-#: resources/src/jsx/components/pages/settings-page.jsx:22
+#: src/Admin/Page/SettingsPageController.php:104
+#: src/Admin/Page/SettingsPageController.php:105
+#: resources/src/jsx/components/pages/settings-page.jsx:80
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: src/Admin/Page/SettingsPageController.php:119
+#: src/Admin/Page/SettingsPageController.php:126
 msgid "Please wait while we load the settings page..."
 msgstr "Attendi mentre carichiamo la pagina delle impostazioni…"
 
@@ -130,7 +132,7 @@ msgstr ""
 
 #: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
 msgid "This license has expired. Please contact support to renew it."
-msgstr "Questa licenza è scaduta. Contatta l’assistenza per il rinnovo"
+msgstr "Questa licenza è scaduta. Contatta l’assistenza per il rinnovo."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
 msgid ""
@@ -318,6 +320,10 @@ msgid "Organize your posts into issues or series."
 msgstr "Organizza i tuoi articoli in collezioni o serie."
 
 #: src/Domain/Plugin/plugin-families.php:170
+msgid "Create shortlinks for your posts."
+msgstr "Crea link abbreviati per i tuoi articoli."
+
+#: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
 msgstr "Crea stati personalizzati e flussi di lavoro di pubblicazione."
 
@@ -328,13 +334,13 @@ msgid "Dependency \"%s\" not found in container."
 msgstr "La dipendenza \"%s\" non è stata trovata nel contenitore."
 
 #. translators: %s is the error message
-#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:123
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #, php-format
 msgid "Error validating license: %s"
 msgstr "Errore nella convalida della licenza: %s"
 
 #. translators: %s is the error message
-#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:117
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #, php-format
 msgid "Error getting license info: %s"
 msgstr "Errore nel recupero delle informazioni sulla licenza: %s"
@@ -385,63 +391,89 @@ msgstr ""
 "Percorso del file non valido: operazione non consentita fuori dalle "
 "directory permesse"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:48
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:52
 msgid "Invalid download URL provided"
 msgstr "L’URL di download fornita non è valida"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:56
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:60
 msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr "L’URL di download deve utilizzare il protocollo HTTP or HTTPS"
 
 #. translators: %s is the hostname
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:73
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr "L’URL di download non proviene da un dominio consentito: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:84
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:80
 msgid "Download URL failed WordPress validation"
 msgstr "Convalida WordPress dell’URL di download non riuscita"
 
 #. translators: %s is the error message
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:100
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr "Impossibile scaricare il plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:116
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:105
+msgid "Downloaded plugin file does not exist"
+msgstr "Il file del plugin scaricato non esiste"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:113
+msgid "Downloaded plugin file is empty"
+msgstr "Il file del plugin scaricato è vuoto"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:122
+msgid "Cannot read downloaded plugin file"
+msgstr "Impossibile leggere il file del plugin scaricato"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:132
+msgid ""
+"Downloaded file is not a valid ZIP archive. The download URL may be "
+"returning an error page."
+msgstr ""
+"Il file scaricato non è un archivio ZIP valido. L'URL di scaricamento "
+"potrebbe restituire una pagina di errore."
+
+#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
+#, php-format
+msgid "Failed to unzip plugin file: %s"
+msgstr "Impossibile decomprimere il file del plugin: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:156
 msgid "Failed to unzip plugin file"
 msgstr "Impossibile decomprimere il file del plugin"
 
 #. translators: %s is the error message
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:138
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "Impossibile attivare il plugin: %s"
 
 #. translators: %s is the error message
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:207
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "Impossibile eliminare il plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:252
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:292
 msgid "No update available for this plugin"
 msgstr "Non ci sono aggiornamenti disponibili per questo plugin"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:260
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:300
 msgid "Invalid update information for this plugin"
 msgstr "Informazioni di aggiornamento non valide per questo plugin"
 
 #. translators: %s is the error message
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:293
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "Impossibile aggiornare il plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:301
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:341
 msgid "Plugin update failed"
-msgstr "Aggiornamento del plugin fallito."
+msgstr "Aggiornamento del plugin fallito"
 
 #. translators: %s is the error message
 #: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
@@ -562,19 +594,162 @@ msgstr "Bacheca dei plugin"
 
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
 msgid "Hold ALT and click to force refresh the update cache"
-msgstr "Tieni premuto ALT e clicca per forzare l’aggiornamento della cache."
+msgstr "Tieni premuto ALT e clicca per forzare l’aggiornamento della cache"
 
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
 msgid "Force Refresh"
 msgstr "Forza l’aggiornamento"
 
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:300
 msgid "Refresh"
 msgstr "Ricarica"
 
-#: resources/src/jsx/components/pages/settings-page.jsx:33
-msgid "Settings page content will be available here."
-msgstr "Il contenuto della pagina delle impostazioni sarà disponibile qui."
+#: resources/src/jsx/components/pages/settings-page.jsx:31
+msgid "Diagnostics"
+msgstr "Diagnostiche"
+
+#: resources/src/jsx/components/pages/settings-page.jsx:39
+msgid "Debug Log"
+msgstr "Registro di debug"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:108
+msgid "Failed to load the debug log. Please try again."
+msgstr "Impossibile caricare il registro di debug. Riprova."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:182
+msgid "Debug log cleared successfully."
+msgstr "Registro di debug pulito correttamente."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
+msgid "Failed to clear the debug log. Please try again."
+msgstr "Impossibile pulire il registro di debug. Riprova."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222
+msgid "Log copied to clipboard."
+msgstr "Registro copiato negli appunti."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
+msgid "Failed to copy log to clipboard."
+msgstr "Impossibile copiare il registro negli appunti."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:253
+msgid "Requests"
+msgstr "Richieste"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:260
+msgid "Full Log"
+msgstr "Registro completo"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:271
+msgid "Auto-refresh is on — click to stop"
+msgstr "L'aggiornamento automatico è attivo - fai clic per arrestarlo"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:272
+msgid "Enable auto-refresh"
+msgstr "Abilita l'aggiornamento automatico"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:277
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
+msgid "Auto-refresh"
+msgstr "Aggiornamento automatico"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:286
+msgid "Auto-refresh interval"
+msgstr "Intervallo di aggiornamento automatico"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:308
+msgid "Copy to Clipboard"
+msgstr "Copia negli appunti"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:318
+msgid "Clear Log"
+msgstr "Pulisci il registro"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:326
+msgid "Loading log..."
+msgstr "Caricamento dei registro in corso…"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:332
+msgid ""
+"The debug log is empty. Perform some actions (e.g. activate a license) and "
+"refresh to see entries."
+msgstr ""
+"Il registro di debug è vuoto. Effettua delle azioni (es.: attiva una "
+"licenza) e ricarica per vedere le voci."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
+msgid "Debug log contents"
+msgstr "Contenuti del registro di debug"
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
+msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
+msgstr ""
+"Modalità di debug abilitata. Una scheda \"Registro di debug\" è ora "
+"disponibile."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
+msgid "Debug mode disabled."
+msgstr "Modalità di debug disabilitata."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:50
+msgid "Failed to save the setting. Please try again."
+msgstr "Impossibile salvare le impostazioni. Riprova."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
+msgid "Debug Mode"
+msgstr "Modalità di debug"
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
+msgid ""
+"When enabled, all HTTP requests and responses to remote services (license "
+"activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
+"the Debug Log tab to inspect the captured data."
+msgstr ""
+"Quando è abilitata, tutte le richieste e risposte HTTP per i servizi remoti "
+"(attivazione licenza, scaricamenti di plugin, ecc.) verranno registrati in "
+"un file di registro dedicato. Utilizza la scheda \"Registro di debug\" per "
+"controllare i dati catturati."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
+msgid "Enable Debug Mode"
+msgstr "Abilita la modalità di debug"
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
+msgid ""
+"Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
+"data."
+msgstr ""
+"La registrazione di debug è attiva. Commuta alla scheda \"Registro di "
+"debug\" per vedere i dati catturati."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
+msgid "ERR"
+msgstr "ERRORE"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:106
+msgid "Request"
+msgstr "Richiesta"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:113
+msgid "Response"
+msgstr "Risposta"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:119
+msgid "No response recorded for this request."
+msgstr "Nessuna risposta registrata per questa richiesta."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:144
+msgid "No requests found in the log."
+msgstr "Nessuna richiesta trovata nel registro."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:153
+msgid "1 request recorded"
+msgstr "1 richiesta registrata"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
+msgid "%d requests recorded"
+msgstr "%d richieste registrate"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:37
 msgid "Welcome to PublishPress Hub!"
@@ -875,40 +1050,40 @@ msgstr "Aggiorna plugin"
 msgid "Check for Updates"
 msgstr "Controlla gli aggiornamenti"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:90
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
 msgid "Install %s"
 msgstr "Installa %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:102
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
 msgid "Install %s Pro"
 msgstr "Installa %s Pro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:110
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:129
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
 msgid "Upgrade %s to Pro"
 msgstr "Aggiorna %s a Pro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:118
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
 msgid "Uninstall %s"
 msgstr "Disinstalla %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:119
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
 msgid "Are you sure you want to uninstall %s?"
 msgstr "Vuoi davvero disinstallare %s?"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:140
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
 msgid "Resolve Conflict for %s"
 msgstr "Risolvi il conflitto per %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:153
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
 msgid "Manage %s License"
 msgstr "Gestisci licenza di %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:164
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
 msgid "Activate %s License"
 msgstr "Attiva la licenza di %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:172
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
 msgid "More Info: %s"
 msgstr "Maggiori informazioni: %s"
 
@@ -963,7 +1138,11 @@ msgstr "Aggiorna a Pro e aumenta la tua produttività"
 msgid "New version available"
 msgstr "Nuova versione disponibile"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:184
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+msgid "Version %s"
+msgstr "Versione %s"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
 msgid "Update available: %s → %s"
 msgstr "Aggiornamento disponibile: %s → %s"
 
@@ -1008,11 +1187,11 @@ msgid "Conflicting Installations"
 msgstr "Installazioni in conflitto"
 
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:170
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
 msgid "Update Available"
 msgstr "Aggiornamento disponibile"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:181
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
 msgid "Expires"
 msgstr "Scade"
 
@@ -1150,3 +1329,506 @@ msgstr "Troppe richieste. Attendi alcuni secondi e riprova."
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
 msgid "Cloudflare Ray ID: %s"
 msgstr "ID Cloudflare Ray: %s"
+
+#~ msgctxt "block title"
+#~ msgid "Widget Group"
+#~ msgstr "Gruppo di widget"
+
+#~ msgctxt "Color name"
+#~ msgid "Base"
+#~ msgstr "Base"
+
+#~ msgctxt "Color name"
+#~ msgid "Contrast"
+#~ msgstr "Contrasto"
+
+#~ msgctxt "Color name"
+#~ msgid "Accent 1"
+#~ msgstr "Accento 1"
+
+#~ msgctxt "Color name"
+#~ msgid "Accent 2"
+#~ msgstr "Accento 2"
+
+#~ msgctxt "Color name"
+#~ msgid "Accent 3"
+#~ msgstr "Accento 3"
+
+#~ msgctxt "Color name"
+#~ msgid "Accent 4"
+#~ msgstr "Accento 4"
+
+#~ msgctxt "Color name"
+#~ msgid "Accent 5"
+#~ msgstr "Accento 5"
+
+#~ msgctxt "Color name"
+#~ msgid "Accent 6"
+#~ msgstr "Accento 6"
+
+#~ msgctxt "Space size name"
+#~ msgid "Tiny"
+#~ msgstr "Piccolissimo"
+
+#~ msgctxt "Space size name"
+#~ msgid "X-Small"
+#~ msgstr "Molto piccolo"
+
+#~ msgctxt "Space size name"
+#~ msgid "Small"
+#~ msgstr "Piccolo"
+
+#~ msgctxt "Space size name"
+#~ msgid "Regular"
+#~ msgstr "Normale"
+
+#~ msgctxt "Space size name"
+#~ msgid "Large"
+#~ msgstr "Grande"
+
+#~ msgctxt "Space size name"
+#~ msgid "X-Large"
+#~ msgstr "Molto grande"
+
+#~ msgctxt "Space size name"
+#~ msgid "XX-Large"
+#~ msgstr "Grandissimo"
+
+#~ msgctxt "Font size name"
+#~ msgid "Small"
+#~ msgstr "Piccolo"
+
+#~ msgctxt "Font size name"
+#~ msgid "Medium"
+#~ msgstr "Medio"
+
+#~ msgctxt "Font size name"
+#~ msgid "Large"
+#~ msgstr "Grande"
+
+#~ msgctxt "Font size name"
+#~ msgid "Extra Large"
+#~ msgstr "Molto grande"
+
+#~ msgctxt "Font size name"
+#~ msgid "Extra Extra Large"
+#~ msgstr "Grandissimo"
+
+#~ msgctxt "Font family name"
+#~ msgid "Manrope"
+#~ msgstr "Manrope"
+
+#~ msgctxt "Font family name"
+#~ msgid "Fira Code"
+#~ msgstr "Fira Code"
+
+#~ msgctxt "Template part name"
+#~ msgid "Header"
+#~ msgstr "Header"
+
+#~ msgctxt "Template part name"
+#~ msgid "Vertical site header"
+#~ msgstr "Header verticale del sito"
+
+#~ msgctxt "Template part name"
+#~ msgid "Header with large title"
+#~ msgstr "Header con titolo grande"
+
+#~ msgctxt "Template part name"
+#~ msgid "Footer"
+#~ msgstr "Footer"
+
+#~ msgctxt "Template part name"
+#~ msgid "Footer Columns"
+#~ msgstr "Colonne del footer"
+
+#~ msgctxt "Template part name"
+#~ msgid "Footer Newsletter"
+#~ msgstr "Footer della newsletter"
+
+#~ msgctxt "Template part name"
+#~ msgid "Sidebar"
+#~ msgstr "Barra laterale"
+
+#~ msgctxt "Custom template name"
+#~ msgid "Page No Title"
+#~ msgstr "Pagina senza titolo"
+
+#~ msgctxt "Duotone name"
+#~ msgid "Black and white"
+#~ msgstr "Bianco e nero"
+
+#~ msgctxt "Duotone name"
+#~ msgid "Black and sandstone"
+#~ msgstr "Nero e arenaria"
+
+#~ msgctxt "Duotone name"
+#~ msgid "Black and rust"
+#~ msgstr "Nero e ruggine"
+
+#~ msgctxt "Duotone name"
+#~ msgid "Black and sage"
+#~ msgstr "Nero e salvia"
+
+#~ msgctxt "Duotone name"
+#~ msgid "Black and pastel blue"
+#~ msgstr "Nero e blu pastello"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Vertical soft beige to white"
+#~ msgstr "Verticale sfumato da beige a bianco"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Vertical soft sandstone to white"
+#~ msgstr "Verticale sfumato da color arena a bianco"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Vertical soft rust to white"
+#~ msgstr "Verticale sfumato da color ruggine a bianco"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Vertical soft sage to white"
+#~ msgstr "Verticale sfumato da color salvia a bianco"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Vertical soft mint to white"
+#~ msgstr "Verticale sfumato da color menta a bianco"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Vertical soft pewter to white"
+#~ msgstr "Verticale sfumato da color peltro a bianco"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Vertical hard beige to white"
+#~ msgstr "Verticale staccato da beige a bianco"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Vertical hard sandstone to white"
+#~ msgstr "Verticale staccato da color arena a bianco"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Vertical hard rust to white"
+#~ msgstr "Verticale staccato da color ruggine a bianco"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Vertical hard sage to white"
+#~ msgstr "Verticale staccato da color salvia a bianco"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Vertical hard mint to white"
+#~ msgstr "Verticale staccato da color menta a bianco"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Vertical hard pewter to white"
+#~ msgstr "Verticale staccato da color peltro a bianco"
+
+#~ msgctxt "Color name"
+#~ msgid "Base / Two"
+#~ msgstr "Base/due"
+
+#~ msgctxt "Color name"
+#~ msgid "Contrast / Two"
+#~ msgstr "Contrasto/due"
+
+#~ msgctxt "Color name"
+#~ msgid "Contrast / Three"
+#~ msgstr "Contrasto/tre"
+
+#~ msgctxt "Color name"
+#~ msgid "Accent"
+#~ msgstr "Accento"
+
+#~ msgctxt "Color name"
+#~ msgid "Accent / Two"
+#~ msgstr "Accento/due"
+
+#~ msgctxt "Color name"
+#~ msgid "Accent / Three"
+#~ msgstr "Accento/tre"
+
+#~ msgctxt "Color name"
+#~ msgid "Accent / Four"
+#~ msgstr "Accento/quattro"
+
+#~ msgctxt "Color name"
+#~ msgid "Accent / Five"
+#~ msgstr "Accento/cinque"
+
+#~ msgctxt "Space size name"
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgctxt "Space size name"
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgctxt "Space size name"
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgctxt "Space size name"
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgctxt "Space size name"
+#~ msgid "5"
+#~ msgstr "5"
+
+#~ msgctxt "Space size name"
+#~ msgid "6"
+#~ msgstr "6"
+
+#~ msgctxt "Font family name"
+#~ msgid "Inter"
+#~ msgstr "Inter"
+
+#~ msgctxt "Font family name"
+#~ msgid "Cardo"
+#~ msgstr "Cardo"
+
+#~ msgctxt "Font family name"
+#~ msgid "System Sans-serif"
+#~ msgstr "Sans-serif di sistema"
+
+#~ msgctxt "Font family name"
+#~ msgid "System Serif"
+#~ msgstr "Serif di sistema"
+
+#~ msgctxt "Template part name"
+#~ msgid "Post Meta"
+#~ msgstr "Meta articolo"
+
+#~ msgctxt "Custom template name"
+#~ msgid "Page with Sidebar"
+#~ msgstr "Pagina con barra laterale"
+
+#~ msgctxt "Custom template name"
+#~ msgid "Page with Wide Image"
+#~ msgstr "Pagina con immagine larga"
+
+#~ msgctxt "Custom template name"
+#~ msgid "Single with Sidebar"
+#~ msgstr "Singola con barra laterale"
+
+#~ msgctxt "Custom template name"
+#~ msgid "Blank"
+#~ msgstr "Vuoto"
+
+#~ msgctxt "Custom template name"
+#~ msgid "Blog (Alternative)"
+#~ msgstr "Blog (alternativo)"
+
+#~ msgctxt "Custom template name"
+#~ msgid "404"
+#~ msgstr "404"
+
+#~ msgctxt "Color name"
+#~ msgid "Primary"
+#~ msgstr "Principale"
+
+#~ msgctxt "Color name"
+#~ msgid "Secondary"
+#~ msgstr "Secondario"
+
+#~ msgctxt "Color name"
+#~ msgid "Tertiary"
+#~ msgstr "Terziario"
+
+#~ msgctxt "Font family name"
+#~ msgid "DM Sans"
+#~ msgstr "DM Sans"
+
+#~ msgctxt "Font family name"
+#~ msgid "IBM Plex Mono"
+#~ msgstr "IBM Plex Mono"
+
+#~ msgctxt "Font family name"
+#~ msgid "System Font"
+#~ msgstr "Font di sistema"
+
+#~ msgctxt "Font family name"
+#~ msgid "Source Serif Pro"
+#~ msgstr "Fonte Serif Pro"
+
+#~ msgctxt "Template part name"
+#~ msgid "Comments Template Part"
+#~ msgstr "Commenti parte dei template"
+
+#~ msgctxt "Duotone name"
+#~ msgid "Dark grayscale"
+#~ msgstr "Scala di grigi scura"
+
+#~ msgctxt "Duotone name"
+#~ msgid "Grayscale"
+#~ msgstr "Scala di grigi"
+
+#~ msgctxt "Duotone name"
+#~ msgid "Purple and yellow"
+#~ msgstr "Porpora e giallo"
+
+#~ msgctxt "Duotone name"
+#~ msgid "Blue and red"
+#~ msgstr "Blu e rosso"
+
+#~ msgctxt "Duotone name"
+#~ msgid "Midnight"
+#~ msgstr "Blu mezzanotte"
+
+#~ msgctxt "Duotone name"
+#~ msgid "Magenta and yellow"
+#~ msgstr "Magenta e giallo"
+
+#~ msgctxt "Duotone name"
+#~ msgid "Purple and green"
+#~ msgstr "Porpora e verde"
+
+#~ msgctxt "Duotone name"
+#~ msgid "Blue and orange"
+#~ msgstr "Blu e arancione"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Vivid cyan blue to vivid purple"
+#~ msgstr "Da ciano blu intenso a porpora intenso"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Light green cyan to vivid green cyan"
+#~ msgstr "Da ciano verde chiaro a ciano verde intenso"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Luminous vivid amber to luminous vivid orange"
+#~ msgstr "Da ambra brillante e intenso ad arancione brillante e intenso"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Luminous vivid orange to vivid red"
+#~ msgstr "Da arancione brillante e intenso a rosso intenso"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Very light gray to cyan bluish gray"
+#~ msgstr "Da grigio chiarissimo a ciano grigio-blu"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Cool to warm spectrum"
+#~ msgstr "Spettro da freddo a caldo"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Blush light purple"
+#~ msgstr "Porpora chiaro pastello"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Blush bordeaux"
+#~ msgstr "Bordeaux pastello"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Luminous dusk"
+#~ msgstr "Tramonto luminoso"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Pale ocean"
+#~ msgstr "Azzurro oceano tenue"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Electric grass"
+#~ msgstr "Verde erba elettrico"
+
+#~ msgctxt "Gradient name"
+#~ msgid "Midnight"
+#~ msgstr "Blu mezzanotte"
+
+#~ msgctxt "Color name"
+#~ msgid "Black"
+#~ msgstr "Nero"
+
+#~ msgctxt "Color name"
+#~ msgid "Cyan bluish gray"
+#~ msgstr "Ciano grigio bluastro"
+
+#~ msgctxt "Color name"
+#~ msgid "White"
+#~ msgstr "Bianco"
+
+#~ msgctxt "Color name"
+#~ msgid "Pale pink"
+#~ msgstr "Rosa chiaro"
+
+#~ msgctxt "Color name"
+#~ msgid "Vivid red"
+#~ msgstr "Rosso intenso"
+
+#~ msgctxt "Color name"
+#~ msgid "Luminous vivid orange"
+#~ msgstr "Arancione brillante e intenso"
+
+#~ msgctxt "Color name"
+#~ msgid "Luminous vivid amber"
+#~ msgstr "Ambra brillante e intenso"
+
+#~ msgctxt "Color name"
+#~ msgid "Light green cyan"
+#~ msgstr "Ciano verde chiaro"
+
+#~ msgctxt "Color name"
+#~ msgid "Vivid green cyan"
+#~ msgstr "Ciano verde intenso"
+
+#~ msgctxt "Color name"
+#~ msgid "Pale cyan blue"
+#~ msgstr "Ciano blu chiaro"
+
+#~ msgctxt "Color name"
+#~ msgid "Vivid cyan blue"
+#~ msgstr "Ciano blu intenso"
+
+#~ msgctxt "Color name"
+#~ msgid "Vivid purple"
+#~ msgstr "Porpora intenso"
+
+#~ msgctxt "Aspect ratio name"
+#~ msgid "Square - 1:1"
+#~ msgstr "Quadrato - 1:1"
+
+#~ msgctxt "Aspect ratio name"
+#~ msgid "Standard - 4:3"
+#~ msgstr "Standard - 4:3"
+
+#~ msgctxt "Aspect ratio name"
+#~ msgid "Portrait - 3:4"
+#~ msgstr "Ritratto - 3:4"
+
+#~ msgctxt "Aspect ratio name"
+#~ msgid "Classic - 3:2"
+#~ msgstr "Classico - 3:2"
+
+#~ msgctxt "Aspect ratio name"
+#~ msgid "Classic Portrait - 2:3"
+#~ msgstr "Classico ritratto - 2:3"
+
+#~ msgctxt "Aspect ratio name"
+#~ msgid "Wide - 16:9"
+#~ msgstr "Largo - 16:9"
+
+#~ msgctxt "Aspect ratio name"
+#~ msgid "Tall - 9:16"
+#~ msgstr "Alto - 9:16"
+
+#~ msgctxt "Shadow name"
+#~ msgid "Natural"
+#~ msgstr "Naturale"
+
+#~ msgctxt "Shadow name"
+#~ msgid "Deep"
+#~ msgstr "Profonda"
+
+#~ msgctxt "Shadow name"
+#~ msgid "Sharp"
+#~ msgstr "Netta"
+
+#~ msgctxt "Shadow name"
+#~ msgid "Outlined"
+#~ msgstr "Contornata"
+
+#~ msgctxt "Shadow name"
+#~ msgid "Crisp"
+#~ msgstr "Definita"
+
+#~ msgid "Settings page content will be available here."
+#~ msgstr "Il contenuto della pagina delle impostazioni sarà disponibile qui."

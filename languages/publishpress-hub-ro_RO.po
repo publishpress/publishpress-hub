@@ -1,0 +1,1350 @@
+# Copyright (C) 2026 PublishPress
+# This file is distributed under the GPL2.
+msgid ""
+msgstr ""
+"Project-Id-Version: PublishPress Hub 1.0.4-beta.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"POT-Creation-Date: 2026-04-15T21:04:03+00:00\n"
+"PO-Revision-Date: 2026-04-15 15:20+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ro-RO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: publishpress-hub\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2);\n"
+
+#. Plugin Name of the plugin
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
+msgid "PublishPress Hub"
+msgstr "PublishPress Hub"
+
+#. Description of the plugin
+#: publishpress-hub.php:5
+msgid ""
+"Centralized management hub for all PublishPress plugins - install, update, "
+"and manage licenses from one dashboard."
+msgstr ""
+"Hub centralizat de gestionare pentru toate pluginurile PublishPress - "
+"instalează, actualizează și gestionează licențele dintr-un singur tablou de "
+"bord."
+
+#. Author of the plugin
+#: publishpress-hub.php:7
+msgid "PublishPress"
+msgstr "PublishPress"
+
+#. Author URI of the plugin
+#: publishpress-hub.php:8
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
+
+#: src/Admin/Page/ComponentsShowcaseController.php:118
+msgid "Please wait while we load the components showcase..."
+msgstr "Te rugăm să aștepți în timp ce încărcăm vitrina componentelor..."
+
+#: src/Admin/Page/PluginsDashboardController.php:133
+msgid "Please wait while we load the plugins dashboard..."
+msgstr ""
+"Te rugăm să aștepți în timp ce încărcăm tabloul de bord al pluginurilor..."
+
+#: src/Admin/Page/SettingsPageController.php:104
+#: src/Admin/Page/SettingsPageController.php:105
+#: resources/src/jsx/components/pages/settings-page.jsx:80
+msgid "Settings"
+msgstr "Setări"
+
+#: src/Admin/Page/SettingsPageController.php:126
+msgid "Please wait while we load the settings page..."
+msgstr "Te rugăm să aștepți în timp ce încărcăm pagina de setări..."
+
+#: src/Admin/Page/WelcomePageController.php:143
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Nu ai suficiente permisiuni pentru a accesa această pagină."
+
+#: src/Admin/Page/WelcomePageController.php:180
+#: src/Admin/Page/WelcomePageController.php:181
+msgid "Welcome"
+msgstr "Bine ai venit"
+
+#: src/Admin/Page/WelcomePageController.php:203
+msgid "Please wait while we load the welcome page..."
+msgstr "Te rugăm să aștepți în timp ce încărcăm pagina de bun venit..."
+
+#. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
+#, php-format
+msgid "Warning: The license for %1$s has expired. %2$s"
+msgstr "Atenție: Licența pentru %1$s a expirat. %2$s"
+
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:123
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:137
+msgid "Manage licenses"
+msgstr "Gestionează licențele"
+
+#. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
+#, php-format
+msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
+msgstr "Atenție: %1$d pluginuri au licențe expirate: %2$s. %3$s"
+
+#: src/Application/Traits/BootableTrait.php:75
+msgid "Object must be loaded before initializing."
+msgstr "Obiectul trebuie să fie încărcat înainte de inițializare."
+
+#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:110
+msgid "No license key found"
+msgstr "Nu a fost găsită nicio cheie de licență"
+
+#. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
+#, php-format
+msgid "Free plugin not set for plugin family: %s"
+msgstr "Plugin gratuit nesetat pentru familia de pluginuri: %s"
+
+#. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
+#, php-format
+msgid "Pro plugin not set for plugin family: %s"
+msgstr "Plugin Pro nesetat pentru familia de pluginuri: %s"
+
+#: src/Domain/Plugin/Exception/LicenseActivationException.php:28
+msgid ""
+"License activation error. Please try again later or contact support for help."
+msgstr ""
+"Eroare la activarea licenței. Te rugăm să încerci din nou mai târziu sau să "
+"contactezi suportul pentru ajutor."
+
+#: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
+msgid ""
+"License deactivation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Eroare la dezactivarea licenței. Te rugăm să încerci din nou mai târziu sau "
+"să contactezi suportul pentru ajutor."
+
+#: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
+msgid "This license is currently disabled. Please contact support for help."
+msgstr ""
+"Această licență este în prezent dezactivată. Vă rugăm să contactați suportul "
+"pentru ajutor."
+
+#: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
+msgid "This license has expired. Please contact support to renew it."
+msgstr ""
+"Această licență a expirat. Vă rugăm să contactați suportul pentru a o "
+"reînnoi."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
+msgid ""
+"This license key is not authorized for this plugin. Please verify your "
+"license key or contact support for help."
+msgstr ""
+"Această cheie de licență nu este autorizată pentru acest plugin. Te rugăm să "
+"verifici cheia ta de licență sau să contactezi suportul pentru ajutor."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
+msgid ""
+"This license cannot be used for this plugin. Please contact support for help."
+msgstr ""
+"Această licență nu poate fi folosită pentru acest plugin. Te rugăm să "
+"contactezi suportul pentru ajutor."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
+msgid ""
+"This license does not match the plugin you are trying to activate. Please "
+"contact support for assistance."
+msgstr ""
+"Această licență nu se potrivește cu pluginul pe care încerci să-l activezi. "
+"Te rugăm să contactezi suportul pentru asistență."
+
+#: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
+msgid ""
+"License key does not match our records. Please contact support for "
+"assistance."
+msgstr ""
+"Cheia de licență nu se potrivește cu înregistrările noastre. Te rugăm să "
+"contactezi suportul pentru asistență."
+
+#: src/Domain/Plugin/Exception/LicenseMissingException.php:28
+msgid "No license key provided. Please enter a valid license key."
+msgstr ""
+"Nicio cheie de licență furnizată. Vă rugăm să introduceți o cheie de licență "
+"valabilă."
+
+#: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
+msgid ""
+"Your site URL is required to activate the license. Please enter a valid site "
+"URL to continue."
+msgstr ""
+"URL-ul site-ului tău este necesar pentru a activa licența. Te rugăm să "
+"introduci un URL valid pentru a continua."
+
+#: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
+msgid ""
+"License activation limit reached. Please contact support to upgrade or "
+"deactivate on another site."
+msgstr ""
+"Limita de activare a licenței a fost atinsă. Te rugăm să contactezi suportul "
+"pentru a face upgrade sau pentru a dezactiva pe un alt site."
+
+#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
+msgid "This license cannot be activated. Please contact support for help."
+msgstr ""
+"Această licență nu poate fi activată. Vă rugăm să contactați suportul pentru "
+"ajutor."
+
+#: src/Domain/Plugin/Exception/LicenseServerException.php:28
+msgid ""
+"License server error. Please try again later or contact support for help."
+msgstr ""
+"Eroare a serverului de licențe. Vă rugăm să încercați din nou mai târziu sau "
+"să contactați suportul pentru ajutor."
+
+#: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
+msgid ""
+"The license server returned an invalid response. Please try again later or "
+"contact support for help."
+msgstr ""
+"Serverul de licențe a returnat un răspuns invalid. Te rugăm să încerci din "
+"nou mai târziu sau să contactezi suportul pentru ajutor."
+
+#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
+msgid ""
+"This license is inactive for this site. Please contact support for help."
+msgstr ""
+"Această licență este inactivă pentru acest site. Vă rugăm să contactați "
+"suportul pentru ajutor."
+
+#: src/Domain/Plugin/Exception/PluginActivationException.php:29
+msgid ""
+"Plugin activation failed. Please try again later or contact support for help."
+msgstr ""
+"Activarea pluginului a eșuat. Te rugăm să încerci din nou mai târziu sau să "
+"contactezi suportul pentru ajutor."
+
+#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
+msgid "This action is not possible because the plugin is already installed."
+msgstr "Această acțiune nu este posibilă deoarece pluginul este deja instalat."
+
+#: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
+msgid ""
+"Plugin deactivation failed. Please try again later or contact support for "
+"help."
+msgstr ""
+"Dezactivarea pluginului a eșuat. Te rugăm să încerci din nou mai târziu sau "
+"să contactezi suportul pentru ajutor."
+
+#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
+msgid "Plugin family not found. Please contact support for help."
+msgstr ""
+"Familia pluginului nu a fost găsită. Vă rugăm să contactați suportul pentru "
+"ajutor."
+
+#: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
+msgid ""
+"This action is not possible because both free and pro versions are "
+"installed. Please uninstall one version to continue."
+msgstr ""
+"Această acțiune nu este posibilă deoarece atât versiunile gratuite, cât și "
+"cele pro sunt instalate. Te rugăm să dezinstalezi o versiune pentru a "
+"continua."
+
+#: src/Domain/Plugin/Exception/PluginInstallException.php:29
+msgid "Plugin installation failed. Please contact support for help."
+msgstr ""
+"Instalarea pluginului a eșuat. Vă rugăm să contactați suportul pentru ajutor."
+
+#: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
+msgid ""
+"This action is not possible because the plugin is not activated. Please "
+"activate the plugin and try again."
+msgstr ""
+"Această acțiune nu este posibilă deoarece pluginul nu este activat. Te rugăm "
+"să activezi pluginul și să încerci din nou."
+
+#: src/Domain/Plugin/Exception/PluginNotFoundException.php:29
+msgid ""
+"Plugin not found in our available plugins list. Please contact support for "
+"help."
+msgstr ""
+"Pluginul nu a fost găsit în lista noastră de pluginuri disponibile. Te rugăm "
+"să contactezi suportul pentru ajutor."
+
+#: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
+msgid ""
+"This action is not possible because the plugin is not installed. Please "
+"install the plugin and try again."
+msgstr ""
+"Această acțiune nu este posibilă deoarece pluginul nu este instalat. Te "
+"rugăm să instalezi pluginul și să încerci din nou."
+
+#: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
+msgid ""
+"Unknown license server error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Eroare necunoscută a serverului de licențe. Te rugăm să încerci din nou mai "
+"târziu sau să contactezi suportul pentru ajutor."
+
+#: src/Domain/Plugin/plugin-families.php:26
+msgid "Define tasks that authors must complete before publishing."
+msgstr ""
+"Definiți sarcinile pe care autorii trebuie să le finalizeze înainte de "
+"publicare."
+
+#: src/Domain/Plugin/plugin-families.php:42
+msgid "Control who can edit and view your content."
+msgstr "Controlați cine poate edita și vizualiza conținutul dumneavoastră."
+
+#: src/Domain/Plugin/plugin-families.php:58
+msgid "Create, manage and display authors for your content."
+msgstr "Creați, gestionați și afișați autorii pentru conținutul dumneavoastră."
+
+#: src/Domain/Plugin/plugin-families.php:74
+msgid "All the tools you need to improve the block editor."
+msgstr ""
+"Toate uneltele de care aveți nevoie pentru a îmbunătăți editorul de blocuri."
+
+#: src/Domain/Plugin/plugin-families.php:90
+msgid "Control your admin area and user roles."
+msgstr ""
+"Controlați zona dumneavoastră de administrare și rolurile utilizatorilor."
+
+#: src/Domain/Plugin/plugin-families.php:106
+msgid "Schedule changes to your posts."
+msgstr "Programarea modificărilor pentru postările dumneavoastră."
+
+#: src/Domain/Plugin/plugin-families.php:122
+msgid "Organize, schedule, and plan your publishing."
+msgstr "Organizați, programați și planificați publicarea dumneavoastră."
+
+#: src/Domain/Plugin/plugin-families.php:138
+msgid "Approve and schedule new versions to your published posts."
+msgstr ""
+"Aprobați și programați versiuni noi pentru postările dumneavoastră publicate."
+
+#: src/Domain/Plugin/plugin-families.php:154
+msgid "Organize your posts into issues or series."
+msgstr "Organizați postările dumneavoastră în numere sau serii."
+
+#: src/Domain/Plugin/plugin-families.php:170
+msgid "Create shortlinks for your posts."
+msgstr "Creați linkuri scurte pentru postările dumneavoastră."
+
+#: src/Domain/Plugin/plugin-families.php:186
+msgid "Create custom statuses and publishing workflows."
+msgstr "Creați statuturi personalizate și fluxuri de lucru pentru publicare."
+
+#. translators: %s is the dependency ID.
+#: src/Infrastructure/Container/DependencyContainer.php:102
+#, php-format
+msgid "Dependency \"%s\" not found in container."
+msgstr "Dependența \"%s\" nu a fost găsită în container."
+
+#. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
+#, php-format
+msgid "Error validating license: %s"
+msgstr "Eroare la validarea licenței: %s"
+
+#. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
+#, php-format
+msgid "Error getting license info: %s"
+msgstr "Eroare la obținerea informațiilor despre licență: %s"
+
+#: src/Infrastructure/RestApi/RestApiService.php:287
+msgid "Too many requests. Please try again later."
+msgstr "Prea multe cereri. Vă rugăm să încercați din nou mai târziu."
+
+#: src/Infrastructure/RestApi/RestApiService.php:358
+msgid "An error occurred while processing your request."
+msgstr "A apărut o eroare în timpul procesării cererii dumneavoastră."
+
+#. translators: %s is the template path
+#: src/Infrastructure/View/ViewService.php:48
+#, php-format
+msgid "Template not found: %s"
+msgstr "Șablonul nu a fost găsit: %s"
+
+#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:55
+msgid "Path cannot be empty"
+msgstr "Calea nu poate fi goală"
+
+#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:64
+msgid "File extension cannot be empty"
+msgstr "Extensia fișierului nu poate fi goală"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:183
+msgid "Invalid file path: null byte detected"
+msgstr "Calea fișierului este invalidă: byte nul detectat"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:192
+msgid "Invalid file path: directory traversal detected"
+msgstr "Calea fișierului este invalidă: traversarea directorului detectată"
+
+#. translators: %s is the directory path
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
+#, php-format
+msgid "Invalid file path: parent directory does not exist: %s"
+msgstr "Calea fișierului este invalidă: directorul părinte nu există: %s"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:220
+msgid "Invalid file path: unable to resolve path"
+msgstr "Calea fișierului este invalidă: nu se poate rezolva calea"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:239
+msgid "Invalid file path: operation not allowed outside permitted directories"
+msgstr ""
+"Calea fișierului este invalidă: operațiunea nu este permisă în afara "
+"directorilor permisi"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:52
+msgid "Invalid download URL provided"
+msgstr "URL-ul de descărcare furnizat este invalid"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:60
+msgid "Download URL must use HTTP or HTTPS protocol"
+msgstr "URL-ul de descărcare trebuie să folosească protocolul HTTP sau HTTPS"
+
+#. translators: %s is the hostname
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
+#, php-format
+msgid "Download URL is not from an allowed domain: %s"
+msgstr "URL-ul de descărcare nu provine dintr-un domeniu permis: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:80
+msgid "Download URL failed WordPress validation"
+msgstr "URL-ul de descărcare nu a trecut de validarea WordPress"
+
+#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
+#, php-format
+msgid "Failed to download plugin: %s"
+msgstr "Nu s-a putut descărca pluginul: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:105
+msgid "Downloaded plugin file does not exist"
+msgstr "Fișierul plugin descărcat nu există"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:113
+msgid "Downloaded plugin file is empty"
+msgstr "Fișierul plugin descărcat este gol"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:122
+msgid "Cannot read downloaded plugin file"
+msgstr "Nu se poate citi fișierul plugin descărcat"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:132
+msgid ""
+"Downloaded file is not a valid ZIP archive. The download URL may be "
+"returning an error page."
+msgstr ""
+"Fișierul descărcat nu este un arhivă ZIP validă. URL-ul de descărcare poate "
+"returna o pagină de eroare."
+
+#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
+#, php-format
+msgid "Failed to unzip plugin file: %s"
+msgstr "Nu s-a putut dezarhiva fișierul plugin: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:156
+msgid "Failed to unzip plugin file"
+msgstr "Nu s-a putut dezarhiva fișierul plugin"
+
+#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
+#, php-format
+msgid "Failed to activate plugin: %s"
+msgstr "Nu s-a putut activa pluginul: %s"
+
+#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
+#, php-format
+msgid "Failed to delete plugin: %s"
+msgstr "Nu s-a putut șterge pluginul: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:292
+msgid "No update available for this plugin"
+msgstr "Nici o actualizare disponibilă pentru acest plugin"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:300
+msgid "Invalid update information for this plugin"
+msgstr "Informații de actualizare invalide pentru acest plugin"
+
+#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
+#, php-format
+msgid "Failed to update plugin: %s"
+msgstr "Actualizarea plugin-ului a eșuat: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:341
+msgid "Plugin update failed"
+msgstr "Actualizarea plugin-ului a eșuat"
+
+#. translators: %s is the error message
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
+#, php-format
+msgid "Failed to get plugin information: %s"
+msgstr "Nu s-au putut obține informațiile plugin-ului: %s"
+
+#. translators: %s is the plugin name, %s is the rating
+#: resources/src/jsx/components/admin-page/footer.jsx:26
+msgid "If you like %s please leave us a %s rating. Thank you!"
+msgstr "Dacă îți place %s, te rugăm să ne lași o evaluare de %s. Mulțumim!"
+
+#. translators: %s is the plugin name
+#: resources/src/jsx/components/admin-page/footer.jsx:43
+msgid "About %s"
+msgstr "Despre %s"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:45
+msgid "About"
+msgstr "Despre"
+
+#. translators: %s is the plugin name
+#: resources/src/jsx/components/admin-page/footer.jsx:54
+msgid "Documentation for %s"
+msgstr "Documentația pentru %s"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:56
+msgid "Documentation"
+msgstr "Documentație"
+
+#. translators: %s is the plugin name
+#: resources/src/jsx/components/admin-page/footer.jsx:65
+msgid "Contact the %s team"
+msgstr "Contactează echipa %s"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:67
+msgid "Contact"
+msgstr "Contact"
+
+#: resources/src/jsx/components/admin-page/header.jsx:50
+msgid "Get Support"
+msgstr "Obține Asistență"
+
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
+msgid "Select an option"
+msgstr "Selectează o opțiune"
+
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
+msgid "Options"
+msgstr "Opțiuni"
+
+#: resources/src/jsx/components/pages/components-showcase.jsx:26
+msgid "Components Showcase"
+msgstr "Vitrinele componentelor"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
+msgid "N/A"
+msgstr "N/A"
+
+#. translators: %1$s is the plugin name, %2$s is the expiration date
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
+msgid "The license for %1$s expired on %2$s"
+msgstr "Licența pentru %1$s a expirat pe %2$s"
+
+#. translators: %1$s is the list of plugin names, %2$s is the expiration date
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
+msgid "The licenses for %1$s expired on %2$s"
+msgstr "Licențele pentru %1$s au expirat pe %2$s"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:157
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:213
+msgid "Renew now"
+msgstr "Renovează acum"
+
+#. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
+msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
+msgstr "Licența pentru %1$s expiră pe %2$s (%3$d zile rămase)"
+
+#. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
+msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
+msgstr "Licențele pentru %1$s expiră pe %2$s (%3$d zile rămase)"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:210
+msgid "Warning:"
+msgstr "Avertisment:"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:46
+msgid "All"
+msgstr "Toate"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:51
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:39
+msgid "Unlicensed"
+msgstr "Neautorizat"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:56
+msgid "Active"
+msgstr "Activ"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:61
+msgid "Inactive"
+msgstr "Inactiv"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:66
+msgid "Not installed"
+msgstr "Neinstalat"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:71
+msgid "Updates available"
+msgstr "Actualizări disponibile"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:94
+#: resources/src/jsx/components/pages/welcome-page.jsx:128
+msgid "Plugins Dashboard"
+msgstr "Tabloul de bord al plugin-urilor"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
+msgid "Hold ALT and click to force refresh the update cache"
+msgstr ""
+"Țineți apăsat ALT și faceți clic pentru a forța actualizarea cache-ului de "
+"actualizări"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
+msgid "Force Refresh"
+msgstr "Forțează actualizarea"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:300
+msgid "Refresh"
+msgstr "Actualizează"
+
+#: resources/src/jsx/components/pages/settings-page.jsx:31
+msgid "Diagnostics"
+msgstr "Diagnosticare"
+
+#: resources/src/jsx/components/pages/settings-page.jsx:39
+msgid "Debug Log"
+msgstr "Jurnal de depanare"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:108
+msgid "Failed to load the debug log. Please try again."
+msgstr ""
+"Nu s-a reușit încărcarea jurnalului de depanare. Vă rugăm să încercați din "
+"nou."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:182
+msgid "Debug log cleared successfully."
+msgstr "Jurnalul de depanare a fost șters cu succes."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
+msgid "Failed to clear the debug log. Please try again."
+msgstr ""
+"Nu s-a reușit ștergerea jurnalului de depanare. Vă rugăm să încercați din "
+"nou."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222
+msgid "Log copied to clipboard."
+msgstr "Jurnalul a fost copiat în clipboard."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
+msgid "Failed to copy log to clipboard."
+msgstr "Nu s-a reușit copierea jurnalului în clipboard."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:253
+msgid "Requests"
+msgstr "Cereri"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:260
+msgid "Full Log"
+msgstr "Jurnal complet"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:271
+msgid "Auto-refresh is on — click to stop"
+msgstr "Actualizare automată este activată — dă clic pentru a opri"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:272
+msgid "Enable auto-refresh"
+msgstr "Activează actualizarea automată"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:277
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
+msgid "Auto-refresh"
+msgstr "Actualizare automată"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:286
+msgid "Auto-refresh interval"
+msgstr "Interval de actualizare automată"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:308
+msgid "Copy to Clipboard"
+msgstr "Copiază în clipboard"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:318
+msgid "Clear Log"
+msgstr "Șterge jurnalul"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:326
+msgid "Loading log..."
+msgstr "Se încarcă jurnalul..."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:332
+msgid ""
+"The debug log is empty. Perform some actions (e.g. activate a license) and "
+"refresh to see entries."
+msgstr ""
+"Jurnalul de depanare este gol. Efectuează câteva acțiuni (de exemplu, "
+"activează o licență) și reîmprospătează pentru a vedea intrările."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
+msgid "Debug log contents"
+msgstr "Conținutul jurnalului de depanare"
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
+msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
+msgstr ""
+"Modul de depanare activat. O filă \"Jurnal de depanare\" este acum "
+"disponibilă."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
+msgid "Debug mode disabled."
+msgstr "Modul de depanare dezactivat."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:50
+msgid "Failed to save the setting. Please try again."
+msgstr "Nu s-a putut salva setarea. Te rugăm să încerci din nou."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
+msgid "Debug Mode"
+msgstr "Mod de depanare"
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
+msgid ""
+"When enabled, all HTTP requests and responses to remote services (license "
+"activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
+"the Debug Log tab to inspect the captured data."
+msgstr ""
+"Când este activat, toate cererile și răspunsurile HTTP către servicii "
+"externe (activarea licenței, descărcările pluginurilor etc.) sunt "
+"înregistrate într-un fișier de jurnal dedicat. Folosește tab-ul Jurnal de "
+"depanare pentru a inspecta datele capturate."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
+msgid "Enable Debug Mode"
+msgstr "Activează modul de depanare"
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
+msgid ""
+"Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
+"data."
+msgstr ""
+"Jurnalizarea de depanare este activă. Comutați la tab-ul \"Jurnal de "
+"depanare\" pentru a vizualiza datele capturate."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
+msgid "ERR"
+msgstr "ERR"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:106
+msgid "Request"
+msgstr "Cerere"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:113
+msgid "Response"
+msgstr "Răspuns"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:119
+msgid "No response recorded for this request."
+msgstr "Niciun răspuns înregistrat pentru această cerere."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:144
+msgid "No requests found in the log."
+msgstr "Nicio cerere găsită în jurnal."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:153
+msgid "1 request recorded"
+msgstr "1 cerere înregistrată"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
+msgid "%d requests recorded"
+msgstr "%d cereri înregistrate"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:37
+msgid "Welcome to PublishPress Hub!"
+msgstr "Bine ați venit la PublishPress Hub!"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:40
+msgid "Get started with PublishPress Hub in a few simple steps."
+msgstr "Începeți cu PublishPress Hub în câțiva pași simpli."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:47
+msgid "Welcome to PublishPress Hub"
+msgstr "Bine ați venit la PublishPress Hub"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:52
+msgid "What you can do with PublishPress Hub"
+msgstr "Ce puteți face cu PublishPress Hub"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:55
+msgid ""
+"PublishPress Hub has everything you need to install, update, and manage your "
+"PublishPress plugins. We're here to help you build a publishing system that "
+"works perfectly for your team."
+msgstr ""
+"PublishPress Hub are tot ce aveți nevoie pentru a instala, actualiza și "
+"gestiona pluginurile dvs. PublishPress. Suntem aici pentru a vă ajuta să "
+"construiți un sistem de publicare care funcționează perfect pentru echipa "
+"dvs."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:64
+msgid "Centralized Dashboard"
+msgstr "Tablou de bord centralizat"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:67
+msgid ""
+"View all your PublishPress plugins with their licenses, versions, and key "
+"details."
+msgstr ""
+"Vizualizați toate pluginurile dvs. PublishPress cu licențele, versiunile și "
+"detaliile cheie."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:76
+msgid "One-Click Installation"
+msgstr "Instalare cu un clic"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:79
+msgid ""
+"Install free PublishPress plugins directly from the Hub without visiting "
+"WordPress.org."
+msgstr ""
+"Instalați pluginuri PublishPress gratuite direct din Hub fără a vizita "
+"WordPress.org."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:88
+msgid "License Management"
+msgstr "Gestionarea licențelor"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:91
+msgid ""
+"Connect your PublishPress licenses to easily install and activate Pro "
+"versions."
+msgstr ""
+"Conectați licențele PublishPress pentru a instala și activa cu ușurință "
+"versiunile Pro."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:100
+msgid "Easy Updates"
+msgstr "Actualizări ușoare"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:103
+msgid "Keep all your PublishPress plugins up to date with one-click updates."
+msgstr ""
+"Mențineți toate pluginurile dvs. PublishPress actualizate cu actualizări cu "
+"un singur clic."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:112
+msgid "Status Monitoring"
+msgstr "Monitorizarea stării"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:115
+msgid ""
+"Monitor plugin activation status, detect conflicts, and ensure compatibility."
+msgstr ""
+"Monitorizați starea activării pluginului, detectați conflicte și asigurați "
+"compatibilitatea."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:124
+msgid "Get Started"
+msgstr "Începeți"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:127
+msgid ""
+"Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgstr ""
+"Ești pregătit să explorezi? Vizitează %s pentru a vedea toate pluginurile "
+"PublishPress disponibile."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:142
+msgid "View Plugins Dashboard"
+msgstr "Vizualizați tabloul de bord al pluginurilor"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:148
+msgid "Already know what you're doing? Great! You can "
+msgstr "Știți deja ce faceți? Grozav! Puteți "
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:150
+msgid "dismiss this page"
+msgstr "închide această pagină"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
+msgid "."
+msgstr "."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
+msgid "Install"
+msgstr "Instalați"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:22
+msgid "Installing..."
+msgstr "Se instalează..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28
+msgid "Upgrade to Pro"
+msgstr "Actualizați la Pro"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:28
+msgid "Upgrading to Pro..."
+msgstr "Se actualizează la Pro..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
+msgid "Manage License"
+msgstr "Gestionați Licența"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:34
+msgid "Managing License..."
+msgstr "Se gestionează Licența..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
+msgid "Activate License"
+msgstr "Activare Licență"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:40
+msgid "Activating License..."
+msgstr "Se activează Licența..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
+msgid "Resolve Conflict"
+msgstr "Rezolvați Conflictul"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
+msgid "Resolving Conflict..."
+msgstr "Se rezolvă Conflictul..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
+msgid "Update"
+msgstr "Actualizare"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
+msgid "Updating..."
+msgstr "Se actualizează..."
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:31
+msgid "Confirmation"
+msgstr "Confirmare"
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:36
+msgid "Are you sure you want to continue?"
+msgstr "Ești sigur că vrei să continui?"
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:49
+msgid "Continue"
+msgstr "Continuă"
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:52
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:98
+msgid "Cancel"
+msgstr "Anulează"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29
+msgid "Install Plugin"
+msgstr "Instalează Pluginul"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
+msgid ""
+"Select how you would like to install this plugin. You can install the Pro "
+"version if you have a license, or the Free version to get started."
+msgstr ""
+"Selectați cum doriți să instalați acest plugin. Puteți instala versiunea Pro "
+"dacă aveți o licență sau versiunea Gratuită pentru a începe."
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+msgid "Free Details"
+msgstr "Detalii Gratis"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+msgid "Pro Details"
+msgstr "Detalii Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
+msgid "Changelogs"
+msgstr "Jurnalele modificărilor"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44
+msgid "I have a license, install the Pro version"
+msgstr "Am o licență, instalează versiunea Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47
+msgid "I don't have a license, install the Free version"
+msgstr "Nu am o licență, instalează versiunea Gratuită"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:50
+msgid "Enter your license key"
+msgstr "Introdu cheia ta de licență"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:55
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
+msgid ""
+"Enter your license key to activate the Pro version of this plugin. You can "
+"find your license key in your PublishPress account dashboard."
+msgstr ""
+"Introduceți cheia dvs. de licență pentru a activa versiunea Pro a acestui "
+"plugin. Puteți găsi cheia dvs. de licență în tabloul de bord al contului "
+"dvs. PublishPress."
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
+msgid "Go to my profile to get the license key"
+msgstr "Mergi la profilul meu pentru a obține cheia de licență"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:66
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:94
+msgid "Enter your license key here"
+msgstr "Introdu cheia ta de licență aici"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:80
+msgid "Activate and install the plugin"
+msgstr "Activează și instalează pluginul"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:76
+msgid "Manage your license"
+msgstr "Gestionează-ți licența"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
+msgid "Your license key is: "
+msgstr "Cheia ta de licență este: "
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
+msgid "(hidden)"
+msgstr "(ascuns)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:119
+msgid "Activate the license key for this site"
+msgstr "Activează cheia de licență pentru acest site"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:126
+msgid "Edit the license key"
+msgstr "Editează cheia de licență"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:129
+msgid "Deactivate the license key for this site"
+msgstr "Dezactivează cheia de licență pentru acest site"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+msgid "Unknown"
+msgstr "Necunoscut"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:39
+msgid "Plugin Information"
+msgstr "Informații despre plugin"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:45
+msgid "Name:"
+msgstr "Nume:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:51
+msgid "Description:"
+msgstr "Descriere:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:57
+msgid "Current Version:"
+msgstr "Versiune curentă:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:63
+msgid "Available Version:"
+msgstr "Versiune disponibilă:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:82
+msgid "Update Plugin"
+msgstr "Actualizează pluginul"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:93
+msgid "Check for Updates"
+msgstr "Verifică actualizări"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
+msgid "Install %s"
+msgstr "Instalează %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
+msgid "Install %s Pro"
+msgstr "Instalează %s Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
+msgid "Upgrade %s to Pro"
+msgstr "Upgradează %s la Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
+msgid "Uninstall %s"
+msgstr "Dezinstalează %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
+msgid "Are you sure you want to uninstall %s?"
+msgstr "Ești sigur că vrei să dezinstalezi %s?"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
+msgid "Resolve Conflict for %s"
+msgstr "Rezolvă conflictul pentru %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
+msgid "Manage %s License"
+msgstr "Gestionați licența %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
+msgid "Activate %s License"
+msgstr "Activează licența %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
+msgid "More Info: %s"
+msgstr "Mai multe informații: %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:34
+msgid "Resolve Plugin Conflict"
+msgstr "Rezolvă conflictul pluginului"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
+msgid "Free version: %s (%s)"
+msgstr "Versiune gratuită: %s (%s)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
+msgid "Pro version: %s (%s)"
+msgstr "Versiune Pro: %s (%s)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:79
+msgid "Keep the Pro version (Recommended)"
+msgstr "Păstrează versiunea Pro (Recomandată)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:89
+msgid "Keep the Free version"
+msgstr "Păstrează versiunea Gratuită"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
+msgid ""
+"Unlock the full potential of this plugin with the Pro version. Enjoy "
+"advanced features, priority support, and exclusive benefits designed to help "
+"you get the most out of your workflow."
+msgstr ""
+"Dezvăluiți întregul potențial al acestui plugin cu versiunea Pro. Bucurați-"
+"vă de funcții avansate, suport prioritar și beneficii exclusive concepute "
+"pentru a vă ajuta să obțineți cele mai bune rezultate din fluxul dvs. de "
+"lucru."
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
+msgid "Discover all Pro features"
+msgstr "Descoperă toate funcțiile Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "Jurnal de modificări"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
+msgid "Already have a license? Install Pro now"
+msgstr "Ai deja o licență? Instalează Pro acum"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
+msgid "Upgrade to Pro and boost your productivity"
+msgstr "Upgradează la Pro și îmbunătățește-ți productivitatea"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:139
+msgid "New version available"
+msgstr "Versiune nouă disponibilă"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+msgid "Version %s"
+msgstr "Versiunea %s"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
+msgid "Update available: %s → %s"
+msgstr "Actualizare disponibilă: %s → %s"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:22
+msgid "Installing"
+msgstr "Se instalează"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:27
+msgid "Not Installed"
+msgstr "Neinstalat"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:31
+msgid "Free"
+msgstr "Gratuit"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:35
+msgid "Licensed"
+msgstr "Licențiat"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:43
+msgid "Expired"
+msgstr "Expirat"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:47
+msgid "Uninstalling"
+msgstr "Se dezinstalează"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:52
+msgid "Upgrading"
+msgstr "Se upgradează"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:57
+msgid "Deactivating"
+msgstr "Se dezactivează"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:62
+msgid "Activating"
+msgstr "Se activează"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:67
+msgid "Conflicting Installations"
+msgstr "Instalări în conflict"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
+msgid "Update Available"
+msgstr "Actualizare disponibilă"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
+msgid "Expires"
+msgstr "Expiră"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
+msgid "latest"
+msgstr "ultimul"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
+msgid "Update to v%s"
+msgstr "Actualizare la v%s"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+msgid "Renew"
+msgstr "Reînnoiește"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+msgid "Deactivate"
+msgstr "Dezactivează"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+msgid "Activate"
+msgstr "Activează"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+msgid "Uninstall"
+msgstr "Dezinstalează"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+msgid "More Info"
+msgstr "Mai multe informații"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
+msgid "This plugin is not installed."
+msgstr "Acest plugin nu este instalat."
+
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40
+msgid "This plugin is active."
+msgstr "Acest plugin este activ."
+
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41
+msgid "This plugin is not active."
+msgstr "Acest plugin nu este activ."
+
+#: resources/src/jsx/components/plugins-list/index.jsx:159
+msgid "No plugins found."
+msgstr "Niciun plugin găsit."
+
+#: resources/src/jsx/components/plugins-list/index.jsx:165
+msgid "Loading plugins..."
+msgstr "Se încarcă plugin-uri..."
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:216
+msgid "Failed to fetch plugins"
+msgstr "Nu s-au putut obține plugin-uri"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
+msgid "%s installed successfully"
+msgstr "%s instalat cu succes"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
+msgid "%s installation failed"
+msgstr "%s instalare eșuată"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
+msgid "%s uninstalled successfully"
+msgstr "%s dezinstalat cu succes"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
+msgid "%s uninstall failed"
+msgstr "%s dezinstalare eșuată"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
+msgid "%s activated successfully"
+msgstr "%s activat cu succes"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
+msgid "%s activation failed"
+msgstr "%s activarea a eșuat"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
+msgid "%s deactivated successfully"
+msgstr "%s dezactivat cu succes"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
+msgid "%s deactivation failed"
+msgstr "%s dezactivarea a eșuat"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
+msgid "%s upgraded to Pro successfully"
+msgstr "%s actualizat la Pro cu succes"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
+msgid "%s upgrade to Pro failed"
+msgstr "%s actualizarea la Pro a eșuat"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
+msgid "Conflict resolved successfully for %s"
+msgstr "Conflict rezolvat cu succes pentru %s"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
+msgid "Failed to resolve conflict for %s"
+msgstr "A eșuat rezolvarea conflictului pentru %s"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
+msgid "%s license deactivated successfully"
+msgstr "%s licența dezactivată cu succes"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
+msgid "%s license deactivation failed"
+msgstr "%s dezactivarea licenței a eșuat"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
+msgid "%s license activated successfully"
+msgstr "%s licența activată cu succes"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
+msgid "%s license activation failed"
+msgstr "%s activarea licenței a eșuat"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
+msgid "%s updated successfully"
+msgstr "%s actualizat cu succes"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
+msgid "%s update failed"
+msgstr "%s actualizarea a eșuat"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
+msgid "Too many requests. Please wait a few seconds and try again."
+msgstr ""
+"Prea multe cereri. Vă rugăm să așteptați câteva secunde și încercați din nou."
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
+#, fuzzy
+msgid "Cloudflare Ray ID: %s"
+msgstr "Cloudflare Ray ID: %s"

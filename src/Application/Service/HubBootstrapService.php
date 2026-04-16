@@ -21,6 +21,7 @@ use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Entity\FreePlugin;
 use PublishPress\Hub\Domain\Plugin\Entity\PluginFamily;
 use PublishPress\Hub\Domain\Plugin\Entity\ProPlugin;
+use PublishPress\Hub\Infrastructure\Debug\DebugLogService;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\Remote\HttpDebugger;
 
@@ -37,21 +38,25 @@ class HubBootstrapService implements BootableInterface
 
     private AccessInterface $accessService;
 
+    private DebugLogService $debugLogService;
+
     /**
      * @param BootableInterface[] $servicesToInit
      * @param PluginFamilyRepositoryInterface $pluginFamilyRepository
      * @param AccessInterface $accessService
-     *
+     * @param DebugLogService $debugLogService
      * @since 1.0.0
      */
     public function __construct(
         array $servicesToInit,
         PluginFamilyRepositoryInterface $pluginFamilyRepository,
-        AccessInterface $accessService
+        AccessInterface $accessService,
+        DebugLogService $debugLogService
     ) {
         $this->servicesToInit = $servicesToInit;
         $this->pluginFamilyRepository = $pluginFamilyRepository;
         $this->accessService = $accessService;
+        $this->debugLogService = $debugLogService;
     }
 
     /**
@@ -61,7 +66,7 @@ class HubBootstrapService implements BootableInterface
      */
     protected function onLoad(): void
     {
-        // Initialize HTTP debugger (hooks into http_api_debug when debugging is enabled)
+        HttpDebugger::setLogFilePath($this->debugLogService->getLogFilePath());
         HttpDebugger::initialize();
 
         $this->addHooks();

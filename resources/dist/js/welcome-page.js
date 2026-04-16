@@ -411,7 +411,7 @@ function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t =
 
 var DEFAULT_TARGET = '_blank';
 var DEFAULT_REL = 'noopener noreferrer';
-var ButtonComponent = function ButtonComponent(_ref) {
+var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forwardRef)(function (_ref, ref) {
   var variant = _ref.variant,
     icon = _ref.icon,
     onClick = _ref.onClick,
@@ -449,6 +449,7 @@ var ButtonComponent = function ButtonComponent(_ref) {
     return "pp-hub-button ".concat(variantClassName, " ").concat(className ? className : '', " ").concat(isFullWidth ? 'is-full-width' : '', " ").concat(spinnerPosition === 'left' ? 'is-link-left' : '');
   }, [className, isFullWidth, variant, spinnerPosition]);
   return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, _extends({
+    ref: ref,
     variant: variant,
     icon: icon,
     onClick: onClick,
@@ -460,7 +461,8 @@ var ButtonComponent = function ButtonComponent(_ref) {
     title: title,
     style: style
   }, restProps), children);
-};
+});
+ButtonComponent.displayName = 'Button';
 
 // Memoize the component to prevent unnecessary re-renders
 var Button = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(ButtonComponent);

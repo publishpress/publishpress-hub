@@ -9,12 +9,12 @@
  */
 
 import { Button as WPButton, Spinner } from "@wordpress/components";
-import { memo, useMemo } from '@wordpress/element';
+import { forwardRef, memo, useMemo } from '@wordpress/element';
 
 const DEFAULT_TARGET = '_blank';
 const DEFAULT_REL = 'noopener noreferrer';
 
-const ButtonComponent = ({
+const ButtonComponent = forwardRef(({
     variant,
     icon,
     onClick,
@@ -30,7 +30,7 @@ const ButtonComponent = ({
     isLoading,
     spinnerPosition = 'right',
     ...restProps
-}) => {
+}, ref) => {
     const targetValue = useMemo(() => {
         return target || (href ? DEFAULT_TARGET : undefined);
     }, [target, href]);
@@ -66,6 +66,7 @@ const ButtonComponent = ({
 
     return (
         <WPButton
+            ref={ref}
             variant={variant}
             icon={icon}
             onClick={onClick}
@@ -81,7 +82,9 @@ const ButtonComponent = ({
             {children}
         </WPButton>
     );
-};
+});
+
+ButtonComponent.displayName = 'Button';
 
 // Memoize the component to prevent unnecessary re-renders
 export const Button = memo(ButtonComponent);

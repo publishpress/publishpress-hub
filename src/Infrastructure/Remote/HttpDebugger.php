@@ -20,7 +20,42 @@ class HttpDebugger
 {
     private const DEBUG_PREFIX = 'HTTP_DEBUG';
 
+    private const LEGACY_CONSTANT = 'PUBLISHPRESS_HUB_DEBUG_REMOTE';
+
+    private const DEBUG_MODE_OPTION = 'publishpress_hub_debug_mode';
+
     private static bool $initialized = false;
+
+    private static ?string $logFilePath = null;
+
+    /**
+     * Returns the current UTC timestamp with millisecond precision.
+     *
+     * @return string Formatted as "Y-m-d H:i:s.mmm".
+     * @since 1.0.0
+     */
+    private static function timestamp(): string
+    {
+        $microtime = microtime(true);
+        $milliseconds = sprintf('%03d', (int) (($microtime - floor($microtime)) * 1000));
+
+        return gmdate('Y-m-d H:i:s', (int) $microtime) . '.' . $milliseconds;
+    }
+
+    /**
+     * Sets the path to the debug log file.
+     *
+     * Must be called before initialize() so that log entries are written to
+     * the correct location rather than falling back to error_log.
+     *
+     * @param string $logFilePath Absolute path to the log file.
+     * @return void
+     * @since 1.0.0
+     */
+    public static function setLogFilePath(string $logFilePath): void
+    {
+        self::$logFilePath = $logFilePath;
+    }
 
     /**
      * Initialize HTTP debugging hooks.
@@ -34,7 +69,7 @@ class HttpDebugger
      */
     public static function initialize(): void
     {
-        if (self::$initialized || !self::isDebugEnabled()) {
+        if (self::$initialized) {
             return;
         }
 
@@ -59,12 +94,11 @@ class HttpDebugger
             return;
         }
 
-        // Log request (with final args after all filters)
         $debugInfo = [
-            'timestamp' => gmdate('Y-m-d H:i:s'),
+            'timestamp' => self::timestamp(),
             'method' => $parsed_args['method'] ?? 'GET',
             'url' => $url,
-            'body' => $parsed_args['body'] ?? [],
+            'body' => self::redactSensitiveFields($parsed_args['body'] ?? []),
             'timeout' => $parsed_args['timeout'] ?? null,
             'sslverify' => $parsed_args['sslverify'] ?? null,
             'headers' => $parsed_args['headers'] ?? [],
@@ -74,7 +108,6 @@ class HttpDebugger
 
         self::log('REQUEST', $debugInfo);
 
-        // Log response
         self::debugResponse($response);
     }
 
@@ -106,13 +139,13 @@ class HttpDebugger
         }
 
         $debugInfo = (is_wp_error($response)) ? [
-            'timestamp' => gmdate('Y-m-d H:i:s'),
+            'timestamp' => self::timestamp(),
             'error' => true,
             'error_message' => $response->get_error_message(),
             'error_code' => $response->get_error_code(),
             'error_data' => $response->get_error_data(),
         ] : [
-            'timestamp' => gmdate('Y-m-d H:i:s'),
+            'timestamp' => self::timestamp(),
             'error' => false,
             'status_code' => wp_remote_retrieve_response_code($response),
             'status_message' => wp_remote_retrieve_response_message($response),
@@ -162,13 +195,11 @@ class HttpDebugger
         $request = $method . ' ' . $path . ' HTTP/1.1' . "\r\n";
         $request .= 'Host: ' . ($parsedUrl['host'] ?? '') . "\r\n";
 
-        // Add headers
         $headers = $args['headers'] ?? [];
         foreach ($headers as $name => $value) {
             $request .= $name . ': ' . $value . "\r\n";
         }
 
-        // Add body
         if (isset($args['body'])) {
             $body = is_array($args['body']) ? http_build_query($args['body']) : $args['body'];
             $request .= 'Content-Length: ' . strlen($body) . "\r\n";
@@ -182,18 +213,25 @@ class HttpDebugger
     }
 
     /**
-     * Check if debugging is enabled
+     * Check if debugging is enabled.
+     *
+     * Debugging is active when the constant PUBLISHPRESS_HUB_DEBUG_REMOTE is
+     * truthy OR when the publishpress_hub_debug_mode WP option is set to true.
      *
      * @return bool True if debugging is enabled, false otherwise.
      * @since 1.0.0
      */
-    private static function isDebugEnabled(): bool
+    public static function isDebugEnabled(): bool
     {
-        return defined('PUBLISHPRESS_HUB_DEBUG_REMOTE') && constant('PUBLISHPRESS_HUB_DEBUG_REMOTE');
+        if (defined(self::LEGACY_CONSTANT) && constant(self::LEGACY_CONSTANT)) {
+            return true;
+        }
+
+        return (bool) get_option(self::DEBUG_MODE_OPTION, false);
     }
 
     /**
-     * Log debug information
+     * Log debug information to the configured log file or PHP error log.
      *
      * @param string $type The type.
      * @param array<string, mixed> $data The data.
@@ -201,15 +239,97 @@ class HttpDebugger
      */
     private static function log(string $type, array $data): void
     {
+        $directionPrefix = self::getDirectionPrefix($type);
         $logMessage = sprintf(
             '[%s] %s: %s',
             self::DEBUG_PREFIX,
-            $type,
+            $directionPrefix . ' ' . $type,
             wp_json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
         );
 
+        if (self::$logFilePath !== null) {
+            self::ensureLogDirectoryExists(dirname(self::$logFilePath));
+            // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
+            file_put_contents(self::$logFilePath, $logMessage . "\n", FILE_APPEND | LOCK_EX);
+            return;
+        }
+
         // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
         error_log($logMessage);
+    }
+
+    /**
+     * Redacts sensitive fields from a request body before logging.
+     *
+     * Any field whose key matches a known sensitive name is replaced with
+     * a masked value that preserves the first and last characters so the
+     * key can still be identified in the log without exposing the full value.
+     *
+     * @param mixed $body The raw request body (array or string).
+     * @return mixed The sanitized body.
+     * @since 1.0.0
+     */
+    private static function redactSensitiveFields($body)
+    {
+        if (!is_array($body)) {
+            return $body;
+        }
+
+        $sensitiveKeys = ['license', 'license_key', 'key', 'secret', 'password', 'token', 'api_key'];
+
+        foreach ($body as $field => $value) {
+            if (!in_array(strtolower((string) $field), $sensitiveKeys, true)) {
+                continue;
+            }
+
+            $value = (string) $value;
+            $length = strlen($value);
+
+            if ($length <= 4) {
+                $body[$field] = str_repeat('*', $length);
+            } else {
+                $body[$field] = $value[0] . str_repeat('*', $length - 2) . $value[$length - 1];
+            }
+        }
+
+        return $body;
+    }
+
+    /**
+     * Returns a visual direction prefix for request/response log entries.
+     *
+     * @param string $type Log entry type.
+     * @return string Direction marker.
+     * @since 1.0.0
+     */
+    private static function getDirectionPrefix(string $type): string
+    {
+        if ($type === 'REQUEST' || $type === 'RAW_REQUEST') {
+            return '->';
+        }
+
+        if ($type === 'RESPONSE') {
+            return '<-';
+        }
+
+        return '--';
+    }
+
+    /**
+     * Ensure the target log directory exists before writing logs.
+     *
+     * @param string $logDir Absolute path to the log directory.
+     * @return void
+     * @since 1.0.0
+     */
+    private static function ensureLogDirectoryExists(string $logDir): void
+    {
+        if (is_dir($logDir)) {
+            return;
+        }
+
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_mkdir, WordPressVIPMinimum.Functions.RestrictedFunctions.directory_mkdir
+        mkdir($logDir, 0755, true);
     }
 
     /**
