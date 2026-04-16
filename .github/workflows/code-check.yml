@@ -64,4 +64,4 @@ jobs:
 
       - name: Run PHPCS check
         run: |
-          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh bash -c "git config --global --add safe.directory /project && composer check:cs"
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh bash -c "git config --global --add safe.directory /project && composer check:phpcs"
