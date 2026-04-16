@@ -52,5 +52,51 @@ jobs:
 
       - name: Composer validation
         run: |
-          composer validate
-          composer install
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer validate
+
+      - name: Start services
+        run: |
+          composer test:up
+        timeout-minutes: 10
+        env:
+          WP_READY_MAX_ATTEMPTS: 60
+          WP_READY_INTERVAL: 5
+
+      - name: Verify container status and fix permissions
+        run: |
+          docker ps
+          echo "Checking marker file..."
+          ls -la $GITHUB_WORKSPACE/dev-workspace-cache/wp_test/ || true
+          echo "Fixing permissions for test runner..."
+          sudo chown -R $(id -u):$(id -g) $GITHUB_WORKSPACE/dev-workspace-cache
+          sudo chmod -R 777 $GITHUB_WORKSPACE/dev-workspace-cache
+
+      - name: Build Codeception support classes
+        run: |
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer build
+
+      - name: Run Unit Tests
+        uses: php-actions/composer@v6
+        with:
+          command: test Unit
+          php_version: "8.4"
+          version: "2.8.1"
+          php_extensions: zip mysqli
+
+      - name: Run Intergration Tests
+        uses: php-actions/composer@v6
+        with:
+          command: test Integration
+          php_version: "8.4"
+          version: "2.8.1"
+          php_extensions: zip mysqli
+
+      - name: Show container logs on failure
+        if: failure()
+        run: |
+          echo "=== Test WordPress Container Logs ==="
+          docker logs publishpress-hub-env-test-wp
+          echo "=== Test DB Container Logs ==="
+          docker logs publishpress-hub-env-test-db || true
+
+
