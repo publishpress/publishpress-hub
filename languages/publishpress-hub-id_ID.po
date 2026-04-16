@@ -10,13 +10,12 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-03-27 15:26+0000\n"
+"PO-Revision-Date: 2026-04-16 14:31+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Language: id-ID\n"
 
-#: publishpress-hub.php:4
 #: publishpress-hub.php:4
 #: src/Admin/Page/WelcomePageController.php:259, fuzzy
 #. Plugin Name of the plugin
@@ -25,6 +24,15 @@ msgstr "PublishPress Hub"
 
 #: publishpress-hub.php:5
 #. Description of the plugin
+msgid ""
+"Centralized management hub for all PublishPress plugins - install, update, "
+"and manage licenses from one dashboard."
+msgstr ""
+"Pusat manajemen terpusat untuk semua plugin PublishPress - instal, "
+"perbarui, dan kelola lisensi dari satu dasbor."
+
+#: publishpress-hub.php:7
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
@@ -102,6 +110,22 @@ msgid "Pro plugin not set for plugin family: %s"
 msgstr "Plugin pro tidak diatur untuk keluarga plugin: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
+msgid ""
+"License activation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Kesalahan server lisensi. Silakan coba lagi nanti atau hubungi dukungan "
+"untuk bantuan."
+
+#: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
+msgid ""
+"License deactivation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Kesalahan server lisensi. Silakan coba lagi nanti atau hubungi dukungan "
+"untuk bantuan."
+
+#: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
 msgstr "Lisensi ini saat ini dinonaktifkan. Silakan hubungi dukungan untuk bantuan."
 
@@ -112,12 +136,56 @@ msgstr ""
 "memperbaruinya."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
+msgid ""
+"This license key is not authorized for this plugin. Please verify your "
+"license key or contact support for help."
+msgstr ""
+"Lisensi ini tidak aktif untuk situs ini. Silakan hubungi dukungan untuk "
+"bantuan."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
+msgid ""
+"This license cannot be used for this plugin. Please contact support for "
+"help."
+msgstr "Lisensi ini tidak dapat diaktifkan. Silakan hubungi dukungan untuk bantuan."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
+msgid ""
+"This license does not match the plugin you are trying to activate. Please "
+"contact support for assistance."
+msgstr ""
+"Lisensi ini tidak aktif untuk situs ini. Silakan hubungi dukungan untuk "
+"bantuan."
+
+#: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
+msgid ""
+"License key does not match our records. Please contact support for "
+"assistance."
+msgstr "Lisensi ini saat ini dinonaktifkan. Silakan hubungi dukungan untuk bantuan."
+
+#: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
 msgstr ""
 "Tidak ada kunci lisensi yang diberikan. Silakan masukkan kunci lisensi yang "
 "valid."
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
+msgid ""
+"Your site URL is required to activate the license. Please enter a valid "
+"site URL to continue."
+msgstr ""
+"URL situs Anda diperlukan untuk mengaktifkan lisensi. Silakan masukkan URL "
+"situs yang valid untuk melanjutkan."
+
+#: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
+msgid ""
+"License activation limit reached. Please contact support to upgrade or "
+"deactivate on another site."
+msgstr ""
+"Lisensi ini telah kedaluwarsa. Silakan hubungi dukungan untuk "
+"memperbaruinya."
+
+#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
 msgid "This license cannot be activated. Please contact support for help."
 msgstr "Lisensi ini tidak dapat diaktifkan. Silakan hubungi dukungan untuk bantuan."
 
@@ -128,24 +196,86 @@ msgstr ""
 "untuk bantuan."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
+#, fuzzy
+msgid ""
+"The license server returned an invalid response. Please try again later or "
+"contact support for help."
+msgstr ""
+"Kesalahan server lisensi. Silakan coba lagi nanti atau hubungi dukungan "
+"untuk bantuan."
+
+#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
 msgid "This license is inactive for this site. Please contact support for help."
 msgstr ""
 "Lisensi ini tidak aktif untuk situs ini. Silakan hubungi dukungan untuk "
 "bantuan."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
+#, fuzzy
+msgid ""
+"Plugin activation failed. Please try again later or contact support for "
+"help."
+msgstr "Instalasi plugin gagal. Silakan hubungi dukungan untuk bantuan."
+
+#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
 msgid "This action is not possible because the plugin is already installed."
 msgstr "Tindakan ini tidak mungkin dilakukan karena plugin sudah terpasang."
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
+#, fuzzy
+msgid ""
+"Plugin deactivation failed. Please try again later or contact support for "
+"help."
+msgstr ""
+"Kesalahan server lisensi. Silakan coba lagi nanti atau hubungi dukungan "
+"untuk bantuan."
+
+#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
 msgid "Plugin family not found. Please contact support for help."
 msgstr "Keluarga plugin tidak ditemukan. Silakan hubungi dukungan untuk bantuan."
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because both free and pro versions are "
+"installed. Please uninstall one version to continue."
+msgstr "Tindakan ini tidak mungkin dilakukan karena plugin sudah terpasang."
+
+#: src/Domain/Plugin/Exception/PluginInstallException.php:29
 msgid "Plugin installation failed. Please contact support for help."
 msgstr "Instalasi plugin gagal. Silakan hubungi dukungan untuk bantuan."
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because the plugin is not activated. Please "
+"activate the plugin and try again."
+msgstr "Tindakan ini tidak mungkin dilakukan karena plugin sudah terpasang."
+
+#: src/Domain/Plugin/Exception/PluginNotFoundException.php:29
+#, fuzzy
+msgid ""
+"Plugin not found in our available plugins list. Please contact support for "
+"help."
+msgstr "Keluarga plugin tidak ditemukan. Silakan hubungi dukungan untuk bantuan."
+
+#: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because the plugin is not installed. Please "
+"install the plugin and try again."
+msgstr "Tindakan ini tidak mungkin dilakukan karena plugin sudah terpasang."
+
+#: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
+#, fuzzy
+msgid ""
+"Unknown license server error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Kesalahan server lisensi. Silakan coba lagi nanti atau hubungi dukungan "
+"untuk bantuan."
+
+#: src/Domain/Plugin/plugin-families.php:26
 msgid "Define tasks that authors must complete before publishing."
 msgstr "Tentukan tugas yang harus diselesaikan penulis sebelum publikasi."
 
@@ -178,12 +308,12 @@ msgid "Approve and schedule new versions to your published posts."
 msgstr "Setujui dan jadwalkan versi baru untuk pos yang telah diterbitkan."
 
 #: src/Domain/Plugin/plugin-families.php:154
-msgid "Create shortlinks for your posts."
-msgstr "Buat tautan pendek untuk pos Anda."
-
-#: src/Domain/Plugin/plugin-families.php:170
 msgid "Organize your posts into issues or series."
 msgstr "Atur pos Anda ke dalam isu atau seri."
+
+#: src/Domain/Plugin/plugin-families.php:170
+msgid "Create shortlinks for your posts."
+msgstr "Buat tautan pendek untuk pos Anda."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -290,6 +420,16 @@ msgid "Cannot read downloaded plugin file"
 msgstr "Tidak dapat membaca file plugin yang diunduh"
 
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:132
+msgid ""
+"Downloaded file is not a valid ZIP archive. The download URL may be "
+"returning an error page."
+msgstr ""
+"File yang diunduh bukan arsip ZIP yang valid. URL unduhan mungkin "
+"mengembalikan halaman kesalahan."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
+#. translators: %s is the error message
+#, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "Gagal mengekstrak file plugin: %s"
 
@@ -531,6 +671,14 @@ msgid "Loading log..."
 msgstr "Memuat log..."
 
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:332
+msgid ""
+"The debug log is empty. Perform some actions (e.g. activate a license) and "
+"refresh to see entries."
+msgstr ""
+"Log debug kosong. Lakukan beberapa tindakan (misalnya, aktifkan lisensi) "
+"dan segarkan untuk melihat entri."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
 msgid "Debug log contents"
 msgstr "Isi log debug"
 
@@ -551,10 +699,28 @@ msgid "Debug Mode"
 msgstr "Mode Debug"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
+msgid ""
+"When enabled, all HTTP requests and responses to remote services (license "
+"activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
+"the Debug Log tab to inspect the captured data."
+msgstr ""
+"Ketika diaktifkan, semua permintaan dan respons HTTP ke layanan remote "
+"(aktivasi lisensi, unduhan plugin, dll.) dicatat ke dalam file log yang "
+"khusus. Gunakan tab Log Debug untuk memeriksa data yang ditangkap."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
 msgid "Enable Debug Mode"
 msgstr "Aktifkan Mode Debug"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
+msgid ""
+"Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
+"data."
+msgstr ""
+"Pencatatan debug aktif. Beralih ke tab \"Log Debug\" untuk melihat data "
+"yang ditangkap."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70, fuzzy
 msgid "ERR"
 msgstr "ERR"
 
@@ -600,18 +766,54 @@ msgid "What you can do with PublishPress Hub"
 msgstr "Apa yang dapat Anda lakukan dengan PublishPress Hub"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
+msgid ""
+"PublishPress Hub has everything you need to install, update, and manage "
+"your PublishPress plugins. We're here to help you build a publishing system "
+"that works perfectly for your team."
+msgstr ""
+"PublishPress Hub memiliki semua yang Anda butuhkan untuk menginstal, "
+"memperbarui, dan mengelola plugin PublishPress Anda. Kami di sini untuk "
+"membantu Anda membangun sistem penerbitan yang bekerja dengan sempurna "
+"untuk tim Anda."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:64
 msgid "Centralized Dashboard"
 msgstr "Dasbor Terpusat"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:67
+#, fuzzy
+msgid ""
+"View all your PublishPress plugins with their licenses, versions, and key "
+"details."
+msgstr ""
+"Jaga semua plugin PublishPress Anda tetap terbaru dengan pembaruan satu "
+"klik."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:76
 msgid "One-Click Installation"
 msgstr "Instalasi Satu Klik"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:79
+msgid ""
+"Install free PublishPress plugins directly from the Hub without visiting "
+"WordPress.org."
+msgstr ""
+"Instal plugin PublishPress gratis langsung dari Hub tanpa mengunjungi "
+"WordPress.org."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:88
 msgid "License Management"
 msgstr "Manajemen Lisensi"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:91
+msgid ""
+"Connect your PublishPress licenses to easily install and activate Pro "
+"versions."
+msgstr ""
+"Hubungkan lisensi PublishPress Anda untuk dengan mudah menginstal dan "
+"mengaktifkan versi Pro."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:100
 msgid "Easy Updates"
 msgstr "Pembaruan Mudah"
 
@@ -626,6 +828,12 @@ msgid "Status Monitoring"
 msgstr "Pemantauan Status"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
+msgid ""
+"Monitor plugin activation status, detect conflicts, and ensure "
+"compatibility."
+msgstr "Pantau status aktivasi plugin, deteksi konflik, dan pastikan kompatibilitas."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:124
 msgid "Get Started"
 msgstr "Mulai"
 
@@ -723,6 +931,15 @@ msgid "Install Plugin"
 msgstr "Pasang Plugin"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
+msgid ""
+"Select how you would like to install this plugin. You can install the Pro "
+"version if you have a license, or the Free version to get started."
+msgstr ""
+"Pilih bagaimana Anda ingin menginstal plugin ini. Anda dapat menginstal "
+"versi Pro jika Anda memiliki lisensi, atau versi Gratis untuk memulai."
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
 msgid "Free Details"
 msgstr "Rincian Gratis"
 
@@ -750,6 +967,15 @@ msgstr "Masukkan kunci lisensi Anda"
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:55
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
+msgid ""
+"Enter your license key to activate the Pro version of this plugin. You can "
+"find your license key in your PublishPress account dashboard."
+msgstr ""
+"Masukkan kunci lisensi Anda untuk mengaktifkan versi Pro dari plugin ini. "
+"Anda dapat menemukan kunci lisensi Anda di dasbor akun PublishPress Anda."
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
 msgid "Go to my profile to get the license key"
 msgstr "Pergi ke profil saya untuk mendapatkan kunci lisensi"
 
@@ -820,48 +1046,48 @@ msgstr "Perbarui Plugin"
 msgid "Check for Updates"
 msgstr "Periksa Pembaruan"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:90
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
 #, js-format
 msgid "Install %s"
 msgstr "Instal %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:102
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
 #, js-format
 msgid "Install %s Pro"
 msgstr "Instal %s Pro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:110
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:129
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
 #, js-format
 msgid "Upgrade %s to Pro"
 msgstr "Tingkatkan %s ke Pro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:118
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
 #, js-format
 msgid "Uninstall %s"
 msgstr "Hapus Instalasi %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:119
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
 #, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "Apakah Anda yakin ingin menghapus instalasi %s?"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:140
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
 #, js-format
 msgid "Resolve Conflict for %s"
 msgstr "Selesaikan Konflik untuk %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:153
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
 #, js-format
 msgid "Manage %s License"
 msgstr "Kelola Lisensi %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:164
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
 #, js-format
 msgid "Activate %s License"
 msgstr "Aktifkan Lisensi %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:172
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
 #, js-format
 msgid "More Info: %s"
 msgstr "Info Lebih Lanjut: %s"
@@ -889,6 +1115,16 @@ msgid "Keep the Free version"
 msgstr "Pertahankan versi Gratis"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
+msgid ""
+"Unlock the full potential of this plugin with the Pro version. Enjoy "
+"advanced features, priority support, and exclusive benefits designed to "
+"help you get the most out of your workflow."
+msgstr ""
+"Buka potensi penuh dari plugin ini dengan versi Pro. Nikmati fitur canggih, "
+"dukungan prioritas, dan manfaat eksklusif yang dirancang untuk membantu "
+"Anda memaksimalkan alur kerja Anda."
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "Temukan semua fitur Pro"
 
@@ -908,7 +1144,12 @@ msgstr "Tingkatkan ke Pro dan tingkatkan produktivitas Anda"
 msgid "New version available"
 msgstr "Versi baru tersedia"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:184
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#, js-format
+msgid "Version %s"
+msgstr "Versi %s"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
 #, js-format
 msgid "Update available: %s → %s"
 msgstr "Pembaruan tersedia: %s → %s"
@@ -954,11 +1195,11 @@ msgid "Conflicting Installations"
 msgstr "Instalasi Bertentangan"
 
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:168
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
 msgid "Update Available"
 msgstr "Pembaruan Tersedia"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:179
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
 msgid "Expires"
 msgstr "Kedaluwarsa"
 

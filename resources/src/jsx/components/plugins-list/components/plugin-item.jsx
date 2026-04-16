@@ -141,6 +141,22 @@ const PluginItemComponent = ({
         return { currentVersion, availableVersion };
     }, [pluginFamily]);
 
+    const installedVersionLabel = useMemo(() => {
+        if (!status.isInstalled || status.hasConflictingInstallations) {
+            return null;
+        }
+
+        const installedPlugin = pluginFamily.freePlugin.isInstalled
+            ? pluginFamily.freePlugin
+            : (pluginFamily.proPlugin.isInstalled ? pluginFamily.proPlugin : null);
+
+        if (!installedPlugin || !installedPlugin.version) {
+            return null;
+        }
+
+        return sprintf(__('v%s', 'publishpress-hub'), installedPlugin.version);
+    }, [pluginFamily, status.isInstalled, status.hasConflictingInstallations]);
+
     return (
         <div
             className={responsiveClasses}
@@ -199,9 +215,14 @@ const PluginItemComponent = ({
 
                             return (
                                 <Fragment key={buttonProps.key}>
-                                    <Button {...buttonProps} />
-                                    {index < actionButtonsData.length - 1 && (
-                                        <span>|</span>
+                                    {buttonProps.variant === 'label' && (
+                                        <>
+                                            <span>&bull;</span>
+                                            <span className={buttonProps.className}>{buttonProps.text}</span>
+                                        </>
+                                    )}
+                                    {buttonProps.variant !== 'label' && (
+                                        <Button {...buttonProps} />
                                     )}
                                 </Fragment>
                             )

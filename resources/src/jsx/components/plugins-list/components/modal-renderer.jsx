@@ -43,10 +43,6 @@ const ModalRendererComponent = ({
         handleCheckForUpdates,
     } = pluginActions;
 
-    if (!currentPluginFamily || activeModal === MODAL_TYPES.NONE) {
-        return null;
-    }
-
     const {
         cleanupError,
     } = useDispatch(store);
@@ -67,6 +63,8 @@ const ModalRendererComponent = ({
     }, [currentPluginState.error]);
 
     const modalProps = useMemo(() => {
+        const hasActiveModal = currentPluginFamily && activeModal !== MODAL_TYPES.NONE;
+
         // For plugin info modal, include isLoading state for "Check for Updates" button
         const buttonInProgress = isModalActive(MODAL_TYPES.PLUGIN_INFO)
             ? (currentPluginState.inProgress || isLoading)
@@ -75,12 +73,18 @@ const ModalRendererComponent = ({
         return {
             onClose: () => {
                 closeModal();
-                cleanupError(currentPluginFamily);
+                if (currentPluginFamily) {
+                    cleanupError(currentPluginFamily);
+                }
             },
-            error: processedError,
+            error: hasActiveModal ? processedError : null,
             buttonInProgress,
         }
-    }, [currentPluginFamily, closeModal, cleanupError, currentPluginState.inProgress, processedError, isLoading, isModalActive, MODAL_TYPES.PLUGIN_INFO]);
+    }, [currentPluginFamily, activeModal, closeModal, cleanupError, currentPluginState.inProgress, processedError, isLoading, isModalActive, MODAL_TYPES.NONE, MODAL_TYPES.PLUGIN_INFO]);
+
+    if (!currentPluginFamily || activeModal === MODAL_TYPES.NONE) {
+        return null;
+    }
 
     return (
         <>

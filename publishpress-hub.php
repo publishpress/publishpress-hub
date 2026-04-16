@@ -3,7 +3,7 @@
 /**
  * Plugin Name: PublishPress Hub
  * Description: Centralized management hub for all PublishPress plugins - install, update, and manage licenses from one dashboard.
- * Version: 1.0.4-beta.3
+ * Version: 1.0.4
  * Author: PublishPress
  * Author URI: https://publishpress.com
  * License: GPL2

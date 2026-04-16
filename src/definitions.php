@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub;
 
 use PublishPress\Hub\Application\Service\ActivationRedirectService;
+use PublishPress\Hub\Application\Service\AdminNoticeVisibilityService;
 use PublishPress\Hub\Application\Service\EddPluginUpdateService;
 use PublishPress\Hub\Application\Service\HubBootstrapService;
 use PublishPress\Hub\Application\Service\RewriteRulesService;
@@ -222,6 +223,9 @@ return [
     AbstractDependencies::HUB_ACCESS_SERVICE =>
         fn(ContainerInterface $container) => new HubAccessService(),
 
+    AbstractDependencies::ADMIN_NOTICE_VISIBILITY_SERVICE =>
+        fn(ContainerInterface $container) => new AdminNoticeVisibilityService(),
+
     AbstractDependencies::VERSION_SERVICE =>
         fn(ContainerInterface $container) => new VersionService(
             $container->get(AbstractDependencies::OPTIONS_ADAPTER),
@@ -392,6 +396,7 @@ return [
                 $container->get(AbstractDependencies::HUB_ACCESS_SERVICE),
                 $container->get(AbstractDependencies::I18N_SERVICE),
                 $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
+                $container->get(AbstractDependencies::ADMIN_NOTICE_VISIBILITY_SERVICE),
             ];
 
             if (!defined('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE') || !constant('PUBLISHPRESS_HUB_DISABLE_WELCOME_PAGE')) {

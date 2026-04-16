@@ -1,0 +1,1334 @@
+# Copyright (C) 2026 PublishPress
+# This file is distributed under the GPL2.
+msgid ""
+msgstr ""
+"Project-Id-Version: PublishPress Hub 1.0.4-beta.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"POT-Creation-Date: 2026-04-15T21:04:03+00:00\n"
+"PO-Revision-Date: 2026-04-15 15:19+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: hu-HU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: publishpress-hub\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Plugin Name of the plugin
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
+msgid "PublishPress Hub"
+msgstr "PublishPress Hub"
+
+#. Description of the plugin
+#: publishpress-hub.php:5
+msgid ""
+"Centralized management hub for all PublishPress plugins - install, update, "
+"and manage licenses from one dashboard."
+msgstr ""
+"Központosított kezelőfelület az összes PublishPress plugin számára - "
+"telepítés, frissítés és licenc kezelés egy irányítópulton."
+
+#. Author of the plugin
+#: publishpress-hub.php:7
+msgid "PublishPress"
+msgstr "PublishPress"
+
+#. Author URI of the plugin
+#: publishpress-hub.php:8
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
+
+#: src/Admin/Page/ComponentsShowcaseController.php:118
+msgid "Please wait while we load the components showcase..."
+msgstr "Kérjük, várjon, amíg betöltjük az összetevők bemutatóját..."
+
+#: src/Admin/Page/PluginsDashboardController.php:133
+msgid "Please wait while we load the plugins dashboard..."
+msgstr "Kérjük, várjon, amíg betöltjük a bővítmények irányítópultját..."
+
+#: src/Admin/Page/SettingsPageController.php:104
+#: src/Admin/Page/SettingsPageController.php:105
+#: resources/src/jsx/components/pages/settings-page.jsx:80
+msgid "Settings"
+msgstr "Beállítások"
+
+#: src/Admin/Page/SettingsPageController.php:126
+msgid "Please wait while we load the settings page..."
+msgstr "Kérjük, várjon, amíg betöltjük a beállítások oldalát..."
+
+#: src/Admin/Page/WelcomePageController.php:143
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Nincs elegendő jogosultsága ennek az oldalnak a megnyitásához."
+
+#: src/Admin/Page/WelcomePageController.php:180
+#: src/Admin/Page/WelcomePageController.php:181
+msgid "Welcome"
+msgstr "Üdvözöljük"
+
+#: src/Admin/Page/WelcomePageController.php:203
+msgid "Please wait while we load the welcome page..."
+msgstr "Kérjük, várjon, amíg betöltjük a üdvözlő oldalt..."
+
+#. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
+#, php-format
+msgid "Warning: The license for %1$s has expired. %2$s"
+msgstr "Figyelmeztetés: A(z) %1$s licencje lejárt. %2$s"
+
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:123
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:137
+msgid "Manage licenses"
+msgstr "Licenc kezelése"
+
+#. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
+#, php-format
+msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
+msgstr "Figyelmeztetés: %1$d bővítmény(ek) licence lejárt: %2$s. %3$s"
+
+#: src/Application/Traits/BootableTrait.php:75
+msgid "Object must be loaded before initializing."
+msgstr "Az objektumot be kell tölteni az inicializálás előtt."
+
+#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:110
+msgid "No license key found"
+msgstr "Nincs licencekód található"
+
+#. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
+#, php-format
+msgid "Free plugin not set for plugin family: %s"
+msgstr "Ingyenes bővítmény nincs beállítva a bővítménycsaládhoz: %s"
+
+#. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
+#, php-format
+msgid "Pro plugin not set for plugin family: %s"
+msgstr "Pro bővítmény nincs beállítva a bővítménycsaládhoz: %s"
+
+#: src/Domain/Plugin/Exception/LicenseActivationException.php:28
+msgid ""
+"License activation error. Please try again later or contact support for help."
+msgstr ""
+"Licenc aktiválási hiba. Kérjük, próbálkozzon később, vagy lépjen kapcsolatba "
+"a támogatással a segítségért."
+
+#: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
+msgid ""
+"License deactivation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Licenc deaktiválási hiba. Kérjük, próbálkozzon később, vagy lépjen "
+"kapcsolatba a támogatással a segítségért."
+
+#: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
+msgid "This license is currently disabled. Please contact support for help."
+msgstr ""
+"Ez a licenc jelenleg le van tiltva. Kérjük, lépjen kapcsolatba a "
+"támogatással segítségért."
+
+#: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
+msgid "This license has expired. Please contact support to renew it."
+msgstr ""
+"Ez a licenc lejárt. Kérjük, lépjen kapcsolatba a támogatással a "
+"megújításához."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
+msgid ""
+"This license key is not authorized for this plugin. Please verify your "
+"license key or contact support for help."
+msgstr ""
+"Ez a licenckulcs nem engedélyezett ehhez a pluginhoz. Kérjük, ellenőrizze a "
+"licenckulcsát, vagy lépjen kapcsolatba a támogatással a segítségért."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
+msgid ""
+"This license cannot be used for this plugin. Please contact support for help."
+msgstr ""
+"Ez a licenc nem használható ehhez a pluginhoz. Kérjük, lépjen kapcsolatba a "
+"támogatással a segítségért."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
+msgid ""
+"This license does not match the plugin you are trying to activate. Please "
+"contact support for assistance."
+msgstr ""
+"Ez a licenc nem felel meg annak a pluginnek, amelyet aktiválni próbál. "
+"Kérjük, lépjen kapcsolatba a támogatással a segítségért."
+
+#: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
+msgid ""
+"License key does not match our records. Please contact support for "
+"assistance."
+msgstr ""
+"A licenckulcs nem egyezik a nyilvántartásainkkal. Kérjük, lépjen kapcsolatba "
+"a támogatással a segítségért."
+
+#: src/Domain/Plugin/Exception/LicenseMissingException.php:28
+msgid "No license key provided. Please enter a valid license key."
+msgstr ""
+"Nincs megadva licenc kulcs. Kérjük, adjon meg egy érvényes licenc kulcsot."
+
+#: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
+msgid ""
+"Your site URL is required to activate the license. Please enter a valid site "
+"URL to continue."
+msgstr ""
+"A webhely URL-je szükséges a licenc aktiválásához. Kérjük, adjon meg egy "
+"érvényes webhely URL-t a folytatáshoz."
+
+#: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
+msgid ""
+"License activation limit reached. Please contact support to upgrade or "
+"deactivate on another site."
+msgstr ""
+"A licenc aktiválási limit elérve. Kérjük, lépjen kapcsolatba a támogatással "
+"a frissítéshez vagy egy másik webhelyen való deaktiváláshoz."
+
+#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
+msgid "This license cannot be activated. Please contact support for help."
+msgstr ""
+"Ez a licenc nem aktiválható. Kérjük, lépjen kapcsolatba a támogatással "
+"segítségért."
+
+#: src/Domain/Plugin/Exception/LicenseServerException.php:28
+msgid ""
+"License server error. Please try again later or contact support for help."
+msgstr ""
+"Licencszerver hiba. Kérjük, próbálja meg később, vagy lépjen kapcsolatba a "
+"támogatással segítségért."
+
+#: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
+msgid ""
+"The license server returned an invalid response. Please try again later or "
+"contact support for help."
+msgstr ""
+"A licencszerver érvénytelen választ adott. Kérjük, próbálkozzon később, vagy "
+"lépjen kapcsolatba a támogatással a segítségért."
+
+#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
+msgid ""
+"This license is inactive for this site. Please contact support for help."
+msgstr ""
+"Ez a licenc inaktív ezen a webhelyen. Kérjük, lépjen kapcsolatba a "
+"támogatással segítségért."
+
+#: src/Domain/Plugin/Exception/PluginActivationException.php:29
+msgid ""
+"Plugin activation failed. Please try again later or contact support for help."
+msgstr ""
+"A plugin aktiválása nem sikerült. Kérjük, próbálkozzon később, vagy lépjen "
+"kapcsolatba a támogatással a segítségért."
+
+#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
+msgid "This action is not possible because the plugin is already installed."
+msgstr "Ez a művelet nem lehetséges, mert a bővítmény már telepítve van."
+
+#: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
+msgid ""
+"Plugin deactivation failed. Please try again later or contact support for "
+"help."
+msgstr ""
+"A plugin deaktiválása nem sikerült. Kérjük, próbálkozzon később, vagy lépjen "
+"kapcsolatba a támogatással a segítségért."
+
+#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
+msgid "Plugin family not found. Please contact support for help."
+msgstr ""
+"Bővítménycsalád nem található. Kérjük, lépjen kapcsolatba a támogatással "
+"segítségért."
+
+#: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
+msgid ""
+"This action is not possible because both free and pro versions are "
+"installed. Please uninstall one version to continue."
+msgstr ""
+"Ez a művelet nem lehetséges, mert mind ingyenes, mind pro verzió telepítve "
+"van. Kérjük, távolítson el egy verziót a folytatáshoz."
+
+#: src/Domain/Plugin/Exception/PluginInstallException.php:29
+msgid "Plugin installation failed. Please contact support for help."
+msgstr ""
+"A bővítmény telepítése nem sikerült. Kérjük, lépjen kapcsolatba a "
+"támogatással segítségért."
+
+#: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
+msgid ""
+"This action is not possible because the plugin is not activated. Please "
+"activate the plugin and try again."
+msgstr ""
+"Ez a művelet nem lehetséges, mert a plugin nincs aktiválva. Kérjük, "
+"aktiválja a plugint, és próbálkozzon újra."
+
+#: src/Domain/Plugin/Exception/PluginNotFoundException.php:29
+msgid ""
+"Plugin not found in our available plugins list. Please contact support for "
+"help."
+msgstr ""
+"A plugin nem található a rendelkezésre álló pluginok listájában. Kérjük, "
+"lépjen kapcsolatba a támogatással a segítségért."
+
+#: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
+msgid ""
+"This action is not possible because the plugin is not installed. Please "
+"install the plugin and try again."
+msgstr ""
+"Ez a művelet nem lehetséges, mert a plugin nincs telepítve. Kérjük, "
+"telepítse a plugint, és próbálkozzon újra."
+
+#: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
+msgid ""
+"Unknown license server error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Ismeretlen licencszerver hiba. Kérjük, próbálkozzon később, vagy lépjen "
+"kapcsolatba a támogatással a segítségért."
+
+#: src/Domain/Plugin/plugin-families.php:26
+msgid "Define tasks that authors must complete before publishing."
+msgstr ""
+"Határozza meg azokat a feladatokat, amelyeket a szerzőknek el kell végezniük "
+"a közzététel előtt."
+
+#: src/Domain/Plugin/plugin-families.php:42
+msgid "Control who can edit and view your content."
+msgstr "Szabályozza, ki szerkesztheti és láthatja a tartalmát."
+
+#: src/Domain/Plugin/plugin-families.php:58
+msgid "Create, manage and display authors for your content."
+msgstr "Hozzon létre, kezeljen és jelenítsen meg szerzőket a tartalmához."
+
+#: src/Domain/Plugin/plugin-families.php:74
+msgid "All the tools you need to improve the block editor."
+msgstr "Minden eszköz, amire szüksége van a blokk szerkesztő fejlesztéséhez."
+
+#: src/Domain/Plugin/plugin-families.php:90
+msgid "Control your admin area and user roles."
+msgstr "Szabályozza az admin területét és a felhasználói szerepeket."
+
+#: src/Domain/Plugin/plugin-families.php:106
+msgid "Schedule changes to your posts."
+msgstr "Ütemezze a változtatásokat a bejegyzéseiben."
+
+#: src/Domain/Plugin/plugin-families.php:122
+msgid "Organize, schedule, and plan your publishing."
+msgstr "Szervezze, ütemezze és tervezze meg a közzételét."
+
+#: src/Domain/Plugin/plugin-families.php:138
+msgid "Approve and schedule new versions to your published posts."
+msgstr "Jóváhagyja és ütemezi az új verziókat a közzétett bejegyzéseihez."
+
+#: src/Domain/Plugin/plugin-families.php:154
+msgid "Organize your posts into issues or series."
+msgstr "Szervezze a bejegyzéseit számokba vagy sorozatokba."
+
+#: src/Domain/Plugin/plugin-families.php:170
+msgid "Create shortlinks for your posts."
+msgstr "Hozzon létre rövidlinkeket a bejegyzéseihez."
+
+#: src/Domain/Plugin/plugin-families.php:186
+msgid "Create custom statuses and publishing workflows."
+msgstr "Hozzon létre egyedi státuszokat és közzétételi munkafolyamatokat."
+
+#. translators: %s is the dependency ID.
+#: src/Infrastructure/Container/DependencyContainer.php:102
+#, php-format
+msgid "Dependency \"%s\" not found in container."
+msgstr "A „%s” függőség nem található a tárolóban."
+
+#. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
+#, php-format
+msgid "Error validating license: %s"
+msgstr "Licenc érvényesítési hiba: %s"
+
+#. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
+#, php-format
+msgid "Error getting license info: %s"
+msgstr "Licencinformációk lekérdezésének hibája: %s"
+
+#: src/Infrastructure/RestApi/RestApiService.php:287
+msgid "Too many requests. Please try again later."
+msgstr "Túl sok kérés. Kérjük, próbálja meg később."
+
+#: src/Infrastructure/RestApi/RestApiService.php:358
+msgid "An error occurred while processing your request."
+msgstr "Hiba történt a kérés feldolgozása során."
+
+#. translators: %s is the template path
+#: src/Infrastructure/View/ViewService.php:48
+#, php-format
+msgid "Template not found: %s"
+msgstr "Sablon nem található: %s"
+
+#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:55
+msgid "Path cannot be empty"
+msgstr "Az útvonal nem lehet üres"
+
+#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:64
+msgid "File extension cannot be empty"
+msgstr "A fájlkiterjesztés nem lehet üres"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:183
+msgid "Invalid file path: null byte detected"
+msgstr "Érvénytelen fájlútvonal: null byte észlelve"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:192
+msgid "Invalid file path: directory traversal detected"
+msgstr "Érvénytelen fájlútvonal: könyvtárbejárás észlelve"
+
+#. translators: %s is the directory path
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
+#, php-format
+msgid "Invalid file path: parent directory does not exist: %s"
+msgstr "Érvénytelen fájlútvonal: a szülő könyvtár nem létezik: %s"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:220
+msgid "Invalid file path: unable to resolve path"
+msgstr "Érvénytelen fájlútvonal: nem sikerült meghatározni az útvonalat"
+
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:239
+msgid "Invalid file path: operation not allowed outside permitted directories"
+msgstr ""
+"Érvénytelen fájlútvonal: művelet nem engedélyezett a megengedett "
+"könyvtárakon kívül"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:52
+msgid "Invalid download URL provided"
+msgstr "Érvénytelen letöltési URL lett megadva"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:60
+msgid "Download URL must use HTTP or HTTPS protocol"
+msgstr "A letöltési URL-nek HTTP vagy HTTPS protokollt kell használnia"
+
+#. translators: %s is the hostname
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
+#, php-format
+msgid "Download URL is not from an allowed domain: %s"
+msgstr "A letöltési URL nem engedélyezett domainből származik: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:80
+msgid "Download URL failed WordPress validation"
+msgstr "A letöltési URL nem teljesítette a WordPress érvényesítést"
+
+#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
+#, php-format
+msgid "Failed to download plugin: %s"
+msgstr "A plugint nem sikerült letölteni: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:105
+msgid "Downloaded plugin file does not exist"
+msgstr "A letöltött plugin fájl nem létezik"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:113
+msgid "Downloaded plugin file is empty"
+msgstr "A letöltött plugin fájl üres"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:122
+msgid "Cannot read downloaded plugin file"
+msgstr "Nem lehet olvasni a letöltött plugin fájlt"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:132
+msgid ""
+"Downloaded file is not a valid ZIP archive. The download URL may be "
+"returning an error page."
+msgstr ""
+"A letöltött fájl nem érvényes ZIP archívum. A letöltési URL hibaoldalt adhat "
+"vissza."
+
+#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
+#, php-format
+msgid "Failed to unzip plugin file: %s"
+msgstr "A plugin fájlt nem sikerült kibővíteni: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:156
+msgid "Failed to unzip plugin file"
+msgstr "A plugin fájlt nem sikerült kibővíteni"
+
+#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
+#, php-format
+msgid "Failed to activate plugin: %s"
+msgstr "A plugint nem sikerült aktiválni: %s"
+
+#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
+#, php-format
+msgid "Failed to delete plugin: %s"
+msgstr "A plugint nem sikerült törölni: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:292
+msgid "No update available for this plugin"
+msgstr "Nincs elérhető frissítés ehhez a bővítményhez"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:300
+msgid "Invalid update information for this plugin"
+msgstr "Érvénytelen frissítési információk ehhez a bővítményhez"
+
+#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
+#, php-format
+msgid "Failed to update plugin: %s"
+msgstr "A bővítmény frissítése nem sikerült: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:341
+msgid "Plugin update failed"
+msgstr "A bővítmény frissítése nem sikerült"
+
+#. translators: %s is the error message
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
+#, php-format
+msgid "Failed to get plugin information: %s"
+msgstr "A bővítmény információinak lekérése nem sikerült: %s"
+
+#. translators: %s is the plugin name, %s is the rating
+#: resources/src/jsx/components/admin-page/footer.jsx:26
+msgid "If you like %s please leave us a %s rating. Thank you!"
+msgstr "Ha tetszik a %s, kérjük, hagyjon egy %s értékelést. Köszönjük!"
+
+#. translators: %s is the plugin name
+#: resources/src/jsx/components/admin-page/footer.jsx:43
+msgid "About %s"
+msgstr "A %s bővítményről"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:45
+msgid "About"
+msgstr "Névjegy"
+
+#. translators: %s is the plugin name
+#: resources/src/jsx/components/admin-page/footer.jsx:54
+msgid "Documentation for %s"
+msgstr "Dokumentáció a %s bővítményhez"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:56
+msgid "Documentation"
+msgstr "Dokumentáció"
+
+#. translators: %s is the plugin name
+#: resources/src/jsx/components/admin-page/footer.jsx:65
+msgid "Contact the %s team"
+msgstr "Lépjen kapcsolatba a %s csapattal"
+
+#: resources/src/jsx/components/admin-page/footer.jsx:67
+msgid "Contact"
+msgstr "Kapcsolat"
+
+#: resources/src/jsx/components/admin-page/header.jsx:50
+msgid "Get Support"
+msgstr "Támogatás beszerzése"
+
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
+msgid "Select an option"
+msgstr "Válasszon egy lehetőséget"
+
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
+msgid "Options"
+msgstr "Lehetőségek"
+
+#: resources/src/jsx/components/pages/components-showcase.jsx:26
+msgid "Components Showcase"
+msgstr "Komponens bemutató"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
+msgid "N/A"
+msgstr "N/A"
+
+#. translators: %1$s is the plugin name, %2$s is the expiration date
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
+msgid "The license for %1$s expired on %2$s"
+msgstr "A %1$s bővítmény licencének lejárata: %2$s"
+
+#. translators: %1$s is the list of plugin names, %2$s is the expiration date
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
+msgid "The licenses for %1$s expired on %2$s"
+msgstr "A %1$s bővítmények licenceinek lejárata: %2$s"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:157
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:213
+msgid "Renew now"
+msgstr "Megújítás most"
+
+#. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
+msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
+msgstr "A(z) %1$s licencje %2$s dátumon lejár (%3$d nap maradt)"
+
+#. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
+msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
+msgstr "A(z) %1$s licencjei %2$s dátumon lejárnak (%3$d nap maradt)"
+
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:210
+msgid "Warning:"
+msgstr "Figyelmeztetés:"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:46
+msgid "All"
+msgstr "Összes"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:51
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:39
+msgid "Unlicensed"
+msgstr "Licenc nélküli"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:56
+msgid "Active"
+msgstr "Aktív"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:61
+msgid "Inactive"
+msgstr "Inaktív"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:66
+msgid "Not installed"
+msgstr "Nincs telepítve"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:71
+msgid "Updates available"
+msgstr "Elérhető frissítések"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:94
+#: resources/src/jsx/components/pages/welcome-page.jsx:128
+msgid "Plugins Dashboard"
+msgstr "Bővítmények műszerfal"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
+msgid "Hold ALT and click to force refresh the update cache"
+msgstr ""
+"Tartsa lenyomva az ALT gombot, és kattintson a frissítési gyorsítótár "
+"kényszerített frissítéséhez"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
+msgid "Force Refresh"
+msgstr "Kényszerített frissítés"
+
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:300
+msgid "Refresh"
+msgstr "Frissítés"
+
+#: resources/src/jsx/components/pages/settings-page.jsx:31
+msgid "Diagnostics"
+msgstr "Diagnosztika"
+
+#: resources/src/jsx/components/pages/settings-page.jsx:39
+msgid "Debug Log"
+msgstr "Debug napló"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:108
+msgid "Failed to load the debug log. Please try again."
+msgstr "A debug napló betöltése nem sikerült. Kérjük, próbálkozzon újra."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:182
+msgid "Debug log cleared successfully."
+msgstr "A debug napló sikeresen törölve."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
+msgid "Failed to clear the debug log. Please try again."
+msgstr "A debug napló törlése nem sikerült. Kérjük, próbálkozzon újra."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222
+msgid "Log copied to clipboard."
+msgstr "A napló a vágólapra másolva."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
+msgid "Failed to copy log to clipboard."
+msgstr "A napló másolása a vágólapra nem sikerült."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:253
+msgid "Requests"
+msgstr "Kérések"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:260
+msgid "Full Log"
+msgstr "Teljes napló"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:271
+msgid "Auto-refresh is on — click to stop"
+msgstr "Automatikus frissítés be van kapcsolva — kattintson a leállításhoz"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:272
+msgid "Enable auto-refresh"
+msgstr "Automatikus frissítés engedélyezése"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:277
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
+msgid "Auto-refresh"
+msgstr "Automatikus frissítés"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:286
+msgid "Auto-refresh interval"
+msgstr "Automatikus frissítési időköz"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:308
+msgid "Copy to Clipboard"
+msgstr "Másolás a vágólapra"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:318
+msgid "Clear Log"
+msgstr "Napló törlése"
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:326
+msgid "Loading log..."
+msgstr "Napló betöltése..."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:332
+msgid ""
+"The debug log is empty. Perform some actions (e.g. activate a license) and "
+"refresh to see entries."
+msgstr ""
+"A hibakeresési napló üres. Végezzen el néhány műveletet (pl. licenc "
+"aktiválása), és frissítse az adatokat a bejegyzések megtekintéséhez."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
+msgid "Debug log contents"
+msgstr "Hibakereső napló tartalma"
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
+msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
+msgstr "Hibakereső mód engedélyezve. A \"Hibakereső napló\" fül most elérhető."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
+msgid "Debug mode disabled."
+msgstr "Hibakereső mód letiltva."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:50
+msgid "Failed to save the setting. Please try again."
+msgstr "A beállítás mentése sikertelen. Kérjük, próbálja újra."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
+msgid "Debug Mode"
+msgstr "Hibakereső Mód"
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
+msgid ""
+"When enabled, all HTTP requests and responses to remote services (license "
+"activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
+"the Debug Log tab to inspect the captured data."
+msgstr ""
+"Ha engedélyezve van, az összes HTTP kérés és válasz a távoli "
+"szolgáltatásokhoz (licenc aktiválás, plugin letöltések stb.) egy dedikált "
+"naplófájlba kerül rögzítésre. Használja a Hibakeresési napló fület a "
+"rögzített adatok ellenőrzéséhez."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
+msgid "Enable Debug Mode"
+msgstr "Hibakereső mód engedélyezése"
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
+msgid ""
+"Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
+"data."
+msgstr ""
+"A hibakeresési naplózás aktív. Váltson a \"Hibakeresési napló\" fülre a "
+"rögzített adatok megtekintéséhez."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
+msgid "ERR"
+msgstr "HIBÁ"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:106
+msgid "Request"
+msgstr "Kérés"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:113
+msgid "Response"
+msgstr "Válasz"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:119
+msgid "No response recorded for this request."
+msgstr "A kéréshez nem rögzítettek választ."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:144
+msgid "No requests found in the log."
+msgstr "Nincsenek kérések a naplóban."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:153
+msgid "1 request recorded"
+msgstr "1 kérés rögzítve"
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
+msgid "%d requests recorded"
+msgstr "%d kérés rögzítve"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:37
+msgid "Welcome to PublishPress Hub!"
+msgstr "Üdvözöljük a PublishPress Hubban!"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:40
+msgid "Get started with PublishPress Hub in a few simple steps."
+msgstr "Kezdje el a PublishPress Hub használatát néhány egyszerű lépésben."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:47
+msgid "Welcome to PublishPress Hub"
+msgstr "Üdvözöljük a PublishPress Hubban"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:52
+msgid "What you can do with PublishPress Hub"
+msgstr "Mit tehet a PublishPress Hubbal"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:55
+msgid ""
+"PublishPress Hub has everything you need to install, update, and manage your "
+"PublishPress plugins. We're here to help you build a publishing system that "
+"works perfectly for your team."
+msgstr ""
+"A PublishPress Hub mindent tartalmaz, amire szüksége van a PublishPress "
+"bővítmények telepítéséhez, frissítéséhez és kezeléséhez. Itt vagyunk, hogy "
+"segítsünk egy olyan kiadási rendszer felépítésében, amely tökéletesen "
+"működik a csapata számára."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:64
+msgid "Centralized Dashboard"
+msgstr "Központosított irányítópult"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:67
+msgid ""
+"View all your PublishPress plugins with their licenses, versions, and key "
+"details."
+msgstr ""
+"Tekintse meg az összes PublishPress bővítményét a licenceikkel, verzióikkal "
+"és kulcsfontosságú részleteikkel együtt."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:76
+msgid "One-Click Installation"
+msgstr "Egylépéses telepítés"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:79
+msgid ""
+"Install free PublishPress plugins directly from the Hub without visiting "
+"WordPress.org."
+msgstr ""
+"Telepítse ingyenes PublishPress bővítményeit közvetlenül a Hubból anélkül, "
+"hogy ellátogatna a WordPress.org-ra."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:88
+msgid "License Management"
+msgstr "Licenc kezelés"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:91
+msgid ""
+"Connect your PublishPress licenses to easily install and activate Pro "
+"versions."
+msgstr ""
+"Csatlakoztassa a PublishPress licenceit a Pro verziók egyszerű telepítéséhez "
+"és aktiválásához."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:100
+msgid "Easy Updates"
+msgstr "Könnyű frissítések"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:103
+msgid "Keep all your PublishPress plugins up to date with one-click updates."
+msgstr ""
+"Tartsa naprakészen az összes PublishPress bővítményét egylépéses "
+"frissítésekkel."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:112
+msgid "Status Monitoring"
+msgstr "Állapotfigyelés"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:115
+msgid ""
+"Monitor plugin activation status, detect conflicts, and ensure compatibility."
+msgstr ""
+"Kövesse nyomon a bővítmények aktiválási állapotát, észlelje az ütközéseket, "
+"és biztosítsa a kompatibilitást."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:124
+msgid "Get Started"
+msgstr "Kezdjük"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:127
+msgid ""
+"Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgstr ""
+"Kész felfedezni? Látogass el a %s oldalra, hogy megtekinthesd az összes "
+"elérhető PublishPress bővítményt."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:142
+msgid "View Plugins Dashboard"
+msgstr "Bővítmények irányítópult megtekintése"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:148
+msgid "Already know what you're doing? Great! You can "
+msgstr "Már tudod, mit csinálsz? Szuper! Akkor "
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:150
+msgid "dismiss this page"
+msgstr "elutasíthatod ezt az oldalt"
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
+msgid "."
+msgstr "."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
+msgid "Install"
+msgstr "Telepítés"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:22
+msgid "Installing..."
+msgstr "Telepítés folyamatban..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28
+msgid "Upgrade to Pro"
+msgstr "Frissítés Pro-ra"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:28
+msgid "Upgrading to Pro..."
+msgstr "Frissítés Pro-ra folyamatban..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
+msgid "Manage License"
+msgstr "Licenc kezelése"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:34
+msgid "Managing License..."
+msgstr "Licenc kezelése folyamatban..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
+msgid "Activate License"
+msgstr "Licenc aktiválása"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:40
+msgid "Activating License..."
+msgstr "Licenc aktiválása folyamatban..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
+msgid "Resolve Conflict"
+msgstr "Ütközés megoldása"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
+msgid "Resolving Conflict..."
+msgstr "Ütközés megoldása folyamatban..."
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
+msgid "Update"
+msgstr "Frissítés"
+
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
+msgid "Updating..."
+msgstr "Frissítés folyamatban..."
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:31
+msgid "Confirmation"
+msgstr "Megerősítés"
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:36
+msgid "Are you sure you want to continue?"
+msgstr "Biztosan folytatni szeretnéd?"
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:49
+msgid "Continue"
+msgstr "Folyamatban"
+
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:52
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:98
+msgid "Cancel"
+msgstr "Mégse"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29
+msgid "Install Plugin"
+msgstr "Plugin telepítése"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
+msgid ""
+"Select how you would like to install this plugin. You can install the Pro "
+"version if you have a license, or the Free version to get started."
+msgstr ""
+"Válassza ki, hogyan szeretné telepíteni ezt a bővítményt. Telepítheti a Pro "
+"verziót, ha rendelkezik licencekkel, vagy a Free verziót, hogy elkezdhesse."
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+msgid "Free Details"
+msgstr "Ingyenes részletek"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+msgid "Pro Details"
+msgstr "Pro részletek"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
+msgid "Changelogs"
+msgstr "Változási naplók"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44
+msgid "I have a license, install the Pro version"
+msgstr "Van licencem, telepítsem a Pro verziót"
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47
+msgid "I don't have a license, install the Free version"
+msgstr "Nincs licencem, telepítsem az Ingyenes verziót"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:50
+msgid "Enter your license key"
+msgstr "Írd be a licenckulcsodat"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:55
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
+msgid ""
+"Enter your license key to activate the Pro version of this plugin. You can "
+"find your license key in your PublishPress account dashboard."
+msgstr ""
+"Adja meg a licence kulcsát a bővítmény Pro verziójának aktiválásához. A "
+"licence kulcsát a PublishPress fiókjának műszerfalán találja."
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
+msgid "Go to my profile to get the license key"
+msgstr "Lépj a profilomra a licenckulcs megszerzéséhez"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:66
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:94
+msgid "Enter your license key here"
+msgstr "Írd be a licenckulcsodat itt"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:80
+msgid "Activate and install the plugin"
+msgstr "Aktiváld és telepítsd a plugint"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:76
+msgid "Manage your license"
+msgstr "Kezeld a licencet"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
+msgid "Your license key is: "
+msgstr "A licenckulcsod: "
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
+msgid "(hidden)"
+msgstr "(rejtett)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:119
+msgid "Activate the license key for this site"
+msgstr "Aktiváld a licenckulcsot ehhez az oldalhoz"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:126
+msgid "Edit the license key"
+msgstr "Szerkeszd a licenckulcsot"
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:129
+msgid "Deactivate the license key for this site"
+msgstr "Deaktiváld a licenckulcsot ehhez az oldalhoz"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+msgid "Unknown"
+msgstr "Ismeretlen"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:39
+msgid "Plugin Information"
+msgstr "Plugin információ"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:45
+msgid "Name:"
+msgstr "Név:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:51
+msgid "Description:"
+msgstr "Leírás:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:57
+msgid "Current Version:"
+msgstr "Jelenlegi verzió:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:63
+msgid "Available Version:"
+msgstr "Elérhető verzió:"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:82
+msgid "Update Plugin"
+msgstr "Plugin frissítése"
+
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:93
+msgid "Check for Updates"
+msgstr "Frissítések ellenőrzése"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
+msgid "Install %s"
+msgstr "Telepítés %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
+msgid "Install %s Pro"
+msgstr "Telepítés %s Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
+msgid "Upgrade %s to Pro"
+msgstr "Frissítés %s Pro-ra"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
+msgid "Uninstall %s"
+msgstr "Eltávolítás %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
+msgid "Are you sure you want to uninstall %s?"
+msgstr "Biztosan el akarja távolítani %s?"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
+msgid "Resolve Conflict for %s"
+msgstr "Konfliktus megoldása %s esetén"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
+msgid "Manage %s License"
+msgstr "%s licenc kezelése"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
+msgid "Activate %s License"
+msgstr "%s licenc aktiválása"
+
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
+msgid "More Info: %s"
+msgstr "További információ: %s"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:34
+msgid "Resolve Plugin Conflict"
+msgstr "Plugin konfliktus megoldása"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
+msgid "Free version: %s (%s)"
+msgstr "Ingyenes verzió: %s (%s)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
+msgid "Pro version: %s (%s)"
+msgstr "Pro verzió: %s (%s)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:79
+msgid "Keep the Pro version (Recommended)"
+msgstr "Tartsd meg a Pro verziót (ajánlott)"
+
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:89
+msgid "Keep the Free version"
+msgstr "Tartsd meg a Free verziót"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
+msgid ""
+"Unlock the full potential of this plugin with the Pro version. Enjoy "
+"advanced features, priority support, and exclusive benefits designed to help "
+"you get the most out of your workflow."
+msgstr ""
+"Fedezze fel ennek a bővítménynek a teljes potenciálját a Pro verzióval. "
+"Élvezze a fejlett funkciókat, a prioritásos támogatást és az exkluzív "
+"előnyöket, amelyek segítenek, hogy a legtöbbet hozza ki a munkafolyamatából."
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
+msgid "Discover all Pro features"
+msgstr "Fedezd fel az összes Pro funkciót"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "Változásnapló"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
+msgid "Already have a license? Install Pro now"
+msgstr "Már van licenc? Telepítsd a Pro-t most"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
+msgid "Upgrade to Pro and boost your productivity"
+msgstr "Frissíts a Pro-ra és növeld a termelékenységedet"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:139
+msgid "New version available"
+msgstr "Új verzió érhető el"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+msgid "Version %s"
+msgstr "Verzió %s"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
+msgid "Update available: %s → %s"
+msgstr "Frissítés elérhető: %s → %s"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:22
+msgid "Installing"
+msgstr "Telepítés alatt"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:27
+msgid "Not Installed"
+msgstr "Nincs telepítve"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:31
+msgid "Free"
+msgstr "Ingyenes"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:35
+msgid "Licensed"
+msgstr "Licencelt"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:43
+msgid "Expired"
+msgstr "Lejárt"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:47
+msgid "Uninstalling"
+msgstr "Eltávolítás alatt"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:52
+msgid "Upgrading"
+msgstr "Frissítés alatt"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:57
+msgid "Deactivating"
+msgstr "Deaktiválás alatt"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:62
+msgid "Activating"
+msgstr "Aktiválás alatt"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:67
+msgid "Conflicting Installations"
+msgstr "Ütköző telepítések"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
+msgid "Update Available"
+msgstr "Frissítés elérhető"
+
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
+msgid "Expires"
+msgstr "Lejár"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
+msgid "latest"
+msgstr "legújabb"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
+msgid "Update to v%s"
+msgstr "Frissítés a v%s verzióra"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+msgid "Renew"
+msgstr "Megújítás"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+msgid "Deactivate"
+msgstr "Letiltás"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+msgid "Activate"
+msgstr "Aktiválás"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+msgid "Uninstall"
+msgstr "Eltávolítás"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+msgid "More Info"
+msgstr "További információk"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
+msgid "This plugin is not installed."
+msgstr "Ez a bővítmény nincs telepítve."
+
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40
+msgid "This plugin is active."
+msgstr "Ez a bővítmény aktív."
+
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41
+msgid "This plugin is not active."
+msgstr "Ez a bővítmény nem aktív."
+
+#: resources/src/jsx/components/plugins-list/index.jsx:159
+msgid "No plugins found."
+msgstr "Nincs bővítmény található."
+
+#: resources/src/jsx/components/plugins-list/index.jsx:165
+msgid "Loading plugins..."
+msgstr "Bővítmények betöltése..."
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:216
+msgid "Failed to fetch plugins"
+msgstr "A bővítmények lekérése nem sikerült"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
+msgid "%s installed successfully"
+msgstr "%s sikeresen telepítve"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
+msgid "%s installation failed"
+msgstr "%s telepítése nem sikerült"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
+msgid "%s uninstalled successfully"
+msgstr "%s sikeresen eltávolítva"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
+msgid "%s uninstall failed"
+msgstr "%s eltávolítása nem sikerült"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
+msgid "%s activated successfully"
+msgstr "%s sikeresen aktiválva"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
+msgid "%s activation failed"
+msgstr "%s aktiválása nem sikerült"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
+msgid "%s deactivated successfully"
+msgstr "%s sikeresen deaktíválva"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
+msgid "%s deactivation failed"
+msgstr "%s deaktíválása nem sikerült"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
+msgid "%s upgraded to Pro successfully"
+msgstr "%s sikeresen Pro verzióra frissítve"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
+msgid "%s upgrade to Pro failed"
+msgstr "%s Pro verzióra frissítés nem sikerült"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
+msgid "Conflict resolved successfully for %s"
+msgstr "%s esetében a konfliktus sikeresen megoldva"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
+msgid "Failed to resolve conflict for %s"
+msgstr "A konfliktus megoldása %s esetében nem sikerült"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
+msgid "%s license deactivated successfully"
+msgstr "%s licenc sikeresen deaktíválva"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
+msgid "%s license deactivation failed"
+msgstr "%s licenc deaktíválása nem sikerült"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
+msgid "%s license activated successfully"
+msgstr "%s licenc sikeresen aktiválva"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
+msgid "%s license activation failed"
+msgstr "%s licenc aktiválása nem sikerült"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
+msgid "%s updated successfully"
+msgstr "%s sikeresen frissítve"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
+msgid "%s update failed"
+msgstr "%s frissítése nem sikerült"
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
+msgid "Too many requests. Please wait a few seconds and try again."
+msgstr "Túl sok kérés. Kérjük, várjon néhány másodpercet, és próbálja újra."
+
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
+#, fuzzy
+msgid "Cloudflare Ray ID: %s"
+msgstr "Cloudflare Ray ID: %s"

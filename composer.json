@@ -1,6 +1,5 @@
 {
     "name": "publishpress/publishpress-hub",
-    "version": "1.0.2",
     "type": "library",
     "license": "GPL-3.0-or-later",
     "description": "PublishPress Hub",
@@ -54,6 +53,6 @@
         "ext-json": "*"
     },
     "require-dev": {
-        "publishpress/dev-workspace": "^1.1"
+        "publishpress/dev-workspace": "dev-development"
     }
 }

@@ -9,14 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-03-27 15:36+0000\n"
+"POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
+"PO-Revision-Date: 2026-04-16 14:33+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Language: yor\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: publishpress-hub.php:4
 #: publishpress-hub.php:4
 #: src/Admin/Page/WelcomePageController.php:259, fuzzy
 #. Plugin Name of the plugin
@@ -25,6 +24,15 @@ msgstr "PublishPress Hub"
 
 #: publishpress-hub.php:5
 #. Description of the plugin
+msgid ""
+"Centralized management hub for all PublishPress plugins - install, update, "
+"and manage licenses from one dashboard."
+msgstr ""
+"Ibi iṣakoso ti aarin fun gbogbo awọn afikun PublishPress - fi sori ẹrọ, ṣe "
+"imudojuiwọn, ati ṣakoso awọn iwe-aṣẹ lati inu iboju iṣakoso kan."
+
+#: publishpress-hub.php:7
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
@@ -102,6 +110,22 @@ msgid "Pro plugin not set for plugin family: %s"
 msgstr "Afikun pro ko ṣeto fun ẹbi afikun: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
+msgid ""
+"License activation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Aṣiṣe olupin iwe-aṣẹ. Jọwọ gbiyanju lẹẹkansi ni igba diẹ tabi kan si "
+"atilẹyin fun iranlọwọ."
+
+#: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
+msgid ""
+"License deactivation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Aṣiṣe olupin iwe-aṣẹ. Jọwọ gbiyanju lẹẹkansi ni igba diẹ tabi kan si "
+"atilẹyin fun iranlọwọ."
+
+#: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
 msgstr "Iwe-aṣẹ yii ti wa ni pipade lọwọlọwọ. Jọwọ kan si atilẹyin fun iranlọwọ."
 
@@ -110,10 +134,50 @@ msgid "This license has expired. Please contact support to renew it."
 msgstr "Iwe-aṣẹ yii ti parẹ. Jọwọ kan si atilẹyin lati tun un ṣe."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
+msgid ""
+"This license key is not authorized for this plugin. Please verify your "
+"license key or contact support for help."
+msgstr "Iwe-aṣẹ yii ko ṣiṣẹ fun aaye yii. Jọwọ kan si atilẹyin fun iranlọwọ."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
+msgid ""
+"This license cannot be used for this plugin. Please contact support for "
+"help."
+msgstr "Iwe-aṣẹ yii ko le ṣee mu ṣiṣẹ. Jọwọ kan si atilẹyin fun iranlọwọ."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
+msgid ""
+"This license does not match the plugin you are trying to activate. Please "
+"contact support for assistance."
+msgstr "Iwe-aṣẹ yii ko ṣiṣẹ fun aaye yii. Jọwọ kan si atilẹyin fun iranlọwọ."
+
+#: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
+#, fuzzy
+msgid ""
+"License key does not match our records. Please contact support for "
+"assistance."
+msgstr "Iwe-aṣẹ yii ti wa ni pipade lọwọlọwọ. Jọwọ kan si atilẹyin fun iranlọwọ."
+
+#: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
 msgstr "Ko si ikọkọ iwe-aṣẹ ti a pese. Jọwọ tẹ ikọkọ iwe-aṣẹ to wulo."
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
+msgid ""
+"Your site URL is required to activate the license. Please enter a valid "
+"site URL to continue."
+msgstr ""
+"URL aaye rẹ nilo lati mu iwe-aṣẹ ṣiṣẹ. Jọwọ tẹ URL aaye ti o wulo lati "
+"tẹsiwaju."
+
+#: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
+#, fuzzy
+msgid ""
+"License activation limit reached. Please contact support to upgrade or "
+"deactivate on another site."
+msgstr "Iwe-aṣẹ yii ti parẹ. Jọwọ kan si atilẹyin lati tun un ṣe."
+
+#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
 msgid "This license cannot be activated. Please contact support for help."
 msgstr "Iwe-aṣẹ yii ko le ṣee mu ṣiṣẹ. Jọwọ kan si atilẹyin fun iranlọwọ."
 
@@ -124,22 +188,84 @@ msgstr ""
 "atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
+#, fuzzy
+msgid ""
+"The license server returned an invalid response. Please try again later or "
+"contact support for help."
+msgstr ""
+"Aṣiṣe olupin iwe-aṣẹ. Jọwọ gbiyanju lẹẹkansi ni igba diẹ tabi kan si "
+"atilẹyin fun iranlọwọ."
+
+#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
 msgid "This license is inactive for this site. Please contact support for help."
 msgstr "Iwe-aṣẹ yii ko ṣiṣẹ fun aaye yii. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
+#, fuzzy
+msgid ""
+"Plugin activation failed. Please try again later or contact support for "
+"help."
+msgstr "Fifi sori ẹrọ afikun ko ṣaṣeyọri. Jọwọ kan si atilẹyin fun iranlọwọ."
+
+#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
 msgid "This action is not possible because the plugin is already installed."
 msgstr "Iṣe yii ko ṣee ṣe nitori pe afikun naa ti fi sori ẹrọ tẹlẹ."
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
+#, fuzzy
+msgid ""
+"Plugin deactivation failed. Please try again later or contact support for "
+"help."
+msgstr ""
+"Aṣiṣe olupin iwe-aṣẹ. Jọwọ gbiyanju lẹẹkansi ni igba diẹ tabi kan si "
+"atilẹyin fun iranlọwọ."
+
+#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
 msgid "Plugin family not found. Please contact support for help."
 msgstr "Ẹbi afikun ko ri. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because both free and pro versions are "
+"installed. Please uninstall one version to continue."
+msgstr "Iṣe yii ko ṣee ṣe nitori pe afikun naa ti fi sori ẹrọ tẹlẹ."
+
+#: src/Domain/Plugin/Exception/PluginInstallException.php:29
 msgid "Plugin installation failed. Please contact support for help."
 msgstr "Fifi sori ẹrọ afikun ko ṣaṣeyọri. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because the plugin is not activated. Please "
+"activate the plugin and try again."
+msgstr "Iṣe yii ko ṣee ṣe nitori pe afikun naa ti fi sori ẹrọ tẹlẹ."
+
+#: src/Domain/Plugin/Exception/PluginNotFoundException.php:29
+#, fuzzy
+msgid ""
+"Plugin not found in our available plugins list. Please contact support for "
+"help."
+msgstr "Ẹbi afikun ko ri. Jọwọ kan si atilẹyin fun iranlọwọ."
+
+#: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because the plugin is not installed. Please "
+"install the plugin and try again."
+msgstr "Iṣe yii ko ṣee ṣe nitori pe afikun naa ti fi sori ẹrọ tẹlẹ."
+
+#: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
+#, fuzzy
+msgid ""
+"Unknown license server error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Aṣiṣe olupin iwe-aṣẹ. Jọwọ gbiyanju lẹẹkansi ni igba diẹ tabi kan si "
+"atilẹyin fun iranlọwọ."
+
+#: src/Domain/Plugin/plugin-families.php:26
 msgid "Define tasks that authors must complete before publishing."
 msgstr "Ṣalaye awọn iṣẹ-ṣiṣe ti awọn onkọwe gbọdọ pari ṣaaju ki wọn to tẹjade."
 
@@ -172,12 +298,12 @@ msgid "Approve and schedule new versions to your published posts."
 msgstr "Fọwọsi ati ṣeto awọn ẹya tuntun si awọn ifiweranṣẹ ti a tẹjade rẹ."
 
 #: src/Domain/Plugin/plugin-families.php:154
-msgid "Create shortlinks for your posts."
-msgstr "Ṣẹda awọn ọna asopọ kukuru fun awọn ifiweranṣẹ rẹ."
-
-#: src/Domain/Plugin/plugin-families.php:170
 msgid "Organize your posts into issues or series."
 msgstr "Ṣeto awọn ifiweranṣẹ rẹ sinu awọn iṣoro tabi jara."
+
+#: src/Domain/Plugin/plugin-families.php:170
+msgid "Create shortlinks for your posts."
+msgstr "Ṣẹda awọn ọna asopọ kukuru fun awọn ifiweranṣẹ rẹ."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -282,6 +408,16 @@ msgid "Cannot read downloaded plugin file"
 msgstr "Ko le ka faili plugin ti a gba silẹ"
 
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:132
+msgid ""
+"Downloaded file is not a valid ZIP archive. The download URL may be "
+"returning an error page."
+msgstr ""
+"Faili ti a gba lati ayelujara ko jẹ iwe-ipamọ ZIP to wulo. URL gbigba lati "
+"ayelujara le n pada oju-iwe aṣiṣe."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
+#. translators: %s is the error message
+#, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "Kuna lati ṣii faili plugin: %s"
 
@@ -523,6 +659,14 @@ msgid "Loading log..."
 msgstr "Nṣiṣẹ ìkànsí..."
 
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:332
+msgid ""
+"The debug log is empty. Perform some actions (e.g. activate a license) and "
+"refresh to see entries."
+msgstr ""
+"Iwe ajako itupalẹ jẹ ofo. Ṣe diẹ ninu awọn iṣe (gẹgẹbi mu iwe-aṣẹ ṣiṣẹ) ki "
+"o si tun igbesoke lati wo awọn ẹsẹ."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
 msgid "Debug log contents"
 msgstr "Awọn akoonu ìkànsí ìṣàkóso"
 
@@ -543,10 +687,29 @@ msgid "Debug Mode"
 msgstr "Ìṣàkóso Ìṣàkóso"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
+msgid ""
+"When enabled, all HTTP requests and responses to remote services (license "
+"activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
+"the Debug Log tab to inspect the captured data."
+msgstr ""
+"Nigbati a ba mu ṣiṣẹ, gbogbo awọn ibeere HTTP ati awọn idahun si awọn iṣẹ "
+"latọna jijin (mimu iwe-aṣẹ ṣiṣẹ, gbigba awọn afikun, ati bẹbẹ lọ) ni a ṣe "
+"igbasilẹ si faili ajako pataki kan. Lo taabu Iwe ajako Itupalẹ lati ṣayẹwo "
+"data ti a mu."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
 msgid "Enable Debug Mode"
 msgstr "Mú Ìṣàkóso Ìṣàkóso ṣiṣẹ"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
+msgid ""
+"Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
+"data."
+msgstr ""
+"Iwe ajako itupalẹ wa ni iṣe. Yipada si taabu \"Iwe ajako Itupalẹ\" lati wo "
+"data ti a mu."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70, fuzzy
 msgid "ERR"
 msgstr "ERR"
 
@@ -592,18 +755,53 @@ msgid "What you can do with PublishPress Hub"
 msgstr "Kini o le ṣe pẹlu PublishPress Hub"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
+msgid ""
+"PublishPress Hub has everything you need to install, update, and manage "
+"your PublishPress plugins. We're here to help you build a publishing system "
+"that works perfectly for your team."
+msgstr ""
+"Ibi isopọ PublishPress ni gbogbo ohun ti o nilo lati fi sori ẹrọ, ṣe "
+"imudojuiwọn, ati ṣakoso awọn afikun PublishPress rẹ. A wa nibi lati ṣe "
+"iranlọwọ fun ọ lati kọ eto atẹjade ti o ṣiṣẹ ni pipe fun ẹgbẹ rẹ."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:64
 msgid "Centralized Dashboard"
 msgstr "Iboju Aarin"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:67
+#, fuzzy
+msgid ""
+"View all your PublishPress plugins with their licenses, versions, and key "
+"details."
+msgstr ""
+"Pa gbogbo awọn afikun PublishPress rẹ ni imudojuiwọn pẹlu imudojuiwọn pẹlu "
+"ikan kan."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:76
 msgid "One-Click Installation"
 msgstr "Fifi sori ẹrọ Pẹlu Ikan"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:79
+msgid ""
+"Install free PublishPress plugins directly from the Hub without visiting "
+"WordPress.org."
+msgstr ""
+"Fi sori ẹrọ awọn afikun PublishPress ọfẹ taara lati Ibi isopọ laisi ibẹwo "
+"si WordPress.org."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:88
 msgid "License Management"
 msgstr "Iṣakoso Iwe-aṣẹ"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:91
+msgid ""
+"Connect your PublishPress licenses to easily install and activate Pro "
+"versions."
+msgstr ""
+"So awọn iwe-aṣẹ PublishPress rẹ pọ lati fi sori ẹrọ ati mu awọn ẹya Pro "
+"ṣiṣẹ ni rọọrun."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:100
 msgid "Easy Updates"
 msgstr "Imudojuiwọn Rọrun"
 
@@ -618,6 +816,14 @@ msgid "Status Monitoring"
 msgstr "Iṣakoso Ipo"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
+msgid ""
+"Monitor plugin activation status, detect conflicts, and ensure "
+"compatibility."
+msgstr ""
+"Ṣakoso ipo mimu awọn afikun ṣiṣẹ, wa awọn ija, ki o si rii daju pe o ni "
+"ibamu."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:124
 msgid "Get Started"
 msgstr "Bẹrẹ"
 
@@ -715,6 +921,15 @@ msgid "Install Plugin"
 msgstr "Fi Plugin sori"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
+msgid ""
+"Select how you would like to install this plugin. You can install the Pro "
+"version if you have a license, or the Free version to get started."
+msgstr ""
+"Yan bi o ṣe fẹ lati fi sori ẹrọ afikun yii. O le fi ẹya Pro sori ẹrọ ti o "
+"ba ni iwe-aṣẹ, tabi ẹya Ọfẹ lati bẹrẹ."
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
 msgid "Free Details"
 msgstr "Alaye Free"
 
@@ -742,6 +957,15 @@ msgstr "Tẹ iwe-aṣẹ rẹ"
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:55
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
+msgid ""
+"Enter your license key to activate the Pro version of this plugin. You can "
+"find your license key in your PublishPress account dashboard."
+msgstr ""
+"Tẹ bọtini iwe-aṣẹ rẹ lati mu ẹya Pro ti afikun yii ṣiṣẹ. O le wa bọtini "
+"iwe-aṣẹ rẹ ninu iboju iṣakoso akọọlẹ PublishPress rẹ."
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
 msgid "Go to my profile to get the license key"
 msgstr "Lọ si profaili mi lati gba iwe-aṣẹ"
 
@@ -812,48 +1036,48 @@ msgstr "Muu Plugin ṣiṣẹ"
 msgid "Check for Updates"
 msgstr "Ṣayẹwo fun Awọn imudojuiwọn"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:90
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
 #, js-format
 msgid "Install %s"
 msgstr "Fi %s sori ẹrọ"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:102
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
 #, js-format
 msgid "Install %s Pro"
 msgstr "Fi %s Pro sori ẹrọ"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:110
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:129
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
 #, js-format
 msgid "Upgrade %s to Pro"
 msgstr "Dara %s si Pro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:118
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
 #, js-format
 msgid "Uninstall %s"
 msgstr "Yọ %s kuro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:119
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
 #, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "Ṣe o daada pe o fẹ yọ %s kuro?"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:140
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
 #, js-format
 msgid "Resolve Conflict for %s"
 msgstr "Yanju Ija fun %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:153
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
 #, js-format
 msgid "Manage %s License"
 msgstr "Ṣakoso Iwe-aṣẹ %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:164
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
 #, js-format
 msgid "Activate %s License"
 msgstr "Muu Iwe-aṣẹ %s ṣiṣẹ"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:172
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
 #, js-format
 msgid "More Info: %s"
 msgstr "Alaye diẹ sii: %s"
@@ -881,6 +1105,16 @@ msgid "Keep the Free version"
 msgstr "Pa ẹya Ọfẹ"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
+msgid ""
+"Unlock the full potential of this plugin with the Pro version. Enjoy "
+"advanced features, priority support, and exclusive benefits designed to "
+"help you get the most out of your workflow."
+msgstr ""
+"Tu agbara kikun ti afikun yii pẹlu ẹya Pro. Gbadun awọn ẹya to ileri, "
+"atilẹyin pataki, ati awọn anfani alailẹgbẹ ti a ṣe apẹrẹ lati ṣe iranlọwọ "
+"fun ọ lati gba pupọ julọ lati inu iṣẹ rẹ."
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "Ṣawari gbogbo awọn ẹya Pro"
 
@@ -900,7 +1134,12 @@ msgstr "Gbigbe si Pro ki o mu iṣelọpọ rẹ pọ si"
 msgid "New version available"
 msgstr "Ẹya tuntun wa"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:184
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#, fuzzy
+msgid "Version %s"
+msgstr "Ẹya Pro: %s (%s)"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
 #, js-format
 msgid "Update available: %s → %s"
 msgstr "Imudojuiwọn wa: %s → %s"
@@ -946,11 +1185,11 @@ msgid "Conflicting Installations"
 msgstr "Fifi sori ẹrọ ti o ni ija"
 
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:168
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
 msgid "Update Available"
 msgstr "Imudojuiwọn Wa"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:179
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
 msgid "Expires"
 msgstr "Pari"
 
@@ -1107,6 +1346,6 @@ msgstr ""
 "gbiyanju."
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
-#, fuzzy, js-format
+#, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"

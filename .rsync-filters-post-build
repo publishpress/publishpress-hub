@@ -13,3 +13,4 @@
 - phpmd.ruleset.xml
 - .gitmodules
 - webpack.prototype.config.js
+- /resources/src/

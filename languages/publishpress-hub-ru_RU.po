@@ -10,14 +10,15 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-03-27 15:34+0000\n"
+"PO-Revision-Date: 2026-04-16 14:33+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
+">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1: 2);\n"
 "Language: ru_RU\n"
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
 
-#: publishpress-hub.php:4
 #: publishpress-hub.php:4
 #: src/Admin/Page/WelcomePageController.php:259, fuzzy
 #. Plugin Name of the plugin
@@ -26,6 +27,16 @@ msgstr "PublishPress Hub"
 
 #: publishpress-hub.php:5
 #. Description of the plugin
+msgid ""
+"Centralized management hub for all PublishPress plugins - install, update, "
+"and manage licenses from one dashboard."
+msgstr ""
+"Централизованный центр управления для всех плагинов PublishPress - "
+"устанавливайте, обновляйте и управляйте лицензиями из одной панели "
+"управления."
+
+#: publishpress-hub.php:7
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
@@ -103,6 +114,22 @@ msgid "Pro plugin not set for plugin family: %s"
 msgstr "Профессиональный плагин не установлен для семейства плагинов: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
+msgid ""
+"License activation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Ошибка сервера лицензий. Пожалуйста, попробуйте снова позже или свяжитесь с "
+"поддержкой для получения помощи."
+
+#: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
+msgid ""
+"License deactivation error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Ошибка сервера лицензий. Пожалуйста, попробуйте снова позже или свяжитесь с "
+"поддержкой для получения помощи."
+
+#: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
 msgstr ""
 "Эта лицензия в настоящее время отключена. Пожалуйста, свяжитесь с "
@@ -113,12 +140,58 @@ msgid "This license has expired. Please contact support to renew it."
 msgstr "Эта лицензия истекла. Пожалуйста, свяжитесь с поддержкой для её продления."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
+msgid ""
+"This license key is not authorized for this plugin. Please verify your "
+"license key or contact support for help."
+msgstr ""
+"Эта лицензия неактивна для этого сайта. Пожалуйста, свяжитесь с поддержкой "
+"для получения помощи."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
+msgid ""
+"This license cannot be used for this plugin. Please contact support for "
+"help."
+msgstr ""
+"Эта лицензия не может быть активирована. Пожалуйста, свяжитесь с поддержкой "
+"для получения помощи."
+
+#: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
+msgid ""
+"This license does not match the plugin you are trying to activate. Please "
+"contact support for assistance."
+msgstr ""
+"Эта лицензия неактивна для этого сайта. Пожалуйста, свяжитесь с поддержкой "
+"для получения помощи."
+
+#: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
+msgid ""
+"License key does not match our records. Please contact support for "
+"assistance."
+msgstr ""
+"Эта лицензия в настоящее время отключена. Пожалуйста, свяжитесь с "
+"поддержкой для получения помощи."
+
+#: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
 msgstr ""
 "Лицензионный ключ не предоставлен. Пожалуйста, введите действительный "
 "лицензионный ключ."
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
+msgid ""
+"Your site URL is required to activate the license. Please enter a valid "
+"site URL to continue."
+msgstr ""
+"Ваш URL сайта необходим для активации лицензии. Пожалуйста, введите "
+"действительный URL сайта, чтобы продолжить."
+
+#: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
+msgid ""
+"License activation limit reached. Please contact support to upgrade or "
+"deactivate on another site."
+msgstr "Эта лицензия истекла. Пожалуйста, свяжитесь с поддержкой для её продления."
+
+#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
 msgid "This license cannot be activated. Please contact support for help."
 msgstr ""
 "Эта лицензия не может быть активирована. Пожалуйста, свяжитесь с поддержкой "
@@ -131,28 +204,94 @@ msgstr ""
 "поддержкой для получения помощи."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
+#, fuzzy
+msgid ""
+"The license server returned an invalid response. Please try again later or "
+"contact support for help."
+msgstr ""
+"Ошибка сервера лицензий. Пожалуйста, попробуйте снова позже или свяжитесь с "
+"поддержкой для получения помощи."
+
+#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
 msgid "This license is inactive for this site. Please contact support for help."
 msgstr ""
 "Эта лицензия неактивна для этого сайта. Пожалуйста, свяжитесь с поддержкой "
 "для получения помощи."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
+#, fuzzy
+msgid ""
+"Plugin activation failed. Please try again later or contact support for "
+"help."
+msgstr ""
+"Не удалось установить плагин. Пожалуйста, свяжитесь с поддержкой для "
+"получения помощи."
+
+#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
 msgid "This action is not possible because the plugin is already installed."
 msgstr "Это действие невозможно, так как плагин уже установлен."
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
+#, fuzzy
+msgid ""
+"Plugin deactivation failed. Please try again later or contact support for "
+"help."
+msgstr ""
+"Ошибка сервера лицензий. Пожалуйста, попробуйте снова позже или свяжитесь с "
+"поддержкой для получения помощи."
+
+#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
 msgid "Plugin family not found. Please contact support for help."
 msgstr ""
 "Семейство плагинов не найдено. Пожалуйста, свяжитесь с поддержкой для "
 "получения помощи."
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because both free and pro versions are "
+"installed. Please uninstall one version to continue."
+msgstr "Это действие невозможно, так как плагин уже установлен."
+
+#: src/Domain/Plugin/Exception/PluginInstallException.php:29
 msgid "Plugin installation failed. Please contact support for help."
 msgstr ""
 "Не удалось установить плагин. Пожалуйста, свяжитесь с поддержкой для "
 "получения помощи."
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because the plugin is not activated. Please "
+"activate the plugin and try again."
+msgstr "Это действие невозможно, так как плагин уже установлен."
+
+#: src/Domain/Plugin/Exception/PluginNotFoundException.php:29
+#, fuzzy
+msgid ""
+"Plugin not found in our available plugins list. Please contact support for "
+"help."
+msgstr ""
+"Семейство плагинов не найдено. Пожалуйста, свяжитесь с поддержкой для "
+"получения помощи."
+
+#: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
+#, fuzzy
+msgid ""
+"This action is not possible because the plugin is not installed. Please "
+"install the plugin and try again."
+msgstr "Это действие невозможно, так как плагин уже установлен."
+
+#: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
+#, fuzzy
+msgid ""
+"Unknown license server error. Please try again later or contact support for "
+"help."
+msgstr ""
+"Ошибка сервера лицензий. Пожалуйста, попробуйте снова позже или свяжитесь с "
+"поддержкой для получения помощи."
+
+#: src/Domain/Plugin/plugin-families.php:26
 msgid "Define tasks that authors must complete before publishing."
 msgstr "Определите задачи, которые авторы должны выполнить перед публикацией."
 
@@ -185,12 +324,12 @@ msgid "Approve and schedule new versions to your published posts."
 msgstr "Одобряйте и планируйте новые версии ваших опубликованных записей."
 
 #: src/Domain/Plugin/plugin-families.php:154
-msgid "Create shortlinks for your posts."
-msgstr "Создавайте короткие ссылки для ваших записей."
-
-#: src/Domain/Plugin/plugin-families.php:170
 msgid "Organize your posts into issues or series."
 msgstr "Организуйте ваши записи по выпускам или сериям."
+
+#: src/Domain/Plugin/plugin-families.php:170
+msgid "Create shortlinks for your posts."
+msgstr "Создавайте короткие ссылки для ваших записей."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -295,6 +434,16 @@ msgid "Cannot read downloaded plugin file"
 msgstr "Не удалось прочитать скачанный файл плагина"
 
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:132
+msgid ""
+"Downloaded file is not a valid ZIP archive. The download URL may be "
+"returning an error page."
+msgstr ""
+"Загруженный файл не является действительным ZIP-архивом. URL для загрузки "
+"может возвращать страницу с ошибкой."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
+#. translators: %s is the error message
+#, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "Не удалось распаковать файл плагина: %s"
 
@@ -536,6 +685,14 @@ msgid "Loading log..."
 msgstr "Загрузка журнала..."
 
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:332
+msgid ""
+"The debug log is empty. Perform some actions (e.g. activate a license) and "
+"refresh to see entries."
+msgstr ""
+"Журнал отладки пуст. Выполните некоторые действия (например, активируйте "
+"лицензию) и обновите страницу, чтобы увидеть записи."
+
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
 msgid "Debug log contents"
 msgstr "Содержимое журнала отладки"
 
@@ -556,10 +713,29 @@ msgid "Debug Mode"
 msgstr "Режим отладки"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
+msgid ""
+"When enabled, all HTTP requests and responses to remote services (license "
+"activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
+"the Debug Log tab to inspect the captured data."
+msgstr ""
+"При включении все HTTP-запросы и ответы к удалённым службам (активация "
+"лицензии, загрузка плагинов и т. д.) записываются в специальный файл "
+"журнала. Используйте вкладку Журнал отладки для просмотра захваченных "
+"данных."
+
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
 msgid "Enable Debug Mode"
 msgstr "Включить режим отладки"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
+msgid ""
+"Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
+"data."
+msgstr ""
+"Запись отладки активна. Переключитесь на вкладку \"Журнал отладки\", чтобы "
+"просмотреть захваченные данные."
+
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70, fuzzy
 msgid "ERR"
 msgstr "ERR"
 
@@ -605,18 +781,53 @@ msgid "What you can do with PublishPress Hub"
 msgstr "Что вы можете сделать с PublishPress Hub"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
+msgid ""
+"PublishPress Hub has everything you need to install, update, and manage "
+"your PublishPress plugins. We're here to help you build a publishing system "
+"that works perfectly for your team."
+msgstr ""
+"PublishPress Hub имеет всё, что вам нужно для установки, обновления и "
+"управления вашими плагинами PublishPress. Мы здесь, чтобы помочь вам "
+"создать издательскую систему, которая идеально подходит вашей команде."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:64
 msgid "Centralized Dashboard"
 msgstr "Централизованная панель управления"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:67
+#, fuzzy
+msgid ""
+"View all your PublishPress plugins with their licenses, versions, and key "
+"details."
+msgstr ""
+"Держите все ваши плагины PublishPress в актуальном состоянии с обновлениями "
+"в один клик."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:76
 msgid "One-Click Installation"
 msgstr "Установка в один клик"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:79
+msgid ""
+"Install free PublishPress plugins directly from the Hub without visiting "
+"WordPress.org."
+msgstr ""
+"Устанавливайте бесплатные плагины PublishPress прямо из Hub без посещения "
+"WordPress.org."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:88
 msgid "License Management"
 msgstr "Управление лицензиями"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:91
+msgid ""
+"Connect your PublishPress licenses to easily install and activate Pro "
+"versions."
+msgstr ""
+"Подключите ваши лицензии PublishPress, чтобы легко устанавливать и "
+"активировать Pro-версии."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:100
 msgid "Easy Updates"
 msgstr "Легкие обновления"
 
@@ -631,6 +842,14 @@ msgid "Status Monitoring"
 msgstr "Мониторинг статуса"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
+msgid ""
+"Monitor plugin activation status, detect conflicts, and ensure "
+"compatibility."
+msgstr ""
+"Мониторьте статус активации плагина, выявляйте конфликты и обеспечивайте "
+"совместимость."
+
+#: resources/src/jsx/components/pages/welcome-page.jsx:124
 msgid "Get Started"
 msgstr "Начать"
 
@@ -728,6 +947,15 @@ msgid "Install Plugin"
 msgstr "Установить плагин"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
+msgid ""
+"Select how you would like to install this plugin. You can install the Pro "
+"version if you have a license, or the Free version to get started."
+msgstr ""
+"Выберите, как вы хотите установить этот плагин. Вы можете установить "
+"Pro-версию, если у вас есть лицензия, или бесплатную версию, чтобы начать."
+
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
 msgid "Free Details"
 msgstr "Бесплатные детали"
 
@@ -755,6 +983,16 @@ msgstr "Введите ваш лицензионный ключ"
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:55
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
+msgid ""
+"Enter your license key to activate the Pro version of this plugin. You can "
+"find your license key in your PublishPress account dashboard."
+msgstr ""
+"Введите ваш лицензионный ключ для активации Pro-версии этого плагина. Вы "
+"можете найти ваш лицензионный ключ в панели управления вашей учетной записи "
+"PublishPress."
+
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
 msgid "Go to my profile to get the license key"
 msgstr "Перейти в мой профиль, чтобы получить лицензионный ключ"
 
@@ -825,48 +1063,48 @@ msgstr "Обновить плагин"
 msgid "Check for Updates"
 msgstr "Проверить наличие обновлений"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:90
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
 #, js-format
 msgid "Install %s"
 msgstr "Установить %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:102
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
 #, js-format
 msgid "Install %s Pro"
 msgstr "Установить %s Pro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:110
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:129
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
 #, js-format
 msgid "Upgrade %s to Pro"
 msgstr "Обновить %s до Pro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:118
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
 #, js-format
 msgid "Uninstall %s"
 msgstr "Удалить %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:119
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
 #, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "Вы уверены, что хотите удалить %s?"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:140
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
 #, js-format
 msgid "Resolve Conflict for %s"
 msgstr "Разрешить конфликт для %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:153
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
 #, js-format
 msgid "Manage %s License"
 msgstr "Управление лицензией %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:164
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
 #, js-format
 msgid "Activate %s License"
 msgstr "Активировать лицензию %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:172
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
 #, js-format
 msgid "More Info: %s"
 msgstr "Больше информации: %s"
@@ -894,6 +1132,17 @@ msgid "Keep the Free version"
 msgstr "Сохранить Бесплатную версию"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
+msgid ""
+"Unlock the full potential of this plugin with the Pro version. Enjoy "
+"advanced features, priority support, and exclusive benefits designed to "
+"help you get the most out of your workflow."
+msgstr ""
+"Разблокируйте полный потенциал этого плагина с Pro-версией. Наслаждайтесь "
+"расширенными функциями, приоритетной поддержкой и эксклюзивными "
+"преимуществами, созданными для того, чтобы помочь вам максимально "
+"эффективно использовать ваш рабочий процесс."
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "Узнайте все функции Pro"
 
@@ -913,7 +1162,12 @@ msgstr "Перейдите на Pro и увеличьте свою продук�
 msgid "New version available"
 msgstr "Доступна новая версия"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:184
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#, js-format
+msgid "Version %s"
+msgstr "Версия %s"
+
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
 #, js-format
 msgid "Update available: %s → %s"
 msgstr "Доступно обновление: %s → %s"
@@ -959,11 +1213,11 @@ msgid "Conflicting Installations"
 msgstr "Конфликтующие установки"
 
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:168
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
 msgid "Update Available"
 msgstr "Доступно обновление"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:179
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
 msgid "Expires"
 msgstr "Истекает"
 
@@ -1120,6 +1374,6 @@ msgstr ""
 "снова."
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
-#, fuzzy, js-format
+#, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
