@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[1.0.4] - 15 Apr, 2026
+[1.0.4] - 16 Apr, 2026
 
 - Added: New settings menu page for improved configuration.
 - Added: Debug log feature to assist with troubleshooting and support.
