@@ -33,12 +33,13 @@ jobs:
           detached: true
 
       - name: Checkout code
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
 
-      - name: Install PHP Extensions
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y php8.3-redis php8.3-zmq php8.3-memcached php8.3-zip php8.3-mysqli
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          tools: composer
 
       - name: Create .env file
         run: |
