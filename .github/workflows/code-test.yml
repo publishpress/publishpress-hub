@@ -84,18 +84,18 @@ jobs:
 
       - name: Run Unit Tests
         run: |
-          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh bash -c "git config --global --add safe.directory /project && composer test Unit"
+          composer test Unit
 
       - name: Run Intergration Tests
         run: |
-          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh bash -c "git config --global --add safe.directory /project && composer test Integration"
+          composer test Integration
 
       - name: Show container logs on failure
         if: failure()
         run: |
           echo "=== Test WordPress Container Logs ==="
-          docker logs publishpress-hub-env-test-wp
+          docker logs publishpress-hub-env-wp_test
           echo "=== Test DB Container Logs ==="
-          docker logs publishpress-hub-env-test-db || true
+          docker logs publishpress-hub-env-db_test || true
 
 
