@@ -154,7 +154,7 @@ const PluginItemComponent = ({
             return null;
         }
 
-        return sprintf(__('Version %s', 'publishpress-hub'), installedPlugin.version);
+        return sprintf(__('v%s', 'publishpress-hub'), installedPlugin.version);
     }, [pluginFamily, status.isInstalled, status.hasConflictingInstallations]);
 
     return (
@@ -215,15 +215,14 @@ const PluginItemComponent = ({
 
                             return (
                                 <Fragment key={buttonProps.key}>
-                                    <Button {...buttonProps} />
-                                    {buttonProps.key === 'more-info' && installedVersionLabel && (
+                                    {buttonProps.variant === 'label' && (
                                         <>
                                             <span>&bull;</span>
-                                            <span className='pp-hub-plugin-current-version'>{installedVersionLabel}</span>
+                                            <span className={buttonProps.className}>{buttonProps.text}</span>
                                         </>
                                     )}
-                                    {index < actionButtonsData.length - 1 && (
-                                        <span>|</span>
+                                    {buttonProps.variant !== 'label' && (
+                                        <Button {...buttonProps} />
                                     )}
                                 </Fragment>
                             )

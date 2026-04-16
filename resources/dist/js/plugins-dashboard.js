@@ -7154,7 +7154,7 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     if (!installedPlugin || !installedPlugin.version) {
       return null;
     }
-    return (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Version %s', 'publishpress-hub'), installedPlugin.version);
+    return (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('v%s', 'publishpress-hub'), installedPlugin.version);
   }, [pluginFamily, status.isInstalled, status.hasConflictingInstallations]);
   return /*#__PURE__*/React.createElement("div", {
     className: responsiveClasses,
@@ -7207,9 +7207,9 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     }
     return /*#__PURE__*/React.createElement(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: buttonProps.key
-    }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_6__.Button, buttonProps), buttonProps.key === 'more-info' && installedVersionLabel && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", null, "\u2022"), /*#__PURE__*/React.createElement("span", {
-      className: "pp-hub-plugin-current-version"
-    }, installedVersionLabel)), index < actionButtonsData.length - 1 && /*#__PURE__*/React.createElement("span", null, "|"));
+    }, buttonProps.variant === 'label' && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", null, "\u2022"), /*#__PURE__*/React.createElement("span", {
+      className: buttonProps.className
+    }, buttonProps.text)), buttonProps.variant !== 'label' && /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_6__.Button, buttonProps));
   })))), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-actions"
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalVStack, null, /*#__PURE__*/React.createElement(_action_button__WEBPACK_IMPORTED_MODULE_5__.ActionButton, {
@@ -7501,23 +7501,7 @@ var useActionButtons = function useActionButtons(pluginFamily, status, loadingSt
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     var buttons = [];
 
-    // Add update button if update is available (show first in row actions)
-    if (pluginFamily.hasUpdate && pluginFamily.hasAnyVersionInstalled && onUpdate) {
-      var installedPlugin = pluginFamily.freePlugin.isInstalled ? pluginFamily.freePlugin : pluginFamily.proPlugin;
-      var currentVersion = installedPlugin.version || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Unknown', 'publishpress-hub');
-      var availableVersion = pluginFamily.availableVersion || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('latest', 'publishpress-hub');
-      buttons.push({
-        key: 'update',
-        variant: 'link',
-        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Update to v%s', 'publishpress-hub'), availableVersion),
-        isLoading: isUpdating,
-        onClick: function onClick() {
-          return onUpdate(pluginFamily);
-        }
-      });
-    }
-
-    // Add renewal link if license is expired (show first in row actions after update)
+    // Add renewal link if license is expired (show first in row actions)
     if (pluginFamily.proPlugin.isInstalled && pluginFamily.proPlugin.isExpired && pluginFamily.proPlugin.detailsUrl) {
       buttons.push({
         key: 'renew',
@@ -7528,7 +7512,7 @@ var useActionButtons = function useActionButtons(pluginFamily, status, loadingSt
         disabled: isUpdating ? false : undefined
       });
     }
-    // Add renewal link if license is expiring within 30 days (show first in row actions after update)
+    // Add renewal link if license is expiring within 30 days
     else if (pluginFamily.proPlugin.isInstalled && pluginFamily.proPlugin.isLicensed && !pluginFamily.proPlugin.isExpired && pluginFamily.proPlugin.daysUntilExpiration !== undefined && pluginFamily.proPlugin.daysUntilExpiration >= 0 && pluginFamily.proPlugin.daysUntilExpiration <= 30 && pluginFamily.proPlugin.detailsUrl) {
       buttons.push({
         key: 'renew',
@@ -7607,6 +7591,33 @@ var useActionButtons = function useActionButtons(pluginFamily, status, loadingSt
         onClick: function onClick() {
           return onOpenPluginInfo(pluginFamily);
         }
+      });
+    }
+
+    // Add update button if update is available (show first in row actions)
+    if (isInstalled && !hasConflictingInstallations && pluginFamily.hasUpdate && pluginFamily.hasAnyVersionInstalled && onUpdate) {
+      var installedPlugin = pluginFamily.freePlugin.isInstalled ? pluginFamily.freePlugin : pluginFamily.proPlugin;
+      var currentVersion = installedPlugin.version || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Unknown', 'publishpress-hub');
+      var availableVersion = pluginFamily.availableVersion || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('latest', 'publishpress-hub');
+      buttons.push({
+        key: 'update',
+        variant: 'link',
+        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Update to v%s', 'publishpress-hub'), availableVersion),
+        isLoading: isUpdating,
+        onClick: function onClick() {
+          return onUpdate(pluginFamily);
+        }
+      });
+    }
+    if (isInstalled && !hasConflictingInstallations) {
+      var _installedPlugin = pluginFamily.freePlugin.isInstalled ? pluginFamily.freePlugin : pluginFamily.proPlugin;
+      var _currentVersion = _installedPlugin.version || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Unknown', 'publishpress-hub');
+      var _availableVersion = pluginFamily.availableVersion || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('latest', 'publishpress-hub');
+      buttons.push({
+        key: 'current-version',
+        variant: 'label',
+        className: 'pp-hub-plugin-current-version',
+        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('v%s', 'publishpress-hub'), _currentVersion)
       });
     }
     return buttons;

@@ -42,28 +42,7 @@ export const useActionButtons = (
     return useMemo(() => {
         const buttons = [];
 
-        // Add update button if update is available (show first in row actions)
-        if (
-            pluginFamily.hasUpdate &&
-            pluginFamily.hasAnyVersionInstalled &&
-            onUpdate
-        ) {
-            const installedPlugin = pluginFamily.freePlugin.isInstalled
-                ? pluginFamily.freePlugin
-                : pluginFamily.proPlugin;
-            const currentVersion = installedPlugin.version || __('Unknown', 'publishpress-hub');
-            const availableVersion = pluginFamily.availableVersion || __('latest', 'publishpress-hub');
-
-            buttons.push({
-                key: 'update',
-                variant: 'link',
-                text: sprintf(__('Update to v%s', 'publishpress-hub'), availableVersion),
-                isLoading: isUpdating,
-                onClick: () => onUpdate(pluginFamily),
-            });
-        }
-
-        // Add renewal link if license is expired (show first in row actions after update)
+        // Add renewal link if license is expired (show first in row actions)
         if (
             pluginFamily.proPlugin.isInstalled &&
             pluginFamily.proPlugin.isExpired &&
@@ -78,7 +57,7 @@ export const useActionButtons = (
                 disabled: isUpdating ? false : undefined,
             });
         }
-        // Add renewal link if license is expiring within 30 days (show first in row actions after update)
+        // Add renewal link if license is expiring within 30 days
         else if (
             pluginFamily.proPlugin.isInstalled &&
             pluginFamily.proPlugin.isLicensed &&
@@ -163,6 +142,44 @@ export const useActionButtons = (
                 text: __('More Info', 'publishpress-hub'),
                 disabled: isUpdating ? false : undefined,
                 onClick: () => onOpenPluginInfo(pluginFamily),
+            });
+        }
+
+        // Add update button if update is available (show first in row actions)
+        if (
+            isInstalled &&
+            !hasConflictingInstallations &&
+            pluginFamily.hasUpdate &&
+            pluginFamily.hasAnyVersionInstalled &&
+            onUpdate
+        ) {
+            const installedPlugin = pluginFamily.freePlugin.isInstalled
+                ? pluginFamily.freePlugin
+                : pluginFamily.proPlugin;
+            const currentVersion = installedPlugin.version || __('Unknown', 'publishpress-hub');
+            const availableVersion = pluginFamily.availableVersion || __('latest', 'publishpress-hub');
+
+            buttons.push({
+                key: 'update',
+                variant: 'link',
+                text: sprintf(__('Update to v%s', 'publishpress-hub'), availableVersion),
+                isLoading: isUpdating,
+                onClick: () => onUpdate(pluginFamily),
+            });
+        }
+
+        if (isInstalled && !hasConflictingInstallations) {
+            const installedPlugin = pluginFamily.freePlugin.isInstalled
+                ? pluginFamily.freePlugin
+                : pluginFamily.proPlugin;
+            const currentVersion = installedPlugin.version || __('Unknown', 'publishpress-hub');
+            const availableVersion = pluginFamily.availableVersion || __('latest', 'publishpress-hub');
+
+            buttons.push({
+                key: 'current-version',
+                variant: 'label',
+                className: 'pp-hub-plugin-current-version',
+                text: sprintf(__('v%s', 'publishpress-hub'), currentVersion)
             });
         }
 
