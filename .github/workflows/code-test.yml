@@ -38,6 +38,12 @@ jobs:
       - name: Verify Docker installation
         run: docker --version
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          tools: composer
+
       - name: Create .env file
         run: |
           cp $GITHUB_WORKSPACE/.env.example $GITHUB_WORKSPACE/.env
@@ -50,9 +56,10 @@ jobs:
           mkdir -p $GITHUB_WORKSPACE/dev-workspace-cache/mailhog/maildir
           chmod -R 777 $GITHUB_WORKSPACE/dev-workspace-cache
 
-      - name: Composer validation
+      - name: Composer prepare
         run: |
-          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer validate
+          composer validate
+          composer install
 
       - name: Start services
         run: |
@@ -73,23 +80,15 @@ jobs:
 
       - name: Build Codeception support classes
         run: |
-          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer build
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh bash -c "git config --global --add safe.directory /project && composer build"
 
       - name: Run Unit Tests
-        uses: php-actions/composer@v6
-        with:
-          command: test Unit
-          php_version: "8.4"
-          version: "2.8.1"
-          php_extensions: zip mysqli
+        run: |
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh bash -c "git config --global --add safe.directory /project && composer test Unit"
 
       - name: Run Intergration Tests
-        uses: php-actions/composer@v6
-        with:
-          command: test Integration
-          php_version: "8.4"
-          version: "2.8.1"
-          php_extensions: zip mysqli
+        run: |
+          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh bash -c "git config --global --add safe.directory /project && composer test Integration"
 
       - name: Show container logs on failure
         if: failure()
