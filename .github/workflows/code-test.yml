@@ -73,7 +73,7 @@ jobs:
         run: |
           docker ps
           echo "Checking marker file..."
-          ls -la $GITHUB_WORKSPACE/dev-workspace-cache/wp_test/ || true
+          ls -la $GITHUB_WORKSPACE/dev-workspace-cache/wp_test/wp-content/plugins/publishpress-hub || true
           echo "Fixing permissions for test runner..."
           sudo chown -R $(id -u):$(id -g) $GITHUB_WORKSPACE/dev-workspace-cache
           sudo chmod -R 777 $GITHUB_WORKSPACE/dev-workspace-cache
