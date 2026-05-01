@@ -1,6 +1,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[UNRELEASED]
+
+- Fixed: Resolved licensing issues with PublishPress Shortlinks Pro (#163).
+
 [1.0.4] - 16 Apr, 2026
 
 - Added: New settings menu page for improved configuration.
