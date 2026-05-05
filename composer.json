@@ -26,7 +26,8 @@
         "plugin-folder": "publishpress-hub",
         "plugin-lang-domain": "publishpress-hub",
         "plugin-github-repo": "publishpress/publishpress-hub",
-        "plugin-composer-package": "publishpress/publishpress-hub"
+        "plugin-composer-package": "publishpress/publishpress-hub",
+        "plugin-type": "pro"
     },
     "autoload": {
         "files": [
