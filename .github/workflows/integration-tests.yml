@@ -1,63 +1,13 @@
 name: Run integration tests
 on:
+  pull_request:
+    branches:
+      - '*'
+
+  workflow_call:
+
   workflow_dispatch:
 
 jobs:
-  check:
-    name: Test the code
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Verify Docker installation
-        run: docker --version
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.4'
-          tools: composer
-
-      - name: Create .env file
-        run: |
-          cp $GITHUB_WORKSPACE/.env.example $GITHUB_WORKSPACE/.env
-
-      - name: Prepare cache directories
-        run: |
-          mkdir -p $GITHUB_WORKSPACE/dev-workspace-cache/wp_test
-          mkdir -p $GITHUB_WORKSPACE/dev-workspace-cache/db_test/mysql
-          mkdir -p $GITHUB_WORKSPACE/dev-workspace-cache/logs/db_test
-          mkdir -p $GITHUB_WORKSPACE/dev-workspace-cache/mailhog/maildir
-          chmod -R 777 $GITHUB_WORKSPACE/dev-workspace-cache
-
-      - name: Composer prepare
-        run: |
-          composer validate
-          composer install
-
-      - name: Start services
-        run: |
-          composer test:up
-        timeout-minutes: 10
-        env:
-          WP_READY_MAX_ATTEMPTS: 60
-          WP_READY_INTERVAL: 5
-
-      - name: Verify container status and fix permissions
-        run: |
-          docker ps
-          echo "Checking marker file..."
-          ls -la $GITHUB_WORKSPACE/dev-workspace-cache/wp_test/wp-content/plugins/publishpress-hub || true
-          sleep 15
-          echo "Fixing permissions for test runner..."
-          sudo chown -R $(id -u):$(id -g) $GITHUB_WORKSPACE/dev-workspace-cache
-          sudo chmod -R 777 $GITHUB_WORKSPACE/dev-workspace-cache
-
-      - name: Build Codeception support classes
-        run: |
-          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh bash -c "git config --global --add safe.directory /project && composer build"
-
-      - name: Run the tests
-        run: |
-          composer test Integration
+  run-integration-tests:
+    uses: publishpress/github-workflows/.github/workflows/integration-tests.yml@v3
