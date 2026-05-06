@@ -1,4 +1,4 @@
-name: Deploy pro plugin to PublishPress.com
+name: Run unit tests
 on:
   pull_request:
     branches:
