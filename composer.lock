@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a30f7e79c63d842676b078a8feeed2e",
+    "content-hash": "75a496ebeb0607e7a32a368c037d6e9e",
     "packages": [],
     "packages-dev": [
         {
@@ -5887,16 +5887,16 @@
         },
         {
             "name": "publishpress/dev-workspace",
-            "version": "dev-development",
+            "version": "1.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/library-dev-workspace.git",
-                "reference": "2574b127545a6a3a64d1ea67dfc455a693da7a5f"
+                "reference": "689779daa52ce49b302ef76a068be34bd16ff45e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/library-dev-workspace/zipball/2574b127545a6a3a64d1ea67dfc455a693da7a5f",
-                "reference": "2574b127545a6a3a64d1ea67dfc455a693da7a5f",
+                "url": "https://api.github.com/repos/publishpress/library-dev-workspace/zipball/689779daa52ce49b302ef76a068be34bd16ff45e",
+                "reference": "689779daa52ce49b302ef76a068be34bd16ff45e",
                 "shasum": ""
             },
             "require": {
@@ -5936,7 +5936,6 @@
                 "wp-cli/wp-cli-bundle": "^2.10",
                 "wp-coding-standards/wpcs": "^3"
             },
-            "default-branch": true,
             "type": "composer-plugin",
             "extra": {
                 "class": "PublishPress\\DevWorkspace\\Plugin"
@@ -5953,9 +5952,9 @@
             "description": "Shared Composer scripts for PublishPress plugins",
             "support": {
                 "issues": "https://github.com/publishpress/library-dev-workspace/issues",
-                "source": "https://github.com/publishpress/library-dev-workspace/tree/development"
+                "source": "https://github.com/publishpress/library-dev-workspace/tree/1.3.5"
             },
-            "time": "2026-05-05T16:38:04+00:00"
+            "time": "2026-05-06T01:37:29+00:00"
         },
         {
             "name": "publishpress/publishpress-phpcs-standards",
@@ -13530,9 +13529,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "publishpress/dev-workspace": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

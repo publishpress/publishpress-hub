@@ -55,6 +55,6 @@
         "ext-json": "*"
     },
     "require-dev": {
-        "publishpress/dev-workspace": "dev-development"
+        "publishpress/dev-workspace": "^1.3"
     }
 }
