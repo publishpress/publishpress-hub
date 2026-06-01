@@ -2,15 +2,15 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Hub 1.0.4\n"
+"Project-Id-Version: PublishPress Hub 1.0.5-beta.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-16T21:46:44+00:00\n"
-"PO-Revision-Date: 2026-04-16 21:56+0000\n"
+"POT-Creation-Date: 2026-06-01T20:22:21+00:00\n"
+"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Language: en-US\n"
@@ -310,8 +310,8 @@ msgid "Organize your posts into issues or series."
 msgstr "Organize your posts into issues or series."
 
 #: src/Domain/Plugin/plugin-families.php:170, fuzzy
-msgid "Create shortlinks for your posts."
-msgstr "Create shortlinks for your posts."
+msgid "Create custom URLs for your posts and external links."
+msgstr "Create custom URLs for your posts and external links."
 
 #: src/Domain/Plugin/plugin-families.php:186, fuzzy
 msgid "Create custom statuses and publishing workflows."
@@ -941,7 +941,6 @@ msgid "Pro Details"
 msgstr "Pro Details"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134, fuzzy
 msgid "Changelogs"
 msgstr "Changelogs"
@@ -1121,6 +1120,10 @@ msgstr ""
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40, fuzzy
 msgid "Discover all Pro features"
 msgstr "Discover all Pro features"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44, fuzzy
+msgid "Changelog"
+msgstr "Changelog"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48, fuzzy
 msgid "Already have a license? Install Pro now"

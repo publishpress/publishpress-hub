@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-04-16 21:56+0000\n"
+"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Language: ja\n"
@@ -275,8 +275,8 @@ msgid "Organize your posts into issues or series."
 msgstr "投稿を号またはシリーズに整理します。"
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "投稿のショートリンクを作成します。"
+msgid "Create custom URLs for your posts and external links."
+msgstr "投稿や外部リンクのためのカスタムURLを作成します。"
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -891,7 +891,6 @@ msgid "Pro Details"
 msgstr "Proの詳細"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "変更履歴"
@@ -1070,6 +1069,10 @@ msgstr ""
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "すべてのPro機能を発見する"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "変更履歴"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"

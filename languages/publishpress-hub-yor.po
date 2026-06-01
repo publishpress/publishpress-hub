@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
-"PO-Revision-Date: 2026-04-16 21:56+0000\n"
+"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Language: yor\n"
@@ -186,7 +186,6 @@ msgstr ""
 "atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
-#, fuzzy
 msgid ""
 "The license server returned an invalid response. Please try again later or "
 "contact support for help."
@@ -199,7 +198,6 @@ msgid "This license is inactive for this site. Please contact support for help."
 msgstr "Iwe-aṣẹ yii ko ṣiṣẹ fun aaye yii. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
-#, fuzzy
 msgid ""
 "Plugin activation failed. Please try again later or contact support for "
 "help."
@@ -300,8 +298,8 @@ msgid "Organize your posts into issues or series."
 msgstr "Ṣeto awọn ifiweranṣẹ rẹ sinu awọn iṣoro tabi jara."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "Ṣẹda awọn ọna asopọ kukuru fun awọn ifiweranṣẹ rẹ."
+msgid "Create custom URLs for your posts and external links."
+msgstr "Ṣẹda URLs aṣa fun awọn ifiweranṣẹ rẹ ati awọn ọna asopọ ita."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -937,7 +935,6 @@ msgid "Pro Details"
 msgstr "Alaye Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Awọn ayipada"
@@ -1117,6 +1114,10 @@ msgstr ""
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "Ṣawari gbogbo awọn ẹya Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "Ayipada iwe"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"

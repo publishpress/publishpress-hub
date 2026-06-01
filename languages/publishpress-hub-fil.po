@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
-"PO-Revision-Date: 2026-04-16 21:56+0000\n"
+"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "|| n % 10 == 6 || n % 10 == 9);\n"
@@ -209,7 +209,6 @@ msgstr ""
 "makipag-ugnayan sa suporta para sa tulong."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
-#, fuzzy
 msgid ""
 "The license server returned an invalid response. Please try again later or "
 "contact support for help."
@@ -224,7 +223,6 @@ msgstr ""
 "makipag-ugnayan sa suporta para sa tulong."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
-#, fuzzy
 msgid ""
 "Plugin activation failed. Please try again later or contact support for "
 "help."
@@ -335,8 +333,8 @@ msgid "Organize your posts into issues or series."
 msgstr "Ayusin ang iyong mga post sa mga isyu o serye."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "Lumikha ng mga shortlink para sa iyong mga post."
+msgid "Create custom URLs for your posts and external links."
+msgstr "Gumawa ng mga pasadyang URL para sa iyong mga post at mga panlabas na link."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -978,7 +976,6 @@ msgid "Pro Details"
 msgstr "Mga Detalye ng Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Mga Changelog"
@@ -1160,6 +1157,10 @@ msgstr ""
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "Tuklasin ang lahat ng Pro na tampok"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "Talaan ng mga pagbabago"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"

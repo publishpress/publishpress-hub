@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-04-16 21:56+0000\n"
+"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -220,7 +220,6 @@ msgid "This action is not possible because the plugin is already installed."
 msgstr "Tindakan ini tidak mungkin dilakukan karena plugin sudah terpasang."
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
-#, fuzzy
 msgid ""
 "Plugin deactivation failed. Please try again later or contact support for "
 "help."
@@ -233,7 +232,6 @@ msgid "Plugin family not found. Please contact support for help."
 msgstr "Keluarga plugin tidak ditemukan. Silakan hubungi dukungan untuk bantuan."
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
-#, fuzzy
 msgid ""
 "This action is not possible because both free and pro versions are "
 "installed. Please uninstall one version to continue."
@@ -310,8 +308,8 @@ msgid "Organize your posts into issues or series."
 msgstr "Atur pos Anda ke dalam isu atau seri."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "Buat tautan pendek untuk pos Anda."
+msgid "Create custom URLs for your posts and external links."
+msgstr "Buat URL kustom untuk pos dan tautan eksternal Anda."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -947,7 +945,6 @@ msgid "Pro Details"
 msgstr "Rincian Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Catatan Perubahan"
@@ -1127,6 +1124,10 @@ msgstr ""
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "Temukan semua fitur Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "Riwayat Perubahan"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"

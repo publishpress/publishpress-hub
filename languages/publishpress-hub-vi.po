@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
-"PO-Revision-Date: 2026-04-16 21:57+0000\n"
+"PO-Revision-Date: 2026-06-01 20:26+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Language: vi\n"
@@ -326,8 +326,8 @@ msgid "Organize your posts into issues or series."
 msgstr "Tổ chức các bài viết của bạn thành các số hoặc chuỗi."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "Tạo liên kết ngắn cho các bài viết của bạn."
+msgid "Create custom URLs for your posts and external links."
+msgstr "Tạo URL tùy chỉnh cho bài viết và liên kết bên ngoài."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -964,7 +964,6 @@ msgid "Pro Details"
 msgstr "Chi tiết Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Nhật ký thay đổi"
@@ -1145,6 +1144,10 @@ msgstr ""
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "Khám phá tất cả các tính năng Pro"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "Nhật ký thay đổi"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"

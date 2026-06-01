@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
-"PO-Revision-Date: 2026-04-16 21:56+0000\n"
+"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -314,8 +314,8 @@ msgid "Organize your posts into issues or series."
 msgstr "Organiser dine indlæg i numre eller serier."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "Opret kortlinks til dine indlæg."
+msgid "Create custom URLs for your posts and external links."
+msgstr "Opret brugerdefinerede URL'er til dine indlæg og eksterne links."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -948,7 +948,6 @@ msgid "Pro Details"
 msgstr "Pro Detaljer"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Ændringslogfiler"
@@ -1128,6 +1127,10 @@ msgstr ""
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "Opdag alle Pro-funktioner"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "Ændringslog"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"

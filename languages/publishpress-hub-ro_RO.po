@@ -18,6 +18,7 @@ msgstr ""
 "20)) ? 1 : 2);\n"
 
 #. Plugin Name of the plugin
+#. Plugin Name of the plugin
 #: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"

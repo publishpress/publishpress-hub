@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-15T21:04:03+00:00\n"
-"PO-Revision-Date: 2026-04-16 21:57+0000\n"
+"PO-Revision-Date: 2026-06-01 20:26+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -322,8 +322,8 @@ msgid "Organize your posts into issues or series."
 msgstr "ଆପଣଙ୍କର ପୋଷ୍ଟ୍‌ଗୁଡିକୁ ମାସିକ କିମ୍ବା ଧାରାରେ ସଂଗଠିତ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "ଆପଣଙ୍କର ପୋଷ୍ଟ୍‌ଗୁଡିକୁ ସଂକ୍ଷିପ୍ତ ଲିଙ୍କ୍‌ଗୁଡିକୁ ସୃଷ୍ଟି କରନ୍ତୁ।"
+msgid "Create custom URLs for your posts and external links."
+msgstr "ଆପଣଙ୍କର ପୋଷ୍ଟଗୁଡିକ ଓ ବାହ୍ୟ ଲିଙ୍କ୍‌ଗୁଡିକ ପାଇଁ କଷ୍ଟମ୍ URL ତିଆରି କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -958,7 +958,6 @@ msgid "Pro Details"
 msgstr "Pro Details"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134, fuzzy
 msgid "Changelogs"
 msgstr "Changelogs"
@@ -1138,6 +1137,10 @@ msgstr ""
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "ସମସ୍ତ ପ୍ରୋ ବୈଶିଷ୍ଟ୍ୟ ଖୋଜନ୍ତୁ"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "ଚେଞ୍ଜଲଗ୍"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-04-16 21:56+0000\n"
+"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -228,7 +228,6 @@ msgid "This action is not possible because the plugin is already installed."
 msgstr "Deze actie is niet mogelijk omdat de plugin al is geïnstalleerd."
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
-#, fuzzy
 msgid ""
 "Plugin deactivation failed. Please try again later or contact support for "
 "help."
@@ -241,7 +240,6 @@ msgid "Plugin family not found. Please contact support for help."
 msgstr "Pluginfamilie niet gevonden. Neem contact op met de ondersteuning voor hulp."
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
-#, fuzzy
 msgid ""
 "This action is not possible because both free and pro versions are "
 "installed. Please uninstall one version to continue."
@@ -320,8 +318,8 @@ msgid "Organize your posts into issues or series."
 msgstr "Organiseer uw berichten in nummers of series."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "Maak shortlinks voor uw berichten."
+msgid "Create custom URLs for your posts and external links."
+msgstr "Maak aangepaste URL's voor uw berichten en externe links."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -954,7 +952,6 @@ msgid "Pro Details"
 msgstr "Pro Details"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134, fuzzy
 msgid "Changelogs"
 msgstr "Changelogs"
@@ -1135,6 +1132,10 @@ msgstr ""
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "Ontdek alle Pro-functies"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "Wijzigingslogboek"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"
