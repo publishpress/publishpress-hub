@@ -262,17 +262,17 @@
         },
         {
             "name": "publishpress/wordpress-edd-license",
-            "version": "3.0.5",
-            "version_normalized": "3.0.5.0",
+            "version": "3.0.6",
+            "version_normalized": "3.0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/library-wordpress-edd-license.git",
-                "reference": "10aa8e209cf7a7e568883ee4c20465aca1f95e67"
+                "reference": "458d118df7d319b42212e26a51a93245a18b7671"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/library-wordpress-edd-license/zipball/10aa8e209cf7a7e568883ee4c20465aca1f95e67",
-                "reference": "10aa8e209cf7a7e568883ee4c20465aca1f95e67",
+                "url": "https://api.github.com/repos/publishpress/library-wordpress-edd-license/zipball/458d118df7d319b42212e26a51a93245a18b7671",
+                "reference": "458d118df7d319b42212e26a51a93245a18b7671",
                 "shasum": ""
             },
             "require": {
@@ -284,7 +284,7 @@
             "require-dev": {
                 "publishpress/version-loader-generator": "^1.0"
             },
-            "time": "2026-03-03T21:50:59+00:00",
+            "time": "2026-05-13T14:49:36+00:00",
             "type": "library",
             "extra": {
                 "generator": {
@@ -331,7 +331,7 @@
             ],
             "support": {
                 "issues": "https://github.com/publishpress/library-wordpress-edd-license/issues",
-                "source": "https://github.com/publishpress/library-wordpress-edd-license/tree/3.0.5"
+                "source": "https://github.com/publishpress/library-wordpress-edd-license/tree/3.0.6"
             },
             "install-path": "../publishpress/wordpress-edd-license"
         },
