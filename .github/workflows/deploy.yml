@@ -1,4 +1,4 @@
-name: Deploy pro plugin to PublishPress.com
+name: Deploy plugin to PublishPress.com
 on:
   release:
     types: [ released ]
@@ -9,9 +9,14 @@ jobs:
     uses: ./.github/workflows/code-standards.yml
     secrets: inherit
 
-  deploy-publishpress:
+  run-unit-tests:
+    name: Run unit tests
+    uses: ./.github/workflows/unit-tests.yml
+    secrets: inherit
+
+  deploy-publishpress-com:
     permissions:
-      contents: write
+      contents: read
     uses: publishpress/github-workflows/.github/workflows/deploy-pro.yml@v3
-    needs: [code-check]
+    needs: [code-check, run-unit-tests]
     secrets: inherit

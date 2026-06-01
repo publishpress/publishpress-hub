@@ -1,13 +1,12 @@
-name: Run integration tests
-on:
-  pull_request:
-    branches:
-      - '*'
+name: Integration Tests
+permissions:
+  contents: read
 
+on:
   workflow_call:
 
   workflow_dispatch:
 
 jobs:
-  run-integration-tests:
+  check:
     uses: publishpress/github-workflows/.github/workflows/integration-tests.yml@v3
