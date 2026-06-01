@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
-"POT-Creation-Date: 2026-04-15T21:04:03+00:00\n"
+"POT-Creation-Date: 2026-04-16T21:46:44+00:00\n"
 "PO-Revision-Date: 2026-04-15 15:19+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Plugin Name of the plugin
-#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259, fuzzy
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
@@ -36,7 +36,7 @@ msgid "PublishPress"
 msgstr "PublishPress"
 
 #. Author URI of the plugin
-#: publishpress-hub.php:8, fuzzy
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -534,7 +534,7 @@ msgstr "Lehetőségek"
 msgid "Components Showcase"
 msgstr "Komponens bemutató"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93, fuzzy
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
 msgid "N/A"
 msgstr "N/A"
 
@@ -863,7 +863,7 @@ msgstr "Már tudod, mit csinálsz? Szuper! Akkor "
 msgid "dismiss this page"
 msgstr "elutasíthatod ezt az oldalt"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
 msgid "."
 msgstr "."
 
@@ -946,17 +946,18 @@ msgstr ""
 "verziót, ha rendelkezik licencekkel, vagy a Free verziót, hogy elkezdhesse."
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
 msgid "Free Details"
 msgstr "Ingyenes részletek"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
 msgid "Pro Details"
 msgstr "Pro részletek"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Változási naplók"
 
@@ -1021,7 +1022,8 @@ msgstr "Deaktiváld a licenckulcsot ehhez az oldalhoz"
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
 msgid "Unknown"
 msgstr "Ismeretlen"
 
@@ -1124,10 +1126,6 @@ msgstr ""
 msgid "Discover all Pro features"
 msgstr "Fedezd fel az összes Pro funkciót"
 
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
-msgid "Changelog"
-msgstr "Változásnapló"
-
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"
 msgstr "Már van licenc? Telepítsd a Pro-t most"
@@ -1141,8 +1139,9 @@ msgid "New version available"
 msgstr "Új verzió érhető el"
 
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
-msgid "Version %s"
-msgstr "Verzió %s"
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
+msgid "v%s"
+msgstr ""
 
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
 msgid "Update available: %s → %s"
@@ -1197,34 +1196,35 @@ msgstr "Frissítés elérhető"
 msgid "Expires"
 msgstr "Lejár"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
-msgid "latest"
-msgstr "legújabb"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
-msgid "Update to v%s"
-msgstr "Frissítés a v%s verzióra"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
 msgid "Renew"
 msgstr "Megújítás"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
 msgid "Deactivate"
 msgstr "Letiltás"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
 msgid "Activate"
 msgstr "Aktiválás"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
 msgid "Uninstall"
 msgstr "Eltávolítás"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
 msgid "More Info"
 msgstr "További információk"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
+msgid "latest"
+msgstr "legújabb"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+msgid "Update to v%s"
+msgstr "Frissítés a v%s verzióra"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
 msgid "This plugin is not installed."
@@ -1332,3 +1332,9 @@ msgstr "Túl sok kérés. Kérjük, várjon néhány másodpercet, és próbálj
 #, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
+
+#~ msgid "Changelog"
+#~ msgstr "Változásnapló"
+
+#~ msgid "Version %s"
+#~ msgstr "Verzió %s"

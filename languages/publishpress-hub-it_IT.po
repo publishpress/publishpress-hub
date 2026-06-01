@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
-"POT-Creation-Date: 2026-04-15T21:04:03+00:00\n"
-"PO-Revision-Date: 2026-04-15 17:15+0200\n"
+"POT-Creation-Date: 2026-04-16T21:46:44+00:00\n"
+"PO-Revision-Date: 2026-04-17 15:44+0200\n"
 "Last-Translator: Angelo Giammarresi <info@wocmultimedia.biz>\n"
 "Language-Team: Italian <https://weblate.publishpress.com/projects/"
 "publishpress-hub/publishpress-hub/it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Domain: publishpress-hub\n"
 
 #. Plugin Name of the plugin
-#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259, fuzzy
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
@@ -37,7 +37,7 @@ msgid "PublishPress"
 msgstr "PublishPress"
 
 #. Author URI of the plugin
-#: publishpress-hub.php:8, fuzzy
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -858,7 +858,7 @@ msgstr "Sai già cosa stai facendo? Ottimo! Tu puoi "
 msgid "dismiss this page"
 msgstr "ignora questa pagina"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
 msgid "."
 msgstr "."
 
@@ -942,17 +942,18 @@ msgstr ""
 "iniziare."
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
 msgid "Free Details"
 msgstr "Dettagli versione gratuita"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
 msgid "Pro Details"
 msgstr "Dettagli versione Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Registro delle modifiche"
 
@@ -1018,7 +1019,8 @@ msgstr "Disattiva la licenza per questo sito"
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
 msgid "Unknown"
 msgstr "Sconosciuto"
 
@@ -1122,10 +1124,6 @@ msgstr ""
 msgid "Discover all Pro features"
 msgstr "Scopri tutte le caratteristiche Pro"
 
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
-msgid "Changelog"
-msgstr "Registro della modifica"
-
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"
 msgstr "Hai già una licenza? Installa Pro adesso"
@@ -1139,8 +1137,9 @@ msgid "New version available"
 msgstr "Nuova versione disponibile"
 
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
-msgid "Version %s"
-msgstr "Versione %s"
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
+msgid "v%s"
+msgstr "v%s"
 
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
 msgid "Update available: %s → %s"
@@ -1195,34 +1194,35 @@ msgstr "Aggiornamento disponibile"
 msgid "Expires"
 msgstr "Scade"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
-msgid "latest"
-msgstr "la più recente"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
-msgid "Update to v%s"
-msgstr "Aggiorna alla v%s"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
 msgid "Renew"
 msgstr "Rinnova"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
 msgid "Deactivate"
 msgstr "Disattiva"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
 msgid "Activate"
 msgstr "Attiva"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
 msgid "Uninstall"
 msgstr "Disinstalla"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
 msgid "More Info"
 msgstr "Maggiori informazioni"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
+msgid "latest"
+msgstr "la più recente"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+msgid "Update to v%s"
+msgstr "Aggiorna alla v%s"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
 msgid "This plugin is not installed."
@@ -1329,6 +1329,12 @@ msgstr "Troppe richieste. Attendi alcuni secondi e riprova."
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
 msgid "Cloudflare Ray ID: %s"
 msgstr "ID Cloudflare Ray: %s"
+
+#~ msgid "Changelog"
+#~ msgstr "Registro della modifica"
+
+#~ msgid "Version %s"
+#~ msgstr "Versione %s"
 
 #~ msgctxt "block title"
 #~ msgid "Widget Group"
