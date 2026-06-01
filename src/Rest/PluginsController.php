@@ -178,7 +178,7 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/install/free',
             WP_REST_Server::CREATABLE,
             $this->installFreePluginUseCase,
-            [$this, 'checkPermissions'],
+            [HubAccessService::class, 'canInstallPlugins'],
             [
                 'familySlug' => $this->getFamilySlugArg(),
             ]
@@ -190,7 +190,7 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/install/pro',
             WP_REST_Server::CREATABLE,
             $this->installProPluginUseCase,
-            [$this, 'checkPermissions'],
+            [HubAccessService::class, 'canInstallPlugins'],
             [
                 'familySlug' => $this->getFamilySlugArg(),
                 'licenseKey' => [
@@ -210,7 +210,7 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/(?P<action>activate|deactivate)',
             WP_REST_Server::CREATABLE,
             $this->changePluginActivationUseCase,
-            [$this, 'checkPermissions'],
+            [HubAccessService::class, 'canActivatePlugins'],
             [
                 'familySlug' => $this->getFamilySlugArg(),
                 'action' => [
@@ -230,7 +230,7 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/uninstall',
             WP_REST_Server::CREATABLE,
             $this->uninstallPluginUseCase,
-            [$this, 'checkPermissions'],
+            [HubAccessService::class, 'canDeletePlugins'],
             [
                 'familySlug' => $this->getFamilySlugArg(),
             ]
@@ -242,7 +242,7 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/upgrade',
             WP_REST_Server::CREATABLE,
             $this->upgradePluginUseCase,
-            [$this, 'checkPermissions'],
+            [HubAccessService::class, 'canUpgradePlugins'],
             [
                 'familySlug' => $this->getFamilySlugArg(),
                 'licenseKey' => [
@@ -262,7 +262,7 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/update',
             WP_REST_Server::CREATABLE,
             $this->updatePluginUseCase,
-            [$this, 'checkPermissions'],
+            [HubAccessService::class, 'canUpdatePlugins'],
             [
                 'familySlug' => $this->getFamilySlugArg(),
             ]
@@ -274,7 +274,7 @@ class PluginsController implements BootableInterface
             '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/resolve-conflict',
             WP_REST_Server::CREATABLE,
             $this->resolveConflictUseCase,
-            [$this, 'checkPermissions'],
+            [HubAccessService::class, 'canResolvePluginConflict'],
             [
                 'familySlug' => $this->getFamilySlugArg(),
                 'pluginToKeep' => [
@@ -379,7 +379,7 @@ class PluginsController implements BootableInterface
      */
     public function checkPermissions(): bool
     {
-        return current_user_can(HubAccessService::CAPABILITY);
+        return HubAccessService::canManageHub();
     }
 
     /**
