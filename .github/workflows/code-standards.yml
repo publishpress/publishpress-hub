@@ -1,0 +1,13 @@
+name: Enforce code standards and compatibility
+on:
+  pull_request:
+    branches:
+      - '*'
+
+  workflow_call:
+
+  workflow_dispatch:
+
+jobs:
+  check:
+    uses: publishpress/github-workflows/.github/workflows/code-standards.yml@v3

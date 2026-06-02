@@ -62,6 +62,11 @@ return [
         'ppseries_license_key',
         'ppseries_license_status',
     ],
+    'shortlinks' => [
+        RawStringHandler::class,
+        'publishpress_shortlinks_pro_license_key',
+        'publishpress_shortlinks_pro_license_status',
+    ],
     'statuses' => [
         SerializedArrayHandler::class,
         'publishpress_statuses_edd_key',

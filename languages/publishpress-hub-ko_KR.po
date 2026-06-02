@@ -4,38 +4,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
+"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ko_KR\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-04-16 14:31+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
-"Language: ko_KR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: publishpress-hub.php:4
-#: src/Admin/Page/WelcomePageController.php:259
 #. Plugin Name of the plugin
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "퍼블리시프레스 허브"
 
-#: publishpress-hub.php:5
 #. Description of the plugin
+#: publishpress-hub.php:5
 msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
-msgstr "모든 PublishPress 플러그인을 위한 중앙 집중식 관리 허브 - 하나의 대시보드에서 설치, 업데이트 및 라이센스를 관리합니다."
+msgstr ""
+"모든 PublishPress 플러그인을 위한 중앙 집중식 관리 허브 - 하나의 대시보드에"
+"서 설치, 업데이트 및 라이센스를 관리합니다."
 
-#: publishpress-hub.php:7
 #. Author of the plugin
+#: publishpress-hub.php:7
 msgid "PublishPress"
 msgstr "퍼블리시프레스"
 
-#: publishpress-hub.php:8, fuzzy
 #. Author URI of the plugin
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -70,8 +71,8 @@ msgstr "환영합니다"
 msgid "Please wait while we load the welcome page..."
 msgstr "환영 페이지를 로드하는 동안 잠시 기다려 주십시오..."
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "경고: %1$s의 라이센스가 만료되었습니다. %2$s"
@@ -81,8 +82,8 @@ msgstr "경고: %1$s의 라이센스가 만료되었습니다. %2$s"
 msgid "Manage licenses"
 msgstr "라이센스 관리"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "경고: %1$d 개의 플러그인에 만료된 라이센스가 있습니다: %2$s. %3$s"
@@ -95,33 +96,38 @@ msgstr "초기화하기 전에 객체를 로드해야 합니다."
 msgid "No license key found"
 msgstr "라이센스 키를 찾을 수 없습니다"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr "플러그인 가족에 대해 설정되지 않은 무료 플러그인: %s"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr "플러그인 가족에 대해 설정되지 않은 프로 플러그인: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
 msgid ""
-"License activation error. Please try again later or contact support for "
-"help."
-msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
+"License activation error. Please try again later or contact support for help."
+msgstr ""
+"라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시"
+"오."
 
 #: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
 msgid ""
 "License deactivation error. Please try again later or contact support for "
 "help."
-msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
+msgstr ""
+"라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시"
+"오."
 
 #: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
-msgstr "이 라이선스는 현재 비활성화되어 있습니다. 도움을 받으시려면 지원팀에 문의하십시오."
+msgstr ""
+"이 라이선스는 현재 비활성화되어 있습니다. 도움을 받으시려면 지원팀에 문의하십"
+"시오."
 
 #: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
 msgid "This license has expired. Please contact support to renew it."
@@ -131,25 +137,31 @@ msgstr "이 라이선스는 만료되었습니다. 갱신을 원하시면 지원
 msgid ""
 "This license key is not authorized for this plugin. Please verify your "
 "license key or contact support for help."
-msgstr "이 라이선스는 이 사이트에 대해 비활성 상태입니다. 도움을 받으시려면 지원팀에 문의하십시오."
+msgstr ""
+"이 라이선스는 이 사이트에 대해 비활성 상태입니다. 도움을 받으시려면 지원팀에 "
+"문의하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
 msgid ""
-"This license cannot be used for this plugin. Please contact support for "
-"help."
-msgstr "이 라이선스는 활성화할 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
+"This license cannot be used for this plugin. Please contact support for help."
+msgstr ""
+"이 라이선스는 활성화할 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
 msgid ""
 "This license does not match the plugin you are trying to activate. Please "
 "contact support for assistance."
-msgstr "이 라이선스는 이 사이트에 대해 비활성 상태입니다. 도움을 받으시려면 지원팀에 문의하십시오."
+msgstr ""
+"이 라이선스는 이 사이트에 대해 비활성 상태입니다. 도움을 받으시려면 지원팀에 "
+"문의하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
 msgid ""
 "License key does not match our records. Please contact support for "
 "assistance."
-msgstr "이 라이선스는 현재 비활성화되어 있습니다. 도움을 받으시려면 지원팀에 문의하십시오."
+msgstr ""
+"이 라이선스는 현재 비활성화되어 있습니다. 도움을 받으시려면 지원팀에 문의하십"
+"시오."
 
 #: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
@@ -157,9 +169,11 @@ msgstr "제공된 라이선스 키가 없습니다. 유효한 라이선스 키�
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
 msgid ""
-"Your site URL is required to activate the license. Please enter a valid "
-"site URL to continue."
-msgstr "라이센스를 활성화하려면 사이트 URL이 필요합니다. 계속하려면 유효한 사이트 URL을 입력하세요."
+"Your site URL is required to activate the license. Please enter a valid site "
+"URL to continue."
+msgstr ""
+"라이센스를 활성화하려면 사이트 URL이 필요합니다. 계속하려면 유효한 사이트 URL"
+"을 입력하세요."
 
 #: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
 msgid ""
@@ -169,28 +183,34 @@ msgstr "이 라이선스는 만료되었습니다. 갱신을 원하시면 지원
 
 #: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
 msgid "This license cannot be activated. Please contact support for help."
-msgstr "이 라이선스는 활성화할 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
+msgstr ""
+"이 라이선스는 활성화할 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseServerException.php:28
-msgid "License server error. Please try again later or contact support for help."
-msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
+msgid ""
+"License server error. Please try again later or contact support for help."
+msgstr ""
+"라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시"
+"오."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
-#, fuzzy
 msgid ""
 "The license server returned an invalid response. Please try again later or "
 "contact support for help."
-msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
+msgstr ""
+"라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시"
+"오."
 
 #: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
-msgid "This license is inactive for this site. Please contact support for help."
-msgstr "이 라이선스는 이 사이트에 대해 비활성 상태입니다. 도움을 받으시려면 지원팀에 문의하십시오."
+msgid ""
+"This license is inactive for this site. Please contact support for help."
+msgstr ""
+"이 라이선스는 이 사이트에 대해 비활성 상태입니다. 도움을 받으시려면 지원팀에 "
+"문의하십시오."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
-#, fuzzy
 msgid ""
-"Plugin activation failed. Please try again later or contact support for "
-"help."
+"Plugin activation failed. Please try again later or contact support for help."
 msgstr "플러그인 설치에 실패했습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
@@ -198,18 +218,19 @@ msgid "This action is not possible because the plugin is already installed."
 msgstr "플러그인이 이미 설치되어 있어 이 작업을 수행할 수 없습니다."
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
-#, fuzzy
 msgid ""
 "Plugin deactivation failed. Please try again later or contact support for "
 "help."
-msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
+msgstr ""
+"라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시"
+"오."
 
 #: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
 msgid "Plugin family not found. Please contact support for help."
-msgstr "플러그인 패밀리를 찾을 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
+msgstr ""
+"플러그인 패밀리를 찾을 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
-#, fuzzy
 msgid ""
 "This action is not possible because both free and pro versions are "
 "installed. Please uninstall one version to continue."
@@ -220,7 +241,6 @@ msgid "Plugin installation failed. Please contact support for help."
 msgstr "플러그인 설치에 실패했습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
-#, fuzzy
 msgid ""
 "This action is not possible because the plugin is not activated. Please "
 "activate the plugin and try again."
@@ -231,7 +251,8 @@ msgstr "플러그인이 이미 설치되어 있어 이 작업을 수행할 수 �
 msgid ""
 "Plugin not found in our available plugins list. Please contact support for "
 "help."
-msgstr "플러그인 패밀리를 찾을 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
+msgstr ""
+"플러그인 패밀리를 찾을 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
 #, fuzzy
@@ -245,7 +266,9 @@ msgstr "플러그인이 이미 설치되어 있어 이 작업을 수행할 수 �
 msgid ""
 "Unknown license server error. Please try again later or contact support for "
 "help."
-msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
+msgstr ""
+"라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시"
+"오."
 
 #: src/Domain/Plugin/plugin-families.php:26
 msgid "Define tasks that authors must complete before publishing."
@@ -284,27 +307,27 @@ msgid "Organize your posts into issues or series."
 msgstr "게시물을 이슈나 시리즈로 조직하세요."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "게시물에 대한 단축 링크를 생성하세요."
+msgid "Create custom URLs for your posts and external links."
+msgstr "게시물 및 외부 링크에 대한 사용자 정의 URL을 생성합니다."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
 msgstr "사용자 정의 상태 및 게시 워크플로를 생성하세요."
 
-#: src/Infrastructure/Container/DependencyContainer.php:102
 #. translators: %s is the dependency ID.
+#: src/Infrastructure/Container/DependencyContainer.php:102
 #, php-format
 msgid "Dependency \"%s\" not found in container."
 msgstr "의존성 \"%s\"를 컨테이너에서 찾을 수 없습니다."
 
-#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #, php-format
 msgid "Error validating license: %s"
 msgstr "라이센스 검증 오류: %s"
 
-#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #, php-format
 msgid "Error getting license info: %s"
 msgstr "라이센스 정보 가져오기 오류: %s"
@@ -317,8 +340,8 @@ msgstr "요청이 너무 많습니다. 나중에 다시 시도하세요."
 msgid "An error occurred while processing your request."
 msgstr "요청을 처리하는 동안 오류가 발생했습니다."
 
-#: src/Infrastructure/View/ViewService.php:48
 #. translators: %s is the template path
+#: src/Infrastructure/View/ViewService.php:48
 #, php-format
 msgid "Template not found: %s"
 msgstr "템플릿을 찾을 수 없습니다: %s"
@@ -339,8 +362,8 @@ msgstr "잘못된 파일 경로: 널 바이트가 감지되었습니다"
 msgid "Invalid file path: directory traversal detected"
 msgstr "잘못된 파일 경로: 디렉토리 탐색이 감지되었습니다"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #. translators: %s is the directory path
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "잘못된 파일 경로: 상위 디렉토리가 존재하지 않습니다: %s"
@@ -361,8 +384,8 @@ msgstr "제공된 다운로드 URL이 잘못되었습니다"
 msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr "다운로드 URL은 HTTP 또는 HTTPS 프로토콜을 사용해야 합니다"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #. translators: %s is the hostname
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr "다운로드 URL이 허용된 도메인에서 오지 않습니다: %s"
@@ -371,8 +394,8 @@ msgstr "다운로드 URL이 허용된 도메인에서 오지 않습니다: %s"
 msgid "Download URL failed WordPress validation"
 msgstr "다운로드 URL이 WordPress 검증에 실패했습니다"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr "플러그인 다운로드에 실패했습니다: %s"
@@ -393,10 +416,12 @@ msgstr "다운로드된 플러그인 파일을 읽을 수 없습니다"
 msgid ""
 "Downloaded file is not a valid ZIP archive. The download URL may be "
 "returning an error page."
-msgstr "다운로드한 파일은 유효한 ZIP 아카이브가 아닙니다. 다운로드 URL이 오류 페이지를 반환할 수 있습니다."
+msgstr ""
+"다운로드한 파일은 유효한 ZIP 아카이브가 아닙니다. 다운로드 URL이 오류 페이지"
+"를 반환할 수 있습니다."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "플러그인 파일 압축 해제에 실패했습니다: %s"
@@ -405,14 +430,14 @@ msgstr "플러그인 파일 압축 해제에 실패했습니다: %s"
 msgid "Failed to unzip plugin file"
 msgstr "플러그인 파일 압축 해제에 실패했습니다"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "플러그인 활성화에 실패했습니다: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "플러그인 삭제에 실패했습니다: %s"
@@ -425,8 +450,8 @@ msgstr "이 플러그인에 대한 업데이트가 없습니다"
 msgid "Invalid update information for this plugin"
 msgstr "이 플러그인에 대한 잘못된 업데이트 정보입니다"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "플러그인 업데이트에 실패했습니다: %s"
@@ -435,21 +460,19 @@ msgstr "플러그인 업데이트에 실패했습니다: %s"
 msgid "Plugin update failed"
 msgstr "플러그인 업데이트에 실패했습니다"
 
-#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #. translators: %s is the error message
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #, php-format
 msgid "Failed to get plugin information: %s"
 msgstr "플러그인 정보를 가져오는 데 실패했습니다: %s"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:26
 #. translators: %s is the plugin name, %s is the rating
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:26
 msgid "If you like %s please leave us a %s rating. Thank you!"
 msgstr "%s가 마음에 드신다면, %s 평가를 남겨주세요. 감사합니다!"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:43
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:43
 msgid "About %s"
 msgstr "%s에 대하여"
 
@@ -457,9 +480,8 @@ msgstr "%s에 대하여"
 msgid "About"
 msgstr "정보"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:54
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:54
 msgid "Documentation for %s"
 msgstr "%s에 대한 문서"
 
@@ -467,9 +489,8 @@ msgstr "%s에 대한 문서"
 msgid "Documentation"
 msgstr "문서"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:65
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:65
 msgid "Contact the %s team"
 msgstr "%s 팀에 연락하기"
 
@@ -497,15 +518,13 @@ msgstr "구성 요소 쇼케이스"
 msgid "N/A"
 msgstr "해당 없음"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 #. translators: %1$s is the plugin name, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 msgid "The license for %1$s expired on %2$s"
 msgstr "%1$s의 라이센스가 %2$s에 만료되었습니다"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 msgid "The licenses for %1$s expired on %2$s"
 msgstr "%1$s의 라이센스가 %2$s에 만료되었습니다"
 
@@ -514,15 +533,13 @@ msgstr "%1$s의 라이센스가 %2$s에 만료되었습니다"
 msgid "Renew now"
 msgstr "지금 갱신하기"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr "%1$s의 라이센스는 %2$s에 만료됩니다 (%3$d일 남음)"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr "%1$s의 라이센스는 %2$s에 만료됩니다 (%3$d일 남음)"
 
@@ -642,7 +659,9 @@ msgstr "로그 로딩 중..."
 msgid ""
 "The debug log is empty. Perform some actions (e.g. activate a license) and "
 "refresh to see entries."
-msgstr "디버그 로그가 비어 있습니다. 일부 작업(예: 라이센스 활성화)을 수행하고 새로 고침하여 항목을 확인하세요."
+msgstr ""
+"디버그 로그가 비어 있습니다. 일부 작업(예: 라이센스 활성화)을 수행하고 새로 "
+"고침하여 항목을 확인하세요."
 
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
 msgid "Debug log contents"
@@ -650,7 +669,8 @@ msgstr "디버그 로그 내용"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
 msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
-msgstr "디버그 모드가 활성화되었습니다. 이제 \"디버그 로그\" 탭을 사용할 수 있습니다."
+msgstr ""
+"디버그 모드가 활성화되었습니다. 이제 \"디버그 로그\" 탭을 사용할 수 있습니다."
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
 msgid "Debug mode disabled."
@@ -670,8 +690,9 @@ msgid ""
 "activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
 "the Debug Log tab to inspect the captured data."
 msgstr ""
-"활성화되면 모든 HTTP 요청 및 원격 서비스에 대한 응답(라이센스 활성화, 플러그인 다운로드 등)이 전용 로그 파일에 기록됩니다. "
-"캡처된 데이터를 확인하려면 디버그 로그 탭을 사용하세요."
+"활성화되면 모든 HTTP 요청 및 원격 서비스에 대한 응답(라이센스 활성화, 플러그"
+"인 다운로드 등)이 전용 로그 파일에 기록됩니다. 캡처된 데이터를 확인하려면 디"
+"버그 로그 탭을 사용하세요."
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
 msgid "Enable Debug Mode"
@@ -681,7 +702,9 @@ msgstr "디버그 모드 활성화"
 msgid ""
 "Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
 "data."
-msgstr "디버그 로깅이 활성화되었습니다. 캡처된 데이터를 보려면 \"디버그 로그\" 탭으로 전환하세요."
+msgstr ""
+"디버그 로깅이 활성화되었습니다. 캡처된 데이터를 보려면 \"디버그 로그\" 탭으"
+"로 전환하세요."
 
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
 msgid "ERR"
@@ -708,7 +731,6 @@ msgid "1 request recorded"
 msgstr "1개의 요청이 기록되었습니다"
 
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#, js-format
 msgid "%d requests recorded"
 msgstr "%d개의 요청이 기록되었습니다"
 
@@ -730,12 +752,13 @@ msgstr "PublishPress 허브로 할 수 있는 것"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
 msgid ""
-"PublishPress Hub has everything you need to install, update, and manage "
-"your PublishPress plugins. We're here to help you build a publishing system "
-"that works perfectly for your team."
+"PublishPress Hub has everything you need to install, update, and manage your "
+"PublishPress plugins. We're here to help you build a publishing system that "
+"works perfectly for your team."
 msgstr ""
-"PublishPress Hub는 PublishPress 플러그인을 설치, 업데이트 및 관리하는 데 필요한 모든 것을 제공합니다. 팀에 "
-"적합한 퍼블리싱 시스템을 구축하는 데 도움을 드리겠습니다."
+"PublishPress Hub는 PublishPress 플러그인을 설치, 업데이트 및 관리하는 데 필요"
+"한 모든 것을 제공합니다. 팀에 적합한 퍼블리싱 시스템을 구축하는 데 도움을 드"
+"리겠습니다."
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:64
 msgid "Centralized Dashboard"
@@ -756,7 +779,9 @@ msgstr "원클릭 설치"
 msgid ""
 "Install free PublishPress plugins directly from the Hub without visiting "
 "WordPress.org."
-msgstr "WordPress.org를 방문하지 않고 허브에서 무료 PublishPress 플러그인을 직접 설치하세요."
+msgstr ""
+"WordPress.org를 방문하지 않고 허브에서 무료 PublishPress 플러그인을 직접 설치"
+"하세요."
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:88
 msgid "License Management"
@@ -766,7 +791,8 @@ msgstr "라이선스 관리"
 msgid ""
 "Connect your PublishPress licenses to easily install and activate Pro "
 "versions."
-msgstr "PublishPress 라이센스를 연결하여 Pro 버전을 쉽게 설치하고 활성화하세요."
+msgstr ""
+"PublishPress 라이센스를 연결하여 Pro 버전을 쉽게 설치하고 활성화하세요."
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:100
 msgid "Easy Updates"
@@ -782,18 +808,20 @@ msgstr "상태 모니터링"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
 msgid ""
-"Monitor plugin activation status, detect conflicts, and ensure "
-"compatibility."
-msgstr "플러그인 활성화 상태를 모니터링하고, 충돌을 감지하며, 호환성을 보장합니다."
+"Monitor plugin activation status, detect conflicts, and ensure compatibility."
+msgstr ""
+"플러그인 활성화 상태를 모니터링하고, 충돌을 감지하며, 호환성을 보장합니다."
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:124
 msgid "Get Started"
 msgstr "시작하기"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:127
-#, js-format
-msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
-msgstr "탐색할 준비가 되셨나요? %s를 방문하여 사용 가능한 모든 PublishPress 플러그인을 확인하세요."
+msgid ""
+"Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgstr ""
+"탐색할 준비가 되셨나요? %s를 방문하여 사용 가능한 모든 PublishPress 플러그인"
+"을 확인하세요."
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:142
 msgid "View Plugins Dashboard"
@@ -807,7 +835,7 @@ msgstr "이미 하고 있는 일을 알고 계신가요? 좋습니다! 당신은
 msgid "dismiss this page"
 msgstr "이 페이지를 닫을 수 있습니다"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
 msgid "."
 msgstr "."
 
@@ -886,21 +914,21 @@ msgid ""
 "Select how you would like to install this plugin. You can install the Pro "
 "version if you have a license, or the Free version to get started."
 msgstr ""
-"이 플러그인을 설치하는 방법을 선택하세요. 라이센스가 있는 경우 Pro 버전을 설치할 수 있으며, 시작하려면 무료 버전을 선택할 수 "
-"있습니다."
+"이 플러그인을 설치하는 방법을 선택하세요. 라이센스가 있는 경우 Pro 버전을 설"
+"치할 수 있으며, 시작하려면 무료 버전을 선택할 수 있습니다."
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
 msgid "Free Details"
 msgstr "무료 세부정보"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
 msgid "Pro Details"
 msgstr "프로 세부정보"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "변경 로그"
 
@@ -922,8 +950,8 @@ msgid ""
 "Enter your license key to activate the Pro version of this plugin. You can "
 "find your license key in your PublishPress account dashboard."
 msgstr ""
-"이 플러그인의 Pro 버전을 활성화하려면 라이센스 키를 입력하세요. PublishPress 계정 대시보드에서 라이센스 키를 찾을 수 "
-"있습니다."
+"이 플러그인의 Pro 버전을 활성화하려면 라이센스 키를 입력하세요. PublishPress "
+"계정 대시보드에서 라이센스 키를 찾을 수 있습니다."
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
@@ -965,7 +993,8 @@ msgstr "이 사이트의 라이센스 키 비활성화"
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
 msgid "Unknown"
 msgstr "알 수 없음"
 
@@ -998,48 +1027,39 @@ msgid "Check for Updates"
 msgstr "업데이트 확인"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
-#, js-format
 msgid "Install %s"
 msgstr "%s 설치"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
-#, js-format
 msgid "Install %s Pro"
 msgstr "%s Pro 설치"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
-#, js-format
 msgid "Upgrade %s to Pro"
 msgstr "%s를 Pro로 업그레이드"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
-#, js-format
 msgid "Uninstall %s"
 msgstr "%s 제거"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
-#, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "%s를 제거하시겠습니까?"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
-#, js-format
 msgid "Resolve Conflict for %s"
 msgstr "%s에 대한 충돌 해결"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
-#, js-format
 msgid "Manage %s License"
 msgstr "%s 라이센스 관리"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
-#, js-format
 msgid "Activate %s License"
 msgstr "%s 라이센스 활성화"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
-#, js-format
 msgid "More Info: %s"
 msgstr "추가 정보: %s"
 
@@ -1048,12 +1068,10 @@ msgid "Resolve Plugin Conflict"
 msgstr "플러그인 충돌 해결"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
-#, js-format
 msgid "Free version: %s (%s)"
 msgstr "무료 버전: %s (%s)"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
-#, js-format
 msgid "Pro version: %s (%s)"
 msgstr "Pro 버전: %s (%s)"
 
@@ -1068,11 +1086,11 @@ msgstr "무료 버전 유지하기"
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
 msgid ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
-"advanced features, priority support, and exclusive benefits designed to "
-"help you get the most out of your workflow."
+"advanced features, priority support, and exclusive benefits designed to help "
+"you get the most out of your workflow."
 msgstr ""
-"Pro 버전으로 이 플러그인의 모든 잠재력을 활용하세요. 고급 기능, 우선 지원 및 워크플로우를 최대한 활용할 수 있도록 설계된 독점 "
-"혜택을 즐기세요."
+"Pro 버전으로 이 플러그인의 모든 잠재력을 활용하세요. 고급 기능, 우선 지원 및 "
+"워크플로우를 최대한 활용할 수 있도록 설계된 독점 혜택을 즐기세요."
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
@@ -1094,13 +1112,14 @@ msgstr "프로로 업그레이드하여 생산성 향상하기"
 msgid "New version available"
 msgstr "새 버전 사용 가능"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
-#, js-format
-msgid "Version %s"
-msgstr "버전 %s"
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
+#, fuzzy
+msgid "v%s"
+msgstr "v%s"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
-#, js-format
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
 msgid "Update available: %s → %s"
 msgstr "업데이트 가능: %s → %s"
 
@@ -1153,35 +1172,35 @@ msgstr "업데이트 가능"
 msgid "Expires"
 msgstr "만료됨"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
-msgid "latest"
-msgstr "최신"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
-#, js-format
-msgid "Update to v%s"
-msgstr "v%s로 업데이트"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
 msgid "Renew"
 msgstr "갱신"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
 msgid "Deactivate"
 msgstr "비활성화"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
 msgid "Activate"
 msgstr "활성화"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
 msgid "Uninstall"
 msgstr "제거"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
 msgid "More Info"
 msgstr "자세한 정보"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
+msgid "latest"
+msgstr "최신"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+msgid "Update to v%s"
+msgstr "v%s로 업데이트"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
 msgid "This plugin is not installed."
@@ -1209,93 +1228,75 @@ msgstr "플러그인을 가져오지 못했습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
-#, js-format
 msgid "%s installed successfully"
 msgstr "%s가 성공적으로 설치되었습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
-#, js-format
 msgid "%s installation failed"
 msgstr "%s 설치에 실패했습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
-#, js-format
 msgid "%s uninstalled successfully"
 msgstr "%s가 성공적으로 제거되었습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
-#, js-format
 msgid "%s uninstall failed"
 msgstr "%s 제거에 실패했습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
-#, js-format
 msgid "%s activated successfully"
 msgstr "%s가 성공적으로 활성화되었습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
-#, js-format
 msgid "%s activation failed"
 msgstr "%s 활성화에 실패했습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
-#, js-format
 msgid "%s deactivated successfully"
 msgstr "%s가 성공적으로 비활성화되었습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
-#, js-format
 msgid "%s deactivation failed"
 msgstr "%s 비활성화에 실패했습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
-#, js-format
 msgid "%s upgraded to Pro successfully"
 msgstr "%s가 Pro로 성공적으로 업그레이드되었습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
-#, js-format
 msgid "%s upgrade to Pro failed"
 msgstr "%s Pro로의 업그레이드에 실패했습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
-#, js-format
 msgid "Conflict resolved successfully for %s"
 msgstr "%s에 대한 충돌이 성공적으로 해결되었습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
-#, js-format
 msgid "Failed to resolve conflict for %s"
 msgstr "%s에 대한 충돌 해결에 실패했습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
-#, js-format
 msgid "%s license deactivated successfully"
 msgstr "%s 라이선스가 성공적으로 비활성화되었습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
-#, js-format
 msgid "%s license deactivation failed"
 msgstr "%s 라이선스 비활성화에 실패했습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
-#, js-format
 msgid "%s license activated successfully"
 msgstr "%s 라이선스가 성공적으로 활성화되었습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
-#, js-format
 msgid "%s license activation failed"
 msgstr "%s 라이선스 활성화에 실패했습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
-#, js-format
 msgid "%s updated successfully"
 msgstr "%s가 성공적으로 업데이트되었습니다"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
-#, js-format
 msgid "%s update failed"
 msgstr "%s 업데이트에 실패했습니다"
 

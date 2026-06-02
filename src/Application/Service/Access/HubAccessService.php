@@ -68,10 +68,89 @@ class HubAccessService implements AccessInterface, BootableInterface
     public function canUserViewHub($user = null): bool
     {
         if (empty($user)) {
-            return current_user_can(self::CAPABILITY);
+            return self::canManageHub();
         }
 
         return user_can($user, self::CAPABILITY);
+    }
+
+    /**
+     * Check if the current user can access Hub features.
+     *
+     * @return bool
+     * @since 1.0.0
+     */
+    public static function canManageHub(): bool
+    {
+        return current_user_can(self::CAPABILITY);
+    }
+
+    /**
+     * Check if the current user can install plugins through the Hub.
+     *
+     * @return bool
+     * @since 1.0.0
+     */
+    public static function canInstallPlugins(): bool
+    {
+        return self::canManageHub() && current_user_can('install_plugins');
+    }
+
+    /**
+     * Check if the current user can delete plugins through the Hub.
+     *
+     * @return bool
+     * @since 1.0.0
+     */
+    public static function canDeletePlugins(): bool
+    {
+        return self::canManageHub() && current_user_can('delete_plugins');
+    }
+
+    /**
+     * Check if the current user can activate or deactivate plugins through the Hub.
+     *
+     * @return bool
+     * @since 1.0.0
+     */
+    public static function canActivatePlugins(): bool
+    {
+        return self::canManageHub() && current_user_can('activate_plugins');
+    }
+
+    /**
+     * Check if the current user can update plugins through the Hub.
+     *
+     * @return bool
+     * @since 1.0.0
+     */
+    public static function canUpdatePlugins(): bool
+    {
+        return self::canManageHub() && current_user_can('update_plugins');
+    }
+
+    /**
+     * Check if the current user can upgrade plugins through the Hub.
+     *
+     * @return bool
+     * @since 1.0.0
+     */
+    public static function canUpgradePlugins(): bool
+    {
+        return self::canInstallPlugins() && current_user_can('delete_plugins');
+    }
+
+    /**
+     * Check if the current user can resolve plugin conflicts through the Hub.
+     *
+     * @return bool
+     * @since 1.0.0
+     */
+    public static function canResolvePluginConflict(): bool
+    {
+        return self::canManageHub()
+            && current_user_can('delete_plugins')
+            && current_user_can('activate_plugins');
     }
 
     /**

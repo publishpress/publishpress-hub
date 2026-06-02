@@ -4,26 +4,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
+"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
-"PO-Revision-Date: 2026-04-16 14:33+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
-"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : (n >= 2 && n <= 4) ? 1 : 2;\n"
 
-#: publishpress-hub.php:4
-#: src/Admin/Page/WelcomePageController.php:259, fuzzy
 #. Plugin Name of the plugin
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
-#: publishpress-hub.php:5
 #. Description of the plugin
+#: publishpress-hub.php:5
 msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
@@ -31,13 +30,13 @@ msgstr ""
 "Centralizované centrum pro správu všech pluginů PublishPress - instalujte, "
 "aktualizujte a spravujte licence z jednoho panelu."
 
-#: publishpress-hub.php:7
 #. Author of the plugin
+#: publishpress-hub.php:7
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress-hub.php:8, fuzzy
 #. Author URI of the plugin
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -72,8 +71,8 @@ msgstr "Vítejte"
 msgid "Please wait while we load the welcome page..."
 msgstr "Prosím, počkejte, zatímco načítáme uvítací stránku..."
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "Upozornění: Licence pro %1$s vypršela. %2$s"
@@ -83,8 +82,8 @@ msgstr "Upozornění: Licence pro %1$s vypršela. %2$s"
 msgid "Manage licenses"
 msgstr "Spravovat licence"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "Upozornění: %1$d plugin(y) mají vypršené licence: %2$s. %3$s"
@@ -97,22 +96,21 @@ msgstr "Objekt musí být načten před inicializací."
 msgid "No license key found"
 msgstr "Žádný licenční klíč nebyl nalezen"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr "Bezplatný plugin není nastaven pro rodinu pluginů: %s"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr "Prémiový plugin není nastaven pro rodinu pluginů: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
 msgid ""
-"License activation error. Please try again later or contact support for "
-"help."
+"License activation error. Please try again later or contact support for help."
 msgstr ""
 "Chyba aktivace licence. Prosím, zkuste to znovu později nebo kontaktujte "
 "podporu pro pomoc."
@@ -127,7 +125,8 @@ msgstr ""
 
 #: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
-msgstr "Tato licence je aktuálně deaktivována. Kontaktujte prosím podporu pro pomoc."
+msgstr ""
+"Tato licence je aktuálně deaktivována. Kontaktujte prosím podporu pro pomoc."
 
 #: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
 msgid "This license has expired. Please contact support to renew it."
@@ -143,11 +142,10 @@ msgstr ""
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
 msgid ""
-"This license cannot be used for this plugin. Please contact support for "
-"help."
+"This license cannot be used for this plugin. Please contact support for help."
 msgstr ""
-"Tato licence nemůže být použita pro tento plugin. Kontaktujte prosím "
-"podporu pro pomoc."
+"Tato licence nemůže být použita pro tento plugin. Kontaktujte prosím podporu "
+"pro pomoc."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
 msgid ""
@@ -167,12 +165,13 @@ msgstr ""
 
 #: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
-msgstr "Nebyl poskytnut žádný licenční klíč. Zadejte prosím platný licenční klíč."
+msgstr ""
+"Nebyl poskytnut žádný licenční klíč. Zadejte prosím platný licenční klíč."
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
 msgid ""
-"Your site URL is required to activate the license. Please enter a valid "
-"site URL to continue."
+"Your site URL is required to activate the license. Please enter a valid site "
+"URL to continue."
 msgstr ""
 "Vaše URL adresa webu je vyžadována pro aktivaci licence. Zadejte prosím "
 "platnou URL adresu webu pro pokračování."
@@ -190,7 +189,8 @@ msgid "This license cannot be activated. Please contact support for help."
 msgstr "Tuto licenci nelze aktivovat. Kontaktujte prosím podporu pro pomoc."
 
 #: src/Domain/Plugin/Exception/LicenseServerException.php:28
-msgid "License server error. Please try again later or contact support for help."
+msgid ""
+"License server error. Please try again later or contact support for help."
 msgstr ""
 "Chyba serveru licence. Zkuste to prosím znovu později nebo kontaktujte "
 "podporu pro pomoc."
@@ -200,19 +200,19 @@ msgid ""
 "The license server returned an invalid response. Please try again later or "
 "contact support for help."
 msgstr ""
-"Server licence vrátil neplatnou odpověď. Zkuste to prosím znovu později "
-"nebo kontaktujte podporu pro pomoc."
+"Server licence vrátil neplatnou odpověď. Zkuste to prosím znovu později nebo "
+"kontaktujte podporu pro pomoc."
 
 #: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
-msgid "This license is inactive for this site. Please contact support for help."
+msgid ""
+"This license is inactive for this site. Please contact support for help."
 msgstr ""
 "Tato licence je neaktivní pro tuto stránku. Kontaktujte prosím podporu pro "
 "pomoc."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
 msgid ""
-"Plugin activation failed. Please try again later or contact support for "
-"help."
+"Plugin activation failed. Please try again later or contact support for help."
 msgstr ""
 "Aktivace pluginu se nezdařila. Zkuste to prosím znovu později nebo "
 "kontaktujte podporu pro pomoc."
@@ -258,16 +258,16 @@ msgid ""
 "Plugin not found in our available plugins list. Please contact support for "
 "help."
 msgstr ""
-"Plugin nebyl nalezen v našem seznamu dostupných pluginů. Prosím, "
-"kontaktujte podporu pro pomoc."
+"Plugin nebyl nalezen v našem seznamu dostupných pluginů. Prosím, kontaktujte "
+"podporu pro pomoc."
 
 #: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
 msgid ""
 "This action is not possible because the plugin is not installed. Please "
 "install the plugin and try again."
 msgstr ""
-"Tato akce není možná, protože plugin není nainstalován. Prosím, "
-"nainstalujte plugin a zkuste to znovu."
+"Tato akce není možná, protože plugin není nainstalován. Prosím, nainstalujte "
+"plugin a zkuste to znovu."
 
 #: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
 msgid ""
@@ -314,27 +314,27 @@ msgid "Organize your posts into issues or series."
 msgstr "Organizujte své příspěvky do čísel nebo sérií."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "Vytvářejte zkrácené odkazy pro své příspěvky."
+msgid "Create custom URLs for your posts and external links."
+msgstr "Vytvořte vlastní URL adresy pro vaše příspěvky a externí odkazy."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
 msgstr "Vytvářejte vlastní stavy a pracovní postupy pro publikování."
 
-#: src/Infrastructure/Container/DependencyContainer.php:102
 #. translators: %s is the dependency ID.
+#: src/Infrastructure/Container/DependencyContainer.php:102
 #, php-format
 msgid "Dependency \"%s\" not found in container."
 msgstr "Závislost \"%s\" nebyla nalezena v kontejneru."
 
-#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #, php-format
 msgid "Error validating license: %s"
 msgstr "Chyba při ověřování licence: %s"
 
-#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #, php-format
 msgid "Error getting license info: %s"
 msgstr "Chyba při získávání informací o licenci: %s"
@@ -347,8 +347,8 @@ msgstr "Příliš mnoho požadavků. Prosím, zkuste to znovu později."
 msgid "An error occurred while processing your request."
 msgstr "Při zpracování vašeho požadavku došlo k chybě."
 
-#: src/Infrastructure/View/ViewService.php:48
 #. translators: %s is the template path
+#: src/Infrastructure/View/ViewService.php:48
 #, php-format
 msgid "Template not found: %s"
 msgstr "Šablona nebyla nalezena: %s"
@@ -369,8 +369,8 @@ msgstr "Neplatná cesta k souboru: detekován nulový bajt"
 msgid "Invalid file path: directory traversal detected"
 msgstr "Neplatná cesta k souboru: detekováno přecházení adresářů"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #. translators: %s is the directory path
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "Neplatná cesta k souboru: nadřazený adresář neexistuje: %s"
@@ -391,8 +391,8 @@ msgstr "Byla poskytnuta neplatná URL pro stažení"
 msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr "URL pro stažení musí používat protokol HTTP nebo HTTPS"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #. translators: %s is the hostname
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr "URL pro stažení není z povolené domény: %s"
@@ -401,8 +401,8 @@ msgstr "URL pro stažení není z povolené domény: %s"
 msgid "Download URL failed WordPress validation"
 msgstr "URL pro stažení neprošla validací WordPressu"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr "Nepodařilo se stáhnout plugin: %s"
@@ -427,8 +427,8 @@ msgstr ""
 "Stažený soubor není platným ZIP archívem. URL pro stažení může vracet "
 "chybovou stránku."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "Nepodařilo se rozbalit soubor pluginu: %s"
@@ -437,14 +437,14 @@ msgstr "Nepodařilo se rozbalit soubor pluginu: %s"
 msgid "Failed to unzip plugin file"
 msgstr "Nepodařilo se rozbalit soubor pluginu"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "Nepodařilo se aktivovat plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "Nepodařilo se smazat plugin: %s"
@@ -457,8 +457,8 @@ msgstr "Žádná aktualizace není k dispozici pro tento plugin"
 msgid "Invalid update information for this plugin"
 msgstr "Neplatné informace o aktualizaci pro tento plugin"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "Aktualizace pluginu se nezdařila: %s"
@@ -467,21 +467,19 @@ msgstr "Aktualizace pluginu se nezdařila: %s"
 msgid "Plugin update failed"
 msgstr "Aktualizace pluginu se nezdařila"
 
-#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #. translators: %s is the error message
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #, php-format
 msgid "Failed to get plugin information: %s"
 msgstr "Nepodařilo se získat informace o pluginu: %s"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:26
 #. translators: %s is the plugin name, %s is the rating
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:26
 msgid "If you like %s please leave us a %s rating. Thank you!"
 msgstr "Pokud se vám %s líbí, prosím, dejte nám hodnocení %s. Děkujeme!"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:43
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:43
 msgid "About %s"
 msgstr "O %s"
 
@@ -489,9 +487,8 @@ msgstr "O %s"
 msgid "About"
 msgstr "O"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:54
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:54
 msgid "Documentation for %s"
 msgstr "Dokumentace pro %s"
 
@@ -499,9 +496,8 @@ msgstr "Dokumentace pro %s"
 msgid "Documentation"
 msgstr "Dokumentace"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:65
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:65
 msgid "Contact the %s team"
 msgstr "Kontaktujte tým %s"
 
@@ -525,19 +521,17 @@ msgstr "Možnosti"
 msgid "Components Showcase"
 msgstr "Ukázka komponent"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93, fuzzy
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
 msgid "N/A"
 msgstr "N/A"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 #. translators: %1$s is the plugin name, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 msgid "The license for %1$s expired on %2$s"
 msgstr "Licenční smlouva pro %1$s vypršela dne %2$s"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 msgid "The licenses for %1$s expired on %2$s"
 msgstr "Licenční smlouvy pro %1$s vypršely dne %2$s"
 
@@ -546,15 +540,13 @@ msgstr "Licenční smlouvy pro %1$s vypršely dne %2$s"
 msgid "Renew now"
 msgstr "Obnovit nyní"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr "Licence pro %1$s vyprší dne %2$s (%3$d dní zbývá)"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr "Licence pro %1$s vyprší dne %2$s (%3$d dní zbývá)"
 
@@ -594,7 +586,8 @@ msgstr "Panel pluginů"
 
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
 msgid "Hold ALT and click to force refresh the update cache"
-msgstr "Držte klávesu ALT a klikněte pro vynucení obnovení mezipaměti aktualizací"
+msgstr ""
+"Držte klávesu ALT a klikněte pro vynucení obnovení mezipaměti aktualizací"
 
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
 msgid "Force Refresh"
@@ -675,8 +668,8 @@ msgid ""
 "The debug log is empty. Perform some actions (e.g. activate a license) and "
 "refresh to see entries."
 msgstr ""
-"Protokol ladění je prázdný. Proveďte nějaké akce (např. aktivujte licenci) "
-"a obnovte, abyste viděli záznamy."
+"Protokol ladění je prázdný. Proveďte nějaké akce (např. aktivujte licenci) a "
+"obnovte, abyste viděli záznamy."
 
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
 msgid "Debug log contents"
@@ -684,7 +677,8 @@ msgstr "Obsah protokolu ladění"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
 msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
-msgstr "Režim ladění je povolen. Karta \"Protokol ladění\" je nyní k dispozici."
+msgstr ""
+"Režim ladění je povolen. Karta \"Protokol ladění\" je nyní k dispozici."
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
 msgid "Debug mode disabled."
@@ -720,7 +714,7 @@ msgstr ""
 "Protokolování ladění je aktivní. Přepněte na kartu \"Protokol ladění\" pro "
 "zobrazení zachycených dat."
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70, fuzzy
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
 msgid "ERR"
 msgstr "ERR"
 
@@ -745,7 +739,6 @@ msgid "1 request recorded"
 msgstr "1 žádost byla zaznamenána"
 
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#, js-format
 msgid "%d requests recorded"
 msgstr "%d žádostí bylo zaznamenáno"
 
@@ -767,9 +760,9 @@ msgstr "Co můžete dělat s PublishPress Hub"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
 msgid ""
-"PublishPress Hub has everything you need to install, update, and manage "
-"your PublishPress plugins. We're here to help you build a publishing system "
-"that works perfectly for your team."
+"PublishPress Hub has everything you need to install, update, and manage your "
+"PublishPress plugins. We're here to help you build a publishing system that "
+"works perfectly for your team."
 msgstr ""
 "PublishPress Hub má vše, co potřebujete k instalaci, aktualizaci a správě "
 "vašich pluginů PublishPress. Jsme tu, abychom vám pomohli vybudovat "
@@ -827,8 +820,7 @@ msgstr "Sledování stavu"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
 msgid ""
-"Monitor plugin activation status, detect conflicts, and ensure "
-"compatibility."
+"Monitor plugin activation status, detect conflicts, and ensure compatibility."
 msgstr ""
 "Sledujte stav aktivace pluginů, detekujte konflikty a zajistěte "
 "kompatibilitu."
@@ -838,8 +830,8 @@ msgid "Get Started"
 msgstr "Začít"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:127
-#, js-format
-msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgid ""
+"Ready to explore? Visit the %s to see all available PublishPress plugins."
 msgstr ""
 "Připraveni prozkoumat? Navštivte %s a podívejte se na všechny dostupné "
 "pluginy PublishPress."
@@ -856,7 +848,7 @@ msgstr "Už víte, co děláte? Skvělé! Můžete "
 msgid "dismiss this page"
 msgstr "zavřít tuto stránku"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
 msgid "."
 msgstr "."
 
@@ -935,21 +927,21 @@ msgid ""
 "Select how you would like to install this plugin. You can install the Pro "
 "version if you have a license, or the Free version to get started."
 msgstr ""
-"Vyberte, jak byste chtěli tento plugin nainstalovat. Můžete nainstalovat "
-"Pro verzi, pokud máte licenci, nebo Bezplatnou verzi, abyste začali."
+"Vyberte, jak byste chtěli tento plugin nainstalovat. Můžete nainstalovat Pro "
+"verzi, pokud máte licenci, nebo Bezplatnou verzi, abyste začali."
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
 msgid "Free Details"
 msgstr "Podrobnosti o bezplatné verzi"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
 msgid "Pro Details"
 msgstr "Podrobnosti o Pro verzi"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Změny"
 
@@ -1014,7 +1006,8 @@ msgstr "Deaktivovat licenční klíč pro tuto stránku"
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
 msgid "Unknown"
 msgstr "Neznámý"
 
@@ -1047,48 +1040,39 @@ msgid "Check for Updates"
 msgstr "Zkontrolovat aktualizace"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
-#, js-format
 msgid "Install %s"
 msgstr "Nainstalovat %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
-#, js-format
 msgid "Install %s Pro"
 msgstr "Nainstalovat %s Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
-#, js-format
 msgid "Upgrade %s to Pro"
 msgstr "Upgradovat %s na Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
-#, js-format
 msgid "Uninstall %s"
 msgstr "Odinstalovat %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
-#, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "Opravdu chcete odinstalovat %s?"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
-#, js-format
 msgid "Resolve Conflict for %s"
 msgstr "Vyřešit konflikt pro %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
-#, js-format
 msgid "Manage %s License"
 msgstr "Spravovat licenci %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
-#, js-format
 msgid "Activate %s License"
 msgstr "Aktivovat licenci %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
-#, js-format
 msgid "More Info: %s"
 msgstr "Více informací: %s"
 
@@ -1097,12 +1081,10 @@ msgid "Resolve Plugin Conflict"
 msgstr "Vyřešit konflikt pluginu"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
-#, js-format
 msgid "Free version: %s (%s)"
 msgstr "Bezplatná verze: %s (%s)"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
-#, js-format
 msgid "Pro version: %s (%s)"
 msgstr "Pro verze: %s (%s)"
 
@@ -1117,8 +1099,8 @@ msgstr "Udržet bezplatnou verzi"
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
 msgid ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
-"advanced features, priority support, and exclusive benefits designed to "
-"help you get the most out of your workflow."
+"advanced features, priority support, and exclusive benefits designed to help "
+"you get the most out of your workflow."
 msgstr ""
 "Odemkněte plný potenciál tohoto pluginu s verzí Pro. Užijte si pokročilé "
 "funkce, prioritní podporu a exkluzivní výhody navržené tak, aby vám pomohly "
@@ -1130,7 +1112,7 @@ msgstr "Objevte všechny funkce Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
 msgid "Changelog"
-msgstr "Záznam změn"
+msgstr "Historie změn"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"
@@ -1144,13 +1126,14 @@ msgstr "Přejděte na Pro a zvyšte svou produktivitu"
 msgid "New version available"
 msgstr "Nová verze k dispozici"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
-#, js-format
-msgid "Version %s"
-msgstr "Verze %s"
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
+#, fuzzy
+msgid "v%s"
+msgstr "v%s"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
-#, js-format
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
 msgid "Update available: %s → %s"
 msgstr "Aktualizace k dispozici: %s → %s"
 
@@ -1203,35 +1186,35 @@ msgstr "Aktualizace k dispozici"
 msgid "Expires"
 msgstr "Vyprší"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
-msgid "latest"
-msgstr "nejnovější"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
-#, js-format
-msgid "Update to v%s"
-msgstr "Aktualizovat na v%s"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
 msgid "Renew"
 msgstr "Obnovit"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
 msgid "Deactivate"
 msgstr "Deaktivovat"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
 msgid "Activate"
 msgstr "Aktivovat"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
 msgid "Uninstall"
 msgstr "Odinstalovat"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
 msgid "More Info"
 msgstr "Více informací"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
+msgid "latest"
+msgstr "nejnovější"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+msgid "Update to v%s"
+msgstr "Aktualizovat na v%s"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
 msgid "This plugin is not installed."
@@ -1259,99 +1242,82 @@ msgstr "Nepodařilo se načíst pluginy"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
-#, js-format
 msgid "%s installed successfully"
 msgstr "%s úspěšně nainstalováno"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
-#, js-format
 msgid "%s installation failed"
 msgstr "%s instalace se nezdařila"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
-#, js-format
 msgid "%s uninstalled successfully"
 msgstr "%s úspěšně odinstalováno"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
-#, js-format
 msgid "%s uninstall failed"
 msgstr "%s odinstalace se nezdařila"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
-#, js-format
 msgid "%s activated successfully"
 msgstr "%s úspěšně aktivováno"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
-#, js-format
 msgid "%s activation failed"
 msgstr "%s aktivace selhala"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
-#, js-format
 msgid "%s deactivated successfully"
 msgstr "%s bylo úspěšně deaktivováno"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
-#, js-format
 msgid "%s deactivation failed"
 msgstr "%s deaktivace selhala"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
-#, js-format
 msgid "%s upgraded to Pro successfully"
 msgstr "%s bylo úspěšně upgradováno na Pro"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
-#, js-format
 msgid "%s upgrade to Pro failed"
 msgstr "%s upgrade na Pro selhal"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
-#, js-format
 msgid "Conflict resolved successfully for %s"
 msgstr "Konflikt byl úspěšně vyřešen pro %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
-#, js-format
 msgid "Failed to resolve conflict for %s"
 msgstr "Nepodařilo se vyřešit konflikt pro %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
-#, js-format
 msgid "%s license deactivated successfully"
 msgstr "%s licence byla úspěšně deaktivována"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
-#, js-format
 msgid "%s license deactivation failed"
 msgstr "%s deaktivace licence selhala"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
-#, js-format
 msgid "%s license activated successfully"
 msgstr "%s licence byla úspěšně aktivována"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
-#, js-format
 msgid "%s license activation failed"
 msgstr "%s aktivace licence selhala"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
-#, js-format
 msgid "%s updated successfully"
 msgstr "%s bylo úspěšně aktualizováno"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
-#, js-format
 msgid "%s update failed"
 msgstr "%s aktualizace selhala"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
 msgid "Too many requests. Please wait a few seconds and try again."
-msgstr "Příliš mnoho požadavků. Prosím, počkejte několik sekund a zkuste to znovu."
+msgstr ""
+"Příliš mnoho požadavků. Prosím, počkejte několik sekund a zkuste to znovu."
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
 #, fuzzy

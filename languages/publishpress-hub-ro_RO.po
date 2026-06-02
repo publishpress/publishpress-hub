@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
-"POT-Creation-Date: 2026-04-15T21:04:03+00:00\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
 "PO-Revision-Date: 2026-04-15 15:20+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -332,7 +332,9 @@ msgid "Organize your posts into issues or series."
 msgstr "Organizați postările dumneavoastră în numere sau serii."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
+#, fuzzy
+#| msgid "Create shortlinks for your posts."
+msgid "Create custom URLs for your posts and external links."
 msgstr "Creați linkuri scurte pentru postările dumneavoastră."
 
 #: src/Domain/Plugin/plugin-families.php:186
@@ -959,17 +961,17 @@ msgstr ""
 "dacă aveți o licență sau versiunea Gratuită pentru a începe."
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
 msgid "Free Details"
 msgstr "Detalii Gratis"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
 msgid "Pro Details"
 msgstr "Detalii Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Jurnalele modificărilor"
 
@@ -1035,7 +1037,8 @@ msgstr "Dezactivează cheia de licență pentru acest site"
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
 msgid "Unknown"
 msgstr "Necunoscut"
 
@@ -1155,11 +1158,13 @@ msgstr "Upgradează la Pro și îmbunătățește-ți productivitatea"
 msgid "New version available"
 msgstr "Versiune nouă disponibilă"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
-msgid "Version %s"
-msgstr "Versiunea %s"
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
+msgid "v%s"
+msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
 msgid "Update available: %s → %s"
 msgstr "Actualizare disponibilă: %s → %s"
 
@@ -1212,34 +1217,35 @@ msgstr "Actualizare disponibilă"
 msgid "Expires"
 msgstr "Expiră"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
-msgid "latest"
-msgstr "ultimul"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
-msgid "Update to v%s"
-msgstr "Actualizare la v%s"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
 msgid "Renew"
 msgstr "Reînnoiește"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
 msgid "Deactivate"
 msgstr "Dezactivează"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
 msgid "Activate"
 msgstr "Activează"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
 msgid "Uninstall"
 msgstr "Dezinstalează"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
 msgid "More Info"
 msgstr "Mai multe informații"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
+msgid "latest"
+msgstr "ultimul"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+msgid "Update to v%s"
+msgstr "Actualizare la v%s"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
 msgid "This plugin is not installed."
@@ -1348,3 +1354,6 @@ msgstr ""
 #, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
+
+#~ msgid "Version %s"
+#~ msgstr "Versiunea %s"

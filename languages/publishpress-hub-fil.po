@@ -4,28 +4,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
+"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fil\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
-"PO-Revision-Date: 2026-04-16 14:31+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "|| n % 10 == 6 || n % 10 == 9);\n"
 "|| n % 10 == 6 || n % 10 == 9);: \n"
-"Language: fil\n"
-"Plural-Forms: nplurals=2; plural=n != 1 && n != 2 && n != 3 && (n % 10 == 4 || n % 10 == 6 || n % 10 == 9);\n"
+"Plural-Forms: nplurals=2; plural=n != 1 && n != 2 && n != 3 && (n % 10 == 4 "
+"|| n % 10 == 6 || n % 10 == 9);\n"
 
-#: publishpress-hub.php:4
-#: src/Admin/Page/WelcomePageController.php:259, fuzzy
 #. Plugin Name of the plugin
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
-#: publishpress-hub.php:5
 #. Description of the plugin
+#: publishpress-hub.php:5
 msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
@@ -34,23 +34,25 @@ msgstr ""
 "PublishPress - i-install, i-update, at pamahalaan ang mga lisensya mula sa "
 "isang dashboard."
 
-#: publishpress-hub.php:7
 #. Author of the plugin
+#: publishpress-hub.php:7
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress-hub.php:8, fuzzy
 #. Author URI of the plugin
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
 #: src/Admin/Page/ComponentsShowcaseController.php:118
 msgid "Please wait while we load the components showcase..."
-msgstr "Mangyaring maghintay habang niloload namin ang showcase ng mga bahagi..."
+msgstr ""
+"Mangyaring maghintay habang niloload namin ang showcase ng mga bahagi..."
 
 #: src/Admin/Page/PluginsDashboardController.php:133
 msgid "Please wait while we load the plugins dashboard..."
-msgstr "Mangyaring maghintay habang niloload namin ang dashboard ng mga plugin..."
+msgstr ""
+"Mangyaring maghintay habang niloload namin ang dashboard ng mga plugin..."
 
 #: src/Admin/Page/SettingsPageController.php:104
 #: src/Admin/Page/SettingsPageController.php:105
@@ -60,7 +62,8 @@ msgstr "Mga Setting"
 
 #: src/Admin/Page/SettingsPageController.php:126
 msgid "Please wait while we load the settings page..."
-msgstr "Mangyaring maghintay habang niloload namin ang pahina ng mga setting..."
+msgstr ""
+"Mangyaring maghintay habang niloload namin ang pahina ng mga setting..."
 
 #: src/Admin/Page/WelcomePageController.php:143
 msgid "You do not have sufficient permissions to access this page."
@@ -77,8 +80,8 @@ msgstr ""
 "Mangyaring maghintay habang niloload namin ang pahina ng maligayang "
 "pagdating..."
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "Babala: Ang lisensya para sa %1$s ay nag-expire na. %2$s"
@@ -88,8 +91,8 @@ msgstr "Babala: Ang lisensya para sa %1$s ay nag-expire na. %2$s"
 msgid "Manage licenses"
 msgstr "Pamahalaan ang mga lisensya"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "Babala: %1$d plugin(s) ang may expired na lisensya: %2$s. %3$s"
@@ -102,39 +105,38 @@ msgstr "Dapat ma-load ang object bago ang pagsisimula."
 msgid "No license key found"
 msgstr "Walang natagpuang license key"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr "Hindi nakatakdang libreng plugin para sa plugin family: %s"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr "Hindi nakatakdang pro plugin para sa plugin family: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
 msgid ""
-"License activation error. Please try again later or contact support for "
-"help."
+"License activation error. Please try again later or contact support for help."
 msgstr ""
-"Error sa server ng lisensya. Mangyaring subukan muli mamaya o "
-"makipag-ugnayan sa suporta para sa tulong."
+"Error sa server ng lisensya. Mangyaring subukan muli mamaya o makipag-"
+"ugnayan sa suporta para sa tulong."
 
 #: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
 msgid ""
 "License deactivation error. Please try again later or contact support for "
 "help."
 msgstr ""
-"Error sa server ng lisensya. Mangyaring subukan muli mamaya o "
-"makipag-ugnayan sa suporta para sa tulong."
+"Error sa server ng lisensya. Mangyaring subukan muli mamaya o makipag-"
+"ugnayan sa suporta para sa tulong."
 
 #: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
 msgstr ""
-"Ang lisensyang ito ay kasalukuyang hindi pinagana. Mangyaring "
-"makipag-ugnayan sa suporta para sa tulong."
+"Ang lisensyang ito ay kasalukuyang hindi pinagana. Mangyaring makipag-"
+"ugnayan sa suporta para sa tulong."
 
 #: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
 msgid "This license has expired. Please contact support to renew it."
@@ -147,13 +149,12 @@ msgid ""
 "This license key is not authorized for this plugin. Please verify your "
 "license key or contact support for help."
 msgstr ""
-"Ang lisensyang ito ay hindi aktibo para sa site na ito. Mangyaring "
-"makipag-ugnayan sa suporta para sa tulong."
+"Ang lisensyang ito ay hindi aktibo para sa site na ito. Mangyaring makipag-"
+"ugnayan sa suporta para sa tulong."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
 msgid ""
-"This license cannot be used for this plugin. Please contact support for "
-"help."
+"This license cannot be used for this plugin. Please contact support for help."
 msgstr ""
 "Ang lisensyang ito ay hindi maaaring i-activate. Mangyaring makipag-ugnayan "
 "sa suporta para sa tulong."
@@ -163,17 +164,16 @@ msgid ""
 "This license does not match the plugin you are trying to activate. Please "
 "contact support for assistance."
 msgstr ""
-"Ang lisensyang ito ay hindi aktibo para sa site na ito. Mangyaring "
-"makipag-ugnayan sa suporta para sa tulong."
+"Ang lisensyang ito ay hindi aktibo para sa site na ito. Mangyaring makipag-"
+"ugnayan sa suporta para sa tulong."
 
 #: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
-#, fuzzy
 msgid ""
 "License key does not match our records. Please contact support for "
 "assistance."
 msgstr ""
-"Ang lisensyang ito ay kasalukuyang hindi pinagana. Mangyaring "
-"makipag-ugnayan sa suporta para sa tulong."
+"Ang lisensyang ito ay kasalukuyang hindi pinagana. Mangyaring makipag-"
+"ugnayan sa suporta para sa tulong."
 
 #: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
@@ -183,14 +183,13 @@ msgstr ""
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
 msgid ""
-"Your site URL is required to activate the license. Please enter a valid "
-"site URL to continue."
+"Your site URL is required to activate the license. Please enter a valid site "
+"URL to continue."
 msgstr ""
 "Kinakailangan ang URL ng iyong site upang i-activate ang lisensya. "
 "Mangyaring maglagay ng wastong URL ng site upang magpatuloy."
 
 #: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
-#, fuzzy
 msgid ""
 "License activation limit reached. Please contact support to upgrade or "
 "deactivate on another site."
@@ -205,53 +204,51 @@ msgstr ""
 "sa suporta para sa tulong."
 
 #: src/Domain/Plugin/Exception/LicenseServerException.php:28
-msgid "License server error. Please try again later or contact support for help."
+msgid ""
+"License server error. Please try again later or contact support for help."
 msgstr ""
-"Error sa server ng lisensya. Mangyaring subukan muli mamaya o "
-"makipag-ugnayan sa suporta para sa tulong."
+"Error sa server ng lisensya. Mangyaring subukan muli mamaya o makipag-"
+"ugnayan sa suporta para sa tulong."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
-#, fuzzy
 msgid ""
 "The license server returned an invalid response. Please try again later or "
 "contact support for help."
 msgstr ""
-"Error sa server ng lisensya. Mangyaring subukan muli mamaya o "
-"makipag-ugnayan sa suporta para sa tulong."
+"Error sa server ng lisensya. Mangyaring subukan muli mamaya o makipag-"
+"ugnayan sa suporta para sa tulong."
 
 #: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
-msgid "This license is inactive for this site. Please contact support for help."
+msgid ""
+"This license is inactive for this site. Please contact support for help."
 msgstr ""
-"Ang lisensyang ito ay hindi aktibo para sa site na ito. Mangyaring "
-"makipag-ugnayan sa suporta para sa tulong."
+"Ang lisensyang ito ay hindi aktibo para sa site na ito. Mangyaring makipag-"
+"ugnayan sa suporta para sa tulong."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
-#, fuzzy
 msgid ""
-"Plugin activation failed. Please try again later or contact support for "
-"help."
+"Plugin activation failed. Please try again later or contact support for help."
 msgstr ""
-"Nabigo ang pag-install ng plugin. Mangyaring makipag-ugnayan sa suporta "
-"para sa tulong."
+"Nabigo ang pag-install ng plugin. Mangyaring makipag-ugnayan sa suporta para "
+"sa tulong."
 
 #: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
 msgid "This action is not possible because the plugin is already installed."
 msgstr "Ang aksyong ito ay hindi posible dahil ang plugin ay naka-install na."
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
-#, fuzzy
 msgid ""
 "Plugin deactivation failed. Please try again later or contact support for "
 "help."
 msgstr ""
-"Error sa server ng lisensya. Mangyaring subukan muli mamaya o "
-"makipag-ugnayan sa suporta para sa tulong."
+"Error sa server ng lisensya. Mangyaring subukan muli mamaya o makipag-"
+"ugnayan sa suporta para sa tulong."
 
 #: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
 msgid "Plugin family not found. Please contact support for help."
 msgstr ""
-"Hindi natagpuan ang pamilya ng plugin. Mangyaring makipag-ugnayan sa "
-"suporta para sa tulong."
+"Hindi natagpuan ang pamilya ng plugin. Mangyaring makipag-ugnayan sa suporta "
+"para sa tulong."
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
 #, fuzzy
@@ -263,8 +260,8 @@ msgstr "Ang aksyong ito ay hindi posible dahil ang plugin ay naka-install na."
 #: src/Domain/Plugin/Exception/PluginInstallException.php:29
 msgid "Plugin installation failed. Please contact support for help."
 msgstr ""
-"Nabigo ang pag-install ng plugin. Mangyaring makipag-ugnayan sa suporta "
-"para sa tulong."
+"Nabigo ang pag-install ng plugin. Mangyaring makipag-ugnayan sa suporta para "
+"sa tulong."
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
 #, fuzzy
@@ -279,8 +276,8 @@ msgid ""
 "Plugin not found in our available plugins list. Please contact support for "
 "help."
 msgstr ""
-"Hindi natagpuan ang pamilya ng plugin. Mangyaring makipag-ugnayan sa "
-"suporta para sa tulong."
+"Hindi natagpuan ang pamilya ng plugin. Mangyaring makipag-ugnayan sa suporta "
+"para sa tulong."
 
 #: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
 #, fuzzy
@@ -295,8 +292,8 @@ msgid ""
 "Unknown license server error. Please try again later or contact support for "
 "help."
 msgstr ""
-"Error sa server ng lisensya. Mangyaring subukan muli mamaya o "
-"makipag-ugnayan sa suporta para sa tulong."
+"Error sa server ng lisensya. Mangyaring subukan muli mamaya o makipag-"
+"ugnayan sa suporta para sa tulong."
 
 #: src/Domain/Plugin/plugin-families.php:26
 msgid "Define tasks that authors must complete before publishing."
@@ -304,11 +301,13 @@ msgstr "Tukuyin ang mga gawain na dapat tapusin ng mga may-akda bago ilathala."
 
 #: src/Domain/Plugin/plugin-families.php:42
 msgid "Control who can edit and view your content."
-msgstr "Kontrolin kung sino ang maaaring mag-edit at tumingin sa iyong nilalaman."
+msgstr ""
+"Kontrolin kung sino ang maaaring mag-edit at tumingin sa iyong nilalaman."
 
 #: src/Domain/Plugin/plugin-families.php:58
 msgid "Create, manage and display authors for your content."
-msgstr "Lumikha, pamahalaan at ipakita ang mga may-akda para sa iyong nilalaman."
+msgstr ""
+"Lumikha, pamahalaan at ipakita ang mga may-akda para sa iyong nilalaman."
 
 #: src/Domain/Plugin/plugin-families.php:74
 msgid "All the tools you need to improve the block editor."
@@ -337,27 +336,28 @@ msgid "Organize your posts into issues or series."
 msgstr "Ayusin ang iyong mga post sa mga isyu o serye."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "Lumikha ng mga shortlink para sa iyong mga post."
+msgid "Create custom URLs for your posts and external links."
+msgstr ""
+"Gumawa ng mga pasadyang URL para sa iyong mga post at mga panlabas na link."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
 msgstr "Lumikha ng mga custom na status at workflow ng paglalathala."
 
-#: src/Infrastructure/Container/DependencyContainer.php:102
 #. translators: %s is the dependency ID.
+#: src/Infrastructure/Container/DependencyContainer.php:102
 #, php-format
 msgid "Dependency \"%s\" not found in container."
 msgstr "Dependency \"%s\" ay hindi natagpuan sa container."
 
-#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #, php-format
 msgid "Error validating license: %s"
 msgstr "Error sa pag-validate ng lisensya: %s"
 
-#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #, php-format
 msgid "Error getting license info: %s"
 msgstr "Error sa pagkuha ng impormasyon ng lisensya: %s"
@@ -370,8 +370,8 @@ msgstr "Sobra ang mga kahilingan. Mangyaring subukan muli mamaya."
 msgid "An error occurred while processing your request."
 msgstr "Nagkaroon ng error habang pinoproseso ang iyong kahilingan."
 
-#: src/Infrastructure/View/ViewService.php:48
 #. translators: %s is the template path
+#: src/Infrastructure/View/ViewService.php:48
 #, php-format
 msgid "Template not found: %s"
 msgstr "Template na hindi natagpuan: %s"
@@ -392,8 +392,8 @@ msgstr "Di-wastong landas ng file: natagpuan ang null byte"
 msgid "Invalid file path: directory traversal detected"
 msgstr "Di-wastong landas ng file: natagpuan ang directory traversal"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #. translators: %s is the directory path
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "Di-wastong landas ng file: wala ang magulang na direktoryo: %s"
@@ -416,8 +416,8 @@ msgstr "Di-wastong URL ng pag-download"
 msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr "Ang URL ng pag-download ay dapat gumamit ng HTTP o HTTPS na protocol"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #. translators: %s is the hostname
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr "Ang URL ng pag-download ay hindi mula sa pinahintulutang domain: %s"
@@ -426,8 +426,8 @@ msgstr "Ang URL ng pag-download ay hindi mula sa pinahintulutang domain: %s"
 msgid "Download URL failed WordPress validation"
 msgstr "Nabigong i-validate ng WordPress ang URL ng pag-download"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr "Nabigong i-download ang plugin: %s"
@@ -452,8 +452,8 @@ msgstr ""
 "Ang na-download na file ay hindi isang wastong ZIP archive. Maaaring "
 "nagbabalik ang URL ng pag-download ng isang error na pahina."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "Nabigong i-unzip ang file ng plugin: %s"
@@ -462,14 +462,14 @@ msgstr "Nabigong i-unzip ang file ng plugin: %s"
 msgid "Failed to unzip plugin file"
 msgstr "Nabigong i-unzip ang file ng plugin"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "Nabigong i-activate ang plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "Nabigong i-delete ang plugin: %s"
@@ -482,8 +482,8 @@ msgstr "Walang update na available para sa plugin na ito"
 msgid "Invalid update information for this plugin"
 msgstr "Hindi wasto ang impormasyon ng update para sa plugin na ito"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "Nabigong i-update ang plugin: %s"
@@ -492,21 +492,19 @@ msgstr "Nabigong i-update ang plugin: %s"
 msgid "Plugin update failed"
 msgstr "Nabigong i-update ang plugin"
 
-#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #. translators: %s is the error message
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #, php-format
 msgid "Failed to get plugin information: %s"
 msgstr "Nabigong makuha ang impormasyon ng plugin: %s"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:26
 #. translators: %s is the plugin name, %s is the rating
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:26
 msgid "If you like %s please leave us a %s rating. Thank you!"
 msgstr "Kung gusto mo ang %s mangyaring iwanan kami ng %s na rating. Salamat!"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:43
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:43
 msgid "About %s"
 msgstr "Tungkol sa %s"
 
@@ -514,9 +512,8 @@ msgstr "Tungkol sa %s"
 msgid "About"
 msgstr "Tungkol"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:54
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:54
 msgid "Documentation for %s"
 msgstr "Dokumentasyon para sa %s"
 
@@ -524,9 +521,8 @@ msgstr "Dokumentasyon para sa %s"
 msgid "Documentation"
 msgstr "Dokumentasyon"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:65
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:65
 msgid "Contact the %s team"
 msgstr "Makipag-ugnayan sa koponan ng %s"
 
@@ -550,19 +546,17 @@ msgstr "Mga Opsyon"
 msgid "Components Showcase"
 msgstr "Tampok na Mga Komponente"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93, fuzzy
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
 msgid "N/A"
 msgstr "N/A"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 #. translators: %1$s is the plugin name, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 msgid "The license for %1$s expired on %2$s"
 msgstr "Nag-expire ang lisensya para sa %1$s noong %2$s"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 msgid "The licenses for %1$s expired on %2$s"
 msgstr "Nag-expire ang mga lisensya para sa %1$s noong %2$s"
 
@@ -571,19 +565,17 @@ msgstr "Nag-expire ang mga lisensya para sa %1$s noong %2$s"
 msgid "Renew now"
 msgstr "I-renew ngayon"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
-msgstr "Ang lisensya para sa %1$s ay mag-e-expire sa %2$s (%3$d araw na natitira)"
+msgstr ""
+"Ang lisensya para sa %1$s ay mag-e-expire sa %2$s (%3$d araw na natitira)"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr ""
-"Ang mga lisensya para sa %1$s ay mag-e-expire sa %2$s (%3$d araw na "
-"natitira)"
+"Ang mga lisensya para sa %1$s ay mag-e-expire sa %2$s (%3$d araw na natitira)"
 
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:210
 msgid "Warning:"
@@ -621,7 +613,8 @@ msgstr "Dashboard ng Plugins"
 
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
 msgid "Hold ALT and click to force refresh the update cache"
-msgstr "Hawakan ang ALT at i-click upang pilitin ang pag-refresh ng update cache"
+msgstr ""
+"Hawakan ang ALT at i-click upang pilitin ang pag-refresh ng update cache"
 
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
 msgid "Force Refresh"
@@ -632,11 +625,11 @@ msgstr "Piliting I-refresh"
 msgid "Refresh"
 msgstr "I-refresh"
 
-#: resources/src/jsx/components/pages/settings-page.jsx:31, fuzzy
+#: resources/src/jsx/components/pages/settings-page.jsx:31
 msgid "Diagnostics"
 msgstr "Diagnostics"
 
-#: resources/src/jsx/components/pages/settings-page.jsx:39, fuzzy
+#: resources/src/jsx/components/pages/settings-page.jsx:39
 msgid "Debug Log"
 msgstr "Debug Log"
 
@@ -677,7 +670,7 @@ msgid "Enable auto-refresh"
 msgstr "I-enable ang auto-refresh"
 
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:277
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
 msgid "Auto-refresh"
 msgstr "Auto-refresh"
 
@@ -711,7 +704,8 @@ msgstr "Nilalaman ng debug log"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
 msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
-msgstr "Naka-enable ang debug mode. Isang tab na \"Debug Log\" ay ngayon available."
+msgstr ""
+"Naka-enable ang debug mode. Isang tab na \"Debug Log\" ay ngayon available."
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
 msgid "Debug mode disabled."
@@ -721,7 +715,7 @@ msgstr "Naka-disable ang debug mode."
 msgid "Failed to save the setting. Please try again."
 msgstr "Nabigong i-save ang setting. Pakisubukan muli."
 
-#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71, fuzzy
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
 msgid "Debug Mode"
 msgstr "Debug Mode"
 
@@ -731,10 +725,10 @@ msgid ""
 "activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
 "the Debug Log tab to inspect the captured data."
 msgstr ""
-"Kapag nakabukas, lahat ng HTTP request at response sa mga remote na "
-"serbisyo (activation ng lisensya, pag-download ng plugin, atbp.) ay "
-"naka-log sa isang nakatalagang log file. Gamitin ang tab na Debug Log upang "
-"suriin ang nakuha na data."
+"Kapag nakabukas, lahat ng HTTP request at response sa mga remote na serbisyo "
+"(activation ng lisensya, pag-download ng plugin, atbp.) ay naka-log sa isang "
+"nakatalagang log file. Gamitin ang tab na Debug Log upang suriin ang nakuha "
+"na data."
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
 msgid "Enable Debug Mode"
@@ -748,7 +742,7 @@ msgstr ""
 "Aktibo ang debug logging. Lumipat sa tab na \"Debug Log\" upang tingnan ang "
 "nakuha na data."
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70, fuzzy
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
 msgid "ERR"
 msgstr "ERR"
 
@@ -773,7 +767,6 @@ msgid "1 request recorded"
 msgstr "1 kahilingan ang nakarehistro"
 
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#, js-format
 msgid "%d requests recorded"
 msgstr "%d mga kahilingan ang nakarehistro"
 
@@ -795,12 +788,12 @@ msgstr "Ano ang maaari mong gawin sa PublishPress Hub"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
 msgid ""
-"PublishPress Hub has everything you need to install, update, and manage "
-"your PublishPress plugins. We're here to help you build a publishing system "
-"that works perfectly for your team."
+"PublishPress Hub has everything you need to install, update, and manage your "
+"PublishPress plugins. We're here to help you build a publishing system that "
+"works perfectly for your team."
 msgstr ""
-"Mayroon ang PublishPress Hub ng lahat ng kailangan mo upang i-install, "
-"i-update, at pamahalaan ang iyong mga plugin ng PublishPress. Nandito kami "
+"Mayroon ang PublishPress Hub ng lahat ng kailangan mo upang i-install, i-"
+"update, at pamahalaan ang iyong mga plugin ng PublishPress. Nandito kami "
 "upang tulungan kang bumuo ng isang publishing system na gumagana nang "
 "perpekto para sa iyong koponan."
 
@@ -857,19 +850,18 @@ msgstr "Pagsubaybay sa Katayuan"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
 msgid ""
-"Monitor plugin activation status, detect conflicts, and ensure "
-"compatibility."
+"Monitor plugin activation status, detect conflicts, and ensure compatibility."
 msgstr ""
-"Subaybayan ang katayuan ng activation ng plugin, tukuyin ang mga "
-"salungatan, at tiyakin ang pagiging tugma."
+"Subaybayan ang katayuan ng activation ng plugin, tukuyin ang mga salungatan, "
+"at tiyakin ang pagiging tugma."
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:124
 msgid "Get Started"
 msgstr "Magsimula"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:127
-#, js-format
-msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgid ""
+"Ready to explore? Visit the %s to see all available PublishPress plugins."
 msgstr ""
 "Handa ka na bang mag-explore? Bisitahin ang %s upang makita ang lahat ng "
 "magagamit na PublishPress plugins."
@@ -886,7 +878,7 @@ msgstr "Alam mo na ba ang iyong ginagawa? Magaling! Maaari kang "
 msgid "dismiss this page"
 msgstr "mag-dismiss ng page na ito"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
 msgid "."
 msgstr "."
 
@@ -965,22 +957,22 @@ msgid ""
 "Select how you would like to install this plugin. You can install the Pro "
 "version if you have a license, or the Free version to get started."
 msgstr ""
-"Pumili kung paano mo gustong i-install ang plugin na ito. Maaari mong "
-"i-install ang Pro na bersyon kung mayroon kang lisensya, o ang Libreng "
-"bersyon upang makapagsimula."
+"Pumili kung paano mo gustong i-install ang plugin na ito. Maaari mong i-"
+"install ang Pro na bersyon kung mayroon kang lisensya, o ang Libreng bersyon "
+"upang makapagsimula."
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
 msgid "Free Details"
 msgstr "Mga Detalye ng Libre"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
 msgid "Pro Details"
 msgstr "Mga Detalye ng Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Mga Changelog"
 
@@ -1046,7 +1038,8 @@ msgstr "I-deactivate ang license key para sa site na ito"
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
 msgid "Unknown"
 msgstr "Hindi"
 
@@ -1079,48 +1072,39 @@ msgid "Check for Updates"
 msgstr "Suriin ang mga Update"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
-#, js-format
 msgid "Install %s"
 msgstr "I-install %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
-#, js-format
 msgid "Install %s Pro"
 msgstr "I-install %s Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
-#, js-format
 msgid "Upgrade %s to Pro"
 msgstr "I-upgrade ang %s sa Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
-#, js-format
 msgid "Uninstall %s"
 msgstr "I-uninstall ang %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
-#, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "Sigurado ka bang nais mong i-uninstall ang %s?"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
-#, js-format
 msgid "Resolve Conflict for %s"
 msgstr "Lutasin ang Alitan para sa %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
-#, js-format
 msgid "Manage %s License"
 msgstr "Pamahalaan ang Lisensya ng %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
-#, js-format
 msgid "Activate %s License"
 msgstr "I-activate ang Lisensya ng %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
-#, js-format
 msgid "More Info: %s"
 msgstr "Karagdagang Impormasyon: %s"
 
@@ -1129,12 +1113,10 @@ msgid "Resolve Plugin Conflict"
 msgstr "Lutasin ang Alitan ng Plugin"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
-#, js-format
 msgid "Free version: %s (%s)"
 msgstr "Libreng bersyon: %s (%s)"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
-#, js-format
 msgid "Pro version: %s (%s)"
 msgstr "Pro bersyon: %s (%s)"
 
@@ -1149,13 +1131,13 @@ msgstr "Panatilihin ang Libreng bersyon"
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
 msgid ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
-"advanced features, priority support, and exclusive benefits designed to "
-"help you get the most out of your workflow."
+"advanced features, priority support, and exclusive benefits designed to help "
+"you get the most out of your workflow."
 msgstr ""
 "Buksan ang buong potensyal ng plugin na ito gamit ang Pro na bersyon. "
 "Tangkilikin ang mga advanced na tampok, priyoridad na suporta, at mga "
-"eksklusibong benepisyo na idinisenyo upang matulungan kang makuha ang "
-"pinaka mula sa iyong workflow."
+"eksklusibong benepisyo na idinisenyo upang matulungan kang makuha ang pinaka "
+"mula sa iyong workflow."
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
@@ -1177,13 +1159,14 @@ msgstr "Mag-upgrade sa Pro at palakasin ang iyong produktibidad"
 msgid "New version available"
 msgstr "Bagong bersyon na available"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
 #, fuzzy
-msgid "Version %s"
-msgstr "Pro bersyon: %s (%s)"
+msgid "v%s"
+msgstr "v%s"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
-#, js-format
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
 msgid "Update available: %s → %s"
 msgstr "Available ang update: %s → %s"
 
@@ -1236,35 +1219,35 @@ msgstr "Available ang Update"
 msgid "Expires"
 msgstr "Nagtatapos"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
-msgid "latest"
-msgstr "pinakabago"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
-#, js-format
-msgid "Update to v%s"
-msgstr "I-update sa v%s"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
 msgid "Renew"
 msgstr "I-renew"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
 msgid "Deactivate"
 msgstr "I-deactivate"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
 msgid "Activate"
 msgstr "I-activate"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
 msgid "Uninstall"
 msgstr "I-uninstall"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
 msgid "More Info"
 msgstr "Higit pang Impormasyon"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
+msgid "latest"
+msgstr "pinakabago"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+msgid "Update to v%s"
+msgstr "I-update sa v%s"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
 msgid "This plugin is not installed."
@@ -1292,93 +1275,75 @@ msgstr "Nabigo sa pagkuha ng mga plugin"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
-#, js-format
 msgid "%s installed successfully"
 msgstr "%s na-install nang matagumpay"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
-#, js-format
 msgid "%s installation failed"
 msgstr "%s na-install na nabigo"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
-#, js-format
 msgid "%s uninstalled successfully"
 msgstr "%s na-uninstall nang matagumpay"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
-#, js-format
 msgid "%s uninstall failed"
 msgstr "%s na-uninstall na nabigo"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
-#, js-format
 msgid "%s activated successfully"
 msgstr "%s na-activate nang matagumpay"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
-#, js-format
 msgid "%s activation failed"
 msgstr "%s na-activate na nabigo"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
-#, js-format
 msgid "%s deactivated successfully"
 msgstr "%s na-deactivate nang matagumpay"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
-#, js-format
 msgid "%s deactivation failed"
 msgstr "%s na-deactivate na nabigo"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
-#, js-format
 msgid "%s upgraded to Pro successfully"
 msgstr "%s na-upgrade sa Pro nang matagumpay"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
-#, js-format
 msgid "%s upgrade to Pro failed"
 msgstr "%s na-upgrade sa Pro na nabigo"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
-#, js-format
 msgid "Conflict resolved successfully for %s"
 msgstr "Nakasolusyunan ang hidwaan nang matagumpay para sa %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
-#, js-format
 msgid "Failed to resolve conflict for %s"
 msgstr "Nabigo ang pagsasagawa ng solusyon sa hidwaan para sa %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
-#, js-format
 msgid "%s license deactivated successfully"
 msgstr "%s na lisensya na-deactivate nang matagumpay"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
-#, js-format
 msgid "%s license deactivation failed"
 msgstr "%s na lisensya na-deactivate na nabigo"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
-#, js-format
 msgid "%s license activated successfully"
 msgstr "%s na lisensya na-activate nang matagumpay"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
-#, js-format
 msgid "%s license activation failed"
 msgstr "%s na lisensya na-activate na nabigo"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
-#, js-format
 msgid "%s updated successfully"
 msgstr "%s na-update nang matagumpay"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
-#, js-format
 msgid "%s update failed"
 msgstr "%s na-update na nabigo"
 

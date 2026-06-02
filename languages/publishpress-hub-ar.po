@@ -4,29 +4,29 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
+"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
-"PO-Revision-Date: 2026-04-16 14:33+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "% 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
 "% 100 >= 3 && n % 100 <= 10 ? 3: n % 100 >= 11 ? 4 : 5);\n"
-"Language: ar\n"
 "&& n%100<=10 ? 3: n%100>=11 ? 4 : 5);\n"
-"Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % "
+"100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
 
-#: publishpress-hub.php:4
-#: src/Admin/Page/WelcomePageController.php:259
 #. Plugin Name of the plugin
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "نشاط PublishPress"
 
-#: publishpress-hub.php:5
 #. Description of the plugin
+#: publishpress-hub.php:5
 msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
@@ -34,13 +34,13 @@ msgstr ""
 "مركز إدارة مركزي لجميع إضافات PublishPress - قم بتثبيت وتحديث وإدارة "
 "التراخيص من لوحة تحكم واحدة."
 
-#: publishpress-hub.php:7
 #. Author of the plugin
+#: publishpress-hub.php:7
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress-hub.php:8, fuzzy
 #. Author URI of the plugin
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -75,8 +75,8 @@ msgstr "مرحبًا"
 msgid "Please wait while we load the welcome page..."
 msgstr "يرجى الانتظار بينما نقوم بتحميل صفحة الترحيب..."
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "تحذير: انتهت صلاحية الترخيص لـ %1$s. %2$s"
@@ -86,8 +86,8 @@ msgstr "تحذير: انتهت صلاحية الترخيص لـ %1$s. %2$s"
 msgid "Manage licenses"
 msgstr "إدارة التراخيص"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "تحذير: %1$d إضافة(ات) انتهت صلاحية تراخيصها: %2$s. %3$s"
@@ -100,22 +100,21 @@ msgstr "يجب تحميل الكائن قبل التهيئة."
 msgid "No license key found"
 msgstr "لم يتم العثور على مفتاح الترخيص"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr "لم يتم تعيين إضافة مجانية لعائلة الإضافات: %s"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr "لم يتم تعيين إضافة مدفوعة لعائلة الإضافات: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
 msgid ""
-"License activation error. Please try again later or contact support for "
-"help."
+"License activation error. Please try again later or contact support for help."
 msgstr ""
 "خطأ في تفعيل الترخيص. يرجى المحاولة لاحقًا أو الاتصال بالدعم للحصول على "
 "المساعدة."
@@ -125,8 +124,8 @@ msgid ""
 "License deactivation error. Please try again later or contact support for "
 "help."
 msgstr ""
-"خطأ في إلغاء تفعيل الترخيص. يرجى المحاولة لاحقًا أو الاتصال بالدعم للحصول "
-"على المساعدة."
+"خطأ في إلغاء تفعيل الترخيص. يرجى المحاولة لاحقًا أو الاتصال بالدعم للحصول على "
+"المساعدة."
 
 #: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
@@ -146,8 +145,7 @@ msgstr ""
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
 msgid ""
-"This license cannot be used for this plugin. Please contact support for "
-"help."
+"This license cannot be used for this plugin. Please contact support for help."
 msgstr ""
 "لا يمكن استخدام هذا الترخيص لهذه الإضافة. يرجى الاتصال بالدعم للحصول على "
 "المساعدة."
@@ -164,7 +162,8 @@ msgstr ""
 msgid ""
 "License key does not match our records. Please contact support for "
 "assistance."
-msgstr "مفتاح الترخيص لا يتطابق مع سجلاتنا. يرجى الاتصال بالدعم للحصول على المساعدة."
+msgstr ""
+"مفتاح الترخيص لا يتطابق مع سجلاتنا. يرجى الاتصال بالدعم للحصول على المساعدة."
 
 #: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
@@ -172,8 +171,8 @@ msgstr "لم يتم تقديم مفتاح رخصة. يرجى إدخال مفتا
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
 msgid ""
-"Your site URL is required to activate the license. Please enter a valid "
-"site URL to continue."
+"Your site URL is required to activate the license. Please enter a valid site "
+"URL to continue."
 msgstr ""
 "عنوان URL لموقعك مطلوب لتفعيل الترخيص. يرجى إدخال عنوان URL صالح للموقع "
 "للمتابعة."
@@ -191,7 +190,8 @@ msgid "This license cannot be activated. Please contact support for help."
 msgstr "لا يمكن تفعيل هذه الرخصة. يرجى الاتصال بالدعم للحصول على المساعدة."
 
 #: src/Domain/Plugin/Exception/LicenseServerException.php:28
-msgid "License server error. Please try again later or contact support for help."
+msgid ""
+"License server error. Please try again later or contact support for help."
 msgstr ""
 "خطأ في خادم الرخصة. يرجى المحاولة مرة أخرى لاحقاً أو الاتصال بالدعم للحصول "
 "على المساعدة."
@@ -201,20 +201,20 @@ msgid ""
 "The license server returned an invalid response. Please try again later or "
 "contact support for help."
 msgstr ""
-"عاد خادم الترخيص برد غير صالح. يرجى المحاولة لاحقًا أو الاتصال بالدعم "
-"للحصول على المساعدة."
+"عاد خادم الترخيص برد غير صالح. يرجى المحاولة لاحقًا أو الاتصال بالدعم للحصول "
+"على المساعدة."
 
 #: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
-msgid "This license is inactive for this site. Please contact support for help."
-msgstr "هذه الرخصة غير نشطة لهذا الموقع. يرجى الاتصال بالدعم للحصول على المساعدة."
+msgid ""
+"This license is inactive for this site. Please contact support for help."
+msgstr ""
+"هذه الرخصة غير نشطة لهذا الموقع. يرجى الاتصال بالدعم للحصول على المساعدة."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
 msgid ""
-"Plugin activation failed. Please try again later or contact support for "
-"help."
+"Plugin activation failed. Please try again later or contact support for help."
 msgstr ""
-"فشل تفعيل الإضافة. يرجى المحاولة لاحقًا أو الاتصال بالدعم للحصول على "
-"المساعدة."
+"فشل تفعيل الإضافة. يرجى المحاولة لاحقًا أو الاتصال بالدعم للحصول على المساعدة."
 
 #: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
 msgid "This action is not possible because the plugin is already installed."
@@ -230,7 +230,8 @@ msgstr ""
 
 #: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
 msgid "Plugin family not found. Please contact support for help."
-msgstr "لم يتم العثور على عائلة الملحق. يرجى الاتصال بالدعم للحصول على المساعدة."
+msgstr ""
+"لم يتم العثور على عائلة الملحق. يرجى الاتصال بالدعم للحصول على المساعدة."
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
 msgid ""
@@ -273,8 +274,8 @@ msgid ""
 "Unknown license server error. Please try again later or contact support for "
 "help."
 msgstr ""
-"خطأ غير معروف في خادم الترخيص. يرجى المحاولة لاحقًا أو الاتصال بالدعم "
-"للحصول على المساعدة."
+"خطأ غير معروف في خادم الترخيص. يرجى المحاولة لاحقًا أو الاتصال بالدعم للحصول "
+"على المساعدة."
 
 #: src/Domain/Plugin/plugin-families.php:26
 msgid "Define tasks that authors must complete before publishing."
@@ -313,27 +314,27 @@ msgid "Organize your posts into issues or series."
 msgstr "تنظيم منشوراتك في قضايا أو سلاسل."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "إنشاء روابط قصيرة لمنشوراتك."
+msgid "Create custom URLs for your posts and external links."
+msgstr "إنشاء روابط مخصصة لمشاركاتك والروابط الخارجية."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
 msgstr "إنشاء حالات مخصصة وتدفقات عمل للنشر."
 
-#: src/Infrastructure/Container/DependencyContainer.php:102
 #. translators: %s is the dependency ID.
+#: src/Infrastructure/Container/DependencyContainer.php:102
 #, php-format
 msgid "Dependency \"%s\" not found in container."
 msgstr "المعتمد \"%s\" غير موجود في الحاوية."
 
-#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #, php-format
 msgid "Error validating license: %s"
 msgstr "خطأ في التحقق من الترخيص: %s"
 
-#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #, php-format
 msgid "Error getting license info: %s"
 msgstr "خطأ في الحصول على معلومات الترخيص: %s"
@@ -346,8 +347,8 @@ msgstr "عدد كبير جدًا من الطلبات. يرجى المحاولة 
 msgid "An error occurred while processing your request."
 msgstr "حدث خطأ أثناء معالجة طلبك."
 
-#: src/Infrastructure/View/ViewService.php:48
 #. translators: %s is the template path
+#: src/Infrastructure/View/ViewService.php:48
 #, php-format
 msgid "Template not found: %s"
 msgstr "القالب غير موجود: %s"
@@ -368,8 +369,8 @@ msgstr "مسار الملف غير صالح: تم اكتشاف بايت فارغ
 msgid "Invalid file path: directory traversal detected"
 msgstr "مسار الملف غير صالح: تم اكتشاف تجاوز الدليل"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #. translators: %s is the directory path
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "مسار الملف غير صالح: الدليل الأب غير موجود: %s"
@@ -390,8 +391,8 @@ msgstr "رابط التنزيل غير صالح"
 msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr "يجب أن يستخدم رابط التنزيل بروتوكول HTTP أو HTTPS"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #. translators: %s is the hostname
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr "رابط التنزيل ليس من نطاق مسموح به: %s"
@@ -400,8 +401,8 @@ msgstr "رابط التنزيل ليس من نطاق مسموح به: %s"
 msgid "Download URL failed WordPress validation"
 msgstr "فشل رابط التنزيل في التحقق من صحة ووردبريس"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr "فشل في تنزيل الإضافة: %s"
@@ -423,11 +424,11 @@ msgid ""
 "Downloaded file is not a valid ZIP archive. The download URL may be "
 "returning an error page."
 msgstr ""
-"الملف الذي تم تنزيله ليس أرشيف ZIP صالح. قد يكون عنوان URL للتنزيل يعيد "
-"صفحة خطأ."
+"الملف الذي تم تنزيله ليس أرشيف ZIP صالح. قد يكون عنوان URL للتنزيل يعيد صفحة "
+"خطأ."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "فشل في فك ضغط ملف الإضافة: %s"
@@ -436,14 +437,14 @@ msgstr "فشل في فك ضغط ملف الإضافة: %s"
 msgid "Failed to unzip plugin file"
 msgstr "فشل في فك ضغط ملف الإضافة"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "فشل في تفعيل الإضافة: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "فشل في حذف الإضافة: %s"
@@ -456,8 +457,8 @@ msgstr "لا توجد تحديثات متاحة لهذه الإضافة"
 msgid "Invalid update information for this plugin"
 msgstr "معلومات التحديث غير صالحة لهذه الإضافة"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "فشل في تحديث الإضافة: %s"
@@ -466,21 +467,19 @@ msgstr "فشل في تحديث الإضافة: %s"
 msgid "Plugin update failed"
 msgstr "فشل تحديث الإضافة"
 
-#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #. translators: %s is the error message
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #, php-format
 msgid "Failed to get plugin information: %s"
 msgstr "فشل في الحصول على معلومات الإضافة: %s"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:26
 #. translators: %s is the plugin name, %s is the rating
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:26
 msgid "If you like %s please leave us a %s rating. Thank you!"
 msgstr "إذا أعجبتك %s، يرجى ترك تقييم لنا بقدر %s. شكرًا لك!"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:43
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:43
 msgid "About %s"
 msgstr "حول %s"
 
@@ -488,9 +487,8 @@ msgstr "حول %s"
 msgid "About"
 msgstr "حول"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:54
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:54
 msgid "Documentation for %s"
 msgstr "الوثائق الخاصة بـ %s"
 
@@ -498,9 +496,8 @@ msgstr "الوثائق الخاصة بـ %s"
 msgid "Documentation"
 msgstr "الوثائق"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:65
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:65
 msgid "Contact the %s team"
 msgstr "اتصل بفريق %s"
 
@@ -528,15 +525,13 @@ msgstr "عرض المكونات"
 msgid "N/A"
 msgstr "غير متوفر"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 #. translators: %1$s is the plugin name, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 msgid "The license for %1$s expired on %2$s"
 msgstr "انتهت صلاحية الترخيص لـ %1$s في %2$s"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 msgid "The licenses for %1$s expired on %2$s"
 msgstr "انتهت صلاحية التراخيص لـ %1$s في %2$s"
 
@@ -545,15 +540,13 @@ msgstr "انتهت صلاحية التراخيص لـ %1$s في %2$s"
 msgid "Renew now"
 msgstr "جدد الآن"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr "تنتهي رخصة %1$s في %2$s (%3$d يوم متبقي)"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr "تنتهي رخص %1$s في %2$s (%3$d يوم متبقي)"
 
@@ -744,7 +737,6 @@ msgid "1 request recorded"
 msgstr "تم تسجيل طلب واحد"
 
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#, js-format
 msgid "%d requests recorded"
 msgstr "%d طلبات مسجلة"
 
@@ -766,9 +758,9 @@ msgstr "ما يمكنك القيام به باستخدام PublishPress Hub"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
 msgid ""
-"PublishPress Hub has everything you need to install, update, and manage "
-"your PublishPress plugins. We're here to help you build a publishing system "
-"that works perfectly for your team."
+"PublishPress Hub has everything you need to install, update, and manage your "
+"PublishPress plugins. We're here to help you build a publishing system that "
+"works perfectly for your team."
 msgstr ""
 "يحتوي PublishPress Hub على كل ما تحتاجه لتثبيت وتحديث وإدارة إضافات "
 "PublishPress الخاصة بك. نحن هنا لمساعدتك في بناء نظام نشر يعمل بشكل مثالي "
@@ -795,8 +787,7 @@ msgid ""
 "Install free PublishPress plugins directly from the Hub without visiting "
 "WordPress.org."
 msgstr ""
-"قم بتثبيت إضافات PublishPress المجانية مباشرة من Hub دون زيارة "
-"WordPress.org."
+"قم بتثبيت إضافات PublishPress المجانية مباشرة من Hub دون زيارة WordPress.org."
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:88
 msgid "License Management"
@@ -824,8 +815,7 @@ msgstr "مراقبة الحالة"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
 msgid ""
-"Monitor plugin activation status, detect conflicts, and ensure "
-"compatibility."
+"Monitor plugin activation status, detect conflicts, and ensure compatibility."
 msgstr "راقب حالة تفعيل الإضافات، واكتشف التعارضات، وتأكد من التوافق."
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:124
@@ -833,8 +823,8 @@ msgid "Get Started"
 msgstr "ابدأ"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:127
-#, js-format
-msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgid ""
+"Ready to explore? Visit the %s to see all available PublishPress plugins."
 msgstr ""
 "هل أنت مستعد للاستكشاف؟ قم بزيارة %s لرؤية جميع الإضافات المتاحة لـ "
 "PublishPress."
@@ -851,7 +841,7 @@ msgstr "هل تعرف بالفعل ما تفعله؟ رائع! يمكنك "
 msgid "dismiss this page"
 msgstr "إغلاق هذه الصفحة"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
 msgid "."
 msgstr "."
 
@@ -934,17 +924,17 @@ msgstr ""
 "ترخيص، أو الإصدار المجاني للبدء."
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
 msgid "Free Details"
 msgstr "تفاصيل مجانية"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
 msgid "Pro Details"
 msgstr "تفاصيل احترافية"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "سجلات التغييرات"
 
@@ -1009,7 +999,8 @@ msgstr "إلغاء تنشيط مفتاح الترخيص لهذا الموقع"
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
 msgid "Unknown"
 msgstr "غير معروف"
 
@@ -1042,48 +1033,39 @@ msgid "Check for Updates"
 msgstr "تحقق من التحديثات"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
-#, js-format
 msgid "Install %s"
 msgstr "تثبيت %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
-#, js-format
 msgid "Install %s Pro"
 msgstr "تثبيت %s برو"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
-#, js-format
 msgid "Upgrade %s to Pro"
 msgstr "ترقية %s إلى برو"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
-#, js-format
 msgid "Uninstall %s"
 msgstr "إلغاء تثبيت %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
-#, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "هل أنت متأكد أنك تريد إلغاء تثبيت %s؟"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
-#, js-format
 msgid "Resolve Conflict for %s"
 msgstr "حل النزاع لـ %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
-#, js-format
 msgid "Manage %s License"
 msgstr "إدارة ترخيص %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
-#, js-format
 msgid "Activate %s License"
 msgstr "تفعيل ترخيص %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
-#, js-format
 msgid "More Info: %s"
 msgstr "مزيد من المعلومات: %s"
 
@@ -1092,12 +1074,10 @@ msgid "Resolve Plugin Conflict"
 msgstr "حل نزاع الإضافة"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
-#, js-format
 msgid "Free version: %s (%s)"
 msgstr "النسخة المجانية: %s (%s)"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
-#, js-format
 msgid "Pro version: %s (%s)"
 msgstr "النسخة البرو: %s (%s)"
 
@@ -1112,8 +1092,8 @@ msgstr "احتفظ بالإصدار المجاني"
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
 msgid ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
-"advanced features, priority support, and exclusive benefits designed to "
-"help you get the most out of your workflow."
+"advanced features, priority support, and exclusive benefits designed to help "
+"you get the most out of your workflow."
 msgstr ""
 "افتح الإمكانيات الكاملة لهذه الإضافة مع الإصدار الاحترافي. استمتع بالميزات "
 "المتقدمة، والدعم الأولوي، والفوائد الحصرية المصممة لمساعدتك في الاستفادة "
@@ -1139,13 +1119,14 @@ msgstr "ترقية إلى الإصدار الاحترافي وزيادة إنت�
 msgid "New version available"
 msgstr "إصدار جديد متاح"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
-#, js-format
-msgid "Version %s"
-msgstr "الإصدار %s"
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
+#, fuzzy
+msgid "v%s"
+msgstr "v%s"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
-#, js-format
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
 msgid "Update available: %s → %s"
 msgstr "تحديث متاح: %s → %s"
 
@@ -1198,35 +1179,35 @@ msgstr "تحديث متاح"
 msgid "Expires"
 msgstr "تنتهي صلاحيتها"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
-msgid "latest"
-msgstr "الأحدث"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
-#, js-format
-msgid "Update to v%s"
-msgstr "تحديث إلى الإصدار %s"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
 msgid "Renew"
 msgstr "تجديد"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
 msgid "Deactivate"
 msgstr "تعطيل"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
 msgid "Activate"
 msgstr "تفعيل"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
 msgid "Uninstall"
 msgstr "إلغاء التثبيت"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
 msgid "More Info"
 msgstr "مزيد من المعلومات"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
+msgid "latest"
+msgstr "الأحدث"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+msgid "Update to v%s"
+msgstr "تحديث إلى الإصدار %s"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
 msgid "This plugin is not installed."
@@ -1254,93 +1235,75 @@ msgstr "فشل في جلب الإضافات"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
-#, js-format
 msgid "%s installed successfully"
 msgstr "%s تم تثبيته بنجاح"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
-#, js-format
 msgid "%s installation failed"
 msgstr "%s فشل التثبيت"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
-#, js-format
 msgid "%s uninstalled successfully"
 msgstr "%s تم إلغاء تثبيته بنجاح"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
-#, js-format
 msgid "%s uninstall failed"
 msgstr "%s فشل إلغاء التثبيت"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
-#, js-format
 msgid "%s activated successfully"
 msgstr "%s تم تفعيله بنجاح"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
-#, js-format
 msgid "%s activation failed"
 msgstr "فشل تفعيل %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
-#, js-format
 msgid "%s deactivated successfully"
 msgstr "تم إلغاء تفعيل %s بنجاح"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
-#, js-format
 msgid "%s deactivation failed"
 msgstr "فشل إلغاء تفعيل %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
-#, js-format
 msgid "%s upgraded to Pro successfully"
 msgstr "تم ترقية %s إلى النسخة الاحترافية بنجاح"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
-#, js-format
 msgid "%s upgrade to Pro failed"
 msgstr "فشل ترقية %s إلى النسخة الاحترافية"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
-#, js-format
 msgid "Conflict resolved successfully for %s"
 msgstr "تم حل النزاع بنجاح لـ %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
-#, js-format
 msgid "Failed to resolve conflict for %s"
 msgstr "فشل في حل النزاع لـ %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
-#, js-format
 msgid "%s license deactivated successfully"
 msgstr "تم إلغاء تفعيل ترخيص %s بنجاح"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
-#, js-format
 msgid "%s license deactivation failed"
 msgstr "فشل إلغاء تفعيل ترخيص %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
-#, js-format
 msgid "%s license activated successfully"
 msgstr "تم تفعيل ترخيص %s بنجاح"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
-#, js-format
 msgid "%s license activation failed"
 msgstr "فشل تفعيل ترخيص %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
-#, js-format
 msgid "%s updated successfully"
 msgstr "تم تحديث %s بنجاح"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
-#, js-format
 msgid "%s update failed"
 msgstr "فشل التحديث لـ %s"
 
@@ -1349,6 +1312,5 @@ msgid "Too many requests. Please wait a few seconds and try again."
 msgstr "عدد كبير جداً من الطلبات. يرجى الانتظار لبضع ثوان والمحاولة مرة أخرى."
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
-#, js-format
 msgid "Cloudflare Ray ID: %s"
 msgstr "معرف راي من Cloudflare: %s"

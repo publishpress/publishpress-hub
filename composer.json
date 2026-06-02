@@ -26,7 +26,9 @@
         "plugin-folder": "publishpress-hub",
         "plugin-lang-domain": "publishpress-hub",
         "plugin-github-repo": "publishpress/publishpress-hub",
-        "plugin-composer-package": "publishpress/publishpress-hub"
+        "plugin-composer-package": "publishpress/publishpress-hub",
+        "project-type": "pro-plugin"
+
     },
     "autoload": {
         "files": [
@@ -53,6 +55,6 @@
         "ext-json": "*"
     },
     "require-dev": {
-        "publishpress/dev-workspace": "dev-development"
+        "publishpress/dev-workspace": "^1.3"
     }
 }

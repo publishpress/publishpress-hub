@@ -4,26 +4,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
+"PO-Revision-Date: 2026-06-01 20:26+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: sv-SE\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
-"PO-Revision-Date: 2026-04-16 14:36+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: sv-SE\n"
 
-#: publishpress-hub.php:4
-#: src/Admin/Page/WelcomePageController.php:259, fuzzy
 #. Plugin Name of the plugin
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
-#: publishpress-hub.php:5
 #. Description of the plugin
+#: publishpress-hub.php:5
 msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
@@ -31,13 +30,13 @@ msgstr ""
 "Centraliserad hanteringshub för alla PublishPress-plugins - installera, "
 "uppdatera och hantera licenser från en och samma instrumentpanel."
 
-#: publishpress-hub.php:7
 #. Author of the plugin
+#: publishpress-hub.php:7
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress-hub.php:8, fuzzy
 #. Author URI of the plugin
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -61,7 +60,8 @@ msgstr "Vänligen vänta medan vi laddar inställningssidan..."
 
 #: src/Admin/Page/WelcomePageController.php:143
 msgid "You do not have sufficient permissions to access this page."
-msgstr "Du har inte tillräckliga rättigheter för att få åtkomst till denna sida."
+msgstr ""
+"Du har inte tillräckliga rättigheter för att få åtkomst till denna sida."
 
 #: src/Admin/Page/WelcomePageController.php:180
 #: src/Admin/Page/WelcomePageController.php:181
@@ -72,8 +72,8 @@ msgstr "Välkommen"
 msgid "Please wait while we load the welcome page..."
 msgstr "Vänligen vänta medan vi laddar välkomstsidan..."
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "Varning: Licensen för %1$s har gått ut. %2$s"
@@ -83,8 +83,8 @@ msgstr "Varning: Licensen för %1$s har gått ut. %2$s"
 msgid "Manage licenses"
 msgstr "Hantera licenser"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "Varning: %1$d plugin(s) har gått ut: %2$s. %3$s"
@@ -97,22 +97,21 @@ msgstr "Objektet måste laddas innan det initieras."
 msgid "No license key found"
 msgstr "Ingen licensnyckel hittades"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr "Gratisplugin är inte angiven för pluginfamilj: %s"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr "Pro-plugin är inte angiven för pluginfamilj: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
 msgid ""
-"License activation error. Please try again later or contact support for "
-"help."
+"License activation error. Please try again later or contact support for help."
 msgstr ""
 "Licensaktiveringsfel. Vänligen försök igen senare eller kontakta supporten "
 "för hjälp."
@@ -122,12 +121,13 @@ msgid ""
 "License deactivation error. Please try again later or contact support for "
 "help."
 msgstr ""
-"Licensdeaktiveringsfel. Vänligen försök igen senare eller kontakta "
-"supporten för hjälp."
+"Licensdeaktiveringsfel. Vänligen försök igen senare eller kontakta supporten "
+"för hjälp."
 
 #: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
-msgstr "Denna licens är för närvarande inaktiverad. Kontakta supporten för hjälp."
+msgstr ""
+"Denna licens är för närvarande inaktiverad. Kontakta supporten för hjälp."
 
 #: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
 msgid "This license has expired. Please contact support to renew it."
@@ -138,16 +138,15 @@ msgid ""
 "This license key is not authorized for this plugin. Please verify your "
 "license key or contact support for help."
 msgstr ""
-"Denna licensnyckel är inte auktoriserad för denna plugin. Vänligen "
-"verifiera din licensnyckel eller kontakta supporten för hjälp."
+"Denna licensnyckel är inte auktoriserad för denna plugin. Vänligen verifiera "
+"din licensnyckel eller kontakta supporten för hjälp."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
 msgid ""
-"This license cannot be used for this plugin. Please contact support for "
-"help."
+"This license cannot be used for this plugin. Please contact support for help."
 msgstr ""
-"Denna licens kan inte användas för denna plugin. Vänligen kontakta "
-"supporten för hjälp."
+"Denna licens kan inte användas för denna plugin. Vänligen kontakta supporten "
+"för hjälp."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
 msgid ""
@@ -171,8 +170,8 @@ msgstr "Ingen licensnyckel angiven. Vänligen ange en giltig licensnyckel."
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
 msgid ""
-"Your site URL is required to activate the license. Please enter a valid "
-"site URL to continue."
+"Your site URL is required to activate the license. Please enter a valid site "
+"URL to continue."
 msgstr ""
 "Din webbplats-URL krävs för att aktivera licensen. Vänligen ange en giltig "
 "webbplats-URL för att fortsätta."
@@ -190,8 +189,10 @@ msgid "This license cannot be activated. Please contact support for help."
 msgstr "Denna licens kan inte aktiveras. Kontakta supporten för hjälp."
 
 #: src/Domain/Plugin/Exception/LicenseServerException.php:28
-msgid "License server error. Please try again later or contact support for help."
-msgstr "Licensserverfel. Försök igen senare eller kontakta supporten för hjälp."
+msgid ""
+"License server error. Please try again later or contact support for help."
+msgstr ""
+"Licensserverfel. Försök igen senare eller kontakta supporten för hjälp."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
 msgid ""
@@ -202,13 +203,14 @@ msgstr ""
 "eller kontakta supporten för hjälp."
 
 #: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
-msgid "This license is inactive for this site. Please contact support for help."
-msgstr "Denna licens är inaktiv för denna webbplats. Kontakta supporten för hjälp."
+msgid ""
+"This license is inactive for this site. Please contact support for help."
+msgstr ""
+"Denna licens är inaktiv för denna webbplats. Kontakta supporten för hjälp."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
 msgid ""
-"Plugin activation failed. Please try again later or contact support for "
-"help."
+"Plugin activation failed. Please try again later or contact support for help."
 msgstr ""
 "Pluginaktivering misslyckades. Vänligen försök igen senare eller kontakta "
 "supporten för hjälp."
@@ -310,27 +312,27 @@ msgid "Organize your posts into issues or series."
 msgstr "Organisera dina inlägg i nummer eller serier."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "Skapa kortlänkar för dina inlägg."
+msgid "Create custom URLs for your posts and external links."
+msgstr "Skapa anpassade URL:er för dina inlägg och externa länkar."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
 msgstr "Skapa anpassade statusar och arbetsflöden för publicering."
 
-#: src/Infrastructure/Container/DependencyContainer.php:102
 #. translators: %s is the dependency ID.
+#: src/Infrastructure/Container/DependencyContainer.php:102
 #, php-format
 msgid "Dependency \"%s\" not found in container."
 msgstr "Beroende \"%s\" hittades inte i containern."
 
-#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #, php-format
 msgid "Error validating license: %s"
 msgstr "Fel vid validering av licens: %s"
 
-#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #, php-format
 msgid "Error getting license info: %s"
 msgstr "Fel vid hämtning av licensinformation: %s"
@@ -343,8 +345,8 @@ msgstr "För många förfrågningar. Vänligen försök igen senare."
 msgid "An error occurred while processing your request."
 msgstr "Ett fel inträffade vid behandling av din begäran."
 
-#: src/Infrastructure/View/ViewService.php:48
 #. translators: %s is the template path
+#: src/Infrastructure/View/ViewService.php:48
 #, php-format
 msgid "Template not found: %s"
 msgstr "Mallen hittades inte: %s"
@@ -365,8 +367,8 @@ msgstr "Ogiltig filväg: nullbyte detekterad"
 msgid "Invalid file path: directory traversal detected"
 msgstr "Ogiltig filväg: katalogtraversering detekterad"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #. translators: %s is the directory path
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "Ogiltig filväg: överordnad katalog finns inte: %s"
@@ -387,8 +389,8 @@ msgstr "Ogiltig nedladdnings-URL angiven"
 msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr "Nedladdnings-URL måste använda HTTP eller HTTPS-protokoll"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #. translators: %s is the hostname
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr "Nedladdnings-URL kommer inte från en tillåten domän: %s"
@@ -397,8 +399,8 @@ msgstr "Nedladdnings-URL kommer inte från en tillåten domän: %s"
 msgid "Download URL failed WordPress validation"
 msgstr "Nedladdnings-URL misslyckades med WordPress-validering"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr "Misslyckades med att ladda ner plugin: %s"
@@ -423,8 +425,8 @@ msgstr ""
 "Den nedladdade filen är inte ett giltigt ZIP-arkiv. Nedladdnings-URL:en kan "
 "returnera en felaktig sida."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "Misslyckades med att packa upp pluginfil: %s"
@@ -433,14 +435,14 @@ msgstr "Misslyckades med att packa upp pluginfil: %s"
 msgid "Failed to unzip plugin file"
 msgstr "Misslyckades med att packa upp pluginfil"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "Misslyckades med att aktivera plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "Misslyckades med att ta bort plugin: %s"
@@ -453,8 +455,8 @@ msgstr "Ingen uppdatering tillgänglig för denna plugin"
 msgid "Invalid update information for this plugin"
 msgstr "Ogiltig uppdateringsinformation för denna plugin"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "Misslyckades med att uppdatera plugin: %s"
@@ -463,21 +465,19 @@ msgstr "Misslyckades med att uppdatera plugin: %s"
 msgid "Plugin update failed"
 msgstr "Pluginuppdatering misslyckades"
 
-#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #. translators: %s is the error message
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #, php-format
 msgid "Failed to get plugin information: %s"
 msgstr "Misslyckades med att hämta plugininformation: %s"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:26
 #. translators: %s is the plugin name, %s is the rating
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:26
 msgid "If you like %s please leave us a %s rating. Thank you!"
 msgstr "Om du gillar %s, vänligen ge oss en %s betyg. Tack!"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:43
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:43
 msgid "About %s"
 msgstr "Om %s"
 
@@ -485,9 +485,8 @@ msgstr "Om %s"
 msgid "About"
 msgstr "Om"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:54
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:54
 msgid "Documentation for %s"
 msgstr "Dokumentation för %s"
 
@@ -495,9 +494,8 @@ msgstr "Dokumentation för %s"
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:65
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:65
 msgid "Contact the %s team"
 msgstr "Kontakta %s-teamet"
 
@@ -521,19 +519,17 @@ msgstr "Alternativ"
 msgid "Components Showcase"
 msgstr "Komponentutställning"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93, fuzzy
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
 msgid "N/A"
 msgstr "N/A"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 #. translators: %1$s is the plugin name, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 msgid "The license for %1$s expired on %2$s"
 msgstr "Licensen för %1$s gick ut den %2$s"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 msgid "The licenses for %1$s expired on %2$s"
 msgstr "Licenserna för %1$s gick ut den %2$s"
 
@@ -542,15 +538,13 @@ msgstr "Licenserna för %1$s gick ut den %2$s"
 msgid "Renew now"
 msgstr "Förnya nu"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr "Licensen för %1$s går ut den %2$s (%3$d dagar kvar)"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr "Licenserna för %1$s går ut den %2$s (%3$d dagar kvar)"
 
@@ -590,7 +584,8 @@ msgstr "Plugins Instrumentpanel"
 
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
 msgid "Hold ALT and click to force refresh the update cache"
-msgstr "Håll ALT och klicka för att tvinga en uppfriskning av uppdateringscachen"
+msgstr ""
+"Håll ALT och klicka för att tvinga en uppfriskning av uppdateringscachen"
 
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
 msgid "Force Refresh"
@@ -717,7 +712,7 @@ msgstr ""
 "Debuggloggning är aktiv. Väx till \"Debugglogg\"-fliken för att visa fångad "
 "data."
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70, fuzzy
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
 msgid "ERR"
 msgstr "ERR"
 
@@ -742,7 +737,6 @@ msgid "1 request recorded"
 msgstr "1 begäran registrerad"
 
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#, js-format
 msgid "%d requests recorded"
 msgstr "%d begärningar registrerade"
 
@@ -764,9 +758,9 @@ msgstr "Vad du kan göra med PublishPress Hub"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
 msgid ""
-"PublishPress Hub has everything you need to install, update, and manage "
-"your PublishPress plugins. We're here to help you build a publishing system "
-"that works perfectly for your team."
+"PublishPress Hub has everything you need to install, update, and manage your "
+"PublishPress plugins. We're here to help you build a publishing system that "
+"works perfectly for your team."
 msgstr ""
 "PublishPress Hub har allt du behöver för att installera, uppdatera och "
 "hantera dina PublishPress-plugin. Vi är här för att hjälpa dig bygga ett "
@@ -805,8 +799,8 @@ msgid ""
 "Connect your PublishPress licenses to easily install and activate Pro "
 "versions."
 msgstr ""
-"Anslut dina PublishPress-licenser för att enkelt installera och aktivera "
-"Pro-versioner."
+"Anslut dina PublishPress-licenser för att enkelt installera och aktivera Pro-"
+"versioner."
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:100
 msgid "Easy Updates"
@@ -824,8 +818,7 @@ msgstr "Statusövervakning"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
 msgid ""
-"Monitor plugin activation status, detect conflicts, and ensure "
-"compatibility."
+"Monitor plugin activation status, detect conflicts, and ensure compatibility."
 msgstr ""
 "Övervaka pluginaktiveringsstatus, upptäck konflikter och säkerställ "
 "kompatibilitet."
@@ -835,11 +828,11 @@ msgid "Get Started"
 msgstr "Kom igång"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:127
-#, js-format
-msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgid ""
+"Ready to explore? Visit the %s to see all available PublishPress plugins."
 msgstr ""
-"Redo att utforska? Besök %s för att se alla tillgängliga "
-"PublishPress-tillägg."
+"Redo att utforska? Besök %s för att se alla tillgängliga PublishPress-"
+"tillägg."
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:142
 msgid "View Plugins Dashboard"
@@ -853,7 +846,7 @@ msgstr "Vet du redan vad du gör? Bra! Du kan "
 msgid "dismiss this page"
 msgstr "stänga den här sidan"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
 msgid "."
 msgstr "."
 
@@ -932,21 +925,21 @@ msgid ""
 "Select how you would like to install this plugin. You can install the Pro "
 "version if you have a license, or the Free version to get started."
 msgstr ""
-"Välj hur du vill installera detta plugin. Du kan installera Pro-versionen "
-"om du har en licens, eller den gratis versionen för att komma igång."
+"Välj hur du vill installera detta plugin. Du kan installera Pro-versionen om "
+"du har en licens, eller den gratis versionen för att komma igång."
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
 msgid "Free Details"
 msgstr "Kostnadsfria detaljer"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
 msgid "Pro Details"
 msgstr "Pro-detaljer"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Ändringsloggar"
 
@@ -968,8 +961,8 @@ msgid ""
 "Enter your license key to activate the Pro version of this plugin. You can "
 "find your license key in your PublishPress account dashboard."
 msgstr ""
-"Ange din licensnyckel för att aktivera Pro-versionen av detta plugin. Du "
-"kan hitta din licensnyckel i din PublishPress-kontodashboard."
+"Ange din licensnyckel för att aktivera Pro-versionen av detta plugin. Du kan "
+"hitta din licensnyckel i din PublishPress-kontodashboard."
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
@@ -1011,7 +1004,8 @@ msgstr "Avaktivera licensnyckeln för denna webbplats"
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
 msgid "Unknown"
 msgstr "Okänd"
 
@@ -1044,48 +1038,39 @@ msgid "Check for Updates"
 msgstr "Kontrollera uppdateringar"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
-#, js-format
 msgid "Install %s"
 msgstr "Installera %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
-#, js-format
 msgid "Install %s Pro"
 msgstr "Installera %s Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
-#, js-format
 msgid "Upgrade %s to Pro"
 msgstr "Uppgradera %s till Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
-#, js-format
 msgid "Uninstall %s"
 msgstr "Avinstallera %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
-#, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "Är du säker på att du vill avinstallera %s?"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
-#, js-format
 msgid "Resolve Conflict for %s"
 msgstr "Lös konflikt för %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
-#, js-format
 msgid "Manage %s License"
 msgstr "Hantera %s-licens"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
-#, js-format
 msgid "Activate %s License"
 msgstr "Aktivera %s-licens"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
-#, js-format
 msgid "More Info: %s"
 msgstr "Mer info: %s"
 
@@ -1094,12 +1079,10 @@ msgid "Resolve Plugin Conflict"
 msgstr "Lös plugin konflikt"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
-#, js-format
 msgid "Free version: %s (%s)"
 msgstr "Gratisversion: %s (%s)"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
-#, js-format
 msgid "Pro version: %s (%s)"
 msgstr "Pro-version: %s (%s)"
 
@@ -1114,8 +1097,8 @@ msgstr "Behåll Gratis-versionen"
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
 msgid ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
-"advanced features, priority support, and exclusive benefits designed to "
-"help you get the most out of your workflow."
+"advanced features, priority support, and exclusive benefits designed to help "
+"you get the most out of your workflow."
 msgstr ""
 "Lås upp den fulla potentialen av detta plugin med Pro-versionen. Njut av "
 "avancerade funktioner, prioriterad support och exklusiva förmåner designade "
@@ -1141,13 +1124,14 @@ msgstr "Uppgradera till Pro och öka din produktivitet"
 msgid "New version available"
 msgstr "Ny version tillgänglig"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
 #, fuzzy
-msgid "Version %s"
-msgstr "Version %s"
+msgid "v%s"
+msgstr "v%s"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
-#, js-format
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
 msgid "Update available: %s → %s"
 msgstr "Uppdatering tillgänglig: %s → %s"
 
@@ -1200,35 +1184,35 @@ msgstr "Uppdatering tillgänglig"
 msgid "Expires"
 msgstr "Utgår"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
-msgid "latest"
-msgstr "senaste"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
-#, js-format
-msgid "Update to v%s"
-msgstr "Uppdatera till v%s"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
 msgid "Renew"
 msgstr "Förnya"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
 msgid "Deactivate"
 msgstr "Avaktivera"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
 msgid "Activate"
 msgstr "Aktivera"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
 msgid "Uninstall"
 msgstr "Avinstallera"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
 msgid "More Info"
 msgstr "Mer info"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
+msgid "latest"
+msgstr "senaste"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+msgid "Update to v%s"
+msgstr "Uppdatera till v%s"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
 msgid "This plugin is not installed."
@@ -1256,99 +1240,82 @@ msgstr "Misslyckades med att hämta plugins"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
-#, js-format
 msgid "%s installed successfully"
 msgstr "%s installerades framgångsrikt"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
-#, js-format
 msgid "%s installation failed"
 msgstr "%s installation misslyckades"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
-#, js-format
 msgid "%s uninstalled successfully"
 msgstr "%s avinstallerades framgångsrikt"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
-#, js-format
 msgid "%s uninstall failed"
 msgstr "%s avinstallation misslyckades"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
-#, js-format
 msgid "%s activated successfully"
 msgstr "%s aktiverades framgångsrikt"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
-#, js-format
 msgid "%s activation failed"
 msgstr "%s aktivering misslyckades"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
-#, js-format
 msgid "%s deactivated successfully"
 msgstr "%s avaktiverades framgångsrikt"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
-#, js-format
 msgid "%s deactivation failed"
 msgstr "%s avaktivering misslyckades"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
-#, js-format
 msgid "%s upgraded to Pro successfully"
 msgstr "%s uppgraderades till Pro framgångsrikt"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
-#, js-format
 msgid "%s upgrade to Pro failed"
 msgstr "%s uppgradering till Pro misslyckades"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
-#, js-format
 msgid "Conflict resolved successfully for %s"
 msgstr "Konflikter lösta framgångsrikt för %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
-#, js-format
 msgid "Failed to resolve conflict for %s"
 msgstr "Misslyckades med att lösa konflikt för %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
-#, js-format
 msgid "%s license deactivated successfully"
 msgstr "%s licens avaktiverad framgångsrikt"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
-#, js-format
 msgid "%s license deactivation failed"
 msgstr "%s licens avaktivering misslyckades"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
-#, js-format
 msgid "%s license activated successfully"
 msgstr "%s licens aktiverad framgångsrikt"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
-#, js-format
 msgid "%s license activation failed"
 msgstr "%s licens aktivering misslyckades"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
-#, js-format
 msgid "%s updated successfully"
 msgstr "%s uppdaterad framgångsrikt"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
-#, js-format
 msgid "%s update failed"
 msgstr "%s uppdatering misslyckades"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
 msgid "Too many requests. Please wait a few seconds and try again."
-msgstr "För många förfrågningar. Vänligen vänta några sekunder och försök igen."
+msgstr ""
+"För många förfrågningar. Vänligen vänta några sekunder och försök igen."
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
 #, fuzzy

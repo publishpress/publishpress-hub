@@ -29,7 +29,7 @@ if (defined('PUBLISHPRESS_HUB_PATH')) {
 /*
  * Define the plugin constants.
  */
-define('PUBLISHPRESS_HUB_VERSION', '1.0.4');
+define('PUBLISHPRESS_HUB_VERSION', '1.0.5');
 define('PUBLISHPRESS_HUB_SRC_PATH', __DIR__ . '/');
 define('PUBLISHPRESS_HUB_PATH', realpath(PUBLISHPRESS_HUB_SRC_PATH . '/../') . '/');
 define('PUBLISHPRESS_HUB_PLUGIN_FILE', PUBLISHPRESS_HUB_PATH . 'publishpress-hub.php');
@@ -78,7 +78,7 @@ Autoloader::register(__NAMESPACE__ . '\\', PUBLISHPRESS_HUB_SRC_PATH);
  * Enable HTTP mocking for tests (only when PP_HUB_ENABLE_HTTP_MOCK is set).
  * This intercepts HTTP requests to publishpress.com and returns mock responses.
  */
-if (defined('PP_HUB_ENABLE_HTTP_MOCK') && PP_HUB_ENABLE_HTTP_MOCK) {
+if (defined('PP_HUB_ENABLE_HTTP_MOCK') && constant('PP_HUB_ENABLE_HTTP_MOCK')) {
     $httpMockPath = PUBLISHPRESS_HUB_PATH . 'tests/Support/HttpMock.php';
     if (file_exists($httpMockPath)) {
         require_once $httpMockPath;

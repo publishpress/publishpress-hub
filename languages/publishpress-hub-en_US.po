@@ -2,28 +2,27 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Hub 1.0.4\n"
+"Project-Id-Version: PublishPress Hub 1.0.5-beta.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
+"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en-US\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-15T21:04:03+00:00\n"
-"PO-Revision-Date: 2026-04-16 14:33+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
-"Language: en-US\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: publishpress-hub.php:4
-#: src/Admin/Page/WelcomePageController.php:259, fuzzy
 #. Plugin Name of the plugin
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
-#: publishpress-hub.php:5
 #. Description of the plugin
+#: publishpress-hub.php:5
 msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
@@ -31,91 +30,89 @@ msgstr ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
 
-#: publishpress-hub.php:7
 #. Author of the plugin
+#: publishpress-hub.php:7
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress-hub.php:8, fuzzy
 #. Author URI of the plugin
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
-#: src/Admin/Page/ComponentsShowcaseController.php:118, fuzzy
+#: src/Admin/Page/ComponentsShowcaseController.php:118
 msgid "Please wait while we load the components showcase..."
 msgstr "Please wait while we load the components showcase..."
 
-#: src/Admin/Page/PluginsDashboardController.php:133, fuzzy
+#: src/Admin/Page/PluginsDashboardController.php:133
 msgid "Please wait while we load the plugins dashboard..."
 msgstr "Please wait while we load the plugins dashboard..."
 
 #: src/Admin/Page/SettingsPageController.php:104
 #: src/Admin/Page/SettingsPageController.php:105
-#: resources/src/jsx/components/pages/settings-page.jsx:80, fuzzy
+#: resources/src/jsx/components/pages/settings-page.jsx:80
 msgid "Settings"
 msgstr "Settings"
 
-#: src/Admin/Page/SettingsPageController.php:126, fuzzy
+#: src/Admin/Page/SettingsPageController.php:126
 msgid "Please wait while we load the settings page..."
 msgstr "Please wait while we load the settings page..."
 
-#: src/Admin/Page/WelcomePageController.php:143, fuzzy
+#: src/Admin/Page/WelcomePageController.php:143
 msgid "You do not have sufficient permissions to access this page."
 msgstr "You do not have sufficient permissions to access this page."
 
 #: src/Admin/Page/WelcomePageController.php:180
-#: src/Admin/Page/WelcomePageController.php:181, fuzzy
+#: src/Admin/Page/WelcomePageController.php:181
 msgid "Welcome"
 msgstr "Welcome"
 
-#: src/Admin/Page/WelcomePageController.php:203, fuzzy
+#: src/Admin/Page/WelcomePageController.php:203
 msgid "Please wait while we load the welcome page..."
 msgstr "Please wait while we load the welcome page..."
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #, fuzzy, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "Warning: The license for %1$s has expired. %2$s"
 
 #: src/Application/Service/License/LicenseExpirationNoticeService.php:123
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:137, fuzzy
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:137
 msgid "Manage licenses"
 msgstr "Manage licenses"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #, fuzzy, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 
-#: src/Application/Traits/BootableTrait.php:75, fuzzy
+#: src/Application/Traits/BootableTrait.php:75
 msgid "Object must be loaded before initializing."
 msgstr "Object must be loaded before initializing."
 
-#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:110, fuzzy
+#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:110
 msgid "No license key found"
 msgstr "No license key found"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #, fuzzy, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr "Free plugin not set for plugin family: %s"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #, fuzzy, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr "Pro plugin not set for plugin family: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
 msgid ""
-"License activation error. Please try again later or contact support for "
-"help."
+"License activation error. Please try again later or contact support for help."
 msgstr ""
-"License activation error. Please try again later or contact support for "
-"help."
+"License activation error. Please try again later or contact support for help."
 
 #: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
 msgid ""
@@ -125,11 +122,11 @@ msgstr ""
 "License deactivation error. Please try again later or contact support for "
 "help."
 
-#: src/Domain/Plugin/Exception/LicenseDisabledException.php:28, fuzzy
+#: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
 msgstr "This license is currently disabled. Please contact support for help."
 
-#: src/Domain/Plugin/Exception/LicenseExpiredException.php:28, fuzzy
+#: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
 msgid "This license has expired. Please contact support to renew it."
 msgstr "This license has expired. Please contact support to renew it."
 
@@ -143,11 +140,9 @@ msgstr ""
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
 msgid ""
-"This license cannot be used for this plugin. Please contact support for "
-"help."
+"This license cannot be used for this plugin. Please contact support for help."
 msgstr ""
-"This license cannot be used for this plugin. Please contact support for "
-"help."
+"This license cannot be used for this plugin. Please contact support for help."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
 msgid ""
@@ -165,17 +160,17 @@ msgstr ""
 "License key does not match our records. Please contact support for "
 "assistance."
 
-#: src/Domain/Plugin/Exception/LicenseMissingException.php:28, fuzzy
+#: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
 msgstr "No license key provided. Please enter a valid license key."
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
 msgid ""
-"Your site URL is required to activate the license. Please enter a valid "
-"site URL to continue."
+"Your site URL is required to activate the license. Please enter a valid site "
+"URL to continue."
 msgstr ""
-"Your site URL is required to activate the license. Please enter a valid "
-"site URL to continue."
+"Your site URL is required to activate the license. Please enter a valid site "
+"URL to continue."
 
 #: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
 msgid ""
@@ -185,13 +180,15 @@ msgstr ""
 "License activation limit reached. Please contact support to upgrade or "
 "deactivate on another site."
 
-#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28, fuzzy
+#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
 msgid "This license cannot be activated. Please contact support for help."
 msgstr "This license cannot be activated. Please contact support for help."
 
-#: src/Domain/Plugin/Exception/LicenseServerException.php:28, fuzzy
-msgid "License server error. Please try again later or contact support for help."
-msgstr "License server error. Please try again later or contact support for help."
+#: src/Domain/Plugin/Exception/LicenseServerException.php:28
+msgid ""
+"License server error. Please try again later or contact support for help."
+msgstr ""
+"License server error. Please try again later or contact support for help."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
 msgid ""
@@ -201,19 +198,19 @@ msgstr ""
 "The license server returned an invalid response. Please try again later or "
 "contact support for help."
 
-#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28, fuzzy
-msgid "This license is inactive for this site. Please contact support for help."
-msgstr "This license is inactive for this site. Please contact support for help."
+#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
+msgid ""
+"This license is inactive for this site. Please contact support for help."
+msgstr ""
+"This license is inactive for this site. Please contact support for help."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
 msgid ""
-"Plugin activation failed. Please try again later or contact support for "
-"help."
+"Plugin activation failed. Please try again later or contact support for help."
 msgstr ""
-"Plugin activation failed. Please try again later or contact support for "
-"help."
+"Plugin activation failed. Please try again later or contact support for help."
 
-#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29, fuzzy
+#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
 msgid "This action is not possible because the plugin is already installed."
 msgstr "This action is not possible because the plugin is already installed."
 
@@ -225,7 +222,7 @@ msgstr ""
 "Plugin deactivation failed. Please try again later or contact support for "
 "help."
 
-#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29, fuzzy
+#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
 msgid "Plugin family not found. Please contact support for help."
 msgstr "Plugin family not found. Please contact support for help."
 
@@ -237,7 +234,7 @@ msgstr ""
 "This action is not possible because both free and pro versions are "
 "installed. Please uninstall one version to continue."
 
-#: src/Domain/Plugin/Exception/PluginInstallException.php:29, fuzzy
+#: src/Domain/Plugin/Exception/PluginInstallException.php:29
 msgid "Plugin installation failed. Please contact support for help."
 msgstr "Plugin installation failed. Please contact support for help."
 
@@ -273,145 +270,145 @@ msgstr ""
 "Unknown license server error. Please try again later or contact support for "
 "help."
 
-#: src/Domain/Plugin/plugin-families.php:26, fuzzy
+#: src/Domain/Plugin/plugin-families.php:26
 msgid "Define tasks that authors must complete before publishing."
 msgstr "Define tasks that authors must complete before publishing."
 
-#: src/Domain/Plugin/plugin-families.php:42, fuzzy
+#: src/Domain/Plugin/plugin-families.php:42
 msgid "Control who can edit and view your content."
 msgstr "Control who can edit and view your content."
 
-#: src/Domain/Plugin/plugin-families.php:58, fuzzy
+#: src/Domain/Plugin/plugin-families.php:58
 msgid "Create, manage and display authors for your content."
 msgstr "Create, manage and display authors for your content."
 
-#: src/Domain/Plugin/plugin-families.php:74, fuzzy
+#: src/Domain/Plugin/plugin-families.php:74
 msgid "All the tools you need to improve the block editor."
 msgstr "All the tools you need to improve the block editor."
 
-#: src/Domain/Plugin/plugin-families.php:90, fuzzy
+#: src/Domain/Plugin/plugin-families.php:90
 msgid "Control your admin area and user roles."
 msgstr "Control your admin area and user roles."
 
-#: src/Domain/Plugin/plugin-families.php:106, fuzzy
+#: src/Domain/Plugin/plugin-families.php:106
 msgid "Schedule changes to your posts."
 msgstr "Schedule changes to your posts."
 
-#: src/Domain/Plugin/plugin-families.php:122, fuzzy
+#: src/Domain/Plugin/plugin-families.php:122
 msgid "Organize, schedule, and plan your publishing."
 msgstr "Organize, schedule, and plan your publishing."
 
-#: src/Domain/Plugin/plugin-families.php:138, fuzzy
+#: src/Domain/Plugin/plugin-families.php:138
 msgid "Approve and schedule new versions to your published posts."
 msgstr "Approve and schedule new versions to your published posts."
 
-#: src/Domain/Plugin/plugin-families.php:154, fuzzy
+#: src/Domain/Plugin/plugin-families.php:154
 msgid "Organize your posts into issues or series."
 msgstr "Organize your posts into issues or series."
 
-#: src/Domain/Plugin/plugin-families.php:170, fuzzy
-msgid "Create shortlinks for your posts."
-msgstr "Create shortlinks for your posts."
+#: src/Domain/Plugin/plugin-families.php:170
+msgid "Create custom URLs for your posts and external links."
+msgstr "Create custom URLs for your posts and external links."
 
-#: src/Domain/Plugin/plugin-families.php:186, fuzzy
+#: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
 msgstr "Create custom statuses and publishing workflows."
 
-#: src/Infrastructure/Container/DependencyContainer.php:102
 #. translators: %s is the dependency ID.
+#: src/Infrastructure/Container/DependencyContainer.php:102
 #, fuzzy, php-format
 msgid "Dependency \"%s\" not found in container."
 msgstr "Dependency \"%s\" not found in container."
 
-#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #, fuzzy, php-format
 msgid "Error validating license: %s"
 msgstr "Error validating license: %s"
 
-#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #, fuzzy, php-format
 msgid "Error getting license info: %s"
 msgstr "Error getting license info: %s"
 
-#: src/Infrastructure/RestApi/RestApiService.php:287, fuzzy
+#: src/Infrastructure/RestApi/RestApiService.php:287
 msgid "Too many requests. Please try again later."
 msgstr "Too many requests. Please try again later."
 
-#: src/Infrastructure/RestApi/RestApiService.php:358, fuzzy
+#: src/Infrastructure/RestApi/RestApiService.php:358
 msgid "An error occurred while processing your request."
 msgstr "An error occurred while processing your request."
 
-#: src/Infrastructure/View/ViewService.php:48
 #. translators: %s is the template path
+#: src/Infrastructure/View/ViewService.php:48
 #, fuzzy, php-format
 msgid "Template not found: %s"
 msgstr "Template not found: %s"
 
-#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:55, fuzzy
+#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:55
 msgid "Path cannot be empty"
 msgstr "Path cannot be empty"
 
-#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:64, fuzzy
+#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:64
 msgid "File extension cannot be empty"
 msgstr "File extension cannot be empty"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:183, fuzzy
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:183
 msgid "Invalid file path: null byte detected"
 msgstr "Invalid file path: null byte detected"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:192, fuzzy
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:192
 msgid "Invalid file path: directory traversal detected"
 msgstr "Invalid file path: directory traversal detected"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #. translators: %s is the directory path
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #, fuzzy, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "Invalid file path: parent directory does not exist: %s"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:220, fuzzy
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:220
 msgid "Invalid file path: unable to resolve path"
 msgstr "Invalid file path: unable to resolve path"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:239, fuzzy
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:239
 msgid "Invalid file path: operation not allowed outside permitted directories"
 msgstr "Invalid file path: operation not allowed outside permitted directories"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:52, fuzzy
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:52
 msgid "Invalid download URL provided"
 msgstr "Invalid download URL provided"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:60, fuzzy
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:60
 msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr "Download URL must use HTTP or HTTPS protocol"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #. translators: %s is the hostname
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #, fuzzy, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr "Download URL is not from an allowed domain: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:80, fuzzy
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:80
 msgid "Download URL failed WordPress validation"
 msgstr "Download URL failed WordPress validation"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #, fuzzy, php-format
 msgid "Failed to download plugin: %s"
 msgstr "Failed to download plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:105, fuzzy
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:105
 msgid "Downloaded plugin file does not exist"
 msgstr "Downloaded plugin file does not exist"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:113, fuzzy
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:113
 msgid "Downloaded plugin file is empty"
 msgstr "Downloaded plugin file is empty"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:122, fuzzy
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:122
 msgid "Cannot read downloaded plugin file"
 msgstr "Cannot read downloaded plugin file"
 
@@ -423,246 +420,246 @@ msgstr ""
 "Downloaded file is not a valid ZIP archive. The download URL may be "
 "returning an error page."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #, fuzzy, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "Failed to unzip plugin file: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:156, fuzzy
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:156
 msgid "Failed to unzip plugin file"
 msgstr "Failed to unzip plugin file"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #, fuzzy, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "Failed to activate plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #, fuzzy, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "Failed to delete plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:292, fuzzy
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:292
 msgid "No update available for this plugin"
 msgstr "No update available for this plugin"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:300, fuzzy
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:300
 msgid "Invalid update information for this plugin"
 msgstr "Invalid update information for this plugin"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #, fuzzy, php-format
 msgid "Failed to update plugin: %s"
 msgstr "Failed to update plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:341, fuzzy
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:341
 msgid "Plugin update failed"
 msgstr "Plugin update failed"
 
-#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #. translators: %s is the error message
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #, fuzzy, php-format
 msgid "Failed to get plugin information: %s"
 msgstr "Failed to get plugin information: %s"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:26
 #. translators: %s is the plugin name, %s is the rating
-#, fuzzy, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:26
+#, fuzzy
 msgid "If you like %s please leave us a %s rating. Thank you!"
 msgstr "If you like %s please leave us a %s rating. Thank you!"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:43
 #. translators: %s is the plugin name
-#, fuzzy, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:43
+#, fuzzy
 msgid "About %s"
 msgstr "About %s"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:45, fuzzy
+#: resources/src/jsx/components/admin-page/footer.jsx:45
 msgid "About"
 msgstr "About"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:54
 #. translators: %s is the plugin name
-#, fuzzy, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:54
+#, fuzzy
 msgid "Documentation for %s"
 msgstr "Documentation for %s"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:56, fuzzy
+#: resources/src/jsx/components/admin-page/footer.jsx:56
 msgid "Documentation"
 msgstr "Documentation"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:65
 #. translators: %s is the plugin name
-#, fuzzy, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:65
+#, fuzzy
 msgid "Contact the %s team"
 msgstr "Contact the %s team"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:67, fuzzy
+#: resources/src/jsx/components/admin-page/footer.jsx:67
 msgid "Contact"
 msgstr "Contact"
 
-#: resources/src/jsx/components/admin-page/header.jsx:50, fuzzy
+#: resources/src/jsx/components/admin-page/header.jsx:50
 msgid "Get Support"
 msgstr "Get Support"
 
-#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44, fuzzy
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
 msgid "Select an option"
 msgstr "Select an option"
 
-#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52, fuzzy
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
 msgid "Options"
 msgstr "Options"
 
-#: resources/src/jsx/components/pages/components-showcase.jsx:26, fuzzy
+#: resources/src/jsx/components/pages/components-showcase.jsx:26
 msgid "Components Showcase"
 msgstr "Components Showcase"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93, fuzzy
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
 msgid "N/A"
 msgstr "N/A"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 #. translators: %1$s is the plugin name, %2$s is the expiration date
-#, fuzzy, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
+#, fuzzy
 msgid "The license for %1$s expired on %2$s"
 msgstr "The license for %1$s expired on %2$s"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
-#, fuzzy, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
+#, fuzzy
 msgid "The licenses for %1$s expired on %2$s"
 msgstr "The licenses for %1$s expired on %2$s"
 
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:157
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:213, fuzzy
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:213
 msgid "Renew now"
 msgstr "Renew now"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
-#, fuzzy, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
+#, fuzzy
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr "The license for %1$s expires on %2$s (%3$d days remaining)"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
-#, fuzzy, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
+#, fuzzy
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:210, fuzzy
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:210
 msgid "Warning:"
 msgstr "Warning:"
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:46, fuzzy
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:46
 msgid "All"
 msgstr "All"
 
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:51
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:39, fuzzy
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:39
 msgid "Unlicensed"
 msgstr "Unlicensed"
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:56, fuzzy
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:56
 msgid "Active"
 msgstr "Active"
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:61, fuzzy
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:61
 msgid "Inactive"
 msgstr "Inactive"
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:66, fuzzy
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:66
 msgid "Not installed"
 msgstr "Not installed"
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:71, fuzzy
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:71
 msgid "Updates available"
 msgstr "Updates available"
 
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:94
-#: resources/src/jsx/components/pages/welcome-page.jsx:128, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:128
 msgid "Plugins Dashboard"
 msgstr "Plugins Dashboard"
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:140, fuzzy
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
 msgid "Hold ALT and click to force refresh the update cache"
 msgstr "Hold ALT and click to force refresh the update cache"
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158, fuzzy
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
 msgid "Force Refresh"
 msgstr "Force Refresh"
 
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:300, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:300
 msgid "Refresh"
 msgstr "Refresh"
 
-#: resources/src/jsx/components/pages/settings-page.jsx:31, fuzzy
+#: resources/src/jsx/components/pages/settings-page.jsx:31
 msgid "Diagnostics"
 msgstr "Diagnostics"
 
-#: resources/src/jsx/components/pages/settings-page.jsx:39, fuzzy
+#: resources/src/jsx/components/pages/settings-page.jsx:39
 msgid "Debug Log"
 msgstr "Debug Log"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:108, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:108
 msgid "Failed to load the debug log. Please try again."
 msgstr "Failed to load the debug log. Please try again."
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:182, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:182
 msgid "Debug log cleared successfully."
 msgstr "Debug log cleared successfully."
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
 msgid "Failed to clear the debug log. Please try again."
 msgstr "Failed to clear the debug log. Please try again."
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222
 msgid "Log copied to clipboard."
 msgstr "Log copied to clipboard."
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
 msgid "Failed to copy log to clipboard."
 msgstr "Failed to copy log to clipboard."
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:253, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:253
 msgid "Requests"
 msgstr "Requests"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:260, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:260
 msgid "Full Log"
 msgstr "Full Log"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:271, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:271
 msgid "Auto-refresh is on — click to stop"
 msgstr "Auto-refresh is on — click to stop"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:272, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:272
 msgid "Enable auto-refresh"
 msgstr "Enable auto-refresh"
 
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:277
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
 msgid "Auto-refresh"
 msgstr "Auto-refresh"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:286, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:286
 msgid "Auto-refresh interval"
 msgstr "Auto-refresh interval"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:308, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:308
 msgid "Copy to Clipboard"
 msgstr "Copy to Clipboard"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:318, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:318
 msgid "Clear Log"
 msgstr "Clear Log"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:326, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:326
 msgid "Loading log..."
 msgstr "Loading log..."
 
@@ -674,23 +671,23 @@ msgstr ""
 "The debug log is empty. Perform some actions (e.g. activate a license) and "
 "refresh to see entries."
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346, fuzzy
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
 msgid "Debug log contents"
 msgstr "Debug log contents"
 
-#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40, fuzzy
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
 msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
 msgstr "Debug mode enabled. A \"Debug Log\" tab is now available."
 
-#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41, fuzzy
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
 msgid "Debug mode disabled."
 msgstr "Debug mode disabled."
 
-#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:50, fuzzy
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:50
 msgid "Failed to save the setting. Please try again."
 msgstr "Failed to save the setting. Please try again."
 
-#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71, fuzzy
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
 msgid "Debug Mode"
 msgstr "Debug Mode"
 
@@ -704,7 +701,7 @@ msgstr ""
 "activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
 "the Debug Log tab to inspect the captured data."
 
-#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82, fuzzy
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
 msgid "Enable Debug Mode"
 msgstr "Enable Debug Mode"
 
@@ -716,62 +713,62 @@ msgstr ""
 "Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
 "data."
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70, fuzzy
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
 msgid "ERR"
 msgstr "ERR"
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:106, fuzzy
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:106
 msgid "Request"
 msgstr "Request"
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:113, fuzzy
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:113
 msgid "Response"
 msgstr "Response"
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:119, fuzzy
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:119
 msgid "No response recorded for this request."
 msgstr "No response recorded for this request."
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:144, fuzzy
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:144
 msgid "No requests found in the log."
 msgstr "No requests found in the log."
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:153, fuzzy
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:153
 msgid "1 request recorded"
 msgstr "1 request recorded"
 
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#, fuzzy, js-format
+#, fuzzy
 msgid "%d requests recorded"
 msgstr "%d requests recorded"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:37, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:37
 msgid "Welcome to PublishPress Hub!"
 msgstr "Welcome to PublishPress Hub!"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:40, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:40
 msgid "Get started with PublishPress Hub in a few simple steps."
 msgstr "Get started with PublishPress Hub in a few simple steps."
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:47, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:47
 msgid "Welcome to PublishPress Hub"
 msgstr "Welcome to PublishPress Hub"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:52, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:52
 msgid "What you can do with PublishPress Hub"
 msgstr "What you can do with PublishPress Hub"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
 msgid ""
-"PublishPress Hub has everything you need to install, update, and manage "
-"your PublishPress plugins. We're here to help you build a publishing system "
-"that works perfectly for your team."
+"PublishPress Hub has everything you need to install, update, and manage your "
+"PublishPress plugins. We're here to help you build a publishing system that "
+"works perfectly for your team."
 msgstr ""
-"PublishPress Hub has everything you need to install, update, and manage "
-"your PublishPress plugins. We're here to help you build a publishing system "
-"that works perfectly for your team."
+"PublishPress Hub has everything you need to install, update, and manage your "
+"PublishPress plugins. We're here to help you build a publishing system that "
+"works perfectly for your team."
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:64, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:64
 msgid "Centralized Dashboard"
 msgstr "Centralized Dashboard"
 
@@ -783,7 +780,7 @@ msgstr ""
 "View all your PublishPress plugins with their licenses, versions, and key "
 "details."
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:76, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:76
 msgid "One-Click Installation"
 msgstr "One-Click Installation"
 
@@ -795,7 +792,7 @@ msgstr ""
 "Install free PublishPress plugins directly from the Hub without visiting "
 "WordPress.org."
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:88, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:88
 msgid "License Management"
 msgstr "License Management"
 
@@ -807,118 +804,118 @@ msgstr ""
 "Connect your PublishPress licenses to easily install and activate Pro "
 "versions."
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:100, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:100
 msgid "Easy Updates"
 msgstr "Easy Updates"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:103, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:103
 msgid "Keep all your PublishPress plugins up to date with one-click updates."
 msgstr "Keep all your PublishPress plugins up to date with one-click updates."
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:112, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:112
 msgid "Status Monitoring"
 msgstr "Status Monitoring"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
 msgid ""
-"Monitor plugin activation status, detect conflicts, and ensure "
-"compatibility."
+"Monitor plugin activation status, detect conflicts, and ensure compatibility."
 msgstr ""
-"Monitor plugin activation status, detect conflicts, and ensure "
-"compatibility."
+"Monitor plugin activation status, detect conflicts, and ensure compatibility."
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:124, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:124
 msgid "Get Started"
 msgstr "Get Started"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:127
-#, fuzzy, js-format
-msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
-msgstr "Ready to explore? Visit the %s to see all available PublishPress plugins."
+#, fuzzy
+msgid ""
+"Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgstr ""
+"Ready to explore? Visit the %s to see all available PublishPress plugins."
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:142, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:142
 msgid "View Plugins Dashboard"
 msgstr "View Plugins Dashboard"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:148, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:148
 msgid "Already know what you're doing? Great! You can "
 msgstr "Already know what you're doing? Great! You can "
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:150, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:150
 msgid "dismiss this page"
 msgstr "dismiss this page"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
 msgid "."
 msgstr "."
 
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:21, fuzzy
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
 msgid "Install"
 msgstr "Install"
 
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:22, fuzzy
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:22
 msgid "Installing..."
 msgstr "Installing..."
 
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28
 msgid "Upgrade to Pro"
 msgstr "Upgrade to Pro"
 
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:28, fuzzy
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:28
 msgid "Upgrading to Pro..."
 msgstr "Upgrading to Pro..."
 
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33, fuzzy
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
 msgid "Manage License"
 msgstr "Manage License"
 
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:34, fuzzy
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:34
 msgid "Managing License..."
 msgstr "Managing License..."
 
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39, fuzzy
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
 msgid "Activate License"
 msgstr "Activate License"
 
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:40, fuzzy
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:40
 msgid "Activating License..."
 msgstr "Activating License..."
 
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:45, fuzzy
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
 msgid "Resolve Conflict"
 msgstr "Resolve Conflict"
 
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:46, fuzzy
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
 msgid "Resolving Conflict..."
 msgstr "Resolving Conflict..."
 
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:51, fuzzy
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
 msgid "Update"
 msgstr "Update"
 
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:52, fuzzy
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
 msgid "Updating..."
 msgstr "Updating..."
 
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:31, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:31
 msgid "Confirmation"
 msgstr "Confirmation"
 
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:36, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:36
 msgid "Are you sure you want to continue?"
 msgstr "Are you sure you want to continue?"
 
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:49, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:49
 msgid "Continue"
 msgstr "Continue"
 
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:52
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:98, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:98
 msgid "Cancel"
 msgstr "Cancel"
 
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29
 msgid "Install Plugin"
 msgstr "Install Plugin"
 
@@ -931,29 +928,29 @@ msgstr ""
 "version if you have a license, or the Free version to get started."
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
 msgid "Free Details"
 msgstr "Free Details"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
 msgid "Pro Details"
 msgstr "Pro Details"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Changelogs"
 
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44
 msgid "I have a license, install the Pro version"
 msgstr "I have a license, install the Pro version"
 
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47
 msgid "I don't have a license, install the Free version"
 msgstr "I don't have a license, install the Free version"
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:50, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:50
 msgid "Enter your license key"
 msgstr "Enter your license key"
 
@@ -967,385 +964,389 @@ msgstr ""
 "find your license key in your PublishPress account dashboard."
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
 msgid "Go to my profile to get the license key"
 msgstr "Go to my profile to get the license key"
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:66
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:94, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:94
 msgid "Enter your license key here"
 msgstr "Enter your license key here"
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:80, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:80
 msgid "Activate and install the plugin"
 msgstr "Activate and install the plugin"
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:76, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:76
 msgid "Manage your license"
 msgstr "Manage your license"
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
 msgid "Your license key is: "
 msgstr "Your license key is: "
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
 msgid "(hidden)"
 msgstr "(hidden)"
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:119, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:119
 msgid "Activate the license key for this site"
 msgstr "Activate the license key for this site"
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:126, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:126
 msgid "Edit the license key"
 msgstr "Edit the license key"
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:129, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:129
 msgid "Deactivate the license key for this site"
 msgstr "Deactivate the license key for this site"
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
 msgid "Unknown"
 msgstr "Unknown"
 
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:39, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:39
 msgid "Plugin Information"
 msgstr "Plugin Information"
 
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:45, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:45
 msgid "Name:"
 msgstr "Name:"
 
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:51, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:51
 msgid "Description:"
 msgstr "Description:"
 
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:57, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:57
 msgid "Current Version:"
 msgstr "Current Version:"
 
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:63, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:63
 msgid "Available Version:"
 msgstr "Available Version:"
 
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:82, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:82
 msgid "Update Plugin"
 msgstr "Update Plugin"
 
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:93, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:93
 msgid "Check for Updates"
 msgstr "Check for Updates"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
-#, fuzzy, js-format
+#, fuzzy
 msgid "Install %s"
 msgstr "Install %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
-#, fuzzy, js-format
+#, fuzzy
 msgid "Install %s Pro"
 msgstr "Install %s Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
-#, fuzzy, js-format
+#, fuzzy
 msgid "Upgrade %s to Pro"
 msgstr "Upgrade %s to Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
-#, fuzzy, js-format
+#, fuzzy
 msgid "Uninstall %s"
 msgstr "Uninstall %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
-#, fuzzy, js-format
+#, fuzzy
 msgid "Are you sure you want to uninstall %s?"
 msgstr "Are you sure you want to uninstall %s?"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
-#, fuzzy, js-format
+#, fuzzy
 msgid "Resolve Conflict for %s"
 msgstr "Resolve Conflict for %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
-#, fuzzy, js-format
+#, fuzzy
 msgid "Manage %s License"
 msgstr "Manage %s License"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
-#, fuzzy, js-format
+#, fuzzy
 msgid "Activate %s License"
 msgstr "Activate %s License"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
-#, fuzzy, js-format
+#, fuzzy
 msgid "More Info: %s"
 msgstr "More Info: %s"
 
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:34, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:34
 msgid "Resolve Plugin Conflict"
 msgstr "Resolve Plugin Conflict"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
-#, fuzzy, js-format
+#, fuzzy
 msgid "Free version: %s (%s)"
 msgstr "Free version: %s (%s)"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
-#, fuzzy, js-format
+#, fuzzy
 msgid "Pro version: %s (%s)"
 msgstr "Pro version: %s (%s)"
 
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:79, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:79
 msgid "Keep the Pro version (Recommended)"
 msgstr "Keep the Pro version (Recommended)"
 
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:89, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:89
 msgid "Keep the Free version"
 msgstr "Keep the Free version"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
 msgid ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
-"advanced features, priority support, and exclusive benefits designed to "
-"help you get the most out of your workflow."
+"advanced features, priority support, and exclusive benefits designed to help "
+"you get the most out of your workflow."
 msgstr ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
-"advanced features, priority support, and exclusive benefits designed to "
-"help you get the most out of your workflow."
+"advanced features, priority support, and exclusive benefits designed to help "
+"you get the most out of your workflow."
 
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "Discover all Pro features"
 
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
 msgid "Changelog"
 msgstr "Changelog"
 
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"
 msgstr "Already have a license? Install Pro now"
 
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51, fuzzy
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
 msgid "Upgrade to Pro and boost your productivity"
 msgstr "Upgrade to Pro and boost your productivity"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:139, fuzzy
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:139
 msgid "New version available"
 msgstr "New version available"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
-#, fuzzy, js-format
-msgid "Version %s"
-msgstr "Version %s"
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
+#, fuzzy
+msgid "v%s"
+msgstr "v%s"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
-#, fuzzy, js-format
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
+#, fuzzy
 msgid "Update available: %s → %s"
 msgstr "Update available: %s → %s"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:22, fuzzy
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:22
 msgid "Installing"
 msgstr "Installing"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:27, fuzzy
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:27
 msgid "Not Installed"
 msgstr "Not Installed"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:31, fuzzy
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:31
 msgid "Free"
 msgstr "Free"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:35, fuzzy
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:35
 msgid "Licensed"
 msgstr "Licensed"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:43, fuzzy
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:43
 msgid "Expired"
 msgstr "Expired"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:47, fuzzy
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:47
 msgid "Uninstalling"
 msgstr "Uninstalling"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:52, fuzzy
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:52
 msgid "Upgrading"
 msgstr "Upgrading"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:57, fuzzy
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:57
 msgid "Deactivating"
 msgstr "Deactivating"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:62, fuzzy
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:62
 msgid "Activating"
 msgstr "Activating"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:67, fuzzy
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:67
 msgid "Conflicting Installations"
 msgstr "Conflicting Installations"
 
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172, fuzzy
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
 msgid "Update Available"
 msgstr "Update Available"
 
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183, fuzzy
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
 msgid "Expires"
 msgstr "Expires"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55, fuzzy
-msgid "latest"
-msgstr "latest"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
-#, fuzzy, js-format
-msgid "Update to v%s"
-msgstr "Update to v%s"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
 msgid "Renew"
 msgstr "Renew"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
 msgid "Deactivate"
 msgstr "Deactivate"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
 msgid "Activate"
 msgstr "Activate"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
 msgid "Uninstall"
 msgstr "Uninstall"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
 msgid "More Info"
 msgstr "More Info"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
+msgid "latest"
+msgstr "latest"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+#, fuzzy
+msgid "Update to v%s"
+msgstr "Update to v%s"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
 msgid "This plugin is not installed."
 msgstr "This plugin is not installed."
 
-#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40
 msgid "This plugin is active."
 msgstr "This plugin is active."
 
-#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41, fuzzy
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41
 msgid "This plugin is not active."
 msgstr "This plugin is not active."
 
-#: resources/src/jsx/components/plugins-list/index.jsx:159, fuzzy
+#: resources/src/jsx/components/plugins-list/index.jsx:159
 msgid "No plugins found."
 msgstr "No plugins found."
 
-#: resources/src/jsx/components/plugins-list/index.jsx:165, fuzzy
+#: resources/src/jsx/components/plugins-list/index.jsx:165
 msgid "Loading plugins..."
 msgstr "Loading plugins..."
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:216, fuzzy
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:216
 msgid "Failed to fetch plugins"
 msgstr "Failed to fetch plugins"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
-#, fuzzy, js-format
+#, fuzzy
 msgid "%s installed successfully"
 msgstr "%s installed successfully"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
-#, fuzzy, js-format
+#, fuzzy
 msgid "%s installation failed"
 msgstr "%s installation failed"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
-#, fuzzy, js-format
+#, fuzzy
 msgid "%s uninstalled successfully"
 msgstr "%s uninstalled successfully"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
-#, fuzzy, js-format
+#, fuzzy
 msgid "%s uninstall failed"
 msgstr "%s uninstall failed"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
-#, fuzzy, js-format
+#, fuzzy
 msgid "%s activated successfully"
 msgstr "%s activated successfully"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
-#, fuzzy, js-format
+#, fuzzy
 msgid "%s activation failed"
 msgstr "%s activation failed"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
-#, fuzzy, js-format
+#, fuzzy
 msgid "%s deactivated successfully"
 msgstr "%s deactivated successfully"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
-#, fuzzy, js-format
+#, fuzzy
 msgid "%s deactivation failed"
 msgstr "%s deactivation failed"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
-#, fuzzy, js-format
+#, fuzzy
 msgid "%s upgraded to Pro successfully"
 msgstr "%s upgraded to Pro successfully"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
-#, fuzzy, js-format
+#, fuzzy
 msgid "%s upgrade to Pro failed"
 msgstr "%s upgrade to Pro failed"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
-#, fuzzy, js-format
+#, fuzzy
 msgid "Conflict resolved successfully for %s"
 msgstr "Conflict resolved successfully for %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
-#, fuzzy, js-format
+#, fuzzy
 msgid "Failed to resolve conflict for %s"
 msgstr "Failed to resolve conflict for %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
-#, fuzzy, js-format
+#, fuzzy
 msgid "%s license deactivated successfully"
 msgstr "%s license deactivated successfully"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
-#, fuzzy, js-format
+#, fuzzy
 msgid "%s license deactivation failed"
 msgstr "%s license deactivation failed"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
-#, fuzzy, js-format
+#, fuzzy
 msgid "%s license activated successfully"
 msgstr "%s license activated successfully"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
-#, fuzzy, js-format
+#, fuzzy
 msgid "%s license activation failed"
 msgstr "%s license activation failed"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
-#, fuzzy, js-format
+#, fuzzy
 msgid "%s updated successfully"
 msgstr "%s updated successfully"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
-#, fuzzy, js-format
+#, fuzzy
 msgid "%s update failed"
 msgstr "%s update failed"
 
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813, fuzzy
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
 msgid "Too many requests. Please wait a few seconds and try again."
 msgstr "Too many requests. Please wait a few seconds and try again."
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
-#, fuzzy, js-format
+#, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"

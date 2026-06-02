@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
-"POT-Creation-Date: 2026-04-15T21:04:03+00:00\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
 "PO-Revision-Date: 2026-04-15 15:19+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -325,7 +325,9 @@ msgid "Organize your posts into issues or series."
 msgstr "Szervezze a bejegyzéseit számokba vagy sorozatokba."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
+#, fuzzy
+#| msgid "Create shortlinks for your posts."
+msgid "Create custom URLs for your posts and external links."
 msgstr "Hozzon létre rövidlinkeket a bejegyzéseihez."
 
 #: src/Domain/Plugin/plugin-families.php:186
@@ -946,17 +948,17 @@ msgstr ""
 "verziót, ha rendelkezik licencekkel, vagy a Free verziót, hogy elkezdhesse."
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
 msgid "Free Details"
 msgstr "Ingyenes részletek"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
 msgid "Pro Details"
 msgstr "Pro részletek"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Változási naplók"
 
@@ -1021,7 +1023,8 @@ msgstr "Deaktiváld a licenckulcsot ehhez az oldalhoz"
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
 msgid "Unknown"
 msgstr "Ismeretlen"
 
@@ -1140,11 +1143,13 @@ msgstr "Frissíts a Pro-ra és növeld a termelékenységedet"
 msgid "New version available"
 msgstr "Új verzió érhető el"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
-msgid "Version %s"
-msgstr "Verzió %s"
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
+msgid "v%s"
+msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
 msgid "Update available: %s → %s"
 msgstr "Frissítés elérhető: %s → %s"
 
@@ -1197,34 +1202,35 @@ msgstr "Frissítés elérhető"
 msgid "Expires"
 msgstr "Lejár"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
-msgid "latest"
-msgstr "legújabb"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
-msgid "Update to v%s"
-msgstr "Frissítés a v%s verzióra"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
 msgid "Renew"
 msgstr "Megújítás"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
 msgid "Deactivate"
 msgstr "Letiltás"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
 msgid "Activate"
 msgstr "Aktiválás"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
 msgid "Uninstall"
 msgstr "Eltávolítás"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
 msgid "More Info"
 msgstr "További információk"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
+msgid "latest"
+msgstr "legújabb"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+msgid "Update to v%s"
+msgstr "Frissítés a v%s verzióra"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
 msgid "This plugin is not installed."
@@ -1332,3 +1338,6 @@ msgstr "Túl sok kérés. Kérjük, várjon néhány másodpercet, és próbálj
 #, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
+
+#~ msgid "Version %s"
+#~ msgstr "Verzió %s"

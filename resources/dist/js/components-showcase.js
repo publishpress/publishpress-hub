@@ -2,108 +2,6 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/@wordpress/escape-html/build-module/escape-greater.js"
-/*!****************************************************************************!*\
-  !*** ./node_modules/@wordpress/escape-html/build-module/escape-greater.js ***!
-  \****************************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ __unstableEscapeGreaterThan)
-/* harmony export */ });
-// packages/escape-html/src/escape-greater.ts
-function __unstableEscapeGreaterThan(value) {
-  return value.replace(/>/g, "&gt;");
-}
-
-//# sourceMappingURL=escape-greater.js.map
-
-
-/***/ },
-
-/***/ "./node_modules/@wordpress/escape-html/build-module/index.js"
-/*!*******************************************************************!*\
-  !*** ./node_modules/@wordpress/escape-html/build-module/index.js ***!
-  \*******************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   escapeAmpersand: () => (/* binding */ escapeAmpersand),
-/* harmony export */   escapeAttribute: () => (/* binding */ escapeAttribute),
-/* harmony export */   escapeEditableHTML: () => (/* binding */ escapeEditableHTML),
-/* harmony export */   escapeHTML: () => (/* binding */ escapeHTML),
-/* harmony export */   escapeLessThan: () => (/* binding */ escapeLessThan),
-/* harmony export */   escapeQuotationMark: () => (/* binding */ escapeQuotationMark),
-/* harmony export */   isValidAttributeName: () => (/* binding */ isValidAttributeName)
-/* harmony export */ });
-/* harmony import */ var _escape_greater__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./escape-greater */ "./node_modules/@wordpress/escape-html/build-module/escape-greater.js");
-// packages/escape-html/src/index.ts
-
-var REGEXP_INVALID_ATTRIBUTE_NAME = /[\u007F-\u009F "'>/="\uFDD0-\uFDEF]/;
-function escapeAmpersand(value) {
-  return value.replace(/&(?!([a-z0-9]+|#[0-9]+|#x[a-f0-9]+);)/gi, "&amp;");
-}
-function escapeQuotationMark(value) {
-  return value.replace(/"/g, "&quot;");
-}
-function escapeLessThan(value) {
-  return value.replace(/</g, "&lt;");
-}
-function escapeAttribute(value) {
-  return (0,_escape_greater__WEBPACK_IMPORTED_MODULE_0__["default"])(
-    escapeQuotationMark(escapeAmpersand(value))
-  );
-}
-function escapeHTML(value) {
-  return escapeLessThan(escapeAmpersand(value));
-}
-function escapeEditableHTML(value) {
-  return escapeLessThan(value.replace(/&/g, "&amp;"));
-}
-function isValidAttributeName(name) {
-  return !REGEXP_INVALID_ATTRIBUTE_NAME.test(name);
-}
-
-//# sourceMappingURL=index.js.map
-
-
-/***/ },
-
-/***/ "./node_modules/react-dom/client.js"
-/*!******************************************!*\
-  !*** ./node_modules/react-dom/client.js ***!
-  \******************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
-
-
-
-var m = __webpack_require__(/*! react-dom */ "react-dom");
-if (false) // removed by dead control flow
-{} else {
-  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-  exports.createRoot = function(c, o) {
-    i.usingClientEntryPoint = true;
-    try {
-      return m.createRoot(c, o);
-    } finally {
-      i.usingClientEntryPoint = false;
-    }
-  };
-  exports.hydrateRoot = function(c, h, o) {
-    i.usingClientEntryPoint = true;
-    try {
-      return m.hydrateRoot(c, h, o);
-    } finally {
-      i.usingClientEntryPoint = false;
-    }
-  };
-}
-
-
-/***/ },
-
 /***/ "./resources/src/jsx/components/admin-page/container.jsx"
 /*!***************************************************************!*\
   !*** ./resources/src/jsx/components/admin-page/container.jsx ***!
@@ -157,7 +55,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Footer: () => (/* binding */ Footer)
 /* harmony export */ });
-/* harmony import */ var _wordpress_escape_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/escape-html */ "./node_modules/@wordpress/escape-html/build-module/index.js");
+/* harmony import */ var _wordpress_escape_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/escape-html */ "./node_modules/@wordpress/escape-html/build-module/index.mjs");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
@@ -622,6 +520,49 @@ var ComponentsShowcase = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo
 
 /***/ },
 
+/***/ "./node_modules/react-dom/client.js"
+/*!******************************************!*\
+  !*** ./node_modules/react-dom/client.js ***!
+  \******************************************/
+(__unused_webpack_module, exports, __webpack_require__) {
+
+
+
+var m = __webpack_require__(/*! react-dom */ "react-dom");
+if (false) // removed by dead control flow
+{} else {
+  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+  exports.createRoot = function(c, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.createRoot(c, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+  exports.hydrateRoot = function(c, h, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.hydrateRoot(c, h, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+}
+
+
+/***/ },
+
+/***/ "react-dom"
+/*!***************************!*\
+  !*** external "ReactDOM" ***!
+  \***************************/
+(module) {
+
+module.exports = ReactDOM;
+
+/***/ },
+
 /***/ "@publishpress-hub/i18n"
 /*!***************************************!*\
   !*** external "publishpressHub.i18n" ***!
@@ -652,13 +593,72 @@ module.exports = wp.element;
 
 /***/ },
 
-/***/ "react-dom"
-/*!***************************!*\
-  !*** external "ReactDOM" ***!
-  \***************************/
-(module) {
+/***/ "./node_modules/@wordpress/escape-html/build-module/escape-greater.mjs"
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@wordpress/escape-html/build-module/escape-greater.mjs ***!
+  \*****************************************************************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
-module.exports = ReactDOM;
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ __unstableEscapeGreaterThan)
+/* harmony export */ });
+// packages/escape-html/src/escape-greater.ts
+function __unstableEscapeGreaterThan(value) {
+  return value.replace(/>/g, "&gt;");
+}
+
+//# sourceMappingURL=escape-greater.mjs.map
+
+
+/***/ },
+
+/***/ "./node_modules/@wordpress/escape-html/build-module/index.mjs"
+/*!********************************************************************!*\
+  !*** ./node_modules/@wordpress/escape-html/build-module/index.mjs ***!
+  \********************************************************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   escapeAmpersand: () => (/* binding */ escapeAmpersand),
+/* harmony export */   escapeAttribute: () => (/* binding */ escapeAttribute),
+/* harmony export */   escapeEditableHTML: () => (/* binding */ escapeEditableHTML),
+/* harmony export */   escapeHTML: () => (/* binding */ escapeHTML),
+/* harmony export */   escapeLessThan: () => (/* binding */ escapeLessThan),
+/* harmony export */   escapeQuotationMark: () => (/* binding */ escapeQuotationMark),
+/* harmony export */   isValidAttributeName: () => (/* binding */ isValidAttributeName)
+/* harmony export */ });
+/* harmony import */ var _escape_greater_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./escape-greater.mjs */ "./node_modules/@wordpress/escape-html/build-module/escape-greater.mjs");
+// packages/escape-html/src/index.ts
+
+var REGEXP_INVALID_ATTRIBUTE_NAME = /[\u007F-\u009F "'>/="\uFDD0-\uFDEF]/;
+function escapeAmpersand(value) {
+  return value.replace(/&(?!([a-z0-9]+|#[0-9]+|#x[a-f0-9]+);)/gi, "&amp;");
+}
+function escapeQuotationMark(value) {
+  return value.replace(/"/g, "&quot;");
+}
+function escapeLessThan(value) {
+  return value.replace(/</g, "&lt;");
+}
+function escapeAttribute(value) {
+  return (0,_escape_greater_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])(
+    escapeLessThan(escapeQuotationMark(escapeAmpersand(value)))
+  );
+}
+function escapeHTML(value) {
+  return escapeLessThan(escapeAmpersand(value));
+}
+function escapeEditableHTML(value) {
+  return escapeLessThan(value.replace(/&/g, "&amp;"));
+}
+function isValidAttributeName(name) {
+  return !REGEXP_INVALID_ATTRIBUTE_NAME.test(name);
+}
+
+//# sourceMappingURL=index.mjs.map
+
 
 /***/ }
 
@@ -674,12 +674,6 @@ module.exports = ReactDOM;
 /******/ 		if (cachedModule !== undefined) {
 /******/ 			return cachedModule.exports;
 /******/ 		}
-/******/ 		// Check if module exists (development only)
-/******/ 		if (__webpack_modules__[moduleId] === undefined) {
-/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
-/******/ 			e.code = 'MODULE_NOT_FOUND';
-/******/ 			throw e;
-/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
 /******/ 			// no module.id needed
@@ -688,6 +682,12 @@ module.exports = ReactDOM;
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
+/******/ 		if (!(moduleId in __webpack_modules__)) {
+/******/ 			delete __webpack_module_cache__[moduleId];
+/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 			e.code = 'MODULE_NOT_FOUND';
+/******/ 			throw e;
+/******/ 		}
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
