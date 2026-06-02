@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
-"POT-Creation-Date: 2026-04-16T21:46:44+00:00\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
 "PO-Revision-Date: 2026-04-15 15:20+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,6 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);\n"
 
-#. Plugin Name of the plugin
-#. Plugin Name of the plugin
 #. Plugin Name of the plugin
 #: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
@@ -334,7 +332,9 @@ msgid "Organize your posts into issues or series."
 msgstr "Organizați postările dumneavoastră în numere sau serii."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
+#, fuzzy
+#| msgid "Create shortlinks for your posts."
+msgid "Create custom URLs for your posts and external links."
 msgstr "Creați linkuri scurte pentru postările dumneavoastră."
 
 #: src/Domain/Plugin/plugin-families.php:186
@@ -971,7 +971,6 @@ msgid "Pro Details"
 msgstr "Detalii Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Jurnalele modificărilor"
@@ -1143,6 +1142,10 @@ msgstr ""
 msgid "Discover all Pro features"
 msgstr "Descoperă toate funcțiile Pro"
 
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "Jurnal de modificări"
+
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"
 msgstr "Ai deja o licență? Instalează Pro acum"
@@ -1155,12 +1158,13 @@ msgstr "Upgradează la Pro și îmbunătățește-ți productivitatea"
 msgid "New version available"
 msgstr "Versiune nouă disponibilă"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
 msgid "v%s"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
 msgid "Update available: %s → %s"
 msgstr "Actualizare disponibilă: %s → %s"
 
@@ -1350,9 +1354,6 @@ msgstr ""
 #, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
-
-#~ msgid "Changelog"
-#~ msgstr "Jurnal de modificări"
 
 #~ msgid "Version %s"
 #~ msgstr "Versiunea %s"

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
-"POT-Creation-Date: 2026-04-16T21:46:44+00:00\n"
-"PO-Revision-Date: 2026-04-17 15:45+0200\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
+"PO-Revision-Date: 2026-06-02 07:33+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -323,8 +323,8 @@ msgid "Organize your posts into issues or series."
 msgstr "Organiza tus entradas en ediciones o series."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "Crea enlaces cortos para tus entradas."
+msgid "Create custom URLs for your posts and external links."
+msgstr "Crea las URL personalizadas para tus entradas y los enlaces externos."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -957,7 +957,6 @@ msgid "Pro Details"
 msgstr "Detalles Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Registros de cambios"
@@ -1128,6 +1127,10 @@ msgstr ""
 msgid "Discover all Pro features"
 msgstr "Descubre todas las características Pro"
 
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "Registro de cambios"
+
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"
 msgstr "¿Ya tienes una licencia? Instala Pro ahora"
@@ -1140,12 +1143,13 @@ msgstr "Mejora a Pro y potencia tu productividad"
 msgid "New version available"
 msgstr "Nueva versión disponible"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
 msgid "v%s"
 msgstr "v%s"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
 msgid "Update available: %s → %s"
 msgstr "Actualización disponible: %s → %s"
 
@@ -1334,9 +1338,6 @@ msgstr ""
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
 msgid "Cloudflare Ray ID: %s"
 msgstr "ID Cloudflare Ray: %s"
-
-#~ msgid "Changelog"
-#~ msgstr "Registro de cambios"
 
 #~ msgid "Version %s"
 #~ msgstr "Versión %s"

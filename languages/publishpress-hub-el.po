@@ -4,26 +4,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
+"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
-"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: el\n"
 
-#: publishpress-hub.php:4
-#: src/Admin/Page/WelcomePageController.php:259, fuzzy
 #. Plugin Name of the plugin
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
-#: publishpress-hub.php:5
 #. Description of the plugin
+#: publishpress-hub.php:5
 msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
@@ -31,13 +30,13 @@ msgstr ""
 "Κεντρικό κόμβο διαχείρισης για όλα τα πρόσθετα PublishPress - εγκαταστήστε, "
 "ενημερώστε και διαχειριστείτε άδειες από έναν πίνακα ελέγχου."
 
-#: publishpress-hub.php:7
 #. Author of the plugin
+#: publishpress-hub.php:7
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress-hub.php:8, fuzzy
 #. Author URI of the plugin
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -61,7 +60,8 @@ msgstr "Παρακαλώ περιμένετε ενώ φορτώνουμε τη �
 
 #: src/Admin/Page/WelcomePageController.php:143
 msgid "You do not have sufficient permissions to access this page."
-msgstr "Δεν έχετε επαρκή δικαιώματα για να αποκτήσετε πρόσβαση σε αυτή τη σελίδα."
+msgstr ""
+"Δεν έχετε επαρκή δικαιώματα για να αποκτήσετε πρόσβαση σε αυτή τη σελίδα."
 
 #: src/Admin/Page/WelcomePageController.php:180
 #: src/Admin/Page/WelcomePageController.php:181
@@ -72,8 +72,8 @@ msgstr "Καλώς ήρθατε"
 msgid "Please wait while we load the welcome page..."
 msgstr "Παρακαλώ περιμένετε ενώ φορτώνουμε τη σελίδα καλωσορίσματος..."
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "Προειδοποίηση: Η άδεια για %1$s έχει λήξει. %2$s"
@@ -83,8 +83,8 @@ msgstr "Προειδοποίηση: Η άδεια για %1$s έχει λήξε�
 msgid "Manage licenses"
 msgstr "Διαχείριση αδειών"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "Προειδοποίηση: %1$d πρόσθετο(τα) έχουν ληγμένες άδειες: %2$s. %3$s"
@@ -97,22 +97,21 @@ msgstr "Το αντικείμενο πρέπει να φορτωθεί πριν 
 msgid "No license key found"
 msgstr "Δεν βρέθηκε κλειδί άδειας"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr "Δωρεάν πρόσθετο δεν έχει οριστεί για την οικογένεια πρόσθετων: %s"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr "Pro πρόσθετο δεν έχει οριστεί για την οικογένεια πρόσθετων: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
 msgid ""
-"License activation error. Please try again later or contact support for "
-"help."
+"License activation error. Please try again later or contact support for help."
 msgstr ""
 "Σφάλμα ενεργοποίησης άδειας. Παρακαλώ δοκιμάστε ξανά αργότερα ή "
 "επικοινωνήστε με την υποστήριξη για βοήθεια."
@@ -134,8 +133,8 @@ msgstr ""
 #: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
 msgid "This license has expired. Please contact support to renew it."
 msgstr ""
-"Αυτή η άδεια έχει λήξει. Παρακαλώ επικοινωνήστε με την υποστήριξη για να "
-"την ανανεώσετε."
+"Αυτή η άδεια έχει λήξει. Παρακαλώ επικοινωνήστε με την υποστήριξη για να την "
+"ανανεώσετε."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
 msgid ""
@@ -143,13 +142,12 @@ msgid ""
 "license key or contact support for help."
 msgstr ""
 "Αυτή η κωδικός άδειας δεν είναι εξουσιοδοτημένος για αυτό το πρόσθετο. "
-"Παρακαλώ επαληθεύστε τον κωδικό άδειας σας ή επικοινωνήστε με την "
-"υποστήριξη για βοήθεια."
+"Παρακαλώ επαληθεύστε τον κωδικό άδειας σας ή επικοινωνήστε με την υποστήριξη "
+"για βοήθεια."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
 msgid ""
-"This license cannot be used for this plugin. Please contact support for "
-"help."
+"This license cannot be used for this plugin. Please contact support for help."
 msgstr ""
 "Αυτή η άδεια δεν μπορεί να χρησιμοποιηθεί για αυτό το πρόσθετο. Παρακαλώ "
 "επικοινωνήστε με την υποστήριξη για βοήθεια."
@@ -159,8 +157,8 @@ msgid ""
 "This license does not match the plugin you are trying to activate. Please "
 "contact support for assistance."
 msgstr ""
-"Αυτή η άδεια δεν ταιριάζει με το πρόσθετο που προσπαθείτε να "
-"ενεργοποιήσετε. Παρακαλώ επικοινωνήστε με την υποστήριξη για βοήθεια."
+"Αυτή η άδεια δεν ταιριάζει με το πρόσθετο που προσπαθείτε να ενεργοποιήσετε. "
+"Παρακαλώ επικοινωνήστε με την υποστήριξη για βοήθεια."
 
 #: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
 msgid ""
@@ -172,15 +170,16 @@ msgstr ""
 
 #: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
-msgstr "Δεν παρέχεται κωδικός άδειας. Παρακαλώ εισαγάγετε έναν έγκυρο κωδικό άδειας."
+msgstr ""
+"Δεν παρέχεται κωδικός άδειας. Παρακαλώ εισαγάγετε έναν έγκυρο κωδικό άδειας."
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
 msgid ""
-"Your site URL is required to activate the license. Please enter a valid "
-"site URL to continue."
+"Your site URL is required to activate the license. Please enter a valid site "
+"URL to continue."
 msgstr ""
-"Η διεύθυνση URL του ιστότοπού σας είναι απαραίτητη για να ενεργοποιήσετε "
-"την άδεια. Παρακαλώ εισάγετε μια έγκυρη διεύθυνση URL του ιστότοπου για να "
+"Η διεύθυνση URL του ιστότοπού σας είναι απαραίτητη για να ενεργοποιήσετε την "
+"άδεια. Παρακαλώ εισάγετε μια έγκυρη διεύθυνση URL του ιστότοπου για να "
 "συνεχίσετε."
 
 #: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
@@ -198,10 +197,11 @@ msgstr ""
 "υποστήριξη για βοήθεια."
 
 #: src/Domain/Plugin/Exception/LicenseServerException.php:28
-msgid "License server error. Please try again later or contact support for help."
+msgid ""
+"License server error. Please try again later or contact support for help."
 msgstr ""
-"Σφάλμα διακομιστή άδειας. Παρακαλώ προσπαθήστε ξανά αργότερα ή "
-"επικοινωνήστε με την υποστήριξη για βοήθεια."
+"Σφάλμα διακομιστή άδειας. Παρακαλώ προσπαθήστε ξανά αργότερα ή επικοινωνήστε "
+"με την υποστήριξη για βοήθεια."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
 msgid ""
@@ -212,22 +212,23 @@ msgstr ""
 "ξανά αργότερα ή επικοινωνήστε με την υποστήριξη για βοήθεια."
 
 #: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
-msgid "This license is inactive for this site. Please contact support for help."
+msgid ""
+"This license is inactive for this site. Please contact support for help."
 msgstr ""
 "Αυτή η άδεια είναι ανενεργή για αυτόν τον ιστότοπο. Παρακαλώ επικοινωνήστε "
 "με την υποστήριξη για βοήθεια."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
 msgid ""
-"Plugin activation failed. Please try again later or contact support for "
-"help."
+"Plugin activation failed. Please try again later or contact support for help."
 msgstr ""
 "Αποτυχία ενεργοποίησης πρόσθετου. Παρακαλώ δοκιμάστε ξανά αργότερα ή "
 "επικοινωνήστε με την υποστήριξη για βοήθεια."
 
 #: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
 msgid "This action is not possible because the plugin is already installed."
-msgstr "Αυτή η ενέργεια δεν είναι δυνατή διότι το πρόσθετο είναι ήδη εγκατεστημένο."
+msgstr ""
+"Αυτή η ενέργεια δεν είναι δυνατή διότι το πρόσθετο είναι ήδη εγκατεστημένο."
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
 msgid ""
@@ -279,8 +280,8 @@ msgid ""
 "This action is not possible because the plugin is not installed. Please "
 "install the plugin and try again."
 msgstr ""
-"Αυτή η ενέργεια δεν είναι δυνατή επειδή το πρόσθετο δεν είναι "
-"εγκατεστημένο. Παρακαλώ εγκαταστήστε το πρόσθετο και δοκιμάστε ξανά."
+"Αυτή η ενέργεια δεν είναι δυνατή επειδή το πρόσθετο δεν είναι εγκατεστημένο. "
+"Παρακαλώ εγκαταστήστε το πρόσθετο και δοκιμάστε ξανά."
 
 #: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
 msgid ""
@@ -303,12 +304,12 @@ msgstr "Ελέγξτε ποιος μπορεί να επεξεργαστεί κ�
 #: src/Domain/Plugin/plugin-families.php:58
 msgid "Create, manage and display authors for your content."
 msgstr ""
-"Δημιουργήστε, διαχειριστείτε και εμφανίστε συγγραφείς για το περιεχόμενό "
-"σας."
+"Δημιουργήστε, διαχειριστείτε και εμφανίστε συγγραφείς για το περιεχόμενό σας."
 
 #: src/Domain/Plugin/plugin-families.php:74
 msgid "All the tools you need to improve the block editor."
-msgstr "Όλα τα εργαλεία που χρειάζεστε για να βελτιώσετε τον επεξεργαστή μπλοκ."
+msgstr ""
+"Όλα τα εργαλεία που χρειάζεστε για να βελτιώσετε τον επεξεργαστή μπλοκ."
 
 #: src/Domain/Plugin/plugin-families.php:90
 msgid "Control your admin area and user roles."
@@ -324,7 +325,8 @@ msgstr "Οργανώστε, προγραμματίστε και σχεδιάστ
 
 #: src/Domain/Plugin/plugin-families.php:138
 msgid "Approve and schedule new versions to your published posts."
-msgstr "Εγκρίνετε και προγραμματίστε νέες εκδόσεις για τα δημοσιευμένα άρθρα σας."
+msgstr ""
+"Εγκρίνετε και προγραμματίστε νέες εκδόσεις για τα δημοσιευμένα άρθρα σας."
 
 #: src/Domain/Plugin/plugin-families.php:154
 msgid "Organize your posts into issues or series."
@@ -340,20 +342,20 @@ msgstr ""
 msgid "Create custom statuses and publishing workflows."
 msgstr "Δημιουργήστε προσαρμοσμένες καταστάσεις και ροές εργασίας δημοσίευσης."
 
-#: src/Infrastructure/Container/DependencyContainer.php:102
 #. translators: %s is the dependency ID.
+#: src/Infrastructure/Container/DependencyContainer.php:102
 #, php-format
 msgid "Dependency \"%s\" not found in container."
 msgstr "Η εξάρτηση \"%s\" δεν βρέθηκε στο δοχείο."
 
-#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #, php-format
 msgid "Error validating license: %s"
 msgstr "Σφάλμα επικύρωσης άδειας: %s"
 
-#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #, php-format
 msgid "Error getting license info: %s"
 msgstr "Σφάλμα στην απόκτηση πληροφοριών άδειας: %s"
@@ -366,8 +368,8 @@ msgstr "Πολύ πολλές αιτήσεις. Παρακαλώ δοκιμάσ�
 msgid "An error occurred while processing your request."
 msgstr "Συνέβη ένα σφάλμα κατά την επεξεργασία του αιτήματός σας."
 
-#: src/Infrastructure/View/ViewService.php:48
 #. translators: %s is the template path
+#: src/Infrastructure/View/ViewService.php:48
 #, php-format
 msgid "Template not found: %s"
 msgstr "Το πρότυπο δεν βρέθηκε: %s"
@@ -388,8 +390,8 @@ msgstr "Μη έγκυρη διαδρομή αρχείου: ανιχνεύθηκ�
 msgid "Invalid file path: directory traversal detected"
 msgstr "Μη έγκυρη διαδρομή αρχείου: ανιχνεύθηκε διαδρομή καταλόγου"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #. translators: %s is the directory path
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "Μη έγκυρη διαδρομή αρχείου: ο γονικός κατάλογος δεν υπάρχει: %s"
@@ -410,10 +412,11 @@ msgstr "Μη έγκυρη διεύθυνση URL λήψης"
 
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:60
 msgid "Download URL must use HTTP or HTTPS protocol"
-msgstr "Η διεύθυνση URL λήψης πρέπει να χρησιμοποιεί το πρωτόκολλο HTTP ή HTTPS"
+msgstr ""
+"Η διεύθυνση URL λήψης πρέπει να χρησιμοποιεί το πρωτόκολλο HTTP ή HTTPS"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #. translators: %s is the hostname
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr "Η διεύθυνση URL λήψης δεν προέρχεται από επιτρεπόμενο τομέα: %s"
@@ -422,8 +425,8 @@ msgstr "Η διεύθυνση URL λήψης δεν προέρχεται από 
 msgid "Download URL failed WordPress validation"
 msgstr "Η διεύθυνση URL λήψης απέτυχε την επικύρωση του WordPress"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr "Αποτυχία λήψης του plugin: %s"
@@ -448,8 +451,8 @@ msgstr ""
 "Το ληφθέν αρχείο δεν είναι έγκυρο αρχείο ZIP. Η διεύθυνση URL λήψης μπορεί "
 "να επιστρέφει μια σελίδα σφάλματος."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "Αποτυχία αποσυμπίεσης του αρχείου plugin: %s"
@@ -458,14 +461,14 @@ msgstr "Αποτυχία αποσυμπίεσης του αρχείου plugin: 
 msgid "Failed to unzip plugin file"
 msgstr "Αποτυχία αποσυμπίεσης του αρχείου plugin"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "Αποτυχία ενεργοποίησης του plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "Αποτυχία διαγραφής του plugin: %s"
@@ -478,8 +481,8 @@ msgstr "Δεν είναι διαθέσιμη καμία ενημέρωση γι�
 msgid "Invalid update information for this plugin"
 msgstr "Μη έγκυρες πληροφορίες ενημέρωσης για αυτό το πρόσθετο"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "Αποτυχία ενημέρωσης πρόσθετου: %s"
@@ -488,21 +491,20 @@ msgstr "Αποτυχία ενημέρωσης πρόσθετου: %s"
 msgid "Plugin update failed"
 msgstr "Αποτυχία ενημέρωσης πρόσθετου"
 
-#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #. translators: %s is the error message
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #, php-format
 msgid "Failed to get plugin information: %s"
 msgstr "Αποτυχία ανάκτησης πληροφοριών πρόσθετου: %s"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:26
 #. translators: %s is the plugin name, %s is the rating
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:26
 msgid "If you like %s please leave us a %s rating. Thank you!"
-msgstr "Αν σας αρέσει το %s παρακαλούμε δώστε μας μια βαθμολογία %s. Ευχαριστούμε!"
+msgstr ""
+"Αν σας αρέσει το %s παρακαλούμε δώστε μας μια βαθμολογία %s. Ευχαριστούμε!"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:43
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:43
 msgid "About %s"
 msgstr "Σχετικά με το %s"
 
@@ -510,9 +512,8 @@ msgstr "Σχετικά με το %s"
 msgid "About"
 msgstr "Σχετικά"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:54
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:54
 msgid "Documentation for %s"
 msgstr "Τεκμηρίωση για το %s"
 
@@ -520,9 +521,8 @@ msgstr "Τεκμηρίωση για το %s"
 msgid "Documentation"
 msgstr "Τεκμηρίωση"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:65
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:65
 msgid "Contact the %s team"
 msgstr "Επικοινωνήστε με την ομάδα του %s"
 
@@ -546,19 +546,17 @@ msgstr "Επιλογές"
 msgid "Components Showcase"
 msgstr "Επίδειξη Στοιχείων"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93, fuzzy
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
 msgid "N/A"
 msgstr "N/A"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 #. translators: %1$s is the plugin name, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 msgid "The license for %1$s expired on %2$s"
 msgstr "Η άδεια για το %1$s έληξε στις %2$s"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 msgid "The licenses for %1$s expired on %2$s"
 msgstr "Οι άδειες για το %1$s έληξαν στις %2$s"
 
@@ -567,15 +565,13 @@ msgstr "Οι άδειες για το %1$s έληξαν στις %2$s"
 msgid "Renew now"
 msgstr "Ανανεώστε τώρα"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr "Η άδεια για το %1$s λήγει στις %2$s (%3$d ημέρες απομένουν)"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr "Οι άδειες για το %1$s λήγουν στις %2$s (%3$d ημέρες απομένουν)"
 
@@ -616,8 +612,8 @@ msgstr "Πίνακας ελέγχου προσθέτων"
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
 msgid "Hold ALT and click to force refresh the update cache"
 msgstr ""
-"Κρατήστε το ALT και κάντε κλικ για να αναγκάσετε την ανανέωση της "
-"προσωρινής μνήμης ενημερώσεων"
+"Κρατήστε το ALT και κάντε κλικ για να αναγκάσετε την ανανέωση της προσωρινής "
+"μνήμης ενημερώσεων"
 
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
 msgid "Force Refresh"
@@ -646,7 +642,8 @@ msgstr "Η καταγραφή σφαλμάτων εκκαθαρίστηκε με
 
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
 msgid "Failed to clear the debug log. Please try again."
-msgstr "Αποτυχία εκκαθάρισης της καταγραφής σφαλμάτων. Παρακαλώ δοκιμάστε ξανά."
+msgstr ""
+"Αποτυχία εκκαθάρισης της καταγραφής σφαλμάτων. Παρακαλώ δοκιμάστε ξανά."
 
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222
 msgid "Log copied to clipboard."
@@ -771,7 +768,6 @@ msgid "1 request recorded"
 msgstr "1 αίτημα καταγραφής"
 
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#, js-format
 msgid "%d requests recorded"
 msgstr "%d αιτήματα καταγραφής"
 
@@ -793,14 +789,14 @@ msgstr "Τι μπορείτε να κάνετε με το PublishPress Hub"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
 msgid ""
-"PublishPress Hub has everything you need to install, update, and manage "
-"your PublishPress plugins. We're here to help you build a publishing system "
-"that works perfectly for your team."
+"PublishPress Hub has everything you need to install, update, and manage your "
+"PublishPress plugins. We're here to help you build a publishing system that "
+"works perfectly for your team."
 msgstr ""
 "Το PublishPress Hub έχει τα πάντα που χρειάζεστε για να εγκαταστήσετε, να "
 "ενημερώσετε και να διαχειριστείτε τα πρόσθετα PublishPress. Είμαστε εδώ για "
-"να σας βοηθήσουμε να δημιουργήσετε ένα σύστημα δημοσίευσης που να "
-"λειτουργεί τέλεια για την ομάδα σας."
+"να σας βοηθήσουμε να δημιουργήσετε ένα σύστημα δημοσίευσης που να λειτουργεί "
+"τέλεια για την ομάδα σας."
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:64
 msgid "Centralized Dashboard"
@@ -854,8 +850,7 @@ msgstr "Παρακολούθηση Κατάστασης"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
 msgid ""
-"Monitor plugin activation status, detect conflicts, and ensure "
-"compatibility."
+"Monitor plugin activation status, detect conflicts, and ensure compatibility."
 msgstr ""
 "Παρακολουθήστε την κατάσταση ενεργοποίησης του πρόσθετου, ανιχνεύστε "
 "συγκρούσεις και διασφαλίστε τη συμβατότητα."
@@ -865,8 +860,8 @@ msgid "Get Started"
 msgstr "Ξεκινήστε"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:127
-#, js-format
-msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgid ""
+"Ready to explore? Visit the %s to see all available PublishPress plugins."
 msgstr ""
 "Είστε έτοιμοι να εξερευνήσετε; Επισκεφθείτε το %s για να δείτε όλα τα "
 "διαθέσιμα πρόσθετα PublishPress."
@@ -883,7 +878,7 @@ msgstr "Ξέρετε ήδη τι κάνετε; Υπέροχα! Μπορείτε 
 msgid "dismiss this page"
 msgstr "απαλείψετε αυτή τη σελίδα"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
 msgid "."
 msgstr "."
 
@@ -999,9 +994,9 @@ msgid ""
 "Enter your license key to activate the Pro version of this plugin. You can "
 "find your license key in your PublishPress account dashboard."
 msgstr ""
-"Εισάγετε το κλειδί άδειάς σας για να ενεργοποιήσετε την Pro έκδοση αυτού "
-"του πρόσθετου. Μπορείτε να βρείτε το κλειδί άδειάς σας στον πίνακα ελέγχου "
-"του λογαριασμού σας στο PublishPress."
+"Εισάγετε το κλειδί άδειάς σας για να ενεργοποιήσετε την Pro έκδοση αυτού του "
+"πρόσθετου. Μπορείτε να βρείτε το κλειδί άδειάς σας στον πίνακα ελέγχου του "
+"λογαριασμού σας στο PublishPress."
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
@@ -1077,48 +1072,39 @@ msgid "Check for Updates"
 msgstr "Έλεγχος για Ενημερώσεις"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
-#, js-format
 msgid "Install %s"
 msgstr "Εγκατάσταση %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
-#, js-format
 msgid "Install %s Pro"
 msgstr "Εγκατάσταση %s Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
-#, js-format
 msgid "Upgrade %s to Pro"
 msgstr "Αναβάθμιση %s σε Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
-#, js-format
 msgid "Uninstall %s"
 msgstr "Απεγκατάσταση %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
-#, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "Είστε σίγουροι ότι θέλετε να απεγκαταστήσετε το %s;"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
-#, js-format
 msgid "Resolve Conflict for %s"
 msgstr "Επίλυση Σύγκρουσης για %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
-#, js-format
 msgid "Manage %s License"
 msgstr "Διαχείριση Άδειας %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
-#, js-format
 msgid "Activate %s License"
 msgstr "Ενεργοποίηση Άδειας %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
-#, js-format
 msgid "More Info: %s"
 msgstr "Περισσότερες Πληροφορίες: %s"
 
@@ -1127,12 +1113,10 @@ msgid "Resolve Plugin Conflict"
 msgstr "Επίλυση Σύγκρουσης Πρόσθετου"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
-#, js-format
 msgid "Free version: %s (%s)"
 msgstr "Δωρεάν έκδοση: %s (%s)"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
-#, js-format
 msgid "Pro version: %s (%s)"
 msgstr "Pro έκδοση: %s (%s)"
 
@@ -1147,8 +1131,8 @@ msgstr "Διατηρήστε την Δωρεάν έκδοση"
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
 msgid ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
-"advanced features, priority support, and exclusive benefits designed to "
-"help you get the most out of your workflow."
+"advanced features, priority support, and exclusive benefits designed to help "
+"you get the most out of your workflow."
 msgstr ""
 "Ξεκλειδώστε το πλήρες δυναμικό αυτού του πρόσθετου με την Pro έκδοση. "
 "Απολαύστε προηγμένα χαρακτηριστικά, προτεραιότητα υποστήριξης και "
@@ -1175,14 +1159,14 @@ msgstr "Αναβαθμίστε σε Pro και αυξήστε την παραγ�
 msgid "New version available"
 msgstr "Διαθέσιμη νέα έκδοση"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
-#, fuzzy, js-format
+#, fuzzy
 msgid "v%s"
 msgstr "v%s"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
-#, js-format
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
 msgid "Update available: %s → %s"
 msgstr "Διαθέσιμη ενημέρωση: %s → %s"
 
@@ -1262,7 +1246,6 @@ msgid "latest"
 msgstr "τελευταία"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
-#, js-format
 msgid "Update to v%s"
 msgstr "Ενημέρωση στην έκδοση v%s"
 
@@ -1292,93 +1275,75 @@ msgstr "Αποτυχία λήψης πρόσθετων"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
-#, js-format
 msgid "%s installed successfully"
 msgstr "%s εγκαταστάθηκε με επιτυχία"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
-#, js-format
 msgid "%s installation failed"
 msgstr "%s η εγκατάσταση απέτυχε"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
-#, js-format
 msgid "%s uninstalled successfully"
 msgstr "%s απεγκαταστάθηκε με επιτυχία"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
-#, js-format
 msgid "%s uninstall failed"
 msgstr "%s η απεγκατάσταση απέτυχε"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
-#, js-format
 msgid "%s activated successfully"
 msgstr "%s ενεργοποιήθηκε με επιτυχία"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
-#, js-format
 msgid "%s activation failed"
 msgstr "%s η ενεργοποίηση απέτυχε"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
-#, js-format
 msgid "%s deactivated successfully"
 msgstr "%s απενεργοποιήθηκε με επιτυχία"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
-#, js-format
 msgid "%s deactivation failed"
 msgstr "%s η απενεργοποίηση απέτυχε"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
-#, js-format
 msgid "%s upgraded to Pro successfully"
 msgstr "%s αναβαθμίστηκε σε Pro με επιτυχία"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
-#, js-format
 msgid "%s upgrade to Pro failed"
 msgstr "%s η αναβάθμιση σε Pro απέτυχε"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
-#, js-format
 msgid "Conflict resolved successfully for %s"
 msgstr "Η σύγκρουση επιλύθηκε με επιτυχία για %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
-#, js-format
 msgid "Failed to resolve conflict for %s"
 msgstr "Αποτυχία στην επίλυση σύγκρουσης για %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
-#, js-format
 msgid "%s license deactivated successfully"
 msgstr "%s άδεια απενεργοποιήθηκε με επιτυχία"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
-#, js-format
 msgid "%s license deactivation failed"
 msgstr "%s η απενεργοποίηση άδειας απέτυχε"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
-#, js-format
 msgid "%s license activated successfully"
 msgstr "%s άδεια ενεργοποιήθηκε με επιτυχία"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
-#, js-format
 msgid "%s license activation failed"
 msgstr "%s η ενεργοποίηση άδειας απέτυχε"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
-#, js-format
 msgid "%s updated successfully"
 msgstr "%s ενημερώθηκε με επιτυχία"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
-#, js-format
 msgid "%s update failed"
 msgstr "%s η ενημέρωση απέτυχε"
 

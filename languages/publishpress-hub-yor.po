@@ -4,26 +4,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
+"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: yor\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
-"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
-"Language: yor\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: publishpress-hub.php:4
-#: src/Admin/Page/WelcomePageController.php:259, fuzzy
 #. Plugin Name of the plugin
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
-#: publishpress-hub.php:5
 #. Description of the plugin
+#: publishpress-hub.php:5
 msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
@@ -31,13 +30,13 @@ msgstr ""
 "Ibi iṣakoso ti aarin fun gbogbo awọn afikun PublishPress - fi sori ẹrọ, ṣe "
 "imudojuiwọn, ati ṣakoso awọn iwe-aṣẹ lati inu iboju iṣakoso kan."
 
-#: publishpress-hub.php:7
 #. Author of the plugin
+#: publishpress-hub.php:7
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress-hub.php:8, fuzzy
 #. Author URI of the plugin
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -72,8 +71,8 @@ msgstr "Kaabo"
 msgid "Please wait while we load the welcome page..."
 msgstr "Jọwọ duro nigba ti a ba n gbe oju-iwe kaabọ..."
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "Ikilo: Iwe-aṣẹ fun %1$s ti pari. %2$s"
@@ -83,8 +82,8 @@ msgstr "Ikilo: Iwe-aṣẹ fun %1$s ti pari. %2$s"
 msgid "Manage licenses"
 msgstr "Ṣakoso awọn iwe-aṣẹ"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "Ikilo: %1$d afikun ti ni awọn iwe-aṣẹ ti o ti pari: %2$s. %3$s"
@@ -97,22 +96,21 @@ msgstr "Ohun kan gbọdọ wa ni gbe silẹ ṣaaju ki o to bẹrẹ."
 msgid "No license key found"
 msgstr "Ko si bọtini iwe-aṣẹ ti a ri"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr "Afikun ọfẹ ko ṣeto fun ẹbi afikun: %s"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr "Afikun pro ko ṣeto fun ẹbi afikun: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
 msgid ""
-"License activation error. Please try again later or contact support for "
-"help."
+"License activation error. Please try again later or contact support for help."
 msgstr ""
 "Aṣiṣe olupin iwe-aṣẹ. Jọwọ gbiyanju lẹẹkansi ni igba diẹ tabi kan si "
 "atilẹyin fun iranlọwọ."
@@ -127,7 +125,8 @@ msgstr ""
 
 #: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
-msgstr "Iwe-aṣẹ yii ti wa ni pipade lọwọlọwọ. Jọwọ kan si atilẹyin fun iranlọwọ."
+msgstr ""
+"Iwe-aṣẹ yii ti wa ni pipade lọwọlọwọ. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
 msgid "This license has expired. Please contact support to renew it."
@@ -141,8 +140,7 @@ msgstr "Iwe-aṣẹ yii ko ṣiṣẹ fun aaye yii. Jọwọ kan si atilẹyin f
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
 msgid ""
-"This license cannot be used for this plugin. Please contact support for "
-"help."
+"This license cannot be used for this plugin. Please contact support for help."
 msgstr "Iwe-aṣẹ yii ko le ṣee mu ṣiṣẹ. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
@@ -155,7 +153,8 @@ msgstr "Iwe-aṣẹ yii ko ṣiṣẹ fun aaye yii. Jọwọ kan si atilẹyin f
 msgid ""
 "License key does not match our records. Please contact support for "
 "assistance."
-msgstr "Iwe-aṣẹ yii ti wa ni pipade lọwọlọwọ. Jọwọ kan si atilẹyin fun iranlọwọ."
+msgstr ""
+"Iwe-aṣẹ yii ti wa ni pipade lọwọlọwọ. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
@@ -163,8 +162,8 @@ msgstr "Ko si ikọkọ iwe-aṣẹ ti a pese. Jọwọ tẹ ikọkọ iwe-aṣ�
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
 msgid ""
-"Your site URL is required to activate the license. Please enter a valid "
-"site URL to continue."
+"Your site URL is required to activate the license. Please enter a valid site "
+"URL to continue."
 msgstr ""
 "URL aaye rẹ nilo lati mu iwe-aṣẹ ṣiṣẹ. Jọwọ tẹ URL aaye ti o wulo lati "
 "tẹsiwaju."
@@ -180,7 +179,8 @@ msgid "This license cannot be activated. Please contact support for help."
 msgstr "Iwe-aṣẹ yii ko le ṣee mu ṣiṣẹ. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseServerException.php:28
-msgid "License server error. Please try again later or contact support for help."
+msgid ""
+"License server error. Please try again later or contact support for help."
 msgstr ""
 "Aṣiṣe olupin iwe-aṣẹ. Jọwọ gbiyanju lẹẹkansi ni igba diẹ tabi kan si "
 "atilẹyin fun iranlọwọ."
@@ -194,13 +194,13 @@ msgstr ""
 "atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
-msgid "This license is inactive for this site. Please contact support for help."
+msgid ""
+"This license is inactive for this site. Please contact support for help."
 msgstr "Iwe-aṣẹ yii ko ṣiṣẹ fun aaye yii. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
 msgid ""
-"Plugin activation failed. Please try again later or contact support for "
-"help."
+"Plugin activation failed. Please try again later or contact support for help."
 msgstr "Fifi sori ẹrọ afikun ko ṣaṣeyọri. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
@@ -304,20 +304,20 @@ msgstr "Ṣẹda URLs aṣa fun awọn ifiweranṣẹ rẹ ati awọn ọna asop
 msgid "Create custom statuses and publishing workflows."
 msgstr "Ṣẹda awọn ipo aṣa ati awọn ilana ikede."
 
-#: src/Infrastructure/Container/DependencyContainer.php:102
 #. translators: %s is the dependency ID.
+#: src/Infrastructure/Container/DependencyContainer.php:102
 #, php-format
 msgid "Dependency \"%s\" not found in container."
 msgstr "Ibeere \"%s\" ko ri ninu apoti."
 
-#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #, php-format
 msgid "Error validating license: %s"
 msgstr "Aṣiṣe ni idanwo iwe-aṣẹ: %s"
 
-#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #, php-format
 msgid "Error getting license info: %s"
 msgstr "Aṣiṣe ni gbigba alaye iwe-aṣẹ: %s"
@@ -330,8 +330,8 @@ msgstr "Awọn ibeere pupọ. Jọwọ tun gbiyanju nigbamii."
 msgid "An error occurred while processing your request."
 msgstr "Aṣiṣe kan ṣẹlẹ nigba ti a n ṣiṣẹ ibeere rẹ."
 
-#: src/Infrastructure/View/ViewService.php:48
 #. translators: %s is the template path
+#: src/Infrastructure/View/ViewService.php:48
 #, php-format
 msgid "Template not found: %s"
 msgstr "Awoṣe ko ri: %s"
@@ -352,8 +352,8 @@ msgstr "Ọna faili ti ko tọ: byte null ti a ti ṣe awari"
 msgid "Invalid file path: directory traversal detected"
 msgstr "Ọna faili ti ko tọ: iṣipopada itọsọna ti a ti ṣe awari"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #. translators: %s is the directory path
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "Ọna faili ti ko tọ: itọsọna obi ko si: %s"
@@ -364,7 +364,8 @@ msgstr "Ọna faili ti ko tọ: ko le yanju ọna"
 
 #: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:239
 msgid "Invalid file path: operation not allowed outside permitted directories"
-msgstr "Ọna faili ti ko tọ: iṣẹ-ṣiṣe ko gba laaye ni ita awọn itọsọna ti a fọwọsi"
+msgstr ""
+"Ọna faili ti ko tọ: iṣẹ-ṣiṣe ko gba laaye ni ita awọn itọsọna ti a fọwọsi"
 
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:52
 msgid "Invalid download URL provided"
@@ -374,8 +375,8 @@ msgstr "URL igbasilẹ ti ko tọ ti pese"
 msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr "URL igbasilẹ gbọdọ lo ilana HTTP tabi HTTPS"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #. translators: %s is the hostname
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr "URL igbasilẹ ko wa lati agbegbe ti a fọwọsi: %s"
@@ -384,8 +385,8 @@ msgstr "URL igbasilẹ ko wa lati agbegbe ti a fọwọsi: %s"
 msgid "Download URL failed WordPress validation"
 msgstr "URL igbasilẹ kuna ayẹwo WordPress"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr "Kuna lati gba plugin silẹ: %s"
@@ -410,8 +411,8 @@ msgstr ""
 "Faili ti a gba lati ayelujara ko jẹ iwe-ipamọ ZIP to wulo. URL gbigba lati "
 "ayelujara le n pada oju-iwe aṣiṣe."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "Kuna lati ṣii faili plugin: %s"
@@ -420,14 +421,14 @@ msgstr "Kuna lati ṣii faili plugin: %s"
 msgid "Failed to unzip plugin file"
 msgstr "Kuna lati ṣii faili plugin"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "Kuna lati mu plugin ṣiṣẹ: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "Kuna lati pa plugin: %s"
@@ -440,8 +441,8 @@ msgstr "Ko si imudojuiwọn ti o wa fun afikun yii"
 msgid "Invalid update information for this plugin"
 msgstr "Alaye imudojuiwọn ti ko tọ fun afikun yii"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "Iṣe imudojuiwọn afikun kuna: %s"
@@ -450,21 +451,19 @@ msgstr "Iṣe imudojuiwọn afikun kuna: %s"
 msgid "Plugin update failed"
 msgstr "Imudojuiwọn afikun kuna"
 
-#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #. translators: %s is the error message
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #, php-format
 msgid "Failed to get plugin information: %s"
 msgstr "Gbigba alaye afikun kuna: %s"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:26
 #. translators: %s is the plugin name, %s is the rating
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:26
 msgid "If you like %s please leave us a %s rating. Thank you!"
 msgstr "Ti o ba fẹ %s jọwọ fi wa silẹ %s iṣiro. O ṣeun!"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:43
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:43
 msgid "About %s"
 msgstr "Nipa %s"
 
@@ -472,9 +471,8 @@ msgstr "Nipa %s"
 msgid "About"
 msgstr "Nipa"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:54
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:54
 msgid "Documentation for %s"
 msgstr "Iwe afọwọkọ fun %s"
 
@@ -482,9 +480,8 @@ msgstr "Iwe afọwọkọ fun %s"
 msgid "Documentation"
 msgstr "Iwe afọwọkọ"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:65
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:65
 msgid "Contact the %s team"
 msgstr "Kan si ẹgbẹ %s"
 
@@ -508,19 +505,17 @@ msgstr "Aṣayan"
 msgid "Components Showcase"
 msgstr "Ifihan awọn Ẹyà"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93, fuzzy
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
 msgid "N/A"
 msgstr "N/A"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 #. translators: %1$s is the plugin name, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 msgid "The license for %1$s expired on %2$s"
 msgstr "Iwe-aṣẹ fun %1$s parẹ ni %2$s"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 msgid "The licenses for %1$s expired on %2$s"
 msgstr "Awọn iwe-aṣẹ fun %1$s parẹ ni %2$s"
 
@@ -529,15 +524,13 @@ msgstr "Awọn iwe-aṣẹ fun %1$s parẹ ni %2$s"
 msgid "Renew now"
 msgstr "Tunṣe bayi"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr "Iwe-aṣẹ fun %1$s pari ni %2$s (%3$d ọjọ to ku)"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr "Iwe-aṣẹ fun %1$s pari ni %2$s (%3$d ọjọ to ku)"
 
@@ -658,8 +651,8 @@ msgid ""
 "The debug log is empty. Perform some actions (e.g. activate a license) and "
 "refresh to see entries."
 msgstr ""
-"Iwe ajako itupalẹ jẹ ofo. Ṣe diẹ ninu awọn iṣe (gẹgẹbi mu iwe-aṣẹ ṣiṣẹ) ki "
-"o si tun igbesoke lati wo awọn ẹsẹ."
+"Iwe ajako itupalẹ jẹ ofo. Ṣe diẹ ninu awọn iṣe (gẹgẹbi mu iwe-aṣẹ ṣiṣẹ) ki o "
+"si tun igbesoke lati wo awọn ẹsẹ."
 
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
 msgid "Debug log contents"
@@ -704,7 +697,7 @@ msgstr ""
 "Iwe ajako itupalẹ wa ni iṣe. Yipada si taabu \"Iwe ajako Itupalẹ\" lati wo "
 "data ti a mu."
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70, fuzzy
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
 msgid "ERR"
 msgstr "ERR"
 
@@ -729,7 +722,6 @@ msgid "1 request recorded"
 msgstr "Ibeere 1 ti a ṣe akọsilẹ"
 
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#, js-format
 msgid "%d requests recorded"
 msgstr "%d awọn ibeere ti a ṣe akọsilẹ"
 
@@ -751,9 +743,9 @@ msgstr "Kini o le ṣe pẹlu PublishPress Hub"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
 msgid ""
-"PublishPress Hub has everything you need to install, update, and manage "
-"your PublishPress plugins. We're here to help you build a publishing system "
-"that works perfectly for your team."
+"PublishPress Hub has everything you need to install, update, and manage your "
+"PublishPress plugins. We're here to help you build a publishing system that "
+"works perfectly for your team."
 msgstr ""
 "Ibi isopọ PublishPress ni gbogbo ohun ti o nilo lati fi sori ẹrọ, ṣe "
 "imudojuiwọn, ati ṣakoso awọn afikun PublishPress rẹ. A wa nibi lati ṣe "
@@ -781,8 +773,8 @@ msgid ""
 "Install free PublishPress plugins directly from the Hub without visiting "
 "WordPress.org."
 msgstr ""
-"Fi sori ẹrọ awọn afikun PublishPress ọfẹ taara lati Ibi isopọ laisi ibẹwo "
-"si WordPress.org."
+"Fi sori ẹrọ awọn afikun PublishPress ọfẹ taara lati Ibi isopọ laisi ibẹwo si "
+"WordPress.org."
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:88
 msgid "License Management"
@@ -793,8 +785,8 @@ msgid ""
 "Connect your PublishPress licenses to easily install and activate Pro "
 "versions."
 msgstr ""
-"So awọn iwe-aṣẹ PublishPress rẹ pọ lati fi sori ẹrọ ati mu awọn ẹya Pro "
-"ṣiṣẹ ni rọọrun."
+"So awọn iwe-aṣẹ PublishPress rẹ pọ lati fi sori ẹrọ ati mu awọn ẹya Pro ṣiṣẹ "
+"ni rọọrun."
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:100
 msgid "Easy Updates"
@@ -812,8 +804,7 @@ msgstr "Iṣakoso Ipo"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
 msgid ""
-"Monitor plugin activation status, detect conflicts, and ensure "
-"compatibility."
+"Monitor plugin activation status, detect conflicts, and ensure compatibility."
 msgstr ""
 "Ṣakoso ipo mimu awọn afikun ṣiṣẹ, wa awọn ija, ki o si rii daju pe o ni "
 "ibamu."
@@ -823,8 +814,8 @@ msgid "Get Started"
 msgstr "Bẹrẹ"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:127
-#, js-format
-msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgid ""
+"Ready to explore? Visit the %s to see all available PublishPress plugins."
 msgstr ""
 "Ṣe o ti ṣetan lati ṣawari? Ṣabẹwo si %s lati wo gbogbo awọn amugbooro "
 "PublishPress ti o wa."
@@ -841,7 +832,7 @@ msgstr "Ṣe o ti mọ ohun ti o n ṣe? O tayọ! O le "
 msgid "dismiss this page"
 msgstr "pa oju iwe yii"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
 msgid "."
 msgstr "."
 
@@ -920,8 +911,8 @@ msgid ""
 "Select how you would like to install this plugin. You can install the Pro "
 "version if you have a license, or the Free version to get started."
 msgstr ""
-"Yan bi o ṣe fẹ lati fi sori ẹrọ afikun yii. O le fi ẹya Pro sori ẹrọ ti o "
-"ba ni iwe-aṣẹ, tabi ẹya Ọfẹ lati bẹrẹ."
+"Yan bi o ṣe fẹ lati fi sori ẹrọ afikun yii. O le fi ẹya Pro sori ẹrọ ti o ba "
+"ni iwe-aṣẹ, tabi ẹya Ọfẹ lati bẹrẹ."
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
@@ -956,8 +947,8 @@ msgid ""
 "Enter your license key to activate the Pro version of this plugin. You can "
 "find your license key in your PublishPress account dashboard."
 msgstr ""
-"Tẹ bọtini iwe-aṣẹ rẹ lati mu ẹya Pro ti afikun yii ṣiṣẹ. O le wa bọtini "
-"iwe-aṣẹ rẹ ninu iboju iṣakoso akọọlẹ PublishPress rẹ."
+"Tẹ bọtini iwe-aṣẹ rẹ lati mu ẹya Pro ti afikun yii ṣiṣẹ. O le wa bọtini iwe-"
+"aṣẹ rẹ ninu iboju iṣakoso akọọlẹ PublishPress rẹ."
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
@@ -1033,48 +1024,39 @@ msgid "Check for Updates"
 msgstr "Ṣayẹwo fun Awọn imudojuiwọn"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
-#, js-format
 msgid "Install %s"
 msgstr "Fi %s sori ẹrọ"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
-#, js-format
 msgid "Install %s Pro"
 msgstr "Fi %s Pro sori ẹrọ"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
-#, js-format
 msgid "Upgrade %s to Pro"
 msgstr "Dara %s si Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
-#, js-format
 msgid "Uninstall %s"
 msgstr "Yọ %s kuro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
-#, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "Ṣe o daada pe o fẹ yọ %s kuro?"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
-#, js-format
 msgid "Resolve Conflict for %s"
 msgstr "Yanju Ija fun %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
-#, js-format
 msgid "Manage %s License"
 msgstr "Ṣakoso Iwe-aṣẹ %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
-#, js-format
 msgid "Activate %s License"
 msgstr "Muu Iwe-aṣẹ %s ṣiṣẹ"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
-#, js-format
 msgid "More Info: %s"
 msgstr "Alaye diẹ sii: %s"
 
@@ -1083,12 +1065,10 @@ msgid "Resolve Plugin Conflict"
 msgstr "Yanju Ija Plugin"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
-#, js-format
 msgid "Free version: %s (%s)"
 msgstr "Ẹya ọfẹ: %s (%s)"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
-#, js-format
 msgid "Pro version: %s (%s)"
 msgstr "Ẹya Pro: %s (%s)"
 
@@ -1103,8 +1083,8 @@ msgstr "Pa ẹya Ọfẹ"
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
 msgid ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
-"advanced features, priority support, and exclusive benefits designed to "
-"help you get the most out of your workflow."
+"advanced features, priority support, and exclusive benefits designed to help "
+"you get the most out of your workflow."
 msgstr ""
 "Tu agbara kikun ti afikun yii pẹlu ẹya Pro. Gbadun awọn ẹya to ileri, "
 "atilẹyin pataki, ati awọn anfani alailẹgbẹ ti a ṣe apẹrẹ lati ṣe iranlọwọ "
@@ -1130,14 +1110,14 @@ msgstr "Gbigbe si Pro ki o mu iṣelọpọ rẹ pọ si"
 msgid "New version available"
 msgstr "Ẹya tuntun wa"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
-#, fuzzy, js-format
+#, fuzzy
 msgid "v%s"
 msgstr "v%s"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
-#, js-format
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
 msgid "Update available: %s → %s"
 msgstr "Imudojuiwọn wa: %s → %s"
 
@@ -1217,7 +1197,6 @@ msgid "latest"
 msgstr "tuntun"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
-#, js-format
 msgid "Update to v%s"
 msgstr "Ṣe imudojuiwọn si v%s"
 
@@ -1247,93 +1226,75 @@ msgstr "Kọlu lati gba awọn afikun"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
-#, js-format
 msgid "%s installed successfully"
 msgstr "%s ti fi sori ẹrọ ni aṣeyọri"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
-#, js-format
 msgid "%s installation failed"
 msgstr "%s fifi sori ẹrọ kuna"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
-#, js-format
 msgid "%s uninstalled successfully"
 msgstr "%s ti yọ kuro ni aṣeyọri"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
-#, js-format
 msgid "%s uninstall failed"
 msgstr "%s yọ kuro kuna"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
-#, js-format
 msgid "%s activated successfully"
 msgstr "%s ti mu ṣiṣẹ ni aṣeyọri"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
-#, js-format
 msgid "%s activation failed"
 msgstr "%s mu ṣiṣẹ kuna"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
-#, js-format
 msgid "%s deactivated successfully"
 msgstr "%s ti wa ni pipa ni aṣeyọri"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
-#, js-format
 msgid "%s deactivation failed"
 msgstr "%s pipa ko ni aṣeyọri"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
-#, js-format
 msgid "%s upgraded to Pro successfully"
 msgstr "%s ti ni ilọsiwaju si Pro ni aṣeyọri"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
-#, js-format
 msgid "%s upgrade to Pro failed"
 msgstr "%s ilọsiwaju si Pro ko ni aṣeyọri"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
-#, js-format
 msgid "Conflict resolved successfully for %s"
 msgstr "Ija ti yanju ni aṣeyọri fun %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
-#, js-format
 msgid "Failed to resolve conflict for %s"
 msgstr "Kò le yanju ija fun %s"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
-#, js-format
 msgid "%s license deactivated successfully"
 msgstr "%s iwe-aṣẹ ti wa ni pipa ni aṣeyọri"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
-#, js-format
 msgid "%s license deactivation failed"
 msgstr "%s pipa iwe-aṣẹ ko ni aṣeyọri"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
-#, js-format
 msgid "%s license activated successfully"
 msgstr "%s iwe-aṣẹ ti wa ni mu ṣiṣẹ ni aṣeyọri"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
-#, js-format
 msgid "%s license activation failed"
 msgstr "%s mu iwe-aṣẹ ṣiṣẹ ko ni aṣeyọri"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
-#, js-format
 msgid "%s updated successfully"
 msgstr "%s ti ni imudojuiwọn ni aṣeyọri"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
-#, js-format
 msgid "%s update failed"
 msgstr "%s imudojuiwọn ko ni aṣeyọri"
 

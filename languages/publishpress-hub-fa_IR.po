@@ -4,26 +4,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
+"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fa_IR\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
-"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
-"Language: fa_IR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: publishpress-hub.php:4
-#: src/Admin/Page/WelcomePageController.php:259
 #. Plugin Name of the plugin
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "هاب PublishPress"
 
-#: publishpress-hub.php:5
 #. Description of the plugin
+#: publishpress-hub.php:5
 msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
@@ -31,13 +30,13 @@ msgstr ""
 "مرکز مدیریت متمرکز برای همه افزونه‌های PublishPress - نصب، به‌روزرسانی و "
 "مدیریت مجوزها از یک داشبورد."
 
-#: publishpress-hub.php:7
 #. Author of the plugin
+#: publishpress-hub.php:7
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress-hub.php:8, fuzzy
 #. Author URI of the plugin
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -72,8 +71,8 @@ msgstr "خوش آمدید"
 msgid "Please wait while we load the welcome page..."
 msgstr "لطفاً منتظر بمانید تا صفحه خوش‌آمدگویی بارگذاری شود..."
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "هشدار: مجوز %1$s منقضی شده است. %2$s"
@@ -83,8 +82,8 @@ msgstr "هشدار: مجوز %1$s منقضی شده است. %2$s"
 msgid "Manage licenses"
 msgstr "مدیریت مجوزها"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "هشدار: %1$d پلاگین مجوزهای منقضی شده دارند: %2$s. %3$s"
@@ -97,37 +96,37 @@ msgstr "شیء باید قبل از راه‌اندازی بارگذاری شو�
 msgid "No license key found"
 msgstr "هیچ کلید مجوزی پیدا نشد"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr "پلاگین رایگان برای خانواده پلاگین: %s تنظیم نشده است"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr "پلاگین پرو برای خانواده پلاگین: %s تنظیم نشده است"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
 msgid ""
-"License activation error. Please try again later or contact support for "
-"help."
+"License activation error. Please try again later or contact support for help."
 msgstr ""
-"خطای فعال‌سازی مجوز. لطفاً بعداً دوباره تلاش کنید یا برای کمک با پشتیبانی "
-"تماس بگیرید."
+"خطای فعال‌سازی مجوز. لطفاً بعداً دوباره تلاش کنید یا برای کمک با پشتیبانی تماس "
+"بگیرید."
 
 #: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
 msgid ""
 "License deactivation error. Please try again later or contact support for "
 "help."
 msgstr ""
-"خطای غیرفعال‌سازی مجوز. لطفاً بعداً دوباره تلاش کنید یا برای کمک با "
-"پشتیبانی تماس بگیرید."
+"خطای غیرفعال‌سازی مجوز. لطفاً بعداً دوباره تلاش کنید یا برای کمک با پشتیبانی "
+"تماس بگیرید."
 
 #: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
-msgstr "این لایسنس در حال حاضر غیرفعال است. لطفاً برای کمک با پشتیبانی تماس بگیرید."
+msgstr ""
+"این لایسنس در حال حاضر غیرفعال است. لطفاً برای کمک با پشتیبانی تماس بگیرید."
 
 #: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
 msgid "This license has expired. Please contact support to renew it."
@@ -138,13 +137,12 @@ msgid ""
 "This license key is not authorized for this plugin. Please verify your "
 "license key or contact support for help."
 msgstr ""
-"این کلید مجوز برای این افزونه مجاز نیست. لطفاً کلید مجوز خود را بررسی کنید "
-"یا برای کمک با پشتیبانی تماس بگیرید."
+"این کلید مجوز برای این افزونه مجاز نیست. لطفاً کلید مجوز خود را بررسی کنید یا "
+"برای کمک با پشتیبانی تماس بگیرید."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
 msgid ""
-"This license cannot be used for this plugin. Please contact support for "
-"help."
+"This license cannot be used for this plugin. Please contact support for help."
 msgstr ""
 "این مجوز نمی‌تواند برای این افزونه استفاده شود. لطفاً برای کمک با پشتیبانی "
 "تماس بگیرید."
@@ -171,26 +169,27 @@ msgstr "هیچ کلید لایسنس ارائه نشده است. لطفاً یک
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
 msgid ""
-"Your site URL is required to activate the license. Please enter a valid "
-"site URL to continue."
+"Your site URL is required to activate the license. Please enter a valid site "
+"URL to continue."
 msgstr ""
-"آدرس URL سایت شما برای فعال‌سازی مجوز لازم است. لطفاً یک آدرس URL معتبر "
-"برای ادامه وارد کنید."
+"آدرس URL سایت شما برای فعال‌سازی مجوز لازم است. لطفاً یک آدرس URL معتبر برای "
+"ادامه وارد کنید."
 
 #: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
 msgid ""
 "License activation limit reached. Please contact support to upgrade or "
 "deactivate on another site."
 msgstr ""
-"به حد مجاز فعال‌سازی مجوز رسیده‌ایم. لطفاً برای ارتقاء یا غیرفعال‌سازی بر "
-"روی سایت دیگر با پشتیبانی تماس بگیرید."
+"به حد مجاز فعال‌سازی مجوز رسیده‌ایم. لطفاً برای ارتقاء یا غیرفعال‌سازی بر روی "
+"سایت دیگر با پشتیبانی تماس بگیرید."
 
 #: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
 msgid "This license cannot be activated. Please contact support for help."
 msgstr "این لایسنس نمی‌تواند فعال شود. لطفاً برای کمک با پشتیبانی تماس بگیرید."
 
 #: src/Domain/Plugin/Exception/LicenseServerException.php:28
-msgid "License server error. Please try again later or contact support for help."
+msgid ""
+"License server error. Please try again later or contact support for help."
 msgstr ""
 "خطای سرور لایسنس. لطفاً بعداً دوباره تلاش کنید یا برای کمک با پشتیبانی تماس "
 "بگیرید."
@@ -200,19 +199,18 @@ msgid ""
 "The license server returned an invalid response. Please try again later or "
 "contact support for help."
 msgstr ""
-"سرور مجوز یک پاسخ نامعتبر برگرداند. لطفاً بعداً دوباره تلاش کنید یا برای "
-"کمک با پشتیبانی تماس بگیرید."
+"سرور مجوز یک پاسخ نامعتبر برگرداند. لطفاً بعداً دوباره تلاش کنید یا برای کمک "
+"با پشتیبانی تماس بگیرید."
 
 #: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
-msgid "This license is inactive for this site. Please contact support for help."
+msgid ""
+"This license is inactive for this site. Please contact support for help."
 msgstr ""
-"این لایسنس برای این سایت غیرفعال است. لطفاً برای کمک با پشتیبانی تماس "
-"بگیرید."
+"این لایسنس برای این سایت غیرفعال است. لطفاً برای کمک با پشتیبانی تماس بگیرید."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
 msgid ""
-"Plugin activation failed. Please try again later or contact support for "
-"help."
+"Plugin activation failed. Please try again later or contact support for help."
 msgstr ""
 "فعال‌سازی افزونه ناموفق بود. لطفاً بعداً دوباره تلاش کنید یا برای کمک با "
 "پشتیبانی تماس بگیرید."
@@ -258,24 +256,24 @@ msgid ""
 "Plugin not found in our available plugins list. Please contact support for "
 "help."
 msgstr ""
-"افزونه در لیست افزونه‌های موجود ما پیدا نشد. لطفاً برای کمک با پشتیبانی "
-"تماس بگیرید."
+"افزونه در لیست افزونه‌های موجود ما پیدا نشد. لطفاً برای کمک با پشتیبانی تماس "
+"بگیرید."
 
 #: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
 msgid ""
 "This action is not possible because the plugin is not installed. Please "
 "install the plugin and try again."
 msgstr ""
-"این عمل ممکن نیست زیرا افزونه نصب نشده است. لطفاً افزونه را نصب کرده و "
-"دوباره تلاش کنید."
+"این عمل ممکن نیست زیرا افزونه نصب نشده است. لطفاً افزونه را نصب کرده و دوباره "
+"تلاش کنید."
 
 #: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
 msgid ""
 "Unknown license server error. Please try again later or contact support for "
 "help."
 msgstr ""
-"خطای ناشناخته سرور مجوز. لطفاً بعداً دوباره تلاش کنید یا برای کمک با "
-"پشتیبانی تماس بگیرید."
+"خطای ناشناخته سرور مجوز. لطفاً بعداً دوباره تلاش کنید یا برای کمک با پشتیبانی "
+"تماس بگیرید."
 
 #: src/Domain/Plugin/plugin-families.php:26
 msgid "Define tasks that authors must complete before publishing."
@@ -321,20 +319,20 @@ msgstr "ایجاد URL های سفارشی برای پست‌ها و لینک‌
 msgid "Create custom statuses and publishing workflows."
 msgstr "وضعیت‌های سفارشی و جریان‌های کاری انتشار ایجاد کنید."
 
-#: src/Infrastructure/Container/DependencyContainer.php:102
 #. translators: %s is the dependency ID.
+#: src/Infrastructure/Container/DependencyContainer.php:102
 #, php-format
 msgid "Dependency \"%s\" not found in container."
 msgstr "وابستگی \"%s\" در контейنر پیدا نشد."
 
-#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #, php-format
 msgid "Error validating license: %s"
 msgstr "خطا در اعتبارسنجی لایسنس: %s"
 
-#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #, php-format
 msgid "Error getting license info: %s"
 msgstr "خطا در دریافت اطلاعات لایسنس: %s"
@@ -347,8 +345,8 @@ msgstr "درخواست‌های زیادی انجام شده است. لطفاً 
 msgid "An error occurred while processing your request."
 msgstr "در حین پردازش درخواست شما خطایی رخ داد."
 
-#: src/Infrastructure/View/ViewService.php:48
 #. translators: %s is the template path
+#: src/Infrastructure/View/ViewService.php:48
 #, php-format
 msgid "Template not found: %s"
 msgstr "قالب پیدا نشد: %s"
@@ -369,8 +367,8 @@ msgstr "مسیر فایل نامعتبر: بایت خنثی شناسایی شد"
 msgid "Invalid file path: directory traversal detected"
 msgstr "مسیر فایل نامعتبر: عبور از دایرکتوری شناسایی شد"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #. translators: %s is the directory path
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "مسیر فایل نامعتبر: دایرکتوری والد وجود ندارد: %s"
@@ -391,8 +389,8 @@ msgstr "آدرس دانلود نامعتبر ارائه شده است"
 msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr "آدرس دانلود باید از پروتکل HTTP یا HTTPS استفاده کند"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #. translators: %s is the hostname
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr "آدرس دانلود از دامنه مجاز نیست: %s"
@@ -401,8 +399,8 @@ msgstr "آدرس دانلود از دامنه مجاز نیست: %s"
 msgid "Download URL failed WordPress validation"
 msgstr "آدرس دانلود اعتبارسنجی وردپرس را رد کرد"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr "دانلود افزونه ناموفق بود: %s"
@@ -427,8 +425,8 @@ msgstr ""
 "فایل دانلود شده یک آرشیو ZIP معتبر نیست. ممکن است URL دانلود یک صفحه خطا "
 "برگرداند."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "دانلود فایل افزونه ناموفق بود: %s"
@@ -437,14 +435,14 @@ msgstr "دانلود فایل افزونه ناموفق بود: %s"
 msgid "Failed to unzip plugin file"
 msgstr "دانلود فایل افزونه ناموفق بود"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "فعال‌سازی افزونه ناموفق بود: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "حذف افزونه ناموفق بود: %s"
@@ -457,8 +455,8 @@ msgstr "به روزرسانی موجود برای این پلاگین نیست"
 msgid "Invalid update information for this plugin"
 msgstr "اطلاعات به روزرسانی نامعتبر برای این پلاگین"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "به روزرسانی پلاگین ناموفق بود: %s"
@@ -467,21 +465,19 @@ msgstr "به روزرسانی پلاگین ناموفق بود: %s"
 msgid "Plugin update failed"
 msgstr "به روزرسانی پلاگین ناموفق بود"
 
-#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #. translators: %s is the error message
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #, php-format
 msgid "Failed to get plugin information: %s"
 msgstr "دریافت اطلاعات پلاگین ناموفق بود: %s"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:26
 #. translators: %s is the plugin name, %s is the rating
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:26
 msgid "If you like %s please leave us a %s rating. Thank you!"
 msgstr "اگر از %s خوشتان آمد، لطفاً به ما %s امتیاز دهید. متشکرم!"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:43
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:43
 msgid "About %s"
 msgstr "درباره %s"
 
@@ -489,9 +485,8 @@ msgstr "درباره %s"
 msgid "About"
 msgstr "درباره"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:54
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:54
 msgid "Documentation for %s"
 msgstr "مستندات برای %s"
 
@@ -499,9 +494,8 @@ msgstr "مستندات برای %s"
 msgid "Documentation"
 msgstr "مستندات"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:65
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:65
 msgid "Contact the %s team"
 msgstr "با تیم %s تماس بگیرید"
 
@@ -529,15 +523,13 @@ msgstr "نمایشگاه مؤلفه‌ها"
 msgid "N/A"
 msgstr "نامشخص"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 #. translators: %1$s is the plugin name, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 msgid "The license for %1$s expired on %2$s"
 msgstr "مجوز %1$s در تاریخ %2$s منقضی شد"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 msgid "The licenses for %1$s expired on %2$s"
 msgstr "مجوزهای %1$s در تاریخ %2$s منقضی شدند"
 
@@ -546,15 +538,13 @@ msgstr "مجوزهای %1$s در تاریخ %2$s منقضی شدند"
 msgid "Renew now"
 msgstr "همین حالا تمدید کنید"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr "مجوز برای %1$s در تاریخ %2$s منقضی می‌شود (%3$d روز باقی مانده)"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr "مجوزها برای %1$s در تاریخ %2$s منقضی می‌شوند (%3$d روز باقی مانده)"
 
@@ -595,8 +585,7 @@ msgstr "داشبورد افزونه‌ها"
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
 msgid "Hold ALT and click to force refresh the update cache"
 msgstr ""
-"کلید ALT را نگه دارید و برای مجبور کردن به تازه‌سازی کش به‌روزرسانی کلیک "
-"کنید"
+"کلید ALT را نگه دارید و برای مجبور کردن به تازه‌سازی کش به‌روزرسانی کلیک کنید"
 
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
 msgid "Force Refresh"
@@ -706,9 +695,9 @@ msgid ""
 "activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
 "the Debug Log tab to inspect the captured data."
 msgstr ""
-"هنگامی که فعال شود، تمام درخواست‌ها و پاسخ‌های HTTP به خدمات راه دور "
-"(فعال‌سازی مجوز، دانلود افزونه‌ها و غیره) در یک فایل لاگ اختصاصی ثبت "
-"می‌شود. از زبانه لاگ اشکال‌زدایی برای بررسی داده‌های ثبت شده استفاده کنید."
+"هنگامی که فعال شود، تمام درخواست‌ها و پاسخ‌های HTTP به خدمات راه دور (فعال‌سازی "
+"مجوز، دانلود افزونه‌ها و غیره) در یک فایل لاگ اختصاصی ثبت می‌شود. از زبانه لاگ "
+"اشکال‌زدایی برای بررسی داده‌های ثبت شده استفاده کنید."
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
 msgid "Enable Debug Mode"
@@ -747,7 +736,6 @@ msgid "1 request recorded"
 msgstr "1 درخواست ثبت شده است"
 
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#, js-format
 msgid "%d requests recorded"
 msgstr "%d درخواست ثبت شده است"
 
@@ -769,13 +757,13 @@ msgstr "چه کارهایی می‌توانید با PublishPress Hub انجام
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
 msgid ""
-"PublishPress Hub has everything you need to install, update, and manage "
-"your PublishPress plugins. We're here to help you build a publishing system "
-"that works perfectly for your team."
+"PublishPress Hub has everything you need to install, update, and manage your "
+"PublishPress plugins. We're here to help you build a publishing system that "
+"works perfectly for your team."
 msgstr ""
-"PublishPress Hub همه چیزهایی را که برای نصب، به‌روزرسانی و مدیریت "
-"پلاگین‌های PublishPress خود نیاز دارید، فراهم کرده است. ما اینجا هستیم تا "
-"به شما در ساخت یک سیستم نشر که به‌خوبی برای تیم شما کار کند، کمک کنیم."
+"PublishPress Hub همه چیزهایی را که برای نصب، به‌روزرسانی و مدیریت پلاگین‌های "
+"PublishPress خود نیاز دارید، فراهم کرده است. ما اینجا هستیم تا به شما در "
+"ساخت یک سیستم نشر که به‌خوبی برای تیم شما کار کند، کمک کنیم."
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:64
 msgid "Centralized Dashboard"
@@ -810,8 +798,8 @@ msgid ""
 "Connect your PublishPress licenses to easily install and activate Pro "
 "versions."
 msgstr ""
-"مجوزهای PublishPress خود را به هم متصل کنید تا به‌راحتی نسخه‌های پرو را نصب "
-"و فعال کنید."
+"مجوزهای PublishPress خود را به هم متصل کنید تا به‌راحتی نسخه‌های پرو را نصب و "
+"فعال کنید."
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:100
 msgid "Easy Updates"
@@ -820,8 +808,7 @@ msgstr "به‌روزرسانی آسان"
 #: resources/src/jsx/components/pages/welcome-page.jsx:103
 msgid "Keep all your PublishPress plugins up to date with one-click updates."
 msgstr ""
-"تمام پلاگین‌های PublishPress خود را با به‌روزرسانی‌های یک‌کلیک به‌روز "
-"نگه‌دارید."
+"تمام پلاگین‌های PublishPress خود را با به‌روزرسانی‌های یک‌کلیک به‌روز نگه‌دارید."
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:112
 msgid "Status Monitoring"
@@ -829,8 +816,7 @@ msgstr "نظارت بر وضعیت"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
 msgid ""
-"Monitor plugin activation status, detect conflicts, and ensure "
-"compatibility."
+"Monitor plugin activation status, detect conflicts, and ensure compatibility."
 msgstr ""
 "وضعیت فعال‌سازی پلاگین را نظارت کنید، تعارض‌ها را شناسایی کنید و از سازگاری "
 "اطمینان حاصل کنید."
@@ -840,8 +826,8 @@ msgid "Get Started"
 msgstr "شروع کنید"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:127
-#, js-format
-msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgid ""
+"Ready to explore? Visit the %s to see all available PublishPress plugins."
 msgstr ""
 "آماده برای کاوش هستید؟ به %s مراجعه کنید تا تمام پلاگین‌های موجود "
 "PublishPress را ببینید."
@@ -858,7 +844,7 @@ msgstr "آیا قبلاً می‌دانید چه کار می‌کنید؟ عال
 msgid "dismiss this page"
 msgstr "این صفحه را ببندید"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
 msgid "."
 msgstr "."
 
@@ -1050,48 +1036,39 @@ msgid "Check for Updates"
 msgstr "بررسی به‌روزرسانی‌ها"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
-#, js-format
 msgid "Install %s"
 msgstr "نصب %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
-#, js-format
 msgid "Install %s Pro"
 msgstr "نصب %s پرو"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
-#, js-format
 msgid "Upgrade %s to Pro"
 msgstr "ارتقاء %s به پرو"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
-#, js-format
 msgid "Uninstall %s"
 msgstr "حذف %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
-#, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "آیا مطمئن هستید که می‌خواهید %s را حذف کنید؟"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
-#, js-format
 msgid "Resolve Conflict for %s"
 msgstr "حل تعارض برای %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
-#, js-format
 msgid "Manage %s License"
 msgstr "مدیریت مجوز %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
-#, js-format
 msgid "Activate %s License"
 msgstr "فعال‌سازی مجوز %s"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
-#, js-format
 msgid "More Info: %s"
 msgstr "اطلاعات بیشتر: %s"
 
@@ -1100,12 +1077,10 @@ msgid "Resolve Plugin Conflict"
 msgstr "حل تعارض پلاگین"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
-#, js-format
 msgid "Free version: %s (%s)"
 msgstr "نسخه رایگان: %s (%s)"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
-#, js-format
 msgid "Pro version: %s (%s)"
 msgstr "نسخه پرو: %s (%s)"
 
@@ -1120,12 +1095,12 @@ msgstr "نسخه رایگان را نگه دارید"
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
 msgid ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
-"advanced features, priority support, and exclusive benefits designed to "
-"help you get the most out of your workflow."
+"advanced features, priority support, and exclusive benefits designed to help "
+"you get the most out of your workflow."
 msgstr ""
 "پتانسیل کامل این پلاگین را با نسخه پرو باز کنید. از ویژگی‌های پیشرفته، "
-"پشتیبانی اولویت‌دار و مزایای اختصاصی که به شما کمک می‌کند بیشترین بهره را "
-"از کار خود ببرید، لذت ببرید."
+"پشتیبانی اولویت‌دار و مزایای اختصاصی که به شما کمک می‌کند بیشترین بهره را از "
+"کار خود ببرید، لذت ببرید."
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
@@ -1147,14 +1122,14 @@ msgstr "به پرو ارتقا دهید و بهره‌وری خود را افز�
 msgid "New version available"
 msgstr "نسخه جدید موجود است"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
-#, fuzzy, js-format
+#, fuzzy
 msgid "v%s"
 msgstr "v%s"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
-#, js-format
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
 msgid "Update available: %s → %s"
 msgstr "به‌روزرسانی موجود: %s → %s"
 
@@ -1234,7 +1209,6 @@ msgid "latest"
 msgstr "جدیدترین"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
-#, js-format
 msgid "Update to v%s"
 msgstr "به‌روزرسانی به نسخه %s"
 
@@ -1264,93 +1238,75 @@ msgstr "خطا در دریافت افزونه‌ها"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
-#, js-format
 msgid "%s installed successfully"
 msgstr "%s با موفقیت نصب شد"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
-#, js-format
 msgid "%s installation failed"
 msgstr "%s نصب ناموفق بود"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
-#, js-format
 msgid "%s uninstalled successfully"
 msgstr "%s با موفقیت حذف نصب شد"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
-#, js-format
 msgid "%s uninstall failed"
 msgstr "%s حذف نصب ناموفق بود"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
-#, js-format
 msgid "%s activated successfully"
 msgstr "%s با موفقیت فعال شد"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
-#, js-format
 msgid "%s activation failed"
 msgstr "%s فعال‌سازی ناموفق بود"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
-#, js-format
 msgid "%s deactivated successfully"
 msgstr "%s با موفقیت غیرفعال شد"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
-#, js-format
 msgid "%s deactivation failed"
 msgstr "%s غیرفعال‌سازی ناموفق بود"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
-#, js-format
 msgid "%s upgraded to Pro successfully"
 msgstr "%s با موفقیت به نسخه Pro ارتقا یافت"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
-#, js-format
 msgid "%s upgrade to Pro failed"
 msgstr "%s ارتقا به نسخه Pro ناموفق بود"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
-#, js-format
 msgid "Conflict resolved successfully for %s"
 msgstr "تعارض برای %s با موفقیت حل شد"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
-#, js-format
 msgid "Failed to resolve conflict for %s"
 msgstr "حل تعارض برای %s ناموفق بود"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
-#, js-format
 msgid "%s license deactivated successfully"
 msgstr "%s مجوز با موفقیت غیرفعال شد"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
-#, js-format
 msgid "%s license deactivation failed"
 msgstr "%s غیرفعال‌سازی مجوز ناموفق بود"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
-#, js-format
 msgid "%s license activated successfully"
 msgstr "%s مجوز با موفقیت فعال شد"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
-#, js-format
 msgid "%s license activation failed"
 msgstr "%s فعال‌سازی مجوز ناموفق بود"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
-#, js-format
 msgid "%s updated successfully"
 msgstr "%s با موفقیت به‌روزرسانی شد"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
-#, js-format
 msgid "%s update failed"
 msgstr "%s به‌روزرسانی ناموفق بود"
 
@@ -1361,6 +1317,5 @@ msgstr ""
 "کنید."
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
-#, js-format
 msgid "Cloudflare Ray ID: %s"
 msgstr "شناسه Ray Cloudflare: %s"

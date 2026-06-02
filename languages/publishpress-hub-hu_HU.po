@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
-"POT-Creation-Date: 2026-04-16T21:46:44+00:00\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
 "PO-Revision-Date: 2026-04-15 15:19+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,8 +16,6 @@ msgstr ""
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. Plugin Name of the plugin
-#. Plugin Name of the plugin
 #. Plugin Name of the plugin
 #: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
@@ -327,7 +325,9 @@ msgid "Organize your posts into issues or series."
 msgstr "Szervezze a bejegyzéseit számokba vagy sorozatokba."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
+#, fuzzy
+#| msgid "Create shortlinks for your posts."
+msgid "Create custom URLs for your posts and external links."
 msgstr "Hozzon létre rövidlinkeket a bejegyzéseihez."
 
 #: src/Domain/Plugin/plugin-families.php:186
@@ -958,7 +958,6 @@ msgid "Pro Details"
 msgstr "Pro részletek"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Változási naplók"
@@ -1128,6 +1127,10 @@ msgstr ""
 msgid "Discover all Pro features"
 msgstr "Fedezd fel az összes Pro funkciót"
 
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "Változásnapló"
+
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"
 msgstr "Már van licenc? Telepítsd a Pro-t most"
@@ -1140,12 +1143,13 @@ msgstr "Frissíts a Pro-ra és növeld a termelékenységedet"
 msgid "New version available"
 msgstr "Új verzió érhető el"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
 msgid "v%s"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
 msgid "Update available: %s → %s"
 msgstr "Frissítés elérhető: %s → %s"
 
@@ -1334,9 +1338,6 @@ msgstr "Túl sok kérés. Kérjük, várjon néhány másodpercet, és próbálj
 #, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
-
-#~ msgid "Changelog"
-#~ msgstr "Változásnapló"
 
 #~ msgid "Version %s"
 #~ msgstr "Verzió %s"
