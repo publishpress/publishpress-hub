@@ -4,37 +4,38 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
+"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-27T15:15:46+00:00\n"
-"PO-Revision-Date: 2026-04-16 21:56+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
-"Language: ja\n"
 
-#: publishpress-hub.php:4
-#: src/Admin/Page/WelcomePageController.php:259, fuzzy
 #. Plugin Name of the plugin
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
-#: publishpress-hub.php:5
 #. Description of the plugin
+#: publishpress-hub.php:5
 msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
-msgstr "すべてのPublishPressプラグインのための集中管理ハブ - 1つのダッシュボードからインストール、更新、およびライセンスを管理します。"
+msgstr ""
+"すべてのPublishPressプラグインのための集中管理ハブ - 1つのダッシュボードから"
+"インストール、更新、およびライセンスを管理します。"
 
-#: publishpress-hub.php:7
 #. Author of the plugin
+#: publishpress-hub.php:7
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress-hub.php:8, fuzzy
 #. Author URI of the plugin
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -69,8 +70,8 @@ msgstr "ようこそ"
 msgid "Please wait while we load the welcome page..."
 msgstr "ウェルカムページを読み込んでいる間、お待ちください..."
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "警告: %1$sのライセンスが期限切れです。 %2$s"
@@ -80,8 +81,8 @@ msgstr "警告: %1$sのライセンスが期限切れです。 %2$s"
 msgid "Manage licenses"
 msgstr "ライセンスを管理"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "警告: %1$d プラグインのライセンスが期限切れです: %2$s。 %3$s"
@@ -94,29 +95,32 @@ msgstr "初期化する前にオブジェクトを読み込む必要がありま
 msgid "No license key found"
 msgstr "ライセンスキーが見つかりません"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr "プラグインファミリーに対して無料プラグインが設定されていません: %s"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr "プラグインファミリーに対してプロプラグインが設定されていません: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
 msgid ""
-"License activation error. Please try again later or contact support for "
-"help."
-msgstr "ライセンスのアクティベーションエラー。後でもう一度お試しいただくか、サポートにお問い合わせください。"
+"License activation error. Please try again later or contact support for help."
+msgstr ""
+"ライセンスのアクティベーションエラー。後でもう一度お試しいただくか、サポート"
+"にお問い合わせください。"
 
 #: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
 msgid ""
 "License deactivation error. Please try again later or contact support for "
 "help."
-msgstr "ライセンスの非アクティベーションエラー。後でもう一度お試しいただくか、サポートにお問い合わせください。"
+msgstr ""
+"ライセンスの非アクティベーションエラー。後でもう一度お試しいただくか、サポー"
+"トにお問い合わせください。"
 
 #: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
@@ -124,119 +128,160 @@ msgstr "このライセンスは現在無効です。サポートに連絡して
 
 #: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
 msgid "This license has expired. Please contact support to renew it."
-msgstr "このライセンスは期限切れです。更新するためにサポートに連絡してください。"
+msgstr ""
+"このライセンスは期限切れです。更新するためにサポートに連絡してください。"
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
 msgid ""
 "This license key is not authorized for this plugin. Please verify your "
 "license key or contact support for help."
-msgstr "このライセンスキーはこのプラグインに対して認証されていません。ライセンスキーを確認するか、サポートにお問い合わせください。"
+msgstr ""
+"このライセンスキーはこのプラグインに対して認証されていません。ライセンスキー"
+"を確認するか、サポートにお問い合わせください。"
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
 msgid ""
-"This license cannot be used for this plugin. Please contact support for "
-"help."
-msgstr "このライセンスはこのプラグインに使用できません。サポートにお問い合わせください。"
+"This license cannot be used for this plugin. Please contact support for help."
+msgstr ""
+"このライセンスはこのプラグインに使用できません。サポートにお問い合わせくださ"
+"い。"
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
 msgid ""
 "This license does not match the plugin you are trying to activate. Please "
 "contact support for assistance."
-msgstr "このライセンスは、アクティベートしようとしているプラグインと一致しません。サポートにお問い合わせください。"
+msgstr ""
+"このライセンスは、アクティベートしようとしているプラグインと一致しません。サ"
+"ポートにお問い合わせください。"
 
 #: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
 msgid ""
 "License key does not match our records. Please contact support for "
 "assistance."
-msgstr "ライセンスキーは当社の記録と一致しません。サポートにお問い合わせください。"
+msgstr ""
+"ライセンスキーは当社の記録と一致しません。サポートにお問い合わせください。"
 
 #: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
-msgstr "ライセンスキーが提供されていません。有効なライセンスキーを入力してください。"
+msgstr ""
+"ライセンスキーが提供されていません。有効なライセンスキーを入力してください。"
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
 msgid ""
-"Your site URL is required to activate the license. Please enter a valid "
-"site URL to continue."
-msgstr "ライセンスをアクティベートするには、サイトのURLが必要です。有効なサイトのURLを入力して続行してください。"
+"Your site URL is required to activate the license. Please enter a valid site "
+"URL to continue."
+msgstr ""
+"ライセンスをアクティベートするには、サイトのURLが必要です。有効なサイトのURL"
+"を入力して続行してください。"
 
 #: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
 msgid ""
 "License activation limit reached. Please contact support to upgrade or "
 "deactivate on another site."
-msgstr "ライセンスアクティベーションの制限に達しました。サポートに連絡してアップグレードするか、別のサイトで非アクティベートしてください。"
+msgstr ""
+"ライセンスアクティベーションの制限に達しました。サポートに連絡してアップグ"
+"レードするか、別のサイトで非アクティベートしてください。"
 
 #: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
 msgid "This license cannot be activated. Please contact support for help."
-msgstr "このライセンスはアクティブ化できません。サポートに連絡して助けを求めてください。"
+msgstr ""
+"このライセンスはアクティブ化できません。サポートに連絡して助けを求めてくださ"
+"い。"
 
 #: src/Domain/Plugin/Exception/LicenseServerException.php:28
-msgid "License server error. Please try again later or contact support for help."
-msgstr "ライセンスサーバーエラー。後でもう一度お試しいただくか、サポートに連絡して助けを求めてください。"
+msgid ""
+"License server error. Please try again later or contact support for help."
+msgstr ""
+"ライセンスサーバーエラー。後でもう一度お試しいただくか、サポートに連絡して助"
+"けを求めてください。"
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
 msgid ""
 "The license server returned an invalid response. Please try again later or "
 "contact support for help."
-msgstr "ライセンスサーバーが無効な応答を返しました。後でもう一度お試しいただくか、サポートにお問い合わせください。"
+msgstr ""
+"ライセンスサーバーが無効な応答を返しました。後でもう一度お試しいただくか、サ"
+"ポートにお問い合わせください。"
 
 #: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
-msgid "This license is inactive for this site. Please contact support for help."
-msgstr "このライセンスはこのサイトでは非アクティブです。サポートに連絡して助けを求めてください。"
+msgid ""
+"This license is inactive for this site. Please contact support for help."
+msgstr ""
+"このライセンスはこのサイトでは非アクティブです。サポートに連絡して助けを求め"
+"てください。"
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
 msgid ""
-"Plugin activation failed. Please try again later or contact support for "
-"help."
-msgstr "プラグインのアクティベーションに失敗しました。後でもう一度お試しいただくか、サポートにお問い合わせください。"
+"Plugin activation failed. Please try again later or contact support for help."
+msgstr ""
+"プラグインのアクティベーションに失敗しました。後でもう一度お試しいただくか、"
+"サポートにお問い合わせください。"
 
 #: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
 msgid "This action is not possible because the plugin is already installed."
-msgstr "プラグインはすでにインストールされているため、このアクションは実行できません。"
+msgstr ""
+"プラグインはすでにインストールされているため、このアクションは実行できませ"
+"ん。"
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
 msgid ""
 "Plugin deactivation failed. Please try again later or contact support for "
 "help."
-msgstr "プラグインの非アクティベーションに失敗しました。後でもう一度お試しいただくか、サポートにお問い合わせください。"
+msgstr ""
+"プラグインの非アクティベーションに失敗しました。後でもう一度お試しいただく"
+"か、サポートにお問い合わせください。"
 
 #: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
 msgid "Plugin family not found. Please contact support for help."
-msgstr "プラグインファミリーが見つかりません。サポートに連絡して助けを求めてください。"
+msgstr ""
+"プラグインファミリーが見つかりません。サポートに連絡して助けを求めてくださ"
+"い。"
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
 msgid ""
 "This action is not possible because both free and pro versions are "
 "installed. Please uninstall one version to continue."
-msgstr "無料版とプロ版の両方がインストールされているため、このアクションは実行できません。一方のバージョンをアンインストールして続行してください。"
+msgstr ""
+"無料版とプロ版の両方がインストールされているため、このアクションは実行できま"
+"せん。一方のバージョンをアンインストールして続行してください。"
 
 #: src/Domain/Plugin/Exception/PluginInstallException.php:29
 msgid "Plugin installation failed. Please contact support for help."
-msgstr "プラグインのインストールに失敗しました。サポートに連絡して助けを求めてください。"
+msgstr ""
+"プラグインのインストールに失敗しました。サポートに連絡して助けを求めてくださ"
+"い。"
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
 msgid ""
 "This action is not possible because the plugin is not activated. Please "
 "activate the plugin and try again."
-msgstr "このアクションはプラグインがアクティベートされていないため実行できません。プラグインをアクティベートして再試行してください。"
+msgstr ""
+"このアクションはプラグインがアクティベートされていないため実行できません。プ"
+"ラグインをアクティベートして再試行してください。"
 
 #: src/Domain/Plugin/Exception/PluginNotFoundException.php:29
 msgid ""
 "Plugin not found in our available plugins list. Please contact support for "
 "help."
-msgstr "利用可能なプラグインリストにプラグインが見つかりませんでした。サポートにお問い合わせください。"
+msgstr ""
+"利用可能なプラグインリストにプラグインが見つかりませんでした。サポートにお問"
+"い合わせください。"
 
 #: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
 msgid ""
 "This action is not possible because the plugin is not installed. Please "
 "install the plugin and try again."
-msgstr "このアクションはプラグインがインストールされていないため実行できません。プラグインをインストールして再試行してください。"
+msgstr ""
+"このアクションはプラグインがインストールされていないため実行できません。プラ"
+"グインをインストールして再試行してください。"
 
 #: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
 msgid ""
 "Unknown license server error. Please try again later or contact support for "
 "help."
-msgstr "不明なライセンスサーバーエラー。後でもう一度お試しいただくか、サポートにお問い合わせください。"
+msgstr ""
+"不明なライセンスサーバーエラー。後でもう一度お試しいただくか、サポートにお問"
+"い合わせください。"
 
 #: src/Domain/Plugin/plugin-families.php:26
 msgid "Define tasks that authors must complete before publishing."
@@ -275,27 +320,27 @@ msgid "Organize your posts into issues or series."
 msgstr "投稿を号またはシリーズに整理します。"
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "投稿のショートリンクを作成します。"
+msgid "Create custom URLs for your posts and external links."
+msgstr "投稿や外部リンクのためのカスタムURLを作成します。"
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
 msgstr "カスタムステータスと公開ワークフローを作成します。"
 
-#: src/Infrastructure/Container/DependencyContainer.php:102
 #. translators: %s is the dependency ID.
+#: src/Infrastructure/Container/DependencyContainer.php:102
 #, php-format
 msgid "Dependency \"%s\" not found in container."
 msgstr "依存関係 \"%s\" がコンテナ内に見つかりません。"
 
-#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #, php-format
 msgid "Error validating license: %s"
 msgstr "ライセンスの検証中にエラーが発生しました: %s"
 
-#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #, php-format
 msgid "Error getting license info: %s"
 msgstr "ライセンス情報の取得中にエラーが発生しました: %s"
@@ -308,8 +353,8 @@ msgstr "リクエストが多すぎます。後でもう一度お試しくださ
 msgid "An error occurred while processing your request."
 msgstr "リクエストの処理中にエラーが発生しました。"
 
-#: src/Infrastructure/View/ViewService.php:48
 #. translators: %s is the template path
+#: src/Infrastructure/View/ViewService.php:48
 #, php-format
 msgid "Template not found: %s"
 msgstr "テンプレートが見つかりません: %s"
@@ -330,8 +375,8 @@ msgstr "無効なファイルパス：ヌルバイトが検出されました"
 msgid "Invalid file path: directory traversal detected"
 msgstr "無効なファイルパス：ディレクトリトラバーサルが検出されました"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #. translators: %s is the directory path
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "無効なファイルパス：親ディレクトリが存在しません：%s"
@@ -342,7 +387,8 @@ msgstr "無効なファイルパス：パスを解決できません"
 
 #: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:239
 msgid "Invalid file path: operation not allowed outside permitted directories"
-msgstr "無効なファイルパス：許可されたディレクトリ外での操作は許可されていません"
+msgstr ""
+"無効なファイルパス：許可されたディレクトリ外での操作は許可されていません"
 
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:52
 msgid "Invalid download URL provided"
@@ -352,8 +398,8 @@ msgstr "無効なダウンロードURLが提供されました"
 msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr "ダウンロードURLはHTTPまたはHTTPSプロトコルを使用する必要があります"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #. translators: %s is the hostname
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr "ダウンロードURLは許可されたドメインからではありません：%s"
@@ -362,8 +408,8 @@ msgstr "ダウンロードURLは許可されたドメインからではありま
 msgid "Download URL failed WordPress validation"
 msgstr "ダウンロードURLがWordPressの検証に失敗しました"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr "プラグインのダウンロードに失敗しました：%s"
@@ -384,10 +430,12 @@ msgstr "ダウンロードしたプラグインファイルを読み取ること
 msgid ""
 "Downloaded file is not a valid ZIP archive. The download URL may be "
 "returning an error page."
-msgstr "ダウンロードしたファイルは有効なZIPアーカイブではありません。ダウンロードURLがエラーページを返している可能性があります。"
+msgstr ""
+"ダウンロードしたファイルは有効なZIPアーカイブではありません。ダウンロードURL"
+"がエラーページを返している可能性があります。"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "プラグインファイルの解凍に失敗しました：%s"
@@ -396,14 +444,14 @@ msgstr "プラグインファイルの解凍に失敗しました：%s"
 msgid "Failed to unzip plugin file"
 msgstr "プラグインファイルの解凍に失敗しました"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "プラグインの有効化に失敗しました：%s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "プラグインの削除に失敗しました：%s"
@@ -416,8 +464,8 @@ msgstr "このプラグインに利用可能な更新はありません"
 msgid "Invalid update information for this plugin"
 msgstr "このプラグインの更新情報が無効です"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "プラグインの更新に失敗しました: %s"
@@ -426,21 +474,19 @@ msgstr "プラグインの更新に失敗しました: %s"
 msgid "Plugin update failed"
 msgstr "プラグインの更新に失敗しました"
 
-#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #. translators: %s is the error message
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #, php-format
 msgid "Failed to get plugin information: %s"
 msgstr "プラグイン情報の取得に失敗しました: %s"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:26
 #. translators: %s is the plugin name, %s is the rating
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:26
 msgid "If you like %s please leave us a %s rating. Thank you!"
 msgstr "%sが気に入ったら、%sの評価をお願いします。ありがとうございます！"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:43
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:43
 msgid "About %s"
 msgstr "%sについて"
 
@@ -448,9 +494,8 @@ msgstr "%sについて"
 msgid "About"
 msgstr "について"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:54
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:54
 msgid "Documentation for %s"
 msgstr "%sのドキュメント"
 
@@ -458,9 +503,8 @@ msgstr "%sのドキュメント"
 msgid "Documentation"
 msgstr "ドキュメント"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:65
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:65
 msgid "Contact the %s team"
 msgstr "%sチームに連絡する"
 
@@ -488,15 +532,13 @@ msgstr "コンポーネントショーケース"
 msgid "N/A"
 msgstr "該当なし"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 #. translators: %1$s is the plugin name, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 msgid "The license for %1$s expired on %2$s"
 msgstr "%1$sのライセンスは%2$sに期限切れです"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 msgid "The licenses for %1$s expired on %2$s"
 msgstr "%1$sのライセンスは%2$sに期限切れです"
 
@@ -505,15 +547,13 @@ msgstr "%1$sのライセンスは%2$sに期限切れです"
 msgid "Renew now"
 msgstr "今すぐ更新"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr "%1$sのライセンスは%2$sに期限切れになります（残り%3$d日）"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr "%1$sのライセンスは%2$sに期限切れになります（残り%3$d日）"
 
@@ -553,7 +593,8 @@ msgstr "プラグインダッシュボード"
 
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
 msgid "Hold ALT and click to force refresh the update cache"
-msgstr "ALTキーを押しながらクリックして、更新キャッシュを強制的にリフレッシュします"
+msgstr ""
+"ALTキーを押しながらクリックして、更新キャッシュを強制的にリフレッシュします"
 
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
 msgid "Force Refresh"
@@ -633,7 +674,9 @@ msgstr "ログを読み込んでいます..."
 msgid ""
 "The debug log is empty. Perform some actions (e.g. activate a license) and "
 "refresh to see entries."
-msgstr "デバッグログは空です。いくつかのアクション（例：ライセンスのアクティベート）を実行して、エントリを表示するために更新してください。"
+msgstr ""
+"デバッグログは空です。いくつかのアクション（例：ライセンスのアクティベート）"
+"を実行して、エントリを表示するために更新してください。"
 
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
 msgid "Debug log contents"
@@ -661,8 +704,10 @@ msgid ""
 "activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
 "the Debug Log tab to inspect the captured data."
 msgstr ""
-"有効化されると、リモートサービスへのすべてのHTTPリクエストおよびレスポンス（ライセンスのアクティベーション、プラグインのダウンロードなど）が専用のロ"
-"グファイルに記録されます。キャプチャされたデータを確認するには、デバッグログタブを使用してください。"
+"有効化されると、リモートサービスへのすべてのHTTPリクエストおよびレスポンス"
+"（ライセンスのアクティベーション、プラグインのダウンロードなど）が専用のログ"
+"ファイルに記録されます。キャプチャされたデータを確認するには、デバッグログタ"
+"ブを使用してください。"
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
 msgid "Enable Debug Mode"
@@ -672,9 +717,11 @@ msgstr "デバッグモードを有効にする"
 msgid ""
 "Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
 "data."
-msgstr "デバッグログがアクティブです。キャプチャされたデータを表示するには「デバッグログ」タブに切り替えてください。"
+msgstr ""
+"デバッグログがアクティブです。キャプチャされたデータを表示するには「デバッグ"
+"ログ」タブに切り替えてください。"
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70, fuzzy
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
 msgid "ERR"
 msgstr "ERR"
 
@@ -699,7 +746,6 @@ msgid "1 request recorded"
 msgstr "1件のリクエストが記録されました"
 
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#, js-format
 msgid "%d requests recorded"
 msgstr "%d件のリクエストが記録されました"
 
@@ -721,13 +767,13 @@ msgstr "PublishPress Hubでできること"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
 msgid ""
-"PublishPress Hub has everything you need to install, update, and manage "
-"your PublishPress plugins. We're here to help you build a publishing system "
-"that works perfectly for your team."
+"PublishPress Hub has everything you need to install, update, and manage your "
+"PublishPress plugins. We're here to help you build a publishing system that "
+"works perfectly for your team."
 msgstr ""
-"PublishPress "
-"Hubには、PublishPressプラグインのインストール、更新、管理に必要なすべてがあります。私たちは、あなたのチームに最適な出版システムを構築する"
-"お手伝いをします。"
+"PublishPress Hubには、PublishPressプラグインのインストール、更新、管理に必要"
+"なすべてがあります。私たちは、あなたのチームに最適な出版システムを構築するお"
+"手伝いをします。"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:64
 msgid "Centralized Dashboard"
@@ -737,7 +783,9 @@ msgstr "集中ダッシュボード"
 msgid ""
 "View all your PublishPress plugins with their licenses, versions, and key "
 "details."
-msgstr "ライセンス、バージョン、主要な詳細とともにすべてのPublishPressプラグインを表示します。"
+msgstr ""
+"ライセンス、バージョン、主要な詳細とともにすべてのPublishPressプラグインを表"
+"示します。"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:76
 msgid "One-Click Installation"
@@ -747,7 +795,9 @@ msgstr "ワンクリックインストール"
 msgid ""
 "Install free PublishPress plugins directly from the Hub without visiting "
 "WordPress.org."
-msgstr "WordPress.orgを訪れることなく、Hubから直接無料のPublishPressプラグインをインストールします。"
+msgstr ""
+"WordPress.orgを訪れることなく、Hubから直接無料のPublishPressプラグインをイン"
+"ストールします。"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:88
 msgid "License Management"
@@ -757,7 +807,9 @@ msgstr "ライセンス管理"
 msgid ""
 "Connect your PublishPress licenses to easily install and activate Pro "
 "versions."
-msgstr "あなたのPublishPressライセンスを接続して、Proバージョンを簡単にインストールおよびアクティブ化します。"
+msgstr ""
+"あなたのPublishPressライセンスを接続して、Proバージョンを簡単にインストールお"
+"よびアクティブ化します。"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:100
 msgid "Easy Updates"
@@ -773,18 +825,21 @@ msgstr "ステータス監視"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
 msgid ""
-"Monitor plugin activation status, detect conflicts, and ensure "
-"compatibility."
-msgstr "プラグインのアクティベーション状況を監視し、競合を検出し、互換性を確認します。"
+"Monitor plugin activation status, detect conflicts, and ensure compatibility."
+msgstr ""
+"プラグインのアクティベーション状況を監視し、競合を検出し、互換性を確認しま"
+"す。"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:124
 msgid "Get Started"
 msgstr "始める"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:127
-#, js-format
-msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
-msgstr "探検する準備はできましたか？%sを訪れて、すべての利用可能なPublishPressプラグインを確認してください。"
+msgid ""
+"Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgstr ""
+"探検する準備はできましたか？%sを訪れて、すべての利用可能なPublishPressプラグ"
+"インを確認してください。"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:142
 msgid "View Plugins Dashboard"
@@ -877,8 +932,9 @@ msgid ""
 "Select how you would like to install this plugin. You can install the Pro "
 "version if you have a license, or the Free version to get started."
 msgstr ""
-"このプラグインをどのようにインストールするかを選択してください。ライセンスがある場合はProバージョンをインストールできますし、始めるには無料バージョン"
-"を選択できます。"
+"このプラグインをどのようにインストールするかを選択してください。ライセンスが"
+"ある場合はProバージョンをインストールできますし、始めるには無料バージョンを選"
+"択できます。"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
@@ -891,7 +947,6 @@ msgid "Pro Details"
 msgstr "Proの詳細"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "変更履歴"
@@ -914,8 +969,9 @@ msgid ""
 "Enter your license key to activate the Pro version of this plugin. You can "
 "find your license key in your PublishPress account dashboard."
 msgstr ""
-"このプラグインのProバージョンをアクティブ化するには、ライセンスキーを入力してください。ライセンスキーは、あなたのPublishPressアカウントの"
-"ダッシュボードにあります。"
+"このプラグインのProバージョンをアクティブ化するには、ライセンスキーを入力して"
+"ください。ライセンスキーは、あなたのPublishPressアカウントのダッシュボードに"
+"あります。"
 
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
@@ -991,48 +1047,39 @@ msgid "Check for Updates"
 msgstr "更新をチェック"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
-#, js-format
 msgid "Install %s"
 msgstr "%sをインストール"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
-#, js-format
 msgid "Install %s Pro"
 msgstr "%s Proをインストール"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
-#, js-format
 msgid "Upgrade %s to Pro"
 msgstr "%sをProにアップグレード"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
-#, js-format
 msgid "Uninstall %s"
 msgstr "%sをアンインストール"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
-#, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "%sをアンインストールしてもよろしいですか？"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
-#, js-format
 msgid "Resolve Conflict for %s"
 msgstr "%sの競合を解決"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
-#, js-format
 msgid "Manage %s License"
 msgstr "%sライセンスを管理"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
-#, js-format
 msgid "Activate %s License"
 msgstr "%sライセンスを有効化"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
-#, js-format
 msgid "More Info: %s"
 msgstr "詳細情報：%s"
 
@@ -1041,12 +1088,10 @@ msgid "Resolve Plugin Conflict"
 msgstr "プラグインの競合を解決"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
-#, js-format
 msgid "Free version: %s (%s)"
 msgstr "無料版：%s (%s)"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
-#, js-format
 msgid "Pro version: %s (%s)"
 msgstr "Pro版：%s (%s)"
 
@@ -1061,15 +1106,20 @@ msgstr "無料版を維持する"
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
 msgid ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
-"advanced features, priority support, and exclusive benefits designed to "
-"help you get the most out of your workflow."
+"advanced features, priority support, and exclusive benefits designed to help "
+"you get the most out of your workflow."
 msgstr ""
-"Proバージョンでこのプラグインの完全な機能を引き出します。高度な機能、優先サポート、およびワークフローを最大限に活用するために設計された独自の特典をお"
-"楽しみください。"
+"Proバージョンでこのプラグインの完全な機能を引き出します。高度な機能、優先サ"
+"ポート、およびワークフローを最大限に活用するために設計された独自の特典をお楽"
+"しみください。"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "すべてのPro機能を発見する"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "変更履歴"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"
@@ -1083,14 +1133,14 @@ msgstr "Proにアップグレードして生産性を向上させる"
 msgid "New version available"
 msgstr "新しいバージョンが利用可能です"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
-#, fuzzy, js-format
+#, fuzzy
 msgid "v%s"
 msgstr "v%s"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
-#, js-format
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
 msgid "Update available: %s → %s"
 msgstr "更新が利用可能です：%s → %s"
 
@@ -1170,7 +1220,6 @@ msgid "latest"
 msgstr "最新"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
-#, js-format
 msgid "Update to v%s"
 msgstr "v%sにアップデート"
 
@@ -1200,93 +1249,75 @@ msgstr "プラグインの取得に失敗しました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
-#, js-format
 msgid "%s installed successfully"
 msgstr "%sが正常にインストールされました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
-#, js-format
 msgid "%s installation failed"
 msgstr "%sのインストールに失敗しました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
-#, js-format
 msgid "%s uninstalled successfully"
 msgstr "%sが正常にアンインストールされました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
-#, js-format
 msgid "%s uninstall failed"
 msgstr "%sのアンインストールに失敗しました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
-#, js-format
 msgid "%s activated successfully"
 msgstr "%sが正常に有効化されました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
-#, js-format
 msgid "%s activation failed"
 msgstr "%sの有効化に失敗しました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
-#, js-format
 msgid "%s deactivated successfully"
 msgstr "%s が正常に無効化されました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
-#, js-format
 msgid "%s deactivation failed"
 msgstr "%s の無効化に失敗しました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
-#, js-format
 msgid "%s upgraded to Pro successfully"
 msgstr "%s が正常に Pro にアップグレードされました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
-#, js-format
 msgid "%s upgrade to Pro failed"
 msgstr "%s の Pro へのアップグレードに失敗しました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
-#, js-format
 msgid "Conflict resolved successfully for %s"
 msgstr "%s の競合が正常に解決されました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
-#, js-format
 msgid "Failed to resolve conflict for %s"
 msgstr "%s の競合の解決に失敗しました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
-#, js-format
 msgid "%s license deactivated successfully"
 msgstr "%s のライセンスが正常に無効化されました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
-#, js-format
 msgid "%s license deactivation failed"
 msgstr "%s のライセンスの無効化に失敗しました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
-#, js-format
 msgid "%s license activated successfully"
 msgstr "%s のライセンスが正常に有効化されました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
-#, js-format
 msgid "%s license activation failed"
 msgstr "%s のライセンスの有効化に失敗しました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
-#, js-format
 msgid "%s updated successfully"
 msgstr "%s が正常に更新されました"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
-#, js-format
 msgid "%s update failed"
 msgstr "%s の更新に失敗しました"
 
@@ -1295,6 +1326,6 @@ msgid "Too many requests. Please wait a few seconds and try again."
 msgstr "リクエストが多すぎます。数秒待ってから再試行してください。"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
-#, fuzzy, js-format
+#, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"

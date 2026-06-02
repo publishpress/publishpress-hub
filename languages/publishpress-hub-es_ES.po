@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
-"POT-Creation-Date: 2026-04-15T21:04:03+00:00\n"
-"PO-Revision-Date: 2026-04-15 17:15+0200\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
+"PO-Revision-Date: 2026-06-02 07:33+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Domain: publishpress-hub\n"
 
 #. Plugin Name of the plugin
-#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259, fuzzy
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
@@ -35,7 +35,7 @@ msgid "PublishPress"
 msgstr "PublishPress"
 
 #. Author URI of the plugin
-#: publishpress-hub.php:8, fuzzy
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -323,8 +323,8 @@ msgid "Organize your posts into issues or series."
 msgstr "Organiza tus entradas en ediciones o series."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "Crea enlaces cortos para tus entradas."
+msgid "Create custom URLs for your posts and external links."
+msgstr "Crea las URL personalizadas para tus entradas y los enlaces externos."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
@@ -864,7 +864,7 @@ msgstr "¿Ya sabes lo que vas a hacer? ¡Genial! Puedes "
 msgid "dismiss this page"
 msgstr "descartar esta página"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
 msgid "."
 msgstr "."
 
@@ -947,17 +947,17 @@ msgstr ""
 "si tienes una licencia, o la versión gratuita para empezar."
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:138
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
 msgid "Free Details"
 msgstr "Detalles del gratuito"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:146
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
 msgid "Pro Details"
 msgstr "Detalles Pro"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:155
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Registros de cambios"
 
@@ -1023,7 +1023,8 @@ msgstr "Desactivar la clave de licencia para este sitio"
 
 #: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:54
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
 msgid "Unknown"
 msgstr "Desconocido"
 
@@ -1142,11 +1143,13 @@ msgstr "Mejora a Pro y potencia tu productividad"
 msgid "New version available"
 msgstr "Nueva versión disponible"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
-msgid "Version %s"
-msgstr "Versión %s"
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
+msgid "v%s"
+msgstr "v%s"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
 msgid "Update available: %s → %s"
 msgstr "Actualización disponible: %s → %s"
 
@@ -1199,34 +1202,35 @@ msgstr "Actualización disponible"
 msgid "Expires"
 msgstr "Caduca"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
-msgid "latest"
-msgstr "última"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:60
-msgid "Update to v%s"
-msgstr "Actualizar a v%s"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:77
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:96
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
 msgid "Renew"
 msgstr "Renovar"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:106
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
 msgid "Deactivate"
 msgstr "Desactivar"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:115
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
 msgid "Activate"
 msgstr "Activar"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
 msgid "Uninstall"
 msgstr "Desinstalar"
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:163
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
 msgid "More Info"
 msgstr "Más información"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
+msgid "latest"
+msgstr "última"
+
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+msgid "Update to v%s"
+msgstr "Actualizar a v%s"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
 msgid "This plugin is not installed."
@@ -1334,6 +1338,9 @@ msgstr ""
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
 msgid "Cloudflare Ray ID: %s"
 msgstr "ID Cloudflare Ray: %s"
+
+#~ msgid "Version %s"
+#~ msgstr "Versión %s"
 
 #~ msgctxt "block title"
 #~ msgid "Widget Group"

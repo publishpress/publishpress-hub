@@ -1,10 +1,11 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[UNRELEASED]
+[1.0.5] - 02 Jun, 2026
 
-- Fixed: Require WordPress plugin management capabilities for Hub install, uninstall, activate, deactivate, upgrade, and update REST endpoints.
-- Fixed: Resolved licensing issues with PublishPress Shortlinks Pro (#163).
+- Fixed: Addressed issues with PublishPress Shortlinks Pro plugin references (#163).
+- Fixed: Enhanced and updated translations.
+- Security: Require WordPress plugin management capabilities for Hub install, uninstall, activate, deactivate, upgrade, and update REST endpoints.
 
 [1.0.4] - 16 Apr, 2026
 

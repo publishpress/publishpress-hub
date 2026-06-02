@@ -4,26 +4,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
+"PO-Revision-Date: 2026-06-01 20:26+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-14T19:28:02+00:00\n"
-"PO-Revision-Date: 2026-04-16 21:57+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
-"Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: publishpress-hub.php:4
-#: src/Admin/Page/WelcomePageController.php:259, fuzzy
 #. Plugin Name of the plugin
+#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
-#: publishpress-hub.php:5
 #. Description of the plugin
+#: publishpress-hub.php:5
 msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
@@ -31,13 +30,13 @@ msgstr ""
 "Tüm PublishPress eklentileri için merkezi yönetim merkezi - tek bir kontrol "
 "panelinden yükleyin, güncelleyin ve lisansları yönetin."
 
-#: publishpress-hub.php:7
 #. Author of the plugin
+#: publishpress-hub.php:7
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress-hub.php:8, fuzzy
 #. Author URI of the plugin
+#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -72,8 +71,8 @@ msgstr "Hoş geldiniz"
 msgid "Please wait while we load the welcome page..."
 msgstr "Hoş geldiniz sayfası yüklenirken lütfen bekleyin..."
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "Uyarı: %1$s için lisans süresi dolmuş. %2$s"
@@ -83,8 +82,8 @@ msgstr "Uyarı: %1$s için lisans süresi dolmuş. %2$s"
 msgid "Manage licenses"
 msgstr "Lisansları yönet"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "Uyarı: %1$d eklentinin lisansı süresi dolmuş: %2$s. %3$s"
@@ -97,22 +96,21 @@ msgstr "Nesne başlatmadan önce yüklenmelidir."
 msgid "No license key found"
 msgstr "Lisans anahtarı bulunamadı"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:128
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr "Eklenti ailesi için ücretsiz eklenti ayarlanmamış: %s"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #. translators: %s is the plugin family slug
+#: src/Domain/Plugin/Entity/PluginFamily.php:150
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr "Eklenti ailesi için pro eklenti ayarlanmamış: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
 msgid ""
-"License activation error. Please try again later or contact support for "
-"help."
+"License activation error. Please try again later or contact support for help."
 msgstr ""
 "Lisans etkinleştirme hatası. Lütfen daha sonra tekrar deneyin veya yardım "
 "için destekle iletişime geçin."
@@ -133,7 +131,8 @@ msgstr ""
 
 #: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
 msgid "This license has expired. Please contact support to renew it."
-msgstr "Bu lisansın süresi dolmuş. Yenilemek için lütfen destekle iletişime geçin."
+msgstr ""
+"Bu lisansın süresi dolmuş. Yenilemek için lütfen destekle iletişime geçin."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
 msgid ""
@@ -145,11 +144,9 @@ msgstr ""
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
 msgid ""
-"This license cannot be used for this plugin. Please contact support for "
-"help."
+"This license cannot be used for this plugin. Please contact support for help."
 msgstr ""
-"Bu lisans bu eklenti için kullanılamaz. Yardım için destekle iletişime "
-"geçin."
+"Bu lisans bu eklenti için kullanılamaz. Yardım için destekle iletişime geçin."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
 msgid ""
@@ -169,12 +166,13 @@ msgstr ""
 
 #: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
-msgstr "Hiçbir lisans anahtarı sağlanmadı. Lütfen geçerli bir lisans anahtarı girin."
+msgstr ""
+"Hiçbir lisans anahtarı sağlanmadı. Lütfen geçerli bir lisans anahtarı girin."
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
 msgid ""
-"Your site URL is required to activate the license. Please enter a valid "
-"site URL to continue."
+"Your site URL is required to activate the license. Please enter a valid site "
+"URL to continue."
 msgstr ""
 "Lisansı etkinleştirmek için sitenizin URL'si gereklidir. Devam etmek için "
 "geçerli bir site URL'si girin."
@@ -194,7 +192,8 @@ msgstr ""
 "geçin."
 
 #: src/Domain/Plugin/Exception/LicenseServerException.php:28
-msgid "License server error. Please try again later or contact support for help."
+msgid ""
+"License server error. Please try again later or contact support for help."
 msgstr ""
 "Lisans sunucusu hatası. Lütfen daha sonra tekrar deneyin veya yardım için "
 "destekle iletişime geçin."
@@ -208,15 +207,15 @@ msgstr ""
 "veya yardım için destekle iletişime geçin."
 
 #: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
-msgid "This license is inactive for this site. Please contact support for help."
+msgid ""
+"This license is inactive for this site. Please contact support for help."
 msgstr ""
 "Bu lisans bu site için pasif durumda. Yardım almak için lütfen destekle "
 "iletişime geçin."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
 msgid ""
-"Plugin activation failed. Please try again later or contact support for "
-"help."
+"Plugin activation failed. Please try again later or contact support for help."
 msgstr ""
 "Eklenti etkinleştirme başarısız oldu. Lütfen daha sonra tekrar deneyin veya "
 "yardım için destekle iletişime geçin."
@@ -236,8 +235,7 @@ msgstr ""
 #: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
 msgid "Plugin family not found. Please contact support for help."
 msgstr ""
-"Eklenti ailesi bulunamadı. Yardım almak için lütfen destekle iletişime "
-"geçin."
+"Eklenti ailesi bulunamadı. Yardım almak için lütfen destekle iletişime geçin."
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
 msgid ""
@@ -250,24 +248,24 @@ msgstr ""
 #: src/Domain/Plugin/Exception/PluginInstallException.php:29
 msgid "Plugin installation failed. Please contact support for help."
 msgstr ""
-"Eklenti kurulumu başarısız oldu. Yardım almak için lütfen destekle "
-"iletişime geçin."
+"Eklenti kurulumu başarısız oldu. Yardım almak için lütfen destekle iletişime "
+"geçin."
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
 msgid ""
 "This action is not possible because the plugin is not activated. Please "
 "activate the plugin and try again."
 msgstr ""
-"Bu işlem, eklenti etkinleştirilmediği için mümkün değildir. Lütfen "
-"eklentiyi etkinleştirin ve tekrar deneyin."
+"Bu işlem, eklenti etkinleştirilmediği için mümkün değildir. Lütfen eklentiyi "
+"etkinleştirin ve tekrar deneyin."
 
 #: src/Domain/Plugin/Exception/PluginNotFoundException.php:29
 msgid ""
 "Plugin not found in our available plugins list. Please contact support for "
 "help."
 msgstr ""
-"Eklentilerimiz listesinde eklenti bulunamadı. Yardım için destekle "
-"iletişime geçin."
+"Eklentilerimiz listesinde eklenti bulunamadı. Yardım için destekle iletişime "
+"geçin."
 
 #: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
 msgid ""
@@ -322,27 +320,27 @@ msgid "Organize your posts into issues or series."
 msgstr "Gönderilerinizi sayılara veya serilere organize edin."
 
 #: src/Domain/Plugin/plugin-families.php:170
-msgid "Create shortlinks for your posts."
-msgstr "Gönderileriniz için kısayollar oluşturun."
+msgid "Create custom URLs for your posts and external links."
+msgstr "Gönderileriniz ve dış bağlantılarınız için özel URL'ler oluşturun."
 
 #: src/Domain/Plugin/plugin-families.php:186
 msgid "Create custom statuses and publishing workflows."
 msgstr "Özel durumlar ve yayımlama iş akışları oluşturun."
 
-#: src/Infrastructure/Container/DependencyContainer.php:102
 #. translators: %s is the dependency ID.
+#: src/Infrastructure/Container/DependencyContainer.php:102
 #, php-format
 msgid "Dependency \"%s\" not found in container."
 msgstr "Bağımlılık \"%s\" konteynerde bulunamadı."
 
-#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
 #, php-format
 msgid "Error validating license: %s"
 msgstr "Lisans doğrulama hatası: %s"
 
-#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #. translators: %s is the error message
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
 #, php-format
 msgid "Error getting license info: %s"
 msgstr "Lisans bilgisi alma hatası: %s"
@@ -355,8 +353,8 @@ msgstr "Çok fazla istek. Lütfen daha sonra tekrar deneyin."
 msgid "An error occurred while processing your request."
 msgstr "İsteğinizi işlerken bir hata oluştu."
 
-#: src/Infrastructure/View/ViewService.php:48
 #. translators: %s is the template path
+#: src/Infrastructure/View/ViewService.php:48
 #, php-format
 msgid "Template not found: %s"
 msgstr "Şablon bulunamadı: %s"
@@ -377,8 +375,8 @@ msgstr "Geçersiz dosya yolu: null byte tespit edildi"
 msgid "Invalid file path: directory traversal detected"
 msgstr "Geçersiz dosya yolu: dizin geçişi tespit edildi"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #. translators: %s is the directory path
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "Geçersiz dosya yolu: üst dizin mevcut değil: %s"
@@ -399,8 +397,8 @@ msgstr "Geçersiz indirme URL'si verildi"
 msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr "İndirme URL'si HTTP veya HTTPS protokolünü kullanmalıdır"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #. translators: %s is the hostname
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr "İndirme URL'si izin verilen bir alan adından değil: %s"
@@ -409,8 +407,8 @@ msgstr "İndirme URL'si izin verilen bir alan adından değil: %s"
 msgid "Download URL failed WordPress validation"
 msgstr "İndirme URL'si WordPress doğrulamasını geçemedi"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr "Eklentiyi indirmek başarısız oldu: %s"
@@ -435,8 +433,8 @@ msgstr ""
 "İndirilen dosya geçerli bir ZIP arşivi değildir. İndirme URL'si bir hata "
 "sayfası döndürüyor olabilir."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "Eklenti dosyasını açmada başarısız oldu: %s"
@@ -445,14 +443,14 @@ msgstr "Eklenti dosyasını açmada başarısız oldu: %s"
 msgid "Failed to unzip plugin file"
 msgstr "Eklenti dosyasını açmada başarısız oldu"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "Eklentiyi etkinleştirmede başarısız oldu: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "Eklentiyi silmede başarısız oldu: %s"
@@ -465,8 +463,8 @@ msgstr "Bu eklenti için güncelleme mevcut değil"
 msgid "Invalid update information for this plugin"
 msgstr "Bu eklenti için geçersiz güncelleme bilgisi"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "Eklenti güncellemesi başarısız oldu: %s"
@@ -475,21 +473,19 @@ msgstr "Eklenti güncellemesi başarısız oldu: %s"
 msgid "Plugin update failed"
 msgstr "Eklenti güncellemesi başarısız"
 
-#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #. translators: %s is the error message
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
 #, php-format
 msgid "Failed to get plugin information: %s"
 msgstr "Eklenti bilgilerini almakta başarısız oldu: %s"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:26
 #. translators: %s is the plugin name, %s is the rating
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:26
 msgid "If you like %s please leave us a %s rating. Thank you!"
 msgstr "Eğer %s'yi beğendiyseniz, lütfen bize %s puanı bırakın. Teşekkürler!"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:43
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:43
 msgid "About %s"
 msgstr "%s Hakkında"
 
@@ -497,9 +493,8 @@ msgstr "%s Hakkında"
 msgid "About"
 msgstr "Hakkında"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:54
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:54
 msgid "Documentation for %s"
 msgstr "%s için Dokümantasyon"
 
@@ -507,9 +502,8 @@ msgstr "%s için Dokümantasyon"
 msgid "Documentation"
 msgstr "Dokümantasyon"
 
-#: resources/src/jsx/components/admin-page/footer.jsx:65
 #. translators: %s is the plugin name
-#, js-format
+#: resources/src/jsx/components/admin-page/footer.jsx:65
 msgid "Contact the %s team"
 msgstr "%s ekibiyle iletişime geçin"
 
@@ -537,15 +531,13 @@ msgstr "Bileşenler Vitrini"
 msgid "N/A"
 msgstr "Geçersiz"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 #. translators: %1$s is the plugin name, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
 msgid "The license for %1$s expired on %2$s"
 msgstr "%1$s için lisans %2$s tarihinde sona erdi"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
 msgid "The licenses for %1$s expired on %2$s"
 msgstr "%1$s için lisanslar %2$s tarihinde sona erdi"
 
@@ -554,15 +546,13 @@ msgstr "%1$s için lisanslar %2$s tarihinde sona erdi"
 msgid "Renew now"
 msgstr "Şimdi yenile"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr "%1$s için lisans %2$s tarihinde sona eriyor (%3$d gün kaldı)"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
-#, js-format
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr "%1$s için lisanslar %2$s tarihinde sona eriyor (%3$d gün kaldı)"
 
@@ -695,8 +685,7 @@ msgstr "Hata ayıklama günlüğü içerikleri"
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
 msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
 msgstr ""
-"Hata ayıklama modu etkin. Artık bir \"Hata Ayıklama Günlüğü\" sekmesi "
-"mevcut."
+"Hata ayıklama modu etkin. Artık bir \"Hata Ayıklama Günlüğü\" sekmesi mevcut."
 
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
 msgid "Debug mode disabled."
@@ -758,7 +747,6 @@ msgid "1 request recorded"
 msgstr "1 istek kaydedildi"
 
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#, js-format
 msgid "%d requests recorded"
 msgstr "%d istek kaydedildi"
 
@@ -780,9 +768,9 @@ msgstr "PublishPress Hub ile neler yapabilirsiniz"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
 msgid ""
-"PublishPress Hub has everything you need to install, update, and manage "
-"your PublishPress plugins. We're here to help you build a publishing system "
-"that works perfectly for your team."
+"PublishPress Hub has everything you need to install, update, and manage your "
+"PublishPress plugins. We're here to help you build a publishing system that "
+"works perfectly for your team."
 msgstr ""
 "PublishPress Hub, PublishPress eklentilerinizi kurmak, güncellemek ve "
 "yönetmek için ihtiyaç duyduğunuz her şeye sahiptir. Ekibiniz için mükemmel "
@@ -838,8 +826,7 @@ msgstr "Durum İzleme"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
 msgid ""
-"Monitor plugin activation status, detect conflicts, and ensure "
-"compatibility."
+"Monitor plugin activation status, detect conflicts, and ensure compatibility."
 msgstr ""
 "Eklenti etkinleştirme durumunu izleyin, çatışmaları tespit edin ve "
 "uyumluluğu sağlayın."
@@ -849,8 +836,8 @@ msgid "Get Started"
 msgstr "Başlayın"
 
 #: resources/src/jsx/components/pages/welcome-page.jsx:127
-#, js-format
-msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgid ""
+"Ready to explore? Visit the %s to see all available PublishPress plugins."
 msgstr ""
 "Keşfetmeye hazır mısınız? Tüm mevcut PublishPress eklentilerini görmek için "
 "%s ziyaret edin."
@@ -867,7 +854,7 @@ msgstr "Zaten ne yaptığınızı biliyor musunuz? Harika! Siz "
 msgid "dismiss this page"
 msgstr "bu sayfayı kapatabilirsiniz"
 
-#: resources/src/jsx/components/pages/welcome-page.jsx:152, fuzzy
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
 msgid "."
 msgstr "."
 
@@ -960,7 +947,6 @@ msgid "Pro Details"
 msgstr "Pro Ayrıntılar"
 
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
 msgid "Changelogs"
 msgstr "Değişiklik Günlükleri"
@@ -1060,48 +1046,39 @@ msgid "Check for Updates"
 msgstr "Güncellemeleri Kontrol Et"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
-#, js-format
 msgid "Install %s"
 msgstr "%s Yükle"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
-#, js-format
 msgid "Install %s Pro"
 msgstr "%s Pro Yükle"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
-#, js-format
 msgid "Upgrade %s to Pro"
 msgstr "%s'yi Pro'ya Yükselt"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
-#, js-format
 msgid "Uninstall %s"
 msgstr "%s'yi Kaldır"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
-#, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "%s'yi kaldırmak istediğinizden emin misiniz?"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
-#, js-format
 msgid "Resolve Conflict for %s"
 msgstr "%s için Çatışmayı Çöz"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
-#, js-format
 msgid "Manage %s License"
 msgstr "%s Lisansını Yönet"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
-#, js-format
 msgid "Activate %s License"
 msgstr "%s Lisansını Aktifleştir"
 
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
-#, js-format
 msgid "More Info: %s"
 msgstr "Daha Fazla Bilgi: %s"
 
@@ -1110,12 +1087,10 @@ msgid "Resolve Plugin Conflict"
 msgstr "Eklenti Çatışmasını Çöz"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
-#, js-format
 msgid "Free version: %s (%s)"
 msgstr "Ücretsiz sürüm: %s (%s)"
 
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
-#, js-format
 msgid "Pro version: %s (%s)"
 msgstr "Pro sürüm: %s (%s)"
 
@@ -1130,8 +1105,8 @@ msgstr "Ücretsiz sürümü koruyun"
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
 msgid ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
-"advanced features, priority support, and exclusive benefits designed to "
-"help you get the most out of your workflow."
+"advanced features, priority support, and exclusive benefits designed to help "
+"you get the most out of your workflow."
 msgstr ""
 "Bu eklentinin tam potansiyelini Pro sürümü ile açın. İş akışınızdan en iyi "
 "şekilde yararlanmanıza yardımcı olmak için tasarlanmış gelişmiş özellikler, "
@@ -1140,6 +1115,10 @@ msgstr ""
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
 msgid "Discover all Pro features"
 msgstr "Tüm Pro özelliklerini keşfedin"
+
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+msgid "Changelog"
+msgstr "Değişiklik Günlüğü"
 
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
 msgid "Already have a license? Install Pro now"
@@ -1153,14 +1132,14 @@ msgstr "Pro'ya yükseltin ve verimliliğinizi artırın"
 msgid "New version available"
 msgstr "Yeni sürüm mevcut"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#. translators: %s is the installed version number
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
-#, fuzzy, js-format
+#, fuzzy
 msgid "v%s"
 msgstr "v%s"
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
-#, js-format
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
 msgid "Update available: %s → %s"
 msgstr "Güncelleme mevcut: %s → %s"
 
@@ -1240,7 +1219,6 @@ msgid "latest"
 msgstr "en son"
 
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
-#, js-format
 msgid "Update to v%s"
 msgstr "v%s'ye Güncelle"
 
@@ -1270,93 +1248,75 @@ msgstr "Eklentileri almakta başarısız oldu"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
-#, js-format
 msgid "%s installed successfully"
 msgstr "%s başarıyla yüklendi"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
-#, js-format
 msgid "%s installation failed"
 msgstr "%s yükleme başarısız oldu"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
-#, js-format
 msgid "%s uninstalled successfully"
 msgstr "%s başarıyla kaldırıldı"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
-#, js-format
 msgid "%s uninstall failed"
 msgstr "%s kaldırma başarısız oldu"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
-#, js-format
 msgid "%s activated successfully"
 msgstr "%s başarıyla etkinleştirildi"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
-#, js-format
 msgid "%s activation failed"
 msgstr "%s etkinleştirme başarısız oldu"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
-#, js-format
 msgid "%s deactivated successfully"
 msgstr "%s başarıyla devre dışı bırakıldı"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
-#, js-format
 msgid "%s deactivation failed"
 msgstr "%s devre dışı bırakma başarısız oldu"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
-#, js-format
 msgid "%s upgraded to Pro successfully"
 msgstr "%s Pro'ya başarıyla yükseltildi"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
-#, js-format
 msgid "%s upgrade to Pro failed"
 msgstr "%s Pro'ya yükseltme başarısız oldu"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
-#, js-format
 msgid "Conflict resolved successfully for %s"
 msgstr "%s için çelişki başarıyla çözüldü"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
-#, js-format
 msgid "Failed to resolve conflict for %s"
 msgstr "%s için çelişkiyi çözmekte başarısız olundu"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
-#, js-format
 msgid "%s license deactivated successfully"
 msgstr "%s lisansı başarıyla devre dışı bırakıldı"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
-#, js-format
 msgid "%s license deactivation failed"
 msgstr "%s lisansı devre dışı bırakma başarısız oldu"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
-#, js-format
 msgid "%s license activated successfully"
 msgstr "%s lisansı başarıyla etkinleştirildi"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
-#, js-format
 msgid "%s license activation failed"
 msgstr "%s lisansı etkinleştirme başarısız oldu"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
-#, js-format
 msgid "%s updated successfully"
 msgstr "%s başarıyla güncellendi"
 
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
-#, js-format
 msgid "%s update failed"
 msgstr "%s güncellemesi başarısız oldu"
 

@@ -2566,6 +2566,8 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     if (!installedPlugin || !installedPlugin.version) {
       return null;
     }
+
+    // translators: %s is the installed version number
     return (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('v%s', 'publishpress-hub'), installedPlugin.version);
   }, [pluginFamily, status.isInstalled, status.hasConflictingInstallations]);
   return /*#__PURE__*/React.createElement("div", {
