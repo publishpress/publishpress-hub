@@ -208,7 +208,6 @@ msgid "This action is not possible because the plugin is already installed."
 msgstr "Iṣe yii ko ṣee ṣe nitori pe afikun naa ti fi sori ẹrọ tẹlẹ."
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
-#, fuzzy
 msgid ""
 "Plugin deactivation failed. Please try again later or contact support for "
 "help."

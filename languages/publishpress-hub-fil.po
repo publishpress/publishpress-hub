@@ -235,7 +235,6 @@ msgid "This action is not possible because the plugin is already installed."
 msgstr "Ang aksyong ito ay hindi posible dahil ang plugin ay naka-install na."
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
-#, fuzzy
 msgid ""
 "Plugin deactivation failed. Please try again later or contact support for "
 "help."

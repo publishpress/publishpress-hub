@@ -256,7 +256,6 @@ msgstr ""
 "получения помощи."
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
-#, fuzzy
 msgid ""
 "This action is not possible because the plugin is not activated. Please "
 "activate the plugin and try again."

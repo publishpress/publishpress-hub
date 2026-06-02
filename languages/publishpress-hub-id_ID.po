@@ -242,7 +242,6 @@ msgid "Plugin installation failed. Please contact support for help."
 msgstr "Instalasi plugin gagal. Silakan hubungi dukungan untuk bantuan."
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
-#, fuzzy
 msgid ""
 "This action is not possible because the plugin is not activated. Please "
 "activate the plugin and try again."

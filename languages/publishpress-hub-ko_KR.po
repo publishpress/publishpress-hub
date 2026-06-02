@@ -216,7 +216,6 @@ msgid "Plugin installation failed. Please contact support for help."
 msgstr "플러그인 설치에 실패했습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
-#, fuzzy
 msgid ""
 "This action is not possible because the plugin is not activated. Please "
 "activate the plugin and try again."
