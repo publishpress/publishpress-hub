@@ -219,6 +219,7 @@ class HubAccessService implements AccessInterface, BootableInterface
                     ]
                 );
             } else {
+                // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.custom_role_add_role
                 $roleInstance = add_role(
                     $role,
                     $roleDisplayName,
@@ -226,7 +227,7 @@ class HubAccessService implements AccessInterface, BootableInterface
                         self::READ_CAPABILITY => true,
                         self::CAPABILITY => true,
                     ]
-                ); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.custom_role_add_role
+                );
             }
         }
     }
