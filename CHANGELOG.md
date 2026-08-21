@@ -1,6 +1,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.6] - [Unreleased]
+
+- Fixed: Restored WordPress admin access for the PublishPress Hub Manager role by adding and repairing its required `read` capability (#151).
+
 [1.0.5] - 02 Jun, 2026
 
 - Fixed: Addressed issues with PublishPress Shortlinks Pro plugin references (#163).
