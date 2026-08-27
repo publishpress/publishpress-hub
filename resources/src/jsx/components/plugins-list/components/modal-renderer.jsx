@@ -9,7 +9,7 @@
  */
 
 import { memo, useMemo } from '@wordpress/element';
-import { useDispatch, useSelect } from '@wordpress/data';
+import { useDispatch } from '@wordpress/data';
 
 import { __, sprintf } from '@publishpress-hub/i18n';
 import { store } from '../../../stores/plugins-dashboard';
@@ -20,7 +20,6 @@ import { ModalLicenseInput } from './modal-license-input';
 import { ModalLicenseManagement } from './modal-license-management';
 import { ModalResolveConflict } from './modal-resolve-conflict';
 import { ModalUpgrade } from './modal-upgrade';
-import { ModalPluginInfo } from './modal-plugin-info';
 
 const ModalRendererComponent = ({
     modalManager,
@@ -39,17 +38,11 @@ const ModalRendererComponent = ({
         handleBuyPlugin,
         handleDeactivateLicense,
         handleActivateLicense,
-        handleUpdatePlugin,
-        handleCheckForUpdates,
     } = pluginActions;
 
     const {
         cleanupError,
     } = useDispatch(store);
-
-    const isLoading = useSelect((select) => {
-        return select(store).getIsLoading();
-    }, []);
 
     const processedError = useMemo(() => {
         if (!currentPluginState.error) return null;
@@ -65,11 +58,6 @@ const ModalRendererComponent = ({
     const modalProps = useMemo(() => {
         const hasActiveModal = currentPluginFamily && activeModal !== MODAL_TYPES.NONE;
 
-        // For plugin info modal, include isLoading state for "Check for Updates" button
-        const buttonInProgress = isModalActive(MODAL_TYPES.PLUGIN_INFO)
-            ? (currentPluginState.inProgress || isLoading)
-            : currentPluginState.inProgress;
-
         return {
             onClose: () => {
                 closeModal();
@@ -78,9 +66,9 @@ const ModalRendererComponent = ({
                 }
             },
             error: hasActiveModal ? processedError : null,
-            buttonInProgress,
+            buttonInProgress: currentPluginState.inProgress,
         }
-    }, [currentPluginFamily, activeModal, closeModal, cleanupError, currentPluginState.inProgress, processedError, isLoading, isModalActive, MODAL_TYPES.NONE, MODAL_TYPES.PLUGIN_INFO]);
+    }, [currentPluginFamily, activeModal, closeModal, cleanupError, currentPluginState.inProgress, processedError, MODAL_TYPES.NONE]);
 
     if (!currentPluginFamily || activeModal === MODAL_TYPES.NONE) {
         return null;
@@ -170,15 +158,6 @@ const ModalRendererComponent = ({
                 />
             )}
 
-            {isModalActive(MODAL_TYPES.PLUGIN_INFO) && (
-                <ModalPluginInfo
-                    {...modalProps}
-                    title={sprintf(__('More Info: %s', 'publishpress-hub'), currentPluginDisplayName)}
-                    pluginFamily={currentPluginFamily}
-                    onUpdate={(pluginFamily) => handleUpdatePlugin(pluginFamily.slug)}
-                    onCheckForUpdates={handleCheckForUpdates}
-                />
-            )}
         </>
     );
 };

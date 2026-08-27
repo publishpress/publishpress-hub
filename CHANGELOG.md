@@ -1,6 +1,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[1.0.6] - [Unreleased]
+
+- Removed: Removed the redundant "More Info" plugin action and dialog (#162).
+
 [1.0.5] - 02 Jun, 2026
 
 - Fixed: Addressed issues with PublishPress Shortlinks Pro plugin references (#163).
