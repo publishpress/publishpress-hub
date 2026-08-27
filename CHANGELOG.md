@@ -1,6 +1,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[1.0.6] - [Unreleased]
+
+- Security: Redacted sensitive EDD response data from HTTP debug logs (#174).
+
 [1.0.5] - 02 Jun, 2026
 
 - Fixed: Addressed issues with PublishPress Shortlinks Pro plugin references (#163).
