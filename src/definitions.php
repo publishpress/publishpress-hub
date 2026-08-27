@@ -583,7 +583,9 @@ return [
         ),
 
     AbstractDependencies::DEBUG_LOG_SERVICE =>
-        fn(ContainerInterface $container) => new DebugLogService(),
+        fn(ContainerInterface $container) => new DebugLogService(
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER)
+        ),
 
     AbstractDependencies::GET_DIAGNOSTICS_SETTINGS_USE_CASE =>
         fn(ContainerInterface $container) => new GetDiagnosticsSettingsUseCase(

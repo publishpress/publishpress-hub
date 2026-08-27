@@ -14,21 +14,38 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Debug;
 
+use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
+
 class DebugLogService
 {
-    private const LOG_DIR_NAME = 'publishpress-hub';
+    private const LEGACY_LOG_DIR_NAME = 'publishpress-hub';
+
+    private const LOG_DIR_PREFIX = 'publishpress-hub-logs-';
 
     private const LOG_FILE_NAME = 'debug.log';
+
+    private const LEGACY_LOG_MIGRATION_OPTION = 'publishpress_hub_legacy_debug_log_migrated';
 
     private const MAX_LOG_SIZE_BYTES = 2097152; // 2 MB
 
     private const CONSTANT_LOG_FILE = 'PUBLISHPRESS_HUB_LOG_FILE';
 
+    private WPOptionsAdapterInterface $optionsAdapter;
+
+    /**
+     * @param WPOptionsAdapterInterface $optionsAdapter WordPress options adapter.
+     * @since 1.0.6
+     */
+    public function __construct(WPOptionsAdapterInterface $optionsAdapter)
+    {
+        $this->optionsAdapter = $optionsAdapter;
+    }
+
     /**
      * Returns the absolute path to the debug log file.
      *
      * If the constant PUBLISHPRESS_HUB_LOG_FILE is defined, its value is used.
-     * Otherwise defaults to wp-content/uploads/publishpress-hub/debug.log.
+     * Otherwise defaults to a site-specific directory outside the web root.
      *
      * @return string
      * @since 1.0.0
@@ -40,6 +57,37 @@ class DebugLogService
         }
 
         return $this->getDefaultLogFilePath();
+    }
+
+    /**
+     * Migrates away from the legacy public debug log once.
+     *
+     * Failed deletion is not marked complete, allowing the next request to retry.
+     *
+     * @return bool True when migration is complete, false when deletion failed.
+     * @since 1.0.6
+     */
+    public function migrateLegacyPublicLog(): bool
+    {
+        if ((bool) $this->optionsAdapter->getOption(self::LEGACY_LOG_MIGRATION_OPTION, false)) {
+            return true;
+        }
+
+        $legacyLogFilePath = $this->getLegacyLogFilePath();
+
+        if ($legacyLogFilePath !== $this->getLogFilePath() && file_exists($legacyLogFilePath)) {
+            wp_delete_file($legacyLogFilePath);
+
+            if (file_exists($legacyLogFilePath)) {
+                return false;
+            }
+        }
+
+        if ($this->optionsAdapter->updateOption(self::LEGACY_LOG_MIGRATION_OPTION, true, true)) {
+            return true;
+        }
+
+        return (bool) $this->optionsAdapter->getOption(self::LEGACY_LOG_MIGRATION_OPTION, false);
     }
 
     /**
@@ -58,7 +106,9 @@ class DebugLogService
     {
         $logFilePath = $this->getLogFilePath();
 
-        $this->ensureLogDirectoryExists($logFilePath);
+        if (!$this->ensureLogDirectoryExists($logFilePath)) {
+            return;
+        }
 
         $entry = sprintf(
             "[%s] %s\n",
@@ -67,7 +117,14 @@ class DebugLogService
         );
 
         // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
-        file_put_contents($logFilePath, $entry, FILE_APPEND | LOCK_EX);
+        $bytesWritten = file_put_contents($logFilePath, $entry, FILE_APPEND | LOCK_EX);
+
+        if ($bytesWritten === false) {
+            return;
+        }
+
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_chmod, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_chmod, WordPressVIPMinimum.Functions.RestrictedFunctions.chmod_chmod
+        chmod($logFilePath, 0600);
 
         $this->enforceMaxLogSize($logFilePath);
     }
@@ -113,56 +170,59 @@ class DebugLogService
     }
 
     /**
-     * Returns the default log file path within the WP uploads directory.
+     * Returns the default log file path outside the web root.
      *
      * @return string
      * @since 1.0.0
      */
     private function getDefaultLogFilePath(): string
     {
-        return WP_CONTENT_DIR . '/uploads/' . self::LOG_DIR_NAME . '/' . self::LOG_FILE_NAME;
+        $siteIdentifier = substr(hash('sha256', rtrim(ABSPATH, '/\\')), 0, 12);
+        $logDirectory = self::LOG_DIR_PREFIX . $siteIdentifier;
+
+        return rtrim(sys_get_temp_dir(), '/\\')
+            . DIRECTORY_SEPARATOR
+            . $logDirectory
+            . DIRECTORY_SEPARATOR
+            . self::LOG_FILE_NAME;
+    }
+
+    /**
+     * Returns the legacy public debug log path.
+     *
+     * @return string
+     * @since 1.0.6
+     */
+    private function getLegacyLogFilePath(): string
+    {
+        return WP_CONTENT_DIR
+            . '/uploads/'
+            . self::LEGACY_LOG_DIR_NAME
+            . '/'
+            . self::LOG_FILE_NAME;
     }
 
     /**
      * Creates the log file's parent directory when it does not exist yet.
      *
      * @param string $logFilePath Absolute path to the log file.
-     * @return void
+     * @return bool True when the directory is ready for secure log writes.
      * @since 1.0.0
      */
-    private function ensureLogDirectoryExists(string $logFilePath): void
+    private function ensureLogDirectoryExists(string $logFilePath): bool
     {
         $logDir = dirname($logFilePath);
 
         if (is_dir($logDir)) {
-            return;
+            return true;
         }
 
-        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_mkdir, WordPressVIPMinimum.Functions.RestrictedFunctions.directory_mkdir
-        mkdir($logDir, 0755, true);
-
-        $this->writeHtaccessProtection($logDir);
-    }
-
-    /**
-     * Writes an .htaccess file to prevent direct browser access to the log directory.
-     *
-     * @param string $logDir Absolute path to the log directory.
-     * @return void
-     * @since 1.0.0
-     */
-    private function writeHtaccessProtection(string $logDir): void
-    {
-        $htaccess = $logDir . '/.htaccess';
-
-        if (file_exists($htaccess)) {
-            return;
+        if (!wp_mkdir_p($logDir)) {
+            return false;
         }
 
-        $rules = "Order deny,allow\nDeny from all\n";
-
-        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
-        file_put_contents($htaccess, $rules, LOCK_EX);
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_chmod, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_chmod, WordPressVIPMinimum.Functions.RestrictedFunctions.chmod_chmod
+        return chmod($logDir, 0700);
     }
 
     /**

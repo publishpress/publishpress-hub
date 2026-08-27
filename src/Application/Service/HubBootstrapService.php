@@ -66,6 +66,7 @@ class HubBootstrapService implements BootableInterface
      */
     protected function onLoad(): void
     {
+        $this->debugLogService->migrateLegacyPublicLog();
         HttpDebugger::setLogFilePath($this->debugLogService->getLogFilePath());
         HttpDebugger::initialize();
 
