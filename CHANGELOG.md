@@ -1,6 +1,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[1.0.6] - [Unreleased]
+
+- Fixed: Show available updates for installed Pro plugins when WordPress has not populated the update cache (#191).
+
 [1.0.5] - 02 Jun, 2026
 
 - Fixed: Addressed issues with PublishPress Shortlinks Pro plugin references (#163).
