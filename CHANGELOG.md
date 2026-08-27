@@ -1,6 +1,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[1.0.6] - [Unreleased]
+
+- Fixed: Prevented license keys from overflowing the license management modal (#192).
+
 [1.0.5] - 02 Jun, 2026
 
 - Fixed: Addressed issues with PublishPress Shortlinks Pro plugin references (#163).

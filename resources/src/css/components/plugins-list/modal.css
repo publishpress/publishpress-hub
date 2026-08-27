@@ -51,6 +51,11 @@
     box-sizing: border-box;
 }
 
+.pp-hub-modal .pp-hub-license-key-masked {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
 .pp-hub-modal .pp-hub-modal-actions {
     display: flex;
     flex-direction: row;
