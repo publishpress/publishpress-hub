@@ -1780,7 +1780,8 @@ var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
     onActivate = _ref.onActivate,
     error = _ref.error,
     buttonInProgress = _ref.buttonInProgress,
-    title = _ref.title;
+    title = _ref.title,
+    buttonLabel = _ref.buttonLabel;
   var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState2 = _slicedToArray(_useState, 2),
     licenseKey = _useState2[0],
@@ -1834,7 +1835,7 @@ var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
     icon: "check",
     onClick: handleActivate,
     isLoading: buttonInProgress
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate and install the plugin', 'publishpress-hub')));
+  }, buttonLabel || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate and install the plugin', 'publishpress-hub')));
 };
 var ModalLicenseInput = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(ModalLicenseInputComponent);
 
@@ -2234,6 +2235,7 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     initialLicenseKeyMasked: currentPluginFamily.proPlugin.licenseKeyMasked
   })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_ACTIVATING_LICENSE) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_6__.ModalLicenseInput, _extends({}, modalProps, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Activate %s License', 'publishpress-hub'), currentPluginDisplayName),
+    buttonLabel: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Activate the license key', 'publishpress-hub'),
     onActivate: function onActivate(licenseKey) {
       return handleActivateLicense(currentPluginFamily, licenseKey);
     }

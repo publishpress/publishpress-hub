@@ -166,6 +166,7 @@ const ModalRendererComponent = ({
                 <ModalLicenseInput
                     {...modalProps}
                     title={sprintf(__('Activate %s License', 'publishpress-hub'), currentPluginDisplayName)}
+                    buttonLabel={__('Activate the license key', 'publishpress-hub')}
                     onActivate={(licenseKey) => handleActivateLicense(currentPluginFamily, licenseKey)}
                 />
             )}

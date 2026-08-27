@@ -1,6 +1,5 @@
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const path = require("path");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
@@ -59,10 +58,6 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "css/" + (NODE_ENV === 'production' ? "[name].min.css" : "[name].css"),
         }),
-        // new BundleAnalyzerPlugin({
-        //     analyzerMode: 'static',
-        //     reportFilename: 'webpack-bundle-stats.html',
-        // }),
     ],
     externals: {
         "react": "React",
@@ -80,4 +75,3 @@ module.exports = {
         '@publishpress-hub/i18n': 'publishpressHub.i18n'
     },
 };
-
