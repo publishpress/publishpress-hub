@@ -72,7 +72,7 @@ var FooterComponent = function FooterComponent(_ref) {
     pluginSupportUrl = _ref.pluginSupportUrl,
     logoUrl = _ref.logoUrl;
   var stars = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return Array(5).fill('<span class="dashicons dashicons-star-filled"></span>').join('');
+    return Array(5).fill('<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>').join('');
   }, []);
   return /*#__PURE__*/React.createElement("footer", {
     className: "pp-hub-footer"
@@ -312,7 +312,8 @@ var BadgeComponent = function BadgeComponent(_ref) {
   return /*#__PURE__*/React.createElement("span", {
     className: "pp-hub-badge ".concat(className)
   }, icon && /*#__PURE__*/React.createElement("span", {
-    className: "pp-hub-badge-icon"
+    className: "pp-hub-badge-icon",
+    "aria-hidden": "true"
   }, icon), children);
 };
 var Badge = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(BadgeComponent);
@@ -350,7 +351,7 @@ function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t =
  * @since 1.0.0
  */
 
-
+;
 
 var DEFAULT_TARGET = '_blank';
 var DEFAULT_REL = 'noopener noreferrer';
@@ -704,7 +705,7 @@ function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t =
  * @since 1.0.0
  */
 
-
+;
 
 
 var ModalComponent = function ModalComponent(_ref) {
@@ -886,7 +887,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  * @since 1.0.0
  */
 
-
+;
 
 
 
@@ -1160,7 +1161,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  * @since 1.0.0
  */
 
-
+;
 
 
 
@@ -1336,7 +1337,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
  * @since 1.0.0
  */
 
-
+;
 
 
 
@@ -1530,7 +1531,7 @@ function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t =
  * @since 1.0.0
  */
 
-
+;
 
 
 
@@ -1769,7 +1770,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  * @since 1.0.0
  */
 
-
+;
 
 
 
@@ -1875,7 +1876,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  * @since 1.0.0
  */
 
-
+;
 
 
 
@@ -2105,7 +2106,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
  * @since 1.0.0
  */
 
-
+;
 
 
 
@@ -2442,7 +2443,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  * @since 1.0.0
  */
 
-
+;
 
 
 
@@ -2580,7 +2581,7 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     className: "pp-hub-plugins-list-item-icon"
   }, /*#__PURE__*/React.createElement("img", {
     src: iconSrc,
-    alt: pluginFamily.name
+    alt: ""
   })), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-info"
   }, /*#__PURE__*/React.createElement("div", {
@@ -3131,7 +3132,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  * @since 1.0.0
  */
 
-
+;
 var MODAL_TYPES = {
   NONE: 'none',
   INSTALLATION_TYPE: 'installation-type',
@@ -3215,7 +3216,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
  * @since 1.0.0
  */
 
-
+;
 
 
 var usePluginActions = function usePluginActions(modalManager) {
@@ -3581,7 +3582,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  * @since 1.0.0
  */
 
-
+;
 var useScreenSize = function useScreenSize() {
   var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)({
       width: window.innerWidth,
@@ -3789,7 +3790,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  * @since 1.0.0
  */
 
-
+;
 
 var CustomTooltipComponent = function CustomTooltipComponent(_ref) {
   var children = _ref.children,
@@ -5510,7 +5511,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
  * @since 1.0.0
  */
 
-
+;
 var DEFAULT_STATE = {
   selectedFilter: 'all',
   plugins: [],
@@ -11062,17 +11063,17 @@ function isValidAttributeName(name) {
 /******/ 	});
 /************************************************************************/
 /******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
+/******/ 	const __webpack_module_cache__ = {};
 /******/ 	
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		const cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
 /******/ 			return cachedModule.exports;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 		const module = __webpack_module_cache__[moduleId] = {
 /******/ 			id: moduleId,
 /******/ 			loaded: false,
 /******/ 			exports: {}
@@ -11081,7 +11082,7 @@ function isValidAttributeName(name) {
 /******/ 		// Execute the module function
 /******/ 		if (!(moduleId in __webpack_modules__)) {
 /******/ 			delete __webpack_module_cache__[moduleId];
-/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 			const e = new Error("Cannot find module '" + moduleId + "'");
 /******/ 			e.code = 'MODULE_NOT_FOUND';
 /******/ 			throw e;
 /******/ 		}
@@ -11096,68 +11097,54 @@ function isValidAttributeName(name) {
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = (module) => {
+/******/ 		const getter = module && module.__esModule ?
+/******/ 			() => (module['default']) :
+/******/ 			() => (module);
+/******/ 		__webpack_require__.d(getter, { a: getter });
+/******/ 		return getter;
+/******/ 	};
 /******/ 	
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
+/******/ 	// define getter/value functions for harmony exports
+/******/ 	__webpack_require__.d = (exports, definition) => {
+/******/ 		for(var key in definition) {
+/******/ 			if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 				Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 			}
-/******/ 		};
-/******/ 	})();
+/******/ 		}
+/******/ 	};
 /******/ 	
 /******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
+/******/ 	__webpack_require__.g = (function() {
+/******/ 		if (typeof globalThis === 'object') return globalThis;
+/******/ 		try {
+/******/ 			return this || new Function('return this')();
+/******/ 		} catch (e) {
+/******/ 			if (typeof window === 'object') return window;
+/******/ 		}
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
+/******/ 	__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop));
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = (exports) => {
+/******/ 		Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
 /******/ 	
 /******/ 	/* webpack/runtime/node module decorator */
-/******/ 	(() => {
-/******/ 		__webpack_require__.nmd = (module) => {
-/******/ 			module.paths = [];
-/******/ 			if (!module.children) module.children = [];
-/******/ 			return module;
-/******/ 		};
-/******/ 	})();
+/******/ 	__webpack_require__.nmd = (module) => {
+/******/ 		module.paths = [];
+/******/ 		if (!module.children) module.children = [];
+/******/ 		return module;
+/******/ 	};
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
+let __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
 (() => {
 "use strict";

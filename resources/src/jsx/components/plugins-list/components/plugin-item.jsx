@@ -166,7 +166,7 @@ const PluginItemComponent = ({
         >
             <div className='pp-hub-plugins-list-item-content'>
                 <div className='pp-hub-plugins-list-item-icon'>
-                    <img src={iconSrc} alt={pluginFamily.name} />
+                    <img src={iconSrc} alt="" />
                 </div>
                 <div className='pp-hub-plugins-list-item-info'>
                     <div className='pp-hub-plugins-list-item-name'>
@@ -252,4 +252,3 @@ const PluginItemComponent = ({
 PluginItemComponent.displayName = 'PluginItem';
 
 export const PluginItem = memo(PluginItemComponent);
-

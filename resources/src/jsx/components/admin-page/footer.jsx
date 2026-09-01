@@ -12,7 +12,7 @@ const FooterComponent = ({
     logoUrl,
 }) => {
     const stars = useMemo(
-        () => Array(5).fill('<span class="dashicons dashicons-star-filled"></span>').join(''),
+        () => Array(5).fill('<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>').join(''),
         []
     );
 
