@@ -1713,6 +1713,10 @@ footer .pp-hub-footer-logo img {
     display: none;
 }
 
+.pp-hub-plugins-list-item:focus-within .pp-hub-plugins-list-item-description {
+    display: none;
+}
+
 .pp-hub-plugins-list-item-status {
     font-size: var(--pp-hub-font-size-sm);
     color: var(--pp-hub-text-secondary);
@@ -1746,6 +1750,10 @@ footer .pp-hub-footer-logo img {
 }
 
 .pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-inline-actions {
+    display: flex;
+}
+
+.pp-hub-plugins-list-item:focus-within .pp-hub-plugins-list-item-inline-actions {
     display: flex;
 }
 
