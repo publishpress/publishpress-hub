@@ -62,6 +62,7 @@ const ModalLicenseInputComponent = ({
 
             <LicenseKeyControl
                 value={licenseKey}
+                label={__('License key', 'publishpress-hub')}
                 className='pp-hub-text-control pp-hub-license-input'
                 placeholder={__('Enter your license key here', 'publishpress-hub')}
                 onChange={(value) => setLicenseKey(value)}
