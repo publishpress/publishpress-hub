@@ -57,3 +57,5 @@
 - /webpack.config.js
 - /webpack.prototype.config.js
 - /yarn.lock
+- .web
+- .ddev
