@@ -174,6 +174,7 @@ const PluginItemComponent = ({
                             <ToggleControl
                                 disabled={status.hasConflictingInstallations}
                                 checked={pluginFamily.hasAnyVersionActive}
+                                aria-label={sprintf(__('Activate or deactivate %s', 'publishpress-hub'), displayName)}
                                 onChange={(newValue) => {
                                     if (newValue) {
                                         onActivate(pluginFamily);
@@ -252,4 +253,3 @@ const PluginItemComponent = ({
 PluginItemComponent.displayName = 'PluginItem';
 
 export const PluginItem = memo(PluginItemComponent);
-

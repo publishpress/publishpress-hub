@@ -23,8 +23,9 @@ const MessageComponent = ({
         'is-warning': variant === 'warning',
         'is-info': variant === 'info',
     });
+    const role = variant === 'error' ? 'alert' : 'status';
 
-    return <div className={classes}>{children}</div>;
+    return <div className={classes} role={role}>{children}</div>;
 }
 
 export const Message = memo(MessageComponent);
