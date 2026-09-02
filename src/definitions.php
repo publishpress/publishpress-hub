@@ -117,11 +117,12 @@ return [
             'https://publishpress.com'
         ),
 
-    AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS =>
-        fn(ContainerInterface $container): array => apply_filters(
-            AbstractHooks::FILTER_ALLOWED_DOWNLOAD_DOMAINS,
-            ['publishpress.com', 'pkg.publishpress.com', 'wordpress.org', 'downloads.wordpress.org']
-        ),
+    AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS => [
+        'publishpress.com',
+        'pkg.publishpress.com',
+        'wordpress.org',
+        'downloads.wordpress.org',
+    ],
 
     AbstractDependencies::SITE_URL => home_url(),
 
