@@ -3027,7 +3027,7 @@ var useActionButtons = function useActionButtons(pluginFamily, status, loadingSt
         }
       });
     }
-    if (isInstalled && !hasConflictingInstallations) {
+    if (isInstalled) {
       var _installedPlugin = pluginFamily.freePlugin.isInstalled ? pluginFamily.freePlugin : pluginFamily.proPlugin;
       var _currentVersion = _installedPlugin.version || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Unknown', 'publishpress-hub');
       var _availableVersion = pluginFamily.availableVersion || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('latest', 'publishpress-hub');

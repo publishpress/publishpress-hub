@@ -168,7 +168,7 @@ export const useActionButtons = (
             });
         }
 
-        if (isInstalled && !hasConflictingInstallations) {
+        if (isInstalled) {
             const installedPlugin = pluginFamily.freePlugin.isInstalled
                 ? pluginFamily.freePlugin
                 : pluginFamily.proPlugin;
