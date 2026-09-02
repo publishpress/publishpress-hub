@@ -16,7 +16,6 @@ export { ModalLicenseInput } from './modal-license-input';
 export { ModalLicenseManagement } from './modal-license-management';
 export { ModalUpgrade } from './modal-upgrade';
 export { ModalResolveConflict } from './modal-resolve-conflict';
-export { ModalPluginInfo } from './modal-plugin-info';
 export { ActionButton } from './action-button';
 export { StatusFlag } from './status-flag';
 export { LicenseKeyControl } from './license-key-control';

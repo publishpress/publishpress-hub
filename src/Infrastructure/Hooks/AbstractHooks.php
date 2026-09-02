@@ -37,6 +37,4 @@ abstract class AbstractHooks
     public const FILTER_PLUGIN_CAPABILITIES = 'cme_plugin_capabilities';
 
     public const FILTER_EDD_SUBSCRIPTION_API_URL = 'publishpress_hub_edd_subscription_api_url';
-
-    public const FILTER_ALLOWED_DOWNLOAD_DOMAINS = 'publishpress_hub_allowed_download_domains';
 }

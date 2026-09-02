@@ -27,7 +27,6 @@ export const usePluginActions = (modalManager) => {
         deactivateLicense,
         activateLicense,
         updatePlugin,
-        fetchPlugins,
     } = useDispatch(store);
 
     const handleOpenInstallationTypeModal = useCallback((pluginFamily) => {
@@ -122,10 +121,6 @@ export const usePluginActions = (modalManager) => {
         closeModal();
     }, [closeModal]);
 
-    const handleOpenPluginInfoModal = useCallback((pluginFamily) => {
-        openModal(MODAL_TYPES.PLUGIN_INFO, pluginFamily);
-    }, [openModal, MODAL_TYPES.PLUGIN_INFO]);
-
     const handleUpdatePlugin = useCallback(async (pluginFamily) => {
         const pluginFamilySlug = typeof pluginFamily === 'string' ? pluginFamily : pluginFamily.slug;
         const result = await updatePlugin(pluginFamilySlug);
@@ -134,12 +129,6 @@ export const usePluginActions = (modalManager) => {
         }
         return result;
     }, [updatePlugin, closeModal]);
-
-    const handleCheckForUpdates = useCallback(async () => {
-        // Force refresh the plugins list to check for updates
-        const result = await fetchPlugins(true);
-        return result;
-    }, [fetchPlugins]);
 
     return {
         // Primary actions
@@ -161,8 +150,6 @@ export const usePluginActions = (modalManager) => {
         handleUninstallPlugin,
         handleResolveConflictAction,
         handleBuyPlugin,
-        handleOpenPluginInfoModal,
         handleUpdatePlugin,
-        handleCheckForUpdates,
     };
 };
