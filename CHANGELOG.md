@@ -4,6 +4,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.0.6] - [Unreleased]
 
 - Security: Moved HTTP debug logs outside the public uploads directory (#175).
+- Security: Redacted sensitive EDD response data from HTTP debug logs (#174).
+- Removed: Removed the redundant "More Info" plugin action and dialog (#162).
+- Fixed: Made installed plugin version numbers visible beside inline plugin actions (#94).
+- Fixed: Improved the refresh tooltip copy for Mac and Windows keyboard shortcuts (#190).
+- Fixed: Show available updates for installed Pro plugins when WordPress has not populated the update cache (#191).
+- Fixed: Prevented license keys from overflowing the license management modal (#192).
+- Fixed: Updated the license activation button text for already installed Pro plugins (#193).
+- Fixed: Sorted the plugins dashboard by licensed status first, then alphabetically (#197).
+- Fixed: Restored WordPress admin access for the PublishPress Hub Manager role by adding and repairing its required `read` capability (#151).
 
 [1.0.5] - 02 Jun, 2026
 

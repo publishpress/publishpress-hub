@@ -24,6 +24,40 @@ class HttpDebugger
 
     private const DEBUG_MODE_OPTION = 'publishpress_hub_debug_mode';
 
+    private const NON_JSON_BODY_REDACTED = '[non-JSON body redacted]';
+
+    private const REDACTED_VALUE = '[REDACTED]';
+
+    private const SENSITIVE_KEYS = [
+        'api_key',
+        'key',
+        'license',
+        'license_key',
+        'password',
+        'secret',
+        'token',
+    ];
+
+    private const OMITTED_RESPONSE_KEYS = [
+        'activation_count',
+        'activations',
+        'activations_left',
+        'cookies',
+        'customer_email',
+        'customer_first_name',
+        'customer_last_name',
+        'customer_name',
+        'download_link',
+        'download_url',
+        'email',
+        'expiration',
+        'expiration_date',
+        'expires',
+        'headers',
+        'license_limit',
+        'site_count',
+    ];
+
     private static bool $initialized = false;
 
     private static ?string $logFilePath = null;
@@ -138,21 +172,7 @@ class HttpDebugger
             return;
         }
 
-        $debugInfo = (is_wp_error($response)) ? [
-            'timestamp' => self::timestamp(),
-            'error' => true,
-            'error_message' => $response->get_error_message(),
-            'error_code' => $response->get_error_code(),
-            'error_data' => $response->get_error_data(),
-        ] : [
-            'timestamp' => self::timestamp(),
-            'error' => false,
-            'status_code' => wp_remote_retrieve_response_code($response),
-            'status_message' => wp_remote_retrieve_response_message($response),
-            'headers' => wp_remote_retrieve_headers($response),
-            'body' => wp_remote_retrieve_body($response),
-            'cookies' => wp_remote_retrieve_cookies($response),
-        ];
+        $debugInfo = ['timestamp' => self::timestamp()] + self::formatResponse($response);
 
         self::log('RESPONSE', $debugInfo);
     }
@@ -268,13 +288,13 @@ class HttpDebugger
     }
 
     /**
-     * Redacts sensitive fields from a request body before logging.
+     * Redacts sensitive fields before logging.
      *
      * Any field whose key matches a known sensitive name is replaced with
      * a masked value that preserves the first and last characters so the
      * key can still be identified in the log without exposing the full value.
      *
-     * @param mixed $body The raw request body (array or string).
+     * @param mixed $body The data to sanitize.
      * @return mixed The sanitized body.
      * @since 1.0.0
      */
@@ -284,24 +304,51 @@ class HttpDebugger
             return $body;
         }
 
-        $sensitiveKeys = ['license', 'license_key', 'key', 'secret', 'password', 'token', 'api_key'];
-
         foreach ($body as $field => $value) {
-            if (!in_array(strtolower((string) $field), $sensitiveKeys, true)) {
+            $normalizedField = strtolower((string) $field);
+
+            if (in_array($normalizedField, self::OMITTED_RESPONSE_KEYS, true)) {
+                unset($body[$field]);
                 continue;
             }
 
-            $value = (string) $value;
-            $length = strlen($value);
-
-            if ($length <= 4) {
-                $body[$field] = str_repeat('*', $length);
-            } else {
-                $body[$field] = $value[0] . str_repeat('*', $length - 2) . $value[$length - 1];
+            if (in_array($normalizedField, self::SENSITIVE_KEYS, true)) {
+                $body[$field] = self::REDACTED_VALUE;
+                continue;
             }
+
+            if ($normalizedField === 'body' && is_string($value)) {
+                $body[$field] = self::sanitizeResponseBody($value);
+                continue;
+            }
+
+            $body[$field] = self::redactSensitiveFields($value);
         }
 
         return $body;
+    }
+
+    /**
+     * Sanitizes an HTTP response body for debug logging.
+     *
+     * @param string $rawBody The raw response body.
+     * @return string The sanitized JSON body or a redaction notice.
+     * @since 1.0.6
+     */
+    private static function sanitizeResponseBody(string $rawBody): string
+    {
+        $decodedBody = json_decode($rawBody, true);
+
+        if (!is_array($decodedBody)) {
+            return self::NON_JSON_BODY_REDACTED;
+        }
+
+        $safeBody = wp_json_encode(
+            self::redactSensitiveFields($decodedBody),
+            JSON_UNESCAPED_SLASHES
+        );
+
+        return is_string($safeBody) ? $safeBody : self::NON_JSON_BODY_REDACTED;
     }
 
     /**
@@ -382,7 +429,6 @@ class HttpDebugger
                 'error' => true,
                 'error_message' => $response->get_error_message(),
                 'error_code' => $response->get_error_code(),
-                'error_data' => $response->get_error_data(),
             ];
         }
 
@@ -390,9 +436,7 @@ class HttpDebugger
             'error' => false,
             'status_code' => wp_remote_retrieve_response_code($response),
             'status_message' => wp_remote_retrieve_response_message($response),
-            'headers' => wp_remote_retrieve_headers($response),
-            'body' => wp_remote_retrieve_body($response),
-            'cookies' => wp_remote_retrieve_cookies($response),
+            'body' => self::sanitizeResponseBody(wp_remote_retrieve_body($response)),
         ];
     }
 }
