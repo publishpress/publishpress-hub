@@ -1135,6 +1135,7 @@ var RequestCardComponent = function RequestCardComponent(_ref2) {
   var methodClass = METHOD_CLASS[method.toUpperCase()] || 'other';
   var statusClass = getStatusClass(statusCode, isError);
   var statusDisplay = isError ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('ERR', 'publishpress-hub') : statusCode || '—';
+  var detailsId = "pp-hub-request-card-details-".concat(pair.id);
   return /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-request-card pp-hub-request-card--".concat(isExpanded ? 'expanded' : 'collapsed')
   }, /*#__PURE__*/React.createElement("button", {
@@ -1143,7 +1144,8 @@ var RequestCardComponent = function RequestCardComponent(_ref2) {
     onClick: function onClick() {
       return setIsExpanded(!isExpanded);
     },
-    "aria-expanded": isExpanded
+    "aria-expanded": isExpanded,
+    "aria-controls": detailsId
   }, /*#__PURE__*/React.createElement("span", {
     className: "pp-hub-request-card__method pp-hub-request-card__method--".concat(methodClass)
   }, method), /*#__PURE__*/React.createElement("span", {
@@ -1157,6 +1159,7 @@ var RequestCardComponent = function RequestCardComponent(_ref2) {
     className: "pp-hub-request-card__chevron",
     "aria-hidden": "true"
   }, isExpanded ? '▲' : '▼')), isExpanded && /*#__PURE__*/React.createElement("div", {
+    id: detailsId,
     className: "pp-hub-request-card__details"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-request-card__section"

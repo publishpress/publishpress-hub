@@ -32,3 +32,9 @@ if (! function_exists('esc_html')) {
         return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
     }
 }
+
+if (! function_exists('wp_delete_file')) {
+    function wp_delete_file($file) {
+        return unlink($file);
+    }
+}
