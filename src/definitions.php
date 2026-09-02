@@ -423,7 +423,9 @@ return [
                 $servicesToInit,
                 $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
                 $container->get(AbstractDependencies::HUB_ACCESS_SERVICE),
-                $container->get(AbstractDependencies::DEBUG_LOG_SERVICE)
+                $container->get(AbstractDependencies::DEBUG_LOG_SERVICE),
+                $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
+                $container->get(AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS)
             );
         },
 

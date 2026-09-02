@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Security: Moved HTTP debug logs outside the public uploads directory (#175).
 - Security: Redacted sensitive EDD response data from HTTP debug logs (#174).
 - Security: Removed the public filter that allowed third-party code to expand trusted plugin download domains (#176).
+- Security: Scoped HTTP debug logging to Hub-owned requests and redacted sensitive headers and cookies (#177).
 - Removed: Removed the redundant "More Info" plugin action and dialog (#162).
 - Fixed: Made installed plugin version numbers visible beside inline plugin actions (#94).
 - Fixed: Improved the refresh tooltip copy for Mac and Windows keyboard shortcuts (#190).
