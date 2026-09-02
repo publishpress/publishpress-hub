@@ -14,3 +14,5 @@
 - .gitmodules
 - webpack.prototype.config.js
 - /resources/src/
+- .web
+- .ddev
