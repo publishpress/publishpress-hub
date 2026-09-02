@@ -835,19 +835,23 @@ var DebugLogTabComponent = function DebugLogTabComponent() {
   }, notice.message), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-debug-log-tab__toolbar"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-debug-log-tab__view-toggle"
+    className: "pp-hub-debug-log-tab__view-toggle",
+    role: "group",
+    "aria-label": (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug log view', 'publishpress-hub')
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "pp-hub-debug-log-tab__view-btn".concat(viewMode === VIEW_REQUESTS ? ' pp-hub-debug-log-tab__view-btn--active' : ''),
     onClick: function onClick() {
       return setViewMode(VIEW_REQUESTS);
-    }
+    },
+    "aria-pressed": viewMode === VIEW_REQUESTS
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Requests', 'publishpress-hub')), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "pp-hub-debug-log-tab__view-btn".concat(viewMode === VIEW_FULL_LOG ? ' pp-hub-debug-log-tab__view-btn--active' : ''),
     onClick: function onClick() {
       return setViewMode(VIEW_FULL_LOG);
-    }
+    },
+    "aria-pressed": viewMode === VIEW_FULL_LOG
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Full Log', 'publishpress-hub'))), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-debug-log-tab__actions"
   }, /*#__PURE__*/React.createElement("div", {
@@ -860,6 +864,7 @@ var DebugLogTabComponent = function DebugLogTabComponent() {
         return !prev;
       });
     },
+    "aria-pressed": autoRefresh,
     title: autoRefresh ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Auto-refresh is on — click to stop', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Enable auto-refresh', 'publishpress-hub')
   }, /*#__PURE__*/React.createElement("span", {
     className: "pp-hub-debug-log-tab__auto-refresh-dot",

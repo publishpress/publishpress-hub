@@ -491,7 +491,9 @@ var FilterButtonsBarComponent = function FilterButtonsBarComponent(_ref) {
   })))), /*#__PURE__*/React.createElement("div", {
     className: "publishpress-hub-filter-desktop"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "publishpress-hub-filter-buttons-bar"
+    className: "publishpress-hub-filter-buttons-bar",
+    role: "group",
+    "aria-label": (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Filter plugins by status', 'publishpress-hub')
   }, options.map(function (filter) {
     var isSelected = activeSelectedOption === filter.value;
     var buttonClass = isSelected ? 'active' : '';
@@ -500,7 +502,8 @@ var FilterButtonsBarComponent = function FilterButtonsBarComponent(_ref) {
       key: "filter-".concat(filter.value),
       className: "publishpress-hub-filter-button ".concat(buttonClass, " ").concat(isDisabled ? 'disabled' : ''),
       onClick: createButtonClickHandler(filter.value),
-      disabled: filter.total === 0
+      disabled: filter.total === 0,
+      "aria-pressed": isSelected
     }, filter.label, " ", filter.total > 0 && "(".concat(filter.total, ")"));
   }), children)));
 };
@@ -2023,6 +2026,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
  */
 
 ;
+
 
 
 
