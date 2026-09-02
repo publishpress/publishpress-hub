@@ -19,6 +19,7 @@ use PublishPress\Hub\Application\Service\License\Contract\LicenseManagementServi
 use PublishPress\Hub\Application\Service\License\LicenseStatusStorageService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
+use PublishPress\Hub\Domain\Plugin\Contract\PluginInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\ProPluginInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
@@ -26,6 +27,11 @@ use WP_REST_Request;
 
 class ListPluginsUseCase implements UseCaseInterface
 {
+    private const UPDATE_INFO_EMPTY = [
+        'hasUpdate' => false,
+        'availableVersion' => null,
+    ];
+
     private PluginStatusService $pluginStatusService;
 
     private LicensePersistenceInterface $licensePersistence;
@@ -267,39 +273,129 @@ class ListPluginsUseCase implements UseCaseInterface
 
         $updates = get_plugin_updates();
 
-        if (empty($updates)) {
-            return [
-                'hasUpdate' => false,
-                'availableVersion' => null,
-            ];
-        }
-
         // Determine which plugin is installed (free or pro)
         $installedPlugin = $family->getInstalledPlugin();
 
         if (!$installedPlugin) {
-            return [
-                'hasUpdate' => false,
-                'availableVersion' => null,
-            ];
+            return self::UPDATE_INFO_EMPTY;
         }
 
         $pluginPath = $installedPlugin->getPath();
 
         // Check if this plugin has an update available
-        if (!isset($updates[$pluginPath])) {
+        if (isset($updates[$pluginPath])) {
+            $update = $updates[$pluginPath];
+
             return [
-                'hasUpdate' => false,
-                'availableVersion' => null,
+                'hasUpdate' => true,
+                'availableVersion' => $this->getAvailableVersionFromWordPressUpdate($update),
             ];
         }
 
-        $update = $updates[$pluginPath];
+        return $this->getProPluginUpdateInfo($family, $installedPlugin, $request);
+    }
+
+    /**
+     * Gets the available version from a WordPress plugin update object.
+     *
+     * @param mixed $update The WordPress update object.
+     * @return string|null The available version.
+     * @since 1.0.0
+     */
+    private function getAvailableVersionFromWordPressUpdate($update): ?string
+    {
+        if (isset($update->update->new_version)) {
+            return (string) $update->update->new_version;
+        }
+
+        if (isset($update->new_version)) {
+            return (string) $update->new_version;
+        }
+
+        return null;
+    }
+
+    /**
+     * Gets Pro plugin update information directly from the license server.
+     *
+     * @param PluginFamilyInterface $family The plugin family.
+     * @param PluginInterface $installedPlugin The installed plugin.
+     * @param WP_REST_Request $request The REST request object.
+     * @return array<string, mixed> Update information with hasUpdate and availableVersion.
+     * @since 1.0.0
+     */
+    private function getProPluginUpdateInfo(
+        PluginFamilyInterface $family,
+        PluginInterface $installedPlugin,
+        WP_REST_Request $request
+    ): array {
+        $proPlugin = $family->getProPlugin();
+
+        if ($installedPlugin->getPath() !== $proPlugin->getPath()) {
+            return self::UPDATE_INFO_EMPTY;
+        }
+
+        $licenseKey = $this->getLicenseKey($proPlugin);
+
+        $forceCheck = $request->get_param('force-check');
+
+        try {
+            $versionInfo = $this->licenseManagement->getLastVersionInfo(
+                $licenseKey,
+                $proPlugin->getDownloadId(),
+                $forceCheck === '1' || $forceCheck === 1
+            );
+        } catch (\Throwable $throwable) {
+            return self::UPDATE_INFO_EMPTY;
+        }
+
+        $availableVersion = $this->getAvailableVersionFromVersionInfo($versionInfo);
+
+        if (!$this->isNewerVersion($availableVersion, $installedPlugin->getVersion())) {
+            return self::UPDATE_INFO_EMPTY;
+        }
 
         return [
             'hasUpdate' => true,
-            'availableVersion' => $update->update->new_version ?? null,
+            'availableVersion' => $availableVersion,
         ];
+    }
+
+    /**
+     * Gets the available version from license server version information.
+     *
+     * @param array<string, mixed> $versionInfo The version information.
+     * @return string|null The available version.
+     * @since 1.0.0
+     */
+    private function getAvailableVersionFromVersionInfo(array $versionInfo): ?string
+    {
+        if (isset($versionInfo['version'])) {
+            return (string) $versionInfo['version'];
+        }
+
+        if (isset($versionInfo['new_version'])) {
+            return (string) $versionInfo['new_version'];
+        }
+
+        return null;
+    }
+
+    /**
+     * Checks if an available version is newer than the installed version.
+     *
+     * @param string|null $availableVersion The available version.
+     * @param string|null $installedVersion The installed version.
+     * @return bool True if the available version is newer.
+     * @since 1.0.0
+     */
+    private function isNewerVersion(?string $availableVersion, ?string $installedVersion): bool
+    {
+        if (empty($availableVersion) || empty($installedVersion)) {
+            return false;
+        }
+
+        return version_compare($availableVersion, $installedVersion, '>');
     }
 
     /**

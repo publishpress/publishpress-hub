@@ -1273,7 +1273,7 @@ var PluginsDashboardComponent = function PluginsDashboardComponent() {
     fetchPlugins(isAltPressed);
   }, [fetchPlugins, isAltPressed]);
   var refreshButtonTooltip = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Hold ALT and click to force refresh the update cache', 'publishpress-hub');
+    return (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('To force a refresh, hold Option on Mac or Alt on Windows and then click Refresh.', 'publishpress-hub');
   }, []);
   return /*#__PURE__*/React.createElement(_admin_page__WEBPACK_IMPORTED_MODULE_3__.AdminPageLayout, {
     title: title,
@@ -1777,7 +1777,8 @@ var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
     onActivate = _ref.onActivate,
     error = _ref.error,
     buttonInProgress = _ref.buttonInProgress,
-    title = _ref.title;
+    title = _ref.title,
+    buttonLabel = _ref.buttonLabel;
   var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState2 = _slicedToArray(_useState, 2),
     licenseKey = _useState2[0],
@@ -1831,7 +1832,7 @@ var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
     icon: "check",
     onClick: handleActivate,
     isLoading: buttonInProgress
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate and install the plugin', 'publishpress-hub')));
+  }, buttonLabel || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate and install the plugin', 'publishpress-hub')));
 };
 var ModalLicenseInput = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(ModalLicenseInputComponent);
 
@@ -1951,7 +1952,9 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
     autoFocus: true,
     onEnterKeyDown: handleActivate,
     onFocusReady: handleFocusReady
-  })), currentAction === ACTIONS.VIEW && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Your license key is: ', 'publishpress-hub'), " ", initialLicenseKeyMasked || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('(hidden)', 'publishpress-hub'))), error && /*#__PURE__*/React.createElement(_message_message__WEBPACK_IMPORTED_MODULE_3__.Message, {
+  })), currentAction === ACTIONS.VIEW && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Your license key is: ', 'publishpress-hub'), /*#__PURE__*/React.createElement("span", {
+    className: "pp-hub-license-key-masked"
+  }, initialLicenseKeyMasked || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('(hidden)', 'publishpress-hub')))), error && /*#__PURE__*/React.createElement(_message_message__WEBPACK_IMPORTED_MODULE_3__.Message, {
     variant: "error"
   }, error.message), currentAction === ACTIONS.EDIT && /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "primary",
@@ -2137,6 +2140,7 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     initialLicenseKeyMasked: currentPluginFamily.proPlugin.licenseKeyMasked
   })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_ACTIVATING_LICENSE) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_6__.ModalLicenseInput, _extends({}, modalProps, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Activate %s License', 'publishpress-hub'), currentPluginDisplayName),
+    buttonLabel: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Activate the license key', 'publishpress-hub'),
     onActivate: function onActivate(licenseKey) {
       return handleActivateLicense(currentPluginFamily, licenseKey);
     }
@@ -2907,7 +2911,7 @@ var useActionButtons = function useActionButtons(pluginFamily, status, loadingSt
         }
       });
     }
-    if (isInstalled && !hasConflictingInstallations) {
+    if (isInstalled) {
       var _installedPlugin = pluginFamily.freePlugin.isInstalled ? pluginFamily.freePlugin : pluginFamily.proPlugin;
       var _currentVersion = _installedPlugin.version || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Unknown', 'publishpress-hub');
       var _availableVersion = pluginFamily.availableVersion || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('latest', 'publishpress-hub');
@@ -5820,6 +5824,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getSelectedFilter: () => (/* binding */ getSelectedFilter),
 /* harmony export */   getSelectedPluginForConflictResolution: () => (/* binding */ getSelectedPluginForConflictResolution)
 /* harmony export */ });
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 /**
  * Plugins dashboard selectors.
  *
@@ -5859,31 +5869,16 @@ var getPlugins = function getPlugins(state) {
   return state.plugins;
 };
 var sortPlugins = function sortPlugins(pluginFamily) {
-  return pluginFamily.sort(function (a, b) {
-    // First sort by having or not a conflicting installation
-    if (a.hasConflictingInstallations && !b.hasConflictingInstallations) {
+  return _toConsumableArray(pluginFamily).sort(function (a, b) {
+    if (a.proPlugin.isLicensed && !b.proPlugin.isLicensed) {
       return -1;
     }
-    if (!a.hasConflictingInstallations && b.hasConflictingInstallations) {
+    if (!a.proPlugin.isLicensed && b.proPlugin.isLicensed) {
       return 1;
     }
-
-    // Then sort by installed status
-    if (a.hasAnyVersionInstalled && !b.hasAnyVersionInstalled) {
-      return -1;
-    }
-    if (!a.hasAnyVersionInstalled && b.hasAnyVersionInstalled) {
-      return 1;
-    }
-
-    // Finally sort by activation status (only for installed plugins)
-    if (a.hasAnyVersionActive && !b.hasAnyVersionActive) {
-      return -1;
-    }
-    if (!a.hasAnyVersionActive && b.hasAnyVersionActive) {
-      return 1;
-    }
-    return 0;
+    return a.name.localeCompare(b.name, undefined, {
+      sensitivity: 'base'
+    });
   });
 };
 var getFilteredPlugins = createMemoizedSelector(function (state) {
