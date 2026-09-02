@@ -3,6 +3,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 [1.0.6] - [Unreleased]
 
+- Fixed: Improved the refresh tooltip copy for Mac and Windows keyboard shortcuts (#190).
 - Fixed: Show available updates for installed Pro plugins when WordPress has not populated the update cache (#191).
 - Fixed: Prevented license keys from overflowing the license management modal (#192).
 - Fixed: Updated the license activation button text for already installed Pro plugins (#193).

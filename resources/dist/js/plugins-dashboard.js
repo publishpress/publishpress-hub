@@ -1273,7 +1273,7 @@ var PluginsDashboardComponent = function PluginsDashboardComponent() {
     fetchPlugins(isAltPressed);
   }, [fetchPlugins, isAltPressed]);
   var refreshButtonTooltip = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Hold ALT and click to force refresh the update cache', 'publishpress-hub');
+    return (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('To force a refresh, hold Option on Mac or Alt on Windows and then click Refresh.', 'publishpress-hub');
   }, []);
   return /*#__PURE__*/React.createElement(_admin_page__WEBPACK_IMPORTED_MODULE_3__.AdminPageLayout, {
     title: title,
