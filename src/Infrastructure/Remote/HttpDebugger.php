@@ -268,9 +268,18 @@ class HttpDebugger
         );
 
         if (self::$logFilePath !== null) {
-            self::ensureLogDirectoryExists(dirname(self::$logFilePath));
+            if (!self::ensureLogDirectoryExists(dirname(self::$logFilePath))) {
+                return;
+            }
+
             // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
-            file_put_contents(self::$logFilePath, $logMessage . "\n", FILE_APPEND | LOCK_EX);
+            $bytesWritten = file_put_contents(self::$logFilePath, $logMessage . "\n", FILE_APPEND | LOCK_EX);
+
+            if ($bytesWritten !== false) {
+                // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_chmod, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_chmod, WordPressVIPMinimum.Functions.RestrictedFunctions.chmod_chmod
+                chmod(self::$logFilePath, 0600);
+            }
+
             return;
         }
 
@@ -366,17 +375,21 @@ class HttpDebugger
      * Ensure the target log directory exists before writing logs.
      *
      * @param string $logDir Absolute path to the log directory.
-     * @return void
+     * @return bool True when the directory is ready for secure log writes.
      * @since 1.0.0
      */
-    private static function ensureLogDirectoryExists(string $logDir): void
+    private static function ensureLogDirectoryExists(string $logDir): bool
     {
         if (is_dir($logDir)) {
-            return;
+            return true;
         }
 
-        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_mkdir, WordPressVIPMinimum.Functions.RestrictedFunctions.directory_mkdir
-        mkdir($logDir, 0755, true);
+        if (!wp_mkdir_p($logDir)) {
+            return false;
+        }
+
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_chmod, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_chmod, WordPressVIPMinimum.Functions.RestrictedFunctions.chmod_chmod
+        return chmod($logDir, 0700);
     }
 
     /**

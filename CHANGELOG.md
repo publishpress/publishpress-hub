@@ -3,6 +3,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 [1.0.6] - [Unreleased]
 
+- Security: Moved HTTP debug logs outside the public uploads directory (#175).
 - Security: Redacted sensitive EDD response data from HTTP debug logs (#174).
 - Removed: Removed the redundant "More Info" plugin action and dialog (#162).
 - Fixed: Made installed plugin version numbers visible beside inline plugin actions (#94).
