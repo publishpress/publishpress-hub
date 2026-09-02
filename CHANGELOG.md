@@ -4,6 +4,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.0.6] - [Unreleased]
 
 - Fixed: Updated the license activation button text for already installed Pro plugins (#193).
+- Fixed: Sorted the plugins dashboard by licensed status first, then alphabetically (#197).
+- Fixed: Restored WordPress admin access for the PublishPress Hub Manager role by adding and repairing its required `read` capability (#151).
 
 [1.0.5] - 02 Jun, 2026
 
