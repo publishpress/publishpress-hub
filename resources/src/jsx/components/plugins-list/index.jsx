@@ -132,7 +132,6 @@ const PluginsListComponent = ({
                 onActivateLicense={pluginActions.handleOpenLicenseInputForActivatingLicenseModal}
                 onUninstall={pluginActions.handleOpenUninstallConfirmationModal}
                 onDeactivateLicense={pluginActions.handleDeactivateLicense}
-                onOpenPluginInfo={pluginActions.handleOpenPluginInfoModal}
                 onUpdate={pluginActions.handleUpdatePlugin}
             />
         );
@@ -178,5 +177,4 @@ const PluginsListComponent = ({
 };
 
 export const PluginsList = memo(PluginsListComponent);
-
 

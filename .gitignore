@@ -41,3 +41,5 @@ SECURITY_AUDIT.md
 /metrics
 
 dev-workspace-cache/
+.web/
+.ddev/

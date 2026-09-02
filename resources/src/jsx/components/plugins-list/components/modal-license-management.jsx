@@ -103,7 +103,10 @@ const ModalLicenseManagementComponent = ({
             {currentAction === ACTIONS.VIEW && (
                 <>
                     <p>
-                        {__('Your license key is: ', 'publishpress-hub')} {initialLicenseKeyMasked || __('(hidden)', 'publishpress-hub')}
+                        {__('Your license key is: ', 'publishpress-hub')}
+                        <span className='pp-hub-license-key-masked'>
+                            {initialLicenseKeyMasked || __('(hidden)', 'publishpress-hub')}
+                        </span>
                     </p>
                 </>
             )}

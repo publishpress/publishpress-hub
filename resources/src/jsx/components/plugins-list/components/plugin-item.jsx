@@ -46,7 +46,6 @@ const PluginItemComponent = ({
     onUninstall,
     onResolveConflict,
     onDeactivateLicense,
-    onOpenPluginInfo,
     onUpdate,
 }) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -86,7 +85,7 @@ const PluginItemComponent = ({
         onDeactivateLicense,
     }), [onDeactivate, onActivate, onUninstall, onDeactivateLicense]);
 
-    const actionButtonsData = useActionButtons(pluginFamily, status, loadingStates, handlers, onOpenPluginInfo, onUpdate, isUpdating);
+    const actionButtonsData = useActionButtons(pluginFamily, status, loadingStates, handlers, onUpdate, isUpdating);
 
     const inProgress = useMemo(() =>
         isInstalling || isUpgrading || isResolvingConflict,
@@ -252,4 +251,3 @@ const PluginItemComponent = ({
 PluginItemComponent.displayName = 'PluginItem';
 
 export const PluginItem = memo(PluginItemComponent);
-
