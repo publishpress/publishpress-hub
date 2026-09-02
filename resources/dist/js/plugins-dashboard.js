@@ -1955,7 +1955,9 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
     autoFocus: true,
     onEnterKeyDown: handleActivate,
     onFocusReady: handleFocusReady
-  })), currentAction === ACTIONS.VIEW && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Your license key is: ', 'publishpress-hub'), " ", initialLicenseKeyMasked || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('(hidden)', 'publishpress-hub'))), error && /*#__PURE__*/React.createElement(_message_message__WEBPACK_IMPORTED_MODULE_3__.Message, {
+  })), currentAction === ACTIONS.VIEW && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Your license key is: ', 'publishpress-hub'), /*#__PURE__*/React.createElement("span", {
+    className: "pp-hub-license-key-masked"
+  }, initialLicenseKeyMasked || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('(hidden)', 'publishpress-hub')))), error && /*#__PURE__*/React.createElement(_message_message__WEBPACK_IMPORTED_MODULE_3__.Message, {
     variant: "error"
   }, error.message), currentAction === ACTIONS.EDIT && /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "primary",
