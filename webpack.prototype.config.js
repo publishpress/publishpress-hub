@@ -1,6 +1,5 @@
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const path = require("path");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     mode: NODE_ENV,
@@ -36,12 +35,6 @@ module.exports = {
     optimization: {
         minimize: NODE_ENV === 'production',
     },
-    // plugins: [
-    //     new BundleAnalyzerPlugin({
-    //         analyzerMode: 'static',
-    //         reportFilename: 'webpack-bundle-stats.html',
-    //     }),
-    // ],
     externals: {
         "react": "React",
         "react-dom": "ReactDOM",

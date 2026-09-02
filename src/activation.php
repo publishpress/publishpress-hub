@@ -65,7 +65,13 @@ function setupActivationAccessSetup()
         return;
     } elseif ($versionService->isUpdate()) {
         // Update: Run migrations if needed (future implementation)
-        // For now, just update the version
+        if (
+            version_compare($currentVersion, '1.0.6', '>=')
+            && version_compare($versionService->getStoredVersionForMigration(), '1.0.6', '<')
+        ) {
+            HubAccessService::addViewerRoleCapability();
+        }
+
         $versionService->storeCurrentVersion();
     }
 }
