@@ -25,6 +25,8 @@ class HubAccessService implements AccessInterface, BootableInterface
 
     public const CAPABILITY = 'manage_publishpress_hub';
 
+    public const READ_CAPABILITY = 'read';
+
     public const PLUGIN_NAME = 'PublishPress Hub';
 
     public const VIEWER_ROLE = 'publishpress_hub_manager';
@@ -179,7 +181,19 @@ class HubAccessService implements AccessInterface, BootableInterface
     public static function setupCapabilityAndRole(): void
     {
         self::createUserRole(self::VIEWER_ROLE, self::VIEWER_ROLE_DISPLAY_NAME);
+        self::addViewerRoleCapability();
         self::addRoleCapability(self::ADMIN_ROLE, self::CAPABILITY);
+    }
+
+    /**
+     * Add the capability required for the Hub Manager role to access the WordPress admin.
+     *
+     * @return void
+     * @since 1.0.6
+     */
+    public static function addViewerRoleCapability(): void
+    {
+        self::addRoleCapability(self::VIEWER_ROLE, self::READ_CAPABILITY);
     }
 
     /**
@@ -195,9 +209,25 @@ class HubAccessService implements AccessInterface, BootableInterface
         $roleInstance = get_role($role);
         if (!$roleInstance) {
             if (function_exists('wpcom_vip_add_role')) {
-                $roleInstance = call_user_func('wpcom_vip_add_role', $role, $roleDisplayName, [self::CAPABILITY => true]);
+                $roleInstance = call_user_func(
+                    'wpcom_vip_add_role',
+                    $role,
+                    $roleDisplayName,
+                    [
+                        self::READ_CAPABILITY => true,
+                        self::CAPABILITY => true,
+                    ]
+                );
             } else {
-                $roleInstance = add_role($role, $roleDisplayName, [self::CAPABILITY => true]); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.custom_role_add_role
+                // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.custom_role_add_role
+                $roleInstance = add_role(
+                    $role,
+                    $roleDisplayName,
+                    [
+                        self::READ_CAPABILITY => true,
+                        self::CAPABILITY => true,
+                    ]
+                );
             }
         }
     }

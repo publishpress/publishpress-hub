@@ -56,3 +56,5 @@
 - RoboFile.php
 - screenshot-*.png
 - dev-workspace-cache/
+- .web
+- .ddev
