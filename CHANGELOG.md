@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[1.0.6] - [Unreleased]
+[1.0.6] - 03 September, 2026
 
 - Security: Moved HTTP debug logs outside the public uploads directory (#175).
 - Security: Redacted sensitive EDD response data from HTTP debug logs (#174).

@@ -168,7 +168,7 @@ export const useActionButtons = (
                 key: 'current-version',
                 variant: 'label',
                 className: 'pp-hub-plugin-current-version',
-                text: sprintf(__('v%s', 'publishpress-hub'), currentVersion)
+                text: sprintf(__('Installed version: %s', 'publishpress-hub'), currentVersion)
             });
         }
 

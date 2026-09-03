@@ -32,10 +32,10 @@ class SerializedArrayHandler implements LicenseOptionHandlerInterface
     public function __construct(
         WPOptionsAdapterInterface $optionsAdapter,
         string $optionName,
-        string $licenseKeyKey = null,
-        string $licenseStatusKey = null,
-        string $licenseStatusValid = null,
-        string $licenseStatusInvalid = null
+        ?string $licenseKeyKey = null,
+        ?string $licenseStatusKey = null,
+        ?string $licenseStatusValid = null,
+        ?string $licenseStatusInvalid = null
     ) {
         $this->optionsAdapter = $optionsAdapter;
         $this->optionName = $optionName;

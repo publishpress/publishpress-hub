@@ -154,7 +154,7 @@ const PluginItemComponent = ({
         }
 
         // translators: %s is the installed version number
-        return sprintf(__('v%s', 'publishpress-hub'), installedPlugin.version);
+        return sprintf(__('Installed version: %s', 'publishpress-hub'), installedPlugin.version);
     }, [pluginFamily, status.isInstalled, status.hasConflictingInstallations]);
 
     return (
