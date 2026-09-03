@@ -2472,7 +2472,7 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     }
 
     // translators: %s is the installed version number
-    return (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('v%s', 'publishpress-hub'), installedPlugin.version);
+    return (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Installed version: %s', 'publishpress-hub'), installedPlugin.version);
   }, [pluginFamily, status.isInstalled, status.hasConflictingInstallations]);
   return /*#__PURE__*/React.createElement("div", {
     className: responsiveClasses,
@@ -2924,7 +2924,7 @@ var useActionButtons = function useActionButtons(pluginFamily, status, loadingSt
         key: 'current-version',
         variant: 'label',
         className: 'pp-hub-plugin-current-version',
-        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('v%s', 'publishpress-hub'), _currentVersion)
+        text: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Installed version: %s', 'publishpress-hub'), _currentVersion)
       });
     }
     return buttons;
