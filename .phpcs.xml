@@ -35,6 +35,14 @@
     <rule ref="WordPress-VIP-Go"/>
     <rule ref="VariableAnalysis"/>
     <rule ref="PublishPressStandards"/>
+    <exclude-pattern>/dev-workspace-cache/*</exclude-pattern>
+    <exclude-pattern>/dist/*</exclude-pattern>
+    <exclude-pattern>/languages/*</exclude-pattern>
+    <exclude-pattern>/lib/*</exclude-pattern>
+    <exclude-pattern>/node_modules/*</exclude-pattern>
+    <exclude-pattern>/tests/*</exclude-pattern>
+    <exclude-pattern>/vendor/*</exclude-pattern>
+    <exclude-pattern>/.wordpress-org/*</exclude-pattern>
     <exclude-pattern>/\.web/</exclude-pattern>
     <exclude-pattern>/\.ddev/</exclude-pattern>
 </ruleset>
