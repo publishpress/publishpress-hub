@@ -1350,7 +1350,6 @@ msgstr "ID Cloudflare Ray: %s"
 #~ msgid "Base"
 #~ msgstr "Base"
 
-#~| msgid "Contact"
 #~ msgctxt "Color name"
 #~ msgid "Contrast"
 #~ msgstr "Contraste"

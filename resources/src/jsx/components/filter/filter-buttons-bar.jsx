@@ -60,7 +60,11 @@ const FilterButtonsBarComponent = ({
             </div>
 
             <div className="publishpress-hub-filter-desktop">
-                <div className="publishpress-hub-filter-buttons-bar">
+                <div
+                    className="publishpress-hub-filter-buttons-bar"
+                    role="group"
+                    aria-label={__('Filter plugins by status', 'publishpress-hub')}
+                >
                     {options.map((filter) => {
                         const isSelected = activeSelectedOption === filter.value;
                         const buttonClass = isSelected ? 'active' : '';
@@ -72,6 +76,7 @@ const FilterButtonsBarComponent = ({
                                 className={`publishpress-hub-filter-button ${buttonClass} ${isDisabled ? 'disabled' : ''}`}
                                 onClick={createButtonClickHandler(filter.value)}
                                 disabled={filter.total === 0}
+                                aria-pressed={isSelected}
                             >
                                 {filter.label} {filter.total > 0 && `(${filter.total})`}
                             </Button>

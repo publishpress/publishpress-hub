@@ -90,6 +90,7 @@ const ModalLicenseManagementComponent = ({
 
                     <LicenseKeyControl
                         value={licenseKey}
+                        label={__('License key', 'publishpress-hub')}
                         className='pp-hub-text-control pp-hub-license-input'
                         placeholder={__('Enter your license key here', 'publishpress-hub')}
                         onChange={(value) => setLicenseKey(value)}
@@ -103,7 +104,10 @@ const ModalLicenseManagementComponent = ({
             {currentAction === ACTIONS.VIEW && (
                 <>
                     <p>
-                        {__('Your license key is: ', 'publishpress-hub')} {initialLicenseKeyMasked || __('(hidden)', 'publishpress-hub')}
+                        {__('Your license key is: ', 'publishpress-hub')}
+                        <span className='pp-hub-license-key-masked'>
+                            {initialLicenseKeyMasked || __('(hidden)', 'publishpress-hub')}
+                        </span>
                     </p>
                 </>
             )}

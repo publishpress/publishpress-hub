@@ -117,11 +117,12 @@ return [
             'https://publishpress.com'
         ),
 
-    AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS =>
-        fn(ContainerInterface $container): array => apply_filters(
-            AbstractHooks::FILTER_ALLOWED_DOWNLOAD_DOMAINS,
-            ['publishpress.com', 'pkg.publishpress.com', 'wordpress.org', 'downloads.wordpress.org']
-        ),
+    AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS => [
+        'publishpress.com',
+        'pkg.publishpress.com',
+        'wordpress.org',
+        'downloads.wordpress.org',
+    ],
 
     AbstractDependencies::SITE_URL => home_url(),
 
@@ -422,7 +423,9 @@ return [
                 $servicesToInit,
                 $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
                 $container->get(AbstractDependencies::HUB_ACCESS_SERVICE),
-                $container->get(AbstractDependencies::DEBUG_LOG_SERVICE)
+                $container->get(AbstractDependencies::DEBUG_LOG_SERVICE),
+                $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
+                $container->get(AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS)
             );
         },
 
@@ -583,7 +586,9 @@ return [
         ),
 
     AbstractDependencies::DEBUG_LOG_SERVICE =>
-        fn(ContainerInterface $container) => new DebugLogService(),
+        fn(ContainerInterface $container) => new DebugLogService(
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER)
+        ),
 
     AbstractDependencies::GET_DIAGNOSTICS_SETTINGS_USE_CASE =>
         fn(ContainerInterface $container) => new GetDiagnosticsSettingsUseCase(

@@ -17,7 +17,6 @@ export const useActionButtons = (
     status,
     loadingStates,
     handlers,
-    onOpenPluginInfo,
     onUpdate,
     isUpdating
 ) => {
@@ -135,16 +134,6 @@ export const useActionButtons = (
             disabled: isUpdating ? false : undefined,
         });
 
-        if (isInstalled && !hasConflictingInstallations && onOpenPluginInfo) {
-            buttons.push({
-                key: 'more-info',
-                variant: 'link',
-                text: __('More Info', 'publishpress-hub'),
-                disabled: isUpdating ? false : undefined,
-                onClick: () => onOpenPluginInfo(pluginFamily),
-            });
-        }
-
         // Add update button if update is available (show first in row actions)
         if (
             isInstalled &&
@@ -168,7 +157,7 @@ export const useActionButtons = (
             });
         }
 
-        if (isInstalled && !hasConflictingInstallations) {
+        if (isInstalled) {
             const installedPlugin = pluginFamily.freePlugin.isInstalled
                 ? pluginFamily.freePlugin
                 : pluginFamily.proPlugin;
@@ -179,7 +168,7 @@ export const useActionButtons = (
                 key: 'current-version',
                 variant: 'label',
                 className: 'pp-hub-plugin-current-version',
-                text: sprintf(__('v%s', 'publishpress-hub'), currentVersion)
+                text: sprintf(__('Installed version: %s', 'publishpress-hub'), currentVersion)
             });
         }
 
@@ -196,7 +185,6 @@ export const useActionButtons = (
         onDeactivate,
         onActivate,
         onUninstall,
-        onOpenPluginInfo,
         onUpdate,
     ]);
 };

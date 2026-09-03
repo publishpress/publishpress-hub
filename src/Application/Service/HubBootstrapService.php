@@ -40,23 +40,36 @@ class HubBootstrapService implements BootableInterface
 
     private DebugLogService $debugLogService;
 
+    private string $eddSubscriptionApiUrl;
+
+    /**
+     * @var array<string>
+     */
+    private array $allowedDownloadDomains;
+
     /**
      * @param BootableInterface[] $servicesToInit
      * @param PluginFamilyRepositoryInterface $pluginFamilyRepository
      * @param AccessInterface $accessService
      * @param DebugLogService $debugLogService
+     * @param string $eddSubscriptionApiUrl
+     * @param array<string> $allowedDownloadDomains
      * @since 1.0.0
      */
     public function __construct(
         array $servicesToInit,
         PluginFamilyRepositoryInterface $pluginFamilyRepository,
         AccessInterface $accessService,
-        DebugLogService $debugLogService
+        DebugLogService $debugLogService,
+        string $eddSubscriptionApiUrl,
+        array $allowedDownloadDomains
     ) {
         $this->servicesToInit = $servicesToInit;
         $this->pluginFamilyRepository = $pluginFamilyRepository;
         $this->accessService = $accessService;
         $this->debugLogService = $debugLogService;
+        $this->eddSubscriptionApiUrl = $eddSubscriptionApiUrl;
+        $this->allowedDownloadDomains = $allowedDownloadDomains;
     }
 
     /**
@@ -66,7 +79,9 @@ class HubBootstrapService implements BootableInterface
      */
     protected function onLoad(): void
     {
+        $this->debugLogService->migrateLegacyPublicLog();
         HttpDebugger::setLogFilePath($this->debugLogService->getLogFilePath());
+        HttpDebugger::setAllowedRequestUrls($this->eddSubscriptionApiUrl, $this->allowedDownloadDomains);
         HttpDebugger::initialize();
 
         $this->addHooks();

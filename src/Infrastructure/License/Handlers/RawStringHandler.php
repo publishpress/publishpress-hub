@@ -34,8 +34,8 @@ class RawStringHandler implements LicenseOptionHandlerInterface
         WPOptionsAdapterInterface $optionsAdapter,
         string $licenseOptionName,
         string $statusOptionName,
-        string $licenseStatusValid = null,
-        string $licenseStatusInvalid = null
+        ?string $licenseStatusValid = null,
+        ?string $licenseStatusInvalid = null
     ) {
         $this->optionsAdapter = $optionsAdapter;
         $this->licenseOptionName = $licenseOptionName;

@@ -23,6 +23,7 @@ const ModalLicenseInputComponent = ({
     error,
     buttonInProgress,
     title,
+    buttonLabel,
 }) => {
     const [licenseKey, setLicenseKey] = useState('');
     const [activationAttempted, setActivationAttempted] = useState(false);
@@ -62,6 +63,7 @@ const ModalLicenseInputComponent = ({
 
             <LicenseKeyControl
                 value={licenseKey}
+                label={__('License key', 'publishpress-hub')}
                 className='pp-hub-text-control pp-hub-license-input'
                 placeholder={__('Enter your license key here', 'publishpress-hub')}
                 onChange={(value) => setLicenseKey(value)}
@@ -77,7 +79,7 @@ const ModalLicenseInputComponent = ({
             )}
 
             <Button variant='primary' icon='check' onClick={handleActivate} isLoading={buttonInProgress}>
-                {__('Activate and install the plugin', 'publishpress-hub')}
+                {buttonLabel || __('Activate and install the plugin', 'publishpress-hub')}
             </Button>
         </Modal>
     );
