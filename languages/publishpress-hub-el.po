@@ -4,25 +4,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
-"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
-"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: el\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
+"PO-Revision-Date: 2026-09-03 09:38+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: el\n"
 
+#: publishpress-hub.php:4
+#: src/Admin/Page/WelcomePageController.php:259, fuzzy
 #. Plugin Name of the plugin
-#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
 
-#. Description of the plugin
 #: publishpress-hub.php:5
+#. Description of the plugin
 msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
@@ -30,13 +31,13 @@ msgstr ""
 "Κεντρικό κόμβο διαχείρισης για όλα τα πρόσθετα PublishPress - εγκαταστήστε, "
 "ενημερώστε και διαχειριστείτε άδειες από έναν πίνακα ελέγχου."
 
-#. Author of the plugin
 #: publishpress-hub.php:7
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
+#: publishpress-hub.php:8, fuzzy
 #. Author URI of the plugin
-#: publishpress-hub.php:8
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -50,7 +51,9 @@ msgstr "Παρακαλώ περιμένετε ενώ φορτώνουμε τον
 
 #: src/Admin/Page/SettingsPageController.php:104
 #: src/Admin/Page/SettingsPageController.php:105
+#: resources/dist/js/settings-page.js:453
 #: resources/src/jsx/components/pages/settings-page.jsx:80
+#: resources/dist/js/settings-page.js:410
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
@@ -60,8 +63,7 @@ msgstr "Παρακαλώ περιμένετε ενώ φορτώνουμε τη �
 
 #: src/Admin/Page/WelcomePageController.php:143
 msgid "You do not have sufficient permissions to access this page."
-msgstr ""
-"Δεν έχετε επαρκή δικαιώματα για να αποκτήσετε πρόσβαση σε αυτή τη σελίδα."
+msgstr "Δεν έχετε επαρκή δικαιώματα για να αποκτήσετε πρόσβαση σε αυτή τη σελίδα."
 
 #: src/Admin/Page/WelcomePageController.php:180
 #: src/Admin/Page/WelcomePageController.php:181
@@ -72,8 +74,8 @@ msgstr "Καλώς ήρθατε"
 msgid "Please wait while we load the welcome page..."
 msgstr "Παρακαλώ περιμένετε ενώ φορτώνουμε τη σελίδα καλωσορίσματος..."
 
-#. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
 #: src/Application/Service/License/LicenseExpirationNoticeService.php:121
+#. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "Προειδοποίηση: Η άδεια για %1$s έχει λήξει. %2$s"
@@ -83,8 +85,8 @@ msgstr "Προειδοποίηση: Η άδεια για %1$s έχει λήξε�
 msgid "Manage licenses"
 msgstr "Διαχείριση αδειών"
 
-#. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
 #: src/Application/Service/License/LicenseExpirationNoticeService.php:134
+#. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "Προειδοποίηση: %1$d πρόσθετο(τα) έχουν ληγμένες άδειες: %2$s. %3$s"
@@ -97,21 +99,22 @@ msgstr "Το αντικείμενο πρέπει να φορτωθεί πριν 
 msgid "No license key found"
 msgstr "Δεν βρέθηκε κλειδί άδειας"
 
-#. translators: %s is the plugin family slug
 #: src/Domain/Plugin/Entity/PluginFamily.php:128
+#. translators: %s is the plugin family slug
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr "Δωρεάν πρόσθετο δεν έχει οριστεί για την οικογένεια πρόσθετων: %s"
 
-#. translators: %s is the plugin family slug
 #: src/Domain/Plugin/Entity/PluginFamily.php:150
+#. translators: %s is the plugin family slug
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr "Pro πρόσθετο δεν έχει οριστεί για την οικογένεια πρόσθετων: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
 msgid ""
-"License activation error. Please try again later or contact support for help."
+"License activation error. Please try again later or contact support for "
+"help."
 msgstr ""
 "Σφάλμα ενεργοποίησης άδειας. Παρακαλώ δοκιμάστε ξανά αργότερα ή "
 "επικοινωνήστε με την υποστήριξη για βοήθεια."
@@ -133,8 +136,8 @@ msgstr ""
 #: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
 msgid "This license has expired. Please contact support to renew it."
 msgstr ""
-"Αυτή η άδεια έχει λήξει. Παρακαλώ επικοινωνήστε με την υποστήριξη για να την "
-"ανανεώσετε."
+"Αυτή η άδεια έχει λήξει. Παρακαλώ επικοινωνήστε με την υποστήριξη για να "
+"την ανανεώσετε."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
 msgid ""
@@ -142,12 +145,13 @@ msgid ""
 "license key or contact support for help."
 msgstr ""
 "Αυτή η κωδικός άδειας δεν είναι εξουσιοδοτημένος για αυτό το πρόσθετο. "
-"Παρακαλώ επαληθεύστε τον κωδικό άδειας σας ή επικοινωνήστε με την υποστήριξη "
-"για βοήθεια."
+"Παρακαλώ επαληθεύστε τον κωδικό άδειας σας ή επικοινωνήστε με την "
+"υποστήριξη για βοήθεια."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
 msgid ""
-"This license cannot be used for this plugin. Please contact support for help."
+"This license cannot be used for this plugin. Please contact support for "
+"help."
 msgstr ""
 "Αυτή η άδεια δεν μπορεί να χρησιμοποιηθεί για αυτό το πρόσθετο. Παρακαλώ "
 "επικοινωνήστε με την υποστήριξη για βοήθεια."
@@ -157,8 +161,8 @@ msgid ""
 "This license does not match the plugin you are trying to activate. Please "
 "contact support for assistance."
 msgstr ""
-"Αυτή η άδεια δεν ταιριάζει με το πρόσθετο που προσπαθείτε να ενεργοποιήσετε. "
-"Παρακαλώ επικοινωνήστε με την υποστήριξη για βοήθεια."
+"Αυτή η άδεια δεν ταιριάζει με το πρόσθετο που προσπαθείτε να "
+"ενεργοποιήσετε. Παρακαλώ επικοινωνήστε με την υποστήριξη για βοήθεια."
 
 #: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
 msgid ""
@@ -170,16 +174,15 @@ msgstr ""
 
 #: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
-msgstr ""
-"Δεν παρέχεται κωδικός άδειας. Παρακαλώ εισαγάγετε έναν έγκυρο κωδικό άδειας."
+msgstr "Δεν παρέχεται κωδικός άδειας. Παρακαλώ εισαγάγετε έναν έγκυρο κωδικό άδειας."
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
 msgid ""
-"Your site URL is required to activate the license. Please enter a valid site "
-"URL to continue."
+"Your site URL is required to activate the license. Please enter a valid "
+"site URL to continue."
 msgstr ""
-"Η διεύθυνση URL του ιστότοπού σας είναι απαραίτητη για να ενεργοποιήσετε την "
-"άδεια. Παρακαλώ εισάγετε μια έγκυρη διεύθυνση URL του ιστότοπου για να "
+"Η διεύθυνση URL του ιστότοπού σας είναι απαραίτητη για να ενεργοποιήσετε "
+"την άδεια. Παρακαλώ εισάγετε μια έγκυρη διεύθυνση URL του ιστότοπου για να "
 "συνεχίσετε."
 
 #: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
@@ -197,11 +200,10 @@ msgstr ""
 "υποστήριξη για βοήθεια."
 
 #: src/Domain/Plugin/Exception/LicenseServerException.php:28
-msgid ""
-"License server error. Please try again later or contact support for help."
+msgid "License server error. Please try again later or contact support for help."
 msgstr ""
-"Σφάλμα διακομιστή άδειας. Παρακαλώ προσπαθήστε ξανά αργότερα ή επικοινωνήστε "
-"με την υποστήριξη για βοήθεια."
+"Σφάλμα διακομιστή άδειας. Παρακαλώ προσπαθήστε ξανά αργότερα ή "
+"επικοινωνήστε με την υποστήριξη για βοήθεια."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
 msgid ""
@@ -212,23 +214,22 @@ msgstr ""
 "ξανά αργότερα ή επικοινωνήστε με την υποστήριξη για βοήθεια."
 
 #: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
-msgid ""
-"This license is inactive for this site. Please contact support for help."
+msgid "This license is inactive for this site. Please contact support for help."
 msgstr ""
 "Αυτή η άδεια είναι ανενεργή για αυτόν τον ιστότοπο. Παρακαλώ επικοινωνήστε "
 "με την υποστήριξη για βοήθεια."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
 msgid ""
-"Plugin activation failed. Please try again later or contact support for help."
+"Plugin activation failed. Please try again later or contact support for "
+"help."
 msgstr ""
 "Αποτυχία ενεργοποίησης πρόσθετου. Παρακαλώ δοκιμάστε ξανά αργότερα ή "
 "επικοινωνήστε με την υποστήριξη για βοήθεια."
 
 #: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
 msgid "This action is not possible because the plugin is already installed."
-msgstr ""
-"Αυτή η ενέργεια δεν είναι δυνατή διότι το πρόσθετο είναι ήδη εγκατεστημένο."
+msgstr "Αυτή η ενέργεια δεν είναι δυνατή διότι το πρόσθετο είναι ήδη εγκατεστημένο."
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
 msgid ""
@@ -280,8 +281,8 @@ msgid ""
 "This action is not possible because the plugin is not installed. Please "
 "install the plugin and try again."
 msgstr ""
-"Αυτή η ενέργεια δεν είναι δυνατή επειδή το πρόσθετο δεν είναι εγκατεστημένο. "
-"Παρακαλώ εγκαταστήστε το πρόσθετο και δοκιμάστε ξανά."
+"Αυτή η ενέργεια δεν είναι δυνατή επειδή το πρόσθετο δεν είναι "
+"εγκατεστημένο. Παρακαλώ εγκαταστήστε το πρόσθετο και δοκιμάστε ξανά."
 
 #: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
 msgid ""
@@ -304,12 +305,12 @@ msgstr "Ελέγξτε ποιος μπορεί να επεξεργαστεί κ�
 #: src/Domain/Plugin/plugin-families.php:58
 msgid "Create, manage and display authors for your content."
 msgstr ""
-"Δημιουργήστε, διαχειριστείτε και εμφανίστε συγγραφείς για το περιεχόμενό σας."
+"Δημιουργήστε, διαχειριστείτε και εμφανίστε συγγραφείς για το περιεχόμενό "
+"σας."
 
 #: src/Domain/Plugin/plugin-families.php:74
 msgid "All the tools you need to improve the block editor."
-msgstr ""
-"Όλα τα εργαλεία που χρειάζεστε για να βελτιώσετε τον επεξεργαστή μπλοκ."
+msgstr "Όλα τα εργαλεία που χρειάζεστε για να βελτιώσετε τον επεξεργαστή μπλοκ."
 
 #: src/Domain/Plugin/plugin-families.php:90
 msgid "Control your admin area and user roles."
@@ -325,8 +326,7 @@ msgstr "Οργανώστε, προγραμματίστε και σχεδιάστ
 
 #: src/Domain/Plugin/plugin-families.php:138
 msgid "Approve and schedule new versions to your published posts."
-msgstr ""
-"Εγκρίνετε και προγραμματίστε νέες εκδόσεις για τα δημοσιευμένα άρθρα σας."
+msgstr "Εγκρίνετε και προγραμματίστε νέες εκδόσεις για τα δημοσιευμένα άρθρα σας."
 
 #: src/Domain/Plugin/plugin-families.php:154
 msgid "Organize your posts into issues or series."
@@ -342,20 +342,20 @@ msgstr ""
 msgid "Create custom statuses and publishing workflows."
 msgstr "Δημιουργήστε προσαρμοσμένες καταστάσεις και ροές εργασίας δημοσίευσης."
 
-#. translators: %s is the dependency ID.
 #: src/Infrastructure/Container/DependencyContainer.php:102
+#. translators: %s is the dependency ID.
 #, php-format
 msgid "Dependency \"%s\" not found in container."
 msgstr "Η εξάρτηση \"%s\" δεν βρέθηκε στο δοχείο."
 
-#. translators: %s is the error message
 #: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
+#. translators: %s is the error message
 #, php-format
 msgid "Error validating license: %s"
 msgstr "Σφάλμα επικύρωσης άδειας: %s"
 
-#. translators: %s is the error message
 #: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
+#. translators: %s is the error message
 #, php-format
 msgid "Error getting license info: %s"
 msgstr "Σφάλμα στην απόκτηση πληροφοριών άδειας: %s"
@@ -368,8 +368,8 @@ msgstr "Πολύ πολλές αιτήσεις. Παρακαλώ δοκιμάσ�
 msgid "An error occurred while processing your request."
 msgstr "Συνέβη ένα σφάλμα κατά την επεξεργασία του αιτήματός σας."
 
-#. translators: %s is the template path
 #: src/Infrastructure/View/ViewService.php:48
+#. translators: %s is the template path
 #, php-format
 msgid "Template not found: %s"
 msgstr "Το πρότυπο δεν βρέθηκε: %s"
@@ -390,8 +390,8 @@ msgstr "Μη έγκυρη διαδρομή αρχείου: ανιχνεύθηκ�
 msgid "Invalid file path: directory traversal detected"
 msgstr "Μη έγκυρη διαδρομή αρχείου: ανιχνεύθηκε διαδρομή καταλόγου"
 
-#. translators: %s is the directory path
 #: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
+#. translators: %s is the directory path
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "Μη έγκυρη διαδρομή αρχείου: ο γονικός κατάλογος δεν υπάρχει: %s"
@@ -412,11 +412,10 @@ msgstr "Μη έγκυρη διεύθυνση URL λήψης"
 
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:60
 msgid "Download URL must use HTTP or HTTPS protocol"
-msgstr ""
-"Η διεύθυνση URL λήψης πρέπει να χρησιμοποιεί το πρωτόκολλο HTTP ή HTTPS"
+msgstr "Η διεύθυνση URL λήψης πρέπει να χρησιμοποιεί το πρωτόκολλο HTTP ή HTTPS"
 
-#. translators: %s is the hostname
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
+#. translators: %s is the hostname
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr "Η διεύθυνση URL λήψης δεν προέρχεται από επιτρεπόμενο τομέα: %s"
@@ -425,8 +424,8 @@ msgstr "Η διεύθυνση URL λήψης δεν προέρχεται από 
 msgid "Download URL failed WordPress validation"
 msgstr "Η διεύθυνση URL λήψης απέτυχε την επικύρωση του WordPress"
 
-#. translators: %s is the error message
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
+#. translators: %s is the error message
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr "Αποτυχία λήψης του plugin: %s"
@@ -451,8 +450,8 @@ msgstr ""
 "Το ληφθέν αρχείο δεν είναι έγκυρο αρχείο ZIP. Η διεύθυνση URL λήψης μπορεί "
 "να επιστρέφει μια σελίδα σφάλματος."
 
-#. translators: %s is the error message
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
+#. translators: %s is the error message
 #, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "Αποτυχία αποσυμπίεσης του αρχείου plugin: %s"
@@ -461,14 +460,14 @@ msgstr "Αποτυχία αποσυμπίεσης του αρχείου plugin: 
 msgid "Failed to unzip plugin file"
 msgstr "Αποτυχία αποσυμπίεσης του αρχείου plugin"
 
-#. translators: %s is the error message
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
+#. translators: %s is the error message
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "Αποτυχία ενεργοποίησης του plugin: %s"
 
-#. translators: %s is the error message
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
+#. translators: %s is the error message
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "Αποτυχία διαγραφής του plugin: %s"
@@ -481,8 +480,8 @@ msgstr "Δεν είναι διαθέσιμη καμία ενημέρωση γι�
 msgid "Invalid update information for this plugin"
 msgstr "Μη έγκυρες πληροφορίες ενημέρωσης για αυτό το πρόσθετο"
 
-#. translators: %s is the error message
 #: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
+#. translators: %s is the error message
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "Αποτυχία ενημέρωσης πρόσθετου: %s"
@@ -491,206 +490,1091 @@ msgstr "Αποτυχία ενημέρωσης πρόσθετου: %s"
 msgid "Plugin update failed"
 msgstr "Αποτυχία ενημέρωσης πρόσθετου"
 
-#. translators: %s is the error message
 #: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
+#. translators: %s is the error message
 #, php-format
 msgid "Failed to get plugin information: %s"
 msgstr "Αποτυχία ανάκτησης πληροφοριών πρόσθετου: %s"
 
-#. translators: %s is the plugin name, %s is the rating
+#: resources/dist/js/components-showcase.js:87
+#: resources/dist/js/plugins-dashboard.js:88
+#: resources/dist/js/settings-page.js:87
+#: resources/dist/js/welcome-page.js:87
 #: resources/src/jsx/components/admin-page/footer.jsx:26
+#: resources/dist/js/components-showcase.js:63
+#: resources/dist/js/plugins-dashboard.js:63
+#: resources/dist/js/settings-page.js:63
+#: resources/dist/js/welcome-page.js:63
+#. translators: %s is the plugin name, %s is the rating
+#, js-format
 msgid "If you like %s please leave us a %s rating. Thank you!"
-msgstr ""
-"Αν σας αρέσει το %s παρακαλούμε δώστε μας μια βαθμολογία %s. Ευχαριστούμε!"
+msgstr "Αν σας αρέσει το %s παρακαλούμε δώστε μας μια βαθμολογία %s. Ευχαριστούμε!"
 
-#. translators: %s is the plugin name
+#: resources/dist/js/components-showcase.js:98
+#: resources/dist/js/plugins-dashboard.js:99
+#: resources/dist/js/settings-page.js:98
+#: resources/dist/js/welcome-page.js:98
 #: resources/src/jsx/components/admin-page/footer.jsx:43
+#: resources/dist/js/components-showcase.js:80
+#: resources/dist/js/plugins-dashboard.js:80
+#: resources/dist/js/settings-page.js:80
+#: resources/dist/js/welcome-page.js:80
+#. translators: %s is the plugin name
+#, js-format
 msgid "About %s"
 msgstr "Σχετικά με το %s"
 
+#: resources/dist/js/components-showcase.js:99
+#: resources/dist/js/plugins-dashboard.js:100
+#: resources/dist/js/settings-page.js:99
+#: resources/dist/js/welcome-page.js:99
 #: resources/src/jsx/components/admin-page/footer.jsx:45
+#: resources/dist/js/components-showcase.js:82
+#: resources/dist/js/plugins-dashboard.js:82
+#: resources/dist/js/settings-page.js:82
+#: resources/dist/js/welcome-page.js:82
 msgid "About"
 msgstr "Σχετικά"
 
-#. translators: %s is the plugin name
+#: resources/dist/js/components-showcase.js:104
+#: resources/dist/js/plugins-dashboard.js:105
+#: resources/dist/js/settings-page.js:104
+#: resources/dist/js/welcome-page.js:104
 #: resources/src/jsx/components/admin-page/footer.jsx:54
+#: resources/dist/js/components-showcase.js:91
+#: resources/dist/js/plugins-dashboard.js:91
+#: resources/dist/js/settings-page.js:91
+#: resources/dist/js/welcome-page.js:91
+#. translators: %s is the plugin name
+#, js-format
 msgid "Documentation for %s"
 msgstr "Τεκμηρίωση για το %s"
 
+#: resources/dist/js/components-showcase.js:105
+#: resources/dist/js/plugins-dashboard.js:106
+#: resources/dist/js/settings-page.js:105
+#: resources/dist/js/welcome-page.js:105
 #: resources/src/jsx/components/admin-page/footer.jsx:56
+#: resources/dist/js/components-showcase.js:93
+#: resources/dist/js/plugins-dashboard.js:93
+#: resources/dist/js/settings-page.js:93
+#: resources/dist/js/welcome-page.js:93
 msgid "Documentation"
 msgstr "Τεκμηρίωση"
 
-#. translators: %s is the plugin name
+#: resources/dist/js/components-showcase.js:110
+#: resources/dist/js/plugins-dashboard.js:111
+#: resources/dist/js/settings-page.js:110
+#: resources/dist/js/welcome-page.js:110
 #: resources/src/jsx/components/admin-page/footer.jsx:65
+#: resources/dist/js/components-showcase.js:102
+#: resources/dist/js/plugins-dashboard.js:102
+#: resources/dist/js/settings-page.js:102
+#: resources/dist/js/welcome-page.js:102
+#. translators: %s is the plugin name
+#, js-format
 msgid "Contact the %s team"
 msgstr "Επικοινωνήστε με την ομάδα του %s"
 
+#: resources/dist/js/components-showcase.js:111
+#: resources/dist/js/plugins-dashboard.js:112
+#: resources/dist/js/settings-page.js:111
+#: resources/dist/js/welcome-page.js:111
 #: resources/src/jsx/components/admin-page/footer.jsx:67
+#: resources/dist/js/components-showcase.js:104
+#: resources/dist/js/plugins-dashboard.js:104
+#: resources/dist/js/settings-page.js:104
+#: resources/dist/js/welcome-page.js:104
 msgid "Contact"
 msgstr "Επικοινωνία"
 
+#: resources/dist/js/components-showcase.js:188
+#: resources/dist/js/plugins-dashboard.js:190
+#: resources/dist/js/settings-page.js:188
+#: resources/dist/js/welcome-page.js:188
 #: resources/src/jsx/components/admin-page/header.jsx:50
+#: resources/dist/js/components-showcase.js:168
+#: resources/dist/js/plugins-dashboard.js:168
+#: resources/dist/js/settings-page.js:168
+#: resources/dist/js/welcome-page.js:168
 msgid "Get Support"
 msgstr "Λάβετε υποστήριξη"
 
-#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
-msgid "Select an option"
-msgstr "Επιλέξτε μια επιλογή"
-
-#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
-msgid "Options"
-msgstr "Επιλογές"
-
+#: resources/dist/js/components-showcase.js:445
 #: resources/src/jsx/components/pages/components-showcase.jsx:26
+#: resources/dist/js/components-showcase.js:385
 msgid "Components Showcase"
 msgstr "Επίδειξη Στοιχείων"
 
+#: resources/dist/js/plugins-dashboard.js:479
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
+#: resources/dist/js/plugins-dashboard.js:403
+msgid "Select an option"
+msgstr "Επιλέξτε μια επιλογή"
+
+#: resources/dist/js/plugins-dashboard.js:485
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
+#: resources/dist/js/plugins-dashboard.js:411
+msgid "Options"
+msgstr "Επιλογές"
+
+#: resources/dist/js/plugins-dashboard.js:496
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:66
+#: resources/dist/js/plugins-dashboard.js:425
+msgid "Filter plugins by status"
+msgstr "Φιλτράρισμα πρόσθετων κατά κατάσταση"
+
+#: resources/dist/js/plugins-dashboard.js:1011
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
+#: resources/dist/js/plugins-dashboard.js:757, fuzzy
 msgid "N/A"
 msgstr "N/A"
 
-#. translators: %1$s is the plugin name, %2$s is the expiration date
+#: resources/dist/js/plugins-dashboard.js:1053
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
+#: resources/dist/js/plugins-dashboard.js:804
+#. translators: %1$s is the plugin name, %2$s is the expiration date
+#, js-format
 msgid "The license for %1$s expired on %2$s"
 msgstr "Η άδεια για το %1$s έληξε στις %2$s"
 
-#. translators: %1$s is the list of plugin names, %2$s is the expiration date
+#: resources/dist/js/plugins-dashboard.js:1057
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
+#: resources/dist/js/plugins-dashboard.js:811
+#. translators: %1$s is the list of plugin names, %2$s is the expiration date
+#, js-format
 msgid "The licenses for %1$s expired on %2$s"
 msgstr "Οι άδειες για το %1$s έληξαν στις %2$s"
 
+#: resources/dist/js/plugins-dashboard.js:1063
+#: resources/dist/js/plugins-dashboard.js:1108
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:157
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:213
+#: resources/dist/js/plugins-dashboard.js:821
+#: resources/dist/js/plugins-dashboard.js:877
 msgid "Renew now"
 msgstr "Ανανεώστε τώρα"
 
-#. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
+#: resources/dist/js/plugins-dashboard.js:1098
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
+#: resources/dist/js/plugins-dashboard.js:858
+#. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
+#, js-format
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr "Η άδεια για το %1$s λήγει στις %2$s (%3$d ημέρες απομένουν)"
 
-#. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
+#: resources/dist/js/plugins-dashboard.js:1102
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
+#: resources/dist/js/plugins-dashboard.js:866
+#. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
+#, js-format
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr "Οι άδειες για το %1$s λήγουν στις %2$s (%3$d ημέρες απομένουν)"
 
+#: resources/dist/js/plugins-dashboard.js:1105
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:210
+#: resources/dist/js/plugins-dashboard.js:874
 msgid "Warning:"
 msgstr "Προειδοποίηση:"
 
+#: resources/dist/js/plugins-dashboard.js:1197
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:46
+#: resources/dist/js/plugins-dashboard.js:942
 msgid "All"
 msgstr "Όλα"
 
+#: resources/dist/js/plugins-dashboard.js:1201
+#: resources/dist/js/plugins-dashboard.js:2602
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:51
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:39
+#: resources/dist/js/plugins-dashboard.js:947
+#: resources/dist/js/plugins-dashboard.js:2260
 msgid "Unlicensed"
 msgstr "Χωρίς άδεια"
 
+#: resources/dist/js/plugins-dashboard.js:1205
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:56
+#: resources/dist/js/plugins-dashboard.js:952
 msgid "Active"
 msgstr "Ενεργό"
 
+#: resources/dist/js/plugins-dashboard.js:1209
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:61
+#: resources/dist/js/plugins-dashboard.js:957
 msgid "Inactive"
 msgstr "Ανενεργό"
 
+#: resources/dist/js/plugins-dashboard.js:1213
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:66
+#: resources/dist/js/plugins-dashboard.js:962
 msgid "Not installed"
 msgstr "Δεν είναι εγκατεστημένο"
 
+#: resources/dist/js/plugins-dashboard.js:1217
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:71
+#: resources/dist/js/plugins-dashboard.js:967
 msgid "Updates available"
 msgstr "Διαθέσιμες ενημερώσεις"
 
+#: resources/dist/js/plugins-dashboard.js:1235
+#: resources/dist/js/welcome-page.js:496
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:94
 #: resources/src/jsx/components/pages/welcome-page.jsx:128
+#: resources/dist/js/plugins-dashboard.js:990
+#: resources/dist/js/welcome-page.js:458
 msgid "Plugins Dashboard"
 msgstr "Πίνακας ελέγχου προσθέτων"
 
+#: resources/dist/js/plugins-dashboard.js:1279
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
-msgid "Hold ALT and click to force refresh the update cache"
+#: resources/dist/js/plugins-dashboard.js:1036
+msgid ""
+"To force a refresh, hold Option on Mac or Alt on Windows and then click "
+"Refresh."
 msgstr ""
-"Κρατήστε το ALT και κάντε κλικ για να αναγκάσετε την ανανέωση της προσωρινής "
-"μνήμης ενημερώσεων"
+"Για να αναγκάσετε μια ανανέωση, κρατήστε το Option σε Mac ή Alt σε Windows "
+"και στη συνέχεια κάντε κλικ στην Ανανέωση."
 
+#: resources/dist/js/plugins-dashboard.js:1292
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
+#: resources/dist/js/plugins-dashboard.js:1054
 msgid "Force Refresh"
 msgstr "Αναγκαστική ανανέωση"
 
+#: resources/dist/js/plugins-dashboard.js:1292
+#: resources/dist/js/settings-page.js:889
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:300
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:307
+#: resources/dist/js/plugins-dashboard.js:1054
+#: resources/dist/js/settings-page.js:741
 msgid "Refresh"
 msgstr "Ανανέωση"
 
+#: resources/dist/js/plugins-dashboard.js:1349
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
+#: resources/dist/js/plugins-dashboard.js:1099
+msgid "Install"
+msgstr "Εγκατάσταση"
+
+#: resources/dist/js/plugins-dashboard.js:1350
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:22
+#: resources/dist/js/plugins-dashboard.js:1100
+msgid "Installing..."
+msgstr "Εγκαθιστώ..."
+
+#: resources/dist/js/plugins-dashboard.js:1355
+#: resources/dist/js/plugins-dashboard.js:2281
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28
+#: resources/dist/js/plugins-dashboard.js:1105
+#: resources/dist/js/plugins-dashboard.js:1937
+msgid "Upgrade to Pro"
+msgstr "Αναβάθμιση σε Pro"
+
+#: resources/dist/js/plugins-dashboard.js:1356
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:28
+#: resources/dist/js/plugins-dashboard.js:1106
+msgid "Upgrading to Pro..."
+msgstr "Αναβαθμίζω σε Pro..."
+
+#: resources/dist/js/plugins-dashboard.js:1361
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
+#: resources/dist/js/plugins-dashboard.js:1111
+msgid "Manage License"
+msgstr "Διαχείριση Άδειας"
+
+#: resources/dist/js/plugins-dashboard.js:1362
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:34
+#: resources/dist/js/plugins-dashboard.js:1112
+msgid "Managing License..."
+msgstr "Διαχείριση Άδειας..."
+
+#: resources/dist/js/plugins-dashboard.js:1367
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
+#: resources/dist/js/plugins-dashboard.js:1117
+msgid "Activate License"
+msgstr "Ενεργοποίηση Άδειας"
+
+#: resources/dist/js/plugins-dashboard.js:1368
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:40
+#: resources/dist/js/plugins-dashboard.js:1118
+msgid "Activating License..."
+msgstr "Ενεργοποίηση Άδειας..."
+
+#: resources/dist/js/plugins-dashboard.js:1373
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
+#: resources/dist/js/plugins-dashboard.js:1123
+msgid "Resolve Conflict"
+msgstr "Επίλυση Σύγκρουσης"
+
+#: resources/dist/js/plugins-dashboard.js:1374
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
+#: resources/dist/js/plugins-dashboard.js:1124
+msgid "Resolving Conflict..."
+msgstr "Επίλυση Σύγκρουσης..."
+
+#: resources/dist/js/plugins-dashboard.js:1379
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
+#: resources/dist/js/plugins-dashboard.js:1129
+msgid "Update"
+msgstr "Ενημέρωση"
+
+#: resources/dist/js/plugins-dashboard.js:1380
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
+#: resources/dist/js/plugins-dashboard.js:1130
+msgid "Updating..."
+msgstr "Ενημέρωση..."
+
+#: resources/dist/js/plugins-dashboard.js:1636
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:31
+#: resources/dist/js/plugins-dashboard.js:1321
+msgid "Confirmation"
+msgstr "Επιβεβαίωση"
+
+#: resources/dist/js/plugins-dashboard.js:1639
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:36
+#: resources/dist/js/plugins-dashboard.js:1326
+msgid "Are you sure you want to continue?"
+msgstr "Είστε σίγουροι ότι θέλετε να συνεχίσετε;"
+
+#: resources/dist/js/plugins-dashboard.js:1650
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:49
+#: resources/dist/js/plugins-dashboard.js:1339
+msgid "Continue"
+msgstr "Συνέχεια"
+
+#: resources/dist/js/plugins-dashboard.js:1657
+#: resources/dist/js/plugins-dashboard.js:2236
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:52
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:100
+#: resources/dist/js/plugins-dashboard.js:1342
+#: resources/dist/js/plugins-dashboard.js:1902
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: resources/dist/js/plugins-dashboard.js:1703
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29
+#: resources/dist/js/plugins-dashboard.js:1379
+msgid "Install Plugin"
+msgstr "Εγκατάσταση Πρόσθετου"
+
+#: resources/dist/js/plugins-dashboard.js:1708
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
+#: resources/dist/js/plugins-dashboard.js:1384
+msgid ""
+"Select how you would like to install this plugin. You can install the Pro "
+"version if you have a license, or the Free version to get started."
+msgstr ""
+"Επιλέξτε πώς θα θέλατε να εγκαταστήσετε αυτό το πρόσθετο. Μπορείτε να "
+"εγκαταστήσετε την Pro έκδοση αν έχετε άδεια, ή την Δωρεάν έκδοση για να "
+"ξεκινήσετε."
+
+#: resources/dist/js/plugins-dashboard.js:1713
+#: resources/dist/js/plugins-dashboard.js:2885
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:116
+#: resources/dist/js/plugins-dashboard.js:1387
+#: resources/dist/js/plugins-dashboard.js:2547
+msgid "Free Details"
+msgstr "Λεπτομέρειες Δωρεάν"
+
+#: resources/dist/js/plugins-dashboard.js:1716
+#: resources/dist/js/plugins-dashboard.js:2892
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:124
+#: resources/dist/js/plugins-dashboard.js:1389
+#: resources/dist/js/plugins-dashboard.js:2555
+msgid "Pro Details"
+msgstr "Λεπτομέρειες Pro"
+
+#: resources/dist/js/plugins-dashboard.js:1719
+#: resources/dist/js/plugins-dashboard.js:2900
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:133
+#: resources/dist/js/plugins-dashboard.js:1391
+#: resources/dist/js/plugins-dashboard.js:2564
+msgid "Changelogs"
+msgstr "Ημερολόγια αλλαγών"
+
+#: resources/dist/js/plugins-dashboard.js:1725
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44
+#: resources/dist/js/plugins-dashboard.js:1394
+msgid "I have a license, install the Pro version"
+msgstr "Έχω άδεια, εγκαταστήστε την έκδοση Pro"
+
+#: resources/dist/js/plugins-dashboard.js:1731
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47
+#: resources/dist/js/plugins-dashboard.js:1397
+msgid "I don't have a license, install the Free version"
+msgstr "Δεν έχω άδεια, εγκαταστήστε την δωρεάν έκδοση"
+
+#: resources/dist/js/plugins-dashboard.js:1809
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:51
+#: resources/dist/js/plugins-dashboard.js:1455
+msgid "Enter your license key"
+msgstr "Εισάγετε το κλειδί άδειας σας"
+
+#: resources/dist/js/plugins-dashboard.js:1814
+#: resources/dist/js/plugins-dashboard.js:1942
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:56
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
+#: resources/dist/js/plugins-dashboard.js:1460
+#: resources/dist/js/plugins-dashboard.js:1576
+msgid ""
+"Enter your license key to activate the Pro version of this plugin. You can "
+"find your license key in your PublishPress account dashboard."
+msgstr ""
+"Εισάγετε το κλειδί άδειάς σας για να ενεργοποιήσετε την Pro έκδοση αυτού "
+"του πρόσθετου. Μπορείτε να βρείτε το κλειδί άδειάς σας στον πίνακα ελέγχου "
+"του λογαριασμού σας στο PublishPress."
+
+#: resources/dist/js/plugins-dashboard.js:1821
+#: resources/dist/js/plugins-dashboard.js:1949
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:60
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
+#: resources/dist/js/plugins-dashboard.js:1464
+#: resources/dist/js/plugins-dashboard.js:1580
+msgid "Go to my profile to get the license key"
+msgstr "Πηγαίνετε στο προφίλ μου για να αποκτήσετε το κλειδί άδειας"
+
+#: resources/dist/js/plugins-dashboard.js:1823
+#: resources/dist/js/plugins-dashboard.js:1951
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:66
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:93
+#: resources/dist/js/plugins-dashboard.js:1470
+#: resources/dist/js/plugins-dashboard.js:1586
+msgid "License key"
+msgstr "Κωδικός άδειας"
+
+#: resources/dist/js/plugins-dashboard.js:1825
+#: resources/dist/js/plugins-dashboard.js:1953
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:68
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:95
+#: resources/dist/js/plugins-dashboard.js:1472
+#: resources/dist/js/plugins-dashboard.js:1588
+msgid "Enter your license key here"
+msgstr "Εισάγετε το κλειδί άδειας σας εδώ"
+
+#: resources/dist/js/plugins-dashboard.js:1839
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:82
+#: resources/dist/js/plugins-dashboard.js:1486
+msgid "Activate and install the plugin"
+msgstr "Ενεργοποιήστε και εγκαταστήστε το πρόσθετο"
+
+#: resources/dist/js/plugins-dashboard.js:1937
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:76
+#: resources/dist/js/plugins-dashboard.js:1569
+msgid "Manage your license"
+msgstr "Διαχειριστείτε την άδειά σας"
+
+#: resources/dist/js/plugins-dashboard.js:1960
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:107
+#: resources/dist/js/plugins-dashboard.js:1600
+msgid "Your license key is: "
+msgstr "Το κλειδί άδειάς σας είναι: "
+
+#: resources/dist/js/plugins-dashboard.js:1962
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:109
+#: resources/dist/js/plugins-dashboard.js:1602
+msgid "(hidden)"
+msgstr "(κρυφό)"
+
+#: resources/dist/js/plugins-dashboard.js:1969
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:123
+#: resources/dist/js/plugins-dashboard.js:1616
+msgid "Activate the license key for this site"
+msgstr "Ενεργοποιήστε το κλειδί άδειας για αυτόν τον ιστότοπο"
+
+#: resources/dist/js/plugins-dashboard.js:1974
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:130
+#: resources/dist/js/plugins-dashboard.js:1623
+msgid "Edit the license key"
+msgstr "Επεξεργαστείτε το κλειδί άδειας"
+
+#: resources/dist/js/plugins-dashboard.js:1981
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:133
+#: resources/dist/js/plugins-dashboard.js:1626
+msgid "Deactivate the license key for this site"
+msgstr "Απενεργοποιήστε το κλειδί άδειας για αυτόν τον ιστότοπο"
+
+#: resources/dist/js/plugins-dashboard.js:2086
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:82
+#: resources/dist/js/plugins-dashboard.js:1717
+#, js-format
+msgid "Install %s"
+msgstr "Εγκατάσταση %s"
+
+#: resources/dist/js/plugins-dashboard.js:2097
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
+#: resources/dist/js/plugins-dashboard.js:1729
+#, js-format
+msgid "Install %s Pro"
+msgstr "Εγκατάσταση %s Pro"
+
+#: resources/dist/js/plugins-dashboard.js:2102
+#: resources/dist/js/plugins-dashboard.js:2115
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:102
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:121
+#: resources/dist/js/plugins-dashboard.js:1737
+#: resources/dist/js/plugins-dashboard.js:1756
+#, js-format
+msgid "Upgrade %s to Pro"
+msgstr "Αναβάθμιση %s σε Pro"
+
+#: resources/dist/js/plugins-dashboard.js:2107
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:110
+#: resources/dist/js/plugins-dashboard.js:1745
+#, js-format
+msgid "Uninstall %s"
+msgstr "Απεγκατάσταση %s"
+
+#: resources/dist/js/plugins-dashboard.js:2108
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:111
+#: resources/dist/js/plugins-dashboard.js:1746
+#, js-format
+msgid "Are you sure you want to uninstall %s?"
+msgstr "Είστε σίγουροι ότι θέλετε να απεγκαταστήσετε το %s;"
+
+#: resources/dist/js/plugins-dashboard.js:2125
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:132
+#: resources/dist/js/plugins-dashboard.js:1767
+#, js-format
+msgid "Resolve Conflict for %s"
+msgstr "Επίλυση Σύγκρουσης για %s"
+
+#: resources/dist/js/plugins-dashboard.js:2137
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:145
+#: resources/dist/js/plugins-dashboard.js:1780
+#, js-format
+msgid "Manage %s License"
+msgstr "Διαχείριση Άδειας %s"
+
+#: resources/dist/js/plugins-dashboard.js:2147
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:156
+#: resources/dist/js/plugins-dashboard.js:1791
+#, js-format
+msgid "Activate %s License"
+msgstr "Ενεργοποίηση Άδειας %s"
+
+#: resources/dist/js/plugins-dashboard.js:2148
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
+#: resources/dist/js/plugins-dashboard.js:1792
+msgid "Activate the license key"
+msgstr "Ενεργοποίηση του κωδικού άδειας"
+
+#: resources/dist/js/plugins-dashboard.js:2204
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:34
+#: resources/dist/js/plugins-dashboard.js:1836
+msgid "Resolve Plugin Conflict"
+msgstr "Επίλυση Σύγκρουσης Πρόσθετου"
+
+#: resources/dist/js/plugins-dashboard.js:2211
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:51
+#: resources/dist/js/plugins-dashboard.js:1853
+#, js-format
+msgid "Free version: %s (%s)"
+msgstr "Δωρεάν έκδοση: %s (%s)"
+
+#: resources/dist/js/plugins-dashboard.js:2211
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:58
+#: resources/dist/js/plugins-dashboard.js:1860
+#, js-format
+msgid "Pro version: %s (%s)"
+msgstr "Pro έκδοση: %s (%s)"
+
+#: resources/dist/js/plugins-dashboard.js:2221
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:81
+#: resources/dist/js/plugins-dashboard.js:1883
+msgid "Keep the Pro version (Recommended)"
+msgstr "Διατηρήστε την Έκδοση Pro (Συνιστάται)"
+
+#: resources/dist/js/plugins-dashboard.js:2229
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:91
+#: resources/dist/js/plugins-dashboard.js:1893
+msgid "Keep the Free version"
+msgstr "Διατηρήστε την Δωρεάν έκδοση"
+
+#: resources/dist/js/plugins-dashboard.js:2286
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
+#: resources/dist/js/plugins-dashboard.js:1942
+msgid ""
+"Unlock the full potential of this plugin with the Pro version. Enjoy "
+"advanced features, priority support, and exclusive benefits designed to "
+"help you get the most out of your workflow."
+msgstr ""
+"Ξεκλειδώστε το πλήρες δυναμικό αυτού του πρόσθετου με την Pro έκδοση. "
+"Απολαύστε προηγμένα χαρακτηριστικά, προτεραιότητα υποστήριξης και "
+"αποκλειστικά οφέλη σχεδιασμένα για να σας βοηθήσουν να αξιοποιήσετε στο "
+"έπακρο τη ροή εργασίας σας."
+
+#: resources/dist/js/plugins-dashboard.js:2291
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
+#: resources/dist/js/plugins-dashboard.js:1949
+msgid "Discover all Pro features"
+msgstr "Ανακαλύψτε όλα τα χαρακτηριστικά Pro"
+
+#: resources/dist/js/plugins-dashboard.js:2294
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+#: resources/dist/js/plugins-dashboard.js:1953
+msgid "Changelog"
+msgstr "Αλλαγές"
+
+#: resources/dist/js/plugins-dashboard.js:2300
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
+#: resources/dist/js/plugins-dashboard.js:1957
+msgid "Already have a license? Install Pro now"
+msgstr "Έχετε ήδη άδεια; Εγκαταστήστε την Pro τώρα"
+
+#: resources/dist/js/plugins-dashboard.js:2306
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
+#: resources/dist/js/plugins-dashboard.js:1960
+msgid "Upgrade to Pro and boost your productivity"
+msgstr "Αναβαθμίστε σε Pro και αυξήστε την παραγωγικότητά σας"
+
+#: resources/dist/js/plugins-dashboard.js:2458
+#: resources/dist/js/plugins-dashboard.js:2907
+#: resources/dist/js/plugins-dashboard.js:2921
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:137
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:148
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:164
+#: resources/dist/js/plugins-dashboard.js:2104
+#: resources/dist/js/plugins-dashboard.js:2579
+#: resources/dist/js/plugins-dashboard.js:2595
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+#: resources/dist/js/plugins-dashboard.js:2459
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
+#: resources/dist/js/plugins-dashboard.js:2105
+msgid "New version available"
+msgstr "Διαθέσιμη νέα έκδοση"
+
+#: resources/dist/js/plugins-dashboard.js:2475
+#: resources/dist/js/plugins-dashboard.js:2927
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:171
+#: resources/dist/js/plugins-dashboard.js:2124
+#: resources/dist/js/plugins-dashboard.js:2602
+#. translators: %s is the installed version number
+#, fuzzy
+msgid "v%s"
+msgstr "v%s"
+
+#: resources/dist/js/plugins-dashboard.js:2514
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
+#: resources/dist/js/plugins-dashboard.js:2167
+#, js-format
+msgid "Update available: %s → %s"
+msgstr "Διαθέσιμη ενημέρωση: %s → %s"
+
+#: resources/dist/js/plugins-dashboard.js:2583
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:22
+#: resources/dist/js/plugins-dashboard.js:2243
+msgid "Installing"
+msgstr "Εγκατάσταση"
+
+#: resources/dist/js/plugins-dashboard.js:2590
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:27
+#: resources/dist/js/plugins-dashboard.js:2248
+msgid "Not Installed"
+msgstr "Δεν έχει εγκατασταθεί"
+
+#: resources/dist/js/plugins-dashboard.js:2594
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:31
+#: resources/dist/js/plugins-dashboard.js:2252
+msgid "Free"
+msgstr "Δωρεάν"
+
+#: resources/dist/js/plugins-dashboard.js:2598
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:35
+#: resources/dist/js/plugins-dashboard.js:2256
+msgid "Licensed"
+msgstr "Με άδεια"
+
+#: resources/dist/js/plugins-dashboard.js:2606
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:43
+#: resources/dist/js/plugins-dashboard.js:2264
+msgid "Expired"
+msgstr "Έχει λήξει"
+
+#: resources/dist/js/plugins-dashboard.js:2610
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:47
+#: resources/dist/js/plugins-dashboard.js:2268
+msgid "Uninstalling"
+msgstr "Απεγκατάσταση"
+
+#: resources/dist/js/plugins-dashboard.js:2617
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:52
+#: resources/dist/js/plugins-dashboard.js:2273
+msgid "Upgrading"
+msgstr "Αναβάθμιση"
+
+#: resources/dist/js/plugins-dashboard.js:2624
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:57
+#: resources/dist/js/plugins-dashboard.js:2278
+msgid "Deactivating"
+msgstr "Απενεργοποίηση"
+
+#: resources/dist/js/plugins-dashboard.js:2631
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:62
+#: resources/dist/js/plugins-dashboard.js:2283
+msgid "Activating"
+msgstr "Ενεργοποίηση"
+
+#: resources/dist/js/plugins-dashboard.js:2638
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:67
+#: resources/dist/js/plugins-dashboard.js:2288
+msgid "Conflicting Installations"
+msgstr "Συγκρουόμενες Εγκαταστάσεις"
+
+#: resources/dist/js/plugins-dashboard.js:2642
+#: resources/dist/js/plugins-dashboard.js:2726
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
+#: resources/dist/js/plugins-dashboard.js:2292
+#: resources/dist/js/plugins-dashboard.js:2393
+msgid "Update Available"
+msgstr "Διαθέσιμη Ενημέρωση"
+
+#: resources/dist/js/plugins-dashboard.js:2734
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
+#: resources/dist/js/plugins-dashboard.js:2404
+msgid "Expires"
+msgstr "Λήγει"
+
+#: resources/dist/js/plugins-dashboard.js:2829
+#: resources/dist/js/plugins-dashboard.js:2840
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:74
+#: resources/dist/js/plugins-dashboard.js:2486
+#: resources/dist/js/plugins-dashboard.js:2505
+msgid "Renew"
+msgstr "Ανανέωση"
+
+#: resources/dist/js/plugins-dashboard.js:2849
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:84
+#: resources/dist/js/plugins-dashboard.js:2515
+msgid "Deactivate"
+msgstr "Απενεργοποίηση"
+
+#: resources/dist/js/plugins-dashboard.js:2860
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:93
+#: resources/dist/js/plugins-dashboard.js:2524
+msgid "Activate"
+msgstr "Ενεργοποίηση"
+
+#: resources/dist/js/plugins-dashboard.js:2871
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:103
+#: resources/dist/js/plugins-dashboard.js:2534
+msgid "Uninstall"
+msgstr "Απεγκατάσταση"
+
+#: resources/dist/js/plugins-dashboard.js:2908
+#: resources/dist/js/plugins-dashboard.js:2922
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:149
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+#: resources/dist/js/plugins-dashboard.js:2580
+#: resources/dist/js/plugins-dashboard.js:2596
+msgid "latest"
+msgstr "τελευταία"
+
+#: resources/dist/js/plugins-dashboard.js:2912
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:154
+#: resources/dist/js/plugins-dashboard.js:2585
+#, js-format
+msgid "Update to v%s"
+msgstr "Ενημέρωση στην έκδοση v%s"
+
+#: resources/dist/js/plugins-dashboard.js:3410
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
+#: resources/dist/js/plugins-dashboard.js:2952
+msgid "This plugin is not installed."
+msgstr "Αυτό το πρόσθετο δεν είναι εγκατεστημένο."
+
+#: resources/dist/js/plugins-dashboard.js:3412
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40
+#: resources/dist/js/plugins-dashboard.js:2955
+msgid "This plugin is active."
+msgstr "Αυτό το πρόσθετο είναι ενεργό."
+
+#: resources/dist/js/plugins-dashboard.js:3412
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41
+#: resources/dist/js/plugins-dashboard.js:2956
+msgid "This plugin is not active."
+msgstr "Αυτό το πρόσθετο δεν είναι ενεργό."
+
+#: resources/dist/js/plugins-dashboard.js:3619
+#: resources/src/jsx/components/plugins-list/index.jsx:158
+#: resources/dist/js/plugins-dashboard.js:3167
+msgid "No plugins found."
+msgstr "Δεν βρέθηκαν πρόσθετα."
+
+#: resources/dist/js/plugins-dashboard.js:3621
+#: resources/src/jsx/components/plugins-list/index.jsx:164
+#: resources/dist/js/plugins-dashboard.js:3173
+msgid "Loading plugins..."
+msgstr "Φορτώνει πρόσθετα..."
+
+#: resources/dist/js/plugins-dashboard.js:4220
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:216
+#: resources/dist/js/plugins-dashboard.js:3591
+msgid "Failed to fetch plugins"
+msgstr "Αποτυχία λήψης πρόσθετων"
+
+#: resources/dist/js/plugins-dashboard.js:4275
+#: resources/dist/js/plugins-dashboard.js:4365
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
+#: resources/dist/js/plugins-dashboard.js:3619
+#: resources/dist/js/plugins-dashboard.js:3677
+#, js-format
+msgid "%s installed successfully"
+msgstr "%s εγκαταστάθηκε με επιτυχία"
+
+#: resources/dist/js/plugins-dashboard.js:4308
+#: resources/dist/js/plugins-dashboard.js:4399
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
+#: resources/dist/js/plugins-dashboard.js:3642
+#: resources/dist/js/plugins-dashboard.js:3702
+#, js-format
+msgid "%s installation failed"
+msgstr "%s η εγκατάσταση απέτυχε"
+
+#: resources/dist/js/plugins-dashboard.js:4456
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
+#: resources/dist/js/plugins-dashboard.js:3738
+#, js-format
+msgid "%s uninstalled successfully"
+msgstr "%s απεγκαταστάθηκε με επιτυχία"
+
+#: resources/dist/js/plugins-dashboard.js:4481
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
+#: resources/dist/js/plugins-dashboard.js:3754
+#, js-format
+msgid "%s uninstall failed"
+msgstr "%s η απεγκατάσταση απέτυχε"
+
+#: resources/dist/js/plugins-dashboard.js:4545
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
+#: resources/dist/js/plugins-dashboard.js:3789
+#, js-format
+msgid "%s activated successfully"
+msgstr "%s ενεργοποιήθηκε με επιτυχία"
+
+#: resources/dist/js/plugins-dashboard.js:4572
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
+#: resources/dist/js/plugins-dashboard.js:3805
+#, js-format
+msgid "%s activation failed"
+msgstr "%s η ενεργοποίηση απέτυχε"
+
+#: resources/dist/js/plugins-dashboard.js:4640
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
+#: resources/dist/js/plugins-dashboard.js:3840
+#, js-format
+msgid "%s deactivated successfully"
+msgstr "%s απενεργοποιήθηκε με επιτυχία"
+
+#: resources/dist/js/plugins-dashboard.js:4667
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
+#: resources/dist/js/plugins-dashboard.js:3856
+#, js-format
+msgid "%s deactivation failed"
+msgstr "%s η απενεργοποίηση απέτυχε"
+
+#: resources/dist/js/plugins-dashboard.js:4729
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
+#: resources/dist/js/plugins-dashboard.js:3891
+#, js-format
+msgid "%s upgraded to Pro successfully"
+msgstr "%s αναβαθμίστηκε σε Pro με επιτυχία"
+
+#: resources/dist/js/plugins-dashboard.js:4763
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
+#: resources/dist/js/plugins-dashboard.js:3916
+#, js-format
+msgid "%s upgrade to Pro failed"
+msgstr "%s η αναβάθμιση σε Pro απέτυχε"
+
+#: resources/dist/js/plugins-dashboard.js:4830
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
+#: resources/dist/js/plugins-dashboard.js:3958
+#, js-format
+msgid "Conflict resolved successfully for %s"
+msgstr "Η σύγκρουση επιλύθηκε με επιτυχία για %s"
+
+#: resources/dist/js/plugins-dashboard.js:4857
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
+#: resources/dist/js/plugins-dashboard.js:3975
+#, js-format
+msgid "Failed to resolve conflict for %s"
+msgstr "Αποτυχία στην επίλυση σύγκρουσης για %s"
+
+#: resources/dist/js/plugins-dashboard.js:4911
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
+#: resources/dist/js/plugins-dashboard.js:4007
+#, js-format
+msgid "%s license deactivated successfully"
+msgstr "%s άδεια απενεργοποιήθηκε με επιτυχία"
+
+#: resources/dist/js/plugins-dashboard.js:4936
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
+#: resources/dist/js/plugins-dashboard.js:4023
+#, js-format
+msgid "%s license deactivation failed"
+msgstr "%s η απενεργοποίηση άδειας απέτυχε"
+
+#: resources/dist/js/plugins-dashboard.js:4994
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
+#: resources/dist/js/plugins-dashboard.js:4058
+#, js-format
+msgid "%s license activated successfully"
+msgstr "%s άδεια ενεργοποιήθηκε με επιτυχία"
+
+#: resources/dist/js/plugins-dashboard.js:5020
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
+#: resources/dist/js/plugins-dashboard.js:4074
+#, js-format
+msgid "%s license activation failed"
+msgstr "%s η ενεργοποίηση άδειας απέτυχε"
+
+#: resources/dist/js/plugins-dashboard.js:5077
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
+#: resources/dist/js/plugins-dashboard.js:4109
+#, js-format
+msgid "%s updated successfully"
+msgstr "%s ενημερώθηκε με επιτυχία"
+
+#: resources/dist/js/plugins-dashboard.js:5105
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
+#: resources/dist/js/plugins-dashboard.js:4126
+#, js-format
+msgid "%s update failed"
+msgstr "%s η ενημέρωση απέτυχε"
+
+#: resources/dist/js/plugins-dashboard.js:5179
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
+#: resources/dist/js/plugins-dashboard.js:4188
+msgid "Too many requests. Please wait a few seconds and try again."
+msgstr ""
+"Πάρα πολλές αιτήσεις. Παρακαλώ περιμένετε μερικά δευτερόλεπτα και δοκιμάστε "
+"ξανά."
+
+#: resources/dist/js/plugins-dashboard.js:5187
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
+#: resources/dist/js/plugins-dashboard.js:4198
+#, fuzzy
+msgid "Cloudflare Ray ID: %s"
+msgstr "Cloudflare Ray ID: %s"
+
+#: resources/dist/js/settings-page.js:413
 #: resources/src/jsx/components/pages/settings-page.jsx:31
+#: resources/dist/js/settings-page.js:361
 msgid "Diagnostics"
 msgstr "Διαγνωστικά"
 
+#: resources/dist/js/settings-page.js:419
 #: resources/src/jsx/components/pages/settings-page.jsx:39
+#: resources/dist/js/settings-page.js:369
 msgid "Debug Log"
 msgstr "Καταγραφή σφαλμάτων"
 
+#: resources/dist/js/settings-page.js:659
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:108
+#: resources/dist/js/settings-page.js:542
 msgid "Failed to load the debug log. Please try again."
 msgstr "Αποτυχία φόρτωσης της καταγραφής σφαλμάτων. Παρακαλώ δοκιμάστε ξανά."
 
+#: resources/dist/js/settings-page.js:738
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:182
+#: resources/dist/js/settings-page.js:616
 msgid "Debug log cleared successfully."
 msgstr "Η καταγραφή σφαλμάτων εκκαθαρίστηκε με επιτυχία."
 
+#: resources/dist/js/settings-page.js:747
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
+#: resources/dist/js/settings-page.js:621
 msgid "Failed to clear the debug log. Please try again."
-msgstr ""
-"Αποτυχία εκκαθάρισης της καταγραφής σφαλμάτων. Παρακαλώ δοκιμάστε ξανά."
+msgstr "Αποτυχία εκκαθάρισης της καταγραφής σφαλμάτων. Παρακαλώ δοκιμάστε ξανά."
 
+#: resources/dist/js/settings-page.js:806
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222
+#: resources/dist/js/settings-page.js:656
 msgid "Log copied to clipboard."
 msgstr "Η καταγραφή αντιγράφηκε στο πρόχειρο."
 
+#: resources/dist/js/settings-page.js:815
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
+#: resources/dist/js/settings-page.js:661
 msgid "Failed to copy log to clipboard."
 msgstr "Αποτυχία αντιγραφής της καταγραφής στο πρόχειρο."
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:253
+#: resources/dist/js/settings-page.js:840
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:250
+#: resources/dist/js/settings-page.js:684
+msgid "Debug log view"
+msgstr "Προβολή καταγραφής αποσφαλμάτωσης"
+
+#: resources/dist/js/settings-page.js:848
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:258
+#: resources/dist/js/settings-page.js:692
 msgid "Requests"
 msgstr "Αιτήματα"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:260
+#: resources/dist/js/settings-page.js:855
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:266
+#: resources/dist/js/settings-page.js:700
 msgid "Full Log"
 msgstr "Πλήρες Ιστορικό"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:271
+#: resources/dist/js/settings-page.js:868
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
+#: resources/dist/js/settings-page.js:712
 msgid "Auto-refresh is on — click to stop"
 msgstr "Η αυτόματη ανανέωση είναι ενεργή — κάντε κλικ για να σταματήσετε"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:272
+#: resources/dist/js/settings-page.js:868
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:279
+#: resources/dist/js/settings-page.js:713
 msgid "Enable auto-refresh"
 msgstr "Ενεργοποίηση αυτόματης ανανέωσης"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:277
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
+#: resources/dist/js/settings-page.js:872
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:284
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:285
+#: resources/dist/js/settings-page.js:718
+#: resources/dist/js/settings-page.js:719
 msgid "Auto-refresh"
 msgstr "Αυτόματη ανανέωση"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:286
+#: resources/dist/js/settings-page.js:876
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:293
+#: resources/dist/js/settings-page.js:727
 msgid "Auto-refresh interval"
 msgstr "Διάστημα αυτόματης ανανέωσης"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:308
+#: resources/dist/js/settings-page.js:893
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:315
+#: resources/dist/js/settings-page.js:749
 msgid "Copy to Clipboard"
 msgstr "Αντιγραφή στο Πρόχειρο"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:318
+#: resources/dist/js/settings-page.js:899
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:325
+#: resources/dist/js/settings-page.js:759
 msgid "Clear Log"
 msgstr "Καθαρισμός Ιστορικού"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:326
+#: resources/dist/js/settings-page.js:903
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:333
+#: resources/dist/js/settings-page.js:767
 msgid "Loading log..."
 msgstr "Φόρτωση ιστορικού..."
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:332
+#: resources/dist/js/settings-page.js:905
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:339
+#: resources/dist/js/settings-page.js:773
 msgid ""
 "The debug log is empty. Perform some actions (e.g. activate a license) and "
 "refresh to see entries."
@@ -698,29 +1582,41 @@ msgstr ""
 "Το αρχείο καταγραφής αποσφαλμάτωσης είναι κενό. Εκτελέστε μερικές ενέργειες "
 "(π.χ. ενεργοποιήστε μια άδεια) και ανανεώστε για να δείτε τις εγγραφές."
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
+#: resources/dist/js/settings-page.js:912
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:353
+#: resources/dist/js/settings-page.js:787
 msgid "Debug log contents"
 msgstr "Περιεχόμενα ιστορικού αποσφαλμάτωσης"
 
+#: resources/dist/js/settings-page.js:997
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
+#: resources/dist/js/settings-page.js:836
 msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
 msgstr ""
 "Η λειτουργία αποσφαλμάτωσης είναι ενεργοποιημένη. Μια καρτέλα \"Ιστορικό "
 "Αποσφαλμάτωσης\" είναι τώρα διαθέσιμη."
 
+#: resources/dist/js/settings-page.js:997
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
+#: resources/dist/js/settings-page.js:837
 msgid "Debug mode disabled."
 msgstr "Η λειτουργία αποσφαλμάτωσης είναι απενεργοποιημένη."
 
+#: resources/dist/js/settings-page.js:1009
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:50
+#: resources/dist/js/settings-page.js:846
 msgid "Failed to save the setting. Please try again."
 msgstr "Αποτυχία αποθήκευσης της ρύθμισης. Παρακαλώ δοκιμάστε ξανά."
 
+#: resources/dist/js/settings-page.js:1036
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
+#: resources/dist/js/settings-page.js:867
 msgid "Debug Mode"
 msgstr "Λειτουργία Αποσφαλμάτωσης"
 
+#: resources/dist/js/settings-page.js:1038
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
+#: resources/dist/js/settings-page.js:871
 msgid ""
 "When enabled, all HTTP requests and responses to remote services (license "
 "activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
@@ -731,11 +1627,15 @@ msgstr ""
 "καταγράφονται σε ένα ειδικό αρχείο καταγραφής. Χρησιμοποιήστε την καρτέλα "
 "Καταγραφή αποσφαλμάτωσης για να ελέγξετε τα καταγεγραμμένα δεδομένα."
 
+#: resources/dist/js/settings-page.js:1039
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
+#: resources/dist/js/settings-page.js:878
 msgid "Enable Debug Mode"
 msgstr "Ενεργοποίηση Λειτουργίας Αποσφαλμάτωσης"
 
+#: resources/dist/js/settings-page.js:1046
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
+#: resources/dist/js/settings-page.js:887
 msgid ""
 "Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
 "data."
@@ -743,66 +1643,95 @@ msgstr ""
 "Η καταγραφή αποσφαλμάτωσης είναι ενεργή. Μεταβείτε στην καρτέλα \"Καταγραφή "
 "Αποσφαλμάτωσης\" για να δείτε τα καταγεγραμμένα δεδομένα."
 
+#: resources/dist/js/settings-page.js:1137
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
+#: resources/dist/js/settings-page.js:969
 msgid "ERR"
 msgstr "ΣΦΑΛΜΑ"
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:106
+#: resources/dist/js/settings-page.js:1168
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:108
+#: resources/dist/js/settings-page.js:1007
 msgid "Request"
 msgstr "Αίτημα"
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:113
+#: resources/dist/js/settings-page.js:1174
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:115
+#: resources/dist/js/settings-page.js:1014
 msgid "Response"
 msgstr "Απάντηση"
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:119
+#: resources/dist/js/settings-page.js:1178
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:121
+#: resources/dist/js/settings-page.js:1020
 msgid "No response recorded for this request."
 msgstr "Δεν έχει καταγραφεί απάντηση για αυτό το αίτημα."
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:144
+#: resources/dist/js/settings-page.js:1193
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:146
+#: resources/dist/js/settings-page.js:1045
 msgid "No requests found in the log."
 msgstr "Δεν βρέθηκαν αιτήματα στο αρχείο καταγραφής."
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:153
+#: resources/dist/js/settings-page.js:1199
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
+#: resources/dist/js/settings-page.js:1054
 msgid "1 request recorded"
 msgstr "1 αίτημα καταγραφής"
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
+#: resources/dist/js/settings-page.js:1199
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:157
+#: resources/dist/js/settings-page.js:1056
+#, js-format
 msgid "%d requests recorded"
 msgstr "%d αιτήματα καταγραφής"
 
+#: resources/dist/js/welcome-page.js:418
 #: resources/src/jsx/components/pages/welcome-page.jsx:37
+#: resources/dist/js/welcome-page.js:367
 msgid "Welcome to PublishPress Hub!"
 msgstr "Καλώς ήρθατε στο PublishPress Hub!"
 
+#: resources/dist/js/welcome-page.js:420
 #: resources/src/jsx/components/pages/welcome-page.jsx:40
+#: resources/dist/js/welcome-page.js:370
 msgid "Get started with PublishPress Hub in a few simple steps."
 msgstr "Ξεκινήστε με το PublishPress Hub σε λίγα απλά βήματα."
 
+#: resources/dist/js/welcome-page.js:428
 #: resources/src/jsx/components/pages/welcome-page.jsx:47
+#: resources/dist/js/welcome-page.js:377
 msgid "Welcome to PublishPress Hub"
 msgstr "Καλώς ήρθατε στο PublishPress Hub"
 
+#: resources/dist/js/welcome-page.js:431
 #: resources/src/jsx/components/pages/welcome-page.jsx:52
+#: resources/dist/js/welcome-page.js:382
 msgid "What you can do with PublishPress Hub"
 msgstr "Τι μπορείτε να κάνετε με το PublishPress Hub"
 
+#: resources/dist/js/welcome-page.js:433
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
+#: resources/dist/js/welcome-page.js:385
 msgid ""
-"PublishPress Hub has everything you need to install, update, and manage your "
-"PublishPress plugins. We're here to help you build a publishing system that "
-"works perfectly for your team."
+"PublishPress Hub has everything you need to install, update, and manage "
+"your PublishPress plugins. We're here to help you build a publishing system "
+"that works perfectly for your team."
 msgstr ""
 "Το PublishPress Hub έχει τα πάντα που χρειάζεστε για να εγκαταστήσετε, να "
 "ενημερώσετε και να διαχειριστείτε τα πρόσθετα PublishPress. Είμαστε εδώ για "
-"να σας βοηθήσουμε να δημιουργήσετε ένα σύστημα δημοσίευσης που να λειτουργεί "
-"τέλεια για την ομάδα σας."
+"να σας βοηθήσουμε να δημιουργήσετε ένα σύστημα δημοσίευσης που να "
+"λειτουργεί τέλεια για την ομάδα σας."
 
+#: resources/dist/js/welcome-page.js:443
 #: resources/src/jsx/components/pages/welcome-page.jsx:64
+#: resources/dist/js/welcome-page.js:394
 msgid "Centralized Dashboard"
 msgstr "Κεντρικός Πίνακας Ελέγχου"
 
+#: resources/dist/js/welcome-page.js:445
 #: resources/src/jsx/components/pages/welcome-page.jsx:67
+#: resources/dist/js/welcome-page.js:397
 msgid ""
 "View all your PublishPress plugins with their licenses, versions, and key "
 "details."
@@ -810,11 +1739,15 @@ msgstr ""
 "Δείτε όλα τα πρόσθετα PublishPress με τις άδειες, τις εκδόσεις και τις "
 "βασικές λεπτομέρειές τους."
 
+#: resources/dist/js/welcome-page.js:453
 #: resources/src/jsx/components/pages/welcome-page.jsx:76
+#: resources/dist/js/welcome-page.js:406
 msgid "One-Click Installation"
 msgstr "Εγκατάσταση με Ένα Κλικ"
 
+#: resources/dist/js/welcome-page.js:455
 #: resources/src/jsx/components/pages/welcome-page.jsx:79
+#: resources/dist/js/welcome-page.js:409
 msgid ""
 "Install free PublishPress plugins directly from the Hub without visiting "
 "WordPress.org."
@@ -822,11 +1755,15 @@ msgstr ""
 "Εγκαταστήστε δωρεάν πρόσθετα PublishPress απευθείας από το Hub χωρίς να "
 "επισκεφθείτε το WordPress.org."
 
+#: resources/dist/js/welcome-page.js:463
 #: resources/src/jsx/components/pages/welcome-page.jsx:88
+#: resources/dist/js/welcome-page.js:418
 msgid "License Management"
 msgstr "Διαχείριση Αδειών"
 
+#: resources/dist/js/welcome-page.js:465
 #: resources/src/jsx/components/pages/welcome-page.jsx:91
+#: resources/dist/js/welcome-page.js:421
 msgid ""
 "Connect your PublishPress licenses to easily install and activate Pro "
 "versions."
@@ -834,526 +1771,71 @@ msgstr ""
 "Συνδέστε τις άδειες σας στο PublishPress για να εγκαταστήσετε και να "
 "ενεργοποιήσετε εύκολα τις Pro εκδόσεις."
 
+#: resources/dist/js/welcome-page.js:473
 #: resources/src/jsx/components/pages/welcome-page.jsx:100
+#: resources/dist/js/welcome-page.js:430
 msgid "Easy Updates"
 msgstr "Εύκολες Ενημερώσεις"
 
+#: resources/dist/js/welcome-page.js:475
 #: resources/src/jsx/components/pages/welcome-page.jsx:103
+#: resources/dist/js/welcome-page.js:433
 msgid "Keep all your PublishPress plugins up to date with one-click updates."
 msgstr ""
 "Διατηρήστε όλα τα πρόσθετα PublishPress σας ενημερωμένα με ενημερώσεις ενός "
 "κλικ."
 
+#: resources/dist/js/welcome-page.js:483
 #: resources/src/jsx/components/pages/welcome-page.jsx:112
+#: resources/dist/js/welcome-page.js:442
 msgid "Status Monitoring"
 msgstr "Παρακολούθηση Κατάστασης"
 
+#: resources/dist/js/welcome-page.js:485
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
+#: resources/dist/js/welcome-page.js:445
 msgid ""
-"Monitor plugin activation status, detect conflicts, and ensure compatibility."
+"Monitor plugin activation status, detect conflicts, and ensure "
+"compatibility."
 msgstr ""
 "Παρακολουθήστε την κατάσταση ενεργοποίησης του πρόσθετου, ανιχνεύστε "
 "συγκρούσεις και διασφαλίστε τη συμβατότητα."
 
+#: resources/dist/js/welcome-page.js:493
 #: resources/src/jsx/components/pages/welcome-page.jsx:124
+#: resources/dist/js/welcome-page.js:454
 msgid "Get Started"
 msgstr "Ξεκινήστε"
 
+#: resources/dist/js/welcome-page.js:496
 #: resources/src/jsx/components/pages/welcome-page.jsx:127
-msgid ""
-"Ready to explore? Visit the %s to see all available PublishPress plugins."
+#: resources/dist/js/welcome-page.js:457
+#, js-format
+msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
 msgstr ""
 "Είστε έτοιμοι να εξερευνήσετε; Επισκεφθείτε το %s για να δείτε όλα τα "
 "διαθέσιμα πρόσθετα PublishPress."
 
+#: resources/dist/js/welcome-page.js:506
 #: resources/src/jsx/components/pages/welcome-page.jsx:142
+#: resources/dist/js/welcome-page.js:472
 msgid "View Plugins Dashboard"
 msgstr "Προβολή Πίνακα Πρόσθετων"
 
+#: resources/dist/js/welcome-page.js:508
 #: resources/src/jsx/components/pages/welcome-page.jsx:148
+#: resources/dist/js/welcome-page.js:478
 msgid "Already know what you're doing? Great! You can "
 msgstr "Ξέρετε ήδη τι κάνετε; Υπέροχα! Μπορείτε να "
 
+#: resources/dist/js/welcome-page.js:510
 #: resources/src/jsx/components/pages/welcome-page.jsx:150
+#: resources/dist/js/welcome-page.js:480
 msgid "dismiss this page"
 msgstr "απαλείψετε αυτή τη σελίδα"
 
+#: resources/dist/js/welcome-page.js:510
 #: resources/src/jsx/components/pages/welcome-page.jsx:152
+#: resources/dist/js/welcome-page.js:482, fuzzy
 msgid "."
 msgstr "."
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
-msgid "Install"
-msgstr "Εγκατάσταση"
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:22
-msgid "Installing..."
-msgstr "Εγκαθιστώ..."
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28
-msgid "Upgrade to Pro"
-msgstr "Αναβάθμιση σε Pro"
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:28
-msgid "Upgrading to Pro..."
-msgstr "Αναβαθμίζω σε Pro..."
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
-msgid "Manage License"
-msgstr "Διαχείριση Άδειας"
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:34
-msgid "Managing License..."
-msgstr "Διαχείριση Άδειας..."
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
-msgid "Activate License"
-msgstr "Ενεργοποίηση Άδειας"
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:40
-msgid "Activating License..."
-msgstr "Ενεργοποίηση Άδειας..."
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
-msgid "Resolve Conflict"
-msgstr "Επίλυση Σύγκρουσης"
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
-msgid "Resolving Conflict..."
-msgstr "Επίλυση Σύγκρουσης..."
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
-msgid "Update"
-msgstr "Ενημέρωση"
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
-msgid "Updating..."
-msgstr "Ενημέρωση..."
-
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:31
-msgid "Confirmation"
-msgstr "Επιβεβαίωση"
-
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:36
-msgid "Are you sure you want to continue?"
-msgstr "Είστε σίγουροι ότι θέλετε να συνεχίσετε;"
-
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:49
-msgid "Continue"
-msgstr "Συνέχεια"
-
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:52
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:98
-msgid "Cancel"
-msgstr "Ακύρωση"
-
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29
-msgid "Install Plugin"
-msgstr "Εγκατάσταση Πρόσθετου"
-
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
-msgid ""
-"Select how you would like to install this plugin. You can install the Pro "
-"version if you have a license, or the Free version to get started."
-msgstr ""
-"Επιλέξτε πώς θα θέλατε να εγκαταστήσετε αυτό το πρόσθετο. Μπορείτε να "
-"εγκαταστήσετε την Pro έκδοση αν έχετε άδεια, ή την Δωρεάν έκδοση για να "
-"ξεκινήσετε."
-
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
-msgid "Free Details"
-msgstr "Λεπτομέρειες Δωρεάν"
-
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
-msgid "Pro Details"
-msgstr "Λεπτομέρειες Pro"
-
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
-msgid "Changelogs"
-msgstr "Ημερολόγια αλλαγών"
-
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44
-msgid "I have a license, install the Pro version"
-msgstr "Έχω άδεια, εγκαταστήστε την έκδοση Pro"
-
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47
-msgid "I don't have a license, install the Free version"
-msgstr "Δεν έχω άδεια, εγκαταστήστε την δωρεάν έκδοση"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:50
-msgid "Enter your license key"
-msgstr "Εισάγετε το κλειδί άδειας σας"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:55
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
-msgid ""
-"Enter your license key to activate the Pro version of this plugin. You can "
-"find your license key in your PublishPress account dashboard."
-msgstr ""
-"Εισάγετε το κλειδί άδειάς σας για να ενεργοποιήσετε την Pro έκδοση αυτού του "
-"πρόσθετου. Μπορείτε να βρείτε το κλειδί άδειάς σας στον πίνακα ελέγχου του "
-"λογαριασμού σας στο PublishPress."
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
-msgid "Go to my profile to get the license key"
-msgstr "Πηγαίνετε στο προφίλ μου για να αποκτήσετε το κλειδί άδειας"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:66
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:94
-msgid "Enter your license key here"
-msgstr "Εισάγετε το κλειδί άδειας σας εδώ"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:80
-msgid "Activate and install the plugin"
-msgstr "Ενεργοποιήστε και εγκαταστήστε το πρόσθετο"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:76
-msgid "Manage your license"
-msgstr "Διαχειριστείτε την άδειά σας"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
-msgid "Your license key is: "
-msgstr "Το κλειδί άδειάς σας είναι: "
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
-msgid "(hidden)"
-msgstr "(κρυφό)"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:119
-msgid "Activate the license key for this site"
-msgstr "Ενεργοποιήστε το κλειδί άδειας για αυτόν τον ιστότοπο"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:126
-msgid "Edit the license key"
-msgstr "Επεξεργαστείτε το κλειδί άδειας"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:129
-msgid "Deactivate the license key for this site"
-msgstr "Απενεργοποιήστε το κλειδί άδειας για αυτόν τον ιστότοπο"
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
-msgid "Unknown"
-msgstr "Άγνωστο"
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:39
-msgid "Plugin Information"
-msgstr "Πληροφορίες Πρόσθετου"
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:45
-msgid "Name:"
-msgstr "Όνομα:"
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:51
-msgid "Description:"
-msgstr "Περιγραφή:"
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:57
-msgid "Current Version:"
-msgstr "Τρέχουσα Έκδοση:"
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:63
-msgid "Available Version:"
-msgstr "Διαθέσιμη Έκδοση:"
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:82
-msgid "Update Plugin"
-msgstr "Ενημέρωση Πρόσθετου"
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:93
-msgid "Check for Updates"
-msgstr "Έλεγχος για Ενημερώσεις"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
-msgid "Install %s"
-msgstr "Εγκατάσταση %s"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
-msgid "Install %s Pro"
-msgstr "Εγκατάσταση %s Pro"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
-msgid "Upgrade %s to Pro"
-msgstr "Αναβάθμιση %s σε Pro"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
-msgid "Uninstall %s"
-msgstr "Απεγκατάσταση %s"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
-msgid "Are you sure you want to uninstall %s?"
-msgstr "Είστε σίγουροι ότι θέλετε να απεγκαταστήσετε το %s;"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
-msgid "Resolve Conflict for %s"
-msgstr "Επίλυση Σύγκρουσης για %s"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
-msgid "Manage %s License"
-msgstr "Διαχείριση Άδειας %s"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
-msgid "Activate %s License"
-msgstr "Ενεργοποίηση Άδειας %s"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
-msgid "More Info: %s"
-msgstr "Περισσότερες Πληροφορίες: %s"
-
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:34
-msgid "Resolve Plugin Conflict"
-msgstr "Επίλυση Σύγκρουσης Πρόσθετου"
-
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
-msgid "Free version: %s (%s)"
-msgstr "Δωρεάν έκδοση: %s (%s)"
-
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
-msgid "Pro version: %s (%s)"
-msgstr "Pro έκδοση: %s (%s)"
-
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:79
-msgid "Keep the Pro version (Recommended)"
-msgstr "Διατηρήστε την Έκδοση Pro (Συνιστάται)"
-
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:89
-msgid "Keep the Free version"
-msgstr "Διατηρήστε την Δωρεάν έκδοση"
-
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
-msgid ""
-"Unlock the full potential of this plugin with the Pro version. Enjoy "
-"advanced features, priority support, and exclusive benefits designed to help "
-"you get the most out of your workflow."
-msgstr ""
-"Ξεκλειδώστε το πλήρες δυναμικό αυτού του πρόσθετου με την Pro έκδοση. "
-"Απολαύστε προηγμένα χαρακτηριστικά, προτεραιότητα υποστήριξης και "
-"αποκλειστικά οφέλη σχεδιασμένα για να σας βοηθήσουν να αξιοποιήσετε στο "
-"έπακρο τη ροή εργασίας σας."
-
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
-msgid "Discover all Pro features"
-msgstr "Ανακαλύψτε όλα τα χαρακτηριστικά Pro"
-
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
-msgid "Changelog"
-msgstr "Αλλαγές"
-
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
-msgid "Already have a license? Install Pro now"
-msgstr "Έχετε ήδη άδεια; Εγκαταστήστε την Pro τώρα"
-
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
-msgid "Upgrade to Pro and boost your productivity"
-msgstr "Αναβαθμίστε σε Pro και αυξήστε την παραγωγικότητά σας"
-
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:139
-msgid "New version available"
-msgstr "Διαθέσιμη νέα έκδοση"
-
-#. translators: %s is the installed version number
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
-#, fuzzy
-msgid "v%s"
-msgstr "v%s"
-
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
-msgid "Update available: %s → %s"
-msgstr "Διαθέσιμη ενημέρωση: %s → %s"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:22
-msgid "Installing"
-msgstr "Εγκατάσταση"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:27
-msgid "Not Installed"
-msgstr "Δεν έχει εγκατασταθεί"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:31
-msgid "Free"
-msgstr "Δωρεάν"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:35
-msgid "Licensed"
-msgstr "Με άδεια"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:43
-msgid "Expired"
-msgstr "Έχει λήξει"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:47
-msgid "Uninstalling"
-msgstr "Απεγκατάσταση"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:52
-msgid "Upgrading"
-msgstr "Αναβάθμιση"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:57
-msgid "Deactivating"
-msgstr "Απενεργοποίηση"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:62
-msgid "Activating"
-msgstr "Ενεργοποίηση"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:67
-msgid "Conflicting Installations"
-msgstr "Συγκρουόμενες Εγκαταστάσεις"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
-msgid "Update Available"
-msgstr "Διαθέσιμη Ενημέρωση"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
-msgid "Expires"
-msgstr "Λήγει"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
-msgid "Renew"
-msgstr "Ανανέωση"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
-msgid "Deactivate"
-msgstr "Απενεργοποίηση"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
-msgid "Activate"
-msgstr "Ενεργοποίηση"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
-msgid "Uninstall"
-msgstr "Απεγκατάσταση"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
-msgid "More Info"
-msgstr "Περισσότερες Πληροφορίες"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
-msgid "latest"
-msgstr "τελευταία"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
-msgid "Update to v%s"
-msgstr "Ενημέρωση στην έκδοση v%s"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
-msgid "This plugin is not installed."
-msgstr "Αυτό το πρόσθετο δεν είναι εγκατεστημένο."
-
-#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40
-msgid "This plugin is active."
-msgstr "Αυτό το πρόσθετο είναι ενεργό."
-
-#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41
-msgid "This plugin is not active."
-msgstr "Αυτό το πρόσθετο δεν είναι ενεργό."
-
-#: resources/src/jsx/components/plugins-list/index.jsx:159
-msgid "No plugins found."
-msgstr "Δεν βρέθηκαν πρόσθετα."
-
-#: resources/src/jsx/components/plugins-list/index.jsx:165
-msgid "Loading plugins..."
-msgstr "Φορτώνει πρόσθετα..."
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:216
-msgid "Failed to fetch plugins"
-msgstr "Αποτυχία λήψης πρόσθετων"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
-msgid "%s installed successfully"
-msgstr "%s εγκαταστάθηκε με επιτυχία"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
-msgid "%s installation failed"
-msgstr "%s η εγκατάσταση απέτυχε"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
-msgid "%s uninstalled successfully"
-msgstr "%s απεγκαταστάθηκε με επιτυχία"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
-msgid "%s uninstall failed"
-msgstr "%s η απεγκατάσταση απέτυχε"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
-msgid "%s activated successfully"
-msgstr "%s ενεργοποιήθηκε με επιτυχία"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
-msgid "%s activation failed"
-msgstr "%s η ενεργοποίηση απέτυχε"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
-msgid "%s deactivated successfully"
-msgstr "%s απενεργοποιήθηκε με επιτυχία"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
-msgid "%s deactivation failed"
-msgstr "%s η απενεργοποίηση απέτυχε"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
-msgid "%s upgraded to Pro successfully"
-msgstr "%s αναβαθμίστηκε σε Pro με επιτυχία"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
-msgid "%s upgrade to Pro failed"
-msgstr "%s η αναβάθμιση σε Pro απέτυχε"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
-msgid "Conflict resolved successfully for %s"
-msgstr "Η σύγκρουση επιλύθηκε με επιτυχία για %s"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
-msgid "Failed to resolve conflict for %s"
-msgstr "Αποτυχία στην επίλυση σύγκρουσης για %s"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
-msgid "%s license deactivated successfully"
-msgstr "%s άδεια απενεργοποιήθηκε με επιτυχία"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
-msgid "%s license deactivation failed"
-msgstr "%s η απενεργοποίηση άδειας απέτυχε"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
-msgid "%s license activated successfully"
-msgstr "%s άδεια ενεργοποιήθηκε με επιτυχία"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
-msgid "%s license activation failed"
-msgstr "%s η ενεργοποίηση άδειας απέτυχε"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
-msgid "%s updated successfully"
-msgstr "%s ενημερώθηκε με επιτυχία"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
-msgid "%s update failed"
-msgstr "%s η ενημέρωση απέτυχε"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
-msgid "Too many requests. Please wait a few seconds and try again."
-msgstr ""
-"Πάρα πολλές αιτήσεις. Παρακαλώ περιμένετε μερικά δευτερόλεπτα και δοκιμάστε "
-"ξανά."
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
-#, fuzzy
-msgid "Cloudflare Ray ID: %s"
-msgstr "Cloudflare Ray ID: %s"

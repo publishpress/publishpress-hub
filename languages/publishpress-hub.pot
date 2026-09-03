@@ -2,14 +2,14 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Hub 1.0.5-beta.2\n"
+"Project-Id-Version: PublishPress Hub 1.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
+"POT-Creation-Date: 2026-09-03T09:18:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
@@ -45,7 +45,9 @@ msgstr ""
 
 #: src/Admin/Page/SettingsPageController.php:104
 #: src/Admin/Page/SettingsPageController.php:105
+#: resources/dist/js/settings-page.js:453
 #: resources/src/jsx/components/pages/settings-page.jsx:80
+#: resources/dist/js/settings-page.js:410
 msgid "Settings"
 msgstr ""
 
@@ -396,836 +398,1278 @@ msgid "Failed to get plugin information: %s"
 msgstr ""
 
 #. translators: %s is the plugin name, %s is the rating
+#: resources/dist/js/components-showcase.js:87
+#: resources/dist/js/plugins-dashboard.js:88
+#: resources/dist/js/settings-page.js:87
+#: resources/dist/js/welcome-page.js:87
 #: resources/src/jsx/components/admin-page/footer.jsx:26
+#: resources/dist/js/components-showcase.js:63
+#: resources/dist/js/plugins-dashboard.js:63
+#: resources/dist/js/settings-page.js:63
+#: resources/dist/js/welcome-page.js:63
 #, js-format
 msgid "If you like %s please leave us a %s rating. Thank you!"
 msgstr ""
 
 #. translators: %s is the plugin name
+#: resources/dist/js/components-showcase.js:98
+#: resources/dist/js/plugins-dashboard.js:99
+#: resources/dist/js/settings-page.js:98
+#: resources/dist/js/welcome-page.js:98
 #: resources/src/jsx/components/admin-page/footer.jsx:43
+#: resources/dist/js/components-showcase.js:80
+#: resources/dist/js/plugins-dashboard.js:80
+#: resources/dist/js/settings-page.js:80
+#: resources/dist/js/welcome-page.js:80
 #, js-format
 msgid "About %s"
 msgstr ""
 
+#: resources/dist/js/components-showcase.js:99
+#: resources/dist/js/plugins-dashboard.js:100
+#: resources/dist/js/settings-page.js:99
+#: resources/dist/js/welcome-page.js:99
 #: resources/src/jsx/components/admin-page/footer.jsx:45
+#: resources/dist/js/components-showcase.js:82
+#: resources/dist/js/plugins-dashboard.js:82
+#: resources/dist/js/settings-page.js:82
+#: resources/dist/js/welcome-page.js:82
 msgid "About"
 msgstr ""
 
 #. translators: %s is the plugin name
+#: resources/dist/js/components-showcase.js:104
+#: resources/dist/js/plugins-dashboard.js:105
+#: resources/dist/js/settings-page.js:104
+#: resources/dist/js/welcome-page.js:104
 #: resources/src/jsx/components/admin-page/footer.jsx:54
+#: resources/dist/js/components-showcase.js:91
+#: resources/dist/js/plugins-dashboard.js:91
+#: resources/dist/js/settings-page.js:91
+#: resources/dist/js/welcome-page.js:91
 #, js-format
 msgid "Documentation for %s"
 msgstr ""
 
+#: resources/dist/js/components-showcase.js:105
+#: resources/dist/js/plugins-dashboard.js:106
+#: resources/dist/js/settings-page.js:105
+#: resources/dist/js/welcome-page.js:105
 #: resources/src/jsx/components/admin-page/footer.jsx:56
+#: resources/dist/js/components-showcase.js:93
+#: resources/dist/js/plugins-dashboard.js:93
+#: resources/dist/js/settings-page.js:93
+#: resources/dist/js/welcome-page.js:93
 msgid "Documentation"
 msgstr ""
 
 #. translators: %s is the plugin name
+#: resources/dist/js/components-showcase.js:110
+#: resources/dist/js/plugins-dashboard.js:111
+#: resources/dist/js/settings-page.js:110
+#: resources/dist/js/welcome-page.js:110
 #: resources/src/jsx/components/admin-page/footer.jsx:65
+#: resources/dist/js/components-showcase.js:102
+#: resources/dist/js/plugins-dashboard.js:102
+#: resources/dist/js/settings-page.js:102
+#: resources/dist/js/welcome-page.js:102
 #, js-format
 msgid "Contact the %s team"
 msgstr ""
 
+#: resources/dist/js/components-showcase.js:111
+#: resources/dist/js/plugins-dashboard.js:112
+#: resources/dist/js/settings-page.js:111
+#: resources/dist/js/welcome-page.js:111
 #: resources/src/jsx/components/admin-page/footer.jsx:67
+#: resources/dist/js/components-showcase.js:104
+#: resources/dist/js/plugins-dashboard.js:104
+#: resources/dist/js/settings-page.js:104
+#: resources/dist/js/welcome-page.js:104
 msgid "Contact"
 msgstr ""
 
+#: resources/dist/js/components-showcase.js:188
+#: resources/dist/js/plugins-dashboard.js:190
+#: resources/dist/js/settings-page.js:188
+#: resources/dist/js/welcome-page.js:188
 #: resources/src/jsx/components/admin-page/header.jsx:50
+#: resources/dist/js/components-showcase.js:168
+#: resources/dist/js/plugins-dashboard.js:168
+#: resources/dist/js/settings-page.js:168
+#: resources/dist/js/welcome-page.js:168
 msgid "Get Support"
 msgstr ""
 
-#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
-msgid "Select an option"
-msgstr ""
-
-#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
-msgid "Options"
-msgstr ""
-
+#: resources/dist/js/components-showcase.js:445
 #: resources/src/jsx/components/pages/components-showcase.jsx:26
+#: resources/dist/js/components-showcase.js:385
 msgid "Components Showcase"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:479
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
+#: resources/dist/js/plugins-dashboard.js:403
+msgid "Select an option"
+msgstr ""
+
+#: resources/dist/js/plugins-dashboard.js:485
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
+#: resources/dist/js/plugins-dashboard.js:411
+msgid "Options"
+msgstr ""
+
+#: resources/dist/js/plugins-dashboard.js:496
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:66
+#: resources/dist/js/plugins-dashboard.js:425
+msgid "Filter plugins by status"
+msgstr ""
+
+#: resources/dist/js/plugins-dashboard.js:1011
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
+#: resources/dist/js/plugins-dashboard.js:757
 msgid "N/A"
 msgstr ""
 
 #. translators: %1$s is the plugin name, %2$s is the expiration date
+#: resources/dist/js/plugins-dashboard.js:1053
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
+#: resources/dist/js/plugins-dashboard.js:804
 #, js-format
 msgid "The license for %1$s expired on %2$s"
 msgstr ""
 
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
+#: resources/dist/js/plugins-dashboard.js:1057
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
+#: resources/dist/js/plugins-dashboard.js:811
 #, js-format
 msgid "The licenses for %1$s expired on %2$s"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1063
+#: resources/dist/js/plugins-dashboard.js:1108
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:157
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:213
+#: resources/dist/js/plugins-dashboard.js:821
+#: resources/dist/js/plugins-dashboard.js:877
 msgid "Renew now"
 msgstr ""
 
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
+#: resources/dist/js/plugins-dashboard.js:1098
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
+#: resources/dist/js/plugins-dashboard.js:858
 #, js-format
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr ""
 
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
+#: resources/dist/js/plugins-dashboard.js:1102
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
+#: resources/dist/js/plugins-dashboard.js:866
 #, js-format
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1105
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:210
+#: resources/dist/js/plugins-dashboard.js:874
 msgid "Warning:"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1197
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:46
+#: resources/dist/js/plugins-dashboard.js:942
 msgid "All"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1201
+#: resources/dist/js/plugins-dashboard.js:2602
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:51
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:39
+#: resources/dist/js/plugins-dashboard.js:947
+#: resources/dist/js/plugins-dashboard.js:2260
 msgid "Unlicensed"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1205
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:56
+#: resources/dist/js/plugins-dashboard.js:952
 msgid "Active"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1209
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:61
+#: resources/dist/js/plugins-dashboard.js:957
 msgid "Inactive"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1213
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:66
+#: resources/dist/js/plugins-dashboard.js:962
 msgid "Not installed"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1217
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:71
+#: resources/dist/js/plugins-dashboard.js:967
 msgid "Updates available"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1235
+#: resources/dist/js/welcome-page.js:496
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:94
 #: resources/src/jsx/components/pages/welcome-page.jsx:128
+#: resources/dist/js/plugins-dashboard.js:990
+#: resources/dist/js/welcome-page.js:458
 msgid "Plugins Dashboard"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1279
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
-msgid "Hold ALT and click to force refresh the update cache"
+#: resources/dist/js/plugins-dashboard.js:1036
+msgid "To force a refresh, hold Option on Mac or Alt on Windows and then click Refresh."
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1292
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
+#: resources/dist/js/plugins-dashboard.js:1054
 msgid "Force Refresh"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1292
+#: resources/dist/js/settings-page.js:889
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:300
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:307
+#: resources/dist/js/plugins-dashboard.js:1054
+#: resources/dist/js/settings-page.js:741
 msgid "Refresh"
 msgstr ""
 
-#: resources/src/jsx/components/pages/settings-page.jsx:31
-msgid "Diagnostics"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings-page.jsx:39
-msgid "Debug Log"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:108
-msgid "Failed to load the debug log. Please try again."
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:182
-msgid "Debug log cleared successfully."
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
-msgid "Failed to clear the debug log. Please try again."
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222
-msgid "Log copied to clipboard."
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
-msgid "Failed to copy log to clipboard."
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:253
-msgid "Requests"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:260
-msgid "Full Log"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:271
-msgid "Auto-refresh is on — click to stop"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:272
-msgid "Enable auto-refresh"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:277
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
-msgid "Auto-refresh"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:286
-msgid "Auto-refresh interval"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:308
-msgid "Copy to Clipboard"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:318
-msgid "Clear Log"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:326
-msgid "Loading log..."
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:332
-msgid "The debug log is empty. Perform some actions (e.g. activate a license) and refresh to see entries."
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
-msgid "Debug log contents"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
-msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
-msgid "Debug mode disabled."
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:50
-msgid "Failed to save the setting. Please try again."
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
-msgid "Debug Mode"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
-msgid "When enabled, all HTTP requests and responses to remote services (license activation, plugin downloads, etc.) are logged to a dedicated log file. Use the Debug Log tab to inspect the captured data."
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
-msgid "Enable Debug Mode"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
-msgid "Debug logging is active. Switch to the \"Debug Log\" tab to view captured data."
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
-msgid "ERR"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:106
-msgid "Request"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:113
-msgid "Response"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:119
-msgid "No response recorded for this request."
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:144
-msgid "No requests found in the log."
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:153
-msgid "1 request recorded"
-msgstr ""
-
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#, js-format
-msgid "%d requests recorded"
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:37
-msgid "Welcome to PublishPress Hub!"
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:40
-msgid "Get started with PublishPress Hub in a few simple steps."
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:47
-msgid "Welcome to PublishPress Hub"
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:52
-msgid "What you can do with PublishPress Hub"
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:55
-msgid "PublishPress Hub has everything you need to install, update, and manage your PublishPress plugins. We're here to help you build a publishing system that works perfectly for your team."
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:64
-msgid "Centralized Dashboard"
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:67
-msgid "View all your PublishPress plugins with their licenses, versions, and key details."
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:76
-msgid "One-Click Installation"
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:79
-msgid "Install free PublishPress plugins directly from the Hub without visiting WordPress.org."
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:88
-msgid "License Management"
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:91
-msgid "Connect your PublishPress licenses to easily install and activate Pro versions."
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:100
-msgid "Easy Updates"
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:103
-msgid "Keep all your PublishPress plugins up to date with one-click updates."
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:112
-msgid "Status Monitoring"
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:115
-msgid "Monitor plugin activation status, detect conflicts, and ensure compatibility."
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:124
-msgid "Get Started"
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:127
-#, js-format
-msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:142
-msgid "View Plugins Dashboard"
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:148
-msgid "Already know what you're doing? Great! You can "
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:150
-msgid "dismiss this page"
-msgstr ""
-
-#: resources/src/jsx/components/pages/welcome-page.jsx:152
-msgid "."
-msgstr ""
-
+#: resources/dist/js/plugins-dashboard.js:1349
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
+#: resources/dist/js/plugins-dashboard.js:1099
 msgid "Install"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1350
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:22
+#: resources/dist/js/plugins-dashboard.js:1100
 msgid "Installing..."
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1355
+#: resources/dist/js/plugins-dashboard.js:2281
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28
+#: resources/dist/js/plugins-dashboard.js:1105
+#: resources/dist/js/plugins-dashboard.js:1937
 msgid "Upgrade to Pro"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1356
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:28
+#: resources/dist/js/plugins-dashboard.js:1106
 msgid "Upgrading to Pro..."
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1361
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
+#: resources/dist/js/plugins-dashboard.js:1111
 msgid "Manage License"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1362
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:34
+#: resources/dist/js/plugins-dashboard.js:1112
 msgid "Managing License..."
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1367
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
+#: resources/dist/js/plugins-dashboard.js:1117
 msgid "Activate License"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1368
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:40
+#: resources/dist/js/plugins-dashboard.js:1118
 msgid "Activating License..."
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1373
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
+#: resources/dist/js/plugins-dashboard.js:1123
 msgid "Resolve Conflict"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1374
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
+#: resources/dist/js/plugins-dashboard.js:1124
 msgid "Resolving Conflict..."
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1379
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
+#: resources/dist/js/plugins-dashboard.js:1129
 msgid "Update"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1380
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
+#: resources/dist/js/plugins-dashboard.js:1130
 msgid "Updating..."
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1636
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:31
+#: resources/dist/js/plugins-dashboard.js:1321
 msgid "Confirmation"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1639
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:36
+#: resources/dist/js/plugins-dashboard.js:1326
 msgid "Are you sure you want to continue?"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1650
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:49
+#: resources/dist/js/plugins-dashboard.js:1339
 msgid "Continue"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1657
+#: resources/dist/js/plugins-dashboard.js:2236
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:52
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:98
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:100
+#: resources/dist/js/plugins-dashboard.js:1342
+#: resources/dist/js/plugins-dashboard.js:1902
 msgid "Cancel"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1703
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29
+#: resources/dist/js/plugins-dashboard.js:1379
 msgid "Install Plugin"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1708
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
+#: resources/dist/js/plugins-dashboard.js:1384
 msgid "Select how you would like to install this plugin. You can install the Pro version if you have a license, or the Free version to get started."
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1713
+#: resources/dist/js/plugins-dashboard.js:2885
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:116
+#: resources/dist/js/plugins-dashboard.js:1387
+#: resources/dist/js/plugins-dashboard.js:2547
 msgid "Free Details"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1716
+#: resources/dist/js/plugins-dashboard.js:2892
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:124
+#: resources/dist/js/plugins-dashboard.js:1389
+#: resources/dist/js/plugins-dashboard.js:2555
 msgid "Pro Details"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1719
+#: resources/dist/js/plugins-dashboard.js:2900
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:133
+#: resources/dist/js/plugins-dashboard.js:1391
+#: resources/dist/js/plugins-dashboard.js:2564
 msgid "Changelogs"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1725
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44
+#: resources/dist/js/plugins-dashboard.js:1394
 msgid "I have a license, install the Pro version"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1731
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47
+#: resources/dist/js/plugins-dashboard.js:1397
 msgid "I don't have a license, install the Free version"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:50
+#: resources/dist/js/plugins-dashboard.js:1809
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:51
+#: resources/dist/js/plugins-dashboard.js:1455
 msgid "Enter your license key"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:55
+#: resources/dist/js/plugins-dashboard.js:1814
+#: resources/dist/js/plugins-dashboard.js:1942
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:56
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
+#: resources/dist/js/plugins-dashboard.js:1460
+#: resources/dist/js/plugins-dashboard.js:1576
 msgid "Enter your license key to activate the Pro version of this plugin. You can find your license key in your PublishPress account dashboard."
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
+#: resources/dist/js/plugins-dashboard.js:1821
+#: resources/dist/js/plugins-dashboard.js:1949
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:60
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
+#: resources/dist/js/plugins-dashboard.js:1464
+#: resources/dist/js/plugins-dashboard.js:1580
 msgid "Go to my profile to get the license key"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1823
+#: resources/dist/js/plugins-dashboard.js:1951
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:66
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:94
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:93
+#: resources/dist/js/plugins-dashboard.js:1470
+#: resources/dist/js/plugins-dashboard.js:1586
+msgid "License key"
+msgstr ""
+
+#: resources/dist/js/plugins-dashboard.js:1825
+#: resources/dist/js/plugins-dashboard.js:1953
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:68
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:95
+#: resources/dist/js/plugins-dashboard.js:1472
+#: resources/dist/js/plugins-dashboard.js:1588
 msgid "Enter your license key here"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:80
+#: resources/dist/js/plugins-dashboard.js:1839
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:82
+#: resources/dist/js/plugins-dashboard.js:1486
 msgid "Activate and install the plugin"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:1937
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:76
+#: resources/dist/js/plugins-dashboard.js:1569
 msgid "Manage your license"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
+#: resources/dist/js/plugins-dashboard.js:1960
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:107
+#: resources/dist/js/plugins-dashboard.js:1600
 msgid "Your license key is: "
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
+#: resources/dist/js/plugins-dashboard.js:1962
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:109
+#: resources/dist/js/plugins-dashboard.js:1602
 msgid "(hidden)"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:119
+#: resources/dist/js/plugins-dashboard.js:1969
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:123
+#: resources/dist/js/plugins-dashboard.js:1616
 msgid "Activate the license key for this site"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:126
+#: resources/dist/js/plugins-dashboard.js:1974
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:130
+#: resources/dist/js/plugins-dashboard.js:1623
 msgid "Edit the license key"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:129
+#: resources/dist/js/plugins-dashboard.js:1981
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:133
+#: resources/dist/js/plugins-dashboard.js:1626
 msgid "Deactivate the license key for this site"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
-msgid "Unknown"
-msgstr ""
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:39
-msgid "Plugin Information"
-msgstr ""
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:45
-msgid "Name:"
-msgstr ""
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:51
-msgid "Description:"
-msgstr ""
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:57
-msgid "Current Version:"
-msgstr ""
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:63
-msgid "Available Version:"
-msgstr ""
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:82
-msgid "Update Plugin"
-msgstr ""
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:93
-msgid "Check for Updates"
-msgstr ""
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
+#: resources/dist/js/plugins-dashboard.js:2086
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:82
+#: resources/dist/js/plugins-dashboard.js:1717
 #, js-format
 msgid "Install %s"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
+#: resources/dist/js/plugins-dashboard.js:2097
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
+#: resources/dist/js/plugins-dashboard.js:1729
 #, js-format
 msgid "Install %s Pro"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
+#: resources/dist/js/plugins-dashboard.js:2102
+#: resources/dist/js/plugins-dashboard.js:2115
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:102
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:121
+#: resources/dist/js/plugins-dashboard.js:1737
+#: resources/dist/js/plugins-dashboard.js:1756
 #, js-format
 msgid "Upgrade %s to Pro"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
+#: resources/dist/js/plugins-dashboard.js:2107
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:110
+#: resources/dist/js/plugins-dashboard.js:1745
 #, js-format
 msgid "Uninstall %s"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
+#: resources/dist/js/plugins-dashboard.js:2108
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:111
+#: resources/dist/js/plugins-dashboard.js:1746
 #, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
+#: resources/dist/js/plugins-dashboard.js:2125
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:132
+#: resources/dist/js/plugins-dashboard.js:1767
 #, js-format
 msgid "Resolve Conflict for %s"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
+#: resources/dist/js/plugins-dashboard.js:2137
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:145
+#: resources/dist/js/plugins-dashboard.js:1780
 #, js-format
 msgid "Manage %s License"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
+#: resources/dist/js/plugins-dashboard.js:2147
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:156
+#: resources/dist/js/plugins-dashboard.js:1791
 #, js-format
 msgid "Activate %s License"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
-#, js-format
-msgid "More Info: %s"
+#: resources/dist/js/plugins-dashboard.js:2148
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
+#: resources/dist/js/plugins-dashboard.js:1792
+msgid "Activate the license key"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2204
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:34
+#: resources/dist/js/plugins-dashboard.js:1836
 msgid "Resolve Plugin Conflict"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
+#: resources/dist/js/plugins-dashboard.js:2211
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:51
+#: resources/dist/js/plugins-dashboard.js:1853
 #, js-format
 msgid "Free version: %s (%s)"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
+#: resources/dist/js/plugins-dashboard.js:2211
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:58
+#: resources/dist/js/plugins-dashboard.js:1860
 #, js-format
 msgid "Pro version: %s (%s)"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:79
+#: resources/dist/js/plugins-dashboard.js:2221
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:81
+#: resources/dist/js/plugins-dashboard.js:1883
 msgid "Keep the Pro version (Recommended)"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:89
+#: resources/dist/js/plugins-dashboard.js:2229
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:91
+#: resources/dist/js/plugins-dashboard.js:1893
 msgid "Keep the Free version"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2286
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
+#: resources/dist/js/plugins-dashboard.js:1942
 msgid "Unlock the full potential of this plugin with the Pro version. Enjoy advanced features, priority support, and exclusive benefits designed to help you get the most out of your workflow."
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2291
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
+#: resources/dist/js/plugins-dashboard.js:1949
 msgid "Discover all Pro features"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2294
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+#: resources/dist/js/plugins-dashboard.js:1953
 msgid "Changelog"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2300
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
+#: resources/dist/js/plugins-dashboard.js:1957
 msgid "Already have a license? Install Pro now"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2306
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
+#: resources/dist/js/plugins-dashboard.js:1960
 msgid "Upgrade to Pro and boost your productivity"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:139
+#: resources/dist/js/plugins-dashboard.js:2458
+#: resources/dist/js/plugins-dashboard.js:2907
+#: resources/dist/js/plugins-dashboard.js:2921
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:137
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:148
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:164
+#: resources/dist/js/plugins-dashboard.js:2104
+#: resources/dist/js/plugins-dashboard.js:2579
+#: resources/dist/js/plugins-dashboard.js:2595
+msgid "Unknown"
+msgstr ""
+
+#: resources/dist/js/plugins-dashboard.js:2459
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
+#: resources/dist/js/plugins-dashboard.js:2105
 msgid "New version available"
 msgstr ""
 
 #. translators: %s is the installed version number
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
+#: resources/dist/js/plugins-dashboard.js:2475
+#: resources/dist/js/plugins-dashboard.js:2927
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:171
+#: resources/dist/js/plugins-dashboard.js:2124
+#: resources/dist/js/plugins-dashboard.js:2602
 #, js-format
 msgid "v%s"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
+#: resources/dist/js/plugins-dashboard.js:2514
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
+#: resources/dist/js/plugins-dashboard.js:2167
 #, js-format
 msgid "Update available: %s → %s"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2583
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:22
+#: resources/dist/js/plugins-dashboard.js:2243
 msgid "Installing"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2590
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:27
+#: resources/dist/js/plugins-dashboard.js:2248
 msgid "Not Installed"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2594
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:31
+#: resources/dist/js/plugins-dashboard.js:2252
 msgid "Free"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2598
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:35
+#: resources/dist/js/plugins-dashboard.js:2256
 msgid "Licensed"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2606
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:43
+#: resources/dist/js/plugins-dashboard.js:2264
 msgid "Expired"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2610
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:47
+#: resources/dist/js/plugins-dashboard.js:2268
 msgid "Uninstalling"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2617
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:52
+#: resources/dist/js/plugins-dashboard.js:2273
 msgid "Upgrading"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2624
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:57
+#: resources/dist/js/plugins-dashboard.js:2278
 msgid "Deactivating"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2631
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:62
+#: resources/dist/js/plugins-dashboard.js:2283
 msgid "Activating"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2638
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:67
+#: resources/dist/js/plugins-dashboard.js:2288
 msgid "Conflicting Installations"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2642
+#: resources/dist/js/plugins-dashboard.js:2726
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
+#: resources/dist/js/plugins-dashboard.js:2292
+#: resources/dist/js/plugins-dashboard.js:2393
 msgid "Update Available"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:2734
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
+#: resources/dist/js/plugins-dashboard.js:2404
 msgid "Expires"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
+#: resources/dist/js/plugins-dashboard.js:2829
+#: resources/dist/js/plugins-dashboard.js:2840
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:74
+#: resources/dist/js/plugins-dashboard.js:2486
+#: resources/dist/js/plugins-dashboard.js:2505
 msgid "Renew"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
+#: resources/dist/js/plugins-dashboard.js:2849
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:84
+#: resources/dist/js/plugins-dashboard.js:2515
 msgid "Deactivate"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
+#: resources/dist/js/plugins-dashboard.js:2860
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:93
+#: resources/dist/js/plugins-dashboard.js:2524
 msgid "Activate"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
+#: resources/dist/js/plugins-dashboard.js:2871
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:103
+#: resources/dist/js/plugins-dashboard.js:2534
 msgid "Uninstall"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
-msgid "More Info"
-msgstr ""
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
+#: resources/dist/js/plugins-dashboard.js:2908
+#: resources/dist/js/plugins-dashboard.js:2922
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:149
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+#: resources/dist/js/plugins-dashboard.js:2580
+#: resources/dist/js/plugins-dashboard.js:2596
 msgid "latest"
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+#: resources/dist/js/plugins-dashboard.js:2912
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:154
+#: resources/dist/js/plugins-dashboard.js:2585
 #, js-format
 msgid "Update to v%s"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:3410
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
+#: resources/dist/js/plugins-dashboard.js:2952
 msgid "This plugin is not installed."
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:3412
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40
+#: resources/dist/js/plugins-dashboard.js:2955
 msgid "This plugin is active."
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:3412
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41
+#: resources/dist/js/plugins-dashboard.js:2956
 msgid "This plugin is not active."
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/index.jsx:159
+#: resources/dist/js/plugins-dashboard.js:3619
+#: resources/src/jsx/components/plugins-list/index.jsx:158
+#: resources/dist/js/plugins-dashboard.js:3167
 msgid "No plugins found."
 msgstr ""
 
-#: resources/src/jsx/components/plugins-list/index.jsx:165
+#: resources/dist/js/plugins-dashboard.js:3621
+#: resources/src/jsx/components/plugins-list/index.jsx:164
+#: resources/dist/js/plugins-dashboard.js:3173
 msgid "Loading plugins..."
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:4220
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:216
+#: resources/dist/js/plugins-dashboard.js:3591
 msgid "Failed to fetch plugins"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:4275
+#: resources/dist/js/plugins-dashboard.js:4365
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
+#: resources/dist/js/plugins-dashboard.js:3619
+#: resources/dist/js/plugins-dashboard.js:3677
 #, js-format
 msgid "%s installed successfully"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:4308
+#: resources/dist/js/plugins-dashboard.js:4399
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
+#: resources/dist/js/plugins-dashboard.js:3642
+#: resources/dist/js/plugins-dashboard.js:3702
 #, js-format
 msgid "%s installation failed"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:4456
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
+#: resources/dist/js/plugins-dashboard.js:3738
 #, js-format
 msgid "%s uninstalled successfully"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:4481
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
+#: resources/dist/js/plugins-dashboard.js:3754
 #, js-format
 msgid "%s uninstall failed"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:4545
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
+#: resources/dist/js/plugins-dashboard.js:3789
 #, js-format
 msgid "%s activated successfully"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:4572
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
+#: resources/dist/js/plugins-dashboard.js:3805
 #, js-format
 msgid "%s activation failed"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:4640
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
+#: resources/dist/js/plugins-dashboard.js:3840
 #, js-format
 msgid "%s deactivated successfully"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:4667
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
+#: resources/dist/js/plugins-dashboard.js:3856
 #, js-format
 msgid "%s deactivation failed"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:4729
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
+#: resources/dist/js/plugins-dashboard.js:3891
 #, js-format
 msgid "%s upgraded to Pro successfully"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:4763
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
+#: resources/dist/js/plugins-dashboard.js:3916
 #, js-format
 msgid "%s upgrade to Pro failed"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:4830
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
+#: resources/dist/js/plugins-dashboard.js:3958
 #, js-format
 msgid "Conflict resolved successfully for %s"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:4857
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
+#: resources/dist/js/plugins-dashboard.js:3975
 #, js-format
 msgid "Failed to resolve conflict for %s"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:4911
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
+#: resources/dist/js/plugins-dashboard.js:4007
 #, js-format
 msgid "%s license deactivated successfully"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:4936
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
+#: resources/dist/js/plugins-dashboard.js:4023
 #, js-format
 msgid "%s license deactivation failed"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:4994
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
+#: resources/dist/js/plugins-dashboard.js:4058
 #, js-format
 msgid "%s license activated successfully"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:5020
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
+#: resources/dist/js/plugins-dashboard.js:4074
 #, js-format
 msgid "%s license activation failed"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:5077
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
+#: resources/dist/js/plugins-dashboard.js:4109
 #, js-format
 msgid "%s updated successfully"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:5105
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
+#: resources/dist/js/plugins-dashboard.js:4126
 #, js-format
 msgid "%s update failed"
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:5179
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
+#: resources/dist/js/plugins-dashboard.js:4188
 msgid "Too many requests. Please wait a few seconds and try again."
 msgstr ""
 
+#: resources/dist/js/plugins-dashboard.js:5187
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
+#: resources/dist/js/plugins-dashboard.js:4198
 #, js-format
 msgid "Cloudflare Ray ID: %s"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:413
+#: resources/src/jsx/components/pages/settings-page.jsx:31
+#: resources/dist/js/settings-page.js:361
+msgid "Diagnostics"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:419
+#: resources/src/jsx/components/pages/settings-page.jsx:39
+#: resources/dist/js/settings-page.js:369
+msgid "Debug Log"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:659
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:108
+#: resources/dist/js/settings-page.js:542
+msgid "Failed to load the debug log. Please try again."
+msgstr ""
+
+#: resources/dist/js/settings-page.js:738
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:182
+#: resources/dist/js/settings-page.js:616
+msgid "Debug log cleared successfully."
+msgstr ""
+
+#: resources/dist/js/settings-page.js:747
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
+#: resources/dist/js/settings-page.js:621
+msgid "Failed to clear the debug log. Please try again."
+msgstr ""
+
+#: resources/dist/js/settings-page.js:806
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222
+#: resources/dist/js/settings-page.js:656
+msgid "Log copied to clipboard."
+msgstr ""
+
+#: resources/dist/js/settings-page.js:815
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
+#: resources/dist/js/settings-page.js:661
+msgid "Failed to copy log to clipboard."
+msgstr ""
+
+#: resources/dist/js/settings-page.js:840
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:250
+#: resources/dist/js/settings-page.js:684
+msgid "Debug log view"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:848
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:258
+#: resources/dist/js/settings-page.js:692
+msgid "Requests"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:855
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:266
+#: resources/dist/js/settings-page.js:700
+msgid "Full Log"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:868
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
+#: resources/dist/js/settings-page.js:712
+msgid "Auto-refresh is on — click to stop"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:868
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:279
+#: resources/dist/js/settings-page.js:713
+msgid "Enable auto-refresh"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:872
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:284
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:285
+#: resources/dist/js/settings-page.js:718
+#: resources/dist/js/settings-page.js:719
+msgid "Auto-refresh"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:876
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:293
+#: resources/dist/js/settings-page.js:727
+msgid "Auto-refresh interval"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:893
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:315
+#: resources/dist/js/settings-page.js:749
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:899
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:325
+#: resources/dist/js/settings-page.js:759
+msgid "Clear Log"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:903
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:333
+#: resources/dist/js/settings-page.js:767
+msgid "Loading log..."
+msgstr ""
+
+#: resources/dist/js/settings-page.js:905
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:339
+#: resources/dist/js/settings-page.js:773
+msgid "The debug log is empty. Perform some actions (e.g. activate a license) and refresh to see entries."
+msgstr ""
+
+#: resources/dist/js/settings-page.js:912
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:353
+#: resources/dist/js/settings-page.js:787
+msgid "Debug log contents"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:997
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
+#: resources/dist/js/settings-page.js:836
+msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
+msgstr ""
+
+#: resources/dist/js/settings-page.js:997
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
+#: resources/dist/js/settings-page.js:837
+msgid "Debug mode disabled."
+msgstr ""
+
+#: resources/dist/js/settings-page.js:1009
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:50
+#: resources/dist/js/settings-page.js:846
+msgid "Failed to save the setting. Please try again."
+msgstr ""
+
+#: resources/dist/js/settings-page.js:1036
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
+#: resources/dist/js/settings-page.js:867
+msgid "Debug Mode"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:1038
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
+#: resources/dist/js/settings-page.js:871
+msgid "When enabled, all HTTP requests and responses to remote services (license activation, plugin downloads, etc.) are logged to a dedicated log file. Use the Debug Log tab to inspect the captured data."
+msgstr ""
+
+#: resources/dist/js/settings-page.js:1039
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
+#: resources/dist/js/settings-page.js:878
+msgid "Enable Debug Mode"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:1046
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
+#: resources/dist/js/settings-page.js:887
+msgid "Debug logging is active. Switch to the \"Debug Log\" tab to view captured data."
+msgstr ""
+
+#: resources/dist/js/settings-page.js:1137
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
+#: resources/dist/js/settings-page.js:969
+msgid "ERR"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:1168
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:108
+#: resources/dist/js/settings-page.js:1007
+msgid "Request"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:1174
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:115
+#: resources/dist/js/settings-page.js:1014
+msgid "Response"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:1178
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:121
+#: resources/dist/js/settings-page.js:1020
+msgid "No response recorded for this request."
+msgstr ""
+
+#: resources/dist/js/settings-page.js:1193
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:146
+#: resources/dist/js/settings-page.js:1045
+msgid "No requests found in the log."
+msgstr ""
+
+#: resources/dist/js/settings-page.js:1199
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
+#: resources/dist/js/settings-page.js:1054
+msgid "1 request recorded"
+msgstr ""
+
+#: resources/dist/js/settings-page.js:1199
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:157
+#: resources/dist/js/settings-page.js:1056
+#, js-format
+msgid "%d requests recorded"
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:418
+#: resources/src/jsx/components/pages/welcome-page.jsx:37
+#: resources/dist/js/welcome-page.js:367
+msgid "Welcome to PublishPress Hub!"
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:420
+#: resources/src/jsx/components/pages/welcome-page.jsx:40
+#: resources/dist/js/welcome-page.js:370
+msgid "Get started with PublishPress Hub in a few simple steps."
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:428
+#: resources/src/jsx/components/pages/welcome-page.jsx:47
+#: resources/dist/js/welcome-page.js:377
+msgid "Welcome to PublishPress Hub"
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:431
+#: resources/src/jsx/components/pages/welcome-page.jsx:52
+#: resources/dist/js/welcome-page.js:382
+msgid "What you can do with PublishPress Hub"
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:433
+#: resources/src/jsx/components/pages/welcome-page.jsx:55
+#: resources/dist/js/welcome-page.js:385
+msgid "PublishPress Hub has everything you need to install, update, and manage your PublishPress plugins. We're here to help you build a publishing system that works perfectly for your team."
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:443
+#: resources/src/jsx/components/pages/welcome-page.jsx:64
+#: resources/dist/js/welcome-page.js:394
+msgid "Centralized Dashboard"
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:445
+#: resources/src/jsx/components/pages/welcome-page.jsx:67
+#: resources/dist/js/welcome-page.js:397
+msgid "View all your PublishPress plugins with their licenses, versions, and key details."
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:453
+#: resources/src/jsx/components/pages/welcome-page.jsx:76
+#: resources/dist/js/welcome-page.js:406
+msgid "One-Click Installation"
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:455
+#: resources/src/jsx/components/pages/welcome-page.jsx:79
+#: resources/dist/js/welcome-page.js:409
+msgid "Install free PublishPress plugins directly from the Hub without visiting WordPress.org."
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:463
+#: resources/src/jsx/components/pages/welcome-page.jsx:88
+#: resources/dist/js/welcome-page.js:418
+msgid "License Management"
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:465
+#: resources/src/jsx/components/pages/welcome-page.jsx:91
+#: resources/dist/js/welcome-page.js:421
+msgid "Connect your PublishPress licenses to easily install and activate Pro versions."
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:473
+#: resources/src/jsx/components/pages/welcome-page.jsx:100
+#: resources/dist/js/welcome-page.js:430
+msgid "Easy Updates"
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:475
+#: resources/src/jsx/components/pages/welcome-page.jsx:103
+#: resources/dist/js/welcome-page.js:433
+msgid "Keep all your PublishPress plugins up to date with one-click updates."
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:483
+#: resources/src/jsx/components/pages/welcome-page.jsx:112
+#: resources/dist/js/welcome-page.js:442
+msgid "Status Monitoring"
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:485
+#: resources/src/jsx/components/pages/welcome-page.jsx:115
+#: resources/dist/js/welcome-page.js:445
+msgid "Monitor plugin activation status, detect conflicts, and ensure compatibility."
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:493
+#: resources/src/jsx/components/pages/welcome-page.jsx:124
+#: resources/dist/js/welcome-page.js:454
+msgid "Get Started"
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:496
+#: resources/src/jsx/components/pages/welcome-page.jsx:127
+#: resources/dist/js/welcome-page.js:457
+#, js-format
+msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:506
+#: resources/src/jsx/components/pages/welcome-page.jsx:142
+#: resources/dist/js/welcome-page.js:472
+msgid "View Plugins Dashboard"
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:508
+#: resources/src/jsx/components/pages/welcome-page.jsx:148
+#: resources/dist/js/welcome-page.js:478
+msgid "Already know what you're doing? Great! You can "
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:510
+#: resources/src/jsx/components/pages/welcome-page.jsx:150
+#: resources/dist/js/welcome-page.js:480
+msgid "dismiss this page"
+msgstr ""
+
+#: resources/dist/js/welcome-page.js:510
+#: resources/src/jsx/components/pages/welcome-page.jsx:152
+#: resources/dist/js/welcome-page.js:482
+msgid "."
 msgstr ""
