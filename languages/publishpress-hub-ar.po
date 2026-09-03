@@ -10,12 +10,12 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
-"PO-Revision-Date: 2026-09-03 09:38+0000\n"
+"PO-Revision-Date: 2026-09-03 15:41+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "% 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
-"Language: ar\n"
 "% 100 >= 3 && n % 100 <= 10 ? 3: n % 100 >= 11 ? 4 : 5);\n"
+"Language: ar\n"
 "&& n%100<=10 ? 3: n%100>=11 ? 4 : 5);\n"
 "Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
 
@@ -1131,9 +1131,9 @@ msgstr "إصدار جديد متاح"
 #: resources/dist/js/plugins-dashboard.js:2124
 #: resources/dist/js/plugins-dashboard.js:2602
 #. translators: %s is the installed version number
-#, fuzzy
-msgid "v%s"
-msgstr "v%s"
+#, js-format
+msgid "Installed version: %s"
+msgstr "الإصدار المثبت: %s"
 
 #: resources/dist/js/plugins-dashboard.js:2514
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200

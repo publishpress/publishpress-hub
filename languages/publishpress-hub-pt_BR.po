@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
-"PO-Revision-Date: 2026-09-03 09:37+0000\n"
+"PO-Revision-Date: 2026-09-03 15:41+0000\n"
 "X-Generator: Weblate 5.17.1\n"
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
@@ -1149,9 +1149,9 @@ msgstr "Nova versão disponível"
 #: resources/dist/js/plugins-dashboard.js:2124
 #: resources/dist/js/plugins-dashboard.js:2602
 #. translators: %s is the installed version number
-#, fuzzy, js-format
-msgid "v%s"
-msgstr "v%s"
+#, js-format
+msgid "Installed version: %s"
+msgstr "Versão instalada: %s"
 
 #: resources/dist/js/plugins-dashboard.js:2514
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200

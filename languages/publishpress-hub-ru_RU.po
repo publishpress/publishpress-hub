@@ -10,12 +10,12 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
-"PO-Revision-Date: 2026-09-03 09:37+0000\n"
+"PO-Revision-Date: 2026-09-03 15:41+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 ">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
-"Language: ru_RU\n"
 ">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1: 2);\n"
+"Language: ru_RU\n"
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
 
@@ -272,7 +272,6 @@ msgstr ""
 "получения помощи."
 
 #: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
-#, fuzzy
 msgid ""
 "This action is not possible because the plugin is not installed. Please "
 "install the plugin and try again."
@@ -1142,9 +1141,9 @@ msgstr "Доступна новая версия"
 #: resources/dist/js/plugins-dashboard.js:2124
 #: resources/dist/js/plugins-dashboard.js:2602
 #. translators: %s is the installed version number
-#, fuzzy
-msgid "v%s"
-msgstr "v%s"
+#, js-format
+msgid "Installed version: %s"
+msgstr "Установленная версия: %s"
 
 #: resources/dist/js/plugins-dashboard.js:2514
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200

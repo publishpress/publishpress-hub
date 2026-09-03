@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
-"PO-Revision-Date: 2026-09-03 09:37+0000\n"
+"PO-Revision-Date: 2026-09-03 15:41+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Language: ko_KR\n"
@@ -230,7 +230,6 @@ msgid ""
 msgstr "플러그인 패밀리를 찾을 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
-#, fuzzy
 msgid ""
 "This action is not possible because the plugin is not installed. Please "
 "install the plugin and try again."
@@ -1091,9 +1090,9 @@ msgstr "새 버전 사용 가능"
 #: resources/dist/js/plugins-dashboard.js:2124
 #: resources/dist/js/plugins-dashboard.js:2602
 #. translators: %s is the installed version number
-#, fuzzy
-msgid "v%s"
-msgstr "v%s"
+#, js-format
+msgid "Installed version: %s"
+msgstr "설치된 버전: %s"
 
 #: resources/dist/js/plugins-dashboard.js:2514
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200

@@ -10,12 +10,12 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
-"PO-Revision-Date: 2026-09-03 09:37+0000\n"
+"PO-Revision-Date: 2026-09-03 15:41+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "|| n % 10 == 6 || n % 10 == 9);\n"
-"Language: fil\n"
 "|| n % 10 == 6 || n % 10 == 9);: \n"
+"Language: fil\n"
 "Plural-Forms: nplurals=2; plural=n != 1 && n != 2 && n != 3 && (n % 10 == 4 || n % 10 == 6 || n % 10 == 9);\n"
 
 #: publishpress-hub.php:4
@@ -263,7 +263,6 @@ msgstr ""
 "para sa tulong."
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
-#, fuzzy
 msgid ""
 "This action is not possible because the plugin is not activated. Please "
 "activate the plugin and try again."
@@ -1156,9 +1155,9 @@ msgstr "Bagong bersyon na available"
 #: resources/dist/js/plugins-dashboard.js:2124
 #: resources/dist/js/plugins-dashboard.js:2602
 #. translators: %s is the installed version number
-#, fuzzy
-msgid "v%s"
-msgstr "v%s"
+#, js-format
+msgid "Installed version: %s"
+msgstr "Naka-install na bersyon: %s"
 
 #: resources/dist/js/plugins-dashboard.js:2514
 #: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
