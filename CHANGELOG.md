@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[Unreleased] - 1.0.7
+[1.0.7] - [Unreleased]
 
 - Added: Support for a single `PUBLISHPRESS_HUB_LICENSE_KEY` constant in wp-config.php to provide licenses for all PublishPress plugin families (#65).
 - Added: Identified wp-config.php-managed license keys in the Hub and prevented editing them from the license management modal (#65).
