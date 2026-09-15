@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added: Identified wp-config.php-managed license keys in the Hub and prevented editing them from the license management modal (#65).
 - Added: Option to reuse an entered license key for all PublishPress plugins from the Hub license UI (#65).
 - Fixed: Allowed Hub-detected Pro plugin updates to run when WordPress has not cached the update yet (#227).
+- Fixed: Made expired license notices non-dismissible so administrators keep seeing renewal warnings (#196).
 
 [1.0.6] - 03 September, 2026
 
