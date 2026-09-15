@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed: Allowed Hub-detected Pro plugin updates to run when WordPress has not cached the update yet (#227).
 - Fixed: Made expired license notices non-dismissible so administrators keep seeing renewal warnings (#196).
 - Fixed: Improved the visual style of update failure messages so they are easier to notice (#226).
+- Fixed: Improved blocked and unauthorized license error messages (#124).
 
 [1.0.6] - 03 September, 2026
 
