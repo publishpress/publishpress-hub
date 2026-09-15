@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed: Made expired license notices non-dismissible so administrators keep seeing renewal warnings (#196).
 - Fixed: Improved the visual style of update failure messages so they are easier to notice (#226).
 - Fixed: Improved blocked and unauthorized license error messages (#124).
+- Added: Site health report copy and download actions with WordPress environment details and PublishPress plugin versions (#103).
 
 [1.0.6] - 03 September, 2026
 

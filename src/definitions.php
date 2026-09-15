@@ -34,6 +34,7 @@ use PublishPress\Hub\Application\UseCase\Plugin\ActivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Settings\ClearDebugLogUseCase;
 use PublishPress\Hub\Application\UseCase\Settings\GetDebugLogUseCase;
 use PublishPress\Hub\Application\UseCase\Settings\GetDiagnosticsSettingsUseCase;
+use PublishPress\Hub\Application\UseCase\Settings\GetSiteHealthReportUseCase;
 use PublishPress\Hub\Application\UseCase\Settings\UpdateDiagnosticsSettingsUseCase;
 use PublishPress\Hub\Infrastructure\Debug\DebugLogService;
 use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
@@ -630,6 +631,14 @@ return [
             $container->get(AbstractDependencies::DEBUG_LOG_SERVICE)
         ),
 
+    AbstractDependencies::GET_SITE_HEALTH_REPORT_USE_CASE =>
+        fn(ContainerInterface $container) => new GetSiteHealthReportUseCase(
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::DEBUG_LOG_SERVICE),
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER),
+            $container->get(AbstractDependencies::PLUGIN_VERSION)
+        ),
+
     AbstractDependencies::REST_API_SETTINGS_CONTROLLER =>
         fn(ContainerInterface $container) => new SettingsController(
             $container->get(AbstractDependencies::HUB_REST_API_NAMESPACE),
@@ -637,7 +646,8 @@ return [
             $container->get(AbstractDependencies::GET_DIAGNOSTICS_SETTINGS_USE_CASE),
             $container->get(AbstractDependencies::UPDATE_DIAGNOSTICS_SETTINGS_USE_CASE),
             $container->get(AbstractDependencies::GET_DEBUG_LOG_USE_CASE),
-            $container->get(AbstractDependencies::CLEAR_DEBUG_LOG_USE_CASE)
+            $container->get(AbstractDependencies::CLEAR_DEBUG_LOG_USE_CASE),
+            $container->get(AbstractDependencies::GET_SITE_HEALTH_REPORT_USE_CASE)
         ),
 
     // Rest API Services

@@ -212,4 +212,6 @@ abstract class AbstractDependencies
     public const GET_DEBUG_LOG_USE_CASE = 'publishpress-hub.application.use-case.settings.get-debug-log';
 
     public const CLEAR_DEBUG_LOG_USE_CASE = 'publishpress-hub.application.use-case.settings.clear-debug-log';
+
+    public const GET_SITE_HEALTH_REPORT_USE_CASE = 'publishpress-hub.application.use-case.settings.get-site-health-report';
 }
