@@ -516,7 +516,9 @@ return [
     AbstractDependencies::UPDATE_PLUGIN_USE_CASE =>
         fn(ContainerInterface $container) => new UpdatePluginUseCase(
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-            $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
+            $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
 
     AbstractDependencies::RESOLVE_CONFLICT_USE_CASE =>
