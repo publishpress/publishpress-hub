@@ -201,6 +201,14 @@ class PluginsController implements BootableInterface
                         return !empty($param) && is_string($param);
                     },
                 ],
+                'applyToAll' => [
+                    'required' => false,
+                    'type' => 'boolean',
+                    'sanitize_callback' => 'rest_sanitize_boolean',
+                    'validate_callback' => function ($param) {
+                        return is_bool(rest_sanitize_boolean($param));
+                    },
+                ],
             ]
         ));
 

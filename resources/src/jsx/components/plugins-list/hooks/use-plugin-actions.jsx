@@ -73,8 +73,8 @@ export const usePluginActions = (modalManager) => {
         return result;
     }, [deactivateLicense]);
 
-    const handleActivateLicense = useCallback(async (pluginFamily, licenseKey) => {
-        const result = await activateLicense(pluginFamily, licenseKey);
+    const handleActivateLicense = useCallback(async (pluginFamily, licenseKey, applyToAll = false) => {
+        const result = await activateLicense(pluginFamily, licenseKey, applyToAll);
         if (result.success && !result.error) {
             closeModal();
         }

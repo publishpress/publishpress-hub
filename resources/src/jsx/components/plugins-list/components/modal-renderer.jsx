@@ -143,10 +143,13 @@ const ModalRendererComponent = ({
                 <ModalLicenseManagement
                     {...modalProps}
                     title={sprintf(__('Manage %s License', 'publishpress-hub'), currentPluginDisplayName)}
-                    onActivate={(licenseKey) => handleActivateLicense(currentPluginFamily, licenseKey)}
+                    onActivate={(licenseKey, applyToAll) =>
+                        handleActivateLicense(currentPluginFamily, licenseKey, applyToAll)
+                    }
                     onDeactivate={() => handleDeactivateLicense(currentPluginFamily)}
                     hasLicenseKey={currentPluginFamily.proPlugin.hasLicenseKey}
                     initialLicenseKeyMasked={currentPluginFamily.proPlugin.licenseKeyMasked}
+                    isLicenseKeyFromConstant={currentPluginFamily.proPlugin.isLicenseKeyFromConstant}
                 />
             )}
 
@@ -155,7 +158,10 @@ const ModalRendererComponent = ({
                     {...modalProps}
                     title={sprintf(__('Activate %s License', 'publishpress-hub'), currentPluginDisplayName)}
                     buttonLabel={__('Activate the license key', 'publishpress-hub')}
-                    onActivate={(licenseKey) => handleActivateLicense(currentPluginFamily, licenseKey)}
+                    onActivate={(licenseKey, applyToAll) =>
+                        handleActivateLicense(currentPluginFamily, licenseKey, applyToAll)
+                    }
+                    showApplyToAll={true}
                 />
             )}
 

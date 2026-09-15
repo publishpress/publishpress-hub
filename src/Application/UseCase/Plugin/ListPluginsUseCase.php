@@ -115,6 +115,8 @@ class ListPluginsUseCase implements UseCaseInterface
             $pluginData['proPlugin']['licenseKeyMasked'] = !empty($licenseKey)
                 ? $this->maskLicenseKey($licenseKey)
                 : '';
+            $pluginData['proPlugin']['isLicenseKeyFromConstant'] =
+                $this->licensePersistence->isLicenseFromConstant($proPlugin->getDownloadId());
 
             // Format expiration date for display using WordPress date format
             if (!empty($expirationDate)) {
