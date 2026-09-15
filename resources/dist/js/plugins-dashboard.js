@@ -1030,7 +1030,7 @@ var useLicenseExpirationWarning = function useLicenseExpirationWarning(plugins) 
     removeNotice('pp-hub-license-expired-warning');
 
     // Display expired license notice (error level - highest priority)
-    if (expiredPlugins.length > 0 && !dismissalStatus.expired) {
+    if (expiredPlugins.length > 0) {
       // Group plugins by expiration date
       var pluginsByDate = {};
       expiredPlugins.forEach(function (plugin) {
@@ -1064,11 +1064,8 @@ var useLicenseExpirationWarning = function useLicenseExpirationWarning(plugins) 
       var message = baseMessage + ' ' + renewLink;
       createNotice('error', message, {
         id: 'pp-hub-license-expired-warning',
-        isDismissible: true,
-        __unstableHTML: true,
-        onDismiss: function onDismiss() {
-          return handleNoticeDismiss('expired');
-        }
+        isDismissible: false,
+        __unstableHTML: true
       });
     }
 
