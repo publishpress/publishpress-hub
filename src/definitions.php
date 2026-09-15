@@ -26,6 +26,8 @@ use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use PublishPress\Hub\Application\Service\License\LicenseStatusStorageService;
 use PublishPress\Hub\Application\Service\License\LicenseValidationBootstrapService;
 use PublishPress\Hub\Application\Service\License\ScheduledLicenseValidationService;
+use PublishPress\Hub\Application\Service\License\WpConfigLicenseReaderService;
+use PublishPress\Hub\Application\Service\License\WpConfigLicenseSyncService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\Service\VersionService;
 use PublishPress\Hub\Application\UseCase\Plugin\ActivateLicenseUseCase;
@@ -251,6 +253,18 @@ return [
             $container->get(AbstractDependencies::LICENSE_EXPIRATION_NOTICE_SERVICE)
         ),
 
+    AbstractDependencies::WP_CONFIG_LICENSE_READER_SERVICE =>
+        fn(ContainerInterface $container) => new WpConfigLicenseReaderService(
+            $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
+        ),
+
+    AbstractDependencies::WP_CONFIG_LICENSE_SYNC_SERVICE =>
+        fn(ContainerInterface $container) => new WpConfigLicenseSyncService(
+            $container->get(AbstractDependencies::WP_CONFIG_LICENSE_READER_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
+        ),
+
     AbstractDependencies::LICENSE_ACTIVATION_SERVICE =>
         function (ContainerInterface $container) {
             $eddSubscriptionApiUrl = $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL);
@@ -424,6 +438,7 @@ return [
                 $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
                 $container->get(AbstractDependencies::HUB_ACCESS_SERVICE),
                 $container->get(AbstractDependencies::DEBUG_LOG_SERVICE),
+                $container->get(AbstractDependencies::WP_CONFIG_LICENSE_SYNC_SERVICE),
                 $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
                 $container->get(AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS)
             );
@@ -513,14 +528,17 @@ return [
     AbstractDependencies::DEACTIVATE_LICENSE_USE_CASE =>
         fn(ContainerInterface $container) => new DeactivateLicenseUseCase(
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
 
     AbstractDependencies::ACTIVATE_LICENSE_USE_CASE =>
         fn(ContainerInterface $container) => new ActivateLicenseUseCase(
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
             $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE),
-            $container->get(AbstractDependencies::SCHEDULED_LICENSE_VALIDATION_SERVICE)
+            $container->get(AbstractDependencies::SCHEDULED_LICENSE_VALIDATION_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
 
     AbstractDependencies::VALIDATE_LICENSES_USE_CASE =>

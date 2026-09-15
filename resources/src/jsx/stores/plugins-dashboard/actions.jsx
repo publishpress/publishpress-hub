@@ -659,9 +659,9 @@ export function* deactivateLicense(pluginFamily) {
     }
 }
 
-export function* activateLicense(pluginFamily, licenseKey) {
+export function* activateLicense(pluginFamily, licenseKey, applyToAll = false) {
     try {
-        yield {type: 'ACTIVATE_LICENSE_START', data: {pluginFamily, licenseKey}};
+        yield {type: 'ACTIVATE_LICENSE_START', data: {pluginFamily, licenseKey, applyToAll}};
 
         yield apiReady();
 
@@ -670,6 +670,7 @@ export function* activateLicense(pluginFamily, licenseKey) {
             method: 'POST',
             data: {
                 licenseKey: licenseKey,
+                applyToAll: applyToAll,
             },
         });
 
@@ -677,12 +678,13 @@ export function* activateLicense(pluginFamily, licenseKey) {
         if (data.success) {
             yield fetchPlugins();
 
-            yield {type: 'ACTIVATE_LICENSE_SUCCESS', data: {pluginFamily, licenseKey}};
+            yield {type: 'ACTIVATE_LICENSE_SUCCESS', data: {pluginFamily, licenseKey, applyToAll}};
 
-            yield createSnackbarNotice(
-                sprintf(__('%s license activated successfully', 'publishpress-hub'), pluginFamily.name),
-                'success'
-            );
+            const successMessage = applyToAll
+                ? __('License activated successfully for all PublishPress plugins', 'publishpress-hub')
+                : sprintf(__('%s license activated successfully', 'publishpress-hub'), pluginFamily.name);
+
+            yield createSnackbarNotice(successMessage, 'success');
 
             return {
                 success: true,
@@ -693,7 +695,7 @@ export function* activateLicense(pluginFamily, licenseKey) {
             throw new Error(data?.error || 'License activation failed');
         }
     } catch (error) {
-        yield {type: 'ACTIVATE_LICENSE_ERROR', data: {pluginFamily, licenseKey, error: error}};
+        yield {type: 'ACTIVATE_LICENSE_ERROR', data: {pluginFamily, licenseKey, applyToAll, error: error}};
 
         yield createNotice(
             sprintf(__('%s license activation failed', 'publishpress-hub'), pluginFamily.name),

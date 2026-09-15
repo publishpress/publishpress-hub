@@ -14,15 +14,16 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
+use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
-use PublishPress\Hub\Domain\Plugin\Exception\LicenseInvalidException;
+use PublishPress\Hub\Domain\Plugin\Contract\ProPluginInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseException;
+use PublishPress\Hub\Domain\Plugin\Exception\LicenseInvalidException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginAlreadyInstalledException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginInstallException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
-use PublishPress\Hub\Application\Service\License\LicenseManagementService;
-use PublishPress\Hub\Domain\Plugin\Contract\ProPluginInterface;
+use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use WP_REST_Request;
 
 class DeactivateLicenseUseCase implements UseCaseInterface
@@ -31,15 +32,19 @@ class DeactivateLicenseUseCase implements UseCaseInterface
 
     private LicenseManagementService $licenseManagement;
 
+    private LicensePersistenceInterface $licensePersistence;
+
     /**
      * @since 1.0.0
      */
     public function __construct(
         PluginStatusService $pluginStatusService,
-        LicenseManagementService $licenseManagement
+        LicenseManagementService $licenseManagement,
+        LicensePersistenceInterface $licensePersistence
     ) {
         $this->pluginStatusService = $pluginStatusService;
         $this->licenseManagement = $licenseManagement;
+        $this->licensePersistence = $licensePersistence;
     }
 
     /**
@@ -60,6 +65,7 @@ class DeactivateLicenseUseCase implements UseCaseInterface
 
         $plugin = $this->getPlugin($familySlug);
         $licenseKey = $this->getLicenseKey($plugin);
+        $this->guardAgainstWpConfigLicense($plugin);
 
         $this->licenseManagement->deactivateAndRemoveLicenseFromAllPlugins(
             $licenseKey,
@@ -112,5 +118,27 @@ class DeactivateLicenseUseCase implements UseCaseInterface
         }
 
         return $licenseKey;
+    }
+
+    /**
+     * Prevent deactivating licenses managed in wp-config.php.
+     *
+     * @param ProPluginInterface $plugin The plugin.
+     * @throws LicenseInvalidException
+     * @since 1.0.0
+     */
+    private function guardAgainstWpConfigLicense(ProPluginInterface $plugin): void
+    {
+        if (!$this->licensePersistence->isLicenseFromConstant($plugin->getDownloadId())) {
+            return;
+        }
+
+        throw new LicenseInvalidException([
+            'plugin_slug' => esc_html($plugin->getSlug()),
+            'error_message' => esc_html__(
+                'This license key is managed in wp-config.php and cannot be deactivated from the Hub.',
+                'publishpress-hub'
+            ),
+        ]);
     }
 }

@@ -15,6 +15,7 @@ import {
     useRef,
     useEffect
 } from '@wordpress/element';
+import { CheckboxControl } from '@wordpress/components';
 
 import { __ } from '@publishpress-hub/i18n';
 
@@ -36,9 +37,11 @@ const ModalLicenseManagementComponent = ({
     buttonInProgress,
     initialLicenseKeyMasked,
     hasLicenseKey,
+    isLicenseKeyFromConstant,
     title,
 }) => {
     const [licenseKey, setLicenseKey] = useState('');
+    const [applyToAll, setApplyToAll] = useState(false);
     const [currentAction, setCurrentAction] = useState(hasLicenseKey ? ACTIONS.VIEW : ACTIONS.EDIT);
     const [activationAttempted, setActivationAttempted] = useState(false);
     const setFocusRef = useRef(null);
@@ -49,8 +52,8 @@ const ModalLicenseManagementComponent = ({
 
     const handleActivate = useCallback(() => {
         setActivationAttempted(true);
-        onActivate(licenseKey);
-    }, [onActivate, licenseKey]);
+        onActivate(licenseKey, applyToAll);
+    }, [onActivate, licenseKey, applyToAll]);
 
     const handleSwitchToEdit = useCallback(() => {
         setLicenseKey('');
@@ -98,6 +101,11 @@ const ModalLicenseManagementComponent = ({
                         onEnterKeyDown={handleActivate}
                         onFocusReady={handleFocusReady}
                     />
+                    <CheckboxControl
+                        label={__('Use this license key for all PublishPress plugins', 'publishpress-hub')}
+                        checked={applyToAll}
+                        onChange={(value) => setApplyToAll(value)}
+                    />
                 </>
             )}
 
@@ -109,6 +117,11 @@ const ModalLicenseManagementComponent = ({
                             {initialLicenseKeyMasked || __('(hidden)', 'publishpress-hub')}
                         </span>
                     </p>
+                    {isLicenseKeyFromConstant && (
+                        <Message variant='info'>
+                            {__('This license key is managed in wp-config.php and cannot be edited from the Hub.', 'publishpress-hub')}
+                        </Message>
+                    )}
                 </>
             )}
 
@@ -124,7 +137,7 @@ const ModalLicenseManagementComponent = ({
                 </Button>
             )}
 
-            {currentAction === ACTIONS.VIEW && (
+            {currentAction === ACTIONS.VIEW && !isLicenseKeyFromConstant && (
                 <>
                     <Button variant='primary' icon='edit' onClick={handleSwitchToEdit} isLoading={buttonInProgress}>
                         {__('Edit the license key', 'publishpress-hub')}
