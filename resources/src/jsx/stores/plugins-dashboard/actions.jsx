@@ -278,7 +278,7 @@ export function* installFreePlugin(pluginFamilySlug) {
     }
 }
 
-export function* installProPlugin(pluginFamilySlug, licenseKey, applyToAll = false) {
+export function* installProPlugin(pluginFamilySlug, licenseKey, applyToAll = false, useExistingLicense = false) {
     try {
         yield {type: 'INSTALL_PLUGIN_START', data: {pluginFamilySlug}};
 
@@ -292,6 +292,7 @@ export function* installProPlugin(pluginFamilySlug, licenseKey, applyToAll = fal
             data: {
                 licenseKey: licenseKey,
                 applyToAll: applyToAll,
+                useExistingLicense: useExistingLicense,
             },
         });
 
@@ -493,7 +494,7 @@ export function* deactivatePlugin(pluginFamilySlug, skipRefresh = false) {
     }
 }
 
-export function* upgradePluginToPro(pluginFamilySlug, licenseKey, applyToAll = false) {
+export function* upgradePluginToPro(pluginFamilySlug, licenseKey, applyToAll = false, useExistingLicense = false) {
     try {
         yield {type: 'UPGRADE_PLUGIN_TO_PRO_START', data: {pluginFamilySlug, licenseKey}};
 
@@ -507,6 +508,7 @@ export function* upgradePluginToPro(pluginFamilySlug, licenseKey, applyToAll = f
             data: {
                 licenseKey: licenseKey,
                 applyToAll: applyToAll,
+                useExistingLicense: useExistingLicense,
             },
         });
 

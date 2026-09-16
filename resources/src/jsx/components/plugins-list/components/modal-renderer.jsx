@@ -9,7 +9,7 @@
  */
 
 import { memo, useMemo } from '@wordpress/element';
-import { useDispatch } from '@wordpress/data';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 import { __, sprintf } from '@publishpress-hub/i18n';
 import { store } from '../../../stores/plugins-dashboard';
@@ -45,6 +45,8 @@ const ModalRendererComponent = ({
         cleanupError,
     } = useDispatch(store);
 
+    const plugins = useSelect((select) => select(store).getPlugins(), []);
+
     const currentProPluginDisplayName = useMemo(() => {
         const proPluginName = currentPluginFamily?.proPlugin?.name;
 
@@ -69,6 +71,16 @@ const ModalRendererComponent = ({
 
         return error;
     }, [currentPluginState.error]);
+
+    const existingLicensePluginName = useMemo(() => {
+        const existingLicensePlugin = plugins.find((pluginFamily) => (
+            pluginFamily.slug !== currentPluginFamily?.slug
+            && pluginFamily.proPlugin?.hasLicenseKey
+            && !pluginFamily.proPlugin?.isLicenseKeyFromConstant
+        ));
+
+        return existingLicensePlugin?.proPlugin?.name || existingLicensePlugin?.name || '';
+    }, [plugins, currentPluginFamily]);
 
     const modalProps = useMemo(() => {
         const hasActiveModal = currentPluginFamily && activeModal !== MODAL_TYPES.NONE;
@@ -110,7 +122,11 @@ const ModalRendererComponent = ({
                     onActivate={(licenseKey, applyToAll) =>
                         handleInstallPro(currentPluginFamily.slug, licenseKey, applyToAll)
                     }
+                    onUseExistingLicense={() =>
+                        handleInstallPro(currentPluginFamily.slug, '', false, true)
+                    }
                     showApplyToAll={true}
+                    existingLicensePluginName={existingLicensePluginName}
                 />
             )}
 
@@ -121,7 +137,11 @@ const ModalRendererComponent = ({
                     onActivate={(licenseKey, applyToAll) =>
                         handleUpgradePluginToPro(currentPluginFamily.slug, licenseKey, applyToAll)
                     }
+                    onUseExistingLicense={() =>
+                        handleUpgradePluginToPro(currentPluginFamily.slug, '', false, true)
+                    }
                     showApplyToAll={true}
+                    existingLicensePluginName={existingLicensePluginName}
                 />
             )}
 

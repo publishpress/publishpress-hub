@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added: Option to reuse an entered license key for all PublishPress plugins from the Hub license UI (#65).
 - Added: Option to reuse license keys for all PublishPress plugins during Pro install and upgrade flows (#65).
 - Added: Option to reuse an existing saved license key for all PublishPress plugins from the license management modal (#65).
+- Added: Option to use an existing saved license key when installing or upgrading Pro plugins (#65).
 - Fixed: Allowed Hub-detected Pro plugin updates to run when WordPress has not cached the update yet (#227).
 - Fixed: Reactivated plugins after Hub-managed updates when they were active before the update (#227).
 - Fixed: Made expired license notices non-dismissible so administrators keep seeing renewal warnings (#196).

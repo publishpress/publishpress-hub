@@ -79,14 +79,13 @@ class InstallProPluginUseCase implements UseCaseInterface
             throw new PluginAlreadyInstalledException(['plugin_slug' => esc_html($plugin->getSlug())]);
         }
 
-        $licenseKey = $request->get_param('licenseKey');
+        $downloadId = $plugin->getDownloadId();
+        $licenseKey = $this->getLicenseKeyFromRequest($request, $downloadId);
         $applyToAll = (bool) $request->get_param('applyToAll');
 
         if (!$licenseKey) {
             throw new LicenseInvalidException(['family_slug' => esc_html($familySlug)]);
         }
-
-        $downloadId = $plugin->getDownloadId();
 
         $this->licenseManagement->validateAndEnsureActiveLicense($licenseKey, $downloadId);
         $this->reuseLicenseKeyForAllPlugins($licenseKey, $downloadId, $applyToAll);
@@ -120,6 +119,49 @@ class InstallProPluginUseCase implements UseCaseInterface
         }
 
         return $family->getProPlugin();
+    }
+
+    /**
+     * Gets the license key from the request or an existing plugin family.
+     *
+     * @param WP_REST_Request $request The REST request.
+     * @param int $currentDownloadId The current plugin download ID.
+     * @return string The license key.
+     * @since 1.0.0
+     */
+    private function getLicenseKeyFromRequest(WP_REST_Request $request, int $currentDownloadId): string
+    {
+        if (!rest_sanitize_boolean($request->get_param('useExistingLicense'))) {
+            return (string) $request->get_param('licenseKey');
+        }
+
+        return $this->getExistingLicenseKey($currentDownloadId);
+    }
+
+    /**
+     * Gets an existing saved license key from another plugin family.
+     *
+     * @param int $currentDownloadId The current plugin download ID.
+     * @return string The license key.
+     * @since 1.0.0
+     */
+    private function getExistingLicenseKey(int $currentDownloadId): string
+    {
+        foreach ($this->pluginFamilyRepository->getAllFamilies() as $family) {
+            $downloadId = $family->getProPlugin()->getDownloadId();
+
+            if ($downloadId === $currentDownloadId) {
+                continue;
+            }
+
+            $licenseKey = $this->licensePersistence->getLicenseKey($downloadId);
+
+            if (!empty($licenseKey)) {
+                return $licenseKey;
+            }
+        }
+
+        return '';
     }
 
     /**

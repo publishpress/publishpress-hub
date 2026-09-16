@@ -96,16 +96,26 @@ export const usePluginActions = (modalManager) => {
         closeModal();
     }, [installFreePlugin, closeModal]);
 
-    const handleInstallPro = useCallback(async (pluginSlug, licenseKey, applyToAll = false) => {
-        const result = await installProPlugin(pluginSlug, licenseKey, applyToAll);
+    const handleInstallPro = useCallback(async (
+        pluginSlug,
+        licenseKey,
+        applyToAll = false,
+        useExistingLicense = false
+    ) => {
+        const result = await installProPlugin(pluginSlug, licenseKey, applyToAll, useExistingLicense);
         if (result.success && !result.error) {
             closeModal();
         }
         return result;
     }, [installProPlugin, closeModal]);
 
-    const handleUpgradePluginToPro = useCallback(async (pluginSlug, licenseKey, applyToAll = false) => {
-        const result = await upgradePluginToPro(pluginSlug, licenseKey, applyToAll);
+    const handleUpgradePluginToPro = useCallback(async (
+        pluginSlug,
+        licenseKey,
+        applyToAll = false,
+        useExistingLicense = false
+    ) => {
+        const result = await upgradePluginToPro(pluginSlug, licenseKey, applyToAll, useExistingLicense);
         if (result.success && !result.error) {
             closeModal();
         }

@@ -75,7 +75,6 @@ class UpgradePluginUseCase implements UseCaseInterface
     public function execute(WP_REST_Request $request): array
     {
         $familySlug = $this->extractFamilySlug($request);
-        $licenseKey = $this->extractLicenseKey($request);
 
         $family = $this->pluginStatusService->getPluginFamilyWithUpdatedStatus($familySlug);
         if (!$family) {
@@ -97,6 +96,7 @@ class UpgradePluginUseCase implements UseCaseInterface
         }
 
         $proPlugin = $family->getProPlugin();
+        $licenseKey = $this->extractLicenseKey($request, (int) $proPlugin->getDownloadId());
 
         $this->licenseManagement->validateAndEnsureActiveLicense($licenseKey, (int) $proPlugin->getDownloadId());
         $this->reuseLicenseKeyForAllPlugins(
@@ -137,19 +137,50 @@ class UpgradePluginUseCase implements UseCaseInterface
      * Extracts the license key from the request.
      *
      * @param WP_REST_Request $request The REST request.
+     * @param int $currentDownloadId The current plugin download ID.
      * @return string The validated license key.
      * @throws LicenseInvalidException When the license key is invalid or missing
      * @since 1.0.0
      */
-    private function extractLicenseKey(WP_REST_Request $request): string
+    private function extractLicenseKey(WP_REST_Request $request, int $currentDownloadId): string
     {
-        $licenseKey = $request->get_param('licenseKey');
+        if (rest_sanitize_boolean($request->get_param('useExistingLicense'))) {
+            $licenseKey = $this->getExistingLicenseKey($currentDownloadId);
+        } else {
+            $licenseKey = $request->get_param('licenseKey');
+        }
 
         if (empty($licenseKey)) {
             throw new LicenseInvalidException(['license_key' => esc_html('missing')]);
         }
 
         return $licenseKey;
+    }
+
+    /**
+     * Gets an existing saved license key from another plugin family.
+     *
+     * @param int $currentDownloadId The current plugin download ID.
+     * @return string The license key.
+     * @since 1.0.0
+     */
+    private function getExistingLicenseKey(int $currentDownloadId): string
+    {
+        foreach ($this->pluginFamilyRepository->getAllFamilies() as $family) {
+            $downloadId = $family->getProPlugin()->getDownloadId();
+
+            if ($downloadId === $currentDownloadId) {
+                continue;
+            }
+
+            $licenseKey = $this->licensePersistence->getLicenseKey($downloadId);
+
+            if (!empty($licenseKey)) {
+                return $licenseKey;
+            }
+        }
+
+        return '';
     }
 
     /**

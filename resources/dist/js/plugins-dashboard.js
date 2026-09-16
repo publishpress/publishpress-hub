@@ -1778,12 +1778,15 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
   var onClose = _ref.onClose,
     onActivate = _ref.onActivate,
+    onUseExistingLicense = _ref.onUseExistingLicense,
     error = _ref.error,
     buttonInProgress = _ref.buttonInProgress,
     title = _ref.title,
     buttonLabel = _ref.buttonLabel,
     _ref$showApplyToAll = _ref.showApplyToAll,
-    showApplyToAll = _ref$showApplyToAll === void 0 ? false : _ref$showApplyToAll;
+    showApplyToAll = _ref$showApplyToAll === void 0 ? false : _ref$showApplyToAll,
+    _ref$existingLicenseP = _ref.existingLicensePluginName,
+    existingLicensePluginName = _ref$existingLicenseP === void 0 ? '' : _ref$existingLicenseP;
   var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState2 = _slicedToArray(_useState, 2),
     licenseKey = _useState2[0],
@@ -1843,7 +1846,14 @@ var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
     }
   }), error && /*#__PURE__*/React.createElement(_message_message__WEBPACK_IMPORTED_MODULE_4__.Message, {
     variant: "error"
-  }, error.message), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
+  }, error.message), existingLicensePluginName && onUseExistingLicense && /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    variant: "secondary",
+    icon: "check",
+    onClick: function onClick() {
+      return onUseExistingLicense();
+    },
+    isLoading: buttonInProgress
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Use existing license key from %s', 'publishpress-hub'), existingLicensePluginName)), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     variant: "primary",
     icon: "check",
     onClick: handleActivate,
@@ -2094,6 +2104,9 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     handleReuseLicenseForAllPlugins = pluginActions.handleReuseLicenseForAllPlugins;
   var _useDispatch = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useDispatch)(_stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_3__.store),
     cleanupError = _useDispatch.cleanupError;
+  var plugins = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useSelect)(function (select) {
+    return select(_stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_3__.store).getPlugins();
+  }, []);
   var currentProPluginDisplayName = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     var _currentPluginFamily$;
     var proPluginName = currentPluginFamily === null || currentPluginFamily === void 0 || (_currentPluginFamily$ = currentPluginFamily.proPlugin) === null || _currentPluginFamily$ === void 0 ? void 0 : _currentPluginFamily$.name;
@@ -2112,6 +2125,14 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     }
     return error;
   }, [currentPluginState.error]);
+  var existingLicensePluginName = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var _existingLicensePlugi;
+    var existingLicensePlugin = plugins.find(function (pluginFamily) {
+      var _pluginFamily$proPlug, _pluginFamily$proPlug2;
+      return pluginFamily.slug !== (currentPluginFamily === null || currentPluginFamily === void 0 ? void 0 : currentPluginFamily.slug) && ((_pluginFamily$proPlug = pluginFamily.proPlugin) === null || _pluginFamily$proPlug === void 0 ? void 0 : _pluginFamily$proPlug.hasLicenseKey) && !((_pluginFamily$proPlug2 = pluginFamily.proPlugin) !== null && _pluginFamily$proPlug2 !== void 0 && _pluginFamily$proPlug2.isLicenseKeyFromConstant);
+    });
+    return (existingLicensePlugin === null || existingLicensePlugin === void 0 || (_existingLicensePlugi = existingLicensePlugin.proPlugin) === null || _existingLicensePlugi === void 0 ? void 0 : _existingLicensePlugi.name) || (existingLicensePlugin === null || existingLicensePlugin === void 0 ? void 0 : existingLicensePlugin.name) || '';
+  }, [plugins, currentPluginFamily]);
   var modalProps = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     var hasActiveModal = currentPluginFamily && activeModal !== MODAL_TYPES.NONE;
     return {
@@ -2144,13 +2165,21 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     onActivate: function onActivate(licenseKey, applyToAll) {
       return handleInstallPro(currentPluginFamily.slug, licenseKey, applyToAll);
     },
-    showApplyToAll: true
+    onUseExistingLicense: function onUseExistingLicense() {
+      return handleInstallPro(currentPluginFamily.slug, '', false, true);
+    },
+    showApplyToAll: true,
+    existingLicensePluginName: existingLicensePluginName
   })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_UPGRADE) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_6__.ModalLicenseInput, _extends({}, modalProps, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Upgrade %s', 'publishpress-hub'), currentProPluginDisplayName),
     onActivate: function onActivate(licenseKey, applyToAll) {
       return handleUpgradePluginToPro(currentPluginFamily.slug, licenseKey, applyToAll);
     },
-    showApplyToAll: true
+    onUseExistingLicense: function onUseExistingLicense() {
+      return handleUpgradePluginToPro(currentPluginFamily.slug, '', false, true);
+    },
+    showApplyToAll: true,
+    existingLicensePluginName: existingLicensePluginName
   })), isModalActive(MODAL_TYPES.UNINSTALL_CONFIRMATION) && /*#__PURE__*/React.createElement(_modal_confirmation__WEBPACK_IMPORTED_MODULE_4__.ModalConfirmation, _extends({}, modalProps, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Uninstall %s', 'publishpress-hub'), currentPluginDisplayName),
     message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Are you sure you want to uninstall %s?', 'publishpress-hub'), currentPluginDisplayName),
@@ -3281,14 +3310,16 @@ var usePluginActions = function usePluginActions(modalManager) {
   var handleInstallPro = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(/*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(pluginSlug, licenseKey) {
       var applyToAll,
+        useExistingLicense,
         result,
         _args4 = arguments;
       return _regenerator().w(function (_context4) {
         while (1) switch (_context4.n) {
           case 0:
             applyToAll = _args4.length > 2 && _args4[2] !== undefined ? _args4[2] : false;
+            useExistingLicense = _args4.length > 3 && _args4[3] !== undefined ? _args4[3] : false;
             _context4.n = 1;
-            return installProPlugin(pluginSlug, licenseKey, applyToAll);
+            return installProPlugin(pluginSlug, licenseKey, applyToAll, useExistingLicense);
           case 1:
             result = _context4.v;
             if (result.success && !result.error) {
@@ -3305,14 +3336,16 @@ var usePluginActions = function usePluginActions(modalManager) {
   var handleUpgradePluginToPro = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(/*#__PURE__*/function () {
     var _ref5 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5(pluginSlug, licenseKey) {
       var applyToAll,
+        useExistingLicense,
         result,
         _args5 = arguments;
       return _regenerator().w(function (_context5) {
         while (1) switch (_context5.n) {
           case 0:
             applyToAll = _args5.length > 2 && _args5[2] !== undefined ? _args5[2] : false;
+            useExistingLicense = _args5.length > 3 && _args5[3] !== undefined ? _args5[3] : false;
             _context5.n = 1;
-            return upgradePluginToPro(pluginSlug, licenseKey, applyToAll);
+            return upgradePluginToPro(pluginSlug, licenseKey, applyToAll, useExistingLicense);
           case 1:
             result = _context5.v;
             if (result.success && !result.error) {
@@ -4404,6 +4437,7 @@ function installFreePlugin(pluginFamilySlug) {
 }
 function installProPlugin(pluginFamilySlug, licenseKey) {
   var applyToAll = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  var useExistingLicense = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
   return /*#__PURE__*/_regenerator().m(function _callee2() {
     var data, pluginName, _pluginName2, _t3;
     return _regenerator().w(function (_context13) {
@@ -4428,7 +4462,8 @@ function installProPlugin(pluginFamilySlug, licenseKey) {
             method: 'POST',
             data: {
               licenseKey: licenseKey,
-              applyToAll: applyToAll
+              applyToAll: applyToAll,
+              useExistingLicense: useExistingLicense
             }
           });
         case 3:
@@ -4771,6 +4806,7 @@ function deactivatePlugin(pluginFamilySlug) {
 }
 function upgradePluginToPro(pluginFamilySlug, licenseKey) {
   var applyToAll = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  var useExistingLicense = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
   return /*#__PURE__*/_regenerator().m(function _callee5() {
     var data, pluginName, _pluginName5, _t7;
     return _regenerator().w(function (_context17) {
@@ -4796,7 +4832,8 @@ function upgradePluginToPro(pluginFamilySlug, licenseKey) {
             method: 'POST',
             data: {
               licenseKey: licenseKey,
-              applyToAll: applyToAll
+              applyToAll: applyToAll,
+              useExistingLicense: useExistingLicense
             }
           });
         case 3:
