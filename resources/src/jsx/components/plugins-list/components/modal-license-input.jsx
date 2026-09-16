@@ -27,6 +27,7 @@ const ModalLicenseInputComponent = ({
     title,
     buttonLabel,
     showApplyToAll = false,
+    hasExistingLicense = false,
     existingLicensePluginName = '',
 }) => {
     const [licenseKey, setLicenseKey] = useState('');
@@ -90,9 +91,11 @@ const ModalLicenseInputComponent = ({
                 </Message>
             )}
 
-            {existingLicensePluginName && onUseExistingLicense && (
+            {hasExistingLicense && onUseExistingLicense && (
                 <Button variant='secondary' icon='check' onClick={() => onUseExistingLicense()} isLoading={buttonInProgress}>
-                    {sprintf(__('Use existing license key from %s', 'publishpress-hub'), existingLicensePluginName)}
+                    {existingLicensePluginName
+                        ? sprintf(__('Use existing license key from %s', 'publishpress-hub'), existingLicensePluginName)
+                        : __('Use existing license key', 'publishpress-hub')}
                 </Button>
             )}
 

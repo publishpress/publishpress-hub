@@ -147,6 +147,12 @@ class InstallProPluginUseCase implements UseCaseInterface
      */
     private function getExistingLicenseKey(int $currentDownloadId): string
     {
+        $currentLicenseKey = $this->licensePersistence->getLicenseKey($currentDownloadId);
+
+        if (!empty($currentLicenseKey)) {
+            return $currentLicenseKey;
+        }
+
         foreach ($this->pluginFamilyRepository->getAllFamilies() as $family) {
             $downloadId = $family->getProPlugin()->getDownloadId();
 

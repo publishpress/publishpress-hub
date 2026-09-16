@@ -76,10 +76,19 @@ const ModalRendererComponent = ({
         const existingLicensePlugin = plugins.find((pluginFamily) => (
             pluginFamily.slug !== currentPluginFamily?.slug
             && pluginFamily.proPlugin?.hasLicenseKey
+            && pluginFamily.proPlugin?.isInstalled
             && !pluginFamily.proPlugin?.isLicenseKeyFromConstant
         ));
 
         return existingLicensePlugin?.proPlugin?.name || existingLicensePlugin?.name || '';
+    }, [plugins, currentPluginFamily]);
+
+    const hasExistingLicense = useMemo(() => {
+        return currentPluginFamily?.proPlugin?.hasLicenseKey || plugins.some((pluginFamily) => (
+            pluginFamily.slug !== currentPluginFamily?.slug
+            && pluginFamily.proPlugin?.hasLicenseKey
+            && !pluginFamily.proPlugin?.isLicenseKeyFromConstant
+        ));
     }, [plugins, currentPluginFamily]);
 
     const modalProps = useMemo(() => {
@@ -126,6 +135,7 @@ const ModalRendererComponent = ({
                         handleInstallPro(currentPluginFamily.slug, '', false, true)
                     }
                     showApplyToAll={true}
+                    hasExistingLicense={hasExistingLicense}
                     existingLicensePluginName={existingLicensePluginName}
                 />
             )}
@@ -141,6 +151,7 @@ const ModalRendererComponent = ({
                         handleUpgradePluginToPro(currentPluginFamily.slug, '', false, true)
                     }
                     showApplyToAll={true}
+                    hasExistingLicense={hasExistingLicense}
                     existingLicensePluginName={existingLicensePluginName}
                 />
             )}
