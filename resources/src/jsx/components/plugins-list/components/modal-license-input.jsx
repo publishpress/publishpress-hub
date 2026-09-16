@@ -11,7 +11,7 @@
 import { memo, useState, useCallback, useRef, useEffect } from '@wordpress/element';
 import { CheckboxControl } from '@wordpress/components';
 
-import { __, sprintf } from '@publishpress-hub/i18n';
+import { __ } from '@publishpress-hub/i18n';
 
 import { Button } from '../../buttons/button';
 import { Message } from '../../message/message';
@@ -28,7 +28,6 @@ const ModalLicenseInputComponent = ({
     buttonLabel,
     showApplyToAll = false,
     hasExistingLicense = false,
-    existingLicensePluginName = '',
 }) => {
     const [licenseKey, setLicenseKey] = useState('');
     const [applyToAll, setApplyToAll] = useState(false);
@@ -93,9 +92,7 @@ const ModalLicenseInputComponent = ({
 
             {hasExistingLicense && onUseExistingLicense && (
                 <Button variant='secondary' icon='check' onClick={() => onUseExistingLicense()} isLoading={buttonInProgress}>
-                    {existingLicensePluginName
-                        ? sprintf(__('Use existing license key from %s', 'publishpress-hub'), existingLicensePluginName)
-                        : __('Use existing license key', 'publishpress-hub')}
+                    {__('Use existing license key', 'publishpress-hub')}
                 </Button>
             )}
 

@@ -1786,9 +1786,7 @@ var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
     _ref$showApplyToAll = _ref.showApplyToAll,
     showApplyToAll = _ref$showApplyToAll === void 0 ? false : _ref$showApplyToAll,
     _ref$hasExistingLicen = _ref.hasExistingLicense,
-    hasExistingLicense = _ref$hasExistingLicen === void 0 ? false : _ref$hasExistingLicen,
-    _ref$existingLicenseP = _ref.existingLicensePluginName,
-    existingLicensePluginName = _ref$existingLicenseP === void 0 ? '' : _ref$existingLicenseP;
+    hasExistingLicense = _ref$hasExistingLicen === void 0 ? false : _ref$hasExistingLicen;
   var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState2 = _slicedToArray(_useState, 2),
     licenseKey = _useState2[0],
@@ -1855,7 +1853,7 @@ var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
       return onUseExistingLicense();
     },
     isLoading: buttonInProgress
-  }, existingLicensePluginName ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Use existing license key from %s', 'publishpress-hub'), existingLicensePluginName) : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Use existing license key', 'publishpress-hub')), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Use existing license key', 'publishpress-hub')), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
     variant: "primary",
     icon: "check",
     onClick: handleActivate,
@@ -2127,19 +2125,11 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
     }
     return error;
   }, [currentPluginState.error]);
-  var existingLicensePluginName = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    var _existingLicensePlugi;
-    var existingLicensePlugin = plugins.find(function (pluginFamily) {
-      var _pluginFamily$proPlug, _pluginFamily$proPlug2, _pluginFamily$proPlug3;
-      return pluginFamily.slug !== (currentPluginFamily === null || currentPluginFamily === void 0 ? void 0 : currentPluginFamily.slug) && ((_pluginFamily$proPlug = pluginFamily.proPlugin) === null || _pluginFamily$proPlug === void 0 ? void 0 : _pluginFamily$proPlug.hasLicenseKey) && ((_pluginFamily$proPlug2 = pluginFamily.proPlugin) === null || _pluginFamily$proPlug2 === void 0 ? void 0 : _pluginFamily$proPlug2.isInstalled) && !((_pluginFamily$proPlug3 = pluginFamily.proPlugin) !== null && _pluginFamily$proPlug3 !== void 0 && _pluginFamily$proPlug3.isLicenseKeyFromConstant);
-    });
-    return (existingLicensePlugin === null || existingLicensePlugin === void 0 || (_existingLicensePlugi = existingLicensePlugin.proPlugin) === null || _existingLicensePlugi === void 0 ? void 0 : _existingLicensePlugi.name) || (existingLicensePlugin === null || existingLicensePlugin === void 0 ? void 0 : existingLicensePlugin.name) || '';
-  }, [plugins, currentPluginFamily]);
   var hasExistingLicense = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     var _currentPluginFamily$2;
     return (currentPluginFamily === null || currentPluginFamily === void 0 || (_currentPluginFamily$2 = currentPluginFamily.proPlugin) === null || _currentPluginFamily$2 === void 0 ? void 0 : _currentPluginFamily$2.hasLicenseKey) || plugins.some(function (pluginFamily) {
-      var _pluginFamily$proPlug4, _pluginFamily$proPlug5;
-      return pluginFamily.slug !== (currentPluginFamily === null || currentPluginFamily === void 0 ? void 0 : currentPluginFamily.slug) && ((_pluginFamily$proPlug4 = pluginFamily.proPlugin) === null || _pluginFamily$proPlug4 === void 0 ? void 0 : _pluginFamily$proPlug4.hasLicenseKey) && !((_pluginFamily$proPlug5 = pluginFamily.proPlugin) !== null && _pluginFamily$proPlug5 !== void 0 && _pluginFamily$proPlug5.isLicenseKeyFromConstant);
+      var _pluginFamily$proPlug, _pluginFamily$proPlug2;
+      return pluginFamily.slug !== (currentPluginFamily === null || currentPluginFamily === void 0 ? void 0 : currentPluginFamily.slug) && ((_pluginFamily$proPlug = pluginFamily.proPlugin) === null || _pluginFamily$proPlug === void 0 ? void 0 : _pluginFamily$proPlug.hasLicenseKey) && !((_pluginFamily$proPlug2 = pluginFamily.proPlugin) !== null && _pluginFamily$proPlug2 !== void 0 && _pluginFamily$proPlug2.isLicenseKeyFromConstant);
     });
   }, [plugins, currentPluginFamily]);
   var modalProps = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
@@ -2178,8 +2168,7 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
       return handleInstallPro(currentPluginFamily.slug, '', false, true);
     },
     showApplyToAll: true,
-    hasExistingLicense: hasExistingLicense,
-    existingLicensePluginName: existingLicensePluginName
+    hasExistingLicense: hasExistingLicense
   })), isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_UPGRADE) && /*#__PURE__*/React.createElement(_modal_license_input__WEBPACK_IMPORTED_MODULE_6__.ModalLicenseInput, _extends({}, modalProps, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Upgrade %s', 'publishpress-hub'), currentProPluginDisplayName),
     onActivate: function onActivate(licenseKey, applyToAll) {
@@ -2189,8 +2178,7 @@ var ModalRendererComponent = function ModalRendererComponent(_ref) {
       return handleUpgradePluginToPro(currentPluginFamily.slug, '', false, true);
     },
     showApplyToAll: true,
-    hasExistingLicense: hasExistingLicense,
-    existingLicensePluginName: existingLicensePluginName
+    hasExistingLicense: hasExistingLicense
   })), isModalActive(MODAL_TYPES.UNINSTALL_CONFIRMATION) && /*#__PURE__*/React.createElement(_modal_confirmation__WEBPACK_IMPORTED_MODULE_4__.ModalConfirmation, _extends({}, modalProps, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Uninstall %s', 'publishpress-hub'), currentPluginDisplayName),
     message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Are you sure you want to uninstall %s?', 'publishpress-hub'), currentPluginDisplayName),
