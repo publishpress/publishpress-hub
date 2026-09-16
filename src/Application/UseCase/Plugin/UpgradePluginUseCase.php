@@ -16,6 +16,7 @@ namespace PublishPress\Hub\Application\UseCase\Plugin;
 
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
+use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\ProPluginInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseInvalidException;
@@ -25,6 +26,7 @@ use PublishPress\Hub\Domain\Plugin\Exception\PluginInstallException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotInstalledException;
 use PublishPress\Hub\Application\Service\License\LicenseManagementService;
+use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginLifecycleAdapter;
 use WP_REST_Request;
 
@@ -36,17 +38,25 @@ class UpgradePluginUseCase implements UseCaseInterface
 
     private LicenseManagementService $licenseManagement;
 
+    private PluginFamilyRepositoryInterface $pluginFamilyRepository;
+
+    private LicensePersistenceInterface $licensePersistence;
+
     /**
      * @since 1.0.0
      */
     public function __construct(
         PluginStatusService $pluginStatusService,
         WPPluginLifecycleAdapter $pluginLifecycle,
-        LicenseManagementService $licenseManagement
+        LicenseManagementService $licenseManagement,
+        PluginFamilyRepositoryInterface $pluginFamilyRepository,
+        LicensePersistenceInterface $licensePersistence
     ) {
         $this->pluginStatusService = $pluginStatusService;
         $this->pluginLifecycle = $pluginLifecycle;
         $this->licenseManagement = $licenseManagement;
+        $this->pluginFamilyRepository = $pluginFamilyRepository;
+        $this->licensePersistence = $licensePersistence;
     }
 
     /**
@@ -89,6 +99,11 @@ class UpgradePluginUseCase implements UseCaseInterface
         $proPlugin = $family->getProPlugin();
 
         $this->licenseManagement->validateAndEnsureActiveLicense($licenseKey, (int) $proPlugin->getDownloadId());
+        $this->reuseLicenseKeyForAllPlugins(
+            $licenseKey,
+            (int) $proPlugin->getDownloadId(),
+            (bool) $request->get_param('applyToAll')
+        );
 
         $this->uninstallFreePlugin($freePlugin);
         $this->installProPlugin($proPlugin, $licenseKey);
@@ -164,5 +179,32 @@ class UpgradePluginUseCase implements UseCaseInterface
 
         $this->pluginLifecycle->installPlugin($proPlugin->getSlug(), $downloadUrl);
         $this->pluginStatusService->updatePluginStatus($proPlugin);
+    }
+
+    /**
+     * Reuses a license key for all plugin families.
+     *
+     * @param string $licenseKey The license key.
+     * @param int $currentDownloadId The current plugin download ID.
+     * @param bool $applyToAll Whether to reuse the key for every family.
+     * @since 1.0.0
+     */
+    private function reuseLicenseKeyForAllPlugins(string $licenseKey, int $currentDownloadId, bool $applyToAll): void
+    {
+        if (!$applyToAll) {
+            return;
+        }
+
+        foreach ($this->pluginFamilyRepository->getAllFamilies() as $family) {
+            $downloadId = $family->getProPlugin()->getDownloadId();
+
+            if ($downloadId === $currentDownloadId || $this->licensePersistence->isLicenseFromConstant($downloadId)) {
+                continue;
+            }
+
+            $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
+            $this->licensePersistence->storeLicenseStatus($downloadId, true);
+            $this->licensePersistence->markLicenseAsFromConstant($downloadId, false);
+        }
     }
 }

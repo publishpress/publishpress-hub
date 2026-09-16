@@ -26,6 +26,7 @@ export const usePluginActions = (modalManager) => {
         resolveConflict,
         deactivateLicense,
         activateLicense,
+        reuseLicenseForAllPlugins,
         updatePlugin,
     } = useDispatch(store);
 
@@ -81,22 +82,30 @@ export const usePluginActions = (modalManager) => {
         return result;
     }, [activateLicense]);
 
+    const handleReuseLicenseForAllPlugins = useCallback(async (pluginFamily) => {
+        const result = await reuseLicenseForAllPlugins(pluginFamily);
+        if (result.success && !result.error) {
+            closeModal();
+        }
+        return result;
+    }, [reuseLicenseForAllPlugins, closeModal]);
+
     // Modal-specific actions
     const handleInstallFree = useCallback((pluginSlug) => {
         installFreePlugin(pluginSlug);
         closeModal();
     }, [installFreePlugin, closeModal]);
 
-    const handleInstallPro = useCallback(async (pluginSlug, licenseKey) => {
-        const result = await installProPlugin(pluginSlug, licenseKey);
+    const handleInstallPro = useCallback(async (pluginSlug, licenseKey, applyToAll = false) => {
+        const result = await installProPlugin(pluginSlug, licenseKey, applyToAll);
         if (result.success && !result.error) {
             closeModal();
         }
         return result;
     }, [installProPlugin, closeModal]);
 
-    const handleUpgradePluginToPro = useCallback(async (pluginSlug, licenseKey) => {
-        const result = await upgradePluginToPro(pluginSlug, licenseKey);
+    const handleUpgradePluginToPro = useCallback(async (pluginSlug, licenseKey, applyToAll = false) => {
+        const result = await upgradePluginToPro(pluginSlug, licenseKey, applyToAll);
         if (result.success && !result.error) {
             closeModal();
         }
@@ -143,6 +152,7 @@ export const usePluginActions = (modalManager) => {
         handleOpenLicenseInputForActivatingLicenseModal,
         handleDeactivateLicense,
         handleActivateLicense,
+        handleReuseLicenseForAllPlugins,
         // Modal-specific actions
         handleInstallFree,
         handleInstallPro,

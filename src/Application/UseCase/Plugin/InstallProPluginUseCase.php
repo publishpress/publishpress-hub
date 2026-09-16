@@ -23,7 +23,9 @@ use PublishPress\Hub\Domain\Plugin\Exception\PluginInstallException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use PublishPress\Hub\Domain\Plugin\Contract\ProPluginInterface;
+use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginLifecycleAdapter;
+use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use WP_REST_Request;
 
 class InstallProPluginUseCase implements UseCaseInterface
@@ -34,17 +36,25 @@ class InstallProPluginUseCase implements UseCaseInterface
 
     private LicenseManagementService $licenseManagement;
 
+    private PluginFamilyRepositoryInterface $pluginFamilyRepository;
+
+    private LicensePersistenceInterface $licensePersistence;
+
     /**
      * @since 1.0.0
      */
     public function __construct(
         PluginStatusService $pluginStatusService,
         WPPluginLifecycleAdapter $pluginLifecycle,
-        LicenseManagementService $licenseManagement
+        LicenseManagementService $licenseManagement,
+        PluginFamilyRepositoryInterface $pluginFamilyRepository,
+        LicensePersistenceInterface $licensePersistence
     ) {
         $this->pluginStatusService = $pluginStatusService;
         $this->pluginLifecycle = $pluginLifecycle;
         $this->licenseManagement = $licenseManagement;
+        $this->pluginFamilyRepository = $pluginFamilyRepository;
+        $this->licensePersistence = $licensePersistence;
     }
 
     /**
@@ -70,6 +80,7 @@ class InstallProPluginUseCase implements UseCaseInterface
         }
 
         $licenseKey = $request->get_param('licenseKey');
+        $applyToAll = (bool) $request->get_param('applyToAll');
 
         if (!$licenseKey) {
             throw new LicenseInvalidException(['family_slug' => esc_html($familySlug)]);
@@ -78,6 +89,7 @@ class InstallProPluginUseCase implements UseCaseInterface
         $downloadId = $plugin->getDownloadId();
 
         $this->licenseManagement->validateAndEnsureActiveLicense($licenseKey, $downloadId);
+        $this->reuseLicenseKeyForAllPlugins($licenseKey, $downloadId, $applyToAll);
 
         $pluginInfo = $this->licenseManagement->getLastVersionInfo($licenseKey, $downloadId);
 
@@ -108,5 +120,32 @@ class InstallProPluginUseCase implements UseCaseInterface
         }
 
         return $family->getProPlugin();
+    }
+
+    /**
+     * Reuses a license key for all plugin families.
+     *
+     * @param string $licenseKey The license key.
+     * @param int $currentDownloadId The current plugin download ID.
+     * @param bool $applyToAll Whether to reuse the key for every family.
+     * @since 1.0.0
+     */
+    private function reuseLicenseKeyForAllPlugins(string $licenseKey, int $currentDownloadId, bool $applyToAll): void
+    {
+        if (!$applyToAll) {
+            return;
+        }
+
+        foreach ($this->pluginFamilyRepository->getAllFamilies() as $family) {
+            $downloadId = $family->getProPlugin()->getDownloadId();
+
+            if ($downloadId === $currentDownloadId || $this->licensePersistence->isLicenseFromConstant($downloadId)) {
+                continue;
+            }
+
+            $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
+            $this->licensePersistence->storeLicenseStatus($downloadId, true);
+            $this->licensePersistence->markLicenseAsFromConstant($downloadId, false);
+        }
     }
 }

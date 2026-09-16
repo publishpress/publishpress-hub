@@ -278,7 +278,7 @@ export function* installFreePlugin(pluginFamilySlug) {
     }
 }
 
-export function* installProPlugin(pluginFamilySlug, licenseKey) {
+export function* installProPlugin(pluginFamilySlug, licenseKey, applyToAll = false) {
     try {
         yield {type: 'INSTALL_PLUGIN_START', data: {pluginFamilySlug}};
 
@@ -291,6 +291,7 @@ export function* installProPlugin(pluginFamilySlug, licenseKey) {
             method: 'POST',
             data: {
                 licenseKey: licenseKey,
+                applyToAll: applyToAll,
             },
         });
 
@@ -492,7 +493,7 @@ export function* deactivatePlugin(pluginFamilySlug, skipRefresh = false) {
     }
 }
 
-export function* upgradePluginToPro(pluginFamilySlug, licenseKey) {
+export function* upgradePluginToPro(pluginFamilySlug, licenseKey, applyToAll = false) {
     try {
         yield {type: 'UPGRADE_PLUGIN_TO_PRO_START', data: {pluginFamilySlug, licenseKey}};
 
@@ -505,6 +506,7 @@ export function* upgradePluginToPro(pluginFamilySlug, licenseKey) {
             method: 'POST',
             data: {
                 licenseKey: licenseKey,
+                applyToAll: applyToAll,
             },
         });
 
@@ -708,6 +710,53 @@ export function* activateLicense(pluginFamily, licenseKey, applyToAll = false) {
             success: false,
             pluginFamily,
             licenseKey,
+            error,
+        };
+    }
+}
+
+export function* reuseLicenseForAllPlugins(pluginFamily) {
+    try {
+        yield {type: 'ACTIVATE_LICENSE_START', data: {pluginFamily, licenseKey: '', applyToAll: true}};
+
+        yield apiReady();
+
+        const data = yield apiFetch({
+            path: `${API_NAMESPACE}/plugins/${pluginFamily.slug}/reuse-license-for-all`,
+            method: 'POST',
+        });
+
+        if (data.success) {
+            yield fetchPlugins();
+
+            yield {type: 'ACTIVATE_LICENSE_SUCCESS', data: {pluginFamily, licenseKey: '', applyToAll: true}};
+
+            yield createSnackbarNotice(
+                __('License reused successfully for all PublishPress plugins', 'publishpress-hub'),
+                'success'
+            );
+
+            return {
+                success: true,
+                pluginFamily,
+                apiResponse: data,
+            };
+        } else {
+            throw new Error(data?.error || 'License reuse failed');
+        }
+    } catch (error) {
+        yield {type: 'ACTIVATE_LICENSE_ERROR', data: {pluginFamily, licenseKey: '', applyToAll: true, error: error}};
+
+        yield createNotice(
+            sprintf(__('%s license reuse failed', 'publishpress-hub'), pluginFamily.name),
+            'error'
+        );
+
+        error = handleErrorMessageOnContext(error);
+
+        return {
+            success: false,
+            pluginFamily,
             error,
         };
     }

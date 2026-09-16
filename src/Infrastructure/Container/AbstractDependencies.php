@@ -173,6 +173,8 @@ abstract class AbstractDependencies
 
     public const ACTIVATE_LICENSE_USE_CASE = 'publishpress-hub.application.use-case.plugin.activate-license';
 
+    public const REUSE_LICENSE_FOR_ALL_PLUGINS_USE_CASE = 'publishpress-hub.application.use-case.plugin.reuse-license-for-all-plugins';
+
     public const PLUGIN_STATUS_ADAPTER = 'publishpress-hub.infrastructure.plugin-status.adapter';
 
     public const PLUGIN_STATUS_SERVICE = 'publishpress-hub.application.plugin-status.service';
