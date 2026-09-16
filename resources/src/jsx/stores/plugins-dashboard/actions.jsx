@@ -308,9 +308,6 @@ export function* installProPlugin(pluginFamilySlug, licenseKey, applyToAll = fal
             // Activate the plugin after successful installation (skip refresh during activation)
             yield* activatePlugin(pluginFamilySlug, true);
 
-            // Refresh once after both install and activate complete
-            yield fetchPlugins();
-
             // Return context along with the API response
             return {
                 success: true,
@@ -524,9 +521,6 @@ export function* upgradePluginToPro(pluginFamilySlug, licenseKey, applyToAll = f
             // Activate the plugin after successful upgrade (skip refresh during activation)
             yield* activatePlugin(pluginFamilySlug, true);
 
-            // Refresh once after both upgrade and activate complete
-            yield fetchPlugins();
-
             // Return context along with the API response
             return {
                 success: true,
@@ -680,8 +674,6 @@ export function* activateLicense(pluginFamily, licenseKey, applyToAll = false) {
 
 
         if (data.success) {
-            yield fetchPlugins();
-
             yield {type: 'ACTIVATE_LICENSE_SUCCESS', data: {pluginFamily, licenseKey, applyToAll}};
 
             const successMessage = applyToAll
