@@ -534,7 +534,7 @@ export function* upgradePluginToPro(pluginFamilySlug, licenseKey, applyToAll = f
 
             const pluginName = yield* getPluginName(pluginFamilySlug);
             yield createSnackbarNotice(
-                sprintf(__('%s upgraded to Pro successfully', 'publishpress-hub'), pluginName),
+                sprintf(__('%s upgraded successfully', 'publishpress-hub'), pluginName),
                 'success'
             );
 
