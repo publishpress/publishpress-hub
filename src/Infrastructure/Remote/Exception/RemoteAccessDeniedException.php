@@ -26,7 +26,10 @@ class RemoteAccessDeniedException extends InfrastructureException
     public function __construct(array $context = [])
     {
         parent::__construct(
-            'Remote access denied.',
+            esc_html__(
+                'The license server denied this request. This can happen when a license key or site has been blocked. Please contact PublishPress support for help.', // phpcs:ignore Generic.Files.LineLength
+                'publishpress-hub'
+            ),
             ExceptionCode::REMOTE_ACCESS_DENIED,
             $context
         );

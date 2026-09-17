@@ -9,7 +9,7 @@
  */
 
 import { memo, useMemo } from '@wordpress/element';
-import { useDispatch } from '@wordpress/data';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 import { __, sprintf } from '@publishpress-hub/i18n';
 import { store } from '../../../stores/plugins-dashboard';
@@ -38,11 +38,28 @@ const ModalRendererComponent = ({
         handleBuyPlugin,
         handleDeactivateLicense,
         handleActivateLicense,
+        handleReuseLicenseForAllPlugins,
     } = pluginActions;
 
     const {
         cleanupError,
     } = useDispatch(store);
+
+    const plugins = useSelect((select) => select(store).getPlugins(), []);
+
+    const currentProPluginDisplayName = useMemo(() => {
+        const proPluginName = currentPluginFamily?.proPlugin?.name;
+
+        if (proPluginName) {
+            return proPluginName;
+        }
+
+        const basePluginName = (currentPluginDisplayName || '')
+            .replace(/\s+Free$/i, '')
+            .replace(/\s+Pro$/i, '');
+
+        return basePluginName ? `${basePluginName} Pro` : '';
+    }, [currentPluginFamily, currentPluginDisplayName]);
 
     const processedError = useMemo(() => {
         if (!currentPluginState.error) return null;
@@ -54,6 +71,14 @@ const ModalRendererComponent = ({
 
         return error;
     }, [currentPluginState.error]);
+
+    const hasExistingLicense = useMemo(() => {
+        return currentPluginFamily?.proPlugin?.hasLicenseKey || plugins.some((pluginFamily) => (
+            pluginFamily.slug !== currentPluginFamily?.slug
+            && pluginFamily.proPlugin?.hasLicenseKey
+            && !pluginFamily.proPlugin?.isLicenseKeyFromConstant
+        ));
+    }, [plugins, currentPluginFamily]);
 
     const modalProps = useMemo(() => {
         const hasActiveModal = currentPluginFamily && activeModal !== MODAL_TYPES.NONE;
@@ -91,16 +116,30 @@ const ModalRendererComponent = ({
             {isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO) && (
                 <ModalLicenseInput
                     {...modalProps}
-                    title={sprintf(__('Install %s Pro', 'publishpress-hub'), currentPluginDisplayName)}
-                    onActivate={(licenseKey) => handleInstallPro(currentPluginFamily.slug, licenseKey)}
+                    title={sprintf(__('Install %s', 'publishpress-hub'), currentProPluginDisplayName)}
+                    onActivate={(licenseKey, applyToAll) =>
+                        handleInstallPro(currentPluginFamily.slug, licenseKey, applyToAll)
+                    }
+                    onUseExistingLicense={() =>
+                        handleInstallPro(currentPluginFamily.slug, '', false, true)
+                    }
+                    showApplyToAll={true}
+                    hasExistingLicense={hasExistingLicense}
                 />
             )}
 
             {isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_UPGRADE) && (
                 <ModalLicenseInput
                     {...modalProps}
-                    title={sprintf(__('Upgrade %s to Pro', 'publishpress-hub'), currentPluginDisplayName)}
-                    onActivate={(licenseKey) => handleUpgradePluginToPro(currentPluginFamily.slug, licenseKey)}
+                    title={sprintf(__('Upgrade %s', 'publishpress-hub'), currentProPluginDisplayName)}
+                    onActivate={(licenseKey, applyToAll) =>
+                        handleUpgradePluginToPro(currentPluginFamily.slug, licenseKey, applyToAll)
+                    }
+                    onUseExistingLicense={() =>
+                        handleUpgradePluginToPro(currentPluginFamily.slug, '', false, true)
+                    }
+                    showApplyToAll={true}
+                    hasExistingLicense={hasExistingLicense}
                 />
             )}
 
@@ -118,7 +157,7 @@ const ModalRendererComponent = ({
             {isModalActive(MODAL_TYPES.UPGRADE_PLUGIN_TO_PRO) && (
                 <ModalUpgrade
                     {...modalProps}
-                    title={sprintf(__('Upgrade %s to Pro', 'publishpress-hub'), currentPluginDisplayName)}
+                    title={sprintf(__('Upgrade %s', 'publishpress-hub'), currentProPluginDisplayName)}
                     onLicenseClick={() => modalManager.openModal(MODAL_TYPES.LICENSE_INPUT_FOR_UPGRADE, currentPluginFamily)}
                     onBuyClick={() => handleBuyPlugin(currentPluginFamily.proPlugin.detailsUrl)}
                     proDetailsUrl={currentPluginFamily.proPlugin.detailsUrl}
@@ -143,10 +182,14 @@ const ModalRendererComponent = ({
                 <ModalLicenseManagement
                     {...modalProps}
                     title={sprintf(__('Manage %s License', 'publishpress-hub'), currentPluginDisplayName)}
-                    onActivate={(licenseKey) => handleActivateLicense(currentPluginFamily, licenseKey)}
+                    onActivate={(licenseKey, applyToAll) =>
+                        handleActivateLicense(currentPluginFamily, licenseKey, applyToAll)
+                    }
                     onDeactivate={() => handleDeactivateLicense(currentPluginFamily)}
+                    onReuseLicenseForAll={() => handleReuseLicenseForAllPlugins(currentPluginFamily)}
                     hasLicenseKey={currentPluginFamily.proPlugin.hasLicenseKey}
                     initialLicenseKeyMasked={currentPluginFamily.proPlugin.licenseKeyMasked}
+                    isLicenseKeyFromConstant={currentPluginFamily.proPlugin.isLicenseKeyFromConstant}
                 />
             )}
 
@@ -155,7 +198,10 @@ const ModalRendererComponent = ({
                     {...modalProps}
                     title={sprintf(__('Activate %s License', 'publishpress-hub'), currentPluginDisplayName)}
                     buttonLabel={__('Activate the license key', 'publishpress-hub')}
-                    onActivate={(licenseKey) => handleActivateLicense(currentPluginFamily, licenseKey)}
+                    onActivate={(licenseKey, applyToAll) =>
+                        handleActivateLicense(currentPluginFamily, licenseKey, applyToAll)
+                    }
+                    showApplyToAll={true}
                 />
             )}
 

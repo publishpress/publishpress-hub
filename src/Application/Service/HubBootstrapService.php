@@ -16,6 +16,7 @@ namespace PublishPress\Hub\Application\Service;
 
 use PublishPress\Hub\Application\Contract\AccessInterface;
 use PublishPress\Hub\Application\Contract\BootableInterface;
+use PublishPress\Hub\Application\Service\License\WpConfigLicenseSyncService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Entity\FreePlugin;
@@ -40,6 +41,8 @@ class HubBootstrapService implements BootableInterface
 
     private DebugLogService $debugLogService;
 
+    private WpConfigLicenseSyncService $wpConfigLicenseSyncService;
+
     private string $eddSubscriptionApiUrl;
 
     /**
@@ -52,6 +55,7 @@ class HubBootstrapService implements BootableInterface
      * @param PluginFamilyRepositoryInterface $pluginFamilyRepository
      * @param AccessInterface $accessService
      * @param DebugLogService $debugLogService
+     * @param WpConfigLicenseSyncService $wpConfigLicenseSyncService
      * @param string $eddSubscriptionApiUrl
      * @param array<string> $allowedDownloadDomains
      * @since 1.0.0
@@ -61,6 +65,7 @@ class HubBootstrapService implements BootableInterface
         PluginFamilyRepositoryInterface $pluginFamilyRepository,
         AccessInterface $accessService,
         DebugLogService $debugLogService,
+        WpConfigLicenseSyncService $wpConfigLicenseSyncService,
         string $eddSubscriptionApiUrl,
         array $allowedDownloadDomains
     ) {
@@ -68,6 +73,7 @@ class HubBootstrapService implements BootableInterface
         $this->pluginFamilyRepository = $pluginFamilyRepository;
         $this->accessService = $accessService;
         $this->debugLogService = $debugLogService;
+        $this->wpConfigLicenseSyncService = $wpConfigLicenseSyncService;
         $this->eddSubscriptionApiUrl = $eddSubscriptionApiUrl;
         $this->allowedDownloadDomains = $allowedDownloadDomains;
     }
@@ -97,8 +103,9 @@ class HubBootstrapService implements BootableInterface
      */
     protected function onInit(): void
     {
-        $this->initServices();
         $this->registerPluginFamilies();
+        $this->wpConfigLicenseSyncService->syncLicenseKeysFromConstants();
+        $this->initServices();
     }
 
     /**

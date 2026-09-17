@@ -9,6 +9,7 @@
  */
 
 import { memo, useState, useCallback, useRef, useEffect } from '@wordpress/element';
+import { CheckboxControl } from '@wordpress/components';
 
 import { __ } from '@publishpress-hub/i18n';
 
@@ -20,12 +21,16 @@ import { LicenseKeyControl } from './license-key-control';
 const ModalLicenseInputComponent = ({
     onClose,
     onActivate,
+    onUseExistingLicense,
     error,
     buttonInProgress,
     title,
     buttonLabel,
+    showApplyToAll = false,
+    hasExistingLicense = false,
 }) => {
     const [licenseKey, setLicenseKey] = useState('');
+    const [applyToAll, setApplyToAll] = useState(false);
     const [activationAttempted, setActivationAttempted] = useState(false);
 
     const setFocusRef = useRef(null);
@@ -35,8 +40,8 @@ const ModalLicenseInputComponent = ({
 
     const handleActivate = useCallback(() => {
         setActivationAttempted(true);
-        onActivate(licenseKey);
-    }, [onActivate, licenseKey]);
+        onActivate(licenseKey, applyToAll);
+    }, [onActivate, licenseKey, applyToAll]);
 
     useEffect(() => {
         if (activationAttempted && error && setFocusRef.current) {
@@ -71,11 +76,24 @@ const ModalLicenseInputComponent = ({
                 onEnterKeyDown={handleActivate}
                 onFocusReady={handleFocusReady}
             />
+            {showApplyToAll && (
+                <CheckboxControl
+                    label={__('Use this license key for all PublishPress plugins', 'publishpress-hub')}
+                    checked={applyToAll}
+                    onChange={(value) => setApplyToAll(value)}
+                />
+            )}
 
             {error && (
                 <Message variant='error'>
                     {error.message}
                 </Message>
+            )}
+
+            {hasExistingLicense && onUseExistingLicense && (
+                <Button variant='secondary' icon='check' onClick={() => onUseExistingLicense()} isLoading={buttonInProgress}>
+                    {__('Use existing license key', 'publishpress-hub')}
+                </Button>
             )}
 
             <Button variant='primary' icon='check' onClick={handleActivate} isLoading={buttonInProgress}>
