@@ -21,11 +21,13 @@ import { LicenseKeyControl } from './license-key-control';
 const ModalLicenseInputComponent = ({
     onClose,
     onActivate,
+    onUseExistingLicense,
     error,
     buttonInProgress,
     title,
     buttonLabel,
     showApplyToAll = false,
+    hasExistingLicense = false,
 }) => {
     const [licenseKey, setLicenseKey] = useState('');
     const [applyToAll, setApplyToAll] = useState(false);
@@ -86,6 +88,12 @@ const ModalLicenseInputComponent = ({
                 <Message variant='error'>
                     {error.message}
                 </Message>
+            )}
+
+            {hasExistingLicense && onUseExistingLicense && (
+                <Button variant='secondary' icon='check' onClick={() => onUseExistingLicense()} isLoading={buttonInProgress}>
+                    {__('Use existing license key', 'publishpress-hub')}
+                </Button>
             )}
 
             <Button variant='primary' icon='check' onClick={handleActivate} isLoading={buttonInProgress}>

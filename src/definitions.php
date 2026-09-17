@@ -43,6 +43,7 @@ use PublishPress\Hub\Application\UseCase\Plugin\InstallFreePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallProPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ResolveConflictUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\ReuseLicenseForAllPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UninstallPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UpgradePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UpdatePluginUseCase;
@@ -492,7 +493,9 @@ return [
         fn(ContainerInterface $container) => new InstallProPluginUseCase(
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
             $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
-            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
 
     AbstractDependencies::CHANGE_PLUGIN_ACTIVATION_USE_CASE =>
@@ -511,7 +514,9 @@ return [
         fn(ContainerInterface $container) => new UpgradePluginUseCase(
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
             $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
-            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
 
     AbstractDependencies::UPDATE_PLUGIN_USE_CASE =>
@@ -540,6 +545,13 @@ return [
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
             $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE),
             $container->get(AbstractDependencies::SCHEDULED_LICENSE_VALIDATION_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+        ),
+
+    AbstractDependencies::REUSE_LICENSE_FOR_ALL_PLUGINS_USE_CASE =>
+        fn(ContainerInterface $container) => new ReuseLicenseForAllPluginsUseCase(
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
             $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
             $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
@@ -666,6 +678,7 @@ return [
             $container->get(AbstractDependencies::DEACTIVATE_LICENSE_USE_CASE),
             $container->get(AbstractDependencies::ACTIVATE_LICENSE_USE_CASE),
             $container->get(AbstractDependencies::VALIDATE_LICENSES_USE_CASE),
+            $container->get(AbstractDependencies::REUSE_LICENSE_FOR_ALL_PLUGINS_USE_CASE),
             $container->get(AbstractDependencies::LICENSE_EXPIRATION_NOTICE_SERVICE)
         )
 ];

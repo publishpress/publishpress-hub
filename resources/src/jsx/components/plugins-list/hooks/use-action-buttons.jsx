@@ -151,7 +151,7 @@ export const useActionButtons = (
             buttons.push({
                 key: 'update',
                 variant: 'link',
-                text: sprintf(__('Update to v%s', 'publishpress-hub'), availableVersion),
+                text: sprintf(__('Update to %s', 'publishpress-hub'), availableVersion),
                 isLoading: isUpdating,
                 onClick: () => onUpdate(pluginFamily),
             });

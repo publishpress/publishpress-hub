@@ -162,7 +162,7 @@ export function* setIsResolveConflictModalOpen(isOpen) {
     };
 }
 
-export function* fetchPlugins(forceCheck = false) {
+export function* fetchPlugins(forceCheck = false, showError = true) {
     try {
         // Cancel any pending fetch request
         if (currentFetchController) {
@@ -211,6 +211,15 @@ export function* fetchPlugins(forceCheck = false) {
             };
         }
 
+        if (!showError) {
+            error = handleErrorMessageOnContext(error);
+
+            return {
+                success: false,
+                error,
+            };
+        }
+
         yield {type: 'FETCH_PLUGINS_ERROR', error: error};
 
         const errorMessage = getErrorMessage(error, __('Failed to fetch plugins', 'publishpress-hub'));
@@ -237,6 +246,12 @@ export function* installFreePlugin(pluginFamilySlug) {
         });
 
         if (data.success) {
+            // Activate the plugin after successful installation without showing a second success notice.
+            yield* activatePlugin(pluginFamilySlug, true, true);
+
+            // Refresh once after both install and activate complete
+            yield fetchPlugins();
+
             yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 
             const pluginName = yield* getPluginName(pluginFamilySlug);
@@ -244,12 +259,6 @@ export function* installFreePlugin(pluginFamilySlug) {
                 sprintf(__('%s installed successfully', 'publishpress-hub'), pluginName),
                 'success'
             );
-
-            // Activate the plugin after successful installation (skip refresh during activation)
-            yield* activatePlugin(pluginFamilySlug, true);
-
-            // Refresh once after both install and activate complete
-            yield fetchPlugins();
 
             return {
                 success: true,
@@ -278,7 +287,7 @@ export function* installFreePlugin(pluginFamilySlug) {
     }
 }
 
-export function* installProPlugin(pluginFamilySlug, licenseKey) {
+export function* installProPlugin(pluginFamilySlug, licenseKey, applyToAll = false, useExistingLicense = false) {
     try {
         yield {type: 'INSTALL_PLUGIN_START', data: {pluginFamilySlug}};
 
@@ -291,10 +300,18 @@ export function* installProPlugin(pluginFamilySlug, licenseKey) {
             method: 'POST',
             data: {
                 licenseKey: licenseKey,
+                applyToAll: applyToAll,
+                useExistingLicense: useExistingLicense,
             },
         });
 
         if (data.success) {
+            // Activate the plugin after successful installation without showing a second success notice.
+            yield* activatePlugin(pluginFamilySlug, true, true);
+
+            // Refresh once after both install and activate complete
+            yield fetchPlugins();
+
             yield {type: 'INSTALL_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 
             const pluginName = yield* getPluginName(pluginFamilySlug);
@@ -302,12 +319,6 @@ export function* installProPlugin(pluginFamilySlug, licenseKey) {
                 sprintf(__('%s installed successfully', 'publishpress-hub'), pluginName),
                 'success'
             );
-
-            // Activate the plugin after successful installation (skip refresh during activation)
-            yield* activatePlugin(pluginFamilySlug, true);
-
-            // Refresh once after both install and activate complete
-            yield fetchPlugins();
 
             // Return context along with the API response
             return {
@@ -390,7 +401,7 @@ export function* uninstallPlugin(pluginFamilySlug) {
     }
 }
 
-export function* activatePlugin(pluginFamilySlug, skipRefresh = false) {
+export function* activatePlugin(pluginFamilySlug, skipRefresh = false, skipNotice = false) {
     try {
         yield {type: 'ACTIVATE_PLUGIN_START', data: {pluginFamilySlug}};
 
@@ -409,11 +420,13 @@ export function* activatePlugin(pluginFamilySlug, skipRefresh = false) {
                 yield fetchPlugins();
             }
 
-            const pluginName = yield* getPluginName(pluginFamilySlug);
-            yield createSnackbarNotice(
-                sprintf(__('%s activated successfully', 'publishpress-hub'), pluginName),
-                'success'
-            );
+            if (!skipNotice) {
+                const pluginName = yield* getPluginName(pluginFamilySlug);
+                yield createSnackbarNotice(
+                    sprintf(__('%s activated successfully', 'publishpress-hub'), pluginName),
+                    'success'
+                );
+            }
 
             return {
                 success: true,
@@ -492,7 +505,7 @@ export function* deactivatePlugin(pluginFamilySlug, skipRefresh = false) {
     }
 }
 
-export function* upgradePluginToPro(pluginFamilySlug, licenseKey) {
+export function* upgradePluginToPro(pluginFamilySlug, licenseKey, applyToAll = false, useExistingLicense = false) {
     try {
         yield {type: 'UPGRADE_PLUGIN_TO_PRO_START', data: {pluginFamilySlug, licenseKey}};
 
@@ -505,23 +518,25 @@ export function* upgradePluginToPro(pluginFamilySlug, licenseKey) {
             method: 'POST',
             data: {
                 licenseKey: licenseKey,
+                applyToAll: applyToAll,
+                useExistingLicense: useExistingLicense,
             },
         });
 
         if (data.success) {
+            // Activate the plugin after successful upgrade without showing a second success notice.
+            yield* activatePlugin(pluginFamilySlug, true, true);
+
+            // Refresh once after both upgrade and activate complete
+            yield fetchPlugins();
+
             yield {type: 'UPGRADE_PLUGIN_TO_PRO_SUCCESS', data: {pluginFamilySlug}};
 
             const pluginName = yield* getPluginName(pluginFamilySlug);
             yield createSnackbarNotice(
-                sprintf(__('%s upgraded to Pro successfully', 'publishpress-hub'), pluginName),
+                sprintf(__('%s upgraded successfully', 'publishpress-hub'), pluginName),
                 'success'
             );
-
-            // Activate the plugin after successful upgrade (skip refresh during activation)
-            yield* activatePlugin(pluginFamilySlug, true);
-
-            // Refresh once after both upgrade and activate complete
-            yield fetchPlugins();
 
             // Return context along with the API response
             return {
@@ -713,6 +728,53 @@ export function* activateLicense(pluginFamily, licenseKey, applyToAll = false) {
     }
 }
 
+export function* reuseLicenseForAllPlugins(pluginFamily) {
+    try {
+        yield {type: 'ACTIVATE_LICENSE_START', data: {pluginFamily, licenseKey: '', applyToAll: true}};
+
+        yield apiReady();
+
+        const data = yield apiFetch({
+            path: `${API_NAMESPACE}/plugins/${pluginFamily.slug}/reuse-license-for-all`,
+            method: 'POST',
+        });
+
+        if (data.success) {
+            yield fetchPlugins();
+
+            yield {type: 'ACTIVATE_LICENSE_SUCCESS', data: {pluginFamily, licenseKey: '', applyToAll: true}};
+
+            yield createSnackbarNotice(
+                __('License reused successfully for all PublishPress plugins', 'publishpress-hub'),
+                'success'
+            );
+
+            return {
+                success: true,
+                pluginFamily,
+                apiResponse: data,
+            };
+        } else {
+            throw new Error(data?.error || 'License reuse failed');
+        }
+    } catch (error) {
+        yield {type: 'ACTIVATE_LICENSE_ERROR', data: {pluginFamily, licenseKey: '', applyToAll: true, error: error}};
+
+        yield createNotice(
+            sprintf(__('%s license reuse failed', 'publishpress-hub'), pluginFamily.name),
+            'error'
+        );
+
+        error = handleErrorMessageOnContext(error);
+
+        return {
+            success: false,
+            pluginFamily,
+            error,
+        };
+    }
+}
+
 export function* updatePlugin(pluginFamilySlug) {
     try {
         yield {type: 'UPDATE_PLUGIN_START', data: {pluginFamilySlug}};
@@ -727,7 +789,35 @@ export function* updatePlugin(pluginFamilySlug) {
         if (data.success) {
             // Force refresh to ensure update status is checked for all plugins
             // WordPress clears the update_plugins transient during plugin upgrades
-            yield fetchPlugins(true);
+            const refreshResult = yield fetchPlugins(true, false);
+            let fallbackRefreshResult = refreshResult;
+
+            if (!refreshResult?.success && !refreshResult?.aborted) {
+                fallbackRefreshResult = yield fetchPlugins(false, false);
+            }
+
+            if (!fallbackRefreshResult?.success) {
+                yield {type: 'UPDATE_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
+
+                yield createNotice(
+                    __(
+                        'The plugin was updated successfully, but the dashboard could not refresh. Reloading this page...',
+                        'publishpress-hub'
+                    ),
+                    'error'
+                );
+
+                if (typeof window !== 'undefined') {
+                    setTimeout(() => window.location.reload(), 1500);
+                }
+
+                return {
+                    success: true,
+                    pluginFamilySlug,
+                    refreshFailed: true,
+                    apiResponse: data,
+                };
+            }
 
             yield {type: 'UPDATE_PLUGIN_SUCCESS', data: {pluginFamilySlug}};
 

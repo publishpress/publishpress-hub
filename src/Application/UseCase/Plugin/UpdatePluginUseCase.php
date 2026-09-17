@@ -81,8 +81,13 @@ class UpdatePluginUseCase implements UseCaseInterface
 
         $pluginPath = $installedPlugin->getPath();
         $updateInfo = $this->getHubDetectedUpdateInfo($installedPlugin);
+        $wasActive = $installedPlugin->isActive();
 
         $this->pluginLifecycle->updatePlugin($pluginPath, $updateInfo);
+
+        if ($wasActive) {
+            $this->pluginLifecycle->activatePlugin($pluginPath);
+        }
 
         // Update plugin status after update to reflect current state
         $this->pluginStatusService->updatePluginStatus($installedPlugin);

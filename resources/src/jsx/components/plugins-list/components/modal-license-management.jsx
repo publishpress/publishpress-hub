@@ -33,6 +33,7 @@ const ModalLicenseManagementComponent = ({
     onClose,
     onActivate,
     onDeactivate,
+    onReuseLicenseForAll,
     error,
     buttonInProgress,
     initialLicenseKeyMasked,
@@ -141,6 +142,14 @@ const ModalLicenseManagementComponent = ({
                 <>
                     <Button variant='primary' icon='edit' onClick={handleSwitchToEdit} isLoading={buttonInProgress}>
                         {__('Edit the license key', 'publishpress-hub')}
+                    </Button>
+                    <Button
+                        variant='secondary'
+                        icon='check'
+                        onClick={() => onReuseLicenseForAll()}
+                        isLoading={buttonInProgress}
+                    >
+                        {__('Use this license key for all PublishPress plugins', 'publishpress-hub')}
                     </Button>
                     <Button variant='secondary' icon='trash' onClick={() => onDeactivate()} isLoading={buttonInProgress}>
                         {__('Deactivate the license key for this site', 'publishpress-hub')}
