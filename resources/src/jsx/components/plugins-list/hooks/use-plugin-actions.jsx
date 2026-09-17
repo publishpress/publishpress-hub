@@ -28,7 +28,6 @@ export const usePluginActions = (modalManager) => {
         activateLicense,
         reuseLicenseForAllPlugins,
         updatePlugin,
-        fetchPlugins,
     } = useDispatch(store);
 
     const handleOpenInstallationTypeModal = useCallback((pluginFamily) => {
@@ -79,10 +78,9 @@ export const usePluginActions = (modalManager) => {
         const result = await activateLicense(pluginFamily, licenseKey, applyToAll);
         if (result.success && !result.error) {
             closeModal();
-            fetchPlugins();
         }
         return result;
-    }, [activateLicense, closeModal, fetchPlugins]);
+    }, [activateLicense, closeModal]);
 
     const handleReuseLicenseForAllPlugins = useCallback(async (pluginFamily) => {
         const result = await reuseLicenseForAllPlugins(pluginFamily);
@@ -107,10 +105,9 @@ export const usePluginActions = (modalManager) => {
         const result = await installProPlugin(pluginSlug, licenseKey, applyToAll, useExistingLicense);
         if (result.success && !result.error) {
             closeModal();
-            fetchPlugins();
         }
         return result;
-    }, [installProPlugin, closeModal, fetchPlugins]);
+    }, [installProPlugin, closeModal]);
 
     const handleUpgradePluginToPro = useCallback(async (
         pluginSlug,
@@ -121,10 +118,9 @@ export const usePluginActions = (modalManager) => {
         const result = await upgradePluginToPro(pluginSlug, licenseKey, applyToAll, useExistingLicense);
         if (result.success && !result.error) {
             closeModal();
-            fetchPlugins();
         }
         return result;
-    }, [upgradePluginToPro, closeModal, fetchPlugins]);
+    }, [upgradePluginToPro, closeModal]);
 
     const handleUninstallPlugin = useCallback((pluginSlug) => {
         uninstallPlugin(pluginSlug);
