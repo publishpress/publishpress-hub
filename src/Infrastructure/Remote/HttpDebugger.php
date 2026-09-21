@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Remote;
 
+use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;
 use WP_Error;
 
 class HttpDebugger
@@ -27,6 +28,8 @@ class HttpDebugger
     private static bool $initialized = false;
 
     private static ?string $logFilePath = null;
+
+    private static ?WPFileSystemAdapter $fileSystemAdapter = null;
 
     /**
      * Returns the current UTC timestamp with millisecond precision.
@@ -249,8 +252,7 @@ class HttpDebugger
 
         if (self::$logFilePath !== null) {
             self::ensureLogDirectoryExists(dirname(self::$logFilePath));
-            // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
-            file_put_contents(self::$logFilePath, $logMessage . "\n", FILE_APPEND | LOCK_EX);
+            self::getFileSystemAdapter()->appendContents(self::$logFilePath, $logMessage . "\n");
             return;
         }
 
@@ -328,8 +330,22 @@ class HttpDebugger
             return;
         }
 
-        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_mkdir, WordPressVIPMinimum.Functions.RestrictedFunctions.directory_mkdir
-        mkdir($logDir, 0755, true);
+        self::getFileSystemAdapter()->makeDirectory($logDir);
+    }
+
+    /**
+     * Get the file system adapter.
+     *
+     * @return WPFileSystemAdapter The file system adapter.
+     * @since 1.0.0
+     */
+    private static function getFileSystemAdapter(): WPFileSystemAdapter
+    {
+        if (null === self::$fileSystemAdapter) {
+            self::$fileSystemAdapter = new WPFileSystemAdapter();
+        }
+
+        return self::$fileSystemAdapter;
     }
 
     /**

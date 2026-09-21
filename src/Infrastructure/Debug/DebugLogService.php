@@ -14,8 +14,12 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Debug;
 
+use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;
+
 class DebugLogService
 {
+    private WPFileSystemAdapter $fileSystemAdapter;
+
     private const LOG_DIR_NAME = 'publishpress-hub';
 
     private const LOG_FILE_NAME = 'debug.log';
@@ -23,6 +27,15 @@ class DebugLogService
     private const MAX_LOG_SIZE_BYTES = 2097152; // 2 MB
 
     private const CONSTANT_LOG_FILE = 'PUBLISHPRESS_HUB_LOG_FILE';
+
+    /**
+     * @param WPFileSystemAdapter $fileSystemAdapter The file system adapter.
+     * @since 1.0.0
+     */
+    public function __construct(WPFileSystemAdapter $fileSystemAdapter)
+    {
+        $this->fileSystemAdapter = $fileSystemAdapter;
+    }
 
     /**
      * Returns the absolute path to the debug log file.
@@ -66,8 +79,7 @@ class DebugLogService
             wp_json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
         );
 
-        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
-        file_put_contents($logFilePath, $entry, FILE_APPEND | LOCK_EX);
+        $this->fileSystemAdapter->appendContents($logFilePath, $entry);
 
         $this->enforceMaxLogSize($logFilePath);
     }
@@ -88,8 +100,7 @@ class DebugLogService
             return '';
         }
 
-        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents, WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown
-        $content = file_get_contents($logFilePath);
+        $content = $this->fileSystemAdapter->getContents($logFilePath);
 
         return $content !== false ? $content : '';
     }
@@ -108,8 +119,7 @@ class DebugLogService
             return;
         }
 
-        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
-        file_put_contents($logFilePath, '', LOCK_EX);
+        $this->fileSystemAdapter->putContents($logFilePath, '');
     }
 
     /**
@@ -138,8 +148,7 @@ class DebugLogService
             return;
         }
 
-        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_mkdir, WordPressVIPMinimum.Functions.RestrictedFunctions.directory_mkdir
-        mkdir($logDir, 0755, true);
+        $this->fileSystemAdapter->makeDirectory($logDir);
 
         $this->writeHtaccessProtection($logDir);
     }
@@ -161,8 +170,7 @@ class DebugLogService
 
         $rules = "Order deny,allow\nDeny from all\n";
 
-        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
-        file_put_contents($htaccess, $rules, LOCK_EX);
+        $this->fileSystemAdapter->putContents($htaccess, $rules);
     }
 
     /**
@@ -180,8 +188,7 @@ class DebugLogService
             return;
         }
 
-        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents, WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown
-        $content = file_get_contents($logFilePath);
+        $content = $this->fileSystemAdapter->getContents($logFilePath);
 
         if ($content === false) {
             return;
@@ -194,7 +201,6 @@ class DebugLogService
             $truncated = substr($truncated, $firstNewline + 1);
         }
 
-        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
-        file_put_contents($logFilePath, $truncated, LOCK_EX);
+        $this->fileSystemAdapter->putContents($logFilePath, $truncated);
     }
 }

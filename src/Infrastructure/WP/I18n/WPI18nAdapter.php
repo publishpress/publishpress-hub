@@ -19,6 +19,7 @@ use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\I18n\Contract\I18nServiceInterface;
+use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;
 
 /**
  * TODO: Make this class reusable for other plugins, after the free plugin also has the Hub as requirement.
@@ -44,23 +45,28 @@ class WPI18nAdapter implements I18nServiceInterface, BootableInterface
      */
     private AssetServiceInterface $assetService;
 
+    private WPFileSystemAdapter $fileSystemAdapter;
+
     /**
      * @param string $textDomain The text domain.
      * @param string $scriptPath The script path.
      * @param string $languagesPath The languages path.
      * @param AssetServiceInterface $assetService The asset service.
+     * @param WPFileSystemAdapter $fileSystemAdapter The file system adapter.
      * @since 1.0.0
      */
     public function __construct(
         string $textDomain,
         string $scriptPath,
         string $languagesPath,
-        AssetServiceInterface $assetService
+        AssetServiceInterface $assetService,
+        WPFileSystemAdapter $fileSystemAdapter
     ) {
         $this->textDomain = $textDomain;
         $this->scriptPath = $scriptPath;
         $this->languagesPath = $languagesPath;
         $this->assetService = $assetService;
+        $this->fileSystemAdapter = $fileSystemAdapter;
     }
 
     /**
@@ -180,8 +186,7 @@ class WPI18nAdapter implements I18nServiceInterface, BootableInterface
             return [];
         }
 
-        // phpcs:ignore WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown
-        $json = file_get_contents($jsonPath);
+        $json = $this->fileSystemAdapter->getContents($jsonPath);
 
         if (false === $json) {
             return [];

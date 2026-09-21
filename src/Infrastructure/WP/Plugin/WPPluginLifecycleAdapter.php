@@ -115,16 +115,15 @@ class WPPluginLifecycleAdapter
         }
 
         // Check ZIP file signature (magic bytes: PK\x03\x04)
-        $fileHandle = fopen($tmpFile, 'rb'); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
-        if ($fileHandle === false) {
+        $fileContents = $this->fileSystemAdapter->getContents($tmpFile);
+        if (false === $fileContents) {
             @unlink($tmpFile); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_unlink
             throw new RuntimeException(
                 esc_html__('Cannot read downloaded plugin file', 'publishpress-hub')
             );
         }
 
-        $magicBytes = fread($fileHandle, 4); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fread
-        fclose($fileHandle);
+        $magicBytes = substr($fileContents, 0, 4);
 
         if ($magicBytes !== "PK\x03\x04") {
             @unlink($tmpFile); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_unlink
