@@ -6,6 +6,8 @@
 - .rsync-filters-post-build
 - .rsync-filters-pre-build
 - /vendor
+- /lib/vendor/publishpress/pimple-pimple/lib/pimple/pimple/phpunit.xml.dist
+- /lib/vendor/publishpress/pimple-pimple/lib/pimple/pimple/.php_cs.dist
 - composer.lock
 - lib/vendor/bin
 - .DS_Store
