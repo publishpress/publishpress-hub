@@ -87,7 +87,7 @@ class AdminMenuService implements AdminMenuServiceInterface, BootableInterface
      */
     private function registerMainMenu(): void
     {
-        $iconDataUri = 'data:image/svg+xml;base64,' . base64_encode(self::MENU_ICON);
+        $iconDataUri = 'data:image/svg+xml,' . rawurlencode(self::MENU_ICON);
 
         $adminPage = [
             'page_title' => 'PublishPress',
