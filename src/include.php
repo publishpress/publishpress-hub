@@ -8,6 +8,7 @@
  ****************************************************************/
 
 namespace PublishPress\Hub;
+defined( 'ABSPATH' ) || exit;
 
 use function add_action;
 use function do_action;

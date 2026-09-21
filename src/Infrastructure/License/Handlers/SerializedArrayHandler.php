@@ -13,6 +13,7 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\License\Handlers;
+defined( 'ABSPATH' ) || exit;
 
 use stdClass;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseOptionHandlerInterface;

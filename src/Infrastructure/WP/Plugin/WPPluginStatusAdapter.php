@@ -13,6 +13,7 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WP\Plugin;
+defined( 'ABSPATH' ) || exit;
 
 use PublishPress\Hub\Domain\Plugin\Contract\PluginInterface;
 use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;

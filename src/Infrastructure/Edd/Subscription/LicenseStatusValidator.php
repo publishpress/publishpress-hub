@@ -13,6 +13,7 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Edd\Subscription;
+defined( 'ABSPATH' ) || exit;
 
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseDisabledException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseExpiredException;

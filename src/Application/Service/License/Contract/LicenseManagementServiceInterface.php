@@ -13,6 +13,7 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\License\Contract;
+defined( 'ABSPATH' ) || exit;
 
 interface LicenseManagementServiceInterface
 {

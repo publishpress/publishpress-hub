@@ -13,6 +13,7 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\AdminMenu\Contract;
+defined( 'ABSPATH' ) || exit;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
 

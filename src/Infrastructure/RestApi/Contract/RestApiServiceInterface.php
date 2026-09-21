@@ -13,6 +13,7 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\RestApi\Contract;
+defined( 'ABSPATH' ) || exit;
 
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use WP_REST_Response;

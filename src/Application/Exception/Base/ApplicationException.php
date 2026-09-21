@@ -13,6 +13,7 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Exception\Base;
+defined( 'ABSPATH' ) || exit;
 
 use Exception;
 use PublishPress\Hub\Domain\Exception\Contract\WithContextInterface;

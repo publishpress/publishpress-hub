@@ -13,6 +13,7 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container;
+defined( 'ABSPATH' ) || exit;
 
 use Closure;
 use PublishPress\Hub\Infrastructure\Container\Contracts\DependencyContainerInterface;

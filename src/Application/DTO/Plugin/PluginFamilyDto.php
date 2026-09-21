@@ -13,6 +13,7 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\DTO\Plugin;
+defined( 'ABSPATH' ) || exit;
 
 use PublishPress\Hub\Application\Contract\DtoInterface;
 

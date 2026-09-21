@@ -13,6 +13,7 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
+defined( 'ABSPATH' ) || exit;
 
 use PublishPress\Hub\Application\DTO\Plugin\PluginFamilyDto;
 use PublishPress\Hub\Application\Service\License\Contract\LicenseManagementServiceInterface;
