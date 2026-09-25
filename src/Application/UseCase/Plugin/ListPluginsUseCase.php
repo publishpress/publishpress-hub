@@ -244,7 +244,7 @@ class ListPluginsUseCase implements UseCaseInterface
 
             if (is_multisite()) {
                 foreach ($edd_patterns as $pattern) {
-                    $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.NoCaching
+                    $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- WordPress has no wildcard site-transient deletion API.
                         $wpdb->prepare(
                             "DELETE FROM {$wpdb->sitemeta} WHERE meta_key LIKE %s",
                             $pattern
@@ -253,7 +253,7 @@ class ListPluginsUseCase implements UseCaseInterface
                 }
             } else {
                 foreach ($edd_patterns as $pattern) {
-                    $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.NoCaching
+                    $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- WordPress has no wildcard transient deletion API.
                         $wpdb->prepare(
                             "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s",
                             $pattern
