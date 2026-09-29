@@ -27,12 +27,15 @@ use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use PublishPress\Hub\Application\Service\License\LicenseStatusStorageService;
 use PublishPress\Hub\Application\Service\License\LicenseValidationBootstrapService;
 use PublishPress\Hub\Application\Service\License\ScheduledLicenseValidationService;
+use PublishPress\Hub\Application\Service\License\WpConfigLicenseReaderService;
+use PublishPress\Hub\Application\Service\License\WpConfigLicenseSyncService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\Service\VersionService;
 use PublishPress\Hub\Application\UseCase\Plugin\ActivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Settings\ClearDebugLogUseCase;
 use PublishPress\Hub\Application\UseCase\Settings\GetDebugLogUseCase;
 use PublishPress\Hub\Application\UseCase\Settings\GetDiagnosticsSettingsUseCase;
+use PublishPress\Hub\Application\UseCase\Settings\GetSiteHealthReportUseCase;
 use PublishPress\Hub\Application\UseCase\Settings\UpdateDiagnosticsSettingsUseCase;
 use PublishPress\Hub\Infrastructure\Debug\DebugLogService;
 use PublishPress\Hub\Application\UseCase\Plugin\ChangePluginActivationUseCase;
@@ -41,6 +44,7 @@ use PublishPress\Hub\Application\UseCase\Plugin\InstallFreePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\InstallProPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ResolveConflictUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\ReuseLicenseForAllPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UninstallPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UpgradePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UpdatePluginUseCase;
@@ -118,11 +122,12 @@ return [
             'https://publishpress.com'
         ),
 
-    AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS =>
-        fn(ContainerInterface $container): array => apply_filters(
-            AbstractHooks::FILTER_ALLOWED_DOWNLOAD_DOMAINS,
-            ['publishpress.com', 'pkg.publishpress.com', 'wordpress.org', 'downloads.wordpress.org']
-        ),
+    AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS => [
+        'publishpress.com',
+        'pkg.publishpress.com',
+        'wordpress.org',
+        'downloads.wordpress.org',
+    ],
 
     AbstractDependencies::SITE_URL => home_url(),
 
@@ -249,6 +254,18 @@ return [
             $container->get(AbstractDependencies::SCHEDULED_LICENSE_VALIDATION_SERVICE),
             $container->get(AbstractDependencies::LICENSE_VALIDATION_ACTION_HANDLER),
             $container->get(AbstractDependencies::LICENSE_EXPIRATION_NOTICE_SERVICE)
+        ),
+
+    AbstractDependencies::WP_CONFIG_LICENSE_READER_SERVICE =>
+        fn(ContainerInterface $container) => new WpConfigLicenseReaderService(
+            $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
+        ),
+
+    AbstractDependencies::WP_CONFIG_LICENSE_SYNC_SERVICE =>
+        fn(ContainerInterface $container) => new WpConfigLicenseSyncService(
+            $container->get(AbstractDependencies::WP_CONFIG_LICENSE_READER_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY)
         ),
 
     AbstractDependencies::LICENSE_ACTIVATION_SERVICE =>
@@ -423,7 +440,10 @@ return [
                 $servicesToInit,
                 $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
                 $container->get(AbstractDependencies::HUB_ACCESS_SERVICE),
-                $container->get(AbstractDependencies::DEBUG_LOG_SERVICE)
+                $container->get(AbstractDependencies::DEBUG_LOG_SERVICE),
+                $container->get(AbstractDependencies::WP_CONFIG_LICENSE_SYNC_SERVICE),
+                $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
+                $container->get(AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS)
             );
         },
 
@@ -474,7 +494,9 @@ return [
         fn(ContainerInterface $container) => new InstallProPluginUseCase(
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
             $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
-            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
 
     AbstractDependencies::CHANGE_PLUGIN_ACTIVATION_USE_CASE =>
@@ -493,13 +515,17 @@ return [
         fn(ContainerInterface $container) => new UpgradePluginUseCase(
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
             $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
-            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
 
     AbstractDependencies::UPDATE_PLUGIN_USE_CASE =>
         fn(ContainerInterface $container) => new UpdatePluginUseCase(
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-            $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER)
+            $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
 
     AbstractDependencies::RESOLVE_CONFLICT_USE_CASE =>
@@ -511,14 +537,24 @@ return [
     AbstractDependencies::DEACTIVATE_LICENSE_USE_CASE =>
         fn(ContainerInterface $container) => new DeactivateLicenseUseCase(
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
-            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
 
     AbstractDependencies::ACTIVATE_LICENSE_USE_CASE =>
         fn(ContainerInterface $container) => new ActivateLicenseUseCase(
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
             $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE),
-            $container->get(AbstractDependencies::SCHEDULED_LICENSE_VALIDATION_SERVICE)
+            $container->get(AbstractDependencies::SCHEDULED_LICENSE_VALIDATION_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+        ),
+
+    AbstractDependencies::REUSE_LICENSE_FOR_ALL_PLUGINS_USE_CASE =>
+        fn(ContainerInterface $container) => new ReuseLicenseForAllPluginsUseCase(
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
 
     AbstractDependencies::VALIDATE_LICENSES_USE_CASE =>
@@ -584,7 +620,9 @@ return [
         ),
 
     AbstractDependencies::DEBUG_LOG_SERVICE =>
-        fn(ContainerInterface $container) => new DebugLogService(),
+        fn(ContainerInterface $container) => new DebugLogService(
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER)
+        ),
 
     AbstractDependencies::GET_DIAGNOSTICS_SETTINGS_USE_CASE =>
         fn(ContainerInterface $container) => new GetDiagnosticsSettingsUseCase(
@@ -606,6 +644,14 @@ return [
             $container->get(AbstractDependencies::DEBUG_LOG_SERVICE)
         ),
 
+    AbstractDependencies::GET_SITE_HEALTH_REPORT_USE_CASE =>
+        fn(ContainerInterface $container) => new GetSiteHealthReportUseCase(
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::DEBUG_LOG_SERVICE),
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER),
+            $container->get(AbstractDependencies::PLUGIN_VERSION)
+        ),
+
     AbstractDependencies::REST_API_SETTINGS_CONTROLLER =>
         fn(ContainerInterface $container) => new SettingsController(
             $container->get(AbstractDependencies::HUB_REST_API_NAMESPACE),
@@ -613,7 +659,8 @@ return [
             $container->get(AbstractDependencies::GET_DIAGNOSTICS_SETTINGS_USE_CASE),
             $container->get(AbstractDependencies::UPDATE_DIAGNOSTICS_SETTINGS_USE_CASE),
             $container->get(AbstractDependencies::GET_DEBUG_LOG_USE_CASE),
-            $container->get(AbstractDependencies::CLEAR_DEBUG_LOG_USE_CASE)
+            $container->get(AbstractDependencies::CLEAR_DEBUG_LOG_USE_CASE),
+            $container->get(AbstractDependencies::GET_SITE_HEALTH_REPORT_USE_CASE)
         ),
 
     // Rest API Services
@@ -632,6 +679,7 @@ return [
             $container->get(AbstractDependencies::DEACTIVATE_LICENSE_USE_CASE),
             $container->get(AbstractDependencies::ACTIVATE_LICENSE_USE_CASE),
             $container->get(AbstractDependencies::VALIDATE_LICENSES_USE_CASE),
+            $container->get(AbstractDependencies::REUSE_LICENSE_FOR_ALL_PLUGINS_USE_CASE),
             $container->get(AbstractDependencies::LICENSE_EXPIRATION_NOTICE_SERVICE)
         )
 ];

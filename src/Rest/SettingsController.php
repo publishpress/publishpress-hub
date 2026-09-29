@@ -21,6 +21,7 @@ use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Application\UseCase\Settings\ClearDebugLogUseCase;
 use PublishPress\Hub\Application\UseCase\Settings\GetDebugLogUseCase;
 use PublishPress\Hub\Application\UseCase\Settings\GetDiagnosticsSettingsUseCase;
+use PublishPress\Hub\Application\UseCase\Settings\GetSiteHealthReportUseCase;
 use PublishPress\Hub\Application\UseCase\Settings\UpdateDiagnosticsSettingsUseCase;
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiServiceInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
@@ -44,6 +45,8 @@ class SettingsController implements BootableInterface
 
     private ClearDebugLogUseCase $clearDebugLogUseCase;
 
+    private GetSiteHealthReportUseCase $getSiteHealthReportUseCase;
+
     /**
      * @param string $restApiNamespace
      * @param RestApiServiceInterface $restApiService
@@ -51,6 +54,7 @@ class SettingsController implements BootableInterface
      * @param UpdateDiagnosticsSettingsUseCase $updateDiagnosticsSettingsUseCase
      * @param GetDebugLogUseCase $getDebugLogUseCase
      * @param ClearDebugLogUseCase $clearDebugLogUseCase
+     * @param GetSiteHealthReportUseCase $getSiteHealthReportUseCase
      * @since 1.0.0
      */
     public function __construct(
@@ -59,7 +63,8 @@ class SettingsController implements BootableInterface
         GetDiagnosticsSettingsUseCase $getDiagnosticsSettingsUseCase,
         UpdateDiagnosticsSettingsUseCase $updateDiagnosticsSettingsUseCase,
         GetDebugLogUseCase $getDebugLogUseCase,
-        ClearDebugLogUseCase $clearDebugLogUseCase
+        ClearDebugLogUseCase $clearDebugLogUseCase,
+        GetSiteHealthReportUseCase $getSiteHealthReportUseCase
     ) {
         $this->restApiNamespace = $restApiNamespace;
         $this->restApiService = $restApiService;
@@ -67,6 +72,7 @@ class SettingsController implements BootableInterface
         $this->updateDiagnosticsSettingsUseCase = $updateDiagnosticsSettingsUseCase;
         $this->getDebugLogUseCase = $getDebugLogUseCase;
         $this->clearDebugLogUseCase = $clearDebugLogUseCase;
+        $this->getSiteHealthReportUseCase = $getSiteHealthReportUseCase;
     }
 
     /**
@@ -139,6 +145,15 @@ class SettingsController implements BootableInterface
             '/settings/debug-log/clear',
             WP_REST_Server::CREATABLE,
             $this->clearDebugLogUseCase,
+            [$this, 'checkPermissions']
+        ));
+
+        // GET /settings/site-health-report
+        $this->restApiService->addRoute(new RestRoute(
+            $this->restApiNamespace,
+            '/settings/site-health-report',
+            WP_REST_Server::READABLE,
+            $this->getSiteHealthReportUseCase,
             [$this, 'checkPermissions']
         ));
     }

@@ -20,7 +20,6 @@ import { ModalLicenseInput } from './modal-license-input';
 import { ModalLicenseManagement } from './modal-license-management';
 import { ModalResolveConflict } from './modal-resolve-conflict';
 import { ModalUpgrade } from './modal-upgrade';
-import { ModalPluginInfo } from './modal-plugin-info';
 
 const ModalRendererComponent = ({
     modalManager,
@@ -39,17 +38,28 @@ const ModalRendererComponent = ({
         handleBuyPlugin,
         handleDeactivateLicense,
         handleActivateLicense,
-        handleUpdatePlugin,
-        handleCheckForUpdates,
+        handleReuseLicenseForAllPlugins,
     } = pluginActions;
 
     const {
         cleanupError,
     } = useDispatch(store);
 
-    const isLoading = useSelect((select) => {
-        return select(store).getIsLoading();
-    }, []);
+    const plugins = useSelect((select) => select(store).getPlugins(), []);
+
+    const currentProPluginDisplayName = useMemo(() => {
+        const proPluginName = currentPluginFamily?.proPlugin?.name;
+
+        if (proPluginName) {
+            return proPluginName;
+        }
+
+        const basePluginName = (currentPluginDisplayName || '')
+            .replace(/\s+Free$/i, '')
+            .replace(/\s+Pro$/i, '');
+
+        return basePluginName ? `${basePluginName} Pro` : '';
+    }, [currentPluginFamily, currentPluginDisplayName]);
 
     const processedError = useMemo(() => {
         if (!currentPluginState.error) return null;
@@ -62,13 +72,16 @@ const ModalRendererComponent = ({
         return error;
     }, [currentPluginState.error]);
 
+    const hasExistingLicense = useMemo(() => {
+        return currentPluginFamily?.proPlugin?.hasLicenseKey || plugins.some((pluginFamily) => (
+            pluginFamily.slug !== currentPluginFamily?.slug
+            && pluginFamily.proPlugin?.hasLicenseKey
+            && !pluginFamily.proPlugin?.isLicenseKeyFromConstant
+        ));
+    }, [plugins, currentPluginFamily]);
+
     const modalProps = useMemo(() => {
         const hasActiveModal = currentPluginFamily && activeModal !== MODAL_TYPES.NONE;
-
-        // For plugin info modal, include isLoading state for "Check for Updates" button
-        const buttonInProgress = isModalActive(MODAL_TYPES.PLUGIN_INFO)
-            ? (currentPluginState.inProgress || isLoading)
-            : currentPluginState.inProgress;
 
         return {
             onClose: () => {
@@ -78,9 +91,9 @@ const ModalRendererComponent = ({
                 }
             },
             error: hasActiveModal ? processedError : null,
-            buttonInProgress,
+            buttonInProgress: currentPluginState.inProgress,
         }
-    }, [currentPluginFamily, activeModal, closeModal, cleanupError, currentPluginState.inProgress, processedError, isLoading, isModalActive, MODAL_TYPES.NONE, MODAL_TYPES.PLUGIN_INFO]);
+    }, [currentPluginFamily, activeModal, closeModal, cleanupError, currentPluginState.inProgress, processedError, MODAL_TYPES.NONE]);
 
     if (!currentPluginFamily || activeModal === MODAL_TYPES.NONE) {
         return null;
@@ -103,16 +116,30 @@ const ModalRendererComponent = ({
             {isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_INSTALLING_PRO) && (
                 <ModalLicenseInput
                     {...modalProps}
-                    title={sprintf(__('Install %s Pro', 'publishpress-hub'), currentPluginDisplayName)}
-                    onActivate={(licenseKey) => handleInstallPro(currentPluginFamily.slug, licenseKey)}
+                    title={sprintf(__('Install %s', 'publishpress-hub'), currentProPluginDisplayName)}
+                    onActivate={(licenseKey, applyToAll) =>
+                        handleInstallPro(currentPluginFamily.slug, licenseKey, applyToAll)
+                    }
+                    onUseExistingLicense={() =>
+                        handleInstallPro(currentPluginFamily.slug, '', false, true)
+                    }
+                    showApplyToAll={true}
+                    hasExistingLicense={hasExistingLicense}
                 />
             )}
 
             {isModalActive(MODAL_TYPES.LICENSE_INPUT_FOR_UPGRADE) && (
                 <ModalLicenseInput
                     {...modalProps}
-                    title={sprintf(__('Upgrade %s to Pro', 'publishpress-hub'), currentPluginDisplayName)}
-                    onActivate={(licenseKey) => handleUpgradePluginToPro(currentPluginFamily.slug, licenseKey)}
+                    title={sprintf(__('Upgrade %s', 'publishpress-hub'), currentProPluginDisplayName)}
+                    onActivate={(licenseKey, applyToAll) =>
+                        handleUpgradePluginToPro(currentPluginFamily.slug, licenseKey, applyToAll)
+                    }
+                    onUseExistingLicense={() =>
+                        handleUpgradePluginToPro(currentPluginFamily.slug, '', false, true)
+                    }
+                    showApplyToAll={true}
+                    hasExistingLicense={hasExistingLicense}
                 />
             )}
 
@@ -130,7 +157,7 @@ const ModalRendererComponent = ({
             {isModalActive(MODAL_TYPES.UPGRADE_PLUGIN_TO_PRO) && (
                 <ModalUpgrade
                     {...modalProps}
-                    title={sprintf(__('Upgrade %s to Pro', 'publishpress-hub'), currentPluginDisplayName)}
+                    title={sprintf(__('Upgrade %s', 'publishpress-hub'), currentProPluginDisplayName)}
                     onLicenseClick={() => modalManager.openModal(MODAL_TYPES.LICENSE_INPUT_FOR_UPGRADE, currentPluginFamily)}
                     onBuyClick={() => handleBuyPlugin(currentPluginFamily.proPlugin.detailsUrl)}
                     proDetailsUrl={currentPluginFamily.proPlugin.detailsUrl}
@@ -155,10 +182,14 @@ const ModalRendererComponent = ({
                 <ModalLicenseManagement
                     {...modalProps}
                     title={sprintf(__('Manage %s License', 'publishpress-hub'), currentPluginDisplayName)}
-                    onActivate={(licenseKey) => handleActivateLicense(currentPluginFamily, licenseKey)}
+                    onActivate={(licenseKey, applyToAll) =>
+                        handleActivateLicense(currentPluginFamily, licenseKey, applyToAll)
+                    }
                     onDeactivate={() => handleDeactivateLicense(currentPluginFamily)}
+                    onReuseLicenseForAll={() => handleReuseLicenseForAllPlugins(currentPluginFamily)}
                     hasLicenseKey={currentPluginFamily.proPlugin.hasLicenseKey}
                     initialLicenseKeyMasked={currentPluginFamily.proPlugin.licenseKeyMasked}
+                    isLicenseKeyFromConstant={currentPluginFamily.proPlugin.isLicenseKeyFromConstant}
                 />
             )}
 
@@ -166,19 +197,14 @@ const ModalRendererComponent = ({
                 <ModalLicenseInput
                     {...modalProps}
                     title={sprintf(__('Activate %s License', 'publishpress-hub'), currentPluginDisplayName)}
-                    onActivate={(licenseKey) => handleActivateLicense(currentPluginFamily, licenseKey)}
+                    buttonLabel={__('Activate the license key', 'publishpress-hub')}
+                    onActivate={(licenseKey, applyToAll) =>
+                        handleActivateLicense(currentPluginFamily, licenseKey, applyToAll)
+                    }
+                    showApplyToAll={true}
                 />
             )}
 
-            {isModalActive(MODAL_TYPES.PLUGIN_INFO) && (
-                <ModalPluginInfo
-                    {...modalProps}
-                    title={sprintf(__('More Info: %s', 'publishpress-hub'), currentPluginDisplayName)}
-                    pluginFamily={currentPluginFamily}
-                    onUpdate={(pluginFamily) => handleUpdatePlugin(pluginFamily.slug)}
-                    onCheckForUpdates={handleCheckForUpdates}
-                />
-            )}
         </>
     );
 };

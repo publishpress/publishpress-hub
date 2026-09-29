@@ -45,6 +45,23 @@
     margin-top: var(--pp-hub-spacing-lg);
 }
 
+.pp-hub-settings-page {
+    position: relative;
+}
+
+.pp-hub-settings-page__notice {
+    margin-bottom: var(--pp-hub-spacing-md);
+}
+
+.pp-hub-settings-page__report-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--pp-hub-spacing-sm);
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
 /* ------------------------------------------------------------------ */
 /* Debug Log Tab                                                         */
 /* ------------------------------------------------------------------ */
@@ -422,5 +439,10 @@
     .pp-hub-debug-log-tab__toolbar {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .pp-hub-settings-page__report-actions {
+        margin-top: var(--pp-hub-spacing-md);
+        position: static;
     }
 }
