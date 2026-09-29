@@ -71,7 +71,7 @@ var FooterComponent = function FooterComponent(_ref) {
     pluginSupportUrl = _ref.pluginSupportUrl,
     logoUrl = _ref.logoUrl;
   var stars = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return Array(5).fill('<span class="dashicons dashicons-star-filled"></span>').join('');
+    return Array(5).fill('<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>').join('');
   }, []);
   return /*#__PURE__*/React.createElement("footer", {
     className: "pp-hub-footer"

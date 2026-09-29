@@ -165,12 +165,19 @@ const PluginItemComponent = ({
         >
             <div className='pp-hub-plugins-list-item-content'>
                 <div className='pp-hub-plugins-list-item-icon'>
-                    <img src={iconSrc} alt={pluginFamily.name} />
+                    <img src={iconSrc} alt="" />
                 </div>
                 <div className='pp-hub-plugins-list-item-info'>
                     <div className='pp-hub-plugins-list-item-name'>
                         {shouldShowToggle && (
                             <ToggleControl
+                                aria-label={sprintf(
+                                    // translators: %s is the plugin name.
+                                    pluginFamily.hasAnyVersionActive
+                                        ? __('Deactivate %s', 'publishpress-hub')
+                                        : __('Activate %s', 'publishpress-hub'),
+                                    displayName
+                                )}
                                 disabled={status.hasConflictingInstallations}
                                 checked={pluginFamily.hasAnyVersionActive}
                                 onChange={(newValue) => {

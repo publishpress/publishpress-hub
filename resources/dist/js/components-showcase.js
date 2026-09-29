@@ -71,7 +71,7 @@ var FooterComponent = function FooterComponent(_ref) {
     pluginSupportUrl = _ref.pluginSupportUrl,
     logoUrl = _ref.logoUrl;
   var stars = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return Array(5).fill('<span class="dashicons dashicons-star-filled"></span>').join('');
+    return Array(5).fill('<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>').join('');
   }, []);
   return /*#__PURE__*/React.createElement("footer", {
     className: "pp-hub-footer"
@@ -307,7 +307,8 @@ var BadgeComponent = function BadgeComponent(_ref) {
   return /*#__PURE__*/React.createElement("span", {
     className: "pp-hub-badge ".concat(className)
   }, icon && /*#__PURE__*/React.createElement("span", {
-    className: "pp-hub-badge-icon"
+    className: "pp-hub-badge-icon",
+    "aria-hidden": "true"
   }, icon), children);
 };
 var Badge = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(BadgeComponent);

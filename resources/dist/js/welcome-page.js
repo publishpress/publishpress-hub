@@ -71,7 +71,7 @@ var FooterComponent = function FooterComponent(_ref) {
     pluginSupportUrl = _ref.pluginSupportUrl,
     logoUrl = _ref.logoUrl;
   var stars = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return Array(5).fill('<span class="dashicons dashicons-star-filled"></span>').join('');
+    return Array(5).fill('<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>').join('');
   }, []);
   return /*#__PURE__*/React.createElement("footer", {
     className: "pp-hub-footer"
@@ -437,7 +437,8 @@ var WelcomePageComponent = function WelcomePageComponent() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-welcome-page__feature-icon"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "dashicons dashicons-chart-bar"
+    className: "dashicons dashicons-chart-bar",
+    "aria-hidden": "true"
   })), /*#__PURE__*/React.createElement("h3", {
     className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Centralized Dashboard', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
@@ -447,7 +448,8 @@ var WelcomePageComponent = function WelcomePageComponent() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-welcome-page__feature-icon"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "dashicons dashicons-admin-plugins"
+    className: "dashicons dashicons-admin-plugins",
+    "aria-hidden": "true"
   })), /*#__PURE__*/React.createElement("h3", {
     className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('One-Click Installation', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
@@ -457,7 +459,8 @@ var WelcomePageComponent = function WelcomePageComponent() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-welcome-page__feature-icon"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "dashicons dashicons-admin-network"
+    className: "dashicons dashicons-admin-network",
+    "aria-hidden": "true"
   })), /*#__PURE__*/React.createElement("h3", {
     className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('License Management', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
@@ -467,7 +470,8 @@ var WelcomePageComponent = function WelcomePageComponent() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-welcome-page__feature-icon"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "dashicons dashicons-update"
+    className: "dashicons dashicons-update",
+    "aria-hidden": "true"
   })), /*#__PURE__*/React.createElement("h3", {
     className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Easy Updates', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
@@ -477,7 +481,8 @@ var WelcomePageComponent = function WelcomePageComponent() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-welcome-page__feature-icon"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "dashicons dashicons-yes-alt"
+    className: "dashicons dashicons-yes-alt",
+    "aria-hidden": "true"
   })), /*#__PURE__*/React.createElement("h3", {
     className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Status Monitoring', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
@@ -487,7 +492,8 @@ var WelcomePageComponent = function WelcomePageComponent() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-welcome-page__feature-icon"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "dashicons dashicons-admin-tools"
+    className: "dashicons dashicons-admin-tools",
+    "aria-hidden": "true"
   })), /*#__PURE__*/React.createElement("h3", {
     className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Get Started', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
