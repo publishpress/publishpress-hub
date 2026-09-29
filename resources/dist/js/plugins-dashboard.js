@@ -402,6 +402,7 @@ var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forward
     rel: relValue,
     className: buttonClassName,
     disabled: disabled || isLoading,
+    "aria-busy": isLoading || undefined,
     title: title,
     style: style
   }, restProps), children);
@@ -668,8 +669,11 @@ var MessageComponent = function MessageComponent(_ref) {
     'is-warning': variant === 'warning',
     'is-info': variant === 'info'
   });
+  // Store errors are already announced by WordPress notices; avoid speaking the modal copy twice.
+  var role = variant === 'error' ? undefined : 'status';
   return /*#__PURE__*/React.createElement("div", {
-    className: classes
+    className: classes,
+    role: role
   }, children);
 };
 var Message = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(MessageComponent);
@@ -3734,11 +3738,16 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
     });
   }, [pluginIconBaseUrl, pluginInstallationInProgress, pluginUninstallationInProgress, pluginDeactivationInProgress, pluginActivationInProgress, pluginUpgradeInProgress, pluginUpdateInProgress, pluginResolveConflictInProgress, pluginLicenseActivationInProgress, pluginLicenseDeactivationInProgress, pluginActions]);
   return /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-plugins-list"
+    className: "pp-hub-plugins-list",
+    "aria-busy": isLoading && plugins.length > 0 || undefined
   }, plugins.map(renderPluginItem), plugins.length === 0 && !isLoading && /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-plugins-list-message"
+    className: "pp-hub-plugins-list-message",
+    role: "status",
+    "aria-live": "polite"
   }, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No plugins found.', 'publishpress-hub'))), isLoading && plugins.length === 0 && /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-plugins-list-message"
+    className: "pp-hub-plugins-list-message",
+    role: "status",
+    "aria-live": "polite"
   }, /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Loading plugins...', 'publishpress-hub'))), /*#__PURE__*/React.createElement(_components__WEBPACK_IMPORTED_MODULE_4__.ModalRenderer, {
     modalManager: modalManager,
     pluginActions: pluginActions,

@@ -396,6 +396,7 @@ var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forward
     rel: relValue,
     className: buttonClassName,
     disabled: disabled || isLoading,
+    "aria-busy": isLoading || undefined,
     title: title,
     style: style
   }, restProps), children);

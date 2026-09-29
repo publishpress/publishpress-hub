@@ -150,17 +150,17 @@ const PluginsListComponent = ({
     ]);
 
     return (
-        <div className="pp-hub-plugins-list">
+        <div className="pp-hub-plugins-list" aria-busy={(isLoading && plugins.length > 0) || undefined}>
             {plugins.map(renderPluginItem)}
 
             {plugins.length === 0 && !isLoading && (
-                <div className="pp-hub-plugins-list-message">
+                <div className="pp-hub-plugins-list-message" role="status" aria-live="polite">
                     <p>{__('No plugins found.', 'publishpress-hub')}</p>
                 </div>
             )}
 
             {isLoading && plugins.length === 0 && (
-                <div className="pp-hub-plugins-list-message">
+                <div className="pp-hub-plugins-list-message" role="status" aria-live="polite">
                     <p>{__('Loading plugins...', 'publishpress-hub')}</p>
                 </div>
             )}

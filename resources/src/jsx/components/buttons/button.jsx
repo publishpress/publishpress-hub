@@ -75,6 +75,7 @@ const ButtonComponent = forwardRef(({
             rel={relValue}
             className={buttonClassName}
             disabled={disabled || isLoading}
+            aria-busy={isLoading || undefined}
             title={title}
             style={style}
             {...restProps}

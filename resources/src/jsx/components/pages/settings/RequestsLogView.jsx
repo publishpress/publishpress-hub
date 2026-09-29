@@ -142,7 +142,7 @@ const RequestsLogViewComponent = ({ logContent }) => {
 
     if (pairs.length === 0) {
         return (
-            <p className="pp-hub-debug-log-tab__empty">
+            <p className="pp-hub-debug-log-tab__empty" role="status" aria-live="polite">
                 { __('No requests found in the log.', 'publishpress-hub') }
             </p>
         );
