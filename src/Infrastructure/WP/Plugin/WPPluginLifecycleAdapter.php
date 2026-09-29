@@ -93,6 +93,7 @@ class WPPluginLifecycleAdapter
         }
 
         // Check ZIP file signature (magic bytes: PK\x03\x04)
+        // WP_Filesystem reads whole files; a local stream keeps signature checks bounded to four bytes.
         $fileHandle = fopen($tmpFile, 'rb'); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
         if ($fileHandle === false) {
             wp_delete_file($tmpFile);

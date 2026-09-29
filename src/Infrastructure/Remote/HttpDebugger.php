@@ -331,6 +331,7 @@ class HttpDebugger
                 return;
             }
 
+            // WP_Filesystem has no locked append operation; keep concurrent local log entries intact.
             // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
             $bytesWritten = file_put_contents(self::$logFilePath, $logMessage . "\n", FILE_APPEND | LOCK_EX);
 

@@ -58,6 +58,19 @@ class WPFileSystemAdapter
     }
 
     /**
+     * Read a file's contents.
+     *
+     * @param string $path The path.
+     * @return string|false The file contents, or false on failure.
+     * @since 1.0.0
+     */
+    public function getContents(string $path)
+    {
+        $this->validatePath($path);
+        return $this->getWpFilesystem()->get_contents($path);
+    }
+
+    /**
      * Delete a file.
      *
      * Security: Only paths within allowed directories are permitted.

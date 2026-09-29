@@ -94,6 +94,37 @@ class WPFileSystemAdapterTest extends NoTransactionWPTestCase
     }
 
     /**
+     * Reads translation JSON through the WordPress filesystem.
+     *
+     * @covers ::getContents
+     * @since 1.1.0
+     */
+    public function testGetContentsReadsTranslationJson(): void
+    {
+        global $wp_filesystem;
+
+        $path = $this->testPluginDir . '/translations.json';
+        $contents = '{"messages":{"Hello":"Bonjour"}}';
+        $this->assertTrue($wp_filesystem->put_contents($path, $contents));
+
+        $this->assertSame($contents, $this->adapter->getContents($path));
+    }
+
+    /**
+     * Refuses traversal before reading a file.
+     *
+     * @covers ::getContents
+     * @since 1.1.0
+     */
+    public function testGetContentsRejectsTraversal(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('directory traversal detected');
+
+        $this->adapter->getContents($this->testPluginDir . '/../translations.json');
+    }
+
+    /**
      * Test that path traversal with ../ is rejected.
      *
      * @covers ::exists

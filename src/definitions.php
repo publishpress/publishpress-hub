@@ -157,7 +157,8 @@ return [
             $container->get(AbstractDependencies::PLUGIN_TEXT_DOMAIN),
             $container->get(AbstractDependencies::PLUGIN_I18N_SCRIPT_PATH),
             $container->get(AbstractDependencies::PLUGIN_LANGUAGES_PATH),
-            $container->get(AbstractDependencies::ASSET_SERVICE)
+            $container->get(AbstractDependencies::ASSET_SERVICE),
+            $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER)
         ),
 
     AbstractDependencies::ASSET_SERVICE =>
