@@ -1718,6 +1718,10 @@ footer .pp-hub-footer-logo img {
     display: none;
 }
 
+.pp-hub-plugins-list-item:focus-within .pp-hub-plugins-list-item-description {
+    display: none;
+}
+
 .pp-hub-plugins-list-item-status {
     font-size: var(--pp-hub-font-size-sm);
     color: var(--pp-hub-text-secondary);
@@ -1739,7 +1743,7 @@ footer .pp-hub-footer-logo img {
 }
 
 .pp-hub-plugins-list-item-inline-actions {
-    display: none;
+    display: flex;
     flex-direction: row;
     align-items: center;
     gap: var(--pp-hub-spacing-sm);
@@ -1750,7 +1754,22 @@ footer .pp-hub-footer-logo img {
     max-height: 24px;
 }
 
+/* Keep actions tabbable before focus enters rows without an activation toggle. */
+.pp-hub-plugins-list-item:not(.hovered):not(:focus-within) .pp-hub-plugins-list-item-inline-actions {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    min-height: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    pointer-events: none;
+}
+
 .pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-inline-actions {
+    display: flex;
+}
+
+.pp-hub-plugins-list-item:focus-within .pp-hub-plugins-list-item-inline-actions {
     display: flex;
 }
 
