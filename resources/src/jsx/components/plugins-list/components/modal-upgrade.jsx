@@ -48,7 +48,7 @@ const ModalUpgradeComponent = ({
                 {__('Already have a license? Install Pro now', 'publishpress-hub')}
             </Button>
             <Button variant='highlight' icon='cart' onClick={() => onBuyClick()}>
-                {__('Upgrade to Pro and boost your productivity', 'publishpress-hub')}
+                {__('Upgrade to Pro', 'publishpress-hub')}
             </Button>
         </Modal>
     );
