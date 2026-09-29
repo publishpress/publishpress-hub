@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\ValueObject;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
 
 /**

@@ -69,6 +69,7 @@ const RequestCardComponent = ({ pair }) => {
     const statusDisplay = isError
         ? __('ERR', 'publishpress-hub')
         : (statusCode || '—');
+    const detailsId = `pp-hub-request-card-details-${pair.id}`;
 
     return (
         <div className={ `pp-hub-request-card pp-hub-request-card--${ isExpanded ? 'expanded' : 'collapsed' }` }>
@@ -77,6 +78,7 @@ const RequestCardComponent = ({ pair }) => {
                 className="pp-hub-request-card__summary"
                 onClick={ () => setIsExpanded(!isExpanded) }
                 aria-expanded={ isExpanded }
+                aria-controls={ detailsId }
             >
                 <span className={ `pp-hub-request-card__method pp-hub-request-card__method--${ methodClass }` }>
                     { method }
@@ -100,7 +102,7 @@ const RequestCardComponent = ({ pair }) => {
             </button>
 
             { isExpanded && (
-                <div className="pp-hub-request-card__details">
+                <div id={ detailsId } className="pp-hub-request-card__details">
                     <div className="pp-hub-request-card__section">
                         <div className="pp-hub-request-card__section-header pp-hub-request-card__section-header--request">
                             →&nbsp;{ __('Request', 'publishpress-hub') }

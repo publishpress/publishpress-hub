@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\License;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 

@@ -58,7 +58,7 @@ const WelcomePageComponent = () => {
                         <div className="pp-hub-welcome-page__features-grid">
                             <div className="pp-hub-welcome-page__feature-item">
                                 <div className="pp-hub-welcome-page__feature-icon">
-                                    <span className="dashicons dashicons-chart-bar" />
+                                    <span className="dashicons dashicons-chart-bar" aria-hidden="true" />
                                 </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('Centralized Dashboard', 'publishpress-hub')}
@@ -70,7 +70,7 @@ const WelcomePageComponent = () => {
 
                             <div className="pp-hub-welcome-page__feature-item">
                                 <div className="pp-hub-welcome-page__feature-icon">
-                                    <span className="dashicons dashicons-admin-plugins" />
+                                    <span className="dashicons dashicons-admin-plugins" aria-hidden="true" />
                                 </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('One-Click Installation', 'publishpress-hub')}
@@ -82,7 +82,7 @@ const WelcomePageComponent = () => {
 
                             <div className="pp-hub-welcome-page__feature-item">
                                 <div className="pp-hub-welcome-page__feature-icon">
-                                    <span className="dashicons dashicons-admin-network" />
+                                    <span className="dashicons dashicons-admin-network" aria-hidden="true" />
                                 </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('License Management', 'publishpress-hub')}
@@ -94,7 +94,7 @@ const WelcomePageComponent = () => {
 
                             <div className="pp-hub-welcome-page__feature-item">
                                 <div className="pp-hub-welcome-page__feature-icon">
-                                    <span className="dashicons dashicons-update" />
+                                    <span className="dashicons dashicons-update" aria-hidden="true" />
                                 </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('Easy Updates', 'publishpress-hub')}
@@ -106,7 +106,7 @@ const WelcomePageComponent = () => {
 
                             <div className="pp-hub-welcome-page__feature-item">
                                 <div className="pp-hub-welcome-page__feature-icon">
-                                    <span className="dashicons dashicons-yes-alt" />
+                                    <span className="dashicons dashicons-yes-alt" aria-hidden="true" />
                                 </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('Status Monitoring', 'publishpress-hub')}
@@ -118,7 +118,7 @@ const WelcomePageComponent = () => {
 
                             <div className="pp-hub-welcome-page__feature-item">
                                 <div className="pp-hub-welcome-page__feature-icon">
-                                    <span className="dashicons dashicons-admin-tools" />
+                                    <span className="dashicons dashicons-admin-tools" aria-hidden="true" />
                                 </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('Get Started', 'publishpress-hub')}
@@ -158,4 +158,3 @@ const WelcomePageComponent = () => {
 };
 
 export const WelcomePage = memo(WelcomePageComponent);
-

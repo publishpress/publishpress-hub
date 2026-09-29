@@ -23,7 +23,8 @@ const MessageComponent = ({
         'is-warning': variant === 'warning',
         'is-info': variant === 'info',
     });
-    const role = variant === 'error' ? 'alert' : 'status';
+    // Store errors are already announced by WordPress notices; avoid speaking the modal copy twice.
+    const role = variant === 'error' ? undefined : 'status';
 
     return <div className={classes} role={role}>{children}</div>;
 }

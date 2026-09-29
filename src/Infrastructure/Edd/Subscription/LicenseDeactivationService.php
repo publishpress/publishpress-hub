@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Edd\Subscription;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseDeactivationException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseServerInvalidResponseException;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\Contract\LicenseDeactivationServiceInterface;

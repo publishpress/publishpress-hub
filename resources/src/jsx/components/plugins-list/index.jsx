@@ -132,7 +132,6 @@ const PluginsListComponent = ({
                 onActivateLicense={pluginActions.handleOpenLicenseInputForActivatingLicenseModal}
                 onUninstall={pluginActions.handleOpenUninstallConfirmationModal}
                 onDeactivateLicense={pluginActions.handleDeactivateLicense}
-                onOpenPluginInfo={pluginActions.handleOpenPluginInfoModal}
                 onUpdate={pluginActions.handleUpdatePlugin}
             />
         );
@@ -151,7 +150,7 @@ const PluginsListComponent = ({
     ]);
 
     return (
-        <div className="pp-hub-plugins-list" aria-busy={isLoading || undefined}>
+        <div className="pp-hub-plugins-list" aria-busy={(isLoading && plugins.length > 0) || undefined}>
             {plugins.map(renderPluginItem)}
 
             {plugins.length === 0 && !isLoading && (
