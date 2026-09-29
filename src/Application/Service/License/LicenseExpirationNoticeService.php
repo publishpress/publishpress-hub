@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\License;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
@@ -70,8 +72,6 @@ class LicenseExpirationNoticeService
     {
         add_action(AbstractHooks::ACTION_ADMIN_INIT, [$this, 'handleDismissRequest']);
         add_action(AbstractHooks::ACTION_ADMIN_NOTICES, [$this, 'displayExpiredLicenseNotices']);
-        add_action(AbstractHooks::ACTION_ADMIN_ENQUEUE_SCRIPTS, [$this, 'enqueueNoticeScript']);
-        add_action('wp_ajax_pp_hub_dismiss_admin_license_notice', [$this, 'handleAjaxDismissRequest']);
     }
 
     /**
@@ -107,11 +107,6 @@ class LicenseExpirationNoticeService
             return;
         }
 
-        // Check if user has dismissed this notice
-        if ($this->isNoticeDismissed()) {
-            return;
-        }
-
         $pluginsDashboardUrl = admin_url('admin.php?page=publishpress-hub-plugins-dashboard');
 
         if (count($expiredLicenses) === 1) {
@@ -138,11 +133,8 @@ class LicenseExpirationNoticeService
             );
         }
 
-        $nonce = wp_create_nonce('pp_hub_dismiss_admin_license_notice');
-
         printf(
-            '<div class="notice notice-error is-dismissible pp-hub-admin-license-notice" data-nonce="%s"><p>%s</p></div>',
-            esc_attr($nonce),
+            '<div class="notice notice-error pp-hub-admin-license-notice"><p>%s</p></div>',
             wp_kses_post($message)
         );
     }
@@ -300,72 +292,6 @@ class LicenseExpirationNoticeService
 
         sort($hashData);
         return md5(implode('|', $hashData));
-    }
-
-    /**
-     * Enqueue script for handling admin notice dismissal.
-     *
-     * @since 1.0.0
-     */
-    public function enqueueNoticeScript(): void
-    {
-        // Only enqueue on pages where we show the notice
-        if (!current_user_can(HubAccessService::CAPABILITY)) {
-            return;
-        }
-
-        $screen = get_current_screen();
-        if (
-            $screen &&
-            (
-                $screen->id === 'publishpress_page_publishpress-hub-plugins-dashboard' ||
-                $screen->id === 'toplevel_page_publishpress-hub'
-            )
-        ) {
-            return;
-        }
-
-        // Only enqueue if there are expired licenses to show
-        $expiredLicenses = $this->getExpiredLicensesForNotice();
-        if (empty($expiredLicenses) || $this->isNoticeDismissed()) {
-            return;
-        }
-
-        wp_add_inline_script(
-            'common',
-            "
-            jQuery(document).ready(function($) {
-                $(document).on('click', '.pp-hub-admin-license-notice .notice-dismiss', function(e) {
-                    var notice = $(this).closest('.pp-hub-admin-license-notice');
-                    var nonce = notice.data('nonce');
-
-                    $.post(ajaxurl, {
-                        action: 'pp_hub_dismiss_admin_license_notice',
-                        nonce: nonce
-                    });
-                });
-            });
-            "
-        );
-    }
-
-    /**
-     * Handle AJAX request to dismiss admin notice.
-     *
-     * @since 1.0.0
-     */
-    public function handleAjaxDismissRequest(): void
-    {
-        check_ajax_referer('pp_hub_dismiss_admin_license_notice', 'nonce');
-
-        if (!current_user_can(HubAccessService::CAPABILITY)) {
-            wp_send_json_error(['message' => 'Unauthorized'], 403);
-            return;
-        }
-
-        $this->setNoticeDismissed();
-
-        wp_send_json_success(['dismissed' => true]);
     }
 
     /**

@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WP\Options\Contract;
 
+defined('ABSPATH') || exit;
+
 interface WPOptionsAdapterInterface
 {
     /**

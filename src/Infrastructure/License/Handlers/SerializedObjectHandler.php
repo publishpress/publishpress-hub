@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\License\Handlers;
 
+defined('ABSPATH') || exit;
+
 use stdClass;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseOptionHandlerInterface;
 use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
@@ -32,10 +34,10 @@ class SerializedObjectHandler implements LicenseOptionHandlerInterface
     public function __construct(
         WPOptionsAdapterInterface $optionsAdapter,
         string $optionName,
-        string $licenseKeyKey = null,
-        string $licenseStatusKey = null,
-        string $licenseStatusValid = null,
-        string $licenseStatusInvalid = null
+        ?string $licenseKeyKey = null,
+        ?string $licenseStatusKey = null,
+        ?string $licenseStatusValid = null,
+        ?string $licenseStatusInvalid = null
     ) {
         $this->optionsAdapter = $optionsAdapter;
         $this->optionName = $optionName;

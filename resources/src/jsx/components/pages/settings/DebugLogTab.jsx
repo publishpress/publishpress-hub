@@ -244,11 +244,16 @@ const DebugLogTabComponent = () => {
             ) }
 
             <div className="pp-hub-debug-log-tab__toolbar">
-                <div className="pp-hub-debug-log-tab__view-toggle">
+                <div
+                    className="pp-hub-debug-log-tab__view-toggle"
+                    role="group"
+                    aria-label={__('Debug log view', 'publishpress-hub')}
+                >
                     <button
                         type="button"
                         className={ `pp-hub-debug-log-tab__view-btn${ viewMode === VIEW_REQUESTS ? ' pp-hub-debug-log-tab__view-btn--active' : '' }` }
                         onClick={ () => setViewMode(VIEW_REQUESTS) }
+                        aria-pressed={ viewMode === VIEW_REQUESTS }
                     >
                         { __('Requests', 'publishpress-hub') }
                     </button>
@@ -256,6 +261,7 @@ const DebugLogTabComponent = () => {
                         type="button"
                         className={ `pp-hub-debug-log-tab__view-btn${ viewMode === VIEW_FULL_LOG ? ' pp-hub-debug-log-tab__view-btn--active' : '' }` }
                         onClick={ () => setViewMode(VIEW_FULL_LOG) }
+                        aria-pressed={ viewMode === VIEW_FULL_LOG }
                     >
                         { __('Full Log', 'publishpress-hub') }
                     </button>
@@ -267,6 +273,7 @@ const DebugLogTabComponent = () => {
                             type="button"
                             className={ `pp-hub-debug-log-tab__auto-refresh-btn${ autoRefresh ? ' pp-hub-debug-log-tab__auto-refresh-btn--active' : '' }` }
                             onClick={ () => setAutoRefresh((prev) => !prev) }
+                            aria-pressed={ autoRefresh }
                             title={ autoRefresh
                                 ? __('Auto-refresh is on — click to stop', 'publishpress-hub')
                                 : __('Enable auto-refresh', 'publishpress-hub')

@@ -161,9 +161,9 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
         $this->assertStringContainsString('notice notice-error', $output);
         $this->assertStringContainsString($pluginName, $output);
         $this->assertStringContainsString('Manage licenses', $output);
-        $this->assertStringContainsString('is-dismissible', $output);
+        $this->assertStringNotContainsString('is-dismissible', $output);
         $this->assertStringContainsString('pp-hub-admin-license-notice', $output);
-        $this->assertStringContainsString('data-nonce=', $output);
+        $this->assertStringNotContainsString('data-nonce=', $output);
     }
 
     public function testDisplayExpiredLicenseNoticesDisplaysMultipleExpiredLicenses(): void
@@ -217,12 +217,12 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
         $this->assertStringContainsString($pluginName1, $output);
         $this->assertStringContainsString($pluginName2, $output);
         $this->assertStringContainsString('2 plugin(s) have expired licenses', $output);
-        $this->assertStringContainsString('is-dismissible', $output);
+        $this->assertStringNotContainsString('is-dismissible', $output);
         $this->assertStringContainsString('pp-hub-admin-license-notice', $output);
-        $this->assertStringContainsString('data-nonce=', $output);
+        $this->assertStringNotContainsString('data-nonce=', $output);
     }
 
-    public function testDisplayExpiredLicenseNoticesDoesNotDisplayWhenDismissed(): void
+    public function testDisplayExpiredLicenseNoticesDisplaysWhenDismissed(): void
     {
         $downloadId = 12345;
         $pluginName = 'Test Pro Plugin';
@@ -276,7 +276,8 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
         $service->displayExpiredLicenseNotices();
         $output = ob_get_clean();
 
-        $this->assertEmpty($output);
+        $this->assertStringContainsString('notice notice-error', $output);
+        $this->assertStringContainsString($pluginName, $output);
     }
 
     public function testDisplayExpiredLicenseNoticesRedisplaysAfterDismissalExpires(): void

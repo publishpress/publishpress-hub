@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\PluginStatus;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginInterface;

@@ -35,13 +35,15 @@ const ModalResolveConflictComponent = ({
             className='pp-hub-modal-resolve-conflict'
             onRequestClose={() => onClose()}
         >
-            <p>
-                {message || __(
-                    'We have detected both Free and Pro versions of this plugin installed. ' +
-                    'To resolve this conflict, please choose which version you would like to keep. ' +
-                    'The other version will be automatically uninstalled.',
-                    'publishpress-hub'
-                )}
+            <div>
+                <p>
+                    {message || __(
+                        'We have detected both Free and Pro versions of this plugin installed. ' +
+                        'To resolve this conflict, please choose which version you would like to keep. ' +
+                        'The other version will be automatically uninstalled.',
+                        'publishpress-hub'
+                    )}
+                </p>
 
                 <ul className='pp-hub-list'>
                     <li>
@@ -59,7 +61,7 @@ const ModalResolveConflictComponent = ({
                         )}
                     </li>
                 </ul>
-            </p>
+            </div>
 
             {children}
 

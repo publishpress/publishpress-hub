@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\License\Handlers;
 
+defined('ABSPATH') || exit;
+
 use stdClass;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseOptionHandlerInterface;
 use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
@@ -34,8 +36,8 @@ class RawStringHandler implements LicenseOptionHandlerInterface
         WPOptionsAdapterInterface $optionsAdapter,
         string $licenseOptionName,
         string $statusOptionName,
-        string $licenseStatusValid = null,
-        string $licenseStatusInvalid = null
+        ?string $licenseStatusValid = null,
+        ?string $licenseStatusInvalid = null
     ) {
         $this->optionsAdapter = $optionsAdapter;
         $this->licenseOptionName = $licenseOptionName;

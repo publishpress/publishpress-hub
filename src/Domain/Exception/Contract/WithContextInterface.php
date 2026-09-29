@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Exception\Contract;
 
+defined('ABSPATH') || exit;
+
 use Exception;
 
 interface WithContextInterface

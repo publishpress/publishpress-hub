@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Autoloader;
 
+defined('ABSPATH') || exit;
+
 /**
  * Autoloader for the PublishPress Hub library.
  *

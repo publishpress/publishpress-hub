@@ -21,6 +21,8 @@ class HubAccessServiceTest extends WPTestCase
 {
     private int $hubOnlyUserId;
 
+    private int $hubManagerUserId;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -30,6 +32,8 @@ class HubAccessServiceTest extends WPTestCase
         $this->hubOnlyUserId = $this->factory()->user->create(['role' => 'editor']);
         $user = new \WP_User($this->hubOnlyUserId);
         $user->add_cap(HubAccessService::CAPABILITY);
+
+        $this->hubManagerUserId = $this->factory()->user->create(['role' => HubAccessService::VIEWER_ROLE]);
     }
 
     protected function tearDown(): void
@@ -44,6 +48,22 @@ class HubAccessServiceTest extends WPTestCase
         wp_set_current_user($this->hubOnlyUserId);
 
         $this->assertTrue(HubAccessService::canManageHub());
+    }
+
+    public function testHubManagerRoleCanAccessTheWordPressAdmin(): void
+    {
+        wp_set_current_user($this->hubManagerUserId);
+
+        $role = get_role(HubAccessService::VIEWER_ROLE);
+
+        $this->assertNotNull($role);
+
+        $role->remove_cap(HubAccessService::READ_CAPABILITY);
+        HubAccessService::addViewerRoleCapability();
+
+        $this->assertTrue(HubAccessService::canManageHub());
+        $this->assertTrue(current_user_can(HubAccessService::READ_CAPABILITY));
+        $this->assertTrue($role->has_cap(HubAccessService::READ_CAPABILITY));
     }
 
     public function testHubOnlyUserCannotInstallPlugins(): void

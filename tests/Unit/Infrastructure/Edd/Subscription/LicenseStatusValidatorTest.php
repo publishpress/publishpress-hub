@@ -113,6 +113,17 @@ class LicenseStatusValidatorTest extends Unit
         $this->validator->assertLicenseStatusOrThrow('invalid', ['valid']);
     }
 
+    public function testAssertLicenseStatusOrThrowShowsHelpfulInvalidLicenseMessage(): void
+    {
+        try {
+            $this->validator->assertLicenseStatusOrThrow('invalid', ['valid']);
+            $this->fail('Expected LicenseInvalidException to be thrown');
+        } catch (LicenseInvalidException $e) {
+            $this->assertStringContainsString('invalid, blocked, or not authorized', $e->getMessage());
+            $this->assertStringContainsString('PublishPress support', $e->getMessage());
+        }
+    }
+
     public function testAssertLicenseStatusOrThrowThrowsUnknownLicenseServerException(): void
     {
         $this->expectException(UnknownLicenseServerException::class);
@@ -155,4 +166,3 @@ class LicenseStatusValidatorTest extends Unit
         $this->validator->assertLicenseStatusOrThrow('VALID', ['valid']);
     }
 }
-
