@@ -88,7 +88,7 @@ const ModalLicenseManagementComponent = ({
                     </p>
                     <div className='pp-hub-modal-inline-links'>
                         <Button variant='link' href='https://publishpress.com/dashboard/?active_tab=licenses' target='_blank' rel='noopener noreferrer'>
-                            {__('Go to my profile to get the license key', 'publishpress-hub')}
+                            {__('Go to the dashboard to get your license key', 'publishpress-hub')}
                         </Button>
                     </div>
 

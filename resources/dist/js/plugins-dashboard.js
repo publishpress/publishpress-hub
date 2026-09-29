@@ -1832,7 +1832,7 @@ var ModalLicenseInputComponent = function ModalLicenseInputComponent(_ref) {
     href: "https://publishpress.com/dashboard/?active_tab=licenses",
     target: "_blank",
     rel: "noopener noreferrer"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Go to my profile to get the license key', 'publishpress-hub'))), /*#__PURE__*/React.createElement(_license_key_control__WEBPACK_IMPORTED_MODULE_6__.LicenseKeyControl, {
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Go to the dashboard to get your license key', 'publishpress-hub'))), /*#__PURE__*/React.createElement(_license_key_control__WEBPACK_IMPORTED_MODULE_6__.LicenseKeyControl, {
     value: licenseKey,
     label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('License key', 'publishpress-hub'),
     className: "pp-hub-text-control pp-hub-license-input",
@@ -1982,7 +1982,7 @@ var ModalLicenseManagementComponent = function ModalLicenseManagementComponent(_
     href: "https://publishpress.com/dashboard/?active_tab=licenses",
     target: "_blank",
     rel: "noopener noreferrer"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Go to my profile to get the license key', 'publishpress-hub'))), /*#__PURE__*/React.createElement(_license_key_control__WEBPACK_IMPORTED_MODULE_6__.LicenseKeyControl, {
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Go to the dashboard to get your license key', 'publishpress-hub'))), /*#__PURE__*/React.createElement(_license_key_control__WEBPACK_IMPORTED_MODULE_6__.LicenseKeyControl, {
     value: licenseKey,
     label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('License key', 'publishpress-hub'),
     className: "pp-hub-text-control pp-hub-license-input",
