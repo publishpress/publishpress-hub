@@ -16,7 +16,8 @@
  */
 
 declare(strict_types=1);
-defined( 'ABSPATH' ) || exit;
+
+defined('ABSPATH') || exit;
 
 ?>
 <div id="publishpress-hub-welcome-page-container">

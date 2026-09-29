@@ -13,7 +13,8 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Contract;
-defined( 'ABSPATH' ) || exit;
+
+defined('ABSPATH') || exit;
 
 interface PluginFamilyRepositoryInterface
 {

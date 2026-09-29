@@ -13,7 +13,8 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Asset\Contract;
-defined( 'ABSPATH' ) || exit;
+
+defined('ABSPATH') || exit;
 
 /**
  * @since 1.0.0

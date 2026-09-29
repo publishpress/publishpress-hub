@@ -13,7 +13,8 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Contract;
-defined( 'ABSPATH' ) || exit;
+
+defined('ABSPATH') || exit;
 
 interface AccessInterface
 {

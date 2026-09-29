@@ -3,7 +3,8 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub;
-defined( 'ABSPATH' ) || exit;
+
+defined('ABSPATH') || exit;
 
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Service\RewriteRulesService;

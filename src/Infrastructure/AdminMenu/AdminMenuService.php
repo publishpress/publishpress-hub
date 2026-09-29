@@ -13,7 +13,8 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\AdminMenu;
-defined( 'ABSPATH' ) || exit;
+
+defined('ABSPATH') || exit;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;

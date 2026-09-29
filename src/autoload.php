@@ -13,7 +13,8 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub;
-defined( 'ABSPATH' ) || exit;
+
+defined('ABSPATH') || exit;
 
 use PublishPress\Hub\Infrastructure\Autoloader\Autoloader;
 use PublishPress\Hub\Infrastructure\Container\AbstractDependencies;

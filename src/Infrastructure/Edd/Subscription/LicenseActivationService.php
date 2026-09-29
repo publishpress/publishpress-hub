@@ -13,7 +13,8 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Edd\Subscription;
-defined( 'ABSPATH' ) || exit;
+
+defined('ABSPATH') || exit;
 
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseActivationException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseServerInvalidResponseException;

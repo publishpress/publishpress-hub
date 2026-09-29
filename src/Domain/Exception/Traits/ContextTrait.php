@@ -13,7 +13,8 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Exception\Traits;
-defined( 'ABSPATH' ) || exit;
+
+defined('ABSPATH') || exit;
 
 /**
  * Trait that provides context functionality for domain exceptions.

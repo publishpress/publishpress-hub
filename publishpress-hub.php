@@ -13,7 +13,7 @@
  * Requires PHP: 7.4
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 use function PublishPress\Hub\registerActivationHook;
 

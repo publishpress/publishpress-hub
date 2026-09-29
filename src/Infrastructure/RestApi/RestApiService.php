@@ -13,7 +13,8 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\RestApi;
-defined( 'ABSPATH' ) || exit;
+
+defined('ABSPATH') || exit;
 
 use Exception;
 use PublishPress\Hub\Application\Contract\BootableInterface;

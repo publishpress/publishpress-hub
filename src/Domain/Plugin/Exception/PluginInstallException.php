@@ -13,7 +13,8 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
-defined( 'ABSPATH' ) || exit;
+
+defined('ABSPATH') || exit;
 
 use PublishPress\Hub\Domain\Exception\Base\DomainException;
 use PublishPress\Hub\Domain\Exception\ExceptionCode;

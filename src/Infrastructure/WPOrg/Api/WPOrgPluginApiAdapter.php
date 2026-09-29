@@ -13,7 +13,8 @@
 declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WPOrg\Api;
-defined( 'ABSPATH' ) || exit;
+
+defined('ABSPATH') || exit;
 
 use RuntimeException;
 
