@@ -2395,7 +2395,7 @@ var ModalUpgradeComponent = function ModalUpgradeComponent(_ref) {
     onClick: function onClick() {
       return onBuyClick();
     }
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Upgrade to Pro and boost your productivity', 'publishpress-hub')));
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Upgrade to Pro', 'publishpress-hub')));
 };
 var ModalUpgrade = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(ModalUpgradeComponent);
 
