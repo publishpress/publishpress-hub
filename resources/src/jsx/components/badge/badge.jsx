@@ -17,7 +17,7 @@ const BadgeComponent = ({
 }) => {
     return (
         <span className={`pp-hub-badge ${className}`}>
-            {icon && <span className="pp-hub-badge-icon">{icon}</span>}
+            {icon && <span className="pp-hub-badge-icon" aria-hidden="true">{icon}</span>}
             {children}
         </span>
     );

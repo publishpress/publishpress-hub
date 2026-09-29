@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Remote;
 
+defined('ABSPATH') || exit;
+
 use WP_Error;
 
 class HttpDebugger
@@ -24,9 +26,61 @@ class HttpDebugger
 
     private const DEBUG_MODE_OPTION = 'publishpress_hub_debug_mode';
 
+    private const NON_JSON_BODY_REDACTED = '[non-JSON body redacted]';
+
+    private const REDACTED_VALUE = '[REDACTED]';
+
+    private const SENSITIVE_KEYS = [
+        'api_key',
+        'apikey',
+        'auth',
+        'authorization',
+        'bearer',
+        'client_secret',
+        'cookie',
+        'key',
+        'license',
+        'license_key',
+        'password',
+        'secret',
+        'token',
+    ];
+
+    private const DEFAULT_ALLOWED_REQUEST_HOSTS = [
+        'api.wordpress.org',
+        'downloads.wordpress.org',
+        'pkg.publishpress.com',
+        'publishpress.com',
+    ];
+
+    private const OMITTED_RESPONSE_KEYS = [
+        'activation_count',
+        'activations',
+        'activations_left',
+        'cookies',
+        'customer_email',
+        'customer_first_name',
+        'customer_last_name',
+        'customer_name',
+        'download_link',
+        'download_url',
+        'email',
+        'expiration',
+        'expiration_date',
+        'expires',
+        'headers',
+        'license_limit',
+        'site_count',
+    ];
+
     private static bool $initialized = false;
 
     private static ?string $logFilePath = null;
+
+    /**
+     * @var array<string>
+     */
+    private static array $allowedRequestHosts = self::DEFAULT_ALLOWED_REQUEST_HOSTS;
 
     /**
      * Returns the current UTC timestamp with millisecond precision.
@@ -55,6 +109,34 @@ class HttpDebugger
     public static function setLogFilePath(string $logFilePath): void
     {
         self::$logFilePath = $logFilePath;
+    }
+
+    /**
+     * Sets the URLs and hosts that may be logged by the HTTP debugger.
+     *
+     * @param string $eddSubscriptionApiUrl Configured EDD API endpoint URL.
+     * @param array<string> $downloadDomains Trusted plugin download domains.
+     * @return void
+     * @since 1.0.6
+     */
+    public static function setAllowedRequestUrls(string $eddSubscriptionApiUrl, array $downloadDomains = []): void
+    {
+        $allowedHosts = self::DEFAULT_ALLOWED_REQUEST_HOSTS;
+        $eddHost = self::extractHost($eddSubscriptionApiUrl);
+
+        if ($eddHost !== null) {
+            $allowedHosts[] = $eddHost;
+        }
+
+        foreach ($downloadDomains as $domain) {
+            $normalizedDomain = self::normalizeHost((string) $domain);
+
+            if ($normalizedDomain !== '') {
+                $allowedHosts[] = $normalizedDomain;
+            }
+        }
+
+        self::$allowedRequestHosts = array_values(array_unique($allowedHosts));
     }
 
     /**
@@ -94,15 +176,19 @@ class HttpDebugger
             return;
         }
 
+        if (!self::isAllowedRequestUrl($url)) {
+            return;
+        }
+
         $debugInfo = [
             'timestamp' => self::timestamp(),
             'method' => $parsed_args['method'] ?? 'GET',
             'url' => $url,
-            'body' => self::redactSensitiveFields($parsed_args['body'] ?? []),
+            'body' => self::sanitizeBody($parsed_args['body'] ?? []),
             'timeout' => $parsed_args['timeout'] ?? null,
             'sslverify' => $parsed_args['sslverify'] ?? null,
-            'headers' => $parsed_args['headers'] ?? [],
-            'cookies' => $parsed_args['cookies'] ?? [],
+            'headers' => self::sanitizeHeaders($parsed_args['headers'] ?? []),
+            'cookies' => self::sanitizeCookies($parsed_args['cookies'] ?? []),
             'user_agent' => $parsed_args['user-agent'] ?? null,
         ];
 
@@ -138,21 +224,7 @@ class HttpDebugger
             return;
         }
 
-        $debugInfo = (is_wp_error($response)) ? [
-            'timestamp' => self::timestamp(),
-            'error' => true,
-            'error_message' => $response->get_error_message(),
-            'error_code' => $response->get_error_code(),
-            'error_data' => $response->get_error_data(),
-        ] : [
-            'timestamp' => self::timestamp(),
-            'error' => false,
-            'status_code' => wp_remote_retrieve_response_code($response),
-            'status_message' => wp_remote_retrieve_response_message($response),
-            'headers' => wp_remote_retrieve_headers($response),
-            'body' => wp_remote_retrieve_body($response),
-            'cookies' => wp_remote_retrieve_cookies($response),
-        ];
+        $debugInfo = ['timestamp' => self::timestamp()] + self::formatResponse($response);
 
         self::log('RESPONSE', $debugInfo);
     }
@@ -168,6 +240,10 @@ class HttpDebugger
     public static function debugRawRequest(string $method, string $url, array $args): void
     {
         if (!self::isDebugEnabled()) {
+            return;
+        }
+
+        if (!self::isAllowedRequestUrl($url)) {
             return;
         }
 
@@ -196,12 +272,15 @@ class HttpDebugger
         $request .= 'Host: ' . ($parsedUrl['host'] ?? '') . "\r\n";
 
         $headers = $args['headers'] ?? [];
+        $headers = self::sanitizeHeaders(is_array($headers) ? $headers : []);
+
         foreach ($headers as $name => $value) {
-            $request .= $name . ': ' . $value . "\r\n";
+            $request .= $name . ': ' . self::formatHeaderValue($value) . "\r\n";
         }
 
         if (isset($args['body'])) {
-            $body = is_array($args['body']) ? http_build_query($args['body']) : $args['body'];
+            $sanitizedBody = self::sanitizeBody($args['body']);
+            $body = is_array($sanitizedBody) ? http_build_query($sanitizedBody) : (string) $sanitizedBody;
             $request .= 'Content-Length: ' . strlen($body) . "\r\n";
             $request .= "\r\n";
             $request .= $body;
@@ -248,9 +327,19 @@ class HttpDebugger
         );
 
         if (self::$logFilePath !== null) {
-            self::ensureLogDirectoryExists(dirname(self::$logFilePath));
+            if (!self::ensureLogDirectoryExists(dirname(self::$logFilePath))) {
+                return;
+            }
+
+            // WP_Filesystem has no locked append operation; keep concurrent local log entries intact.
             // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
-            file_put_contents(self::$logFilePath, $logMessage . "\n", FILE_APPEND | LOCK_EX);
+            $bytesWritten = file_put_contents(self::$logFilePath, $logMessage . "\n", FILE_APPEND | LOCK_EX);
+
+            if ($bytesWritten !== false) {
+                // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_chmod, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_chmod, WordPressVIPMinimum.Functions.RestrictedFunctions.chmod_chmod
+                chmod(self::$logFilePath, 0600);
+            }
+
             return;
         }
 
@@ -259,13 +348,13 @@ class HttpDebugger
     }
 
     /**
-     * Redacts sensitive fields from a request body before logging.
+     * Redacts sensitive fields before logging.
      *
      * Any field whose key matches a known sensitive name is replaced with
      * a masked value that preserves the first and last characters so the
      * key can still be identified in the log without exposing the full value.
      *
-     * @param mixed $body The raw request body (array or string).
+     * @param mixed $body The data to sanitize.
      * @return mixed The sanitized body.
      * @since 1.0.0
      */
@@ -275,24 +364,225 @@ class HttpDebugger
             return $body;
         }
 
-        $sensitiveKeys = ['license', 'license_key', 'key', 'secret', 'password', 'token', 'api_key'];
-
         foreach ($body as $field => $value) {
-            if (!in_array(strtolower((string) $field), $sensitiveKeys, true)) {
+            $normalizedField = self::normalizeSensitiveKey((string) $field);
+
+            if (in_array($normalizedField, self::OMITTED_RESPONSE_KEYS, true)) {
+                unset($body[$field]);
                 continue;
             }
 
-            $value = (string) $value;
-            $length = strlen($value);
-
-            if ($length <= 4) {
-                $body[$field] = str_repeat('*', $length);
-            } else {
-                $body[$field] = $value[0] . str_repeat('*', $length - 2) . $value[$length - 1];
+            if (self::isSensitiveKey($normalizedField)) {
+                $body[$field] = self::REDACTED_VALUE;
+                continue;
             }
+
+            if ($normalizedField === 'body' && is_string($value)) {
+                $body[$field] = self::sanitizeResponseBody($value);
+                continue;
+            }
+
+            $body[$field] = self::redactSensitiveFields($value);
         }
 
         return $body;
+    }
+
+    /**
+     * Sanitizes an HTTP response body for debug logging.
+     *
+     * @param string $rawBody The raw response body.
+     * @return string The sanitized JSON body or a redaction notice.
+     * @since 1.0.6
+     */
+    private static function sanitizeResponseBody(string $rawBody): string
+    {
+        $decodedBody = json_decode($rawBody, true);
+
+        if (!is_array($decodedBody)) {
+            return self::NON_JSON_BODY_REDACTED;
+        }
+
+        $safeBody = wp_json_encode(
+            self::redactSensitiveFields($decodedBody),
+            JSON_UNESCAPED_SLASHES
+        );
+
+        return is_string($safeBody) ? $safeBody : self::NON_JSON_BODY_REDACTED;
+    }
+
+    /**
+     * Sanitizes a request or response body before logging.
+     *
+     * @param mixed $body Body value.
+     * @return mixed Sanitized body.
+     * @since 1.0.6
+     */
+    private static function sanitizeBody($body)
+    {
+        if (is_array($body)) {
+            return self::redactSensitiveFields($body);
+        }
+
+        if (!is_string($body)) {
+            return $body;
+        }
+
+        $decodedJson = json_decode($body, true);
+        if (is_array($decodedJson)) {
+            $safeBody = wp_json_encode(self::redactSensitiveFields($decodedJson), JSON_UNESCAPED_SLASHES);
+
+            return is_string($safeBody) ? $safeBody : self::NON_JSON_BODY_REDACTED;
+        }
+
+        if (strpos($body, '=') === false) {
+            return self::NON_JSON_BODY_REDACTED;
+        }
+
+        parse_str($body, $parsedBody);
+        if (is_array($parsedBody) && !empty($parsedBody)) {
+            return http_build_query(self::redactSensitiveFields($parsedBody));
+        }
+
+        return self::NON_JSON_BODY_REDACTED;
+    }
+
+    /**
+     * Sanitizes request headers before logging.
+     *
+     * @param mixed $headers Request headers.
+     * @return array<string, mixed>
+     * @since 1.0.6
+     */
+    private static function sanitizeHeaders($headers): array
+    {
+        if (!is_array($headers)) {
+            return [];
+        }
+
+        foreach ($headers as $name => $value) {
+            if (self::isSensitiveKey(self::normalizeSensitiveKey((string) $name))) {
+                $headers[$name] = self::REDACTED_VALUE;
+                continue;
+            }
+
+            $headers[$name] = is_array($value) ? self::redactSensitiveFields($value) : $value;
+        }
+
+        return $headers;
+    }
+
+    /**
+     * Sanitizes cookies before logging.
+     *
+     * @param mixed $cookies Request cookies.
+     * @return array<string, string>|string
+     * @since 1.0.6
+     */
+    private static function sanitizeCookies($cookies)
+    {
+        if (empty($cookies)) {
+            return [];
+        }
+
+        return self::REDACTED_VALUE;
+    }
+
+    /**
+     * Checks whether the URL belongs to PublishPress Hub HTTP traffic.
+     *
+     * @param string $url Request URL.
+     * @return bool
+     * @since 1.0.6
+     */
+    private static function isAllowedRequestUrl(string $url): bool
+    {
+        $host = self::extractHost($url);
+
+        return $host !== null && in_array($host, self::$allowedRequestHosts, true);
+    }
+
+    /**
+     * Extracts and normalizes the host from a URL.
+     *
+     * @param string $url URL.
+     * @return string|null
+     * @since 1.0.6
+     */
+    private static function extractHost(string $url): ?string
+    {
+        $parsedUrl = wp_parse_url($url);
+
+        if (!is_array($parsedUrl) || empty($parsedUrl['host'])) {
+            return null;
+        }
+
+        $host = self::normalizeHost((string) $parsedUrl['host']);
+
+        return $host !== '' ? $host : null;
+    }
+
+    /**
+     * Normalizes a host for exact allowlist comparison.
+     *
+     * @param string $host Hostname.
+     * @return string
+     * @since 1.0.6
+     */
+    private static function normalizeHost(string $host): string
+    {
+        return rtrim(strtolower(trim($host)), '.');
+    }
+
+    /**
+     * Normalizes keys before sensitive-name comparison.
+     *
+     * @param string $key Field or header name.
+     * @return string
+     * @since 1.0.6
+     */
+    private static function normalizeSensitiveKey(string $key): string
+    {
+        return str_replace(['-', ' '], '_', strtolower($key));
+    }
+
+    /**
+     * Checks whether a key or header name is sensitive.
+     *
+     * @param string $normalizedKey Normalized field or header name.
+     * @return bool
+     * @since 1.0.6
+     */
+    private static function isSensitiveKey(string $normalizedKey): bool
+    {
+        if (in_array($normalizedKey, self::SENSITIVE_KEYS, true)) {
+            return true;
+        }
+
+        return strpos($normalizedKey, 'api_key') !== false
+            || strpos($normalizedKey, 'auth_token') !== false
+            || strpos($normalizedKey, 'authorization') !== false
+            || strpos($normalizedKey, 'bearer') !== false
+            || strpos($normalizedKey, 'cookie') !== false
+            || strpos($normalizedKey, 'password') !== false
+            || strpos($normalizedKey, 'secret') !== false
+            || strpos($normalizedKey, 'token') !== false;
+    }
+
+    /**
+     * Formats a sanitized header value for raw request logs.
+     *
+     * @param mixed $value Header value.
+     * @return string
+     * @since 1.0.6
+     */
+    private static function formatHeaderValue($value): string
+    {
+        if (is_array($value)) {
+            return implode(', ', array_map('strval', $value));
+        }
+
+        return (string) $value;
     }
 
     /**
@@ -319,17 +609,21 @@ class HttpDebugger
      * Ensure the target log directory exists before writing logs.
      *
      * @param string $logDir Absolute path to the log directory.
-     * @return void
+     * @return bool True when the directory is ready for secure log writes.
      * @since 1.0.0
      */
-    private static function ensureLogDirectoryExists(string $logDir): void
+    private static function ensureLogDirectoryExists(string $logDir): bool
     {
         if (is_dir($logDir)) {
-            return;
+            return true;
         }
 
-        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_mkdir, WordPressVIPMinimum.Functions.RestrictedFunctions.directory_mkdir
-        mkdir($logDir, 0755, true);
+        if (!wp_mkdir_p($logDir)) {
+            return false;
+        }
+
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_chmod, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_chmod, WordPressVIPMinimum.Functions.RestrictedFunctions.chmod_chmod
+        return chmod($logDir, 0700);
     }
 
     /**
@@ -346,11 +640,11 @@ class HttpDebugger
         return [
             'method' => $method,
             'url' => $url,
-            'body' => $args['body'] ?? [],
+            'body' => self::sanitizeBody($args['body'] ?? []),
             'timeout' => $args['timeout'] ?? null,
             'sslverify' => $args['sslverify'] ?? null,
-            'headers' => $args['headers'] ?? [],
-            'cookies' => $args['cookies'] ?? [],
+            'headers' => self::sanitizeHeaders($args['headers'] ?? []),
+            'cookies' => self::sanitizeCookies($args['cookies'] ?? []),
             'user_agent' => $args['user-agent'] ?? null,
         ];
     }
@@ -369,7 +663,6 @@ class HttpDebugger
                 'error' => true,
                 'error_message' => $response->get_error_message(),
                 'error_code' => $response->get_error_code(),
-                'error_data' => $response->get_error_data(),
             ];
         }
 
@@ -377,9 +670,7 @@ class HttpDebugger
             'error' => false,
             'status_code' => wp_remote_retrieve_response_code($response),
             'status_message' => wp_remote_retrieve_response_message($response),
-            'headers' => wp_remote_retrieve_headers($response),
-            'body' => wp_remote_retrieve_body($response),
-            'cookies' => wp_remote_retrieve_cookies($response),
+            'body' => self::sanitizeResponseBody(wp_remote_retrieve_body($response)),
         ];
     }
 }

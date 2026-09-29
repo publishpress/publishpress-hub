@@ -1591,6 +1591,11 @@ footer .pp-hub-footer-logo img {
     box-sizing: border-box;
 }
 
+.pp-hub-modal .pp-hub-license-key-masked {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
 .pp-hub-modal .pp-hub-modal-actions {
     display: flex;
     flex-direction: row;
@@ -1738,7 +1743,7 @@ footer .pp-hub-footer-logo img {
 }
 
 .pp-hub-plugins-list-item-inline-actions {
-    display: none;
+    display: flex;
     flex-direction: row;
     align-items: center;
     gap: var(--pp-hub-spacing-sm);
@@ -1747,6 +1752,17 @@ footer .pp-hub-footer-logo img {
     line-height: 24px;
     min-height: 24px;
     max-height: 24px;
+}
+
+/* Keep actions tabbable before focus enters rows without an activation toggle. */
+.pp-hub-plugins-list-item:not(.hovered):not(:focus-within) .pp-hub-plugins-list-item-inline-actions {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    min-height: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    pointer-events: none;
 }
 
 .pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-inline-actions {
@@ -2246,29 +2262,40 @@ button.publishpress-hub-filter-button:hover {
  */
 
 .pp-hub-message {
-    padding: var(--pp-hub-spacing-md);
-    border-radius: var(--pp-hub-radius-md);
+    margin: var(--pp-hub-spacing-md) 0;
+    padding: var(--pp-hub-spacing-md) var(--pp-hub-spacing-lg);
+    border: 1px solid var(--pp-hub-border-secondary);
+    border-left: 4px solid var(--pp-hub-border-secondary);
+    border-radius: 0;
     background-color: var(--pp-hub-bg-secondary);
     color: var(--pp-hub-text-primary);
+    font-size: var(--pp-hub-font-size-md);
+    line-height: var(--pp-hub-line-height-normal);
+    word-break: break-word;
 }
 
 .pp-hub-message.is-error {
     background-color: var(--pp-hub-bg-error);
+    border-color: var(--pp-hub-error-color);
     color: var(--pp-hub-text-error);
+    font-weight: var(--pp-hub-font-weight-semibold);
 }
 
 .pp-hub-message.is-success {
     background-color: var(--pp-hub-bg-success);
+    border-color: var(--pp-hub-success-color);
     color: var(--pp-hub-text-success);
 }
 
 .pp-hub-message.is-warning {
     background-color: var(--pp-hub-bg-warning);
+    border-color: var(--pp-hub-warning-color);
     color: var(--pp-hub-text-warning);
 }
 
 .pp-hub-message.is-info {
     background-color: var(--pp-hub-bg-info);
+    border-color: var(--pp-hub-info-color);
     color: var(--pp-hub-text-info);
 }
 
@@ -2318,10 +2345,29 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
 .components-notice.is-warning,
 .components-notice.is-error {
     background-color: var(--pp-hub-bg-primary);
-    padding: 0 12px;
+    padding: 12px 16px;
     border-top: 1px solid var(--pp-hub-border-secondary);
     border-right: 1px solid var(--pp-hub-border-secondary);
     border-bottom: 1px solid var(--pp-hub-border-secondary);
+    border-left-width: 4px;
+    border-left-style: solid;
+    box-shadow: var(--pp-hub-shadow-sm);
+}
+
+.components-notice.is-error {
+    background-color: var(--pp-hub-bg-error);
+    border-color: var(--pp-hub-error-color);
+}
+
+.components-notice.is-error .components-notice__content {
+    color: var(--pp-hub-text-primary);
+    font-weight: var(--pp-hub-font-weight-semibold);
+}
+
+.components-notice .components-notice__content {
+    margin: 0;
+    line-height: var(--pp-hub-line-height-normal);
+    word-break: break-word;
 }
 
 .components-notice .components-notice__dismiss {
@@ -2449,6 +2495,23 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
 
 .pp-hub-settings-tabs .components-tab-panel__tab-content {
     margin-top: var(--pp-hub-spacing-lg);
+}
+
+.pp-hub-settings-page {
+    position: relative;
+}
+
+.pp-hub-settings-page__notice {
+    margin-bottom: var(--pp-hub-spacing-md);
+}
+
+.pp-hub-settings-page__report-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--pp-hub-spacing-sm);
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 /* ------------------------------------------------------------------ */
@@ -2828,6 +2891,11 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
     .pp-hub-debug-log-tab__toolbar {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .pp-hub-settings-page__report-actions {
+        margin-top: var(--pp-hub-spacing-md);
+        position: static;
     }
 }
 

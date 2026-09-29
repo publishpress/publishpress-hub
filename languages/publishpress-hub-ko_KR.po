@@ -4,39 +4,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Hub 1.0.4-beta.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
-"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
-"PO-Revision-Date: 2026-06-01 20:25+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: ko_KR\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
+"PO-Revision-Date: 2026-09-16 11:33+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
+"Language: ko_KR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: publishpress-hub.php:4
+#: src/Admin/Page/WelcomePageController.php:259
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:121
 #. Plugin Name of the plugin
-#: publishpress-hub.php:4 src/Admin/Page/WelcomePageController.php:259
 msgid "PublishPress Hub"
 msgstr "퍼블리시프레스 허브"
 
-#. Description of the plugin
 #: publishpress-hub.php:5
+#. Description of the plugin
 msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
-msgstr ""
-"모든 PublishPress 플러그인을 위한 중앙 집중식 관리 허브 - 하나의 대시보드에"
-"서 설치, 업데이트 및 라이센스를 관리합니다."
+msgstr "모든 PublishPress 플러그인을 위한 중앙 집중식 관리 허브 - 하나의 대시보드에서 설치, 업데이트 및 라이센스를 관리합니다."
 
-#. Author of the plugin
 #: publishpress-hub.php:7
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "퍼블리시프레스"
 
-#. Author URI of the plugin
 #: publishpress-hub.php:8
+#. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
@@ -50,7 +50,9 @@ msgstr "플러그인 대시보드를 로드하는 동안 잠시 기다려 주십
 
 #: src/Admin/Page/SettingsPageController.php:104
 #: src/Admin/Page/SettingsPageController.php:105
-#: resources/src/jsx/components/pages/settings-page.jsx:80
+#: resources/dist/js/settings-page.js:466
+#: resources/src/jsx/components/pages/settings-page.jsx:81
+#: resources/dist/js/settings-page.js:411
 msgid "Settings"
 msgstr "설정"
 
@@ -71,19 +73,19 @@ msgstr "환영합니다"
 msgid "Please wait while we load the welcome page..."
 msgstr "환영 페이지를 로드하는 동안 잠시 기다려 주십시오..."
 
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:114
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "경고: %1$s의 라이센스가 만료되었습니다. %2$s"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:123
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:137
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:116
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:130
 msgid "Manage licenses"
 msgstr "라이센스 관리"
 
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:127
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "경고: %1$d 개의 플러그인에 만료된 라이센스가 있습니다: %2$s. %3$s"
@@ -92,42 +94,170 @@ msgstr "경고: %1$d 개의 플러그인에 만료된 라이센스가 있습니�
 msgid "Object must be loaded before initializing."
 msgstr "초기화하기 전에 객체를 로드해야 합니다."
 
-#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:110
+#: src/Application/UseCase/Plugin/ActivateLicenseUseCase.php:157
+#: resources/dist/js/plugins-dashboard.js:1990
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:122
+#: resources/dist/js/plugins-dashboard.js:1623
+msgid ""
+"This license key is managed in wp-config.php and cannot be edited from the "
+"Hub."
+msgstr "이 라이센스 키는 wp-config.php에서 관리되며 Hub에서 편집할 수 없습니다."
+
+#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:116
 msgid "No license key found"
 msgstr "라이센스 키를 찾을 수 없습니다"
 
-#. translators: %s is the plugin family slug
+#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:138
+msgid ""
+"This license key is managed in wp-config.php and cannot be deactivated from "
+"the Hub."
+msgstr "이 라이센스 키는 wp-config.php에서 관리되며 Hub에서 비활성화할 수 없습니다."
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:88
+msgid "Database Tables"
+msgstr "데이터베이스 테이블"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:93
+msgid "PublishPress Plugins"
+msgstr "PublishPress 플러그인"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:99
+msgid "PublishPress Hub Debug Log"
+msgstr "PublishPress Hub 디버그 로그"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:102
+#: resources/dist/js/settings-page.js:432
+#: resources/src/jsx/components/pages/settings-page.jsx:40
+#: resources/dist/js/settings-page.js:370
+msgid "Debug Log"
+msgstr "디버그 로그"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:103
+msgid "The debug log is empty."
+msgstr "디버그 로그가 비어 있습니다."
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:124
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:314
+msgid "Version"
+msgstr "버전"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:128
+#: resources/dist/js/settings-page.js:1240
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
+#: resources/dist/js/settings-page.js:993
+msgid "Debug Mode"
+msgstr "디버그 모드"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:130
+msgid "Enabled"
+msgstr "활성화됨"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:131
+msgid "Disabled"
+msgstr "비활성화됨"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:134
+msgid "Generated At"
+msgstr "생성 일시"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:188
+msgid "Plugins"
+msgstr "플러그인"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:189
+msgid "No PublishPress plugins found."
+msgstr "발견된 PublishPress 플러그인이 없습니다."
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:213
+msgid "Tables"
+msgstr "테이블"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:214
+msgid "No database table information was available."
+msgstr "사용 가능한 데이터베이스 테이블 정보가 없습니다."
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:238
+msgid "Size"
+msgstr "크기"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:240
+msgid "Engine"
+msgstr "엔진"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:242
+msgid "Rows"
+msgstr "행"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:244
+msgid "Collation"
+msgstr "정렬"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:246
+msgid "Charset"
+msgstr "문자 세트"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:253
+msgid "Total Database Size"
+msgstr "총 데이터베이스 크기"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:308
+#: resources/dist/js/plugins-dashboard.js:1210
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:66
+#: resources/dist/js/plugins-dashboard.js:960
+msgid "Not installed"
+msgstr "설치되지 않음"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:313
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:322
+#: resources/dist/js/plugins-dashboard.js:1202
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:56
+#: resources/dist/js/plugins-dashboard.js:950
+msgid "Active"
+msgstr "활성"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:313
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:322
+#: resources/dist/js/plugins-dashboard.js:1206
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:61
+#: resources/dist/js/plugins-dashboard.js:955
+msgid "Inactive"
+msgstr "비활성"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:315
+msgid "unknown"
+msgstr "알 수 없음"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:321
+msgid "License"
+msgstr "라이선스"
+
 #: src/Domain/Plugin/Entity/PluginFamily.php:128
+#. translators: %s is the plugin family slug
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr "플러그인 가족에 대해 설정되지 않은 무료 플러그인: %s"
 
-#. translators: %s is the plugin family slug
 #: src/Domain/Plugin/Entity/PluginFamily.php:150
+#. translators: %s is the plugin family slug
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr "플러그인 가족에 대해 설정되지 않은 프로 플러그인: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:28
 msgid ""
-"License activation error. Please try again later or contact support for help."
-msgstr ""
-"라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시"
-"오."
+"License activation error. Please try again later or contact support for "
+"help."
+msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
 msgid ""
 "License deactivation error. Please try again later or contact support for "
 "help."
-msgstr ""
-"라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시"
-"오."
+msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
 msgid "This license is currently disabled. Please contact support for help."
-msgstr ""
-"이 라이선스는 현재 비활성화되어 있습니다. 도움을 받으시려면 지원팀에 문의하십"
-"시오."
+msgstr "이 라이선스는 현재 비활성화되어 있습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
 msgid "This license has expired. Please contact support to renew it."
@@ -135,33 +265,30 @@ msgstr "이 라이선스는 만료되었습니다. 갱신을 원하시면 지원
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
 msgid ""
-"This license key is not authorized for this plugin. Please verify your "
-"license key or contact support for help."
+"This license key could not be activated. It may be invalid, blocked, or not "
+"authorized for this plugin. Please verify the key and contact PublishPress "
+"support if the problem continues."
 msgstr ""
-"이 라이선스는 이 사이트에 대해 비활성 상태입니다. 도움을 받으시려면 지원팀에 "
-"문의하십시오."
+"이 라이선스 키를 활성화할 수 없습니다. 유효하지 않거나, 차단되었거나, 이 플러그인에 대해 권한이 없을 수 있습니다. 키를 확인하고 "
+"문제가 계속되면 PublishPress 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
 msgid ""
-"This license cannot be used for this plugin. Please contact support for help."
-msgstr ""
-"이 라이선스는 활성화할 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
+"This license cannot be used for this plugin. Please contact support for "
+"help."
+msgstr "이 라이선스는 활성화할 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
 msgid ""
 "This license does not match the plugin you are trying to activate. Please "
 "contact support for assistance."
-msgstr ""
-"이 라이선스는 이 사이트에 대해 비활성 상태입니다. 도움을 받으시려면 지원팀에 "
-"문의하십시오."
+msgstr "이 라이선스는 이 사이트에 대해 비활성 상태입니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
 msgid ""
 "License key does not match our records. Please contact support for "
 "assistance."
-msgstr ""
-"이 라이선스는 현재 비활성화되어 있습니다. 도움을 받으시려면 지원팀에 문의하십"
-"시오."
+msgstr "이 라이선스는 현재 비활성화되어 있습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseMissingException.php:28
 msgid "No license key provided. Please enter a valid license key."
@@ -169,11 +296,9 @@ msgstr "제공된 라이선스 키가 없습니다. 유효한 라이선스 키�
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
 msgid ""
-"Your site URL is required to activate the license. Please enter a valid site "
-"URL to continue."
-msgstr ""
-"라이센스를 활성화하려면 사이트 URL이 필요합니다. 계속하려면 유효한 사이트 URL"
-"을 입력하세요."
+"Your site URL is required to activate the license. Please enter a valid "
+"site URL to continue."
+msgstr "라이센스를 활성화하려면 사이트 URL이 필요합니다. 계속하려면 유효한 사이트 URL을 입력하세요."
 
 #: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
 msgid ""
@@ -183,34 +308,26 @@ msgstr "이 라이선스는 만료되었습니다. 갱신을 원하시면 지원
 
 #: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
 msgid "This license cannot be activated. Please contact support for help."
-msgstr ""
-"이 라이선스는 활성화할 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
+msgstr "이 라이선스는 활성화할 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseServerException.php:28
-msgid ""
-"License server error. Please try again later or contact support for help."
-msgstr ""
-"라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시"
-"오."
+msgid "License server error. Please try again later or contact support for help."
+msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
 msgid ""
 "The license server returned an invalid response. Please try again later or "
 "contact support for help."
-msgstr ""
-"라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시"
-"오."
+msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
 
 #: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
-msgid ""
-"This license is inactive for this site. Please contact support for help."
-msgstr ""
-"이 라이선스는 이 사이트에 대해 비활성 상태입니다. 도움을 받으시려면 지원팀에 "
-"문의하십시오."
+msgid "This license is inactive for this site. Please contact support for help."
+msgstr "이 라이선스는 이 사이트에 대해 비활성 상태입니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:29
 msgid ""
-"Plugin activation failed. Please try again later or contact support for help."
+"Plugin activation failed. Please try again later or contact support for "
+"help."
 msgstr "플러그인 설치에 실패했습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
@@ -221,14 +338,11 @@ msgstr "플러그인이 이미 설치되어 있어 이 작업을 수행할 수 �
 msgid ""
 "Plugin deactivation failed. Please try again later or contact support for "
 "help."
-msgstr ""
-"라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시"
-"오."
+msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
 
 #: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
 msgid "Plugin family not found. Please contact support for help."
-msgstr ""
-"플러그인 패밀리를 찾을 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
+msgstr "플러그인 패밀리를 찾을 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
 msgid ""
@@ -247,28 +361,22 @@ msgid ""
 msgstr "플러그인이 이미 설치되어 있어 이 작업을 수행할 수 없습니다."
 
 #: src/Domain/Plugin/Exception/PluginNotFoundException.php:29
-#, fuzzy
 msgid ""
 "Plugin not found in our available plugins list. Please contact support for "
 "help."
-msgstr ""
-"플러그인 패밀리를 찾을 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
+msgstr "플러그인 패밀리를 찾을 수 없습니다. 도움을 받으시려면 지원팀에 문의하십시오."
 
 #: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
-#, fuzzy
 msgid ""
 "This action is not possible because the plugin is not installed. Please "
 "install the plugin and try again."
 msgstr "플러그인이 이미 설치되어 있어 이 작업을 수행할 수 없습니다."
 
 #: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
-#, fuzzy
 msgid ""
 "Unknown license server error. Please try again later or contact support for "
 "help."
-msgstr ""
-"라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시"
-"오."
+msgstr "라이선스 서버 오류입니다. 나중에 다시 시도하시거나 지원팀에 도움을 요청하십시오."
 
 #: src/Domain/Plugin/plugin-families.php:26
 msgid "Define tasks that authors must complete before publishing."
@@ -314,23 +422,31 @@ msgstr "게시물 및 외부 링크에 대한 사용자 정의 URL을 생성합�
 msgid "Create custom statuses and publishing workflows."
 msgstr "사용자 정의 상태 및 게시 워크플로를 생성하세요."
 
-#. translators: %s is the dependency ID.
 #: src/Infrastructure/Container/DependencyContainer.php:102
+#. translators: %s is the dependency ID.
 #, php-format
 msgid "Dependency \"%s\" not found in container."
 msgstr "의존성 \"%s\"를 컨테이너에서 찾을 수 없습니다."
 
-#. translators: %s is the error message
 #: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
+#. translators: %s is the error message
 #, php-format
 msgid "Error validating license: %s"
 msgstr "라이센스 검증 오류: %s"
 
-#. translators: %s is the error message
 #: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
+#. translators: %s is the error message
 #, php-format
 msgid "Error getting license info: %s"
 msgstr "라이센스 정보 가져오기 오류: %s"
+
+#: src/Infrastructure/Remote/Exception/RemoteAccessDeniedException.php:29
+msgid ""
+"The license server denied this request. This can happen when a license key "
+"or site has been blocked. Please contact PublishPress support for help."
+msgstr ""
+"라이선스 서버가 이 요청을 거부했습니다. 라이선스 키나 사이트가 차단된 경우에 발생할 수 있습니다. 도움을 받으려면 "
+"PublishPress 지원팀에 문의하십시오."
 
 #: src/Infrastructure/RestApi/RestApiService.php:287
 msgid "Too many requests. Please try again later."
@@ -340,8 +456,8 @@ msgstr "요청이 너무 많습니다. 나중에 다시 시도하세요."
 msgid "An error occurred while processing your request."
 msgstr "요청을 처리하는 동안 오류가 발생했습니다."
 
-#. translators: %s is the template path
 #: src/Infrastructure/View/ViewService.php:48
+#. translators: %s is the template path
 #, php-format
 msgid "Template not found: %s"
 msgstr "템플릿을 찾을 수 없습니다: %s"
@@ -362,8 +478,8 @@ msgstr "잘못된 파일 경로: 널 바이트가 감지되었습니다"
 msgid "Invalid file path: directory traversal detected"
 msgstr "잘못된 파일 경로: 디렉토리 탐색이 감지되었습니다"
 
-#. translators: %s is the directory path
 #: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
+#. translators: %s is the directory path
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "잘못된 파일 경로: 상위 디렉토리가 존재하지 않습니다: %s"
@@ -376,935 +492,1426 @@ msgstr "잘못된 파일 경로: 경로를 해결할 수 없습니다"
 msgid "Invalid file path: operation not allowed outside permitted directories"
 msgstr "잘못된 파일 경로: 허용된 디렉토리 외부에서의 작업이 허용되지 않습니다"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:52
-msgid "Invalid download URL provided"
-msgstr "제공된 다운로드 URL이 잘못되었습니다"
-
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:60
-msgid "Download URL must use HTTP or HTTPS protocol"
-msgstr "다운로드 URL은 HTTP 또는 HTTPS 프로토콜을 사용해야 합니다"
-
-#. translators: %s is the hostname
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:69
-#, php-format
-msgid "Download URL is not from an allowed domain: %s"
-msgstr "다운로드 URL이 허용된 도메인에서 오지 않습니다: %s"
-
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:80
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:56
 msgid "Download URL failed WordPress validation"
 msgstr "다운로드 URL이 WordPress 검증에 실패했습니다"
 
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:72
 #. translators: %s is the error message
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:96
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr "플러그인 다운로드에 실패했습니다: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:105
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:81
 msgid "Downloaded plugin file does not exist"
 msgstr "다운로드된 플러그인 파일이 존재하지 않습니다"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:113
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:89
 msgid "Downloaded plugin file is empty"
 msgstr "다운로드된 플러그인 파일이 비어 있습니다"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:122
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:98
 msgid "Cannot read downloaded plugin file"
 msgstr "다운로드된 플러그인 파일을 읽을 수 없습니다"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:132
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:108
 msgid ""
 "Downloaded file is not a valid ZIP archive. The download URL may be "
 "returning an error page."
-msgstr ""
-"다운로드한 파일은 유효한 ZIP 아카이브가 아닙니다. 다운로드 URL이 오류 페이지"
-"를 반환할 수 있습니다."
+msgstr "다운로드한 파일은 유효한 ZIP 아카이브가 아닙니다. 다운로드 URL이 오류 페이지를 반환할 수 있습니다."
 
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:124
 #. translators: %s is the error message
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:148
 #, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "플러그인 파일 압축 해제에 실패했습니다: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:156
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:132
 msgid "Failed to unzip plugin file"
 msgstr "플러그인 파일 압축 해제에 실패했습니다"
 
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:154
 #. translators: %s is the error message
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:178
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "플러그인 활성화에 실패했습니다: %s"
 
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:223
 #. translators: %s is the error message
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:247
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "플러그인 삭제에 실패했습니다: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:292
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:273
 msgid "No update available for this plugin"
 msgstr "이 플러그인에 대한 업데이트가 없습니다"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:300
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:282
 msgid "Invalid update information for this plugin"
 msgstr "이 플러그인에 대한 잘못된 업데이트 정보입니다"
 
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:315
 #. translators: %s is the error message
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:333
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "플러그인 업데이트에 실패했습니다: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:341
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:323
 msgid "Plugin update failed"
 msgstr "플러그인 업데이트에 실패했습니다"
 
-#. translators: %s is the error message
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:442
+msgid "Invalid download URL provided"
+msgstr "제공된 다운로드 URL이 잘못되었습니다"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:449
+msgid "Download URL must use HTTP or HTTPS protocol"
+msgstr "다운로드 URL은 HTTP 또는 HTTPS 프로토콜을 사용해야 합니다"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:458
+#. translators: %s is the hostname
+#, php-format
+msgid "Download URL is not from an allowed domain: %s"
+msgstr "다운로드 URL이 허용된 도메인에서 오지 않습니다: %s"
+
 #: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
+#. translators: %s is the error message
 #, php-format
 msgid "Failed to get plugin information: %s"
 msgstr "플러그인 정보를 가져오는 데 실패했습니다: %s"
 
-#. translators: %s is the plugin name, %s is the rating
+#: resources/dist/js/components-showcase.js:87
+#: resources/dist/js/plugins-dashboard.js:88
+#: resources/dist/js/settings-page.js:87
+#: resources/dist/js/welcome-page.js:87
 #: resources/src/jsx/components/admin-page/footer.jsx:26
+#: resources/dist/js/components-showcase.js:63
+#: resources/dist/js/plugins-dashboard.js:63
+#: resources/dist/js/settings-page.js:63
+#: resources/dist/js/welcome-page.js:63
+#. translators: %s is the plugin name, %s is the rating
+#, js-format
 msgid "If you like %s please leave us a %s rating. Thank you!"
 msgstr "%s가 마음에 드신다면, %s 평가를 남겨주세요. 감사합니다!"
 
-#. translators: %s is the plugin name
+#: resources/dist/js/components-showcase.js:98
+#: resources/dist/js/plugins-dashboard.js:99
+#: resources/dist/js/settings-page.js:98
+#: resources/dist/js/welcome-page.js:98
 #: resources/src/jsx/components/admin-page/footer.jsx:43
+#: resources/dist/js/components-showcase.js:80
+#: resources/dist/js/plugins-dashboard.js:80
+#: resources/dist/js/settings-page.js:80
+#: resources/dist/js/welcome-page.js:80
+#. translators: %s is the plugin name
+#, js-format
 msgid "About %s"
 msgstr "%s에 대하여"
 
+#: resources/dist/js/components-showcase.js:99
+#: resources/dist/js/plugins-dashboard.js:100
+#: resources/dist/js/settings-page.js:99
+#: resources/dist/js/welcome-page.js:99
 #: resources/src/jsx/components/admin-page/footer.jsx:45
+#: resources/dist/js/components-showcase.js:82
+#: resources/dist/js/plugins-dashboard.js:82
+#: resources/dist/js/settings-page.js:82
+#: resources/dist/js/welcome-page.js:82
 msgid "About"
 msgstr "정보"
 
-#. translators: %s is the plugin name
+#: resources/dist/js/components-showcase.js:104
+#: resources/dist/js/plugins-dashboard.js:105
+#: resources/dist/js/settings-page.js:104
+#: resources/dist/js/welcome-page.js:104
 #: resources/src/jsx/components/admin-page/footer.jsx:54
+#: resources/dist/js/components-showcase.js:91
+#: resources/dist/js/plugins-dashboard.js:91
+#: resources/dist/js/settings-page.js:91
+#: resources/dist/js/welcome-page.js:91
+#. translators: %s is the plugin name
+#, js-format
 msgid "Documentation for %s"
 msgstr "%s에 대한 문서"
 
+#: resources/dist/js/components-showcase.js:105
+#: resources/dist/js/plugins-dashboard.js:106
+#: resources/dist/js/settings-page.js:105
+#: resources/dist/js/welcome-page.js:105
 #: resources/src/jsx/components/admin-page/footer.jsx:56
+#: resources/dist/js/components-showcase.js:93
+#: resources/dist/js/plugins-dashboard.js:93
+#: resources/dist/js/settings-page.js:93
+#: resources/dist/js/welcome-page.js:93
 msgid "Documentation"
 msgstr "문서"
 
-#. translators: %s is the plugin name
+#: resources/dist/js/components-showcase.js:110
+#: resources/dist/js/plugins-dashboard.js:111
+#: resources/dist/js/settings-page.js:110
+#: resources/dist/js/welcome-page.js:110
 #: resources/src/jsx/components/admin-page/footer.jsx:65
+#: resources/dist/js/components-showcase.js:102
+#: resources/dist/js/plugins-dashboard.js:102
+#: resources/dist/js/settings-page.js:102
+#: resources/dist/js/welcome-page.js:102
+#. translators: %s is the plugin name
+#, js-format
 msgid "Contact the %s team"
 msgstr "%s 팀에 연락하기"
 
+#: resources/dist/js/components-showcase.js:111
+#: resources/dist/js/plugins-dashboard.js:112
+#: resources/dist/js/settings-page.js:111
+#: resources/dist/js/welcome-page.js:111
 #: resources/src/jsx/components/admin-page/footer.jsx:67
+#: resources/dist/js/components-showcase.js:104
+#: resources/dist/js/plugins-dashboard.js:104
+#: resources/dist/js/settings-page.js:104
+#: resources/dist/js/welcome-page.js:104
 msgid "Contact"
 msgstr "연락처"
 
+#: resources/dist/js/components-showcase.js:188
+#: resources/dist/js/plugins-dashboard.js:190
+#: resources/dist/js/settings-page.js:188
+#: resources/dist/js/welcome-page.js:188
 #: resources/src/jsx/components/admin-page/header.jsx:50
+#: resources/dist/js/components-showcase.js:168
+#: resources/dist/js/plugins-dashboard.js:168
+#: resources/dist/js/settings-page.js:168
+#: resources/dist/js/welcome-page.js:168
 msgid "Get Support"
 msgstr "지원 받기"
 
-#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
-msgid "Select an option"
-msgstr "옵션 선택"
-
-#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
-msgid "Options"
-msgstr "옵션"
-
+#: resources/dist/js/components-showcase.js:445
 #: resources/src/jsx/components/pages/components-showcase.jsx:26
+#: resources/dist/js/components-showcase.js:385
 msgid "Components Showcase"
 msgstr "구성 요소 쇼케이스"
 
+#: resources/dist/js/plugins-dashboard.js:479
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
+#: resources/dist/js/plugins-dashboard.js:403
+msgid "Select an option"
+msgstr "옵션 선택"
+
+#: resources/dist/js/plugins-dashboard.js:485
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
+#: resources/dist/js/plugins-dashboard.js:411
+msgid "Options"
+msgstr "옵션"
+
+#: resources/dist/js/plugins-dashboard.js:496
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:66
+#: resources/dist/js/plugins-dashboard.js:425
+msgid "Filter plugins by status"
+msgstr "상태별로 플러그인 필터링"
+
+#: resources/dist/js/plugins-dashboard.js:1011
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
+#: resources/dist/js/plugins-dashboard.js:757
 msgid "N/A"
 msgstr "해당 없음"
 
-#. translators: %1$s is the plugin name, %2$s is the expiration date
+#: resources/dist/js/plugins-dashboard.js:1053
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
+#: resources/dist/js/plugins-dashboard.js:804
+#. translators: %1$s is the plugin name, %2$s is the expiration date
+#, js-format
 msgid "The license for %1$s expired on %2$s"
 msgstr "%1$s의 라이센스가 %2$s에 만료되었습니다"
 
-#. translators: %1$s is the list of plugin names, %2$s is the expiration date
+#: resources/dist/js/plugins-dashboard.js:1057
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
+#: resources/dist/js/plugins-dashboard.js:811
+#. translators: %1$s is the list of plugin names, %2$s is the expiration date
+#, js-format
 msgid "The licenses for %1$s expired on %2$s"
 msgstr "%1$s의 라이센스가 %2$s에 만료되었습니다"
 
+#: resources/dist/js/plugins-dashboard.js:1063
+#: resources/dist/js/plugins-dashboard.js:1105
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:157
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:213
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:212
+#: resources/dist/js/plugins-dashboard.js:821
+#: resources/dist/js/plugins-dashboard.js:876
 msgid "Renew now"
 msgstr "지금 갱신하기"
 
+#: resources/dist/js/plugins-dashboard.js:1095
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:193
+#: resources/dist/js/plugins-dashboard.js:857
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:194
+#, js-format
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr "%1$s의 라이센스는 %2$s에 만료됩니다 (%3$d일 남음)"
 
+#: resources/dist/js/plugins-dashboard.js:1099
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:201
+#: resources/dist/js/plugins-dashboard.js:865
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:202
+#, js-format
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr "%1$s의 라이센스는 %2$s에 만료됩니다 (%3$d일 남음)"
 
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:210
+#: resources/dist/js/plugins-dashboard.js:1102
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:209
+#: resources/dist/js/plugins-dashboard.js:873
 msgid "Warning:"
 msgstr "경고:"
 
+#: resources/dist/js/plugins-dashboard.js:1194
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:46
+#: resources/dist/js/plugins-dashboard.js:940
 msgid "All"
 msgstr "모두"
 
+#: resources/dist/js/plugins-dashboard.js:1198
+#: resources/dist/js/plugins-dashboard.js:2632
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:51
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:39
+#: resources/dist/js/plugins-dashboard.js:945
+#: resources/dist/js/plugins-dashboard.js:2287
 msgid "Unlicensed"
 msgstr "라이센스 없음"
 
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:56
-msgid "Active"
-msgstr "활성"
-
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:61
-msgid "Inactive"
-msgstr "비활성"
-
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:66
-msgid "Not installed"
-msgstr "설치되지 않음"
-
+#: resources/dist/js/plugins-dashboard.js:1214
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:71
+#: resources/dist/js/plugins-dashboard.js:965
 msgid "Updates available"
 msgstr "업데이트 가능"
 
+#: resources/dist/js/plugins-dashboard.js:1232
+#: resources/dist/js/welcome-page.js:496
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:94
 #: resources/src/jsx/components/pages/welcome-page.jsx:128
+#: resources/dist/js/plugins-dashboard.js:988
+#: resources/dist/js/welcome-page.js:458
 msgid "Plugins Dashboard"
 msgstr "플러그인 대시보드"
 
+#: resources/dist/js/plugins-dashboard.js:1276
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
-msgid "Hold ALT and click to force refresh the update cache"
-msgstr "ALT를 누른 채로 클릭하여 업데이트 캐시를 강제로 새로 고침합니다"
+#: resources/dist/js/plugins-dashboard.js:1034
+msgid ""
+"To force a refresh, hold Option on Mac or Alt on Windows and then click "
+"Refresh."
+msgstr "새로 고침을 강제하려면 Mac에서는 Option 키를, Windows에서는 Alt 키를 누른 상태에서 새로 고침을 클릭하세요."
 
+#: resources/dist/js/plugins-dashboard.js:1289
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
+#: resources/dist/js/plugins-dashboard.js:1052
 msgid "Force Refresh"
 msgstr "강제 새로 고침"
 
+#: resources/dist/js/plugins-dashboard.js:1289
+#: resources/dist/js/settings-page.js:1093
 #: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:300
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:307
+#: resources/dist/js/plugins-dashboard.js:1052
+#: resources/dist/js/settings-page.js:867
 msgid "Refresh"
 msgstr "새로 고침"
 
-#: resources/src/jsx/components/pages/settings-page.jsx:31
+#: resources/dist/js/plugins-dashboard.js:1346
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
+#: resources/dist/js/plugins-dashboard.js:1097
+msgid "Install"
+msgstr "설치"
+
+#: resources/dist/js/plugins-dashboard.js:1347
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:22
+#: resources/dist/js/plugins-dashboard.js:1098
+msgid "Installing..."
+msgstr "설치 중..."
+
+#: resources/dist/js/plugins-dashboard.js:1352
+#: resources/dist/js/plugins-dashboard.js:2311
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28
+#: resources/dist/js/plugins-dashboard.js:1103
+#: resources/dist/js/plugins-dashboard.js:1964
+msgid "Upgrade to Pro"
+msgstr "Pro로 업그레이드"
+
+#: resources/dist/js/plugins-dashboard.js:1353
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:28
+#: resources/dist/js/plugins-dashboard.js:1104
+msgid "Upgrading to Pro..."
+msgstr "Pro로 업그레이드 중..."
+
+#: resources/dist/js/plugins-dashboard.js:1358
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
+#: resources/dist/js/plugins-dashboard.js:1109
+msgid "Manage License"
+msgstr "라이센스 관리"
+
+#: resources/dist/js/plugins-dashboard.js:1359
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:34
+#: resources/dist/js/plugins-dashboard.js:1110
+msgid "Managing License..."
+msgstr "라이센스 관리 중..."
+
+#: resources/dist/js/plugins-dashboard.js:1364
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
+#: resources/dist/js/plugins-dashboard.js:1115
+msgid "Activate License"
+msgstr "라이센스 활성화"
+
+#: resources/dist/js/plugins-dashboard.js:1365
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:40
+#: resources/dist/js/plugins-dashboard.js:1116
+msgid "Activating License..."
+msgstr "라이센스 활성화 중..."
+
+#: resources/dist/js/plugins-dashboard.js:1370
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
+#: resources/dist/js/plugins-dashboard.js:1121
+msgid "Resolve Conflict"
+msgstr "충돌 해결"
+
+#: resources/dist/js/plugins-dashboard.js:1371
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
+#: resources/dist/js/plugins-dashboard.js:1122
+msgid "Resolving Conflict..."
+msgstr "충돌 해결 중..."
+
+#: resources/dist/js/plugins-dashboard.js:1376
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
+#: resources/dist/js/plugins-dashboard.js:1127
+msgid "Update"
+msgstr "업데이트"
+
+#: resources/dist/js/plugins-dashboard.js:1377
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
+#: resources/dist/js/plugins-dashboard.js:1128
+msgid "Updating..."
+msgstr "업데이트 중..."
+
+#: resources/dist/js/plugins-dashboard.js:1633
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:31
+#: resources/dist/js/plugins-dashboard.js:1319
+msgid "Confirmation"
+msgstr "확인"
+
+#: resources/dist/js/plugins-dashboard.js:1636
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:36
+#: resources/dist/js/plugins-dashboard.js:1324
+msgid "Are you sure you want to continue?"
+msgstr "계속하시겠습니까?"
+
+#: resources/dist/js/plugins-dashboard.js:1647
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:49
+#: resources/dist/js/plugins-dashboard.js:1337
+msgid "Continue"
+msgstr "계속"
+
+#: resources/dist/js/plugins-dashboard.js:1654
+#: resources/dist/js/plugins-dashboard.js:2266
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:52
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:100
+#: resources/dist/js/plugins-dashboard.js:1340
+#: resources/dist/js/plugins-dashboard.js:1929
+msgid "Cancel"
+msgstr "취소"
+
+#: resources/dist/js/plugins-dashboard.js:1700
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29
+#: resources/dist/js/plugins-dashboard.js:1377
+msgid "Install Plugin"
+msgstr "플러그인 설치"
+
+#: resources/dist/js/plugins-dashboard.js:1705
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
+#: resources/dist/js/plugins-dashboard.js:1382
+msgid ""
+"Select how you would like to install this plugin. You can install the Pro "
+"version if you have a license, or the Free version to get started."
+msgstr ""
+"이 플러그인을 설치하는 방법을 선택하세요. 라이센스가 있는 경우 Pro 버전을 설치할 수 있으며, 시작하려면 무료 버전을 선택할 수 "
+"있습니다."
+
+#: resources/dist/js/plugins-dashboard.js:1710
+#: resources/dist/js/plugins-dashboard.js:2915
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:116
+#: resources/dist/js/plugins-dashboard.js:1385
+#: resources/dist/js/plugins-dashboard.js:2574
+msgid "Free Details"
+msgstr "무료 세부정보"
+
+#: resources/dist/js/plugins-dashboard.js:1713
+#: resources/dist/js/plugins-dashboard.js:2922
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:124
+#: resources/dist/js/plugins-dashboard.js:1387
+#: resources/dist/js/plugins-dashboard.js:2582
+msgid "Pro Details"
+msgstr "프로 세부정보"
+
+#: resources/dist/js/plugins-dashboard.js:1716
+#: resources/dist/js/plugins-dashboard.js:2930
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:133
+#: resources/dist/js/plugins-dashboard.js:1389
+#: resources/dist/js/plugins-dashboard.js:2591
+msgid "Changelogs"
+msgstr "변경 로그"
+
+#: resources/dist/js/plugins-dashboard.js:1722
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44
+#: resources/dist/js/plugins-dashboard.js:1392
+msgid "I have a license, install the Pro version"
+msgstr "라이센스가 있습니다, 프로 버전 설치"
+
+#: resources/dist/js/plugins-dashboard.js:1728
+#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47
+#: resources/dist/js/plugins-dashboard.js:1395
+msgid "I don't have a license, install the Free version"
+msgstr "라이센스가 없습니다, 무료 버전 설치"
+
+#: resources/dist/js/plugins-dashboard.js:1815
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:54
+#: resources/dist/js/plugins-dashboard.js:1456
+msgid "Enter your license key"
+msgstr "라이센스 키를 입력하세요"
+
+#: resources/dist/js/plugins-dashboard.js:1820
+#: resources/dist/js/plugins-dashboard.js:1962
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:86
+#: resources/dist/js/plugins-dashboard.js:1461
+#: resources/dist/js/plugins-dashboard.js:1587
+msgid ""
+"Enter your license key to activate the Pro version of this plugin. You can "
+"find your license key in your PublishPress account dashboard."
+msgstr ""
+"이 플러그인의 Pro 버전을 활성화하려면 라이센스 키를 입력하세요. PublishPress 계정 대시보드에서 라이센스 키를 찾을 수 "
+"있습니다."
+
+#: resources/dist/js/plugins-dashboard.js:1827
+#: resources/dist/js/plugins-dashboard.js:1969
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:63
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:90
+#: resources/dist/js/plugins-dashboard.js:1465
+#: resources/dist/js/plugins-dashboard.js:1591
+msgid "Go to my profile to get the license key"
+msgstr "라이센스 키를 얻으려면 내 프로필로 가세요"
+
+#: resources/dist/js/plugins-dashboard.js:1829
+#: resources/dist/js/plugins-dashboard.js:1971
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:69
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:96
+#: resources/dist/js/plugins-dashboard.js:1471
+#: resources/dist/js/plugins-dashboard.js:1597
+msgid "License key"
+msgstr "라이센스 키"
+
+#: resources/dist/js/plugins-dashboard.js:1831
+#: resources/dist/js/plugins-dashboard.js:1973
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:71
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:98
+#: resources/dist/js/plugins-dashboard.js:1473
+#: resources/dist/js/plugins-dashboard.js:1599
+msgid "Enter your license key here"
+msgstr "여기에 라이센스 키를 입력하세요"
+
+#: resources/dist/js/plugins-dashboard.js:1839
+#: resources/dist/js/plugins-dashboard.js:1981
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:79
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:105
+#: resources/dist/js/plugins-dashboard.js:1481
+#: resources/dist/js/plugins-dashboard.js:1606
+msgid "Use this license key for all PublishPress plugins"
+msgstr "모든 PublishPress 플러그인에 이 라이선스 키를 사용하십시오"
+
+#: resources/dist/js/plugins-dashboard.js:1851
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:92
+#: resources/dist/js/plugins-dashboard.js:1494
+msgid "Activate and install the plugin"
+msgstr "플러그인을 활성화하고 설치"
+
+#: resources/dist/js/plugins-dashboard.js:1957
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:79
+#: resources/dist/js/plugins-dashboard.js:1580
+msgid "Manage your license"
+msgstr "라이센스 관리"
+
+#: resources/dist/js/plugins-dashboard.js:1986
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:115
+#: resources/dist/js/plugins-dashboard.js:1616
+msgid "Your license key is: "
+msgstr "귀하의 라이센스 키는: "
+
+#: resources/dist/js/plugins-dashboard.js:1988
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:117
+#: resources/dist/js/plugins-dashboard.js:1618
+msgid "(hidden)"
+msgstr "(숨김)"
+
+#: resources/dist/js/plugins-dashboard.js:1997
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:136
+#: resources/dist/js/plugins-dashboard.js:1637
+msgid "Activate the license key for this site"
+msgstr "이 사이트의 라이센스 키 활성화"
+
+#: resources/dist/js/plugins-dashboard.js:2002
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:143
+#: resources/dist/js/plugins-dashboard.js:1644
+msgid "Edit the license key"
+msgstr "라이센스 키 편집"
+
+#: resources/dist/js/plugins-dashboard.js:2009
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:146
+#: resources/dist/js/plugins-dashboard.js:1647
+msgid "Deactivate the license key for this site"
+msgstr "이 사이트의 라이센스 키 비활성화"
+
+#: resources/dist/js/plugins-dashboard.js:2114
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:82
+#: resources/dist/js/plugins-dashboard.js:1738
+#, js-format
+msgid "Install %s"
+msgstr "%s 설치"
+
+#: resources/dist/js/plugins-dashboard.js:2125
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
+#: resources/dist/js/plugins-dashboard.js:1750
+#, js-format
+msgid "Install %s Pro"
+msgstr "%s Pro 설치"
+
+#: resources/dist/js/plugins-dashboard.js:2130
+#: resources/dist/js/plugins-dashboard.js:2143
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:102
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:121
+#: resources/dist/js/plugins-dashboard.js:1758
+#: resources/dist/js/plugins-dashboard.js:1777
+#, js-format
+msgid "Upgrade %s to Pro"
+msgstr "%s를 Pro로 업그레이드"
+
+#: resources/dist/js/plugins-dashboard.js:2135
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:110
+#: resources/dist/js/plugins-dashboard.js:1766
+#, js-format
+msgid "Uninstall %s"
+msgstr "%s 제거"
+
+#: resources/dist/js/plugins-dashboard.js:2136
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:111
+#: resources/dist/js/plugins-dashboard.js:1767
+#, js-format
+msgid "Are you sure you want to uninstall %s?"
+msgstr "%s를 제거하시겠습니까?"
+
+#: resources/dist/js/plugins-dashboard.js:2153
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:132
+#: resources/dist/js/plugins-dashboard.js:1788
+#, js-format
+msgid "Resolve Conflict for %s"
+msgstr "%s에 대한 충돌 해결"
+
+#: resources/dist/js/plugins-dashboard.js:2165
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:145
+#: resources/dist/js/plugins-dashboard.js:1801
+#, js-format
+msgid "Manage %s License"
+msgstr "%s 라이센스 관리"
+
+#: resources/dist/js/plugins-dashboard.js:2176
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:159
+#: resources/dist/js/plugins-dashboard.js:1815
+#, js-format
+msgid "Activate %s License"
+msgstr "%s 라이센스 활성화"
+
+#: resources/dist/js/plugins-dashboard.js:2177
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:160
+#: resources/dist/js/plugins-dashboard.js:1816
+msgid "Activate the license key"
+msgstr "라이센스 키 활성화"
+
+#: resources/dist/js/plugins-dashboard.js:2234
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:34
+#: resources/dist/js/plugins-dashboard.js:1863
+msgid "Resolve Plugin Conflict"
+msgstr "플러그인 충돌 해결"
+
+#: resources/dist/js/plugins-dashboard.js:2241
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:51
+#: resources/dist/js/plugins-dashboard.js:1880
+#, js-format
+msgid "Free version: %s (%s)"
+msgstr "무료 버전: %s (%s)"
+
+#: resources/dist/js/plugins-dashboard.js:2241
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:58
+#: resources/dist/js/plugins-dashboard.js:1887
+#, js-format
+msgid "Pro version: %s (%s)"
+msgstr "Pro 버전: %s (%s)"
+
+#: resources/dist/js/plugins-dashboard.js:2251
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:81
+#: resources/dist/js/plugins-dashboard.js:1910
+msgid "Keep the Pro version (Recommended)"
+msgstr "프로 버전 유지하기 (권장)"
+
+#: resources/dist/js/plugins-dashboard.js:2259
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:91
+#: resources/dist/js/plugins-dashboard.js:1920
+msgid "Keep the Free version"
+msgstr "무료 버전 유지하기"
+
+#: resources/dist/js/plugins-dashboard.js:2316
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
+#: resources/dist/js/plugins-dashboard.js:1969
+msgid ""
+"Unlock the full potential of this plugin with the Pro version. Enjoy "
+"advanced features, priority support, and exclusive benefits designed to "
+"help you get the most out of your workflow."
+msgstr ""
+"Pro 버전으로 이 플러그인의 모든 잠재력을 활용하세요. 고급 기능, 우선 지원 및 워크플로우를 최대한 활용할 수 있도록 설계된 독점 "
+"혜택을 즐기세요."
+
+#: resources/dist/js/plugins-dashboard.js:2321
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
+#: resources/dist/js/plugins-dashboard.js:1976
+msgid "Discover all Pro features"
+msgstr "모든 프로 기능 알아보기"
+
+#: resources/dist/js/plugins-dashboard.js:2324
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
+#: resources/dist/js/plugins-dashboard.js:1980
+msgid "Changelog"
+msgstr "변경 로그"
+
+#: resources/dist/js/plugins-dashboard.js:2330
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
+#: resources/dist/js/plugins-dashboard.js:1984
+msgid "Already have a license? Install Pro now"
+msgstr "라이센스가 있나요? 지금 프로 설치하기"
+
+#: resources/dist/js/plugins-dashboard.js:2336
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
+#: resources/dist/js/plugins-dashboard.js:1987
+msgid "Upgrade to Pro and boost your productivity"
+msgstr "프로로 업그레이드하여 생산성 향상하기"
+
+#: resources/dist/js/plugins-dashboard.js:2488
+#: resources/dist/js/plugins-dashboard.js:2937
+#: resources/dist/js/plugins-dashboard.js:2951
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:137
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:148
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:164
+#: resources/dist/js/plugins-dashboard.js:2131
+#: resources/dist/js/plugins-dashboard.js:2606
+#: resources/dist/js/plugins-dashboard.js:2622
+msgid "Unknown"
+msgstr "알 수 없음"
+
+#: resources/dist/js/plugins-dashboard.js:2489
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
+#: resources/dist/js/plugins-dashboard.js:2132
+msgid "New version available"
+msgstr "새 버전 사용 가능"
+
+#: resources/dist/js/plugins-dashboard.js:2505
+#: resources/dist/js/plugins-dashboard.js:2957
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:171
+#: resources/dist/js/plugins-dashboard.js:2151
+#: resources/dist/js/plugins-dashboard.js:2629
+#. translators: %s is the installed version number
+#, js-format
+msgid "Installed version: %s"
+msgstr "설치된 버전: %s"
+
+#: resources/dist/js/plugins-dashboard.js:2544
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
+#: resources/dist/js/plugins-dashboard.js:2194
+#, js-format
+msgid "Update available: %s → %s"
+msgstr "업데이트 가능: %s → %s"
+
+#: resources/dist/js/plugins-dashboard.js:2613
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:22
+#: resources/dist/js/plugins-dashboard.js:2270
+msgid "Installing"
+msgstr "설치 중"
+
+#: resources/dist/js/plugins-dashboard.js:2620
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:27
+#: resources/dist/js/plugins-dashboard.js:2275
+msgid "Not Installed"
+msgstr "설치되지 않음"
+
+#: resources/dist/js/plugins-dashboard.js:2624
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:31
+#: resources/dist/js/plugins-dashboard.js:2279
+msgid "Free"
+msgstr "무료"
+
+#: resources/dist/js/plugins-dashboard.js:2628
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:35
+#: resources/dist/js/plugins-dashboard.js:2283
+msgid "Licensed"
+msgstr "라이센스 보유"
+
+#: resources/dist/js/plugins-dashboard.js:2636
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:43
+#: resources/dist/js/plugins-dashboard.js:2291
+msgid "Expired"
+msgstr "만료됨"
+
+#: resources/dist/js/plugins-dashboard.js:2640
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:47
+#: resources/dist/js/plugins-dashboard.js:2295
+msgid "Uninstalling"
+msgstr "제거 중"
+
+#: resources/dist/js/plugins-dashboard.js:2647
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:52
+#: resources/dist/js/plugins-dashboard.js:2300
+msgid "Upgrading"
+msgstr "업그레이드 중"
+
+#: resources/dist/js/plugins-dashboard.js:2654
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:57
+#: resources/dist/js/plugins-dashboard.js:2305
+msgid "Deactivating"
+msgstr "비활성화 중"
+
+#: resources/dist/js/plugins-dashboard.js:2661
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:62
+#: resources/dist/js/plugins-dashboard.js:2310
+msgid "Activating"
+msgstr "활성화 중"
+
+#: resources/dist/js/plugins-dashboard.js:2668
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:67
+#: resources/dist/js/plugins-dashboard.js:2315
+msgid "Conflicting Installations"
+msgstr "충돌하는 설치"
+
+#: resources/dist/js/plugins-dashboard.js:2672
+#: resources/dist/js/plugins-dashboard.js:2756
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
+#: resources/dist/js/plugins-dashboard.js:2319
+#: resources/dist/js/plugins-dashboard.js:2420
+msgid "Update Available"
+msgstr "업데이트 가능"
+
+#: resources/dist/js/plugins-dashboard.js:2764
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
+#: resources/dist/js/plugins-dashboard.js:2431
+msgid "Expires"
+msgstr "만료됨"
+
+#: resources/dist/js/plugins-dashboard.js:2859
+#: resources/dist/js/plugins-dashboard.js:2870
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:74
+#: resources/dist/js/plugins-dashboard.js:2513
+#: resources/dist/js/plugins-dashboard.js:2532
+msgid "Renew"
+msgstr "갱신"
+
+#: resources/dist/js/plugins-dashboard.js:2879
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:84
+#: resources/dist/js/plugins-dashboard.js:2542
+msgid "Deactivate"
+msgstr "비활성화"
+
+#: resources/dist/js/plugins-dashboard.js:2890
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:93
+#: resources/dist/js/plugins-dashboard.js:2551
+msgid "Activate"
+msgstr "활성화"
+
+#: resources/dist/js/plugins-dashboard.js:2901
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:103
+#: resources/dist/js/plugins-dashboard.js:2561
+msgid "Uninstall"
+msgstr "제거"
+
+#: resources/dist/js/plugins-dashboard.js:2938
+#: resources/dist/js/plugins-dashboard.js:2952
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:149
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
+#: resources/dist/js/plugins-dashboard.js:2607
+#: resources/dist/js/plugins-dashboard.js:2623
+msgid "latest"
+msgstr "최신"
+
+#: resources/dist/js/plugins-dashboard.js:2942
+#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:154
+#: resources/dist/js/plugins-dashboard.js:2612
+#, js-format
+msgid "Update to v%s"
+msgstr "v%s로 업데이트"
+
+#: resources/dist/js/plugins-dashboard.js:3443
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
+#: resources/dist/js/plugins-dashboard.js:2979
+msgid "This plugin is not installed."
+msgstr "이 플러그인이 설치되지 않았습니다."
+
+#: resources/dist/js/plugins-dashboard.js:3445
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40
+#: resources/dist/js/plugins-dashboard.js:2982
+msgid "This plugin is active."
+msgstr "이 플러그인이 활성화되었습니다."
+
+#: resources/dist/js/plugins-dashboard.js:3445
+#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41
+#: resources/dist/js/plugins-dashboard.js:2983
+msgid "This plugin is not active."
+msgstr "이 플러그인이 비활성화되었습니다."
+
+#: resources/dist/js/plugins-dashboard.js:3652
+#: resources/src/jsx/components/plugins-list/index.jsx:158
+#: resources/dist/js/plugins-dashboard.js:3194
+msgid "No plugins found."
+msgstr "플러그인이 발견되지 않았습니다."
+
+#: resources/dist/js/plugins-dashboard.js:3654
+#: resources/src/jsx/components/plugins-list/index.jsx:164
+#: resources/dist/js/plugins-dashboard.js:3200
+msgid "Loading plugins..."
+msgstr "플러그인을 로딩 중..."
+
+#: resources/dist/js/plugins-dashboard.js:4252
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:216
+#: resources/dist/js/plugins-dashboard.js:3618
+msgid "Failed to fetch plugins"
+msgstr "플러그인을 가져오지 못했습니다"
+
+#: resources/dist/js/plugins-dashboard.js:4307
+#: resources/dist/js/plugins-dashboard.js:4397
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
+#: resources/dist/js/plugins-dashboard.js:3646
+#: resources/dist/js/plugins-dashboard.js:3704
+#, js-format
+msgid "%s installed successfully"
+msgstr "%s가 성공적으로 설치되었습니다"
+
+#: resources/dist/js/plugins-dashboard.js:4340
+#: resources/dist/js/plugins-dashboard.js:4431
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
+#: resources/dist/js/plugins-dashboard.js:3669
+#: resources/dist/js/plugins-dashboard.js:3729
+#, js-format
+msgid "%s installation failed"
+msgstr "%s 설치에 실패했습니다"
+
+#: resources/dist/js/plugins-dashboard.js:4488
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
+#: resources/dist/js/plugins-dashboard.js:3765
+#, js-format
+msgid "%s uninstalled successfully"
+msgstr "%s가 성공적으로 제거되었습니다"
+
+#: resources/dist/js/plugins-dashboard.js:4513
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
+#: resources/dist/js/plugins-dashboard.js:3781
+#, js-format
+msgid "%s uninstall failed"
+msgstr "%s 제거에 실패했습니다"
+
+#: resources/dist/js/plugins-dashboard.js:4577
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
+#: resources/dist/js/plugins-dashboard.js:3816
+#, js-format
+msgid "%s activated successfully"
+msgstr "%s가 성공적으로 활성화되었습니다"
+
+#: resources/dist/js/plugins-dashboard.js:4604
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
+#: resources/dist/js/plugins-dashboard.js:3832
+#, js-format
+msgid "%s activation failed"
+msgstr "%s 활성화에 실패했습니다"
+
+#: resources/dist/js/plugins-dashboard.js:4672
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
+#: resources/dist/js/plugins-dashboard.js:3867
+#, js-format
+msgid "%s deactivated successfully"
+msgstr "%s가 성공적으로 비활성화되었습니다"
+
+#: resources/dist/js/plugins-dashboard.js:4699
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
+#: resources/dist/js/plugins-dashboard.js:3883
+#, js-format
+msgid "%s deactivation failed"
+msgstr "%s 비활성화에 실패했습니다"
+
+#: resources/dist/js/plugins-dashboard.js:4761
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
+#: resources/dist/js/plugins-dashboard.js:3918
+#, js-format
+msgid "%s upgraded to Pro successfully"
+msgstr "%s가 Pro로 성공적으로 업그레이드되었습니다"
+
+#: resources/dist/js/plugins-dashboard.js:4795
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
+#: resources/dist/js/plugins-dashboard.js:3943
+#, js-format
+msgid "%s upgrade to Pro failed"
+msgstr "%s Pro로의 업그레이드에 실패했습니다"
+
+#: resources/dist/js/plugins-dashboard.js:4862
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
+#: resources/dist/js/plugins-dashboard.js:3985
+#, js-format
+msgid "Conflict resolved successfully for %s"
+msgstr "%s에 대한 충돌이 성공적으로 해결되었습니다"
+
+#: resources/dist/js/plugins-dashboard.js:4889
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
+#: resources/dist/js/plugins-dashboard.js:4002
+#, js-format
+msgid "Failed to resolve conflict for %s"
+msgstr "%s에 대한 충돌 해결에 실패했습니다"
+
+#: resources/dist/js/plugins-dashboard.js:4943
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
+#: resources/dist/js/plugins-dashboard.js:4034
+#, js-format
+msgid "%s license deactivated successfully"
+msgstr "%s 라이선스가 성공적으로 비활성화되었습니다"
+
+#: resources/dist/js/plugins-dashboard.js:4968
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
+#: resources/dist/js/plugins-dashboard.js:4050
+#, js-format
+msgid "%s license deactivation failed"
+msgstr "%s 라이선스 비활성화에 실패했습니다"
+
+#: resources/dist/js/plugins-dashboard.js:5030
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:684
+#: resources/dist/js/plugins-dashboard.js:4086
+msgid "License activated successfully for all PublishPress plugins"
+msgstr "모든 PublishPress 플러그인에 대해 라이선스가 성공적으로 활성화되었습니다"
+
+#: resources/dist/js/plugins-dashboard.js:5030
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:685
+#: resources/dist/js/plugins-dashboard.js:4087
+#, js-format
+msgid "%s license activated successfully"
+msgstr "%s 라이선스가 성공적으로 활성화되었습니다"
+
+#: resources/dist/js/plugins-dashboard.js:5059
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:701
+#: resources/dist/js/plugins-dashboard.js:4103
+#, js-format
+msgid "%s license activation failed"
+msgstr "%s 라이선스 활성화에 실패했습니다"
+
+#: resources/dist/js/plugins-dashboard.js:5117
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:736
+#: resources/dist/js/plugins-dashboard.js:4138
+#, js-format
+msgid "%s updated successfully"
+msgstr "%s가 성공적으로 업데이트되었습니다"
+
+#: resources/dist/js/plugins-dashboard.js:5145
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:753
+#: resources/dist/js/plugins-dashboard.js:4155
+#, js-format
+msgid "%s update failed"
+msgstr "%s 업데이트에 실패했습니다"
+
+#: resources/dist/js/plugins-dashboard.js:5219
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:815
+#: resources/dist/js/plugins-dashboard.js:4217
+msgid "Too many requests. Please wait a few seconds and try again."
+msgstr "요청이 너무 많습니다. 몇 초 기다린 후 다시 시도해 주세요."
+
+#: resources/dist/js/plugins-dashboard.js:5227
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:825
+#: resources/dist/js/plugins-dashboard.js:4227
+#, fuzzy
+msgid "Cloudflare Ray ID: %s"
+msgstr "Cloudflare Ray ID: %s"
+
+#: resources/dist/js/settings-page.js:426
+#: resources/src/jsx/components/pages/settings-page.jsx:32
+#: resources/dist/js/settings-page.js:362
 msgid "Diagnostics"
 msgstr "진단"
 
-#: resources/src/jsx/components/pages/settings-page.jsx:39
-msgid "Debug Log"
-msgstr "디버그 로그"
+#: resources/dist/js/settings-page.js:567
+#: resources/src/jsx/components/pages/settings-page.jsx:136
+#: resources/dist/js/settings-page.js:466
+msgid "Site health report copied to clipboard."
+msgstr "사이트 건강 보고서가 클립보드에 복사되었습니다."
 
+#: resources/dist/js/settings-page.js:576
+#: resources/src/jsx/components/pages/settings-page.jsx:141
+#: resources/dist/js/settings-page.js:471
+msgid "Failed to copy the site health report. Please try again."
+msgstr "사이트 건강 보고서를 복사하지 못했습니다. 다시 시도하십시오."
+
+#: resources/dist/js/settings-page.js:617
+#: resources/src/jsx/components/pages/settings-page.jsx:167
+#: resources/dist/js/settings-page.js:497
+msgid "Site health report downloaded."
+msgstr "사이트 건강 보고서가 다운로드되었습니다."
+
+#: resources/dist/js/settings-page.js:626
+#: resources/src/jsx/components/pages/settings-page.jsx:172
+#: resources/dist/js/settings-page.js:502
+msgid "Failed to download the site health report. Please try again."
+msgstr "사이트 건강 보고서를 다운로드하지 못했습니다. 다시 시도하십시오."
+
+#: resources/dist/js/settings-page.js:668
+#: resources/src/jsx/components/pages/settings-page.jsx:213
+#: resources/dist/js/settings-page.js:543
+msgid "Copy Site Health Report"
+msgstr "사이트 건강 보고서 복사"
+
+#: resources/dist/js/settings-page.js:672
+#: resources/src/jsx/components/pages/settings-page.jsx:221
+#: resources/dist/js/settings-page.js:551
+msgid "Download Site Health Report"
+msgstr "사이트 건강 보고서 다운로드"
+
+#: resources/dist/js/settings-page.js:863
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:108
+#: resources/dist/js/settings-page.js:668
 msgid "Failed to load the debug log. Please try again."
 msgstr "디버그 로그를 로드하지 못했습니다. 다시 시도해 주세요."
 
+#: resources/dist/js/settings-page.js:942
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:182
+#: resources/dist/js/settings-page.js:742
 msgid "Debug log cleared successfully."
 msgstr "디버그 로그가 성공적으로 지워졌습니다."
 
+#: resources/dist/js/settings-page.js:951
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
+#: resources/dist/js/settings-page.js:747
 msgid "Failed to clear the debug log. Please try again."
 msgstr "디버그 로그를 지우지 못했습니다. 다시 시도해 주세요."
 
+#: resources/dist/js/settings-page.js:1010
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222
+#: resources/dist/js/settings-page.js:782
 msgid "Log copied to clipboard."
 msgstr "로그가 클립보드에 복사되었습니다."
 
+#: resources/dist/js/settings-page.js:1019
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
+#: resources/dist/js/settings-page.js:787
 msgid "Failed to copy log to clipboard."
 msgstr "로그를 클립보드에 복사하지 못했습니다."
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:253
+#: resources/dist/js/settings-page.js:1044
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:250
+#: resources/dist/js/settings-page.js:810
+msgid "Debug log view"
+msgstr "디버그 로그 보기"
+
+#: resources/dist/js/settings-page.js:1052
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:258
+#: resources/dist/js/settings-page.js:818
 msgid "Requests"
 msgstr "요청"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:260
+#: resources/dist/js/settings-page.js:1059
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:266
+#: resources/dist/js/settings-page.js:826
 msgid "Full Log"
 msgstr "전체 로그"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:271
+#: resources/dist/js/settings-page.js:1072
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
+#: resources/dist/js/settings-page.js:838
 msgid "Auto-refresh is on — click to stop"
 msgstr "자동 새로 고침이 켜져 있습니다 — 클릭하여 중지"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:272
+#: resources/dist/js/settings-page.js:1072
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:279
+#: resources/dist/js/settings-page.js:839
 msgid "Enable auto-refresh"
 msgstr "자동 새로 고침 활성화"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:277
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
+#: resources/dist/js/settings-page.js:1076
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:284
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:285
+#: resources/dist/js/settings-page.js:844
+#: resources/dist/js/settings-page.js:845
 msgid "Auto-refresh"
 msgstr "자동 새로 고침"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:286
+#: resources/dist/js/settings-page.js:1080
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:293
+#: resources/dist/js/settings-page.js:853
 msgid "Auto-refresh interval"
 msgstr "자동 새로 고침 간격"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:308
+#: resources/dist/js/settings-page.js:1097
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:315
+#: resources/dist/js/settings-page.js:875
 msgid "Copy to Clipboard"
 msgstr "클립보드에 복사"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:318
+#: resources/dist/js/settings-page.js:1103
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:325
+#: resources/dist/js/settings-page.js:885
 msgid "Clear Log"
 msgstr "로그 지우기"
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:326
+#: resources/dist/js/settings-page.js:1107
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:333
+#: resources/dist/js/settings-page.js:893
 msgid "Loading log..."
 msgstr "로그 로딩 중..."
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:332
+#: resources/dist/js/settings-page.js:1109
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:339
+#: resources/dist/js/settings-page.js:899
 msgid ""
 "The debug log is empty. Perform some actions (e.g. activate a license) and "
 "refresh to see entries."
-msgstr ""
-"디버그 로그가 비어 있습니다. 일부 작업(예: 라이센스 활성화)을 수행하고 새로 "
-"고침하여 항목을 확인하세요."
+msgstr "디버그 로그가 비어 있습니다. 일부 작업(예: 라이센스 활성화)을 수행하고 새로 고침하여 항목을 확인하세요."
 
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:346
+#: resources/dist/js/settings-page.js:1116
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:353
+#: resources/dist/js/settings-page.js:913
 msgid "Debug log contents"
 msgstr "디버그 로그 내용"
 
+#: resources/dist/js/settings-page.js:1201
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
+#: resources/dist/js/settings-page.js:962
 msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
-msgstr ""
-"디버그 모드가 활성화되었습니다. 이제 \"디버그 로그\" 탭을 사용할 수 있습니다."
+msgstr "디버그 모드가 활성화되었습니다. 이제 \"디버그 로그\" 탭을 사용할 수 있습니다."
 
+#: resources/dist/js/settings-page.js:1201
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
+#: resources/dist/js/settings-page.js:963
 msgid "Debug mode disabled."
 msgstr "디버그 모드가 비활성화되었습니다."
 
+#: resources/dist/js/settings-page.js:1213
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:50
+#: resources/dist/js/settings-page.js:972
 msgid "Failed to save the setting. Please try again."
 msgstr "설정을 저장하지 못했습니다. 다시 시도해 주십시오."
 
-#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
-msgid "Debug Mode"
-msgstr "디버그 모드"
-
+#: resources/dist/js/settings-page.js:1242
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
+#: resources/dist/js/settings-page.js:997
 msgid ""
 "When enabled, all HTTP requests and responses to remote services (license "
 "activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
 "the Debug Log tab to inspect the captured data."
 msgstr ""
-"활성화되면 모든 HTTP 요청 및 원격 서비스에 대한 응답(라이센스 활성화, 플러그"
-"인 다운로드 등)이 전용 로그 파일에 기록됩니다. 캡처된 데이터를 확인하려면 디"
-"버그 로그 탭을 사용하세요."
+"활성화되면 모든 HTTP 요청 및 원격 서비스에 대한 응답(라이센스 활성화, 플러그인 다운로드 등)이 전용 로그 파일에 기록됩니다. "
+"캡처된 데이터를 확인하려면 디버그 로그 탭을 사용하세요."
 
+#: resources/dist/js/settings-page.js:1243
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
+#: resources/dist/js/settings-page.js:1004
 msgid "Enable Debug Mode"
 msgstr "디버그 모드 활성화"
 
+#: resources/dist/js/settings-page.js:1250
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
+#: resources/dist/js/settings-page.js:1013
 msgid ""
 "Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
 "data."
-msgstr ""
-"디버그 로깅이 활성화되었습니다. 캡처된 데이터를 보려면 \"디버그 로그\" 탭으"
-"로 전환하세요."
+msgstr "디버그 로깅이 활성화되었습니다. 캡처된 데이터를 보려면 \"디버그 로그\" 탭으로 전환하세요."
 
+#: resources/dist/js/settings-page.js:1341
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
+#: resources/dist/js/settings-page.js:1095
 msgid "ERR"
 msgstr "오류"
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:106
+#: resources/dist/js/settings-page.js:1372
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:108
+#: resources/dist/js/settings-page.js:1133
 msgid "Request"
 msgstr "요청"
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:113
+#: resources/dist/js/settings-page.js:1378
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:115
+#: resources/dist/js/settings-page.js:1140
 msgid "Response"
 msgstr "응답"
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:119
+#: resources/dist/js/settings-page.js:1382
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:121
+#: resources/dist/js/settings-page.js:1146
 msgid "No response recorded for this request."
 msgstr "이 요청에 대한 응답이 기록되지 않았습니다."
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:144
+#: resources/dist/js/settings-page.js:1397
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:146
+#: resources/dist/js/settings-page.js:1171
 msgid "No requests found in the log."
 msgstr "로그에서 요청을 찾을 수 없습니다."
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:153
+#: resources/dist/js/settings-page.js:1403
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
+#: resources/dist/js/settings-page.js:1180
 msgid "1 request recorded"
 msgstr "1개의 요청이 기록되었습니다"
 
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
+#: resources/dist/js/settings-page.js:1403
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:157
+#: resources/dist/js/settings-page.js:1182
+#, js-format
 msgid "%d requests recorded"
 msgstr "%d개의 요청이 기록되었습니다"
 
+#: resources/dist/js/welcome-page.js:418
 #: resources/src/jsx/components/pages/welcome-page.jsx:37
+#: resources/dist/js/welcome-page.js:367
 msgid "Welcome to PublishPress Hub!"
 msgstr "PublishPress 허브에 오신 것을 환영합니다!"
 
+#: resources/dist/js/welcome-page.js:420
 #: resources/src/jsx/components/pages/welcome-page.jsx:40
+#: resources/dist/js/welcome-page.js:370
 msgid "Get started with PublishPress Hub in a few simple steps."
 msgstr "간단한 몇 단계로 PublishPress 허브를 시작하세요."
 
+#: resources/dist/js/welcome-page.js:428
 #: resources/src/jsx/components/pages/welcome-page.jsx:47
+#: resources/dist/js/welcome-page.js:377
 msgid "Welcome to PublishPress Hub"
 msgstr "PublishPress 허브에 오신 것을 환영합니다"
 
+#: resources/dist/js/welcome-page.js:431
 #: resources/src/jsx/components/pages/welcome-page.jsx:52
+#: resources/dist/js/welcome-page.js:382
 msgid "What you can do with PublishPress Hub"
 msgstr "PublishPress 허브로 할 수 있는 것"
 
+#: resources/dist/js/welcome-page.js:433
 #: resources/src/jsx/components/pages/welcome-page.jsx:55
+#: resources/dist/js/welcome-page.js:385
 msgid ""
-"PublishPress Hub has everything you need to install, update, and manage your "
-"PublishPress plugins. We're here to help you build a publishing system that "
-"works perfectly for your team."
+"PublishPress Hub has everything you need to install, update, and manage "
+"your PublishPress plugins. We're here to help you build a publishing system "
+"that works perfectly for your team."
 msgstr ""
-"PublishPress Hub는 PublishPress 플러그인을 설치, 업데이트 및 관리하는 데 필요"
-"한 모든 것을 제공합니다. 팀에 적합한 퍼블리싱 시스템을 구축하는 데 도움을 드"
-"리겠습니다."
+"PublishPress Hub는 PublishPress 플러그인을 설치, 업데이트 및 관리하는 데 필요한 모든 것을 제공합니다. 팀에 "
+"적합한 퍼블리싱 시스템을 구축하는 데 도움을 드리겠습니다."
 
+#: resources/dist/js/welcome-page.js:443
 #: resources/src/jsx/components/pages/welcome-page.jsx:64
+#: resources/dist/js/welcome-page.js:394
 msgid "Centralized Dashboard"
 msgstr "중앙 집중식 대시보드"
 
+#: resources/dist/js/welcome-page.js:445
 #: resources/src/jsx/components/pages/welcome-page.jsx:67
+#: resources/dist/js/welcome-page.js:397
 #, fuzzy
 msgid ""
 "View all your PublishPress plugins with their licenses, versions, and key "
 "details."
 msgstr "원클릭 업데이트로 모든 PublishPress 플러그인을 최신 상태로 유지하세요."
 
+#: resources/dist/js/welcome-page.js:453
 #: resources/src/jsx/components/pages/welcome-page.jsx:76
+#: resources/dist/js/welcome-page.js:406
 msgid "One-Click Installation"
 msgstr "원클릭 설치"
 
+#: resources/dist/js/welcome-page.js:455
 #: resources/src/jsx/components/pages/welcome-page.jsx:79
+#: resources/dist/js/welcome-page.js:409
 msgid ""
 "Install free PublishPress plugins directly from the Hub without visiting "
 "WordPress.org."
-msgstr ""
-"WordPress.org를 방문하지 않고 허브에서 무료 PublishPress 플러그인을 직접 설치"
-"하세요."
+msgstr "WordPress.org를 방문하지 않고 허브에서 무료 PublishPress 플러그인을 직접 설치하세요."
 
+#: resources/dist/js/welcome-page.js:463
 #: resources/src/jsx/components/pages/welcome-page.jsx:88
+#: resources/dist/js/welcome-page.js:418
 msgid "License Management"
 msgstr "라이선스 관리"
 
+#: resources/dist/js/welcome-page.js:465
 #: resources/src/jsx/components/pages/welcome-page.jsx:91
+#: resources/dist/js/welcome-page.js:421
 msgid ""
 "Connect your PublishPress licenses to easily install and activate Pro "
 "versions."
-msgstr ""
-"PublishPress 라이센스를 연결하여 Pro 버전을 쉽게 설치하고 활성화하세요."
+msgstr "PublishPress 라이센스를 연결하여 Pro 버전을 쉽게 설치하고 활성화하세요."
 
+#: resources/dist/js/welcome-page.js:473
 #: resources/src/jsx/components/pages/welcome-page.jsx:100
+#: resources/dist/js/welcome-page.js:430
 msgid "Easy Updates"
 msgstr "쉬운 업데이트"
 
+#: resources/dist/js/welcome-page.js:475
 #: resources/src/jsx/components/pages/welcome-page.jsx:103
+#: resources/dist/js/welcome-page.js:433
 msgid "Keep all your PublishPress plugins up to date with one-click updates."
 msgstr "원클릭 업데이트로 모든 PublishPress 플러그인을 최신 상태로 유지하세요."
 
+#: resources/dist/js/welcome-page.js:483
 #: resources/src/jsx/components/pages/welcome-page.jsx:112
+#: resources/dist/js/welcome-page.js:442
 msgid "Status Monitoring"
 msgstr "상태 모니터링"
 
+#: resources/dist/js/welcome-page.js:485
 #: resources/src/jsx/components/pages/welcome-page.jsx:115
+#: resources/dist/js/welcome-page.js:445
 msgid ""
-"Monitor plugin activation status, detect conflicts, and ensure compatibility."
-msgstr ""
-"플러그인 활성화 상태를 모니터링하고, 충돌을 감지하며, 호환성을 보장합니다."
+"Monitor plugin activation status, detect conflicts, and ensure "
+"compatibility."
+msgstr "플러그인 활성화 상태를 모니터링하고, 충돌을 감지하며, 호환성을 보장합니다."
 
+#: resources/dist/js/welcome-page.js:493
 #: resources/src/jsx/components/pages/welcome-page.jsx:124
+#: resources/dist/js/welcome-page.js:454
 msgid "Get Started"
 msgstr "시작하기"
 
+#: resources/dist/js/welcome-page.js:496
 #: resources/src/jsx/components/pages/welcome-page.jsx:127
-msgid ""
-"Ready to explore? Visit the %s to see all available PublishPress plugins."
-msgstr ""
-"탐색할 준비가 되셨나요? %s를 방문하여 사용 가능한 모든 PublishPress 플러그인"
-"을 확인하세요."
+#: resources/dist/js/welcome-page.js:457
+#, js-format
+msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
+msgstr "탐색할 준비가 되셨나요? %s를 방문하여 사용 가능한 모든 PublishPress 플러그인을 확인하세요."
 
+#: resources/dist/js/welcome-page.js:506
 #: resources/src/jsx/components/pages/welcome-page.jsx:142
+#: resources/dist/js/welcome-page.js:472
 msgid "View Plugins Dashboard"
 msgstr "플러그인 대시보드 보기"
 
+#: resources/dist/js/welcome-page.js:508
 #: resources/src/jsx/components/pages/welcome-page.jsx:148
+#: resources/dist/js/welcome-page.js:478
 msgid "Already know what you're doing? Great! You can "
 msgstr "이미 하고 있는 일을 알고 계신가요? 좋습니다! 당신은 "
 
+#: resources/dist/js/welcome-page.js:510
 #: resources/src/jsx/components/pages/welcome-page.jsx:150
+#: resources/dist/js/welcome-page.js:480
 msgid "dismiss this page"
 msgstr "이 페이지를 닫을 수 있습니다"
 
+#: resources/dist/js/welcome-page.js:510
 #: resources/src/jsx/components/pages/welcome-page.jsx:152
+#: resources/dist/js/welcome-page.js:482, fuzzy
 msgid "."
 msgstr "."
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
-msgid "Install"
-msgstr "설치"
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:22
-msgid "Installing..."
-msgstr "설치 중..."
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28
-msgid "Upgrade to Pro"
-msgstr "Pro로 업그레이드"
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:28
-msgid "Upgrading to Pro..."
-msgstr "Pro로 업그레이드 중..."
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
-msgid "Manage License"
-msgstr "라이센스 관리"
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:34
-msgid "Managing License..."
-msgstr "라이센스 관리 중..."
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
-msgid "Activate License"
-msgstr "라이센스 활성화"
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:40
-msgid "Activating License..."
-msgstr "라이센스 활성화 중..."
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
-msgid "Resolve Conflict"
-msgstr "충돌 해결"
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
-msgid "Resolving Conflict..."
-msgstr "충돌 해결 중..."
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
-msgid "Update"
-msgstr "업데이트"
-
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
-msgid "Updating..."
-msgstr "업데이트 중..."
-
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:31
-msgid "Confirmation"
-msgstr "확인"
-
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:36
-msgid "Are you sure you want to continue?"
-msgstr "계속하시겠습니까?"
-
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:49
-msgid "Continue"
-msgstr "계속"
-
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:52
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:98
-msgid "Cancel"
-msgstr "취소"
-
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29
-msgid "Install Plugin"
-msgstr "플러그인 설치"
-
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
-msgid ""
-"Select how you would like to install this plugin. You can install the Pro "
-"version if you have a license, or the Free version to get started."
-msgstr ""
-"이 플러그인을 설치하는 방법을 선택하세요. 라이센스가 있는 경우 Pro 버전을 설"
-"치할 수 있으며, 시작하려면 무료 버전을 선택할 수 있습니다."
-
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:117
-msgid "Free Details"
-msgstr "무료 세부정보"
-
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:125
-msgid "Pro Details"
-msgstr "프로 세부정보"
-
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:134
-msgid "Changelogs"
-msgstr "변경 로그"
-
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44
-msgid "I have a license, install the Pro version"
-msgstr "라이센스가 있습니다, 프로 버전 설치"
-
-#: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47
-msgid "I don't have a license, install the Free version"
-msgstr "라이센스가 없습니다, 무료 버전 설치"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:50
-msgid "Enter your license key"
-msgstr "라이센스 키를 입력하세요"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:55
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:83
-msgid ""
-"Enter your license key to activate the Pro version of this plugin. You can "
-"find your license key in your PublishPress account dashboard."
-msgstr ""
-"이 플러그인의 Pro 버전을 활성화하려면 라이센스 키를 입력하세요. PublishPress "
-"계정 대시보드에서 라이센스 키를 찾을 수 있습니다."
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
-msgid "Go to my profile to get the license key"
-msgstr "라이센스 키를 얻으려면 내 프로필로 가세요"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:66
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:94
-msgid "Enter your license key here"
-msgstr "여기에 라이센스 키를 입력하세요"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:80
-msgid "Activate and install the plugin"
-msgstr "플러그인을 활성화하고 설치"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:76
-msgid "Manage your license"
-msgstr "라이센스 관리"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
-msgid "Your license key is: "
-msgstr "귀하의 라이센스 키는: "
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
-msgid "(hidden)"
-msgstr "(숨김)"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:119
-msgid "Activate the license key for this site"
-msgstr "이 사이트의 라이센스 키 활성화"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:126
-msgid "Edit the license key"
-msgstr "라이센스 키 편집"
-
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:129
-msgid "Deactivate the license key for this site"
-msgstr "이 사이트의 라이센스 키 비활성화"
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:32
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:159
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:175
-msgid "Unknown"
-msgstr "알 수 없음"
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:39
-msgid "Plugin Information"
-msgstr "플러그인 정보"
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:45
-msgid "Name:"
-msgstr "이름:"
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:51
-msgid "Description:"
-msgstr "설명:"
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:57
-msgid "Current Version:"
-msgstr "현재 버전:"
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:63
-msgid "Available Version:"
-msgstr "사용 가능한 버전:"
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:82
-msgid "Update Plugin"
-msgstr "플러그인 업데이트"
-
-#: resources/src/jsx/components/plugins-list/components/modal-plugin-info.jsx:93
-msgid "Check for Updates"
-msgstr "업데이트 확인"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
-msgid "Install %s"
-msgstr "%s 설치"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:106
-msgid "Install %s Pro"
-msgstr "%s Pro 설치"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:114
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:133
-msgid "Upgrade %s to Pro"
-msgstr "%s를 Pro로 업그레이드"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:122
-msgid "Uninstall %s"
-msgstr "%s 제거"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:123
-msgid "Are you sure you want to uninstall %s?"
-msgstr "%s를 제거하시겠습니까?"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:144
-msgid "Resolve Conflict for %s"
-msgstr "%s에 대한 충돌 해결"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:157
-msgid "Manage %s License"
-msgstr "%s 라이센스 관리"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:168
-msgid "Activate %s License"
-msgstr "%s 라이센스 활성화"
-
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:176
-msgid "More Info: %s"
-msgstr "추가 정보: %s"
-
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:34
-msgid "Resolve Plugin Conflict"
-msgstr "플러그인 충돌 해결"
-
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:49
-msgid "Free version: %s (%s)"
-msgstr "무료 버전: %s (%s)"
-
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:56
-msgid "Pro version: %s (%s)"
-msgstr "Pro 버전: %s (%s)"
-
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:79
-msgid "Keep the Pro version (Recommended)"
-msgstr "프로 버전 유지하기 (권장)"
-
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:89
-msgid "Keep the Free version"
-msgstr "무료 버전 유지하기"
-
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
-msgid ""
-"Unlock the full potential of this plugin with the Pro version. Enjoy "
-"advanced features, priority support, and exclusive benefits designed to help "
-"you get the most out of your workflow."
-msgstr ""
-"Pro 버전으로 이 플러그인의 모든 잠재력을 활용하세요. 고급 기능, 우선 지원 및 "
-"워크플로우를 최대한 활용할 수 있도록 설계된 독점 혜택을 즐기세요."
-
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
-msgid "Discover all Pro features"
-msgstr "모든 프로 기능 알아보기"
-
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
-msgid "Changelog"
-msgstr "변경 로그"
-
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
-msgid "Already have a license? Install Pro now"
-msgstr "라이센스가 있나요? 지금 프로 설치하기"
-
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
-msgid "Upgrade to Pro and boost your productivity"
-msgstr "프로로 업그레이드하여 생산성 향상하기"
-
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:139
-msgid "New version available"
-msgstr "새 버전 사용 가능"
-
-#. translators: %s is the installed version number
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:158
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:182
-#, fuzzy
-msgid "v%s"
-msgstr "v%s"
-
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
-msgid "Update available: %s → %s"
-msgstr "업데이트 가능: %s → %s"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:22
-msgid "Installing"
-msgstr "설치 중"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:27
-msgid "Not Installed"
-msgstr "설치되지 않음"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:31
-msgid "Free"
-msgstr "무료"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:35
-msgid "Licensed"
-msgstr "라이센스 보유"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:43
-msgid "Expired"
-msgstr "만료됨"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:47
-msgid "Uninstalling"
-msgstr "제거 중"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:52
-msgid "Upgrading"
-msgstr "업그레이드 중"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:57
-msgid "Deactivating"
-msgstr "비활성화 중"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:62
-msgid "Activating"
-msgstr "활성화 중"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:67
-msgid "Conflicting Installations"
-msgstr "충돌하는 설치"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
-msgid "Update Available"
-msgstr "업데이트 가능"
-
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
-msgid "Expires"
-msgstr "만료됨"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:56
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:75
-msgid "Renew"
-msgstr "갱신"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:85
-msgid "Deactivate"
-msgstr "비활성화"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:94
-msgid "Activate"
-msgstr "활성화"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:104
-msgid "Uninstall"
-msgstr "제거"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:142
-msgid "More Info"
-msgstr "자세한 정보"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:160
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:176
-msgid "latest"
-msgstr "최신"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
-msgid "Update to v%s"
-msgstr "v%s로 업데이트"
-
-#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
-msgid "This plugin is not installed."
-msgstr "이 플러그인이 설치되지 않았습니다."
-
-#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40
-msgid "This plugin is active."
-msgstr "이 플러그인이 활성화되었습니다."
-
-#: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41
-msgid "This plugin is not active."
-msgstr "이 플러그인이 비활성화되었습니다."
-
-#: resources/src/jsx/components/plugins-list/index.jsx:159
-msgid "No plugins found."
-msgstr "플러그인이 발견되지 않았습니다."
-
-#: resources/src/jsx/components/plugins-list/index.jsx:165
-msgid "Loading plugins..."
-msgstr "플러그인을 로딩 중..."
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:216
-msgid "Failed to fetch plugins"
-msgstr "플러그인을 가져오지 못했습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
-msgid "%s installed successfully"
-msgstr "%s가 성공적으로 설치되었습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
-msgid "%s installation failed"
-msgstr "%s 설치에 실패했습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
-msgid "%s uninstalled successfully"
-msgstr "%s가 성공적으로 제거되었습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
-msgid "%s uninstall failed"
-msgstr "%s 제거에 실패했습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
-msgid "%s activated successfully"
-msgstr "%s가 성공적으로 활성화되었습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
-msgid "%s activation failed"
-msgstr "%s 활성화에 실패했습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
-msgid "%s deactivated successfully"
-msgstr "%s가 성공적으로 비활성화되었습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
-msgid "%s deactivation failed"
-msgstr "%s 비활성화에 실패했습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
-msgid "%s upgraded to Pro successfully"
-msgstr "%s가 Pro로 성공적으로 업그레이드되었습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
-msgid "%s upgrade to Pro failed"
-msgstr "%s Pro로의 업그레이드에 실패했습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
-msgid "Conflict resolved successfully for %s"
-msgstr "%s에 대한 충돌이 성공적으로 해결되었습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
-msgid "Failed to resolve conflict for %s"
-msgstr "%s에 대한 충돌 해결에 실패했습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
-msgid "%s license deactivated successfully"
-msgstr "%s 라이선스가 성공적으로 비활성화되었습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
-msgid "%s license deactivation failed"
-msgstr "%s 라이선스 비활성화에 실패했습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:683
-msgid "%s license activated successfully"
-msgstr "%s 라이선스가 성공적으로 활성화되었습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:699
-msgid "%s license activation failed"
-msgstr "%s 라이선스 활성화에 실패했습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:734
-msgid "%s updated successfully"
-msgstr "%s가 성공적으로 업데이트되었습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:751
-msgid "%s update failed"
-msgstr "%s 업데이트에 실패했습니다"
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
-msgid "Too many requests. Please wait a few seconds and try again."
-msgstr "요청이 너무 많습니다. 몇 초 기다린 후 다시 시도해 주세요."
-
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:823
-#, fuzzy
-msgid "Cloudflare Ray ID: %s"
-msgstr "Cloudflare Ray ID: %s"

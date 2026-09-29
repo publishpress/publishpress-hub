@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Domain\Exception\ExceptionCode;
 
 class LicenseInvalidException extends LicenseException
@@ -26,7 +28,7 @@ class LicenseInvalidException extends LicenseException
     {
         parent::__construct(
             esc_html__(
-                'This license key is not authorized for this plugin. Please verify your license key or contact support for help.', // phpcs:ignore Generic.Files.LineLength
+                'This license key could not be activated. It may be invalid, blocked, or not authorized for this plugin. Please verify the key and contact PublishPress support if the problem continues.', // phpcs:ignore Generic.Files.LineLength
                 'publishpress-hub'
             ),
             ExceptionCode::LICENSE_INVALID,

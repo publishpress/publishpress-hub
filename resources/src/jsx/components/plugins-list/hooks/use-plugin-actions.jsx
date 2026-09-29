@@ -26,8 +26,8 @@ export const usePluginActions = (modalManager) => {
         resolveConflict,
         deactivateLicense,
         activateLicense,
+        reuseLicenseForAllPlugins,
         updatePlugin,
-        fetchPlugins,
     } = useDispatch(store);
 
     const handleOpenInstallationTypeModal = useCallback((pluginFamily) => {
@@ -74,13 +74,21 @@ export const usePluginActions = (modalManager) => {
         return result;
     }, [deactivateLicense]);
 
-    const handleActivateLicense = useCallback(async (pluginFamily, licenseKey) => {
-        const result = await activateLicense(pluginFamily, licenseKey);
+    const handleActivateLicense = useCallback(async (pluginFamily, licenseKey, applyToAll = false) => {
+        const result = await activateLicense(pluginFamily, licenseKey, applyToAll);
         if (result.success && !result.error) {
             closeModal();
         }
         return result;
-    }, [activateLicense]);
+    }, [activateLicense, closeModal]);
+
+    const handleReuseLicenseForAllPlugins = useCallback(async (pluginFamily) => {
+        const result = await reuseLicenseForAllPlugins(pluginFamily);
+        if (result.success && !result.error) {
+            closeModal();
+        }
+        return result;
+    }, [reuseLicenseForAllPlugins, closeModal]);
 
     // Modal-specific actions
     const handleInstallFree = useCallback((pluginSlug) => {
@@ -88,16 +96,26 @@ export const usePluginActions = (modalManager) => {
         closeModal();
     }, [installFreePlugin, closeModal]);
 
-    const handleInstallPro = useCallback(async (pluginSlug, licenseKey) => {
-        const result = await installProPlugin(pluginSlug, licenseKey);
+    const handleInstallPro = useCallback(async (
+        pluginSlug,
+        licenseKey,
+        applyToAll = false,
+        useExistingLicense = false
+    ) => {
+        const result = await installProPlugin(pluginSlug, licenseKey, applyToAll, useExistingLicense);
         if (result.success && !result.error) {
             closeModal();
         }
         return result;
     }, [installProPlugin, closeModal]);
 
-    const handleUpgradePluginToPro = useCallback(async (pluginSlug, licenseKey) => {
-        const result = await upgradePluginToPro(pluginSlug, licenseKey);
+    const handleUpgradePluginToPro = useCallback(async (
+        pluginSlug,
+        licenseKey,
+        applyToAll = false,
+        useExistingLicense = false
+    ) => {
+        const result = await upgradePluginToPro(pluginSlug, licenseKey, applyToAll, useExistingLicense);
         if (result.success && !result.error) {
             closeModal();
         }
@@ -122,10 +140,6 @@ export const usePluginActions = (modalManager) => {
         closeModal();
     }, [closeModal]);
 
-    const handleOpenPluginInfoModal = useCallback((pluginFamily) => {
-        openModal(MODAL_TYPES.PLUGIN_INFO, pluginFamily);
-    }, [openModal, MODAL_TYPES.PLUGIN_INFO]);
-
     const handleUpdatePlugin = useCallback(async (pluginFamily) => {
         const pluginFamilySlug = typeof pluginFamily === 'string' ? pluginFamily : pluginFamily.slug;
         const result = await updatePlugin(pluginFamilySlug);
@@ -134,12 +148,6 @@ export const usePluginActions = (modalManager) => {
         }
         return result;
     }, [updatePlugin, closeModal]);
-
-    const handleCheckForUpdates = useCallback(async () => {
-        // Force refresh the plugins list to check for updates
-        const result = await fetchPlugins(true);
-        return result;
-    }, [fetchPlugins]);
 
     return {
         // Primary actions
@@ -154,6 +162,7 @@ export const usePluginActions = (modalManager) => {
         handleOpenLicenseInputForActivatingLicenseModal,
         handleDeactivateLicense,
         handleActivateLicense,
+        handleReuseLicenseForAllPlugins,
         // Modal-specific actions
         handleInstallFree,
         handleInstallPro,
@@ -161,8 +170,6 @@ export const usePluginActions = (modalManager) => {
         handleUninstallPlugin,
         handleResolveConflictAction,
         handleBuyPlugin,
-        handleOpenPluginInfoModal,
         handleUpdatePlugin,
-        handleCheckForUpdates,
     };
 };
