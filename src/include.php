@@ -12,7 +12,8 @@ namespace PublishPress\Hub;
 use function add_action;
 use function do_action;
 
-if (! function_exists('add_action')) {
+// Composer can load this file before WordPress has bootstrapped.
+if (! defined('ABSPATH') || ! function_exists('add_action')) {
     return;
 }
 

@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\View;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
 use PublishPress\Hub\Infrastructure\View\Exception\TemplateNotFoundException;
 

@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Application\Service\ActivationRedirectService;
 use PublishPress\Hub\Application\Service\AdminNoticeVisibilityService;
 use PublishPress\Hub\Application\Service\EddPluginUpdateService;

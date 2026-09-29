@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Debug;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
 
 class DebugLogService

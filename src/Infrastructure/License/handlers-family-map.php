@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\License;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Infrastructure\License\Handlers\RawStringHandler;
 use PublishPress\Hub\Infrastructure\License\Handlers\SerializedArrayHandler;
 use PublishPress\Hub\Infrastructure\License\Handlers\SerializedObjectHandler;

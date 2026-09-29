@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Remote\Exception;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Domain\Exception\ExceptionCode;
 use PublishPress\Hub\Infrastructure\Exception\Base\InfrastructureException;
 
