@@ -373,7 +373,13 @@ var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forward
     return rel || (href ? DEFAULT_REL : undefined);
   }, [rel, href]);
   if (isLoading) {
-    children = /*#__PURE__*/React.createElement(React.Fragment, null, spinnerPosition === 'left' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, null), children, spinnerPosition === 'right' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, null));
+    children = /*#__PURE__*/React.createElement("span", {
+      className: "pp-hub-button-loading-content"
+    }, spinnerPosition === 'left' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {
+      className: "pp-hub-button-spinner"
+    }), /*#__PURE__*/React.createElement("span", null, children), spinnerPosition === 'right' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {
+      className: "pp-hub-button-spinner"
+    }));
     disabled = true;
   }
   var buttonClassName = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {

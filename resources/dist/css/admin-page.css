@@ -1177,6 +1177,21 @@ footer .pp-hub-footer-logo img {
     border-color: unset;
 }
 
+.pp-hub-button .pp-hub-button-loading-content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--pp-hub-spacing-sm);
+    vertical-align: middle;
+}
+
+.pp-hub-button .pp-hub-button-loading-content > .pp-hub-button-spinner {
+    display: block;
+    flex-shrink: 0;
+    margin: 0;
+    position: static;
+}
+
 .pp-hub-button:disabled {
     cursor: not-allowed;
 }
