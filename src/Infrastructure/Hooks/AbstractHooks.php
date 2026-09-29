@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Hooks;
 
+defined('ABSPATH') || exit;
+
 abstract class AbstractHooks
 {
     public const ACTION_PLUGINS_LOADED = 'plugins_loaded';
@@ -37,6 +39,4 @@ abstract class AbstractHooks
     public const FILTER_PLUGIN_CAPABILITIES = 'cme_plugin_capabilities';
 
     public const FILTER_EDD_SUBSCRIPTION_API_URL = 'publishpress_hub_edd_subscription_api_url';
-
-    public const FILTER_ALLOWED_DOWNLOAD_DOMAINS = 'publishpress_hub_allowed_download_domains';
 }

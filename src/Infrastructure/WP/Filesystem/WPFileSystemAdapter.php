@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WP\Filesystem;
 
+defined('ABSPATH') || exit;
+
 use InvalidArgumentException;
 use WP_Filesystem_Base;
 use WP_Error;
@@ -66,53 +68,6 @@ class WPFileSystemAdapter
     {
         $this->validatePath($path);
         return $this->getWpFilesystem()->get_contents($path);
-    }
-
-    /**
-     * Write contents to a file.
-     *
-     * @param string $path The path.
-     * @param string $contents The contents.
-     * @return bool True on success, false on failure.
-     * @since 1.0.0
-     */
-    public function putContents(string $path, string $contents): bool
-    {
-        $this->validatePath($path);
-        return $this->getWpFilesystem()->put_contents($path, $contents);
-    }
-
-    /**
-     * Append contents to a file.
-     *
-     * @param string $path The path.
-     * @param string $contents The contents.
-     * @return bool True on success, false on failure.
-     * @since 1.0.0
-     */
-    public function appendContents(string $path, string $contents): bool
-    {
-        $existingContents = $this->getContents($path);
-
-        if (false === $existingContents) {
-            $existingContents = '';
-        }
-
-        return $this->putContents($path, $existingContents . $contents);
-    }
-
-    /**
-     * Create a directory.
-     *
-     * @param string $path The path.
-     * @param int $chmod The directory permissions.
-     * @return bool True on success, false on failure.
-     * @since 1.0.0
-     */
-    public function makeDirectory(string $path, int $chmod = 0755): bool
-    {
-        $this->validatePath($path);
-        return $this->getWpFilesystem()->mkdir($path, $chmod, true);
     }
 
     /**
@@ -207,7 +162,6 @@ class WPFileSystemAdapter
         $paths = [
             WP_PLUGIN_DIR,                      // /wp-content/plugins
             WP_CONTENT_DIR . '/upgrade',        // /wp-content/upgrade (temp updates)
-            WP_CONTENT_DIR . '/uploads',        // /wp-content/uploads (debug logs)
             get_temp_dir(),                     // System temp directory
         ];
 

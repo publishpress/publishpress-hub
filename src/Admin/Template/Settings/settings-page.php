@@ -17,6 +17,8 @@
 
 declare(strict_types=1);
 
+defined('ABSPATH') || exit;
+
 ?>
 <div id="publishpress-hub-settings-page-container">
     <div class="publishpress-hub-admin-page-loading">

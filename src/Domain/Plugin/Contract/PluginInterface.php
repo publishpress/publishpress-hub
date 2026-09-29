@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Contract;
 
+defined('ABSPATH') || exit;
+
 /**
  * @since 1.0.0
  */

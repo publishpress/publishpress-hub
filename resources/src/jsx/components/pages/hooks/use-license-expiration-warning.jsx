@@ -118,7 +118,7 @@ export const useLicenseExpirationWarning = (plugins, daysUntilExpiration = DAYS_
         removeNotice('pp-hub-license-expired-warning');
 
         // Display expired license notice (error level - highest priority)
-        if (expiredPlugins.length > 0 && !dismissalStatus.expired) {
+        if (expiredPlugins.length > 0) {
             // Group plugins by expiration date
             const pluginsByDate = {};
             expiredPlugins.forEach((plugin) => {
@@ -163,9 +163,8 @@ export const useLicenseExpirationWarning = (plugins, daysUntilExpiration = DAYS_
                 message,
                 {
                     id: 'pp-hub-license-expired-warning',
-                    isDismissible: true,
+                    isDismissible: false,
                     __unstableHTML: true,
-                    onDismiss: () => handleNoticeDismiss('expired'),
                 }
             );
         }
@@ -228,4 +227,3 @@ export const useLicenseExpirationWarning = (plugins, daysUntilExpiration = DAYS_
 
     }, [plugins, createNotice, removeNotice, daysUntilExpiration, dismissalStatus, handleNoticeDismiss]);
 };
-

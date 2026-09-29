@@ -14,8 +14,11 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Application\Contract\AccessInterface;
 use PublishPress\Hub\Application\Contract\BootableInterface;
+use PublishPress\Hub\Application\Service\License\WpConfigLicenseSyncService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Entity\FreePlugin;
@@ -40,23 +43,41 @@ class HubBootstrapService implements BootableInterface
 
     private DebugLogService $debugLogService;
 
+    private WpConfigLicenseSyncService $wpConfigLicenseSyncService;
+
+    private string $eddSubscriptionApiUrl;
+
+    /**
+     * @var array<string>
+     */
+    private array $allowedDownloadDomains;
+
     /**
      * @param BootableInterface[] $servicesToInit
      * @param PluginFamilyRepositoryInterface $pluginFamilyRepository
      * @param AccessInterface $accessService
      * @param DebugLogService $debugLogService
+     * @param WpConfigLicenseSyncService $wpConfigLicenseSyncService
+     * @param string $eddSubscriptionApiUrl
+     * @param array<string> $allowedDownloadDomains
      * @since 1.0.0
      */
     public function __construct(
         array $servicesToInit,
         PluginFamilyRepositoryInterface $pluginFamilyRepository,
         AccessInterface $accessService,
-        DebugLogService $debugLogService
+        DebugLogService $debugLogService,
+        WpConfigLicenseSyncService $wpConfigLicenseSyncService,
+        string $eddSubscriptionApiUrl,
+        array $allowedDownloadDomains
     ) {
         $this->servicesToInit = $servicesToInit;
         $this->pluginFamilyRepository = $pluginFamilyRepository;
         $this->accessService = $accessService;
         $this->debugLogService = $debugLogService;
+        $this->wpConfigLicenseSyncService = $wpConfigLicenseSyncService;
+        $this->eddSubscriptionApiUrl = $eddSubscriptionApiUrl;
+        $this->allowedDownloadDomains = $allowedDownloadDomains;
     }
 
     /**
@@ -66,7 +87,9 @@ class HubBootstrapService implements BootableInterface
      */
     protected function onLoad(): void
     {
+        $this->debugLogService->migrateLegacyPublicLog();
         HttpDebugger::setLogFilePath($this->debugLogService->getLogFilePath());
+        HttpDebugger::setAllowedRequestUrls($this->eddSubscriptionApiUrl, $this->allowedDownloadDomains);
         HttpDebugger::initialize();
 
         $this->addHooks();
@@ -82,8 +105,9 @@ class HubBootstrapService implements BootableInterface
      */
     protected function onInit(): void
     {
-        $this->initServices();
         $this->registerPluginFamilies();
+        $this->wpConfigLicenseSyncService->syncLicenseKeysFromConstants();
+        $this->initServices();
     }
 
     /**

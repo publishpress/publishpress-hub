@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WP\Plugin;
 
+defined('ABSPATH') || exit;
+
 use InvalidArgumentException;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;
@@ -46,31 +48,7 @@ class WPPluginLifecycleAdapter
      */
     public function installPlugin(string $slug, string $downloadUrl): bool
     {
-        // Validate URL format
-        if (!filter_var($downloadUrl, FILTER_VALIDATE_URL)) {
-            throw new InvalidArgumentException(
-                esc_html__('Invalid download URL provided', 'publishpress-hub')
-            );
-        }
-
-        // Parse URL to extract host and validate scheme
-        $urlParts = wp_parse_url($downloadUrl);
-        if (!isset($urlParts['scheme']) || !in_array($urlParts['scheme'], ['http', 'https'], true)) {
-            throw new InvalidArgumentException(
-                esc_html__('Download URL must use HTTP or HTTPS protocol', 'publishpress-hub')
-            );
-        }
-
-        $host = $urlParts['host'] ?? '';
-        if (!in_array($host, $this->allowedDownloadDomains, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    // translators: %s is the hostname
-                    esc_html__('Download URL is not from an allowed domain: %s', 'publishpress-hub'),
-                    esc_html($host)
-                )
-            );
-        }
+        $this->validateDownloadUrl($downloadUrl);
 
         // Additional validation using WordPress function if available
         if (function_exists('wp_http_validate_url')) {
@@ -108,25 +86,27 @@ class WPPluginLifecycleAdapter
 
         $fileSize = filesize($tmpFile);
         if ($fileSize === false || $fileSize === 0) {
-            @unlink($tmpFile); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_unlink
+            wp_delete_file($tmpFile);
             throw new RuntimeException(
                 esc_html__('Downloaded plugin file is empty', 'publishpress-hub')
             );
         }
 
         // Check ZIP file signature (magic bytes: PK\x03\x04)
-        $fileContents = $this->fileSystemAdapter->getContents($tmpFile);
-        if (false === $fileContents) {
-            @unlink($tmpFile); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_unlink
+        // WP_Filesystem reads whole files; a local stream keeps signature checks bounded to four bytes.
+        $fileHandle = fopen($tmpFile, 'rb'); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
+        if ($fileHandle === false) {
+            wp_delete_file($tmpFile);
             throw new RuntimeException(
                 esc_html__('Cannot read downloaded plugin file', 'publishpress-hub')
             );
         }
 
-        $magicBytes = substr($fileContents, 0, 4);
+        $magicBytes = fread($fileHandle, 4); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fread
+        fclose($fileHandle); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- Required after inspecting ZIP magic bytes.
 
         if ($magicBytes !== "PK\x03\x04") {
-            @unlink($tmpFile); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_unlink
+            wp_delete_file($tmpFile);
             throw new RuntimeException(
                 esc_html__('Downloaded file is not a valid ZIP archive. The download URL may be returning an error page.', 'publishpress-hub')
             );
@@ -258,11 +238,12 @@ class WPPluginLifecycleAdapter
      * This function will update a plugin using WordPress native Plugin_Upgrader.
      *
      * @param string $pluginPath The plugin path.
+     * @param array<string, mixed>|null $updateInfo The update information.
      * @return bool True if the plugin was updated, false otherwise.
      * @throws RuntimeException
      * @since 1.0.0
      */
-    public function updatePlugin(string $pluginPath): bool
+    public function updatePlugin(string $pluginPath, ?array $updateInfo = null): bool
     {
         if (!class_exists('Plugin_Upgrader')) {
             require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
@@ -287,9 +268,14 @@ class WPPluginLifecycleAdapter
         // Verify the plugin has an update available
         $updates = get_plugin_updates();
         if (empty($updates) || !isset($updates[$pluginPath])) {
-            throw new RuntimeException(
-                esc_html__('No update available for this plugin', 'publishpress-hub')
-            );
+            $this->primePluginUpdateTransient($pluginPath, $updateInfo);
+            $updates = get_plugin_updates();
+
+            if (empty($updates) || !isset($updates[$pluginPath])) {
+                throw new RuntimeException(
+                    esc_html__('No update available for this plugin', 'publishpress-hub')
+                );
+            }
         }
 
         // Ensure the update information is properly structured
@@ -342,5 +328,140 @@ class WPPluginLifecycleAdapter
         }
 
         return true;
+    }
+
+    /**
+     * Prime WordPress update transient using Hub-detected update information.
+     *
+     * @param string $pluginPath The plugin path.
+     * @param array<string, mixed>|null $updateInfo The update information.
+     * @throws RuntimeException
+     * @since 1.0.0
+     */
+    private function primePluginUpdateTransient(string $pluginPath, ?array $updateInfo): void
+    {
+        if (empty($updateInfo)) {
+            return;
+        }
+
+        $package = $this->getUpdatePackageUrl($updateInfo);
+        $version = $this->getUpdateVersion($updateInfo);
+
+        if (empty($package) || empty($version)) {
+            return;
+        }
+
+        $this->validateDownloadUrl($package);
+
+        $transient = get_site_transient('update_plugins');
+        if (!is_object($transient)) {
+            $transient = new \stdClass();
+        }
+
+        if (!isset($transient->response) || !is_array($transient->response)) {
+            $transient->response = [];
+        }
+
+        $transient->response[$pluginPath] = $this->createUpdateTransientEntry($pluginPath, $version, $package);
+
+        set_site_transient('update_plugins', $transient);
+    }
+
+    /**
+     * Create a WordPress plugin update transient entry.
+     *
+     * @param string $pluginPath The plugin path.
+     * @param string $version The available version.
+     * @param string $package The update package URL.
+     * @return \stdClass
+     * @since 1.0.0
+     */
+    private function createUpdateTransientEntry(string $pluginPath, string $version, string $package): \stdClass
+    {
+        $slug = dirname($pluginPath);
+        $entry = new \stdClass();
+        $entry->id = $slug;
+        $entry->slug = $slug;
+        $entry->plugin = $pluginPath;
+        $entry->new_version = $version;
+        $entry->url = '';
+        $entry->package = $package;
+        $entry->icons = [];
+        $entry->banners = [];
+        $entry->banners_rtl = [];
+
+        return $entry;
+    }
+
+    /**
+     * Get the update package URL from update info.
+     *
+     * @param array<string, mixed> $updateInfo The update information.
+     * @return string
+     * @since 1.0.0
+     */
+    private function getUpdatePackageUrl(array $updateInfo): string
+    {
+        if (!empty($updateInfo['package']) && is_string($updateInfo['package'])) {
+            return $updateInfo['package'];
+        }
+
+        if (!empty($updateInfo['download_link']) && is_string($updateInfo['download_link'])) {
+            return $updateInfo['download_link'];
+        }
+
+        return '';
+    }
+
+    /**
+     * Get the available version from update info.
+     *
+     * @param array<string, mixed> $updateInfo The update information.
+     * @return string
+     * @since 1.0.0
+     */
+    private function getUpdateVersion(array $updateInfo): string
+    {
+        foreach (['new_version', 'version', 'stable_version'] as $versionKey) {
+            if (!empty($updateInfo[$versionKey]) && is_string($updateInfo[$versionKey])) {
+                return $updateInfo[$versionKey];
+            }
+        }
+
+        return '';
+    }
+
+    /**
+     * Validate a download URL.
+     *
+     * @param string $downloadUrl The download URL.
+     * @throws InvalidArgumentException When the download URL is invalid or from an untrusted domain.
+     * @since 1.0.0
+     */
+    private function validateDownloadUrl(string $downloadUrl): void
+    {
+        if (!filter_var($downloadUrl, FILTER_VALIDATE_URL)) {
+            throw new InvalidArgumentException(
+                esc_html__('Invalid download URL provided', 'publishpress-hub')
+            );
+        }
+
+        $urlParts = wp_parse_url($downloadUrl);
+        if (!isset($urlParts['scheme']) || !in_array($urlParts['scheme'], ['http', 'https'], true)) {
+            throw new InvalidArgumentException(
+                esc_html__('Download URL must use HTTP or HTTPS protocol', 'publishpress-hub')
+            );
+        }
+
+        $host = $urlParts['host'] ?? '';
+        if (!in_array($host, $this->allowedDownloadDomains, true)) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    // translators: %s is the hostname
+                    esc_html__('Download URL is not from an allowed domain: %s', 'publishpress-hub'),
+                    esc_html($host)
+                )
+            );
+        }
     }
 }

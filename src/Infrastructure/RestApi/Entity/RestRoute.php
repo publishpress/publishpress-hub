@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\RestApi\Entity;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 
 class RestRoute

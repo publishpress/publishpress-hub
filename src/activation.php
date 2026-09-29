@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Service\RewriteRulesService;
 use PublishPress\Hub\Application\Service\VersionService;
@@ -65,7 +67,13 @@ function setupActivationAccessSetup()
         return;
     } elseif ($versionService->isUpdate()) {
         // Update: Run migrations if needed (future implementation)
-        // For now, just update the version
+        if (
+            version_compare($currentVersion, '1.0.6', '>=')
+            && version_compare($versionService->getStoredVersionForMigration(), '1.0.6', '<')
+        ) {
+            HubAccessService::addViewerRoleCapability();
+        }
+
         $versionService->storeCurrentVersion();
     }
 }
