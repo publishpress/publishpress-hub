@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace Tests\Integration\Infrastructure\WP\I18n;
 
 use PublishPress\Hub\Infrastructure\WP\Asset\WPAssetAdapter;
+use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;
 use PublishPress\Hub\Infrastructure\WP\I18n\WPI18nAdapter;
 use Tests\WPTestCase;
 
@@ -28,7 +29,8 @@ class WordPressI18nAdapterTest extends WPTestCase
                 'http://localhost/publishpress-hub/assets/',
                 '1.0.0',
                 false
-            )
+            ),
+            new WPFileSystemAdapter()
         );
     }
 

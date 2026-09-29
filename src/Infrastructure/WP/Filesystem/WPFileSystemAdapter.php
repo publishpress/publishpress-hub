@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WP\Filesystem;
 
+defined('ABSPATH') || exit;
+
 use InvalidArgumentException;
 use WP_Filesystem_Base;
 use WP_Error;
@@ -53,6 +55,19 @@ class WPFileSystemAdapter
     {
         $this->validatePath($path);
         return $this->getWpFilesystem()->exists($path);
+    }
+
+    /**
+     * Read a file's contents.
+     *
+     * @param string $path The path.
+     * @return string|false The file contents, or false on failure.
+     * @since 1.0.0
+     */
+    public function getContents(string $path)
+    {
+        $this->validatePath($path);
+        return $this->getWpFilesystem()->get_contents($path);
     }
 
     /**

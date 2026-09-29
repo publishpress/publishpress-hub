@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin;
 
+defined('ABSPATH') || exit;
+
 /**
  * @return array<array<string, mixed>> An array of plugin families.
  * @since 1.0.0

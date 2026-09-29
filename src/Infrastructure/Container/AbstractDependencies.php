@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container;
 
+defined('ABSPATH') || exit;
+
 /**
  * Container dependency identifiers.
  *
@@ -118,6 +120,10 @@ abstract class AbstractDependencies
 
     public const LICENSE_VALIDATION_BOOTSTRAP_SERVICE = 'publishpress-hub.application.license.validation-bootstrap.service';
 
+    public const WP_CONFIG_LICENSE_READER_SERVICE = 'publishpress-hub.application.license.wp-config-reader.service';
+
+    public const WP_CONFIG_LICENSE_SYNC_SERVICE = 'publishpress-hub.application.license.wp-config-sync.service';
+
     public const VALIDATE_LICENSES_USE_CASE = 'publishpress-hub.application.use-case.plugin.validate-licenses';
 
     public const EDD_SUBSCRIPTION_ADAPTER = 'publishpress-hub.infrastructure.edd-subscription.adapter';
@@ -169,6 +175,8 @@ abstract class AbstractDependencies
 
     public const ACTIVATE_LICENSE_USE_CASE = 'publishpress-hub.application.use-case.plugin.activate-license';
 
+    public const REUSE_LICENSE_FOR_ALL_PLUGINS_USE_CASE = 'publishpress-hub.application.use-case.plugin.reuse-license-for-all-plugins';
+
     public const PLUGIN_STATUS_ADAPTER = 'publishpress-hub.infrastructure.plugin-status.adapter';
 
     public const PLUGIN_STATUS_SERVICE = 'publishpress-hub.application.plugin-status.service';
@@ -208,4 +216,6 @@ abstract class AbstractDependencies
     public const GET_DEBUG_LOG_USE_CASE = 'publishpress-hub.application.use-case.settings.get-debug-log';
 
     public const CLEAR_DEBUG_LOG_USE_CASE = 'publishpress-hub.application.use-case.settings.clear-debug-log';
+
+    public const GET_SITE_HEALTH_REPORT_USE_CASE = 'publishpress-hub.application.use-case.settings.get-site-health-report';
 }

@@ -39,32 +39,17 @@ export const getPlugins = (state) => {
 }
 
 const sortPlugins = (pluginFamily) => {
-    return pluginFamily.sort((a, b) => {
-        // First sort by having or not a conflicting installation
-        if (a.hasConflictingInstallations && !b.hasConflictingInstallations) {
+    return [...pluginFamily].sort((a, b) => {
+        if (a.proPlugin.isLicensed && !b.proPlugin.isLicensed) {
             return -1;
         }
-        if (!a.hasConflictingInstallations && b.hasConflictingInstallations) {
+        if (!a.proPlugin.isLicensed && b.proPlugin.isLicensed) {
             return 1;
         }
 
-        // Then sort by installed status
-        if (a.hasAnyVersionInstalled && !b.hasAnyVersionInstalled) {
-            return -1;
-        }
-        if (!a.hasAnyVersionInstalled && b.hasAnyVersionInstalled) {
-            return 1;
-        }
-
-        // Finally sort by activation status (only for installed plugins)
-        if (a.hasAnyVersionActive && !b.hasAnyVersionActive) {
-            return -1;
-        }
-        if (!a.hasAnyVersionActive && b.hasAnyVersionActive) {
-            return 1;
-        }
-
-        return 0;
+        return a.name.localeCompare(b.name, undefined, {
+            sensitivity: 'base',
+        });
     });
 }
 

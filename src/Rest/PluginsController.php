@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Rest;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
@@ -25,6 +27,7 @@ use PublishPress\Hub\Application\UseCase\Plugin\UninstallPluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UpgradePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\UpdatePluginUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ResolveConflictUseCase;
+use PublishPress\Hub\Application\UseCase\Plugin\ReuseLicenseForAllPluginsUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\DeactivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ActivateLicenseUseCase;
 use PublishPress\Hub\Application\UseCase\Plugin\ValidateLicensesUseCase;
@@ -51,6 +54,7 @@ class PluginsController implements BootableInterface
     private DeactivateLicenseUseCase $deactivateLicenseUseCase;
     private ActivateLicenseUseCase $activateLicenseUseCase;
     private ValidateLicensesUseCase $validateLicensesUseCase;
+    private ReuseLicenseForAllPluginsUseCase $reuseLicenseForAllPluginsUseCase;
     private LicenseExpirationNoticeService $licenseExpirationNoticeService;
     private string $restApiNamespace;
 
@@ -68,6 +72,7 @@ class PluginsController implements BootableInterface
      * @param DeactivateLicenseUseCase $deactivateLicenseUseCase
      * @param ActivateLicenseUseCase $activateLicenseUseCase
      * @param ValidateLicensesUseCase $validateLicensesUseCase
+     * @param ReuseLicenseForAllPluginsUseCase $reuseLicenseForAllPluginsUseCase
      * @param LicenseExpirationNoticeService $licenseExpirationNoticeService
      * @since 1.0.0
      */
@@ -85,6 +90,7 @@ class PluginsController implements BootableInterface
         DeactivateLicenseUseCase $deactivateLicenseUseCase,
         ActivateLicenseUseCase $activateLicenseUseCase,
         ValidateLicensesUseCase $validateLicensesUseCase,
+        ReuseLicenseForAllPluginsUseCase $reuseLicenseForAllPluginsUseCase,
         LicenseExpirationNoticeService $licenseExpirationNoticeService
     ) {
         $this->restApiService = $restApiService;
@@ -100,6 +106,7 @@ class PluginsController implements BootableInterface
         $this->deactivateLicenseUseCase = $deactivateLicenseUseCase;
         $this->activateLicenseUseCase = $activateLicenseUseCase;
         $this->validateLicensesUseCase = $validateLicensesUseCase;
+        $this->reuseLicenseForAllPluginsUseCase = $reuseLicenseForAllPluginsUseCase;
         $this->licenseExpirationNoticeService = $licenseExpirationNoticeService;
     }
 
@@ -194,11 +201,27 @@ class PluginsController implements BootableInterface
             [
                 'familySlug' => $this->getFamilySlugArg(),
                 'licenseKey' => [
-                    'required' => true,
+                    'required' => false,
                     'type' => 'string',
                     'sanitize_callback' => 'sanitize_text_field',
                     'validate_callback' => function ($param) {
-                        return !empty($param) && is_string($param);
+                        return $param === null || is_string($param);
+                    },
+                ],
+                'applyToAll' => [
+                    'required' => false,
+                    'type' => 'boolean',
+                    'sanitize_callback' => 'rest_sanitize_boolean',
+                    'validate_callback' => function ($param) {
+                        return is_bool(rest_sanitize_boolean($param));
+                    },
+                ],
+                'useExistingLicense' => [
+                    'required' => false,
+                    'type' => 'boolean',
+                    'sanitize_callback' => 'rest_sanitize_boolean',
+                    'validate_callback' => function ($param) {
+                        return is_bool(rest_sanitize_boolean($param));
                     },
                 ],
             ]
@@ -246,11 +269,27 @@ class PluginsController implements BootableInterface
             [
                 'familySlug' => $this->getFamilySlugArg(),
                 'licenseKey' => [
-                    'required' => true,
+                    'required' => false,
                     'type' => 'string',
                     'sanitize_callback' => 'sanitize_text_field',
                     'validate_callback' => function ($param) {
-                        return !empty($param) && is_string($param);
+                        return $param === null || is_string($param);
+                    },
+                ],
+                'applyToAll' => [
+                    'required' => false,
+                    'type' => 'boolean',
+                    'sanitize_callback' => 'rest_sanitize_boolean',
+                    'validate_callback' => function ($param) {
+                        return is_bool(rest_sanitize_boolean($param));
+                    },
+                ],
+                'useExistingLicense' => [
+                    'required' => false,
+                    'type' => 'boolean',
+                    'sanitize_callback' => 'rest_sanitize_boolean',
+                    'validate_callback' => function ($param) {
+                        return is_bool(rest_sanitize_boolean($param));
                     },
                 ],
             ]
@@ -317,6 +356,18 @@ class PluginsController implements BootableInterface
                         return !empty($param) && is_string($param);
                     },
                 ],
+            ]
+        ));
+
+        // POST /plugins/{familySlug}/reuse-license-for-all
+        $this->restApiService->addRoute(new RestRoute(
+            $this->restApiNamespace,
+            '/plugins/(?P<familySlug>[a-zA-Z0-9-]+)/reuse-license-for-all',
+            WP_REST_Server::CREATABLE,
+            $this->reuseLicenseForAllPluginsUseCase,
+            [$this, 'checkPermissions'],
+            [
+                'familySlug' => $this->getFamilySlugArg(),
             ]
         ));
 

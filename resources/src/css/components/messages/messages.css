@@ -9,28 +9,39 @@
  */
 
 .pp-hub-message {
-    padding: var(--pp-hub-spacing-md);
-    border-radius: var(--pp-hub-radius-md);
+    margin: var(--pp-hub-spacing-md) 0;
+    padding: var(--pp-hub-spacing-md) var(--pp-hub-spacing-lg);
+    border: 1px solid var(--pp-hub-border-secondary);
+    border-left: 4px solid var(--pp-hub-border-secondary);
+    border-radius: 0;
     background-color: var(--pp-hub-bg-secondary);
     color: var(--pp-hub-text-primary);
+    font-size: var(--pp-hub-font-size-md);
+    line-height: var(--pp-hub-line-height-normal);
+    word-break: break-word;
 }
 
 .pp-hub-message.is-error {
     background-color: var(--pp-hub-bg-error);
+    border-color: var(--pp-hub-error-color);
     color: var(--pp-hub-text-error);
+    font-weight: var(--pp-hub-font-weight-semibold);
 }
 
 .pp-hub-message.is-success {
     background-color: var(--pp-hub-bg-success);
+    border-color: var(--pp-hub-success-color);
     color: var(--pp-hub-text-success);
 }
 
 .pp-hub-message.is-warning {
     background-color: var(--pp-hub-bg-warning);
+    border-color: var(--pp-hub-warning-color);
     color: var(--pp-hub-text-warning);
 }
 
 .pp-hub-message.is-info {
     background-color: var(--pp-hub-bg-info);
+    border-color: var(--pp-hub-info-color);
     color: var(--pp-hub-text-info);
 }

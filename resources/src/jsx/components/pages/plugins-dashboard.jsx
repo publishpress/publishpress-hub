@@ -137,7 +137,7 @@ const PluginsDashboardComponent = () => {
     }, [fetchPlugins, isAltPressed]);
 
     const refreshButtonTooltip = useMemo(() => {
-        return __('Hold ALT and click to force refresh the update cache', 'publishpress-hub');
+        return __('To force a refresh, hold Option on Mac or Alt on Windows and then click Refresh.', 'publishpress-hub');
     }, []);
 
     return (

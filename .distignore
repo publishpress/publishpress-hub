@@ -23,6 +23,8 @@
 /tests-old
 /lib/composer.json
 /lib/composer.lock
+/lib/vendor/publishpress/pimple-pimple/lib/pimple/pimple/phpunit.xml.dist
+/lib/vendor/publishpress/pimple-pimple/lib/pimple/pimple/.php_cs.dist
 /lib/vendor/woocommerce/action-scheduler/README.md
 /lib/vendor/woocommerce/action-scheduler/changelog.txt
 Gruntfile.js
