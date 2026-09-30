@@ -17,6 +17,7 @@ const MODAL_TYPES = {
     LICENSE_INPUT_FOR_UPGRADE: 'license-input-for-upgrade',
     LICENSE_INPUT_FOR_ACTIVATING_LICENSE: 'license-input-for-activating-license',
     UNINSTALL_CONFIRMATION: 'uninstall-confirmation',
+    DEACTIVATE_CONFIRMATION: 'deactivate-confirmation',
     UPGRADE_PLUGIN_TO_PRO: 'upgrade-plugin-to-pro',
     RESOLVE_CONFLICT: 'resolve-conflict',
     LICENSE_MANAGEMENT: 'license-management',

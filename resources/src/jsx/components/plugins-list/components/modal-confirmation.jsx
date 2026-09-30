@@ -25,12 +25,17 @@ const ModalConfirmationComponent = ({
     children,
     error,
     isDanger,
+    buttonInProgress = false,
+    confirmLabel,
 }) => {
     return (
         <Modal
             title={title || __('Confirmation', 'publishpress-hub')}
             className='pp-hub-modal-confirmation'
-            onRequestClose={onClose}
+            onRequestClose={buttonInProgress ? undefined : onClose}
+            isDismissible={!buttonInProgress}
+            shouldCloseOnEsc={!buttonInProgress}
+            shouldCloseOnClickOutside={!buttonInProgress}
         >
             <p>
                 {message || __('Are you sure you want to continue?', 'publishpress-hub')}
@@ -45,10 +50,10 @@ const ModalConfirmationComponent = ({
             )}
 
             <div className='pp-hub-modal-actions'>
-                <Button variant={isDanger ? 'danger' : 'primary'} isFullWidth icon='yes' onClick={() => onConfirm()}>
-                    {__('Continue', 'publishpress-hub')}
+                <Button variant={isDanger ? 'danger' : 'primary'} isFullWidth icon='yes' isLoading={buttonInProgress} onClick={() => onConfirm()}>
+                    {confirmLabel || __('Continue', 'publishpress-hub')}
                 </Button>
-                <Button variant='secondary' isFullWidth icon='no' onClick={() => onCancel()}>
+                <Button variant='secondary' isFullWidth icon='no' disabled={buttonInProgress} onClick={() => onCancel()}>
                     {__('Cancel', 'publishpress-hub')}
                 </Button>
             </div>
