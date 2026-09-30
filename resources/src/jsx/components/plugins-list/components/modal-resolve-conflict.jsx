@@ -15,6 +15,7 @@ import { __, sprintf } from '@publishpress-hub/i18n';
 import { Button } from '../../buttons/button';
 import { Message } from '../../message/message';
 import { Modal } from '../../modal';
+import { DeactivationWarning } from './deactivation-warning';
 
 const ModalResolveConflictComponent = ({
     onClose,
@@ -62,6 +63,8 @@ const ModalResolveConflictComponent = ({
                     </li>
                 </ul>
             </div>
+
+            <DeactivationWarning pluginFamily={pluginsFamily} isConflict={true} />
 
             {children}
 
