@@ -581,13 +581,23 @@ export function* resolveConflict(pluginFamily, pluginToKeep) {
 
         yield apiReady();
 
-        const data = yield apiFetch({
+        let data = yield apiFetch({
             path: `${API_NAMESPACE}/plugins/${pluginFamily.slug}/resolve-conflict`,
             method: 'POST',
             data: {
                 pluginToKeep: pluginToKeep,
+                phase: 'activate',
             },
         });
+
+        // A fresh request must load the selected edition before removing the inactive copy.
+        if (data.success && data.requiresCleanup) {
+            data = yield apiFetch({
+                path: `${API_NAMESPACE}/plugins/${pluginFamily.slug}/resolve-conflict`,
+                method: 'POST',
+                data: { pluginToKeep, phase: 'cleanup' },
+            });
+        }
 
         if (data.success) {
             yield fetchPlugins();
