@@ -25,6 +25,8 @@ use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Domain\Plugin\Exception\PluginNotInstalledException;
 use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginLifecycleAdapter;
 use WP_REST_Request;
+use InvalidArgumentException;
+use RuntimeException;
 
 class ResolveConflictUseCase implements UseCaseInterface
 {
@@ -57,6 +59,10 @@ class ResolveConflictUseCase implements UseCaseInterface
     {
         $familySlug = $request->get_param('familySlug');
         $pluginTypeToKeep = $request->get_param('pluginToKeep');
+        $phase = $request->get_param('phase') ?? 'activate';
+        if (!in_array($pluginTypeToKeep, ['free', 'pro'], true) || !in_array($phase, ['activate', 'cleanup'], true)) {
+            throw new InvalidArgumentException(esc_html__('Invalid conflict resolution request.', 'publishpress-hub'));
+        }
 
         $family = $this->pluginStatusService->getPluginFamilyWithUpdatedStatus($familySlug);
 
@@ -77,16 +83,41 @@ class ResolveConflictUseCase implements UseCaseInterface
 
         $pluginToUninstallSlug = $pluginToUninstall->getSlug();
         $pluginToUninstallPath = $pluginToUninstall->getPath();
+        $selectedPath = $pluginToKeep->getPath();
 
-        $this->pluginLifecycle->deactivatePlugin($pluginToUninstallPath);
-        $this->pluginLifecycle->uninstallPlugin($pluginToUninstallPath);
-        $this->pluginLifecycle->deletePlugin($pluginToUninstallPath);
+        if (!$pluginToKeep->isInstalled() || $selectedPath === $pluginToUninstallPath) {
+            throw new RuntimeException(esc_html__('The selected plugin is not available for activation.', 'publishpress-hub'));
+        }
+
+        if ($phase === 'activate') {
+            $this->pluginLifecycle->switchActivePlugin($pluginToUninstallPath, $selectedPath);
+            return ['requiresCleanup' => true, 'active' => true];
+        }
+
+        if (!$this->pluginLifecycle->canRemoveConflictingPlugin($pluginToUninstallPath, $selectedPath)) {
+            throw new RuntimeException(esc_html__(
+                'Cleanup was stopped because the selected plugin is not active or the other version is still loaded. Neither copy was deleted.',
+                'publishpress-hub'
+            ));
+        }
+
+        // delete_plugins() runs the uninstall hook itself. Do not run it twice.
+        if (!$this->pluginLifecycle->deletePlugin($pluginToUninstallPath)) {
+            throw new RuntimeException(esc_html__(
+                'The selected plugin is active, but the other version could not be removed. Please remove it from the Plugins screen.',
+                'publishpress-hub'
+            ));
+        }
 
         $this->pluginStatusService->updatePluginStatus($pluginToKeep);
+        if (!$pluginToKeep->isActive()) {
+            throw new RuntimeException(esc_html__('The selected plugin is no longer active. Please reactivate it from the Plugins screen.', 'publishpress-hub'));
+        }
 
         return [
             'slug' => esc_html($pluginToUninstallSlug),
             'installed' => $pluginToKeep->isInstalled(),
+            'active' => $pluginToKeep->isActive(),
         ];
     }
 

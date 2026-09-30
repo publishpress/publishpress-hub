@@ -324,6 +324,11 @@ class PluginsController implements BootableInterface
                         return in_array($param, ['free', 'pro'], true);
                     },
                 ],
+                'phase' => [
+                    'type' => 'string',
+                    'default' => 'activate',
+                    'enum' => ['activate', 'cleanup'],
+                ],
             ]
         ));
 

@@ -5032,7 +5032,7 @@ function upgradePluginToPro(pluginFamilySlug, licenseKey) {
   })();
 }
 function resolveConflict(pluginFamily, pluginToKeep) {
-  var validPlugins, validPluginToKeep, data, _t8;
+  var validPlugins, validPluginToKeep, data, _data, _t8;
   return _regenerator().w(function (_context18) {
     while (1) switch (_context18.p = _context18.n) {
       case 0:
@@ -5062,19 +5062,36 @@ function resolveConflict(pluginFamily, pluginToKeep) {
           path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamily.slug, "/resolve-conflict"),
           method: 'POST',
           data: {
-            pluginToKeep: pluginToKeep
+            pluginToKeep: pluginToKeep,
+            phase: 'activate'
           }
         });
       case 4:
         data = _context18.v;
-        if (!data.success) {
-          _context18.n = 8;
+        if (!(data.success && data.requiresCleanup)) {
+          _context18.n = 6;
           break;
         }
         _context18.n = 5;
-        return fetchPlugins();
+        return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
+          path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamily.slug, "/resolve-conflict"),
+          method: 'POST',
+          data: {
+            pluginToKeep: pluginToKeep,
+            phase: 'cleanup'
+          }
+        });
       case 5:
-        _context18.n = 6;
+        data = _context18.v;
+      case 6:
+        if (!data.success) {
+          _context18.n = 10;
+          break;
+        }
+        _context18.n = 7;
+        return fetchPlugins();
+      case 7:
+        _context18.n = 8;
         return {
           type: 'RESOLVE_CONFLICT_SUCCESS',
           data: {
@@ -5082,25 +5099,25 @@ function resolveConflict(pluginFamily, pluginToKeep) {
             pluginToKeep: pluginToKeep
           }
         };
-      case 6:
-        _context18.n = 7;
+      case 8:
+        _context18.n = 9;
         return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Conflict resolved successfully for %s', 'publishpress-hub'), pluginFamily.name), 'success');
-      case 7:
+      case 9:
         return _context18.a(2, {
           success: true,
           pluginFamily: pluginFamily,
           pluginToKeep: pluginToKeep,
           apiResponse: data
         });
-      case 8:
-        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Failed to resolve conflict');
-      case 9:
-        _context18.n = 13;
-        break;
       case 10:
-        _context18.p = 10;
+        throw new Error(((_data = data) === null || _data === void 0 ? void 0 : _data.error) || 'Failed to resolve conflict');
+      case 11:
+        _context18.n = 15;
+        break;
+      case 12:
+        _context18.p = 12;
         _t8 = _context18.v;
-        _context18.n = 11;
+        _context18.n = 13;
         return {
           type: 'RESOLVE_CONFLICT_ERROR',
           data: {
@@ -5109,10 +5126,10 @@ function resolveConflict(pluginFamily, pluginToKeep) {
             error: _t8
           }
         };
-      case 11:
-        _context18.n = 12;
+      case 13:
+        _context18.n = 14;
         return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Failed to resolve conflict for %s', 'publishpress-hub'), pluginFamily.name), 'error');
-      case 12:
+      case 14:
         _t8 = handleErrorMessageOnContext(_t8);
         return _context18.a(2, {
           success: false,
@@ -5120,10 +5137,10 @@ function resolveConflict(pluginFamily, pluginToKeep) {
           pluginToKeep: pluginToKeep,
           error: _t8
         });
-      case 13:
+      case 15:
         return _context18.a(2);
     }
-  }, _marked13, null, [[0, 10]]);
+  }, _marked13, null, [[0, 12]]);
 }
 function deactivateLicense(pluginFamily) {
   var data, _t9;
