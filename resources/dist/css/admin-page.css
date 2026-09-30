@@ -2305,7 +2305,7 @@ button.publishpress-hub-filter-button:hover {
 .pp-hub-message.is-warning {
     background-color: var(--pp-hub-bg-warning);
     border-color: var(--pp-hub-warning-color);
-    color: var(--pp-hub-text-warning);
+    color: var(--pp-hub-text-primary);
 }
 
 .pp-hub-message.is-info {
