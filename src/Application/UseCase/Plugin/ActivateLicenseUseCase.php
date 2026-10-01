@@ -93,7 +93,9 @@ class ActivateLicenseUseCase implements UseCaseInterface
         $downloadId = $plugin->getDownloadId();
 
         $this->guardAgainstWpConfigLicense($downloadId, $plugin->getSlug());
-        $this->licenseManagement->activateAndStoreLicense($licenseKey, $downloadId);
+        if (!$this->licenseManagement->activateAndStoreLicense($licenseKey, $downloadId)) {
+            throw new LicenseInvalidException(['family_slug' => $familySlug]);
+        }
         $this->reuseLicenseKeyForAllPlugins($licenseKey, $family, $applyToAll);
         $this->pluginStatusService->updatePluginStatus($plugin);
 

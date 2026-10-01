@@ -19,9 +19,12 @@ const getPluginWarning = (slug) => {
     }
 };
 
-export const DeactivationWarning = ({ pluginFamily, isConflict = false }) => (
+export const DeactivationWarning = ({ pluginFamily, isConflict = false, isUninstall = false }) => (
     <Message variant="warning">
-        <p>{getPluginWarning(pluginFamily.slug)}</p>
+        {isUninstall ? <>
+            <p>{__('Uninstalling deletes the plugin files and may also delete its saved settings or data. Its features will no longer be available. Back up your site before continuing.', 'publishpress-hub')}</p>
+            {pluginFamily.slug === 'statuses' && <p>{__('Without PublishPress Statuses, its custom post statuses are no longer registered. Content using those statuses may become unavailable, and parts of your site may stop working until the plugin is installed and active again.', 'publishpress-hub')}</p>}
+        </> : <p>{getPluginWarning(pluginFamily.slug)}</p>}
         {isConflict && (
             <p>{__('Resolving this conflict can deactivate the plugin while switching versions. If the version you keep cannot be activated, the plugin may remain disabled. Check that it is active after resolving the conflict.', 'publishpress-hub')}</p>
         )}
