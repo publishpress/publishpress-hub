@@ -10,14 +10,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
-"PO-Revision-Date: 2026-09-16 11:38+0000\n"
+"PO-Revision-Date: 2026-10-01 10:28+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: publishpress-hub.php:4
-#: src/Admin/Page/WelcomePageController.php:259
+#: src/Admin/Page/WelcomePageController.php:261
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:121, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Hub"
@@ -42,64 +42,64 @@ msgstr "PublishPress"
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
-#: src/Admin/Page/ComponentsShowcaseController.php:118
+#: src/Admin/Page/ComponentsShowcaseController.php:120
 msgid "Please wait while we load the components showcase..."
 msgstr "Bileşen vitrini yüklenirken lütfen bekleyin..."
 
-#: src/Admin/Page/PluginsDashboardController.php:133
+#: src/Admin/Page/PluginsDashboardController.php:136
 msgid "Please wait while we load the plugins dashboard..."
 msgstr "Eklentiler kontrol paneli yüklenirken lütfen bekleyin..."
 
-#: src/Admin/Page/SettingsPageController.php:104
-#: src/Admin/Page/SettingsPageController.php:105
-#: resources/dist/js/settings-page.js:466
+#: src/Admin/Page/SettingsPageController.php:106
+#: src/Admin/Page/SettingsPageController.php:107
+#: resources/dist/js/settings-page.js:473
 #: resources/src/jsx/components/pages/settings-page.jsx:81
-#: resources/dist/js/settings-page.js:411
+#: resources/dist/js/settings-page.js:412
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: src/Admin/Page/SettingsPageController.php:126
+#: src/Admin/Page/SettingsPageController.php:128
 msgid "Please wait while we load the settings page..."
 msgstr "Ayarlar sayfası yüklenirken lütfen bekleyin..."
 
-#: src/Admin/Page/WelcomePageController.php:143
+#: src/Admin/Page/WelcomePageController.php:145
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Bu sayfaya erişmek için yeterli izniniz yok."
 
-#: src/Admin/Page/WelcomePageController.php:180
-#: src/Admin/Page/WelcomePageController.php:181
+#: src/Admin/Page/WelcomePageController.php:182
+#: src/Admin/Page/WelcomePageController.php:183
 msgid "Welcome"
 msgstr "Hoş geldiniz"
 
-#: src/Admin/Page/WelcomePageController.php:203
+#: src/Admin/Page/WelcomePageController.php:205
 msgid "Please wait while we load the welcome page..."
 msgstr "Hoş geldiniz sayfası yüklenirken lütfen bekleyin..."
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:114
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:116
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "Uyarı: %1$s için lisans süresi dolmuş. %2$s"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:116
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:130
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:118
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:132
 msgid "Manage licenses"
 msgstr "Lisansları yönet"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:127
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:129
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "Uyarı: %1$d eklentinin lisansı süresi dolmuş: %2$s. %3$s"
 
-#: src/Application/Traits/BootableTrait.php:75
+#: src/Application/Traits/BootableTrait.php:77
 msgid "Object must be loaded before initializing."
 msgstr "Nesne başlatmadan önce yüklenmelidir."
 
-#: src/Application/UseCase/Plugin/ActivateLicenseUseCase.php:157
-#: resources/dist/js/plugins-dashboard.js:1990
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:122
-#: resources/dist/js/plugins-dashboard.js:1623
+#: src/Application/UseCase/Plugin/ActivateLicenseUseCase.php:161
+#: resources/dist/js/plugins-dashboard.js:2204
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:123
+#: resources/dist/js/plugins-dashboard.js:1699
 msgid ""
 "This license key is managed in wp-config.php and cannot be edited from the "
 "Hub."
@@ -107,17 +107,53 @@ msgstr ""
 "Bu lisans anahtarı wp-config.php dosyasında yönetilmektedir ve Hub "
 "üzerinden düzenlenemez."
 
-#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:116
+#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:118
 msgid "No license key found"
 msgstr "Lisans anahtarı bulunamadı"
 
-#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:138
+#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:140
 msgid ""
 "This license key is managed in wp-config.php and cannot be deactivated from "
 "the Hub."
 msgstr ""
 "Bu lisans anahtarı wp-config.php dosyasında yönetilmektedir ve Hub "
 "üzerinden devre dışı bırakılamaz."
+
+#: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:64
+msgid "Invalid conflict resolution request."
+msgstr "Geçersiz çatışma çözümleme talebi."
+
+#: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:89
+msgid "The selected plugin is not available for activation."
+msgstr "Seçilen eklenti etkinleştirme için mevcut değil."
+
+#: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:98
+msgid ""
+"Cleanup was stopped because the selected plugin is not active or the other "
+"version is still loaded. Neither copy was deleted."
+msgstr ""
+"Temizlik, seçilen eklenti etkin olmadığı veya diğer versiyon hala yüklü "
+"olduğu için durduruldu. Hiçbir kopya silinmedi."
+
+#: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:106
+msgid ""
+"The selected plugin is active, but the other version could not be removed. "
+"Please remove it from the Plugins screen."
+msgstr ""
+"Seçilen eklenti aktiftir, ancak diğer versiyon kaldırılamadı. Lütfen bunu "
+"Eklentiler ekranından kaldırın."
+
+#: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:114
+msgid ""
+"The selected plugin is no longer active. Please reactivate it from the "
+"Plugins screen."
+msgstr ""
+"Seçilen eklenti artık aktif değil. Lütfen bunu Eklentiler ekranından "
+"yeniden etkinleştirin."
+
+#: src/Application/UseCase/Plugin/ReuseLicenseForAllPluginsUseCase.php:75
+msgid "No existing license key was found for this plugin."
+msgstr "Bu eklenti için mevcut bir lisans anahtarı bulunamadı."
 
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:88
 msgid "Database Tables"
@@ -132,9 +168,9 @@ msgid "PublishPress Hub Debug Log"
 msgstr "PublishPress Hub Hata Günlüğü"
 
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:102
-#: resources/dist/js/settings-page.js:432
+#: resources/dist/js/settings-page.js:439
 #: resources/src/jsx/components/pages/settings-page.jsx:40
-#: resources/dist/js/settings-page.js:370
+#: resources/dist/js/settings-page.js:371
 msgid "Debug Log"
 msgstr "Hata Ayıklama Kaydı"
 
@@ -148,9 +184,9 @@ msgid "Version"
 msgstr "Sürüm"
 
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:128
-#: resources/dist/js/settings-page.js:1240
+#: resources/dist/js/settings-page.js:1251
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
-#: resources/dist/js/settings-page.js:993
+#: resources/dist/js/settings-page.js:994
 msgid "Debug Mode"
 msgstr "Hata Ayıklama Modu"
 
@@ -207,25 +243,34 @@ msgid "Total Database Size"
 msgstr "Toplam Veritabanı Boyutu"
 
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:308
-#: resources/dist/js/plugins-dashboard.js:1210
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:66
-#: resources/dist/js/plugins-dashboard.js:960
+#: resources/dist/js/plugins-dashboard.js:1108
+#: resources/dist/js/plugins-dashboard.js:2755
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:68
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:90
+#: resources/dist/js/plugins-dashboard.js:908
+#: resources/dist/js/plugins-dashboard.js:2230
 msgid "Not installed"
 msgstr "Yüklenmedi"
 
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:313
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:322
-#: resources/dist/js/plugins-dashboard.js:1202
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:56
-#: resources/dist/js/plugins-dashboard.js:950
+#: resources/dist/js/plugins-dashboard.js:1100
+#: resources/dist/js/plugins-dashboard.js:2746
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:58
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:84
+#: resources/dist/js/plugins-dashboard.js:898
+#: resources/dist/js/plugins-dashboard.js:2224
 msgid "Active"
 msgstr "Aktif"
 
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:313
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:322
-#: resources/dist/js/plugins-dashboard.js:1206
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:61
-#: resources/dist/js/plugins-dashboard.js:955
+#: resources/dist/js/plugins-dashboard.js:1104
+#: resources/dist/js/plugins-dashboard.js:2746
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:63
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:84
+#: resources/dist/js/plugins-dashboard.js:903
+#: resources/dist/js/plugins-dashboard.js:2224
 msgid "Inactive"
 msgstr "Pasif"
 
@@ -237,19 +282,19 @@ msgstr "bilinmeyen"
 msgid "License"
 msgstr "Lisans"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:128
+#: src/Domain/Plugin/Entity/PluginFamily.php:130
 #. translators: %s is the plugin family slug
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr "Eklenti ailesi için ücretsiz eklenti ayarlanmamış: %s"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:150
+#: src/Domain/Plugin/Entity/PluginFamily.php:152
 #. translators: %s is the plugin family slug
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr "Eklenti ailesi için pro eklenti ayarlanmamış: %s"
 
-#: src/Domain/Plugin/Exception/LicenseActivationException.php:28
+#: src/Domain/Plugin/Exception/LicenseActivationException.php:30
 msgid ""
 "License activation error. Please try again later or contact support for "
 "help."
@@ -257,7 +302,7 @@ msgstr ""
 "Lisans etkinleştirme hatası. Lütfen daha sonra tekrar deneyin veya yardım "
 "için destekle iletişime geçin."
 
-#: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
+#: src/Domain/Plugin/Exception/LicenseDeactivationException.php:30
 msgid ""
 "License deactivation error. Please try again later or contact support for "
 "help."
@@ -265,17 +310,17 @@ msgstr ""
 "Lisans devre dışı bırakma hatası. Lütfen daha sonra tekrar deneyin veya "
 "yardım için destekle iletişime geçin."
 
-#: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
+#: src/Domain/Plugin/Exception/LicenseDisabledException.php:30
 msgid "This license is currently disabled. Please contact support for help."
 msgstr ""
 "Bu lisans şu anda devre dışı. Yardım almak için lütfen destekle iletişime "
 "geçin."
 
-#: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
+#: src/Domain/Plugin/Exception/LicenseExpiredException.php:30
 msgid "This license has expired. Please contact support to renew it."
 msgstr "Bu lisansın süresi dolmuş. Yenilemek için lütfen destekle iletişime geçin."
 
-#: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
+#: src/Domain/Plugin/Exception/LicenseInvalidException.php:30
 msgid ""
 "This license key could not be activated. It may be invalid, blocked, or not "
 "authorized for this plugin. Please verify the key and contact PublishPress "
@@ -285,7 +330,7 @@ msgstr ""
 "eklenti için yetkilendirilmemiş olabilir. Lütfen anahtarı doğrulayın ve "
 "sorun devam ederse PublishPress destek ile iletişime geçin."
 
-#: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
+#: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:30
 msgid ""
 "This license cannot be used for this plugin. Please contact support for "
 "help."
@@ -293,7 +338,7 @@ msgstr ""
 "Bu lisans bu eklenti için kullanılamaz. Yardım için destekle iletişime "
 "geçin."
 
-#: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
+#: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:30
 msgid ""
 "This license does not match the plugin you are trying to activate. Please "
 "contact support for assistance."
@@ -301,7 +346,7 @@ msgstr ""
 "Bu lisans, etkinleştirmeye çalıştığınız eklentiyle eşleşmiyor. Yardım için "
 "destekle iletişime geçin."
 
-#: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
+#: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:30
 msgid ""
 "License key does not match our records. Please contact support for "
 "assistance."
@@ -309,11 +354,11 @@ msgstr ""
 "Lisans anahtarı kayıtlarımızla eşleşmiyor. Yardım için destekle iletişime "
 "geçin."
 
-#: src/Domain/Plugin/Exception/LicenseMissingException.php:28
+#: src/Domain/Plugin/Exception/LicenseMissingException.php:30
 msgid "No license key provided. Please enter a valid license key."
 msgstr "Hiçbir lisans anahtarı sağlanmadı. Lütfen geçerli bir lisans anahtarı girin."
 
-#: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
+#: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:30
 msgid ""
 "Your site URL is required to activate the license. Please enter a valid "
 "site URL to continue."
@@ -321,7 +366,7 @@ msgstr ""
 "Lisansı etkinleştirmek için sitenizin URL'si gereklidir. Devam etmek için "
 "geçerli bir site URL'si girin."
 
-#: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
+#: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:30
 msgid ""
 "License activation limit reached. Please contact support to upgrade or "
 "deactivate on another site."
@@ -329,19 +374,19 @@ msgstr ""
 "Lisans etkinleştirme limiti aşıldı. Yükseltmek veya başka bir sitede devre "
 "dışı bırakmak için destekle iletişime geçin."
 
-#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
+#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:30
 msgid "This license cannot be activated. Please contact support for help."
 msgstr ""
 "Bu lisans etkinleştirilemez. Yardım almak için lütfen destekle iletişime "
 "geçin."
 
-#: src/Domain/Plugin/Exception/LicenseServerException.php:28
+#: src/Domain/Plugin/Exception/LicenseServerException.php:30
 msgid "License server error. Please try again later or contact support for help."
 msgstr ""
 "Lisans sunucusu hatası. Lütfen daha sonra tekrar deneyin veya yardım için "
 "destekle iletişime geçin."
 
-#: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
+#: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:30
 msgid ""
 "The license server returned an invalid response. Please try again later or "
 "contact support for help."
@@ -349,13 +394,13 @@ msgstr ""
 "Lisans sunucusu geçersiz bir yanıt döndü. Lütfen daha sonra tekrar deneyin "
 "veya yardım için destekle iletişime geçin."
 
-#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
+#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:30
 msgid "This license is inactive for this site. Please contact support for help."
 msgstr ""
 "Bu lisans bu site için pasif durumda. Yardım almak için lütfen destekle "
 "iletişime geçin."
 
-#: src/Domain/Plugin/Exception/PluginActivationException.php:29
+#: src/Domain/Plugin/Exception/PluginActivationException.php:31
 msgid ""
 "Plugin activation failed. Please try again later or contact support for "
 "help."
@@ -363,11 +408,11 @@ msgstr ""
 "Eklenti etkinleştirme başarısız oldu. Lütfen daha sonra tekrar deneyin veya "
 "yardım için destekle iletişime geçin."
 
-#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
+#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:31
 msgid "This action is not possible because the plugin is already installed."
 msgstr "Bu işlem mümkün değil çünkü eklenti zaten yüklü."
 
-#: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
+#: src/Domain/Plugin/Exception/PluginDeactivationException.php:31
 msgid ""
 "Plugin deactivation failed. Please try again later or contact support for "
 "help."
@@ -375,13 +420,13 @@ msgstr ""
 "Eklenti devre dışı bırakma başarısız oldu. Lütfen daha sonra tekrar deneyin "
 "veya yardım için destekle iletişime geçin."
 
-#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
+#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:31
 msgid "Plugin family not found. Please contact support for help."
 msgstr ""
 "Eklenti ailesi bulunamadı. Yardım almak için lütfen destekle iletişime "
 "geçin."
 
-#: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
+#: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:31
 msgid ""
 "This action is not possible because both free and pro versions are "
 "installed. Please uninstall one version to continue."
@@ -389,13 +434,13 @@ msgstr ""
 "Bu işlem, hem ücretsiz hem de pro sürümleri yüklü olduğu için mümkün "
 "değildir. Devam etmek için bir sürümü kaldırın."
 
-#: src/Domain/Plugin/Exception/PluginInstallException.php:29
+#: src/Domain/Plugin/Exception/PluginInstallException.php:31
 msgid "Plugin installation failed. Please contact support for help."
 msgstr ""
 "Eklenti kurulumu başarısız oldu. Yardım almak için lütfen destekle "
 "iletişime geçin."
 
-#: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
+#: src/Domain/Plugin/Exception/PluginNotActivatedException.php:31
 msgid ""
 "This action is not possible because the plugin is not activated. Please "
 "activate the plugin and try again."
@@ -403,7 +448,7 @@ msgstr ""
 "Bu işlem, eklenti etkinleştirilmediği için mümkün değildir. Lütfen "
 "eklentiyi etkinleştirin ve tekrar deneyin."
 
-#: src/Domain/Plugin/Exception/PluginNotFoundException.php:29
+#: src/Domain/Plugin/Exception/PluginNotFoundException.php:31
 msgid ""
 "Plugin not found in our available plugins list. Please contact support for "
 "help."
@@ -411,7 +456,7 @@ msgstr ""
 "Eklentilerimiz listesinde eklenti bulunamadı. Yardım için destekle "
 "iletişime geçin."
 
-#: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
+#: src/Domain/Plugin/Exception/PluginNotInstalledException.php:31
 msgid ""
 "This action is not possible because the plugin is not installed. Please "
 "install the plugin and try again."
@@ -419,7 +464,7 @@ msgstr ""
 "Bu işlem, eklenti yüklü olmadığı için mümkün değildir. Lütfen eklentiyi "
 "yükleyin ve tekrar deneyin."
 
-#: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
+#: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:30
 msgid ""
 "Unknown license server error. Please try again later or contact support for "
 "help."
@@ -427,69 +472,75 @@ msgstr ""
 "Bilinmeyen lisans sunucusu hatası. Lütfen daha sonra tekrar deneyin veya "
 "yardım için destekle iletişime geçin."
 
-#: src/Domain/Plugin/plugin-families.php:26
+#: src/Domain/Plugin/plugin-families.php:28
 msgid "Define tasks that authors must complete before publishing."
 msgstr "Yazarların yayımlamadan önce tamamlaması gereken görevleri tanımlayın."
 
-#: src/Domain/Plugin/plugin-families.php:42
+#: src/Domain/Plugin/plugin-families.php:44
 msgid "Control who can edit and view your content."
 msgstr "İçeriğinizi kimlerin düzenleyip görüntüleyebileceğini kontrol edin."
 
-#: src/Domain/Plugin/plugin-families.php:58
+#: src/Domain/Plugin/plugin-families.php:60
 msgid "Create, manage and display authors for your content."
 msgstr "İçeriğiniz için yazarlar oluşturun, yönetin ve görüntüleyin."
 
-#: src/Domain/Plugin/plugin-families.php:74
+#: src/Domain/Plugin/plugin-families.php:76
 msgid "All the tools you need to improve the block editor."
 msgstr "Blok editörünü geliştirmeniz için ihtiyacınız olan tüm araçlar."
 
-#: src/Domain/Plugin/plugin-families.php:90
+#: src/Domain/Plugin/plugin-families.php:92
 msgid "Control your admin area and user roles."
 msgstr "Yönetici alanınızı ve kullanıcı rollerinizi kontrol edin."
 
-#: src/Domain/Plugin/plugin-families.php:106
+#: src/Domain/Plugin/plugin-families.php:108
 msgid "Schedule changes to your posts."
 msgstr "Gönderilerinize değişiklikler planlayın."
 
-#: src/Domain/Plugin/plugin-families.php:122
+#: src/Domain/Plugin/plugin-families.php:124
 msgid "Organize, schedule, and plan your publishing."
 msgstr "Yayımlamanızı organize edin, planlayın ve programlayın."
 
-#: src/Domain/Plugin/plugin-families.php:138
+#: src/Domain/Plugin/plugin-families.php:140
 msgid "Approve and schedule new versions to your published posts."
 msgstr "Yayımlanan gönderilerinize yeni sürümleri onaylayın ve planlayın."
 
-#: src/Domain/Plugin/plugin-families.php:154
+#: src/Domain/Plugin/plugin-families.php:156
 msgid "Organize your posts into issues or series."
 msgstr "Gönderilerinizi sayılara veya serilere organize edin."
 
-#: src/Domain/Plugin/plugin-families.php:170
+#: src/Domain/Plugin/plugin-families.php:172
 msgid "Create custom URLs for your posts and external links."
 msgstr "Gönderileriniz ve dış bağlantılarınız için özel URL'ler oluşturun."
 
-#: src/Domain/Plugin/plugin-families.php:186
+#: src/Domain/Plugin/plugin-families.php:188
 msgid "Create custom statuses and publishing workflows."
 msgstr "Özel durumlar ve yayımlama iş akışları oluşturun."
 
-#: src/Infrastructure/Container/DependencyContainer.php:102
+#: src/Infrastructure/AdminMenu/PluginQuickLinks.php:68
+#. Translators: %s is the plugin's registered menu label.
+#, php-format
+msgid "Open %s"
+msgstr "%s Aç"
+
+#: src/Infrastructure/Container/DependencyContainer.php:104
 #. translators: %s is the dependency ID.
 #, php-format
 msgid "Dependency \"%s\" not found in container."
 msgstr "Bağımlılık \"%s\" konteynerde bulunamadı."
 
-#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:118
 #. translators: %s is the error message
 #, php-format
 msgid "Error validating license: %s"
 msgstr "Lisans doğrulama hatası: %s"
 
-#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:112
 #. translators: %s is the error message
 #, php-format
 msgid "Error getting license info: %s"
 msgstr "Lisans bilgisi alma hatası: %s"
 
-#: src/Infrastructure/Remote/Exception/RemoteAccessDeniedException.php:29
+#: src/Infrastructure/Remote/Exception/RemoteAccessDeniedException.php:31
 msgid ""
 "The license server denied this request. This can happen when a license key "
 "or site has been blocked. Please contact PublishPress support for help."
@@ -498,73 +549,73 @@ msgstr ""
 "engellenmesi durumunda meydana gelebilir. Yardım için lütfen PublishPress "
 "destek ile iletişime geçin."
 
-#: src/Infrastructure/RestApi/RestApiService.php:287
+#: src/Infrastructure/RestApi/RestApiService.php:289
 msgid "Too many requests. Please try again later."
 msgstr "Çok fazla istek. Lütfen daha sonra tekrar deneyin."
 
-#: src/Infrastructure/RestApi/RestApiService.php:358
+#: src/Infrastructure/RestApi/RestApiService.php:360
 msgid "An error occurred while processing your request."
 msgstr "İsteğinizi işlerken bir hata oluştu."
 
-#: src/Infrastructure/View/ViewService.php:48
+#: src/Infrastructure/View/ViewService.php:50
 #. translators: %s is the template path
 #, php-format
 msgid "Template not found: %s"
 msgstr "Şablon bulunamadı: %s"
 
-#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:55
+#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:57
 msgid "Path cannot be empty"
 msgstr "Yol boş olamaz"
 
-#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:64
+#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:66
 msgid "File extension cannot be empty"
 msgstr "Dosya uzantısı boş olamaz"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:183
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:198
 msgid "Invalid file path: null byte detected"
 msgstr "Geçersiz dosya yolu: null byte tespit edildi"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:192
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:207
 msgid "Invalid file path: directory traversal detected"
 msgstr "Geçersiz dosya yolu: dizin geçişi tespit edildi"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:225
 #. translators: %s is the directory path
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "Geçersiz dosya yolu: üst dizin mevcut değil: %s"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:220
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:235
 msgid "Invalid file path: unable to resolve path"
 msgstr "Geçersiz dosya yolu: yol çözümlenemiyor"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:239
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:254
 msgid "Invalid file path: operation not allowed outside permitted directories"
 msgstr "Geçersiz dosya yolu: izin verilen dizinlerin dışında işlem yapılamaz"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:56
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:58
 msgid "Download URL failed WordPress validation"
 msgstr "İndirme URL'si WordPress doğrulamasını geçemedi"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:72
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:74
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr "Eklentiyi indirmek başarısız oldu: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:81
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:83
 msgid "Downloaded plugin file does not exist"
 msgstr "İndirilen eklenti dosyası mevcut değil"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:89
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:91
 msgid "Downloaded plugin file is empty"
 msgstr "İndirilen eklenti dosyası boş"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:98
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:101
 msgid "Cannot read downloaded plugin file"
 msgstr "İndirilen eklenti dosyası okunamıyor"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:108
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:111
 msgid ""
 "Downloaded file is not a valid ZIP archive. The download URL may be "
 "returning an error page."
@@ -572,61 +623,89 @@ msgstr ""
 "İndirilen dosya geçerli bir ZIP arşivi değildir. İndirme URL'si bir hata "
 "sayfası döndürüyor olabilir."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:124
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:127
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "Eklenti dosyasını açmada başarısız oldu: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:132
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:135
 msgid "Failed to unzip plugin file"
 msgstr "Eklenti dosyasını açmada başarısız oldu"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:154
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:157
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "Eklentiyi etkinleştirmede başarısız oldu: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:223
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:187
+msgid "Resolve conflicts for network-active plugins from Network Admin."
+msgstr "Ağda etkin olan eklentiler için çatışmaları Ağ Yönetimi'nden çözün."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:207
+msgid ""
+"Activation recovery failed. Both plugin copies were retained. Please "
+"restore the previous version from the Plugins screen."
+msgstr ""
+"Etkinleştirme kurtarımı başarısız oldu. Her iki eklenti kopyası da "
+"saklandı. Lütfen önceki sürümü Eklentiler ekranından geri yükleyin."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:220
+msgid "The other plugin could not be deactivated."
+msgstr "Diğer eklenti devre dışı bırakılamadı."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:224
+msgid "The selected plugin did not remain active."
+msgstr "Seçilen eklenti aktif kalmadı."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:230
+msgid ""
+"The selected plugin could not be activated. Neither copy was deleted and "
+"the previous activation settings were restored."
+msgstr ""
+"Seçilen eklenti etkinleştirilemedi. Hiçbir kopya silinmedi ve önceki "
+"etkinleştirme ayarları geri yüklendi."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:297
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "Eklentiyi silmede başarısız oldu: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:273
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:347
 msgid "No update available for this plugin"
 msgstr "Bu eklenti için güncelleme mevcut değil"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:282
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:356
 msgid "Invalid update information for this plugin"
 msgstr "Bu eklenti için geçersiz güncelleme bilgisi"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:315
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:389
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "Eklenti güncellemesi başarısız oldu: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:323
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:397
 msgid "Plugin update failed"
 msgstr "Eklenti güncellemesi başarısız"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:442
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:516
 msgid "Invalid download URL provided"
 msgstr "Geçersiz indirme URL'si verildi"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:449
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:523
 msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr "İndirme URL'si HTTP veya HTTPS protokolünü kullanmalıdır"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:458
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:532
 #. translators: %s is the hostname
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr "İndirme URL'si izin verilen bir alan adından değil: %s"
 
-#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:58
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to get plugin information: %s"
@@ -688,13 +767,19 @@ msgstr "%s için Dokümantasyon"
 
 #: resources/dist/js/components-showcase.js:105
 #: resources/dist/js/plugins-dashboard.js:106
+#: resources/dist/js/plugins-dashboard.js:2817
 #: resources/dist/js/settings-page.js:105
 #: resources/dist/js/welcome-page.js:105
+#: resources/dist/js/welcome-page.js:444
 #: resources/src/jsx/components/admin-page/footer.jsx:56
+#: resources/src/jsx/components/pages/welcome-page.jsx:46
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:124
 #: resources/dist/js/components-showcase.js:93
 #: resources/dist/js/plugins-dashboard.js:93
+#: resources/dist/js/plugins-dashboard.js:2264
 #: resources/dist/js/settings-page.js:93
 #: resources/dist/js/welcome-page.js:93
+#: resources/dist/js/welcome-page.js:377
 msgid "Documentation"
 msgstr "Dokümantasyon"
 
@@ -736,116 +821,107 @@ msgstr "İletişim"
 msgid "Get Support"
 msgstr "Destek Al"
 
-#: resources/dist/js/components-showcase.js:445
+#: resources/dist/js/components-showcase.js:453
 #: resources/src/jsx/components/pages/components-showcase.jsx:26
-#: resources/dist/js/components-showcase.js:385
+#: resources/dist/js/components-showcase.js:386
 msgid "Components Showcase"
 msgstr "Bileşenler Vitrini"
 
-#: resources/dist/js/plugins-dashboard.js:479
+#: resources/dist/js/plugins-dashboard.js:487
 #: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
-#: resources/dist/js/plugins-dashboard.js:403
+#: resources/dist/js/plugins-dashboard.js:404
 msgid "Select an option"
 msgstr "Bir seçenek seçin"
 
-#: resources/dist/js/plugins-dashboard.js:485
+#: resources/dist/js/plugins-dashboard.js:493
 #: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
-#: resources/dist/js/plugins-dashboard.js:411
+#: resources/dist/js/plugins-dashboard.js:412
 msgid "Options"
 msgstr "Seçenekler"
 
-#: resources/dist/js/plugins-dashboard.js:496
+#: resources/dist/js/plugins-dashboard.js:504
 #: resources/src/jsx/components/filter/filter-buttons-bar.jsx:66
-#: resources/dist/js/plugins-dashboard.js:425
+#: resources/dist/js/plugins-dashboard.js:426
 msgid "Filter plugins by status"
 msgstr "Duruma göre eklentileri filtrele"
 
-#: resources/dist/js/plugins-dashboard.js:1011
+#: resources/dist/js/plugins-dashboard.js:906
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
-#: resources/dist/js/plugins-dashboard.js:757
+#: resources/dist/js/plugins-dashboard.js:703
 msgid "N/A"
 msgstr "Geçersiz"
 
-#: resources/dist/js/plugins-dashboard.js:1053
+#: resources/dist/js/plugins-dashboard.js:948
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
-#: resources/dist/js/plugins-dashboard.js:804
+#: resources/dist/js/plugins-dashboard.js:750
 #. translators: %1$s is the plugin name, %2$s is the expiration date
 #, js-format
 msgid "The license for %1$s expired on %2$s"
 msgstr "%1$s için lisans %2$s tarihinde sona erdi"
 
-#: resources/dist/js/plugins-dashboard.js:1057
+#: resources/dist/js/plugins-dashboard.js:952
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
-#: resources/dist/js/plugins-dashboard.js:811
+#: resources/dist/js/plugins-dashboard.js:757
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
 #, js-format
 msgid "The licenses for %1$s expired on %2$s"
 msgstr "%1$s için lisanslar %2$s tarihinde sona erdi"
 
-#: resources/dist/js/plugins-dashboard.js:1063
-#: resources/dist/js/plugins-dashboard.js:1105
+#: resources/dist/js/plugins-dashboard.js:958
+#: resources/dist/js/plugins-dashboard.js:1000
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:157
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:212
-#: resources/dist/js/plugins-dashboard.js:821
-#: resources/dist/js/plugins-dashboard.js:876
+#: resources/dist/js/plugins-dashboard.js:767
+#: resources/dist/js/plugins-dashboard.js:822
 msgid "Renew now"
 msgstr "Şimdi yenile"
 
-#: resources/dist/js/plugins-dashboard.js:1095
+#: resources/dist/js/plugins-dashboard.js:990
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:193
-#: resources/dist/js/plugins-dashboard.js:857
+#: resources/dist/js/plugins-dashboard.js:803
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
 #, js-format
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr "%1$s için lisans %2$s tarihinde sona eriyor (%3$d gün kaldı)"
 
-#: resources/dist/js/plugins-dashboard.js:1099
+#: resources/dist/js/plugins-dashboard.js:994
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:201
-#: resources/dist/js/plugins-dashboard.js:865
+#: resources/dist/js/plugins-dashboard.js:811
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
 #, js-format
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr "%1$s için lisanslar %2$s tarihinde sona eriyor (%3$d gün kaldı)"
 
-#: resources/dist/js/plugins-dashboard.js:1102
+#: resources/dist/js/plugins-dashboard.js:997
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:209
-#: resources/dist/js/plugins-dashboard.js:873
+#: resources/dist/js/plugins-dashboard.js:819
 msgid "Warning:"
 msgstr "Uyarı:"
 
-#: resources/dist/js/plugins-dashboard.js:1194
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:46
-#: resources/dist/js/plugins-dashboard.js:940
+#: resources/dist/js/plugins-dashboard.js:1092
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:48
+#: resources/dist/js/plugins-dashboard.js:888
 msgid "All"
 msgstr "Hepsi"
 
-#: resources/dist/js/plugins-dashboard.js:1198
-#: resources/dist/js/plugins-dashboard.js:2632
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:51
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:39
-#: resources/dist/js/plugins-dashboard.js:945
-#: resources/dist/js/plugins-dashboard.js:2287
+#: resources/dist/js/plugins-dashboard.js:1096
+#: resources/dist/js/plugins-dashboard.js:3174
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:53
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:40
+#: resources/dist/js/plugins-dashboard.js:893
+#: resources/dist/js/plugins-dashboard.js:2604
 msgid "Unlicensed"
 msgstr "Lisanssız"
 
-#: resources/dist/js/plugins-dashboard.js:1214
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:71
-#: resources/dist/js/plugins-dashboard.js:965
+#: resources/dist/js/plugins-dashboard.js:1112
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:73
+#: resources/dist/js/plugins-dashboard.js:913
 msgid "Updates available"
 msgstr "Güncellemeler mevcut"
 
-#: resources/dist/js/plugins-dashboard.js:1232
-#: resources/dist/js/welcome-page.js:496
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:94
-#: resources/src/jsx/components/pages/welcome-page.jsx:128
-#: resources/dist/js/plugins-dashboard.js:988
-#: resources/dist/js/welcome-page.js:458
-msgid "Plugins Dashboard"
-msgstr "Eklentiler Gösterge Tablosu"
-
-#: resources/dist/js/plugins-dashboard.js:1276
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
-#: resources/dist/js/plugins-dashboard.js:1034
+#: resources/dist/js/plugins-dashboard.js:1172
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:142
+#: resources/dist/js/plugins-dashboard.js:982
 msgid ""
 "To force a refresh, hold Option on Mac or Alt on Windows and then click "
 "Refresh."
@@ -853,132 +929,320 @@ msgstr ""
 "Yenilemeyi zorlamak için Mac'te Option tuşuna veya Windows'ta Alt tuşuna "
 "basılı tutun ve ardından Yenile'ye tıklayın."
 
-#: resources/dist/js/plugins-dashboard.js:1289
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
-#: resources/dist/js/plugins-dashboard.js:1052
+#: resources/dist/js/plugins-dashboard.js:1184
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:152
+#: resources/dist/js/plugins-dashboard.js:992
+msgid "Plugins & Features"
+msgstr "Eklentiler & Özellikler"
+
+#: resources/dist/js/plugins-dashboard.js:1184
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:153
+#: resources/dist/js/plugins-dashboard.js:993
+msgid "Activate, open, and license each product directly from the Hub."
+msgstr "Her ürünü doğrudan Hub'dan etkinleştir, aç ve lisansla."
+
+#: resources/dist/js/plugins-dashboard.js:1192
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:157
+#: resources/dist/js/plugins-dashboard.js:997
 msgid "Force Refresh"
 msgstr "Zorla Yenile"
 
-#: resources/dist/js/plugins-dashboard.js:1289
-#: resources/dist/js/settings-page.js:1093
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
+#: resources/dist/js/plugins-dashboard.js:1192
+#: resources/dist/js/settings-page.js:1100
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:157
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:307
-#: resources/dist/js/plugins-dashboard.js:1052
-#: resources/dist/js/settings-page.js:867
+#: resources/dist/js/plugins-dashboard.js:997
+#: resources/dist/js/settings-page.js:868
 msgid "Refresh"
 msgstr "Yenile"
 
-#: resources/dist/js/plugins-dashboard.js:1346
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
-#: resources/dist/js/plugins-dashboard.js:1097
+#: resources/dist/js/plugins-dashboard.js:1309
+#: resources/src/jsx/components/pages/suite-license.jsx:30
+#: resources/dist/js/plugins-dashboard.js:1048
+#, js-format
+msgid "Checking %s…"
+msgstr "Kontrol ediliyor %s…"
+
+#: resources/dist/js/plugins-dashboard.js:1326
+#: resources/src/jsx/components/pages/suite-license.jsx:38
+#: resources/dist/js/plugins-dashboard.js:1056
+msgid "The license could not be activated for this product."
+msgstr "Bu ürün için lisans etkinleştirilemedi."
+
+#: resources/dist/js/plugins-dashboard.js:1331
+#: resources/src/jsx/components/pages/suite-license.jsx:40
+#: resources/dist/js/plugins-dashboard.js:1058
+msgid "License activated."
+msgstr "Lisans etkinleştirildi."
+
+#: resources/dist/js/plugins-dashboard.js:1342
+#: resources/src/jsx/components/pages/suite-license.jsx:42
+#: resources/dist/js/plugins-dashboard.js:1060
+msgid "Activation failed. Please try again."
+msgstr "Etkinleştirme başarısız oldu. Lütfen tekrar deneyin."
+
+#: resources/dist/js/plugins-dashboard.js:1362
+#: resources/src/jsx/components/pages/suite-license.jsx:46
+#: resources/dist/js/plugins-dashboard.js:1064
+msgid "License checks complete. Review the results below."
+msgstr "Lisans kontrolleri tamamlandı. Aşağıdaki sonuçları gözden geçirin."
+
+#: resources/dist/js/plugins-dashboard.js:1371
+#: resources/src/jsx/components/pages/suite-license.jsx:49
+#: resources/dist/js/plugins-dashboard.js:1067
+msgid ""
+"License checks complete, but the dashboard could not refresh. Reload this "
+"page to see the latest status."
+msgstr ""
+"Lisans kontrolleri tamamlandı, ancak dashboard yenilenemedi. En son durumu "
+"görmek için bu sayfayı yeniden yükleyin."
+
+#: resources/dist/js/plugins-dashboard.js:1398
+#: resources/src/jsx/components/pages/suite-license.jsx:60
+#: resources/dist/js/plugins-dashboard.js:1078
+msgid "PublishPress Bundle / Suite"
+msgstr "PublishPress Paket / Suit"
+
+#: resources/dist/js/plugins-dashboard.js:1398
+#: resources/src/jsx/components/pages/suite-license.jsx:61
+#: resources/dist/js/plugins-dashboard.js:1079
+msgid "Connect your included Pro plugins with one license key."
+msgstr "Dahil olan Pro eklentilerinizi tek bir lisans anahtarı ile bağlayın."
+
+#: resources/dist/js/plugins-dashboard.js:1406
+#: resources/src/jsx/components/pages/suite-license.jsx:64
+#: resources/dist/js/plugins-dashboard.js:1082
+msgid "Close license setup"
+msgstr "Lisans ayarını kapat"
+
+#: resources/dist/js/plugins-dashboard.js:1406
+#: resources/src/jsx/components/pages/suite-license.jsx:64
+#: resources/dist/js/plugins-dashboard.js:1082
+msgid "Activate Suite License"
+msgstr "Suit Lisansını Aktif Et"
+
+#: resources/dist/js/plugins-dashboard.js:1410
+#: resources/dist/js/plugins-dashboard.js:2035
+#: resources/dist/js/plugins-dashboard.js:2185
+#: resources/src/jsx/components/pages/suite-license.jsx:67
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:71
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:97
+#: resources/dist/js/plugins-dashboard.js:1085
+#: resources/dist/js/plugins-dashboard.js:1540
+#: resources/dist/js/plugins-dashboard.js:1673
+msgid "License key"
+msgstr "Lisans anahtarı"
+
+#: resources/dist/js/plugins-dashboard.js:1418
+#: resources/src/jsx/components/pages/suite-license.jsx:70
+#: resources/dist/js/plugins-dashboard.js:1088
+msgid "Select products included in your subscription"
+msgstr "Aboneliğinize dahil olan ürünleri seçin"
+
+#: resources/dist/js/plugins-dashboard.js:1418
+#: resources/src/jsx/components/pages/suite-license.jsx:71
+#: resources/dist/js/plugins-dashboard.js:1089
+msgid ""
+"This replaces the saved license key for each selected product after "
+"successful activation. Keys managed in wp-config.php cannot be changed "
+"here. No plugins will be installed or activated."
+msgstr ""
+"Bu, başarılı etkinleştirmeden sonra her seçilen ürün için kaydedilen lisans "
+"anahtarını değiştirecektir. wp-config.php'de yönetilen anahtarlar burada "
+"değiştirilemez. Hiçbir eklenti yüklenmeyecek veya etkinleştirilmeyecektir."
+
+#: resources/dist/js/plugins-dashboard.js:1438
+#: resources/src/jsx/components/pages/suite-license.jsx:77
+#: resources/dist/js/plugins-dashboard.js:1095
+msgid "Activate license for selected products"
+msgstr "Seçilen ürünler için lisansı etkinleştir"
+
+#: resources/dist/js/plugins-dashboard.js:1445
+#: resources/src/jsx/components/pages/suite-license.jsx:81
+#: resources/dist/js/plugins-dashboard.js:1099
+msgid "Success"
+msgstr "Başarılı"
+
+#: resources/dist/js/plugins-dashboard.js:1445
+#: resources/src/jsx/components/pages/suite-license.jsx:81
+#: resources/dist/js/plugins-dashboard.js:1099
+msgid "Failed"
+msgstr "Başarısız"
+
+#: resources/dist/js/plugins-dashboard.js:1490
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:20
+#: resources/dist/js/plugins-dashboard.js:1124
 msgid "Install"
 msgstr "Yükle"
 
-#: resources/dist/js/plugins-dashboard.js:1347
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:22
-#: resources/dist/js/plugins-dashboard.js:1098
+#: resources/dist/js/plugins-dashboard.js:1491
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
+#: resources/dist/js/plugins-dashboard.js:1125
 msgid "Installing..."
 msgstr "Yükleniyor..."
 
-#: resources/dist/js/plugins-dashboard.js:1352
-#: resources/dist/js/plugins-dashboard.js:2311
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
+#: resources/dist/js/plugins-dashboard.js:1496
+#: resources/dist/js/plugins-dashboard.js:2588
+#: resources/dist/js/plugins-dashboard.js:2613
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:26
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28
-#: resources/dist/js/plugins-dashboard.js:1103
-#: resources/dist/js/plugins-dashboard.js:1964
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
+#: resources/dist/js/plugins-dashboard.js:1130
+#: resources/dist/js/plugins-dashboard.js:2110
+#: resources/dist/js/plugins-dashboard.js:2133
 msgid "Upgrade to Pro"
 msgstr "Pro'ya Yükselt"
 
-#: resources/dist/js/plugins-dashboard.js:1353
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:28
-#: resources/dist/js/plugins-dashboard.js:1104
+#: resources/dist/js/plugins-dashboard.js:1497
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
+#: resources/dist/js/plugins-dashboard.js:1131
 msgid "Upgrading to Pro..."
 msgstr "Pro'ya Yükseltiliyor..."
 
-#: resources/dist/js/plugins-dashboard.js:1358
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
-#: resources/dist/js/plugins-dashboard.js:1109
+#: resources/dist/js/plugins-dashboard.js:1502
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:32
+#: resources/dist/js/plugins-dashboard.js:1136
 msgid "Manage License"
 msgstr "Lisansı Yönet"
 
-#: resources/dist/js/plugins-dashboard.js:1359
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:34
-#: resources/dist/js/plugins-dashboard.js:1110
+#: resources/dist/js/plugins-dashboard.js:1503
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
+#: resources/dist/js/plugins-dashboard.js:1137
 msgid "Managing License..."
 msgstr "Lisans Yönetiliyor..."
 
-#: resources/dist/js/plugins-dashboard.js:1364
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
-#: resources/dist/js/plugins-dashboard.js:1115
+#: resources/dist/js/plugins-dashboard.js:1508
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:38
+#: resources/dist/js/plugins-dashboard.js:1142
 msgid "Activate License"
 msgstr "Lisansı Aktive Et"
 
-#: resources/dist/js/plugins-dashboard.js:1365
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:40
-#: resources/dist/js/plugins-dashboard.js:1116
+#: resources/dist/js/plugins-dashboard.js:1509
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
+#: resources/dist/js/plugins-dashboard.js:1143
 msgid "Activating License..."
 msgstr "Lisans Aktive Ediliyor..."
 
-#: resources/dist/js/plugins-dashboard.js:1370
+#: resources/dist/js/plugins-dashboard.js:1515
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
-#: resources/dist/js/plugins-dashboard.js:1121
+#: resources/dist/js/plugins-dashboard.js:1149
 msgid "Resolve Conflict"
 msgstr "Çatışmayı Çöz"
 
-#: resources/dist/js/plugins-dashboard.js:1371
+#: resources/dist/js/plugins-dashboard.js:1516
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
-#: resources/dist/js/plugins-dashboard.js:1122
+#: resources/dist/js/plugins-dashboard.js:1150
 msgid "Resolving Conflict..."
 msgstr "Çatışma Çözülüyor..."
 
-#: resources/dist/js/plugins-dashboard.js:1376
+#: resources/dist/js/plugins-dashboard.js:1521
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
-#: resources/dist/js/plugins-dashboard.js:1127
+#: resources/dist/js/plugins-dashboard.js:1155
 msgid "Update"
 msgstr "Güncelle"
 
-#: resources/dist/js/plugins-dashboard.js:1377
+#: resources/dist/js/plugins-dashboard.js:1522
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
-#: resources/dist/js/plugins-dashboard.js:1128
+#: resources/dist/js/plugins-dashboard.js:1156
 msgid "Updating..."
 msgstr "Güncelleniyor..."
 
-#: resources/dist/js/plugins-dashboard.js:1633
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:31
-#: resources/dist/js/plugins-dashboard.js:1319
+#: resources/dist/js/plugins-dashboard.js:1614
+#: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:16
+#: resources/dist/js/plugins-dashboard.js:1238
+msgid ""
+"Deactivating PublishPress Statuses stops registering its custom post "
+"statuses. Content using those statuses may become unavailable, and parts of "
+"your site may stop working until the plugin is active again."
+msgstr ""
+"PublishPress Durumları'nı devre dışı bırakmak, özel gönderi durumlarının "
+"kaydını durdurur. Bu durumları kullanan içerikler erişilemez hale gelebilir "
+"ve sitenizin bazı bölümleri, eklenti tekrar aktif olana kadar çalışmayı "
+"durdurabilir."
+
+#: resources/dist/js/plugins-dashboard.js:1616
+#: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:18
+#: resources/dist/js/plugins-dashboard.js:1240
+msgid ""
+"Deactivating this plugin disables its features and may affect content or "
+"workflows that depend on it."
+msgstr ""
+"Bu eklentiyi devre dışı bırakmak, özelliklerini devre dışı bırakır ve ona "
+"bağımlı olan içerik veya iş akışlarını etkileyebilir."
+
+#: resources/dist/js/plugins-dashboard.js:1627
+#: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:25
+#: resources/dist/js/plugins-dashboard.js:1247
+msgid ""
+"Uninstalling deletes the plugin files and may also delete its saved "
+"settings or data. Its features will no longer be available. Back up your "
+"site before continuing."
+msgstr ""
+"Kaldırma, eklenti dosyalarını siler ve kaydedilmiş ayarlarını veya "
+"verilerini de silebilir. Özellikleri artık kullanılamayacaktır. Devam "
+"etmeden önce sitenizi yedekleyin."
+
+#: resources/dist/js/plugins-dashboard.js:1627
+#: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:26
+#: resources/dist/js/plugins-dashboard.js:1248
+msgid ""
+"Without PublishPress Statuses, its custom post statuses are no longer "
+"registered. Content using those statuses may become unavailable, and parts "
+"of your site may stop working until the plugin is installed and active "
+"again."
+msgstr ""
+"PublishPress Durumları olmadan, özel gönderi durumları artık kaydedilmez. "
+"Bu durumları kullanan içerikler erişilemez hale gelebilir ve sitenizin bazı "
+"bölümleri, eklenti tekrar yüklenip aktif olana kadar çalışmayı durdurabilir."
+
+#: resources/dist/js/plugins-dashboard.js:1627
+#: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:29
+#: resources/dist/js/plugins-dashboard.js:1251
+msgid ""
+"Resolving this conflict can deactivate the plugin while switching versions. "
+"If the version you keep cannot be activated, the plugin may remain "
+"disabled. Check that it is active after resolving the conflict."
+msgstr ""
+"Bu çatışmayı çözmek, sürüm değiştirirken eklentiyi devre dışı bırakabilir. "
+"Sakladığınız sürüm etkinleştirilemezse, eklenti devre dışı kalabilir. "
+"Çatışmayı çözdükten sonra etkin olup olmadığını kontrol edin."
+
+#: resources/dist/js/plugins-dashboard.js:1831
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:33
+#: resources/dist/js/plugins-dashboard.js:1383
 msgid "Confirmation"
 msgstr "Onay"
 
-#: resources/dist/js/plugins-dashboard.js:1636
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:36
-#: resources/dist/js/plugins-dashboard.js:1324
+#: resources/dist/js/plugins-dashboard.js:1837
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:41
+#: resources/dist/js/plugins-dashboard.js:1391
 msgid "Are you sure you want to continue?"
 msgstr "Devam etmek istediğinizden emin misiniz?"
 
-#: resources/dist/js/plugins-dashboard.js:1647
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:49
-#: resources/dist/js/plugins-dashboard.js:1337
+#: resources/dist/js/plugins-dashboard.js:1849
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:54
+#: resources/dist/js/plugins-dashboard.js:1404
 msgid "Continue"
 msgstr "Devam et"
 
-#: resources/dist/js/plugins-dashboard.js:1654
-#: resources/dist/js/plugins-dashboard.js:2266
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:52
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:100
-#: resources/dist/js/plugins-dashboard.js:1340
-#: resources/dist/js/plugins-dashboard.js:1929
+#: resources/dist/js/plugins-dashboard.js:1857
+#: resources/dist/js/plugins-dashboard.js:2543
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:57
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:103
+#: resources/dist/js/plugins-dashboard.js:1407
+#: resources/dist/js/plugins-dashboard.js:2075
 msgid "Cancel"
 msgstr "İptal"
 
-#: resources/dist/js/plugins-dashboard.js:1700
+#: resources/dist/js/plugins-dashboard.js:1903
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29
-#: resources/dist/js/plugins-dashboard.js:1377
+#: resources/dist/js/plugins-dashboard.js:1444
 msgid "Install Plugin"
 msgstr "Eklentiyi Yükle"
 
-#: resources/dist/js/plugins-dashboard.js:1705
+#: resources/dist/js/plugins-dashboard.js:1908
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
-#: resources/dist/js/plugins-dashboard.js:1382
+#: resources/dist/js/plugins-dashboard.js:1449
 msgid ""
 "Select how you would like to install this plugin. You can install the Pro "
 "version if you have a license, or the Free version to get started."
@@ -986,57 +1250,57 @@ msgstr ""
 "Bu eklentiyi nasıl kurmak istediğinizi seçin. Lisansınız varsa Pro sürümünü "
 "veya başlamanız için Ücretsiz sürümü kurabilirsiniz."
 
-#: resources/dist/js/plugins-dashboard.js:1710
-#: resources/dist/js/plugins-dashboard.js:2915
+#: resources/dist/js/plugins-dashboard.js:1913
+#: resources/dist/js/plugins-dashboard.js:3457
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:116
-#: resources/dist/js/plugins-dashboard.js:1385
-#: resources/dist/js/plugins-dashboard.js:2574
+#: resources/dist/js/plugins-dashboard.js:1452
+#: resources/dist/js/plugins-dashboard.js:2891
 msgid "Free Details"
 msgstr "Ücretsiz Ayrıntılar"
 
-#: resources/dist/js/plugins-dashboard.js:1713
-#: resources/dist/js/plugins-dashboard.js:2922
+#: resources/dist/js/plugins-dashboard.js:1916
+#: resources/dist/js/plugins-dashboard.js:3464
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:124
-#: resources/dist/js/plugins-dashboard.js:1387
-#: resources/dist/js/plugins-dashboard.js:2582
+#: resources/dist/js/plugins-dashboard.js:1454
+#: resources/dist/js/plugins-dashboard.js:2899
 msgid "Pro Details"
 msgstr "Pro Ayrıntılar"
 
-#: resources/dist/js/plugins-dashboard.js:1716
-#: resources/dist/js/plugins-dashboard.js:2930
+#: resources/dist/js/plugins-dashboard.js:1919
+#: resources/dist/js/plugins-dashboard.js:3472
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:133
-#: resources/dist/js/plugins-dashboard.js:1389
-#: resources/dist/js/plugins-dashboard.js:2591
+#: resources/dist/js/plugins-dashboard.js:1456
+#: resources/dist/js/plugins-dashboard.js:2908
 msgid "Changelogs"
 msgstr "Değişiklik Günlükleri"
 
-#: resources/dist/js/plugins-dashboard.js:1722
+#: resources/dist/js/plugins-dashboard.js:1925
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44
-#: resources/dist/js/plugins-dashboard.js:1392
+#: resources/dist/js/plugins-dashboard.js:1459
 msgid "I have a license, install the Pro version"
 msgstr "Bir lisansım var, Pro sürümünü yükle"
 
-#: resources/dist/js/plugins-dashboard.js:1728
+#: resources/dist/js/plugins-dashboard.js:1931
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47
-#: resources/dist/js/plugins-dashboard.js:1395
+#: resources/dist/js/plugins-dashboard.js:1462
 msgid "I don't have a license, install the Free version"
 msgstr "Bir lisansım yok, Ücretsiz sürümü yükle"
 
-#: resources/dist/js/plugins-dashboard.js:1815
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:54
-#: resources/dist/js/plugins-dashboard.js:1456
+#: resources/dist/js/plugins-dashboard.js:2021
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:56
+#: resources/dist/js/plugins-dashboard.js:1525
 msgid "Enter your license key"
 msgstr "Lisans anahtarınızı girin"
 
-#: resources/dist/js/plugins-dashboard.js:1820
-#: resources/dist/js/plugins-dashboard.js:1962
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:86
-#: resources/dist/js/plugins-dashboard.js:1461
-#: resources/dist/js/plugins-dashboard.js:1587
+#: resources/dist/js/plugins-dashboard.js:2026
+#: resources/dist/js/plugins-dashboard.js:2176
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:61
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
+#: resources/dist/js/plugins-dashboard.js:1530
+#: resources/dist/js/plugins-dashboard.js:1663
 msgid ""
 "Enter your license key to activate the Pro version of this plugin. You can "
 "find your license key in your PublishPress account dashboard."
@@ -1044,184 +1308,213 @@ msgstr ""
 "Bu eklentinin Pro sürümünü etkinleştirmek için lisans anahtarınızı girin. "
 "Lisans anahtarınızı PublishPress hesap kontrol panelinizde bulabilirsiniz."
 
-#: resources/dist/js/plugins-dashboard.js:1827
-#: resources/dist/js/plugins-dashboard.js:1969
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:63
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:90
-#: resources/dist/js/plugins-dashboard.js:1465
-#: resources/dist/js/plugins-dashboard.js:1591
-msgid "Go to my profile to get the license key"
-msgstr "Lisans anahtarını almak için profilime git"
+#: resources/dist/js/plugins-dashboard.js:2033
+#: resources/dist/js/plugins-dashboard.js:2183
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:65
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:91
+#: resources/dist/js/plugins-dashboard.js:1534
+#: resources/dist/js/plugins-dashboard.js:1667
+msgid "Go to the dashboard to get your license key"
+msgstr "Lisans anahtarınızı almak için dashboard'a gidin"
 
-#: resources/dist/js/plugins-dashboard.js:1829
-#: resources/dist/js/plugins-dashboard.js:1971
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:69
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:96
-#: resources/dist/js/plugins-dashboard.js:1471
-#: resources/dist/js/plugins-dashboard.js:1597
-msgid "License key"
-msgstr "Lisans anahtarı"
-
-#: resources/dist/js/plugins-dashboard.js:1831
-#: resources/dist/js/plugins-dashboard.js:1973
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:71
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:98
-#: resources/dist/js/plugins-dashboard.js:1473
-#: resources/dist/js/plugins-dashboard.js:1599
+#: resources/dist/js/plugins-dashboard.js:2037
+#: resources/dist/js/plugins-dashboard.js:2187
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:73
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:99
+#: resources/dist/js/plugins-dashboard.js:1542
+#: resources/dist/js/plugins-dashboard.js:1675
 msgid "Enter your license key here"
 msgstr "Lisans anahtarınızı buraya girin"
 
-#: resources/dist/js/plugins-dashboard.js:1839
-#: resources/dist/js/plugins-dashboard.js:1981
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:79
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:105
-#: resources/dist/js/plugins-dashboard.js:1481
-#: resources/dist/js/plugins-dashboard.js:1606
+#: resources/dist/js/plugins-dashboard.js:2045
+#: resources/dist/js/plugins-dashboard.js:2195
+#: resources/dist/js/plugins-dashboard.js:2223
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:81
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:152
+#: resources/dist/js/plugins-dashboard.js:1550
+#: resources/dist/js/plugins-dashboard.js:1682
+#: resources/dist/js/plugins-dashboard.js:1728
 msgid "Use this license key for all PublishPress plugins"
 msgstr "Tüm PublishPress eklentileri için bu lisans anahtarını kullanın"
 
-#: resources/dist/js/plugins-dashboard.js:1851
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:92
-#: resources/dist/js/plugins-dashboard.js:1494
+#: resources/dist/js/plugins-dashboard.js:2059
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:95
+#: resources/dist/js/plugins-dashboard.js:1564
+msgid "Use existing license key"
+msgstr "Mevcut lisans anahtarını kullan"
+
+#: resources/dist/js/plugins-dashboard.js:2064
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:100
+#: resources/dist/js/plugins-dashboard.js:1569
 msgid "Activate and install the plugin"
 msgstr "Eklentiyi etkinleştir ve yükle"
 
-#: resources/dist/js/plugins-dashboard.js:1957
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:79
-#: resources/dist/js/plugins-dashboard.js:1580
+#: resources/dist/js/plugins-dashboard.js:2171
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:80
+#: resources/dist/js/plugins-dashboard.js:1656
 msgid "Manage your license"
 msgstr "Lisansınızı yönetin"
 
-#: resources/dist/js/plugins-dashboard.js:1986
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:115
-#: resources/dist/js/plugins-dashboard.js:1616
+#: resources/dist/js/plugins-dashboard.js:2200
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:116
+#: resources/dist/js/plugins-dashboard.js:1692
 msgid "Your license key is: "
 msgstr "Lisans anahtarınız: "
 
-#: resources/dist/js/plugins-dashboard.js:1988
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:117
-#: resources/dist/js/plugins-dashboard.js:1618
+#: resources/dist/js/plugins-dashboard.js:2202
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:118
+#: resources/dist/js/plugins-dashboard.js:1694
 msgid "(hidden)"
 msgstr "(gizli)"
 
-#: resources/dist/js/plugins-dashboard.js:1997
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:136
-#: resources/dist/js/plugins-dashboard.js:1637
+#: resources/dist/js/plugins-dashboard.js:2211
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:137
+#: resources/dist/js/plugins-dashboard.js:1713
 msgid "Activate the license key for this site"
 msgstr "Bu site için lisans anahtarını etkinleştir"
 
-#: resources/dist/js/plugins-dashboard.js:2002
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:143
-#: resources/dist/js/plugins-dashboard.js:1644
+#: resources/dist/js/plugins-dashboard.js:2216
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:144
+#: resources/dist/js/plugins-dashboard.js:1720
 msgid "Edit the license key"
 msgstr "Lisans anahtarını düzenle"
 
-#: resources/dist/js/plugins-dashboard.js:2009
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:146
-#: resources/dist/js/plugins-dashboard.js:1647
+#: resources/dist/js/plugins-dashboard.js:2230
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:155
+#: resources/dist/js/plugins-dashboard.js:1731
 msgid "Deactivate the license key for this site"
 msgstr "Bu site için lisans anahtarını devre dışı bırak"
 
-#: resources/dist/js/plugins-dashboard.js:2114
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:82
-#: resources/dist/js/plugins-dashboard.js:1738
+#: resources/dist/js/plugins-dashboard.js:2358
+#: resources/dist/js/plugins-dashboard.js:2369
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:109
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:121
+#: resources/dist/js/plugins-dashboard.js:1849
+#: resources/dist/js/plugins-dashboard.js:1861
 #, js-format
 msgid "Install %s"
 msgstr "%s Yükle"
 
-#: resources/dist/js/plugins-dashboard.js:2125
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
-#: resources/dist/js/plugins-dashboard.js:1750
+#: resources/dist/js/plugins-dashboard.js:2379
+#: resources/dist/js/plugins-dashboard.js:2412
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:136
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:179
+#: resources/dist/js/plugins-dashboard.js:1876
+#: resources/dist/js/plugins-dashboard.js:1919
 #, js-format
-msgid "Install %s Pro"
-msgstr "%s Pro Yükle"
+msgid "Upgrade %s"
+msgstr "%s'yi yükselt"
 
-#: resources/dist/js/plugins-dashboard.js:2130
-#: resources/dist/js/plugins-dashboard.js:2143
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:102
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:121
-#: resources/dist/js/plugins-dashboard.js:1758
-#: resources/dist/js/plugins-dashboard.js:1777
+#: resources/dist/js/plugins-dashboard.js:2389
+#: resources/dist/js/plugins-dashboard.js:2749
+#: resources/dist/js/plugins-dashboard.js:3048
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:151
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:86
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
+#: resources/dist/js/plugins-dashboard.js:1891
+#: resources/dist/js/plugins-dashboard.js:2226
+#: resources/dist/js/plugins-dashboard.js:2472
+#. translators: %s is the plugin name.
 #, js-format
-msgid "Upgrade %s to Pro"
-msgstr "%s'yi Pro'ya Yükselt"
+msgid "Deactivate %s"
+msgstr "%s'yi devre dışı bırak"
 
-#: resources/dist/js/plugins-dashboard.js:2135
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:110
-#: resources/dist/js/plugins-dashboard.js:1766
+#: resources/dist/js/plugins-dashboard.js:2390
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:152
+#: resources/dist/js/plugins-dashboard.js:1892
+#, js-format
+msgid "Are you sure you want to deactivate %s?"
+msgstr "%s'yi devre dışı bırakmak istediğinizden emin misiniz?"
+
+#: resources/dist/js/plugins-dashboard.js:2391
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:153
+#: resources/dist/js/plugins-dashboard.js:1893
+msgid "Deactivate plugin"
+msgstr "Eklentiyi devre dışı bırak"
+
+#: resources/dist/js/plugins-dashboard.js:2400
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:165
+#: resources/dist/js/plugins-dashboard.js:1905
 #, js-format
 msgid "Uninstall %s"
 msgstr "%s'yi Kaldır"
 
-#: resources/dist/js/plugins-dashboard.js:2136
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:111
-#: resources/dist/js/plugins-dashboard.js:1767
+#: resources/dist/js/plugins-dashboard.js:2401
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:166
+#: resources/dist/js/plugins-dashboard.js:1906
 #, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "%s'yi kaldırmak istediğinizden emin misiniz?"
 
-#: resources/dist/js/plugins-dashboard.js:2153
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:132
-#: resources/dist/js/plugins-dashboard.js:1788
+#: resources/dist/js/plugins-dashboard.js:2402
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:167
+#: resources/dist/js/plugins-dashboard.js:1907
+msgid "Uninstall plugin"
+msgstr "Eklentiyi kaldır"
+
+#: resources/dist/js/plugins-dashboard.js:2422
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:190
+#: resources/dist/js/plugins-dashboard.js:1930
 #, js-format
 msgid "Resolve Conflict for %s"
 msgstr "%s için Çatışmayı Çöz"
 
-#: resources/dist/js/plugins-dashboard.js:2165
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:145
-#: resources/dist/js/plugins-dashboard.js:1801
+#: resources/dist/js/plugins-dashboard.js:2434
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:203
+#: resources/dist/js/plugins-dashboard.js:1943
 #, js-format
 msgid "Manage %s License"
 msgstr "%s Lisansını Yönet"
 
-#: resources/dist/js/plugins-dashboard.js:2176
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:159
-#: resources/dist/js/plugins-dashboard.js:1815
+#: resources/dist/js/plugins-dashboard.js:2448
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:218
+#: resources/dist/js/plugins-dashboard.js:1958
 #, js-format
 msgid "Activate %s License"
 msgstr "%s Lisansını Aktifleştir"
 
-#: resources/dist/js/plugins-dashboard.js:2177
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:160
-#: resources/dist/js/plugins-dashboard.js:1816
+#: resources/dist/js/plugins-dashboard.js:2449
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:219
+#: resources/dist/js/plugins-dashboard.js:1959
 msgid "Activate the license key"
 msgstr "Lisans anahtarını etkinleştir"
 
-#: resources/dist/js/plugins-dashboard.js:2234
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:34
-#: resources/dist/js/plugins-dashboard.js:1863
+#: resources/dist/js/plugins-dashboard.js:2508
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:35
+#: resources/dist/js/plugins-dashboard.js:2007
 msgid "Resolve Plugin Conflict"
 msgstr "Eklenti Çatışmasını Çöz"
 
-#: resources/dist/js/plugins-dashboard.js:2241
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:51
-#: resources/dist/js/plugins-dashboard.js:1880
+#: resources/dist/js/plugins-dashboard.js:2515
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:52
+#: resources/dist/js/plugins-dashboard.js:2024
 #, js-format
 msgid "Free version: %s (%s)"
 msgstr "Ücretsiz sürüm: %s (%s)"
 
-#: resources/dist/js/plugins-dashboard.js:2241
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:58
-#: resources/dist/js/plugins-dashboard.js:1887
+#: resources/dist/js/plugins-dashboard.js:2515
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:59
+#: resources/dist/js/plugins-dashboard.js:2031
 #, js-format
 msgid "Pro version: %s (%s)"
 msgstr "Pro sürüm: %s (%s)"
 
-#: resources/dist/js/plugins-dashboard.js:2251
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:81
-#: resources/dist/js/plugins-dashboard.js:1910
+#: resources/dist/js/plugins-dashboard.js:2528
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:84
+#: resources/dist/js/plugins-dashboard.js:2056
 msgid "Keep the Pro version (Recommended)"
 msgstr "Pro sürümünü koruyun (Tavsiye edilen)"
 
-#: resources/dist/js/plugins-dashboard.js:2259
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:91
-#: resources/dist/js/plugins-dashboard.js:1920
+#: resources/dist/js/plugins-dashboard.js:2536
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:94
+#: resources/dist/js/plugins-dashboard.js:2066
 msgid "Keep the Free version"
 msgstr "Ücretsiz sürümü koruyun"
 
-#: resources/dist/js/plugins-dashboard.js:2316
+#: resources/dist/js/plugins-dashboard.js:2593
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
-#: resources/dist/js/plugins-dashboard.js:1969
+#: resources/dist/js/plugins-dashboard.js:2115
 msgid ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
 "advanced features, priority support, and exclusive benefits designed to "
@@ -1231,508 +1524,644 @@ msgstr ""
 "şekilde yararlanmanıza yardımcı olmak için tasarlanmış gelişmiş özellikler, "
 "öncelikli destek ve özel avantajların keyfini çıkarın."
 
-#: resources/dist/js/plugins-dashboard.js:2321
+#: resources/dist/js/plugins-dashboard.js:2598
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
-#: resources/dist/js/plugins-dashboard.js:1976
+#: resources/dist/js/plugins-dashboard.js:2122
 msgid "Discover all Pro features"
 msgstr "Tüm Pro özelliklerini keşfedin"
 
-#: resources/dist/js/plugins-dashboard.js:2324
+#: resources/dist/js/plugins-dashboard.js:2601
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
-#: resources/dist/js/plugins-dashboard.js:1980
+#: resources/dist/js/plugins-dashboard.js:2126
 msgid "Changelog"
 msgstr "Değişiklik Günlüğü"
 
-#: resources/dist/js/plugins-dashboard.js:2330
+#: resources/dist/js/plugins-dashboard.js:2607
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
-#: resources/dist/js/plugins-dashboard.js:1984
+#: resources/dist/js/plugins-dashboard.js:2130
 msgid "Already have a license? Install Pro now"
 msgstr "Zaten bir lisansınız var mı? Pro'yu hemen yükleyin"
 
-#: resources/dist/js/plugins-dashboard.js:2336
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
-#: resources/dist/js/plugins-dashboard.js:1987
-msgid "Upgrade to Pro and boost your productivity"
-msgstr "Pro'ya yükseltin ve verimliliğinizi artırın"
+#: resources/dist/js/plugins-dashboard.js:2737
+#: resources/dist/js/plugins-dashboard.js:3038
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:78
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:192
+#: resources/dist/js/plugins-dashboard.js:2218
+#: resources/dist/js/plugins-dashboard.js:2463
+#, js-format
+msgid "Remove %s from favorites"
+msgstr "%s'yi favorilerden kaldır"
 
-#: resources/dist/js/plugins-dashboard.js:2488
-#: resources/dist/js/plugins-dashboard.js:2937
-#: resources/dist/js/plugins-dashboard.js:2951
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:137
+#: resources/dist/js/plugins-dashboard.js:2737
+#: resources/dist/js/plugins-dashboard.js:3038
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:78
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:192
+#: resources/dist/js/plugins-dashboard.js:2218
+#: resources/dist/js/plugins-dashboard.js:2463
+#, js-format
+msgid "Add %s to favorites"
+msgstr "%s'yi favorilere ekle"
+
+#: resources/dist/js/plugins-dashboard.js:2749
+#: resources/dist/js/plugins-dashboard.js:3048
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:86
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:202
+#: resources/dist/js/plugins-dashboard.js:2226
+#: resources/dist/js/plugins-dashboard.js:2473
+#, js-format
+msgid "Activate %s"
+msgstr "%s'yi etkinleştir"
+
+#: resources/dist/js/plugins-dashboard.js:2759
+#: resources/dist/js/plugins-dashboard.js:3075
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:95
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:238
+#: resources/dist/js/plugins-dashboard.js:2235
+#: resources/dist/js/plugins-dashboard.js:2509
+#, js-format
+msgid "%s shortcuts"
+msgstr "%s kısayolları"
+
+#: resources/dist/js/plugins-dashboard.js:2769
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:99
+#: resources/dist/js/plugins-dashboard.js:2239
+#, js-format
+msgid "More actions for %s"
+msgstr "%s için daha fazla işlem"
+
+#: resources/dist/js/plugins-dashboard.js:2770
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:99
+#: resources/dist/js/plugins-dashboard.js:2239
+msgid "More"
+msgstr "Daha fazla"
+
+#: resources/dist/js/plugins-dashboard.js:2790
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:110
+#: resources/dist/js/plugins-dashboard.js:2250
+msgid "Conflicting installations"
+msgstr "Çatışan kurulumlar"
+
+#: resources/dist/js/plugins-dashboard.js:2796
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:112
+#: resources/dist/js/plugins-dashboard.js:2252
+msgid "Activating…"
+msgstr "Etkinleştiriliyor…"
+
+#: resources/dist/js/plugins-dashboard.js:2800
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:113
+#: resources/dist/js/plugins-dashboard.js:2253
+msgid "Deactivating…"
+msgstr "Devre dışı bırakılıyor…"
+
+#: resources/dist/js/plugins-dashboard.js:2981
+#: resources/dist/js/plugins-dashboard.js:3479
+#: resources/dist/js/plugins-dashboard.js:3493
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:144
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:148
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:164
-#: resources/dist/js/plugins-dashboard.js:2131
-#: resources/dist/js/plugins-dashboard.js:2606
-#: resources/dist/js/plugins-dashboard.js:2622
+#: resources/dist/js/plugins-dashboard.js:2415
+#: resources/dist/js/plugins-dashboard.js:2923
+#: resources/dist/js/plugins-dashboard.js:2939
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
-#: resources/dist/js/plugins-dashboard.js:2489
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/dist/js/plugins-dashboard.js:2132
+#: resources/dist/js/plugins-dashboard.js:2982
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:145
+#: resources/dist/js/plugins-dashboard.js:2416
 msgid "New version available"
 msgstr "Yeni sürüm mevcut"
 
-#: resources/dist/js/plugins-dashboard.js:2505
-#: resources/dist/js/plugins-dashboard.js:2957
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#: resources/dist/js/plugins-dashboard.js:2998
+#: resources/dist/js/plugins-dashboard.js:3499
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:164
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:171
-#: resources/dist/js/plugins-dashboard.js:2151
-#: resources/dist/js/plugins-dashboard.js:2629
+#: resources/dist/js/plugins-dashboard.js:2435
+#: resources/dist/js/plugins-dashboard.js:2946
 #. translators: %s is the installed version number
 #, js-format
 msgid "Installed version: %s"
 msgstr "Yüklenen sürüm: %s"
 
-#: resources/dist/js/plugins-dashboard.js:2544
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
-#: resources/dist/js/plugins-dashboard.js:2194
+#: resources/dist/js/plugins-dashboard.js:3070
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:231
+#: resources/dist/js/plugins-dashboard.js:2502
 #, js-format
 msgid "Update available: %s → %s"
 msgstr "Güncelleme mevcut: %s → %s"
 
-#: resources/dist/js/plugins-dashboard.js:2613
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:22
-#: resources/dist/js/plugins-dashboard.js:2270
+#: resources/dist/js/plugins-dashboard.js:3155
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:23
+#: resources/dist/js/plugins-dashboard.js:2587
 msgid "Installing"
 msgstr "Yükleniyor"
 
-#: resources/dist/js/plugins-dashboard.js:2620
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:27
-#: resources/dist/js/plugins-dashboard.js:2275
+#: resources/dist/js/plugins-dashboard.js:3162
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:28
+#: resources/dist/js/plugins-dashboard.js:2592
 msgid "Not Installed"
 msgstr "Yüklenmedi"
 
-#: resources/dist/js/plugins-dashboard.js:2624
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:31
-#: resources/dist/js/plugins-dashboard.js:2279
+#: resources/dist/js/plugins-dashboard.js:3166
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:32
+#: resources/dist/js/plugins-dashboard.js:2596
 msgid "Free"
 msgstr "Ücretsiz"
 
-#: resources/dist/js/plugins-dashboard.js:2628
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:35
-#: resources/dist/js/plugins-dashboard.js:2283
+#: resources/dist/js/plugins-dashboard.js:3170
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:36
+#: resources/dist/js/plugins-dashboard.js:2600
 msgid "Licensed"
 msgstr "Lisanslı"
 
-#: resources/dist/js/plugins-dashboard.js:2636
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:43
-#: resources/dist/js/plugins-dashboard.js:2291
+#: resources/dist/js/plugins-dashboard.js:3178
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:44
+#: resources/dist/js/plugins-dashboard.js:2608
 msgid "Expired"
 msgstr "Süresi dolmuş"
 
-#: resources/dist/js/plugins-dashboard.js:2640
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:47
-#: resources/dist/js/plugins-dashboard.js:2295
+#: resources/dist/js/plugins-dashboard.js:3182
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:48
+#: resources/dist/js/plugins-dashboard.js:2612
 msgid "Uninstalling"
 msgstr "Kaldırılıyor"
 
-#: resources/dist/js/plugins-dashboard.js:2647
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:52
-#: resources/dist/js/plugins-dashboard.js:2300
+#: resources/dist/js/plugins-dashboard.js:3189
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:53
+#: resources/dist/js/plugins-dashboard.js:2617
 msgid "Upgrading"
 msgstr "Yükseltiliyor"
 
-#: resources/dist/js/plugins-dashboard.js:2654
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:57
-#: resources/dist/js/plugins-dashboard.js:2305
+#: resources/dist/js/plugins-dashboard.js:3196
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:58
+#: resources/dist/js/plugins-dashboard.js:2622
 msgid "Deactivating"
 msgstr "Devre dışı bırakılıyor"
 
-#: resources/dist/js/plugins-dashboard.js:2661
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:62
-#: resources/dist/js/plugins-dashboard.js:2310
+#: resources/dist/js/plugins-dashboard.js:3203
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:63
+#: resources/dist/js/plugins-dashboard.js:2627
 msgid "Activating"
 msgstr "Etkinleştiriliyor"
 
-#: resources/dist/js/plugins-dashboard.js:2668
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:67
-#: resources/dist/js/plugins-dashboard.js:2315
+#: resources/dist/js/plugins-dashboard.js:3210
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:68
+#: resources/dist/js/plugins-dashboard.js:2632
 msgid "Conflicting Installations"
 msgstr "Çakışan Yüklemeler"
 
-#: resources/dist/js/plugins-dashboard.js:2672
-#: resources/dist/js/plugins-dashboard.js:2756
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
-#: resources/dist/js/plugins-dashboard.js:2319
-#: resources/dist/js/plugins-dashboard.js:2420
+#: resources/dist/js/plugins-dashboard.js:3214
+#: resources/dist/js/plugins-dashboard.js:3298
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:72
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:173
+#: resources/dist/js/plugins-dashboard.js:2636
+#: resources/dist/js/plugins-dashboard.js:2737
 msgid "Update Available"
 msgstr "Güncelleme Mevcut"
 
-#: resources/dist/js/plugins-dashboard.js:2764
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
-#: resources/dist/js/plugins-dashboard.js:2431
+#: resources/dist/js/plugins-dashboard.js:3306
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:184
+#: resources/dist/js/plugins-dashboard.js:2748
 msgid "Expires"
 msgstr "Süresi Doluyor"
 
-#: resources/dist/js/plugins-dashboard.js:2859
-#: resources/dist/js/plugins-dashboard.js:2870
+#: resources/dist/js/plugins-dashboard.js:3401
+#: resources/dist/js/plugins-dashboard.js:3412
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:74
-#: resources/dist/js/plugins-dashboard.js:2513
-#: resources/dist/js/plugins-dashboard.js:2532
+#: resources/dist/js/plugins-dashboard.js:2830
+#: resources/dist/js/plugins-dashboard.js:2849
 msgid "Renew"
 msgstr "Yenile"
 
-#: resources/dist/js/plugins-dashboard.js:2879
+#: resources/dist/js/plugins-dashboard.js:3421
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:84
-#: resources/dist/js/plugins-dashboard.js:2542
+#: resources/dist/js/plugins-dashboard.js:2859
 msgid "Deactivate"
 msgstr "Devre Dışı Bırak"
 
-#: resources/dist/js/plugins-dashboard.js:2890
+#: resources/dist/js/plugins-dashboard.js:3432
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:93
-#: resources/dist/js/plugins-dashboard.js:2551
+#: resources/dist/js/plugins-dashboard.js:2868
 msgid "Activate"
 msgstr "Etkinleştir"
 
-#: resources/dist/js/plugins-dashboard.js:2901
+#: resources/dist/js/plugins-dashboard.js:3443
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:103
-#: resources/dist/js/plugins-dashboard.js:2561
+#: resources/dist/js/plugins-dashboard.js:2878
 msgid "Uninstall"
 msgstr "Kaldır"
 
-#: resources/dist/js/plugins-dashboard.js:2938
-#: resources/dist/js/plugins-dashboard.js:2952
+#: resources/dist/js/plugins-dashboard.js:3480
+#: resources/dist/js/plugins-dashboard.js:3494
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:149
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
-#: resources/dist/js/plugins-dashboard.js:2607
-#: resources/dist/js/plugins-dashboard.js:2623
+#: resources/dist/js/plugins-dashboard.js:2924
+#: resources/dist/js/plugins-dashboard.js:2940
 msgid "latest"
 msgstr "en son"
 
-#: resources/dist/js/plugins-dashboard.js:2942
+#: resources/dist/js/plugins-dashboard.js:3484
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:154
-#: resources/dist/js/plugins-dashboard.js:2612
+#: resources/dist/js/plugins-dashboard.js:2929
 #, js-format
-msgid "Update to v%s"
-msgstr "v%s'ye Güncelle"
+msgid "Update to %s"
+msgstr "%s'ye güncelle"
 
-#: resources/dist/js/plugins-dashboard.js:3443
+#: resources/dist/js/plugins-dashboard.js:4041
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
-#: resources/dist/js/plugins-dashboard.js:2979
+#: resources/dist/js/plugins-dashboard.js:3326
 msgid "This plugin is not installed."
 msgstr "Bu eklenti yüklü değil."
 
-#: resources/dist/js/plugins-dashboard.js:3445
+#: resources/dist/js/plugins-dashboard.js:4043
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40
-#: resources/dist/js/plugins-dashboard.js:2982
+#: resources/dist/js/plugins-dashboard.js:3329
 msgid "This plugin is active."
 msgstr "Bu eklenti aktiftir."
 
-#: resources/dist/js/plugins-dashboard.js:3445
+#: resources/dist/js/plugins-dashboard.js:4043
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41
-#: resources/dist/js/plugins-dashboard.js:2983
+#: resources/dist/js/plugins-dashboard.js:3330
 msgid "This plugin is not active."
 msgstr "Bu eklenti aktif değil."
 
-#: resources/dist/js/plugins-dashboard.js:3652
-#: resources/src/jsx/components/plugins-list/index.jsx:158
-#: resources/dist/js/plugins-dashboard.js:3194
+#: resources/dist/js/plugins-dashboard.js:4272
+#: resources/src/jsx/components/plugins-list/index.jsx:166
+#: resources/dist/js/plugins-dashboard.js:3549
+msgid "Editorial process"
+msgstr "Editoryal süreç"
+
+#: resources/dist/js/plugins-dashboard.js:4275
+#: resources/src/jsx/components/plugins-list/index.jsx:167
+#: resources/dist/js/plugins-dashboard.js:3550
+msgid "Additional publishing tools"
+msgstr "Ek yayınlama araçları"
+
+#: resources/dist/js/plugins-dashboard.js:4283
+#: resources/src/jsx/components/plugins-list/index.jsx:171
+#: resources/dist/js/plugins-dashboard.js:3554
+msgid "Other plugins"
+msgstr "Diğer eklentiler"
+
+#: resources/dist/js/plugins-dashboard.js:4296
+#: resources/src/jsx/components/plugins-list/index.jsx:177
+#: resources/dist/js/plugins-dashboard.js:3560
+msgid "Plugin layout"
+msgstr "Eklenti düzeni"
+
+#: resources/dist/js/plugins-dashboard.js:4310
+#: resources/src/jsx/components/plugins-list/index.jsx:181
+#: resources/dist/js/plugins-dashboard.js:3564
+msgid "Cards"
+msgstr "Kartlar"
+
+#: resources/dist/js/plugins-dashboard.js:4310
+#: resources/src/jsx/components/plugins-list/index.jsx:181
+#: resources/dist/js/plugins-dashboard.js:3564
+msgid "List"
+msgstr "Liste"
+
+#: resources/dist/js/plugins-dashboard.js:4312
+#: resources/src/jsx/components/plugins-list/index.jsx:184
+#: resources/dist/js/plugins-dashboard.js:3567
+msgid "Group by purpose"
+msgstr "Amaca göre grupla"
+
+#: resources/dist/js/plugins-dashboard.js:4320
+#: resources/src/jsx/components/plugins-list/index.jsx:186
+#: resources/dist/js/plugins-dashboard.js:3569
+msgid "Favorites only"
+msgstr "Sadece favoriler"
+
+#: resources/dist/js/plugins-dashboard.js:4342
+#: resources/src/jsx/components/plugins-list/index.jsx:200
+#: resources/dist/js/plugins-dashboard.js:3583
 msgid "No plugins found."
 msgstr "Eklenti bulunamadı."
 
-#: resources/dist/js/plugins-dashboard.js:3654
-#: resources/src/jsx/components/plugins-list/index.jsx:164
-#: resources/dist/js/plugins-dashboard.js:3200
+#: resources/dist/js/plugins-dashboard.js:4346
+#: resources/src/jsx/components/plugins-list/index.jsx:206
+#: resources/dist/js/plugins-dashboard.js:3589
 msgid "Loading plugins..."
 msgstr "Eklentiler yükleniyor..."
 
-#: resources/dist/js/plugins-dashboard.js:4252
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:216
-#: resources/dist/js/plugins-dashboard.js:3618
+#: resources/dist/js/plugins-dashboard.js:4955
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:225
+#: resources/dist/js/plugins-dashboard.js:4017
 msgid "Failed to fetch plugins"
 msgstr "Eklentileri almakta başarısız oldu"
 
-#: resources/dist/js/plugins-dashboard.js:4307
-#: resources/dist/js/plugins-dashboard.js:4397
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
-#: resources/dist/js/plugins-dashboard.js:3646
-#: resources/dist/js/plugins-dashboard.js:3704
+#: resources/dist/js/plugins-dashboard.js:5015
+#: resources/dist/js/plugins-dashboard.js:5110
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:259
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:319
+#: resources/dist/js/plugins-dashboard.js:4051
+#: resources/dist/js/plugins-dashboard.js:4111
 #, js-format
 msgid "%s installed successfully"
 msgstr "%s başarıyla yüklendi"
 
-#: resources/dist/js/plugins-dashboard.js:4340
-#: resources/dist/js/plugins-dashboard.js:4431
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
-#: resources/dist/js/plugins-dashboard.js:3669
-#: resources/dist/js/plugins-dashboard.js:3729
+#: resources/dist/js/plugins-dashboard.js:5043
+#: resources/dist/js/plugins-dashboard.js:5139
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:276
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:338
+#: resources/dist/js/plugins-dashboard.js:4068
+#: resources/dist/js/plugins-dashboard.js:4130
 #, js-format
 msgid "%s installation failed"
 msgstr "%s yükleme başarısız oldu"
 
-#: resources/dist/js/plugins-dashboard.js:4488
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
-#: resources/dist/js/plugins-dashboard.js:3765
+#: resources/dist/js/plugins-dashboard.js:5197
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:374
+#: resources/dist/js/plugins-dashboard.js:4166
 #, js-format
 msgid "%s uninstalled successfully"
 msgstr "%s başarıyla kaldırıldı"
 
-#: resources/dist/js/plugins-dashboard.js:4513
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
-#: resources/dist/js/plugins-dashboard.js:3781
+#: resources/dist/js/plugins-dashboard.js:5222
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:390
+#: resources/dist/js/plugins-dashboard.js:4182
 #, js-format
 msgid "%s uninstall failed"
 msgstr "%s kaldırma başarısız oldu"
 
-#: resources/dist/js/plugins-dashboard.js:4577
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
-#: resources/dist/js/plugins-dashboard.js:3816
+#: resources/dist/js/plugins-dashboard.js:5291
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:426
+#: resources/dist/js/plugins-dashboard.js:4218
 #, js-format
 msgid "%s activated successfully"
 msgstr "%s başarıyla etkinleştirildi"
 
-#: resources/dist/js/plugins-dashboard.js:4604
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
-#: resources/dist/js/plugins-dashboard.js:3832
+#: resources/dist/js/plugins-dashboard.js:5318
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:443
+#: resources/dist/js/plugins-dashboard.js:4235
 #, js-format
 msgid "%s activation failed"
 msgstr "%s etkinleştirme başarısız oldu"
 
-#: resources/dist/js/plugins-dashboard.js:4672
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
-#: resources/dist/js/plugins-dashboard.js:3867
+#: resources/dist/js/plugins-dashboard.js:5386
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:478
+#: resources/dist/js/plugins-dashboard.js:4270
 #, js-format
 msgid "%s deactivated successfully"
 msgstr "%s başarıyla devre dışı bırakıldı"
 
-#: resources/dist/js/plugins-dashboard.js:4699
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
-#: resources/dist/js/plugins-dashboard.js:3883
+#: resources/dist/js/plugins-dashboard.js:5413
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:494
+#: resources/dist/js/plugins-dashboard.js:4286
 #, js-format
 msgid "%s deactivation failed"
 msgstr "%s devre dışı bırakma başarısız oldu"
 
-#: resources/dist/js/plugins-dashboard.js:4761
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
-#: resources/dist/js/plugins-dashboard.js:3918
+#: resources/dist/js/plugins-dashboard.js:5485
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:537
+#: resources/dist/js/plugins-dashboard.js:4329
 #, js-format
-msgid "%s upgraded to Pro successfully"
-msgstr "%s Pro'ya başarıyla yükseltildi"
+msgid "%s upgraded successfully"
+msgstr "%s başarıyla yükseltildi"
 
-#: resources/dist/js/plugins-dashboard.js:4795
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
-#: resources/dist/js/plugins-dashboard.js:3943
+#: resources/dist/js/plugins-dashboard.js:5514
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:556
+#: resources/dist/js/plugins-dashboard.js:4348
 #, js-format
 msgid "%s upgrade to Pro failed"
 msgstr "%s Pro'ya yükseltme başarısız oldu"
 
-#: resources/dist/js/plugins-dashboard.js:4862
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
-#: resources/dist/js/plugins-dashboard.js:3985
+#: resources/dist/js/plugins-dashboard.js:5599
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:608
+#: resources/dist/js/plugins-dashboard.js:4400
 #, js-format
 msgid "Conflict resolved successfully for %s"
 msgstr "%s için çelişki başarıyla çözüldü"
 
-#: resources/dist/js/plugins-dashboard.js:4889
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
-#: resources/dist/js/plugins-dashboard.js:4002
+#: resources/dist/js/plugins-dashboard.js:5626
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:625
+#: resources/dist/js/plugins-dashboard.js:4417
 #, js-format
 msgid "Failed to resolve conflict for %s"
 msgstr "%s için çelişkiyi çözmekte başarısız olundu"
 
-#: resources/dist/js/plugins-dashboard.js:4943
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
-#: resources/dist/js/plugins-dashboard.js:4034
+#: resources/dist/js/plugins-dashboard.js:5680
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:657
+#: resources/dist/js/plugins-dashboard.js:4449
 #, js-format
 msgid "%s license deactivated successfully"
 msgstr "%s lisansı başarıyla devre dışı bırakıldı"
 
-#: resources/dist/js/plugins-dashboard.js:4968
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
-#: resources/dist/js/plugins-dashboard.js:4050
+#: resources/dist/js/plugins-dashboard.js:5705
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:673
+#: resources/dist/js/plugins-dashboard.js:4465
 #, js-format
 msgid "%s license deactivation failed"
 msgstr "%s lisansı devre dışı bırakma başarısız oldu"
 
-#: resources/dist/js/plugins-dashboard.js:5030
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:684
-#: resources/dist/js/plugins-dashboard.js:4086
+#: resources/dist/js/plugins-dashboard.js:5767
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:709
+#: resources/dist/js/plugins-dashboard.js:4501
 msgid "License activated successfully for all PublishPress plugins"
 msgstr "Tüm PublishPress eklentileri için lisans başarıyla etkinleştirildi"
 
-#: resources/dist/js/plugins-dashboard.js:5030
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:685
-#: resources/dist/js/plugins-dashboard.js:4087
+#: resources/dist/js/plugins-dashboard.js:5767
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:710
+#: resources/dist/js/plugins-dashboard.js:4502
 #, js-format
 msgid "%s license activated successfully"
 msgstr "%s lisansı başarıyla etkinleştirildi"
 
-#: resources/dist/js/plugins-dashboard.js:5059
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:701
-#: resources/dist/js/plugins-dashboard.js:4103
+#: resources/dist/js/plugins-dashboard.js:5796
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:726
+#: resources/dist/js/plugins-dashboard.js:4518
 #, js-format
 msgid "%s license activation failed"
 msgstr "%s lisansı etkinleştirme başarısız oldu"
 
-#: resources/dist/js/plugins-dashboard.js:5117
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:736
-#: resources/dist/js/plugins-dashboard.js:4138
+#: resources/dist/js/plugins-dashboard.js:5855
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:758
+#: resources/dist/js/plugins-dashboard.js:4550
+msgid "License reused successfully for all PublishPress plugins"
+msgstr "Tüm PublishPress eklentileri için lisans başarıyla yeniden kullanıldı"
+
+#: resources/dist/js/plugins-dashboard.js:5882
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:774
+#: resources/dist/js/plugins-dashboard.js:4566
+#, js-format
+msgid "%s license reuse failed"
+msgstr "%s lisans yeniden kullanımı başarısız oldu"
+
+#: resources/dist/js/plugins-dashboard.js:5950
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
+#: resources/dist/js/plugins-dashboard.js:4605
+msgid ""
+"The plugin was updated successfully, but the dashboard could not refresh. "
+"Reloading this page..."
+msgstr ""
+"Eklenti başarıyla güncellendi, ancak dashboard yenilenemedi. Bu sayfayı "
+"yeniden yüklüyor..."
+
+#: resources/dist/js/plugins-dashboard.js:5976
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:836
+#: resources/dist/js/plugins-dashboard.js:4628
 #, js-format
 msgid "%s updated successfully"
 msgstr "%s başarıyla güncellendi"
 
-#: resources/dist/js/plugins-dashboard.js:5145
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:753
-#: resources/dist/js/plugins-dashboard.js:4155
+#: resources/dist/js/plugins-dashboard.js:6004
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:853
+#: resources/dist/js/plugins-dashboard.js:4645
 #, js-format
 msgid "%s update failed"
 msgstr "%s güncellemesi başarısız oldu"
 
-#: resources/dist/js/plugins-dashboard.js:5219
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:815
-#: resources/dist/js/plugins-dashboard.js:4217
+#: resources/dist/js/plugins-dashboard.js:6078
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:915
+#: resources/dist/js/plugins-dashboard.js:4707
 msgid "Too many requests. Please wait a few seconds and try again."
 msgstr "Çok fazla istek. Lütfen birkaç saniye bekleyin ve tekrar deneyin."
 
-#: resources/dist/js/plugins-dashboard.js:5227
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:825
-#: resources/dist/js/plugins-dashboard.js:4227
+#: resources/dist/js/plugins-dashboard.js:6086
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:925
+#: resources/dist/js/plugins-dashboard.js:4717
 #, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
 
-#: resources/dist/js/settings-page.js:426
+#: resources/dist/js/settings-page.js:433
 #: resources/src/jsx/components/pages/settings-page.jsx:32
-#: resources/dist/js/settings-page.js:362
+#: resources/dist/js/settings-page.js:363
 msgid "Diagnostics"
 msgstr "Tanılama"
 
-#: resources/dist/js/settings-page.js:567
+#: resources/dist/js/settings-page.js:574
 #: resources/src/jsx/components/pages/settings-page.jsx:136
-#: resources/dist/js/settings-page.js:466
+#: resources/dist/js/settings-page.js:467
 msgid "Site health report copied to clipboard."
 msgstr "Site sağlık raporu panoya kopyalandı."
 
-#: resources/dist/js/settings-page.js:576
+#: resources/dist/js/settings-page.js:583
 #: resources/src/jsx/components/pages/settings-page.jsx:141
-#: resources/dist/js/settings-page.js:471
+#: resources/dist/js/settings-page.js:472
 msgid "Failed to copy the site health report. Please try again."
 msgstr "Site sağlık raporunu kopyalamak başarısız oldu. Lütfen tekrar deneyin."
 
-#: resources/dist/js/settings-page.js:617
+#: resources/dist/js/settings-page.js:624
 #: resources/src/jsx/components/pages/settings-page.jsx:167
-#: resources/dist/js/settings-page.js:497
+#: resources/dist/js/settings-page.js:498
 msgid "Site health report downloaded."
 msgstr "Site sağlık raporu indirildi."
 
-#: resources/dist/js/settings-page.js:626
+#: resources/dist/js/settings-page.js:633
 #: resources/src/jsx/components/pages/settings-page.jsx:172
-#: resources/dist/js/settings-page.js:502
+#: resources/dist/js/settings-page.js:503
 msgid "Failed to download the site health report. Please try again."
 msgstr "Site sağlık raporunu indirmek başarısız oldu. Lütfen tekrar deneyin."
 
-#: resources/dist/js/settings-page.js:668
+#: resources/dist/js/settings-page.js:675
 #: resources/src/jsx/components/pages/settings-page.jsx:213
-#: resources/dist/js/settings-page.js:543
+#: resources/dist/js/settings-page.js:544
 msgid "Copy Site Health Report"
 msgstr "Site Sağlık Raporunu Kopyala"
 
-#: resources/dist/js/settings-page.js:672
+#: resources/dist/js/settings-page.js:679
 #: resources/src/jsx/components/pages/settings-page.jsx:221
-#: resources/dist/js/settings-page.js:551
+#: resources/dist/js/settings-page.js:552
 msgid "Download Site Health Report"
 msgstr "Site Sağlık Raporunu İndir"
 
-#: resources/dist/js/settings-page.js:863
+#: resources/dist/js/settings-page.js:870
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:108
-#: resources/dist/js/settings-page.js:668
+#: resources/dist/js/settings-page.js:669
 msgid "Failed to load the debug log. Please try again."
 msgstr "Hata ayıklama kaydı yüklenemedi. Lütfen tekrar deneyin."
 
-#: resources/dist/js/settings-page.js:942
+#: resources/dist/js/settings-page.js:949
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:182
-#: resources/dist/js/settings-page.js:742
+#: resources/dist/js/settings-page.js:743
 msgid "Debug log cleared successfully."
 msgstr "Hata ayıklama kaydı başarıyla temizlendi."
 
-#: resources/dist/js/settings-page.js:951
+#: resources/dist/js/settings-page.js:958
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
-#: resources/dist/js/settings-page.js:747
+#: resources/dist/js/settings-page.js:748
 msgid "Failed to clear the debug log. Please try again."
 msgstr "Hata ayıklama kaydı temizlenemedi. Lütfen tekrar deneyin."
 
-#: resources/dist/js/settings-page.js:1010
+#: resources/dist/js/settings-page.js:1017
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222
-#: resources/dist/js/settings-page.js:782
+#: resources/dist/js/settings-page.js:783
 msgid "Log copied to clipboard."
 msgstr "Kayıt panoya kopyalandı."
 
-#: resources/dist/js/settings-page.js:1019
+#: resources/dist/js/settings-page.js:1026
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
-#: resources/dist/js/settings-page.js:787
+#: resources/dist/js/settings-page.js:788
 msgid "Failed to copy log to clipboard."
 msgstr "Kayıt panoya kopyalanamadı."
 
-#: resources/dist/js/settings-page.js:1044
+#: resources/dist/js/settings-page.js:1051
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:250
-#: resources/dist/js/settings-page.js:810
+#: resources/dist/js/settings-page.js:811
 msgid "Debug log view"
 msgstr "Hata ayıklama günlük görüntüsü"
 
-#: resources/dist/js/settings-page.js:1052
+#: resources/dist/js/settings-page.js:1059
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:258
-#: resources/dist/js/settings-page.js:818
+#: resources/dist/js/settings-page.js:819
 msgid "Requests"
 msgstr "İstekler"
 
-#: resources/dist/js/settings-page.js:1059
+#: resources/dist/js/settings-page.js:1066
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:266
-#: resources/dist/js/settings-page.js:826
+#: resources/dist/js/settings-page.js:827
 msgid "Full Log"
 msgstr "Tam Günlük"
 
-#: resources/dist/js/settings-page.js:1072
+#: resources/dist/js/settings-page.js:1079
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
-#: resources/dist/js/settings-page.js:838
+#: resources/dist/js/settings-page.js:839
 msgid "Auto-refresh is on — click to stop"
 msgstr "Otomatik yenileme açık - durdurmak için tıklayın"
 
-#: resources/dist/js/settings-page.js:1072
+#: resources/dist/js/settings-page.js:1079
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:279
-#: resources/dist/js/settings-page.js:839
+#: resources/dist/js/settings-page.js:840
 msgid "Enable auto-refresh"
 msgstr "Otomatik yenilemeyi etkinleştir"
 
-#: resources/dist/js/settings-page.js:1076
+#: resources/dist/js/settings-page.js:1083
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:284
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:285
-#: resources/dist/js/settings-page.js:844
 #: resources/dist/js/settings-page.js:845
+#: resources/dist/js/settings-page.js:846
 msgid "Auto-refresh"
 msgstr "Otomatik yenileme"
 
-#: resources/dist/js/settings-page.js:1080
+#: resources/dist/js/settings-page.js:1087
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:293
-#: resources/dist/js/settings-page.js:853
+#: resources/dist/js/settings-page.js:854
 msgid "Auto-refresh interval"
 msgstr "Otomatik yenileme aralığı"
 
-#: resources/dist/js/settings-page.js:1097
+#: resources/dist/js/settings-page.js:1104
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:315
-#: resources/dist/js/settings-page.js:875
+#: resources/dist/js/settings-page.js:876
 msgid "Copy to Clipboard"
 msgstr "Pano'ya Kopyala"
 
-#: resources/dist/js/settings-page.js:1103
+#: resources/dist/js/settings-page.js:1110
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:325
-#: resources/dist/js/settings-page.js:885
+#: resources/dist/js/settings-page.js:886
 msgid "Clear Log"
 msgstr "Günlüğü Temizle"
 
-#: resources/dist/js/settings-page.js:1107
+#: resources/dist/js/settings-page.js:1116
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:333
-#: resources/dist/js/settings-page.js:893
+#: resources/dist/js/settings-page.js:894
 msgid "Loading log..."
 msgstr "Günlük yükleniyor..."
 
-#: resources/dist/js/settings-page.js:1109
+#: resources/dist/js/settings-page.js:1120
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:339
-#: resources/dist/js/settings-page.js:899
+#: resources/dist/js/settings-page.js:900
 msgid ""
 "The debug log is empty. Perform some actions (e.g. activate a license) and "
 "refresh to see entries."
@@ -1740,35 +2169,35 @@ msgstr ""
 "Hata ayıklama günlüğü boş. Bazı işlemler gerçekleştirin (örneğin, bir "
 "lisansı etkinleştirin) ve girişleri görmek için sayfayı yenileyin."
 
-#: resources/dist/js/settings-page.js:1116
+#: resources/dist/js/settings-page.js:1127
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:353
-#: resources/dist/js/settings-page.js:913
+#: resources/dist/js/settings-page.js:914
 msgid "Debug log contents"
 msgstr "Hata ayıklama günlüğü içerikleri"
 
-#: resources/dist/js/settings-page.js:1201
+#: resources/dist/js/settings-page.js:1212
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
-#: resources/dist/js/settings-page.js:962
+#: resources/dist/js/settings-page.js:963
 msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
 msgstr ""
 "Hata ayıklama modu etkin. Artık bir \"Hata Ayıklama Günlüğü\" sekmesi "
 "mevcut."
 
-#: resources/dist/js/settings-page.js:1201
+#: resources/dist/js/settings-page.js:1212
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
-#: resources/dist/js/settings-page.js:963
+#: resources/dist/js/settings-page.js:964
 msgid "Debug mode disabled."
 msgstr "Hata ayıklama modu devre dışı."
 
-#: resources/dist/js/settings-page.js:1213
+#: resources/dist/js/settings-page.js:1224
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:50
-#: resources/dist/js/settings-page.js:972
+#: resources/dist/js/settings-page.js:973
 msgid "Failed to save the setting. Please try again."
 msgstr "Ayar kaydedilemedi. Lütfen tekrar deneyin."
 
-#: resources/dist/js/settings-page.js:1242
+#: resources/dist/js/settings-page.js:1253
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
-#: resources/dist/js/settings-page.js:997
+#: resources/dist/js/settings-page.js:998
 msgid ""
 "When enabled, all HTTP requests and responses to remote services (license "
 "activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
@@ -1779,15 +2208,15 @@ msgstr ""
 "dosyasına kaydedilir. Yakalanan verileri incelemek için Hata Ayıklama "
 "Günlüğü sekmesini kullanın."
 
-#: resources/dist/js/settings-page.js:1243
+#: resources/dist/js/settings-page.js:1254
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
-#: resources/dist/js/settings-page.js:1004
+#: resources/dist/js/settings-page.js:1005
 msgid "Enable Debug Mode"
 msgstr "Hata Ayıklama Modunu Etkinleştir"
 
-#: resources/dist/js/settings-page.js:1250
+#: resources/dist/js/settings-page.js:1261
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
-#: resources/dist/js/settings-page.js:1013
+#: resources/dist/js/settings-page.js:1014
 msgid ""
 "Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
 "data."
@@ -1795,76 +2224,122 @@ msgstr ""
 "Hata ayıklama günlüğü aktiftir. Yakalanan verileri görüntülemek için \"Hata "
 "Ayıklama Günlüğü\" sekmesine geçin."
 
-#: resources/dist/js/settings-page.js:1341
+#: resources/dist/js/settings-page.js:1352
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
-#: resources/dist/js/settings-page.js:1095
+#: resources/dist/js/settings-page.js:1096
 msgid "ERR"
 msgstr "HATA"
 
-#: resources/dist/js/settings-page.js:1372
+#: resources/dist/js/settings-page.js:1383
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:108
-#: resources/dist/js/settings-page.js:1133
+#: resources/dist/js/settings-page.js:1134
 msgid "Request"
 msgstr "İstek"
 
-#: resources/dist/js/settings-page.js:1378
+#: resources/dist/js/settings-page.js:1389
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:115
-#: resources/dist/js/settings-page.js:1140
+#: resources/dist/js/settings-page.js:1141
 msgid "Response"
 msgstr "Yanıt"
 
-#: resources/dist/js/settings-page.js:1382
+#: resources/dist/js/settings-page.js:1393
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:121
-#: resources/dist/js/settings-page.js:1146
+#: resources/dist/js/settings-page.js:1147
 msgid "No response recorded for this request."
 msgstr "Bu isteğe ait herhangi bir yanıt kaydedilmedi."
 
-#: resources/dist/js/settings-page.js:1397
+#: resources/dist/js/settings-page.js:1410
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:146
-#: resources/dist/js/settings-page.js:1171
+#: resources/dist/js/settings-page.js:1172
 msgid "No requests found in the log."
 msgstr "Kayıtta hiçbir istek bulunamadı."
 
-#: resources/dist/js/settings-page.js:1403
+#: resources/dist/js/settings-page.js:1416
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#: resources/dist/js/settings-page.js:1180
+#: resources/dist/js/settings-page.js:1181
 msgid "1 request recorded"
 msgstr "1 istek kaydedildi"
 
-#: resources/dist/js/settings-page.js:1403
+#: resources/dist/js/settings-page.js:1416
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:157
-#: resources/dist/js/settings-page.js:1182
+#: resources/dist/js/settings-page.js:1183
 #, js-format
 msgid "%d requests recorded"
 msgstr "%d istek kaydedildi"
 
-#: resources/dist/js/welcome-page.js:418
+#: resources/dist/js/welcome-page.js:427
 #: resources/src/jsx/components/pages/welcome-page.jsx:37
-#: resources/dist/js/welcome-page.js:367
-msgid "Welcome to PublishPress Hub!"
-msgstr "PublishPress Hub'a hoş geldiniz!"
-
-#: resources/dist/js/welcome-page.js:420
-#: resources/src/jsx/components/pages/welcome-page.jsx:40
-#: resources/dist/js/welcome-page.js:370
-msgid "Get started with PublishPress Hub in a few simple steps."
-msgstr "PublishPress Hub'a birkaç basit adımla başlayın."
-
-#: resources/dist/js/welcome-page.js:428
-#: resources/src/jsx/components/pages/welcome-page.jsx:47
-#: resources/dist/js/welcome-page.js:377
+#: resources/dist/js/welcome-page.js:368
 msgid "Welcome to PublishPress Hub"
 msgstr "PublishPress Hub'a hoş geldiniz"
 
-#: resources/dist/js/welcome-page.js:431
-#: resources/src/jsx/components/pages/welcome-page.jsx:52
+#: resources/dist/js/welcome-page.js:427
+#: resources/src/jsx/components/pages/welcome-page.jsx:38
+#: resources/dist/js/welcome-page.js:369
+msgid "Your publishing tools, in one place."
+msgstr "Yayınlama araçlarınız, tek bir yerde."
+
+#: resources/dist/js/welcome-page.js:429
+#: resources/src/jsx/components/pages/welcome-page.jsx:39
+#: resources/dist/js/welcome-page.js:370
+msgid ""
+"Manage your plugins, build your editorial workflow, and find the help you "
+"need to get started."
+msgstr ""
+"Eklentilerinizi yönetin, editoryal iş akışınızı oluşturun ve başlamanız "
+"için gereken yardımı bulun."
+
+#: resources/dist/js/welcome-page.js:434
+#: resources/src/jsx/components/pages/welcome-page.jsx:41
+#: resources/dist/js/welcome-page.js:372
+msgid "View Plugins Dashboard"
+msgstr "Eklentiler Gösterge Panelini Görüntüle"
+
+#: resources/dist/js/welcome-page.js:436
+#: resources/src/jsx/components/pages/welcome-page.jsx:43
+#: resources/dist/js/welcome-page.js:374
+msgid "Help and account"
+msgstr "Yardım ve hesap"
+
+#: resources/dist/js/welcome-page.js:444
+#: resources/src/jsx/components/pages/welcome-page.jsx:46
+#: resources/dist/js/welcome-page.js:377
+msgid "Setup guides and answers for every plugin."
+msgstr "Her eklenti için kurulum kılavuzları ve yanıtlar."
+
+#: resources/dist/js/welcome-page.js:454
+#: resources/src/jsx/components/pages/welcome-page.jsx:51
 #: resources/dist/js/welcome-page.js:382
+msgid "Get support"
+msgstr "Destek alın"
+
+#: resources/dist/js/welcome-page.js:454
+#: resources/src/jsx/components/pages/welcome-page.jsx:51
+#: resources/dist/js/welcome-page.js:382
+msgid "Get help from the PublishPress team."
+msgstr "PublishPress ekibinden yardım alın."
+
+#: resources/dist/js/welcome-page.js:464
+#: resources/src/jsx/components/pages/welcome-page.jsx:56
+#: resources/dist/js/welcome-page.js:387
+msgid "Account and licenses"
+msgstr "Hesap ve lisanslar"
+
+#: resources/dist/js/welcome-page.js:464
+#: resources/src/jsx/components/pages/welcome-page.jsx:56
+#: resources/dist/js/welcome-page.js:387
+msgid "Find your license keys and manage your subscription."
+msgstr "Lisans anahtarlarınızı bulun ve aboneliğinizi yönetin."
+
+#: resources/dist/js/welcome-page.js:476
+#: resources/src/jsx/components/pages/welcome-page.jsx:65
+#: resources/dist/js/welcome-page.js:396
 msgid "What you can do with PublishPress Hub"
 msgstr "PublishPress Hub ile neler yapabilirsiniz"
 
-#: resources/dist/js/welcome-page.js:433
-#: resources/src/jsx/components/pages/welcome-page.jsx:55
-#: resources/dist/js/welcome-page.js:385
+#: resources/dist/js/welcome-page.js:478
+#: resources/src/jsx/components/pages/welcome-page.jsx:68
+#: resources/dist/js/welcome-page.js:399
 msgid ""
 "PublishPress Hub has everything you need to install, update, and manage "
 "your PublishPress plugins. We're here to help you build a publishing system "
@@ -1874,15 +2349,15 @@ msgstr ""
 "yönetmek için ihtiyaç duyduğunuz her şeye sahiptir. Ekibiniz için mükemmel "
 "çalışan bir yayın sistemi oluşturmanıza yardımcı olmak için buradayız."
 
-#: resources/dist/js/welcome-page.js:443
-#: resources/src/jsx/components/pages/welcome-page.jsx:64
-#: resources/dist/js/welcome-page.js:394
+#: resources/dist/js/welcome-page.js:489
+#: resources/src/jsx/components/pages/welcome-page.jsx:77
+#: resources/dist/js/welcome-page.js:408
 msgid "Centralized Dashboard"
 msgstr "Merkezi Gösterge Tablosu"
 
-#: resources/dist/js/welcome-page.js:445
-#: resources/src/jsx/components/pages/welcome-page.jsx:67
-#: resources/dist/js/welcome-page.js:397
+#: resources/dist/js/welcome-page.js:491
+#: resources/src/jsx/components/pages/welcome-page.jsx:80
+#: resources/dist/js/welcome-page.js:411
 msgid ""
 "View all your PublishPress plugins with their licenses, versions, and key "
 "details."
@@ -1890,15 +2365,15 @@ msgstr ""
 "Tüm PublishPress eklentilerinizi lisansları, sürümleri ve ana detaylarıyla "
 "birlikte görüntüleyin."
 
-#: resources/dist/js/welcome-page.js:453
-#: resources/src/jsx/components/pages/welcome-page.jsx:76
-#: resources/dist/js/welcome-page.js:406
+#: resources/dist/js/welcome-page.js:500
+#: resources/src/jsx/components/pages/welcome-page.jsx:89
+#: resources/dist/js/welcome-page.js:420
 msgid "One-Click Installation"
 msgstr "Tek Tıkla Kurulum"
 
-#: resources/dist/js/welcome-page.js:455
-#: resources/src/jsx/components/pages/welcome-page.jsx:79
-#: resources/dist/js/welcome-page.js:409
+#: resources/dist/js/welcome-page.js:502
+#: resources/src/jsx/components/pages/welcome-page.jsx:92
+#: resources/dist/js/welcome-page.js:423
 msgid ""
 "Install free PublishPress plugins directly from the Hub without visiting "
 "WordPress.org."
@@ -1906,15 +2381,15 @@ msgstr ""
 "WordPress.org adresini ziyaret etmeden Hub'dan doğrudan ücretsiz "
 "PublishPress eklentilerini kurun."
 
-#: resources/dist/js/welcome-page.js:463
-#: resources/src/jsx/components/pages/welcome-page.jsx:88
-#: resources/dist/js/welcome-page.js:418
+#: resources/dist/js/welcome-page.js:511
+#: resources/src/jsx/components/pages/welcome-page.jsx:101
+#: resources/dist/js/welcome-page.js:432
 msgid "License Management"
 msgstr "Lisans Yönetimi"
 
-#: resources/dist/js/welcome-page.js:465
-#: resources/src/jsx/components/pages/welcome-page.jsx:91
-#: resources/dist/js/welcome-page.js:421
+#: resources/dist/js/welcome-page.js:513
+#: resources/src/jsx/components/pages/welcome-page.jsx:104
+#: resources/dist/js/welcome-page.js:435
 msgid ""
 "Connect your PublishPress licenses to easily install and activate Pro "
 "versions."
@@ -1922,27 +2397,27 @@ msgstr ""
 "Pro sürümlerini kolayca kurmak ve etkinleştirmek için PublishPress "
 "lisanslarınızı bağlayın."
 
-#: resources/dist/js/welcome-page.js:473
-#: resources/src/jsx/components/pages/welcome-page.jsx:100
-#: resources/dist/js/welcome-page.js:430
+#: resources/dist/js/welcome-page.js:522
+#: resources/src/jsx/components/pages/welcome-page.jsx:113
+#: resources/dist/js/welcome-page.js:444
 msgid "Easy Updates"
 msgstr "Kolay Güncellemeler"
 
-#: resources/dist/js/welcome-page.js:475
-#: resources/src/jsx/components/pages/welcome-page.jsx:103
-#: resources/dist/js/welcome-page.js:433
+#: resources/dist/js/welcome-page.js:524
+#: resources/src/jsx/components/pages/welcome-page.jsx:116
+#: resources/dist/js/welcome-page.js:447
 msgid "Keep all your PublishPress plugins up to date with one-click updates."
 msgstr "Tüm PublishPress eklentilerinizi tek tıklama ile güncel tutun."
 
-#: resources/dist/js/welcome-page.js:483
-#: resources/src/jsx/components/pages/welcome-page.jsx:112
-#: resources/dist/js/welcome-page.js:442
+#: resources/dist/js/welcome-page.js:533
+#: resources/src/jsx/components/pages/welcome-page.jsx:125
+#: resources/dist/js/welcome-page.js:456
 msgid "Status Monitoring"
 msgstr "Durum İzleme"
 
-#: resources/dist/js/welcome-page.js:485
-#: resources/src/jsx/components/pages/welcome-page.jsx:115
-#: resources/dist/js/welcome-page.js:445
+#: resources/dist/js/welcome-page.js:535
+#: resources/src/jsx/components/pages/welcome-page.jsx:128
+#: resources/dist/js/welcome-page.js:459
 msgid ""
 "Monitor plugin activation status, detect conflicts, and ensure "
 "compatibility."
@@ -1950,41 +2425,41 @@ msgstr ""
 "Eklenti etkinleştirme durumunu izleyin, çatışmaları tespit edin ve "
 "uyumluluğu sağlayın."
 
-#: resources/dist/js/welcome-page.js:493
-#: resources/src/jsx/components/pages/welcome-page.jsx:124
-#: resources/dist/js/welcome-page.js:454
+#: resources/dist/js/welcome-page.js:544
+#: resources/src/jsx/components/pages/welcome-page.jsx:137
+#: resources/dist/js/welcome-page.js:468
 msgid "Get Started"
 msgstr "Başlayın"
 
-#: resources/dist/js/welcome-page.js:496
-#: resources/src/jsx/components/pages/welcome-page.jsx:127
-#: resources/dist/js/welcome-page.js:457
+#: resources/dist/js/welcome-page.js:547
+#: resources/src/jsx/components/pages/welcome-page.jsx:140
+#: resources/dist/js/welcome-page.js:471
 #, js-format
 msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
 msgstr ""
 "Keşfetmeye hazır mısınız? Tüm mevcut PublishPress eklentilerini görmek için "
 "%s ziyaret edin."
 
-#: resources/dist/js/welcome-page.js:506
-#: resources/src/jsx/components/pages/welcome-page.jsx:142
+#: resources/dist/js/welcome-page.js:547
+#: resources/src/jsx/components/pages/welcome-page.jsx:141
 #: resources/dist/js/welcome-page.js:472
-msgid "View Plugins Dashboard"
-msgstr "Eklentiler Gösterge Panelini Görüntüle"
+msgid "Plugins Dashboard"
+msgstr "Eklentiler Gösterge Tablosu"
 
-#: resources/dist/js/welcome-page.js:508
-#: resources/src/jsx/components/pages/welcome-page.jsx:148
-#: resources/dist/js/welcome-page.js:478
+#: resources/dist/js/welcome-page.js:551
+#: resources/src/jsx/components/pages/welcome-page.jsx:151
+#: resources/dist/js/welcome-page.js:482
 msgid "Already know what you're doing? Great! You can "
 msgstr "Zaten ne yaptığınızı biliyor musunuz? Harika! Siz "
 
-#: resources/dist/js/welcome-page.js:510
-#: resources/src/jsx/components/pages/welcome-page.jsx:150
-#: resources/dist/js/welcome-page.js:480
+#: resources/dist/js/welcome-page.js:553
+#: resources/src/jsx/components/pages/welcome-page.jsx:153
+#: resources/dist/js/welcome-page.js:484
 msgid "dismiss this page"
 msgstr "bu sayfayı kapatabilirsiniz"
 
-#: resources/dist/js/welcome-page.js:510
-#: resources/src/jsx/components/pages/welcome-page.jsx:152
-#: resources/dist/js/welcome-page.js:482, fuzzy
+#: resources/dist/js/welcome-page.js:553
+#: resources/src/jsx/components/pages/welcome-page.jsx:155
+#: resources/dist/js/welcome-page.js:486, fuzzy
 msgid "."
 msgstr "."
