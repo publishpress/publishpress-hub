@@ -10,6 +10,8 @@
 
 @import './modal.css';
 
+@import './plugin-cards.css';
+
 .pp-hub-plugins-list {
     display: flex;
     flex-direction: column;
@@ -52,6 +54,7 @@
     gap: var(--pp-hub-spacing-lg);
     align-items: flex-start;
     width: 100%;
+    min-width: 0;
 }
 
 .pp-hub-plugins-list-item-icon {
@@ -73,6 +76,7 @@
     flex-direction: column;
     gap: var(--pp-hub-spacing-sm);
     flex: 1;
+    min-width: 0;
 }
 
 .pp-hub-plugins-list-item-name {
@@ -102,14 +106,6 @@
     white-space: nowrap;
 }
 
-.pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-description {
-    display: none;
-}
-
-.pp-hub-plugins-list-item:focus-within .pp-hub-plugins-list-item-description {
-    display: none;
-}
-
 .pp-hub-plugins-list-item-status {
     font-size: var(--pp-hub-font-size-sm);
     color: var(--pp-hub-text-secondary);
@@ -136,29 +132,9 @@
     align-items: center;
     gap: var(--pp-hub-spacing-sm);
     justify-content: flex-start;
-    height: 24px;
     line-height: 24px;
     min-height: 24px;
-    max-height: 24px;
-}
-
-/* Keep actions tabbable before focus enters rows without an activation toggle. */
-.pp-hub-plugins-list-item:not(.hovered):not(:focus-within) .pp-hub-plugins-list-item-inline-actions {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    min-height: 0;
-    overflow: hidden;
-    clip-path: inset(50%);
-    pointer-events: none;
-}
-
-.pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-inline-actions {
-    display: flex;
-}
-
-.pp-hub-plugins-list-item:focus-within .pp-hub-plugins-list-item-inline-actions {
-    display: flex;
+    flex-wrap: wrap;
 }
 
 .pp-hub-plugins-list-item-inline-actions .pp-hub-button.is-link {
@@ -323,4 +299,9 @@
         font-size: var(--pp-hub-font-size-sm);
         padding: var(--pp-hub-spacing-lg) var(--pp-hub-spacing-md);
     }
+}
+
+/* A warning-colored icon remains distinct on the purple conflict button. */
+.pp-hub-button.pp-hub-resolve-conflict .dashicons-warning {
+    color: #ffd54f;
 }

@@ -13,7 +13,6 @@ import { memo } from '@wordpress/element';
 import { __ } from '@publishpress-hub/i18n';
 
 import { Button } from '../../buttons/button';
-import { IconWarning } from '../../icons';
 
 const ACTION_BUTTON_CONFIGS = {
     install: {
@@ -42,6 +41,7 @@ const ACTION_BUTTON_CONFIGS = {
     },
     conflict: {
         variant: 'primary',
+        className: 'pp-hub-resolve-conflict',
         text: __('Resolve Conflict', 'publishpress-hub'),
         loadingtext: __('Resolving Conflict...', 'publishpress-hub'),
         icon: 'warning',
@@ -57,6 +57,7 @@ const ACTION_BUTTON_CONFIGS = {
 const ActionButtonComponent = ({
     pluginFamily,
     inProgress,
+    disabled = false,
     onInstall,
     onUpgradeToPro,
     onManageLicense,
@@ -107,7 +108,7 @@ const ActionButtonComponent = ({
     }
 
     return (
-        <Button {...buttonProps} />
+        <Button {...buttonProps} disabled={disabled || inProgress} />
     );
 }
 

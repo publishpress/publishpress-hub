@@ -17,6 +17,7 @@ import { AdminPageLayout } from '../admin-page';
 import FilterButtonsBar from '../filter/filter-buttons-bar';
 import { store } from '../../stores/plugins-dashboard';
 import { PluginsList } from '../plugins-list';
+import { SuiteLicense } from './suite-license';
 import NoticesList from '../notices/NoticesList';
 import SnackbarList from '../notices/SnackbarList';
 import { Button } from '../buttons/button';
@@ -35,6 +36,7 @@ const selectPluginsDashboardData = (select) => {
         selectedFilter: storeSelect.getSelectedFilter(),
         filterCounts: storeSelect.getFilterCounts(),
         plugins: storeSelect.getFilteredPlugins(),
+        allPlugins: storeSelect.getPlugins(),
         isLoading: storeSelect.getIsLoading(),
         error: storeSelect.getError(),
     };
@@ -79,6 +81,7 @@ const PluginsDashboardComponent = () => {
         selectedFilter,
         filterCounts,
         plugins,
+        allPlugins,
         isLoading,
     } = useSelect(selectPluginsDashboardData, []);
 
@@ -91,7 +94,6 @@ const PluginsDashboardComponent = () => {
         setSelectedFilter(selectedFilter);
     }, [setSelectedFilter]);
 
-    const title = useMemo(() => __('Plugins Dashboard', 'publishpress-hub'), []);
 
     // Optimize filterOptions memoization with stable reference
     const filterOptions = useMemo(() => {
@@ -141,27 +143,21 @@ const PluginsDashboardComponent = () => {
     }, []);
 
     return (
-        <AdminPageLayout
-            title={title}
-            logoUrl={logoUrl}
-            titleChildren={
-                <Tooltip
-                    text={refreshButtonTooltip}
-                    placement='top'
-                >
-                    <Button
-                        variant='link'
-                        onClick={handleRefresh}
-                        isLoading={isLoading}
-                        spinnerPosition='left'
-                    >
-                        {isAltPressed ? __('Force Refresh', 'publishpress-hub') : __('Refresh', 'publishpress-hub')}
-                    </Button>
-                </Tooltip>
-            }
-        >
+        <AdminPageLayout logoUrl={logoUrl}>
             <div className="pp-hub-plugins-dashboard">
                 <NoticesList />
+                <SuiteLicense plugins={allPlugins} onRefresh={fetchPlugins} isLoading={isLoading} />
+                <div className="pp-hub-dashboard-heading">
+                    <div>
+                        <h1>{__('Plugins & Features', 'publishpress-hub')}</h1>
+                        <p>{__('Activate, open, and license each product directly from the Hub.', 'publishpress-hub')}</p>
+                    </div>
+                    <Tooltip text={refreshButtonTooltip} placement="top">
+                        <Button variant="link" onClick={handleRefresh} isLoading={isLoading} spinnerPosition="left">
+                            {isAltPressed ? __('Force Refresh', 'publishpress-hub') : __('Refresh', 'publishpress-hub')}
+                        </Button>
+                    </Tooltip>
+                </div>
                 <FilterButtonsBar
                     options={filterOptions}
                     selectedOption={selectedFilter}

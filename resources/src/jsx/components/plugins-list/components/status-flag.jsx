@@ -8,6 +8,7 @@
  * @since 1.0.0
  */
 
+import { Spinner } from '@wordpress/components';
 import { memo, useMemo } from '@wordpress/element';
 
 import { __, sprintf } from '@publishpress-hub/i18n';
@@ -21,7 +22,7 @@ const STATUS_BADGE_CONFIGS = {
     installing: {
         text: __('Installing', 'publishpress-hub'),
         className: 'installing',
-        icon: <span className="dashicons dashicons-update" />,
+        icon: <Spinner aria-hidden="true" />,
     },
     notInstalled: {
         text: __('Not Installed', 'publishpress-hub'),
@@ -46,22 +47,22 @@ const STATUS_BADGE_CONFIGS = {
     uninstalling: {
         text: __('Uninstalling', 'publishpress-hub'),
         className: 'uninstalling',
-        icon: <span className="dashicons dashicons-update" />,
+        icon: <Spinner aria-hidden="true" />,
     },
     upgrading: {
         text: __('Upgrading', 'publishpress-hub'),
         className: 'upgrading',
-        icon: <span className="dashicons dashicons-update" />,
+        icon: <Spinner aria-hidden="true" />,
     },
     deactivating: {
         text: __('Deactivating', 'publishpress-hub'),
         className: 'deactivating',
-        icon: <span className="dashicons dashicons-update" />,
+        icon: <Spinner aria-hidden="true" />,
     },
     activating: {
         text: __('Activating', 'publishpress-hub'),
         className: 'activating',
-        icon: <span className="dashicons dashicons-update" />,
+        icon: <Spinner aria-hidden="true" />,
     },
     hasConflictingInstallations: {
         text: __('Conflicting Installations', 'publishpress-hub'),

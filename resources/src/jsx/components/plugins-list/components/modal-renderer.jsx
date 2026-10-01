@@ -164,10 +164,13 @@ const ModalRendererComponent = ({
                     {...modalProps}
                     title={sprintf(__('Uninstall %s', 'publishpress-hub'), currentPluginDisplayName)}
                     message={sprintf(__('Are you sure you want to uninstall %s?', 'publishpress-hub'), currentPluginDisplayName)}
+                    confirmLabel={__('Uninstall plugin', 'publishpress-hub')}
                     isDanger={true}
                     onConfirm={() => handleUninstallPlugin(currentPluginFamily.slug)}
                     onCancel={closeModal}
-                />
+                >
+                    <DeactivationWarning pluginFamily={currentPluginFamily} isUninstall={true} />
+                </ModalConfirmation>
             )}
 
             {isModalActive(MODAL_TYPES.UPGRADE_PLUGIN_TO_PRO) && (

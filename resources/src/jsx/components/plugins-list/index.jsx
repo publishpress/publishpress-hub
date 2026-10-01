@@ -8,7 +8,9 @@
  * @since 1.0.0
  */
 
-import { memo, useMemo, useCallback } from '@wordpress/element';
+import { memo, useMemo, useCallback, useState } from '@wordpress/element';
+import { CheckboxControl } from '@wordpress/components';
+import { useDashboardPreferences } from './hooks/use-dashboard-preferences';
 import { useSelect } from '@wordpress/data';
 
 import { __ } from '@publishpress-hub/i18n';
@@ -50,6 +52,8 @@ const PluginsListComponent = ({
     isLoading,
 }) => {
     const modalManager = useModalManager();
+    const { preferences, updatePreferences, toggleFavorite } = useDashboardPreferences();
+    const [favoritesOnly, setFavoritesOnly] = useState(false);
     const pluginActions = usePluginActions(modalManager);
 
     const progressStates = useSelect(selectProgressStates, []);
@@ -121,6 +125,9 @@ const PluginsListComponent = ({
             <PluginItem
                 key={`plugin-${slug}`}
                 pluginFamily={pluginFamily}
+                layout={preferences.layout}
+                isFavorite={preferences.favorites.includes(slug)}
+                onToggleFavorite={toggleFavorite}
                 pluginIconBaseUrl={pluginIconBaseUrl}
                 progressStates={pluginProgressStates}
                 onInstall={pluginActions.handleOpenInstallationTypeModal}
@@ -137,6 +144,9 @@ const PluginsListComponent = ({
         );
     }, [
         pluginIconBaseUrl,
+        preferences.favorites,
+        preferences.layout,
+        toggleFavorite,
         pluginInstallationInProgress,
         pluginUninstallationInProgress,
         pluginDeactivationInProgress,
@@ -149,11 +159,43 @@ const PluginsListComponent = ({
         pluginActions,
     ]);
 
-    return (
-        <div className="pp-hub-plugins-list" aria-busy={(isLoading && plugins.length > 0) || undefined}>
-            {plugins.map(renderPluginItem)}
+    const visiblePlugins = favoritesOnly
+        ? plugins.filter(plugin => preferences.favorites.includes(plugin.slug))
+        : plugins;
+    const groups = preferences.grouped ? [
+        { title: __('Editorial process', 'publishpress-hub'), slugs: ['planner', 'checklists', 'statuses', 'revisions'] },
+        { title: __('Additional publishing tools', 'publishpress-hub'), slugs: ['permissions', 'capabilities', 'authors', 'blocks', 'future', 'series', 'shortlinks'] },
+    ] : [];
+    if (preferences.grouped) {
+        const knownSlugs = groups.flatMap(group => group.slugs);
+        groups.push({ title: __('Other plugins', 'publishpress-hub'), slugs: visiblePlugins.filter(plugin => !knownSlugs.includes(plugin.slug)).map(plugin => plugin.slug) });
+    }
 
-            {plugins.length === 0 && !isLoading && (
+    return (
+        <>
+            <div className="pp-hub-view-controls">
+                <div className="pp-hub-layout-switch" role="group" aria-label={__('Plugin layout', 'publishpress-hub')}>
+                    {['cards', 'list'].map(layout => <button type="button" key={layout}
+                        aria-pressed={preferences.layout === layout} onClick={() => updatePreferences({ layout })}>
+                        <span className={`dashicons dashicons-${layout === 'cards' ? 'grid-view' : 'list-view'}`} aria-hidden="true" />
+                        {layout === 'cards' ? __('Cards', 'publishpress-hub') : __('List', 'publishpress-hub')}
+                    </button>)}
+                </div>
+                <CheckboxControl label={__('Group by purpose', 'publishpress-hub')} checked={preferences.grouped}
+                    onChange={grouped => updatePreferences({ grouped })} />
+                <CheckboxControl label={__('Favorites only', 'publishpress-hub')} checked={favoritesOnly}
+                    onChange={setFavoritesOnly} />
+            </div>
+        <div className={`pp-hub-plugins-list pp-hub-view-${preferences.layout}`} aria-busy={(isLoading && plugins.length > 0) || undefined}>
+            {preferences.grouped ? groups.map(group => {
+                const members = group.slugs.map(slug => visiblePlugins.find(plugin => plugin.slug === slug)).filter(Boolean);
+                return members.length > 0 && <section className="pp-hub-plugin-group" key={group.title}>
+                    <h2>{group.title}</h2>
+                    <div className="pp-hub-plugin-group-items">{members.map(renderPluginItem)}</div>
+                </section>;
+            }) : visiblePlugins.map(renderPluginItem)}
+
+            {visiblePlugins.length === 0 && !isLoading && (
                 <div className="pp-hub-plugins-list-message" role="status" aria-live="polite">
                     <p>{__('No plugins found.', 'publishpress-hub')}</p>
                 </div>
@@ -173,6 +215,7 @@ const PluginsListComponent = ({
                 pluginResolveConflictInProgress={pluginResolveConflictInProgress}
             />
         </div>
+        </>
     );
 };
 
