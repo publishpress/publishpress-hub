@@ -68,7 +68,7 @@ export const SuiteLicense = ({ plugins, onRefresh, isLoading }) => {
                 value={key} onChange={setKey} disabled={busy} />
             <fieldset disabled={busy || isLoading}>
                 <legend>{__('Select products included in your subscription', 'publishpress-hub')}</legend>
-                <p>{__('This replaces the saved license key for each selected product after successful activation. Keys managed in wp-config.php cannot be changed here. No plugins will be installed or activated.', 'publishpress-hub')}</p>
+                <p>{__('This will replace any saved license key for each selected product. This will not install or activate any plugins.', 'publishpress-hub')}</p>
                 <div className="pp-hub-suite-products">{plugins.map(plugin => <CheckboxControl key={plugin.slug}
                     label={plugin.name} checked={selected.includes(plugin.slug)}
                     onChange={checked => setSelected(previous => checked ? [...previous, plugin.slug] : previous.filter(slug => slug !== plugin.slug))} />)}</div>

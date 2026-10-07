@@ -1415,7 +1415,7 @@ var SuiteLicense = function SuiteLicense(_ref) {
     disabled: busy
   }), /*#__PURE__*/React.createElement("fieldset", {
     disabled: busy || isLoading
-  }, /*#__PURE__*/React.createElement("legend", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Select products included in your subscription', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('This replaces the saved license key for each selected product after successful activation. Keys managed in wp-config.php cannot be changed here. No plugins will be installed or activated.', 'publishpress-hub')), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("legend", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Select products included in your subscription', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('This will replace any saved license key for each selected product. This will not install or activate any plugins.', 'publishpress-hub')), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-suite-products"
   }, plugins.map(function (plugin) {
     return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.CheckboxControl, {
