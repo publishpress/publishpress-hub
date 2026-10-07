@@ -3,6 +3,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 [1.1.0] - 07 October, 2026
 
+- Changed: Made List view the default dashboard layout while preserving saved layout choices (#262).
 - Changed: Hide the "Group by purpose" control and postponed dashboard grouping to a later release (#264).
 - Changed: Simplified the bundle license explanation (#265).
 - Added: Support for PublishPress Cart, PublishPress Taxonomies, and PublishPress Tag Groups, including Free and Pro plugin management, licensing, dashboard icons, and admin shortcuts.

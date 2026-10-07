@@ -14,12 +14,12 @@ export const readPreferences = () => {
     try {
         const saved = JSON.parse(window.localStorage.getItem(storageKey())) || {};
         return {
-            layout: saved.layout === 'list' ? 'list' : 'cards',
+            layout: saved.layout === 'cards' ? 'cards' : 'list',
             grouped: saved.grouped !== false,
             favorites: Array.isArray(saved.favorites) ? saved.favorites.filter(slug => typeof slug === 'string') : [],
         };
     } catch {
-        return { layout: 'cards', grouped: true, favorites: [] };
+        return { layout: 'list', grouped: true, favorites: [] };
     }
 };
 

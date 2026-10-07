@@ -47,8 +47,11 @@ async function main() {
         localStorage: { getItem: key => stored.get(key), setItem: (key, value) => stored.set(key, value) },
     };
     const preferences = load('resources/src/jsx/components/plugins-list/hooks/use-dashboard-preferences.js', window);
+    assert.equal(preferences.exports.readPreferences().layout, 'list');
+    stored.set('pp-hub-dashboard:1:7', JSON.stringify({ layout: 'unknown' }));
+    assert.equal(preferences.exports.readPreferences().layout, 'list');
     stored.set('pp-hub-dashboard:1:7', 'invalid JSON');
-    assert.equal(preferences.exports.readPreferences().layout, 'cards');
+    assert.equal(preferences.exports.readPreferences().layout, 'list');
     assert.equal(preferences.exports.readPreferences().grouped, true);
     let state = preferences.render(module => module.useDashboardPreferences());
     state.toggleFavorite('statuses');
@@ -56,10 +59,11 @@ async function main() {
     assert.equal(state.preferences.favorites[0], 'statuses');
     state.updatePreferences({ layout: 'cards' });
     assert.equal(JSON.parse(stored.get('pp-hub-dashboard:1:7')).layout, 'cards');
+    assert.equal(preferences.exports.readPreferences().layout, 'cards');
     window.ppHubPluginsDashboardConfig.preferencesKey = '1:8';
     assert.equal(preferences.exports.readPreferences().favorites.length, 0);
     window.localStorage.getItem = () => { throw Error('Storage disabled'); };
-    assert.equal(preferences.exports.readPreferences().layout, 'cards');
+    assert.equal(preferences.exports.readPreferences().layout, 'list');
 
     const requests = [];
     let refreshed = 0;
