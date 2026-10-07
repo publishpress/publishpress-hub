@@ -3,11 +3,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 [1.1.0] - 07 October, 2026
 
+- Changed: Hide the "Group by purpose" control and postponed dashboard grouping to a later release (#264).
 - Changed: Simplified the bundle license explanation (#265).
 - Added: Support for PublishPress Cart, PublishPress Taxonomies, and PublishPress Tag Groups, including Free and Pro plugin management, licensing, dashboard icons, and admin shortcuts.
 - Fixed: Synchronized the new plugins' native license settings with Hub and linked their dashboard cards to plugin documentation.
-- Added: Card and list layouts for the plugins dashboard, with optional grouping by publishing workflow (#211).
-- Added: Plugin favorites and a favorites only filter, with saved layout and grouping preferences (#211).
+- Added: Card and list layouts for the plugins dashboard (#211).
+- Added: Plugin favorites and a favorites only filter, with saved layout preferences (#211).
 - Added: Shortcuts to accessible plugin admin pages from the plugins dashboard (#211).
 - Added: Shared license form to validate and apply one license key to multiple selected plugins (#211).
 - Added: Warnings before plugin deactivation and conflict resolution to explain potential effects on site content (#107).

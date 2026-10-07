@@ -4170,6 +4170,9 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+// Postponed until the dashboard grouping is reviewed for a later release (#264).
+var groupingEnabled = false;
+
 // Split selectors for better performance
 var selectProgressStates = function selectProgressStates(select) {
   var storeSelect = select(_stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_5__.store);
@@ -4201,6 +4204,7 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
     preferences = _useDashboardPreferen.preferences,
     updatePreferences = _useDashboardPreferen.updatePreferences,
     toggleFavorite = _useDashboardPreferen.toggleFavorite;
+  var grouped = groupingEnabled && preferences.grouped;
   var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     favoritesOnly = _useState2[0],
@@ -4273,14 +4277,14 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
   var visiblePlugins = favoritesOnly ? plugins.filter(function (plugin) {
     return preferences.favorites.includes(plugin.slug);
   }) : plugins;
-  var groups = preferences.grouped ? [{
+  var groups = grouped ? [{
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Editorial process', 'publishpress-hub'),
     slugs: ['planner', 'checklists', 'statuses', 'revisions']
   }, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Additional publishing tools', 'publishpress-hub'),
     slugs: ['permissions', 'capabilities', 'authors', 'blocks', 'future', 'series', 'shortlinks', 'cart', 'taxonomies', 'tag-groups']
   }] : [];
-  if (preferences.grouped) {
+  if (grouped) {
     var knownSlugs = groups.flatMap(function (group) {
       return group.slugs;
     });
@@ -4313,7 +4317,7 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
       className: "dashicons dashicons-".concat(layout === 'cards' ? 'grid-view' : 'list-view'),
       "aria-hidden": "true"
     }), layout === 'cards' ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Cards', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('List', 'publishpress-hub'));
-  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.CheckboxControl, {
+  })), groupingEnabled && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.CheckboxControl, {
     label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Group by purpose', 'publishpress-hub'),
     checked: preferences.grouped,
     onChange: function onChange(grouped) {
@@ -4328,7 +4332,7 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
   })), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list pp-hub-view-".concat(preferences.layout),
     "aria-busy": isLoading && plugins.length > 0 || undefined
-  }, preferences.grouped ? groups.map(function (group) {
+  }, grouped ? groups.map(function (group) {
     var members = group.slugs.map(function (slug) {
       return visiblePlugins.find(function (plugin) {
         return plugin.slug === slug;

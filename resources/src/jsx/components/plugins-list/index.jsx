@@ -22,6 +22,9 @@ import {
 } from './components';
 import { useModalManager, usePluginActions } from './hooks';
 
+// Postponed until the dashboard grouping is reviewed for a later release (#264).
+const groupingEnabled = false;
+
 // Split selectors for better performance
 const selectProgressStates = (select) => {
     const storeSelect = select(store);
@@ -53,6 +56,7 @@ const PluginsListComponent = ({
 }) => {
     const modalManager = useModalManager();
     const { preferences, updatePreferences, toggleFavorite } = useDashboardPreferences();
+    const grouped = groupingEnabled && preferences.grouped;
     const [favoritesOnly, setFavoritesOnly] = useState(false);
     const pluginActions = usePluginActions(modalManager);
 
@@ -162,11 +166,11 @@ const PluginsListComponent = ({
     const visiblePlugins = favoritesOnly
         ? plugins.filter(plugin => preferences.favorites.includes(plugin.slug))
         : plugins;
-    const groups = preferences.grouped ? [
+    const groups = grouped ? [
         { title: __('Editorial process', 'publishpress-hub'), slugs: ['planner', 'checklists', 'statuses', 'revisions'] },
         { title: __('Additional publishing tools', 'publishpress-hub'), slugs: ['permissions', 'capabilities', 'authors', 'blocks', 'future', 'series', 'shortlinks', 'cart', 'taxonomies', 'tag-groups'] },
     ] : [];
-    if (preferences.grouped) {
+    if (grouped) {
         const knownSlugs = groups.flatMap(group => group.slugs);
         groups.push({ title: __('Other plugins', 'publishpress-hub'), slugs: visiblePlugins.filter(plugin => !knownSlugs.includes(plugin.slug)).map(plugin => plugin.slug) });
     }
@@ -181,13 +185,13 @@ const PluginsListComponent = ({
                         {layout === 'cards' ? __('Cards', 'publishpress-hub') : __('List', 'publishpress-hub')}
                     </button>)}
                 </div>
-                <CheckboxControl label={__('Group by purpose', 'publishpress-hub')} checked={preferences.grouped}
-                    onChange={grouped => updatePreferences({ grouped })} />
+                {groupingEnabled && <CheckboxControl label={__('Group by purpose', 'publishpress-hub')} checked={preferences.grouped}
+                    onChange={grouped => updatePreferences({ grouped })} />}
                 <CheckboxControl label={__('Favorites only', 'publishpress-hub')} checked={favoritesOnly}
                     onChange={setFavoritesOnly} />
             </div>
         <div className={`pp-hub-plugins-list pp-hub-view-${preferences.layout}`} aria-busy={(isLoading && plugins.length > 0) || undefined}>
-            {preferences.grouped ? groups.map(group => {
+            {grouped ? groups.map(group => {
                 const members = group.slugs.map(slug => visiblePlugins.find(plugin => plugin.slug === slug)).filter(Boolean);
                 return members.length > 0 && <section className="pp-hub-plugin-group" key={group.title}>
                     <h2>{group.title}</h2>
