@@ -18,6 +18,9 @@ defined('ABSPATH') || exit;
 class PluginQuickLinks
 {
     private const MENU_PREFIXES = [
+        'cart' => ['ppcart', 'publishpress-cart', 'edit.php?post_type=ppcart_'],
+        'taxonomies' => ['st_', 'taxopress', 'publishpress-taxonomies'],
+        'tag-groups' => ['tag-groups', 'publishpress-tag-groups'],
         'planner' => ['pp-calendar', 'pp-content-overview', 'pp-content-board', 'pp-settings'],
         'checklists' => ['publishpress-checklists', 'pp-checklists'],
         'statuses' => ['publishpress-statuses'],

@@ -51,6 +51,23 @@ namespace Tests\Unit\Infrastructure\AdminMenu {
             unset($GLOBALS['menu'], $GLOBALS['submenu'], $GLOBALS['hub_navigation_filters']);
         }
 
+        public function testNewPluginMenusExposeAccessibleDashboardActions(): void
+        {
+            foreach (['cart' => 'ppcart', 'taxonomies' => 'st_dashboard', 'tag-groups' => 'tag-groups-settings'] as $family => $slug) {
+                $GLOBALS['menu'] = [['Plugin', 'allowed', $slug]];
+                $GLOBALS['submenu'] = [$slug => [
+                    ['Dashboard', 'allowed', $slug],
+                    ['Settings', 'allowed', $slug . '-settings'],
+                    ['Restricted', 'denied', $slug . '-restricted'],
+                ]];
+                $links = (new PluginQuickLinks())->getLinks();
+                $this->assertSame('Open Dashboard', $links[$family]['primary']['label']);
+                $this->assertSame('https://example.test/wp-admin/admin.php?page=' . $slug, $links[$family]['primary']['url']);
+                $this->assertCount(1, $links[$family]['secondary']);
+                $this->assertSame('Settings', $links[$family]['secondary'][0]['label']);
+            }
+        }
+
         public function testOnlyAccessibleRegisteredInternalLinksAreReturned(): void
         {
             $GLOBALS['menu'] = [['Statuts', 'allowed', 'publishpress-statuses']];

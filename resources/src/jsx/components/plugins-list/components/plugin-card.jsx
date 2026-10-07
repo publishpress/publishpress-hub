@@ -19,6 +19,12 @@ const documentationCategories = {
     shortlinks: 'publishpress-shortlinks', statuses: 'publishpress-statuses',
 };
 
+const documentationUrls = {
+    cart: 'https://publishpress.com/knowledge-base/getting-started-with-publishpress-cart/',
+    taxonomies: 'https://publishpress.com/knowledge-base/start-publishpress-taxonomies/',
+    'tag-groups': 'https://publishpress.com/knowledge-base/introduction-tag-groups/',
+};
+
 export const PluginCard = ({
     pluginFamily, iconSrc, displayName, isFavorite, onToggleFavorite,
     actionButtons, progressStates, onActivate, onDeactivate, ...actions
@@ -59,9 +65,9 @@ export const PluginCard = ({
     const links = navigation.secondary || [];
     const primaryLink = navigation.primary;
     const category = documentationCategories[pluginFamily.slug];
-    const documentationUrl = category
+    const documentationUrl = documentationUrls[pluginFamily.slug] || (category
         ? `https://publishpress.com/docs-category/${category}/`
-        : 'https://publishpress.com/knowledge-base/';
+        : 'https://publishpress.com/knowledge-base/');
     const updateAction = actionButtons.find(button => button.key === 'update');
     const moreActions = actionButtons.filter(button => !['activate', 'deactivate', 'update'].includes(button.key));
 

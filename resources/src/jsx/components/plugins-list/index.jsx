@@ -164,7 +164,7 @@ const PluginsListComponent = ({
         : plugins;
     const groups = preferences.grouped ? [
         { title: __('Editorial process', 'publishpress-hub'), slugs: ['planner', 'checklists', 'statuses', 'revisions'] },
-        { title: __('Additional publishing tools', 'publishpress-hub'), slugs: ['permissions', 'capabilities', 'authors', 'blocks', 'future', 'series', 'shortlinks'] },
+        { title: __('Additional publishing tools', 'publishpress-hub'), slugs: ['permissions', 'capabilities', 'authors', 'blocks', 'future', 'series', 'shortlinks', 'cart', 'taxonomies', 'tag-groups'] },
     ] : [];
     if (preferences.grouped) {
         const knownSlugs = groups.flatMap(group => group.slugs);

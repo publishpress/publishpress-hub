@@ -2666,6 +2666,11 @@ var documentationCategories = {
   shortlinks: 'publishpress-shortlinks',
   statuses: 'publishpress-statuses'
 };
+var documentationUrls = {
+  cart: 'https://publishpress.com/knowledge-base/getting-started-with-publishpress-cart/',
+  taxonomies: 'https://publishpress.com/knowledge-base/start-publishpress-taxonomies/',
+  'tag-groups': 'https://publishpress.com/knowledge-base/introduction-tag-groups/'
+};
 var PluginCard = function PluginCard(_ref) {
   var _window$ppHubPluginsD;
   var pluginFamily = _ref.pluginFamily,
@@ -2711,7 +2716,7 @@ var PluginCard = function PluginCard(_ref) {
   var links = navigation.secondary || [];
   var primaryLink = navigation.primary;
   var category = documentationCategories[pluginFamily.slug];
-  var documentationUrl = category ? "https://publishpress.com/docs-category/".concat(category, "/") : 'https://publishpress.com/knowledge-base/';
+  var documentationUrl = documentationUrls[pluginFamily.slug] || (category ? "https://publishpress.com/docs-category/".concat(category, "/") : 'https://publishpress.com/knowledge-base/');
   var updateAction = actionButtons.find(function (button) {
     return button.key === 'update';
   });
@@ -4273,7 +4278,7 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
     slugs: ['planner', 'checklists', 'statuses', 'revisions']
   }, {
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Additional publishing tools', 'publishpress-hub'),
-    slugs: ['permissions', 'capabilities', 'authors', 'blocks', 'future', 'series', 'shortlinks']
+    slugs: ['permissions', 'capabilities', 'authors', 'blocks', 'future', 'series', 'shortlinks', 'cart', 'taxonomies', 'tag-groups']
   }] : [];
   if (preferences.grouped) {
     var knownSlugs = groups.flatMap(function (group) {
