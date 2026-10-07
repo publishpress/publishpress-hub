@@ -179,7 +179,7 @@ const PluginsListComponent = ({
         <>
             <div className="pp-hub-view-controls">
                 <div className="pp-hub-layout-switch" role="group" aria-label={__('Plugin layout', 'publishpress-hub')}>
-                    {['cards', 'list'].map(layout => <button type="button" key={layout}
+                    {['list', 'cards'].map(layout => <button type="button" key={layout}
                         aria-pressed={preferences.layout === layout} onClick={() => updatePreferences({ layout })}>
                         <span className={`dashicons dashicons-${layout === 'cards' ? 'grid-view' : 'list-view'}`} aria-hidden="true" />
                         {layout === 'cards' ? __('Cards', 'publishpress-hub') : __('List', 'publishpress-hub')}

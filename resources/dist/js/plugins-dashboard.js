@@ -4303,7 +4303,7 @@ var PluginsListComponent = function PluginsListComponent(_ref) {
     className: "pp-hub-layout-switch",
     role: "group",
     "aria-label": (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Plugin layout', 'publishpress-hub')
-  }, ['cards', 'list'].map(function (layout) {
+  }, ['list', 'cards'].map(function (layout) {
     return /*#__PURE__*/React.createElement("button", {
       type: "button",
       key: layout,
