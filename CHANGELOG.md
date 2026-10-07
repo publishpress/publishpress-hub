@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added: List and card layouts for the plugins dashboard (#211, #262).
 - Added: Plugin favorites and a favorites only filter, with saved layout preferences (#211).
 - Added: Shortcuts to accessible plugin admin pages from the plugins dashboard (#211).
-- Added: Shared license form to validate and apply one license key to multiple selected plugins (#211).
+- Added: Bundle license form to validate and apply one license key to multiple selected plugins (#211, #261).
 - Added: Warnings before plugin deactivation and conflict resolution to explain potential effects on site content (#107).
 - Changed: Refreshed the welcome page layout and its documentation, support, and account links (#211).
 - Changed: Standardized license key links to direct users to their dashboard (#242).

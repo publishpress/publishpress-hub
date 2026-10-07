@@ -1395,7 +1395,7 @@ var SuiteLicense = function SuiteLicense(_ref) {
     className: "dashicons dashicons-admin-network"
   })), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-suite-license__copy"
-  }, /*#__PURE__*/React.createElement("h2", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('PublishPress Bundle / Suite', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Connect your included Pro plugins with one license key.', 'publishpress-hub'))), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
+  }, /*#__PURE__*/React.createElement("h2", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('PublishPress Bundle', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Connect your included Pro plugins with one license key.', 'publishpress-hub'))), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
     variant: "primary",
     disabled: busy,
     "aria-expanded": open,
@@ -1403,7 +1403,7 @@ var SuiteLicense = function SuiteLicense(_ref) {
     onClick: function onClick() {
       return setOpen(!open);
     }
-  }, open ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Close license setup', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Activate Suite License', 'publishpress-hub'))), open && /*#__PURE__*/React.createElement("form", {
+  }, open ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Close license setup', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Activate Bundle License', 'publishpress-hub'))), open && /*#__PURE__*/React.createElement("form", {
     id: "pp-hub-suite-form",
     onSubmit: activate
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {

@@ -57,11 +57,11 @@ export const SuiteLicense = ({ plugins, onRefresh, isLoading }) => {
         <div className="pp-hub-suite-license__summary">
             <span className="pp-hub-suite-license__icon" aria-hidden="true"><span className="dashicons dashicons-admin-network" /></span>
             <div className="pp-hub-suite-license__copy">
-                <h2>{__('PublishPress Bundle / Suite', 'publishpress-hub')}</h2>
+                <h2>{__('PublishPress Bundle', 'publishpress-hub')}</h2>
                 <p>{__('Connect your included Pro plugins with one license key.', 'publishpress-hub')}</p>
             </div>
             <Button variant="primary" disabled={busy} aria-expanded={open} aria-controls="pp-hub-suite-form"
-                onClick={() => setOpen(!open)}>{open ? __('Close license setup', 'publishpress-hub') : __('Activate Suite License', 'publishpress-hub')}</Button>
+                onClick={() => setOpen(!open)}>{open ? __('Close license setup', 'publishpress-hub') : __('Activate Bundle License', 'publishpress-hub')}</Button>
         </div>
         {open && <form id="pp-hub-suite-form" onSubmit={activate}>
             <TextControl label={__('License key', 'publishpress-hub')} type="password" autoComplete="off"
