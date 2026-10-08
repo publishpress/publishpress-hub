@@ -263,3 +263,13 @@
 .pp-hub-button.is-link-left svg {
     margin-right: 8px;
 }
+
+/*
+ * Keyboard focus indicator (WCAG 2.4.7). The variant rules above replace the
+ * WordPress focus ring with a 1px or currentColor outline, which disappears on
+ * filled buttons such as the selected filter. Use one consistent ring instead.
+ */
+.pp-hub-root .components-button.pp-hub-button:focus-visible {
+    outline: 2px solid var(--pp-hub-border-focus);
+    outline-offset: 2px;
+}

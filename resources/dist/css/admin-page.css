@@ -1402,6 +1402,16 @@ footer .pp-hub-footer-logo img {
     margin-right: 8px;
 }
 
+/*
+ * Keyboard focus indicator (WCAG 2.4.7). The variant rules above replace the
+ * WordPress focus ring with a 1px or currentColor outline, which disappears on
+ * filled buttons such as the selected filter. Use one consistent ring instead.
+ */
+.pp-hub-root .components-button.pp-hub-button:focus-visible {
+    outline: 2px solid var(--pp-hub-border-focus);
+    outline-offset: 2px;
+}
+
 /*!********************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./resources/src/css/components/buttons/help-button.css ***!
   \********************************************************************************************************/
@@ -2759,6 +2769,11 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
 
 .pp-hub-debug-log-tab__interval-select:focus {
     background-color: var(--pp-hub-bg-tertiary);
+}
+
+.pp-hub-debug-log-tab__interval-select:focus-visible {
+    outline: 2px solid var(--pp-hub-border-focus);
+    outline-offset: -2px;
 }
 
 .pp-hub-debug-log-tab__auto-refresh-btn--active
