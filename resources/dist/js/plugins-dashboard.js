@@ -407,7 +407,11 @@ var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forward
     target: targetValue,
     rel: relValue,
     className: buttonClassName,
-    disabled: disabled || isLoading,
+    disabled: disabled || isLoading
+    // Keep a loading button focusable so keyboard focus is not dropped to <body>
+    // while the action runs or when a modal returns focus to it (WCAG 2.4.3).
+    ,
+    accessibleWhenDisabled: isLoading || undefined,
     "aria-busy": isLoading || undefined,
     title: title,
     style: style
@@ -2744,10 +2748,11 @@ var PluginCard = function PluginCard(_ref) {
     className: "pp-hub-plugin-card__activation".concat(active ? ' is-active' : '')
   }, /*#__PURE__*/React.createElement("span", null, active ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Active', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Inactive', 'publishpress-hub')), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
     checked: active,
-    disabled: busy,
+    "aria-disabled": busy || undefined,
     "aria-label": (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(active ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Deactivate %s', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Activate %s', 'publishpress-hub'), displayName),
     onChange: function onChange(value) {
-      return value ? onActivate(pluginFamily) : onDeactivate(pluginFamily);
+      if (busy) return;
+      value ? onActivate(pluginFamily) : onDeactivate(pluginFamily);
     }
   })), !pluginFamily.hasAnyVersionInstalled && /*#__PURE__*/React.createElement("span", {
     className: "pp-hub-plugin-card__state"
