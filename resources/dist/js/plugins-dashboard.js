@@ -4384,6 +4384,8 @@ var CustomTooltipComponent = function CustomTooltipComponent(_ref) {
   var triggerRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   var tooltipRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   var showTimeoutRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var hideTimeoutRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var tooltipId = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useId)();
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (!isVisible || !triggerRef.current || !tooltipRef.current || !useCustom) return;
     var updatePosition = function updatePosition() {
@@ -4425,89 +4427,88 @@ var CustomTooltipComponent = function CustomTooltipComponent(_ref) {
     };
   }, [isVisible, placement, useCustom]);
 
-  // Cleanup timeout on unmount
+  // Cleanup timeouts on unmount
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     return function () {
-      if (showTimeoutRef.current) {
-        clearTimeout(showTimeoutRef.current);
+      clearTimeout(showTimeoutRef.current);
+      clearTimeout(hideTimeoutRef.current);
+    };
+  }, []);
+
+  // Let keyboard users dismiss the tooltip without moving focus (WCAG 1.4.13).
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!isVisible) return;
+    var handleKeyDown = function handleKeyDown(event) {
+      if (event.key === 'Escape') {
+        setIsVisible(false);
       }
     };
+    document.addEventListener('keydown', handleKeyDown);
+    return function () {
+      return document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isVisible]);
+  var show = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    clearTimeout(hideTimeoutRef.current);
+    clearTimeout(showTimeoutRef.current);
+    showTimeoutRef.current = setTimeout(function () {
+      setIsVisible(true);
+      showTimeoutRef.current = null;
+    }, delay);
+  }, [delay]);
+  var hide = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    clearTimeout(showTimeoutRef.current);
+    showTimeoutRef.current = null;
+    setIsVisible(false);
+  }, []);
+
+  // Short grace period so the pointer can cross the gap onto the tooltip (WCAG 1.4.13).
+  var hideSoon = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    clearTimeout(showTimeoutRef.current);
+    showTimeoutRef.current = null;
+    clearTimeout(hideTimeoutRef.current);
+    hideTimeoutRef.current = setTimeout(function () {
+      return setIsVisible(false);
+    }, 150);
   }, []);
   if (!text) {
     return children;
   }
-  var handleMouseEnter = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
-    // Clear any existing timeout
-    if (showTimeoutRef.current) {
-      clearTimeout(showTimeoutRef.current);
-    }
-
-    // Start timeout to show tooltip
-    showTimeoutRef.current = setTimeout(function () {
-      setIsVisible(true);
-      showTimeoutRef.current = null;
-    }, delay);
-  }, [delay]);
-  var handleMouseLeave = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
-    // Cancel pending show timeout
-    if (showTimeoutRef.current) {
-      clearTimeout(showTimeoutRef.current);
-      showTimeoutRef.current = null;
-    }
-
-    // Immediately hide tooltip
-    setIsVisible(false);
-  }, []);
-  var handleFocus = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
-    // Clear any existing timeout
-    if (showTimeoutRef.current) {
-      clearTimeout(showTimeoutRef.current);
-    }
-
-    // Start timeout to show tooltip
-    showTimeoutRef.current = setTimeout(function () {
-      setIsVisible(true);
-      showTimeoutRef.current = null;
-    }, delay);
-  }, [delay]);
-  var handleBlur = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
-    // Cancel pending show timeout
-    if (showTimeoutRef.current) {
-      clearTimeout(showTimeoutRef.current);
-      showTimeoutRef.current = null;
-    }
-
-    // Immediately hide tooltip
-    setIsVisible(false);
-  }, []);
 
   // Use custom tooltip implementation
   if (useCustom) {
     var combinedClassName = "pp-hub-tooltip-trigger ".concat(className).trim();
+
+    // The trigger is focusable and described by the tooltip so keyboard and screen reader
+    // users get the same information as mouse users (WCAG 1.3.1, 2.1.1). The tooltip text
+    // stays in the DOM, visually hidden, while it is not shown.
     return /*#__PURE__*/React.createElement("div", {
       className: combinedClassName,
       style: {
         position: 'relative',
         display: 'inline-block'
-      }
+      },
+      onMouseEnter: show,
+      onMouseLeave: hideSoon
     }, /*#__PURE__*/React.createElement("div", {
       ref: triggerRef,
-      onMouseEnter: handleMouseEnter,
-      onMouseLeave: handleMouseLeave,
-      onFocus: handleFocus,
-      onBlur: handleBlur
-    }, children), isVisible && /*#__PURE__*/React.createElement("div", {
+      tabIndex: 0,
+      "aria-describedby": tooltipId,
+      onFocus: show,
+      onBlur: hide
+    }, children), /*#__PURE__*/React.createElement("div", {
       ref: tooltipRef,
-      className: "pp-hub-tooltip pp-hub-tooltip--custom",
-      style: {
+      id: tooltipId,
+      role: "tooltip",
+      className: isVisible ? 'pp-hub-tooltip pp-hub-tooltip--custom' : 'screen-reader-text',
+      style: isVisible ? {
         position: 'fixed',
         top: position.top,
         left: position.left,
         zIndex: 'var(--pp-hub-z-tooltip)',
-        pointerEvents: 'none',
         opacity: 1,
         transform: 'none'
-      }
+      } : undefined
     }, text));
   }
 
