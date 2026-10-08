@@ -412,12 +412,6 @@ msgstr ""
 msgid "Create custom statuses and publishing workflows."
 msgstr ""
 
-#. Translators: %s is the plugin's registered menu label.
-#: src/Infrastructure/AdminMenu/PluginQuickLinks.php:68
-#, php-format
-msgid "Open %s"
-msgstr ""
-
 #. translators: %s is the dependency ID.
 #: src/Infrastructure/Container/DependencyContainer.php:104
 #, php-format
@@ -1391,16 +1385,6 @@ msgstr ""
 #: resources/dist/js/plugins-dashboard.js:2473
 #, js-format
 msgid "Activate %s"
-msgstr ""
-
-#: resources/dist/js/plugins-dashboard.js:2759
-#: resources/dist/js/plugins-dashboard.js:3075
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:95
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:238
-#: resources/dist/js/plugins-dashboard.js:2235
-#: resources/dist/js/plugins-dashboard.js:2509
-#, js-format
-msgid "%s shortcuts"
 msgstr ""
 
 #: resources/dist/js/plugins-dashboard.js:2769

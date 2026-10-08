@@ -20,7 +20,6 @@ use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
-use PublishPress\Hub\Infrastructure\AdminMenu\PluginQuickLinks;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
@@ -186,7 +185,6 @@ class PluginsDashboardController implements BootableInterface
                 'logoUrl' => $this->assetService->getPluginAssetUrl('images/publishpress-logo.png'),
                 'apiNonce' => wp_create_nonce('wp_rest'),
                 'preferencesKey' => get_current_blog_id() . ':' . get_current_user_id(),
-                'pluginNavigation' => (new PluginQuickLinks())->getLinks(),
                 'pluginIconBaseUrl' => $this->assetService->getPluginAssetsBaseUrl(),
             ]
         );

@@ -1,12 +1,11 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[1.1.0] - 07 October, 2026
+[1.1.0] - 08 October, 2026
 
 - Added: Support for PublishPress Cart, PublishPress Taxonomies, and PublishPress Tag Groups (#269).
 - Added: List and card layouts for the plugins dashboard (#211, #262).
 - Added: Plugin favorites and a favorites only filter, with saved layout preferences (#211).
-- Added: Shortcuts to accessible plugin admin pages from the plugins dashboard (#211).
 - Added: Bundle license form to validate and apply one license key to multiple selected plugins (#211, #261).
 - Added: Warnings before plugin deactivation and conflict resolution to explain potential effects on site content (#107).
 - Changed: Refreshed the welcome page layout and its documentation, support, and account links (#211).

@@ -1673,7 +1673,6 @@ footer .pp-hub-footer-logo img {
 .pp-hub-favorite:focus-visible,
 .pp-hub-layout-switch button:focus-visible,
 .pp-hub-plugin-card summary:focus-visible { outline: 2px solid #6552c4; outline-offset: 3px; }
-.pp-hub-plugin-shortcuts { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 8px 0; }
 
 .pp-hub-plugins-list.pp-hub-view-cards,
 .pp-hub-view-cards .pp-hub-plugin-group-items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; background: transparent; }
@@ -1701,10 +1700,7 @@ footer .pp-hub-footer-logo img {
 .pp-hub-plugin-card__activation .components-base-control__field { margin: 0; }
 .pp-hub-plugin-card__activation .components-form-toggle.is-checked .components-form-toggle__track { background: #168341; border-color: #168341; }
 .pp-hub-plugin-card__state { color: #646970; font-size: 11px; }
-.pp-hub-plugin-card__navigation { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-.pp-hub-plugin-card__shortcuts { display: flex; flex-wrap: wrap; gap: 6px 14px; }
-.pp-hub-plugin-card__shortcuts a { font-size: 12px; line-height: 1.5; color: #5842b0; text-decoration: none; }
-.pp-hub-plugin-card__shortcuts a:hover { text-decoration: underline; }
+.pp-hub-plugin-card__actions { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .pp-hub-plugin-card__footer { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 12px; border-top: 1px solid #eee; }
 .pp-hub-plugin-card__primary { margin-right: auto; }
 .pp-hub-plugin-card__footer .pp-hub-button,

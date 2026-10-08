@@ -2641,7 +2641,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
 function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
 /**
- * Compact plugin card with shortcuts and a persistent action footer.
+ * Compact plugin card with a persistent action footer.
  *
  * @author PublishPress
  * @copyright Copyright (c) 2026, PublishPress
@@ -2664,15 +2664,12 @@ var documentationCategories = {
   revisions: 'revisions',
   series: 'series',
   shortlinks: 'publishpress-shortlinks',
-  statuses: 'publishpress-statuses'
-};
-var documentationUrls = {
-  cart: 'https://publishpress.com/knowledge-base/getting-started-with-publishpress-cart/',
-  taxonomies: 'https://publishpress.com/knowledge-base/start-publishpress-taxonomies/',
-  'tag-groups': 'https://publishpress.com/knowledge-base/introduction-tag-groups/'
+  statuses: 'publishpress-statuses',
+  cart: 'publishpress-cart',
+  taxonomies: 'publishpress-taxonomies',
+  'tag-groups': 'publishpress-tag-groups'
 };
 var PluginCard = function PluginCard(_ref) {
-  var _window$ppHubPluginsD;
   var pluginFamily = _ref.pluginFamily,
     iconSrc = _ref.iconSrc,
     displayName = _ref.displayName,
@@ -2712,11 +2709,8 @@ var PluginCard = function PluginCard(_ref) {
   var inProgress = progressStates.isInstalling || progressStates.isUpgrading || progressStates.isResolvingConflict;
   var active = pluginFamily.hasAnyVersionActive;
   var conflict = pluginFamily.hasConflictingInstallations;
-  var navigation = active && !conflict ? ((_window$ppHubPluginsD = window.ppHubPluginsDashboardConfig) === null || _window$ppHubPluginsD === void 0 || (_window$ppHubPluginsD = _window$ppHubPluginsD.pluginNavigation) === null || _window$ppHubPluginsD === void 0 ? void 0 : _window$ppHubPluginsD[pluginFamily.slug]) || {} : {};
-  var links = navigation.secondary || [];
-  var primaryLink = navigation.primary;
   var category = documentationCategories[pluginFamily.slug];
-  var documentationUrl = documentationUrls[pluginFamily.slug] || (category ? "https://publishpress.com/docs-category/".concat(category, "/") : 'https://publishpress.com/knowledge-base/');
+  var documentationUrl = category ? "https://publishpress.com/docs-category/".concat(category, "/") : 'https://publishpress.com/knowledge-base/';
   var updateAction = actionButtons.find(function (button) {
     return button.key === 'update';
   });
@@ -2758,16 +2752,8 @@ var PluginCard = function PluginCard(_ref) {
   })), !pluginFamily.hasAnyVersionInstalled && /*#__PURE__*/React.createElement("span", {
     className: "pp-hub-plugin-card__state"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Not installed', 'publishpress-hub')))), /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-plugin-card__navigation"
-  }, links.length > 0 && /*#__PURE__*/React.createElement("nav", {
-    className: "pp-hub-plugin-card__shortcuts",
-    "aria-label": (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s shortcuts', 'publishpress-hub'), displayName)
-  }, links.map(function (link) {
-    return /*#__PURE__*/React.createElement("a", {
-      key: link.url,
-      href: link.url
-    }, link.label);
-  })), /*#__PURE__*/React.createElement("details", {
+    className: "pp-hub-plugin-card__actions"
+  }, /*#__PURE__*/React.createElement("details", {
     ref: moreRef,
     className: "pp-hub-plugin-card__more"
   }, /*#__PURE__*/React.createElement("summary", {
@@ -2806,12 +2792,7 @@ var PluginCard = function PluginCard(_ref) {
     className: "pp-hub-plugin-card__footer"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugin-card__primary"
-  }, primaryLink ? /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
-    variant: "primary",
-    href: primaryLink.url,
-    target: "_self",
-    disabled: busy
-  }, primaryLink.label) : /*#__PURE__*/React.createElement(_action_button__WEBPACK_IMPORTED_MODULE_4__.ActionButton, _extends({
+  }, /*#__PURE__*/React.createElement(_action_button__WEBPACK_IMPORTED_MODULE_4__.ActionButton, _extends({
     pluginFamily: pluginFamily,
     inProgress: inProgress,
     disabled: busy
@@ -2819,11 +2800,7 @@ var PluginCard = function PluginCard(_ref) {
     variant: "secondary",
     href: documentationUrl,
     icon: "book-alt"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Documentation', 'publishpress-hub')), primaryLink && /*#__PURE__*/React.createElement(_action_button__WEBPACK_IMPORTED_MODULE_4__.ActionButton, _extends({
-    pluginFamily: pluginFamily,
-    inProgress: inProgress,
-    disabled: busy
-  }, actions))));
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Documentation', 'publishpress-hub'))));
 };
 
 /***/ },
@@ -2877,7 +2854,6 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 var PluginItemComponent = function PluginItemComponent(_ref) {
-  var _window$ppHubPluginsD, _navigation$secondary;
   var pluginFamily = _ref.pluginFamily,
     _ref$layout = _ref.layout,
     layout = _ref$layout === void 0 ? 'list' : _ref$layout,
@@ -2914,7 +2890,6 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     isResolvingConflict = progressStates.isResolvingConflict,
     isActivatingLicense = progressStates.isActivatingLicense,
     isDeactivatingLicense = progressStates.isDeactivatingLicense;
-  var navigation = pluginFamily.hasAnyVersionActive && !pluginFamily.hasConflictingInstallations ? ((_window$ppHubPluginsD = window.ppHubPluginsDashboardConfig) === null || _window$ppHubPluginsD === void 0 || (_window$ppHubPluginsD = _window$ppHubPluginsD.pluginNavigation) === null || _window$ppHubPluginsD === void 0 ? void 0 : _window$ppHubPluginsD[pluginFamily.slug]) || {} : {};
   var status = (0,_hooks__WEBPACK_IMPORTED_MODULE_8__.usePluginStatus)(pluginFamily);
   var _usePluginDisplayInfo = (0,_hooks__WEBPACK_IMPORTED_MODULE_8__.usePluginDisplayInfo)(pluginFamily, pluginIconBaseUrl, status),
     iconSrc = _usePluginDisplayInfo.iconSrc,
@@ -3075,15 +3050,7 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     updateBadgeTooltip: getUpdateBadgeInfo ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Update available: %s → %s', 'publishpress-hub'), getUpdateBadgeInfo.currentVersion, getUpdateBadgeInfo.availableVersion) : null
   })), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-description"
-  }, pluginFamily.description), ((_navigation$secondary = navigation.secondary) === null || _navigation$secondary === void 0 ? void 0 : _navigation$secondary.length) > 0 && /*#__PURE__*/React.createElement("nav", {
-    className: "pp-hub-plugin-shortcuts",
-    "aria-label": (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s shortcuts', 'publishpress-hub'), displayName)
-  }, navigation.secondary.map(function (link) {
-    return /*#__PURE__*/React.createElement("a", {
-      key: link.url,
-      href: link.url
-    }, link.label);
-  })), /*#__PURE__*/React.createElement("div", {
+  }, pluginFamily.description), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-inline-actions"
   }, actionButtonsData.map(function (buttonProps, index) {
     if (buttonProps.key === 'activate' && !isSmallMobile) {
@@ -3099,12 +3066,7 @@ var PluginItemComponent = function PluginItemComponent(_ref) {
     }, buttonProps.text)), buttonProps.variant !== 'label' && /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_7__.Button, buttonProps));
   })))), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-list-item-actions"
-  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalVStack, null, navigation.primary && /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_7__.Button, {
-    variant: "primary",
-    href: navigation.primary.url,
-    target: "_self",
-    disabled: Object.values(progressStates).some(Boolean)
-  }, navigation.primary.label), /*#__PURE__*/React.createElement(_action_button__WEBPACK_IMPORTED_MODULE_5__.ActionButton, {
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalVStack, null, /*#__PURE__*/React.createElement(_action_button__WEBPACK_IMPORTED_MODULE_5__.ActionButton, {
     pluginFamily: pluginFamily,
     inProgress: inProgress,
     onInstall: onInstall,
