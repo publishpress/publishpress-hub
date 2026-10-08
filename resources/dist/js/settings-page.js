@@ -1246,7 +1246,7 @@ var DiagnosticsTabComponent = function DiagnosticsTabComponent() {
     }
   }, notice.message), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-diagnostics-tab__section"
-  }, /*#__PURE__*/React.createElement("h3", {
+  }, /*#__PURE__*/React.createElement("h2", {
     className: "pp-hub-diagnostics-tab__section-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug Mode', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
     className: "pp-hub-diagnostics-tab__description"

@@ -67,7 +67,7 @@ export const PluginCard = ({
             <div className="pp-hub-plugin-card__header">
                 <img className="pp-hub-plugin-card__icon" src={iconSrc} alt="" />
                 <div className="pp-hub-plugin-card__identity">
-                    <h3>{displayName.replace(/^PublishPress\s+/, '')}</h3>
+                    <h2>{displayName.replace(/^PublishPress\s+/, '')}</h2>
                     <p>{pluginFamily.description}</p>
                 </div>
                 <div className="pp-hub-plugin-card__controls">

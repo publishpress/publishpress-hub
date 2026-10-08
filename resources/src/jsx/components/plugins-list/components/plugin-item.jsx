@@ -245,7 +245,7 @@ const PluginItemComponent = ({
                                 <Fragment key={buttonProps.key}>
                                     {buttonProps.variant === 'label' && (
                                         <>
-                                            <span>&bull;</span>
+                                            <span aria-hidden="true">&bull;</span>
                                             <span className={buttonProps.className}>{buttonProps.text}</span>
                                         </>
                                     )}
