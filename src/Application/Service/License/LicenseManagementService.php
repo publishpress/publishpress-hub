@@ -17,6 +17,7 @@ namespace PublishPress\Hub\Application\Service\License;
 defined('ABSPATH') || exit;
 
 use PublishPress\Hub\Application\Service\License\Contract\LicenseManagementServiceInterface;
+use PublishPress\Hub\Domain\Plugin\Exception\LicenseActivationException;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseApiServiceInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 
@@ -54,6 +55,10 @@ class LicenseManagementService implements LicenseManagementServiceInterface
 
             // Always force fetch expiration date when activating to ensure we get the latest from EDD
             $this->storeExpirationDateFromApi($licenseKey, $downloadId, true);
+        }
+
+        if ($activated) {
+            $this->assertStoredLicense($licenseKey, $downloadId);
         }
 
         return $activated;
@@ -127,6 +132,8 @@ class LicenseManagementService implements LicenseManagementServiceInterface
         $this->licensePersistence->storeLicenseStatus($downloadId, true);
         // Always force fetch expiration date when activating to ensure we get the latest from EDD
         $this->storeExpirationDateFromApi($licenseKey, $downloadId, true);
+
+        $this->assertStoredLicense($licenseKey, $downloadId);
 
         return true;
     }
@@ -238,6 +245,28 @@ class LicenseManagementService implements LicenseManagementServiceInterface
     public function getStoredLicenseExpirationDate(int $downloadId): ?string
     {
         return $this->licensePersistence->getLicenseExpirationDate($downloadId);
+    }
+
+    /**
+     * Verify that activation persisted the requested key and valid status.
+     *
+     * @since 1.1.0
+     */
+    private function assertStoredLicense(string $licenseKey, int $downloadId): void
+    {
+        if (
+            $this->licensePersistence->getLicenseKey($downloadId) !== $licenseKey
+            || !$this->licensePersistence->getLicenseStatus($downloadId)
+        ) {
+            throw new LicenseActivationException([
+                'download_id' => $downloadId,
+                'error_message' => esc_html__(
+                    'The license server accepted your key, but this site could not save its active license. '
+                    . 'Please contact support and mention this message.',
+                    'publishpress-hub'
+                ),
+            ]);
+        }
     }
 
     /**
