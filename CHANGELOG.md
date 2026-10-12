@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[1.1.0] - 08 October, 2026
+[1.1.0] - 12 October, 2026
 
 - Added: Support for PublishPress Cart, PublishPress Taxonomies, and PublishPress Tag Groups (#269).
 - Added: List and card layouts for the plugins dashboard (#211, #262).
