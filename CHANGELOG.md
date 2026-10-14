@@ -1,6 +1,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
+- Added: Download a language pack for the installed plugin version. A plugin registers its text domain, package-server repository, and version. The `.po` stays on disk so it can be imported into Loco. Packs remain after Hub is deactivated (#594).
+
 [1.1.0] - 12 October, 2026
 
 - Added: Support for PublishPress Cart, PublishPress Taxonomies, and PublishPress Tag Groups (#269).
