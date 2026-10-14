@@ -25,11 +25,13 @@ class LanguagePackPolicyTest extends Unit
         $this->assertTrue(LanguagePackPolicy::isEligibleLocale('pt_BR'));
     }
 
-    public function testReleaseTagIsIndependentOfPluginVersion(): void
+    public function testPackFollowsTheInstalledPluginRelease(): void
     {
-        $this->assertSame('v0.0.0-pt-br', LanguagePackPolicy::releaseTag('pt_BR'));
-        $this->assertSame('v0.0.0-de-de', LanguagePackPolicy::releaseTag('de_DE'));
-        $this->assertSame('v0.0.0-ja', LanguagePackPolicy::releaseTag('ja'));
+        $this->assertTrue(LanguagePackPolicy::needsRelease('', '1.1.0'));
+        $this->assertTrue(LanguagePackPolicy::needsRelease('1.0.1', '1.1.0'));
+        $this->assertFalse(LanguagePackPolicy::needsRelease('1.1.0', '1.1.0'));
+        $this->assertFalse(LanguagePackPolicy::needsRelease('1.1.0', ''));
+        $this->assertTrue(LanguagePackPolicy::isPluginVersion('1.0.0-beta.4'));
     }
 
     public function testMissingCatalogIsInstalledWhenRemoteDateIsPresent(): void

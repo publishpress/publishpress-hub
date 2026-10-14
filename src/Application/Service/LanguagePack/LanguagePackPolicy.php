@@ -37,15 +37,20 @@ class LanguagePackPolicy
     }
 
     /**
-     * Release tag for the one current pack of a locale.
-     *
-     * The tag is not the plugin version. Older installs of the text domain use this same pack.
+     * Download the pack for this plugin release when the installed copy is for another release.
      */
-    public static function releaseTag(string $locale): string
+    public static function needsRelease(string $installedRelease, string $remoteRelease): bool
     {
-        $suffix = strtolower(str_replace('_', '-', $locale));
+        if (!self::isPluginVersion($remoteRelease)) {
+            return false;
+        }
 
-        return 'v0.0.0-' . $suffix;
+        return $installedRelease !== $remoteRelease;
+    }
+
+    public static function isPluginVersion(string $version): bool
+    {
+        return preg_match('/^\d+\.\d+\.\d+(?:-[A-Za-z0-9.-]+)?$/', $version) === 1;
     }
 
     public static function packFileName(string $domain, string $locale, string $extension): string

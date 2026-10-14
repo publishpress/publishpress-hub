@@ -112,7 +112,7 @@ class LanguagePackSyncService implements BootableInterface
         $messages = [];
         $state = 'current';
         foreach ($packs as $pack) {
-            $result = $this->syncDomain($pack['domain'], $pack['repository'], $locale);
+            $result = $this->syncDomain($pack['domain'], $pack['repository'], $pack['version'], $locale);
             $messages[] = $result['message'];
             if ($result['state'] === 'error') {
                 $state = 'error';
@@ -130,7 +130,7 @@ class LanguagePackSyncService implements BootableInterface
      * The repository is the package-server and GitHub name. It does not have to
      * match the text domain.
      *
-     * @return array<int, array{domain: string, repository: string}>
+     * @return array<int, array{domain: string, repository: string, version: string}>
      */
     private function packs(): array
     {
@@ -141,25 +141,21 @@ class LanguagePackSyncService implements BootableInterface
 
         $packs = [];
         foreach ($registered as $entry) {
-            if (is_string($entry)) {
-                $entry = [
-                    'domain' => $entry,
-                    'repository' => $entry,
-                ];
-            }
             if (!is_array($entry)) {
                 continue;
             }
 
             $domain = isset($entry['domain']) ? (string) $entry['domain'] : '';
             $repository = isset($entry['repository']) ? (string) $entry['repository'] : $domain;
-            if (!$this->isSafeName($domain) || !$this->isSafeName($repository)) {
+            $version = isset($entry['version']) ? (string) $entry['version'] : '';
+            if (!$this->isSafeName($domain) || !$this->isSafeName($repository) || !LanguagePackPolicy::isPluginVersion($version)) {
                 continue;
             }
 
             $packs[] = [
                 'domain' => $domain,
                 'repository' => $repository,
+                'version' => $version,
             ];
         }
 
@@ -174,7 +170,7 @@ class LanguagePackSyncService implements BootableInterface
     /**
      * @return array{state: string, message: string}
      */
-    private function syncDomain(string $domain, string $repository, string $locale): array
+    private function syncDomain(string $domain, string $repository, string $version, string $locale): array
     {
         $directory = $this->packDirectory();
         if ($directory === '') {
@@ -184,28 +180,16 @@ class LanguagePackSyncService implements BootableInterface
             ];
         }
 
-        $updated = $this->remoteUpdated($domain, $repository, $locale);
-        if ($updated === '') {
-            return [
-                'state' => 'error',
-                'message' => sprintf(
-                    /* translators: 1: text domain, 2: locale */
-                    __('No language pack timestamp for %1$s (%2$s). The installed pack was left in place.', 'publishpress-hub'),
-                    $domain,
-                    $locale
-                ),
-            ];
+        $markerPath = $directory . '/' . $domain . '-' . $locale . '.release';
+        $installed = '';
+        if (is_readable($markerPath)) {
+            $marker = file_get_contents($markerPath);
+            $installed = is_string($marker) ? trim($marker) : '';
         }
 
         $moPath = $directory . '/' . LanguagePackPolicy::packFileName($domain, $locale, 'mo');
-        $installed = '';
-        if (is_readable($moPath)) {
-            $contents = file_get_contents($moPath);
-            $installed = is_string($contents) ? LanguagePackPolicy::revisionDateFromContents($contents) : '';
-        }
-
         $phpPath = $directory . '/' . LanguagePackPolicy::packFileName($domain, $locale, 'l10n.php');
-        if (!LanguagePackPolicy::needsInstall($installed, $updated)) {
+        if (is_readable($moPath) && !LanguagePackPolicy::needsRelease($installed, $version)) {
             if (!is_readable($phpPath)) {
                 $phpError = $this->ensurePhpCatalog($moPath, $directory, $domain, $locale);
                 if ($phpError !== '') {
@@ -219,16 +203,16 @@ class LanguagePackSyncService implements BootableInterface
             return [
                 'state' => 'current',
                 'message' => sprintf(
-                    /* translators: 1: text domain, 2: locale, 3: PO-Revision-Date */
-                    __('Language pack for %1$s (%2$s) is current (%3$s).', 'publishpress-hub'),
+                    /* translators: 1: text domain, 2: locale, 3: plugin version */
+                    __('Language pack for %1$s (%2$s) matches %3$s.', 'publishpress-hub'),
                     $domain,
                     $locale,
-                    $installed
+                    $version
                 ),
             ];
         }
 
-        $downloaded = $this->downloadAndInstall($domain, $repository, $locale, $updated, $directory);
+        $downloaded = $this->downloadAndInstall($domain, $repository, $version, $locale, $directory);
         if ($downloaded !== '') {
             return [
                 'state' => 'error',
@@ -236,14 +220,21 @@ class LanguagePackSyncService implements BootableInterface
             ];
         }
 
+        if (file_put_contents($markerPath, $version) === false) {
+            return [
+                'state' => 'error',
+                'message' => __('Language pack could not be stored. The installed pack was left in place.', 'publishpress-hub'),
+            ];
+        }
+
         return [
             'state' => 'installed',
             'message' => sprintf(
-                /* translators: 1: text domain, 2: locale, 3: PO-Revision-Date */
-                __('Language pack for %1$s (%2$s) updated (%3$s).', 'publishpress-hub'),
+                /* translators: 1: text domain, 2: locale, 3: plugin version */
+                __('Language pack for %1$s (%2$s) installed for %3$s.', 'publishpress-hub'),
                 $domain,
                 $locale,
-                $updated
+                $version
             ),
         ];
     }
@@ -251,12 +242,13 @@ class LanguagePackSyncService implements BootableInterface
     /**
      * @return string Error message, or an empty string when the pack was installed.
      */
-    private function downloadAndInstall(string $domain, string $repository, string $locale, string $updated, string $directory): string
+    private function downloadAndInstall(string $domain, string $repository, string $version, string $locale, string $directory): string
     {
         $url = 'https://' . LanguagePackPolicy::PACKAGE_SERVER_HOST
-            . '/v1/translations/' . rawurlencode($repository) . '/' . rawurlencode($locale)
-            . '/download?updated=' . rawurlencode($updated);
-        $url = apply_filters('publishpress_hub_language_pack_download_url', $url, $domain, $locale, $updated);
+            . '/v1/translations/' . rawurlencode($repository) . '/' . rawurlencode($version)
+            . '/' . rawurlencode($domain) . '/' . rawurlencode($locale)
+            . '/download';
+        $url = apply_filters('publishpress_hub_language_pack_download_url', $url, $domain, $locale, $version);
         if (!is_string($url) || !$this->isAllowedDownloadUrl($url)) {
             return __('Language pack URL was rejected.', 'publishpress-hub');
         }
