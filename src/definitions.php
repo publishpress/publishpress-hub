@@ -20,6 +20,7 @@ use PublishPress\Hub\Application\Service\ActivationRedirectService;
 use PublishPress\Hub\Application\Service\AdminNoticeVisibilityService;
 use PublishPress\Hub\Application\Service\EddPluginUpdateService;
 use PublishPress\Hub\Application\Service\HubBootstrapService;
+use PublishPress\Hub\Application\Service\LanguagePack\LanguagePackSyncService;
 use PublishPress\Hub\Application\Service\RewriteRulesService;
 use PublishPress\Hub\Application\Service\Statistics\StatisticsService;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
@@ -433,6 +434,7 @@ return [
             $servicesToInit[] = $container->get(AbstractDependencies::REWRITE_RULES_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::EDD_PLUGIN_UPDATE_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::STATISTICS_SERVICE);
+            $servicesToInit[] = $container->get(AbstractDependencies::LANGUAGE_PACK_SYNC_SERVICE);
 
             if (defined('PUBLISHPRESS_HUB_DEV_MODE') && constant('PUBLISHPRESS_HUB_DEV_MODE')) {
                 $servicesToInit[] = $container->get(AbstractDependencies::DEV_COMPONENTS_SHOWCASE_CONTROLLER);
@@ -598,6 +600,9 @@ return [
             $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
             $container->get(AbstractDependencies::PLUGIN_VERSION)
         ),
+
+    AbstractDependencies::LANGUAGE_PACK_SYNC_SERVICE =>
+        fn(ContainerInterface $container) => new LanguagePackSyncService(),
 
     AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER =>
         fn(ContainerInterface $container) => new PluginsDashboardController(
