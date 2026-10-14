@@ -279,7 +279,7 @@ class LanguagePackSyncService implements BootableInterface
     }
 
     /**
-     * @return string Error message, or an empty string when both pack files were stored.
+     * @return string Error message, or an empty string when the pack files were stored.
      */
     private function installZip(string $zipPath, string $domain, string $locale, string $directory): string
     {
@@ -309,9 +309,10 @@ class LanguagePackSyncService implements BootableInterface
         }
         $zip->close();
 
+        $poName = LanguagePackPolicy::packFileName($domain, $locale, 'po');
         $moName = LanguagePackPolicy::packFileName($domain, $locale, 'mo');
         $jsonName = LanguagePackPolicy::packFileName($domain, $locale, 'json');
-        if (!isset($files[$moName], $files[$jsonName])) {
+        if (!isset($files[$poName], $files[$moName], $files[$jsonName])) {
             return __('Language pack is missing a catalog file. The installed pack was left in place.', 'publishpress-hub');
         }
 
@@ -337,20 +338,28 @@ class LanguagePackSyncService implements BootableInterface
         }
 
         $phpName = LanguagePackPolicy::packFileName($domain, $locale, 'l10n.php');
+        $poTemp = $directory . '/' . $poName . '.new';
         $jsonTemp = $directory . '/' . $jsonName . '.new';
         $phpTemp = $directory . '/' . $phpName . '.new';
-        if (file_put_contents($jsonTemp, $files[$jsonName]) === false || file_put_contents($phpTemp, $php) === false) {
+        if (
+            file_put_contents($poTemp, $files[$poName]) === false
+            || file_put_contents($jsonTemp, $files[$jsonName]) === false
+            || file_put_contents($phpTemp, $php) === false
+        ) {
             wp_delete_file($moTemp);
+            wp_delete_file($poTemp);
             wp_delete_file($jsonTemp);
             wp_delete_file($phpTemp);
             return __('Language pack could not be stored. The installed pack was left in place.', 'publishpress-hub');
         }
 
         $renamed = rename($moTemp, $directory . '/' . $moName)
+            && rename($poTemp, $directory . '/' . $poName)
             && rename($jsonTemp, $directory . '/' . $jsonName)
             && rename($phpTemp, $directory . '/' . $phpName);
         if (!$renamed) {
             wp_delete_file($moTemp);
+            wp_delete_file($poTemp);
             wp_delete_file($jsonTemp);
             wp_delete_file($phpTemp);
             return __('Language pack could not be stored. The installed pack was left in place.', 'publishpress-hub');

@@ -67,11 +67,11 @@ class LanguagePackPolicyTest extends Unit
         $this->assertSame('2026-07-30 18:52+0000', LanguagePackPolicy::revisionDateFromContents($header));
     }
 
-    public function testZipEntriesAreOnlyTheMoAndJsonFiles(): void
+    public function testZipEntriesAreThePoMoAndJsonFiles(): void
     {
+        $this->assertTrue(LanguagePackPolicy::isAllowedEntry('example-plugin-pt_BR.po', 'example-plugin', 'pt_BR'));
         $this->assertTrue(LanguagePackPolicy::isAllowedEntry('example-plugin-pt_BR.mo', 'example-plugin', 'pt_BR'));
         $this->assertTrue(LanguagePackPolicy::isAllowedEntry('example-plugin-de_DE.json', 'example-plugin', 'de_DE'));
-        $this->assertFalse(LanguagePackPolicy::isAllowedEntry('example-plugin-pt_BR.po', 'example-plugin', 'pt_BR'));
         $this->assertFalse(LanguagePackPolicy::isAllowedEntry('example-plugin-pt_BR.l10n.php', 'example-plugin', 'pt_BR'));
         $this->assertFalse(LanguagePackPolicy::isAllowedEntry('../example-plugin-pt_BR.mo', 'example-plugin', 'pt_BR'));
         $this->assertFalse(LanguagePackPolicy::isAllowedEntry('nested/example-plugin-pt_BR.mo', 'example-plugin', 'pt_BR'));

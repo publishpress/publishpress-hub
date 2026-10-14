@@ -54,7 +54,7 @@ class LanguagePackPolicy
     }
 
     /**
-     * True when the zip entry is one of the two pack files and nothing else.
+     * True when the zip entry is the .po, .mo, or .json for this pack and nothing else.
      */
     public static function isAllowedEntry(string $entry, string $domain, string $locale): bool
     {
@@ -68,6 +68,7 @@ class LanguagePackPolicy
         }
 
         $allowed = [
+            self::packFileName($domain, $locale, 'po'),
             self::packFileName($domain, $locale, 'mo'),
             self::packFileName($domain, $locale, 'json'),
         ];
