@@ -4602,11 +4602,12 @@ var _marked = /*#__PURE__*/_regenerator().m(getPluginName),
   _marked12 = /*#__PURE__*/_regenerator().m(uninstallPlugin),
   _marked13 = /*#__PURE__*/_regenerator().m(resolveConflict),
   _marked14 = /*#__PURE__*/_regenerator().m(deactivateLicense),
-  _marked15 = /*#__PURE__*/_regenerator().m(reuseLicenseForAllPlugins),
-  _marked16 = /*#__PURE__*/_regenerator().m(updatePlugin),
-  _marked17 = /*#__PURE__*/_regenerator().m(cleanupError),
-  _marked18 = /*#__PURE__*/_regenerator().m(dismissLicenseNotice),
-  _marked19 = /*#__PURE__*/_regenerator().m(fetchLicenseNoticeDismissalStatus);
+  _marked15 = /*#__PURE__*/_regenerator().m(reportSharedLicenseFailures),
+  _marked16 = /*#__PURE__*/_regenerator().m(reuseLicenseForAllPlugins),
+  _marked17 = /*#__PURE__*/_regenerator().m(updatePlugin),
+  _marked18 = /*#__PURE__*/_regenerator().m(cleanupError),
+  _marked19 = /*#__PURE__*/_regenerator().m(dismissLicenseNotice),
+  _marked20 = /*#__PURE__*/_regenerator().m(fetchLicenseNoticeDismissalStatus);
 /**
  * Plugins dashboard actions.
  *
@@ -5073,43 +5074,45 @@ function installProPlugin(pluginFamilySlug, licenseKey) {
         case 3:
           data = _context13.v;
           if (!data.success) {
-            _context13.n = 9;
+            _context13.n = 10;
             break;
           }
-          return _context13.d(_regeneratorValues(activatePlugin(pluginFamilySlug, true, true)), 4);
+          return _context13.d(_regeneratorValues(reportSharedLicenseFailures(data)), 4);
         case 4:
-          _context13.n = 5;
-          return fetchPlugins();
+          return _context13.d(_regeneratorValues(activatePlugin(pluginFamilySlug, true, true)), 5);
         case 5:
           _context13.n = 6;
+          return fetchPlugins();
+        case 6:
+          _context13.n = 7;
           return {
             type: 'INSTALL_PLUGIN_SUCCESS',
             data: {
               pluginFamilySlug: pluginFamilySlug
             }
           };
-        case 6:
-          return _context13.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 7);
         case 7:
-          pluginName = _context13.v;
-          _context13.n = 8;
-          return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s installed successfully', 'publishpress-hub'), pluginName), 'success');
+          return _context13.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 8);
         case 8:
+          pluginName = _context13.v;
+          _context13.n = 9;
+          return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s installed successfully', 'publishpress-hub'), pluginName), 'success');
+        case 9:
           return _context13.a(2, {
             success: true,
             pluginFamilySlug: pluginFamilySlug,
             licenseKey: licenseKey,
             apiResponse: data
           });
-        case 9:
-          throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin installation failed');
         case 10:
-          _context13.n = 15;
-          break;
+          throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin installation failed');
         case 11:
-          _context13.p = 11;
+          _context13.n = 16;
+          break;
+        case 12:
+          _context13.p = 12;
           _t3 = _context13.v;
-          _context13.n = 12;
+          _context13.n = 13;
           return {
             type: 'INSTALL_PLUGIN_ERROR',
             data: {
@@ -5117,13 +5120,13 @@ function installProPlugin(pluginFamilySlug, licenseKey) {
               error: _t3
             }
           };
-        case 12:
-          return _context13.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 13);
         case 13:
-          _pluginName2 = _context13.v;
-          _context13.n = 14;
-          return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s installation failed', 'publishpress-hub'), _pluginName2), 'error');
+          return _context13.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 14);
         case 14:
+          _pluginName2 = _context13.v;
+          _context13.n = 15;
+          return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s installation failed', 'publishpress-hub'), _pluginName2), 'error');
+        case 15:
           _t3 = handleErrorMessageOnContext(_t3);
           return _context13.a(2, {
             success: false,
@@ -5131,10 +5134,10 @@ function installProPlugin(pluginFamilySlug, licenseKey) {
             licenseKey: licenseKey,
             error: _t3
           });
-        case 15:
+        case 16:
           return _context13.a(2);
       }
-    }, _callee2, null, [[0, 11]]);
+    }, _callee2, null, [[0, 12]]);
   })();
 }
 function uninstallPlugin(pluginFamilySlug) {
@@ -5448,43 +5451,45 @@ function upgradePluginToPro(pluginFamilySlug, licenseKey) {
         case 3:
           data = _context17.v;
           if (!data.success) {
-            _context17.n = 9;
+            _context17.n = 10;
             break;
           }
-          return _context17.d(_regeneratorValues(activatePlugin(pluginFamilySlug, true, true)), 4);
+          return _context17.d(_regeneratorValues(reportSharedLicenseFailures(data)), 4);
         case 4:
-          _context17.n = 5;
-          return fetchPlugins();
+          return _context17.d(_regeneratorValues(activatePlugin(pluginFamilySlug, true, true)), 5);
         case 5:
           _context17.n = 6;
+          return fetchPlugins();
+        case 6:
+          _context17.n = 7;
           return {
             type: 'UPGRADE_PLUGIN_TO_PRO_SUCCESS',
             data: {
               pluginFamilySlug: pluginFamilySlug
             }
           };
-        case 6:
-          return _context17.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 7);
         case 7:
-          pluginName = _context17.v;
-          _context17.n = 8;
-          return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s upgraded successfully', 'publishpress-hub'), pluginName), 'success');
+          return _context17.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 8);
         case 8:
+          pluginName = _context17.v;
+          _context17.n = 9;
+          return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s upgraded successfully', 'publishpress-hub'), pluginName), 'success');
+        case 9:
           return _context17.a(2, {
             success: true,
             pluginFamilySlug: pluginFamilySlug,
             licenseKey: licenseKey,
             apiResponse: data
           });
-        case 9:
-          throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin upgrade to Pro failed');
         case 10:
-          _context17.n = 15;
-          break;
+          throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin upgrade to Pro failed');
         case 11:
-          _context17.p = 11;
+          _context17.n = 16;
+          break;
+        case 12:
+          _context17.p = 12;
           _t7 = _context17.v;
-          _context17.n = 12;
+          _context17.n = 13;
           return {
             type: 'UPGRADE_PLUGIN_TO_PRO_ERROR',
             data: {
@@ -5492,13 +5497,13 @@ function upgradePluginToPro(pluginFamilySlug, licenseKey) {
               error: _t7
             }
           };
-        case 12:
-          return _context17.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 13);
         case 13:
-          _pluginName5 = _context17.v;
-          _context17.n = 14;
-          return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s upgrade to Pro failed', 'publishpress-hub'), _pluginName5), 'error');
+          return _context17.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 14);
         case 14:
+          _pluginName5 = _context17.v;
+          _context17.n = 15;
+          return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s upgrade to Pro failed', 'publishpress-hub'), _pluginName5), 'error');
+        case 15:
           _t7 = handleErrorMessageOnContext(_t7);
           return _context17.a(2, {
             success: false,
@@ -5506,10 +5511,10 @@ function upgradePluginToPro(pluginFamilySlug, licenseKey) {
             licenseKey: licenseKey,
             error: _t7
           });
-        case 15:
+        case 16:
           return _context17.a(2);
       }
-    }, _callee5, null, [[0, 11]]);
+    }, _callee5, null, [[0, 12]]);
   })();
 }
 function resolveConflict(pluginFamily, pluginToKeep) {
@@ -5701,15 +5706,36 @@ function deactivateLicense(pluginFamily) {
     }
   }, _marked14, null, [[0, 9]]);
 }
+function reportSharedLicenseFailures(data) {
+  var failed;
+  return _regenerator().w(function (_context20) {
+    while (1) switch (_context20.n) {
+      case 0:
+        failed = (data.licenseResults || []).filter(function (result) {
+          return !result.success;
+        });
+        if (!failed.length) {
+          _context20.n = 1;
+          break;
+        }
+        _context20.n = 1;
+        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The license key could not be activated for these plugins: %s. Review their licenses or retry using Activate Bundle License.', 'publishpress-hub'), failed.map(function (result) {
+          return result.slug;
+        }).join(', ')), 'warning');
+      case 1:
+        return _context20.a(2, failed.length > 0);
+    }
+  }, _marked15);
+}
 function activateLicense(pluginFamily, licenseKey) {
   var applyToAll = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
   return /*#__PURE__*/_regenerator().m(function _callee6() {
-    var data, successMessage, _t0;
-    return _regenerator().w(function (_context20) {
-      while (1) switch (_context20.p = _context20.n) {
+    var data, hasLicenseFailures, successMessage, _t0;
+    return _regenerator().w(function (_context21) {
+      while (1) switch (_context21.p = _context21.n) {
         case 0:
-          _context20.p = 0;
-          _context20.n = 1;
+          _context21.p = 0;
+          _context21.n = 1;
           return {
             type: 'ACTIVATE_LICENSE_START',
             data: {
@@ -5719,10 +5745,10 @@ function activateLicense(pluginFamily, licenseKey) {
             }
           };
         case 1:
-          _context20.n = 2;
+          _context21.n = 2;
           return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
         case 2:
-          _context20.n = 3;
+          _context21.n = 3;
           return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
             path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamily.slug, "/activate-license"),
             method: 'POST',
@@ -5732,15 +5758,18 @@ function activateLicense(pluginFamily, licenseKey) {
             }
           });
         case 3:
-          data = _context20.v;
+          data = _context21.v;
           if (!data.success) {
-            _context20.n = 7;
+            _context21.n = 8;
             break;
           }
-          _context20.n = 4;
-          return fetchPlugins();
+          return _context21.d(_regeneratorValues(reportSharedLicenseFailures(data)), 4);
         case 4:
-          _context20.n = 5;
+          hasLicenseFailures = _context21.v;
+          _context21.n = 5;
+          return fetchPlugins();
+        case 5:
+          _context21.n = 6;
           return {
             type: 'ACTIVATE_LICENSE_SUCCESS',
             data: {
@@ -5749,25 +5778,25 @@ function activateLicense(pluginFamily, licenseKey) {
               applyToAll: applyToAll
             }
           };
-        case 5:
-          successMessage = applyToAll ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('License activated successfully for all PublishPress plugins', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s license activated successfully', 'publishpress-hub'), pluginFamily.name);
-          _context20.n = 6;
-          return createSnackbarNotice(successMessage, 'success');
         case 6:
-          return _context20.a(2, {
+          successMessage = applyToAll && !hasLicenseFailures ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('License activated successfully for all PublishPress plugins', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s license activated successfully', 'publishpress-hub'), pluginFamily.name);
+          _context21.n = 7;
+          return createSnackbarNotice(successMessage, 'success');
+        case 7:
+          return _context21.a(2, {
             success: true,
             pluginSlug: pluginFamily,
             apiResponse: data
           });
-        case 7:
-          throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'License activation failed');
         case 8:
-          _context20.n = 12;
-          break;
+          throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'License activation failed');
         case 9:
-          _context20.p = 9;
-          _t0 = _context20.v;
-          _context20.n = 10;
+          _context21.n = 13;
+          break;
+        case 10:
+          _context21.p = 10;
+          _t0 = _context21.v;
+          _context21.n = 11;
           return {
             type: 'ACTIVATE_LICENSE_ERROR',
             data: {
@@ -5777,30 +5806,30 @@ function activateLicense(pluginFamily, licenseKey) {
               error: _t0
             }
           };
-        case 10:
-          _context20.n = 11;
-          return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s license activation failed', 'publishpress-hub'), pluginFamily.name), 'error');
         case 11:
+          _context21.n = 12;
+          return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s license activation failed', 'publishpress-hub'), pluginFamily.name), 'error');
+        case 12:
           _t0 = handleErrorMessageOnContext(_t0);
-          return _context20.a(2, {
+          return _context21.a(2, {
             success: false,
             pluginFamily: pluginFamily,
             licenseKey: licenseKey,
             error: _t0
           });
-        case 12:
-          return _context20.a(2);
+        case 13:
+          return _context21.a(2);
       }
-    }, _callee6, null, [[0, 9]]);
+    }, _callee6, null, [[0, 10]]);
   })();
 }
 function reuseLicenseForAllPlugins(pluginFamily) {
-  var data, _t1;
-  return _regenerator().w(function (_context21) {
-    while (1) switch (_context21.p = _context21.n) {
+  var data, hasLicenseFailures, _t1;
+  return _regenerator().w(function (_context22) {
+    while (1) switch (_context22.p = _context22.n) {
       case 0:
-        _context21.p = 0;
-        _context21.n = 1;
+        _context22.p = 0;
+        _context22.n = 1;
         return {
           type: 'ACTIVATE_LICENSE_START',
           data: {
@@ -5810,24 +5839,27 @@ function reuseLicenseForAllPlugins(pluginFamily) {
           }
         };
       case 1:
-        _context21.n = 2;
+        _context22.n = 2;
         return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
       case 2:
-        _context21.n = 3;
+        _context22.n = 3;
         return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
           path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamily.slug, "/reuse-license-for-all"),
           method: 'POST'
         });
       case 3:
-        data = _context21.v;
+        data = _context22.v;
         if (!data.success) {
-          _context21.n = 7;
+          _context22.n = 8;
           break;
         }
-        _context21.n = 4;
-        return fetchPlugins();
+        return _context22.d(_regeneratorValues(reportSharedLicenseFailures(data)), 4);
       case 4:
-        _context21.n = 5;
+        hasLicenseFailures = _context22.v;
+        _context22.n = 5;
+        return fetchPlugins();
+      case 5:
+        _context22.n = 6;
         return {
           type: 'ACTIVATE_LICENSE_SUCCESS',
           data: {
@@ -5836,24 +5868,24 @@ function reuseLicenseForAllPlugins(pluginFamily) {
             applyToAll: true
           }
         };
-      case 5:
-        _context21.n = 6;
-        return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('License reused successfully for all PublishPress plugins', 'publishpress-hub'), 'success');
       case 6:
-        return _context21.a(2, {
+        _context22.n = 7;
+        return createSnackbarNotice(hasLicenseFailures ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('License checks complete. Some plugins could not be activated.', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('License activated successfully for all PublishPress plugins', 'publishpress-hub'), hasLicenseFailures ? 'warning' : 'success');
+      case 7:
+        return _context22.a(2, {
           success: true,
           pluginFamily: pluginFamily,
           apiResponse: data
         });
-      case 7:
-        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'License reuse failed');
       case 8:
-        _context21.n = 12;
-        break;
+        throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'License reuse failed');
       case 9:
-        _context21.p = 9;
-        _t1 = _context21.v;
-        _context21.n = 10;
+        _context22.n = 13;
+        break;
+      case 10:
+        _context22.p = 10;
+        _t1 = _context22.v;
+        _context22.n = 11;
         return {
           type: 'ACTIVATE_LICENSE_ERROR',
           data: {
@@ -5863,28 +5895,28 @@ function reuseLicenseForAllPlugins(pluginFamily) {
             error: _t1
           }
         };
-      case 10:
-        _context21.n = 11;
-        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s license reuse failed', 'publishpress-hub'), pluginFamily.name), 'error');
       case 11:
+        _context22.n = 12;
+        return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s license reuse failed', 'publishpress-hub'), pluginFamily.name), 'error');
+      case 12:
         _t1 = handleErrorMessageOnContext(_t1);
-        return _context21.a(2, {
+        return _context22.a(2, {
           success: false,
           pluginFamily: pluginFamily,
           error: _t1
         });
-      case 12:
-        return _context21.a(2);
+      case 13:
+        return _context22.a(2);
     }
-  }, _marked15, null, [[0, 9]]);
+  }, _marked16, null, [[0, 10]]);
 }
 function updatePlugin(pluginFamilySlug) {
   var data, _fallbackRefreshResul, refreshResult, fallbackRefreshResult, pluginName, _pluginName6, _t10;
-  return _regenerator().w(function (_context22) {
-    while (1) switch (_context22.p = _context22.n) {
+  return _regenerator().w(function (_context23) {
+    while (1) switch (_context23.p = _context23.n) {
       case 0:
-        _context22.p = 0;
-        _context22.n = 1;
+        _context23.p = 0;
+        _context23.n = 1;
         return {
           type: 'UPDATE_PLUGIN_START',
           data: {
@@ -5892,39 +5924,39 @@ function updatePlugin(pluginFamilySlug) {
           }
         };
       case 1:
-        _context22.n = 2;
+        _context23.n = 2;
         return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
       case 2:
-        _context22.n = 3;
+        _context23.n = 3;
         return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
           path: "".concat(API_NAMESPACE, "/plugins/").concat(pluginFamilySlug, "/update"),
           method: 'POST'
         });
       case 3:
-        data = _context22.v;
+        data = _context23.v;
         if (!data.success) {
-          _context22.n = 13;
+          _context23.n = 13;
           break;
         }
-        _context22.n = 4;
+        _context23.n = 4;
         return fetchPlugins(true, false);
       case 4:
-        refreshResult = _context22.v;
+        refreshResult = _context23.v;
         fallbackRefreshResult = refreshResult;
         if (!(!(refreshResult !== null && refreshResult !== void 0 && refreshResult.success) && !(refreshResult !== null && refreshResult !== void 0 && refreshResult.aborted))) {
-          _context22.n = 6;
+          _context23.n = 6;
           break;
         }
-        _context22.n = 5;
+        _context23.n = 5;
         return fetchPlugins(false, false);
       case 5:
-        fallbackRefreshResult = _context22.v;
+        fallbackRefreshResult = _context23.v;
       case 6:
         if ((_fallbackRefreshResul = fallbackRefreshResult) !== null && _fallbackRefreshResul !== void 0 && _fallbackRefreshResul.success) {
-          _context22.n = 9;
+          _context23.n = 9;
           break;
         }
-        _context22.n = 7;
+        _context23.n = 7;
         return {
           type: 'UPDATE_PLUGIN_SUCCESS',
           data: {
@@ -5932,7 +5964,7 @@ function updatePlugin(pluginFamilySlug) {
           }
         };
       case 7:
-        _context22.n = 8;
+        _context23.n = 8;
         return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The plugin was updated successfully, but the dashboard could not refresh. Reloading this page...', 'publishpress-hub'), 'error');
       case 8:
         if (typeof window !== 'undefined') {
@@ -5940,14 +5972,14 @@ function updatePlugin(pluginFamilySlug) {
             return window.location.reload();
           }, 1500);
         }
-        return _context22.a(2, {
+        return _context23.a(2, {
           success: true,
           pluginFamilySlug: pluginFamilySlug,
           refreshFailed: true,
           apiResponse: data
         });
       case 9:
-        _context22.n = 10;
+        _context23.n = 10;
         return {
           type: 'UPDATE_PLUGIN_SUCCESS',
           data: {
@@ -5955,13 +5987,13 @@ function updatePlugin(pluginFamilySlug) {
           }
         };
       case 10:
-        return _context22.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 11);
+        return _context23.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 11);
       case 11:
-        pluginName = _context22.v;
-        _context22.n = 12;
+        pluginName = _context23.v;
+        _context23.n = 12;
         return createSnackbarNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s updated successfully', 'publishpress-hub'), pluginName), 'success');
       case 12:
-        return _context22.a(2, {
+        return _context23.a(2, {
           success: true,
           pluginFamilySlug: pluginFamilySlug,
           apiResponse: data
@@ -5969,12 +6001,12 @@ function updatePlugin(pluginFamilySlug) {
       case 13:
         throw new Error((data === null || data === void 0 ? void 0 : data.error) || 'Plugin update failed');
       case 14:
-        _context22.n = 19;
+        _context23.n = 19;
         break;
       case 15:
-        _context22.p = 15;
-        _t10 = _context22.v;
-        _context22.n = 16;
+        _context23.p = 15;
+        _t10 = _context23.v;
+        _context23.n = 16;
         return {
           type: 'UPDATE_PLUGIN_ERROR',
           data: {
@@ -5983,28 +6015,28 @@ function updatePlugin(pluginFamilySlug) {
           }
         };
       case 16:
-        return _context22.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 17);
+        return _context23.d(_regeneratorValues(getPluginName(pluginFamilySlug)), 17);
       case 17:
-        _pluginName6 = _context22.v;
-        _context22.n = 18;
+        _pluginName6 = _context23.v;
+        _context23.n = 18;
         return createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s update failed', 'publishpress-hub'), _pluginName6), 'error');
       case 18:
         _t10 = handleErrorMessageOnContext(_t10);
-        return _context22.a(2, {
+        return _context23.a(2, {
           success: false,
           pluginFamilySlug: pluginFamilySlug,
           error: _t10
         });
       case 19:
-        return _context22.a(2);
+        return _context23.a(2);
     }
-  }, _marked16, null, [[0, 15]]);
+  }, _marked17, null, [[0, 15]]);
 }
 function cleanupError(pluginFamily) {
-  return _regenerator().w(function (_context23) {
-    while (1) switch (_context23.n) {
+  return _regenerator().w(function (_context24) {
+    while (1) switch (_context24.n) {
       case 0:
-        _context23.n = 1;
+        _context24.n = 1;
         return {
           type: 'CLEANUP_ERROR',
           data: {
@@ -6012,9 +6044,9 @@ function cleanupError(pluginFamily) {
           }
         };
       case 1:
-        return _context23.a(2);
+        return _context24.a(2);
     }
-  }, _marked17);
+  }, _marked18);
 }
 
 /**
@@ -6091,14 +6123,14 @@ function handleErrorMessageOnContext(error) {
  */
 function dismissLicenseNotice(noticeType) {
   var _t11;
-  return _regenerator().w(function (_context24) {
-    while (1) switch (_context24.p = _context24.n) {
+  return _regenerator().w(function (_context25) {
+    while (1) switch (_context25.p = _context25.n) {
       case 0:
-        _context24.n = 1;
+        _context25.n = 1;
         return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
       case 1:
-        _context24.p = 1;
-        _context24.n = 2;
+        _context25.p = 1;
+        _context25.n = 2;
         return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
           path: "".concat(API_NAMESPACE, "/license-notices/dismiss"),
           method: 'POST',
@@ -6107,18 +6139,18 @@ function dismissLicenseNotice(noticeType) {
           }
         });
       case 2:
-        _context24.n = 4;
+        _context25.n = 4;
         break;
       case 3:
-        _context24.p = 3;
-        _t11 = _context24.v;
+        _context25.p = 3;
+        _t11 = _context25.v;
         // Silently fail - dismissal is not critical
         // eslint-disable-next-line no-console
         console.error('Error dismissing license notice:', _t11);
       case 4:
-        return _context24.a(2);
+        return _context25.a(2);
     }
-  }, _marked18, null, [[1, 3]]);
+  }, _marked19, null, [[1, 3]]);
 }
 
 /**
@@ -6129,36 +6161,36 @@ function dismissLicenseNotice(noticeType) {
  */
 function fetchLicenseNoticeDismissalStatus() {
   var response, _t12;
-  return _regenerator().w(function (_context25) {
-    while (1) switch (_context25.p = _context25.n) {
+  return _regenerator().w(function (_context26) {
+    while (1) switch (_context26.p = _context26.n) {
       case 0:
-        _context25.n = 1;
+        _context26.n = 1;
         return (0,_utils_apiReady__WEBPACK_IMPORTED_MODULE_3__["default"])();
       case 1:
-        _context25.p = 1;
-        _context25.n = 2;
+        _context26.p = 1;
+        _context26.n = 2;
         return (0,_wordpress_data_controls__WEBPACK_IMPORTED_MODULE_0__.apiFetch)({
           path: "".concat(API_NAMESPACE, "/license-notices/dismissal-status"),
           method: 'GET'
         });
       case 2:
-        response = _context25.v;
-        return _context25.a(2, response.dismissalStatus || {
+        response = _context26.v;
+        return _context26.a(2, response.dismissalStatus || {
           expired: false,
           expiring: false
         });
       case 3:
-        _context25.p = 3;
-        _t12 = _context25.v;
+        _context26.p = 3;
+        _t12 = _context26.v;
         // Silently fail and return default status
         // eslint-disable-next-line no-console
         console.error('Error fetching dismissal status:', _t12);
-        return _context25.a(2, {
+        return _context26.a(2, {
           expired: false,
           expiring: false
         });
     }
-  }, _marked19, null, [[1, 3]]);
+  }, _marked20, null, [[1, 3]]);
 }
 
 /***/ },
