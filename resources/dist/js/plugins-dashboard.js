@@ -1268,16 +1268,23 @@ var SuiteLicense = function SuiteLicense(_ref) {
     setSelected = _useState6[1];
   var _useState7 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState8 = _slicedToArray(_useState7, 2),
-    busy = _useState8[0],
-    setBusy = _useState8[1];
-  var _useState9 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    selectSpecific = _useState8[0],
+    setSelectSpecific = _useState8[1];
+  var _useState9 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState0 = _slicedToArray(_useState9, 2),
-    results = _useState0[0],
-    setResults = _useState0[1];
-  var _useState1 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    busy = _useState0[0],
+    setBusy = _useState0[1];
+  var _useState1 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState10 = _slicedToArray(_useState1, 2),
-    progress = _useState10[0],
-    setProgress = _useState10[1];
+    results = _useState10[0],
+    setResults = _useState10[1];
+  var _useState11 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState12 = _slicedToArray(_useState11, 2),
+    progress = _useState12[0],
+    setProgress = _useState12[1];
+  var targetPlugins = selectSpecific ? plugins.filter(function (plugin) {
+    return selected.includes(plugin.slug);
+  }) : plugins;
   var activate = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(event) {
       var completed, _iterator, _step, plugin, response, _response$error, _t, _t2, _t3;
@@ -1285,7 +1292,7 @@ var SuiteLicense = function SuiteLicense(_ref) {
         while (1) switch (_context.p = _context.n) {
           case 0:
             event.preventDefault();
-            if (!(busy || !key.trim() || !selected.length)) {
+            if (!(busy || isLoading || !key.trim() || !targetPlugins.length)) {
               _context.n = 1;
               break;
             }
@@ -1295,9 +1302,7 @@ var SuiteLicense = function SuiteLicense(_ref) {
             setResults([]);
             completed = [];
             _context.p = 2;
-            _iterator = _createForOfIteratorHelper(plugins.filter(function (plugin) {
-              return selected.includes(plugin.slug);
-            }));
+            _iterator = _createForOfIteratorHelper(targetPlugins);
             _context.p = 3;
             _iterator.s();
           case 4:
@@ -1413,9 +1418,19 @@ var SuiteLicense = function SuiteLicense(_ref) {
     value: key,
     onChange: setKey,
     disabled: busy
-  }), /*#__PURE__*/React.createElement("fieldset", {
+  }), /*#__PURE__*/React.createElement("p", null, selectSpecific ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('This will replace any saved license key for each selected product. This will not install or activate any plugins.', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('This will apply your license key to all products, replacing any saved license keys. This will not install or activate any plugins.', 'publishpress-hub')), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Select specific plugins', 'publishpress-hub'),
+    checked: selectSpecific,
+    disabled: busy || isLoading,
+    onChange: function onChange(enabled) {
+      setSelectSpecific(enabled);
+      if (enabled) setSelected(plugins.map(function (plugin) {
+        return plugin.slug;
+      }));
+    }
+  }), selectSpecific && /*#__PURE__*/React.createElement("fieldset", {
     disabled: busy || isLoading
-  }, /*#__PURE__*/React.createElement("legend", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Select products included in your subscription', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('This will replace any saved license key for each selected product. This will not install or activate any plugins.', 'publishpress-hub')), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("legend", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Select products included in your subscription', 'publishpress-hub')), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-suite-products"
   }, plugins.map(function (plugin) {
     return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.CheckboxControl, {
@@ -1434,8 +1449,8 @@ var SuiteLicense = function SuiteLicense(_ref) {
     type: "submit",
     variant: "primary",
     isLoading: busy,
-    disabled: isLoading || !key.trim() || !selected.length
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Activate license for selected products', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
+    disabled: busy || isLoading || !key.trim() || !targetPlugins.length
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Activate license key', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
     role: "status"
   }, progress), results.length > 0 && /*#__PURE__*/React.createElement("ul", {
     className: "pp-hub-suite-results"
