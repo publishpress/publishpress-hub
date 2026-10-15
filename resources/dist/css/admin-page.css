@@ -1377,15 +1377,15 @@ footer .pp-hub-footer-logo img {
 }
 
 .pp-hub-button.is-link.is-renew-link {
-    color: var(--pp-hub-secondary-color);
+    color: var(--pp-hub-primary-color);
 }
 
 .pp-hub-button.is-link.is-renew-link:hover {
-    color: var(--pp-hub-secondary-color-darker);
+    color: var(--pp-hub-primary-color-darker);
 }
 
 .pp-hub-button.is-link.is-renew-link:focus {
-    color: var(--pp-hub-secondary-color-darker);
+    color: var(--pp-hub-primary-color-darker);
 }
 
 .components-button.has-icon.has-text {
@@ -2513,6 +2513,18 @@ body.sticky-menu.folded .pp-hub-snackbar-list {
 
 .components-notice .components-notice__dismiss {
     margin-top: 12px;
+}
+
+/* License notices share the bundle panel shape and retain a clear renewal action. */
+.pp-hub-notices-list .components-notice:has(.pp-hub-renew-link) {
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 0 0 24px;
+}
+.components-notice .pp-hub-renew-link {
+    color: var(--pp-hub-primary-color);
+    font-weight: 600;
+    margin-left: 8px;
 }
 
 /*!************************************************************************************************!*\

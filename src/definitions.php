@@ -248,7 +248,8 @@ return [
     AbstractDependencies::LICENSE_EXPIRATION_NOTICE_SERVICE =>
         fn(ContainerInterface $container) => new LicenseExpirationNoticeService(
             $container->get(AbstractDependencies::LICENSE_STATUS_STORAGE_SERVICE),
-            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE)
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
 
     AbstractDependencies::LICENSE_VALIDATION_BOOTSTRAP_SERVICE =>

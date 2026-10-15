@@ -892,15 +892,12 @@ var useLicenseExpirationWarning = function useLicenseExpirationWarning(plugins) 
     };
   }(), []);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (!plugins || plugins.length === 0) {
-      return;
-    }
     var expiringPlugins = [];
     var expiredPlugins = [];
-    plugins.forEach(function (plugin) {
+    (plugins || []).forEach(function (plugin) {
       // Check for expired licenses using the isExpired flag from license services
       // This takes priority over expiring licenses
-      if (plugin.proPlugin.isInstalled && plugin.proPlugin.isExpired && plugin.proPlugin.detailsUrl) {
+      if (plugin.proPlugin.isInstalled && plugin.proPlugin.isExpired) {
         expiredPlugins.push({
           name: plugin.proPlugin.name,
           expirationDate: plugin.proPlugin.licenseExpirationDateFormatted || plugin.proPlugin.licenseExpirationDate || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('N/A', 'publishpress-hub'),
@@ -910,7 +907,7 @@ var useLicenseExpirationWarning = function useLicenseExpirationWarning(plugins) 
       // Check for licenses expiring within the specified days
       // Use daysUntilExpiration from the plugin data (calculated by backend)
       // Only check if not already expired
-      else if (plugin.proPlugin.isLicensed && !plugin.proPlugin.isExpired && plugin.proPlugin.daysUntilExpiration !== undefined && plugin.proPlugin.daysUntilExpiration >= 0 && plugin.proPlugin.daysUntilExpiration <= daysUntilExpiration) {
+      else if (plugin.proPlugin.isInstalled && plugin.proPlugin.isLicensed && !plugin.proPlugin.isExpired && plugin.proPlugin.daysUntilExpiration !== undefined && plugin.proPlugin.daysUntilExpiration >= 0 && plugin.proPlugin.daysUntilExpiration <= daysUntilExpiration) {
         expiringPlugins.push({
           name: plugin.proPlugin.name,
           expirationDate: plugin.proPlugin.licenseExpirationDateFormatted || plugin.proPlugin.licenseExpirationDate,
@@ -1097,6 +1094,10 @@ var createFilterOptions = function createFilterOptions(filterCounts) {
     value: 'unlicensed',
     total: filterCounts.unlicensed
   }, {
+    label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Expired', 'publishpress-hub'),
+    value: 'expired',
+    total: filterCounts.expired
+  }, {
     label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Active', 'publishpress-hub'),
     value: 'active',
     total: filterCounts.active
@@ -1131,7 +1132,7 @@ var PluginsDashboardComponent = function PluginsDashboardComponent() {
   // Optimize filterOptions memoization with stable reference
   var filterOptions = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
     return createFilterOptions(filterCounts);
-  }, [filterCounts.all, filterCounts.unlicensed, filterCounts.active, filterCounts.inactive, filterCounts.notInstalled, filterCounts.updatesAvailable]);
+  }, [filterCounts.expired, filterCounts.all, filterCounts.unlicensed, filterCounts.active, filterCounts.inactive, filterCounts.notInstalled, filterCounts.updatesAvailable]);
 
   // Fetch plugins only once on mount
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
@@ -1140,7 +1141,7 @@ var PluginsDashboardComponent = function PluginsDashboardComponent() {
   }, []);
 
   // Check for licenses expiring within the specified days
-  (0,_hooks_use_license_expiration_warning__WEBPACK_IMPORTED_MODULE_12__.useLicenseExpirationWarning)(plugins, 30);
+  (0,_hooks_use_license_expiration_warning__WEBPACK_IMPORTED_MODULE_12__.useLicenseExpirationWarning)(allPlugins, 30);
   var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     isAltPressed = _useState2[0],
@@ -6877,6 +6878,7 @@ var getFilterCounts = createMemoizedSelector(function (state) {
   var filterResults = {
     all: [],
     unlicensed: [],
+    expired: [],
     active: [],
     inactive: [],
     notInstalled: [],
@@ -6886,6 +6888,9 @@ var getFilterCounts = createMemoizedSelector(function (state) {
   // Single pass through plugins to calculate all filters
   plugins.forEach(function (plugin) {
     filterResults.all.push(plugin);
+    if (plugin.proPlugin.isInstalled && plugin.proPlugin.isExpired) {
+      filterResults.expired.push(plugin);
+    }
     if (!plugin.hasAnyVersionInstalled) {
       filterResults.notInstalled.push(plugin);
     } else {
@@ -6905,6 +6910,7 @@ var getFilterCounts = createMemoizedSelector(function (state) {
   return {
     all: filterResults.all.length,
     unlicensed: filterResults.unlicensed.length,
+    expired: filterResults.expired.length,
     active: filterResults.active.length,
     inactive: filterResults.inactive.length,
     notInstalled: filterResults.notInstalled.length,
@@ -6915,6 +6921,8 @@ var filterPlugin = function filterPlugin(plugin, selectedFilter) {
   switch (selectedFilter) {
     case 'notInstalled':
       return !plugin.hasAnyVersionInstalled;
+    case 'expired':
+      return plugin.proPlugin.isInstalled && plugin.proPlugin.isExpired;
     case 'unlicensed':
       return plugin.proPlugin.isInstalled && !plugin.proPlugin.isLicensed;
     case 'active':

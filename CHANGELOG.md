@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Changed: Used the WordPress filesystem API for debug logs, translation files, and downloaded ZIP signature checks (#249).
 - Changed: Used a URL encoded SVG for the admin menu icon instead of Base64 encoding (#248).
 - Changed: Documented the wildcard EDD transient cleanup queries and added targeted coding-standard exceptions (#250).
+- Fixed: Updated expiration notices from local dates and current installations, clarified expired activation errors, improved renewal links, and added an Expired filter (#275).
 - Fixed: Activated shared license keys individually for other plugins when using the all plugins option, and reported activation failures (#274).
 - Fixed: Sorted the plugins dashboard and bundle license selector alphabetically, regardless of license status (#273).
 - Fixed: Improved recovery when plugin conflict resolution fails to reactivate the selected plugin (#108).
