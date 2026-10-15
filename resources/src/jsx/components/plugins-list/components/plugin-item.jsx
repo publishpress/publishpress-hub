@@ -68,9 +68,6 @@ const PluginItemComponent = ({
         isDeactivatingLicense,
     } = progressStates;
 
-    const navigation = pluginFamily.hasAnyVersionActive && !pluginFamily.hasConflictingInstallations
-        ? window.ppHubPluginsDashboardConfig?.pluginNavigation?.[pluginFamily.slug] || {}
-        : {};
     const status = usePluginStatus(pluginFamily);
     const { iconSrc, displayName } = usePluginDisplayInfo(pluginFamily, pluginIconBaseUrl, status);
 
@@ -234,13 +231,6 @@ const PluginItemComponent = ({
                     <div className='pp-hub-plugins-list-item-description'>
                         {pluginFamily.description}
                     </div>
-                    {(navigation.secondary?.length > 0) && (
-                        <nav className="pp-hub-plugin-shortcuts" aria-label={sprintf(__('%s shortcuts', 'publishpress-hub'), displayName)}>
-                            {navigation.secondary.map(link =>
-                                <a key={link.url} href={link.url}>{link.label}</a>
-                            )}
-                        </nav>
-                    )}
                     <div className='pp-hub-plugins-list-item-inline-actions'>
                         {actionButtonsData.map((buttonProps, index) => {
                             if (buttonProps.key === 'activate' && !isSmallMobile) {
@@ -270,7 +260,6 @@ const PluginItemComponent = ({
             </div>
             <div className='pp-hub-plugins-list-item-actions'>
                 <VStack>
-                    {navigation.primary && <Button variant="primary" href={navigation.primary.url} target="_self" disabled={Object.values(progressStates).some(Boolean)}>{navigation.primary.label}</Button>}
                     <ActionButton
                         pluginFamily={pluginFamily}
                         inProgress={inProgress}

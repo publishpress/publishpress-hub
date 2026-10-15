@@ -21,6 +21,21 @@ use PublishPress\Hub\Infrastructure\License\Handlers\SerializedArrayHandler;
 use PublishPress\Hub\Infrastructure\License\Handlers\SerializedObjectHandler;
 
 return [
+    'cart' => [
+        RawStringHandler::class,
+        '_sc_pro_license_key',
+        '_sc_pro_license_status',
+    ],
+    'taxonomies' => [
+        RawStringHandler::class,
+        'taxopress_license_key',
+        'taxopress_license_status',
+    ],
+    'tag-groups' => [
+        RawStringHandler::class,
+        'tag_groups_license_key',
+        'tag_groups_license_status',
+    ],
     'checklists' => [
         SerializedObjectHandler::class,
         'publishpress_checklists_settings_options',

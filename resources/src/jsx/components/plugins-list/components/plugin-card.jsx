@@ -1,5 +1,5 @@
 /**
- * Compact plugin card with shortcuts and a persistent action footer.
+ * Compact plugin card with a persistent action footer.
  *
  * @author PublishPress
  * @copyright Copyright (c) 2026, PublishPress
@@ -17,6 +17,8 @@ const documentationCategories = {
     checklists: 'checklists', future: 'future', permissions: 'presspermit',
     planner: 'publishpress', revisions: 'revisions', series: 'series',
     shortlinks: 'publishpress-shortlinks', statuses: 'publishpress-statuses',
+    cart: 'publishpress-cart', taxonomies: 'publishpress-taxonomies',
+    'tag-groups': 'publishpress-tag-groups',
 };
 
 export const PluginCard = ({
@@ -53,11 +55,6 @@ export const PluginCard = ({
     const inProgress = progressStates.isInstalling || progressStates.isUpgrading || progressStates.isResolvingConflict;
     const active = pluginFamily.hasAnyVersionActive;
     const conflict = pluginFamily.hasConflictingInstallations;
-    const navigation = active && !conflict
-        ? window.ppHubPluginsDashboardConfig?.pluginNavigation?.[pluginFamily.slug] || {}
-        : {};
-    const links = navigation.secondary || [];
-    const primaryLink = navigation.primary;
     const category = documentationCategories[pluginFamily.slug];
     const documentationUrl = category
         ? `https://publishpress.com/docs-category/${category}/`
@@ -91,10 +88,7 @@ export const PluginCard = ({
                 </div>
             </div>
 
-            <div className="pp-hub-plugin-card__navigation">
-                {links.length > 0 && <nav className="pp-hub-plugin-card__shortcuts" aria-label={sprintf(__('%s shortcuts', 'publishpress-hub'), displayName)}>
-                    {links.map(link => <a key={link.url} href={link.url}>{link.label}</a>)}
-                </nav>}
+            <div className="pp-hub-plugin-card__actions">
                 <details ref={moreRef} className="pp-hub-plugin-card__more">
                     <summary aria-label={sprintf(__('More actions for %s', 'publishpress-hub'), displayName)}>{__('More', 'publishpress-hub')}</summary>
                     <div className="pp-hub-plugin-card__more-actions">
@@ -116,14 +110,11 @@ export const PluginCard = ({
 
             <footer className="pp-hub-plugin-card__footer">
                 <div className="pp-hub-plugin-card__primary">
-                    {primaryLink ? <Button variant="primary" href={primaryLink.url} target="_self" disabled={busy}>
-                        {primaryLink.label}
-                    </Button> : <ActionButton pluginFamily={pluginFamily} inProgress={inProgress} disabled={busy} {...actions} />}
+                    <ActionButton pluginFamily={pluginFamily} inProgress={inProgress} disabled={busy} {...actions} />
                 </div>
                 <Button variant="secondary" href={documentationUrl} icon="book-alt">
                     {__('Documentation', 'publishpress-hub')}
                 </Button>
-                {primaryLink && <ActionButton pluginFamily={pluginFamily} inProgress={inProgress} disabled={busy} {...actions} />}
             </footer>
         </article>
     );

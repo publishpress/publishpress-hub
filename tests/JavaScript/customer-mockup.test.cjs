@@ -47,8 +47,11 @@ async function main() {
         localStorage: { getItem: key => stored.get(key), setItem: (key, value) => stored.set(key, value) },
     };
     const preferences = load('resources/src/jsx/components/plugins-list/hooks/use-dashboard-preferences.js', window);
+    assert.equal(preferences.exports.readPreferences().layout, 'list');
+    stored.set('pp-hub-dashboard:1:7', JSON.stringify({ layout: 'unknown' }));
+    assert.equal(preferences.exports.readPreferences().layout, 'list');
     stored.set('pp-hub-dashboard:1:7', 'invalid JSON');
-    assert.equal(preferences.exports.readPreferences().layout, 'cards');
+    assert.equal(preferences.exports.readPreferences().layout, 'list');
     assert.equal(preferences.exports.readPreferences().grouped, true);
     let state = preferences.render(module => module.useDashboardPreferences());
     state.toggleFavorite('statuses');
@@ -56,10 +59,11 @@ async function main() {
     assert.equal(state.preferences.favorites[0], 'statuses');
     state.updatePreferences({ layout: 'cards' });
     assert.equal(JSON.parse(stored.get('pp-hub-dashboard:1:7')).layout, 'cards');
+    assert.equal(preferences.exports.readPreferences().layout, 'cards');
     window.ppHubPluginsDashboardConfig.preferencesKey = '1:8';
     assert.equal(preferences.exports.readPreferences().favorites.length, 0);
     window.localStorage.getItem = () => { throw Error('Storage disabled'); };
-    assert.equal(preferences.exports.readPreferences().layout, 'cards');
+    assert.equal(preferences.exports.readPreferences().layout, 'list');
 
     const requests = [];
     let refreshed = 0;
@@ -85,9 +89,6 @@ async function main() {
     const output = JSON.stringify(tree);
     assert.ok(output.includes('Product not covered') && output.includes('License activated.'));
 
-    window.ppHubPluginsDashboardConfig.pluginNavigation = {
-        statuses: { primary: { label: 'Open Statuses', url: '/wp-admin/admin.php?page=publishpress-statuses' }, secondary: [{label: 'Settings', url: '/wp-admin/admin.php?page=statuses-settings'}] },
-    };
     const cards = load('resources/src/jsx/components/plugins-list/components/plugin-card.jsx', window);
     let deactivated = false;
     const cardProps = {
@@ -96,14 +97,10 @@ async function main() {
         progressStates: {}, actionButtons: [], onDeactivate: () => { deactivated = true; },
     };
     let card = cards.exports.PluginCard(cardProps);
-    assert.ok(JSON.stringify(card).includes('Open Statuses'));
-    assert.ok(JSON.stringify(card).includes('statuses-settings'));
+    assert.equal(flatten(card).filter(node => node.type === 'ActionButton').length, 1);
+    assert.equal(flatten(card).some(node => node.type === 'nav'), false);
     const activating = cards.exports.PluginCard({ ...cardProps, progressStates: { isActivating: true } });
     assert.ok(flatten(activating).some(node => node.type === 'Spinner'));
-    window.ppHubPluginsDashboardConfig.pluginNavigation.statuses.primary = null;
-    card = cards.exports.PluginCard(cardProps);
-    assert.ok(JSON.stringify(card).includes('statuses-settings'), 'Removing the primary link preserves secondary links');
-    assert.ok(!JSON.stringify(card).includes('Open Statuses'));
 
     flatten(card).find(node => node.type === 'Toggle').props.onChange(false);
     assert.equal(deactivated, true, 'Card deactivation uses the existing confirmation handler');
@@ -113,7 +110,7 @@ async function main() {
     card = cards.exports.PluginCard({ ...cardProps, pluginFamily: { ...cardProps.pluginFamily, hasConflictingInstallations: true } });
     assert.equal(flatten(card).some(node => node.type === 'Toggle'), false);
     assert.equal(flatten(card).some(node => node.props?.href?.startsWith('/wp-admin/')), false);
-    console.log('Passed: card deactivation handler, busy controls, and conflict navigation protection.');
+    console.log('Passed: card deactivation handler, busy controls, and conflict controls.');
     console.log('Passed: preference persistence, user isolation, unavailable storage, partial license failure, individual validation, and key clearing.');
 }
 

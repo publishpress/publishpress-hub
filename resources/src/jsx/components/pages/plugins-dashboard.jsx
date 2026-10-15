@@ -55,6 +55,11 @@ const createFilterOptions = (filterCounts) => [
         total: filterCounts.unlicensed,
     },
     {
+        label: __('Expired', 'publishpress-hub'),
+        value: 'expired',
+        total: filterCounts.expired,
+    },
+    {
         label: __('Active', 'publishpress-hub'),
         value: 'active',
         total: filterCounts.active,
@@ -98,7 +103,7 @@ const PluginsDashboardComponent = () => {
     // Optimize filterOptions memoization with stable reference
     const filterOptions = useMemo(() => {
         return createFilterOptions(filterCounts);
-    }, [filterCounts.all, filterCounts.unlicensed, filterCounts.active, filterCounts.inactive, filterCounts.notInstalled, filterCounts.updatesAvailable]);
+    }, [filterCounts.expired, filterCounts.all, filterCounts.unlicensed, filterCounts.active, filterCounts.inactive, filterCounts.notInstalled, filterCounts.updatesAvailable]);
 
     // Fetch plugins only once on mount
     useEffect(() => {
@@ -107,7 +112,7 @@ const PluginsDashboardComponent = () => {
     }, []);
 
     // Check for licenses expiring within the specified days
-    useLicenseExpirationWarning(plugins, 30);
+    useLicenseExpirationWarning(allPlugins, 30);
 
     const [isAltPressed, setIsAltPressed] = useState(false);
 

@@ -248,7 +248,8 @@ return [
     AbstractDependencies::LICENSE_EXPIRATION_NOTICE_SERVICE =>
         fn(ContainerInterface $container) => new LicenseExpirationNoticeService(
             $container->get(AbstractDependencies::LICENSE_STATUS_STORAGE_SERVICE),
-            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE)
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
 
     AbstractDependencies::LICENSE_VALIDATION_BOOTSTRAP_SERVICE =>
@@ -556,7 +557,8 @@ return [
         fn(ContainerInterface $container) => new ReuseLicenseForAllPluginsUseCase(
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
             $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
-            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
         ),
 
     AbstractDependencies::VALIDATE_LICENSES_USE_CASE =>

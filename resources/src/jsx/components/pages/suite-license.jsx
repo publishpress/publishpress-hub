@@ -6,7 +6,7 @@
  * @license GPL v2 or later
  */
 import { useState } from '@wordpress/element';
-import { CheckboxControl, TextControl } from '@wordpress/components';
+import { CheckboxControl, TextControl, ToggleControl } from '@wordpress/components';
 import apiFetch from '@wordpress/api-fetch';
 import { __, sprintf } from '@publishpress-hub/i18n';
 import { Button } from '../buttons/button';
@@ -15,18 +15,23 @@ export const SuiteLicense = ({ plugins, onRefresh, isLoading }) => {
     const [open, setOpen] = useState(window.location.hash === '#suite-license');
     const [key, setKey] = useState('');
     const [selected, setSelected] = useState([]);
+    const [selectSpecific, setSelectSpecific] = useState(false);
     const [busy, setBusy] = useState(false);
     const [results, setResults] = useState([]);
     const [progress, setProgress] = useState('');
 
+    const targetPlugins = selectSpecific
+        ? plugins.filter(plugin => selected.includes(plugin.slug))
+        : plugins;
+
     const activate = async event => {
         event.preventDefault();
-        if (busy || !key.trim() || !selected.length) return;
+        if (busy || isLoading || !key.trim() || !targetPlugins.length) return;
         setBusy(true);
         setResults([]);
         const completed = [];
         try {
-            for (const plugin of plugins.filter(plugin => selected.includes(plugin.slug))) {
+            for (const plugin of targetPlugins) {
                 setProgress(sprintf(__('Checking %s…', 'publishpress-hub'), plugin.name));
                 try {
                     const response = await apiFetch({
@@ -57,24 +62,32 @@ export const SuiteLicense = ({ plugins, onRefresh, isLoading }) => {
         <div className="pp-hub-suite-license__summary">
             <span className="pp-hub-suite-license__icon" aria-hidden="true"><span className="dashicons dashicons-admin-network" /></span>
             <div className="pp-hub-suite-license__copy">
-                <h2>{__('PublishPress Bundle / Suite', 'publishpress-hub')}</h2>
+                <h2>{__('PublishPress Bundle', 'publishpress-hub')}</h2>
                 <p>{__('Connect your included Pro plugins with one license key.', 'publishpress-hub')}</p>
             </div>
             <Button variant="primary" disabled={busy} aria-expanded={open} aria-controls="pp-hub-suite-form"
-                onClick={() => setOpen(!open)}>{open ? __('Close license setup', 'publishpress-hub') : __('Activate Suite License', 'publishpress-hub')}</Button>
+                onClick={() => setOpen(!open)}>{open ? __('Close license setup', 'publishpress-hub') : __('Activate Bundle License', 'publishpress-hub')}</Button>
         </div>
         {open && <form id="pp-hub-suite-form" onSubmit={activate}>
             <TextControl label={__('License key', 'publishpress-hub')} type="password" autoComplete="off"
                 value={key} onChange={setKey} disabled={busy} />
-            <fieldset disabled={busy || isLoading}>
+            <p>{selectSpecific
+                ? __('This will replace any saved license key for each selected product. This will not install or activate any plugins.', 'publishpress-hub')
+                : __('This will apply your license key to all products, replacing any saved license keys. This will not install or activate any plugins.', 'publishpress-hub')}</p>
+            <ToggleControl label={__('Select specific plugins', 'publishpress-hub')}
+                checked={selectSpecific} disabled={busy || isLoading}
+                onChange={enabled => {
+                    setSelectSpecific(enabled);
+                    if (enabled) setSelected(plugins.map(plugin => plugin.slug));
+                }} />
+            {selectSpecific && <fieldset disabled={busy || isLoading}>
                 <legend>{__('Select products included in your subscription', 'publishpress-hub')}</legend>
-                <p>{__('This replaces the saved license key for each selected product after successful activation. Keys managed in wp-config.php cannot be changed here. No plugins will be installed or activated.', 'publishpress-hub')}</p>
                 <div className="pp-hub-suite-products">{plugins.map(plugin => <CheckboxControl key={plugin.slug}
                     label={plugin.name} checked={selected.includes(plugin.slug)}
                     onChange={checked => setSelected(previous => checked ? [...previous, plugin.slug] : previous.filter(slug => slug !== plugin.slug))} />)}</div>
-            </fieldset>
-            <Button type="submit" variant="primary" isLoading={busy} disabled={isLoading || !key.trim() || !selected.length}>
-                {__('Activate license for selected products', 'publishpress-hub')}
+            </fieldset>}
+            <Button type="submit" variant="primary" isLoading={busy} disabled={busy || isLoading || !key.trim() || !targetPlugins.length}>
+                {__('Activate license key', 'publishpress-hub')}
             </Button>
             <p role="status">{progress}</p>
             {results.length > 0 && <ul className="pp-hub-suite-results">{results.map(result => <li key={result.slug}>
