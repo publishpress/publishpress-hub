@@ -6740,17 +6740,11 @@ var areArgsEqual = function areArgsEqual(prev, curr) {
 var getSelectedFilter = function getSelectedFilter(state) {
   return state.selectedFilter;
 };
-var getPlugins = function getPlugins(state) {
-  return state.plugins;
-};
+var getPlugins = createMemoizedSelector(function (state) {
+  return sortPlugins(state.plugins);
+});
 var sortPlugins = function sortPlugins(pluginFamily) {
   return _toConsumableArray(pluginFamily).sort(function (a, b) {
-    if (a.proPlugin.isLicensed && !b.proPlugin.isLicensed) {
-      return -1;
-    }
-    if (!a.proPlugin.isLicensed && b.proPlugin.isLicensed) {
-      return 1;
-    }
     return a.name.localeCompare(b.name, undefined, {
       sensitivity: 'base'
     });

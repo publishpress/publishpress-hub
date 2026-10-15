@@ -34,19 +34,12 @@ export const getSelectedFilter = (state) => {
     return state.selectedFilter;
 }
 
-export const getPlugins = (state) => {
-    return state.plugins;
-}
+export const getPlugins = createMemoizedSelector((state) => {
+    return sortPlugins(state.plugins);
+});
 
 const sortPlugins = (pluginFamily) => {
     return [...pluginFamily].sort((a, b) => {
-        if (a.proPlugin.isLicensed && !b.proPlugin.isLicensed) {
-            return -1;
-        }
-        if (!a.proPlugin.isLicensed && b.proPlugin.isLicensed) {
-            return 1;
-        }
-
         return a.name.localeCompare(b.name, undefined, {
             sensitivity: 'base',
         });
