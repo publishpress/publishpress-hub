@@ -329,13 +329,13 @@ const DebugLogTabComponent = () => {
 
             <div className="pp-hub-debug-log-tab__viewer">
                 { isLoading && (
-                    <p className="pp-hub-debug-log-tab__loading">
+                    <p className="pp-hub-debug-log-tab__loading" role="status" aria-live="polite">
                         { __('Loading log...', 'publishpress-hub') }
                     </p>
                 ) }
 
                 { !isLoading && isEmpty && (
-                    <p className="pp-hub-debug-log-tab__empty">
+                    <p className="pp-hub-debug-log-tab__empty" role="status" aria-live="polite">
                         { __('The debug log is empty. Perform some actions (e.g. activate a license) and refresh to see entries.', 'publishpress-hub') }
                     </p>
                 ) }

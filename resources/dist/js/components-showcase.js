@@ -71,7 +71,7 @@ var FooterComponent = function FooterComponent(_ref) {
     pluginSupportUrl = _ref.pluginSupportUrl,
     logoUrl = _ref.logoUrl;
   var stars = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return Array(5).fill('<span class="dashicons dashicons-star-filled"></span>').join('');
+    return Array(5).fill('<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>').join('');
   }, []);
   return /*#__PURE__*/React.createElement("footer", {
     className: "pp-hub-footer"
@@ -307,7 +307,8 @@ var BadgeComponent = function BadgeComponent(_ref) {
   return /*#__PURE__*/React.createElement("span", {
     className: "pp-hub-badge ".concat(className)
   }, icon && /*#__PURE__*/React.createElement("span", {
-    className: "pp-hub-badge-icon"
+    className: "pp-hub-badge-icon",
+    "aria-hidden": "true"
   }, icon), children);
 };
 var Badge = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(BadgeComponent);
@@ -372,7 +373,13 @@ var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forward
     return rel || (href ? DEFAULT_REL : undefined);
   }, [rel, href]);
   if (isLoading) {
-    children = /*#__PURE__*/React.createElement(React.Fragment, null, spinnerPosition === 'left' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, null), children, spinnerPosition === 'right' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, null));
+    children = /*#__PURE__*/React.createElement("span", {
+      className: "pp-hub-button-loading-content"
+    }, spinnerPosition === 'left' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {
+      className: "pp-hub-button-spinner"
+    }), /*#__PURE__*/React.createElement("span", null, children), spinnerPosition === 'right' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {
+      className: "pp-hub-button-spinner"
+    }));
     disabled = true;
   }
   var buttonClassName = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
@@ -395,6 +402,7 @@ var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forward
     rel: relValue,
     className: buttonClassName,
     disabled: disabled || isLoading,
+    "aria-busy": isLoading || undefined,
     title: title,
     style: style
   }, restProps), children);

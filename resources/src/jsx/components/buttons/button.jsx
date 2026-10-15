@@ -41,11 +41,11 @@ const ButtonComponent = forwardRef(({
 
     if (isLoading) {
         children = (
-            <>
-                {spinnerPosition === 'left' && <Spinner />}
-                {children}
-                {spinnerPosition === 'right' && <Spinner />}
-            </>
+            <span className="pp-hub-button-loading-content">
+                {spinnerPosition === 'left' && <Spinner className="pp-hub-button-spinner" />}
+                <span>{children}</span>
+                {spinnerPosition === 'right' && <Spinner className="pp-hub-button-spinner" />}
+            </span>
         );
 
         disabled = true;
@@ -75,6 +75,7 @@ const ButtonComponent = forwardRef(({
             rel={relValue}
             className={buttonClassName}
             disabled={disabled || isLoading}
+            aria-busy={isLoading || undefined}
             title={title}
             style={style}
             {...restProps}

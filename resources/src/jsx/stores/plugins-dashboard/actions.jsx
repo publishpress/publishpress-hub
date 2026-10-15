@@ -306,6 +306,7 @@ export function* installProPlugin(pluginFamilySlug, licenseKey, applyToAll = fal
         });
 
         if (data.success) {
+            yield* reportSharedLicenseFailures(data);
             // Activate the plugin after successful installation without showing a second success notice.
             yield* activatePlugin(pluginFamilySlug, true, true);
 
@@ -524,6 +525,7 @@ export function* upgradePluginToPro(pluginFamilySlug, licenseKey, applyToAll = f
         });
 
         if (data.success) {
+            yield* reportSharedLicenseFailures(data);
             // Activate the plugin after successful upgrade without showing a second success notice.
             yield* activatePlugin(pluginFamilySlug, true, true);
 
@@ -581,13 +583,23 @@ export function* resolveConflict(pluginFamily, pluginToKeep) {
 
         yield apiReady();
 
-        const data = yield apiFetch({
+        let data = yield apiFetch({
             path: `${API_NAMESPACE}/plugins/${pluginFamily.slug}/resolve-conflict`,
             method: 'POST',
             data: {
                 pluginToKeep: pluginToKeep,
+                phase: 'activate',
             },
         });
+
+        // A fresh request must load the selected edition before removing the inactive copy.
+        if (data.success && data.requiresCleanup) {
+            data = yield apiFetch({
+                path: `${API_NAMESPACE}/plugins/${pluginFamily.slug}/resolve-conflict`,
+                method: 'POST',
+                data: { pluginToKeep, phase: 'cleanup' },
+            });
+        }
 
         if (data.success) {
             yield fetchPlugins();
@@ -674,6 +686,17 @@ export function* deactivateLicense(pluginFamily) {
     }
 }
 
+function* reportSharedLicenseFailures(data) {
+    const failed = (data.licenseResults || []).filter(result => !result.success);
+    if (failed.length) {
+        yield createNotice(
+            sprintf(__('The license key could not be activated for these plugins: %s. Review their licenses or retry using Activate Bundle License.', 'publishpress-hub'), failed.map(result => result.slug).join(', ')),
+            'warning'
+        );
+    }
+    return failed.length > 0;
+}
+
 export function* activateLicense(pluginFamily, licenseKey, applyToAll = false) {
     try {
         yield {type: 'ACTIVATE_LICENSE_START', data: {pluginFamily, licenseKey, applyToAll}};
@@ -691,11 +714,12 @@ export function* activateLicense(pluginFamily, licenseKey, applyToAll = false) {
 
 
         if (data.success) {
+            const hasLicenseFailures = yield* reportSharedLicenseFailures(data);
             yield fetchPlugins();
 
             yield {type: 'ACTIVATE_LICENSE_SUCCESS', data: {pluginFamily, licenseKey, applyToAll}};
 
-            const successMessage = applyToAll
+            const successMessage = applyToAll && !hasLicenseFailures
                 ? __('License activated successfully for all PublishPress plugins', 'publishpress-hub')
                 : sprintf(__('%s license activated successfully', 'publishpress-hub'), pluginFamily.name);
 
@@ -740,13 +764,16 @@ export function* reuseLicenseForAllPlugins(pluginFamily) {
         });
 
         if (data.success) {
+            const hasLicenseFailures = yield* reportSharedLicenseFailures(data);
             yield fetchPlugins();
 
             yield {type: 'ACTIVATE_LICENSE_SUCCESS', data: {pluginFamily, licenseKey: '', applyToAll: true}};
 
             yield createSnackbarNotice(
-                __('License reused successfully for all PublishPress plugins', 'publishpress-hub'),
-                'success'
+                hasLicenseFailures
+                    ? __('License checks complete. Some plugins could not be activated.', 'publishpress-hub')
+                    : __('License activated successfully for all PublishPress plugins', 'publishpress-hub'),
+                hasLicenseFailures ? 'warning' : 'success'
             );
 
             return {

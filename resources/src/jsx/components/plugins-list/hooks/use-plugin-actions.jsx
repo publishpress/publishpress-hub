@@ -63,8 +63,16 @@ export const usePluginActions = (modalManager) => {
     }, [activatePlugin]);
 
     const handleDeactivatePlugin = useCallback((pluginFamily) => {
-        deactivatePlugin(pluginFamily.slug);
-    }, [deactivatePlugin]);
+        openModal(MODAL_TYPES.DEACTIVATE_CONFIRMATION, pluginFamily);
+    }, [openModal, MODAL_TYPES.DEACTIVATE_CONFIRMATION]);
+
+    const handleConfirmDeactivatePlugin = useCallback(async (pluginFamily) => {
+        const result = await deactivatePlugin(pluginFamily.slug);
+        if (result.success && !result.error) {
+            closeModal();
+        }
+        return result;
+    }, [deactivatePlugin, closeModal]);
 
     const handleDeactivateLicense = useCallback(async (pluginFamily) => {
         const result = await deactivateLicense(pluginFamily);
@@ -155,6 +163,7 @@ export const usePluginActions = (modalManager) => {
         handleOpenResolveConflictModal,
         handleActivatePlugin,
         handleDeactivatePlugin,
+        handleConfirmDeactivatePlugin,
         handleOpenUpgradeToProModal,
         handleOpenUninstallConfirmationModal,
         handleOpenLicenseManagementModal,

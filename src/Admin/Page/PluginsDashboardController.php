@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Admin\Page;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
@@ -182,6 +184,7 @@ class PluginsDashboardController implements BootableInterface
             [
                 'logoUrl' => $this->assetService->getPluginAssetUrl('images/publishpress-logo.png'),
                 'apiNonce' => wp_create_nonce('wp_rest'),
+                'preferencesKey' => get_current_blog_id() . ':' . get_current_user_id(),
                 'pluginIconBaseUrl' => $this->assetService->getPluginAssetsBaseUrl(),
             ]
         );

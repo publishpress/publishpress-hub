@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WP\Plugin;
 
+defined('ABSPATH') || exit;
+
 use InvalidArgumentException;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;
@@ -91,6 +93,7 @@ class WPPluginLifecycleAdapter
         }
 
         // Check ZIP file signature (magic bytes: PK\x03\x04)
+        // WP_Filesystem reads whole files; a local stream keeps signature checks bounded to four bytes.
         $fileHandle = fopen($tmpFile, 'rb'); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
         if ($fileHandle === false) {
             wp_delete_file($tmpFile);
@@ -174,6 +177,77 @@ class WPPluginLifecycleAdapter
     }
 
     /**
+     * Switch editions without deleting either copy, restoring activation on failure.
+     *
+     * @since 1.1.0
+     */
+    public function switchActivePlugin(string $previousPath, string $selectedPath): void
+    {
+        if (is_plugin_active_for_network($previousPath) || is_plugin_active_for_network($selectedPath)) {
+            throw new RuntimeException(esc_html__(
+                'Resolve conflicts for network-active plugins from Network Admin.',
+                'publishpress-hub'
+            ));
+        }
+
+        $paths = [$previousPath, $selectedPath];
+        $original = array_values(array_intersect((array) get_option('active_plugins', []), $paths));
+        $complete = false;
+        $restore = static function () use ($paths, $original, &$complete): void {
+            if ($complete) {
+                return;
+            }
+            // Restore only these editions; preserve unrelated activation changes.
+            $active = array_values(array_diff((array) get_option('active_plugins', []), $paths));
+            $active = array_values(array_unique(array_merge($active, $original)));
+            sort($active);
+            update_option('active_plugins', $active);
+            $restored = array_values(array_intersect((array) get_option('active_plugins', []), $paths));
+            if (array_diff($original, $restored) || array_diff($restored, $original)) {
+                throw new RuntimeException(esc_html__(
+                    'Activation recovery failed. Both plugin copies were retained. Please restore the previous version from the Plugins screen.',
+                    'publishpress-hub'
+                ));
+            }
+            $complete = true;
+        };
+        // Activation hooks may terminate PHP instead of throwing an exception.
+        register_shutdown_function($restore);
+
+        try {
+            $this->deactivatePlugin($previousPath);
+            if (is_plugin_active($previousPath)) {
+                throw new RuntimeException(esc_html__('The other plugin could not be deactivated.', 'publishpress-hub'));
+            }
+            $this->activatePlugin($selectedPath);
+            if (!is_plugin_active($selectedPath)) {
+                throw new RuntimeException(esc_html__('The selected plugin did not remain active.', 'publishpress-hub'));
+            }
+            $complete = true;
+        } catch (\Throwable $error) {
+            $restore();
+            throw new RuntimeException(
+                esc_html__('The selected plugin could not be activated. Neither copy was deleted and the previous activation settings were restored.', 'publishpress-hub'),
+                0,
+                $error
+            );
+        }
+    }
+
+    /**
+     * Check cleanup is occurring in a fresh request with the selected edition active.
+     *
+     * @since 1.1.0
+     */
+    public function canRemoveConflictingPlugin(string $previousPath, string $selectedPath): bool
+    {
+        $previousFile = realpath(WP_PLUGIN_DIR . '/' . $previousPath);
+        return is_plugin_active($selectedPath)
+            && !is_plugin_active($previousPath)
+            && !in_array($previousFile, get_included_files(), true);
+    }
+
+    /**
      * Run the uninstallation process for a plugin executing the uninstall.php file
      * or registered uninstall hook.
      *
@@ -226,7 +300,7 @@ class WPPluginLifecycleAdapter
             );
         }
 
-        return true;
+        return $result === true;
     }
 
     /**

@@ -39,6 +39,21 @@
     border-color: unset;
 }
 
+.pp-hub-button .pp-hub-button-loading-content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--pp-hub-spacing-sm);
+    vertical-align: middle;
+}
+
+.pp-hub-button .pp-hub-button-loading-content > .pp-hub-button-spinner {
+    display: block;
+    flex-shrink: 0;
+    margin: 0;
+    position: static;
+}
+
 .pp-hub-button:disabled {
     cursor: not-allowed;
 }
@@ -224,15 +239,15 @@
 }
 
 .pp-hub-button.is-link.is-renew-link {
-    color: var(--pp-hub-secondary-color);
+    color: var(--pp-hub-primary-color);
 }
 
 .pp-hub-button.is-link.is-renew-link:hover {
-    color: var(--pp-hub-secondary-color-darker);
+    color: var(--pp-hub-primary-color-darker);
 }
 
 .pp-hub-button.is-link.is-renew-link:focus {
-    color: var(--pp-hub-secondary-color-darker);
+    color: var(--pp-hub-primary-color-darker);
 }
 
 .components-button.has-icon.has-text {

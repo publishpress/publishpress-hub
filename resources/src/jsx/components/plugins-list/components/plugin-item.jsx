@@ -25,6 +25,7 @@ import { __, sprintf } from '@publishpress-hub/i18n';
 import { Tooltip } from '../../tooltip';
 import { StatusFlag } from './status-flag';
 import { ActionButton } from './action-button';
+import { PluginCard } from './plugin-card';
 import { Button } from '../../buttons/button';
 import {
     usePluginStatus,
@@ -35,6 +36,9 @@ import {
 
 const PluginItemComponent = ({
     pluginFamily,
+    layout = 'list',
+    isFavorite = false,
+    onToggleFavorite,
     pluginIconBaseUrl,
     progressStates,
     onInstall,
@@ -157,6 +161,18 @@ const PluginItemComponent = ({
         return sprintf(__('Installed version: %s', 'publishpress-hub'), installedPlugin.version);
     }, [pluginFamily, status.isInstalled, status.hasConflictingInstallations]);
 
+    if (layout === 'cards') {
+        return <PluginCard
+            pluginFamily={pluginFamily} iconSrc={iconSrc} displayName={displayName}
+            isFavorite={isFavorite} onToggleFavorite={onToggleFavorite}
+            actionButtons={actionButtonsData} progressStates={progressStates}
+            onActivate={onActivate} onDeactivate={onDeactivate}
+            onInstall={onInstall} onResolveConflict={onResolveConflict}
+            onUpgradeToPro={onUpgradeToPro} onManageLicense={onManageLicense}
+            onActivateLicense={onActivateLicense} onUpdate={onUpdate}
+        />;
+    }
+
     return (
         <div
             className={responsiveClasses}
@@ -165,12 +181,24 @@ const PluginItemComponent = ({
         >
             <div className='pp-hub-plugins-list-item-content'>
                 <div className='pp-hub-plugins-list-item-icon'>
-                    <img src={iconSrc} alt={pluginFamily.name} />
+                    <img src={iconSrc} alt="" />
                 </div>
                 <div className='pp-hub-plugins-list-item-info'>
                     <div className='pp-hub-plugins-list-item-name'>
+                        <button type="button" className="pp-hub-favorite" aria-pressed={isFavorite}
+                            aria-label={sprintf(isFavorite ? __('Remove %s from favorites', 'publishpress-hub') : __('Add %s to favorites', 'publishpress-hub'), displayName)}
+                            onClick={() => onToggleFavorite(pluginFamily.slug)}>
+                            <span className={`dashicons dashicons-star-${isFavorite ? 'filled' : 'empty'}`} aria-hidden="true" />
+                        </button>
                         {shouldShowToggle && (
                             <ToggleControl
+                                aria-label={sprintf(
+                                    // translators: %s is the plugin name.
+                                    pluginFamily.hasAnyVersionActive
+                                        ? __('Deactivate %s', 'publishpress-hub')
+                                        : __('Activate %s', 'publishpress-hub'),
+                                    displayName
+                                )}
                                 disabled={status.hasConflictingInstallations}
                                 checked={pluginFamily.hasAnyVersionActive}
                                 onChange={(newValue) => {

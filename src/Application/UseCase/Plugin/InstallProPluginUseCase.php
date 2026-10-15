@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseInvalidException;
@@ -88,7 +90,7 @@ class InstallProPluginUseCase implements UseCaseInterface
         }
 
         $this->licenseManagement->validateAndEnsureActiveLicense($licenseKey, $downloadId);
-        $this->reuseLicenseKeyForAllPlugins($licenseKey, $downloadId, $applyToAll);
+        $licenseResults = $this->reuseLicenseKeyForAllPlugins($licenseKey, $downloadId, $applyToAll);
 
         $pluginInfo = $this->licenseManagement->getLastVersionInfo($licenseKey, $downloadId);
 
@@ -100,6 +102,7 @@ class InstallProPluginUseCase implements UseCaseInterface
         return [
             'slug' => esc_html($plugin->getSlug()),
             'installed' => $plugin->isInstalled(),
+            'licenseResults' => $licenseResults,
         ];
     }
 
@@ -176,24 +179,19 @@ class InstallProPluginUseCase implements UseCaseInterface
      * @param string $licenseKey The license key.
      * @param int $currentDownloadId The current plugin download ID.
      * @param bool $applyToAll Whether to reuse the key for every family.
+     * @return array<array{slug: string, success: bool}>
      * @since 1.0.0
      */
-    private function reuseLicenseKeyForAllPlugins(string $licenseKey, int $currentDownloadId, bool $applyToAll): void
+    private function reuseLicenseKeyForAllPlugins(string $licenseKey, int $currentDownloadId, bool $applyToAll): array
     {
         if (!$applyToAll) {
-            return;
+            return [];
         }
 
-        foreach ($this->pluginFamilyRepository->getAllFamilies() as $family) {
-            $downloadId = $family->getProPlugin()->getDownloadId();
-
-            if ($downloadId === $currentDownloadId || $this->licensePersistence->isLicenseFromConstant($downloadId)) {
-                continue;
-            }
-
-            $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
-            $this->licensePersistence->storeLicenseStatus($downloadId, true);
-            $this->licensePersistence->markLicenseAsFromConstant($downloadId, false);
-        }
+        return $this->licenseManagement->activateLicenseForFamilies(
+            $licenseKey,
+            $this->pluginFamilyRepository->getAllFamilies(),
+            $currentDownloadId
+        );
     }
 }

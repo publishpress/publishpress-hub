@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Application\Service\ActivationRedirectService;
 use PublishPress\Hub\Application\Service\AdminNoticeVisibilityService;
 use PublishPress\Hub\Application\Service\EddPluginUpdateService;
@@ -155,7 +157,8 @@ return [
             $container->get(AbstractDependencies::PLUGIN_TEXT_DOMAIN),
             $container->get(AbstractDependencies::PLUGIN_I18N_SCRIPT_PATH),
             $container->get(AbstractDependencies::PLUGIN_LANGUAGES_PATH),
-            $container->get(AbstractDependencies::ASSET_SERVICE)
+            $container->get(AbstractDependencies::ASSET_SERVICE),
+            $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER)
         ),
 
     AbstractDependencies::ASSET_SERVICE =>
@@ -245,7 +248,8 @@ return [
     AbstractDependencies::LICENSE_EXPIRATION_NOTICE_SERVICE =>
         fn(ContainerInterface $container) => new LicenseExpirationNoticeService(
             $container->get(AbstractDependencies::LICENSE_STATUS_STORAGE_SERVICE),
-            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE)
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
 
     AbstractDependencies::LICENSE_VALIDATION_BOOTSTRAP_SERVICE =>
@@ -553,7 +557,8 @@ return [
         fn(ContainerInterface $container) => new ReuseLicenseForAllPluginsUseCase(
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
             $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
-            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
         ),
 
     AbstractDependencies::VALIDATE_LICENSES_USE_CASE =>

@@ -9,6 +9,7 @@
  ****************************************************************/
 
 namespace PublishPress\Hub;
+defined( 'ABSPATH' ) || exit;
 
 if (! class_exists('PublishPress\\Hub\\Versions')) {
     /**

@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Infrastructure\Autoloader\Autoloader;
 use PublishPress\Hub\Infrastructure\Container\AbstractDependencies;
 use PublishPress\Hub\Infrastructure\Container\DependencyContainer;
@@ -29,7 +31,7 @@ if (defined('PUBLISHPRESS_HUB_PATH')) {
 /*
  * Define the plugin constants.
  */
-define('PUBLISHPRESS_HUB_VERSION', '1.0.7');
+define('PUBLISHPRESS_HUB_VERSION', '1.1.0');
 define('PUBLISHPRESS_HUB_SRC_PATH', __DIR__ . '/');
 define('PUBLISHPRESS_HUB_PATH', realpath(PUBLISHPRESS_HUB_SRC_PATH . '/../') . '/');
 define('PUBLISHPRESS_HUB_PLUGIN_FILE', PUBLISHPRESS_HUB_PATH . 'publishpress-hub.php');

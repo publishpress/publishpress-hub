@@ -71,7 +71,7 @@ var FooterComponent = function FooterComponent(_ref) {
     pluginSupportUrl = _ref.pluginSupportUrl,
     logoUrl = _ref.logoUrl;
   var stars = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return Array(5).fill('<span class="dashicons dashicons-star-filled"></span>').join('');
+    return Array(5).fill('<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>').join('');
   }, []);
   return /*#__PURE__*/React.createElement("footer", {
     className: "pp-hub-footer"
@@ -333,7 +333,13 @@ var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forward
     return rel || (href ? DEFAULT_REL : undefined);
   }, [rel, href]);
   if (isLoading) {
-    children = /*#__PURE__*/React.createElement(React.Fragment, null, spinnerPosition === 'left' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, null), children, spinnerPosition === 'right' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, null));
+    children = /*#__PURE__*/React.createElement("span", {
+      className: "pp-hub-button-loading-content"
+    }, spinnerPosition === 'left' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {
+      className: "pp-hub-button-spinner"
+    }), /*#__PURE__*/React.createElement("span", null, children), spinnerPosition === 'right' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {
+      className: "pp-hub-button-spinner"
+    }));
     disabled = true;
   }
   var buttonClassName = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
@@ -356,6 +362,7 @@ var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forward
     rel: relValue,
     className: buttonClassName,
     disabled: disabled || isLoading,
+    "aria-busy": isLoading || undefined,
     title: title,
     style: style
   }, restProps), children);
@@ -1103,9 +1110,13 @@ var DebugLogTabComponent = function DebugLogTabComponent() {
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Clear Log', 'publishpress-hub')))), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-debug-log-tab__viewer"
   }, isLoading && /*#__PURE__*/React.createElement("p", {
-    className: "pp-hub-debug-log-tab__loading"
+    className: "pp-hub-debug-log-tab__loading",
+    role: "status",
+    "aria-live": "polite"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Loading log...', 'publishpress-hub')), !isLoading && isEmpty && /*#__PURE__*/React.createElement("p", {
-    className: "pp-hub-debug-log-tab__empty"
+    className: "pp-hub-debug-log-tab__empty",
+    role: "status",
+    "aria-live": "polite"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('The debug log is empty. Perform some actions (e.g. activate a license) and refresh to see entries.', 'publishpress-hub')), !isLoading && !isEmpty && viewMode === VIEW_REQUESTS && /*#__PURE__*/React.createElement(_RequestsLogView__WEBPACK_IMPORTED_MODULE_4__.RequestsLogView, {
     logContent: logContent
   }), !isLoading && viewMode === VIEW_FULL_LOG && /*#__PURE__*/React.createElement("textarea", {
@@ -1393,7 +1404,9 @@ var RequestsLogViewComponent = function RequestsLogViewComponent(_ref3) {
   }
   if (pairs.length === 0) {
     return /*#__PURE__*/React.createElement("p", {
-      className: "pp-hub-debug-log-tab__empty"
+      className: "pp-hub-debug-log-tab__empty",
+      role: "status",
+      "aria-live": "polite"
     }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('No requests found in the log.', 'publishpress-hub'));
   }
   return /*#__PURE__*/React.createElement("div", {

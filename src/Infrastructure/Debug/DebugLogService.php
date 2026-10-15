@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Debug;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
 
 class DebugLogService
@@ -116,6 +118,7 @@ class DebugLogService
             wp_json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
         );
 
+        // WP_Filesystem has no locked append operation; keep concurrent local log entries intact.
         // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
         $bytesWritten = file_put_contents($logFilePath, $entry, FILE_APPEND | LOCK_EX);
 

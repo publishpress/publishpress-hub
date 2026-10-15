@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WPOrg\Api;
 
+defined('ABSPATH') || exit;
+
 use RuntimeException;
 
 class WPOrgPluginApiAdapter

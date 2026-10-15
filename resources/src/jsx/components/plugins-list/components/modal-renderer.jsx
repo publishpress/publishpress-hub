@@ -20,6 +20,7 @@ import { ModalLicenseInput } from './modal-license-input';
 import { ModalLicenseManagement } from './modal-license-management';
 import { ModalResolveConflict } from './modal-resolve-conflict';
 import { ModalUpgrade } from './modal-upgrade';
+import { DeactivationWarning } from './deactivation-warning';
 
 const ModalRendererComponent = ({
     modalManager,
@@ -34,6 +35,7 @@ const ModalRendererComponent = ({
         handleInstallPro,
         handleUpgradePluginToPro,
         handleUninstallPlugin,
+        handleConfirmDeactivatePlugin,
         handleResolveConflictAction,
         handleBuyPlugin,
         handleDeactivateLicense,
@@ -143,15 +145,32 @@ const ModalRendererComponent = ({
                 />
             )}
 
+            {isModalActive(MODAL_TYPES.DEACTIVATE_CONFIRMATION) && (
+                <ModalConfirmation
+                    {...modalProps}
+                    title={sprintf(__('Deactivate %s', 'publishpress-hub'), currentPluginDisplayName)}
+                    message={sprintf(__('Are you sure you want to deactivate %s?', 'publishpress-hub'), currentPluginDisplayName)}
+                    confirmLabel={__('Deactivate plugin', 'publishpress-hub')}
+                    isDanger={true}
+                    onConfirm={() => handleConfirmDeactivatePlugin(currentPluginFamily)}
+                    onCancel={modalProps.onClose}
+                >
+                    <DeactivationWarning pluginFamily={currentPluginFamily} />
+                </ModalConfirmation>
+            )}
+
             {isModalActive(MODAL_TYPES.UNINSTALL_CONFIRMATION) && (
                 <ModalConfirmation
                     {...modalProps}
                     title={sprintf(__('Uninstall %s', 'publishpress-hub'), currentPluginDisplayName)}
                     message={sprintf(__('Are you sure you want to uninstall %s?', 'publishpress-hub'), currentPluginDisplayName)}
+                    confirmLabel={__('Uninstall plugin', 'publishpress-hub')}
                     isDanger={true}
                     onConfirm={() => handleUninstallPlugin(currentPluginFamily.slug)}
                     onCancel={closeModal}
-                />
+                >
+                    <DeactivationWarning pluginFamily={currentPluginFamily} isUninstall={true} />
+                </ModalConfirmation>
             )}
 
             {isModalActive(MODAL_TYPES.UPGRADE_PLUGIN_TO_PRO) && (

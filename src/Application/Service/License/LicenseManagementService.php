@@ -14,7 +14,10 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\License;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Application\Service\License\Contract\LicenseManagementServiceInterface;
+use PublishPress\Hub\Domain\Plugin\Exception\LicenseActivationException;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseApiServiceInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 
@@ -54,7 +57,42 @@ class LicenseManagementService implements LicenseManagementServiceInterface
             $this->storeExpirationDateFromApi($licenseKey, $downloadId, true);
         }
 
+        if ($activated) {
+            $this->assertStoredLicense($licenseKey, $downloadId);
+        }
+
         return $activated;
+    }
+
+    /**
+     * Activate a shared key separately for each editable plugin family.
+     *
+     * @param array<\PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface> $families
+     * @return array<array{slug: string, success: bool}>
+     * @since 1.1.0
+     */
+    public function activateLicenseForFamilies(string $licenseKey, array $families, int $currentDownloadId): array
+    {
+        $results = [];
+        foreach ($families as $family) {
+            $plugin = $family->getProPlugin();
+            $downloadId = $plugin->getDownloadId();
+            if ($downloadId === $currentDownloadId || $this->licensePersistence->isLicenseFromConstant($downloadId)) {
+                continue;
+            }
+
+            try {
+                $success = $this->activateAndStoreLicense($licenseKey, $downloadId);
+                if ($success) {
+                    $this->licensePersistence->markLicenseAsFromConstant($downloadId, false);
+                }
+            } catch (\Throwable $exception) {
+                $success = false;
+            }
+            $results[] = ['slug' => $plugin->getSlug(), 'success' => $success];
+        }
+
+        return $results;
     }
 
     /**
@@ -125,6 +163,8 @@ class LicenseManagementService implements LicenseManagementServiceInterface
         $this->licensePersistence->storeLicenseStatus($downloadId, true);
         // Always force fetch expiration date when activating to ensure we get the latest from EDD
         $this->storeExpirationDateFromApi($licenseKey, $downloadId, true);
+
+        $this->assertStoredLicense($licenseKey, $downloadId);
 
         return true;
     }
@@ -236,6 +276,28 @@ class LicenseManagementService implements LicenseManagementServiceInterface
     public function getStoredLicenseExpirationDate(int $downloadId): ?string
     {
         return $this->licensePersistence->getLicenseExpirationDate($downloadId);
+    }
+
+    /**
+     * Verify that activation persisted the requested key and valid status.
+     *
+     * @since 1.1.0
+     */
+    private function assertStoredLicense(string $licenseKey, int $downloadId): void
+    {
+        if (
+            $this->licensePersistence->getLicenseKey($downloadId) !== $licenseKey
+            || !$this->licensePersistence->getLicenseStatus($downloadId)
+        ) {
+            throw new LicenseActivationException([
+                'download_id' => $downloadId,
+                'error_message' => esc_html__(
+                    'The license server accepted your key, but this site could not save its active license. '
+                    . 'Please contact support and mention this message.',
+                    'publishpress-hub'
+                ),
+            ]);
+        }
     }
 
     /**

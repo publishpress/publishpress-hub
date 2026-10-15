@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\License;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Application\Service\License\Contract\LicenseManagementServiceInterface;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Domain\Plugin\Contract\ProPluginInterface;
@@ -127,14 +129,13 @@ class ScheduledLicenseValidationService
                 $proPlugin = $family->getProPlugin();
                 $downloadId = $proPlugin->getDownloadId();
 
-                // Skip validation if plugin is not installed or doesn't have a license yet
-                // This prevents unnecessary API calls for unlicensed plugins
-                if (!$proPlugin->isInstalled() || !$proPlugin->isLicensed()) {
+                // Installation and key presence gate requests; expired keys may have been renewed.
+                if (!$proPlugin->isInstalled()) {
                     continue;
                 }
                 $licenseKey = $this->licensePersistence->getLicenseKey($downloadId);
 
-                // Double-check license key exists (isLicensed() might be cached)
+                // A saved key is required even when its previous status was invalid.
                 if (empty($licenseKey)) {
                     continue;
                 }
@@ -164,20 +165,24 @@ class ScheduledLicenseValidationService
 
                     // Calculate if license has expired by comparing dates at midnight
                     // Using midnight comparison ensures consistent day-level expiration
-                    // (a license expiring "2025-01-05" expires at start of that day, not end)
-                    $isExpired = false;
+                    // Match dashboard day-level comparisons in the site's timezone.
+                    $isExpired = ($licenseInfo['license'] ?? '') === 'expired'
+                        || ($licenseInfo['error'] ?? '') === 'expired';
                     if (!$isLifetime && $expirationDate !== null) {
                         // Normalize both dates to midnight to compare days, not times
-                        $today = new \DateTimeImmutable();
+                        $timezone = function_exists('wp_timezone')
+                            ? wp_timezone()
+                            : new \DateTimeZone(date_default_timezone_get());
+                        $today = new \DateTimeImmutable('now', $timezone);
                         $today = $today->setTime(0, 0, 0, 0);
-                        $expiration = new \DateTimeImmutable($expirationDate);
+                        $expiration = new \DateTimeImmutable($expirationDate, $timezone);
                         $expiration = $expiration->setTime(0, 0, 0, 0);
 
                         // License is expired if expiration date is in the past
-                        $isExpired = $expiration < $today;
+                        $isExpired = $isExpired || $expiration < $today;
                     }
 
-                    // Store expiration status in transient for quick access by UI
+                    // Store expiration status locally for quick access by UI
                     // This allows the dashboard to show expiration warnings without API calls
                     $this->licenseStatusStorage->storeLicenseExpirationStatus(
                         $downloadId,

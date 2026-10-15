@@ -10,6 +10,8 @@
 
 @import './modal.css';
 
+@import './plugin-cards.css';
+
 .pp-hub-plugins-list {
     display: flex;
     flex-direction: column;
@@ -52,6 +54,7 @@
     gap: var(--pp-hub-spacing-lg);
     align-items: flex-start;
     width: 100%;
+    min-width: 0;
 }
 
 .pp-hub-plugins-list-item-icon {
@@ -73,6 +76,7 @@
     flex-direction: column;
     gap: var(--pp-hub-spacing-sm);
     flex: 1;
+    min-width: 0;
 }
 
 .pp-hub-plugins-list-item-name {
@@ -102,10 +106,6 @@
     white-space: nowrap;
 }
 
-.pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-description {
-    display: none;
-}
-
 .pp-hub-plugins-list-item-status {
     font-size: var(--pp-hub-font-size-sm);
     color: var(--pp-hub-text-secondary);
@@ -127,19 +127,14 @@
 }
 
 .pp-hub-plugins-list-item-inline-actions {
-    display: none;
+    display: flex;
     flex-direction: row;
     align-items: center;
     gap: var(--pp-hub-spacing-sm);
     justify-content: flex-start;
-    height: 24px;
     line-height: 24px;
     min-height: 24px;
-    max-height: 24px;
-}
-
-.pp-hub-plugins-list-item.hovered .pp-hub-plugins-list-item-inline-actions {
-    display: flex;
+    flex-wrap: wrap;
 }
 
 .pp-hub-plugins-list-item-inline-actions .pp-hub-button.is-link {
@@ -304,4 +299,9 @@
         font-size: var(--pp-hub-font-size-sm);
         padding: var(--pp-hub-spacing-lg) var(--pp-hub-spacing-md);
     }
+}
+
+/* A warning-colored icon remains distinct on the purple conflict button. */
+.pp-hub-button.pp-hub-resolve-conflict .dashicons-warning {
+    color: #ffd54f;
 }

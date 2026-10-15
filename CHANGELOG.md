@@ -1,5 +1,29 @@
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
-and this project adheres to [Semantic Versioning](http://semver.org/).
+The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
+
+[1.1.0] - 15 October, 2026
+
+- Added: Support for PublishPress Cart, PublishPress Taxonomies, and PublishPress Tag Groups (#269).
+- Added: List and card layouts for the plugins dashboard (#211, #262).
+- Added: Plugin favorites and a favorites only filter, with saved layout preferences (#211).
+- Added: Bundle license form to validate and apply one license key to multiple selected plugins (#211, #261).
+- Added: Warnings before plugin deactivation and conflict resolution to explain potential effects on site content (#107).
+- Changed: Refreshed the welcome page layout and its documentation, support, and account links (#211).
+- Changed: Standardized license key links to direct users to their dashboard (#242).
+- Changed: Shortened the upgrade button text to "Upgrade to Pro" (#241).
+- Changed: Used the WordPress filesystem API for debug logs, translation files, and downloaded ZIP signature checks (#249).
+- Changed: Used a URL encoded SVG for the admin menu icon instead of Base64 encoding (#248).
+- Changed: Documented the wildcard EDD transient cleanup queries and added targeted coding-standard exceptions (#250).
+- Fixed: Updated expiration notices from local dates and current installations, clarified expired activation errors, improved renewal links, and added an Expired filter (#275).
+- Fixed: Activated shared license keys individually for other plugins when using the all plugins option, and reported activation failures (#274).
+- Fixed: Sorted the plugins dashboard and bundle license selector alphabetically, regardless of license status (#273).
+- Fixed: Improved recovery when plugin conflict resolution fails to reactivate the selected plugin (#108).
+- Fixed: Prevented loading spinners from overlapping button text (#240).
+- Fixed: Improved interface styles and color contrast for accessibility (#21).
+- Fixed: Kept secondary plugin actions visible when navigating with the keyboard (#215).
+- Fixed: Improved screen reader feedback for loading, empty and busy states, activation controls, and modal errors (#214).
+- Fixed: Reduced redundant screen reader output from decorative plugin artwork, icons, and rating stars (#216).
+- Fixed: Excluded vendor development configuration files from release packages (#247).
+- Security: Added direct access guards to plugin owned PHP files in the src and languages directories (#251).
 
 [1.0.7] - 17 September, 2026
 

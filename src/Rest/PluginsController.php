@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Rest;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
@@ -321,6 +323,11 @@ class PluginsController implements BootableInterface
                     'validate_callback' => function ($param) {
                         return in_array($param, ['free', 'pro'], true);
                     },
+                ],
+                'phase' => [
+                    'type' => 'string',
+                    'default' => 'activate',
+                    'enum' => ['activate', 'cleanup'],
                 ],
             ]
         ));

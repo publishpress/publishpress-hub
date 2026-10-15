@@ -14,11 +14,61 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin;
 
+defined('ABSPATH') || exit;
+
 /**
  * @return array<array<string, mixed>> An array of plugin families.
  * @since 1.0.0
  */
 return [
+    [
+        'name' => 'PublishPress Cart',
+        'slug' => 'cart',
+        'icon_file_name' => 'icon-cart',
+        'description' => __('Sell digital products, programs, and services from your website.', 'publishpress-hub'),
+        'changelog_url' => 'https://github.com/publishpress/publishpress-cart/blob/development/CHANGELOG.md',
+        'free_name' => 'PublishPress Cart Free',
+        'free_slug' => 'publishpress-cart',
+        'free_file_name' => 'publishpress-cart.php',
+        'free_details_url' => 'https://wordpress.org/plugins/publishpress-cart/',
+        'pro_name' => 'PublishPress Cart Pro',
+        'pro_slug' => 'publishpress-cart-pro',
+        'pro_file_name' => 'publishpress-cart-pro.php',
+        'pro_details_url' => 'https://publishpress.com/publishpress-cart/',
+        'edd_item_id' => 406422,
+    ],
+    [
+        'name' => 'PublishPress Taxonomies',
+        'slug' => 'taxonomies',
+        'icon_file_name' => 'icon-taxonomies',
+        'description' => __('Create and manage tags, categories, and taxonomy terms.', 'publishpress-hub'),
+        'changelog_url' => 'https://publishpress.com/knowledge-base/changelogs-for-publishpress-taxonomies/',
+        'free_name' => 'PublishPress Taxonomies Free',
+        'free_slug' => 'simple-tags',
+        'free_file_name' => 'simple-tags.php',
+        'free_details_url' => 'https://wordpress.org/plugins/simple-tags/',
+        'pro_name' => 'PublishPress Taxonomies Pro',
+        'pro_slug' => 'taxopress-pro',
+        'pro_file_name' => 'taxopress-pro.php',
+        'pro_details_url' => 'https://publishpress.com/publishpress-taxonomies/',
+        'edd_item_id' => 408189,
+    ],
+    [
+        'name' => 'PublishPress Tag Groups',
+        'slug' => 'tag-groups',
+        'icon_file_name' => 'icon-tag-groups',
+        'description' => __('Organize taxonomy terms into groups and display them in clouds, tabs, and lists.', 'publishpress-hub'),
+        'changelog_url' => 'https://github.com/publishpress/publishpress-tag-groups/blob/development/CHANGELOG.md',
+        'free_name' => 'PublishPress Tag Groups Free',
+        'free_slug' => 'tag-groups',
+        'free_file_name' => 'tag-groups.php',
+        'free_details_url' => 'https://wordpress.org/plugins/tag-groups/',
+        'pro_name' => 'PublishPress Tag Groups Pro',
+        'pro_slug' => 'tag-groups-pro',
+        'pro_file_name' => 'tag-groups-pro.php',
+        'pro_details_url' => 'https://publishpress.com/tag-groups/',
+        'edd_item_id' => 408655,
+    ],
     [
         'name' => 'PublishPress Checklists',
         'slug' => 'checklists',

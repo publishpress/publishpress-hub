@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\View\Contract;
 
+defined('ABSPATH') || exit;
+
 interface ViewServiceInterface
 {
     /**

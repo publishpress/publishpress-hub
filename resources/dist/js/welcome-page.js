@@ -71,7 +71,7 @@ var FooterComponent = function FooterComponent(_ref) {
     pluginSupportUrl = _ref.pluginSupportUrl,
     logoUrl = _ref.logoUrl;
   var stars = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return Array(5).fill('<span class="dashicons dashicons-star-filled"></span>').join('');
+    return Array(5).fill('<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>').join('');
   }, []);
   return /*#__PURE__*/React.createElement("footer", {
     className: "pp-hub-footer"
@@ -333,7 +333,13 @@ var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forward
     return rel || (href ? DEFAULT_REL : undefined);
   }, [rel, href]);
   if (isLoading) {
-    children = /*#__PURE__*/React.createElement(React.Fragment, null, spinnerPosition === 'left' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, null), children, spinnerPosition === 'right' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, null));
+    children = /*#__PURE__*/React.createElement("span", {
+      className: "pp-hub-button-loading-content"
+    }, spinnerPosition === 'left' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {
+      className: "pp-hub-button-spinner"
+    }), /*#__PURE__*/React.createElement("span", null, children), spinnerPosition === 'right' && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {
+      className: "pp-hub-button-spinner"
+    }));
     disabled = true;
   }
   var buttonClassName = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
@@ -356,6 +362,7 @@ var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forward
     rel: relValue,
     className: buttonClassName,
     disabled: disabled || isLoading,
+    "aria-busy": isLoading || undefined,
     title: title,
     style: style
   }, restProps), children);
@@ -411,22 +418,60 @@ var WelcomePageComponent = function WelcomePageComponent() {
     className: "pp-hub-welcome-page"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-welcome-page__container"
+  }, /*#__PURE__*/React.createElement("section", {
+    className: "pp-hub-welcome-page__hero"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__header"
-  }, /*#__PURE__*/React.createElement("h1", {
-    className: "pp-hub-welcome-page__title"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Welcome to PublishPress Hub!', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
-    className: "pp-hub-welcome-page__subtitle"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Get started with PublishPress Hub in a few simple steps.', 'publishpress-hub'))), /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__box"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__intro"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__intro-image"
+    className: "pp-hub-welcome-page__hero-copy"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pp-hub-welcome-page__eyebrow"
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Welcome to PublishPress Hub', 'publishpress-hub')), /*#__PURE__*/React.createElement("h1", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Your publishing tools, in one place.', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
+    className: "pp-hub-welcome-page__lead"
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Manage your plugins, build your editorial workflow, and find the help you need to get started.', 'publishpress-hub')), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
+    variant: "primary",
+    href: window.ppHubWelcomePageConfig.pluginsDashboardUrl,
+    target: "_self",
+    isFullWidth: false
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('View Plugins Dashboard', 'publishpress-hub')), /*#__PURE__*/React.createElement("nav", {
+    className: "pp-hub-welcome-page__resources",
+    "aria-label": (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Help and account', 'publishpress-hub')
+  }, /*#__PURE__*/React.createElement("a", {
+    href: window.ppHubWelcomePageConfig.pluginDocumentationUrl,
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pp-hub-welcome-page__resource-icon dashicons dashicons-book-alt",
+    "aria-hidden": "true"
+  }), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("strong", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Documentation', 'publishpress-hub')), /*#__PURE__*/React.createElement("small", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Setup guides and answers for every plugin.', 'publishpress-hub'))), /*#__PURE__*/React.createElement("span", {
+    className: "dashicons dashicons-arrow-right-alt2",
+    "aria-hidden": "true"
+  })), /*#__PURE__*/React.createElement("a", {
+    href: window.ppHubWelcomePageConfig.pluginSupportUrl,
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pp-hub-welcome-page__resource-icon dashicons dashicons-sos",
+    "aria-hidden": "true"
+  }), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("strong", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Get support', 'publishpress-hub')), /*#__PURE__*/React.createElement("small", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Get help from the PublishPress team.', 'publishpress-hub'))), /*#__PURE__*/React.createElement("span", {
+    className: "dashicons dashicons-arrow-right-alt2",
+    "aria-hidden": "true"
+  })), /*#__PURE__*/React.createElement("a", {
+    href: "https://publishpress.com/dashboard/?active_tab=licenses",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pp-hub-welcome-page__resource-icon dashicons dashicons-admin-users",
+    "aria-hidden": "true"
+  }), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("strong", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Account and licenses', 'publishpress-hub')), /*#__PURE__*/React.createElement("small", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Find your license keys and manage your subscription.', 'publishpress-hub'))), /*#__PURE__*/React.createElement("span", {
+    className: "dashicons dashicons-arrow-right-alt2",
+    "aria-hidden": "true"
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-welcome-page__hero-art"
   }, /*#__PURE__*/React.createElement("img", {
     src: welcomeImageUrl,
-    alt: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Welcome to PublishPress Hub', 'publishpress-hub')
-  }))), /*#__PURE__*/React.createElement("h2", {
+    alt: ""
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "pp-hub-welcome-page__box"
+  }, /*#__PURE__*/React.createElement("h2", {
     className: "pp-hub-welcome-page__features-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('What you can do with PublishPress Hub', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
     className: "pp-hub-welcome-page__message"
@@ -437,7 +482,8 @@ var WelcomePageComponent = function WelcomePageComponent() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-welcome-page__feature-icon"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "dashicons dashicons-chart-bar"
+    className: "dashicons dashicons-chart-bar",
+    "aria-hidden": "true"
   })), /*#__PURE__*/React.createElement("h3", {
     className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Centralized Dashboard', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
@@ -447,7 +493,8 @@ var WelcomePageComponent = function WelcomePageComponent() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-welcome-page__feature-icon"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "dashicons dashicons-admin-plugins"
+    className: "dashicons dashicons-admin-plugins",
+    "aria-hidden": "true"
   })), /*#__PURE__*/React.createElement("h3", {
     className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('One-Click Installation', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
@@ -457,7 +504,8 @@ var WelcomePageComponent = function WelcomePageComponent() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-welcome-page__feature-icon"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "dashicons dashicons-admin-network"
+    className: "dashicons dashicons-admin-network",
+    "aria-hidden": "true"
   })), /*#__PURE__*/React.createElement("h3", {
     className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('License Management', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
@@ -467,7 +515,8 @@ var WelcomePageComponent = function WelcomePageComponent() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-welcome-page__feature-icon"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "dashicons dashicons-update"
+    className: "dashicons dashicons-update",
+    "aria-hidden": "true"
   })), /*#__PURE__*/React.createElement("h3", {
     className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Easy Updates', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
@@ -477,7 +526,8 @@ var WelcomePageComponent = function WelcomePageComponent() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-welcome-page__feature-icon"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "dashicons dashicons-yes-alt"
+    className: "dashicons dashicons-yes-alt",
+    "aria-hidden": "true"
   })), /*#__PURE__*/React.createElement("h3", {
     className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Status Monitoring', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
@@ -487,7 +537,8 @@ var WelcomePageComponent = function WelcomePageComponent() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-welcome-page__feature-icon"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "dashicons dashicons-admin-tools"
+    className: "dashicons dashicons-admin-tools",
+    "aria-hidden": "true"
   })), /*#__PURE__*/React.createElement("h3", {
     className: "pp-hub-welcome-page__feature-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Get Started', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
@@ -495,15 +546,7 @@ var WelcomePageComponent = function WelcomePageComponent() {
     dangerouslySetInnerHTML: {
       __html: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.sprintf)((0,_wordpress_escape_html__WEBPACK_IMPORTED_MODULE_2__.escapeHTML)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Ready to explore? Visit the %s to see all available PublishPress plugins.', 'publishpress-hub')), '<a href="' + (0,_wordpress_escape_html__WEBPACK_IMPORTED_MODULE_2__.escapeAttribute)(window.ppHubWelcomePageConfig.pluginsDashboardUrl) + '">' + (0,_wordpress_escape_html__WEBPACK_IMPORTED_MODULE_2__.escapeHTML)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Plugins Dashboard', 'publishpress-hub')) + '</a>')
     }
-  }))), /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-welcome-page__cta"
-  }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
-    variant: "primary",
-    href: window.ppHubWelcomePageConfig.pluginsDashboardUrl,
-    target: "_self",
-    isFullWidth: false,
-    className: "pp-hub-welcome-page__cta-button"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('View Plugins Dashboard', 'publishpress-hub')))), /*#__PURE__*/React.createElement("p", {
+  })))), /*#__PURE__*/React.createElement("p", {
     className: "pp-hub-welcome-page__dismiss"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Already know what you\'re doing? Great! You can ', 'publishpress-hub'), /*#__PURE__*/React.createElement("a", {
     href: dismissUrl

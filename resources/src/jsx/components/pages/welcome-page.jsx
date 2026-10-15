@@ -32,22 +32,35 @@ const WelcomePageComponent = () => {
         >
             <div className="pp-hub-welcome-page">
                 <div className="pp-hub-welcome-page__container">
-                    <div className="pp-hub-welcome-page__header">
-                        <h1 className="pp-hub-welcome-page__title">
-                            {__('Welcome to PublishPress Hub!', 'publishpress-hub')}
-                        </h1>
-                        <p className="pp-hub-welcome-page__subtitle">
-                            {__('Get started with PublishPress Hub in a few simple steps.', 'publishpress-hub')}
-                        </p>
-                    </div>
-
-                    <div className="pp-hub-welcome-page__box">
-                        <div className="pp-hub-welcome-page__intro">
-                            <div className="pp-hub-welcome-page__intro-image">
-                                <img src={welcomeImageUrl} alt={__('Welcome to PublishPress Hub', 'publishpress-hub')} />
-                            </div>
+                    <section className="pp-hub-welcome-page__hero">
+                        <div className="pp-hub-welcome-page__hero-copy">
+                            <span className="pp-hub-welcome-page__eyebrow">{__('Welcome to PublishPress Hub', 'publishpress-hub')}</span>
+                            <h1>{__('Your publishing tools, in one place.', 'publishpress-hub')}</h1>
+                            <p className="pp-hub-welcome-page__lead">{__('Manage your plugins, build your editorial workflow, and find the help you need to get started.', 'publishpress-hub')}</p>
+                            <Button variant="primary" href={window.ppHubWelcomePageConfig.pluginsDashboardUrl} target="_self" isFullWidth={false}>
+                                {__('View Plugins Dashboard', 'publishpress-hub')}
+                            </Button>
+                            <nav className="pp-hub-welcome-page__resources" aria-label={__('Help and account', 'publishpress-hub')}>
+                                <a href={window.ppHubWelcomePageConfig.pluginDocumentationUrl} target="_blank" rel="noopener noreferrer">
+                                    <span className="pp-hub-welcome-page__resource-icon dashicons dashicons-book-alt" aria-hidden="true" />
+                                    <span><strong>{__('Documentation', 'publishpress-hub')}</strong><small>{__('Setup guides and answers for every plugin.', 'publishpress-hub')}</small></span>
+                                    <span className="dashicons dashicons-arrow-right-alt2" aria-hidden="true" />
+                                </a>
+                                <a href={window.ppHubWelcomePageConfig.pluginSupportUrl} target="_blank" rel="noopener noreferrer">
+                                    <span className="pp-hub-welcome-page__resource-icon dashicons dashicons-sos" aria-hidden="true" />
+                                    <span><strong>{__('Get support', 'publishpress-hub')}</strong><small>{__('Get help from the PublishPress team.', 'publishpress-hub')}</small></span>
+                                    <span className="dashicons dashicons-arrow-right-alt2" aria-hidden="true" />
+                                </a>
+                                <a href="https://publishpress.com/dashboard/?active_tab=licenses" target="_blank" rel="noopener noreferrer">
+                                    <span className="pp-hub-welcome-page__resource-icon dashicons dashicons-admin-users" aria-hidden="true" />
+                                    <span><strong>{__('Account and licenses', 'publishpress-hub')}</strong><small>{__('Find your license keys and manage your subscription.', 'publishpress-hub')}</small></span>
+                                    <span className="dashicons dashicons-arrow-right-alt2" aria-hidden="true" />
+                                </a>
+                            </nav>
                         </div>
-
+                        <div className="pp-hub-welcome-page__hero-art"><img src={welcomeImageUrl} alt="" /></div>
+                    </section>
+                    <div className="pp-hub-welcome-page__box">
                         <h2 className="pp-hub-welcome-page__features-title">
                             {__('What you can do with PublishPress Hub', 'publishpress-hub')}
                         </h2>
@@ -58,7 +71,7 @@ const WelcomePageComponent = () => {
                         <div className="pp-hub-welcome-page__features-grid">
                             <div className="pp-hub-welcome-page__feature-item">
                                 <div className="pp-hub-welcome-page__feature-icon">
-                                    <span className="dashicons dashicons-chart-bar" />
+                                    <span className="dashicons dashicons-chart-bar" aria-hidden="true" />
                                 </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('Centralized Dashboard', 'publishpress-hub')}
@@ -70,7 +83,7 @@ const WelcomePageComponent = () => {
 
                             <div className="pp-hub-welcome-page__feature-item">
                                 <div className="pp-hub-welcome-page__feature-icon">
-                                    <span className="dashicons dashicons-admin-plugins" />
+                                    <span className="dashicons dashicons-admin-plugins" aria-hidden="true" />
                                 </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('One-Click Installation', 'publishpress-hub')}
@@ -82,7 +95,7 @@ const WelcomePageComponent = () => {
 
                             <div className="pp-hub-welcome-page__feature-item">
                                 <div className="pp-hub-welcome-page__feature-icon">
-                                    <span className="dashicons dashicons-admin-network" />
+                                    <span className="dashicons dashicons-admin-network" aria-hidden="true" />
                                 </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('License Management', 'publishpress-hub')}
@@ -94,7 +107,7 @@ const WelcomePageComponent = () => {
 
                             <div className="pp-hub-welcome-page__feature-item">
                                 <div className="pp-hub-welcome-page__feature-icon">
-                                    <span className="dashicons dashicons-update" />
+                                    <span className="dashicons dashicons-update" aria-hidden="true" />
                                 </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('Easy Updates', 'publishpress-hub')}
@@ -106,7 +119,7 @@ const WelcomePageComponent = () => {
 
                             <div className="pp-hub-welcome-page__feature-item">
                                 <div className="pp-hub-welcome-page__feature-icon">
-                                    <span className="dashicons dashicons-yes-alt" />
+                                    <span className="dashicons dashicons-yes-alt" aria-hidden="true" />
                                 </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('Status Monitoring', 'publishpress-hub')}
@@ -118,7 +131,7 @@ const WelcomePageComponent = () => {
 
                             <div className="pp-hub-welcome-page__feature-item">
                                 <div className="pp-hub-welcome-page__feature-icon">
-                                    <span className="dashicons dashicons-admin-tools" />
+                                    <span className="dashicons dashicons-admin-tools" aria-hidden="true" />
                                 </div>
                                 <h3 className="pp-hub-welcome-page__feature-title">
                                     {__('Get Started', 'publishpress-hub')}
@@ -131,17 +144,7 @@ const WelcomePageComponent = () => {
                                 </p>
                             </div>
                         </div>
-                        <div className="pp-hub-welcome-page__cta">
-                            <Button
-                                variant="primary"
-                                href={window.ppHubWelcomePageConfig.pluginsDashboardUrl}
-                                target="_self"
-                                isFullWidth={false}
-                                className="pp-hub-welcome-page__cta-button"
-                            >
-                                {__('View Plugins Dashboard', 'publishpress-hub')}
-                            </Button>
-                        </div>
+
                     </div>
 
                     <p className="pp-hub-welcome-page__dismiss">
@@ -158,4 +161,3 @@ const WelcomePageComponent = () => {
 };
 
 export const WelcomePage = memo(WelcomePageComponent);
-

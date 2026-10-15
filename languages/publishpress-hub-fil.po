@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
-"PO-Revision-Date: 2026-09-16 11:33+0000\n"
+"PO-Revision-Date: 2026-10-01 10:23+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "|| n % 10 == 6 || n % 10 == 9);\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1 && n != 2 && n != 3 && (n % 10 == 4 || n % 10 == 6 || n % 10 == 9);\n"
 
 #: publishpress-hub.php:4
-#: src/Admin/Page/WelcomePageController.php:259
+#: src/Admin/Page/WelcomePageController.php:261
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:121, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Hub"
@@ -45,66 +45,66 @@ msgstr "PublishPress"
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
-#: src/Admin/Page/ComponentsShowcaseController.php:118
+#: src/Admin/Page/ComponentsShowcaseController.php:120
 msgid "Please wait while we load the components showcase..."
 msgstr "Mangyaring maghintay habang niloload namin ang showcase ng mga bahagi..."
 
-#: src/Admin/Page/PluginsDashboardController.php:133
+#: src/Admin/Page/PluginsDashboardController.php:136
 msgid "Please wait while we load the plugins dashboard..."
 msgstr "Mangyaring maghintay habang niloload namin ang dashboard ng mga plugin..."
 
-#: src/Admin/Page/SettingsPageController.php:104
-#: src/Admin/Page/SettingsPageController.php:105
-#: resources/dist/js/settings-page.js:466
+#: src/Admin/Page/SettingsPageController.php:106
+#: src/Admin/Page/SettingsPageController.php:107
+#: resources/dist/js/settings-page.js:473
 #: resources/src/jsx/components/pages/settings-page.jsx:81
-#: resources/dist/js/settings-page.js:411
+#: resources/dist/js/settings-page.js:412
 msgid "Settings"
 msgstr "Mga Setting"
 
-#: src/Admin/Page/SettingsPageController.php:126
+#: src/Admin/Page/SettingsPageController.php:128
 msgid "Please wait while we load the settings page..."
 msgstr "Mangyaring maghintay habang niloload namin ang pahina ng mga setting..."
 
-#: src/Admin/Page/WelcomePageController.php:143
+#: src/Admin/Page/WelcomePageController.php:145
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Wala kang sapat na pahintulot upang ma-access ang pahinang ito."
 
-#: src/Admin/Page/WelcomePageController.php:180
-#: src/Admin/Page/WelcomePageController.php:181
+#: src/Admin/Page/WelcomePageController.php:182
+#: src/Admin/Page/WelcomePageController.php:183
 msgid "Welcome"
 msgstr "Maligayang pagdating"
 
-#: src/Admin/Page/WelcomePageController.php:203
+#: src/Admin/Page/WelcomePageController.php:205
 msgid "Please wait while we load the welcome page..."
 msgstr ""
 "Mangyaring maghintay habang niloload namin ang pahina ng maligayang "
 "pagdating..."
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:114
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:116
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "Babala: Ang lisensya para sa %1$s ay nag-expire na. %2$s"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:116
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:130
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:118
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:132
 msgid "Manage licenses"
 msgstr "Pamahalaan ang mga lisensya"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:127
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:129
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "Babala: %1$d plugin(s) ang may expired na lisensya: %2$s. %3$s"
 
-#: src/Application/Traits/BootableTrait.php:75
+#: src/Application/Traits/BootableTrait.php:77
 msgid "Object must be loaded before initializing."
 msgstr "Dapat ma-load ang object bago ang pagsisimula."
 
-#: src/Application/UseCase/Plugin/ActivateLicenseUseCase.php:157
-#: resources/dist/js/plugins-dashboard.js:1990
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:122
-#: resources/dist/js/plugins-dashboard.js:1623
+#: src/Application/UseCase/Plugin/ActivateLicenseUseCase.php:161
+#: resources/dist/js/plugins-dashboard.js:2204
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:123
+#: resources/dist/js/plugins-dashboard.js:1699
 msgid ""
 "This license key is managed in wp-config.php and cannot be edited from the "
 "Hub."
@@ -112,17 +112,53 @@ msgstr ""
 "Ang susi ng lisensya na ito ay pinamamahalaan sa wp-config.php at hindi "
 "maaaring i-edit mula sa Hub."
 
-#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:116
+#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:118
 msgid "No license key found"
 msgstr "Walang natagpuang license key"
 
-#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:138
+#: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:140
 msgid ""
 "This license key is managed in wp-config.php and cannot be deactivated from "
 "the Hub."
 msgstr ""
 "Ang susi ng lisensya na ito ay pinamamahalaan sa wp-config.php at hindi "
 "maaaring i-deactivate mula sa Hub."
+
+#: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:64
+msgid "Invalid conflict resolution request."
+msgstr "Hindi ang kahilingan para sa pag-resolba ng salungatan."
+
+#: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:89
+msgid "The selected plugin is not available for activation."
+msgstr "Ang napiling plugin ay hindi magagamit para sa pag-activate."
+
+#: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:98
+msgid ""
+"Cleanup was stopped because the selected plugin is not active or the other "
+"version is still loaded. Neither copy was deleted."
+msgstr ""
+"Itinigil ang paglilinis dahil ang napiling plugin ay hindi aktibo o ang "
+"ibang bersyon ay kasalukuyang naka-load. Walang kopyang na-delete."
+
+#: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:106
+msgid ""
+"The selected plugin is active, but the other version could not be removed. "
+"Please remove it from the Plugins screen."
+msgstr ""
+"Ang napiling plugin ay aktibo, ngunit ang ibang bersyon ay hindi maalis. "
+"Mangyaring alisin ito mula sa screen ng Plugins."
+
+#: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:114
+msgid ""
+"The selected plugin is no longer active. Please reactivate it from the "
+"Plugins screen."
+msgstr ""
+"Ang napiling plugin ay hindi na aktibo. Mangyaring i-reactivate ito mula sa "
+"screen ng Plugins."
+
+#: src/Application/UseCase/Plugin/ReuseLicenseForAllPluginsUseCase.php:75
+msgid "No existing license key was found for this plugin."
+msgstr "Walang umiiral na license key na natagpuan para sa plugin na ito."
 
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:88
 msgid "Database Tables"
@@ -137,9 +173,9 @@ msgid "PublishPress Hub Debug Log"
 msgstr "PublishPress Hub Debug Log"
 
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:102
-#: resources/dist/js/settings-page.js:432
+#: resources/dist/js/settings-page.js:439
 #: resources/src/jsx/components/pages/settings-page.jsx:40
-#: resources/dist/js/settings-page.js:370, fuzzy
+#: resources/dist/js/settings-page.js:371, fuzzy
 msgid "Debug Log"
 msgstr "Debug Log"
 
@@ -153,9 +189,9 @@ msgid "Version"
 msgstr "Bersyon"
 
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:128
-#: resources/dist/js/settings-page.js:1240
+#: resources/dist/js/settings-page.js:1251
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
-#: resources/dist/js/settings-page.js:993, fuzzy
+#: resources/dist/js/settings-page.js:994, fuzzy
 msgid "Debug Mode"
 msgstr "Debug Mode"
 
@@ -212,25 +248,34 @@ msgid "Total Database Size"
 msgstr "Kabuuang Laki ng Database"
 
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:308
-#: resources/dist/js/plugins-dashboard.js:1210
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:66
-#: resources/dist/js/plugins-dashboard.js:960
+#: resources/dist/js/plugins-dashboard.js:1108
+#: resources/dist/js/plugins-dashboard.js:2755
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:68
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:90
+#: resources/dist/js/plugins-dashboard.js:908
+#: resources/dist/js/plugins-dashboard.js:2230
 msgid "Not installed"
 msgstr "Hindi naka-install"
 
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:313
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:322
-#: resources/dist/js/plugins-dashboard.js:1202
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:56
-#: resources/dist/js/plugins-dashboard.js:950
+#: resources/dist/js/plugins-dashboard.js:1100
+#: resources/dist/js/plugins-dashboard.js:2746
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:58
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:84
+#: resources/dist/js/plugins-dashboard.js:898
+#: resources/dist/js/plugins-dashboard.js:2224
 msgid "Active"
 msgstr "Aktibo"
 
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:313
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:322
-#: resources/dist/js/plugins-dashboard.js:1206
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:61
-#: resources/dist/js/plugins-dashboard.js:955
+#: resources/dist/js/plugins-dashboard.js:1104
+#: resources/dist/js/plugins-dashboard.js:2746
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:63
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:84
+#: resources/dist/js/plugins-dashboard.js:903
+#: resources/dist/js/plugins-dashboard.js:2224
 msgid "Inactive"
 msgstr "Hindi aktibo"
 
@@ -242,19 +287,19 @@ msgstr "hindi kilala"
 msgid "License"
 msgstr "Lisensya"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:128
+#: src/Domain/Plugin/Entity/PluginFamily.php:130
 #. translators: %s is the plugin family slug
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
 msgstr "Hindi nakatakdang libreng plugin para sa plugin family: %s"
 
-#: src/Domain/Plugin/Entity/PluginFamily.php:150
+#: src/Domain/Plugin/Entity/PluginFamily.php:152
 #. translators: %s is the plugin family slug
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
 msgstr "Hindi nakatakdang pro plugin para sa plugin family: %s"
 
-#: src/Domain/Plugin/Exception/LicenseActivationException.php:28
+#: src/Domain/Plugin/Exception/LicenseActivationException.php:30
 msgid ""
 "License activation error. Please try again later or contact support for "
 "help."
@@ -262,7 +307,7 @@ msgstr ""
 "Error sa server ng lisensya. Mangyaring subukan muli mamaya o "
 "makipag-ugnayan sa suporta para sa tulong."
 
-#: src/Domain/Plugin/Exception/LicenseDeactivationException.php:28
+#: src/Domain/Plugin/Exception/LicenseDeactivationException.php:30
 msgid ""
 "License deactivation error. Please try again later or contact support for "
 "help."
@@ -270,19 +315,19 @@ msgstr ""
 "Error sa server ng lisensya. Mangyaring subukan muli mamaya o "
 "makipag-ugnayan sa suporta para sa tulong."
 
-#: src/Domain/Plugin/Exception/LicenseDisabledException.php:28
+#: src/Domain/Plugin/Exception/LicenseDisabledException.php:30
 msgid "This license is currently disabled. Please contact support for help."
 msgstr ""
 "Ang lisensyang ito ay kasalukuyang hindi pinagana. Mangyaring "
 "makipag-ugnayan sa suporta para sa tulong."
 
-#: src/Domain/Plugin/Exception/LicenseExpiredException.php:28
+#: src/Domain/Plugin/Exception/LicenseExpiredException.php:30
 msgid "This license has expired. Please contact support to renew it."
 msgstr ""
 "Nag-expire na ang lisensyang ito. Mangyaring makipag-ugnayan sa suporta "
 "upang i-renew ito."
 
-#: src/Domain/Plugin/Exception/LicenseInvalidException.php:28
+#: src/Domain/Plugin/Exception/LicenseInvalidException.php:30
 msgid ""
 "This license key could not be activated. It may be invalid, blocked, or not "
 "authorized for this plugin. Please verify the key and contact PublishPress "
@@ -292,7 +337,7 @@ msgstr ""
 "naka-block, o hindi awtorisado para sa plugin na ito. Pakisuri ang key at "
 "makipag-ugnayan sa suporta ng PublishPress kung magpapatuloy ang problema."
 
-#: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:28
+#: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:30
 msgid ""
 "This license cannot be used for this plugin. Please contact support for "
 "help."
@@ -300,7 +345,7 @@ msgstr ""
 "Ang lisensyang ito ay hindi maaaring i-activate. Mangyaring makipag-ugnayan "
 "sa suporta para sa tulong."
 
-#: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:28
+#: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:30
 msgid ""
 "This license does not match the plugin you are trying to activate. Please "
 "contact support for assistance."
@@ -308,7 +353,7 @@ msgstr ""
 "Ang lisensyang ito ay hindi aktibo para sa site na ito. Mangyaring "
 "makipag-ugnayan sa suporta para sa tulong."
 
-#: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:28
+#: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:30
 msgid ""
 "License key does not match our records. Please contact support for "
 "assistance."
@@ -316,13 +361,13 @@ msgstr ""
 "Ang lisensyang ito ay kasalukuyang hindi pinagana. Mangyaring "
 "makipag-ugnayan sa suporta para sa tulong."
 
-#: src/Domain/Plugin/Exception/LicenseMissingException.php:28
+#: src/Domain/Plugin/Exception/LicenseMissingException.php:30
 msgid "No license key provided. Please enter a valid license key."
 msgstr ""
 "Walang ibinigay na key ng lisensya. Mangyaring mag-enter ng wastong key ng "
 "lisensya."
 
-#: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:28
+#: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:30
 msgid ""
 "Your site URL is required to activate the license. Please enter a valid "
 "site URL to continue."
@@ -330,7 +375,7 @@ msgstr ""
 "Kinakailangan ang URL ng iyong site upang i-activate ang lisensya. "
 "Mangyaring maglagay ng wastong URL ng site upang magpatuloy."
 
-#: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:28
+#: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:30
 msgid ""
 "License activation limit reached. Please contact support to upgrade or "
 "deactivate on another site."
@@ -338,19 +383,19 @@ msgstr ""
 "Nag-expire na ang lisensyang ito. Mangyaring makipag-ugnayan sa suporta "
 "upang i-renew ito."
 
-#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:28
+#: src/Domain/Plugin/Exception/LicenseNotActivableException.php:30
 msgid "This license cannot be activated. Please contact support for help."
 msgstr ""
 "Ang lisensyang ito ay hindi maaaring i-activate. Mangyaring makipag-ugnayan "
 "sa suporta para sa tulong."
 
-#: src/Domain/Plugin/Exception/LicenseServerException.php:28
+#: src/Domain/Plugin/Exception/LicenseServerException.php:30
 msgid "License server error. Please try again later or contact support for help."
 msgstr ""
 "Error sa server ng lisensya. Mangyaring subukan muli mamaya o "
 "makipag-ugnayan sa suporta para sa tulong."
 
-#: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:28
+#: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:30
 msgid ""
 "The license server returned an invalid response. Please try again later or "
 "contact support for help."
@@ -358,13 +403,13 @@ msgstr ""
 "Error sa server ng lisensya. Mangyaring subukan muli mamaya o "
 "makipag-ugnayan sa suporta para sa tulong."
 
-#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:28
+#: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:30
 msgid "This license is inactive for this site. Please contact support for help."
 msgstr ""
 "Ang lisensyang ito ay hindi aktibo para sa site na ito. Mangyaring "
 "makipag-ugnayan sa suporta para sa tulong."
 
-#: src/Domain/Plugin/Exception/PluginActivationException.php:29
+#: src/Domain/Plugin/Exception/PluginActivationException.php:31
 msgid ""
 "Plugin activation failed. Please try again later or contact support for "
 "help."
@@ -372,11 +417,11 @@ msgstr ""
 "Nabigo ang pag-install ng plugin. Mangyaring makipag-ugnayan sa suporta "
 "para sa tulong."
 
-#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:29
+#: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:31
 msgid "This action is not possible because the plugin is already installed."
 msgstr "Ang aksyong ito ay hindi posible dahil ang plugin ay naka-install na."
 
-#: src/Domain/Plugin/Exception/PluginDeactivationException.php:29
+#: src/Domain/Plugin/Exception/PluginDeactivationException.php:31
 msgid ""
 "Plugin deactivation failed. Please try again later or contact support for "
 "help."
@@ -384,31 +429,31 @@ msgstr ""
 "Error sa server ng lisensya. Mangyaring subukan muli mamaya o "
 "makipag-ugnayan sa suporta para sa tulong."
 
-#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:29
+#: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:31
 msgid "Plugin family not found. Please contact support for help."
 msgstr ""
 "Hindi natagpuan ang pamilya ng plugin. Mangyaring makipag-ugnayan sa "
 "suporta para sa tulong."
 
-#: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:29
+#: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:31
 msgid ""
 "This action is not possible because both free and pro versions are "
 "installed. Please uninstall one version to continue."
 msgstr "Ang aksyong ito ay hindi posible dahil ang plugin ay naka-install na."
 
-#: src/Domain/Plugin/Exception/PluginInstallException.php:29
+#: src/Domain/Plugin/Exception/PluginInstallException.php:31
 msgid "Plugin installation failed. Please contact support for help."
 msgstr ""
 "Nabigo ang pag-install ng plugin. Mangyaring makipag-ugnayan sa suporta "
 "para sa tulong."
 
-#: src/Domain/Plugin/Exception/PluginNotActivatedException.php:29
+#: src/Domain/Plugin/Exception/PluginNotActivatedException.php:31
 msgid ""
 "This action is not possible because the plugin is not activated. Please "
 "activate the plugin and try again."
 msgstr "Ang aksyong ito ay hindi posible dahil ang plugin ay naka-install na."
 
-#: src/Domain/Plugin/Exception/PluginNotFoundException.php:29
+#: src/Domain/Plugin/Exception/PluginNotFoundException.php:31
 msgid ""
 "Plugin not found in our available plugins list. Please contact support for "
 "help."
@@ -416,14 +461,13 @@ msgstr ""
 "Hindi natagpuan ang pamilya ng plugin. Mangyaring makipag-ugnayan sa "
 "suporta para sa tulong."
 
-#: src/Domain/Plugin/Exception/PluginNotInstalledException.php:29
-#, fuzzy
+#: src/Domain/Plugin/Exception/PluginNotInstalledException.php:31
 msgid ""
 "This action is not possible because the plugin is not installed. Please "
 "install the plugin and try again."
 msgstr "Ang aksyong ito ay hindi posible dahil ang plugin ay naka-install na."
 
-#: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:28
+#: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:30
 #, fuzzy
 msgid ""
 "Unknown license server error. Please try again later or contact support for "
@@ -432,71 +476,77 @@ msgstr ""
 "Error sa server ng lisensya. Mangyaring subukan muli mamaya o "
 "makipag-ugnayan sa suporta para sa tulong."
 
-#: src/Domain/Plugin/plugin-families.php:26
+#: src/Domain/Plugin/plugin-families.php:28
 msgid "Define tasks that authors must complete before publishing."
 msgstr "Tukuyin ang mga gawain na dapat tapusin ng mga may-akda bago ilathala."
 
-#: src/Domain/Plugin/plugin-families.php:42
+#: src/Domain/Plugin/plugin-families.php:44
 msgid "Control who can edit and view your content."
 msgstr "Kontrolin kung sino ang maaaring mag-edit at tumingin sa iyong nilalaman."
 
-#: src/Domain/Plugin/plugin-families.php:58
+#: src/Domain/Plugin/plugin-families.php:60
 msgid "Create, manage and display authors for your content."
 msgstr "Lumikha, pamahalaan at ipakita ang mga may-akda para sa iyong nilalaman."
 
-#: src/Domain/Plugin/plugin-families.php:74
+#: src/Domain/Plugin/plugin-families.php:76
 msgid "All the tools you need to improve the block editor."
 msgstr "Lahat ng mga tool na kailangan mo upang mapabuti ang block editor."
 
-#: src/Domain/Plugin/plugin-families.php:90
+#: src/Domain/Plugin/plugin-families.php:92
 msgid "Control your admin area and user roles."
 msgstr "Kontrolin ang iyong admin area at mga tungkulin ng gumagamit."
 
-#: src/Domain/Plugin/plugin-families.php:106
+#: src/Domain/Plugin/plugin-families.php:108
 msgid "Schedule changes to your posts."
 msgstr "I-schedule ang mga pagbabago sa iyong mga post."
 
-#: src/Domain/Plugin/plugin-families.php:122
+#: src/Domain/Plugin/plugin-families.php:124
 msgid "Organize, schedule, and plan your publishing."
 msgstr "Ayusin, i-schedule, at planuhin ang iyong paglalathala."
 
-#: src/Domain/Plugin/plugin-families.php:138
+#: src/Domain/Plugin/plugin-families.php:140
 msgid "Approve and schedule new versions to your published posts."
 msgstr ""
 "Aprubahan at i-schedule ang mga bagong bersyon sa iyong mga nai-publish na "
 "post."
 
-#: src/Domain/Plugin/plugin-families.php:154
+#: src/Domain/Plugin/plugin-families.php:156
 msgid "Organize your posts into issues or series."
 msgstr "Ayusin ang iyong mga post sa mga isyu o serye."
 
-#: src/Domain/Plugin/plugin-families.php:170
+#: src/Domain/Plugin/plugin-families.php:172
 msgid "Create custom URLs for your posts and external links."
 msgstr "Gumawa ng mga pasadyang URL para sa iyong mga post at mga panlabas na link."
 
-#: src/Domain/Plugin/plugin-families.php:186
+#: src/Domain/Plugin/plugin-families.php:188
 msgid "Create custom statuses and publishing workflows."
 msgstr "Lumikha ng mga custom na status at workflow ng paglalathala."
 
-#: src/Infrastructure/Container/DependencyContainer.php:102
+#: src/Infrastructure/AdminMenu/PluginQuickLinks.php:68
+#. Translators: %s is the plugin's registered menu label.
+#, php-format
+msgid "Open %s"
+msgstr "Buksan ang %s"
+
+#: src/Infrastructure/Container/DependencyContainer.php:104
 #. translators: %s is the dependency ID.
 #, php-format
 msgid "Dependency \"%s\" not found in container."
 msgstr "Dependency \"%s\" ay hindi natagpuan sa container."
 
-#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:116
+#: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:118
 #. translators: %s is the error message
 #, php-format
 msgid "Error validating license: %s"
 msgstr "Error sa pag-validate ng lisensya: %s"
 
-#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:110
+#: src/Infrastructure/Edd/Subscription/VersionCheckService.php:112
 #. translators: %s is the error message
 #, php-format
 msgid "Error getting license info: %s"
 msgstr "Error sa pagkuha ng impormasyon ng lisensya: %s"
 
-#: src/Infrastructure/Remote/Exception/RemoteAccessDeniedException.php:29
+#: src/Infrastructure/Remote/Exception/RemoteAccessDeniedException.php:31
 msgid ""
 "The license server denied this request. This can happen when a license key "
 "or site has been blocked. Please contact PublishPress support for help."
@@ -505,75 +555,75 @@ msgstr ""
 "ito kapag ang isang key ng lisensya o site ay na-block. Pakisubukan "
 "makipag-ugnayan sa suporta ng PublishPress para sa tulong."
 
-#: src/Infrastructure/RestApi/RestApiService.php:287
+#: src/Infrastructure/RestApi/RestApiService.php:289
 msgid "Too many requests. Please try again later."
 msgstr "Sobra ang mga kahilingan. Mangyaring subukan muli mamaya."
 
-#: src/Infrastructure/RestApi/RestApiService.php:358
+#: src/Infrastructure/RestApi/RestApiService.php:360
 msgid "An error occurred while processing your request."
 msgstr "Nagkaroon ng error habang pinoproseso ang iyong kahilingan."
 
-#: src/Infrastructure/View/ViewService.php:48
+#: src/Infrastructure/View/ViewService.php:50
 #. translators: %s is the template path
 #, php-format
 msgid "Template not found: %s"
 msgstr "Template na hindi natagpuan: %s"
 
-#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:55
+#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:57
 msgid "Path cannot be empty"
 msgstr "Ang landas ay hindi maaaring walang laman"
 
-#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:64
+#: src/Infrastructure/WP/Asset/WPAssetAdapter.php:66
 msgid "File extension cannot be empty"
 msgstr "Ang ekstensyon ng file ay hindi maaaring walang laman"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:183
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:198
 msgid "Invalid file path: null byte detected"
 msgstr "Di-wastong landas ng file: natagpuan ang null byte"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:192
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:207
 msgid "Invalid file path: directory traversal detected"
 msgstr "Di-wastong landas ng file: natagpuan ang directory traversal"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:210
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:225
 #. translators: %s is the directory path
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "Di-wastong landas ng file: wala ang magulang na direktoryo: %s"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:220
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:235
 msgid "Invalid file path: unable to resolve path"
 msgstr "Di-wastong landas ng file: hindi ma-resolve ang landas"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:239
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:254
 msgid "Invalid file path: operation not allowed outside permitted directories"
 msgstr ""
 "Di-wastong landas ng file: hindi pinapayagang operasyon sa labas ng mga "
 "pinahintulutang direktoryo"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:56
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:58
 msgid "Download URL failed WordPress validation"
 msgstr "Nabigong i-validate ng WordPress ang URL ng pag-download"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:72
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:74
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to download plugin: %s"
 msgstr "Nabigong i-download ang plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:81
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:83
 msgid "Downloaded plugin file does not exist"
 msgstr "Ang na-download na file ng plugin ay hindi umiiral"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:89
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:91
 msgid "Downloaded plugin file is empty"
 msgstr "Ang na-download na file ng plugin ay walang laman"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:98
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:101
 msgid "Cannot read downloaded plugin file"
 msgstr "Hindi mabasa ang na-download na file ng plugin"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:108
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:111
 msgid ""
 "Downloaded file is not a valid ZIP archive. The download URL may be "
 "returning an error page."
@@ -581,61 +631,92 @@ msgstr ""
 "Ang na-download na file ay hindi isang wastong ZIP archive. Maaaring "
 "nagbabalik ang URL ng pag-download ng isang error na pahina."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:124
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:127
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to unzip plugin file: %s"
 msgstr "Nabigong i-unzip ang file ng plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:132
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:135
 msgid "Failed to unzip plugin file"
 msgstr "Nabigong i-unzip ang file ng plugin"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:154
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:157
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "Nabigong i-activate ang plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:223
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:187
+msgid "Resolve conflicts for network-active plugins from Network Admin."
+msgstr ""
+"I-resolve ang mga salungatan para sa mga network-active na plugin mula sa "
+"Network Admin."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:207
+msgid ""
+"Activation recovery failed. Both plugin copies were retained. Please "
+"restore the previous version from the Plugins screen."
+msgstr ""
+"Nabigo ang pag-recover ng activation. Parehong kopya ng plugin ay "
+"pinanatili. Mangyaring ibalik ang nakaraang bersyon mula sa screen ng "
+"Plugins."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:220
+msgid "The other plugin could not be deactivated."
+msgstr "Ang ibang plugin ay hindi ma-deactivate."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:224
+msgid "The selected plugin did not remain active."
+msgstr "Ang napiling plugin ay hindi nanatiling aktibo."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:230
+msgid ""
+"The selected plugin could not be activated. Neither copy was deleted and "
+"the previous activation settings were restored."
+msgstr ""
+"Ang napiling plugin ay hindi ma-activate. Walang kopyang na-delete at ang "
+"mga nakaraang setting ng activation ay naibalik."
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:297
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "Nabigong i-delete ang plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:273
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:347
 msgid "No update available for this plugin"
 msgstr "Walang update na available para sa plugin na ito"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:282
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:356
 msgid "Invalid update information for this plugin"
 msgstr "Hindi wasto ang impormasyon ng update para sa plugin na ito"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:315
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:389
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "Nabigong i-update ang plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:323
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:397
 msgid "Plugin update failed"
 msgstr "Nabigong i-update ang plugin"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:442
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:516
 msgid "Invalid download URL provided"
 msgstr "Di-wastong URL ng pag-download"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:449
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:523
 msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr "Ang URL ng pag-download ay dapat gumamit ng HTTP o HTTPS na protocol"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:458
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:532
 #. translators: %s is the hostname
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
 msgstr "Ang URL ng pag-download ay hindi mula sa pinahintulutang domain: %s"
 
-#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:56
+#: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:58
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to get plugin information: %s"
@@ -697,13 +778,19 @@ msgstr "Dokumentasyon para sa %s"
 
 #: resources/dist/js/components-showcase.js:105
 #: resources/dist/js/plugins-dashboard.js:106
+#: resources/dist/js/plugins-dashboard.js:2817
 #: resources/dist/js/settings-page.js:105
 #: resources/dist/js/welcome-page.js:105
+#: resources/dist/js/welcome-page.js:444
 #: resources/src/jsx/components/admin-page/footer.jsx:56
+#: resources/src/jsx/components/pages/welcome-page.jsx:46
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:124
 #: resources/dist/js/components-showcase.js:93
 #: resources/dist/js/plugins-dashboard.js:93
+#: resources/dist/js/plugins-dashboard.js:2264
 #: resources/dist/js/settings-page.js:93
 #: resources/dist/js/welcome-page.js:93
+#: resources/dist/js/welcome-page.js:377
 msgid "Documentation"
 msgstr "Dokumentasyon"
 
@@ -745,72 +832,72 @@ msgstr "Makipag-ugnayan"
 msgid "Get Support"
 msgstr "Kumuha ng Suporta"
 
-#: resources/dist/js/components-showcase.js:445
+#: resources/dist/js/components-showcase.js:453
 #: resources/src/jsx/components/pages/components-showcase.jsx:26
-#: resources/dist/js/components-showcase.js:385
+#: resources/dist/js/components-showcase.js:386
 msgid "Components Showcase"
 msgstr "Tampok na Mga Komponente"
 
-#: resources/dist/js/plugins-dashboard.js:479
+#: resources/dist/js/plugins-dashboard.js:487
 #: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
-#: resources/dist/js/plugins-dashboard.js:403
+#: resources/dist/js/plugins-dashboard.js:404
 msgid "Select an option"
 msgstr "Pumili ng isang opsyon"
 
-#: resources/dist/js/plugins-dashboard.js:485
+#: resources/dist/js/plugins-dashboard.js:493
 #: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
-#: resources/dist/js/plugins-dashboard.js:411
+#: resources/dist/js/plugins-dashboard.js:412
 msgid "Options"
 msgstr "Mga Opsyon"
 
-#: resources/dist/js/plugins-dashboard.js:496
+#: resources/dist/js/plugins-dashboard.js:504
 #: resources/src/jsx/components/filter/filter-buttons-bar.jsx:66
-#: resources/dist/js/plugins-dashboard.js:425
+#: resources/dist/js/plugins-dashboard.js:426
 msgid "Filter plugins by status"
 msgstr "Salainin ang mga plugin ayon sa estado"
 
-#: resources/dist/js/plugins-dashboard.js:1011
+#: resources/dist/js/plugins-dashboard.js:906
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
-#: resources/dist/js/plugins-dashboard.js:757, fuzzy
+#: resources/dist/js/plugins-dashboard.js:703, fuzzy
 msgid "N/A"
 msgstr "N/A"
 
-#: resources/dist/js/plugins-dashboard.js:1053
+#: resources/dist/js/plugins-dashboard.js:948
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
-#: resources/dist/js/plugins-dashboard.js:804
+#: resources/dist/js/plugins-dashboard.js:750
 #. translators: %1$s is the plugin name, %2$s is the expiration date
 #, js-format
 msgid "The license for %1$s expired on %2$s"
 msgstr "Nag-expire ang lisensya para sa %1$s noong %2$s"
 
-#: resources/dist/js/plugins-dashboard.js:1057
+#: resources/dist/js/plugins-dashboard.js:952
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
-#: resources/dist/js/plugins-dashboard.js:811
+#: resources/dist/js/plugins-dashboard.js:757
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
 #, js-format
 msgid "The licenses for %1$s expired on %2$s"
 msgstr "Nag-expire ang mga lisensya para sa %1$s noong %2$s"
 
-#: resources/dist/js/plugins-dashboard.js:1063
-#: resources/dist/js/plugins-dashboard.js:1105
+#: resources/dist/js/plugins-dashboard.js:958
+#: resources/dist/js/plugins-dashboard.js:1000
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:157
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:212
-#: resources/dist/js/plugins-dashboard.js:821
-#: resources/dist/js/plugins-dashboard.js:876
+#: resources/dist/js/plugins-dashboard.js:767
+#: resources/dist/js/plugins-dashboard.js:822
 msgid "Renew now"
 msgstr "I-renew ngayon"
 
-#: resources/dist/js/plugins-dashboard.js:1095
+#: resources/dist/js/plugins-dashboard.js:990
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:193
-#: resources/dist/js/plugins-dashboard.js:857
+#: resources/dist/js/plugins-dashboard.js:803
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
 #, js-format
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr "Ang lisensya para sa %1$s ay mag-e-expire sa %2$s (%3$d araw na natitira)"
 
-#: resources/dist/js/plugins-dashboard.js:1099
+#: resources/dist/js/plugins-dashboard.js:994
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:201
-#: resources/dist/js/plugins-dashboard.js:865
+#: resources/dist/js/plugins-dashboard.js:811
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
 #, js-format
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
@@ -818,45 +905,36 @@ msgstr ""
 "Ang mga lisensya para sa %1$s ay mag-e-expire sa %2$s (%3$d araw na "
 "natitira)"
 
-#: resources/dist/js/plugins-dashboard.js:1102
+#: resources/dist/js/plugins-dashboard.js:997
 #: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:209
-#: resources/dist/js/plugins-dashboard.js:873
+#: resources/dist/js/plugins-dashboard.js:819
 msgid "Warning:"
 msgstr "Babala:"
 
-#: resources/dist/js/plugins-dashboard.js:1194
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:46
-#: resources/dist/js/plugins-dashboard.js:940
+#: resources/dist/js/plugins-dashboard.js:1092
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:48
+#: resources/dist/js/plugins-dashboard.js:888
 msgid "All"
 msgstr "Lahat"
 
-#: resources/dist/js/plugins-dashboard.js:1198
-#: resources/dist/js/plugins-dashboard.js:2632
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:51
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:39
-#: resources/dist/js/plugins-dashboard.js:945
-#: resources/dist/js/plugins-dashboard.js:2287
+#: resources/dist/js/plugins-dashboard.js:1096
+#: resources/dist/js/plugins-dashboard.js:3174
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:53
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:40
+#: resources/dist/js/plugins-dashboard.js:893
+#: resources/dist/js/plugins-dashboard.js:2604
 msgid "Unlicensed"
 msgstr "Walang lisensya"
 
-#: resources/dist/js/plugins-dashboard.js:1214
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:71
-#: resources/dist/js/plugins-dashboard.js:965
+#: resources/dist/js/plugins-dashboard.js:1112
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:73
+#: resources/dist/js/plugins-dashboard.js:913
 msgid "Updates available"
 msgstr "Mga update na available"
 
-#: resources/dist/js/plugins-dashboard.js:1232
-#: resources/dist/js/welcome-page.js:496
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:94
-#: resources/src/jsx/components/pages/welcome-page.jsx:128
-#: resources/dist/js/plugins-dashboard.js:988
-#: resources/dist/js/welcome-page.js:458
-msgid "Plugins Dashboard"
-msgstr "Dashboard ng Plugins"
-
-#: resources/dist/js/plugins-dashboard.js:1276
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:140
-#: resources/dist/js/plugins-dashboard.js:1034
+#: resources/dist/js/plugins-dashboard.js:1172
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:142
+#: resources/dist/js/plugins-dashboard.js:982
 msgid ""
 "To force a refresh, hold Option on Mac or Alt on Windows and then click "
 "Refresh."
@@ -864,132 +942,326 @@ msgstr ""
 "Upang pilitin ang isang pag-refresh, hawakan ang Option sa Mac o Alt sa "
 "Windows at pagkatapos ay i-click ang Refresh."
 
-#: resources/dist/js/plugins-dashboard.js:1289
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
-#: resources/dist/js/plugins-dashboard.js:1052
+#: resources/dist/js/plugins-dashboard.js:1184
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:152
+#: resources/dist/js/plugins-dashboard.js:992, fuzzy
+msgid "Plugins & Features"
+msgstr "Plugins & Features"
+
+#: resources/dist/js/plugins-dashboard.js:1184
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:153
+#: resources/dist/js/plugins-dashboard.js:993
+msgid "Activate, open, and license each product directly from the Hub."
+msgstr ""
+"I-activate, buksan, at lisensyahan ang bawat produkto nang direkta mula sa "
+"Hub."
+
+#: resources/dist/js/plugins-dashboard.js:1192
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:157
+#: resources/dist/js/plugins-dashboard.js:997
 msgid "Force Refresh"
 msgstr "Piliting I-refresh"
 
-#: resources/dist/js/plugins-dashboard.js:1289
-#: resources/dist/js/settings-page.js:1093
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:158
+#: resources/dist/js/plugins-dashboard.js:1192
+#: resources/dist/js/settings-page.js:1100
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:157
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:307
-#: resources/dist/js/plugins-dashboard.js:1052
-#: resources/dist/js/settings-page.js:867
+#: resources/dist/js/plugins-dashboard.js:997
+#: resources/dist/js/settings-page.js:868
 msgid "Refresh"
 msgstr "I-refresh"
 
-#: resources/dist/js/plugins-dashboard.js:1346
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
-#: resources/dist/js/plugins-dashboard.js:1097
+#: resources/dist/js/plugins-dashboard.js:1309
+#: resources/src/jsx/components/pages/suite-license.jsx:30
+#: resources/dist/js/plugins-dashboard.js:1048
+#, js-format
+msgid "Checking %s…"
+msgstr "Niche-checking %s…"
+
+#: resources/dist/js/plugins-dashboard.js:1326
+#: resources/src/jsx/components/pages/suite-license.jsx:38
+#: resources/dist/js/plugins-dashboard.js:1056
+msgid "The license could not be activated for this product."
+msgstr "Hindi ma-activate ang lisensya para sa produktong ito."
+
+#: resources/dist/js/plugins-dashboard.js:1331
+#: resources/src/jsx/components/pages/suite-license.jsx:40
+#: resources/dist/js/plugins-dashboard.js:1058
+msgid "License activated."
+msgstr "Na-activate ang lisensya."
+
+#: resources/dist/js/plugins-dashboard.js:1342
+#: resources/src/jsx/components/pages/suite-license.jsx:42
+#: resources/dist/js/plugins-dashboard.js:1060
+msgid "Activation failed. Please try again."
+msgstr "Nabigo ang activation. Mangyaring subukan muli."
+
+#: resources/dist/js/plugins-dashboard.js:1362
+#: resources/src/jsx/components/pages/suite-license.jsx:46
+#: resources/dist/js/plugins-dashboard.js:1064
+msgid "License checks complete. Review the results below."
+msgstr "Kumpleto ang mga tseke ng lisensya. Suriin ang mga resulta sa ibaba."
+
+#: resources/dist/js/plugins-dashboard.js:1371
+#: resources/src/jsx/components/pages/suite-license.jsx:49
+#: resources/dist/js/plugins-dashboard.js:1067
+msgid ""
+"License checks complete, but the dashboard could not refresh. Reload this "
+"page to see the latest status."
+msgstr ""
+"Kumpleto ang mga tseke ng lisensya, ngunit hindi ma-refresh ang dashboard. "
+"I-reload ang pahinang ito upang makita ang pinakabagong katayuan."
+
+#: resources/dist/js/plugins-dashboard.js:1398
+#: resources/src/jsx/components/pages/suite-license.jsx:60
+#: resources/dist/js/plugins-dashboard.js:1078
+msgid "PublishPress Bundle / Suite"
+msgstr "Bundle / Suite ng PublishPress"
+
+#: resources/dist/js/plugins-dashboard.js:1398
+#: resources/src/jsx/components/pages/suite-license.jsx:61
+#: resources/dist/js/plugins-dashboard.js:1079
+msgid "Connect your included Pro plugins with one license key."
+msgstr "Ikonekta ang iyong mga kasama na Pro plugins gamit ang isang license key."
+
+#: resources/dist/js/plugins-dashboard.js:1406
+#: resources/src/jsx/components/pages/suite-license.jsx:64
+#: resources/dist/js/plugins-dashboard.js:1082
+msgid "Close license setup"
+msgstr "Isara ang setup ng lisensya"
+
+#: resources/dist/js/plugins-dashboard.js:1406
+#: resources/src/jsx/components/pages/suite-license.jsx:64
+#: resources/dist/js/plugins-dashboard.js:1082
+msgid "Activate Suite License"
+msgstr "I-activate ang Suite License"
+
+#: resources/dist/js/plugins-dashboard.js:1410
+#: resources/dist/js/plugins-dashboard.js:2035
+#: resources/dist/js/plugins-dashboard.js:2185
+#: resources/src/jsx/components/pages/suite-license.jsx:67
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:71
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:97
+#: resources/dist/js/plugins-dashboard.js:1085
+#: resources/dist/js/plugins-dashboard.js:1540
+#: resources/dist/js/plugins-dashboard.js:1673
+msgid "License key"
+msgstr "Susi ng lisensya"
+
+#: resources/dist/js/plugins-dashboard.js:1418
+#: resources/src/jsx/components/pages/suite-license.jsx:70
+#: resources/dist/js/plugins-dashboard.js:1088
+msgid "Select products included in your subscription"
+msgstr "Pumili ng mga produktong kasama sa iyong subscription"
+
+#: resources/dist/js/plugins-dashboard.js:1418
+#: resources/src/jsx/components/pages/suite-license.jsx:71
+#: resources/dist/js/plugins-dashboard.js:1089
+msgid ""
+"This replaces the saved license key for each selected product after "
+"successful activation. Keys managed in wp-config.php cannot be changed "
+"here. No plugins will be installed or activated."
+msgstr ""
+"Ito ay pumapalit sa na-save na license key para sa bawat napiling produkto "
+"pagkatapos ng matagumpay na aktibasyon. Ang mga key na pinamamahalaan sa "
+"wp-config.php ay hindi maaaring baguhin dito. Walang mga plugin na "
+"mai-install o ma-aactivate."
+
+#: resources/dist/js/plugins-dashboard.js:1438
+#: resources/src/jsx/components/pages/suite-license.jsx:77
+#: resources/dist/js/plugins-dashboard.js:1095
+msgid "Activate license for selected products"
+msgstr "I-activate ang lisensya para sa mga napiling produkto"
+
+#: resources/dist/js/plugins-dashboard.js:1445
+#: resources/src/jsx/components/pages/suite-license.jsx:81
+#: resources/dist/js/plugins-dashboard.js:1099
+msgid "Success"
+msgstr "Tagumpay"
+
+#: resources/dist/js/plugins-dashboard.js:1445
+#: resources/src/jsx/components/pages/suite-license.jsx:81
+#: resources/dist/js/plugins-dashboard.js:1099
+msgid "Failed"
+msgstr "Nabigo"
+
+#: resources/dist/js/plugins-dashboard.js:1490
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:20
+#: resources/dist/js/plugins-dashboard.js:1124
 msgid "Install"
 msgstr "Mag-install"
 
-#: resources/dist/js/plugins-dashboard.js:1347
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:22
-#: resources/dist/js/plugins-dashboard.js:1098
+#: resources/dist/js/plugins-dashboard.js:1491
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
+#: resources/dist/js/plugins-dashboard.js:1125
 msgid "Installing..."
 msgstr "Naga-install..."
 
-#: resources/dist/js/plugins-dashboard.js:1352
-#: resources/dist/js/plugins-dashboard.js:2311
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
+#: resources/dist/js/plugins-dashboard.js:1496
+#: resources/dist/js/plugins-dashboard.js:2588
+#: resources/dist/js/plugins-dashboard.js:2613
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:26
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28
-#: resources/dist/js/plugins-dashboard.js:1103
-#: resources/dist/js/plugins-dashboard.js:1964
+#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
+#: resources/dist/js/plugins-dashboard.js:1130
+#: resources/dist/js/plugins-dashboard.js:2110
+#: resources/dist/js/plugins-dashboard.js:2133
 msgid "Upgrade to Pro"
 msgstr "Mag-upgrade sa Pro"
 
-#: resources/dist/js/plugins-dashboard.js:1353
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:28
-#: resources/dist/js/plugins-dashboard.js:1104
+#: resources/dist/js/plugins-dashboard.js:1497
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
+#: resources/dist/js/plugins-dashboard.js:1131
 msgid "Upgrading to Pro..."
 msgstr "Naga-upgrade sa Pro..."
 
-#: resources/dist/js/plugins-dashboard.js:1358
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
-#: resources/dist/js/plugins-dashboard.js:1109
+#: resources/dist/js/plugins-dashboard.js:1502
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:32
+#: resources/dist/js/plugins-dashboard.js:1136
 msgid "Manage License"
 msgstr "Pamahalaan ang Lisensya"
 
-#: resources/dist/js/plugins-dashboard.js:1359
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:34
-#: resources/dist/js/plugins-dashboard.js:1110
+#: resources/dist/js/plugins-dashboard.js:1503
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
+#: resources/dist/js/plugins-dashboard.js:1137
 msgid "Managing License..."
 msgstr "Naga-pamahala ng Lisensya..."
 
-#: resources/dist/js/plugins-dashboard.js:1364
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
-#: resources/dist/js/plugins-dashboard.js:1115
+#: resources/dist/js/plugins-dashboard.js:1508
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:38
+#: resources/dist/js/plugins-dashboard.js:1142
 msgid "Activate License"
 msgstr "I-activate ang Lisensya"
 
-#: resources/dist/js/plugins-dashboard.js:1365
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:40
-#: resources/dist/js/plugins-dashboard.js:1116
+#: resources/dist/js/plugins-dashboard.js:1509
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
+#: resources/dist/js/plugins-dashboard.js:1143
 msgid "Activating License..."
 msgstr "Naga-activate ng Lisensya..."
 
-#: resources/dist/js/plugins-dashboard.js:1370
+#: resources/dist/js/plugins-dashboard.js:1515
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
-#: resources/dist/js/plugins-dashboard.js:1121
+#: resources/dist/js/plugins-dashboard.js:1149
 msgid "Resolve Conflict"
 msgstr "Lutasin ang Alitan"
 
-#: resources/dist/js/plugins-dashboard.js:1371
+#: resources/dist/js/plugins-dashboard.js:1516
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
-#: resources/dist/js/plugins-dashboard.js:1122
+#: resources/dist/js/plugins-dashboard.js:1150
 msgid "Resolving Conflict..."
 msgstr "Naga-lutas ng Alitan..."
 
-#: resources/dist/js/plugins-dashboard.js:1376
+#: resources/dist/js/plugins-dashboard.js:1521
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
-#: resources/dist/js/plugins-dashboard.js:1127
+#: resources/dist/js/plugins-dashboard.js:1155
 msgid "Update"
 msgstr "I-update"
 
-#: resources/dist/js/plugins-dashboard.js:1377
+#: resources/dist/js/plugins-dashboard.js:1522
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
-#: resources/dist/js/plugins-dashboard.js:1128
+#: resources/dist/js/plugins-dashboard.js:1156
 msgid "Updating..."
 msgstr "Naga-update..."
 
-#: resources/dist/js/plugins-dashboard.js:1633
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:31
-#: resources/dist/js/plugins-dashboard.js:1319
+#: resources/dist/js/plugins-dashboard.js:1614
+#: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:16
+#: resources/dist/js/plugins-dashboard.js:1238
+msgid ""
+"Deactivating PublishPress Statuses stops registering its custom post "
+"statuses. Content using those statuses may become unavailable, and parts of "
+"your site may stop working until the plugin is active again."
+msgstr ""
+"Ang pag-deactivate sa PublishPress Statuses ay humihinto sa pagrerehistro "
+"ng mga custom post statuses nito. Ang nilalaman na gumagamit ng mga status "
+"na iyon ay maaaring hindi magamit, at ang mga bahagi ng iyong site ay "
+"maaaring huminto sa pagtatrabaho hanggang ang plugin ay muling maging "
+"aktibo."
+
+#: resources/dist/js/plugins-dashboard.js:1616
+#: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:18
+#: resources/dist/js/plugins-dashboard.js:1240
+msgid ""
+"Deactivating this plugin disables its features and may affect content or "
+"workflows that depend on it."
+msgstr ""
+"Ang pag-deactivate sa plugin na ito ay nag-disable ng mga tampok nito at "
+"maaaring makaapekto sa nilalaman o mga workflow na umaasa dito."
+
+#: resources/dist/js/plugins-dashboard.js:1627
+#: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:25
+#: resources/dist/js/plugins-dashboard.js:1247
+msgid ""
+"Uninstalling deletes the plugin files and may also delete its saved "
+"settings or data. Its features will no longer be available. Back up your "
+"site before continuing."
+msgstr ""
+"Ang pag-uninstall ay nag-delete ng mga file ng plugin at maaari ring "
+"mag-delete ng mga na-save na setting o data nito. Ang mga tampok nito ay "
+"hindi na magiging available. Mag-backup ng iyong site bago magpatuloy."
+
+#: resources/dist/js/plugins-dashboard.js:1627
+#: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:26
+#: resources/dist/js/plugins-dashboard.js:1248
+msgid ""
+"Without PublishPress Statuses, its custom post statuses are no longer "
+"registered. Content using those statuses may become unavailable, and parts "
+"of your site may stop working until the plugin is installed and active "
+"again."
+msgstr ""
+"Walang PublishPress Statuses, ang mga custom post statuses nito ay hindi na "
+"narehistro. Ang nilalaman na gumagamit ng mga status na iyon ay maaaring "
+"hindi magamit, at ang mga bahagi ng iyong site ay maaaring huminto sa "
+"pagtatrabaho hanggang ang plugin ay muling mai-install at maging aktibo."
+
+#: resources/dist/js/plugins-dashboard.js:1627
+#: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:29
+#: resources/dist/js/plugins-dashboard.js:1251
+msgid ""
+"Resolving this conflict can deactivate the plugin while switching versions. "
+"If the version you keep cannot be activated, the plugin may remain "
+"disabled. Check that it is active after resolving the conflict."
+msgstr ""
+"Ang paglutas sa salungatang ito ay maaaring mag-deactivate ng plugin habang "
+"nagbabago ng mga bersyon. Kung ang bersyon na iyong pinanatili ay hindi "
+"ma-aactivate, ang plugin ay maaaring manatiling disabled. Suriin na ito ay "
+"aktibo pagkatapos malutas ang salungatan."
+
+#: resources/dist/js/plugins-dashboard.js:1831
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:33
+#: resources/dist/js/plugins-dashboard.js:1383
 msgid "Confirmation"
 msgstr "Kumpirmasyon"
 
-#: resources/dist/js/plugins-dashboard.js:1636
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:36
-#: resources/dist/js/plugins-dashboard.js:1324
+#: resources/dist/js/plugins-dashboard.js:1837
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:41
+#: resources/dist/js/plugins-dashboard.js:1391
 msgid "Are you sure you want to continue?"
 msgstr "Sigurado ka bang nais mong magpatuloy?"
 
-#: resources/dist/js/plugins-dashboard.js:1647
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:49
-#: resources/dist/js/plugins-dashboard.js:1337
+#: resources/dist/js/plugins-dashboard.js:1849
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:54
+#: resources/dist/js/plugins-dashboard.js:1404
 msgid "Continue"
 msgstr "Magpatuloy"
 
-#: resources/dist/js/plugins-dashboard.js:1654
-#: resources/dist/js/plugins-dashboard.js:2266
-#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:52
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:100
-#: resources/dist/js/plugins-dashboard.js:1340
-#: resources/dist/js/plugins-dashboard.js:1929
+#: resources/dist/js/plugins-dashboard.js:1857
+#: resources/dist/js/plugins-dashboard.js:2543
+#: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:57
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:103
+#: resources/dist/js/plugins-dashboard.js:1407
+#: resources/dist/js/plugins-dashboard.js:2075
 msgid "Cancel"
 msgstr "Kanselahin"
 
-#: resources/dist/js/plugins-dashboard.js:1700
+#: resources/dist/js/plugins-dashboard.js:1903
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29
-#: resources/dist/js/plugins-dashboard.js:1377
+#: resources/dist/js/plugins-dashboard.js:1444
 msgid "Install Plugin"
 msgstr "Mag-install ng Plugin"
 
-#: resources/dist/js/plugins-dashboard.js:1705
+#: resources/dist/js/plugins-dashboard.js:1908
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
-#: resources/dist/js/plugins-dashboard.js:1382
+#: resources/dist/js/plugins-dashboard.js:1449
 msgid ""
 "Select how you would like to install this plugin. You can install the Pro "
 "version if you have a license, or the Free version to get started."
@@ -998,57 +1270,57 @@ msgstr ""
 "i-install ang Pro na bersyon kung mayroon kang lisensya, o ang Libreng "
 "bersyon upang makapagsimula."
 
-#: resources/dist/js/plugins-dashboard.js:1710
-#: resources/dist/js/plugins-dashboard.js:2915
+#: resources/dist/js/plugins-dashboard.js:1913
+#: resources/dist/js/plugins-dashboard.js:3457
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:116
-#: resources/dist/js/plugins-dashboard.js:1385
-#: resources/dist/js/plugins-dashboard.js:2574
+#: resources/dist/js/plugins-dashboard.js:1452
+#: resources/dist/js/plugins-dashboard.js:2891
 msgid "Free Details"
 msgstr "Mga Detalye ng Libre"
 
-#: resources/dist/js/plugins-dashboard.js:1713
-#: resources/dist/js/plugins-dashboard.js:2922
+#: resources/dist/js/plugins-dashboard.js:1916
+#: resources/dist/js/plugins-dashboard.js:3464
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:124
-#: resources/dist/js/plugins-dashboard.js:1387
-#: resources/dist/js/plugins-dashboard.js:2582
+#: resources/dist/js/plugins-dashboard.js:1454
+#: resources/dist/js/plugins-dashboard.js:2899
 msgid "Pro Details"
 msgstr "Mga Detalye ng Pro"
 
-#: resources/dist/js/plugins-dashboard.js:1716
-#: resources/dist/js/plugins-dashboard.js:2930
+#: resources/dist/js/plugins-dashboard.js:1919
+#: resources/dist/js/plugins-dashboard.js:3472
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:133
-#: resources/dist/js/plugins-dashboard.js:1389
-#: resources/dist/js/plugins-dashboard.js:2591
+#: resources/dist/js/plugins-dashboard.js:1456
+#: resources/dist/js/plugins-dashboard.js:2908
 msgid "Changelogs"
 msgstr "Mga Changelog"
 
-#: resources/dist/js/plugins-dashboard.js:1722
+#: resources/dist/js/plugins-dashboard.js:1925
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44
-#: resources/dist/js/plugins-dashboard.js:1392
+#: resources/dist/js/plugins-dashboard.js:1459
 msgid "I have a license, install the Pro version"
 msgstr "Mayroon akong lisensya, i-install ang Pro na bersyon"
 
-#: resources/dist/js/plugins-dashboard.js:1728
+#: resources/dist/js/plugins-dashboard.js:1931
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47
-#: resources/dist/js/plugins-dashboard.js:1395
+#: resources/dist/js/plugins-dashboard.js:1462
 msgid "I don't have a license, install the Free version"
 msgstr "Wala akong lisensya, i-install ang Libre na bersyon"
 
-#: resources/dist/js/plugins-dashboard.js:1815
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:54
-#: resources/dist/js/plugins-dashboard.js:1456
+#: resources/dist/js/plugins-dashboard.js:2021
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:56
+#: resources/dist/js/plugins-dashboard.js:1525
 msgid "Enter your license key"
 msgstr "Ipasok ang iyong license key"
 
-#: resources/dist/js/plugins-dashboard.js:1820
-#: resources/dist/js/plugins-dashboard.js:1962
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:59
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:86
-#: resources/dist/js/plugins-dashboard.js:1461
-#: resources/dist/js/plugins-dashboard.js:1587
+#: resources/dist/js/plugins-dashboard.js:2026
+#: resources/dist/js/plugins-dashboard.js:2176
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:61
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
+#: resources/dist/js/plugins-dashboard.js:1530
+#: resources/dist/js/plugins-dashboard.js:1663
 msgid ""
 "Enter your license key to activate the Pro version of this plugin. You can "
 "find your license key in your PublishPress account dashboard."
@@ -1057,184 +1329,213 @@ msgstr ""
 "na ito. Mahahanap mo ang iyong license key sa dashboard ng iyong "
 "PublishPress account."
 
-#: resources/dist/js/plugins-dashboard.js:1827
-#: resources/dist/js/plugins-dashboard.js:1969
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:63
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:90
-#: resources/dist/js/plugins-dashboard.js:1465
-#: resources/dist/js/plugins-dashboard.js:1591
-msgid "Go to my profile to get the license key"
-msgstr "Pumunta sa aking profile upang makuha ang license key"
+#: resources/dist/js/plugins-dashboard.js:2033
+#: resources/dist/js/plugins-dashboard.js:2183
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:65
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:91
+#: resources/dist/js/plugins-dashboard.js:1534
+#: resources/dist/js/plugins-dashboard.js:1667
+msgid "Go to the dashboard to get your license key"
+msgstr "Pumunta sa dashboard upang makuha ang iyong license key"
 
-#: resources/dist/js/plugins-dashboard.js:1829
-#: resources/dist/js/plugins-dashboard.js:1971
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:69
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:96
-#: resources/dist/js/plugins-dashboard.js:1471
-#: resources/dist/js/plugins-dashboard.js:1597
-msgid "License key"
-msgstr "Susi ng lisensya"
-
-#: resources/dist/js/plugins-dashboard.js:1831
-#: resources/dist/js/plugins-dashboard.js:1973
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:71
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:98
-#: resources/dist/js/plugins-dashboard.js:1473
-#: resources/dist/js/plugins-dashboard.js:1599
+#: resources/dist/js/plugins-dashboard.js:2037
+#: resources/dist/js/plugins-dashboard.js:2187
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:73
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:99
+#: resources/dist/js/plugins-dashboard.js:1542
+#: resources/dist/js/plugins-dashboard.js:1675
 msgid "Enter your license key here"
 msgstr "Ipasok ang iyong license key dito"
 
-#: resources/dist/js/plugins-dashboard.js:1839
-#: resources/dist/js/plugins-dashboard.js:1981
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:79
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:105
-#: resources/dist/js/plugins-dashboard.js:1481
-#: resources/dist/js/plugins-dashboard.js:1606
+#: resources/dist/js/plugins-dashboard.js:2045
+#: resources/dist/js/plugins-dashboard.js:2195
+#: resources/dist/js/plugins-dashboard.js:2223
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:81
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:152
+#: resources/dist/js/plugins-dashboard.js:1550
+#: resources/dist/js/plugins-dashboard.js:1682
+#: resources/dist/js/plugins-dashboard.js:1728
 msgid "Use this license key for all PublishPress plugins"
 msgstr "Gamitin ang key ng lisensya na ito para sa lahat ng plugin ng PublishPress"
 
-#: resources/dist/js/plugins-dashboard.js:1851
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:92
-#: resources/dist/js/plugins-dashboard.js:1494
+#: resources/dist/js/plugins-dashboard.js:2059
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:95
+#: resources/dist/js/plugins-dashboard.js:1564
+msgid "Use existing license key"
+msgstr "Gamitin ang umiiral na license key"
+
+#: resources/dist/js/plugins-dashboard.js:2064
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:100
+#: resources/dist/js/plugins-dashboard.js:1569
 msgid "Activate and install the plugin"
 msgstr "I-activate at i-install ang plugin"
 
-#: resources/dist/js/plugins-dashboard.js:1957
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:79
-#: resources/dist/js/plugins-dashboard.js:1580
+#: resources/dist/js/plugins-dashboard.js:2171
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:80
+#: resources/dist/js/plugins-dashboard.js:1656
 msgid "Manage your license"
 msgstr "Pamahalaan ang iyong lisensya"
 
-#: resources/dist/js/plugins-dashboard.js:1986
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:115
-#: resources/dist/js/plugins-dashboard.js:1616
+#: resources/dist/js/plugins-dashboard.js:2200
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:116
+#: resources/dist/js/plugins-dashboard.js:1692
 msgid "Your license key is: "
 msgstr "Ang iyong license key ay: "
 
-#: resources/dist/js/plugins-dashboard.js:1988
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:117
-#: resources/dist/js/plugins-dashboard.js:1618
+#: resources/dist/js/plugins-dashboard.js:2202
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:118
+#: resources/dist/js/plugins-dashboard.js:1694
 msgid "(hidden)"
 msgstr "(nakatago)"
 
-#: resources/dist/js/plugins-dashboard.js:1997
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:136
-#: resources/dist/js/plugins-dashboard.js:1637
+#: resources/dist/js/plugins-dashboard.js:2211
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:137
+#: resources/dist/js/plugins-dashboard.js:1713
 msgid "Activate the license key for this site"
 msgstr "I-activate ang license key para sa site na ito"
 
-#: resources/dist/js/plugins-dashboard.js:2002
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:143
-#: resources/dist/js/plugins-dashboard.js:1644
+#: resources/dist/js/plugins-dashboard.js:2216
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:144
+#: resources/dist/js/plugins-dashboard.js:1720
 msgid "Edit the license key"
 msgstr "I-edit ang license key"
 
-#: resources/dist/js/plugins-dashboard.js:2009
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:146
-#: resources/dist/js/plugins-dashboard.js:1647
+#: resources/dist/js/plugins-dashboard.js:2230
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:155
+#: resources/dist/js/plugins-dashboard.js:1731
 msgid "Deactivate the license key for this site"
 msgstr "I-deactivate ang license key para sa site na ito"
 
-#: resources/dist/js/plugins-dashboard.js:2114
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:82
-#: resources/dist/js/plugins-dashboard.js:1738
+#: resources/dist/js/plugins-dashboard.js:2358
+#: resources/dist/js/plugins-dashboard.js:2369
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:109
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:121
+#: resources/dist/js/plugins-dashboard.js:1849
+#: resources/dist/js/plugins-dashboard.js:1861
 #, js-format
 msgid "Install %s"
 msgstr "I-install %s"
 
-#: resources/dist/js/plugins-dashboard.js:2125
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:94
-#: resources/dist/js/plugins-dashboard.js:1750
+#: resources/dist/js/plugins-dashboard.js:2379
+#: resources/dist/js/plugins-dashboard.js:2412
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:136
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:179
+#: resources/dist/js/plugins-dashboard.js:1876
+#: resources/dist/js/plugins-dashboard.js:1919
 #, js-format
-msgid "Install %s Pro"
-msgstr "I-install %s Pro"
+msgid "Upgrade %s"
+msgstr "I-upgrade %s"
 
-#: resources/dist/js/plugins-dashboard.js:2130
-#: resources/dist/js/plugins-dashboard.js:2143
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:102
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:121
-#: resources/dist/js/plugins-dashboard.js:1758
-#: resources/dist/js/plugins-dashboard.js:1777
+#: resources/dist/js/plugins-dashboard.js:2389
+#: resources/dist/js/plugins-dashboard.js:2749
+#: resources/dist/js/plugins-dashboard.js:3048
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:151
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:86
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
+#: resources/dist/js/plugins-dashboard.js:1891
+#: resources/dist/js/plugins-dashboard.js:2226
+#: resources/dist/js/plugins-dashboard.js:2472
+#. translators: %s is the plugin name.
 #, js-format
-msgid "Upgrade %s to Pro"
-msgstr "I-upgrade ang %s sa Pro"
+msgid "Deactivate %s"
+msgstr "I-deactivate %s"
 
-#: resources/dist/js/plugins-dashboard.js:2135
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:110
-#: resources/dist/js/plugins-dashboard.js:1766
+#: resources/dist/js/plugins-dashboard.js:2390
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:152
+#: resources/dist/js/plugins-dashboard.js:1892
+#, js-format
+msgid "Are you sure you want to deactivate %s?"
+msgstr "Sigurado ka bang nais mong i-deactivate ang %s?"
+
+#: resources/dist/js/plugins-dashboard.js:2391
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:153
+#: resources/dist/js/plugins-dashboard.js:1893
+msgid "Deactivate plugin"
+msgstr "I-deactivate ang plugin"
+
+#: resources/dist/js/plugins-dashboard.js:2400
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:165
+#: resources/dist/js/plugins-dashboard.js:1905
 #, js-format
 msgid "Uninstall %s"
 msgstr "I-uninstall ang %s"
 
-#: resources/dist/js/plugins-dashboard.js:2136
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:111
-#: resources/dist/js/plugins-dashboard.js:1767
+#: resources/dist/js/plugins-dashboard.js:2401
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:166
+#: resources/dist/js/plugins-dashboard.js:1906
 #, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "Sigurado ka bang nais mong i-uninstall ang %s?"
 
-#: resources/dist/js/plugins-dashboard.js:2153
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:132
-#: resources/dist/js/plugins-dashboard.js:1788
+#: resources/dist/js/plugins-dashboard.js:2402
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:167
+#: resources/dist/js/plugins-dashboard.js:1907
+msgid "Uninstall plugin"
+msgstr "I-uninstall ang plugin"
+
+#: resources/dist/js/plugins-dashboard.js:2422
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:190
+#: resources/dist/js/plugins-dashboard.js:1930
 #, js-format
 msgid "Resolve Conflict for %s"
 msgstr "Lutasin ang Alitan para sa %s"
 
-#: resources/dist/js/plugins-dashboard.js:2165
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:145
-#: resources/dist/js/plugins-dashboard.js:1801
+#: resources/dist/js/plugins-dashboard.js:2434
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:203
+#: resources/dist/js/plugins-dashboard.js:1943
 #, js-format
 msgid "Manage %s License"
 msgstr "Pamahalaan ang Lisensya ng %s"
 
-#: resources/dist/js/plugins-dashboard.js:2176
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:159
-#: resources/dist/js/plugins-dashboard.js:1815
+#: resources/dist/js/plugins-dashboard.js:2448
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:218
+#: resources/dist/js/plugins-dashboard.js:1958
 #, js-format
 msgid "Activate %s License"
 msgstr "I-activate ang Lisensya ng %s"
 
-#: resources/dist/js/plugins-dashboard.js:2177
-#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:160
-#: resources/dist/js/plugins-dashboard.js:1816
+#: resources/dist/js/plugins-dashboard.js:2449
+#: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:219
+#: resources/dist/js/plugins-dashboard.js:1959
 msgid "Activate the license key"
 msgstr "I-activate ang susi ng lisensya"
 
-#: resources/dist/js/plugins-dashboard.js:2234
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:34
-#: resources/dist/js/plugins-dashboard.js:1863
+#: resources/dist/js/plugins-dashboard.js:2508
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:35
+#: resources/dist/js/plugins-dashboard.js:2007
 msgid "Resolve Plugin Conflict"
 msgstr "Lutasin ang Alitan ng Plugin"
 
-#: resources/dist/js/plugins-dashboard.js:2241
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:51
-#: resources/dist/js/plugins-dashboard.js:1880
+#: resources/dist/js/plugins-dashboard.js:2515
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:52
+#: resources/dist/js/plugins-dashboard.js:2024
 #, js-format
 msgid "Free version: %s (%s)"
 msgstr "Libreng bersyon: %s (%s)"
 
-#: resources/dist/js/plugins-dashboard.js:2241
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:58
-#: resources/dist/js/plugins-dashboard.js:1887
+#: resources/dist/js/plugins-dashboard.js:2515
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:59
+#: resources/dist/js/plugins-dashboard.js:2031
 #, js-format
 msgid "Pro version: %s (%s)"
 msgstr "Pro bersyon: %s (%s)"
 
-#: resources/dist/js/plugins-dashboard.js:2251
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:81
-#: resources/dist/js/plugins-dashboard.js:1910
+#: resources/dist/js/plugins-dashboard.js:2528
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:84
+#: resources/dist/js/plugins-dashboard.js:2056
 msgid "Keep the Pro version (Recommended)"
 msgstr "Panatilihin ang Pro bersyon (Inirerekomenda)"
 
-#: resources/dist/js/plugins-dashboard.js:2259
-#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:91
-#: resources/dist/js/plugins-dashboard.js:1920
+#: resources/dist/js/plugins-dashboard.js:2536
+#: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:94
+#: resources/dist/js/plugins-dashboard.js:2066
 msgid "Keep the Free version"
 msgstr "Panatilihin ang Libreng bersyon"
 
-#: resources/dist/js/plugins-dashboard.js:2316
+#: resources/dist/js/plugins-dashboard.js:2593
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
-#: resources/dist/js/plugins-dashboard.js:1969
+#: resources/dist/js/plugins-dashboard.js:2115
 msgid ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
 "advanced features, priority support, and exclusive benefits designed to "
@@ -1245,512 +1546,648 @@ msgstr ""
 "eksklusibong benepisyo na idinisenyo upang matulungan kang makuha ang "
 "pinaka mula sa iyong workflow."
 
-#: resources/dist/js/plugins-dashboard.js:2321
+#: resources/dist/js/plugins-dashboard.js:2598
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
-#: resources/dist/js/plugins-dashboard.js:1976
+#: resources/dist/js/plugins-dashboard.js:2122
 msgid "Discover all Pro features"
 msgstr "Tuklasin ang lahat ng Pro na tampok"
 
-#: resources/dist/js/plugins-dashboard.js:2324
+#: resources/dist/js/plugins-dashboard.js:2601
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
-#: resources/dist/js/plugins-dashboard.js:1980
+#: resources/dist/js/plugins-dashboard.js:2126
 msgid "Changelog"
 msgstr "Talaan ng mga pagbabago"
 
-#: resources/dist/js/plugins-dashboard.js:2330
+#: resources/dist/js/plugins-dashboard.js:2607
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
-#: resources/dist/js/plugins-dashboard.js:1984
+#: resources/dist/js/plugins-dashboard.js:2130
 msgid "Already have a license? Install Pro now"
 msgstr "May lisensya na? I-install ang Pro ngayon"
 
-#: resources/dist/js/plugins-dashboard.js:2336
-#: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
-#: resources/dist/js/plugins-dashboard.js:1987
-msgid "Upgrade to Pro and boost your productivity"
-msgstr "Mag-upgrade sa Pro at palakasin ang iyong produktibidad"
+#: resources/dist/js/plugins-dashboard.js:2737
+#: resources/dist/js/plugins-dashboard.js:3038
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:78
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:192
+#: resources/dist/js/plugins-dashboard.js:2218
+#: resources/dist/js/plugins-dashboard.js:2463
+#, js-format
+msgid "Remove %s from favorites"
+msgstr "Tanggalin ang %s sa mga paborito"
 
-#: resources/dist/js/plugins-dashboard.js:2488
-#: resources/dist/js/plugins-dashboard.js:2937
-#: resources/dist/js/plugins-dashboard.js:2951
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:137
+#: resources/dist/js/plugins-dashboard.js:2737
+#: resources/dist/js/plugins-dashboard.js:3038
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:78
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:192
+#: resources/dist/js/plugins-dashboard.js:2218
+#: resources/dist/js/plugins-dashboard.js:2463
+#, js-format
+msgid "Add %s to favorites"
+msgstr "Idagdag ang %s sa mga paborito"
+
+#: resources/dist/js/plugins-dashboard.js:2749
+#: resources/dist/js/plugins-dashboard.js:3048
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:86
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:202
+#: resources/dist/js/plugins-dashboard.js:2226
+#: resources/dist/js/plugins-dashboard.js:2473
+#, js-format
+msgid "Activate %s"
+msgstr "I-activate ang %s"
+
+#: resources/dist/js/plugins-dashboard.js:2759
+#: resources/dist/js/plugins-dashboard.js:3075
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:95
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:238
+#: resources/dist/js/plugins-dashboard.js:2235
+#: resources/dist/js/plugins-dashboard.js:2509
+#, js-format
+msgid "%s shortcuts"
+msgstr "%s na mga shortcut"
+
+#: resources/dist/js/plugins-dashboard.js:2769
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:99
+#: resources/dist/js/plugins-dashboard.js:2239
+#, js-format
+msgid "More actions for %s"
+msgstr "Dagdag na aksyon para sa %s"
+
+#: resources/dist/js/plugins-dashboard.js:2770
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:99
+#: resources/dist/js/plugins-dashboard.js:2239
+msgid "More"
+msgstr "Higit pa"
+
+#: resources/dist/js/plugins-dashboard.js:2790
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:110
+#: resources/dist/js/plugins-dashboard.js:2250
+msgid "Conflicting installations"
+msgstr "Nagtatalo ang mga installation"
+
+#: resources/dist/js/plugins-dashboard.js:2796
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:112
+#: resources/dist/js/plugins-dashboard.js:2252
+msgid "Activating…"
+msgstr "Naga-activate…"
+
+#: resources/dist/js/plugins-dashboard.js:2800
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:113
+#: resources/dist/js/plugins-dashboard.js:2253
+msgid "Deactivating…"
+msgstr "Naga-deactivate…"
+
+#: resources/dist/js/plugins-dashboard.js:2981
+#: resources/dist/js/plugins-dashboard.js:3479
+#: resources/dist/js/plugins-dashboard.js:3493
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:144
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:148
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:164
-#: resources/dist/js/plugins-dashboard.js:2131
-#: resources/dist/js/plugins-dashboard.js:2606
-#: resources/dist/js/plugins-dashboard.js:2622
+#: resources/dist/js/plugins-dashboard.js:2415
+#: resources/dist/js/plugins-dashboard.js:2923
+#: resources/dist/js/plugins-dashboard.js:2939
 msgid "Unknown"
 msgstr "Hindi"
 
-#: resources/dist/js/plugins-dashboard.js:2489
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:138
-#: resources/dist/js/plugins-dashboard.js:2132
+#: resources/dist/js/plugins-dashboard.js:2982
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:145
+#: resources/dist/js/plugins-dashboard.js:2416
 msgid "New version available"
 msgstr "Bagong bersyon na available"
 
-#: resources/dist/js/plugins-dashboard.js:2505
-#: resources/dist/js/plugins-dashboard.js:2957
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:157
+#: resources/dist/js/plugins-dashboard.js:2998
+#: resources/dist/js/plugins-dashboard.js:3499
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:164
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:171
-#: resources/dist/js/plugins-dashboard.js:2151
-#: resources/dist/js/plugins-dashboard.js:2629
+#: resources/dist/js/plugins-dashboard.js:2435
+#: resources/dist/js/plugins-dashboard.js:2946
 #. translators: %s is the installed version number
 #, js-format
 msgid "Installed version: %s"
 msgstr "Naka-install na bersyon: %s"
 
-#: resources/dist/js/plugins-dashboard.js:2544
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:200
-#: resources/dist/js/plugins-dashboard.js:2194
+#: resources/dist/js/plugins-dashboard.js:3070
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:231
+#: resources/dist/js/plugins-dashboard.js:2502
 #, js-format
 msgid "Update available: %s → %s"
 msgstr "Available ang update: %s → %s"
 
-#: resources/dist/js/plugins-dashboard.js:2613
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:22
-#: resources/dist/js/plugins-dashboard.js:2270
+#: resources/dist/js/plugins-dashboard.js:3155
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:23
+#: resources/dist/js/plugins-dashboard.js:2587
 msgid "Installing"
 msgstr "Naga-install"
 
-#: resources/dist/js/plugins-dashboard.js:2620
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:27
-#: resources/dist/js/plugins-dashboard.js:2275
+#: resources/dist/js/plugins-dashboard.js:3162
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:28
+#: resources/dist/js/plugins-dashboard.js:2592
 msgid "Not Installed"
 msgstr "Hindi Na-install"
 
-#: resources/dist/js/plugins-dashboard.js:2624
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:31
-#: resources/dist/js/plugins-dashboard.js:2279
+#: resources/dist/js/plugins-dashboard.js:3166
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:32
+#: resources/dist/js/plugins-dashboard.js:2596
 msgid "Free"
 msgstr "Libre"
 
-#: resources/dist/js/plugins-dashboard.js:2628
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:35
-#: resources/dist/js/plugins-dashboard.js:2283
+#: resources/dist/js/plugins-dashboard.js:3170
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:36
+#: resources/dist/js/plugins-dashboard.js:2600
 msgid "Licensed"
 msgstr "May Lisensya"
 
-#: resources/dist/js/plugins-dashboard.js:2636
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:43
-#: resources/dist/js/plugins-dashboard.js:2291
+#: resources/dist/js/plugins-dashboard.js:3178
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:44
+#: resources/dist/js/plugins-dashboard.js:2608
 msgid "Expired"
 msgstr "Nagtapos na"
 
-#: resources/dist/js/plugins-dashboard.js:2640
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:47
-#: resources/dist/js/plugins-dashboard.js:2295
+#: resources/dist/js/plugins-dashboard.js:3182
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:48
+#: resources/dist/js/plugins-dashboard.js:2612
 msgid "Uninstalling"
 msgstr "Naga-uninstall"
 
-#: resources/dist/js/plugins-dashboard.js:2647
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:52
-#: resources/dist/js/plugins-dashboard.js:2300
+#: resources/dist/js/plugins-dashboard.js:3189
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:53
+#: resources/dist/js/plugins-dashboard.js:2617
 msgid "Upgrading"
 msgstr "Naga-upgrade"
 
-#: resources/dist/js/plugins-dashboard.js:2654
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:57
-#: resources/dist/js/plugins-dashboard.js:2305
+#: resources/dist/js/plugins-dashboard.js:3196
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:58
+#: resources/dist/js/plugins-dashboard.js:2622
 msgid "Deactivating"
 msgstr "Naga-deactivate"
 
-#: resources/dist/js/plugins-dashboard.js:2661
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:62
-#: resources/dist/js/plugins-dashboard.js:2310
+#: resources/dist/js/plugins-dashboard.js:3203
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:63
+#: resources/dist/js/plugins-dashboard.js:2627
 msgid "Activating"
 msgstr "Naga-activate"
 
-#: resources/dist/js/plugins-dashboard.js:2668
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:67
-#: resources/dist/js/plugins-dashboard.js:2315
+#: resources/dist/js/plugins-dashboard.js:3210
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:68
+#: resources/dist/js/plugins-dashboard.js:2632
 msgid "Conflicting Installations"
 msgstr "Nagkakasalungat na mga Pag-install"
 
-#: resources/dist/js/plugins-dashboard.js:2672
-#: resources/dist/js/plugins-dashboard.js:2756
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:71
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:172
-#: resources/dist/js/plugins-dashboard.js:2319
-#: resources/dist/js/plugins-dashboard.js:2420
+#: resources/dist/js/plugins-dashboard.js:3214
+#: resources/dist/js/plugins-dashboard.js:3298
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:72
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:173
+#: resources/dist/js/plugins-dashboard.js:2636
+#: resources/dist/js/plugins-dashboard.js:2737
 msgid "Update Available"
 msgstr "Available ang Update"
 
-#: resources/dist/js/plugins-dashboard.js:2764
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:183
-#: resources/dist/js/plugins-dashboard.js:2431
+#: resources/dist/js/plugins-dashboard.js:3306
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:184
+#: resources/dist/js/plugins-dashboard.js:2748
 msgid "Expires"
 msgstr "Nagtatapos"
 
-#: resources/dist/js/plugins-dashboard.js:2859
-#: resources/dist/js/plugins-dashboard.js:2870
+#: resources/dist/js/plugins-dashboard.js:3401
+#: resources/dist/js/plugins-dashboard.js:3412
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:74
-#: resources/dist/js/plugins-dashboard.js:2513
-#: resources/dist/js/plugins-dashboard.js:2532
+#: resources/dist/js/plugins-dashboard.js:2830
+#: resources/dist/js/plugins-dashboard.js:2849
 msgid "Renew"
 msgstr "I-renew"
 
-#: resources/dist/js/plugins-dashboard.js:2879
+#: resources/dist/js/plugins-dashboard.js:3421
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:84
-#: resources/dist/js/plugins-dashboard.js:2542
+#: resources/dist/js/plugins-dashboard.js:2859
 msgid "Deactivate"
 msgstr "I-deactivate"
 
-#: resources/dist/js/plugins-dashboard.js:2890
+#: resources/dist/js/plugins-dashboard.js:3432
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:93
-#: resources/dist/js/plugins-dashboard.js:2551
+#: resources/dist/js/plugins-dashboard.js:2868
 msgid "Activate"
 msgstr "I-activate"
 
-#: resources/dist/js/plugins-dashboard.js:2901
+#: resources/dist/js/plugins-dashboard.js:3443
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:103
-#: resources/dist/js/plugins-dashboard.js:2561
+#: resources/dist/js/plugins-dashboard.js:2878
 msgid "Uninstall"
 msgstr "I-uninstall"
 
-#: resources/dist/js/plugins-dashboard.js:2938
-#: resources/dist/js/plugins-dashboard.js:2952
+#: resources/dist/js/plugins-dashboard.js:3480
+#: resources/dist/js/plugins-dashboard.js:3494
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:149
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
-#: resources/dist/js/plugins-dashboard.js:2607
-#: resources/dist/js/plugins-dashboard.js:2623
+#: resources/dist/js/plugins-dashboard.js:2924
+#: resources/dist/js/plugins-dashboard.js:2940
 msgid "latest"
 msgstr "pinakabago"
 
-#: resources/dist/js/plugins-dashboard.js:2942
+#: resources/dist/js/plugins-dashboard.js:3484
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:154
-#: resources/dist/js/plugins-dashboard.js:2612
+#: resources/dist/js/plugins-dashboard.js:2929
 #, js-format
-msgid "Update to v%s"
-msgstr "I-update sa v%s"
+msgid "Update to %s"
+msgstr "I-update sa %s"
 
-#: resources/dist/js/plugins-dashboard.js:3443
+#: resources/dist/js/plugins-dashboard.js:4041
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
-#: resources/dist/js/plugins-dashboard.js:2979
+#: resources/dist/js/plugins-dashboard.js:3326
 msgid "This plugin is not installed."
 msgstr "Ang plugin na ito ay hindi naka-install."
 
-#: resources/dist/js/plugins-dashboard.js:3445
+#: resources/dist/js/plugins-dashboard.js:4043
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40
-#: resources/dist/js/plugins-dashboard.js:2982
+#: resources/dist/js/plugins-dashboard.js:3329
 msgid "This plugin is active."
 msgstr "Ang plugin na ito ay aktibo."
 
-#: resources/dist/js/plugins-dashboard.js:3445
+#: resources/dist/js/plugins-dashboard.js:4043
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41
-#: resources/dist/js/plugins-dashboard.js:2983
+#: resources/dist/js/plugins-dashboard.js:3330
 msgid "This plugin is not active."
 msgstr "Ang plugin na ito ay hindi aktibo."
 
-#: resources/dist/js/plugins-dashboard.js:3652
-#: resources/src/jsx/components/plugins-list/index.jsx:158
-#: resources/dist/js/plugins-dashboard.js:3194
+#: resources/dist/js/plugins-dashboard.js:4272
+#: resources/src/jsx/components/plugins-list/index.jsx:166
+#: resources/dist/js/plugins-dashboard.js:3549
+msgid "Editorial process"
+msgstr "Proseso ng editoryal"
+
+#: resources/dist/js/plugins-dashboard.js:4275
+#: resources/src/jsx/components/plugins-list/index.jsx:167
+#: resources/dist/js/plugins-dashboard.js:3550
+msgid "Additional publishing tools"
+msgstr "Karagdagang mga tool sa pag-publish"
+
+#: resources/dist/js/plugins-dashboard.js:4283
+#: resources/src/jsx/components/plugins-list/index.jsx:171
+#: resources/dist/js/plugins-dashboard.js:3554
+msgid "Other plugins"
+msgstr "Ibang mga plugin"
+
+#: resources/dist/js/plugins-dashboard.js:4296
+#: resources/src/jsx/components/plugins-list/index.jsx:177
+#: resources/dist/js/plugins-dashboard.js:3560
+msgid "Plugin layout"
+msgstr "Istraktura ng plugin"
+
+#: resources/dist/js/plugins-dashboard.js:4310
+#: resources/src/jsx/components/plugins-list/index.jsx:181
+#: resources/dist/js/plugins-dashboard.js:3564
+msgid "Cards"
+msgstr "Mga card"
+
+#: resources/dist/js/plugins-dashboard.js:4310
+#: resources/src/jsx/components/plugins-list/index.jsx:181
+#: resources/dist/js/plugins-dashboard.js:3564
+msgid "List"
+msgstr "Listahan"
+
+#: resources/dist/js/plugins-dashboard.js:4312
+#: resources/src/jsx/components/plugins-list/index.jsx:184
+#: resources/dist/js/plugins-dashboard.js:3567
+msgid "Group by purpose"
+msgstr "I-grupo ayon sa layunin"
+
+#: resources/dist/js/plugins-dashboard.js:4320
+#: resources/src/jsx/components/plugins-list/index.jsx:186
+#: resources/dist/js/plugins-dashboard.js:3569
+msgid "Favorites only"
+msgstr "Mga paborito lamang"
+
+#: resources/dist/js/plugins-dashboard.js:4342
+#: resources/src/jsx/components/plugins-list/index.jsx:200
+#: resources/dist/js/plugins-dashboard.js:3583
 msgid "No plugins found."
 msgstr "Walang natagpuang mga plugin."
 
-#: resources/dist/js/plugins-dashboard.js:3654
-#: resources/src/jsx/components/plugins-list/index.jsx:164
-#: resources/dist/js/plugins-dashboard.js:3200
+#: resources/dist/js/plugins-dashboard.js:4346
+#: resources/src/jsx/components/plugins-list/index.jsx:206
+#: resources/dist/js/plugins-dashboard.js:3589
 msgid "Loading plugins..."
 msgstr "Naglo-load ng mga plugin..."
 
-#: resources/dist/js/plugins-dashboard.js:4252
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:216
-#: resources/dist/js/plugins-dashboard.js:3618
+#: resources/dist/js/plugins-dashboard.js:4955
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:225
+#: resources/dist/js/plugins-dashboard.js:4017
 msgid "Failed to fetch plugins"
 msgstr "Nabigo sa pagkuha ng mga plugin"
 
-#: resources/dist/js/plugins-dashboard.js:4307
-#: resources/dist/js/plugins-dashboard.js:4397
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:244
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:302
-#: resources/dist/js/plugins-dashboard.js:3646
-#: resources/dist/js/plugins-dashboard.js:3704
+#: resources/dist/js/plugins-dashboard.js:5015
+#: resources/dist/js/plugins-dashboard.js:5110
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:259
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:319
+#: resources/dist/js/plugins-dashboard.js:4051
+#: resources/dist/js/plugins-dashboard.js:4111
 #, js-format
 msgid "%s installed successfully"
 msgstr "%s na-install nang matagumpay"
 
-#: resources/dist/js/plugins-dashboard.js:4340
-#: resources/dist/js/plugins-dashboard.js:4431
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:267
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:327
-#: resources/dist/js/plugins-dashboard.js:3669
-#: resources/dist/js/plugins-dashboard.js:3729
+#: resources/dist/js/plugins-dashboard.js:5043
+#: resources/dist/js/plugins-dashboard.js:5139
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:276
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:338
+#: resources/dist/js/plugins-dashboard.js:4068
+#: resources/dist/js/plugins-dashboard.js:4130
 #, js-format
 msgid "%s installation failed"
 msgstr "%s na-install na nabigo"
 
-#: resources/dist/js/plugins-dashboard.js:4488
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:363
-#: resources/dist/js/plugins-dashboard.js:3765
+#: resources/dist/js/plugins-dashboard.js:5197
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:374
+#: resources/dist/js/plugins-dashboard.js:4166
 #, js-format
 msgid "%s uninstalled successfully"
 msgstr "%s na-uninstall nang matagumpay"
 
-#: resources/dist/js/plugins-dashboard.js:4513
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:379
-#: resources/dist/js/plugins-dashboard.js:3781
+#: resources/dist/js/plugins-dashboard.js:5222
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:390
+#: resources/dist/js/plugins-dashboard.js:4182
 #, js-format
 msgid "%s uninstall failed"
 msgstr "%s na-uninstall na nabigo"
 
-#: resources/dist/js/plugins-dashboard.js:4577
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:414
-#: resources/dist/js/plugins-dashboard.js:3816
+#: resources/dist/js/plugins-dashboard.js:5291
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:426
+#: resources/dist/js/plugins-dashboard.js:4218
 #, js-format
 msgid "%s activated successfully"
 msgstr "%s na-activate nang matagumpay"
 
-#: resources/dist/js/plugins-dashboard.js:4604
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:430
-#: resources/dist/js/plugins-dashboard.js:3832
+#: resources/dist/js/plugins-dashboard.js:5318
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:443
+#: resources/dist/js/plugins-dashboard.js:4235
 #, js-format
 msgid "%s activation failed"
 msgstr "%s na-activate na nabigo"
 
-#: resources/dist/js/plugins-dashboard.js:4672
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:465
-#: resources/dist/js/plugins-dashboard.js:3867
+#: resources/dist/js/plugins-dashboard.js:5386
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:478
+#: resources/dist/js/plugins-dashboard.js:4270
 #, js-format
 msgid "%s deactivated successfully"
 msgstr "%s na-deactivate nang matagumpay"
 
-#: resources/dist/js/plugins-dashboard.js:4699
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:481
-#: resources/dist/js/plugins-dashboard.js:3883
+#: resources/dist/js/plugins-dashboard.js:5413
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:494
+#: resources/dist/js/plugins-dashboard.js:4286
 #, js-format
 msgid "%s deactivation failed"
 msgstr "%s na-deactivate na nabigo"
 
-#: resources/dist/js/plugins-dashboard.js:4761
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:516
-#: resources/dist/js/plugins-dashboard.js:3918
+#: resources/dist/js/plugins-dashboard.js:5485
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:537
+#: resources/dist/js/plugins-dashboard.js:4329
 #, js-format
-msgid "%s upgraded to Pro successfully"
-msgstr "%s na-upgrade sa Pro nang matagumpay"
+msgid "%s upgraded successfully"
+msgstr "%s na-upgrade nang matagumpay"
 
-#: resources/dist/js/plugins-dashboard.js:4795
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:541
-#: resources/dist/js/plugins-dashboard.js:3943
+#: resources/dist/js/plugins-dashboard.js:5514
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:556
+#: resources/dist/js/plugins-dashboard.js:4348
 #, js-format
 msgid "%s upgrade to Pro failed"
 msgstr "%s na-upgrade sa Pro na nabigo"
 
-#: resources/dist/js/plugins-dashboard.js:4862
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:583
-#: resources/dist/js/plugins-dashboard.js:3985
+#: resources/dist/js/plugins-dashboard.js:5599
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:608
+#: resources/dist/js/plugins-dashboard.js:4400
 #, js-format
 msgid "Conflict resolved successfully for %s"
 msgstr "Nakasolusyunan ang hidwaan nang matagumpay para sa %s"
 
-#: resources/dist/js/plugins-dashboard.js:4889
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:600
-#: resources/dist/js/plugins-dashboard.js:4002
+#: resources/dist/js/plugins-dashboard.js:5626
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:625
+#: resources/dist/js/plugins-dashboard.js:4417
 #, js-format
 msgid "Failed to resolve conflict for %s"
 msgstr "Nabigo ang pagsasagawa ng solusyon sa hidwaan para sa %s"
 
-#: resources/dist/js/plugins-dashboard.js:4943
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:632
-#: resources/dist/js/plugins-dashboard.js:4034
+#: resources/dist/js/plugins-dashboard.js:5680
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:657
+#: resources/dist/js/plugins-dashboard.js:4449
 #, js-format
 msgid "%s license deactivated successfully"
 msgstr "%s na lisensya na-deactivate nang matagumpay"
 
-#: resources/dist/js/plugins-dashboard.js:4968
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:648
-#: resources/dist/js/plugins-dashboard.js:4050
+#: resources/dist/js/plugins-dashboard.js:5705
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:673
+#: resources/dist/js/plugins-dashboard.js:4465
 #, js-format
 msgid "%s license deactivation failed"
 msgstr "%s na lisensya na-deactivate na nabigo"
 
-#: resources/dist/js/plugins-dashboard.js:5030
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:684
-#: resources/dist/js/plugins-dashboard.js:4086
+#: resources/dist/js/plugins-dashboard.js:5767
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:709
+#: resources/dist/js/plugins-dashboard.js:4501
 msgid "License activated successfully for all PublishPress plugins"
 msgstr ""
 "Matagumpay na na-activate ang lisensya para sa lahat ng plugin ng "
 "PublishPress"
 
-#: resources/dist/js/plugins-dashboard.js:5030
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:685
-#: resources/dist/js/plugins-dashboard.js:4087
+#: resources/dist/js/plugins-dashboard.js:5767
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:710
+#: resources/dist/js/plugins-dashboard.js:4502
 #, js-format
 msgid "%s license activated successfully"
 msgstr "%s na lisensya na-activate nang matagumpay"
 
-#: resources/dist/js/plugins-dashboard.js:5059
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:701
-#: resources/dist/js/plugins-dashboard.js:4103
+#: resources/dist/js/plugins-dashboard.js:5796
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:726
+#: resources/dist/js/plugins-dashboard.js:4518
 #, js-format
 msgid "%s license activation failed"
 msgstr "%s na lisensya na-activate na nabigo"
 
-#: resources/dist/js/plugins-dashboard.js:5117
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:736
-#: resources/dist/js/plugins-dashboard.js:4138
+#: resources/dist/js/plugins-dashboard.js:5855
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:758
+#: resources/dist/js/plugins-dashboard.js:4550
+msgid "License reused successfully for all PublishPress plugins"
+msgstr "Matagumpay na na-reuse ang lisensya para sa lahat ng PublishPress plugins"
+
+#: resources/dist/js/plugins-dashboard.js:5882
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:774
+#: resources/dist/js/plugins-dashboard.js:4566
+#, js-format
+msgid "%s license reuse failed"
+msgstr "%s nabigong ma-reuse ang lisensya"
+
+#: resources/dist/js/plugins-dashboard.js:5950
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
+#: resources/dist/js/plugins-dashboard.js:4605
+msgid ""
+"The plugin was updated successfully, but the dashboard could not refresh. "
+"Reloading this page..."
+msgstr ""
+"Matagumpay na na-update ang plugin, ngunit hindi nag-refresh ang dashboard. "
+"Nagre-reload ng pahinang ito..."
+
+#: resources/dist/js/plugins-dashboard.js:5976
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:836
+#: resources/dist/js/plugins-dashboard.js:4628
 #, js-format
 msgid "%s updated successfully"
 msgstr "%s na-update nang matagumpay"
 
-#: resources/dist/js/plugins-dashboard.js:5145
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:753
-#: resources/dist/js/plugins-dashboard.js:4155
+#: resources/dist/js/plugins-dashboard.js:6004
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:853
+#: resources/dist/js/plugins-dashboard.js:4645
 #, js-format
 msgid "%s update failed"
 msgstr "%s na-update na nabigo"
 
-#: resources/dist/js/plugins-dashboard.js:5219
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:815
-#: resources/dist/js/plugins-dashboard.js:4217
+#: resources/dist/js/plugins-dashboard.js:6078
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:915
+#: resources/dist/js/plugins-dashboard.js:4707
 msgid "Too many requests. Please wait a few seconds and try again."
 msgstr ""
 "Napakaraming kahilingan. Mangyaring maghintay ng ilang segundo at subukan "
 "muli."
 
-#: resources/dist/js/plugins-dashboard.js:5227
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:825
-#: resources/dist/js/plugins-dashboard.js:4227
+#: resources/dist/js/plugins-dashboard.js:6086
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:925
+#: resources/dist/js/plugins-dashboard.js:4717
 #, fuzzy
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
 
-#: resources/dist/js/settings-page.js:426
+#: resources/dist/js/settings-page.js:433
 #: resources/src/jsx/components/pages/settings-page.jsx:32
-#: resources/dist/js/settings-page.js:362, fuzzy
+#: resources/dist/js/settings-page.js:363, fuzzy
 msgid "Diagnostics"
 msgstr "Diagnostics"
 
-#: resources/dist/js/settings-page.js:567
+#: resources/dist/js/settings-page.js:574
 #: resources/src/jsx/components/pages/settings-page.jsx:136
-#: resources/dist/js/settings-page.js:466
+#: resources/dist/js/settings-page.js:467
 msgid "Site health report copied to clipboard."
 msgstr "Nakopya ang ulat ng kalusugan ng site sa clipboard."
 
-#: resources/dist/js/settings-page.js:576
+#: resources/dist/js/settings-page.js:583
 #: resources/src/jsx/components/pages/settings-page.jsx:141
-#: resources/dist/js/settings-page.js:471
+#: resources/dist/js/settings-page.js:472
 msgid "Failed to copy the site health report. Please try again."
 msgstr "Nabigong kopyahin ang ulat ng kalusugan ng site. Pakisubukan muli."
 
-#: resources/dist/js/settings-page.js:617
+#: resources/dist/js/settings-page.js:624
 #: resources/src/jsx/components/pages/settings-page.jsx:167
-#: resources/dist/js/settings-page.js:497
+#: resources/dist/js/settings-page.js:498
 msgid "Site health report downloaded."
 msgstr "Na-download ang ulat ng kalusugan ng site."
 
-#: resources/dist/js/settings-page.js:626
+#: resources/dist/js/settings-page.js:633
 #: resources/src/jsx/components/pages/settings-page.jsx:172
-#: resources/dist/js/settings-page.js:502
+#: resources/dist/js/settings-page.js:503
 msgid "Failed to download the site health report. Please try again."
 msgstr "Nabigong i-download ang ulat ng kalusugan ng site. Pakisubukan muli."
 
-#: resources/dist/js/settings-page.js:668
+#: resources/dist/js/settings-page.js:675
 #: resources/src/jsx/components/pages/settings-page.jsx:213
-#: resources/dist/js/settings-page.js:543
+#: resources/dist/js/settings-page.js:544
 msgid "Copy Site Health Report"
 msgstr "Kopyahin ang Ulat ng Kalusugan ng Site"
 
-#: resources/dist/js/settings-page.js:672
+#: resources/dist/js/settings-page.js:679
 #: resources/src/jsx/components/pages/settings-page.jsx:221
-#: resources/dist/js/settings-page.js:551
+#: resources/dist/js/settings-page.js:552
 msgid "Download Site Health Report"
 msgstr "I-download ang Ulat ng Kalusugan ng Site"
 
-#: resources/dist/js/settings-page.js:863
+#: resources/dist/js/settings-page.js:870
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:108
-#: resources/dist/js/settings-page.js:668
+#: resources/dist/js/settings-page.js:669
 msgid "Failed to load the debug log. Please try again."
 msgstr "Nabigong i-load ang debug log. Pakisubukan muli."
 
-#: resources/dist/js/settings-page.js:942
+#: resources/dist/js/settings-page.js:949
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:182
-#: resources/dist/js/settings-page.js:742
+#: resources/dist/js/settings-page.js:743
 msgid "Debug log cleared successfully."
 msgstr "Matagumpay na na-clear ang debug log."
 
-#: resources/dist/js/settings-page.js:951
+#: resources/dist/js/settings-page.js:958
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
-#: resources/dist/js/settings-page.js:747
+#: resources/dist/js/settings-page.js:748
 msgid "Failed to clear the debug log. Please try again."
 msgstr "Nabigong i-clear ang debug log. Pakisubukan muli."
 
-#: resources/dist/js/settings-page.js:1010
+#: resources/dist/js/settings-page.js:1017
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222
-#: resources/dist/js/settings-page.js:782
+#: resources/dist/js/settings-page.js:783
 msgid "Log copied to clipboard."
 msgstr "Nakopya ang log sa clipboard."
 
-#: resources/dist/js/settings-page.js:1019
+#: resources/dist/js/settings-page.js:1026
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
-#: resources/dist/js/settings-page.js:787
+#: resources/dist/js/settings-page.js:788
 msgid "Failed to copy log to clipboard."
 msgstr "Nabigong kopyahin ang log sa clipboard."
 
-#: resources/dist/js/settings-page.js:1044
+#: resources/dist/js/settings-page.js:1051
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:250
-#: resources/dist/js/settings-page.js:810
+#: resources/dist/js/settings-page.js:811
 msgid "Debug log view"
 msgstr "Tingnan ang debug log"
 
-#: resources/dist/js/settings-page.js:1052
+#: resources/dist/js/settings-page.js:1059
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:258
-#: resources/dist/js/settings-page.js:818
+#: resources/dist/js/settings-page.js:819
 msgid "Requests"
 msgstr "Mga Kahilingan"
 
-#: resources/dist/js/settings-page.js:1059
+#: resources/dist/js/settings-page.js:1066
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:266
-#: resources/dist/js/settings-page.js:826
+#: resources/dist/js/settings-page.js:827
 msgid "Full Log"
 msgstr "Buong Log"
 
-#: resources/dist/js/settings-page.js:1072
+#: resources/dist/js/settings-page.js:1079
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
-#: resources/dist/js/settings-page.js:838
+#: resources/dist/js/settings-page.js:839
 msgid "Auto-refresh is on — click to stop"
 msgstr "Naka-on ang auto-refresh — i-click upang itigil"
 
-#: resources/dist/js/settings-page.js:1072
+#: resources/dist/js/settings-page.js:1079
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:279
-#: resources/dist/js/settings-page.js:839
+#: resources/dist/js/settings-page.js:840
 msgid "Enable auto-refresh"
 msgstr "I-enable ang auto-refresh"
 
-#: resources/dist/js/settings-page.js:1076
+#: resources/dist/js/settings-page.js:1083
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:284
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:285
-#: resources/dist/js/settings-page.js:844
-#: resources/dist/js/settings-page.js:845, fuzzy
+#: resources/dist/js/settings-page.js:845
+#: resources/dist/js/settings-page.js:846, fuzzy
 msgid "Auto-refresh"
 msgstr "Auto-refresh"
 
-#: resources/dist/js/settings-page.js:1080
+#: resources/dist/js/settings-page.js:1087
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:293
-#: resources/dist/js/settings-page.js:853
+#: resources/dist/js/settings-page.js:854
 msgid "Auto-refresh interval"
 msgstr "Interbal ng auto-refresh"
 
-#: resources/dist/js/settings-page.js:1097
+#: resources/dist/js/settings-page.js:1104
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:315
-#: resources/dist/js/settings-page.js:875
+#: resources/dist/js/settings-page.js:876
 msgid "Copy to Clipboard"
 msgstr "Kopyahin sa Clipboard"
 
-#: resources/dist/js/settings-page.js:1103
+#: resources/dist/js/settings-page.js:1110
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:325
-#: resources/dist/js/settings-page.js:885
+#: resources/dist/js/settings-page.js:886
 msgid "Clear Log"
 msgstr "I-clear ang Log"
 
-#: resources/dist/js/settings-page.js:1107
+#: resources/dist/js/settings-page.js:1116
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:333
-#: resources/dist/js/settings-page.js:893
+#: resources/dist/js/settings-page.js:894
 msgid "Loading log..."
 msgstr "Naglo-load ng log..."
 
-#: resources/dist/js/settings-page.js:1109
+#: resources/dist/js/settings-page.js:1120
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:339
-#: resources/dist/js/settings-page.js:899
+#: resources/dist/js/settings-page.js:900
 msgid ""
 "The debug log is empty. Perform some actions (e.g. activate a license) and "
 "refresh to see entries."
@@ -1758,33 +2195,33 @@ msgstr ""
 "Walang laman ang debug log. Gumawa ng ilang mga aksyon (hal. i-activate ang "
 "lisensya) at i-refresh upang makita ang mga entry."
 
-#: resources/dist/js/settings-page.js:1116
+#: resources/dist/js/settings-page.js:1127
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:353
-#: resources/dist/js/settings-page.js:913
+#: resources/dist/js/settings-page.js:914
 msgid "Debug log contents"
 msgstr "Nilalaman ng debug log"
 
-#: resources/dist/js/settings-page.js:1201
+#: resources/dist/js/settings-page.js:1212
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
-#: resources/dist/js/settings-page.js:962
+#: resources/dist/js/settings-page.js:963
 msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
 msgstr "Naka-enable ang debug mode. Isang tab na \"Debug Log\" ay ngayon available."
 
-#: resources/dist/js/settings-page.js:1201
+#: resources/dist/js/settings-page.js:1212
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
-#: resources/dist/js/settings-page.js:963
+#: resources/dist/js/settings-page.js:964
 msgid "Debug mode disabled."
 msgstr "Naka-disable ang debug mode."
 
-#: resources/dist/js/settings-page.js:1213
+#: resources/dist/js/settings-page.js:1224
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:50
-#: resources/dist/js/settings-page.js:972
+#: resources/dist/js/settings-page.js:973
 msgid "Failed to save the setting. Please try again."
 msgstr "Nabigong i-save ang setting. Pakisubukan muli."
 
-#: resources/dist/js/settings-page.js:1242
+#: resources/dist/js/settings-page.js:1253
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
-#: resources/dist/js/settings-page.js:997
+#: resources/dist/js/settings-page.js:998
 msgid ""
 "When enabled, all HTTP requests and responses to remote services (license "
 "activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
@@ -1795,15 +2232,15 @@ msgstr ""
 "naka-log sa isang nakatalagang log file. Gamitin ang tab na Debug Log upang "
 "suriin ang nakuha na data."
 
-#: resources/dist/js/settings-page.js:1243
+#: resources/dist/js/settings-page.js:1254
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
-#: resources/dist/js/settings-page.js:1004
+#: resources/dist/js/settings-page.js:1005
 msgid "Enable Debug Mode"
 msgstr "I-enable ang Debug Mode"
 
-#: resources/dist/js/settings-page.js:1250
+#: resources/dist/js/settings-page.js:1261
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
-#: resources/dist/js/settings-page.js:1013
+#: resources/dist/js/settings-page.js:1014
 msgid ""
 "Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
 "data."
@@ -1811,76 +2248,122 @@ msgstr ""
 "Aktibo ang debug logging. Lumipat sa tab na \"Debug Log\" upang tingnan ang "
 "nakuha na data."
 
-#: resources/dist/js/settings-page.js:1341
+#: resources/dist/js/settings-page.js:1352
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
-#: resources/dist/js/settings-page.js:1095, fuzzy
+#: resources/dist/js/settings-page.js:1096, fuzzy
 msgid "ERR"
 msgstr "ERR"
 
-#: resources/dist/js/settings-page.js:1372
+#: resources/dist/js/settings-page.js:1383
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:108
-#: resources/dist/js/settings-page.js:1133
+#: resources/dist/js/settings-page.js:1134
 msgid "Request"
 msgstr "Kahilingan"
 
-#: resources/dist/js/settings-page.js:1378
+#: resources/dist/js/settings-page.js:1389
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:115
-#: resources/dist/js/settings-page.js:1140
+#: resources/dist/js/settings-page.js:1141
 msgid "Response"
 msgstr "Tugon"
 
-#: resources/dist/js/settings-page.js:1382
+#: resources/dist/js/settings-page.js:1393
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:121
-#: resources/dist/js/settings-page.js:1146
+#: resources/dist/js/settings-page.js:1147
 msgid "No response recorded for this request."
 msgstr "Walang nakarehistrong tugon para sa kahilingang ito."
 
-#: resources/dist/js/settings-page.js:1397
+#: resources/dist/js/settings-page.js:1410
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:146
-#: resources/dist/js/settings-page.js:1171
+#: resources/dist/js/settings-page.js:1172
 msgid "No requests found in the log."
 msgstr "Walang natagpuang mga kahilingan sa log."
 
-#: resources/dist/js/settings-page.js:1403
+#: resources/dist/js/settings-page.js:1416
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#: resources/dist/js/settings-page.js:1180
+#: resources/dist/js/settings-page.js:1181
 msgid "1 request recorded"
 msgstr "1 kahilingan ang nakarehistro"
 
-#: resources/dist/js/settings-page.js:1403
+#: resources/dist/js/settings-page.js:1416
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:157
-#: resources/dist/js/settings-page.js:1182
+#: resources/dist/js/settings-page.js:1183
 #, js-format
 msgid "%d requests recorded"
 msgstr "%d mga kahilingan ang nakarehistro"
 
-#: resources/dist/js/welcome-page.js:418
+#: resources/dist/js/welcome-page.js:427
 #: resources/src/jsx/components/pages/welcome-page.jsx:37
-#: resources/dist/js/welcome-page.js:367
-msgid "Welcome to PublishPress Hub!"
-msgstr "Maligayang pagdating sa PublishPress Hub!"
-
-#: resources/dist/js/welcome-page.js:420
-#: resources/src/jsx/components/pages/welcome-page.jsx:40
-#: resources/dist/js/welcome-page.js:370
-msgid "Get started with PublishPress Hub in a few simple steps."
-msgstr "Magsimula sa PublishPress Hub sa ilang simpleng hakbang."
-
-#: resources/dist/js/welcome-page.js:428
-#: resources/src/jsx/components/pages/welcome-page.jsx:47
-#: resources/dist/js/welcome-page.js:377
+#: resources/dist/js/welcome-page.js:368
 msgid "Welcome to PublishPress Hub"
 msgstr "Maligayang pagdating sa PublishPress Hub"
 
-#: resources/dist/js/welcome-page.js:431
-#: resources/src/jsx/components/pages/welcome-page.jsx:52
+#: resources/dist/js/welcome-page.js:427
+#: resources/src/jsx/components/pages/welcome-page.jsx:38
+#: resources/dist/js/welcome-page.js:369
+msgid "Your publishing tools, in one place."
+msgstr "Ang iyong mga tool sa pag-publish, sa isang lugar."
+
+#: resources/dist/js/welcome-page.js:429
+#: resources/src/jsx/components/pages/welcome-page.jsx:39
+#: resources/dist/js/welcome-page.js:370
+msgid ""
+"Manage your plugins, build your editorial workflow, and find the help you "
+"need to get started."
+msgstr ""
+"I-manage ang iyong mga plugin, bumuo ng iyong editorial workflow, at "
+"hanapin ang tulong na kailangan mo upang makapagsimula."
+
+#: resources/dist/js/welcome-page.js:434
+#: resources/src/jsx/components/pages/welcome-page.jsx:41
+#: resources/dist/js/welcome-page.js:372
+msgid "View Plugins Dashboard"
+msgstr "Tingnan ang Dashboard ng Plugins"
+
+#: resources/dist/js/welcome-page.js:436
+#: resources/src/jsx/components/pages/welcome-page.jsx:43
+#: resources/dist/js/welcome-page.js:374
+msgid "Help and account"
+msgstr "Tulong at account"
+
+#: resources/dist/js/welcome-page.js:444
+#: resources/src/jsx/components/pages/welcome-page.jsx:46
+#: resources/dist/js/welcome-page.js:377
+msgid "Setup guides and answers for every plugin."
+msgstr "Mga gabay sa setup at mga sagot para sa bawat plugin."
+
+#: resources/dist/js/welcome-page.js:454
+#: resources/src/jsx/components/pages/welcome-page.jsx:51
 #: resources/dist/js/welcome-page.js:382
+msgid "Get support"
+msgstr "Kumuha ng suporta"
+
+#: resources/dist/js/welcome-page.js:454
+#: resources/src/jsx/components/pages/welcome-page.jsx:51
+#: resources/dist/js/welcome-page.js:382
+msgid "Get help from the PublishPress team."
+msgstr "Kumuha ng tulong mula sa team ng PublishPress."
+
+#: resources/dist/js/welcome-page.js:464
+#: resources/src/jsx/components/pages/welcome-page.jsx:56
+#: resources/dist/js/welcome-page.js:387
+msgid "Account and licenses"
+msgstr "Account at mga lisensya"
+
+#: resources/dist/js/welcome-page.js:464
+#: resources/src/jsx/components/pages/welcome-page.jsx:56
+#: resources/dist/js/welcome-page.js:387
+msgid "Find your license keys and manage your subscription."
+msgstr "Hanapin ang iyong mga susi ng lisensya at i-manage ang iyong subscription."
+
+#: resources/dist/js/welcome-page.js:476
+#: resources/src/jsx/components/pages/welcome-page.jsx:65
+#: resources/dist/js/welcome-page.js:396
 msgid "What you can do with PublishPress Hub"
 msgstr "Ano ang maaari mong gawin sa PublishPress Hub"
 
-#: resources/dist/js/welcome-page.js:433
-#: resources/src/jsx/components/pages/welcome-page.jsx:55
-#: resources/dist/js/welcome-page.js:385
+#: resources/dist/js/welcome-page.js:478
+#: resources/src/jsx/components/pages/welcome-page.jsx:68
+#: resources/dist/js/welcome-page.js:399
 msgid ""
 "PublishPress Hub has everything you need to install, update, and manage "
 "your PublishPress plugins. We're here to help you build a publishing system "
@@ -1891,15 +2374,15 @@ msgstr ""
 "upang tulungan kang bumuo ng isang publishing system na gumagana nang "
 "perpekto para sa iyong koponan."
 
-#: resources/dist/js/welcome-page.js:443
-#: resources/src/jsx/components/pages/welcome-page.jsx:64
-#: resources/dist/js/welcome-page.js:394
+#: resources/dist/js/welcome-page.js:489
+#: resources/src/jsx/components/pages/welcome-page.jsx:77
+#: resources/dist/js/welcome-page.js:408
 msgid "Centralized Dashboard"
 msgstr "Sentralisadong Dashboard"
 
-#: resources/dist/js/welcome-page.js:445
-#: resources/src/jsx/components/pages/welcome-page.jsx:67
-#: resources/dist/js/welcome-page.js:397
+#: resources/dist/js/welcome-page.js:491
+#: resources/src/jsx/components/pages/welcome-page.jsx:80
+#: resources/dist/js/welcome-page.js:411
 #, fuzzy
 msgid ""
 "View all your PublishPress plugins with their licenses, versions, and key "
@@ -1908,15 +2391,15 @@ msgstr ""
 "Panatilihin ang lahat ng iyong mga PublishPress plugin na na-a-update sa "
 "pamamagitan ng isang-click na mga update."
 
-#: resources/dist/js/welcome-page.js:453
-#: resources/src/jsx/components/pages/welcome-page.jsx:76
-#: resources/dist/js/welcome-page.js:406
+#: resources/dist/js/welcome-page.js:500
+#: resources/src/jsx/components/pages/welcome-page.jsx:89
+#: resources/dist/js/welcome-page.js:420
 msgid "One-Click Installation"
 msgstr "Isang-click na Pag-install"
 
-#: resources/dist/js/welcome-page.js:455
-#: resources/src/jsx/components/pages/welcome-page.jsx:79
-#: resources/dist/js/welcome-page.js:409
+#: resources/dist/js/welcome-page.js:502
+#: resources/src/jsx/components/pages/welcome-page.jsx:92
+#: resources/dist/js/welcome-page.js:423
 msgid ""
 "Install free PublishPress plugins directly from the Hub without visiting "
 "WordPress.org."
@@ -1924,15 +2407,15 @@ msgstr ""
 "Mag-install ng mga libreng plugin ng PublishPress nang direkta mula sa Hub "
 "nang hindi bumibisita sa WordPress.org."
 
-#: resources/dist/js/welcome-page.js:463
-#: resources/src/jsx/components/pages/welcome-page.jsx:88
-#: resources/dist/js/welcome-page.js:418
+#: resources/dist/js/welcome-page.js:511
+#: resources/src/jsx/components/pages/welcome-page.jsx:101
+#: resources/dist/js/welcome-page.js:432
 msgid "License Management"
 msgstr "Pamamahala ng Lisensya"
 
-#: resources/dist/js/welcome-page.js:465
-#: resources/src/jsx/components/pages/welcome-page.jsx:91
-#: resources/dist/js/welcome-page.js:421
+#: resources/dist/js/welcome-page.js:513
+#: resources/src/jsx/components/pages/welcome-page.jsx:104
+#: resources/dist/js/welcome-page.js:435
 msgid ""
 "Connect your PublishPress licenses to easily install and activate Pro "
 "versions."
@@ -1940,29 +2423,29 @@ msgstr ""
 "Ikonekta ang iyong mga lisensya ng PublishPress upang madaling i-install at "
 "i-activate ang mga Pro na bersyon."
 
-#: resources/dist/js/welcome-page.js:473
-#: resources/src/jsx/components/pages/welcome-page.jsx:100
-#: resources/dist/js/welcome-page.js:430
+#: resources/dist/js/welcome-page.js:522
+#: resources/src/jsx/components/pages/welcome-page.jsx:113
+#: resources/dist/js/welcome-page.js:444
 msgid "Easy Updates"
 msgstr "Madaling Mga Update"
 
-#: resources/dist/js/welcome-page.js:475
-#: resources/src/jsx/components/pages/welcome-page.jsx:103
-#: resources/dist/js/welcome-page.js:433
+#: resources/dist/js/welcome-page.js:524
+#: resources/src/jsx/components/pages/welcome-page.jsx:116
+#: resources/dist/js/welcome-page.js:447
 msgid "Keep all your PublishPress plugins up to date with one-click updates."
 msgstr ""
 "Panatilihin ang lahat ng iyong mga PublishPress plugin na na-a-update sa "
 "pamamagitan ng isang-click na mga update."
 
-#: resources/dist/js/welcome-page.js:483
-#: resources/src/jsx/components/pages/welcome-page.jsx:112
-#: resources/dist/js/welcome-page.js:442
+#: resources/dist/js/welcome-page.js:533
+#: resources/src/jsx/components/pages/welcome-page.jsx:125
+#: resources/dist/js/welcome-page.js:456
 msgid "Status Monitoring"
 msgstr "Pagsubaybay sa Katayuan"
 
-#: resources/dist/js/welcome-page.js:485
-#: resources/src/jsx/components/pages/welcome-page.jsx:115
-#: resources/dist/js/welcome-page.js:445
+#: resources/dist/js/welcome-page.js:535
+#: resources/src/jsx/components/pages/welcome-page.jsx:128
+#: resources/dist/js/welcome-page.js:459
 msgid ""
 "Monitor plugin activation status, detect conflicts, and ensure "
 "compatibility."
@@ -1970,41 +2453,41 @@ msgstr ""
 "Subaybayan ang katayuan ng activation ng plugin, tukuyin ang mga "
 "salungatan, at tiyakin ang pagiging tugma."
 
-#: resources/dist/js/welcome-page.js:493
-#: resources/src/jsx/components/pages/welcome-page.jsx:124
-#: resources/dist/js/welcome-page.js:454
+#: resources/dist/js/welcome-page.js:544
+#: resources/src/jsx/components/pages/welcome-page.jsx:137
+#: resources/dist/js/welcome-page.js:468
 msgid "Get Started"
 msgstr "Magsimula"
 
-#: resources/dist/js/welcome-page.js:496
-#: resources/src/jsx/components/pages/welcome-page.jsx:127
-#: resources/dist/js/welcome-page.js:457
+#: resources/dist/js/welcome-page.js:547
+#: resources/src/jsx/components/pages/welcome-page.jsx:140
+#: resources/dist/js/welcome-page.js:471
 #, js-format
 msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
 msgstr ""
 "Handa ka na bang mag-explore? Bisitahin ang %s upang makita ang lahat ng "
 "magagamit na PublishPress plugins."
 
-#: resources/dist/js/welcome-page.js:506
-#: resources/src/jsx/components/pages/welcome-page.jsx:142
+#: resources/dist/js/welcome-page.js:547
+#: resources/src/jsx/components/pages/welcome-page.jsx:141
 #: resources/dist/js/welcome-page.js:472
-msgid "View Plugins Dashboard"
-msgstr "Tingnan ang Dashboard ng Plugins"
+msgid "Plugins Dashboard"
+msgstr "Dashboard ng Plugins"
 
-#: resources/dist/js/welcome-page.js:508
-#: resources/src/jsx/components/pages/welcome-page.jsx:148
-#: resources/dist/js/welcome-page.js:478
+#: resources/dist/js/welcome-page.js:551
+#: resources/src/jsx/components/pages/welcome-page.jsx:151
+#: resources/dist/js/welcome-page.js:482
 msgid "Already know what you're doing? Great! You can "
 msgstr "Alam mo na ba ang iyong ginagawa? Magaling! Maaari kang "
 
-#: resources/dist/js/welcome-page.js:510
-#: resources/src/jsx/components/pages/welcome-page.jsx:150
-#: resources/dist/js/welcome-page.js:480
+#: resources/dist/js/welcome-page.js:553
+#: resources/src/jsx/components/pages/welcome-page.jsx:153
+#: resources/dist/js/welcome-page.js:484
 msgid "dismiss this page"
 msgstr "mag-dismiss ng page na ito"
 
-#: resources/dist/js/welcome-page.js:510
-#: resources/src/jsx/components/pages/welcome-page.jsx:152
-#: resources/dist/js/welcome-page.js:482, fuzzy
+#: resources/dist/js/welcome-page.js:553
+#: resources/src/jsx/components/pages/welcome-page.jsx:155
+#: resources/dist/js/welcome-page.js:486, fuzzy
 msgid "."
 msgstr "."

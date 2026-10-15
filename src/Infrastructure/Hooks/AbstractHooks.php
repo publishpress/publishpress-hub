@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Hooks;
 
+defined('ABSPATH') || exit;
+
 abstract class AbstractHooks
 {
     public const ACTION_PLUGINS_LOADED = 'plugins_loaded';

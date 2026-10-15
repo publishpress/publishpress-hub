@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
+defined('ABSPATH') || exit;
+
 use PublishPress\Hub\Application\DTO\Plugin\PluginFamilyDto;
 use PublishPress\Hub\Application\Service\License\Contract\LicenseManagementServiceInterface;
 use PublishPress\Hub\Application\Service\License\LicenseStatusStorageService;
@@ -244,7 +246,7 @@ class ListPluginsUseCase implements UseCaseInterface
 
             if (is_multisite()) {
                 foreach ($edd_patterns as $pattern) {
-                    $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.NoCaching
+                    $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- WordPress has no wildcard site-transient deletion API.
                         $wpdb->prepare(
                             "DELETE FROM {$wpdb->sitemeta} WHERE meta_key LIKE %s",
                             $pattern
@@ -253,7 +255,7 @@ class ListPluginsUseCase implements UseCaseInterface
                 }
             } else {
                 foreach ($edd_patterns as $pattern) {
-                    $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.NoCaching
+                    $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- WordPress has no wildcard transient deletion API.
                         $wpdb->prepare(
                             "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s",
                             $pattern
@@ -409,26 +411,18 @@ class ListPluginsUseCase implements UseCaseInterface
      */
     private function isLicenseExpired(ProPluginInterface $proPlugin): bool
     {
-        $downloadId = $proPlugin->getDownloadId();
-
-        // First check stored expiration status
-        $storedStatus = $this->licenseStatusStorage->getLicenseExpirationStatus($downloadId);
-
-        if ($storedStatus !== null && isset($storedStatus['isExpired'])) {
-            return (bool) $storedStatus['isExpired'];
-        }
-
-        // Fallback to calculating from expiration date
-        $expirationDate = $this->getLicenseExpirationDate($proPlugin);
-
-        // If no expiration date, it's likely a lifetime license - never expired
-        if (empty($expirationDate)) {
+        if ($this->getLicenseKey($proPlugin) === '') {
             return false;
         }
 
-        $daysUntilExpiration = $this->getDaysUntilExpiration($expirationDate);
+        // Dates advance locally; a previously cached boolean must not freeze expiration.
+        $expirationDate = $this->getLicenseExpirationDate($proPlugin);
+        if (!empty($expirationDate)) {
+            return $this->getDaysUntilExpiration($expirationDate) < 0;
+        }
 
-        return $daysUntilExpiration < 0;
+        $storedStatus = $this->licenseStatusStorage->getLicenseExpirationStatus($proPlugin->getDownloadId());
+        return (bool) ($storedStatus['isExpired'] ?? false);
     }
 
     /**
