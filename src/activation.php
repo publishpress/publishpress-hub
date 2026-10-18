@@ -33,6 +33,14 @@ function registerActivationHook($pluginFile)
     });
 }
 
+function registerDeactivationHook($pluginFile)
+{
+    register_deactivation_hook($pluginFile, function () {
+        delete_option(RewriteRulesService::FLUSH_OPTION_KEY);
+        flush_rewrite_rules();
+    });
+}
+
 function registerAutoloader()
 {
     // Load the autoloader for activation hook (runs before plugins_loaded)

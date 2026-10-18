@@ -16,6 +16,7 @@
 defined('ABSPATH') || exit;
 
 use function PublishPress\Hub\registerActivationHook;
+use function PublishPress\Hub\registerDeactivationHook;
 
 /*
  * Check if the PHP and WP versions are compatible.
@@ -43,3 +44,4 @@ require_once __DIR__ . '/src/include.php';
 require_once __DIR__ . '/src/activation.php';
 
 registerActivationHook(__FILE__);
+registerDeactivationHook(__FILE__);

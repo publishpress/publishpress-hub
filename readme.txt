@@ -5,8 +5,8 @@ Author URI: https://publishpress.com
 Tags: publishpress, plugins, licensing, plugin management, publishing, editorial workflow
 Requires at least: 6.7
 Requires PHP: 7.4
-Tested up to: 7.1
-License: GPLv2 or later
+Tested up to: 7.1.3
+License: GPL-2.0-or-later
 Stable tag: 1.1.0
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
