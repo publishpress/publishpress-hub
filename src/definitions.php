@@ -18,7 +18,6 @@ defined('ABSPATH') || exit;
 
 use PublishPress\Hub\Application\Service\ActivationRedirectService;
 use PublishPress\Hub\Application\Service\AdminNoticeVisibilityService;
-use PublishPress\Hub\Application\Service\EddPluginUpdateService;
 use PublishPress\Hub\Application\Service\HubBootstrapService;
 use PublishPress\Hub\Application\Service\RewriteRulesService;
 use PublishPress\Hub\Application\Service\Statistics\StatisticsService;
@@ -110,10 +109,6 @@ return [
     AbstractDependencies::PLUGIN_FILE => PUBLISHPRESS_HUB_PLUGIN_FILE,
 
     AbstractDependencies::PLUGIN_AUTHOR => 'PublishPress',
-
-    AbstractDependencies::EDD_ITEM_ID => 404405,
-
-    AbstractDependencies::HUB_UPDATER_VALUE => '012345678901234567890123456789',
 
     AbstractDependencies::HUB_REST_API_NAMESPACE => 'publishpress-hub/v1',
 
@@ -432,7 +427,6 @@ return [
             $servicesToInit[] = $container->get(AbstractDependencies::LICENSE_VALIDATION_BOOTSTRAP_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::ACTIVATION_REDIRECT_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::REWRITE_RULES_SERVICE);
-            $servicesToInit[] = $container->get(AbstractDependencies::EDD_PLUGIN_UPDATE_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::STATISTICS_SERVICE);
 
             if (defined('PUBLISHPRESS_HUB_DEV_MODE') && constant('PUBLISHPRESS_HUB_DEV_MODE')) {
@@ -583,17 +577,6 @@ return [
 
     AbstractDependencies::REWRITE_RULES_SERVICE =>
         fn(ContainerInterface $container) => new RewriteRulesService(),
-
-    AbstractDependencies::EDD_PLUGIN_UPDATE_SERVICE =>
-        fn(ContainerInterface $container) => new EddPluginUpdateService(
-            $container->get(AbstractDependencies::EDD_SUBSCRIPTION_API_URL),
-            $container->get(AbstractDependencies::PLUGIN_FILE),
-            $container->get(AbstractDependencies::PLUGIN_VERSION),
-            $container->get(AbstractDependencies::EDD_ITEM_ID),
-            $container->get(AbstractDependencies::PLUGIN_AUTHOR),
-            $container->get(AbstractDependencies::HUB_UPDATER_VALUE),
-            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
-        ),
 
     AbstractDependencies::STATISTICS_SERVICE =>
         fn(ContainerInterface $container) => new StatisticsService(

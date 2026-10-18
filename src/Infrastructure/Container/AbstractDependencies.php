@@ -67,11 +67,7 @@ abstract class AbstractDependencies
 
     public const PLUGIN_AUTHOR = 'publishpress-hub.constants.plugin-author';
 
-    public const EDD_ITEM_ID = 'publishpress-hub.constants.edd-item-id';
-
     public const PLUGIN_FILE = 'publishpress-hub.constants.plugin-file';
-
-    public const HUB_UPDATER_VALUE = 'publishpress-hub.constants.hub-updater-value';
 
     // Infrastructure Services
     public const HOOKS_SERVICE = 'publishpress-hub.infrastructure.hooks.service';
@@ -192,8 +188,6 @@ abstract class AbstractDependencies
     public const ACTIVATION_REDIRECT_SERVICE = 'publishpress-hub.application.service.activation-redirect';
 
     public const REWRITE_RULES_SERVICE = 'publishpress-hub.application.service.rewrite-rules';
-
-    public const EDD_PLUGIN_UPDATE_SERVICE = 'publishpress-hub.application.service.edd-plugin-update';
 
     public const STATISTICS_SERVICE = 'publishpress-hub.application.service.statistics';
 
