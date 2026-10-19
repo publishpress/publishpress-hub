@@ -117,6 +117,21 @@ class McpConnectionService implements BootableInterface
     }
 
     /**
+     * Identify this site's connection in external MCP clients.
+     *
+     * @return string
+     * @since 1.2.0
+     */
+    public function getClientIdentifier(): string
+    {
+        $endpoint = untrailingslashit(rest_url('mcp/publishpress'));
+        $host = (string) wp_parse_url($endpoint, PHP_URL_HOST);
+        $label = substr(sanitize_key(str_replace('.', '-', $host)), 0, 32);
+
+        return 'publishpress-' . ($label ?: 'site') . '-' . substr(hash('sha256', $endpoint), 0, 12);
+    }
+
+    /**
      * The adapter invokes this after WordPress has established the request user.
      *
      * @return bool

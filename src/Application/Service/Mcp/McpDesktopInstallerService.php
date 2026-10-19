@@ -107,9 +107,8 @@ class McpDesktopInstallerService
             if ($content === false || $content === '') {
                 throw new RuntimeException('Cannot read the desktop bundle.');
             }
-            $host = (string) wp_parse_url(home_url(), PHP_URL_HOST);
             return [
-                'filename' => sanitize_file_name('publishpress-' . $host . '.mcpb'),
+                'filename' => $this->connection->getClientIdentifier() . '.mcpb',
                 'content' => $content,
             ];
         } catch (Throwable $exception) {
@@ -166,8 +165,8 @@ class McpDesktopInstallerService
         $host = (string) wp_parse_url(home_url(), PHP_URL_HOST);
         return [
             'manifest_version' => '0.3',
-            'name' => 'publishpress-' . sanitize_title($host),
-            'display_name' => 'PublishPress - ' . $host,
+            'name' => $this->connection->getClientIdentifier(),
+            'display_name' => 'PublishPress - ' . $host . (string) wp_parse_url(home_url(), PHP_URL_PATH),
             'version' => PUBLISHPRESS_HUB_VERSION,
             'description' => __('Connect to the selected PublishPress actions on your WordPress site.', 'publishpress-hub'),
             'author' => ['name' => 'PublishPress', 'url' => 'https://publishpress.com'],

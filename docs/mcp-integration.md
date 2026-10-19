@@ -2,6 +2,8 @@
 
 Hub provides one optional MCP connection for participating PublishPress plugins. Available actions depend on the active plugins and the connection's access settings.
 
+Each site has a stable client connection name derived from its full MCP endpoint. Different domains and sites under different paths can coexist in the same AI app. Repeating setup uses the same name for that site.
+
 Actions from supported plugins appear automatically in Hub's action selection. Users connect through a compatible external MCP client. The connection supports different AI providers and is separate from WordPress.com's hosted MCP service.
 
 ## Setup

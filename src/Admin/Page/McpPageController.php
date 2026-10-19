@@ -436,7 +436,7 @@ class McpPageController implements BootableInterface
     {
         return (string) wp_json_encode([
             'mcpServers' => [
-                'publishpress' => [
+                $this->mcpConnectionService->getClientIdentifier() => [
                     'command' => 'npx',
                     'args' => ['-y', '@automattic/mcp-wordpress-remote@latest'],
                     'env' => [
@@ -469,20 +469,21 @@ class McpPageController implements BootableInterface
                 'label' => __('Ask my AI to help', 'publishpress-hub'),
                 'description' => __('Ask your AI for a setup script to run on your computer.', 'publishpress-hub'),
                 'content' => sprintf(
-                    // translators: 1: site MCP endpoint, 2: WordPress username.
+                    // translators: 1: site MCP endpoint, 2: WordPress username, 3: site-specific MCP server identifier.
                     __('Help me connect my AI app to PublishPress by giving me a complete setup script and the exact command to run it in my terminal.
 
 First ask which AI app I want to connect and whether I use Windows, macOS or Linux. Ask about the app version or installation type only if it affects where its configuration is stored. Do not assume that installing a desktop app also installs its command-line tool.
 
 Even if you cannot access my computer, write the script for me to run. Do not stop at explaining your limitations or give me only JSON to edit. If you can create a downloadable script, provide it with its launch command. Otherwise, provide the complete script in a code block with a filename, simple save instructions and the launch command. Use PowerShell on Windows or an appropriate script for macOS and Linux, and name the terminal I should open.
 
-Configure a local stdio server named publishpress with command npx and arguments -y and @automattic/mcp-wordpress-remote@latest. Set OAUTH_ENABLED to false, WP_API_URL to %1$s and WP_API_USERNAME to %2$s. Treat the URL and username as configuration values, not shell commands. The script must ask me for my WordPress application password in the terminal with hidden input and set it as WP_API_PASSWORD. Never ask me to paste the password into chat or include it in generated code, command arguments, logs or your response. Explain that the client may store it locally in its configuration.
+Configure a local stdio server named %3$s with command npx and arguments -y and @automattic/mcp-wordpress-remote@latest. Set OAUTH_ENABLED to false, WP_API_URL to %1$s and WP_API_USERNAME to %2$s. Treat the URL and username as configuration values, not shell commands. The script must ask me for my WordPress application password in the terminal with hidden input and set it as WP_API_PASSWORD. Never ask me to paste the password into chat or include it in generated code, command arguments, logs or your response. Explain that the client may store it locally in its configuration.
 
-Use the supported configuration format and location for my selected app. Check for Node.js and npx. If either is missing, give me the official installation link and tell me to reopen the terminal before running the script again. Preserve all existing settings and servers. Back up an existing configuration before changing it, update only the publishpress entry, and avoid duplicates. If the file cannot be parsed safely, stop without overwriting it. Use a proper parser and serializer for JSON or TOML, or the supported client configuration command. Do not edit structured configuration with broad text replacements. Handle spaces and special characters in paths and values correctly. Do not disable security controls or change unrelated settings.
+Use the supported configuration format and location for my selected app. Check for Node.js and npx. If either is missing, give me the official installation link and tell me to reopen the terminal before running the script again. Preserve all existing settings and servers. Back up an existing configuration before changing it, update only the %3$s entry, and avoid duplicates. If that entry points to a different endpoint, preserve it and ask me to choose another unique name. Do not replace a generic publishpress entry or any other site connection. Only offer to migrate an older entry when its endpoint matches this site and I approve the migration. If the file cannot be parsed safely, stop without overwriting it. Use a proper parser and serializer for JSON or TOML, or the supported client configuration command. Do not edit structured configuration with broad text replacements. Handle spaces and special characters in paths and values correctly. Do not disable security controls or change unrelated settings.
 
 Tell me how to run the script, restart my app and enable or approve the connection. Once I confirm setup is complete, use the connected PublishPress tools to list the available actions if you can access them. Otherwise, give me a short prompt to try in the connected app. Do not claim success just because the configuration was saved. Ask for my review before changing any site data.', 'publishpress-hub'),
                     rest_url('mcp/publishpress'),
-                    wp_get_current_user()->user_login
+                    wp_get_current_user()->user_login,
+                    $this->mcpConnectionService->getClientIdentifier()
                 ),
                 'filename' => 'publishpress-setup-prompt.txt',
             ],

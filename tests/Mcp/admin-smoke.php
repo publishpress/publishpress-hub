@@ -104,6 +104,28 @@ try {
     ob_start();
     $controller->showConnectionPage();
     $html = ob_get_clean();
+    $clientIdentifier = $connection->getClientIdentifier();
+    $endpointOverride = 'https://same-host.example/site-one/wp-json/mcp/publishpress';
+    $overrideEndpoint = static function () use (&$endpointOverride): string {
+        return $endpointOverride;
+    };
+    add_filter('rest_url', $overrideEndpoint);
+    try {
+        $firstIdentifier = $connection->getClientIdentifier();
+        $check($firstIdentifier === $connection->getClientIdentifier(), 'Client identity is stable for repeated setup');
+        $endpointOverride = 'https://same-host.example/site-two/wp-json/mcp/publishpress';
+        $secondIdentifier = $connection->getClientIdentifier();
+        $endpointOverride = 'https://another-host.example/site-one/wp-json/mcp/publishpress';
+        $check(count(array_unique([$firstIdentifier, $secondIdentifier, $connection->getClientIdentifier()])) === 3,
+            'Client identities distinguish different domains and subdirectory sites');
+    } finally {
+        remove_filter('rest_url', $overrideEndpoint);
+    }
+    preg_match('/id="mcp-config-desktop"[^>]*>(.*?)<\/textarea>/s', $html, $desktopMatch);
+    $desktopConfig = json_decode(html_entity_decode($desktopMatch[1] ?? '', ENT_QUOTES, 'UTF-8'), true);
+    $check(isset($desktopConfig['mcpServers'][$clientIdentifier]) && !isset($desktopConfig['mcpServers']['publishpress']),
+        'Manual configuration uses the stable site-specific server name');
+
     $check(
         substr_count($html, 'name="enabled_actions[]"') === 10,
         'Connection screen limits the current plugin page to ten action controls'
@@ -127,6 +149,8 @@ try {
     preg_match('/id="mcp-config-assistant"[^>]*>(.*?)<\/textarea>/s', $html, $promptMatch);
     $check(strpos(html_entity_decode($promptMatch[1] ?? '', ENT_QUOTES, 'UTF-8'), rest_url('mcp/publishpress')) !== false,
         'Assisted setup prompt includes the current site endpoint');
+    $check(strpos(html_entity_decode($promptMatch[1] ?? '', ENT_QUOTES, 'UTF-8'), $clientIdentifier) !== false,
+        'Assisted setup uses the same site-specific server name');
     $check(strpos($html, 'PASTE_YOUR_APPLICATION_PASSWORD_HERE') !== false
         && strpos($html, 'Hub cannot detect whether your app has been configured.') !== false,
         'Client setup uses a password placeholder and does not claim external setup is complete');

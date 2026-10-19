@@ -75,6 +75,9 @@ try {
         && $manifest['server']['mcp_config']['env']['OAUTH_ENABLED'] === 'false'
         && $manifest['version'] === PUBLISHPRESS_HUB_VERSION,
         'The generated manifest launches the bridge directly using application-password authentication');
+    $check($manifest['name'] === $connection->getClientIdentifier()
+        && $bundle['filename'] === $manifest['name'] . '.mcpb',
+        'Desktop extension and download use the shared site-specific identity');
     $secret = $manifest['user_config']['password']['default'];
     $after = WP_Application_Passwords::get_user_application_passwords(1);
     $new = array_values(array_filter($after, static fn(array $item): bool => !in_array($item['uuid'], array_column($before, 'uuid'), true)));
