@@ -27,6 +27,8 @@ class HubAccessService implements AccessInterface, BootableInterface
 
     public const CAPABILITY = 'manage_publishpress_hub';
 
+    public const MCP_CAPABILITY = 'manage_options';
+
     public const READ_CAPABILITY = 'read';
 
     public const PLUGIN_NAME = 'PublishPress Hub';
@@ -87,6 +89,19 @@ class HubAccessService implements AccessInterface, BootableInterface
     public static function canManageHub(): bool
     {
         return current_user_can(self::CAPABILITY);
+    }
+
+    /**
+     * Check access to MCP administration and the MCP connection.
+     *
+     * MCP requires administrator-level access independently of Hub viewer access.
+     *
+     * @return bool
+     * @since 1.2.0
+     */
+    public static function canManageMcp(): bool
+    {
+        return current_user_can(self::MCP_CAPABILITY);
     }
 
     /**

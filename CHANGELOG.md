@@ -1,5 +1,9 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[1.2.0] - [Unreleased]
+
+- Added: Optional PublishPress MCP connection, adapter setup, write opt-in, per-action exposure controls, searchable plugin action tabs, background navigation and saves, client setup guidance, a Claude Desktop installer, and connection diagnostics (#246).
+
 [1.1.0] - 15 October, 2026
 
 - Added: Support for PublishPress Cart, PublishPress Taxonomies, and PublishPress Tag Groups (#269).

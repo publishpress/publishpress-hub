@@ -1,0 +1,63 @@
+@import './components/notices/notices.css';
+
+.mcp-page { max-width: 1240px; padding-bottom: 24px; }
+.mcp-page .mcp-intro { font-size: 15px; color: #50575e; margin-bottom: 24px; }
+.mcp-overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+.mcp-panel { background: #fff; border: 1px solid #dcdcde; border-radius: 6px; padding: 24px; margin: 0 0 20px; min-width: 0; }
+.mcp-panel h2 { margin-top: 0; font-size: 18px; }
+.mcp-panel p { line-height: 1.6; }
+.mcp-page details > summary { cursor: pointer; font-weight: 600; padding: 10px 0; }
+.mcp-page summary:focus-visible { outline: 2px solid #2271b1; outline-offset: 3px; }
+.mcp-checklist { border-top: 1px solid #dcdcde; margin-top: 20px; padding-top: 6px; }
+.mcp-checklist li { display: flex; gap: 10px; padding: 12px 0; border-bottom: 1px solid #f0f0f1; }
+.mcp-checklist .dashicons { flex-shrink: 0; margin-top: 2px; }
+.mcp-step-state { display: block; color: #646970; font-size: 12px; margin-top: 3px; }
+.mcp-ready { color: #008a20; }
+.mcp-needed { color: #b32d2e; }
+.mcp-copy-field { display: flex; gap: 8px; margin-top: 8px; }
+.mcp-copy-field input { min-width: 0; }
+.mcp-copy-field .button { flex-shrink: 0; }
+.mcp-tabs { display: flex; flex-wrap: wrap; gap: 4px; padding-top: 0; }
+.mcp-tabs .nav-tab { margin-left: 0; }
+.mcp-tab-count { font-size: 12px; padding: 2px 7px; background: #e2e4e7; border-radius: 10px; margin-left: 6px; }
+.mcp-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+.mcp-action-table th:first-child { width: 72px; }
+.mcp-action-table th:last-child { width: 180px; }
+.mcp-action-table td { padding: 14px 10px; vertical-align: top; }
+.mcp-action-table code { overflow-wrap: anywhere; }
+.mcp-badge { display: inline-block; background: #f0f0f1; border-radius: 4px; padding: 3px 8px; font-size: 12px; }
+.mcp-pagination { display: flex; gap: 8px; justify-content: flex-end; align-items: center; margin-top: 16px; }
+.mcp-save-bar { position: sticky; bottom: 0; background: #fff; border: 1px solid #dcdcde; padding: 14px 24px; box-shadow: 0 -2px 8px #00000008; z-index: 10; margin-bottom: 20px; }
+.mcp-diagnostics table { margin-top: 12px; }
+@media (max-width: 960px) { .mcp-overview-grid { grid-template-columns: 1fr; gap: 0; } }
+@media (max-width: 600px) { .mcp-panel { padding: 16px; } .mcp-action-table th:last-child { width: 110px; } .mcp-copy-field { flex-wrap: wrap; } .mcp-pagination { flex-wrap: wrap; } }
+
+.mcp-page .mcp-copy-feedback { display: inline-block; color: #50575e; font-weight: 600; margin: 6px 8px; }
+.mcp-page .button.is-copied { border-color: #008a20; color: #006b19; background: #edfaef; }
+.mcp-access-note { background: #f0f6fc; border-left: 4px solid #2271b1; padding: 14px 16px; margin: 20px 0; }
+.mcp-access-note p { margin-bottom: 0; }
+.mcp-client-picker { margin-top: 24px; }
+.mcp-client-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 12px 0 20px; }
+.mcp-client-choice { display: flex; gap: 8px; align-items: flex-start; padding: 12px; border: 1px solid #c3c4c7; border-radius: 5px; cursor: pointer; }
+.mcp-client-choice:has(input:checked) { background: #f0f6fc; border-color: #2271b1; box-shadow: inset 0 0 0 1px #2271b1; }
+.mcp-client-choice input { flex-shrink: 0; margin-top: 3px; }
+.mcp-client-choice span span { display: block; color: #646970; font-size: 12px; line-height: 1.5; margin-top: 5px; }
+.mcp-client-panel { border-top: 1px solid #dcdcde; padding-top: 8px; }
+.mcp-client-panel[hidden] { display: none; }
+.mcp-artifact-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 12px 0; }
+@media (max-width: 480px) { .mcp-client-choices { grid-template-columns: 1fr; } }
+
+.mcp-copy-field { flex-wrap: wrap; }
+.mcp-copy-field input { flex: 1; }
+.mcp-copy-field .mcp-copy-feedback { flex-basis: 100%; margin-left: 0; }
+
+.mcp-page .is-copied + .mcp-copy-feedback { color: #008a20; }
+
+.mcp-save-status { display: inline-block; margin-right: 16px; font-weight: 600; }
+.mcp-actions[aria-busy="true"] { opacity: .65; }
+
+.mcp-instruction-box { border: 1px solid #dcdcde; border-radius: 5px; padding: 20px; margin: 20px 0; }
+.mcp-instruction-box h4 { margin-top: 0; font-size: 16px; }
+.mcp-instruction-box li { margin-bottom: 12px; line-height: 1.6; }
+.mcp-instruction-box > :last-child { margin-bottom: 0; }
+.mcp-password-note { background: #f6f7f7; }

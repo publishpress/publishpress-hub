@@ -1,6 +1,6 @@
 {
   "name": "publishpress-hub",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "PublishPress Hub",
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
     "classnames": "^2.5.1"
   },
   "devDependencies": {
+    "@automattic/mcp-wordpress-remote": "0.5.1",
     "@babel/core": "^7.24.3",
     "@babel/preset-env": "^7.24.3",
     "@babel/preset-react": "^7.24.1",

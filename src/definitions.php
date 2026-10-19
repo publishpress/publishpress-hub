@@ -20,6 +20,9 @@ use PublishPress\Hub\Application\Service\ActivationRedirectService;
 use PublishPress\Hub\Application\Service\AdminNoticeVisibilityService;
 use PublishPress\Hub\Application\Service\EddPluginUpdateService;
 use PublishPress\Hub\Application\Service\HubBootstrapService;
+use PublishPress\Hub\Application\Service\Mcp\McpAdapterInstallationService;
+use PublishPress\Hub\Application\Service\Mcp\McpConnectionService;
+use PublishPress\Hub\Application\Service\Mcp\McpDesktopInstallerService;
 use PublishPress\Hub\Application\Service\RewriteRulesService;
 use PublishPress\Hub\Application\Service\Statistics\StatisticsService;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
@@ -75,6 +78,7 @@ use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginStatusAdapter;
 use PublishPress\Hub\Infrastructure\WP\Remote\WPRemoteAdapter;
 use PublishPress\Hub\Infrastructure\WP\RestApi\WPRestApiAdapter;
 use PublishPress\Hub\Admin\Page\ComponentsShowcaseController;
+use PublishPress\Hub\Admin\Page\McpPageController;
 use PublishPress\Hub\Admin\Page\PluginsDashboardController;
 use PublishPress\Hub\Admin\Page\SettingsPageController;
 use PublishPress\Hub\Admin\Page\WelcomePageController;
@@ -411,6 +415,22 @@ return [
         fn(ContainerInterface $container) => new WPOrgPluginApiAdapter(),
 
     // Application Services
+    AbstractDependencies::MCP_ADAPTER_INSTALLATION_SERVICE =>
+        fn(ContainerInterface $container) => new McpAdapterInstallationService(
+            $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
+            $container->get(AbstractDependencies::FREE_PLUGIN_API)
+        ),
+
+    AbstractDependencies::MCP_DESKTOP_INSTALLER_SERVICE =>
+        fn(ContainerInterface $container) => new McpDesktopInstallerService(
+            $container->get(AbstractDependencies::MCP_CONNECTION_SERVICE)
+        ),
+
+    AbstractDependencies::MCP_CONNECTION_SERVICE =>
+        fn(ContainerInterface $container) => new McpConnectionService(
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER)
+        ),
+
     AbstractDependencies::HUB_BOOTSTRAP_SERVICE =>
         function (ContainerInterface $container) {
             $servicesToInit = [
@@ -425,6 +445,8 @@ return [
             }
 
             $servicesToInit[] = $container->get(AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER);
+            $servicesToInit[] = $container->get(AbstractDependencies::MCP_CONNECTION_SERVICE);
+            $servicesToInit[] = $container->get(AbstractDependencies::MCP_PAGE_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::SETTINGS_PAGE_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_PLUGINS_CONTROLLER);
@@ -606,6 +628,16 @@ return [
             $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
             $container->get(AbstractDependencies::ASSET_SERVICE)
+        ),
+
+    AbstractDependencies::MCP_PAGE_CONTROLLER =>
+        fn(ContainerInterface $container) => new McpPageController(
+            $container->get(AbstractDependencies::MCP_CONNECTION_SERVICE),
+            $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
+            $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
+            $container->get(AbstractDependencies::MCP_ADAPTER_INSTALLATION_SERVICE),
+            $container->get(AbstractDependencies::ASSET_SERVICE),
+            $container->get(AbstractDependencies::MCP_DESKTOP_INSTALLER_SERVICE)
         ),
 
     AbstractDependencies::SETTINGS_PAGE_CONTROLLER =>

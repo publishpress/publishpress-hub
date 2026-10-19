@@ -34,6 +34,18 @@ abstract class AbstractHooks
 
     public const ACTION_REST_API_INIT = 'rest_api_init';
 
+    public const ACTION_MCP_ADAPTER_INIT = 'mcp_adapter_init';
+
+    public const ACTION_MCP_AJAX_SAVE_CONNECTION = 'wp_ajax_publishpress_hub_mcp_save';
+
+    public const ACTION_MCP_SAVE_CONNECTION = 'admin_post_publishpress_hub_mcp_save';
+
+    public const ACTION_MCP_DOWNLOAD_INSTALLER = 'admin_post_publishpress_hub_mcp_installer';
+
+    public const ACTION_MCP_INSTALL_ADAPTER = 'admin_post_publishpress_hub_mcp_install';
+
+    public const ACTION_MCP_REGISTRATION_ERROR = 'publishpress_hub_mcp_registration_error';
+
     public const ACTION_REST_ROUTES_REGISTERED = 'publishpress_hub_rest_routes_registered';
 
     public const FILTER_PLUGIN_CAPABILITIES = 'cme_plugin_capabilities';
