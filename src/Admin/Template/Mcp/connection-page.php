@@ -132,7 +132,7 @@ defined('ABSPATH') || exit;
                 <div class="mcp-instruction-box">
                     <ol>
                         <li><a href="<?php echo esc_url(admin_url('profile.php#application-passwords-section')); ?>"><?php esc_html_e('Create an application password', 'publishpress-hub'); ?></a>. <?php esc_html_e('Name it PublishPress AI and copy the password.', 'publishpress-hub'); ?></li>
-                        <li><?php esc_html_e('Copy the prompt below and paste it into your AI agent. Ask it for a setup script to run on your computer.', 'publishpress-hub'); ?></li>
+                        <li><?php esc_html_e('Copy the prompt below and paste it into your AI agent.', 'publishpress-hub'); ?></li>
                     </ol>
                     <p class="description"><?php esc_html_e('Enter the password in your app or configuration file, not in the chat.', 'publishpress-hub'); ?></p>
                 </div>
