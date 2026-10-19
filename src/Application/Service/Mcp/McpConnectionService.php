@@ -172,6 +172,32 @@ class McpConnectionService implements BootableInterface
     }
 
     /**
+     * Show the complete site address in the client connection label.
+     *
+     * @return string
+     * @since 1.2.0
+     */
+    public function getClientDisplayName(): string
+    {
+        return 'PublishPress - ' . untrailingslashit(home_url());
+    }
+
+    /**
+     * Identify the target site and explain how to handle ambiguous requests.
+     *
+     * @return string
+     * @since 1.2.0
+     */
+    public function getClientDescription(): string
+    {
+        return sprintf(
+            // translators: %s: full WordPress site address.
+            __('PublishPress actions for %s. These tools apply only to this site. If several sites are connected and the requested site is unclear, ask which site to use before calling a tool. Confirm the target site before changing site data.', 'publishpress-hub'),
+            untrailingslashit(home_url())
+        );
+    }
+
+    /**
      * Abilities remain owned and executed by their registering plugins.
      *
      * @param \WP\MCP\Core\McpAdapter $adapter Adapter registry.
@@ -188,8 +214,8 @@ class McpConnectionService implements BootableInterface
             'publishpress',
             'mcp',
             'publishpress',
-            'PublishPress',
-            __('Actions provided by active PublishPress plugins.', 'publishpress-hub'),
+            $this->getClientDisplayName(),
+            $this->getClientDescription(),
             '1.0.0',
             [\WP\MCP\Transport\HttpTransport::class],
             null,

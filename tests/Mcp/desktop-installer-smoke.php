@@ -75,7 +75,10 @@ try {
         && $manifest['server']['mcp_config']['env']['OAUTH_ENABLED'] === 'false'
         && $manifest['version'] === PUBLISHPRESS_HUB_VERSION,
         'The generated manifest launches the bridge directly using application-password authentication');
-    $check($manifest['name'] === $connection->getClientIdentifier()
+    $check($manifest['display_name'] === $connection->getClientDisplayName()
+        && $manifest['description'] === $connection->getClientDescription()
+        && strpos($manifest['display_name'], untrailingslashit(home_url())) !== false
+        && $manifest['name'] === $connection->getClientIdentifier()
         && $bundle['filename'] === $manifest['name'] . '.mcpb',
         'Desktop extension and download use the shared site-specific identity');
     $secret = $manifest['user_config']['password']['default'];

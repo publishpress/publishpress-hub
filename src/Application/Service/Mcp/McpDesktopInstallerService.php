@@ -162,13 +162,12 @@ class McpDesktopInstallerService
      */
     private function getManifest(string $password): array
     {
-        $host = (string) wp_parse_url(home_url(), PHP_URL_HOST);
         return [
             'manifest_version' => '0.3',
             'name' => $this->connection->getClientIdentifier(),
-            'display_name' => 'PublishPress - ' . $host . (string) wp_parse_url(home_url(), PHP_URL_PATH),
+            'display_name' => $this->connection->getClientDisplayName(),
             'version' => PUBLISHPRESS_HUB_VERSION,
-            'description' => __('Connect to the selected PublishPress actions on your WordPress site.', 'publishpress-hub'),
+            'description' => $this->connection->getClientDescription(),
             'author' => ['name' => 'PublishPress', 'url' => 'https://publishpress.com'],
             'license' => 'GPL-2.0-or-later',
             'server' => [
