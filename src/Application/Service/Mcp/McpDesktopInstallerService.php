@@ -75,7 +75,8 @@ class McpDesktopInstallerService
         $zip = new ZipArchive();
         $opened = false;
         try {
-            // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.chmod_chmod -- Credentials require a private temporary file.
+            // The credential ZIP is local even when WP_Filesystem uses a remote transport.
+            // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_chmod, WordPressVIPMinimum.Functions.RestrictedFunctions.chmod_chmod -- Make the temporary file private before writing credentials.
             if (!$path || !chmod($path, 0600)) {
                 throw new RuntimeException('Cannot prepare the desktop bundle.');
             }
