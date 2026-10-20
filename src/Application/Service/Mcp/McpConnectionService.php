@@ -172,14 +172,14 @@ class McpConnectionService implements BootableInterface
     }
 
     /**
-     * Show the complete site address in the client connection label.
+     * Show a site-specific label that is safe for client-generated file paths.
      *
      * @return string
      * @since 1.2.0
      */
     public function getClientDisplayName(): string
     {
-        return 'PublishPress - ' . untrailingslashit(home_url());
+        return 'PublishPress - ' . substr($this->getClientIdentifier(), strlen('publishpress-'));
     }
 
     /**

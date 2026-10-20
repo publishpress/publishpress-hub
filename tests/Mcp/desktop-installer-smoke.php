@@ -77,7 +77,8 @@ try {
         'The generated manifest launches the bridge directly using application-password authentication');
     $check($manifest['display_name'] === $connection->getClientDisplayName()
         && $manifest['description'] === $connection->getClientDescription()
-        && strpos($manifest['display_name'], untrailingslashit(home_url())) !== false
+        && preg_match('/^PublishPress - [a-z0-9-]+$/D', $manifest['display_name']) === 1
+        && strpos($manifest['description'], untrailingslashit(home_url())) !== false
         && $manifest['name'] === $connection->getClientIdentifier()
         && $bundle['filename'] === $manifest['name'] . '.mcpb',
         'Desktop extension and download use the shared site-specific identity');
