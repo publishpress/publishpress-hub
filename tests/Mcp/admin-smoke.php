@@ -121,7 +121,7 @@ try {
     } finally {
         remove_filter('rest_url', $overrideEndpoint);
     }
-    preg_match('/id="mcp-config-desktop"[^>]*>(.*?)<\/textarea>/s', $html, $desktopMatch);
+    preg_match('/id="mcp-config-manual"[^>]*>(.*?)<\/textarea>/s', $html, $desktopMatch);
     $desktopConfig = json_decode(html_entity_decode($desktopMatch[1] ?? '', ENT_QUOTES, 'UTF-8'), true);
     $check(isset($desktopConfig['mcpServers'][$clientIdentifier]) && !isset($desktopConfig['mcpServers']['publishpress']),
         'Manual configuration uses the stable site-specific server name');
@@ -132,17 +132,17 @@ try {
     );
     $check(strpos($html, 'name="mcp_writes_enabled"') !== false, 'Connection screen contains the write opt-in control');
     $check(strpos($html, 'Connection diagnostics') !== false, 'Connection diagnostics render successfully');
-    $check(strpos($html, 'Connection setup checklist') !== false
-        && strpos($html, 'dashicons-yes-alt') !== false
-        && strpos($html, 'dashicons-dismiss') !== false,
-        'Setup checklist distinguishes ready prerequisites from remaining client setup');
+    $check(strpos($html, 'Allow PublishPress to connect with your favorite AI') !== false
+        && strpos($html, 'role="switch"') !== false,
+        'Connection setup starts with the welcome toggle');
     $check(strpos($html, 'id="mcp-client-setup"') !== false
         && strpos($html, 'cli-usage.md#using-with-mcp-clients') === false
-        && strpos($html, 'After you download') !== false
+        && strpos($html, 'Download the installer for this site.') !== false
         && strpos($html, '@automattic/mcp-wordpress-remote@latest') !== false,
         'Client setup provides in-page app instructions and remote bridge configuration');
 
-    $check(substr_count($html, 'name="mcp_client"') === 2
+    $check(substr_count($html, 'name="mcp_client"') === 3
+        && strpos($html, 'mcp-client-manual') !== false
         && strpos($html, 'mcp-client-assistant') !== false
         && strpos($html, 'Download configuration') !== false,
         'Client setup offers app choices, assisted setup and downloadable configuration');
@@ -152,13 +152,13 @@ try {
     $check(strpos(html_entity_decode($promptMatch[1] ?? '', ENT_QUOTES, 'UTF-8'), $clientIdentifier) !== false,
         'Assisted setup uses the same site-specific server name');
     $check(strpos($html, 'PASTE_YOUR_APPLICATION_PASSWORD_HERE') !== false
-        && strpos($html, 'Hub cannot detect whether your app has been configured.') !== false,
+        && strpos($html, 'Hub cannot check the app connection for you.') !== false,
         'Client setup uses a password placeholder and does not claim external setup is complete');
     $connection->saveExposureSettings(false, false, $names);
     ob_start();
     $controller->showConnectionPage();
     $disabledHtml = ob_get_clean();
-    $check(strpos($disabledHtml, 'Connection setup checklist') !== false
+    $check(strpos($disabledHtml, 'data-mcp-stage="disabled"') !== false
         && strpos($disabledHtml, 'id="mcp-client-setup"') !== false,
         'Setup guidance remains available before the connection is enabled');
 

@@ -13,15 +13,23 @@ import { createRoot } from 'react-dom/client';
 import { createElement } from '@wordpress/element';
 import { dispatch } from '@wordpress/data';
 import SnackbarList from './components/notices/SnackbarList';
+import { AdminPageHeader } from './components/admin-page/header';
 
 const page = document.querySelector('.mcp-page');
 if (page) {
+    const header = document.querySelector('#mcp-page-header');
+    if (header) createRoot(header).render(createElement(AdminPageHeader, { logoUrl: window.ppHubMcpConfig.logoUrl }));
     const notices = page.querySelector('.mcp-notices');
     if (notices) createRoot(notices).render(createElement(SnackbarList));
     let dirty = false;
     let submitting = false;
     let saving = false;
+    let advancing = false;
     let navigationController;
+    const scrollToStep = (element) => element?.scrollIntoView?.({
+        behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+        block: 'start',
+    });
     const changedActions = new Map();
     const form = page.querySelector('#mcp-connection-settings');
     const showStatus = (message, error = false) => {
@@ -29,6 +37,10 @@ if (page) {
         if (!status) return;
         status.textContent = message;
         status.classList.toggle('mcp-needed', error);
+        if (error) {
+            const footer = page.querySelector('.mcp-save-bar');
+            if (footer) footer.hidden = false;
+        }
     };
     const replaceSection = (document, selector) => {
         const current = page.querySelector(selector);
@@ -79,9 +91,24 @@ if (page) {
             dirty = true;
             if (event.target.name === 'enabled_actions[]') changedActions.set(event.target.value, event.target.checked);
             showStatus(__('You have unsaved changes.', 'publishpress-hub'));
+            if (event.target.name === 'mcp_enabled') {
+                advancing = event.target.checked;
+                form.requestSubmit?.();
+            }
         }
     });
     page.addEventListener('click', (event) => {
+        const finish = event.target.matches?.('[data-mcp-finish-setup]');
+        const reconnect = event.target.matches?.('[data-mcp-reconnect]');
+        if (finish || reconnect) {
+            const complete = form.querySelector('[name="mcp_setup_complete"]');
+            if (!complete || saving) return;
+            complete.value = finish ? '1' : '0';
+            dirty = true;
+            advancing = true;
+            form.requestSubmit();
+            return;
+        }
         const link = event.target.closest('.mcp-tabs a, .mcp-pagination a');
         if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
         event.preventDefault();
@@ -124,6 +151,15 @@ if (page) {
         const disabled = controls.map((input) => input.disabled);
         controls.forEach((input) => { input.disabled = true; });
         saving = true;
+        const loading = page.querySelector('.mcp-step-loading');
+        const journey = page.querySelector('.mcp-journey');
+        const revealStep = advancing;
+        advancing = false;
+        if (revealStep && loading && journey) {
+            journey.hidden = true;
+            loading.hidden = false;
+            scrollToStep(loading);
+        }
         showStatus(__('Saving changes...', 'publishpress-hub'));
         try {
             const response = await fetch(url, { method: 'POST', credentials: 'same-origin', body: data });
@@ -132,7 +168,15 @@ if (page) {
             const document = parsePage(result.data.html);
             changedActions.clear();
             dirty = false;
-            ['.mcp-actions', '.mcp-checklist', '.mcp-exposure-count', '.mcp-diagnostics', '.mcp-installer-form'].forEach((selector) => replaceSection(document, selector));
+            replaceSection(document, '.mcp-journey');
+            bindClientControls();
+            const footer = page.querySelector('.mcp-save-bar');
+            const nextFooter = document.querySelector('.mcp-save-bar');
+            if (footer && nextFooter) footer.hidden = nextFooter.hidden;
+            const heading = page.querySelector('.mcp-journey > section:not([hidden]) h2');
+            heading?.setAttribute('tabindex', '-1');
+            heading?.focus({ preventScroll: true });
+            if (revealStep && !loading) scrollToStep(heading);
             showStatus('');
             dispatch('core/notices').createSuccessNotice(result.data.message, {
                 id: 'publishpress-hub-mcp-save',
@@ -142,6 +186,9 @@ if (page) {
         } catch (error) {
             showStatus(error instanceof SyntaxError ? __('Settings could not be saved. Your session may have expired. Refresh the page and try again.', 'publishpress-hub') : error.message, true);
         } finally {
+            if (loading) loading.hidden = true;
+            const currentJourney = page.querySelector('.mcp-journey');
+            if (currentJourney) currentJourney.hidden = false;
             saving = false;
             controls.forEach((input, index) => { input.disabled = disabled[index]; });
         }
@@ -153,60 +200,63 @@ if (page) {
             event.returnValue = '';
         }
     });
-    page.querySelectorAll('[name="mcp_client"]').forEach((radio) => {
-        radio.addEventListener('change', () => {
-            page.querySelectorAll('[data-mcp-client-panel]').forEach((panel) => {
-                panel.hidden = panel.dataset.mcpClientPanel !== radio.value;
+    const bindClientControls = () => {
+        page.querySelectorAll('[name="mcp_client"]').forEach((radio) => {
+            radio.addEventListener('change', () => {
+                page.querySelectorAll('[data-mcp-client-panel]').forEach((panel) => {
+                    panel.hidden = panel.dataset.mcpClientPanel !== radio.value;
+                });
             });
         });
-    });
-    page.querySelectorAll('[data-mcp-copy]').forEach((button) => {
-        const originalLabel = button.textContent;
-        const status = document.createElement('span');
-        status.className = 'mcp-copy-feedback';
-        status.setAttribute('role', 'status');
-        status.setAttribute('aria-live', 'polite');
-        button.insertAdjacentElement('afterend', status);
-        let resetTimer;
-        button.addEventListener('click', async () => {
-            const field = document.getElementById(button.dataset.mcpCopy);
-            if (!field) return;
-            clearTimeout(resetTimer);
-            status.textContent = '';
-            button.disabled = true;
-            try {
-                await navigator.clipboard.writeText(field.value);
-                button.textContent = __('Copied!', 'publishpress-hub');
-                button.classList.add('is-copied');
-                status.textContent = __('Copied to clipboard.', 'publishpress-hub');
-            } catch (error) {
-                field.focus();
-                field.select();
-                button.textContent = originalLabel;
-                button.classList.remove('is-copied');
-                status.textContent = __('Select and copy the highlighted text.', 'publishpress-hub');
-            } finally {
-                button.disabled = false;
-            }
-            resetTimer = setTimeout(() => {
-                button.textContent = originalLabel;
-                button.classList.remove('is-copied');
+        page.querySelectorAll('[data-mcp-copy]').forEach((button) => {
+            const originalLabel = button.textContent;
+            const status = document.createElement('span');
+            status.className = 'mcp-copy-feedback';
+            status.setAttribute('role', 'status');
+            status.setAttribute('aria-live', 'polite');
+            button.insertAdjacentElement('afterend', status);
+            let resetTimer;
+            button.addEventListener('click', async () => {
+                const field = document.getElementById(button.dataset.mcpCopy);
+                if (!field) return;
+                clearTimeout(resetTimer);
                 status.textContent = '';
-            }, 3000);
+                button.disabled = true;
+                try {
+                    await navigator.clipboard.writeText(field.value);
+                    button.textContent = __('Copied!', 'publishpress-hub');
+                    button.classList.add('is-copied');
+                    status.textContent = __('Copied to clipboard.', 'publishpress-hub');
+                } catch (error) {
+                    field.focus();
+                    field.select();
+                    button.textContent = originalLabel;
+                    button.classList.remove('is-copied');
+                    status.textContent = __('Select and copy the highlighted text.', 'publishpress-hub');
+                } finally {
+                    button.disabled = false;
+                }
+                resetTimer = setTimeout(() => {
+                    button.textContent = originalLabel;
+                    button.classList.remove('is-copied');
+                    status.textContent = '';
+                }, 3000);
+            });
         });
-    });
-    page.querySelectorAll('[data-mcp-download]').forEach((button) => {
-        button.addEventListener('click', () => {
-            const field = document.getElementById(button.dataset.mcpDownload);
-            if (!field) return;
-            const url = URL.createObjectURL(new Blob([field.value], { type: 'text/plain;charset=utf-8' }));
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = button.dataset.filename;
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
-            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        page.querySelectorAll('[data-mcp-download]').forEach((button) => {
+            button.addEventListener('click', () => {
+                const field = document.getElementById(button.dataset.mcpDownload);
+                if (!field) return;
+                const url = URL.createObjectURL(new Blob([field.value], { type: 'text/plain;charset=utf-8' }));
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = button.dataset.filename;
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
+            });
         });
-    });
+    };
+    bindClientControls();
 }

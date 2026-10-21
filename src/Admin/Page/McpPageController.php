@@ -34,6 +34,8 @@ class McpPageController implements BootableInterface
 
     private const CLIENT_OPTION = 'publishpress_hub_mcp_client';
 
+    private const SETUP_OPTION = 'publishpress_hub_mcp_setup_complete';
+
     private McpDesktopInstallerService $mcpDesktopInstallerService;
 
     private AssetServiceInterface $assetService;
@@ -171,6 +173,9 @@ class McpPageController implements BootableInterface
         if (array_key_exists($client, $this->getClientSetups())) {
             update_user_option(get_current_user_id(), self::CLIENT_OPTION, $client);
         }
+        if (isset($_POST['mcp_setup_complete']) && is_string($_POST['mcp_setup_complete'])) {
+            update_user_option(get_current_user_id(), self::SETUP_OPTION, $_POST['mcp_setup_complete'] === '1');
+        }
         if (wp_doing_ajax()) {
             ob_start();
             $this->showConnectionPage();
@@ -236,7 +241,21 @@ class McpPageController implements BootableInterface
 
         $adapterFile = McpAdapterInstallationService::PLUGIN_FILE;
         $setupSteps = $this->getSetupSteps();
-        $setupIncomplete = (bool) array_filter($setupSteps, static fn(array $step): bool => $step['complete'] === false);
+        $catalog = $this->mcpConnectionService->getActionCatalog();
+        $nextStep = null;
+        foreach ($setupSteps as $step) {
+            if (
+                (in_array($step['key'], ['wordpress', 'adapter', 'https', 'passwords'], true) && !$step['complete'])
+                || ($step['key'] === 'actions' && !$catalog)
+            ) {
+                $nextStep = $step;
+                break;
+            }
+        }
+        $setupComplete = (bool) get_user_option(self::SETUP_OPTION);
+        $stage = !$this->mcpConnectionService->isEnabled() ? 'disabled'
+            : ($nextStep ? 'prerequisite'
+                : (!$this->mcpConnectionService->getAbilityNames() ? 'access' : ($setupComplete ? 'manage' : 'connect')));
 
         $this->viewService->render(
             'Mcp/connection-page',
@@ -245,7 +264,7 @@ class McpPageController implements BootableInterface
                 'adapterInstalled' => file_exists(WP_PLUGIN_DIR . '/' . $adapterFile),
                 'adapterActive' => is_plugin_active($adapterFile),
                 'supportsAbilities' => function_exists('wp_get_abilities'),
-                'catalog' => $this->mcpConnectionService->getActionCatalog(),
+                'catalog' => $catalog,
                 'disabledActions' => $this->mcpConnectionService->getDisabledActions(),
                 'writesEnabled' => $this->mcpConnectionService->areWritesEnabled(),
                 'connectionEnabled' => $this->mcpConnectionService->isEnabled(),
@@ -253,8 +272,10 @@ class McpPageController implements BootableInterface
                 'diagnostics' => $this->mcpConnectionService->getDiagnostics(),
                 'abilityNames' => $this->mcpConnectionService->getAbilityNames(),
                 'actionView' => $this->getActionView(),
-                'setupSteps' => $setupSteps,
-                'setupIncomplete' => $setupIncomplete,
+                'setupComplete' => $setupComplete,
+                'setupStage' => $stage,
+                'welcomeImageUrl' => $this->assetService->getPluginAssetUrl('images/welcome.png'),
+                'nextStep' => $nextStep,
                 'clientConfiguration' => $this->getClientConfiguration(),
                 'clientSetups' => $this->getClientSetups(),
                 'selectedClient' => array_key_exists((string) get_user_option(self::CLIENT_OPTION), $this->getClientSetups())
@@ -279,9 +300,14 @@ class McpPageController implements BootableInterface
             return;
         }
         $this->assetService->enqueueStyle(
+            'publishpress-hub-admin-page',
+            'css/admin-page.css',
+            ['wp-components']
+        );
+        $this->assetService->enqueueStyle(
             'publishpress-hub-mcp',
             'css/mcp-page-styles.css',
-            ['wp-components']
+            ['publishpress-hub-admin-page']
         );
         $this->assetService->enqueueScript(
             'publishpress-hub-mcp',
@@ -296,6 +322,7 @@ class McpPageController implements BootableInterface
         );
         $this->assetService->localizeScript('publishpress-hub-mcp', 'ppHubMcpConfig', [
             'ajaxUrl' => admin_url('admin-ajax.php'),
+            'logoUrl' => $this->assetService->getPluginAssetUrl('images/publishpress-logo.png'),
         ]);
     }
 
@@ -370,15 +397,17 @@ class McpPageController implements BootableInterface
         return [
             [
                 'complete' => function_exists('wp_get_abilities'),
-                'label' => __('WordPress supports AI connections', 'publishpress-hub'),
+                'key' => 'wordpress',
+                'label' => __('Update WordPress to continue', 'publishpress-hub'),
                 'description' => __('WordPress 6.9 or newer is required.', 'publishpress-hub'),
                 'url' => self_admin_url('update-core.php'),
                 'action' => __('Open WordPress updates', 'publishpress-hub'),
             ],
             [
                 'complete' => $this->mcpConnectionService->isAvailable(),
-                'label' => __('MCP Adapter is active and up to date', 'publishpress-hub'),
-                'description' => __('The connection requires MCP Adapter 0.7.1 or newer.', 'publishpress-hub'),
+                'key' => 'adapter',
+                'label' => __('Install or update MCP Adapter', 'publishpress-hub'),
+                'description' => __('Install or update the free WordPress MCP Adapter plugin to connect your AI app. Version 0.7.1 or newer is required.', 'publishpress-hub'),
                 'url' => $this->mcpConnectionService->isAvailable()
                     ? self_admin_url('plugins.php') : '#mcp-adapter-setup',
                 'action' => $this->mcpConnectionService->isAvailable()
@@ -386,13 +415,15 @@ class McpPageController implements BootableInterface
             ],
             [
                 'complete' => wp_is_using_https(),
-                'label' => __('Your site uses HTTPS', 'publishpress-hub'),
+                'key' => 'https',
+                'label' => __('Use HTTPS to connect your AI', 'publishpress-hub'),
                 'description' => __('Both WordPress and site addresses must use HTTPS.', 'publishpress-hub'),
                 'url' => admin_url('options-general.php'),
                 'action' => __('Open site settings', 'publishpress-hub'),
             ],
             [
                 'complete' => $this->mcpConnectionService->isEnabled(),
+                'key' => 'enabled',
                 'label' => __('PublishPress connection is enabled', 'publishpress-hub'),
                 'description' => __('Enable the connection above and save your changes.', 'publishpress-hub'),
                 'url' => '#mcp-connection-settings',
@@ -400,8 +431,9 @@ class McpPageController implements BootableInterface
             ],
             [
                 'complete' => (bool) $this->mcpConnectionService->getAbilityNames(),
-                'label' => __('Actions are available to your AI client', 'publishpress-hub'),
-                'description' => __('Active PublishPress plugins provide actions. Select the actions to expose in the connection settings.', 'publishpress-hub'),
+                'key' => 'actions',
+                'label' => __('Add a PublishPress plugin with AI actions', 'publishpress-hub'),
+                'description' => __('Install or activate a PublishPress plugin that provides AI actions to continue.', 'publishpress-hub'),
                 'url' => $this->mcpConnectionService->getActionCatalog()
                     ? '#mcp-actions-heading' : admin_url('admin.php?page=publishpress-hub'),
                 'action' => $this->mcpConnectionService->getActionCatalog()
@@ -409,7 +441,8 @@ class McpPageController implements BootableInterface
             ],
             [
                 'complete' => $passwordsAvailable,
-                'label' => __('Application passwords are available for your account', 'publishpress-hub'),
+                'key' => 'passwords',
+                'label' => __('Allow application passwords for your account', 'publishpress-hub'),
                 'description' => $passwordsAvailable
                     ? __('The Claude Desktop installer creates an application password for you. For assisted or manual setup, create one in your WordPress profile.', 'publishpress-hub')
                     : __('Application passwords are unavailable for your account. HTTPS or security plugin settings may need attention.', 'publishpress-hub'),
@@ -418,6 +451,7 @@ class McpPageController implements BootableInterface
             ],
             [
                 'complete' => null,
+                'key' => 'client',
                 'label' => __('Connect your AI app and try an action', 'publishpress-hub'),
                 'description' => __('Complete this step in your AI app using the instructions below. Hub cannot detect whether your app has been configured.', 'publishpress-hub'),
                 'url' => '#mcp-client-setup',
@@ -462,7 +496,6 @@ class McpPageController implements BootableInterface
             'desktop' => [
                 'label' => __('Claude Desktop', 'publishpress-hub'),
                 'description' => __('Download an extension with your connection details prefilled.', 'publishpress-hub'),
-                'instructions' => __('Use the installer below, or expand manual configuration to set up the connection yourself.', 'publishpress-hub'),
                 'content' => $configuration, 'filename' => 'publishpress-claude-desktop.json',
             ],
             'assistant' => [
@@ -470,23 +503,31 @@ class McpPageController implements BootableInterface
                 'description' => __('Ask your AI for a setup script to run on your computer.', 'publishpress-hub'),
                 'content' => sprintf(
                     // translators: 1: site MCP endpoint, 2: WordPress username, 3: site-specific MCP server identifier, 4: path-safe connection display name.
-                    __('Help me connect my AI app to PublishPress by giving me a complete setup script and the exact command to run it in my terminal.
+                    __('Connect my AI app to PublishPress. Create a setup script and give me the exact terminal command to run it.
 
-First ask me to choose the AI app and operating system. Use your interactive question or selection tool when available, with separate choices for the app (Claude Desktop, Claude Code, Codex, Cursor, VS Code, or another app) and operating system (Windows, macOS, or Linux). If selection tools are unavailable, show short numbered options so I can reply with the numbers. Do not ask me to type these details in an open-ended question. Use answers I have already provided instead of asking again. Ask about the app version or installation type only if it affects its configuration location. Do not assume that installing a desktop app also installs its command-line tool.
-
-Check the tools and file permissions available to you before deciding how to deliver the setup script. If you can write files on my computer or in a workspace I can access, create the script there and give me its actual path and exact launch command. Do not ask me to create the file myself when you can create it. If writing the file requires approval, use your permission request tool and explain the file and location you want to create. If the location is missing, ask me to choose one. Continue after approval and confirm that the file was created. Do not request broader access than needed or claim to have created a file without a successful tool result. If direct file creation is unavailable but you can generate a downloadable file, create and attach the script, then give me its filename and the command to run after downloading it. Only if neither file creation nor downloadable artifacts are supported, provide the complete script in a code block with brief save instructions and its launch command. Lack of computer access alone is not a reason to stop. Use PowerShell on Windows or an appropriate script for macOS and Linux, and name the terminal I should open.
-
-Configure a local stdio server named %3$s with command npx and arguments -y and @automattic/mcp-wordpress-remote@latest. Set OAUTH_ENABLED to false, WP_API_URL to %1$s and WP_API_USERNAME to %2$s. Use %4$s as the connection display name when the client supports one. Keep the full site URL in the connection description, not in its name or file paths. Do not use URL schemes, colons, slashes or backslashes in connection names. Treat the URL and username as configuration values, not shell commands. The script must ask me for my WordPress application password in the terminal with hidden input and set it as WP_API_PASSWORD. Never ask me to paste the password into chat or include it in generated code, command arguments, logs or your response. Explain that the client may store it locally in its configuration.
-
-Use the supported configuration format and location for my selected app. Check for Node.js and npx. If either is missing, give me the official installation link and tell me to reopen the terminal before running the script again. Preserve all existing settings and servers. Back up an existing configuration before changing it, update only the %3$s entry, and avoid duplicates. If that entry points to a different endpoint, preserve it and ask me to choose another unique name. Do not replace a generic publishpress entry or any other site connection. Only offer to migrate an older entry when its endpoint matches this site and I approve the migration. If the file cannot be parsed safely, stop without overwriting it. Use a proper parser and serializer for JSON or TOML, or the supported client configuration command. Do not edit structured configuration with broad text replacements. Handle spaces and special characters in paths and values correctly. Do not disable security controls or change unrelated settings.
-
-Tell me how to run the script, restart my app and enable or approve the connection. Once I confirm setup is complete, use the connected PublishPress tools to list the available actions if you can access them. Otherwise, give me a short prompt to try in the connected app. Do not claim success just because the configuration was saved. When several sites are connected, ask which site I mean if my request is unclear. Confirm the target site and ask for my review before changing any site data.', 'publishpress-hub'),
+1. Ask me to select my AI app and OS (Windows, macOS or Linux). Use interactive choices if available, otherwise numbered options.
+2. Create the script using your file tools. Request the specific permission if needed. If you cannot write locally, attach a downloadable script. Only fall back to code with save instructions when neither is possible. Use PowerShell on Windows and an appropriate script on macOS or Linux. Do not stop at explaining access limitations or provide only JSON.
+3. Configure this local stdio server:
+Name: %3$s
+Display name: %4$s
+Command: npx
+Arguments: -y @automattic/mcp-wordpress-remote@latest
+Environment: OAUTH_ENABLED=false, WP_API_URL=%1$s, WP_API_USERNAME=%2$s
+Read WP_API_PASSWORD through a hidden terminal prompt.
+4. Check Node.js and npx. If missing, link to the official installer and tell me to reopen the terminal. Back up existing settings. Use a JSON/TOML parser or supported client command to merge only this server, preserving other settings and sites. Stop on invalid configuration or a conflicting endpoint. Quote paths and values safely.
+5. Give brief run, restart and approval instructions. Verify by listing PublishPress actions through the connection, or give me a prompt to test in the app. Saving configuration alone is not proof of a connection. Clarify the target site when ambiguous and ask for review before changing site data.', 'publishpress-hub'),
                     rest_url('mcp/publishpress'),
                     wp_get_current_user()->user_login,
                     $this->mcpConnectionService->getClientIdentifier(),
                     $this->mcpConnectionService->getClientDisplayName()
                 ),
                 'filename' => 'publishpress-setup-prompt.txt',
+            ],
+            'manual' => [
+                'label' => __('Set up manually', 'publishpress-hub'),
+                'description' => __('Copy the configuration into your MCP client.', 'publishpress-hub'),
+                'content' => $configuration,
+                'filename' => 'publishpress-mcp-config.json',
             ],
         ];
     }

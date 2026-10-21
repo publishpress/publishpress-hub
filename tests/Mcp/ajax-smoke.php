@@ -33,6 +33,8 @@ $captureSave = static function () use ($controller) {
 };
 $clientOption = 'publishpress_hub_mcp_client';
 $originalClient = get_user_option($clientOption);
+$setupOption = 'publishpress_hub_mcp_setup_complete';
+$originalSetup = get_user_option($setupOption);
 try {
     $_SERVER['REQUEST_METHOD'] = 'POST';
     $_POST = ['_wpnonce' => wp_create_nonce('publishpress_hub_mcp_save'), 'mcp_enabled' => '1',
@@ -50,6 +52,13 @@ try {
     $check(in_array('hub-fixture/get-item', $connection->getDisabledActions(), true)
         && !in_array('z-fixture/read-item', $connection->getDisabledActions(), true),
         'AJAX saves retain selections outside the submitted draft scope');
+    $_POST['mcp_setup_complete'] = '1';
+    $captureSave();
+    $check((bool) get_user_option($setupOption), 'Authorized saves record explicit app setup confirmation');
+    $_POST['mcp_setup_complete'] = '0';
+    $captureSave();
+    $check(!get_user_option($setupOption) && $connection->isEnabled(),
+        'Reopening app setup keeps the site connection enabled');
     $_POST['_wpnonce'] = 'invalid';
     $_POST['mcp_enabled'] = '0';
     $result = $captureSave();
@@ -65,8 +74,13 @@ try {
     $result = $captureSave();
     $check(isset($result['success']) && !$result['success'] && $connection->isEnabled(),
         'AJAX saves reject requests that do not use POST');
-    echo "Completed 7 AJAX save checks with WordPress $wp_version.\n";
+    echo "Completed 9 AJAX save checks with WordPress $wp_version.\n";
 } finally {
+    if ($originalSetup === false) {
+        delete_user_option(get_current_user_id(), $setupOption);
+    } else {
+        update_user_option(get_current_user_id(), $setupOption, $originalSetup);
+    }
     if ($originalClient === false) {
         delete_user_option(get_current_user_id(), $clientOption);
     } else {

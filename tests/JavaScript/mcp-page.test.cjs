@@ -21,7 +21,7 @@ function fixture(rejectClipboard = false) {
         insertAdjacentElement: (position, status) => { button.status = status; },
     };
     const radio = { value: 'assistant', addEventListener: (name, callback) => { handlers.client = callback; } };
-    const panels = ['desktop', 'assistant'].map((value) => ({ dataset: { mcpClientPanel: value }, hidden: false }));
+    const panels = ['desktop', 'assistant', 'manual'].map((value) => ({ dataset: { mcpClientPanel: value }, hidden: false }));
     const page = {
         querySelector: () => null,
         addEventListener: (name, callback) => { handlers[name] = callback; },
@@ -31,7 +31,7 @@ function fixture(rejectClipboard = false) {
         }[selector] || []),
     };
     vm.runInNewContext(source, {
-        document: { querySelector: () => page, getElementById: () => field, createElement: () => ({ setAttribute() {} }) },
+        document: { querySelector: (selector) => selector === '.mcp-page' ? page : null, getElementById: () => field, createElement: () => ({ setAttribute() {} }) },
         window: { addEventListener: (name, callback) => { handlers[name] = callback; } },
         navigator: { clipboard: { writeText: async (value) => {
             if (rejectClipboard) throw new Error('Clipboard denied');
@@ -82,12 +82,15 @@ test('choosing an app shows only its setup panel', () => {
     ui.handlers.beforeunload({ preventDefault() { warned = true; } });
     assert.equal(warned, true);
 });
-function asyncFixture() {
+function asyncFixture(reducedMotion = false) {
     const handlers = {};
     const requests = [];
     const status = { textContent: '', classList: { toggle() {} } };
     const returnUrl = { value: '' };
-    const form = { querySelector: () => returnUrl };
+    const complete = { value: '0' };
+    const loading = { hidden: true, scrollIntoView(options) { this.scrolled = options; } };
+    let submits = 0;
+    const form = { querySelector: (selector) => selector.includes('mcp_setup_complete') ? complete : returnUrl, requestSubmit() { submits++; } };
     const makeAction = (name, checked) => ({ name: 'enabled_actions[]', value: name, checked, disabled: false, form: { id: 'mcp-connection-settings' } });
     let actions = [makeAction('fixture/first', true)];
     let currentSection;
@@ -99,7 +102,7 @@ function asyncFixture() {
     currentSection = makeSection(actions);
     const page = {
         addEventListener: (name, callback) => { handlers[name] = callback; },
-        querySelector: (selector) => ({ '#mcp-connection-settings': form, '.mcp-save-status': status, '.mcp-actions': currentSection, '.mcp-installer-form': { replaceWith(section) { state.installerAvailable = section.available; } } }[selector] || null),
+        querySelector: (selector) => ({ '.mcp-step-loading': loading, '#mcp-connection-settings': form, '.mcp-save-status': status, '.mcp-actions': currentSection, '.mcp-installer-form': { replaceWith(section) { state.installerAvailable = section.available; } }, '.mcp-journey': { replaceWith(next) { currentSection = next.section; actions = next.section.actions; state.installerAvailable = true; } }, '.mcp-save-bar': { hidden: false } }[selector] || null),
         querySelectorAll: (selector) => selector === '[name="enabled_actions[]"]' || selector.startsWith('input[form=') ? actions : [],
     };
     const location = { href: 'https://fixture.test/wp-admin/admin.php?page=publishpress-hub-mcp' };
@@ -119,13 +122,14 @@ function asyncFixture() {
     class FixtureParser {
         parseFromString(html) {
             const section = makeSection([makeAction(html === 'first' ? 'fixture/first' : 'fixture/second', true)]);
-            return { querySelector: (selector) => ({ '.mcp-actions': section, '#mcp-connection-settings': form, '.mcp-installer-form': { available: true } }[selector] || null) };
+            return { querySelector: (selector) => ({ '.mcp-actions': section, '#mcp-connection-settings': form, '.mcp-installer-form': { available: true }, '.mcp-journey': { section }, '.mcp-save-bar': { hidden: false } }[selector] || null) };
         }
     }
     const state = { failSave: false, failLoad: false, scroll: 520, installerAvailable: false };
     vm.runInNewContext(source, {
-        document: { querySelector: () => page },
+        document: { querySelector: (selector) => selector === '.mcp-page' ? page : null },
         window: { addEventListener: (name, callback) => { handlers[name] = callback; }, location, history,
+            matchMedia: () => ({ matches: reducedMotion }),
             ppHubMcpConfig: { ajaxUrl: 'https://fixture.test/wp-admin/admin-ajax.php' },
             scrollY: 520, scrollTo(x, y) { state.scroll = y; } },
         DOMParser: FixtureParser, FormData: FixtureFormData, AbortController, URL,
@@ -139,7 +143,7 @@ function asyncFixture() {
         dispatch: () => ({ createSuccessNotice: (message, options) => { globalThis.lastMcpNotice = { message, options }; } }),
         __: (text) => text,
     });
-    return { handlers, requests, state, status, get actions() { return actions; },
+    return { handlers, requests, state, status, complete, loading, get submits() { return submits; }, get actions() { return actions; },
         change(checked) { actions[0].checked = checked; handlers.change({ target: actions[0] }); },
         async navigate(second = true) {
             const href = 'https://fixture.test/wp-admin/admin.php?page=publishpress-hub-mcp' + (second ? '&action_page=2' : '');
@@ -193,4 +197,42 @@ test('failed background navigation keeps the current action page and draft', asy
     assert.equal(ui.actions[0].value, 'fixture/first');
     assert.equal(ui.actions[0].checked, false);
     assert.match(ui.status.textContent, /could not be loaded/);
+});
+
+test('finishing and reopening setup save the explicit confirmation without changing action drafts', () => {
+    const ui = asyncFixture();
+    ui.handlers.click({ target: { matches: (selector) => selector === '[data-mcp-finish-setup]' } });
+    assert.equal(ui.complete.value, '1');
+    assert.equal(ui.submits, 1);
+    ui.handlers.click({ target: { matches: (selector) => selector === '[data-mcp-reconnect]' } });
+    assert.equal(ui.complete.value, '0');
+    assert.equal(ui.submits, 2);
+});
+
+test('the main toggle submits immediately', () => {
+    const ui = asyncFixture();
+    ui.handlers.change({ target: { form: { id: 'mcp-connection-settings' }, name: 'mcp_enabled' } });
+    assert.equal(ui.submits, 1);
+});
+
+
+test('next-step loading scrolls into view and clears after a failed save', async () => {
+    const ui = asyncFixture();
+    ui.handlers.click({ target: { matches: (selector) => selector === '[data-mcp-reconnect]' } });
+    ui.state.failSave = true;
+    const saving = ui.save();
+    assert.equal(ui.loading.hidden, false);
+    assert.equal(ui.loading.scrolled.behavior, 'smooth');
+    await saving;
+    assert.equal(ui.loading.hidden, true);
+    assert.equal(ui.status.textContent, 'Save failed');
+});
+
+test('next-step scrolling respects reduced motion', async () => {
+    const ui = asyncFixture(true);
+    ui.handlers.click({ target: { matches: (selector) => selector === '[data-mcp-reconnect]' } });
+    const saving = ui.save();
+    assert.equal(ui.loading.scrolled.behavior, 'instant');
+    await saving;
+    assert.equal(ui.loading.hidden, true);
 });

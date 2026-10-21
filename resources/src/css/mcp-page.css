@@ -1,17 +1,11 @@
 @import './components/notices/notices.css';
 
-.mcp-page { max-width: 1240px; padding-bottom: 24px; }
-.mcp-page .mcp-intro { font-size: 15px; color: #50575e; margin-bottom: 24px; }
-.mcp-overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
-.mcp-panel { background: #fff; border: 1px solid #dcdcde; border-radius: 6px; padding: 24px; margin: 0 0 20px; min-width: 0; }
+.mcp-page { max-width: 1200px; margin: 0 auto; padding: 48px 40px 24px; color: #1d2327; }
+.mcp-panel { background: #fff; border: 1px solid #dcdcde; border-radius: 8px; padding: 28px; margin: 0 0 24px; box-shadow: 0 1px 2px rgb(0 0 0 / 3%); min-width: 0; }
 .mcp-panel h2 { margin-top: 0; font-size: 18px; }
 .mcp-panel p { line-height: 1.6; }
 .mcp-page details > summary { cursor: pointer; font-weight: 600; padding: 10px 0; }
-.mcp-page summary:focus-visible { outline: 2px solid #2271b1; outline-offset: 3px; }
-.mcp-checklist { border-top: 1px solid #dcdcde; margin-top: 20px; padding-top: 6px; }
-.mcp-checklist li { display: flex; gap: 10px; padding: 12px 0; border-bottom: 1px solid #f0f0f1; }
-.mcp-checklist .dashicons { flex-shrink: 0; margin-top: 2px; }
-.mcp-step-state { display: block; color: #646970; font-size: 12px; margin-top: 3px; }
+.mcp-page summary:focus-visible { outline: 2px solid #6552c4; outline-offset: 3px; }
 .mcp-ready { color: #008a20; }
 .mcp-needed { color: #b32d2e; }
 .mcp-copy-field { display: flex; gap: 8px; margin-top: 8px; }
@@ -29,17 +23,16 @@
 .mcp-pagination { display: flex; gap: 8px; justify-content: flex-end; align-items: center; margin-top: 16px; }
 .mcp-save-bar { position: sticky; bottom: 0; background: #fff; border: 1px solid #dcdcde; padding: 14px 24px; box-shadow: 0 -2px 8px #00000008; z-index: 10; margin-bottom: 20px; }
 .mcp-diagnostics table { margin-top: 12px; }
-@media (max-width: 960px) { .mcp-overview-grid { grid-template-columns: 1fr; gap: 0; } }
 @media (max-width: 600px) { .mcp-panel { padding: 16px; } .mcp-action-table th:last-child { width: 110px; } .mcp-copy-field { flex-wrap: wrap; } .mcp-pagination { flex-wrap: wrap; } }
 
 .mcp-page .mcp-copy-feedback { display: inline-block; color: #50575e; font-weight: 600; margin: 6px 8px; }
 .mcp-page .button.is-copied { border-color: #008a20; color: #006b19; background: #edfaef; }
-.mcp-access-note { background: #f0f6fc; border-left: 4px solid #2271b1; padding: 14px 16px; margin: 20px 0; }
+.mcp-access-note { background: #f7f4ff; border-left: 4px solid #6552c4; padding: 14px 16px; margin: 20px 0; }
 .mcp-access-note p { margin-bottom: 0; }
 .mcp-client-picker { margin-top: 24px; }
-.mcp-client-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 12px 0 20px; }
+.mcp-client-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 12px 0 20px; }
 .mcp-client-choice { display: flex; gap: 8px; align-items: flex-start; padding: 12px; border: 1px solid #c3c4c7; border-radius: 5px; cursor: pointer; }
-.mcp-client-choice:has(input:checked) { background: #f0f6fc; border-color: #2271b1; box-shadow: inset 0 0 0 1px #2271b1; }
+.mcp-client-choice:has(input:checked) { background: #f7f4ff; border-color: #6552c4; box-shadow: inset 0 0 0 1px #6552c4; }
 .mcp-client-choice input { flex-shrink: 0; margin-top: 3px; }
 .mcp-client-choice span span { display: block; color: #646970; font-size: 12px; line-height: 1.5; margin-top: 5px; }
 .mcp-client-panel { border-top: 1px solid #dcdcde; padding-top: 8px; }
@@ -61,3 +54,54 @@
 .mcp-instruction-box li { margin-bottom: 12px; line-height: 1.6; }
 .mcp-instruction-box > :last-child { margin-bottom: 0; }
 .mcp-password-note { background: #f6f7f7; }
+
+.mcp-page [hidden] { display: none !important; }
+/* Match the Hub Welcome page while keeping setup controls in the hero. */
+.mcp-welcome { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); padding: 0; background: linear-gradient(120deg, #fff 20%, #f4f0ff); border-color: #ded8f6; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 3px rgb(0 0 0 / 4%); margin-bottom: 32px; }
+.mcp-welcome-copy { padding: 36px 12px 36px 36px; align-self: center; }
+.mcp-eyebrow { color: #6552c4; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+.mcp-page .mcp-welcome h1 { font-size: 30px; line-height: 1.2; font-weight: 600; margin: 10px 0 14px; padding: 0; }
+.mcp-welcome p { font-size: 15px; line-height: 1.6; color: #50575e; margin: 0 0 20px; }
+.mcp-welcome-art { display: flex; align-items: center; justify-content: center; padding: 24px; }
+.mcp-welcome-art img { width: 100%; max-width: 440px; height: auto; }
+.mcp-page .button { border-radius: 4px; }
+.mcp-page .button-primary { background: #6552c4; border-color: #6552c4; padding: 4px 16px; }
+.mcp-page .button-primary:hover, .mcp-page .button-primary:focus { background: #5844ad; border-color: #5844ad; }
+.mcp-page .button-primary:focus-visible { outline: 2px solid #6552c4; outline-offset: 3px; }
+.mcp-page .nav-tab { background: #f6f7f7; border-radius: 5px 5px 0 0; }
+.mcp-page .nav-tab-active { background: #f7f4ff; border-top: 3px solid #6552c4; color: #5844ad; }
+.mcp-action-table { border-color: #e5e5e8; }
+.mcp-action-table thead { background: #f6f7f7; }
+.mcp-manage-summary { border-left: 4px solid #6552c4; }
+.mcp-main-toggle { display: inline-flex; align-items: center; gap: 12px; cursor: pointer; margin: 12px 0; position: relative; }
+.mcp-page .mcp-main-toggle input { clip-path: inset(50%); position: absolute; width: 52px; height: 30px; opacity: 0; margin: 0; }
+.mcp-toggle-track { width: 52px; height: 30px; border-radius: 20px; background: #757575; position: relative; transition: background .15s; }
+.mcp-toggle-track::after { content: ''; position: absolute; width: 22px; height: 22px; border-radius: 50%; background: #fff; top: 4px; left: 4px; transition: transform .15s; }
+.mcp-main-toggle input:checked + .mcp-toggle-track { background: #6552c4; }
+.mcp-main-toggle input:checked + .mcp-toggle-track::after { transform: translateX(22px); }
+.mcp-main-toggle input:focus-visible + .mcp-toggle-track { outline: 2px solid #6552c4; outline-offset: 3px; }
+.mcp-main-toggle input:disabled + .mcp-toggle-track { opacity: .5; }
+.mcp-connect-complete { margin-top: 24px; }
+@media (max-width: 900px) { .mcp-page { padding: 28px 24px; } .mcp-welcome { grid-template-columns: 1fr; } .mcp-welcome-copy { padding: 28px; } .mcp-welcome-art { display: none; } }
+@media (max-width: 600px) { .mcp-page { padding: 20px 12px; } .mcp-welcome-copy { padding: 24px; } .mcp-page .mcp-welcome h1 { font-size: 26px; } .mcp-panel { padding: 20px; } .mcp-welcome { padding: 0; } }
+@media (prefers-reduced-motion: reduce) { .mcp-toggle-track, .mcp-toggle-track::after { transition: none; } }
+.mcp-step-loading, .mcp-journey h2 { scroll-margin-top: 64px; }
+.mcp-step-loading { min-height: 340px; padding: 36px; }
+.mcp-skeleton { height: 20px; border-radius: 6px; background: #f0f0f1; margin: 20px 0; }
+.mcp-skeleton-heading { width: 60%; height: 28px; margin-bottom: 32px; }
+.mcp-skeleton-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 32px; }
+.mcp-skeleton-choices span { height: 100px; border: 1px solid #eeeef0; background: #f7f7f8; border-radius: 6px; }
+.mcp-step-loading:has(+ .mcp-journey:not([hidden])) { display: none; }
+
+.mcp-section-heading { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.mcp-section-heading > h2, .mcp-section-heading > p { margin: 0; }
+.mcp-section-heading > p { font-size: 13px; }
+.mcp-page .button:not(.button-primary) { color: #5844ad; border-color: #b9afdE; background: #fff; padding: 4px 14px; }
+.mcp-page .button:not(.button-primary):hover { background: #f7f4ff; border-color: #6552c4; }
+.mcp-page .button:disabled { color: #a7aaad; border-color: #dcdcde; background: #f6f7f7; }
+.mcp-instruction-box li > p:first-child { margin-top: 0; }
+.mcp-configuration textarea { background: #f6f7f7; border-color: #dcdcde; border-radius: 4px; padding: 14px; font-size: 13px; line-height: 1.6; }
+.mcp-connect-complete { background: #faf9fd; }
+.mcp-manage-summary .mcp-password-note { padding: 14px 16px; margin-bottom: 0; }
+@media (max-width: 900px) { .mcp-client-choices { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .mcp-step-loading { min-height: 300px; padding: 24px; } .mcp-skeleton-choices { grid-template-columns: 1fr; } .mcp-skeleton-choices span { height: 32px; } }
