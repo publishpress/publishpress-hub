@@ -38,8 +38,15 @@ defined('ABSPATH') || exit;
     <?php endif; ?>
 
     <?php // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Display-only save confirmation; no state changes. ?>
-    <?php if (isset($_GET['updated']) && '1' === $_GET['updated']) : ?>
-        <div class="notice notice-success"><p><?php esc_html_e('Connection settings saved. Reconnect your AI app to refresh its actions.', 'publishpress-hub'); ?></p></div>
+    <?php if (isset($_GET['updated']) && in_array($_GET['updated'], ['1', 'refresh'], true)) : ?>
+        <div class="notice notice-success"><p>
+            <?php // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Display-only save confirmation. ?>
+            <?php if ($_GET['updated'] === 'refresh') : ?>
+                <?php esc_html_e('Changes saved. Restart your AI app or refresh its PublishPress connection to update the available actions.', 'publishpress-hub'); ?>
+            <?php else : ?>
+                <?php esc_html_e('Changes saved.', 'publishpress-hub'); ?>
+            <?php endif; ?>
+        </p></div>
     <?php endif; ?>
     <section class="mcp-panel mcp-welcome" aria-labelledby="mcp-overview-heading">
         <div class="mcp-welcome-copy">
@@ -178,7 +185,7 @@ defined('ABSPATH') || exit;
         </section>
         <section class="mcp-panel mcp-access-step" <?php echo $context['setupStage'] !== 'access' ? 'hidden' : ''; ?>>
             <h2><?php esc_html_e('Choose actions for your AI', 'publishpress-hub'); ?></h2>
-            <p><?php esc_html_e('No actions are currently available through this connection. Select the actions you want to allow below and save your changes to continue.', 'publishpress-hub'); ?></p>
+            <p><?php esc_html_e('Choose whether your AI can change site data and select the actions it can use. Save your choices, then connect your AI app.', 'publishpress-hub'); ?></p>
         </section>
         <section class="mcp-panel mcp-manage-summary" <?php echo $context['setupStage'] !== 'manage' ? 'hidden' : ''; ?>>
             <div class="mcp-section-heading">
@@ -188,6 +195,7 @@ defined('ABSPATH') || exit;
             <p><?php esc_html_e('Manage the actions your AI can use below. To set up another app or computer, open the connection steps again.', 'publishpress-hub'); ?></p>
         </section>
         <div class="mcp-manage-controls" <?php echo !in_array($context['setupStage'], ['manage', 'access'], true) ? 'hidden' : ''; ?>>
+            <input type="hidden" form="mcp-connection-settings" name="mcp_review_actions" value="1" <?php disabled($context['setupStage'] !== 'access'); ?>>
             <section class="mcp-panel">
                 <h2><?php esc_html_e('Control what your AI can do', 'publishpress-hub'); ?></h2>
                 <p><label><input form="mcp-connection-settings" type="checkbox" name="mcp_writes_enabled" value="1" <?php checked($context['writesEnabled']); ?>> <?php esc_html_e('Allow actions that change site data', 'publishpress-hub'); ?></label></p>
@@ -199,7 +207,7 @@ defined('ABSPATH') || exit;
             </section>
     <section class="mcp-panel mcp-actions" aria-labelledby="mcp-actions-heading">
         <h2 id="mcp-actions-heading"><?php esc_html_e('Plugin actions', 'publishpress-hub'); ?></h2>
-        <p><?php esc_html_e('Choose actions for each plugin. Your selections are kept while you browse. Save changes to apply them, then reconnect your AI app.', 'publishpress-hub'); ?></p>
+        <p><?php esc_html_e('Choose actions for each plugin. Your selections are kept while you browse. Save changes to apply them.', 'publishpress-hub'); ?></p>
         <nav class="nav-tab-wrapper mcp-tabs" aria-label="<?php esc_attr_e('Plugin action settings', 'publishpress-hub'); ?>">
             <?php foreach ($context['actionView']['groups'] as $key => $group) : ?>
                 <a class="nav-tab <?php echo $key === $context['actionView']['plugin'] ? 'nav-tab-active' : ''; ?>"
@@ -274,5 +282,5 @@ defined('ABSPATH') || exit;
     </details>
         </div>
     </div>
-    <div class="mcp-save-bar" <?php echo in_array($context['setupStage'], ['disabled', 'prerequisite'], true) ? 'hidden' : ''; ?>><span class="mcp-save-status" role="status" aria-live="polite"></span><button type="submit" class="button button-primary" form="mcp-connection-settings"><?php esc_html_e('Save Changes', 'publishpress-hub'); ?></button></div>
+    <div class="mcp-save-bar" <?php echo in_array($context['setupStage'], ['disabled', 'prerequisite'], true) ? 'hidden' : ''; ?>><span class="mcp-save-status" role="status" aria-live="polite"></span><button type="submit" class="button button-primary" form="mcp-connection-settings"><?php echo $context['setupStage'] === 'access' ? esc_html__('Save and continue', 'publishpress-hub') : esc_html__('Save Changes', 'publishpress-hub'); ?></button></div>
 </div>

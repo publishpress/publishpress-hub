@@ -153,7 +153,7 @@ if (page) {
         saving = true;
         const loading = page.querySelector('.mcp-step-loading');
         const journey = page.querySelector('.mcp-journey');
-        const revealStep = advancing;
+        const revealStep = advancing || journey?.dataset?.mcpStage === 'access';
         advancing = false;
         if (revealStep && loading && journey) {
             journey.hidden = true;
@@ -172,7 +172,7 @@ if (page) {
             bindClientControls();
             const footer = page.querySelector('.mcp-save-bar');
             const nextFooter = document.querySelector('.mcp-save-bar');
-            if (footer && nextFooter) footer.hidden = nextFooter.hidden;
+            if (footer && nextFooter) footer.replaceWith(nextFooter);
             const heading = page.querySelector('.mcp-journey > section:not([hidden]) h2');
             heading?.setAttribute('tabindex', '-1');
             heading?.focus({ preventScroll: true });

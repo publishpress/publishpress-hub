@@ -35,7 +35,11 @@ $clientOption = 'publishpress_hub_mcp_client';
 $originalClient = get_user_option($clientOption);
 $setupOption = 'publishpress_hub_mcp_setup_complete';
 $originalSetup = get_user_option($setupOption);
+$reviewOption = 'publishpress_hub_mcp_actions_reviewed';
+$originalReview = get_user_option($reviewOption);
 try {
+    update_user_option($actor->ID, $setupOption, false);
+    update_user_option($actor->ID, $reviewOption, false);
     $_SERVER['REQUEST_METHOD'] = 'POST';
     $_POST = ['_wpnonce' => wp_create_nonce('publishpress_hub_mcp_save'), 'mcp_enabled' => '1',
         'mcp_writes_enabled' => '1', 'mcp_client' => 'assistant', 'displayed_actions' => ['hub-fixture/get-item']];
@@ -46,6 +50,13 @@ try {
         && preg_match('/name="mcp_client"[^>]*value="assistant"[^>]*checked/', $result['data']['html']) === 1
         && strpos($result['data']['html'], 'data-mcp-client-panel="assistant" hidden') === false,
         'Saved setup choice is restored when the page renders again');
+    $check(!get_user_option($reviewOption), 'Enabling the connection alone does not mark actions reviewed');
+    $_POST['mcp_review_actions'] = '1';
+    $result = $captureSave();
+    $check((bool) get_user_option($reviewOption)
+        && $result['data']['message'] === 'Changes saved. Connect your AI app to continue.',
+        'Saving reviewed actions records the step and offers app connection');
+    unset($_POST['mcp_review_actions']);
     $_POST['mcp_client'] = 'unknown-client';
     $captureSave();
     $check(get_user_option($clientOption) === 'assistant', 'Unknown setup choices do not replace the saved preference');
@@ -55,6 +66,12 @@ try {
     $_POST['mcp_setup_complete'] = '1';
     $captureSave();
     $check((bool) get_user_option($setupOption), 'Authorized saves record explicit app setup confirmation');
+    $_POST['enabled_actions'] = ['hub-fixture/get-item'];
+    $result = $captureSave();
+    $check($result['data']['message'] === 'Changes saved. Restart your AI app or refresh its PublishPress connection to update the available actions.',
+        'Changing exposed actions after setup shows the refresh instructions');
+    $result = $captureSave();
+    $check($result['data']['message'] === 'Changes saved.', 'Unchanged actions do not show an unnecessary refresh instruction');
     $_POST['mcp_setup_complete'] = '0';
     $captureSave();
     $check(!get_user_option($setupOption) && $connection->isEnabled(),
@@ -74,8 +91,13 @@ try {
     $result = $captureSave();
     $check(isset($result['success']) && !$result['success'] && $connection->isEnabled(),
         'AJAX saves reject requests that do not use POST');
-    echo "Completed 9 AJAX save checks with WordPress $wp_version.\n";
+    echo "Completed 13 AJAX save checks with WordPress $wp_version.\n";
 } finally {
+    if ($originalReview === false) {
+        delete_user_option(get_current_user_id(), $reviewOption);
+    } else {
+        update_user_option(get_current_user_id(), $reviewOption, $originalReview);
+    }
     if ($originalSetup === false) {
         delete_user_option(get_current_user_id(), $setupOption);
     } else {

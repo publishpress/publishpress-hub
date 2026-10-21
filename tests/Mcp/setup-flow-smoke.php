@@ -20,6 +20,8 @@ foreach (['home', 'siteurl', 'publishpress_hub_mcp_enabled', 'publishpress_hub_m
 }
 $setupOption = 'publishpress_hub_mcp_setup_complete';
 $previousSetup = get_user_option($setupOption);
+$reviewOption = 'publishpress_hub_mcp_actions_reviewed';
+$previousReview = get_user_option($reviewOption);
 $previousHttps = $_SERVER['HTTPS'] ?? null;
 $_SERVER['HTTPS'] = 'on';
 $renderFlow = static function () use ($controller): string {
@@ -43,11 +45,19 @@ try {
     update_option('home', 'https://mcp-test.example');
     update_option('siteurl', 'https://mcp-test.example');
     update_user_option($actor->ID, $setupOption, false);
+    update_user_option($actor->ID, $reviewOption, false);
+    $html = $renderFlow();
+    $check(strpos($html, 'data-mcp-stage="access"') !== false
+        && preg_match('/class="mcp-manage-controls"[^>]*hidden/', $html) === 0
+        && preg_match('/class="mcp-panel mcp-connect-step"[^>]*hidden/', $html) === 1
+        && strpos($html, 'Save and continue') !== false,
+        'New setup requires action review before connecting even with default actions selected');
+    update_user_option($actor->ID, $reviewOption, true);
     $html = $renderFlow();
     $check(strpos($html, 'data-mcp-stage="connect"') !== false
         && preg_match('/class="mcp-panel mcp-connect-step"[^>]*hidden/', $html) === 0
         && preg_match('/class="mcp-manage-controls"[^>]*hidden/', $html) === 1,
-        'Ready prerequisites reveal app setup without exposing management controls');
+        'Saved action review reveals app setup without repeating access controls');
     update_user_option($actor->ID, $setupOption, true);
     $html = $renderFlow();
     $check(strpos($html, 'data-mcp-stage="manage"') !== false
@@ -63,7 +73,7 @@ try {
     $connection->saveExposureSettings(true, false, []);
     $check(strpos($renderFlow(), 'data-mcp-stage="access"') !== false,
         'An empty exposure selection shows access controls before app setup');
-    echo "Completed 6 setup flow checks with WordPress $wp_version.\n";
+    echo "Completed 7 setup flow checks with WordPress $wp_version.\n";
 } finally {
     if ($previousHttps === null) {
         unset($_SERVER['HTTPS']);
@@ -72,6 +82,11 @@ try {
     }
     foreach ($flowOptions as $key => $value) {
         update_option($key, $value);
+    }
+    if ($previousReview === false) {
+        delete_user_option($actor->ID, $reviewOption);
+    } else {
+        update_user_option($actor->ID, $reviewOption, $previousReview);
     }
     if ($previousSetup === false) {
         delete_user_option($actor->ID, $setupOption);

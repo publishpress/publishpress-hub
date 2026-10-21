@@ -36,6 +36,8 @@ class McpPageController implements BootableInterface
 
     private const SETUP_OPTION = 'publishpress_hub_mcp_setup_complete';
 
+    private const ACTIONS_REVIEWED_OPTION = 'publishpress_hub_mcp_actions_reviewed';
+
     private McpDesktopInstallerService $mcpDesktopInstallerService;
 
     private AssetServiceInterface $assetService;
@@ -167,7 +169,21 @@ class McpPageController implements BootableInterface
             ? array_map('sanitize_text_field', wp_unslash($_POST['enabled_actions'])) : [];
         $displayed = isset($_POST['displayed_actions']) && is_array($_POST['displayed_actions'])
             ? array_map('sanitize_text_field', wp_unslash($_POST['displayed_actions'])) : [];
+        $wasComplete = (bool) get_user_option(self::SETUP_OPTION);
+        $previousActions = $this->mcpConnectionService->getAbilityNames();
         $this->mcpConnectionService->saveExposureSettings($enabled, $writesEnabled, $submitted, $displayed);
+        $actions = $this->mcpConnectionService->getAbilityNames();
+        $reviewed = isset($_POST['mcp_review_actions']) && $_POST['mcp_review_actions'] === '1';
+        if ($wasComplete || ($enabled && $reviewed && $actions)) {
+            update_user_option(get_current_user_id(), self::ACTIONS_REVIEWED_OPTION, true);
+        }
+        $refreshNeeded = $wasComplete && $enabled && $previousActions !== $actions;
+        $message = __('Changes saved.', 'publishpress-hub');
+        if ($refreshNeeded) {
+            $message = __('Changes saved. Restart your AI app or refresh its PublishPress connection to update the available actions.', 'publishpress-hub');
+        } elseif ($enabled && $reviewed && $actions) {
+            $message = __('Changes saved. Connect your AI app to continue.', 'publishpress-hub');
+        }
         $client = isset($_POST['mcp_client']) && is_string($_POST['mcp_client'])
             ? sanitize_key(wp_unslash($_POST['mcp_client'])) : '';
         if (array_key_exists($client, $this->getClientSetups())) {
@@ -182,7 +198,7 @@ class McpPageController implements BootableInterface
             $html = ob_get_clean();
             wp_send_json_success([
                 'html' => $html,
-                'message' => __('Connection settings saved. Reconnect your AI app to refresh its actions.', 'publishpress-hub'),
+                'message' => $message,
             ]);
         }
         $returnUrl = isset($_POST['return_url']) && is_string($_POST['return_url'])
@@ -191,7 +207,7 @@ class McpPageController implements BootableInterface
         if (strpos($returnUrl, $pageUrl) !== 0) {
             $returnUrl = $pageUrl;
         }
-        wp_safe_redirect(add_query_arg('updated', '1', $returnUrl));
+        wp_safe_redirect(add_query_arg('updated', $refreshNeeded ? 'refresh' : '1', $returnUrl));
         exit;
     }
 
@@ -253,9 +269,11 @@ class McpPageController implements BootableInterface
             }
         }
         $setupComplete = (bool) get_user_option(self::SETUP_OPTION);
+        $actionsReviewed = $setupComplete || (bool) get_user_option(self::ACTIONS_REVIEWED_OPTION);
         $stage = !$this->mcpConnectionService->isEnabled() ? 'disabled'
             : ($nextStep ? 'prerequisite'
-                : (!$this->mcpConnectionService->getAbilityNames() ? 'access' : ($setupComplete ? 'manage' : 'connect')));
+                : (!$actionsReviewed || !$this->mcpConnectionService->getAbilityNames()
+                    ? 'access' : ($setupComplete ? 'manage' : 'connect')));
 
         $this->viewService->render(
             'Mcp/connection-page',

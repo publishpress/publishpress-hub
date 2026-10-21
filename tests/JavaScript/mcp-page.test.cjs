@@ -82,7 +82,7 @@ test('choosing an app shows only its setup panel', () => {
     ui.handlers.beforeunload({ preventDefault() { warned = true; } });
     assert.equal(warned, true);
 });
-function asyncFixture(reducedMotion = false) {
+function asyncFixture(reducedMotion = false, stage = 'manage') {
     const handlers = {};
     const requests = [];
     const status = { textContent: '', classList: { toggle() {} } };
@@ -102,7 +102,7 @@ function asyncFixture(reducedMotion = false) {
     currentSection = makeSection(actions);
     const page = {
         addEventListener: (name, callback) => { handlers[name] = callback; },
-        querySelector: (selector) => ({ '.mcp-step-loading': loading, '#mcp-connection-settings': form, '.mcp-save-status': status, '.mcp-actions': currentSection, '.mcp-installer-form': { replaceWith(section) { state.installerAvailable = section.available; } }, '.mcp-journey': { replaceWith(next) { currentSection = next.section; actions = next.section.actions; state.installerAvailable = true; } }, '.mcp-save-bar': { hidden: false } }[selector] || null),
+        querySelector: (selector) => ({ '.mcp-step-loading': loading, '#mcp-connection-settings': form, '.mcp-save-status': status, '.mcp-actions': currentSection, '.mcp-installer-form': { replaceWith(section) { state.installerAvailable = section.available; } }, '.mcp-journey': { dataset: { mcpStage: stage }, replaceWith(next) { currentSection = next.section; actions = next.section.actions; state.installerAvailable = true; } }, '.mcp-save-bar': { hidden: false, replaceWith(next) { state.footerReplaced = true; } } }[selector] || null),
         querySelectorAll: (selector) => selector === '[name="enabled_actions[]"]' || selector.startsWith('input[form=') ? actions : [],
     };
     const location = { href: 'https://fixture.test/wp-admin/admin.php?page=publishpress-hub-mcp' };
@@ -181,6 +181,7 @@ test('background save submits edits from other pages and clears the draft only o
     assert.equal(body.getAll('enabled_actions[]').includes('fixture/first'), false);
     assert.equal(ui.status.textContent, '');
     assert.equal(ui.state.installerAvailable, true);
+    assert.equal(ui.state.footerReplaced, true);
     assert.equal(globalThis.lastMcpNotice.message, 'Saved');
     assert.equal(globalThis.lastMcpNotice.options.type, 'snackbar');
     assert.equal(globalThis.lastMcpNotice.options.isDismissible, true);
@@ -235,4 +236,14 @@ test('next-step scrolling respects reduced motion', async () => {
     assert.equal(ui.loading.scrolled.behavior, 'instant');
     await saving;
     assert.equal(ui.loading.hidden, true);
+});
+
+test('saving the action review opens the next step and refreshes the footer', async () => {
+    const ui = asyncFixture(false, 'access');
+    const saving = ui.save();
+    assert.equal(ui.loading.hidden, false);
+    assert.equal(ui.loading.scrolled.behavior, 'smooth');
+    await saving;
+    assert.equal(ui.loading.hidden, true);
+    assert.equal(ui.state.footerReplaced, true);
 });
