@@ -24,55 +24,30 @@ $reviewOption = 'publishpress_hub_mcp_actions_reviewed';
 $previousReview = get_user_option($reviewOption);
 $previousHttps = $_SERVER['HTTPS'] ?? null;
 $_SERVER['HTTPS'] = 'on';
-$renderFlow = static function () use ($controller): string {
-    ob_start();
-    $controller->showConnectionPage();
-    return ob_get_clean();
-};
+$renderFlow = static fn(): array => $setupService->getState();
 try {
     update_option('publishpress_hub_mcp_enabled', false);
-    $html = $renderFlow();
-    $check(strpos($html, 'data-mcp-stage="disabled"') !== false
-        && preg_match('/class="mcp-panel mcp-connect-step"[^>]*hidden/', $html) === 1,
-        'Disabled connection hides the client setup and keeps the welcome toggle');
+    $check($renderFlow()['setupStage'] === 'disabled', 'Disabled connection hides setup');
     update_option('publishpress_hub_mcp_enabled', true);
     update_option('home', 'http://mcp-test.example');
     update_option('siteurl', 'http://mcp-test.example');
-    $html = $renderFlow();
-    $check(strpos($html, 'data-mcp-stage="prerequisite"') !== false
-        && preg_match('/class="mcp-panel mcp-next-step"[^>]*hidden/', $html) === 0,
-        'Incomplete prerequisites show the next required step');
+    $check($renderFlow()['setupStage'] === 'prerequisite', 'Incomplete prerequisites precede action review');
     update_option('home', 'https://mcp-test.example');
     update_option('siteurl', 'https://mcp-test.example');
     update_user_option($actor->ID, $setupOption, false);
     update_user_option($actor->ID, $reviewOption, false);
-    $html = $renderFlow();
-    $check(strpos($html, 'data-mcp-stage="access"') !== false
-        && preg_match('/class="mcp-manage-controls"[^>]*hidden/', $html) === 0
-        && preg_match('/class="mcp-panel mcp-connect-step"[^>]*hidden/', $html) === 1
-        && strpos($html, 'Save and continue') !== false,
-        'New setup requires action review before connecting even with default actions selected');
+    $check($renderFlow()['setupStage'] === 'access', 'New setup requires action review even with default actions selected');
     update_user_option($actor->ID, $reviewOption, true);
-    $html = $renderFlow();
-    $check(strpos($html, 'data-mcp-stage="connect"') !== false
-        && preg_match('/class="mcp-panel mcp-connect-step"[^>]*hidden/', $html) === 0
-        && preg_match('/class="mcp-manage-controls"[^>]*hidden/', $html) === 1,
-        'Saved action review reveals app setup without repeating access controls');
+    $check($renderFlow()['setupStage'] === 'connect', 'Reviewed actions reveal app connection');
     update_user_option($actor->ID, $setupOption, true);
-    $html = $renderFlow();
-    $check(strpos($html, 'data-mcp-stage="manage"') !== false
-        && preg_match('/class="mcp-panel mcp-connect-step"[^>]*hidden/', $html) === 1
-        && preg_match('/class="mcp-manage-controls"[^>]*hidden/', $html) === 0
-        && strpos($html, 'data-mcp-reconnect') !== false,
-        'Confirmed setup shows management controls and the reconnect action');
+    update_user_option($actor->ID, $reviewOption, false);
+    $check($renderFlow()['setupStage'] === 'manage', 'Existing completed setups keep their management controls');
     $selection = $connection->getDisabledActions();
-    update_user_option($actor->ID, $setupOption, false);
-    $check(strpos($renderFlow(), 'data-mcp-stage="connect"') !== false
-        && $selection === $connection->getDisabledActions(),
-        'Reopening setup preserves action selections and the enabled connection');
+    $setupService->save(['enabled' => true, 'writesEnabled' => false, 'setupComplete' => false]);
+    $check($renderFlow()['setupStage'] === 'connect' && $selection === $connection->getDisabledActions(),
+        'Reopening setup preserves selected actions and migrates existing completion');
     $connection->saveExposureSettings(true, false, []);
-    $check(strpos($renderFlow(), 'data-mcp-stage="access"') !== false,
-        'An empty exposure selection shows access controls before app setup');
+    $check($renderFlow()['setupStage'] === 'access', 'Empty exposure returns to action selection');
     echo "Completed 7 setup flow checks with WordPress $wp_version.\n";
 } finally {
     if ($previousHttps === null) {

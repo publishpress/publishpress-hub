@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Verify the real connection template and exposure-setting persistence.
+ * Verify the React mount, structured setup data and exposure-setting persistence.
  *
  * @author PublishPress
  * @copyright Copyright (c) 2026, PublishPress
@@ -51,6 +51,7 @@ $container = new \PublishPress\Hub\Infrastructure\Container\DependencyContainer(
 );
 $connection = $container->get(AbstractDependencies::MCP_CONNECTION_SERVICE);
 $controller = $container->get(AbstractDependencies::MCP_PAGE_CONTROLLER);
+$setupService = $container->get(AbstractDependencies::MCP_SETUP_SERVICE);
 $actor = new WP_User();
 $actor->ID = 1;
 $actor->allcaps = ['read' => true, 'manage_options' => true];
@@ -121,66 +122,32 @@ try {
     } finally {
         remove_filter('rest_url', $overrideEndpoint);
     }
-    preg_match('/id="mcp-config-manual"[^>]*>(.*?)<\/textarea>/s', $html, $desktopMatch);
-    $desktopConfig = json_decode(html_entity_decode($desktopMatch[1] ?? '', ENT_QUOTES, 'UTF-8'), true);
-    $check(isset($desktopConfig['mcpServers'][$clientIdentifier]) && !isset($desktopConfig['mcpServers']['publishpress']),
+    $state = $setupService->getState();
+    $check(strpos($html, 'id="publishpress-hub-mcp-page-container"') !== false
+        && strpos($html, 'mcp-connection-settings') === false,
+        'PHP renders only the React mount and loading placeholder');
+    $manual = json_decode($state['clientSetups']['manual']['content'], true);
+    $check(isset($manual['mcpServers'][$clientIdentifier]) && !isset($manual['mcpServers']['publishpress']),
         'Manual configuration uses the stable site-specific server name');
-
-    $check(
-        substr_count($html, 'name="enabled_actions[]"') === 10,
-        'Connection screen limits the current plugin page to ten action controls'
-    );
-    $check(strpos($html, 'name="mcp_writes_enabled"') !== false, 'Connection screen contains the write opt-in control');
-    $check(strpos($html, 'Connection diagnostics') !== false, 'Connection diagnostics render successfully');
-    $check(strpos($html, 'Allow PublishPress to connect with your favorite AI') !== false
-        && strpos($html, 'role="switch"') !== false,
-        'Connection setup starts with the welcome toggle');
-    $check(strpos($html, 'id="mcp-client-setup"') !== false
-        && strpos($html, 'cli-usage.md#using-with-mcp-clients') === false
-        && strpos($html, 'Download the installer for this site.') !== false
-        && strpos($html, '@automattic/mcp-wordpress-remote@latest') !== false,
-        'Client setup provides in-page app instructions and remote bridge configuration');
-
-    $check(substr_count($html, 'name="mcp_client"') === 3
-        && strpos($html, 'mcp-client-manual') !== false
-        && strpos($html, 'mcp-client-assistant') !== false
-        && strpos($html, 'Download configuration') !== false,
-        'Client setup offers app choices, assisted setup and downloadable configuration');
-    preg_match('/id="mcp-config-assistant"[^>]*>(.*?)<\/textarea>/s', $html, $promptMatch);
-    $check(strpos(html_entity_decode($promptMatch[1] ?? '', ENT_QUOTES, 'UTF-8'), rest_url('mcp/publishpress')) !== false,
+    $check(count($state['actionView']['actions']) === 10, 'Structured action data is bounded to ten controls per page');
+    $check(is_bool($state['writesEnabled']), 'Structured connection data contains write access');
+    $check(!empty($state['diagnostics']), 'Connection diagnostics are available as structured data');
+    $check(array_keys($state['clientSetups']) === ['desktop', 'assistant', 'manual'], 'Client setup offers desktop, assisted and manual choices');
+    $check(strpos($state['clientSetups']['assistant']['content'], rest_url('mcp/publishpress')) !== false,
         'Assisted setup prompt includes the current site endpoint');
-    $check(strpos(html_entity_decode($promptMatch[1] ?? '', ENT_QUOTES, 'UTF-8'), $clientIdentifier) !== false,
+    $check(strpos($state['clientSetups']['assistant']['content'], $clientIdentifier) !== false,
         'Assisted setup uses the same site-specific server name');
-    $check(strpos($html, 'PASTE_YOUR_APPLICATION_PASSWORD_HERE') !== false
-        && strpos($html, 'Hub cannot check the app connection for you.') !== false,
-        'Client setup uses a password placeholder and does not claim external setup is complete');
+    $check(strpos($state['clientSetups']['manual']['content'], 'PASTE_YOUR_APPLICATION_PASSWORD_HERE') !== false,
+        'Client configuration contains a password placeholder');
     $connection->saveExposureSettings(false, false, $names);
-    ob_start();
-    $controller->showConnectionPage();
-    $disabledHtml = ob_get_clean();
-    $check(strpos($disabledHtml, 'data-mcp-stage="disabled"') !== false
-        && strpos($disabledHtml, 'id="mcp-client-setup"') !== false,
-        'Setup guidance remains available before the connection is enabled');
-
-    $_GET['plugin'] = 'z-fixture';
-    ob_start();
-    $controller->showConnectionPage();
-    $pluginHtml = ob_get_clean();
-    $check(strpos($pluginHtml, 'Other plugin action') !== false
-        && strpos($pluginHtml, 'name="enabled_actions[]" value="hub-fixture/') === false,
-        'Plugin tabs isolate action controls');
-    $_GET = ['action_page' => '2'];
-    ob_start();
-    $controller->showConnectionPage();
-    $pageHtml = ob_get_clean();
-    $check(substr_count($pageHtml, 'name="enabled_actions[]"') === 5, 'Second page renders only remaining plugin actions');
-    $_GET = ['search' => 'Pagination action 12', 'behavior' => 'read'];
-    ob_start();
-    $controller->showConnectionPage();
-    $filteredHtml = ob_get_clean();
-    $check(substr_count($filteredHtml, 'name="enabled_actions[]"') === 1,
-        'Search and behavior filters narrow displayed actions');
-    $_GET = [];
+    $check($setupService->getState()['setupStage'] === 'disabled', 'Disabled state is provided to React');
+    $pluginState = $setupService->getState(['plugin' => 'z-fixture']);
+    $check(count($pluginState['actionView']['actions']) === 1
+        && $pluginState['actionView']['actions'][0]['plugin'] === 'z-fixture', 'Plugin filters isolate action data');
+    $check(count($setupService->getState(['action_page' => 2])['actionView']['actions']) === 5,
+        'Second page returns only remaining plugin actions');
+    $check(count($setupService->getState(['search' => 'Pagination action 12', 'behavior' => 'read'])['actionView']['actions']) === 1,
+        'Search and behavior filters narrow returned actions');
     $connection->saveExposureSettings(true, true, $names);
     $connection->saveExposureSettings(true, true, [], ['hub-fixture/get-item']);
     $check(in_array('hub-fixture/get-item', $connection->getDisabledActions(), true)

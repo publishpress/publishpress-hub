@@ -36,13 +36,7 @@ abstract class AbstractHooks
 
     public const ACTION_MCP_ADAPTER_INIT = 'mcp_adapter_init';
 
-    public const ACTION_MCP_AJAX_SAVE_CONNECTION = 'wp_ajax_publishpress_hub_mcp_save';
-
-    public const ACTION_MCP_SAVE_CONNECTION = 'admin_post_publishpress_hub_mcp_save';
-
     public const ACTION_MCP_DOWNLOAD_INSTALLER = 'admin_post_publishpress_hub_mcp_installer';
-
-    public const ACTION_MCP_INSTALL_ADAPTER = 'admin_post_publishpress_hub_mcp_install';
 
     public const ACTION_MCP_REGISTRATION_ERROR = 'publishpress_hub_mcp_registration_error';
 

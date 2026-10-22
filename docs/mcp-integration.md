@@ -1,35 +1,65 @@
 # PublishPress MCP integration
 
-Hub provides one optional MCP connection for participating PublishPress plugins. Available actions depend on the active plugins and the connection's access settings.
+Hub provides one optional MCP connection for participating PublishPress plugins through the separately installed WordPress MCP Adapter. Supported plugins contribute their own actions to this connection. Available actions depend on the active plugins and the site's exposure settings.
 
-Each site has a stable client connection name derived from its full MCP endpoint. Different domains and sites under different paths can coexist in the same AI app. Repeating setup uses the same name for that site. Connection labels use a site-specific slug. The full site address is included in the server description. Server descriptions identify the target site and ask the assistant to clarify ambiguous requests when multiple sites are connected.
+Users connect through an external MCP client. This integration is separate from WordPress.com's hosted MCP service.
 
-Actions from supported plugins appear automatically in Hub's action selection. Users connect through a compatible external MCP client. The connection supports different AI providers and is separate from WordPress.com's hosted MCP service.
+## Requirements
+
+- WordPress 6.9 or later.
+- MCP Adapter 0.7.1 or later, installed and activated separately.
+- HTTPS for both the WordPress and site addresses.
+- WordPress application passwords available for the connecting account.
+- A compatible MCP client or bridge that supports the adapter's transport and application-password authentication.
 
 ## Setup
 
-Requires WordPress 6.9+, HTTPS site and WordPress addresses, and separately installed MCP Adapter 0.7.1+. In Hub > AI Connections, enable the connection and install/activate the adapter. The installer uses WordPress APIs and direct filesystem access; hosts requiring filesystem credentials can use their normal installation workflow and the plugin-page fallback.
+1. Open **Hub > AI Connections** and enable AI connections.
+2. Install and activate MCP Adapter when prompted. If the host blocks installation, use the linked plugin page or the host's normal plugin installation process.
+3. Choose the allowed actions and whether AI can change site data. Select **Save and continue** before connecting an app.
+4. Choose a connection method and follow its instructions. Once the app can list PublishPress actions, select **I have connected my AI app**.
 
-Configure a compatible MCP client or bridge with `https://yoursite.com/wp-json/mcp/publishpress`, a WordPress username, and an application password. The user must have `manage_options`; actions additionally enforce plugin/object permissions and applicable application-password restrictions, including for administrators. The client or bridge needs to support the adapter's transport and application-password authentication.
+The connection endpoint is:
 
-The page starts with a toggle to enable AI connections. Once enabled, it shows the next required site setup step, then the write-access and action-selection controls. Save and continue records the action review for the current user on this site and opens the app connection instructions. Selecting no available actions keeps the action-selection step open. Completed prerequisites are hidden. The setup choices are Claude Desktop, an assisted setup prompt, and manual configuration for compatible clients. Save Changes remembers the selected method for the current user on this site.
+```text
+https://yoursite.com/wp-json/mcp/publishpress
+```
 
-After connecting an app, the user selects **I have connected my AI app** to finish setup and return to the access controls. Later changes to exposed actions show a confirmation asking the user to restart their AI app or refresh its PublishPress connection. This records the user's confirmation rather than detecting a live connection. The main toggle remains available to disable access. **Connect another AI app** reopens the setup instructions for another app or computer without resetting action selections. The assisted-setup prompt asks an AI assistant for a local setup script and keeps application-password entry out of chat.
+The client authenticates with a WordPress username and an application password. Hub remembers the selected setup method for the current user on this site. **Connect another AI app** reopens the instructions without resetting allowed actions.
 
-Claude Desktop users can download a site-specific `.mcpb` extension from the app selector. The extension bundles the WordPress remote bridge and its dependencies, uses the desktop client's Node.js runtime, and requires no manual JSON configuration. Each download creates a separate application password for the current WordPress account. The site URL, username and new password are prefilled; the password is marked as sensitive client configuration. The download contains that password and should be deleted after import. The corresponding **PublishPress - Claude Desktop** application password can be revoked in the WordPress profile. Repeated downloads create separate passwords. The installer requires PHP ZIP support and an enabled, available HTTPS connection; manual configuration remains available. Hub does not store a plaintext copy of the password or bundle.
+### Claude Desktop
 
-Read-only actions are exposed by default. Enable **Allow actions that change site data** to expose selected write actions. Each action also has its own exposure checkbox. Plugin actions appear in separate tabs derived from their ability namespaces, with search, behavior filters and ten actions per page. Action pages, plugin tabs, filters and settings saves use background requests. Selections remain in a browser draft while navigating; Save Changes applies the draft across visited tabs and pages while preserving other selections. Drafts live in the current browser page until saved. Descriptions and technical identifiers are expandable. Plugins can supply a display name through `meta.publishpress.plugin_name`; otherwise the namespace supplies the tab label. Reconnect clients after changing selection or plugin activation. Diagnostics show dependency versions, HTTPS/application-password availability and action counts.
+Download the site's `.mcpb` extension and install it in Claude Desktop. It includes the connection details and remote bridge, uses Claude Desktop's Node.js runtime, and requires no manual JSON configuration. Creating the installer requires PHP ZIP support and an enabled HTTPS connection.
 
-Switching off removes the PublishPress endpoint on subsequent requests; it does not revoke application passwords or disable other MCP servers. Existing Hub features do not depend on the adapter.
+Each download creates a new application password for the current WordPress account and includes it in the file. Delete the downloaded file after installation. To revoke its access, remove the corresponding **PublishPress - Claude Desktop** application password in the WordPress profile. Hub does not retain a plaintext copy of the password or installer.
 
-## Multisite
+### Ask my AI to help
 
-The connection and its exposure settings are site-scoped. Access to the connection requires the configured capability on that site.
+Create a WordPress application password, then copy the setup prompt into an AI agent. The prompt asks for a local setup script and the command to run it for the chosen app and operating system. Enter the password locally rather than in the chat.
+
+### Manual configuration
+
+Create a WordPress application password and use the supplied configuration in a compatible MCP client. Set the password locally in the client's configuration.
+
+## Actions and access
+
+Opening the PublishPress connection requires `manage_options` on the target site. Each action also checks the connected WordPress user's plugin and object permissions, including applicable application-password restrictions. These checks apply to administrators too.
+
+Read-only actions are exposed by default. Enable **Allow actions that change site data** to make selected write actions available. Individual actions can also be excluded. Save changes to apply the selection.
+
+After changing allowed actions or activating or deactivating a participating plugin, restart the AI app or refresh its PublishPress connection to update its available actions. Completing setup records the user's confirmation and does not detect a live client connection.
+
+Turning off AI connections removes the PublishPress endpoint on subsequent requests. It does not revoke application passwords or disable other MCP servers. Other Hub features remain available without MCP Adapter.
+
+## Multiple sites
+
+Each site has a distinct, stable connection name so multiple sites can coexist in one AI app. Repeating setup uses the same connection name for that site. Labels use a site-specific slug, and the server description includes the full site address. Specify the target site when making requests if more than one site is connected.
+
+On WordPress multisite, the connection and allowed actions are configured separately for each site. The connecting user must have the required access on that site.
 
 ## References
 
 - [PublishPress AI connection guide](https://publishpress.com/knowledge-base/hub-mcp/)
-
 - [WordPress MCP Adapter](https://wordpress.org/plugins/mcp-adapter/)
 - [WordPress remote bridge](https://github.com/Automattic/mcp-wordpress-remote)
 - [Transport permissions](https://github.com/WordPress/mcp-adapter/blob/trunk/docs/guides/transport-permissions.md)

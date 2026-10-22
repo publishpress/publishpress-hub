@@ -207,6 +207,10 @@ abstract class AbstractDependencies
 
     public const SETTINGS_PAGE_CONTROLLER = 'publishpress-hub.presentation.settings-page.controller';
 
+    public const MCP_SETUP_SERVICE = 'publishpress-hub.application.mcp.setup.service';
+
+    public const REST_API_MCP_CONTROLLER = 'publishpress-hub.presentation.rest-api.mcp.controller';
+
     public const MCP_PAGE_CONTROLLER = 'publishpress-hub.presentation.mcp-page.controller';
 
     public const DEV_COMPONENTS_SHOWCASE_CONTROLLER = 'publishpress-hub.presentation.dev-components-showcase.controller';

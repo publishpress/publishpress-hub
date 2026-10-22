@@ -23,6 +23,7 @@ use PublishPress\Hub\Application\Service\HubBootstrapService;
 use PublishPress\Hub\Application\Service\Mcp\McpAdapterInstallationService;
 use PublishPress\Hub\Application\Service\Mcp\McpConnectionService;
 use PublishPress\Hub\Application\Service\Mcp\McpDesktopInstallerService;
+use PublishPress\Hub\Application\Service\Mcp\McpSetupService;
 use PublishPress\Hub\Application\Service\RewriteRulesService;
 use PublishPress\Hub\Application\Service\Statistics\StatisticsService;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
@@ -82,6 +83,7 @@ use PublishPress\Hub\Admin\Page\McpPageController;
 use PublishPress\Hub\Admin\Page\PluginsDashboardController;
 use PublishPress\Hub\Admin\Page\SettingsPageController;
 use PublishPress\Hub\Admin\Page\WelcomePageController;
+use PublishPress\Hub\Rest\McpController;
 use PublishPress\Hub\Rest\SettingsController;
 use PublishPress\Hub\Infrastructure\Container\AbstractDependencies;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
@@ -451,6 +453,7 @@ return [
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_PLUGINS_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_SETTINGS_CONTROLLER);
+            $servicesToInit[] = $container->get(AbstractDependencies::REST_API_MCP_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::LICENSE_VALIDATION_BOOTSTRAP_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::ACTIVATION_REDIRECT_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::REWRITE_RULES_SERVICE);
@@ -630,12 +633,24 @@ return [
             $container->get(AbstractDependencies::ASSET_SERVICE)
         ),
 
+    AbstractDependencies::MCP_SETUP_SERVICE =>
+        fn(ContainerInterface $container) => new McpSetupService(
+            $container->get(AbstractDependencies::MCP_CONNECTION_SERVICE),
+            $container->get(AbstractDependencies::MCP_DESKTOP_INSTALLER_SERVICE)
+        ),
+
+    AbstractDependencies::REST_API_MCP_CONTROLLER =>
+        fn(ContainerInterface $container) => new McpController(
+            $container->get(AbstractDependencies::HUB_REST_API_NAMESPACE),
+            $container->get(AbstractDependencies::REST_API_SERVICE),
+            $container->get(AbstractDependencies::MCP_SETUP_SERVICE),
+            $container->get(AbstractDependencies::MCP_ADAPTER_INSTALLATION_SERVICE)
+        ),
+
     AbstractDependencies::MCP_PAGE_CONTROLLER =>
         fn(ContainerInterface $container) => new McpPageController(
-            $container->get(AbstractDependencies::MCP_CONNECTION_SERVICE),
             $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
-            $container->get(AbstractDependencies::MCP_ADAPTER_INSTALLATION_SERVICE),
             $container->get(AbstractDependencies::ASSET_SERVICE),
             $container->get(AbstractDependencies::MCP_DESKTOP_INSTALLER_SERVICE)
         ),
