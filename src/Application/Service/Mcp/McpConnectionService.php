@@ -232,7 +232,7 @@ class McpConnectionService implements BootableInterface
     }
 
     /**
-     * Category registration is the responsibility of participating plugins.
+     * Apply the same exposure choices to WordPress and plugin abilities.
      *
      * @return string[]
      * @since 1.2.0

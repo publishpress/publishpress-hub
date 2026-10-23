@@ -26,8 +26,8 @@ export const McpActions = ({ state, edits, busy, onAction, onNavigate }) => {
     }));
     return (
         <McpPanel className="mcp-actions" aria-busy={busy}>
-            <div className="mcp-section-heading"><h2>{__('Plugin actions', 'publishpress-hub')}</h2>{busy && <Spinner />}</div>
-            <p>{__('Choose actions for each plugin. Your selections are kept while you browse. Save changes to apply them.', 'publishpress-hub')}</p>
+            <div className="mcp-section-heading"><h2>{__('Available actions', 'publishpress-hub')}</h2>{busy && <Spinner />}</div>
+            <p>{__('Choose WordPress and plugin actions. Your selections are kept while you browse. Save changes to apply them.', 'publishpress-hub')}</p>
             <fieldset className="mcp-action-controls" disabled={busy}>
             <TabPanel
                 key={view.plugin}

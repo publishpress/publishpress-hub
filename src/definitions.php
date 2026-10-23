@@ -22,6 +22,8 @@ use PublishPress\Hub\Application\Service\EddPluginUpdateService;
 use PublishPress\Hub\Application\Service\HubBootstrapService;
 use PublishPress\Hub\Application\Service\Mcp\McpAdapterInstallationService;
 use PublishPress\Hub\Application\Service\Mcp\McpConnectionService;
+use PublishPress\Hub\Application\Service\Mcp\WordPressAbilitiesService;
+use PublishPress\Hub\Application\Service\Mcp\WordPressLookupService;
 use PublishPress\Hub\Application\Service\Mcp\McpDesktopInstallerService;
 use PublishPress\Hub\Application\Service\Mcp\McpSetupService;
 use PublishPress\Hub\Application\Service\RewriteRulesService;
@@ -428,6 +430,13 @@ return [
             $container->get(AbstractDependencies::MCP_CONNECTION_SERVICE)
         ),
 
+    AbstractDependencies::WORDPRESS_LOOKUP_SERVICE => fn() => new WordPressLookupService(),
+
+    AbstractDependencies::WORDPRESS_ABILITIES_SERVICE =>
+        fn(ContainerInterface $container) => new WordPressAbilitiesService(
+            $container->get(AbstractDependencies::WORDPRESS_LOOKUP_SERVICE)
+        ),
+
     AbstractDependencies::MCP_CONNECTION_SERVICE =>
         fn(ContainerInterface $container) => new McpConnectionService(
             $container->get(AbstractDependencies::OPTIONS_ADAPTER)
@@ -448,6 +457,7 @@ return [
 
             $servicesToInit[] = $container->get(AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::MCP_CONNECTION_SERVICE);
+            $servicesToInit[] = $container->get(AbstractDependencies::WORDPRESS_ABILITIES_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::MCP_PAGE_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::SETTINGS_PAGE_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_SERVICE);

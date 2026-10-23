@@ -1,6 +1,6 @@
 # PublishPress MCP integration
 
-Hub provides one optional MCP connection for participating PublishPress plugins through the separately installed WordPress MCP Adapter. Supported plugins contribute their own actions to this connection. Available actions depend on the active plugins and the site's exposure settings.
+Hub provides one optional MCP connection for WordPress lookups and participating PublishPress plugins through the separately installed WordPress MCP Adapter. Supported plugins contribute their own actions to this connection. Available actions depend on the active plugins and the site's exposure settings.
 
 Users connect through an external MCP client. This integration is separate from WordPress.com's hosted MCP service.
 
@@ -42,6 +42,10 @@ Create a WordPress application password, then copy the setup prompt into an AI a
 Create a WordPress application password and use the supplied configuration in a compatible MCP client. Set the password locally in the client's configuration.
 
 ## Actions and access
+
+The **WordPress** tab provides read-only user searches, exact user lookup with effective primitive capabilities, content searches and post type discovery. Content results include actual IDs and permalinks. User results include IDs, usernames, display names and roles without email addresses or authentication data. User listing requires `list_users`, and detailed user inspection also requires permission to edit that user. Content searches use the post type's WordPress REST permissions.
+
+User searches can filter by an effective primitive capability. Filtering happens within each candidate page, so clients must visit every reported page even if a filtered page is empty. Custom content types must be REST-enabled. These lookups do not change users or content.
 
 Opening the PublishPress connection requires `manage_options` on the target site. Each action also checks the connected WordPress user's plugin and object permissions, including applicable application-password restrictions. These checks apply to administrators too.
 
