@@ -218,7 +218,7 @@ class McpSetupService
                 'complete' => (bool) $this->mcpConnectionService->getActionCatalog(),
                 'key' => 'actions',
                 'label' => __('Add a PublishPress plugin with AI actions', 'publishpress-hub'),
-                'description' => __('Install or activate a PublishPress plugin that provides AI actions to continue.', 'publishpress-hub'),
+                'description' => __('You don\'t have any PublishPress plugins installed that support AI actions yet.', 'publishpress-hub'),
                 'url' => admin_url('admin.php?page=publishpress-hub-plugins-dashboard'),
                 'action' => __('Open PublishPress plugins', 'publishpress-hub'),
             ],
