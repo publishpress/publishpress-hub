@@ -73,8 +73,8 @@ const McpPageComponent = () => {
             <section className="mcp-welcome" aria-labelledby="mcp-overview-heading">
                 <div className="mcp-welcome-copy">
                     <span className="mcp-eyebrow">{__('AI Connections', 'publishpress-hub')}</span>
-                    <h1 id="mcp-overview-heading">{__('Allow PublishPress to connect with your favorite AI', 'publishpress-hub')}</h1>
-                    <p>{__('Use your AI app to work with PublishPress on this site. You choose which actions it can use.', 'publishpress-hub')}</p>
+                    <h1 id="mcp-overview-heading">{__('Allow PublishPress to connect with your favorite AI service', 'publishpress-hub')}</h1>
+                    <p>{__('Use your AI to work with PublishPress plugins on this site.', 'publishpress-hub')}</p>
                     <ToggleControl className="mcp-connection-toggle" label={__('Enable AI connections', 'publishpress-hub')}
                         checked={draft.enabled} disabled={busy || !state}
                         onChange={(enabled) => enabled ? runStep(() => connection.save({ enabled })) : connection.save({ enabled })} />

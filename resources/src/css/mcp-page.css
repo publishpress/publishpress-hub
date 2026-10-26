@@ -23,8 +23,14 @@
 .mcp-welcome p { font-size: 15px; line-height: 1.6; color: #50575e; margin: 0 0 24px; }
 .mcp-welcome-art { display: flex; align-items: center; justify-content: center; padding: 24px; }
 .mcp-welcome-art img { width: 100%; max-width: 440px; height: auto; }
-.mcp-connection-toggle .components-base-control__field { margin: 0; }
-.mcp-connection-toggle .components-toggle-control__label { font-weight: 600; }
+.mcp-connection-toggle .components-base-control__field { margin: 0; min-height: 44px; }
+.mcp-connection-toggle .components-toggle-control__label { font-size: 18px; font-weight: 600; }
+.mcp-connection-toggle .components-form-toggle { width: 64px; height: 32px; flex-shrink: 0; }
+.mcp-connection-toggle .components-form-toggle__track { width: 64px; height: 32px; border-radius: 16px; }
+.mcp-connection-toggle .components-form-toggle__track::after { border-top-width: 32px; }
+.mcp-connection-toggle .components-form-toggle__thumb { width: 26px; height: 26px; top: 3px; left: auto; right: auto; inset-inline-start: 3px; }
+.mcp-connection-toggle .components-form-toggle.is-checked .components-form-toggle__thumb { transform: translateX(32px); }
+.rtl .mcp-connection-toggle .components-form-toggle.is-checked .components-form-toggle__thumb { transform: translateX(-32px); }
 .mcp-page .components-form-toggle.is-checked .components-form-toggle__track { background-color: #6552c4; }
 .mcp-page .pp-hub-button.is-primary { background: #6552c4; border-color: #6552c4; color: #fff; }
 .mcp-page .pp-hub-button.is-primary:hover:not(:disabled), .mcp-page .pp-hub-button.is-primary:focus { background: #5844ad; border-color: #5844ad; color: #fff; }
