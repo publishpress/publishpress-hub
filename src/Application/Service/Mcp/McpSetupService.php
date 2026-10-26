@@ -200,8 +200,8 @@ class McpSetupService
             [
                 'complete' => $this->mcpConnectionService->isAvailable(),
                 'key' => 'adapter',
-                'label' => __('Install or update MCP Adapter', 'publishpress-hub'),
-                'description' => __('Install or update the free WordPress MCP Adapter plugin to connect your AI app. Version 0.7.1 or newer is required.', 'publishpress-hub'),
+                'label' => __('Install the MCP Adapter plugin', 'publishpress-hub'),
+                'description' => __('Install the official WordPress MCP Adapter plugin to connect your AI service.', 'publishpress-hub'),
                 'url' => self_admin_url('plugins.php'),
                 'action' => $this->mcpConnectionService->isAvailable()
                     ? __('Manage plugins', 'publishpress-hub') : __('Set up MCP Adapter', 'publishpress-hub'),

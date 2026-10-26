@@ -268,7 +268,8 @@ test('React renders management controls after setup and hides them while disable
 test('React renders prerequisite checks and the static loading state', () => {
     const state = { ...fixture('prerequisite'), canInstallAdapter: true, nextStep: { key: 'adapter', label: 'Install adapter', description: 'Official adapter' } };
     assert.match(renderPage(state), /Install and activate MCP Adapter/);
-    assert.match(renderPage(state), /Check again/);
+    assert.doesNotMatch(renderPage(state), /Check again/);
+    assert.match(renderPage(state), /MCP Adapter plugin page/);
     assert.match(renderPage(null), /mcp-skeleton/);
 });
 

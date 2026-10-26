@@ -68,6 +68,13 @@ const McpPageComponent = () => {
     const save = () => stage === 'access' ? runStep(() => connection.save()) : connection.save();
     const nextStep = state?.nextStep;
 
+    useEffect(() => {
+        if (stage !== 'prerequisite' || nextStep?.key !== 'adapter') return;
+        const checkStatus = () => connection.refresh();
+        window.addEventListener('focus', checkStatus);
+        return () => window.removeEventListener('focus', checkStatus);
+    }, [stage, nextStep?.key, connection.refresh]);
+
     return <AdminPageLayout logoUrl={config.logoUrl}>
         <div className="mcp-page">
             <section className="mcp-welcome" aria-labelledby="mcp-overview-heading">
@@ -87,14 +94,16 @@ const McpPageComponent = () => {
                     {!state && !loading && <McpPanel><Button variant="secondary" onClick={connection.refresh}>{__('Try again', 'publishpress-hub')}</Button></McpPanel>}
                     {stage === 'prerequisite' && nextStep && <McpPanel className="mcp-next-step">
                         <h2 ref={stepHeading} tabIndex={-1}>{nextStep.label}</h2><p>{nextStep.description}</p>
-                        {nextStep.key === 'adapter' ? <>
+                        {nextStep.key === 'adapter' ? <div className="mcp-step-actions">
                             {state.canInstallAdapter && <Button variant="primary" disabled={busy} isLoading={saving} onClick={() => runStep(connection.install)}>
                                 {state.adapterInstalled ? __('Activate MCP Adapter', 'publishpress-hub') : __('Install and activate MCP Adapter', 'publishpress-hub')}
                             </Button>}
-                            <p><a href="https://wordpress.org/plugins/mcp-adapter/" target="_blank" rel="noopener noreferrer">{__('MCP Adapter plugin page', 'publishpress-hub')}</a></p>
-                            {state.adapterInstalled && <p><Button variant="secondary" href={state.pluginsUrl} target="_self">{__('Manage plugins', 'publishpress-hub')}</Button></p>}
-                        </> : <Button variant="secondary" href={nextStep.url} target="_self">{nextStep.action}</Button>}
-                        <p><Button variant="secondary" disabled={busy} onClick={() => runStep(connection.refresh)}>{__('Check again', 'publishpress-hub')}</Button></p>
+                            <Button variant="secondary" href="https://wordpress.org/plugins/mcp-adapter/" target="_blank" rel="noopener noreferrer">{__('MCP Adapter plugin page', 'publishpress-hub')}</Button>
+                            {state.adapterInstalled && <Button variant="secondary" href={state.pluginsUrl} target="_self">{__('Manage plugins', 'publishpress-hub')}</Button>}
+                        </div> : <>
+                            <Button variant="secondary" href={nextStep.url} target="_self">{nextStep.action}</Button>
+                            <p><Button variant="secondary" disabled={busy} onClick={() => runStep(connection.refresh)}>{__('Check again', 'publishpress-hub')}</Button></p>
+                        </>}
                     </McpPanel>}
                     {stage === 'connect' && <McpClientSetup headingRef={stepHeading} state={state} selected={draft.client} busy={busy}
                         onSelect={(client) => connection.setDraft({ client })}
