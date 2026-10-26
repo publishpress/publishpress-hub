@@ -31,7 +31,7 @@ if (defined('PUBLISHPRESS_HUB_PATH')) {
 /*
  * Define the plugin constants.
  */
-define('PUBLISHPRESS_HUB_VERSION', '1.2.0-beta.2');
+define('PUBLISHPRESS_HUB_VERSION', '1.2.0-beta.3');
 define('PUBLISHPRESS_HUB_SRC_PATH', __DIR__ . '/');
 define('PUBLISHPRESS_HUB_PATH', realpath(PUBLISHPRESS_HUB_SRC_PATH . '/../') . '/');
 define('PUBLISHPRESS_HUB_PLUGIN_FILE', PUBLISHPRESS_HUB_PATH . 'publishpress-hub.php');

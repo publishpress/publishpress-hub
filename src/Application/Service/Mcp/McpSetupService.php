@@ -26,17 +26,13 @@ class McpSetupService
 
     private McpConnectionService $mcpConnectionService;
 
-    private McpDesktopInstallerService $mcpDesktopInstallerService;
-
     /**
      * @param McpConnectionService $connection Connection exposure settings.
-     * @param McpDesktopInstallerService $installer Desktop extension availability.
      * @since 1.2.0
      */
-    public function __construct(McpConnectionService $connection, McpDesktopInstallerService $installer)
+    public function __construct(McpConnectionService $connection)
     {
         $this->mcpConnectionService = $connection;
-        $this->mcpDesktopInstallerService = $installer;
     }
 
     /**
@@ -79,8 +75,7 @@ class McpSetupService
             'setupStage' => $stage,
             'nextStep' => $nextStep,
             'clientSetups' => $clients,
-            'selectedClient' => array_key_exists($client, $clients) ? $client : 'desktop',
-            'installerAvailable' => $this->mcpDesktopInstallerService->isAvailable(),
+            'selectedClient' => array_key_exists($client, $clients) ? $client : 'assistant',
             'diagnostics' => $this->mcpConnectionService->getDiagnostics(),
             'adapterInstalled' => $adapterInstalled,
             'adapterActive' => $adapterActive,
@@ -232,7 +227,7 @@ class McpSetupService
                 'key' => 'passwords',
                 'label' => __('Allow application passwords for your account', 'publishpress-hub'),
                 'description' => $passwordsAvailable
-                    ? __('The Claude Desktop installer creates an application password for you. For assisted or manual setup, create one in your WordPress profile.', 'publishpress-hub')
+                    ? __('Create an application password in your WordPress profile for assisted or manual setup.', 'publishpress-hub')
                     : __('Application passwords are unavailable for your account. HTTPS or security plugin settings may need attention.', 'publishpress-hub'),
                 'url' => admin_url('profile.php#application-passwords-section'),
                 'action' => __('Open application passwords', 'publishpress-hub'),
@@ -257,6 +252,7 @@ class McpSetupService
                         'WP_API_URL' => rest_url('mcp/publishpress'),
                         'WP_API_USERNAME' => wp_get_current_user()->user_login,
                         'WP_API_PASSWORD' => __('PASTE_YOUR_APPLICATION_PASSWORD_HERE', 'publishpress-hub'),
+                        'OAUTH_ENABLED' => 'false',
                     ],
                 ],
             ],
@@ -273,15 +269,11 @@ class McpSetupService
     {
         $configuration = $this->getClientConfiguration();
         return [
-            'desktop' => [
-                'label' => __('Claude Desktop', 'publishpress-hub'),
-                'description' => __('Download an extension with your connection details prefilled.', 'publishpress-hub'),
-            ],
             'assistant' => [
                 'label' => __('Ask my AI to help', 'publishpress-hub'),
-                'description' => __('Ask your AI for a setup script to run on your computer.', 'publishpress-hub'),
+                'description' => __('Recommended. Ask your AI for a setup script to run on your computer.', 'publishpress-hub'),
                 'content' => sprintf(
-                    // translators: 1: site MCP endpoint, 2: WordPress username, 3: site-specific MCP server identifier, 4: path-safe connection display name.
+                    // translators: 1: endpoint, 2: username, 3: server identifier, 4: display name, 5: write access state.
                     __('Connect my AI app to PublishPress. Create a setup script and give me the exact terminal command to run it.
 
 1. Ask me to select my AI app and OS (Windows, macOS or Linux). Use interactive choices if available, otherwise numbered options.
@@ -293,12 +285,14 @@ Command: npx
 Arguments: -y @automattic/mcp-wordpress-remote@latest
 Environment: OAUTH_ENABLED=false, WP_API_URL=%1$s, WP_API_USERNAME=%2$s
 Read WP_API_PASSWORD through a hidden terminal prompt.
-4. Check Node.js and npx. If missing, link to the official installer and tell me to reopen the terminal. Back up existing settings. Use a JSON/TOML parser or supported client command to merge only this server, preserving other settings and sites. Stop on invalid configuration or a conflicting endpoint. Quote paths and values safely.
-5. Give brief run, restart and approval instructions. Verify by listing PublishPress actions through the connection, or give me a prompt to test in the app. Saving configuration alone is not proof of a connection. Clarify the target site when ambiguous and ask for review before changing site data.', 'publishpress-hub'),
+Hub write access: %5$s. Only individually selected actions are exposed.
+4. Check Node.js and npx. If missing, link to the official installer and tell me to reopen the terminal. Back up existing settings. Use a JSON/TOML parser or supported client command to merge only this server, preserving other settings and sites. Stop on invalid configuration or a conflicting endpoint. If replacing an old PublishPress desktop extension for this site, guide me to disable only that extension to avoid duplicate connections. Quote paths and values safely.
+5. Give brief run, restart and approval instructions. Verify through the connection or give me a prompt to test in the app: confirm the site URL, list actual tools and perform a read-only lookup. Report whether write tools are available. If expected write tools are missing, ask me to check Allow actions that change site data and the selected actions in Hub, then refresh the connection. Do not claim success from saved configuration alone. Do not test writes during setup. Clarify the target site when ambiguous and ask for review before changing site data.', 'publishpress-hub'),
                     rest_url('mcp/publishpress'),
                     wp_get_current_user()->user_login,
                     $this->mcpConnectionService->getClientIdentifier(),
-                    $this->mcpConnectionService->getClientDisplayName()
+                    $this->mcpConnectionService->getClientDisplayName(),
+                    $this->mcpConnectionService->areWritesEnabled() ? __('enabled', 'publishpress-hub') : __('disabled', 'publishpress-hub')
                 ),
                 'filename' => 'publishpress-setup-prompt.txt',
             ],

@@ -24,7 +24,7 @@ use PublishPress\Hub\Application\Service\Mcp\McpAdapterInstallationService;
 use PublishPress\Hub\Application\Service\Mcp\McpConnectionService;
 use PublishPress\Hub\Application\Service\Mcp\WordPressAbilitiesService;
 use PublishPress\Hub\Application\Service\Mcp\WordPressLookupService;
-use PublishPress\Hub\Application\Service\Mcp\McpDesktopInstallerService;
+use PublishPress\Hub\Application\Service\Mcp\WordPressWriteService;
 use PublishPress\Hub\Application\Service\Mcp\McpSetupService;
 use PublishPress\Hub\Application\Service\RewriteRulesService;
 use PublishPress\Hub\Application\Service\Statistics\StatisticsService;
@@ -425,16 +425,14 @@ return [
             $container->get(AbstractDependencies::FREE_PLUGIN_API)
         ),
 
-    AbstractDependencies::MCP_DESKTOP_INSTALLER_SERVICE =>
-        fn(ContainerInterface $container) => new McpDesktopInstallerService(
-            $container->get(AbstractDependencies::MCP_CONNECTION_SERVICE)
-        ),
-
     AbstractDependencies::WORDPRESS_LOOKUP_SERVICE => fn() => new WordPressLookupService(),
+
+    AbstractDependencies::WORDPRESS_WRITE_SERVICE => fn() => new WordPressWriteService(),
 
     AbstractDependencies::WORDPRESS_ABILITIES_SERVICE =>
         fn(ContainerInterface $container) => new WordPressAbilitiesService(
-            $container->get(AbstractDependencies::WORDPRESS_LOOKUP_SERVICE)
+            $container->get(AbstractDependencies::WORDPRESS_LOOKUP_SERVICE),
+            $container->get(AbstractDependencies::WORDPRESS_WRITE_SERVICE)
         ),
 
     AbstractDependencies::MCP_CONNECTION_SERVICE =>
@@ -645,8 +643,7 @@ return [
 
     AbstractDependencies::MCP_SETUP_SERVICE =>
         fn(ContainerInterface $container) => new McpSetupService(
-            $container->get(AbstractDependencies::MCP_CONNECTION_SERVICE),
-            $container->get(AbstractDependencies::MCP_DESKTOP_INSTALLER_SERVICE)
+            $container->get(AbstractDependencies::MCP_CONNECTION_SERVICE)
         ),
 
     AbstractDependencies::REST_API_MCP_CONTROLLER =>
@@ -661,8 +658,7 @@ return [
         fn(ContainerInterface $container) => new McpPageController(
             $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
-            $container->get(AbstractDependencies::ASSET_SERVICE),
-            $container->get(AbstractDependencies::MCP_DESKTOP_INSTALLER_SERVICE)
+            $container->get(AbstractDependencies::ASSET_SERVICE)
         ),
 
     AbstractDependencies::SETTINGS_PAGE_CONTROLLER =>

@@ -56,15 +56,6 @@ module.exports = {
         ],
     },
     plugins: [
-        {
-            apply(compiler) {
-                compiler.hooks.afterEmit.tapPromise('PublishPressDesktopBridge', async (compilation) => {
-                    if (compiler.options.mode !== 'production' || compilation.errors.length) return;
-                    const { buildMcpDesktop } = await import('./bin/build-mcp-desktop.mjs');
-                    await buildMcpDesktop();
-                });
-            },
-        },
         new RemoveEmptyScriptsPlugin(),
         new MiniCssExtractPlugin({
             filename: "css/" + (NODE_ENV === 'production' ? "[name].min.css" : "[name].css"),

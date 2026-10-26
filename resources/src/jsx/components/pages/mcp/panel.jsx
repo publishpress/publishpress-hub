@@ -20,6 +20,6 @@ export const McpSkeleton = () => (
         <div className="mcp-skeleton mcp-skeleton-heading" aria-hidden="true" />
         <div className="mcp-skeleton" aria-hidden="true" />
         <div className="mcp-skeleton" aria-hidden="true" />
-        <div className="mcp-skeleton-choices" aria-hidden="true"><span /><span /><span /></div>
+        <div className="mcp-skeleton-choices" aria-hidden="true"><span /><span /></div>
     </McpPanel>
 );

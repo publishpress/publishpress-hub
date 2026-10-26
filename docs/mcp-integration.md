@@ -1,6 +1,6 @@
 # PublishPress MCP integration
 
-Hub provides one optional MCP connection for WordPress lookups and participating PublishPress plugins through the separately installed WordPress MCP Adapter. Supported plugins contribute their own actions to this connection. Available actions depend on the active plugins and the site's exposure settings.
+Hub provides one optional MCP connection for WordPress actions and participating PublishPress plugins through the separately installed WordPress MCP Adapter. Supported plugins contribute their own actions to this connection. Available actions depend on the active plugins and the site's exposure settings.
 
 Users connect through an external MCP client. This integration is separate from WordPress.com's hosted MCP service.
 
@@ -17,7 +17,7 @@ Users connect through an external MCP client. This integration is separate from 
 1. Open **Hub > AI Connections** and enable AI connections.
 2. Install and activate MCP Adapter when prompted. If the host blocks installation, use the linked plugin page or the host's normal plugin installation process.
 3. Choose the allowed actions and whether AI can change site data. Select **Save and continue** before connecting an app.
-4. Choose a connection method and follow its instructions. Once the app can list PublishPress actions, select **I have connected my AI app**.
+4. Choose a connection method and follow its instructions. Verify the target site and perform a read-only lookup. If write actions are enabled, confirm their tools are available. Select **I have connected my AI app** after verification.
 
 The connection endpoint is:
 
@@ -27,15 +27,9 @@ https://yoursite.com/wp-json/mcp/publishpress
 
 The client authenticates with a WordPress username and an application password. Hub remembers the selected setup method for the current user on this site. **Connect another AI app** reopens the instructions without resetting allowed actions.
 
-### Claude Desktop
-
-Download the site's `.mcpb` extension and install it in Claude Desktop. It includes the connection details and remote bridge, uses Claude Desktop's Node.js runtime, and requires no manual JSON configuration. Creating the installer requires PHP ZIP support and an enabled HTTPS connection.
-
-Each download creates a new application password for the current WordPress account and includes it in the file. Delete the downloaded file after installation. To revoke its access, remove the corresponding **PublishPress - Claude Desktop** application password in the WordPress profile. Hub does not retain a plaintext copy of the password or installer.
-
 ### Ask my AI to help
 
-Create a WordPress application password, then copy the setup prompt into an AI agent. The prompt asks for a local setup script and the command to run it for the chosen app and operating system. Enter the password locally rather than in the chat.
+Create a WordPress application password, then copy the setup prompt into an AI agent. The recommended prompt asks for a local setup script and the command to run it for the chosen app and operating system. Setup verification checks the target site, available tools and a read-only lookup. It also checks whether expected write tools are available and directs users to Hub exposure settings when they are missing. Enter the password locally rather than in the chat.
 
 ### Manual configuration
 
@@ -45,7 +39,7 @@ Create a WordPress application password and use the supplied configuration in a 
 
 The **WordPress** tab provides read-only user searches, exact user lookup with effective primitive capabilities, content searches and post type discovery. Content results include actual IDs and permalinks. User results include IDs, usernames, display names and roles without email addresses or authentication data. User listing requires `list_users`, and detailed user inspection also requires permission to edit that user. Content searches use the post type's WordPress REST permissions.
 
-User searches can filter by an effective primitive capability. Filtering happens within each candidate page, so clients must visit every reported page even if a filtered page is empty. Custom content types must be REST-enabled. These lookups do not change users or content.
+User searches can filter by an effective primitive capability. Filtering happens within each candidate page, so clients must visit every reported page even if a filtered page is empty. Custom content types must be REST-enabled. These lookups do not change users or content. Selected write actions can create users and create or update posts, pages and supported custom content. Content defaults to a draft. User creation requires a username, email and editable role, generates a password privately and can request the standard WordPress password-setup email. Passwords are never returned. Native REST validation and permissions apply to each write, including publishing, author assignment and individual content access.
 
 Opening the PublishPress connection requires `manage_options` on the target site. Each action also checks the connected WordPress user's plugin and object permissions, including applicable application-password restrictions. These checks apply to administrators too.
 

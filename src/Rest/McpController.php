@@ -94,7 +94,7 @@ class McpController implements BootableInterface
             'writesEnabled' => ['type' => 'boolean', 'required' => true],
             'selectedActions' => $actionNames,
             'displayedActions' => $actionNames,
-            'client' => ['type' => 'string', 'enum' => ['desktop', 'assistant', 'manual']],
+            'client' => ['type' => 'string', 'enum' => ['assistant', 'manual']],
             'setupComplete' => ['type' => 'boolean'],
             'reviewActions' => ['type' => 'boolean', 'default' => false],
         ];

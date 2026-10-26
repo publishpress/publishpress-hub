@@ -96,8 +96,8 @@ const McpPageComponent = () => {
                         </> : <Button variant="secondary" href={nextStep.url} target="_self">{nextStep.action}</Button>}
                         <p><Button variant="secondary" disabled={busy} onClick={() => runStep(connection.refresh)}>{__('Check again', 'publishpress-hub')}</Button></p>
                     </McpPanel>}
-                    {stage === 'connect' && <McpClientSetup headingRef={stepHeading} state={state} selected={draft.client} busy={busy} config={config}
-                        onSelect={(client) => connection.setDraft({ client })} onNotice={connection.setNotice}
+                    {stage === 'connect' && <McpClientSetup headingRef={stepHeading} state={state} selected={draft.client} busy={busy}
+                        onSelect={(client) => connection.setDraft({ client })}
                         onFinish={() => runStep(() => connection.save({ setupComplete: true }))} />}
                     {stage === 'access' && <McpPanel className="mcp-access-step">
                         <h2 ref={stepHeading} tabIndex={-1}>{__('Choose actions for your AI', 'publishpress-hub')}</h2>

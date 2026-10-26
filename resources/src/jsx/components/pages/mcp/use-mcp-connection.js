@@ -14,7 +14,7 @@ import { readFilters, requestPath, savedDraft, savePayload } from './connection-
 
 export const useMcpConnection = () => {
     const [state, setState] = useState(null);
-    const [draft, setDraft] = useState({ enabled: false, writesEnabled: false, client: 'desktop' });
+    const [draft, setDraft] = useState({ enabled: false, writesEnabled: false, client: 'assistant' });
     const [edits, setEdits] = useState({});
     const [filters, setFilters] = useState(() => readFilters(new URL(window.location.href)));
     const [loading, setLoading] = useState(true);

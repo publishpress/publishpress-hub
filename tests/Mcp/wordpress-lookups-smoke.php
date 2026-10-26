@@ -21,7 +21,7 @@ if ($GLOBALS['wpdb']->prefix !== 'mcp_smoke_') {
 }
 require_once ABSPATH . 'wp-admin/includes/user.php';
 $service = new \PublishPress\Hub\Application\Service\Mcp\WordPressLookupService();
-$abilities = new \PublishPress\Hub\Application\Service\Mcp\WordPressAbilitiesService($service);
+$abilities = new \PublishPress\Hub\Application\Service\Mcp\WordPressAbilitiesService($service, new \PublishPress\Hub\Application\Service\Mcp\WordPressWriteService());
 $abilities->load();
 $users = [];
 $posts = [];
@@ -70,7 +70,7 @@ try {
         new \PublishPress\Hub\Infrastructure\WP\Options\WPOptionsAdapter()
     );
     $catalog = array_filter($connection->getActionCatalog(), static fn(array $action): bool => $action['plugin'] === 'wordpress');
-    $check(count($catalog) === 4 && reset($catalog)['pluginLabel'] === 'WordPress', 'All four lookups appear in the WordPress action tab');
+    $check(count($catalog) === 7 && reset($catalog)['pluginLabel'] === 'WordPress', 'Lookup and write actions appear in the WordPress action tab');
     add_filter('pre_option_publishpress_hub_mcp_disabled_abilities', static fn() => ['wordpress/list-users']);
     $check(!in_array('wordpress/list-users', $connection->getAbilityNames(), true), 'Action exposure can exclude a core lookup');
     $check(in_array('wordpress/find-content', $connection->getAbilityNames(), true), 'Read-only mode exposes selected core lookups');

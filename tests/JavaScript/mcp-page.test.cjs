@@ -52,14 +52,13 @@ const stateFile = path.join(root, 'components/pages/mcp/connection-state.js');
 const hookFile = path.join(root, 'components/pages/mcp/use-mcp-connection.js');
 const stateHelpers = moduleLoader()(stateFile);
 const fixture = (stage = 'manage', plugin = 'first') => ({
-    connectionEnabled: true, writesEnabled: false, selectedClient: 'desktop', setupComplete: stage === 'manage',
-    disabledActions: [], setupStage: stage, installerAvailable: true, diagnostics: { HTTPS: 'Available' },
+    connectionEnabled: true, writesEnabled: false, selectedClient: 'assistant', setupComplete: stage === 'manage',
+    disabledActions: [], setupStage: stage, diagnostics: { HTTPS: 'Available' },
     profileUrl: '/profile.php', pluginsUrl: '/plugins.php',
     actionView: { plugin, search: '', behavior: '', page: 1, pages: 2, total: 11,
         actions: [{ name: plugin + '/read', plugin, label: 'Read item', description: 'Read fixture', readonly: true, destructive: false }],
         groups: { first: { label: 'First', selected: 10, total: 10 }, second: { label: 'Second', selected: 1, total: 1 } } },
     clientSetups: {
-        desktop: { label: 'Claude Desktop', description: 'Install the extension.' },
         assistant: { label: 'Ask my AI to help', description: 'Get a script.', content: 'Fixture setup prompt', filename: 'prompt.txt' },
         manual: { label: 'Set up manually', description: 'Copy configuration.', content: '{"mcpServers":{}}', filename: 'config.json' },
     },
@@ -235,7 +234,7 @@ function renderPage(state, draftValues = {}) {
         '@wordpress/components': WP,
         '@wordpress/data': { useDispatch: () => ({ createSuccessNotice() {} }), useSelect: () => [] },
         'lodash/filter': (items, values) => items.filter((item) => Object.entries(values).every(([key, value]) => item[key] === value)),
-        [hookFile]: { useMcpConnection: () => ({ state, draft: { enabled: state?.connectionEnabled || false, writesEnabled: false, client: 'desktop', ...draftValues }, edits: {}, loading: !state, saving: false, dirty: false }) },
+        [hookFile]: { useMcpConnection: () => ({ state, draft: { enabled: state?.connectionEnabled || false, writesEnabled: false, client: 'assistant', ...draftValues }, edits: {}, loading: !state, saving: false, dirty: false }) },
         window: { ppHubMcpConfig: { logoUrl: '/logo.png', welcomeImageUrl: '/welcome.png' } },
     });
     return renderToStaticMarkup(h(load(path.join(root, 'components/pages/mcp-page.jsx')).McpPage));
@@ -249,11 +248,8 @@ test('React renders the shared layout and action review before client setup', ()
     assert.doesNotMatch(html, /How would you like to connect/);
 });
 
-test('React renders separate installer, prompt and manual guides', () => {
+test('React renders assisted and manual guides without an installer', () => {
     const state = fixture('connect');
-    const desktop = renderPage(state);
-    assert.match(desktop, /Download the installer for this site/);
-    assert.doesNotMatch(desktop, /Server configuration|Alternative: configure/);
     const assistant = renderPage(state, { client: 'assistant' });
     assert.match(assistant, /Fixture setup prompt/);
     assert.doesNotMatch(assistant, /Download installer/);

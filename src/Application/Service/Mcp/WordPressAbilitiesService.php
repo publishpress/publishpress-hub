@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Register Hub's read-only WordPress lookup abilities.
+ * Register Hub's WordPress lookup and write abilities.
  *
  * @author PublishPress
  * @copyright Copyright (c) 2026, PublishPress
@@ -25,12 +25,15 @@ class WordPressAbilitiesService implements BootableInterface
 
     private WordPressLookupService $lookups;
 
+    private WordPressWriteService $writes;
+
     /**
      * @since 1.2.0
      */
-    public function __construct(WordPressLookupService $lookups)
+    public function __construct(WordPressLookupService $lookups, WordPressWriteService $writes)
     {
         $this->lookups = $lookups;
+        $this->writes = $writes;
     }
 
     /**
@@ -65,7 +68,7 @@ class WordPressAbilitiesService implements BootableInterface
     }
 
     /**
-     * Register only explicitly described, bounded lookup operations.
+     * Register explicitly described, bounded WordPress operations.
      *
      * @since 1.2.0
      */
@@ -123,6 +126,71 @@ class WordPressAbilitiesService implements BootableInterface
                     'public' => false, 'show_in_rest' => false, 'mcp' => ['public' => false],
                     'publishpress' => ['plugin_name' => __('WordPress', 'publishpress-hub')],
                     'annotations' => ['readonly' => true, 'destructive' => false, 'idempotent' => true],
+                ],
+            ]);
+        }
+        $this->registerWrites();
+    }
+
+    /**
+     * Register focused writes under the same exposure controls as plugin actions.
+     *
+     * @since 1.2.0
+     */
+    private function registerWrites(): void
+    {
+        $text = ['type' => 'string', 'maxLength' => 1000];
+        $id = ['type' => 'integer', 'minimum' => 1];
+        $content = [
+            'post_type' => ['type' => 'string', 'minLength' => 1, 'maxLength' => 100],
+            'title' => $text, 'content' => ['type' => 'string', 'maxLength' => 200000],
+            'excerpt' => ['type' => 'string', 'maxLength' => 10000], 'slug' => $text,
+            'status' => ['type' => 'string', 'enum' => ['draft', 'pending', 'private', 'publish', 'future']],
+            'author' => $id, 'date' => ['type' => 'string', 'format' => 'date-time'],
+        ];
+        $definitions = [
+            'create-user' => [
+                __('Create WordPress user', 'publishpress-hub'),
+                __('Create a new user account with a known username, email and one editable role. Ask for missing details. WordPress validates role assignment permissions. A password is generated privately. By default WordPress emails the user a password setup link. Never guess an email or request a password in chat.', 'publishpress-hub'),
+                'createUser', [
+                    'username' => ['type' => 'string', 'minLength' => 1, 'maxLength' => 60],
+                    'email' => ['type' => 'string', 'format' => 'email'],
+                    'role' => ['type' => 'string', 'minLength' => 1, 'maxLength' => 100],
+                    'display_name' => $text, 'send_notification' => ['type' => 'boolean'],
+                ], ['username', 'email', 'role'], 'create_users',
+            ],
+            'create-content' => [
+                __('Create WordPress content', 'publishpress-hub'),
+                __('Create a post, page or REST-enabled custom post type. Use post_type=page for pages. Defaults to draft. Publish or schedule only when requested. WordPress checks creation, publishing and author-assignment permissions. Returns the actual ID and permalink.', 'publishpress-hub'),
+                'createContent', $content, ['title'], 'read',
+            ],
+            'update-content' => [
+                __('Update WordPress content', 'publishpress-hub'),
+                __('Edit an existing post, page or REST-enabled custom post by its verified ID. Find content first if the ID is unknown. Only supplied fields change. WordPress checks object, publishing and author-assignment permissions. No deletion, arbitrary metadata or options are supported.', 'publishpress-hub'),
+                'updateContent', ['id' => $id] + $content, ['id'], 'read',
+            ],
+        ];
+        foreach ($definitions as $name => [$label, $description, $method, $properties, $required, $capability]) {
+            wp_register_ability('wordpress/' . $name, [
+                'label' => $label, 'description' => $description, 'category' => 'publishpress',
+                'input_schema' => [
+                    'type' => 'object', 'properties' => $properties, 'required' => $required,
+                    'additionalProperties' => false,
+                ],
+                'output_schema' => ['type' => 'object', 'properties' => [
+                    'id' => $id, 'username' => $text, 'display_name' => $text,
+                    'roles' => ['type' => 'array', 'items' => $text],
+                    'notification_requested' => ['type' => 'boolean'],
+                    'title' => ['type' => 'object'], 'link' => $text, 'status' => $text, 'type' => $text, 'slug' => $text,
+                ], 'required' => ['id'], 'additionalProperties' => false],
+                'permission_callback' => static function () use ($capability): bool {
+                    return HubAccessService::canManageMcp() && current_user_can($capability);
+                },
+                'execute_callback' => [$this->writes, $method],
+                'meta' => [
+                    'public' => false, 'show_in_rest' => false, 'mcp' => ['public' => false],
+                    'publishpress' => ['plugin_name' => __('WordPress', 'publishpress-hub')],
+                    'annotations' => ['readonly' => false, 'destructive' => true, 'idempotent' => false],
                 ],
             ]);
         }

@@ -132,7 +132,17 @@ try {
     $check(count($state['actionView']['actions']) === 10, 'Structured action data is bounded to ten controls per page');
     $check(is_bool($state['writesEnabled']), 'Structured connection data contains write access');
     $check(!empty($state['diagnostics']), 'Connection diagnostics are available as structured data');
-    $check(array_keys($state['clientSetups']) === ['desktop', 'assistant', 'manual'], 'Client setup offers desktop, assisted and manual choices');
+    $check(array_keys($state['clientSetups']) === ['assistant', 'manual'], 'Client setup offers assisted and manual choices');
+    $check($state['selectedClient'] !== 'desktop' && strpos($state['clientSetups']['assistant']['content'], 'Do not test writes during setup') !== false,
+        'Assisted setup is selected and verifies without changing site data');
+    $previousClient = get_user_option('publishpress_hub_mcp_client');
+    update_user_option($actor->ID, 'publishpress_hub_mcp_client', 'desktop');
+    $check($setupService->getState()['selectedClient'] === 'assistant', 'Legacy Desktop preferences fall back to assisted setup');
+    if ($previousClient === false) {
+        delete_user_option($actor->ID, 'publishpress_hub_mcp_client');
+    } else {
+        update_user_option($actor->ID, 'publishpress_hub_mcp_client', $previousClient);
+    }
     $check(strpos($state['clientSetups']['assistant']['content'], rest_url('mcp/publishpress')) !== false,
         'Assisted setup prompt includes the current site endpoint');
     $check(strpos($state['clientSetups']['assistant']['content'], $clientIdentifier) !== false,

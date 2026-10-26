@@ -20,37 +20,28 @@ if ($zip->open($argv[1]) !== true) {
 }
 try {
     $prefix = 'publishpress-hub/';
-    $runtimePrefix = 'resources/dist/mcp/desktop-bridge/';
-    $runtime = [];
     foreach (range(0, $zip->numFiles - 1) as $index) {
         $name = $zip->getNameIndex($index);
         if (strpos($name, $prefix) !== 0 || strpos($name, '../') !== false) {
             throw new RuntimeException('Unexpected release archive path.');
         }
         $relative = substr($name, strlen($prefix));
+        if (strpos($relative, 'resources/dist/mcp/') === 0 && substr($relative, -1) !== '/') {
+            throw new RuntimeException('Obsolete Desktop extension assets must not ship in the plugin.');
+        }
         if (
             preg_match('#^(\.git|\.agents|\.codex|\.claude|\.cursor|bin|docs|tests|node_modules|resources/src)(/|$)#', $relative)
             || preg_match('#(^|/)([^/]+\.log|\.env(?:\.[^/]*)?|auth\.json|\.phpcs-plugin-review\.xml)$#', $relative)
         ) {
             throw new RuntimeException('Development or private file in release: ' . $relative);
         }
-        if (strpos($relative, $runtimePrefix) === 0 && substr($relative, -1) !== '/') {
-            $runtime[] = substr($relative, strlen($runtimePrefix));
-        }
-        if (strpos($relative, 'resources/dist/mcp/') === 0 && substr($relative, -4) === '.zip') {
-            throw new RuntimeException('A ZIP template must not ship in the plugin.');
-        }
     }
-    sort($runtime);
-    if ($runtime !== ['THIRD-PARTY-LICENSES.txt', 'server/bridge.mjs']) {
-        throw new RuntimeException('The desktop payload must contain only the compiled bridge and license notice.');
-    }
-    foreach (['publishpress-hub.php', 'src/Application/Service/Mcp/McpDesktopInstallerService.php'] as $required) {
+    foreach (['publishpress-hub.php', 'src/Application/Service/Mcp/WordPressWriteService.php'] as $required) {
         if ($zip->locateName($prefix . $required) === false) {
             throw new RuntimeException('Required release file is missing: ' . $required);
         }
     }
-    echo "Release package passed: two desktop assets; no build scripts, frontend sources, agent configuration or logs.\n";
+    echo "Release package passed: no build scripts, frontend sources, agent configuration or logs.\n";
 } finally {
     $zip->close();
 }
