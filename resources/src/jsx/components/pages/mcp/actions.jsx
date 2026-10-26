@@ -8,7 +8,7 @@
  */
 
 import { useEffect, useState } from '@wordpress/element';
-import { CheckboxControl, PanelBody, SearchControl, SelectControl, Spinner, TabPanel } from '@wordpress/components';
+import { CheckboxControl, SearchControl, SelectControl, Spinner, TabPanel } from '@wordpress/components';
 import { __, sprintf } from '@publishpress-hub/i18n';
 import Button from '../../buttons/button';
 import Badge from '../../badge/badge';
@@ -61,9 +61,7 @@ export const McpActions = ({ state, edits, busy, onAction, onNavigate }) => {
                                     onChange={(checked) => onAction(action.name, checked)}
                                     disabled={busy}
                                 /></td>
-                                <td>{action.label}<PanelBody className="mcp-action-details" title={__('Details', 'publishpress-hub')} initialOpen={false}>
-                                    <code>{action.name}</code><p>{action.description}</p>
-                                </PanelBody></td>
+                                <td>{action.label}</td>
                                 <td><Badge className="mcp-badge">{action.readonly ? __('Read only', 'publishpress-hub') : __('Changes site data', 'publishpress-hub')}</Badge>
                                     {!action.readonly && action.destructive && <p className="description">{__('Potentially destructive', 'publishpress-hub')}</p>}
                                 </td>

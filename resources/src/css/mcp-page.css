@@ -74,11 +74,7 @@
 .mcp-action-table th:first-child { width: 72px; }
 .mcp-action-table th:last-child { width: 180px; }
 .mcp-action-table td { padding: 14px 10px; vertical-align: top; }
-.mcp-action-table code { overflow-wrap: anywhere; }
 .mcp-action-table .components-checkbox-control { margin: 0; }
-.mcp-action-details.components-panel__body { border: 0; padding: 0; margin-top: 6px; }
-.mcp-action-details .components-panel__body-title { margin: 0; }
-.mcp-action-details .components-panel__body-toggle { padding: 8px 28px 8px 0; font-size: 13px; font-weight: 400; min-height: 28px; }
 .mcp-badge { background: #f0f0f1; border-radius: 4px; padding: 3px 8px; font-size: 12px; white-space: normal; }
 .mcp-pagination { display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap; margin-top: 16px; }
 .mcp-actions[aria-busy="true"] .mcp-action-table { opacity: .65; }
