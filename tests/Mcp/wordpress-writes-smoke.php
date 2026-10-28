@@ -48,6 +48,11 @@ try {
     }
     wp_set_current_user($users['administrator']);
     $input = ['username' => $token . 'new', 'email' => $token . '@example.org', 'role' => 'subscriber', 'send_notification' => false];
+    foreach (['false', 'true', '0', '1', 0, 1] as $notification) {
+        $invalid = array_merge($input, ['send_notification' => $notification]);
+        $check(is_wp_error($call('create-user', $invalid)), 'Notification preference requires a JSON boolean');
+        $check(!username_exists($input['username']), 'Malformed notification preferences never create an account');
+    }
     $created = $call('create-user', $input);
     $check(!is_wp_error($created), 'Create a user through the native REST controller');
     $users['created'] = $created['id'];
@@ -96,6 +101,11 @@ try {
     $check($created['status'] === 'draft' && !isset($created['content']), 'Content defaults to draft and returns minimal identity');
     $updated = $call('update-content', ['id' => $created['id'], 'title' => 'Changed title']);
     $check(!is_wp_error($updated) && get_post($created['id'])->post_content === 'Original body', 'Updates preserve fields that were not supplied');
+    $check(
+        is_wp_error($call('update-content', ['id' => (string) $created['id'], 'title' => 'Malformed ID']))
+            && get_post($created['id'])->post_title === 'Changed title',
+        'String IDs cannot silently update content'
+    );
     $check(is_wp_error($call('update-content', ['id' => $created['id']])), 'Empty updates are rejected');
     $check(is_wp_error($call('update-content', ['id' => $created['id'], 'meta' => ['unsafe' => 'value']])), 'Arbitrary metadata is excluded');
     $page = $call('create-content', ['title' => 'Page fixture', 'post_type' => 'page', 'status' => 'publish']);

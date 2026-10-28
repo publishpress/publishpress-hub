@@ -216,6 +216,32 @@ $terminate = new WP_REST_Request('DELETE', '/mcp/publishpress');
 $terminate->set_header('Mcp-Session-Id', $session);
 $terminate->set_header('MCP-Protocol-Version', '2025-11-25');
 rest_do_request($terminate);
+$expired = $call([
+    'jsonrpc' => '2.0', 'id' => 13, 'method' => 'tools/list', 'params' => (object) [],
+], $session);
+$check($expired->get_status() === 404, 'A terminated session requires client reinitialization');
+$reinitialized = $call([
+    'jsonrpc' => '2.0', 'id' => 14, 'method' => 'initialize',
+    'params' => [
+        'protocolVersion' => '2025-11-25', 'capabilities' => (object) [],
+        'clientInfo' => ['name' => 'publishpress-smoke', 'version' => '1.0.0'],
+    ],
+]);
+$replacement = $reinitialized->get_headers()['Mcp-Session-Id'] ?? null;
+$check(
+    $reinitialized->get_status() === 200 && is_string($replacement) && $replacement !== $session,
+    'The same authenticated account can initialize a fresh session without replacing credentials'
+);
+$refreshedList = $call([
+    'jsonrpc' => '2.0', 'id' => 15, 'method' => 'tools/list', 'params' => (object) [],
+], $replacement);
+$check(
+    $refreshedList->get_status() === 200
+        && strpos(wp_json_encode($refreshedList->get_data()), 'hub-fixture-list-items') !== false,
+    'Tool discovery works after client session recovery'
+);
+$terminate->set_header('Mcp-Session-Id', $replacement);
+rest_do_request($terminate);
 
 $setUser(['read' => true]);
 $check(is_wp_error($tool->execute([])), 'Adapter tool execution enforces plugin permissions');

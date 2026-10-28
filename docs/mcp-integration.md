@@ -35,6 +35,12 @@ Create a WordPress application password, then copy the setup prompt into an AI a
 
 Create a WordPress application password and use the supplied configuration in a compatible MCP client. Set the password locally in the client's configuration.
 
+### Connection recovery
+
+After updating a participating plugin, refresh the connection's tools in the AI app if it still shows an older action schema. The site supplies the current actions; the app controls its cached tool list. The supported MCP Adapter does not send tool-list change notifications.
+
+An expired MCP session requires the client to initialize a new session and discover tools again. This normally uses the existing credentials; it does not require creating another application password. If the app cannot recover automatically, reconnect its PublishPress connection or start a new chat. Hub cannot refresh another application's session through a tool on that expired session. Before retrying a write whose outcome is uncertain, read the affected data to avoid applying it twice.
+
 ## Actions and access
 
 The **WordPress** tab provides read-only user searches, exact user lookup with effective primitive capabilities, content searches and post type discovery. Content results include actual IDs and permalinks. User results include IDs, usernames, display names and roles without email addresses or authentication data. User listing requires `list_users`, and detailed user inspection also requires permission to edit that user. Content searches use the post type's WordPress REST permissions.

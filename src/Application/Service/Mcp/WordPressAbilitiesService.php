@@ -186,7 +186,21 @@ class WordPressAbilitiesService implements BootableInterface
                 'permission_callback' => static function () use ($capability): bool {
                     return HubAccessService::canManageMcp() && current_user_can($capability);
                 },
-                'execute_callback' => [$this->writes, $method],
+                'execute_callback' => function (array $input) use ($method, $properties) {
+                    foreach ($input as $field => $value) {
+                        $type = $properties[$field]['type'] ?? '';
+                        if (($type === 'boolean' && !is_bool($value))
+                            || ($type === 'integer' && !is_int($value))
+                            || ($type === 'string' && !is_string($value))) {
+                            return new \WP_Error(
+                                'mcp_input_type',
+                                __('Use the exact input types shown in discovery.', 'publishpress-hub'),
+                                ['status' => 400]
+                            );
+                        }
+                    }
+                    return $this->writes->$method($input);
+                },
                 'meta' => [
                     'public' => false, 'show_in_rest' => false, 'mcp' => ['public' => false],
                     'publishpress' => ['plugin_name' => __('WordPress', 'publishpress-hub')],
