@@ -33,6 +33,18 @@ Hub provides an optional connection through the separately installed WordPress M
 - Annotate read-only, destructive, and idempotent behavior truthfully. Avoid arbitrary PHP, SQL, option writes, or generic unrestricted method dispatch.
 - Keep Free/Pro bootstrap and minimum PHP compatibility in mind. Do not register duplicates when Pro loads shared Free code.
 
+## Shared implementation standard
+
+- Follow the plugin's native class structure, bootstrap, minimum PHP version and Free/Pro packaging. Keep Hub responsible for connection and exposure; keep plugin operations and tests in the plugin repository.
+- Audit every Free/Pro admin screen and relevant editor feature. Maintain a coverage map with discovery, reads, supported writes, permission checks, edition gates and intentional exclusions. Do not declare completeness from an action count alone.
+- Expose native screen labels, exact identifiers, field types, choices, defaults and edition requirements through registered action descriptions, schemas and discovery results. Include common user wording and distinguish similarly named settings and scopes.
+- Pair native reads with typed create/update/delete operations where supported. Preserve omitted fields and unrelated objects. Reject unknown identifiers, validate all targets before bulk writes, and use optimistic concurrency for existing content edits.
+- Reuse native services, sanitizers and object-specific capability checks. Enforce feature and edition gates at execution; an Administrator role or Hub exposure setting never bypasses a denied capability. Keep secrets outside tool inputs and outputs.
+- For multi-step writes, test failure between steps and avoid reporting an unchanged failure after partially saving. Provide write previews and bulk operations where the native workflow needs them; document unsupported previews and multi-object operations explicitly.
+- Verify translated action metadata and domain errors, native round trips, malformed inputs, stale content, unrelated-data preservation and capability-restricted Administrators. Cover Free/Pro boundaries and distinguish shared-contract fixtures from full Pro distribution tests.
+- Verify missing-API compatibility, duplicate registration, private discovery and execution with a released adapter. Keep shared transport tests in Hub and domain tests in each plugin.
+- Maintain request examples mapped to expected discovery, ambiguity handling, writes and read-back verification. Documentation describes current behavior and limitations, without development history or unreleased change logs.
+
 ## Verification
 
 Verify the released adapter version, not just trunk: [adapter source](https://github.com/WordPress/mcp-adapter), [transport permissions](https://github.com/WordPress/mcp-adapter/blob/trunk/docs/guides/transport-permissions.md), and [custom/default servers](https://github.com/WordPress/mcp-adapter/blob/trunk/docs/guides/default-server.md).

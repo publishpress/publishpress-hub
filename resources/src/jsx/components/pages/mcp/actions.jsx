@@ -69,6 +69,12 @@ export const McpActions = ({ state, edits, busy, onAction, onNavigate }) => {
                         </tbody>
                     </table>
                     <div className="mcp-pagination">
+                        <div className="mcp-page-size">
+                            <label htmlFor="mcp-actions-per-page">{__('Actions per page', 'publishpress-hub')}</label>
+                            <SelectControl id="mcp-actions-per-page" value={view.perPage || 10}
+                                disabled={busy} options={[10, 25, 50, 100].map((count) => ({ value: count, label: String(count) }))}
+                                onChange={(count) => onNavigate({ per_page: Number(count), action_page: 1 })} />
+                        </div>
                         <span>{sprintf(__('Page %1$d of %2$d - %3$d actions', 'publishpress-hub'), view.page, view.pages, view.total)}</span>
                         {view.page > 1 && <Button variant="secondary" disabled={busy} onClick={() => onNavigate({ action_page: view.page - 1 })}>{__('Previous', 'publishpress-hub')}</Button>}
                         {view.page < view.pages && <Button variant="secondary" disabled={busy} onClick={() => onNavigate({ action_page: view.page + 1 })}>{__('Next', 'publishpress-hub')}</Button>}

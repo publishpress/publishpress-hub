@@ -156,6 +156,11 @@ try {
         && $pluginState['actionView']['actions'][0]['plugin'] === 'z-fixture', 'Plugin filters isolate action data');
     $check(count($setupService->getState(['action_page' => 2])['actionView']['actions']) === 5,
         'Second page returns only remaining plugin actions');
+    $larger = $setupService->getState(['per_page' => 25, 'action_page' => 2])['actionView'];
+    $check(count($larger['actions']) === 15 && $larger['perPage'] === 25 && $larger['page'] === 1 && $larger['pages'] === 1,
+        'Larger action pages return all matching rows and clamp stale page numbers');
+    $check($setupService->getState(['per_page' => 999])['actionView']['perPage'] === 10,
+        'Unsupported page sizes fall back to the bounded default');
     $check(count($setupService->getState(['search' => 'Pagination action 12', 'behavior' => 'read'])['actionView']['actions']) === 1,
         'Search and behavior filters narrow returned actions');
     $connection->saveExposureSettings(true, true, $names);

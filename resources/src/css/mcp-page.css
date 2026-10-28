@@ -76,6 +76,10 @@
 .mcp-action-table td { padding: 14px 10px; vertical-align: top; }
 .mcp-action-table .components-checkbox-control { margin: 0; }
 .mcp-badge { background: #f0f0f1; border-radius: 4px; padding: 3px 8px; font-size: 12px; white-space: normal; }
+.mcp-page-size { display: flex; align-items: center; gap: 8px; margin-right: auto; }
+.mcp-page-size > label { margin: 0; white-space: nowrap; font-size: 13px; font-weight: 400; text-transform: none; }
+.mcp-page-size .components-base-control, .mcp-page-size .components-base-control__field { margin: 0; }
+.mcp-page-size select { min-width: 72px; }
 .mcp-pagination { display: flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: wrap; margin-top: 16px; }
 .mcp-actions[aria-busy="true"] .mcp-action-table { opacity: .65; }
 .mcp-diagnostics .components-panel__body { border: 0; }

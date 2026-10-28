@@ -63,3 +63,8 @@ On WordPress multisite, the connection and allowed actions are configured separa
 - [Transport permissions](https://github.com/WordPress/mcp-adapter/blob/trunk/docs/guides/transport-permissions.md)
 - [Custom servers](https://github.com/WordPress/mcp-adapter/blob/trunk/docs/guides/default-server.md)
 - [WordPress Abilities API](https://developer.wordpress.org/apis/abilities-api/)
+
+## WordPress user creation policy
+
+The WordPress create-user action refuses the administrator role and any role that grants administrator-level capabilities, including user, plugin/theme/file/core or network administration, unfiltered_html, unfiltered_upload and manage_capabilities-prefixed capabilities. A protected capability used as a role slug is restricted too. Roles with explicitly denied protected capabilities remain eligible, subject to native REST permissions. Use the WordPress Users screen for privileged account creation; core and wp-admin behavior are unchanged.
+

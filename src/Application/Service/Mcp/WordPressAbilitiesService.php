@@ -151,7 +151,7 @@ class WordPressAbilitiesService implements BootableInterface
         $definitions = [
             'create-user' => [
                 __('Create WordPress user', 'publishpress-hub'),
-                __('Create a new user account with a known username, email and one editable role. Ask for missing details. WordPress validates role assignment permissions. A password is generated privately. By default WordPress emails the user a password setup link. Never guess an email or request a password in chat.', 'publishpress-hub'),
+                __('Create a new user account with a known username, email and one editable role. Ask for missing details. WordPress validates role assignment permissions. MCP rejects administrator and any role granting administrator-level capabilities. A password is generated privately. By default WordPress emails the user a password setup link. Never guess an email or request a password in chat.', 'publishpress-hub'),
                 'createUser', [
                     'username' => ['type' => 'string', 'minLength' => 1, 'maxLength' => 60],
                     'email' => ['type' => 'string', 'format' => 'email'],

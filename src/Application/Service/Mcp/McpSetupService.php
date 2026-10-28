@@ -142,6 +142,8 @@ class McpSetupService
         $search = isset($filters['search']) && is_string($filters['search']) ? sanitize_text_field($filters['search']) : '';
         $behavior = isset($filters['behavior']) && is_string($filters['behavior']) ? sanitize_key($filters['behavior']) : '';
         $page = max(1, absint($filters['action_page'] ?? 1));
+        $perPage = isset($filters['per_page']) && is_scalar($filters['per_page']) ? (int) $filters['per_page'] : 10;
+        $perPage = in_array($perPage, [10, 25, 50, 100], true) ? $perPage : 10;
         $groups = [];
         $disabled = $this->mcpConnectionService->getDisabledActions();
         $catalog = $this->mcpConnectionService->getActionCatalog();
@@ -169,12 +171,12 @@ class McpSetupService
                 && ($behavior !== 'destructive' || (!$action['readonly'] && $action['destructive']));
         }));
         $total = count($actions);
-        $pages = max(1, (int) ceil($total / 10));
+        $pages = max(1, (int) ceil($total / $perPage));
         $page = min($page, $pages);
         return [
             'groups' => $groups, 'plugin' => $plugin, 'search' => $search, 'behavior' => $behavior,
-            'actions' => array_slice($actions, ($page - 1) * 10, 10), 'total' => $total,
-            'page' => $page, 'pages' => $pages,
+            'actions' => array_slice($actions, ($page - 1) * $perPage, $perPage), 'total' => $total,
+            'page' => $page, 'pages' => $pages, 'perPage' => $perPage,
         ];
     }
 

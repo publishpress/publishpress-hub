@@ -280,3 +280,23 @@ test('React escapes action metadata and configuration instead of interpreting HT
     assert.match(html, /&lt;script&gt;/);
     assert.doesNotMatch(html, /<script>/);
 });
+
+
+test('action page size survives navigation and saves without losing unsaved selections', async () => {
+    assert.equal(stateHelpers.readFilters(new URL('https://fixture.test/?per_page=50')).per_page, 50);
+    assert.equal(stateHelpers.readFilters(new URL('https://fixture.test/?per_page=999')).per_page, 10);
+    const ui = hookFixture();
+    await ui.start();
+    ui.current.setAction('first/read', false);
+    const navigation = ui.current.navigate({ per_page: 50, action_page: 1 });
+    assert.match(ui.requests[1].options.path, /per_page=50/);
+    ui.requests[1].resolve({ success: true, state: fixture() });
+    await navigation;
+    assert.equal(new URL(ui.window.location.href).searchParams.get('per_page'), '50');
+    assert.equal(ui.current.edits['first/read'], false);
+    const saving = ui.current.save();
+    assert.equal(ui.requests[2].options.data.per_page, 50);
+    ui.requests[2].resolve({ success: true, state: fixture(), message: 'Saved' });
+    await saving;
+    assert.match(renderPage(fixture()), /Actions per page/);
+});

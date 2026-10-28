@@ -14,6 +14,7 @@ export const readFilters = (url) => ({
     search: url.searchParams.get('search') || '',
     behavior: url.searchParams.get('behavior') || '',
     action_page: Math.max(1, parseInt(url.searchParams.get('action_page'), 10) || 1),
+    per_page: [10, 25, 50, 100].includes(Number(url.searchParams.get('per_page'))) ? Number(url.searchParams.get('per_page')) : 10,
 });
 
 export const requestPath = (filters) => `${connectionPath}?${new URLSearchParams(filters)}`;

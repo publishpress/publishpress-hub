@@ -79,6 +79,7 @@ class McpController implements BootableInterface
             'search' => ['type' => 'string', 'default' => '', 'sanitize_callback' => 'sanitize_text_field'],
             'behavior' => ['type' => 'string', 'default' => '', 'enum' => ['', 'read', 'write', 'destructive']],
             'action_page' => ['type' => 'integer', 'minimum' => 1, 'default' => 1],
+            'per_page' => ['type' => 'integer', 'enum' => [10, 25, 50, 100], 'default' => 10],
         ];
         $actionNames = [
             'type' => 'array',

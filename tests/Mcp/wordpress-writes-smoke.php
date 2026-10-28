@@ -27,6 +27,7 @@ $abilities = new \PublishPress\Hub\Application\Service\Mcp\WordPressAbilitiesSer
 $abilities->load();
 $users = [];
 $posts = [];
+$roles = [];
 $checks = 0;
 $check = static function (bool $result, string $message) use (&$checks): void {
     if (!$result) {
@@ -61,6 +62,28 @@ try {
     add_filter('editable_roles', $removeRole);
     $check(is_wp_error($call('create-user', array_merge($input, ['username' => $token . 'restricted', 'email' => $token . 'restricted@example.org', 'role' => 'administrator']))), 'Role assignment honors editable_roles restrictions');
     remove_filter('editable_roles', $removeRole);
+    $protected = ['manage_options', 'edit_users', 'promote_users', 'create_users', 'delete_users', 'remove_users',
+        'activate_plugins', 'install_plugins', 'update_plugins', 'delete_plugins', 'edit_plugins', 'resume_plugins',
+        'switch_themes', 'edit_themes', 'install_themes', 'update_themes', 'delete_themes', 'resume_themes', 'edit_files',
+        'update_core', 'unfiltered_html', 'unfiltered_upload', 'manage_capabilities_future', 'manage_network_options'];
+    $check(is_wp_error($call('create-user', array_merge($input, ['username' => $token . 'admin', 'role' => 'administrator']))), 'Administrator creation is rejected even for an authorized administrator');
+    $protected = array_merge($protected, ['add_users', 'promote_user', 'edit_user', 'delete_user', 'deactivate_plugins', 'activate_plugin', 'deactivate_plugin', 'resume_plugin', 'resume_theme', 'upload_plugins', 'upload_themes', 'install_languages', 'update_languages', 'edit_css', 'customize', 'delete_site', 'update_php', 'update_https', 'manage_privacy_options', 'export_others_personal_data', 'erase_others_personal_data']);
+    foreach ($protected as $index => $capability) {
+        $role = 'hub_privileged_' . $index;
+        add_role($role, 'Privileged fixture', ['read' => true, $capability => true]);
+        $roles[] = $role;
+        $request = array_merge($input, ['username' => $token . $index, 'email' => $token . $index . '@example.org', 'role' => $role]);
+        $rejected = $call('create-user', $request);
+        $check(is_wp_error($rejected) && $rejected->get_error_code() === 'mcp_privileged_role' && !username_exists($request['username']), 'Custom role cannot grant ' . $capability);
+    }
+    add_role('manage_capabilities_future', 'Privileged role name fixture', ['read' => true]);
+    $roles[] = 'manage_capabilities_future';
+    $check(is_wp_error($call('create-user', array_merge($input, ['username' => $token . 'implicit', 'role' => 'manage_capabilities_future']))), 'A protected role name cannot grant an implicit capability');
+    add_role('hub_safe_flags', 'Safe fixture', ['read' => true, 'manage_options' => false, 'unfiltered_html' => false]);
+    $roles[] = 'hub_safe_flags';
+    $safe = $call('create-user', array_merge($input, ['username' => $token . 'safe', 'email' => $token . 'safe@example.org', 'role' => 'hub_safe_flags']));
+    $check(!is_wp_error($safe), 'Explicitly denied protected capabilities do not make a role privileged');
+    $users['safe'] = $safe['id'];
     $actor = wp_get_current_user();
     $actor->allcaps['create_users'] = false;
     $check(is_wp_error($call('create-user', $input)), 'Administrator role does not bypass denied create_users');
@@ -111,5 +134,8 @@ try {
     }
     foreach ($users as $id) {
         wp_delete_user($id);
+    }
+    foreach ($roles as $role) {
+        remove_role($role);
     }
 }

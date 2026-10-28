@@ -60,6 +60,10 @@ try {
     $check(count($data['state']['actionView']['actions']) === 1, 'REST filters action data by plugin');
     $data = $call('GET', ['action_page' => 2])->get_data();
     $check(count($data['state']['actionView']['actions']) === 5, 'REST paginates action data');
+    $larger = $call('GET', ['per_page' => 25])->get_data();
+    $check(count($larger['state']['actionView']['actions']) === 15 && $larger['state']['actionView']['perPage'] === 25,
+        'REST accepts the selected action page size');
+    $check($call('GET', ['per_page' => 100000])->get_status() === 400, 'REST rejects unbounded action page sizes');
     $payload = ['enabled' => true, 'writesEnabled' => false, 'client' => 'manual'];
     $data = $call('POST', $payload)->get_data();
     $check($data['state']['selectedClient'] === 'manual' && !get_user_option('publishpress_hub_mcp_actions_reviewed'),

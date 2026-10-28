@@ -24,6 +24,9 @@ class WordPressWriteService
      */
     public function createUser(array $input)
     {
+        if (GrantPolicy::restrictedRole($input['role'])) {
+            return new \WP_Error('mcp_privileged_role', __('MCP tools cannot create users with administrator-level access. Use the WordPress Users screen for this change.', 'publishpress-hub'), ['status' => 403]);
+        }
         $controller = new \WP_REST_Users_Controller();
         $data = [
             'username' => $input['username'], 'email' => $input['email'],
