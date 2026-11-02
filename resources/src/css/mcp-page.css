@@ -62,7 +62,9 @@
 .mcp-copy-feedback { display: block; color: #50575e; font-weight: 600; margin-top: 8px; }
 .mcp-configuration textarea { font-family: monospace; background: #f6f7f7; border-color: #dcdcde; border-radius: 4px; padding: 14px; font-size: 13px; line-height: 1.6; }
 .mcp-action-controls { border: 0; margin: 0; padding: 0; min-width: 0; }
-.mcp-tabs .components-tab-panel__tabs { gap: 4px; border-bottom: 1px solid #dcdcde; }
+.mcp-tabs { min-width: 0; }
+.mcp-tabs .components-tab-panel__tabs { flex-wrap: wrap; gap: 4px; border-bottom: 1px solid #dcdcde; }
+.mcp-tabs .components-tab-panel__tabs-item { flex-shrink: 0; white-space: nowrap; }
 .mcp-tabs .components-tab-panel__tabs-item.is-active { background: #f7f4ff; color: #5844ad; border-top: 3px solid #6552c4; }
 .mcp-tab-count { font-size: 12px; padding: 2px 7px; background: #e2e4e7; border-radius: 10px; margin-left: 6px; }
 .mcp-filters { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
