@@ -54,12 +54,15 @@ class PackageSignatureVerifier
 
         $publicKey = base64_decode((string) $this->publicKeys[$keyId], true);
         $decodedSignature = base64_decode((string) $signature, true);
-        $contents = file_get_contents($file); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents, WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown -- Reads a local temporary ZIP.
+        $contents = file_get_contents($file);
 
-        if ($publicKey === false || strlen($publicKey) !== SODIUM_CRYPTO_SIGN_PUBLICKEYBYTES
+        if (
+            $publicKey === false || strlen($publicKey) !== SODIUM_CRYPTO_SIGN_PUBLICKEYBYTES
             || $decodedSignature === false || strlen($decodedSignature) !== SODIUM_CRYPTO_SIGN_BYTES
             || $contents === false
-            || !sodium_crypto_sign_verify_detached($decodedSignature, $contents, $publicKey)) {
+            || !sodium_crypto_sign_verify_detached($decodedSignature, $contents, $publicKey)
+        ) {
             throw new RuntimeException('The downloaded package signature is invalid.');
         }
     }

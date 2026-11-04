@@ -38,8 +38,7 @@ class WPPluginLifecycleAdapter
         array $allowedDownloadDomains,
         array $packageSignaturePublicKeys = [],
         array $signedPackageRepositories = []
-    )
-    {
+    ) {
         $this->fileSystemAdapter = $fileSystemAdapter;
         $this->allowedDownloadDomains = $allowedDownloadDomains;
         $this->packageSignatureVerifier = new PackageSignatureVerifier(
@@ -565,7 +564,7 @@ class WPPluginLifecycleAdapter
         }
 
         $response = wp_safe_remote_get($downloadUrl, [
-            'timeout' => 300,
+            'timeout' => 300, // phpcs:ignore WordPressVIPMinimum.Performance.RemoteRequestTimeout.timeout_timeout -- Plugin ZIP downloads can be large.
             'redirection' => 5,
             'stream' => true,
             'filename' => $tmpFile,
@@ -605,9 +604,11 @@ class WPPluginLifecycleAdapter
 
     private function getFinalResponseUrl(array $response, string $fallback): string
     {
-        if (!isset($response['http_response'])
+        if (
+            !isset($response['http_response'])
             || !is_object($response['http_response'])
-            || !method_exists($response['http_response'], 'get_response_object')) {
+            || !method_exists($response['http_response'], 'get_response_object')
+        ) {
             return $fallback;
         }
 
