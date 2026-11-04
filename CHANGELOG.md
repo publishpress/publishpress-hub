@@ -1,5 +1,9 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[Unreleased]
+
+- Security: Verify Package Server Ed25519 signatures before installing or upgrading enrolled Pro plugins, #307.
+
 [1.1.0] - 15 October, 2026
 
 - Added: Support for PublishPress Cart, PublishPress Taxonomies, and PublishPress Tag Groups (#269).
