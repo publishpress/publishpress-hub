@@ -130,6 +130,16 @@ return [
         'downloads.wordpress.org',
     ],
 
+    AbstractDependencies::PACKAGE_SIGNATURE_PUBLIC_KEYS =>
+        defined('PUBLISHPRESS_HUB_PACKAGE_SIGNATURE_PUBLIC_KEYS')
+            ? (array) constant('PUBLISHPRESS_HUB_PACKAGE_SIGNATURE_PUBLIC_KEYS')
+            : [],
+
+    AbstractDependencies::SIGNED_PACKAGE_REPOSITORIES =>
+        defined('PUBLISHPRESS_HUB_SIGNED_PACKAGE_REPOSITORIES')
+            ? (array) constant('PUBLISHPRESS_HUB_SIGNED_PACKAGE_REPOSITORIES')
+            : [],
+
     AbstractDependencies::SITE_URL => home_url(),
 
     AbstractDependencies::CACHE_GROUP => 'publishpress-hub',
@@ -468,7 +478,9 @@ return [
     AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER =>
         fn(ContainerInterface $container) => new WPPluginLifecycleAdapter(
             $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER),
-            $container->get(AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS)
+            $container->get(AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS),
+            $container->get(AbstractDependencies::PACKAGE_SIGNATURE_PUBLIC_KEYS),
+            $container->get(AbstractDependencies::SIGNED_PACKAGE_REPOSITORIES)
         ),
 
     AbstractDependencies::FILE_SYSTEM_ADAPTER =>
