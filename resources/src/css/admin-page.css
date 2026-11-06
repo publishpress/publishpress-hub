@@ -451,3 +451,8 @@
         position: static;
     }
 }
+
+/* Section headings are h2 for a correct outline; keep the previous h3 size. */
+.pp-hub-root h2.pp-hub-diagnostics-tab__section-title {
+    font-size: 18px;
+}

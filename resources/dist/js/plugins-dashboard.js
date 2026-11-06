@@ -482,10 +482,10 @@ const FilterButtonsBarComponent = ({
   }, /*#__PURE__*/React.createElement("div", {
     className: "publishpress-hub-filter-mobile"
   }, /*#__PURE__*/React.createElement("label", {
-    htmlFor: "tabs",
+    htmlFor: "pp-hub-plugin-filter",
     className: "publishpress-hub-filter-label-sr"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select an option', 'publishpress-hub')), /*#__PURE__*/React.createElement("select", {
-    id: "tabs",
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Filter plugins by status', 'publishpress-hub')), /*#__PURE__*/React.createElement("select", {
+    id: "pp-hub-plugin-filter",
     className: "publishpress-hub-filter-select",
     value: activeSelectedOption,
     onChange: handleSelectChange
@@ -1740,10 +1740,14 @@ const ModalInstallationTypeComponent = ({
   }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "link",
     href: freeDetailsUrl
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Free Details', 'publishpress-hub')), /*#__PURE__*/React.createElement("span", null, "|"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Free Details', 'publishpress-hub')), /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true"
+  }, "|"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "link",
     href: proDetailsUrl
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pro Details', 'publishpress-hub')), /*#__PURE__*/React.createElement("span", null, "|"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pro Details', 'publishpress-hub')), /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true"
+  }, "|"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "link",
     href: changelogUrl
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Changelogs', 'publishpress-hub'))), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
@@ -2324,7 +2328,9 @@ const ModalUpgradeComponent = ({
   }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "link",
     href: proDetailsUrl
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Discover all Pro features', 'publishpress-hub')), /*#__PURE__*/React.createElement("span", null, "|"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Discover all Pro features', 'publishpress-hub')), /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true"
+  }, "|"), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "link",
     href: changelogUrl
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Changelog', 'publishpress-hub'))), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
@@ -2444,7 +2450,7 @@ const PluginCard = ({
     alt: ""
   }), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugin-card__identity"
-  }, /*#__PURE__*/React.createElement("h3", null, displayName.replace(/^PublishPress\s+/, '')), /*#__PURE__*/React.createElement("p", null, pluginFamily.description)), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h2", null, displayName.replace(/^PublishPress\s+/, '')), /*#__PURE__*/React.createElement("p", null, pluginFamily.description)), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugin-card__controls"
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
@@ -2760,7 +2766,9 @@ const PluginItemComponent = ({
     }
     return /*#__PURE__*/React.createElement(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: buttonProps.key
-    }, buttonProps.variant === 'label' && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", null, "\u2022"), /*#__PURE__*/React.createElement("span", {
+    }, buttonProps.variant === 'label' && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", {
+      "aria-hidden": "true"
+    }, "\u2022"), /*#__PURE__*/React.createElement("span", {
       className: buttonProps.className
     }, buttonProps.text)), buttonProps.variant !== 'label' && /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_7__.Button, buttonProps));
   })))), /*#__PURE__*/React.createElement("div", {
