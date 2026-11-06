@@ -168,6 +168,11 @@
     background-color: var(--pp-hub-bg-tertiary);
 }
 
+.pp-hub-debug-log-tab__interval-select:focus-visible {
+    outline: 2px solid var(--pp-hub-border-focus);
+    outline-offset: -2px;
+}
+
 .pp-hub-debug-log-tab__auto-refresh-btn--active
 + .pp-hub-debug-log-tab__interval-select {
     background-color: #f0fdf4;

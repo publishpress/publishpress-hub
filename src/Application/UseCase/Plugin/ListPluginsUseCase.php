@@ -68,6 +68,17 @@ class ListPluginsUseCase implements UseCaseInterface
     {
         $families = $this->pluginStatusService->getAllPluginFamiliesWithUpdatedStatus();
 
+        if (!function_exists('get_plugin_updates')) {
+            require_once ABSPATH . 'wp-admin/includes/update.php';
+        }
+
+        // Clear update caches once per request, not once per plugin family.
+        if ($this->isForceCheck($request)) {
+            $this->clearUpdateCaches();
+        }
+
+        $updates = get_plugin_updates();
+
         $plugins = [];
 
         /** @var PluginFamilyInterface $family */
@@ -104,7 +115,7 @@ class ListPluginsUseCase implements UseCaseInterface
             $dto->setProPluginLicenseExpirationDate($expirationDate);
 
             // Check for plugin updates
-            $updateInfo = $this->getPluginUpdateInfo($family, $request);
+            $updateInfo = $this->getPluginUpdateInfo($family, $updates, $request);
             $dto->setHasUpdate($updateInfo['hasUpdate'])
                 ->setAvailableVersion($updateInfo['availableVersion']);
 
@@ -211,72 +222,110 @@ class ListPluginsUseCase implements UseCaseInterface
     }
 
     /**
+     * Whether the request asks to bypass cached update data.
+     *
+     * @param WP_REST_Request $request The REST request object.
+     * @return bool
+     * @since 1.1.0
+     */
+    private function isForceCheck(WP_REST_Request $request): bool
+    {
+        $forceCheck = $request->get_param('force-check');
+
+        return $forceCheck === '1' || $forceCheck === 1;
+    }
+
+    /**
+     * Clears WordPress and EDD update caches and triggers a fresh update check.
+     *
+     * @return void
+     * @since 1.1.0
+     */
+    private function clearUpdateCaches(): void
+    {
+        global $wpdb;
+
+        // Clear the main update transient
+        delete_site_transient('update_plugins');
+
+        // EDD plugins store update info under several transient keys. WordPress has no
+        // wildcard transient deletion API, so delete them with one query per table.
+        $transientPrefixes = [
+            '_transient_edd_sl_',
+            '_transient_edd_api_request_',
+            '_transient_timeout_edd_sl_',
+            '_transient_timeout_edd_api_request_',
+        ];
+        $siteTransientPrefixes = [
+            '_site_transient_edd_sl_',
+            '_site_transient_edd_api_request_',
+            '_site_transient_timeout_edd_sl_',
+            '_site_transient_timeout_edd_api_request_',
+        ];
+
+        if (is_multisite()) {
+            // Site transients live in sitemeta on multisite; regular transients stay in options.
+            $this->deleteRowsByPrefix($wpdb->options, 'option_name', $transientPrefixes);
+            $this->deleteRowsByPrefix($wpdb->sitemeta, 'meta_key', $siteTransientPrefixes);
+        } else {
+            $this->deleteRowsByPrefix(
+                $wpdb->options,
+                'option_name',
+                array_merge($transientPrefixes, $siteTransientPrefixes)
+            );
+        }
+
+        // Force immediate update check by using set_site_transient with a very short timeout
+        // This tricks WordPress into thinking the cache is expired
+        set_site_transient('update_plugins', (object) ['last_checked' => 0], 1);
+
+        // Call wp_update_plugins to trigger the update check
+        // Note: This is still asynchronous, but clearing EDD transients should help
+        if (function_exists('wp_update_plugins')) {
+            wp_update_plugins();
+        }
+    }
+
+    /**
+     * Deletes rows whose key starts with any of the given prefixes, in a single query.
+     *
+     * @param string $table Table name.
+     * @param string $column Key column name.
+     * @param string[] $prefixes Literal key prefixes.
+     * @return void
+     * @since 1.1.0
+     */
+    private function deleteRowsByPrefix(string $table, string $column, array $prefixes): void
+    {
+        global $wpdb;
+
+        $patterns = array_map(
+            static fn (string $prefix): string => $wpdb->esc_like($prefix) . '%',
+            $prefixes
+        );
+        $conditions = implode(' OR ', array_fill(0, count($patterns), '%i LIKE %s'));
+        $values = [$table];
+
+        foreach ($patterns as $pattern) {
+            $values[] = $column;
+            $values[] = $pattern;
+        }
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber -- Wildcard transient cleanup; placeholders are built to match $values.
+        $wpdb->query($wpdb->prepare("DELETE FROM %i WHERE {$conditions}", $values));
+    }
+
+    /**
      * Gets plugin update information.
      *
      * @param PluginFamilyInterface $family The plugin family.
+     * @param array<string, object> $updates Result of get_plugin_updates(), fetched once per request.
      * @param WP_REST_Request $request The REST request object.
      * @return array<string, mixed> Update information with hasUpdate and availableVersion.
      * @since 1.0.0
      */
-    private function getPluginUpdateInfo(PluginFamilyInterface $family, WP_REST_Request $request): array
+    private function getPluginUpdateInfo(PluginFamilyInterface $family, array $updates, WP_REST_Request $request): array
     {
-        if (!function_exists('get_plugin_updates')) {
-            require_once ABSPATH . 'wp-admin/includes/update.php';
-        }
-
-        // Force refresh update cache if requested
-        $forceCheck = $request->get_param('force-check');
-        if ($forceCheck === '1' || $forceCheck === 1) {
-            // Clear the main update transient
-            delete_site_transient('update_plugins');
-
-            // Clear any EDD-specific update transients
-            // EDD plugins store update info with various transient keys
-            global $wpdb;
-            $edd_patterns = [
-                '_site_transient_edd_sl_%',
-                '_site_transient_edd_api_request_%',
-                '_transient_edd_sl_%',
-                '_transient_edd_api_request_%',
-                '_site_transient_timeout_edd_sl_%',
-                '_site_transient_timeout_edd_api_request_%',
-                '_transient_timeout_edd_sl_%',
-                '_transient_timeout_edd_api_request_%',
-            ];
-
-            if (is_multisite()) {
-                foreach ($edd_patterns as $pattern) {
-                    $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- WordPress has no wildcard site-transient deletion API.
-                        $wpdb->prepare(
-                            "DELETE FROM {$wpdb->sitemeta} WHERE meta_key LIKE %s",
-                            $pattern
-                        )
-                    );
-                }
-            } else {
-                foreach ($edd_patterns as $pattern) {
-                    $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- WordPress has no wildcard transient deletion API.
-                        $wpdb->prepare(
-                            "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s",
-                            $pattern
-                        )
-                    );
-                }
-            }
-
-            // Force immediate update check by using set_site_transient with a very short timeout
-            // This tricks WordPress into thinking the cache is expired
-            set_site_transient('update_plugins', (object) ['last_checked' => 0], 1);
-
-            // Call wp_update_plugins to trigger the update check
-            // Note: This is still asynchronous, but clearing EDD transients should help
-            if (function_exists('wp_update_plugins')) {
-                wp_update_plugins();
-            }
-        }
-
-        $updates = get_plugin_updates();
-
         // Determine which plugin is installed (free or pro)
         $installedPlugin = $family->getInstalledPlugin();
 
@@ -341,13 +390,11 @@ class ListPluginsUseCase implements UseCaseInterface
 
         $licenseKey = $this->getLicenseKey($proPlugin);
 
-        $forceCheck = $request->get_param('force-check');
-
         try {
             $versionInfo = $this->licenseManagement->getLastVersionInfo(
                 $licenseKey,
                 $proPlugin->getDownloadId(),
-                $forceCheck === '1' || $forceCheck === 1
+                $this->isForceCheck($request)
             );
         } catch (\Throwable $throwable) {
             return self::UPDATE_INFO_EMPTY;
@@ -411,26 +458,18 @@ class ListPluginsUseCase implements UseCaseInterface
      */
     private function isLicenseExpired(ProPluginInterface $proPlugin): bool
     {
-        $downloadId = $proPlugin->getDownloadId();
-
-        // First check stored expiration status
-        $storedStatus = $this->licenseStatusStorage->getLicenseExpirationStatus($downloadId);
-
-        if ($storedStatus !== null && isset($storedStatus['isExpired'])) {
-            return (bool) $storedStatus['isExpired'];
-        }
-
-        // Fallback to calculating from expiration date
-        $expirationDate = $this->getLicenseExpirationDate($proPlugin);
-
-        // If no expiration date, it's likely a lifetime license - never expired
-        if (empty($expirationDate)) {
+        if ($this->getLicenseKey($proPlugin) === '') {
             return false;
         }
 
-        $daysUntilExpiration = $this->getDaysUntilExpiration($expirationDate);
+        // Dates advance locally; a previously cached boolean must not freeze expiration.
+        $expirationDate = $this->getLicenseExpirationDate($proPlugin);
+        if (!empty($expirationDate)) {
+            return $this->getDaysUntilExpiration($expirationDate) < 0;
+        }
 
-        return $daysUntilExpiration < 0;
+        $storedStatus = $this->licenseStatusStorage->getLicenseExpirationStatus($proPlugin->getDownloadId());
+        return (bool) ($storedStatus['isExpired'] ?? false);
     }
 
     /**

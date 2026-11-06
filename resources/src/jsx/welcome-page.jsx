@@ -8,7 +8,8 @@
  * @since 1.0.0
  */
 
-import { createRoot } from 'react-dom/client';
+// Use the React DOM that WordPress already loads instead of bundling a second copy.
+import { createRoot } from '@wordpress/element';
 
 import { WelcomePage } from './components/pages/welcome-page';
 import { getCurrentTheme, setTheme } from './utils/themeController';
