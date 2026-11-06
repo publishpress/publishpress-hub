@@ -34,19 +34,12 @@ export const getSelectedFilter = (state) => {
     return state.selectedFilter;
 }
 
-export const getPlugins = (state) => {
-    return state.plugins;
-}
+export const getPlugins = createMemoizedSelector((state) => {
+    return sortPlugins(state.plugins);
+});
 
 const sortPlugins = (pluginFamily) => {
     return [...pluginFamily].sort((a, b) => {
-        if (a.proPlugin.isLicensed && !b.proPlugin.isLicensed) {
-            return -1;
-        }
-        if (!a.proPlugin.isLicensed && b.proPlugin.isLicensed) {
-            return 1;
-        }
-
         return a.name.localeCompare(b.name, undefined, {
             sensitivity: 'base',
         });
@@ -154,6 +147,7 @@ export const getFilterCounts = createMemoizedSelector((state) => {
     const filterResults = {
         all: [],
         unlicensed: [],
+        expired: [],
         active: [],
         inactive: [],
         notInstalled: [],
@@ -163,6 +157,9 @@ export const getFilterCounts = createMemoizedSelector((state) => {
     // Single pass through plugins to calculate all filters
     plugins.forEach((plugin) => {
         filterResults.all.push(plugin);
+        if (plugin.proPlugin.isInstalled && plugin.proPlugin.isExpired) {
+            filterResults.expired.push(plugin);
+        }
 
         if (!plugin.hasAnyVersionInstalled) {
             filterResults.notInstalled.push(plugin);
@@ -186,6 +183,7 @@ export const getFilterCounts = createMemoizedSelector((state) => {
     return {
         all: filterResults.all.length,
         unlicensed: filterResults.unlicensed.length,
+        expired: filterResults.expired.length,
         active: filterResults.active.length,
         inactive: filterResults.inactive.length,
         notInstalled: filterResults.notInstalled.length,
@@ -197,6 +195,8 @@ const filterPlugin = (plugin, selectedFilter) => {
     switch (selectedFilter) {
         case 'notInstalled':
             return !plugin.hasAnyVersionInstalled;
+        case 'expired':
+            return plugin.proPlugin.isInstalled && plugin.proPlugin.isExpired;
         case 'unlicensed':
             return plugin.proPlugin.isInstalled && !plugin.proPlugin.isLicensed;
         case 'active':
