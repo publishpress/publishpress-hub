@@ -239,15 +239,15 @@
 }
 
 .pp-hub-button.is-link.is-renew-link {
-    color: var(--pp-hub-secondary-color);
+    color: var(--pp-hub-primary-color);
 }
 
 .pp-hub-button.is-link.is-renew-link:hover {
-    color: var(--pp-hub-secondary-color-darker);
+    color: var(--pp-hub-primary-color-darker);
 }
 
 .pp-hub-button.is-link.is-renew-link:focus {
-    color: var(--pp-hub-secondary-color-darker);
+    color: var(--pp-hub-primary-color-darker);
 }
 
 .components-button.has-icon.has-text {

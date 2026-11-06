@@ -61,6 +61,9 @@
 .pp-hub-welcome-page__feature-description { font-size: 13px; line-height: 1.6; color: #646970; margin: 0; }
 .pp-hub-welcome-page__feature-description a,
 .pp-hub-welcome-page__dismiss a { color: #5842b0; }
+/* Links inside sentences need a non-color cue (WCAG 1.4.1); base.css removes underlines. */
+.pp-hub-root .pp-hub-welcome-page__feature-description a,
+.pp-hub-root .pp-hub-welcome-page__dismiss a { text-decoration: underline; }
 .pp-hub-welcome-page__dismiss { text-align: center; color: #646970; font-size: 12px; margin: 24px 0 0; }
 @media (max-width: 900px) {
     .pp-hub-welcome-page__hero { grid-template-columns: minmax(0, 1fr); }
