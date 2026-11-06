@@ -439,11 +439,11 @@
     --pp-hub-text-inverse: #ffffff;
     --pp-hub-text-disabled: #767b82;
     --pp-hub-text-link: var(--pp-hub-primary-color);
-    --pp-hub-text-link-hover: var(--pp-hub-primary-color-lighter);
-    --pp-hub-text-error: var(--pp-hub-error-color);
-    --pp-hub-text-success: var(--pp-hub-success-color);
+    --pp-hub-text-link-hover: var(--pp-hub-primary-color-darker);
+    --pp-hub-text-error: #a00a0a;
+    --pp-hub-text-success: #1e5e24;
     --pp-hub-text-warning: var(--pp-hub-warning-color);
-    --pp-hub-text-info: var(--pp-hub-info-color);
+    --pp-hub-text-info: #04557a;
 
     /* Border Colors */
     --pp-hub-border-primary: #e7e7e7;
@@ -453,9 +453,9 @@
 
     /* Button Colors */
     --pp-hub-button-bg-primary: var(--pp-hub-primary-color);
-    --pp-hub-button-bg-primary-hover: var(--pp-hub-primary-color-lighter);
+    --pp-hub-button-bg-primary-hover: var(--pp-hub-primary-color-darker);
     --pp-hub-button-bg-primary-active: var(--pp-hub-primary-color-darker);
-    --pp-hub-button-bg-primary-focus: var(--pp-hub-primary-color-lighter);
+    --pp-hub-button-bg-primary-focus: var(--pp-hub-primary-color-darker);
     --pp-hub-button-bg-primary-disabled: var(--pp-hub-primary-color-disabled);
 
     --pp-hub-button-bg-secondary: var(--pp-hub-bg-primary);
@@ -525,7 +525,7 @@
     /* Not Installed - Neutral muted gray */
     --pp-hub-badge-bg-not-installed: #e5e7eb;
     --pp-hub-badge-bg-not-installed-hover: #d1d5db;
-    --pp-hub-badge-text-not-installed: #6b7280;
+    --pp-hub-badge-text-not-installed: #4b5563;
 
     /* Free - Brand-related soft violet */
     --pp-hub-badge-bg-free: #e9e7f8;
@@ -545,7 +545,7 @@
     /* Installing - Soft sky blue (processing) */
     --pp-hub-badge-bg-installing: #e0f2fe;
     --pp-hub-badge-bg-installing-hover: #bae6fd;
-    --pp-hub-badge-text-installing: #0369a1;
+    --pp-hub-badge-text-installing: #075985;
 
     /* Uninstalling - Soft rose (transitional warning) */
     --pp-hub-badge-bg-uninstalling: #ffe4e6;
@@ -555,17 +555,17 @@
     /* Conflicting Installations - Light red (error state) */
     --pp-hub-badge-bg-conflicting-installations: #fecaca;
     --pp-hub-badge-bg-conflicting-installations-hover: #fca5a5;
-    --pp-hub-badge-text-conflicting-installations: #991b1b;
+    --pp-hub-badge-text-conflicting-installations: #7f1d1d;
 
     /* Expired - Soft red with border (problem state) */
     --pp-hub-badge-bg-expired: #fee2e2;
     --pp-hub-badge-bg-expired-hover: #fecaca;
-    --pp-hub-badge-text-expired: #dc2626;
+    --pp-hub-badge-text-expired: #991b1b;
     --pp-hub-badge-border-expired: rgba(220, 38, 38, 0.35);
 
     /* Toggle Colors */
-    --pp-hub-toggle-bg-checked: #00d084;
-    --pp-hub-toggle-bg-unchecked: #cccccc;
+    --pp-hub-toggle-bg-checked: #008a5e;
+    --pp-hub-toggle-bg-unchecked: #757575;
     --pp-hub-toggle-thumb-checked: #ffffff;
     --pp-hub-toggle-thumb-unchecked: #ffffff;
 }
@@ -2370,14 +2370,14 @@ button.publishpress-hub-filter-button:hover {
 
 
 .pp-hub-badge.update-available {
-    background-color: rgba(147, 51, 234, 0.85);
+    background-color: #9333ea;
     color: #ffffff;
     cursor: help;
     font-weight: 700;
 }
 
 .pp-hub-plugins-list-item:hover .pp-hub-badge.update-available {
-    background-color: rgba(147, 51, 234, 0.95);
+    background-color: #7e22ce;
 }
 
 .pp-hub-badge-icon .dashicons {
