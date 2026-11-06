@@ -358,7 +358,11 @@ const ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forwa
     target: targetValue,
     rel: relValue,
     className: buttonClassName,
-    disabled: disabled || isLoading,
+    disabled: disabled || isLoading
+    // Keep a loading button focusable so keyboard focus is not dropped to <body>
+    // while the action runs or when a modal returns focus to it (WCAG 2.4.3).
+    ,
+    accessibleWhenDisabled: isLoading || undefined,
     "aria-busy": isLoading || undefined,
     title: title,
     style: style
@@ -563,11 +567,13 @@ const SettingsPageComponent = () => {
     variant: "secondary",
     onClick: handleCopyReport,
     isBusy: isLoadingReport,
-    disabled: isLoadingReport
+    disabled: isLoadingReport,
+    accessibleWhenDisabled: true
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Copy Site Health Report', 'publishpress-hub')), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
     variant: "secondary",
     onClick: handleDownloadReport,
-    disabled: isLoadingReport
+    disabled: isLoadingReport,
+    accessibleWhenDisabled: true
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Download Site Health Report', 'publishpress-hub')))));
 };
 const SettingsPage = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(SettingsPageComponent);
@@ -863,7 +869,8 @@ const DebugLogTabComponent = () => {
     variant: "secondary",
     onClick: fetchLog,
     isBusy: isLoading,
-    disabled: isLoading
+    disabled: isLoading,
+    accessibleWhenDisabled: true
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Refresh', 'publishpress-hub')), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
     variant: "secondary",
     onClick: handleCopyToClipboard,
@@ -873,7 +880,8 @@ const DebugLogTabComponent = () => {
     isDestructive: true,
     onClick: handleClearLog,
     isBusy: isClearing,
-    disabled: isEmpty || isLoading || isClearing
+    disabled: isEmpty || isLoading || isClearing,
+    accessibleWhenDisabled: true
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Clear Log', 'publishpress-hub')))), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-debug-log-tab__viewer"
   }, isLoading && /*#__PURE__*/React.createElement("p", {

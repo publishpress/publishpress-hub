@@ -358,7 +358,11 @@ const ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forwa
     target: targetValue,
     rel: relValue,
     className: buttonClassName,
-    disabled: disabled || isLoading,
+    disabled: disabled || isLoading
+    // Keep a loading button focusable so keyboard focus is not dropped to <body>
+    // while the action runs or when a modal returns focus to it (WCAG 2.4.3).
+    ,
+    accessibleWhenDisabled: isLoading || undefined,
     "aria-busy": isLoading || undefined,
     title: title,
     style: style

@@ -209,6 +209,7 @@ const SettingsPageComponent = () => {
                         onClick={handleCopyReport}
                         isBusy={isLoadingReport}
                         disabled={isLoadingReport}
+                        accessibleWhenDisabled
                     >
                         {__('Copy Site Health Report', 'publishpress-hub')}
                     </Button>
@@ -217,6 +218,7 @@ const SettingsPageComponent = () => {
                         variant="secondary"
                         onClick={handleDownloadReport}
                         disabled={isLoadingReport}
+                        accessibleWhenDisabled
                     >
                         {__('Download Site Health Report', 'publishpress-hub')}
                     </Button>

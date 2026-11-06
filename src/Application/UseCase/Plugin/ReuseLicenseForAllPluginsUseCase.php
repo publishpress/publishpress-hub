@@ -16,6 +16,7 @@ namespace PublishPress\Hub\Application\UseCase\Plugin;
 
 defined('ABSPATH') || exit;
 
+use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
@@ -32,20 +33,25 @@ class ReuseLicenseForAllPluginsUseCase implements UseCaseInterface
 
     private LicensePersistenceInterface $licensePersistence;
 
+    private LicenseManagementService $licenseManagement;
+
     /**
      * @param PluginStatusService $pluginStatusService
      * @param PluginFamilyRepositoryInterface $pluginFamilyRepository
      * @param LicensePersistenceInterface $licensePersistence
+     * @param LicenseManagementService $licenseManagement
      * @since 1.0.0
      */
     public function __construct(
         PluginStatusService $pluginStatusService,
         PluginFamilyRepositoryInterface $pluginFamilyRepository,
-        LicensePersistenceInterface $licensePersistence
+        LicensePersistenceInterface $licensePersistence,
+        LicenseManagementService $licenseManagement
     ) {
         $this->pluginStatusService = $pluginStatusService;
         $this->pluginFamilyRepository = $pluginFamilyRepository;
         $this->licensePersistence = $licensePersistence;
+        $this->licenseManagement = $licenseManagement;
     }
 
     /**
@@ -79,40 +85,16 @@ class ReuseLicenseForAllPluginsUseCase implements UseCaseInterface
             ]);
         }
 
-        $updatedCount = $this->reuseLicenseKeyForAllPlugins($licenseKey, $currentDownloadId);
+        $licenseResults = $this->licenseManagement->activateLicenseForFamilies(
+            $licenseKey,
+            $this->pluginFamilyRepository->getAllFamilies(),
+            $currentDownloadId
+        );
 
         return [
             'reused' => true,
-            'updatedCount' => $updatedCount,
+            'updatedCount' => count(array_filter($licenseResults, static fn(array $result): bool => $result['success'])),
+            'licenseResults' => $licenseResults,
         ];
-    }
-
-    /**
-     * Reuses a license key for all plugin families.
-     *
-     * @param string $licenseKey The license key.
-     * @param int $currentDownloadId The current plugin download ID.
-     * @return int Number of plugin families updated.
-     * @since 1.0.0
-     */
-    private function reuseLicenseKeyForAllPlugins(string $licenseKey, int $currentDownloadId): int
-    {
-        $updatedCount = 0;
-
-        foreach ($this->pluginFamilyRepository->getAllFamilies() as $family) {
-            $downloadId = $family->getProPlugin()->getDownloadId();
-
-            if ($downloadId === $currentDownloadId || $this->licensePersistence->isLicenseFromConstant($downloadId)) {
-                continue;
-            }
-
-            $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
-            $this->licensePersistence->storeLicenseStatus($downloadId, true);
-            $this->licensePersistence->markLicenseAsFromConstant($downloadId, false);
-
-            $updatedCount++;
-        }
-
-        return $updatedCount;
     }
 }

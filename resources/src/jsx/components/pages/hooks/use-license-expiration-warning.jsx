@@ -73,20 +73,15 @@ export const useLicenseExpirationWarning = (plugins, daysUntilExpiration = DAYS_
     }, []);
 
     useEffect(() => {
-        if (!plugins || plugins.length === 0) {
-            return;
-        }
-
         const expiringPlugins = [];
         const expiredPlugins = [];
 
-        plugins.forEach((plugin) => {
+        (plugins || []).forEach((plugin) => {
             // Check for expired licenses using the isExpired flag from license services
             // This takes priority over expiring licenses
             if (
                 plugin.proPlugin.isInstalled &&
-                plugin.proPlugin.isExpired &&
-                plugin.proPlugin.detailsUrl
+                plugin.proPlugin.isExpired
             ) {
                 expiredPlugins.push({
                     name: plugin.proPlugin.name,
@@ -98,6 +93,7 @@ export const useLicenseExpirationWarning = (plugins, daysUntilExpiration = DAYS_
             // Use daysUntilExpiration from the plugin data (calculated by backend)
             // Only check if not already expired
             else if (
+                plugin.proPlugin.isInstalled &&
                 plugin.proPlugin.isLicensed &&
                 !plugin.proPlugin.isExpired &&
                 plugin.proPlugin.daysUntilExpiration !== undefined &&

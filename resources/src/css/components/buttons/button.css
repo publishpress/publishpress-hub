@@ -30,10 +30,10 @@
     box-shadow: none;
 }
 
-.components-button.is-primary:hover:not(:disabled),
-.components-button.is-secondary:hover:not(:disabled),
-.components-button.is-tertiary:hover:not(:disabled),
-.components-button.is-link:hover:not(:disabled) {
+.components-button.is-primary:hover:not(:disabled, [aria-disabled="true"]),
+.components-button.is-secondary:hover:not(:disabled, [aria-disabled="true"]),
+.components-button.is-tertiary:hover:not(:disabled, [aria-disabled="true"]),
+.components-button.is-link:hover:not(:disabled, [aria-disabled="true"]) {
     background: unset;
     color: unset;
     border-color: unset;
@@ -54,7 +54,7 @@
     position: static;
 }
 
-.pp-hub-button:disabled {
+.pp-hub-button:is(:disabled, [aria-disabled="true"]) {
     cursor: not-allowed;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .pp-hub-button:hover,
-.components-button.is-secondary:hover:not(:disabled),
+.components-button.is-secondary:hover:not(:disabled, [aria-disabled="true"]),
 .pp-hub-button.is-secondary:hover {
     background-color: var(--pp-hub-button-bg-secondary-hover);
     color: var(--pp-hub-button-text-secondary-hover);
@@ -85,8 +85,8 @@
     border-color: var(--pp-hub-button-border-secondary);
 }
 
-.pp-hub-button:disabled,
-.pp-hub-button.is-secondary:disabled {
+.pp-hub-button:is(:disabled, [aria-disabled="true"]),
+.pp-hub-button.is-secondary:is(:disabled, [aria-disabled="true"]) {
     background-color: var(--pp-hub-button-bg-secondary-disabled);
     color: var(--pp-hub-button-text-disabled);
 }
@@ -98,7 +98,7 @@
     border-color: var(--pp-hub-button-border-primary);
 }
 
-.components-button.is-primary:hover:not(:disabled),
+.components-button.is-primary:hover:not(:disabled, [aria-disabled="true"]),
 .pp-hub-button.is-primary:hover {
     background-color: var(--pp-hub-button-bg-primary-hover);
     border-color: var(--pp-hub-button-border-primary);
@@ -118,7 +118,7 @@
     outline: 1px solid var(--pp-hub-button-border-primary);
 }
 
-.pp-hub-button.is-primary:disabled {
+.pp-hub-button.is-primary:is(:disabled, [aria-disabled="true"]) {
     background-color: var(--pp-hub-button-bg-primary-disabled);
     border-color: var(--pp-hub-button-border-primary);
     color: var(--pp-hub-button-text-disabled);
@@ -151,7 +151,7 @@
     outline: 1px solid var(--pp-hub-button-border-highlight);
 }
 
-.pp-hub-button.is-highlight:disabled {
+.pp-hub-button.is-highlight:is(:disabled, [aria-disabled="true"]) {
     background-color: var(--pp-hub-button-bg-highlight-disabled);
     border-color: var(--pp-hub-button-border-highlight);
     color: var(--pp-hub-button-text-disabled);
@@ -179,7 +179,7 @@
     border-color: var(--pp-hub-button-border-tertiary);
 }
 
-.pp-hub-button.is-tertiary:disabled {
+.pp-hub-button.is-tertiary:is(:disabled, [aria-disabled="true"]) {
     color: var(--pp-hub-button-text-disabled);
 }
 
@@ -205,7 +205,7 @@
     border-color: var(--pp-hub-button-border-danger);
 }
 
-.pp-hub-button.is-danger:disabled {
+.pp-hub-button.is-danger:is(:disabled, [aria-disabled="true"]) {
     background-color: var(--pp-hub-button-bg-danger-disabled);
     border-color: var(--pp-hub-button-border-danger);
     color: var(--pp-hub-button-text-disabled);
@@ -233,21 +233,21 @@
     color: var(--pp-hub-text-link-hover);
 }
 
-.pp-hub-button.is-link:disabled {
+.pp-hub-button.is-link:is(:disabled, [aria-disabled="true"]) {
     background-color: unset;
     color: var(--pp-hub-button-text-disabled);
 }
 
 .pp-hub-button.is-link.is-renew-link {
-    color: var(--pp-hub-secondary-color);
+    color: var(--pp-hub-primary-color);
 }
 
 .pp-hub-button.is-link.is-renew-link:hover {
-    color: var(--pp-hub-secondary-color-darker);
+    color: var(--pp-hub-primary-color-darker);
 }
 
 .pp-hub-button.is-link.is-renew-link:focus {
-    color: var(--pp-hub-secondary-color-darker);
+    color: var(--pp-hub-primary-color-darker);
 }
 
 .components-button.has-icon.has-text {
@@ -262,4 +262,14 @@
 
 .pp-hub-button.is-link-left svg {
     margin-right: 8px;
+}
+
+/*
+ * Keyboard focus indicator (WCAG 2.4.7). The variant rules above replace the
+ * WordPress focus ring with a 1px or currentColor outline, which disappears on
+ * filled buttons such as the selected filter. Use one consistent ring instead.
+ */
+.pp-hub-root .components-button.pp-hub-button:focus-visible {
+    outline: 2px solid var(--pp-hub-border-focus);
+    outline-offset: 2px;
 }
