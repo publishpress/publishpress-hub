@@ -21,6 +21,10 @@ use WP_Error;
 
 class WPRemoteAdapter implements RemoteServiceInterface
 {
+    private const CACHE_GROUP = 'publishpress-hub-remote';
+
+    private const CACHE_TTL = 300;
+
     /**
      * Request a remote URL.
      *
@@ -32,7 +36,50 @@ class WPRemoteAdapter implements RemoteServiceInterface
      */
     public function request(string $url, array $args = [])
     {
-        return wp_remote_request($url, $args);
+        if (!$this->canCacheRequest($args)) {
+            return wp_remote_request($url, $args);
+        }
+
+        $cacheKey = 'request_' . md5($url . serialize($args));
+        $found = false;
+        $cachedResponse = wp_cache_get($cacheKey, self::CACHE_GROUP, false, $found);
+
+        if ($found) {
+            return $cachedResponse;
+        }
+
+        $response = wp_remote_request($url, $args);
+
+        if (!is_wp_error($response)) {
+            // phpcs:ignore WordPressVIPMinimum.Performance.LowExpiryCacheTime.CacheTimeUndetermined
+            wp_cache_set($cacheKey, $response, self::CACHE_GROUP, self::CACHE_TTL);
+        }
+
+        return $response;
+    }
+
+    /**
+     * Determine whether a request is safe to cache.
+     *
+     * @param array<string, mixed> $args Request arguments.
+     * @return bool
+     */
+    private function canCacheRequest(array $args): bool
+    {
+        $method = strtoupper((string) ($args['method'] ?? 'GET'));
+        $headers = $args['headers'] ?? [];
+
+        if ($method !== 'GET' || !empty($args['body']) || !is_array($headers)) {
+            return false;
+        }
+
+        foreach (array_keys($headers) as $header) {
+            if (in_array(strtolower((string) $header), ['authorization', 'cookie'], true)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
