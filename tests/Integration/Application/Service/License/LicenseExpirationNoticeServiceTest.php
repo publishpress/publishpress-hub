@@ -20,16 +20,20 @@ use PublishPress\Hub\Application\Service\License\LicenseStatusStorageService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Domain\Plugin\Entity\PluginFamily;
 use PublishPress\Hub\Domain\Plugin\Entity\ProPlugin;
+use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 
 class LicenseExpirationNoticeServiceTest extends WPTestCase
 {
     private LicenseExpirationNoticeService $service;
     private LicenseStatusStorageService $licenseStatusStorage;
     private PluginStatusService $pluginStatusService;
+    private LicensePersistenceInterface $licensePersistence;
 
     protected function setUp(): void
     {
         parent::setUp();
+        $this->licensePersistence = $this->createMock(LicensePersistenceInterface::class);
+        $this->licensePersistence->method('getLicenseKey')->willReturn('saved-key');
 
         $this->licenseStatusStorage = $this->createMock(LicenseStatusStorageService::class);
         $this->licenseStatusStorage->method('getAllExpiredLicenses')->willReturn([]);
@@ -39,7 +43,8 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
 
         $this->service = new LicenseExpirationNoticeService(
             $this->licenseStatusStorage,
-            $this->pluginStatusService
+            $this->pluginStatusService,
+            $this->licensePersistence
         );
     }
 
@@ -58,7 +63,8 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
 
         $service = new LicenseExpirationNoticeService(
             $licenseStatusStorage,
-            $this->pluginStatusService
+            $this->pluginStatusService,
+            $this->licensePersistence
         );
 
         $result = $service->getExpiredLicensesForNotice();
@@ -81,6 +87,7 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
         ]);
 
         $proPlugin = $this->createMock(ProPlugin::class);
+        $proPlugin->method('isInstalled')->willReturn(true);
         $proPlugin->method('getDownloadId')->willReturn($downloadId);
         $proPlugin->method('getName')->willReturn($pluginName);
 
@@ -92,7 +99,8 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
 
         $service = new LicenseExpirationNoticeService(
             $licenseStatusStorage,
-            $pluginStatusService
+            $pluginStatusService,
+            $this->licensePersistence
         );
 
         $result = $service->getExpiredLicensesForNotice();
@@ -140,6 +148,7 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
         ]);
 
         $proPlugin = $this->createMock(ProPlugin::class);
+        $proPlugin->method('isInstalled')->willReturn(true);
         $proPlugin->method('getDownloadId')->willReturn($downloadId);
         $proPlugin->method('getName')->willReturn($pluginName);
 
@@ -151,7 +160,8 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
 
         $service = new LicenseExpirationNoticeService(
             $this->licenseStatusStorage,
-            $this->pluginStatusService
+            $this->pluginStatusService,
+            $this->licensePersistence
         );
 
         ob_start();
@@ -187,10 +197,12 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
         ]);
 
         $proPlugin1 = $this->createMock(ProPlugin::class);
+        $proPlugin1->method('isInstalled')->willReturn(true);
         $proPlugin1->method('getDownloadId')->willReturn($downloadId1);
         $proPlugin1->method('getName')->willReturn($pluginName1);
 
         $proPlugin2 = $this->createMock(ProPlugin::class);
+        $proPlugin2->method('isInstalled')->willReturn(true);
         $proPlugin2->method('getDownloadId')->willReturn($downloadId2);
         $proPlugin2->method('getName')->willReturn($pluginName2);
 
@@ -206,7 +218,8 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
 
         $service = new LicenseExpirationNoticeService(
             $this->licenseStatusStorage,
-            $this->pluginStatusService
+            $this->pluginStatusService,
+            $this->licensePersistence
         );
 
         ob_start();
@@ -240,6 +253,7 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
         ]);
 
         $proPlugin = $this->createMock(ProPlugin::class);
+        $proPlugin->method('isInstalled')->willReturn(true);
         $proPlugin->method('getDownloadId')->willReturn($downloadId);
         $proPlugin->method('getName')->willReturn($pluginName);
 
@@ -251,7 +265,8 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
 
         $service = new LicenseExpirationNoticeService(
             $this->licenseStatusStorage,
-            $this->pluginStatusService
+            $this->pluginStatusService,
+            $this->licensePersistence
         );
 
         // Generate hash the same way the service does: downloadId:expirationDate
@@ -298,6 +313,7 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
         ]);
 
         $proPlugin = $this->createMock(ProPlugin::class);
+        $proPlugin->method('isInstalled')->willReturn(true);
         $proPlugin->method('getDownloadId')->willReturn($downloadId);
         $proPlugin->method('getName')->willReturn($pluginName);
 
@@ -309,7 +325,8 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
 
         $service = new LicenseExpirationNoticeService(
             $this->licenseStatusStorage,
-            $this->pluginStatusService
+            $this->pluginStatusService,
+            $this->licensePersistence
         );
 
         // Set dismissed state with expired timestamp (more than 1 month ago)
@@ -359,10 +376,12 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
         ]);
 
         $proPlugin1 = $this->createMock(ProPlugin::class);
+        $proPlugin1->method('isInstalled')->willReturn(true);
         $proPlugin1->method('getDownloadId')->willReturn($downloadId1);
         $proPlugin1->method('getName')->willReturn($pluginName1);
 
         $proPlugin2 = $this->createMock(ProPlugin::class);
+        $proPlugin2->method('isInstalled')->willReturn(true);
         $proPlugin2->method('getDownloadId')->willReturn($downloadId2);
         $proPlugin2->method('getName')->willReturn($pluginName2);
 
@@ -378,7 +397,8 @@ class LicenseExpirationNoticeServiceTest extends WPTestCase
 
         $service = new LicenseExpirationNoticeService(
             $this->licenseStatusStorage,
-            $this->pluginStatusService
+            $this->pluginStatusService,
+            $this->licensePersistence
         );
 
         ob_start();

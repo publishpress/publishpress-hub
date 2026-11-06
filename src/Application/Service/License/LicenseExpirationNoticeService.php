@@ -19,6 +19,7 @@ defined('ABSPATH') || exit;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
+use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 
 class LicenseExpirationNoticeService
 {
@@ -49,18 +50,22 @@ class LicenseExpirationNoticeService
 
     private LicenseStatusStorageService $licenseStatusStorage;
     private PluginStatusService $pluginStatusService;
+    private LicensePersistenceInterface $licensePersistence;
 
     /**
      * @param LicenseStatusStorageService $licenseStatusStorage
      * @param PluginStatusService $pluginStatusService
+     * @param LicensePersistenceInterface $licensePersistence
      * @since 1.0.0
      */
     public function __construct(
         LicenseStatusStorageService $licenseStatusStorage,
-        PluginStatusService $pluginStatusService
+        PluginStatusService $pluginStatusService,
+        LicensePersistenceInterface $licensePersistence
     ) {
         $this->licenseStatusStorage = $licenseStatusStorage;
         $this->pluginStatusService = $pluginStatusService;
+        $this->licensePersistence = $licensePersistence;
     }
 
     /**
@@ -149,10 +154,6 @@ class LicenseExpirationNoticeService
     {
         $expiredStatuses = $this->licenseStatusStorage->getAllExpiredLicenses();
 
-        if (empty($expiredStatuses)) {
-            return [];
-        }
-
         // Get all plugin families to map download IDs to plugin names
         $families = $this->pluginStatusService->getAllPluginFamiliesWithUpdatedStatus();
 
@@ -162,11 +163,24 @@ class LicenseExpirationNoticeService
             $proPlugin = $family->getProPlugin();
             $downloadId = $proPlugin->getDownloadId();
 
-            if (isset($expiredStatuses[$downloadId])) {
+            // Installation and key presence are local checks, independent of scheduled validation.
+            if (!$proPlugin->isInstalled() || empty($this->licensePersistence->getLicenseKey($downloadId))) {
+                continue;
+            }
+            $expirationDate = $this->licensePersistence->getLicenseExpirationDate($downloadId);
+            $isExpired = isset($expiredStatuses[$downloadId]);
+            if (!empty($expirationDate)) {
+                $timezone = function_exists('wp_timezone') ? wp_timezone() : new \DateTimeZone(date_default_timezone_get());
+                $today = (new \DateTimeImmutable('now', $timezone))->setTime(0, 0);
+                $expiresAt = \DateTimeImmutable::createFromFormat('!Y-m-d', $expirationDate, $timezone);
+                $isExpired = $expiresAt !== false && $expiresAt < $today;
+            }
+
+            if ($isExpired) {
                 $expiredLicenses[] = [
                     'name' => $proPlugin->getName(),
                     'downloadId' => (string) $downloadId,
-                    'expirationDate' => $expiredStatuses[$downloadId]['expirationDate'] ?? '',
+                    'expirationDate' => $expirationDate ?? ($expiredStatuses[$downloadId]['expirationDate'] ?? ''),
                 ];
             }
         }

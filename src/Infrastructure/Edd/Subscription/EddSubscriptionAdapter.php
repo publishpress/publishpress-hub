@@ -119,7 +119,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         $operation = 'is_license_valid';
 
         $this->licenseStatusValidator->assertLicenseStatusOrThrow(
-            $data['license'],
+            ($data['error'] ?? '') === 'expired' ? 'expired' : $data['license'],
             [
                 self::LICENSE_STATUS_VALID,
                 self::LICENSE_STATUS_INACTIVE,
@@ -176,7 +176,7 @@ class EddSubscriptionAdapter implements LicenseAdapterInterface
         $data = $this->licenseActivationService->activateLicense($licenseKey, $downloadId, $force);
 
         $this->licenseStatusValidator->assertLicenseStatusOrThrow(
-            $data['license'],
+            ($data['error'] ?? '') === 'expired' ? 'expired' : $data['license'],
             [self::LICENSE_STATUS_VALID],
             'activate_license'
         );
