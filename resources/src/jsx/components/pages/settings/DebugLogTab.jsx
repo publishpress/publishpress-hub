@@ -303,6 +303,7 @@ const DebugLogTabComponent = () => {
                         onClick={ fetchLog }
                         isBusy={ isLoading }
                         disabled={ isLoading }
+                        accessibleWhenDisabled
                     >
                         { __('Refresh', 'publishpress-hub') }
                     </Button>
@@ -321,6 +322,7 @@ const DebugLogTabComponent = () => {
                         onClick={ handleClearLog }
                         isBusy={ isClearing }
                         disabled={ isEmpty || isLoading || isClearing }
+                        accessibleWhenDisabled
                     >
                         { __('Clear Log', 'publishpress-hub') }
                     </Button>

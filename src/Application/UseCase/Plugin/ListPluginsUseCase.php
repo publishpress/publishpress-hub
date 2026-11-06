@@ -411,26 +411,18 @@ class ListPluginsUseCase implements UseCaseInterface
      */
     private function isLicenseExpired(ProPluginInterface $proPlugin): bool
     {
-        $downloadId = $proPlugin->getDownloadId();
-
-        // First check stored expiration status
-        $storedStatus = $this->licenseStatusStorage->getLicenseExpirationStatus($downloadId);
-
-        if ($storedStatus !== null && isset($storedStatus['isExpired'])) {
-            return (bool) $storedStatus['isExpired'];
-        }
-
-        // Fallback to calculating from expiration date
-        $expirationDate = $this->getLicenseExpirationDate($proPlugin);
-
-        // If no expiration date, it's likely a lifetime license - never expired
-        if (empty($expirationDate)) {
+        if ($this->getLicenseKey($proPlugin) === '') {
             return false;
         }
 
-        $daysUntilExpiration = $this->getDaysUntilExpiration($expirationDate);
+        // Dates advance locally; a previously cached boolean must not freeze expiration.
+        $expirationDate = $this->getLicenseExpirationDate($proPlugin);
+        if (!empty($expirationDate)) {
+            return $this->getDaysUntilExpiration($expirationDate) < 0;
+        }
 
-        return $daysUntilExpiration < 0;
+        $storedStatus = $this->licenseStatusStorage->getLicenseExpirationStatus($proPlugin->getDownloadId());
+        return (bool) ($storedStatus['isExpired'] ?? false);
     }
 
     /**

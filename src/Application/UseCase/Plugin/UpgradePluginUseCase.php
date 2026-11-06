@@ -101,7 +101,7 @@ class UpgradePluginUseCase implements UseCaseInterface
         $licenseKey = $this->extractLicenseKey($request, (int) $proPlugin->getDownloadId());
 
         $this->licenseManagement->validateAndEnsureActiveLicense($licenseKey, (int) $proPlugin->getDownloadId());
-        $this->reuseLicenseKeyForAllPlugins(
+        $licenseResults = $this->reuseLicenseKeyForAllPlugins(
             $licenseKey,
             (int) $proPlugin->getDownloadId(),
             (bool) $request->get_param('applyToAll')
@@ -113,6 +113,7 @@ class UpgradePluginUseCase implements UseCaseInterface
         return [
             'slug' => esc_html($proPlugin->getSlug()),
             'installed' => $proPlugin->isInstalled(),
+            'licenseResults' => $licenseResults,
         ];
     }
 
@@ -226,24 +227,19 @@ class UpgradePluginUseCase implements UseCaseInterface
      * @param string $licenseKey The license key.
      * @param int $currentDownloadId The current plugin download ID.
      * @param bool $applyToAll Whether to reuse the key for every family.
+     * @return array<array{slug: string, success: bool}>
      * @since 1.0.0
      */
-    private function reuseLicenseKeyForAllPlugins(string $licenseKey, int $currentDownloadId, bool $applyToAll): void
+    private function reuseLicenseKeyForAllPlugins(string $licenseKey, int $currentDownloadId, bool $applyToAll): array
     {
         if (!$applyToAll) {
-            return;
+            return [];
         }
 
-        foreach ($this->pluginFamilyRepository->getAllFamilies() as $family) {
-            $downloadId = $family->getProPlugin()->getDownloadId();
-
-            if ($downloadId === $currentDownloadId || $this->licensePersistence->isLicenseFromConstant($downloadId)) {
-                continue;
-            }
-
-            $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
-            $this->licensePersistence->storeLicenseStatus($downloadId, true);
-            $this->licensePersistence->markLicenseAsFromConstant($downloadId, false);
-        }
+        return $this->licenseManagement->activateLicenseForFamilies(
+            $licenseKey,
+            $this->pluginFamilyRepository->getAllFamilies(),
+            $currentDownloadId
+        );
     }
 }
