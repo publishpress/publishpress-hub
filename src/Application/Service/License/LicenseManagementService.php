@@ -338,6 +338,7 @@ class LicenseManagementService implements LicenseManagementServiceInterface
                 }
             }
         } catch (\Exception $e) {
+            do_action('publishpress_hub_license_expiration_sync_failed', $e);
         }
     }
 
