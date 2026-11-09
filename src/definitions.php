@@ -21,6 +21,12 @@ use PublishPress\Hub\Application\Service\AdminNoticeVisibilityService;
 use PublishPress\Hub\Application\Service\EddPluginUpdateService;
 use PublishPress\Hub\Application\Service\HubBootstrapService;
 use PublishPress\Hub\Application\Service\LanguagePack\LanguagePackSyncService;
+use PublishPress\Hub\Application\Service\Mcp\McpAdapterInstallationService;
+use PublishPress\Hub\Application\Service\Mcp\McpConnectionService;
+use PublishPress\Hub\Application\Service\Mcp\WordPressAbilitiesService;
+use PublishPress\Hub\Application\Service\Mcp\WordPressLookupService;
+use PublishPress\Hub\Application\Service\Mcp\WordPressWriteService;
+use PublishPress\Hub\Application\Service\Mcp\McpSetupService;
 use PublishPress\Hub\Application\Service\RewriteRulesService;
 use PublishPress\Hub\Application\Service\Statistics\StatisticsService;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
@@ -76,9 +82,11 @@ use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginStatusAdapter;
 use PublishPress\Hub\Infrastructure\WP\Remote\WPRemoteAdapter;
 use PublishPress\Hub\Infrastructure\WP\RestApi\WPRestApiAdapter;
 use PublishPress\Hub\Admin\Page\ComponentsShowcaseController;
+use PublishPress\Hub\Admin\Page\McpPageController;
 use PublishPress\Hub\Admin\Page\PluginsDashboardController;
 use PublishPress\Hub\Admin\Page\SettingsPageController;
 use PublishPress\Hub\Admin\Page\WelcomePageController;
+use PublishPress\Hub\Rest\McpController;
 use PublishPress\Hub\Rest\SettingsController;
 use PublishPress\Hub\Infrastructure\Container\AbstractDependencies;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
@@ -130,6 +138,16 @@ return [
         'wordpress.org',
         'downloads.wordpress.org',
     ],
+
+    AbstractDependencies::PACKAGE_SIGNATURE_PUBLIC_KEYS =>
+        defined('PUBLISHPRESS_HUB_PACKAGE_SIGNATURE_PUBLIC_KEYS')
+            ? (array) constant('PUBLISHPRESS_HUB_PACKAGE_SIGNATURE_PUBLIC_KEYS')
+            : [],
+
+    AbstractDependencies::SIGNED_PACKAGE_REPOSITORIES =>
+        defined('PUBLISHPRESS_HUB_SIGNED_PACKAGE_REPOSITORIES')
+            ? (array) constant('PUBLISHPRESS_HUB_SIGNED_PACKAGE_REPOSITORIES')
+            : [],
 
     AbstractDependencies::SITE_URL => home_url(),
 
@@ -249,7 +267,8 @@ return [
     AbstractDependencies::LICENSE_EXPIRATION_NOTICE_SERVICE =>
         fn(ContainerInterface $container) => new LicenseExpirationNoticeService(
             $container->get(AbstractDependencies::LICENSE_STATUS_STORAGE_SERVICE),
-            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE)
+            $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
         ),
 
     AbstractDependencies::LICENSE_VALIDATION_BOOTSTRAP_SERVICE =>
@@ -411,6 +430,27 @@ return [
         fn(ContainerInterface $container) => new WPOrgPluginApiAdapter(),
 
     // Application Services
+    AbstractDependencies::MCP_ADAPTER_INSTALLATION_SERVICE =>
+        fn(ContainerInterface $container) => new McpAdapterInstallationService(
+            $container->get(AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER),
+            $container->get(AbstractDependencies::FREE_PLUGIN_API)
+        ),
+
+    AbstractDependencies::WORDPRESS_LOOKUP_SERVICE => fn() => new WordPressLookupService(),
+
+    AbstractDependencies::WORDPRESS_WRITE_SERVICE => fn() => new WordPressWriteService(),
+
+    AbstractDependencies::WORDPRESS_ABILITIES_SERVICE =>
+        fn(ContainerInterface $container) => new WordPressAbilitiesService(
+            $container->get(AbstractDependencies::WORDPRESS_LOOKUP_SERVICE),
+            $container->get(AbstractDependencies::WORDPRESS_WRITE_SERVICE)
+        ),
+
+    AbstractDependencies::MCP_CONNECTION_SERVICE =>
+        fn(ContainerInterface $container) => new McpConnectionService(
+            $container->get(AbstractDependencies::OPTIONS_ADAPTER)
+        ),
+
     AbstractDependencies::HUB_BOOTSTRAP_SERVICE =>
         function (ContainerInterface $container) {
             $servicesToInit = [
@@ -425,10 +465,14 @@ return [
             }
 
             $servicesToInit[] = $container->get(AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER);
+            $servicesToInit[] = $container->get(AbstractDependencies::MCP_CONNECTION_SERVICE);
+            $servicesToInit[] = $container->get(AbstractDependencies::WORDPRESS_ABILITIES_SERVICE);
+            $servicesToInit[] = $container->get(AbstractDependencies::MCP_PAGE_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::SETTINGS_PAGE_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_PLUGINS_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::REST_API_SETTINGS_CONTROLLER);
+            $servicesToInit[] = $container->get(AbstractDependencies::REST_API_MCP_CONTROLLER);
             $servicesToInit[] = $container->get(AbstractDependencies::LICENSE_VALIDATION_BOOTSTRAP_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::ACTIVATION_REDIRECT_SERVICE);
             $servicesToInit[] = $container->get(AbstractDependencies::REWRITE_RULES_SERVICE);
@@ -469,7 +513,9 @@ return [
     AbstractDependencies::PLUGIN_LIFECYCLE_ADAPTER =>
         fn(ContainerInterface $container) => new WPPluginLifecycleAdapter(
             $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER),
-            $container->get(AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS)
+            $container->get(AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS),
+            $container->get(AbstractDependencies::PACKAGE_SIGNATURE_PUBLIC_KEYS),
+            $container->get(AbstractDependencies::SIGNED_PACKAGE_REPOSITORIES)
         ),
 
     AbstractDependencies::FILE_SYSTEM_ADAPTER =>
@@ -558,7 +604,8 @@ return [
         fn(ContainerInterface $container) => new ReuseLicenseForAllPluginsUseCase(
             $container->get(AbstractDependencies::PLUGIN_STATUS_SERVICE),
             $container->get(AbstractDependencies::PLUGIN_FAMILY_REPOSITORY),
-            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE)
+            $container->get(AbstractDependencies::LICENSE_PERSISTENCE_SERVICE),
+            $container->get(AbstractDependencies::LICENSE_MANAGEMENT_SERVICE)
         ),
 
     AbstractDependencies::VALIDATE_LICENSES_USE_CASE =>
@@ -606,6 +653,26 @@ return [
 
     AbstractDependencies::PLUGINS_DASHBOARD_CONTROLLER =>
         fn(ContainerInterface $container) => new PluginsDashboardController(
+            $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
+            $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
+            $container->get(AbstractDependencies::ASSET_SERVICE)
+        ),
+
+    AbstractDependencies::MCP_SETUP_SERVICE =>
+        fn(ContainerInterface $container) => new McpSetupService(
+            $container->get(AbstractDependencies::MCP_CONNECTION_SERVICE)
+        ),
+
+    AbstractDependencies::REST_API_MCP_CONTROLLER =>
+        fn(ContainerInterface $container) => new McpController(
+            $container->get(AbstractDependencies::HUB_REST_API_NAMESPACE),
+            $container->get(AbstractDependencies::REST_API_SERVICE),
+            $container->get(AbstractDependencies::MCP_SETUP_SERVICE),
+            $container->get(AbstractDependencies::MCP_ADAPTER_INSTALLATION_SERVICE)
+        ),
+
+    AbstractDependencies::MCP_PAGE_CONTROLLER =>
+        fn(ContainerInterface $container) => new McpPageController(
             $container->get(AbstractDependencies::ADMIN_VIEW_SERVICE),
             $container->get(AbstractDependencies::ADMIN_MENU_SERVICE),
             $container->get(AbstractDependencies::ASSET_SERVICE)

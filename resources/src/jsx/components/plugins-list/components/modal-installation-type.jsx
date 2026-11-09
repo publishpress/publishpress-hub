@@ -35,9 +35,9 @@ const ModalInstallationTypeComponent = ({
             </p>
             <div className='pp-hub-modal-inline-links'>
                 <Button variant='link' href={freeDetailsUrl}>{__('Free Details', 'publishpress-hub')}</Button>
-                <span>|</span>
+                <span aria-hidden="true">|</span>
                 <Button variant='link' href={proDetailsUrl}>{__('Pro Details', 'publishpress-hub')}</Button>
-                <span>|</span>
+                <span aria-hidden="true">|</span>
                 <Button variant='link' href={changelogUrl}>{__('Changelogs', 'publishpress-hub')}</Button>
             </div>
             <Button variant='secondary' icon='unlock' onClick={() => onProClick()}>

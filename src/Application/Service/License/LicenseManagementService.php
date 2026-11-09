@@ -65,6 +65,37 @@ class LicenseManagementService implements LicenseManagementServiceInterface
     }
 
     /**
+     * Activate a shared key separately for each editable plugin family.
+     *
+     * @param array<\PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface> $families
+     * @return array<array{slug: string, success: bool}>
+     * @since 1.1.0
+     */
+    public function activateLicenseForFamilies(string $licenseKey, array $families, int $currentDownloadId): array
+    {
+        $results = [];
+        foreach ($families as $family) {
+            $plugin = $family->getProPlugin();
+            $downloadId = $plugin->getDownloadId();
+            if ($downloadId === $currentDownloadId || $this->licensePersistence->isLicenseFromConstant($downloadId)) {
+                continue;
+            }
+
+            try {
+                $success = $this->activateAndStoreLicense($licenseKey, $downloadId);
+                if ($success) {
+                    $this->licensePersistence->markLicenseAsFromConstant($downloadId, false);
+                }
+            } catch (\Throwable $exception) {
+                $success = false;
+            }
+            $results[] = ['slug' => $plugin->getSlug(), 'success' => $success];
+        }
+
+        return $results;
+    }
+
+    /**
      * Deactivate license via API and remove it from local storage.
      *
      * @param string $licenseKey The license key to deactivate
@@ -259,7 +290,7 @@ class LicenseManagementService implements LicenseManagementServiceInterface
             || !$this->licensePersistence->getLicenseStatus($downloadId)
         ) {
             throw new LicenseActivationException([
-                'download_id' => $downloadId,
+                'download_id' => absint($downloadId),
                 'error_message' => esc_html__(
                     'The license server accepted your key, but this site could not save its active license. '
                     . 'Please contact support and mention this message.',

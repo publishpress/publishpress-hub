@@ -50,3 +50,15 @@ webpack.config.js
 yarn.lock
 phpstan.neon
 /.cursor
+/.agents
+
+/docs
+
+.rsync-filters-sync
+.rsync-filters-dev-sync
+/.codex
+/.claude
+/resources/src
+/.wordpress-org
+*.log
+.phpcs-plugin-review.xml

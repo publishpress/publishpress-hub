@@ -46,4 +46,31 @@ class ActivateLicenseFailureTest extends Unit
         $this->expectException(LicenseInvalidException::class);
         $useCase->execute($request);
     }
+
+    public function testSingleProductActivationValidatesOnlyThatFamily(): void
+    {
+        $plugin = $this->createMock(ProPluginInterface::class);
+        $plugin->method('getDownloadId')->willReturn(123);
+        $plugin->method('getSlug')->willReturn('statuses-pro');
+        $plugin->method('isLicensed')->willReturn(true);
+        $family = $this->createMock(PluginFamilyInterface::class);
+        $family->method('getProPlugin')->willReturn($plugin);
+        $status = $this->createMock(PluginStatusService::class);
+        $status->method('getPluginFamilyWithUpdatedStatus')->willReturn($family);
+        $status->expects($this->once())->method('updatePluginStatus')->with($plugin);
+        $management = $this->createMock(LicenseManagementService::class);
+        $management->expects($this->once())->method('activateAndStoreLicense')->with('fixture-key', 123)->willReturn(true);
+        $validation = $this->createMock(ScheduledLicenseValidationService::class);
+        $validation->expects($this->once())->method('validateAllLicenses')->with([$family]);
+        $repository = $this->createMock(PluginFamilyRepositoryInterface::class);
+        $repository->expects($this->never())->method('getAllFamilies');
+        $persistence = $this->createMock(LicensePersistenceInterface::class);
+        $persistence->method('isLicenseFromConstant')->willReturn(false);
+        $request = $this->createMock(\WP_REST_Request::class);
+        $request->method('get_param')->willReturnMap([
+            ['familySlug', 'statuses'], ['licenseKey', 'fixture-key'], ['applyToAll', false],
+        ]);
+        $useCase = new ActivateLicenseUseCase($status, $management, $validation, $repository, $persistence);
+        $this->assertTrue($useCase->execute($request)['licensed']);
+    }
 }

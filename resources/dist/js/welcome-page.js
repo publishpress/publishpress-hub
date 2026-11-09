@@ -26,15 +26,15 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
-var AdminPageContainer = function AdminPageContainer(_ref) {
-  var _ref$className = _ref.className,
-    className = _ref$className === void 0 ? '' : _ref$className,
-    _ref$variant = _ref.variant,
-    variant = _ref$variant === void 0 ? 'contained' : _ref$variant,
-    children = _ref.children;
-  var baseClass = 'pp-hub-admin-page-container';
-  var variantClass = "pp-hub-".concat(variant);
-  var combinedClassName = "".concat(baseClass, " ").concat(variantClass, " pp-hub-root ").concat(className).trim();
+const AdminPageContainer = ({
+  className = '',
+  variant = 'contained',
+  // 'contained' | 'fullwidth'
+  children
+}) => {
+  const baseClass = 'pp-hub-admin-page-container';
+  const variantClass = `pp-hub-${variant}`;
+  const combinedClassName = `${baseClass} ${variantClass} pp-hub-root ${className}`.trim();
   return /*#__PURE__*/React.createElement("div", {
     id: "publishpress-hub-admin-page-container",
     className: combinedClassName,
@@ -63,28 +63,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var FooterComponent = function FooterComponent(_ref) {
-  var pluginSlug = _ref.pluginSlug,
-    pluginName = _ref.pluginName,
-    pluginDocumentationUrl = _ref.pluginDocumentationUrl,
-    pluginAboutUrl = _ref.pluginAboutUrl,
-    pluginSupportUrl = _ref.pluginSupportUrl,
-    logoUrl = _ref.logoUrl;
-  var stars = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return Array(5).fill('<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>').join('');
-  }, []);
+const FooterComponent = ({
+  pluginSlug,
+  pluginName,
+  pluginDocumentationUrl,
+  pluginAboutUrl,
+  pluginSupportUrl,
+  logoUrl
+}) => {
+  const stars = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => Array(5).fill('<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>').join(''), []);
   return /*#__PURE__*/React.createElement("footer", {
     className: "pp-hub-footer"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-footer-rating"
   }, /*#__PURE__*/React.createElement("a", {
-    href: "//wordpress.org/support/plugin/".concat(pluginSlug, "/reviews/#new-post"),
+    href: `//wordpress.org/support/plugin/${pluginSlug}/reviews/#new-post`,
     target: "_blank",
     rel: "noopener noreferrer"
   }, /*#__PURE__*/React.createElement("span", {
     dangerouslySetInnerHTML: {
       __html: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s is the plugin name, %s is the rating */
-      (0,_wordpress_escape_html__WEBPACK_IMPORTED_MODULE_0__.escapeHTML)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('If you like %s please leave us a %s rating. Thank you!', 'publishpress-hub')), "<strong>".concat((0,_wordpress_escape_html__WEBPACK_IMPORTED_MODULE_0__.escapeHTML)(pluginName), "</strong>,"), "<span className=\"pp-hub-footer-stars\">".concat(stars, "</span>"))
+      (0,_wordpress_escape_html__WEBPACK_IMPORTED_MODULE_0__.escapeHTML)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('If you like %s please leave us a %s rating. Thank you!', 'publishpress-hub')), `<strong>${(0,_wordpress_escape_html__WEBPACK_IMPORTED_MODULE_0__.escapeHTML)(pluginName)}</strong>,`, `<span className="pp-hub-footer-stars">${stars}</span>`)
     }
   }))), /*#__PURE__*/React.createElement("hr", {
     className: "pp-hub-footer-separator"
@@ -119,7 +118,7 @@ var FooterComponent = function FooterComponent(_ref) {
     alt: "PublishPress"
   }))));
 };
-var Footer = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(FooterComponent);
+const Footer = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(FooterComponent);
 
 /***/ },
 
@@ -154,17 +153,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Constants moved outside to prevent recreation
-var BASE_HEADER_CLASS = "pp-hub-admin-page-header";
-var COMPACT_HEADER_CLASS = "pp-hub-admin-page-header pp-hub-admin-page-header--compact";
-var LOGO_ALT_TEXT = "PublishPress";
-var LOGO_TEXT = "Hub";
-var AdminPageHeaderComponent = function AdminPageHeaderComponent(_ref) {
-  var logoUrl = _ref.logoUrl,
-    children = _ref.children,
-    _ref$compact = _ref.compact,
-    compact = _ref$compact === void 0 ? false : _ref$compact;
+const BASE_HEADER_CLASS = "pp-hub-admin-page-header";
+const COMPACT_HEADER_CLASS = "pp-hub-admin-page-header pp-hub-admin-page-header--compact";
+const LOGO_ALT_TEXT = "PublishPress";
+const LOGO_TEXT = "Hub";
+const AdminPageHeaderComponent = ({
+  logoUrl,
+  children,
+  compact = false
+}) => {
   // Memoize the header class computation
-  var headerClass = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+  const headerClass = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
     return compact ? COMPACT_HEADER_CLASS : BASE_HEADER_CLASS;
   }, [compact]);
   return /*#__PURE__*/React.createElement("div", {
@@ -189,7 +188,7 @@ var AdminPageHeaderComponent = function AdminPageHeaderComponent(_ref) {
 };
 
 // Memoize the component to prevent unnecessary re-renders
-var AdminPageHeader = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(AdminPageHeaderComponent);
+const AdminPageHeader = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(AdminPageHeaderComponent);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AdminPageHeader);
 
 /***/ },
@@ -253,11 +252,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var AdminPageLayout = function AdminPageLayout(_ref) {
-  var title = _ref.title,
-    logoUrl = _ref.logoUrl,
-    children = _ref.children,
-    titleChildren = _ref.titleChildren;
+const AdminPageLayout = ({
+  title,
+  logoUrl,
+  children,
+  titleChildren
+}) => {
   return /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-admin-page-layout"
   }, /*#__PURE__*/React.createElement(_header__WEBPACK_IMPORTED_MODULE_1__.AdminPageHeader, {
@@ -291,10 +291,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-var _excluded = ["variant", "icon", "onClick", "href", "target", "rel", "className", "disabled", "title", "style", "children", "isFullWidth", "isLoading", "spinnerPosition"];
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
-function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
 /**
  * Button.
  *
@@ -307,29 +304,29 @@ function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t =
 
 
 
-var DEFAULT_TARGET = '_blank';
-var DEFAULT_REL = 'noopener noreferrer';
-var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forwardRef)(function (_ref, ref) {
-  var variant = _ref.variant,
-    icon = _ref.icon,
-    onClick = _ref.onClick,
-    href = _ref.href,
-    target = _ref.target,
-    rel = _ref.rel,
-    className = _ref.className,
-    disabled = _ref.disabled,
-    title = _ref.title,
-    style = _ref.style,
-    children = _ref.children,
-    isFullWidth = _ref.isFullWidth,
-    isLoading = _ref.isLoading,
-    _ref$spinnerPosition = _ref.spinnerPosition,
-    spinnerPosition = _ref$spinnerPosition === void 0 ? 'right' : _ref$spinnerPosition,
-    restProps = _objectWithoutProperties(_ref, _excluded);
-  var targetValue = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+const DEFAULT_TARGET = '_blank';
+const DEFAULT_REL = 'noopener noreferrer';
+const ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forwardRef)(({
+  variant,
+  icon,
+  onClick,
+  href,
+  target,
+  rel,
+  className,
+  disabled,
+  title,
+  style,
+  children,
+  isFullWidth,
+  isLoading,
+  spinnerPosition = 'right',
+  ...restProps
+}, ref) => {
+  const targetValue = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => {
     return target || (href ? DEFAULT_TARGET : undefined);
   }, [target, href]);
-  var relValue = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+  const relValue = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => {
     return rel || (href ? DEFAULT_REL : undefined);
   }, [rel, href]);
   if (isLoading) {
@@ -342,15 +339,15 @@ var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forward
     }));
     disabled = true;
   }
-  var buttonClassName = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    var variantClassName = '';
+  const buttonClassName = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => {
+    let variantClassName = '';
     if (variant === 'highlight') {
       variantClassName = 'is-highlight';
     }
     if (variant === 'danger') {
       variantClassName = 'is-danger';
     }
-    return "pp-hub-button ".concat(variantClassName, " ").concat(className ? className : '', " ").concat(isFullWidth ? 'is-full-width' : '', " ").concat(spinnerPosition === 'left' ? 'is-link-left' : '');
+    return `pp-hub-button ${variantClassName} ${className ? className : ''} ${isFullWidth ? 'is-full-width' : ''} ${spinnerPosition === 'left' ? 'is-link-left' : ''}`;
   }, [className, isFullWidth, variant, spinnerPosition]);
   return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, _extends({
     ref: ref,
@@ -361,7 +358,11 @@ var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forward
     target: targetValue,
     rel: relValue,
     className: buttonClassName,
-    disabled: disabled || isLoading,
+    disabled: disabled || isLoading
+    // Keep a loading button focusable so keyboard focus is not dropped to <body>
+    // while the action runs or when a modal returns focus to it (WCAG 2.4.3).
+    ,
+    accessibleWhenDisabled: isLoading || undefined,
     "aria-busy": isLoading || undefined,
     title: title,
     style: style
@@ -370,7 +371,7 @@ var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forward
 ButtonComponent.displayName = 'Button';
 
 // Memoize the component to prevent unnecessary re-renders
-var Button = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(ButtonComponent);
+const Button = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(ButtonComponent);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Button);
 
 /***/ },
@@ -407,11 +408,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _window$ppHubWelcomeP = window.ppHubWelcomePageConfig,
-  logoUrl = _window$ppHubWelcomeP.logoUrl,
-  welcomeImageUrl = _window$ppHubWelcomeP.welcomeImageUrl,
-  dismissUrl = _window$ppHubWelcomeP.dismissUrl;
-var WelcomePageComponent = function WelcomePageComponent() {
+const {
+  logoUrl,
+  welcomeImageUrl,
+  dismissUrl
+} = window.ppHubWelcomePageConfig;
+const WelcomePageComponent = () => {
   return /*#__PURE__*/React.createElement(_admin_page__WEBPACK_IMPORTED_MODULE_3__.AdminPageLayout, {
     logoUrl: logoUrl
   }, /*#__PURE__*/React.createElement("div", {
@@ -552,40 +554,7 @@ var WelcomePageComponent = function WelcomePageComponent() {
     href: dismissUrl
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('dismiss this page', 'publishpress-hub')), (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('.', 'publishpress-hub')))));
 };
-var WelcomePage = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(WelcomePageComponent);
-
-/***/ },
-
-/***/ "./node_modules/react-dom/client.js"
-/*!******************************************!*\
-  !*** ./node_modules/react-dom/client.js ***!
-  \******************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
-
-
-
-var m = __webpack_require__(/*! react-dom */ "react-dom");
-if (false) // removed by dead control flow
-{} else {
-  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-  exports.createRoot = function(c, o) {
-    i.usingClientEntryPoint = true;
-    try {
-      return m.createRoot(c, o);
-    } finally {
-      i.usingClientEntryPoint = false;
-    }
-  };
-  exports.hydrateRoot = function(c, h, o) {
-    i.usingClientEntryPoint = true;
-    try {
-      return m.hydrateRoot(c, h, o);
-    } finally {
-      i.usingClientEntryPoint = false;
-    }
-  };
-}
-
+const WelcomePage = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(WelcomePageComponent);
 
 /***/ },
 
@@ -786,16 +755,6 @@ if (typeof window !== 'undefined') {
 
 /***/ },
 
-/***/ "react-dom"
-/*!***************************!*\
-  !*** external "ReactDOM" ***!
-  \***************************/
-(module) {
-
-module.exports = ReactDOM;
-
-/***/ },
-
 /***/ "@publishpress-hub/i18n"
 /*!***************************************!*\
   !*** external "publishpressHub.i18n" ***!
@@ -976,7 +935,8 @@ var __webpack_exports__ = {};
   !*** ./resources/src/jsx/welcome-page.jsx ***!
   \********************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_pages_welcome_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/pages/welcome-page */ "./resources/src/jsx/components/pages/welcome-page.jsx");
 /* harmony import */ var _utils_themeController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/themeController */ "./resources/src/jsx/utils/themeController.js");
 /**
@@ -989,14 +949,15 @@ __webpack_require__.r(__webpack_exports__);
  * @since 1.0.0
  */
 
+// Use the React DOM that WordPress already loads instead of bundling a second copy.
 
 
 
-var welcomePageContainer = document.getElementById('publishpress-hub-welcome-page-container');
+const welcomePageContainer = document.getElementById('publishpress-hub-welcome-page-container');
 if (welcomePageContainer) {
-  var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(welcomePageContainer);
+  const root = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createRoot)(welcomePageContainer);
   root.render(/*#__PURE__*/React.createElement(_components_pages_welcome_page__WEBPACK_IMPORTED_MODULE_1__.WelcomePage, null));
-  var currentTheme = (0,_utils_themeController__WEBPACK_IMPORTED_MODULE_2__.getCurrentTheme)();
+  const currentTheme = (0,_utils_themeController__WEBPACK_IMPORTED_MODULE_2__.getCurrentTheme)();
   (0,_utils_themeController__WEBPACK_IMPORTED_MODULE_2__.setTheme)(currentTheme);
 }
 })();

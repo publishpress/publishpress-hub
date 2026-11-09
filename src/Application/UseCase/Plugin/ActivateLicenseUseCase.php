@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use PublishPress\Hub\Application\Service\License\ScheduledLicenseValidationService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
@@ -29,6 +27,8 @@ use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use WP_REST_Request;
+
+\defined('ABSPATH') || exit;
 
 class ActivateLicenseUseCase implements UseCaseInterface
 {
@@ -94,19 +94,20 @@ class ActivateLicenseUseCase implements UseCaseInterface
 
         $this->guardAgainstWpConfigLicense($downloadId, $plugin->getSlug());
         if (!$this->licenseManagement->activateAndStoreLicense($licenseKey, $downloadId)) {
-            throw new LicenseInvalidException(['family_slug' => $familySlug]);
+            throw new LicenseInvalidException(['family_slug' => esc_html($familySlug)]);
         }
-        $this->reuseLicenseKeyForAllPlugins($licenseKey, $family, $applyToAll);
+        $licenseResults = $this->reuseLicenseKeyForAllPlugins($licenseKey, $family, $applyToAll);
         $this->pluginStatusService->updatePluginStatus($plugin);
 
         // Trigger immediate license validation to check expiration status
         // This ensures the UI shows current license status (expired/active)
         // without waiting for the next scheduled validation.
-        $this->licenseValidation->validateAllLicenses();
+        $this->licenseValidation->validateAllLicenses($applyToAll ? null : [$family]);
 
         return [
             'slug' => esc_html($plugin->getSlug()),
             'licensed' => $plugin->isLicensed(),
+            'licenseResults' => $licenseResults,
         ];
     }
 
@@ -116,30 +117,25 @@ class ActivateLicenseUseCase implements UseCaseInterface
      * @param string $licenseKey The license key.
      * @param PluginFamilyInterface $currentFamily The family already activated through the API.
      * @param bool $applyToAll Whether to reuse the key for every family.
+     * @return array<array{slug: string, success: bool}>
      * @since 1.0.0
      */
     private function reuseLicenseKeyForAllPlugins(
         string $licenseKey,
         PluginFamilyInterface $currentFamily,
         bool $applyToAll
-    ): void {
+    ): array {
         if (!$applyToAll) {
-            return;
+            return [];
         }
 
         $currentDownloadId = $currentFamily->getProPlugin()->getDownloadId();
 
-        foreach ($this->pluginFamilyRepository->getAllFamilies() as $family) {
-            $downloadId = $family->getProPlugin()->getDownloadId();
-
-            if ($downloadId === $currentDownloadId || $this->licensePersistence->isLicenseFromConstant($downloadId)) {
-                continue;
-            }
-
-            $this->licensePersistence->storeLicenseKey($downloadId, $licenseKey);
-            $this->licensePersistence->storeLicenseStatus($downloadId, true);
-            $this->licensePersistence->markLicenseAsFromConstant($downloadId, false);
-        }
+        return $this->licenseManagement->activateLicenseForFamilies(
+            $licenseKey,
+            $this->pluginFamilyRepository->getAllFamilies(),
+            $currentDownloadId
+        );
     }
 
     /**
