@@ -669,21 +669,27 @@ const McpPageComponent = () => {
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Connect another AI app', 'publishpress-hub'))), /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Manage the actions your AI can use below. To set up another app or computer, open the connection steps again.', 'publishpress-hub'))), (stage === 'access' || stage === 'manage') && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_mcp_panel__WEBPACK_IMPORTED_MODULE_7__.McpPanel, null, /*#__PURE__*/React.createElement("h2", {
     ref: stage === 'access' ? stepHeading : undefined,
     tabIndex: stage === 'access' ? -1 : undefined
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Control what your AI can do', 'publishpress-hub')), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.CheckboxControl, {
+  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Control what your AI can do', 'publishpress-hub')), /*#__PURE__*/React.createElement("div", {
+    className: "mcp-access-options"
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.CheckboxControl, {
+    className: "mcp-access-choice",
     label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Allow AI to read site data', 'publishpress-hub'),
+    help: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('View content and settings using the actions selected below.', 'publishpress-hub'),
     checked: draft.readsEnabled,
     onChange: readsEnabled => connection.setDraft({
       readsEnabled
     }),
     disabled: busy
   }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.CheckboxControl, {
+    className: "mcp-access-choice",
     label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Allow AI to change site data', 'publishpress-hub'),
+    help: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Create, update or delete data using the actions selected below.', 'publishpress-hub'),
     checked: draft.writesEnabled,
     onChange: writesEnabled => connection.setDraft({
       writesEnabled
     }),
     disabled: busy
-  }), /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('You can change these choices at any time. Turn off change access to let your AI only read site data.', 'publishpress-hub'))), /*#__PURE__*/React.createElement(_mcp_actions__WEBPACK_IMPORTED_MODULE_8__.McpActions, {
+  })), /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('You can change these choices at any time. Turn off change access to let your AI only read site data.', 'publishpress-hub'))), /*#__PURE__*/React.createElement(_mcp_actions__WEBPACK_IMPORTED_MODULE_8__.McpActions, {
     state: state,
     edits: edits,
     busy: busy,

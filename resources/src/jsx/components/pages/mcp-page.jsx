@@ -117,10 +117,14 @@ const McpPageComponent = () => {
                     {(stage === 'access' || stage === 'manage') && <>
                         <McpPanel>
                             <h2 ref={stage === 'access' ? stepHeading : undefined} tabIndex={stage === 'access' ? -1 : undefined}>{__('Control what your AI can do', 'publishpress-hub')}</h2>
-                            <CheckboxControl label={__('Allow AI to read site data', 'publishpress-hub')} checked={draft.readsEnabled}
-                                onChange={(readsEnabled) => connection.setDraft({ readsEnabled })} disabled={busy} />
-                            <CheckboxControl label={__('Allow AI to change site data', 'publishpress-hub')} checked={draft.writesEnabled}
-                                onChange={(writesEnabled) => connection.setDraft({ writesEnabled })} disabled={busy} />
+                            <div className="mcp-access-options">
+                                <CheckboxControl className="mcp-access-choice" label={__('Allow AI to read site data', 'publishpress-hub')}
+                                    help={__('View content and settings using the actions selected below.', 'publishpress-hub')} checked={draft.readsEnabled}
+                                    onChange={(readsEnabled) => connection.setDraft({ readsEnabled })} disabled={busy} />
+                                <CheckboxControl className="mcp-access-choice" label={__('Allow AI to change site data', 'publishpress-hub')}
+                                    help={__('Create, update or delete data using the actions selected below.', 'publishpress-hub')} checked={draft.writesEnabled}
+                                    onChange={(writesEnabled) => connection.setDraft({ writesEnabled })} disabled={busy} />
+                            </div>
                             <p>{__('You can change these choices at any time. Turn off change access to let your AI only read site data.', 'publishpress-hub')}</p>
                         </McpPanel>
                         <McpActions state={state} edits={edits} busy={busy} onAction={connection.setAction} onNavigate={connection.navigate} />

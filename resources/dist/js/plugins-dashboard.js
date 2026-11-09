@@ -943,12 +943,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _filter_filter_buttons_bar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../filter/filter-buttons-bar */ "./resources/src/jsx/components/filter/filter-buttons-bar.jsx");
 /* harmony import */ var _stores_plugins_dashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../stores/plugins-dashboard */ "./resources/src/jsx/stores/plugins-dashboard/index.jsx");
 /* harmony import */ var _plugins_list__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../plugins-list */ "./resources/src/jsx/components/plugins-list/index.jsx");
-/* harmony import */ var _suite_license__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./suite-license */ "./resources/src/jsx/components/pages/suite-license.jsx");
-/* harmony import */ var _notices_NoticesList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../notices/NoticesList */ "./resources/src/jsx/components/notices/NoticesList.jsx");
-/* harmony import */ var _notices_SnackbarList__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../notices/SnackbarList */ "./resources/src/jsx/components/notices/SnackbarList.jsx");
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../buttons/button */ "./resources/src/jsx/components/buttons/button.jsx");
-/* harmony import */ var _tooltip__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../tooltip */ "./resources/src/jsx/components/tooltip/index.jsx");
-/* harmony import */ var _hooks_use_license_expiration_warning__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./hooks/use-license-expiration-warning */ "./resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx");
+/* harmony import */ var _notices_NoticesList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../notices/NoticesList */ "./resources/src/jsx/components/notices/NoticesList.jsx");
+/* harmony import */ var _notices_SnackbarList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../notices/SnackbarList */ "./resources/src/jsx/components/notices/SnackbarList.jsx");
+/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../buttons/button */ "./resources/src/jsx/components/buttons/button.jsx");
+/* harmony import */ var _tooltip__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../tooltip */ "./resources/src/jsx/components/tooltip/index.jsx");
+/* harmony import */ var _hooks_use_license_expiration_warning__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./hooks/use-license-expiration-warning */ "./resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx");
 /**
  * Plugins dashboard.
  *
@@ -958,7 +957,6 @@ __webpack_require__.r(__webpack_exports__);
  * @license GPL v2 or later
  * @since 1.0.0
  */
-
 
 
 
@@ -1048,7 +1046,7 @@ const PluginsDashboardComponent = () => {
   }, []);
 
   // Check for licenses expiring within the specified days
-  (0,_hooks_use_license_expiration_warning__WEBPACK_IMPORTED_MODULE_12__.useLicenseExpirationWarning)(allPlugins, 30);
+  (0,_hooks_use_license_expiration_warning__WEBPACK_IMPORTED_MODULE_11__.useLicenseExpirationWarning)(allPlugins, 30);
   const [isAltPressed, setIsAltPressed] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
 
   // Track ALT key state
@@ -1080,16 +1078,12 @@ const PluginsDashboardComponent = () => {
     logoUrl: logoUrl
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-plugins-dashboard"
-  }, /*#__PURE__*/React.createElement(_notices_NoticesList__WEBPACK_IMPORTED_MODULE_8__["default"], null), /*#__PURE__*/React.createElement(_suite_license__WEBPACK_IMPORTED_MODULE_7__.SuiteLicense, {
-    plugins: allPlugins,
-    onRefresh: fetchPlugins,
-    isLoading: isLoading
-  }), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(_notices_NoticesList__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-dashboard-heading"
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugins & Features', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Activate, open, and license each product directly from the Hub.', 'publishpress-hub'))), /*#__PURE__*/React.createElement(_tooltip__WEBPACK_IMPORTED_MODULE_11__.Tooltip, {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Plugins & Features', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Activate, open, and license each product directly from the Hub.', 'publishpress-hub'))), /*#__PURE__*/React.createElement(_tooltip__WEBPACK_IMPORTED_MODULE_10__.Tooltip, {
     text: refreshButtonTooltip,
     placement: "top"
-  }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_10__.Button, {
+  }, /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_9__.Button, {
     variant: "link",
     onClick: handleRefresh,
     isLoading: isLoading,
@@ -1102,211 +1096,9 @@ const PluginsDashboardComponent = () => {
     plugins: plugins,
     isLoading: isLoading,
     pluginIconBaseUrl: pluginIconBaseUrl
-  }), /*#__PURE__*/React.createElement(_notices_SnackbarList__WEBPACK_IMPORTED_MODULE_9__["default"], null)));
+  }), /*#__PURE__*/React.createElement(_notices_SnackbarList__WEBPACK_IMPORTED_MODULE_8__["default"], null)));
 };
 const PluginsDashboard = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(PluginsDashboardComponent);
-
-/***/ },
-
-/***/ "./resources/src/jsx/components/pages/suite-license.jsx"
-/*!**************************************************************!*\
-  !*** ./resources/src/jsx/components/pages/suite-license.jsx ***!
-  \**************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   SuiteLicense: () => (/* binding */ SuiteLicense)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
-/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
-/* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../buttons/button */ "./resources/src/jsx/components/buttons/button.jsx");
-/**
- * Activate a shared license individually for the selected products.
- *
- * @author PublishPress
- * @copyright Copyright (c) 2026, PublishPress
- * @license GPL v2 or later
- */
-
-
-
-
-
-const SuiteLicense = ({
-  plugins,
-  onRefresh,
-  isLoading
-}) => {
-  const [open, setOpen] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(window.location.hash === '#suite-license');
-  const dismissalKey = `pp-hub-bundle-dismissed:${window.ppHubPluginsDashboardConfig?.preferencesKey || 'default'}`;
-  const [dismissed, setDismissed] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(() => {
-    try {
-      return window.localStorage.getItem(dismissalKey) === 'true';
-    } catch {
-      return false;
-    }
-  });
-  const activationLock = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(false);
-  const [key, setKey] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const [selected, setSelected] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  const [selectSpecific, setSelectSpecific] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [busy, setBusy] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [results, setResults] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  const [progress, setProgress] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const targetPlugins = selectSpecific ? plugins.filter(plugin => selected.includes(plugin.slug)) : plugins;
-  const licensedCount = new Set([...plugins.filter(plugin => plugin.proPlugin?.isLicensed).map(plugin => plugin.slug), ...results.filter(result => result.success).map(result => result.slug)]).size;
-  const dismiss = () => {
-    setDismissed(true);
-    setOpen(false);
-    try {
-      window.localStorage.setItem(dismissalKey, 'true');
-    } catch {/* Keep dismissal usable without storage. */}
-  };
-  const show = () => {
-    setDismissed(false);
-    setOpen(true);
-    try {
-      window.localStorage.setItem(dismissalKey, 'false');
-    } catch {/* Keep setup usable without storage. */}
-  };
-  const activate = async event => {
-    event.preventDefault();
-    if (activationLock.current || busy || isLoading || !key.trim() || !targetPlugins.length) return;
-    activationLock.current = true;
-    setBusy(true);
-    setResults([]);
-    const completed = new Map();
-    let next = 0;
-    const checkNext = async () => {
-      while (next < targetPlugins.length) {
-        const plugin = targetPlugins[next++];
-        let result;
-        try {
-          const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
-            path: `/publishpress-hub/v1/plugins/${encodeURIComponent(plugin.slug)}/activate-license`,
-            method: 'POST',
-            data: {
-              licenseKey: key.trim(),
-              applyToAll: false
-            }
-          });
-          if (!response.success || !response.licensed) {
-            throw new Error(response.error?.message || response.error || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('The license could not be activated for this product.', 'publishpress-hub'));
-          }
-          result = {
-            slug: plugin.slug,
-            name: plugin.name,
-            message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Pro license active for this site.', 'publishpress-hub'),
-            success: true
-          };
-        } catch (error) {
-          result = {
-            slug: plugin.slug,
-            name: plugin.name,
-            message: error.message || (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Activation failed. Please try again.', 'publishpress-hub'),
-            success: false
-          };
-        }
-        completed.set(plugin.slug, result);
-        setResults(targetPlugins.filter(item => completed.has(item.slug)).map(item => completed.get(item.slug)));
-        setProgress((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Checked %1$d of %2$d products.', 'publishpress-hub'), completed.size, targetPlugins.length));
-      }
-    };
-    setProgress((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Activating Pro licenses�', 'publishpress-hub'));
-    try {
-      await Promise.all(Array.from({
-        length: Math.min(3, targetPlugins.length)
-      }, checkNext));
-      setProgress((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('License activation complete. Review each product below.', 'publishpress-hub'));
-      const refreshed = await onRefresh();
-      if (refreshed?.success === false) throw new Error('Dashboard refresh failed');
-    } catch {
-      setProgress((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('License checks complete, but the dashboard could not refresh. Reload this page to see the latest status.', 'publishpress-hub'));
-    } finally {
-      activationLock.current = false;
-      setKey('');
-      setBusy(false);
-    }
-  };
-  if (dismissed && !open) {
-    return /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
-      variant: "link",
-      onClick: show
-    }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Set up a bundle license', 'publishpress-hub'));
-  }
-  return /*#__PURE__*/React.createElement("section", {
-    id: "suite-license",
-    className: "pp-hub-suite-license"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-suite-license__summary"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "pp-hub-suite-license__icon",
-    "aria-hidden": "true"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "dashicons dashicons-admin-network"
-  })), /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-suite-license__copy"
-  }, /*#__PURE__*/React.createElement("h2", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('PublishPress Bundle', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('A PublishPress Bundle includes multiple Pro plugins with one license key.', 'publishpress-hub')), licensedCount > 0 && /*#__PURE__*/React.createElement("p", {
-    role: "status"
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__._n)('Pro license active for %d product.', 'Pro licenses active for %d products.', licensedCount, 'publishpress-hub'), licensedCount))), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
-    variant: "primary",
-    disabled: busy,
-    "aria-expanded": open,
-    "aria-controls": "pp-hub-suite-form",
-    onClick: () => setOpen(!open)
-  }, open ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Close license setup', 'publishpress-hub') : licensedCount ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Manage licenses', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Activate Bundle License', 'publishpress-hub')), !open && /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
-    variant: "link",
-    disabled: busy,
-    onClick: dismiss,
-    "aria-label": (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Dismiss bundle license setup', 'publishpress-hub')
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Dismiss', 'publishpress-hub'))), open && /*#__PURE__*/React.createElement("form", {
-    id: "pp-hub-suite-form",
-    onSubmit: activate
-  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
-    label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('License key', 'publishpress-hub'),
-    type: "password",
-    autoComplete: "off",
-    value: key,
-    onChange: setKey,
-    disabled: busy
-  }), /*#__PURE__*/React.createElement("p", null, selectSpecific ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('This will replace any saved license key for each selected product. This will not install or activate any plugins.', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('This will apply your license key to all products, replacing any saved license keys. This will not install or activate any plugins.', 'publishpress-hub')), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-    label: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Select specific plugins', 'publishpress-hub'),
-    checked: selectSpecific,
-    disabled: busy || isLoading,
-    onChange: enabled => {
-      setSelectSpecific(enabled);
-      if (enabled) setSelected(plugins.map(plugin => plugin.slug));
-    }
-  }), selectSpecific && /*#__PURE__*/React.createElement("fieldset", {
-    disabled: busy || isLoading
-  }, /*#__PURE__*/React.createElement("legend", null, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Select products included in your subscription', 'publishpress-hub')), /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-suite-products"
-  }, plugins.map(plugin => /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.CheckboxControl, {
-    key: plugin.slug,
-    label: plugin.name,
-    checked: selected.includes(plugin.slug),
-    onChange: checked => setSelected(previous => checked ? [...previous, plugin.slug] : previous.filter(slug => slug !== plugin.slug))
-  })))), /*#__PURE__*/React.createElement(_buttons_button__WEBPACK_IMPORTED_MODULE_4__.Button, {
-    type: "submit",
-    variant: "primary",
-    isLoading: busy,
-    disabled: busy || isLoading || !key.trim() || !targetPlugins.length
-  }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Activate license key', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
-    role: "status"
-  }, progress), results.length > 0 && /*#__PURE__*/React.createElement("ul", {
-    className: "pp-hub-suite-results"
-  }, results.map(result => /*#__PURE__*/React.createElement("li", {
-    key: result.slug
-  }, /*#__PURE__*/React.createElement("strong", null, result.name, ": "), result.success ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Success', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed', 'publishpress-hub'), " \u2014 ", result.message)))));
-};
 
 /***/ },
 
@@ -4759,7 +4551,7 @@ function* deactivateLicense(pluginFamily) {
 function* reportSharedLicenseFailures(data) {
   const failed = (data.licenseResults || []).filter(result => !result.success);
   if (failed.length) {
-    yield createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The license key could not be activated for these plugins: %s. Review their licenses or retry using Activate Bundle License.', 'publishpress-hub'), failed.map(result => result.slug).join(', ')), 'warning');
+    yield createNotice((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The license key could not be activated for these plugins: %s. Review their licenses and retry from each plugin’s license controls.', 'publishpress-hub'), failed.map(result => result.slug).join(', ')), 'warning');
   }
   return failed.length > 0;
 }

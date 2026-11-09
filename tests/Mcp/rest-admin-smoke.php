@@ -57,6 +57,11 @@ try {
         'REST returns structured state without rendered HTML');
     $check($data['state']['setupStage'] === 'access' && count($data['state']['actionView']['actions']) === 10,
         'Initial REST state requires review and returns a bounded action page');
+    delete_option('publishpress_hub_mcp_reads_enabled');
+    delete_option('publishpress_hub_mcp_writes_enabled');
+    $defaults = $call('GET')->get_data();
+    $check($defaults['state']['readsEnabled'] && !$defaults['state']['writesEnabled'],
+        'Fresh access settings default to reading enabled and changes disabled');
     $data = $call('GET', ['plugin' => 'z-fixture'])->get_data();
     $check(count($data['state']['actionView']['actions']) === 1, 'REST filters action data by plugin');
     $data = $call('GET', ['action_page' => 2])->get_data();
