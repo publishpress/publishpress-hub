@@ -95,6 +95,12 @@ try {
     $call('POST', ['enabled' => true, 'writesEnabled' => true]);
     $check(!$connection->areReadsEnabled(), 'Older REST callers preserve saved read exposure');
     $call('POST', ['enabled' => true, 'readsEnabled' => true, 'writesEnabled' => false]);
+    $data = $call('POST', ['enabled' => false, 'readsEnabled' => true, 'writesEnabled' => false])->get_data();
+    $check(!$data['state']['connectionEnabled'] && $data['state']['setupStage'] === 'disabled'
+        && !$connection->canConnect(), 'An enabled connection can be switched off through REST');
+    $fresh = $call('GET')->get_data();
+    $check(!$fresh['state']['connectionEnabled'], 'The disabled connection remains off on a subsequent REST read');
+    $call('POST', ['enabled' => true, 'readsEnabled' => true, 'writesEnabled' => false]);
     $before = $connection->getDisabledActions();
     $check($call('POST', ['enabled' => true, 'writesEnabled' => false, 'selectedActions' => 'invalid'])->get_status() === 400
         && $before === $connection->getDisabledActions(), 'REST rejects malformed settings without changing exposure');

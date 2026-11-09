@@ -314,3 +314,34 @@ test('read access defaults on for existing settings and is saved independently o
     assert.equal(payload.readsEnabled, false);
     assert.equal(payload.writesEnabled, true);
 });
+
+
+test('connection toggle sends false and remains off when adapter setup is incomplete', async () => {
+    const ui = hookFixture();
+    await ui.start(fixture('prerequisite'));
+    const saving = ui.current.save({ enabled: false });
+    assert.equal(ui.requests[1].options.data.enabled, false);
+    const disabled = { ...fixture('disabled'), connectionEnabled: false };
+    ui.requests[1].resolve({ success: true, message: 'Changes saved.', state: disabled });
+    await saving;
+    assert.equal(ui.current.draft.enabled, false);
+    assert.equal(ui.current.state.setupStage, 'disabled');
+    assert.equal(ui.current.dirty, false);
+});
+
+
+test('background adapter status checks keep the toggle usable and cannot overwrite a disable save', async () => {
+    const ui = hookFixture();
+    await ui.start(fixture('prerequisite'));
+    const checking = ui.current.refresh({ background: true });
+    assert.equal(ui.current.loading, false, 'A focus-triggered check must not disable the toggle');
+    const saving = ui.current.save({ enabled: false });
+    assert.equal(ui.requests[2].options.method, 'POST');
+    assert.equal(ui.requests[2].options.data.enabled, false);
+    ui.requests[2].resolve({ success: true, message: 'Changes saved.', state: { ...fixture('disabled'), connectionEnabled: false } });
+    await saving;
+    ui.requests[1].resolve({ success: true, state: fixture('prerequisite') });
+    await checking;
+    assert.equal(ui.current.draft.enabled, false);
+    assert.equal(ui.current.state.connectionEnabled, false);
+});

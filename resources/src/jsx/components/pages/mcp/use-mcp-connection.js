@@ -28,12 +28,12 @@ export const useMcpConnection = () => {
     const dirty = state && (Object.keys(edits).length > 0 || Object.entries(savedDraft(state))
         .some(([key, value]) => draft[key] !== value));
 
-    const load = useCallback(async (nextFilters, replaceDraft = false) => {
+    const load = useCallback(async (nextFilters, replaceDraft = false, background = false) => {
         request.current?.abort();
         const controller = new AbortController();
         request.current = controller;
         const id = ++sequence.current;
-        setLoading(true);
+        if (!background) setLoading(true);
         try {
             const result = await apiFetch({ path: requestPath(nextFilters), signal: controller.signal });
             if (!mounted.current || id !== sequence.current) return false;
@@ -150,6 +150,8 @@ export const useMcpConnection = () => {
             else next[name] = checked;
             return next;
         }),
-        navigate, save, install, refresh: () => !busy.current && load(filters, !dirty),
+        navigate, save, install,
+        refresh: ({ background = false } = {}) => !busy.current && (!background || !loading)
+            && load(filters, !dirty, background),
     };
 };

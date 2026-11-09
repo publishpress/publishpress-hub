@@ -70,7 +70,7 @@ const McpPageComponent = () => {
 
     useEffect(() => {
         if (stage !== 'prerequisite' || nextStep?.key !== 'adapter') return;
-        const checkStatus = () => connection.refresh();
+        const checkStatus = () => connection.refresh({ background: true });
         window.addEventListener('focus', checkStatus);
         return () => window.removeEventListener('focus', checkStatus);
     }, [stage, nextStep?.key, connection.refresh]);

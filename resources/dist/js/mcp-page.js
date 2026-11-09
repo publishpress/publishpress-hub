@@ -568,7 +568,9 @@ const McpPageComponent = () => {
   const nextStep = state?.nextStep;
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (stage !== 'prerequisite' || nextStep?.key !== 'adapter') return;
-    const checkStatus = () => connection.refresh();
+    const checkStatus = () => connection.refresh({
+      background: true
+    });
     window.addEventListener('focus', checkStatus);
     return () => window.removeEventListener('focus', checkStatus);
   }, [stage, nextStep?.key, connection.refresh]);
@@ -1243,12 +1245,12 @@ const useMcpConnection = () => {
     const dirty = state && (Object.keys(edits).length > 0 || Object.entries((0,_connection_state__WEBPACK_IMPORTED_MODULE_3__.savedDraft)(state))
         .some(([key, value]) => draft[key] !== value));
 
-    const load = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(async (nextFilters, replaceDraft = false) => {
+    const load = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(async (nextFilters, replaceDraft = false, background = false) => {
         request.current?.abort();
         const controller = new AbortController();
         request.current = controller;
         const id = ++sequence.current;
-        setLoading(true);
+        if (!background) setLoading(true);
         try {
             const result = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({ path: (0,_connection_state__WEBPACK_IMPORTED_MODULE_3__.requestPath)(nextFilters), signal: controller.signal });
             if (!mounted.current || id !== sequence.current) return false;
@@ -1365,7 +1367,9 @@ const useMcpConnection = () => {
             else next[name] = checked;
             return next;
         }),
-        navigate, save, install, refresh: () => !busy.current && load(filters, !dirty),
+        navigate, save, install,
+        refresh: ({ background = false } = {}) => !busy.current && (!background || !loading)
+            && load(filters, !dirty, background),
     };
 };
 
