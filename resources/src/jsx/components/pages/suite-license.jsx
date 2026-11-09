@@ -5,14 +5,19 @@
  * @copyright Copyright (c) 2026, PublishPress
  * @license GPL v2 or later
  */
-import { useState } from '@wordpress/element';
+import { useRef, useState } from '@wordpress/element';
 import { CheckboxControl, TextControl, ToggleControl } from '@wordpress/components';
 import apiFetch from '@wordpress/api-fetch';
-import { __, sprintf } from '@publishpress-hub/i18n';
+import { __, _n, sprintf } from '@publishpress-hub/i18n';
 import { Button } from '../buttons/button';
 
 export const SuiteLicense = ({ plugins, onRefresh, isLoading }) => {
     const [open, setOpen] = useState(window.location.hash === '#suite-license');
+    const dismissalKey = `pp-hub-bundle-dismissed:${window.ppHubPluginsDashboardConfig?.preferencesKey || 'default'}`;
+    const [dismissed, setDismissed] = useState(() => {
+        try { return window.localStorage.getItem(dismissalKey) === 'true'; } catch { return false; }
+    });
+    const activationLock = useRef(false);
     const [key, setKey] = useState('');
     const [selected, setSelected] = useState([]);
     const [selectSpecific, setSelectSpecific] = useState(false);
@@ -24,15 +29,33 @@ export const SuiteLicense = ({ plugins, onRefresh, isLoading }) => {
         ? plugins.filter(plugin => selected.includes(plugin.slug))
         : plugins;
 
+    const licensedCount = new Set([
+        ...plugins.filter(plugin => plugin.proPlugin?.isLicensed).map(plugin => plugin.slug),
+        ...results.filter(result => result.success).map(result => result.slug),
+    ]).size;
+    const dismiss = () => {
+        setDismissed(true);
+        setOpen(false);
+        try { window.localStorage.setItem(dismissalKey, 'true'); } catch { /* Keep dismissal usable without storage. */ }
+    };
+    const show = () => {
+        setDismissed(false);
+        setOpen(true);
+        try { window.localStorage.setItem(dismissalKey, 'false'); } catch { /* Keep setup usable without storage. */ }
+    };
+
     const activate = async event => {
         event.preventDefault();
-        if (busy || isLoading || !key.trim() || !targetPlugins.length) return;
+        if (activationLock.current || busy || isLoading || !key.trim() || !targetPlugins.length) return;
+        activationLock.current = true;
         setBusy(true);
         setResults([]);
-        const completed = [];
-        try {
-            for (const plugin of targetPlugins) {
-                setProgress(sprintf(__('Checking %sâ€¦', 'publishpress-hub'), plugin.name));
+        const completed = new Map();
+        let next = 0;
+        const checkNext = async () => {
+            while (next < targetPlugins.length) {
+                const plugin = targetPlugins[next++];
+                let result;
                 try {
                     const response = await apiFetch({
                         path: `/publishpress-hub/v1/plugins/${encodeURIComponent(plugin.slug)}/activate-license`,
@@ -42,31 +65,46 @@ export const SuiteLicense = ({ plugins, onRefresh, isLoading }) => {
                     if (!response.success || !response.licensed) {
                         throw new Error(response.error?.message || response.error || __('The license could not be activated for this product.', 'publishpress-hub'));
                     }
-                    completed.push({ slug: plugin.slug, name: plugin.name, message: __('License activated.', 'publishpress-hub'), success: true });
+                    result = { slug: plugin.slug, name: plugin.name, message: __('Pro license active for this site.', 'publishpress-hub'), success: true };
                 } catch (error) {
-                    completed.push({ slug: plugin.slug, name: plugin.name, message: error.message || __('Activation failed. Please try again.', 'publishpress-hub'), success: false });
+                    result = { slug: plugin.slug, name: plugin.name, message: error.message || __('Activation failed. Please try again.', 'publishpress-hub'), success: false };
                 }
-                setResults([...completed]);
+                completed.set(plugin.slug, result);
+                setResults(targetPlugins.filter(item => completed.has(item.slug)).map(item => completed.get(item.slug)));
+                setProgress(sprintf(__('Checked %1$d of %2$d products.', 'publishpress-hub'), completed.size, targetPlugins.length));
             }
-            setProgress(__('License checks complete. Review the results below.', 'publishpress-hub'));
-            await onRefresh();
+        };
+        setProgress(__('Activating Pro licenses…', 'publishpress-hub'));
+        try {
+            await Promise.all(Array.from({ length: Math.min(3, targetPlugins.length) }, checkNext));
+            setProgress(__('License activation complete. Review each product below.', 'publishpress-hub'));
+            const refreshed = await onRefresh();
+            if (refreshed?.success === false) throw new Error('Dashboard refresh failed');
         } catch {
             setProgress(__('License checks complete, but the dashboard could not refresh. Reload this page to see the latest status.', 'publishpress-hub'));
         } finally {
+            activationLock.current = false;
             setKey('');
             setBusy(false);
         }
     };
+
+    if (dismissed && !open) {
+        return <Button variant="link" onClick={show}>{__('Set up a bundle license', 'publishpress-hub')}</Button>;
+    }
 
     return <section id="suite-license" className="pp-hub-suite-license">
         <div className="pp-hub-suite-license__summary">
             <span className="pp-hub-suite-license__icon" aria-hidden="true"><span className="dashicons dashicons-admin-network" /></span>
             <div className="pp-hub-suite-license__copy">
                 <h2>{__('PublishPress Bundle', 'publishpress-hub')}</h2>
-                <p>{__('Connect your included Pro plugins with one license key.', 'publishpress-hub')}</p>
+                <p>{__('A PublishPress Bundle includes multiple Pro plugins with one license key.', 'publishpress-hub')}</p>
+                {licensedCount > 0 && <p role="status">{sprintf(_n('Pro license active for %d product.', 'Pro licenses active for %d products.', licensedCount, 'publishpress-hub'), licensedCount)}</p>}
             </div>
             <Button variant="primary" disabled={busy} aria-expanded={open} aria-controls="pp-hub-suite-form"
-                onClick={() => setOpen(!open)}>{open ? __('Close license setup', 'publishpress-hub') : __('Activate Bundle License', 'publishpress-hub')}</Button>
+                onClick={() => setOpen(!open)}>{open ? __('Close license setup', 'publishpress-hub') : (licensedCount ? __('Manage licenses', 'publishpress-hub') : __('Activate Bundle License', 'publishpress-hub'))}</Button>
+            {!open && <Button variant="link" disabled={busy} onClick={dismiss}
+                aria-label={__('Dismiss bundle license setup', 'publishpress-hub')}>{__('Dismiss', 'publishpress-hub')}</Button>}
         </div>
         {open && <form id="pp-hub-suite-form" onSubmit={activate}>
             <TextControl label={__('License key', 'publishpress-hub')} type="password" autoComplete="off"

@@ -21,6 +21,7 @@ export const requestPath = (filters) => `${connectionPath}?${new URLSearchParams
 
 export const savedDraft = (state) => ({
     enabled: state.connectionEnabled,
+    readsEnabled: state.readsEnabled !== false,
     writesEnabled: state.writesEnabled,
     client: state.selectedClient,
 });

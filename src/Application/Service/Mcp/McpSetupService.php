@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\Mcp;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use RuntimeException;
+
+\defined('ABSPATH') || exit;
 
 class McpSetupService
 {
@@ -68,6 +68,7 @@ class McpSetupService
         $client = (string) get_user_option(self::CLIENT_OPTION);
         return [
             'connectionEnabled' => $this->mcpConnectionService->isEnabled(),
+            'readsEnabled' => $this->mcpConnectionService->areReadsEnabled(),
             'writesEnabled' => $this->mcpConnectionService->areWritesEnabled(),
             'disabledActions' => $this->mcpConnectionService->getDisabledActions(),
             'actionView' => $this->getActionView($filters),
@@ -105,7 +106,8 @@ class McpSetupService
             $data['enabled'],
             $data['writesEnabled'],
             $data['selectedActions'] ?? [],
-            $data['displayedActions'] ?? []
+            $data['displayedActions'] ?? [],
+            $data['readsEnabled'] ?? null
         );
         $actions = $this->mcpConnectionService->getAbilityNames();
         $reviewed = $data['reviewActions'] ?? false;

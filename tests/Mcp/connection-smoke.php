@@ -35,7 +35,11 @@ $check = static function (bool $condition, string $message) use (&$checks): void
 };
 $enabled = false;
 $writesEnabled = false;
+$readsEnabled = true;
 $disabledActions = [];
+add_filter('pre_option_publishpress_hub_mcp_reads_enabled', static function () use (&$readsEnabled) {
+    return $readsEnabled ? '1' : '0';
+});
 add_filter('pre_option_publishpress_hub_mcp_writes_enabled', static function () use (&$writesEnabled) {
     return $writesEnabled ? '1' : '0';
 });
@@ -99,6 +103,10 @@ $check(
     in_array('hub-fixture/create-item', $connection->getAbilityNames(), true),
     'Write opt-in exposes registered write actions'
 );
+$readsEnabled = false;
+$check(!in_array('hub-fixture/list-items', $connection->getAbilityNames(), true)
+    && in_array('hub-fixture/create-item', $connection->getAbilityNames(), true), 'Read exposure can be disabled independently of write exposure');
+$readsEnabled = true;
 $disabledActions = ['hub-fixture/get-item'];
 $check(
     !in_array('hub-fixture/get-item', $connection->getAbilityNames(), true),

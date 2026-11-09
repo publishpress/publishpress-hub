@@ -189,9 +189,11 @@ class WordPressAbilitiesService implements BootableInterface
                 'execute_callback' => function (array $input) use ($method, $properties) {
                     foreach ($input as $field => $value) {
                         $type = $properties[$field]['type'] ?? '';
-                        if (($type === 'boolean' && !is_bool($value))
+                        if (
+                            ($type === 'boolean' && !is_bool($value))
                             || ($type === 'integer' && !is_int($value))
-                            || ($type === 'string' && !is_string($value))) {
+                            || ($type === 'string' && !is_string($value))
+                        ) {
                             return new \WP_Error(
                                 'mcp_input_type',
                                 __('Use the exact input types shown in discovery.', 'publishpress-hub'),

@@ -52,7 +52,7 @@ const stateFile = path.join(root, 'components/pages/mcp/connection-state.js');
 const hookFile = path.join(root, 'components/pages/mcp/use-mcp-connection.js');
 const stateHelpers = moduleLoader()(stateFile);
 const fixture = (stage = 'manage', plugin = 'first') => ({
-    connectionEnabled: true, writesEnabled: false, selectedClient: 'assistant', setupComplete: stage === 'manage',
+    connectionEnabled: true, readsEnabled: true, writesEnabled: false, selectedClient: 'assistant', setupComplete: stage === 'manage',
     disabledActions: [], setupStage: stage, diagnostics: { HTTPS: 'Available' },
     profileUrl: '/profile.php', pluginsUrl: '/plugins.php',
     actionView: { plugin, search: '', behavior: '', page: 1, pages: 2, total: 11,
@@ -135,11 +135,12 @@ test('React hook preserves edits and draft settings through filtered page loads 
     const ui = hookFixture();
     await ui.start();
     ui.current.setAction('first/read', false);
-    ui.current.setDraft({ writesEnabled: true, client: 'manual' });
+    ui.current.setDraft({ readsEnabled: false, writesEnabled: true, client: 'manual' });
     const navigating = ui.current.navigate({ plugin: 'second', action_page: 2 });
     ui.requests[1].resolve({ success: true, state: fixture('manage', 'second') });
     await navigating;
     assert.equal(ui.current.draft.writesEnabled, true);
+    assert.equal(ui.current.draft.readsEnabled, false);
     assert.equal(ui.current.edits['first/read'], false);
     const saving = ui.current.save();
     assert.equal(ui.requests[2].options.method, 'POST');
@@ -234,7 +235,7 @@ function renderPage(state, draftValues = {}) {
         '@wordpress/components': WP,
         '@wordpress/data': { useDispatch: () => ({ createSuccessNotice() {} }), useSelect: () => [] },
         'lodash/filter': (items, values) => items.filter((item) => Object.entries(values).every(([key, value]) => item[key] === value)),
-        [hookFile]: { useMcpConnection: () => ({ state, draft: { enabled: state?.connectionEnabled || false, writesEnabled: false, client: 'assistant', ...draftValues }, edits: {}, loading: !state, saving: false, dirty: false }) },
+        [hookFile]: { useMcpConnection: () => ({ state, draft: { enabled: state?.connectionEnabled || false, readsEnabled: true, writesEnabled: false, client: 'assistant', ...draftValues }, edits: {}, loading: !state, saving: false, dirty: false }) },
         window: { ppHubMcpConfig: { logoUrl: '/logo.png', welcomeImageUrl: '/welcome.png' } },
     });
     return renderToStaticMarkup(h(load(path.join(root, 'components/pages/mcp-page.jsx')).McpPage));
@@ -244,7 +245,9 @@ test('React renders the shared layout and action review before client setup', ()
     const html = renderPage(fixture('access'));
     assert.match(html, /pp-hub-admin-page-layout/);
     assert.match(html, /Save and continue/);
-    assert.match(html, /Allow actions that change site data/);
+    assert.match(html, /Allow AI to read site data/);
+    assert.match(html, /Allow AI to change site data/);
+    assert.doesNotMatch(html, /Choose actions for your AI|Manage application passwords|Every action also checks/);
     assert.doesNotMatch(html, /How would you like to connect/);
 });
 
@@ -299,4 +302,15 @@ test('action page size survives navigation and saves without losing unsaved sele
     ui.requests[2].resolve({ success: true, state: fixture(), message: 'Saved' });
     await saving;
     assert.match(renderPage(fixture()), /Actions per page/);
+});
+
+
+test('read access defaults on for existing settings and is saved independently of writes', () => {
+    const state = fixture('manage');
+    delete state.readsEnabled;
+    assert.equal(stateHelpers.savedDraft(state).readsEnabled, true);
+    const draft = { ...stateHelpers.savedDraft(state), readsEnabled: false, writesEnabled: true };
+    const payload = stateHelpers.savePayload(state, draft, {}, {});
+    assert.equal(payload.readsEnabled, false);
+    assert.equal(payload.writesEnabled, true);
 });

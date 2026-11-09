@@ -49,7 +49,7 @@ User searches can filter by an effective primitive capability. Filtering happens
 
 Opening the PublishPress connection requires `manage_options` on the target site. Each action also checks the connected WordPress user's plugin and object permissions, including applicable application-password restrictions. These checks apply to administrators too.
 
-Read-only actions are exposed by default. Enable **Allow actions that change site data** to make selected write actions available. Individual actions can also be excluded. Save changes to apply the selection.
+**Allow AI to read site data** is enabled by default. **Allow AI to change site data** is disabled by default. These controls apply to selected read and write actions independently and can be changed after setup. Individual actions can also be excluded. Save changes to apply the selection.
 
 After changing allowed actions or activating or deactivating a participating plugin, restart the AI app or refresh its PublishPress connection to update its available actions. Completing setup records the user's confirmation and does not detect a live client connection.
 

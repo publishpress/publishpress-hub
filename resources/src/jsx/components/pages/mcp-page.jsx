@@ -108,10 +108,6 @@ const McpPageComponent = () => {
                     {stage === 'connect' && <McpClientSetup headingRef={stepHeading} state={state} selected={draft.client} busy={busy}
                         onSelect={(client) => connection.setDraft({ client })}
                         onFinish={() => runStep(() => connection.save({ setupComplete: true }))} />}
-                    {stage === 'access' && <McpPanel className="mcp-access-step">
-                        <h2 ref={stepHeading} tabIndex={-1}>{__('Choose actions for your AI', 'publishpress-hub')}</h2>
-                        <p>{__('Choose whether your AI can change site data and select the actions it can use. Save your choices, then connect your AI app.', 'publishpress-hub')}</p>
-                    </McpPanel>}
                     {stage === 'manage' && <McpPanel className="mcp-manage-summary">
                         <div className="mcp-section-heading"><h2 ref={stepHeading} tabIndex={-1}>{__('Your AI connection is enabled', 'publishpress-hub')}</h2>
                             <Button variant="secondary" disabled={busy} onClick={() => runStep(() => connection.save({ setupComplete: false }))}>{__('Connect another AI app', 'publishpress-hub')}</Button>
@@ -120,11 +116,12 @@ const McpPageComponent = () => {
                     </McpPanel>}
                     {(stage === 'access' || stage === 'manage') && <>
                         <McpPanel>
-                            <h2>{__('Control what your AI can do', 'publishpress-hub')}</h2>
-                            <CheckboxControl label={__('Allow actions that change site data', 'publishpress-hub')} checked={draft.writesEnabled}
+                            <h2 ref={stage === 'access' ? stepHeading : undefined} tabIndex={stage === 'access' ? -1 : undefined}>{__('Control what your AI can do', 'publishpress-hub')}</h2>
+                            <CheckboxControl label={__('Allow AI to read site data', 'publishpress-hub')} checked={draft.readsEnabled}
+                                onChange={(readsEnabled) => connection.setDraft({ readsEnabled })} disabled={busy} />
+                            <CheckboxControl label={__('Allow AI to change site data', 'publishpress-hub')} checked={draft.writesEnabled}
                                 onChange={(writesEnabled) => connection.setDraft({ writesEnabled })} disabled={busy} />
-                            <p>{__('Read-only actions are available by default. Every action also checks the connected WordPress account permissions.', 'publishpress-hub')}</p>
-                            <div className="mcp-access-note"><p>{__('Turn off the connection to stop PublishPress access, or revoke its application password in your WordPress profile.', 'publishpress-hub')} <a href={state.profileUrl}>{__('Manage application passwords', 'publishpress-hub')}</a></p></div>
+                            <p>{__('You can change these choices at any time. Turn off change access to let your AI only read site data.', 'publishpress-hub')}</p>
                         </McpPanel>
                         <McpActions state={state} edits={edits} busy={busy} onAction={connection.setAction} onNavigate={connection.navigate} />
                         <McpPanel className="mcp-diagnostics"><PanelBody title={__('Connection diagnostics', 'publishpress-hub')} initialOpen={false}>

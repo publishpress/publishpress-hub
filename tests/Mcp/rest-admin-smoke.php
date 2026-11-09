@@ -24,6 +24,7 @@ $restApi->load();
 $restApi->init();
 rest_get_server();
 $original = [];
+$keys[] = 'publishpress_hub_mcp_reads_enabled';
 foreach ($keys as $key) {
     $original[$key] = get_option($key, null);
 }
@@ -88,6 +89,12 @@ try {
     $check($data['message'] === 'Changes saved.', 'Unchanged saves do not request a refresh');
     $data = $call('POST', ['enabled' => true, 'writesEnabled' => false, 'setupComplete' => false])->get_data();
     $check($data['state']['setupStage'] === 'connect' && $connection->isEnabled(), 'Reconnect preserves the enabled connection');
+    $data = $call('POST', ['enabled' => true, 'readsEnabled' => false, 'writesEnabled' => true])->get_data();
+    $check(!$data['state']['readsEnabled'] && $data['state']['writesEnabled']
+        && !in_array('z-fixture/read-item', $connection->getAbilityNames(), true), 'REST persists independent read exposure');
+    $call('POST', ['enabled' => true, 'writesEnabled' => true]);
+    $check(!$connection->areReadsEnabled(), 'Older REST callers preserve saved read exposure');
+    $call('POST', ['enabled' => true, 'readsEnabled' => true, 'writesEnabled' => false]);
     $before = $connection->getDisabledActions();
     $check($call('POST', ['enabled' => true, 'writesEnabled' => false, 'selectedActions' => 'invalid'])->get_status() === 400
         && $before === $connection->getDisabledActions(), 'REST rejects malformed settings without changing exposure');

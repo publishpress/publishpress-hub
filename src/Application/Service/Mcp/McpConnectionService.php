@@ -14,13 +14,13 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\Mcp;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
+
+\defined('ABSPATH') || exit;
 
 class McpConnectionService implements BootableInterface
 {
@@ -29,6 +29,8 @@ class McpConnectionService implements BootableInterface
     public const ENABLED_OPTION = 'publishpress_hub_mcp_enabled';
 
     public const CATEGORY = 'publishpress';
+
+    public const READ_ENABLED_OPTION = 'publishpress_hub_mcp_reads_enabled';
 
     public const WRITE_ENABLED_OPTION = 'publishpress_hub_mcp_writes_enabled';
 
@@ -95,6 +97,17 @@ class McpConnectionService implements BootableInterface
     }
 
     /**
+     * Check whether read actions may be exposed.
+     *
+     * @return bool
+     * @since 1.2.0
+     */
+    public function areReadsEnabled(): bool
+    {
+        return (bool) $this->optionsAdapter->getOption(self::READ_ENABLED_OPTION, true);
+    }
+
+    /**
      * Check whether write actions may be exposed.
      *
      * @return bool
@@ -147,6 +160,7 @@ class McpConnectionService implements BootableInterface
      *
      * @param string[] $enabledActions Selected action names.
      * @param string[]|null $displayedActions Limit changes to these actions, or null for the full catalog.
+     * @param bool|null $readsEnabled Read exposure, or null to preserve the current choice.
      * @return void
      * @since 1.2.0
      */
@@ -154,7 +168,8 @@ class McpConnectionService implements BootableInterface
         bool $enabled,
         bool $writesEnabled,
         array $enabledActions,
-        ?array $displayedActions = null
+        ?array $displayedActions = null,
+        ?bool $readsEnabled = null
     ): void {
         $registered = array_column($this->getActionCatalog(), 'name');
         $disabled = $this->getDisabledActions();
@@ -168,6 +183,9 @@ class McpConnectionService implements BootableInterface
         $disabled = array_merge(array_diff($disabled, $registered), array_diff($registered, $enabledActions));
         $this->optionsAdapter->updateOption(self::ENABLED_OPTION, $enabled);
         $this->optionsAdapter->updateOption(self::WRITE_ENABLED_OPTION, $writesEnabled);
+        if ($readsEnabled !== null) {
+            $this->optionsAdapter->updateOption(self::READ_ENABLED_OPTION, (int) $readsEnabled);
+        }
         $this->optionsAdapter->updateOption(self::DISABLED_ABILITIES_OPTION, array_values(array_unique($disabled)));
     }
 
@@ -241,10 +259,15 @@ class McpConnectionService implements BootableInterface
     {
         $disabled = $this->getDisabledActions();
         $writesEnabled = $this->areWritesEnabled();
+        $readsEnabled = $this->areReadsEnabled();
         $names = [];
 
         foreach ($this->getActionCatalog() as $action) {
-            if (in_array($action['name'], $disabled, true) || (!$writesEnabled && !$action['readonly'])) {
+            if (
+                in_array($action['name'], $disabled, true)
+                || (!$writesEnabled && !$action['readonly'])
+                || (!$readsEnabled && $action['readonly'])
+            ) {
                 continue;
             }
             $names[] = $action['name'];

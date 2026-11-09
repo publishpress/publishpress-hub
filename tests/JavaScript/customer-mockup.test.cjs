@@ -30,7 +30,7 @@ function load(relativePath, window, apiFetch = () => {}) {
             if (name === '@wordpress/element') return hooks;
             if (name === '@wordpress/components') return { CheckboxControl: 'Checkbox', TextControl: 'Text', ToggleControl: 'Toggle', Spinner: 'Spinner' };
             if (name === '@wordpress/api-fetch') return { __esModule: true, default: apiFetch };
-            if (name === '@publishpress-hub/i18n') return { __: text => text, sprintf: (text, name) => text.replace('%s', name) };
+            if (name === '@publishpress-hub/i18n') return { __: text => text, _n: (single, plural, count) => count === 1 ? single : plural, sprintf: (text, ...values) => { let index = 0; return text.replace(/%(?:(\d+)\$)?[sd]/g, (match, position) => String(values[position ? Number(position) - 1 : index++])); } };
             if (name.endsWith('/buttons/button')) return { Button: 'Button' };
             if (name === './action-button') return { ActionButton: 'ActionButton' };
             throw Error(name);
@@ -87,7 +87,52 @@ async function main() {
     tree = render();
     assert.equal(flatten(tree).find(node => node.type === 'Text').props.value, '', 'Do not retain the entered key after completion');
     const output = JSON.stringify(tree);
-    assert.ok(output.includes('Product not covered') && output.includes('License activated.'));
+    assert.ok(output.includes('Product not covered') && output.includes('Pro license active for this site.'));
+
+    window.localStorage.getItem = key => stored.get(key);
+    window.location.hash = '';
+    const closedProps = { plugins: [], onRefresh: async () => {}, isLoading: false };
+    const dismissedSuite = load('resources/src/jsx/components/pages/suite-license.jsx', window);
+    tree = dismissedSuite.render(module => module.SuiteLicense(closedProps));
+    flatten(tree).find(node => node.props?.['aria-label'] === 'Dismiss bundle license setup').props.onClick();
+    const reloadedSuite = load('resources/src/jsx/components/pages/suite-license.jsx', window);
+    tree = reloadedSuite.render(module => module.SuiteLicense(closedProps));
+    assert.ok(JSON.stringify(tree).includes('Set up a bundle license'));
+    tree.props.onClick();
+    tree = reloadedSuite.render(module => module.SuiteLicense(closedProps));
+    assert.ok(flatten(tree).some(node => node.type === 'form'));
+    stored.set('pp-hub-bundle-dismissed:1:8', 'false');
+    const licensedSuite = load('resources/src/jsx/components/pages/suite-license.jsx', window);
+    tree = licensedSuite.render(module => module.SuiteLicense({ ...closedProps,
+        plugins: [{ slug: 'planner', proPlugin: { isLicensed: true } }] }));
+    assert.ok(JSON.stringify(tree).includes('Pro license active for 1 product.'));
+    assert.ok(JSON.stringify(tree).includes('Manage licenses'));
+
+    window.location.hash = '#suite-license';
+    const pending = [];
+    let active = 0;
+    let maximum = 0;
+    const parallelSuite = load('resources/src/jsx/components/pages/suite-license.jsx', window, () => {
+        active++;
+        maximum = Math.max(maximum, active);
+        return new Promise(resolve => pending.push(() => { active--; resolve({ success: true, licensed: true }); }));
+    });
+    const parallelProps = { ...closedProps, plugins: Array.from({ length: 5 }, (_, index) => ({ slug: `fixture-${index}`, name: `Fixture ${index}` })) };
+    tree = parallelSuite.render(module => module.SuiteLicense(parallelProps));
+    flatten(tree).find(node => node.type === 'Text').props.onChange('test-key');
+    tree = parallelSuite.render(module => module.SuiteLicense(parallelProps));
+    const form = flatten(tree).find(node => node.type === 'form');
+    const activation = form.props.onSubmit({ preventDefault() {} });
+    await form.props.onSubmit({ preventDefault() {} });
+    assert.equal(pending.length, 3, 'At most three activation requests run together and duplicate submission is blocked');
+    while (pending.length) {
+        pending.shift()();
+        await new Promise(resolve => setImmediate(resolve));
+    }
+    await activation;
+    assert.equal(maximum, 3);
+    tree = parallelSuite.render(module => module.SuiteLicense(parallelProps));
+    assert.equal(flatten(tree).filter(node => node.type === 'li').length, 5);
 
     const cards = load('resources/src/jsx/components/plugins-list/components/plugin-card.jsx', window);
     let deactivated = false;

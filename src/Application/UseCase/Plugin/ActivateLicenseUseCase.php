@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use PublishPress\Hub\Application\Service\License\ScheduledLicenseValidationService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
@@ -29,6 +27,8 @@ use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use WP_REST_Request;
+
+\defined('ABSPATH') || exit;
 
 class ActivateLicenseUseCase implements UseCaseInterface
 {
@@ -102,7 +102,7 @@ class ActivateLicenseUseCase implements UseCaseInterface
         // Trigger immediate license validation to check expiration status
         // This ensures the UI shows current license status (expired/active)
         // without waiting for the next scheduled validation.
-        $this->licenseValidation->validateAllLicenses();
+        $this->licenseValidation->validateAllLicenses($applyToAll ? null : [$family]);
 
         return [
             'slug' => esc_html($plugin->getSlug()),

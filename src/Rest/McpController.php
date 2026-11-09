@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Rest;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Service\Mcp\McpAdapterInstallationService;
@@ -25,6 +23,8 @@ use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use RuntimeException;
 use WP_REST_Request;
 use WP_REST_Server;
+
+\defined('ABSPATH') || exit;
 
 class McpController implements BootableInterface
 {
@@ -92,6 +92,7 @@ class McpController implements BootableInterface
         ];
         $settings = [
             'enabled' => ['type' => 'boolean', 'required' => true],
+            'readsEnabled' => ['type' => 'boolean'],
             'writesEnabled' => ['type' => 'boolean', 'required' => true],
             'selectedActions' => $actionNames,
             'displayedActions' => $actionNames,
