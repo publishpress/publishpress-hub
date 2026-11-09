@@ -38,3 +38,9 @@ if (! function_exists('wp_delete_file')) {
         return unlink($file);
     }
 }
+
+if (! function_exists('absint')) {
+    function absint($value) {
+        return abs((int) $value);
+    }
+}
