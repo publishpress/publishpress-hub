@@ -150,7 +150,11 @@ async function main() {
     flatten(card).find(node => node.type === 'Toggle').props.onChange(false);
     assert.equal(deactivated, true, 'Card deactivation uses the existing confirmation handler');
     card = cards.exports.PluginCard({ ...cardProps, progressStates: { isUpdating: true } });
-    assert.equal(flatten(card).find(node => node.type === 'Toggle').props.disabled, true);
+    const busyToggle = flatten(card).find(node => node.type === 'Toggle');
+    assert.equal(busyToggle.props['aria-disabled'], true);
+    deactivated = false;
+    busyToggle.props.onChange(false);
+    assert.equal(deactivated, false, 'A focusable busy toggle must not trigger deactivation');
     assert.ok(flatten(card).filter(node => node.type === 'ActionButton').every(node => node.props.disabled));
     card = cards.exports.PluginCard({ ...cardProps, pluginFamily: { ...cardProps.pluginFamily, hasConflictingInstallations: true } });
     assert.equal(flatten(card).some(node => node.type === 'Toggle'), false);

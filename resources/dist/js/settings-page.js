@@ -26,15 +26,15 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
-var AdminPageContainer = function AdminPageContainer(_ref) {
-  var _ref$className = _ref.className,
-    className = _ref$className === void 0 ? '' : _ref$className,
-    _ref$variant = _ref.variant,
-    variant = _ref$variant === void 0 ? 'contained' : _ref$variant,
-    children = _ref.children;
-  var baseClass = 'pp-hub-admin-page-container';
-  var variantClass = "pp-hub-".concat(variant);
-  var combinedClassName = "".concat(baseClass, " ").concat(variantClass, " pp-hub-root ").concat(className).trim();
+const AdminPageContainer = ({
+  className = '',
+  variant = 'contained',
+  // 'contained' | 'fullwidth'
+  children
+}) => {
+  const baseClass = 'pp-hub-admin-page-container';
+  const variantClass = `pp-hub-${variant}`;
+  const combinedClassName = `${baseClass} ${variantClass} pp-hub-root ${className}`.trim();
   return /*#__PURE__*/React.createElement("div", {
     id: "publishpress-hub-admin-page-container",
     className: combinedClassName,
@@ -63,28 +63,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var FooterComponent = function FooterComponent(_ref) {
-  var pluginSlug = _ref.pluginSlug,
-    pluginName = _ref.pluginName,
-    pluginDocumentationUrl = _ref.pluginDocumentationUrl,
-    pluginAboutUrl = _ref.pluginAboutUrl,
-    pluginSupportUrl = _ref.pluginSupportUrl,
-    logoUrl = _ref.logoUrl;
-  var stars = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return Array(5).fill('<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>').join('');
-  }, []);
+const FooterComponent = ({
+  pluginSlug,
+  pluginName,
+  pluginDocumentationUrl,
+  pluginAboutUrl,
+  pluginSupportUrl,
+  logoUrl
+}) => {
+  const stars = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => Array(5).fill('<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>').join(''), []);
   return /*#__PURE__*/React.createElement("footer", {
     className: "pp-hub-footer"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-footer-rating"
   }, /*#__PURE__*/React.createElement("a", {
-    href: "//wordpress.org/support/plugin/".concat(pluginSlug, "/reviews/#new-post"),
+    href: `//wordpress.org/support/plugin/${pluginSlug}/reviews/#new-post`,
     target: "_blank",
     rel: "noopener noreferrer"
   }, /*#__PURE__*/React.createElement("span", {
     dangerouslySetInnerHTML: {
       __html: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s is the plugin name, %s is the rating */
-      (0,_wordpress_escape_html__WEBPACK_IMPORTED_MODULE_0__.escapeHTML)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('If you like %s please leave us a %s rating. Thank you!', 'publishpress-hub')), "<strong>".concat((0,_wordpress_escape_html__WEBPACK_IMPORTED_MODULE_0__.escapeHTML)(pluginName), "</strong>,"), "<span className=\"pp-hub-footer-stars\">".concat(stars, "</span>"))
+      (0,_wordpress_escape_html__WEBPACK_IMPORTED_MODULE_0__.escapeHTML)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('If you like %s please leave us a %s rating. Thank you!', 'publishpress-hub')), `<strong>${(0,_wordpress_escape_html__WEBPACK_IMPORTED_MODULE_0__.escapeHTML)(pluginName)}</strong>,`, `<span className="pp-hub-footer-stars">${stars}</span>`)
     }
   }))), /*#__PURE__*/React.createElement("hr", {
     className: "pp-hub-footer-separator"
@@ -119,7 +118,7 @@ var FooterComponent = function FooterComponent(_ref) {
     alt: "PublishPress"
   }))));
 };
-var Footer = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(FooterComponent);
+const Footer = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(FooterComponent);
 
 /***/ },
 
@@ -154,17 +153,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Constants moved outside to prevent recreation
-var BASE_HEADER_CLASS = "pp-hub-admin-page-header";
-var COMPACT_HEADER_CLASS = "pp-hub-admin-page-header pp-hub-admin-page-header--compact";
-var LOGO_ALT_TEXT = "PublishPress";
-var LOGO_TEXT = "Hub";
-var AdminPageHeaderComponent = function AdminPageHeaderComponent(_ref) {
-  var logoUrl = _ref.logoUrl,
-    children = _ref.children,
-    _ref$compact = _ref.compact,
-    compact = _ref$compact === void 0 ? false : _ref$compact;
+const BASE_HEADER_CLASS = "pp-hub-admin-page-header";
+const COMPACT_HEADER_CLASS = "pp-hub-admin-page-header pp-hub-admin-page-header--compact";
+const LOGO_ALT_TEXT = "PublishPress";
+const LOGO_TEXT = "Hub";
+const AdminPageHeaderComponent = ({
+  logoUrl,
+  children,
+  compact = false
+}) => {
   // Memoize the header class computation
-  var headerClass = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+  const headerClass = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
     return compact ? COMPACT_HEADER_CLASS : BASE_HEADER_CLASS;
   }, [compact]);
   return /*#__PURE__*/React.createElement("div", {
@@ -189,7 +188,7 @@ var AdminPageHeaderComponent = function AdminPageHeaderComponent(_ref) {
 };
 
 // Memoize the component to prevent unnecessary re-renders
-var AdminPageHeader = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(AdminPageHeaderComponent);
+const AdminPageHeader = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(AdminPageHeaderComponent);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AdminPageHeader);
 
 /***/ },
@@ -253,11 +252,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var AdminPageLayout = function AdminPageLayout(_ref) {
-  var title = _ref.title,
-    logoUrl = _ref.logoUrl,
-    children = _ref.children,
-    titleChildren = _ref.titleChildren;
+const AdminPageLayout = ({
+  title,
+  logoUrl,
+  children,
+  titleChildren
+}) => {
   return /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-admin-page-layout"
   }, /*#__PURE__*/React.createElement(_header__WEBPACK_IMPORTED_MODULE_1__.AdminPageHeader, {
@@ -291,10 +291,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-var _excluded = ["variant", "icon", "onClick", "href", "target", "rel", "className", "disabled", "title", "style", "children", "isFullWidth", "isLoading", "spinnerPosition"];
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
-function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
 /**
  * Button.
  *
@@ -307,29 +304,29 @@ function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t =
 
 
 
-var DEFAULT_TARGET = '_blank';
-var DEFAULT_REL = 'noopener noreferrer';
-var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forwardRef)(function (_ref, ref) {
-  var variant = _ref.variant,
-    icon = _ref.icon,
-    onClick = _ref.onClick,
-    href = _ref.href,
-    target = _ref.target,
-    rel = _ref.rel,
-    className = _ref.className,
-    disabled = _ref.disabled,
-    title = _ref.title,
-    style = _ref.style,
-    children = _ref.children,
-    isFullWidth = _ref.isFullWidth,
-    isLoading = _ref.isLoading,
-    _ref$spinnerPosition = _ref.spinnerPosition,
-    spinnerPosition = _ref$spinnerPosition === void 0 ? 'right' : _ref$spinnerPosition,
-    restProps = _objectWithoutProperties(_ref, _excluded);
-  var targetValue = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+const DEFAULT_TARGET = '_blank';
+const DEFAULT_REL = 'noopener noreferrer';
+const ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forwardRef)(({
+  variant,
+  icon,
+  onClick,
+  href,
+  target,
+  rel,
+  className,
+  disabled,
+  title,
+  style,
+  children,
+  isFullWidth,
+  isLoading,
+  spinnerPosition = 'right',
+  ...restProps
+}, ref) => {
+  const targetValue = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => {
     return target || (href ? DEFAULT_TARGET : undefined);
   }, [target, href]);
-  var relValue = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+  const relValue = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => {
     return rel || (href ? DEFAULT_REL : undefined);
   }, [rel, href]);
   if (isLoading) {
@@ -342,15 +339,15 @@ var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forward
     }));
     disabled = true;
   }
-  var buttonClassName = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    var variantClassName = '';
+  const buttonClassName = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => {
+    let variantClassName = '';
     if (variant === 'highlight') {
       variantClassName = 'is-highlight';
     }
     if (variant === 'danger') {
       variantClassName = 'is-danger';
     }
-    return "pp-hub-button ".concat(variantClassName, " ").concat(className ? className : '', " ").concat(isFullWidth ? 'is-full-width' : '', " ").concat(spinnerPosition === 'left' ? 'is-link-left' : '');
+    return `pp-hub-button ${variantClassName} ${className ? className : ''} ${isFullWidth ? 'is-full-width' : ''} ${spinnerPosition === 'left' ? 'is-link-left' : ''}`;
   }, [className, isFullWidth, variant, spinnerPosition]);
   return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, _extends({
     ref: ref,
@@ -361,7 +358,11 @@ var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forward
     target: targetValue,
     rel: relValue,
     className: buttonClassName,
-    disabled: disabled || isLoading,
+    disabled: disabled || isLoading
+    // Keep a loading button focusable so keyboard focus is not dropped to <body>
+    // while the action runs or when a modal returns focus to it (WCAG 2.4.3).
+    ,
+    accessibleWhenDisabled: isLoading || undefined,
     "aria-busy": isLoading || undefined,
     title: title,
     style: style
@@ -370,7 +371,7 @@ var ButtonComponent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.forward
 ButtonComponent.displayName = 'Button';
 
 // Memoize the component to prevent unnecessary re-renders
-var Button = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(ButtonComponent);
+const Button = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.memo)(ButtonComponent);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Button);
 
 /***/ },
@@ -396,16 +397,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _admin_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../admin-page */ "./resources/src/jsx/components/admin-page/index.jsx");
 /* harmony import */ var _settings_DiagnosticsTab__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./settings/DiagnosticsTab */ "./resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx");
 /* harmony import */ var _settings_DebugLogTab__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./settings/DebugLogTab */ "./resources/src/jsx/components/pages/settings/DebugLogTab.jsx");
-function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
-function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 /**
  * Settings page.
  *
@@ -423,12 +414,13 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
-var _ref = window.ppHubSettingsPageConfig || {},
-  logoUrl = _ref.logoUrl,
-  debugModeEnabled = _ref.debugModeEnabled;
-var TAB_QUERY_PARAM = 'tab';
-var buildTabs = function buildTabs() {
-  var tabs = [{
+const {
+  logoUrl,
+  debugModeEnabled
+} = window.ppHubSettingsPageConfig || {};
+const TAB_QUERY_PARAM = 'tab';
+const buildTabs = () => {
+  const tabs = [{
     name: 'diagnostics',
     title: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Diagnostics', 'publishpress-hub'),
     className: 'pp-hub-settings-tab'
@@ -442,209 +434,117 @@ var buildTabs = function buildTabs() {
   }
   return tabs;
 };
-var getInitialTabName = function getInitialTabName(tabs) {
-  var _tabs$;
-  var defaultTab = ((_tabs$ = tabs[0]) === null || _tabs$ === void 0 ? void 0 : _tabs$.name) || '';
+const getInitialTabName = tabs => {
+  const defaultTab = tabs[0]?.name || '';
   if (!defaultTab) {
     return '';
   }
-  var currentUrl = new URL(window.location.href);
-  var selectedTab = currentUrl.searchParams.get(TAB_QUERY_PARAM);
-  var hasSelectedTab = tabs.some(function (tab) {
-    return tab.name === selectedTab;
-  });
+  const currentUrl = new URL(window.location.href);
+  const selectedTab = currentUrl.searchParams.get(TAB_QUERY_PARAM);
+  const hasSelectedTab = tabs.some(tab => tab.name === selectedTab);
   return hasSelectedTab ? selectedTab : defaultTab;
 };
-var updateSelectedTabInUrl = function updateSelectedTabInUrl(tabName) {
+const updateSelectedTabInUrl = tabName => {
   if (!tabName) {
     return;
   }
-  var currentUrl = new URL(window.location.href);
+  const currentUrl = new URL(window.location.href);
   currentUrl.searchParams.set(TAB_QUERY_PARAM, tabName);
   window.history.replaceState({}, '', currentUrl.toString());
 };
-var renderTab = function renderTab(tab) {
+const renderTab = tab => {
   if (tab.name === 'debug-log') {
     return /*#__PURE__*/React.createElement(_settings_DebugLogTab__WEBPACK_IMPORTED_MODULE_6__.DebugLogTab, null);
   }
   return /*#__PURE__*/React.createElement(_settings_DiagnosticsTab__WEBPACK_IMPORTED_MODULE_5__.DiagnosticsTab, null);
 };
-var SettingsPageComponent = function SettingsPageComponent() {
-  var title = (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Settings', 'publishpress-hub');
-  var tabs = buildTabs();
-  var initialTabName = getInitialTabName(tabs);
-  var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    isLoadingReport = _useState2[0],
-    setIsLoadingReport = _useState2[1];
-  var _useState3 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState4 = _slicedToArray(_useState3, 2),
-    notice = _useState4[0],
-    setNotice = _useState4[1];
-  var fetchReport = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-      var response;
-      return _regenerator().w(function (_context) {
-        while (1) switch (_context.n) {
-          case 0:
-            _context.n = 1;
-            return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
-              path: '/publishpress-hub/v1/settings/site-health-report'
-            });
-          case 1:
-            response = _context.v;
-            return _context.a(2, response);
-        }
-      }, _callee);
-    }));
-    return function fetchReport() {
-      return _ref2.apply(this, arguments);
+const SettingsPageComponent = () => {
+  const title = (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Settings', 'publishpress-hub');
+  const tabs = buildTabs();
+  const initialTabName = getInitialTabName(tabs);
+  const [isLoadingReport, setIsLoadingReport] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [notice, setNotice] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const fetchReport = async () => {
+    const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
+      path: '/publishpress-hub/v1/settings/site-health-report'
+    });
+    return response;
+  };
+  const copyTextToClipboard = async text => {
+    const copyViaExecCommand = () => {
+      const el = document.createElement('textarea');
+      el.value = text;
+      el.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
+      document.body.appendChild(el);
+      el.focus();
+      el.select();
+      const success = document.execCommand('copy');
+      document.body.removeChild(el);
+      return success;
     };
-  }();
-  var copyTextToClipboard = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(text) {
-      var _navigator$clipboard;
-      var copyViaExecCommand, _t;
-      return _regenerator().w(function (_context2) {
-        while (1) switch (_context2.p = _context2.n) {
-          case 0:
-            copyViaExecCommand = function copyViaExecCommand() {
-              var el = document.createElement('textarea');
-              el.value = text;
-              el.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
-              document.body.appendChild(el);
-              el.focus();
-              el.select();
-              var success = document.execCommand('copy');
-              document.body.removeChild(el);
-              return success;
-            };
-            if (!((_navigator$clipboard = navigator.clipboard) !== null && _navigator$clipboard !== void 0 && _navigator$clipboard.writeText)) {
-              _context2.n = 5;
-              break;
-            }
-            _context2.p = 1;
-            _context2.n = 2;
-            return navigator.clipboard.writeText(text);
-          case 2:
-            return _context2.a(2);
-          case 3:
-            _context2.p = 3;
-            _t = _context2.v;
-            if (!copyViaExecCommand()) {
-              _context2.n = 4;
-              break;
-            }
-            return _context2.a(2);
-          case 4:
-            throw _t;
-          case 5:
-            if (copyViaExecCommand()) {
-              _context2.n = 6;
-              break;
-            }
-            throw new Error('execCommand copy failed');
-          case 6:
-            return _context2.a(2);
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return;
+      } catch (error) {
+        if (copyViaExecCommand()) {
+          return;
         }
-      }, _callee2, null, [[1, 3]]);
-    }));
-    return function copyTextToClipboard(_x) {
-      return _ref3.apply(this, arguments);
-    };
-  }();
-  var handleCopyReport = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
-      var response, _t2;
-      return _regenerator().w(function (_context3) {
-        while (1) switch (_context3.p = _context3.n) {
-          case 0:
-            setIsLoadingReport(true);
-            setNotice(null);
-            _context3.p = 1;
-            _context3.n = 2;
-            return fetchReport();
-          case 2:
-            response = _context3.v;
-            _context3.n = 3;
-            return copyTextToClipboard(response.report || '');
-          case 3:
-            setNotice({
-              status: 'success',
-              message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Site health report copied to clipboard.', 'publishpress-hub')
-            });
-            _context3.n = 5;
-            break;
-          case 4:
-            _context3.p = 4;
-            _t2 = _context3.v;
-            setNotice({
-              status: 'error',
-              message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to copy the site health report. Please try again.', 'publishpress-hub')
-            });
-          case 5:
-            _context3.p = 5;
-            setIsLoadingReport(false);
-            return _context3.f(5);
-          case 6:
-            return _context3.a(2);
-        }
-      }, _callee3, null, [[1, 4, 5, 6]]);
-    }));
-    return function handleCopyReport() {
-      return _ref4.apply(this, arguments);
-    };
-  }();
-  var handleDownloadReport = /*#__PURE__*/function () {
-    var _ref5 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
-      var response, blob, url, link, _t3;
-      return _regenerator().w(function (_context4) {
-        while (1) switch (_context4.p = _context4.n) {
-          case 0:
-            setIsLoadingReport(true);
-            setNotice(null);
-            _context4.p = 1;
-            _context4.n = 2;
-            return fetchReport();
-          case 2:
-            response = _context4.v;
-            blob = new Blob([response.report || ''], {
-              type: 'text/plain;charset=utf-8'
-            });
-            url = URL.createObjectURL(blob);
-            link = document.createElement('a');
-            link.href = url;
-            link.download = response.filename || 'publishpress-hub-site-health-report.txt';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-            setNotice({
-              status: 'success',
-              message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Site health report downloaded.', 'publishpress-hub')
-            });
-            _context4.n = 4;
-            break;
-          case 3:
-            _context4.p = 3;
-            _t3 = _context4.v;
-            setNotice({
-              status: 'error',
-              message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to download the site health report. Please try again.', 'publishpress-hub')
-            });
-          case 4:
-            _context4.p = 4;
-            setIsLoadingReport(false);
-            return _context4.f(4);
-          case 5:
-            return _context4.a(2);
-        }
-      }, _callee4, null, [[1, 3, 4, 5]]);
-    }));
-    return function handleDownloadReport() {
-      return _ref5.apply(this, arguments);
-    };
-  }();
+        throw error;
+      }
+    }
+    if (!copyViaExecCommand()) {
+      throw new Error('execCommand copy failed');
+    }
+  };
+  const handleCopyReport = async () => {
+    setIsLoadingReport(true);
+    setNotice(null);
+    try {
+      const response = await fetchReport();
+      await copyTextToClipboard(response.report || '');
+      setNotice({
+        status: 'success',
+        message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Site health report copied to clipboard.', 'publishpress-hub')
+      });
+    } catch (error) {
+      setNotice({
+        status: 'error',
+        message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to copy the site health report. Please try again.', 'publishpress-hub')
+      });
+    } finally {
+      setIsLoadingReport(false);
+    }
+  };
+  const handleDownloadReport = async () => {
+    setIsLoadingReport(true);
+    setNotice(null);
+    try {
+      const response = await fetchReport();
+      const blob = new Blob([response.report || ''], {
+        type: 'text/plain;charset=utf-8'
+      });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = response.filename || 'publishpress-hub-site-health-report.txt';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+      setNotice({
+        status: 'success',
+        message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Site health report downloaded.', 'publishpress-hub')
+      });
+    } catch (error) {
+      setNotice({
+        status: 'error',
+        message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to download the site health report. Please try again.', 'publishpress-hub')
+      });
+    } finally {
+      setIsLoadingReport(false);
+    }
+  };
   return /*#__PURE__*/React.createElement(_admin_page__WEBPACK_IMPORTED_MODULE_4__.AdminPageLayout, {
     title: title,
     logoUrl: logoUrl
@@ -653,32 +553,30 @@ var SettingsPageComponent = function SettingsPageComponent() {
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Notice, {
     status: notice.status,
     isDismissible: true,
-    onRemove: function onRemove() {
-      return setNotice(null);
-    }
+    onRemove: () => setNotice(null)
   }, notice.message)), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-settings-page"
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TabPanel, {
     className: "pp-hub-settings-tabs",
     tabs: tabs,
     initialTabName: initialTabName,
-    onSelect: function onSelect(tabName) {
-      return updateSelectedTabInUrl(tabName);
-    }
+    onSelect: tabName => updateSelectedTabInUrl(tabName)
   }, renderTab), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-settings-page__report-actions"
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
     variant: "secondary",
     onClick: handleCopyReport,
     isBusy: isLoadingReport,
-    disabled: isLoadingReport
+    disabled: isLoadingReport,
+    accessibleWhenDisabled: true
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Copy Site Health Report', 'publishpress-hub')), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
     variant: "secondary",
     onClick: handleDownloadReport,
-    disabled: isLoadingReport
+    disabled: isLoadingReport,
+    accessibleWhenDisabled: true
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Download Site Health Report', 'publishpress-hub')))));
 };
-var SettingsPage = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(SettingsPageComponent);
+const SettingsPage = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(SettingsPageComponent);
 
 /***/ },
 
@@ -701,16 +599,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _RequestsLogView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RequestsLogView */ "./resources/src/jsx/components/pages/settings/RequestsLogView.jsx");
-function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
-function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 /**
  * Debug log viewer tab.
  *
@@ -726,9 +614,9 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
-var VIEW_REQUESTS = 'requests';
-var VIEW_FULL_LOG = 'full-log';
-var REFRESH_INTERVALS = [{
+const VIEW_REQUESTS = 'requests';
+const VIEW_FULL_LOG = 'full-log';
+const REFRESH_INTERVALS = [{
   value: 3,
   label: '3s'
 }, {
@@ -744,53 +632,29 @@ var REFRESH_INTERVALS = [{
   value: 60,
   label: '60s'
 }];
-var DebugLogTabComponent = function DebugLogTabComponent() {
-  var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-    _useState2 = _slicedToArray(_useState, 2),
-    logContent = _useState2[0],
-    setLogContent = _useState2[1];
-  var _useState3 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState4 = _slicedToArray(_useState3, 2),
-    isLoading = _useState4[0],
-    setIsLoading = _useState4[1];
-  var _useState5 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState6 = _slicedToArray(_useState5, 2),
-    isClearing = _useState6[0],
-    setIsClearing = _useState6[1];
-  var _useState7 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState8 = _slicedToArray(_useState7, 2),
-    notice = _useState8[0],
-    setNotice = _useState8[1];
-  var _useState9 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(VIEW_REQUESTS),
-    _useState0 = _slicedToArray(_useState9, 2),
-    viewMode = _useState0[0],
-    setViewMode = _useState0[1];
-  var _useState1 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState10 = _slicedToArray(_useState1, 2),
-    autoRefresh = _useState10[0],
-    setAutoRefresh = _useState10[1];
-  var _useState11 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(5),
-    _useState12 = _slicedToArray(_useState11, 2),
-    intervalSeconds = _useState12[0],
-    setIntervalSeconds = _useState12[1];
-  var _useState13 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(5),
-    _useState14 = _slicedToArray(_useState13, 2),
-    countdown = _useState14[0],
-    setCountdown = _useState14[1];
+const DebugLogTabComponent = () => {
+  const [logContent, setLogContent] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [isLoading, setIsLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [isClearing, setIsClearing] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [notice, setNotice] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [viewMode, setViewMode] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(VIEW_REQUESTS);
+  const [autoRefresh, setAutoRefresh] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [intervalSeconds, setIntervalSeconds] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(5);
+  const [countdown, setCountdown] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(5);
 
   // Single timer ref — only one setInterval ever runs at a time.
-  var tickRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const tickRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
 
   // Mutable refs so the single 1s tick closure never goes stale.
   // Changing the interval value only updates these refs; the timer is NOT recreated.
-  var intervalSecondsRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(5);
-  var countdownValueRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(5);
+  const intervalSecondsRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(5);
+  const countdownValueRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(5);
 
   // Tracks the active AbortController so we can cancel in-flight requests.
-  var abortControllerRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const abortControllerRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
 
   // Cancel any in-flight request.
-  var cancelInFlightRequest = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+  const cancelInFlightRequest = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(() => {
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
       abortControllerRef.current = null;
@@ -798,99 +662,68 @@ var DebugLogTabComponent = function DebugLogTabComponent() {
   }, []);
 
   // Abort on unmount so state is never set on an unmounted component.
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    return function () {
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    return () => {
       cancelInFlightRequest();
     };
   }, [cancelInFlightRequest]);
 
   // Silent fetch for auto-refresh — no loading spinner, no error notice.
-  var fetchLogSilent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-    var controller, response, _t;
-    return _regenerator().w(function (_context) {
-      while (1) switch (_context.p = _context.n) {
-        case 0:
-          cancelInFlightRequest();
-          controller = new AbortController();
-          abortControllerRef.current = controller;
-          _context.p = 1;
-          _context.n = 2;
-          return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
-            path: '/publishpress-hub/v1/settings/debug-log',
-            signal: controller.signal
-          });
-        case 2:
-          response = _context.v;
-          setLogContent(response.log || '');
-          _context.n = 4;
-          break;
-        case 3:
-          _context.p = 3;
-          _t = _context.v;
-        case 4:
-          _context.p = 4;
-          if (abortControllerRef.current === controller) {
-            abortControllerRef.current = null;
-          }
-          return _context.f(4);
-        case 5:
-          return _context.a(2);
+  const fetchLogSilent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(async () => {
+    cancelInFlightRequest();
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
+    try {
+      const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
+        path: '/publishpress-hub/v1/settings/debug-log',
+        signal: controller.signal
+      });
+      setLogContent(response.log || '');
+    } catch {
+      // AbortError or transient network error — silently ignored during polling.
+    } finally {
+      if (abortControllerRef.current === controller) {
+        abortControllerRef.current = null;
       }
-    }, _callee, null, [[1, 3, 4, 5]]);
-  })), [cancelInFlightRequest]);
+    }
+  }, [cancelInFlightRequest]);
 
   // Manual fetch — shows loading state and error notice on failure.
-  var fetchLog = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
-    var controller, response, _t2;
-    return _regenerator().w(function (_context2) {
-      while (1) switch (_context2.p = _context2.n) {
-        case 0:
-          cancelInFlightRequest();
-          setIsLoading(true);
-          setNotice(null);
-          controller = new AbortController();
-          abortControllerRef.current = controller;
-          _context2.p = 1;
-          _context2.n = 2;
-          return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
-            path: '/publishpress-hub/v1/settings/debug-log',
-            signal: controller.signal
-          });
-        case 2:
-          response = _context2.v;
-          setLogContent(response.log || '');
-          _context2.n = 4;
-          break;
-        case 3:
-          _context2.p = 3;
-          _t2 = _context2.v;
-          if ((_t2 === null || _t2 === void 0 ? void 0 : _t2.name) !== 'AbortError') {
-            setNotice({
-              status: 'error',
-              message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to load the debug log. Please try again.', 'publishpress-hub')
-            });
-          }
-        case 4:
-          _context2.p = 4;
-          if (abortControllerRef.current === controller) {
-            abortControllerRef.current = null;
-          }
-          setIsLoading(false);
-          return _context2.f(4);
-        case 5:
-          return _context2.a(2);
+  const fetchLog = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(async () => {
+    cancelInFlightRequest();
+    setIsLoading(true);
+    setNotice(null);
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
+    try {
+      const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
+        path: '/publishpress-hub/v1/settings/debug-log',
+        signal: controller.signal
+      });
+      setLogContent(response.log || '');
+    } catch (error) {
+      if (error?.name !== 'AbortError') {
+        setNotice({
+          status: 'error',
+          message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to load the debug log. Please try again.', 'publishpress-hub')
+        });
       }
-    }, _callee2, null, [[1, 3, 4, 5]]);
-  })), [cancelInFlightRequest]);
+    } finally {
+      if (abortControllerRef.current === controller) {
+        abortControllerRef.current = null;
+      }
+      setIsLoading(false);
+    }
+  }, [cancelInFlightRequest]);
 
   // Initial load.
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     fetchLog();
   }, [fetchLog]);
 
   // Auto-refresh: a single 1s tick reads mutable refs so it never goes stale
   // and never needs to be recreated when the interval value changes.
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (!autoRefresh) {
       clearInterval(tickRef.current);
       tickRef.current = null;
@@ -902,7 +735,7 @@ var DebugLogTabComponent = function DebugLogTabComponent() {
     // Reset countdown display on enable.
     countdownValueRef.current = intervalSecondsRef.current;
     setCountdown(intervalSecondsRef.current);
-    tickRef.current = setInterval(function () {
+    tickRef.current = setInterval(() => {
       countdownValueRef.current -= 1;
       setCountdown(countdownValueRef.current);
       if (countdownValueRef.current <= 0) {
@@ -912,7 +745,7 @@ var DebugLogTabComponent = function DebugLogTabComponent() {
         fetchLogSilent();
       }
     }, 1000);
-    return function () {
+    return () => {
       clearInterval(tickRef.current);
       tickRef.current = null;
     };
@@ -921,128 +754,77 @@ var DebugLogTabComponent = function DebugLogTabComponent() {
 
   // Changing the interval updates refs immediately; the running timer picks up
   // the new value on its next tick without needing to be recreated.
-  var handleIntervalChange = function handleIntervalChange(e) {
-    var value = Number(e.target.value);
+  const handleIntervalChange = e => {
+    const value = Number(e.target.value);
     setIntervalSeconds(value);
     intervalSecondsRef.current = value;
     countdownValueRef.current = value;
     setCountdown(value);
   };
-  var handleClearLog = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
-      var _t3;
-      return _regenerator().w(function (_context3) {
-        while (1) switch (_context3.p = _context3.n) {
-          case 0:
-            setIsClearing(true);
-            setNotice(null);
-            _context3.p = 1;
-            _context3.n = 2;
-            return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
-              path: '/publishpress-hub/v1/settings/debug-log/clear',
-              method: 'POST'
-            });
-          case 2:
-            setLogContent('');
-            setNotice({
-              status: 'success',
-              message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug log cleared successfully.', 'publishpress-hub')
-            });
-            _context3.n = 4;
-            break;
-          case 3:
-            _context3.p = 3;
-            _t3 = _context3.v;
-            setNotice({
-              status: 'error',
-              message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to clear the debug log. Please try again.', 'publishpress-hub')
-            });
-          case 4:
-            _context3.p = 4;
-            setIsClearing(false);
-            return _context3.f(4);
-          case 5:
-            return _context3.a(2);
-        }
-      }, _callee3, null, [[1, 3, 4, 5]]);
-    }));
-    return function handleClearLog() {
-      return _ref3.apply(this, arguments);
+  const handleClearLog = async () => {
+    setIsClearing(true);
+    setNotice(null);
+    try {
+      await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
+        path: '/publishpress-hub/v1/settings/debug-log/clear',
+        method: 'POST'
+      });
+      setLogContent('');
+      setNotice({
+        status: 'success',
+        message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug log cleared successfully.', 'publishpress-hub')
+      });
+    } catch (error) {
+      setNotice({
+        status: 'error',
+        message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to clear the debug log. Please try again.', 'publishpress-hub')
+      });
+    } finally {
+      setIsClearing(false);
+    }
+  };
+  const handleCopyToClipboard = async () => {
+    if (!logContent) {
+      return;
+    }
+
+    // navigator.clipboard requires a secure context (HTTPS).
+    // Fall back to the legacy execCommand approach for HTTP dev environments.
+    const copyViaExecCommand = () => {
+      const el = document.createElement('textarea');
+      el.value = logContent;
+      el.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
+      document.body.appendChild(el);
+      el.focus();
+      el.select();
+      const success = document.execCommand('copy');
+      document.body.removeChild(el);
+      return success;
     };
-  }();
-  var handleCopyToClipboard = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
-      var copyViaExecCommand, _navigator$clipboard, _t4;
-      return _regenerator().w(function (_context4) {
-        while (1) switch (_context4.p = _context4.n) {
-          case 0:
-            if (logContent) {
-              _context4.n = 1;
-              break;
-            }
-            return _context4.a(2);
-          case 1:
-            // navigator.clipboard requires a secure context (HTTPS).
-            // Fall back to the legacy execCommand approach for HTTP dev environments.
-            copyViaExecCommand = function copyViaExecCommand() {
-              var el = document.createElement('textarea');
-              el.value = logContent;
-              el.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
-              document.body.appendChild(el);
-              el.focus();
-              el.select();
-              var success = document.execCommand('copy');
-              document.body.removeChild(el);
-              return success;
-            };
-            _context4.p = 2;
-            if (!((_navigator$clipboard = navigator.clipboard) !== null && _navigator$clipboard !== void 0 && _navigator$clipboard.writeText)) {
-              _context4.n = 4;
-              break;
-            }
-            _context4.n = 3;
-            return navigator.clipboard.writeText(logContent);
-          case 3:
-            _context4.n = 5;
-            break;
-          case 4:
-            if (copyViaExecCommand()) {
-              _context4.n = 5;
-              break;
-            }
-            throw new Error('execCommand copy failed');
-          case 5:
-            setNotice({
-              status: 'success',
-              message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Log copied to clipboard.', 'publishpress-hub')
-            });
-            _context4.n = 7;
-            break;
-          case 6:
-            _context4.p = 6;
-            _t4 = _context4.v;
-            setNotice({
-              status: 'error',
-              message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to copy log to clipboard.', 'publishpress-hub')
-            });
-          case 7:
-            return _context4.a(2);
-        }
-      }, _callee4, null, [[2, 6]]);
-    }));
-    return function handleCopyToClipboard() {
-      return _ref4.apply(this, arguments);
-    };
-  }();
-  var isEmpty = !logContent;
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(logContent);
+      } else if (!copyViaExecCommand()) {
+        throw new Error('execCommand copy failed');
+      }
+      setNotice({
+        status: 'success',
+        message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Log copied to clipboard.', 'publishpress-hub')
+      });
+    } catch (error) {
+      setNotice({
+        status: 'error',
+        message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to copy log to clipboard.', 'publishpress-hub')
+      });
+    }
+  };
+  const isEmpty = !logContent;
   return /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-debug-log-tab"
   }, notice && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Notice, {
     status: notice.status,
     isDismissible: true,
-    onRemove: function onRemove() {
-      return setNotice(null);
-    }
+    onRemove: () => setNotice(null)
   }, notice.message), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-debug-log-tab__toolbar"
   }, /*#__PURE__*/React.createElement("div", {
@@ -1051,17 +833,13 @@ var DebugLogTabComponent = function DebugLogTabComponent() {
     "aria-label": (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug log view', 'publishpress-hub')
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
-    className: "pp-hub-debug-log-tab__view-btn".concat(viewMode === VIEW_REQUESTS ? ' pp-hub-debug-log-tab__view-btn--active' : ''),
-    onClick: function onClick() {
-      return setViewMode(VIEW_REQUESTS);
-    },
+    className: `pp-hub-debug-log-tab__view-btn${viewMode === VIEW_REQUESTS ? ' pp-hub-debug-log-tab__view-btn--active' : ''}`,
+    onClick: () => setViewMode(VIEW_REQUESTS),
     "aria-pressed": viewMode === VIEW_REQUESTS
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Requests', 'publishpress-hub')), /*#__PURE__*/React.createElement("button", {
     type: "button",
-    className: "pp-hub-debug-log-tab__view-btn".concat(viewMode === VIEW_FULL_LOG ? ' pp-hub-debug-log-tab__view-btn--active' : ''),
-    onClick: function onClick() {
-      return setViewMode(VIEW_FULL_LOG);
-    },
+    className: `pp-hub-debug-log-tab__view-btn${viewMode === VIEW_FULL_LOG ? ' pp-hub-debug-log-tab__view-btn--active' : ''}`,
+    onClick: () => setViewMode(VIEW_FULL_LOG),
     "aria-pressed": viewMode === VIEW_FULL_LOG
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Full Log', 'publishpress-hub'))), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-debug-log-tab__actions"
@@ -1069,34 +847,30 @@ var DebugLogTabComponent = function DebugLogTabComponent() {
     className: "pp-hub-debug-log-tab__auto-refresh-group"
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
-    className: "pp-hub-debug-log-tab__auto-refresh-btn".concat(autoRefresh ? ' pp-hub-debug-log-tab__auto-refresh-btn--active' : ''),
-    onClick: function onClick() {
-      return setAutoRefresh(function (prev) {
-        return !prev;
-      });
-    },
+    className: `pp-hub-debug-log-tab__auto-refresh-btn${autoRefresh ? ' pp-hub-debug-log-tab__auto-refresh-btn--active' : ''}`,
+    onClick: () => setAutoRefresh(prev => !prev),
     "aria-pressed": autoRefresh,
     title: autoRefresh ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Auto-refresh is on — click to stop', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Enable auto-refresh', 'publishpress-hub')
   }, /*#__PURE__*/React.createElement("span", {
     className: "pp-hub-debug-log-tab__auto-refresh-dot",
     "aria-hidden": "true"
-  }), autoRefresh ? "".concat((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Auto-refresh', 'publishpress-hub'), " (").concat(countdown, "s)") : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Auto-refresh', 'publishpress-hub')), /*#__PURE__*/React.createElement("select", {
+  }), autoRefresh ? `${(0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Auto-refresh', 'publishpress-hub')} (${countdown}s)` : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Auto-refresh', 'publishpress-hub')), /*#__PURE__*/React.createElement("select", {
     className: "pp-hub-debug-log-tab__interval-select",
     value: intervalSeconds,
     onChange: handleIntervalChange,
     "aria-label": (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Auto-refresh interval', 'publishpress-hub')
-  }, REFRESH_INTERVALS.map(function (_ref5) {
-    var value = _ref5.value,
-      label = _ref5.label;
-    return /*#__PURE__*/React.createElement("option", {
-      key: value,
-      value: value
-    }, label);
-  }))), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+  }, REFRESH_INTERVALS.map(({
+    value,
+    label
+  }) => /*#__PURE__*/React.createElement("option", {
+    key: value,
+    value: value
+  }, label)))), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
     variant: "secondary",
     onClick: fetchLog,
     isBusy: isLoading,
-    disabled: isLoading
+    disabled: isLoading,
+    accessibleWhenDisabled: true
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Refresh', 'publishpress-hub')), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
     variant: "secondary",
     onClick: handleCopyToClipboard,
@@ -1106,7 +880,8 @@ var DebugLogTabComponent = function DebugLogTabComponent() {
     isDestructive: true,
     onClick: handleClearLog,
     isBusy: isClearing,
-    disabled: isEmpty || isLoading || isClearing
+    disabled: isEmpty || isLoading || isClearing,
+    accessibleWhenDisabled: true
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Clear Log', 'publishpress-hub')))), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-debug-log-tab__viewer"
   }, isLoading && /*#__PURE__*/React.createElement("p", {
@@ -1127,7 +902,7 @@ var DebugLogTabComponent = function DebugLogTabComponent() {
     "aria-label": (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug log contents', 'publishpress-hub')
   })));
 };
-var DebugLogTab = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(DebugLogTabComponent);
+const DebugLogTab = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(DebugLogTabComponent);
 
 /***/ },
 
@@ -1149,16 +924,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__);
-function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
-function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 /**
  * Diagnostics settings tab.
  *
@@ -1173,80 +938,50 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
-var _ref = window.ppHubSettingsPageConfig || {},
-  initialDebugMode = _ref.debugModeEnabled;
-var DiagnosticsTabComponent = function DiagnosticsTabComponent() {
-  var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(Boolean(initialDebugMode)),
-    _useState2 = _slicedToArray(_useState, 2),
-    debugMode = _useState2[0],
-    setDebugMode = _useState2[1];
-  var _useState3 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState4 = _slicedToArray(_useState3, 2),
-    isSaving = _useState4[0],
-    setIsSaving = _useState4[1];
-  var _useState5 = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState6 = _slicedToArray(_useState5, 2),
-    notice = _useState6[0],
-    setNotice = _useState6[1];
-  var handleDebugModeChange = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(newValue) {
-      var _t;
-      return _regenerator().w(function (_context) {
-        while (1) switch (_context.p = _context.n) {
-          case 0:
-            setIsSaving(true);
-            setNotice(null);
-            _context.p = 1;
-            _context.n = 2;
-            return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
-              path: '/publishpress-hub/v1/settings/diagnostics',
-              method: 'POST',
-              data: {
-                debug_mode: newValue
-              }
-            });
-          case 2:
-            setDebugMode(newValue);
-            setNotice({
-              status: 'success',
-              message: newValue ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug mode enabled. A "Debug Log" tab is now available.', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug mode disabled.', 'publishpress-hub')
-            });
-            if (newValue !== Boolean(initialDebugMode)) {
-              window.location.reload();
-            }
-            _context.n = 4;
-            break;
-          case 3:
-            _context.p = 3;
-            _t = _context.v;
-            setNotice({
-              status: 'error',
-              message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to save the setting. Please try again.', 'publishpress-hub')
-            });
-          case 4:
-            _context.p = 4;
-            setIsSaving(false);
-            return _context.f(4);
-          case 5:
-            return _context.a(2);
+const {
+  debugModeEnabled: initialDebugMode
+} = window.ppHubSettingsPageConfig || {};
+const DiagnosticsTabComponent = () => {
+  const [debugMode, setDebugMode] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(Boolean(initialDebugMode));
+  const [isSaving, setIsSaving] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [notice, setNotice] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const handleDebugModeChange = async newValue => {
+    setIsSaving(true);
+    setNotice(null);
+    try {
+      await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
+        path: '/publishpress-hub/v1/settings/diagnostics',
+        method: 'POST',
+        data: {
+          debug_mode: newValue
         }
-      }, _callee, null, [[1, 3, 4, 5]]);
-    }));
-    return function handleDebugModeChange(_x) {
-      return _ref2.apply(this, arguments);
-    };
-  }();
+      });
+      setDebugMode(newValue);
+      setNotice({
+        status: 'success',
+        message: newValue ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug mode enabled. A "Debug Log" tab is now available.', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug mode disabled.', 'publishpress-hub')
+      });
+      if (newValue !== Boolean(initialDebugMode)) {
+        window.location.reload();
+      }
+    } catch (error) {
+      setNotice({
+        status: 'error',
+        message: (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Failed to save the setting. Please try again.', 'publishpress-hub')
+      });
+    } finally {
+      setIsSaving(false);
+    }
+  };
   return /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-diagnostics-tab"
   }, notice && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Notice, {
     status: notice.status,
     isDismissible: true,
-    onRemove: function onRemove() {
-      return setNotice(null);
-    }
+    onRemove: () => setNotice(null)
   }, notice.message), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-diagnostics-tab__section"
-  }, /*#__PURE__*/React.createElement("h3", {
+  }, /*#__PURE__*/React.createElement("h2", {
     className: "pp-hub-diagnostics-tab__section-title"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug Mode', 'publishpress-hub')), /*#__PURE__*/React.createElement("p", {
     className: "pp-hub-diagnostics-tab__description"
@@ -1260,7 +995,7 @@ var DiagnosticsTabComponent = function DiagnosticsTabComponent() {
     className: "pp-hub-diagnostics-tab__hint"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Debug logging is active. Switch to the "Debug Log" tab to view captured data.', 'publishpress-hub'))));
 };
-var DiagnosticsTab = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(DiagnosticsTabComponent);
+const DiagnosticsTab = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(DiagnosticsTabComponent);
 
 /***/ },
 
@@ -1279,12 +1014,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @publishpress-hub/i18n */ "@publishpress-hub/i18n");
 /* harmony import */ var _publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _DebugLogParser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DebugLogParser */ "./resources/src/jsx/components/pages/settings/DebugLogParser.js");
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 /**
  * Structured requests log view — shows request/response pairs as expandable cards.
  *
@@ -1298,14 +1027,14 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
-var METHOD_CLASS = {
+const METHOD_CLASS = {
   GET: 'get',
   POST: 'post',
   PUT: 'put',
   PATCH: 'patch',
   DELETE: 'delete'
 };
-var getStatusClass = function getStatusClass(statusCode, isError) {
+const getStatusClass = (statusCode, isError) => {
   if (isError || !statusCode) {
     return 'error';
   }
@@ -1320,54 +1049,49 @@ var getStatusClass = function getStatusClass(statusCode, isError) {
   }
   return 'unknown';
 };
-var truncateUrl = function truncateUrl(url) {
-  var maxLength = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 72;
+const truncateUrl = (url, maxLength = 72) => {
   if (!url || url.length <= maxLength) {
     return url;
   }
   return url.substring(0, maxLength) + '…';
 };
-var CodeBlock = function CodeBlock(_ref) {
-  var data = _ref.data;
-  return /*#__PURE__*/React.createElement("pre", {
-    className: "pp-hub-request-card__code"
-  }, JSON.stringify(data, null, 2));
-};
-var RequestCardComponent = function RequestCardComponent(_ref2) {
-  var _request$data, _request$data2, _request$data3, _response$data, _response$data2;
-  var pair = _ref2.pair;
-  var _useState = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    isExpanded = _useState2[0],
-    setIsExpanded = _useState2[1];
-  var request = pair.request,
-    response = pair.response;
-  var method = (request === null || request === void 0 || (_request$data = request.data) === null || _request$data === void 0 ? void 0 : _request$data.method) || '???';
-  var url = (request === null || request === void 0 || (_request$data2 = request.data) === null || _request$data2 === void 0 ? void 0 : _request$data2.url) || '';
-  var timestamp = (request === null || request === void 0 || (_request$data3 = request.data) === null || _request$data3 === void 0 ? void 0 : _request$data3.timestamp) || '';
-  var statusCode = response === null || response === void 0 || (_response$data = response.data) === null || _response$data === void 0 ? void 0 : _response$data.status_code;
-  var isError = (response === null || response === void 0 || (_response$data2 = response.data) === null || _response$data2 === void 0 ? void 0 : _response$data2.error) === true;
-  var methodClass = METHOD_CLASS[method.toUpperCase()] || 'other';
-  var statusClass = getStatusClass(statusCode, isError);
-  var statusDisplay = isError ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('ERR', 'publishpress-hub') : statusCode || '—';
-  var detailsId = "pp-hub-request-card-details-".concat(pair.id);
+const CodeBlock = ({
+  data
+}) => /*#__PURE__*/React.createElement("pre", {
+  className: "pp-hub-request-card__code"
+}, JSON.stringify(data, null, 2));
+const RequestCardComponent = ({
+  pair
+}) => {
+  const [isExpanded, setIsExpanded] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const {
+    request,
+    response
+  } = pair;
+  const method = request?.data?.method || '???';
+  const url = request?.data?.url || '';
+  const timestamp = request?.data?.timestamp || '';
+  const statusCode = response?.data?.status_code;
+  const isError = response?.data?.error === true;
+  const methodClass = METHOD_CLASS[method.toUpperCase()] || 'other';
+  const statusClass = getStatusClass(statusCode, isError);
+  const statusDisplay = isError ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('ERR', 'publishpress-hub') : statusCode || '—';
+  const detailsId = `pp-hub-request-card-details-${pair.id}`;
   return /*#__PURE__*/React.createElement("div", {
-    className: "pp-hub-request-card pp-hub-request-card--".concat(isExpanded ? 'expanded' : 'collapsed')
+    className: `pp-hub-request-card pp-hub-request-card--${isExpanded ? 'expanded' : 'collapsed'}`
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "pp-hub-request-card__summary",
-    onClick: function onClick() {
-      return setIsExpanded(!isExpanded);
-    },
+    onClick: () => setIsExpanded(!isExpanded),
     "aria-expanded": isExpanded,
     "aria-controls": detailsId
   }, /*#__PURE__*/React.createElement("span", {
-    className: "pp-hub-request-card__method pp-hub-request-card__method--".concat(methodClass)
+    className: `pp-hub-request-card__method pp-hub-request-card__method--${methodClass}`
   }, method), /*#__PURE__*/React.createElement("span", {
     className: "pp-hub-request-card__url",
     title: url
   }, truncateUrl(url)), /*#__PURE__*/React.createElement("span", {
-    className: "pp-hub-request-card__status pp-hub-request-card__status--".concat(statusClass)
+    className: `pp-hub-request-card__status pp-hub-request-card__status--${statusClass}`
   }, statusDisplay), /*#__PURE__*/React.createElement("span", {
     className: "pp-hub-request-card__timestamp"
   }, timestamp), /*#__PURE__*/React.createElement("span", {
@@ -1381,22 +1105,23 @@ var RequestCardComponent = function RequestCardComponent(_ref2) {
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-request-card__section-header pp-hub-request-card__section-header--request"
   }, "\u2192\xA0", (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Request', 'publishpress-hub')), /*#__PURE__*/React.createElement(CodeBlock, {
-    data: request === null || request === void 0 ? void 0 : request.data
+    data: request?.data
   })), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-request-card__section"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-request-card__section-header pp-hub-request-card__section-header--response"
   }, "\u2190\xA0", (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Response', 'publishpress-hub')), response ? /*#__PURE__*/React.createElement(CodeBlock, {
-    data: response === null || response === void 0 ? void 0 : response.data
+    data: response?.data
   }) : /*#__PURE__*/React.createElement("p", {
     className: "pp-hub-request-card__no-response"
   }, (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('No response recorded for this request.', 'publishpress-hub')))));
 };
-var RequestCard = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(RequestCardComponent);
-var RequestsLogViewComponent = function RequestsLogViewComponent(_ref3) {
-  var logContent = _ref3.logContent;
-  var pairs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    var entries = (0,_DebugLogParser__WEBPACK_IMPORTED_MODULE_2__.parseLogEntries)(logContent);
+const RequestCard = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(RequestCardComponent);
+const RequestsLogViewComponent = ({
+  logContent
+}) => {
+  const pairs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
+    const entries = (0,_DebugLogParser__WEBPACK_IMPORTED_MODULE_2__.parseLogEntries)(logContent);
     return (0,_DebugLogParser__WEBPACK_IMPORTED_MODULE_2__.groupIntoPairs)(entries);
   }, [logContent]);
   if (!logContent) {
@@ -1415,47 +1140,12 @@ var RequestsLogViewComponent = function RequestsLogViewComponent(_ref3) {
     className: "pp-hub-requests-log__count"
   }, pairs.length === 1 ? (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('1 request recorded', 'publishpress-hub') : (0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.sprintf)((0,_publishpress_hub_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('%d requests recorded', 'publishpress-hub'), pairs.length)), /*#__PURE__*/React.createElement("div", {
     className: "pp-hub-requests-log__list"
-  }, pairs.map(function (pair) {
-    return /*#__PURE__*/React.createElement(RequestCard, {
-      key: pair.id,
-      pair: pair
-    });
-  })));
+  }, pairs.map(pair => /*#__PURE__*/React.createElement(RequestCard, {
+    key: pair.id,
+    pair: pair
+  }))));
 };
-var RequestsLogView = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(RequestsLogViewComponent);
-
-/***/ },
-
-/***/ "./node_modules/react-dom/client.js"
-/*!******************************************!*\
-  !*** ./node_modules/react-dom/client.js ***!
-  \******************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
-
-
-
-var m = __webpack_require__(/*! react-dom */ "react-dom");
-if (false) // removed by dead control flow
-{} else {
-  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-  exports.createRoot = function(c, o) {
-    i.usingClientEntryPoint = true;
-    try {
-      return m.createRoot(c, o);
-    } finally {
-      i.usingClientEntryPoint = false;
-    }
-  };
-  exports.hydrateRoot = function(c, h, o) {
-    i.usingClientEntryPoint = true;
-    try {
-      return m.hydrateRoot(c, h, o);
-    } finally {
-      i.usingClientEntryPoint = false;
-    }
-  };
-}
-
+const RequestsLogView = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(RequestsLogViewComponent);
 
 /***/ },
 
@@ -1766,16 +1456,6 @@ if (typeof window !== 'undefined') {
 
 /***/ },
 
-/***/ "react-dom"
-/*!***************************!*\
-  !*** external "ReactDOM" ***!
-  \***************************/
-(module) {
-
-module.exports = ReactDOM;
-
-/***/ },
-
 /***/ "@publishpress-hub/i18n"
 /*!***************************************!*\
   !*** external "publishpressHub.i18n" ***!
@@ -1966,7 +1646,8 @@ var __webpack_exports__ = {};
   !*** ./resources/src/jsx/settings-page.jsx ***!
   \*********************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
 /* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_pages_settings_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/pages/settings-page */ "./resources/src/jsx/components/pages/settings-page.jsx");
@@ -1981,20 +1662,22 @@ __webpack_require__.r(__webpack_exports__);
  * @since 1.0.0
  */
 
+// Use the React DOM that WordPress already loads instead of bundling a second copy.
 
 
 
 
-var _ref = window.ppHubSettingsPageConfig || {},
-  apiNonce = _ref.apiNonce;
-var settingsPageContainer = document.getElementById('publishpress-hub-settings-page-container');
+const {
+  apiNonce
+} = window.ppHubSettingsPageConfig || {};
+const settingsPageContainer = document.getElementById('publishpress-hub-settings-page-container');
 if (settingsPageContainer) {
   if (apiNonce) {
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default().use(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default().createNonceMiddleware(apiNonce));
   }
-  var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(settingsPageContainer);
+  const root = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createRoot)(settingsPageContainer);
   root.render(/*#__PURE__*/React.createElement(_components_pages_settings_page__WEBPACK_IMPORTED_MODULE_2__.SettingsPage, null));
-  var currentTheme = (0,_utils_themeController__WEBPACK_IMPORTED_MODULE_3__.getCurrentTheme)();
+  const currentTheme = (0,_utils_themeController__WEBPACK_IMPORTED_MODULE_3__.getCurrentTheme)();
   (0,_utils_themeController__WEBPACK_IMPORTED_MODULE_3__.setTheme)(currentTheme);
 }
 })();

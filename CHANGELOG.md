@@ -2,7 +2,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [1.2.0] - [Unreleased]
 
-- Added: Optional PublishPress MCP connection, adapter setup, write opt-in, per-action exposure controls, searchable plugin action tabs, background navigation and saves, client setup guidance, a Claude Desktop installer, and connection diagnostics (#246).
+- Added: Optional PublishPress MCP connection, adapter setup, read/write exposure controls, searchable plugin action tabs, background navigation and saves, client setup guidance, and connection diagnostics (#246).
+- Security: Verify Package Server Ed25519 signatures before installing or upgrading enrolled Pro plugins, #307.
 
 [1.1.0] - 15 October, 2026
 

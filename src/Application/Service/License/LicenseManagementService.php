@@ -290,7 +290,7 @@ class LicenseManagementService implements LicenseManagementServiceInterface
             || !$this->licensePersistence->getLicenseStatus($downloadId)
         ) {
             throw new LicenseActivationException([
-                'download_id' => $downloadId,
+                'download_id' => absint($downloadId),
                 'error_message' => esc_html__(
                     'The license server accepted your key, but this site could not save its active license. '
                     . 'Please contact support and mention this message.',

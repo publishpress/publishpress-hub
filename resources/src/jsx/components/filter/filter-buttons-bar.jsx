@@ -40,22 +40,20 @@ const FilterButtonsBarComponent = ({
     return (
         <div className={`publishpress-hub-filter-container ${className}`}>
             <div className="publishpress-hub-filter-mobile">
-                <label htmlFor="tabs" className="publishpress-hub-filter-label-sr">
-                    {__('Select an option', 'publishpress-hub')}
+                <label htmlFor="pp-hub-plugin-filter" className="publishpress-hub-filter-label-sr">
+                    {__('Filter plugins by status', 'publishpress-hub')}
                 </label>
                 <select
-                    id="tabs"
+                    id="pp-hub-plugin-filter"
                     className="publishpress-hub-filter-select"
                     value={activeSelectedOption}
                     onChange={handleSelectChange}
                 >
-                    <optgroup label={__('Options', 'publishpress-hub')}>
-                        {options.map((filter) => (
-                            <option key={filter.value} value={filter.value}>
-                                {filter.label} ({filter.total})
-                            </option>
-                        ))}
-                    </optgroup>
+                    {options.map((filter) => (
+                        <option key={filter.value} value={filter.value}>
+                            {filter.label} ({filter.total})
+                        </option>
+                    ))}
                 </select>
             </div>
 

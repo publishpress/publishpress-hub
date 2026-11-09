@@ -7,7 +7,7 @@
  * @since 1.2.0
  */
 
-import { createRoot } from 'react-dom/client';
+import { createRoot } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 import { McpPage } from './components/pages/mcp-page';
 import { getCurrentTheme, setTheme } from './utils/themeController';

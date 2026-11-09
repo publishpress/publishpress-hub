@@ -14,6 +14,7 @@ import {
     useRef,
     useEffect,
     useCallback,
+    useId,
 } from '@wordpress/element';
 import { Tooltip as WPTooltip } from '@wordpress/components';
 
@@ -30,6 +31,8 @@ const CustomTooltipComponent = ({
     const triggerRef = useRef(null);
     const tooltipRef = useRef(null);
     const showTimeoutRef = useRef(null);
+    const hideTimeoutRef = useRef(null);
+    const tooltipId = useId();
 
     useEffect(() => {
         if (!isVisible || !triggerRef.current || !tooltipRef.current || !useCustom) return;
@@ -75,103 +78,97 @@ const CustomTooltipComponent = ({
         };
     }, [isVisible, placement, useCustom]);
 
-    // Cleanup timeout on unmount
+    // Cleanup timeouts on unmount
     useEffect(() => {
         return () => {
-            if (showTimeoutRef.current) {
-                clearTimeout(showTimeoutRef.current);
+            clearTimeout(showTimeoutRef.current);
+            clearTimeout(hideTimeoutRef.current);
+        };
+    }, []);
+
+    // Let keyboard users dismiss the tooltip without moving focus (WCAG 1.4.13).
+    useEffect(() => {
+        if (!isVisible) return;
+
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                setIsVisible(false);
             }
         };
+
+        document.addEventListener('keydown', handleKeyDown);
+
+        return () => document.removeEventListener('keydown', handleKeyDown);
+    }, [isVisible]);
+
+    const show = useCallback(() => {
+        clearTimeout(hideTimeoutRef.current);
+        clearTimeout(showTimeoutRef.current);
+
+        showTimeoutRef.current = setTimeout(() => {
+            setIsVisible(true);
+            showTimeoutRef.current = null;
+        }, delay);
+    }, [delay]);
+
+    const hide = useCallback(() => {
+        clearTimeout(showTimeoutRef.current);
+        showTimeoutRef.current = null;
+        setIsVisible(false);
+    }, []);
+
+    // Short grace period so the pointer can cross the gap onto the tooltip (WCAG 1.4.13).
+    const hideSoon = useCallback(() => {
+        clearTimeout(showTimeoutRef.current);
+        showTimeoutRef.current = null;
+        clearTimeout(hideTimeoutRef.current);
+        hideTimeoutRef.current = setTimeout(() => setIsVisible(false), 150);
     }, []);
 
     if (!text) {
         return children;
     }
 
-    const handleMouseEnter = useCallback(() => {
-        // Clear any existing timeout
-        if (showTimeoutRef.current) {
-            clearTimeout(showTimeoutRef.current);
-        }
-
-        // Start timeout to show tooltip
-        showTimeoutRef.current = setTimeout(() => {
-            setIsVisible(true);
-            showTimeoutRef.current = null;
-        }, delay);
-    }, [delay]);
-
-    const handleMouseLeave = useCallback(() => {
-        // Cancel pending show timeout
-        if (showTimeoutRef.current) {
-            clearTimeout(showTimeoutRef.current);
-            showTimeoutRef.current = null;
-        }
-
-        // Immediately hide tooltip
-        setIsVisible(false);
-    }, []);
-
-    const handleFocus = useCallback(() => {
-        // Clear any existing timeout
-        if (showTimeoutRef.current) {
-            clearTimeout(showTimeoutRef.current);
-        }
-
-        // Start timeout to show tooltip
-        showTimeoutRef.current = setTimeout(() => {
-            setIsVisible(true);
-            showTimeoutRef.current = null;
-        }, delay);
-    }, [delay]);
-
-    const handleBlur = useCallback(() => {
-        // Cancel pending show timeout
-        if (showTimeoutRef.current) {
-            clearTimeout(showTimeoutRef.current);
-            showTimeoutRef.current = null;
-        }
-
-        // Immediately hide tooltip
-        setIsVisible(false);
-    }, []);
-
     // Use custom tooltip implementation
     if (useCustom) {
         const combinedClassName = `pp-hub-tooltip-trigger ${className}`.trim();
 
+        // The trigger is focusable and described by the tooltip so keyboard and screen reader
+        // users get the same information as mouse users (WCAG 1.3.1, 2.1.1). The tooltip text
+        // stays in the DOM, visually hidden, while it is not shown.
         return (
             <div
                 className={combinedClassName}
                 style={{ position: 'relative', display: 'inline-block' }}
+                onMouseEnter={show}
+                onMouseLeave={hideSoon}
             >
                 <div
                     ref={triggerRef}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                    onFocus={handleFocus}
-                    onBlur={handleBlur}
+                    tabIndex={0}
+                    aria-describedby={tooltipId}
+                    onFocus={show}
+                    onBlur={hide}
                 >
                     {children}
                 </div>
 
-                {isVisible && (
-                    <div
-                        ref={tooltipRef}
-                        className="pp-hub-tooltip pp-hub-tooltip--custom"
-                        style={{
-                            position: 'fixed',
-                            top: position.top,
-                            left: position.left,
-                            zIndex: 'var(--pp-hub-z-tooltip)',
-                            pointerEvents: 'none',
-                            opacity: 1,
-                            transform: 'none'
-                        }}
-                    >
-                        {text}
-                    </div>
-                )}
+                <div
+                    ref={tooltipRef}
+                    id={tooltipId}
+                    role="tooltip"
+                    className={isVisible ? 'pp-hub-tooltip pp-hub-tooltip--custom' : 'screen-reader-text'}
+                    style={isVisible ? {
+                        position: 'fixed',
+                        top: position.top,
+                        left: position.left,
+                        zIndex: 'var(--pp-hub-z-tooltip)',
+                        opacity: 1,
+                        transform: 'none'
+                    } : undefined}
+                >
+                    {text}
+                </div>
             </div>
         );
     }

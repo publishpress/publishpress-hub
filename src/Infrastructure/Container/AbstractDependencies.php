@@ -59,6 +59,10 @@ abstract class AbstractDependencies
 
     public const ALLOWED_DOWNLOAD_DOMAINS = 'publishpress-hub.constants.allowed-download-domains';
 
+    public const PACKAGE_SIGNATURE_PUBLIC_KEYS = 'publishpress-hub.constants.package-signature-public-keys';
+
+    public const SIGNED_PACKAGE_REPOSITORIES = 'publishpress-hub.constants.signed-package-repositories';
+
     public const SITE_URL = 'publishpress-hub.constants.site-url';
 
     public const CACHE_GROUP = 'publishpress-hub.constants.cache-group';
