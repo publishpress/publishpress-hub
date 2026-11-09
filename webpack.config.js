@@ -15,6 +15,8 @@ module.exports = {
         "settings-page": `${assetsBasePath}/jsx/settings-page.jsx`,
         "i18n": `${assetsBasePath}/jsx/i18n.jsx`,
         "components-showcase": `${assetsBasePath}/jsx/components-showcase.jsx`,
+        "mcp-page": `${assetsBasePath}/jsx/mcp-page.jsx`,
+        "mcp-page-styles": `${assetsBasePath}/css/mcp-page.css`,
         "admin-page": `${assetsBasePath}/css/admin-page.css`,
         "admin-menu": `${assetsBasePath}/css/admin-menu.css`,
         "welcome-page-styles": `${assetsBasePath}/css/welcome-page.css`,

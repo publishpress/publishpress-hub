@@ -34,6 +34,10 @@ abstract class AbstractHooks
 
     public const ACTION_REST_API_INIT = 'rest_api_init';
 
+    public const ACTION_MCP_ADAPTER_INIT = 'mcp_adapter_init';
+
+    public const ACTION_MCP_REGISTRATION_ERROR = 'publishpress_hub_mcp_registration_error';
+
     public const ACTION_REST_ROUTES_REGISTERED = 'publishpress_hub_rest_routes_registered';
 
     public const FILTER_PLUGIN_CAPABILITIES = 'cme_plugin_capabilities';
