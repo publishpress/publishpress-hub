@@ -31,9 +31,8 @@ class PackageSignatureVerifierTest extends Unit
             'https://pkg.publishpress.com/v1/packages/download/publishpress-authors-pro/4.0.0',
             $file,
             [
-                'x-package-signature' => base64_encode(\sodium_crypto_sign_detached($contents, $secretKey)),
-                'x-package-signature-key-id' => 'publishpress-2026',
-                'x-package-signature-algorithm' => 'Ed25519',
+                'x-publishpress-signature' => base64_encode(\sodium_crypto_sign_detached($contents, $secretKey)),
+                'x-publishpress-signature-key-id' => 'publishpress-2026',
             ]
         );
 
@@ -67,5 +66,39 @@ class PackageSignatureVerifierTest extends Unit
         $verifier->verify('https://downloads.wordpress.org/plugin/example.zip', __FILE__, []);
 
         $this->assertTrue(true);
+    }
+
+    public function testRejectsChangedBytesAndUnknownKeys(): void
+    {
+        if (!function_exists('sodium_crypto_sign_keypair')) {
+            $this->markTestSkipped('The Sodium extension is not available.');
+        }
+
+        $pair = \sodium_crypto_sign_keypair();
+        $key = \sodium_crypto_sign_publickey($pair);
+        $signature = base64_encode(\sodium_crypto_sign_detached('original bytes', \sodium_crypto_sign_secretkey($pair)));
+        $file = tempnam(sys_get_temp_dir(), 'hub-signature-');
+        file_put_contents($file, 'changed bytes');
+        $url = 'https://pkg.publishpress.com/v1/packages/download/plugin-pro/1.0.0';
+        $verifier = new PackageSignatureVerifier(['test-key' => base64_encode($key)], ['plugin-pro']);
+
+        try {
+            foreach (['test-key', 'unknown-key'] as $keyId) {
+                try {
+                    $verifier->verify($url, $file, [
+                        'x-publishpress-signature' => $signature,
+                        'x-publishpress-signature-key-id' => $keyId,
+                    ]);
+                    $this->fail('Expected invalid signature data to be rejected.');
+                } catch (RuntimeException $error) {
+                    $this->assertSame(
+                        $keyId === 'test-key' ? 'The downloaded package signature is invalid.' : 'The package was signed with an unknown key.',
+                        $error->getMessage()
+                    );
+                }
+            }
+        } finally {
+            unlink($file);
+        }
     }
 }

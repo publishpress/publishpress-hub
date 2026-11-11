@@ -10,6 +10,11 @@ use RuntimeException;
 
 class PackageSignatureVerifier
 {
+    public const PUBLIC_KEYS = [
+        'publishpress-2026' => '3lrm9KcDTOt0Bapj04Wav/eaU7YaHsVwBd4MUHMDx18=',
+        'metaslider-2026' => 'I63LA0oHn3BjOUaj2wcXKLaCX6AkDBi3FxaKQhtEjZ4=',
+    ];
+
     private array $publicKeys;
 
     private array $requiredRepositories;
@@ -32,15 +37,14 @@ class PackageSignatureVerifier
 
     public function verify(string $downloadUrl, string $file, array $headers): void
     {
-        $signature = $headers['x-package-signature'] ?? '';
-        $keyId = $headers['x-package-signature-key-id'] ?? '';
-        $algorithm = $headers['x-package-signature-algorithm'] ?? '';
+        $signature = $headers['x-publishpress-signature'] ?? '';
+        $keyId = $headers['x-publishpress-signature-key-id'] ?? '';
 
         if (!$this->requiresSignature($downloadUrl) && $signature === '' && $keyId === '') {
             return;
         }
 
-        if ($signature === '' || $keyId === '' || $algorithm !== 'Ed25519') {
+        if ($signature === '' || $keyId === '') {
             throw new RuntimeException('The package signature headers are missing or invalid.');
         }
 
