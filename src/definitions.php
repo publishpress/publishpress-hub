@@ -141,7 +141,7 @@ return [
     AbstractDependencies::PACKAGE_SIGNATURE_PUBLIC_KEYS =>
         defined('PUBLISHPRESS_HUB_PACKAGE_SIGNATURE_PUBLIC_KEYS')
             ? (array) constant('PUBLISHPRESS_HUB_PACKAGE_SIGNATURE_PUBLIC_KEYS')
-            : [],
+            : \PublishPress\Hub\Infrastructure\WP\Plugin\PackageSignatureVerifier::PUBLIC_KEYS,
 
     AbstractDependencies::SIGNED_PACKAGE_REPOSITORIES =>
         defined('PUBLISHPRESS_HUB_SIGNED_PACKAGE_REPOSITORIES')

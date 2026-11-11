@@ -584,7 +584,7 @@ class WPPluginLifecycleAdapter
         }
 
         $headers = [];
-        foreach (['x-package-signature', 'x-package-signature-key-id', 'x-package-signature-algorithm'] as $name) {
+        foreach (['x-publishpress-signature', 'x-publishpress-signature-key-id'] as $name) {
             $headers[$name] = (string) wp_remote_retrieve_header($response, $name);
         }
 
