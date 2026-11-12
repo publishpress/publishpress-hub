@@ -2,6 +2,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [1.2.0] - [Unreleased]
 
+- Fixed: Show a readable package signature error when Sodium rejects malformed signatures and delete temporary ZIPs on every verification exception.
+
 - Security: Require signatures for every Package Server install and upgrade without repository enrollment, including redirected downloads; retain WordPress.org download behavior.
 
 - Security: Pin the PublishPress and MetaSlider package signing public keys and verify the `X-PublishPress-Signature` download contract, #307, package-server#88.

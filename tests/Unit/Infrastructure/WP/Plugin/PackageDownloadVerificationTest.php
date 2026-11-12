@@ -16,6 +16,15 @@ namespace PublishPress\Hub\Infrastructure\WP\Plugin {
     {
         public static array $response = [];
         public static string $temporaryFile = '';
+        public static ?\Throwable $verificationError = null;
+    }
+
+    function sodium_crypto_sign_verify_detached($signature, $message, $key)
+    {
+        if (PackageDownloadTestState::$verificationError !== null) {
+            throw PackageDownloadTestState::$verificationError;
+        }
+        return \sodium_crypto_sign_verify_detached($signature, $message, $key);
     }
 
     function wp_safe_remote_get($url, $args)
@@ -46,7 +55,9 @@ namespace Tests\Unit\Infrastructure\WP\Plugin {
     use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;
     use PublishPress\Hub\Infrastructure\WP\Plugin\PackageDownloadTestState as State;
     use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginLifecycleAdapter;
+    use PublishPress\Hub\Infrastructure\WP\Plugin\PackageSignatureVerifier;
     use ReflectionMethod;
+    use ReflectionProperty;
     use RuntimeException;
 
     class PackageDownloadVerificationTest extends Unit
@@ -60,10 +71,12 @@ namespace Tests\Unit\Infrastructure\WP\Plugin {
             $this->adapter = new WPPluginLifecycleAdapter($filesystem, []);
             State::$response = [];
             State::$temporaryFile = '';
+            State::$verificationError = null;
         }
 
         protected function tearDown(): void
         {
+            State::$verificationError = null;
             if (is_file(State::$temporaryFile)) {
                 unlink(State::$temporaryFile);
             }
@@ -105,6 +118,43 @@ namespace Tests\Unit\Infrastructure\WP\Plugin {
         {
             $file = $this->download('https://downloads.wordpress.org/plugin/example.zip');
             $this->assertFileExists($file);
+        }
+
+        public function testSodiumExceptionsBecomeReadableErrorsAndDeleteTheTemporaryZip(): void
+        {
+            if (!function_exists('sodium_crypto_sign_keypair')) {
+                $this->markTestSkipped('The Sodium extension is not available.');
+            }
+            State::$verificationError = new \SodiumException('Signature is on too small of an order');
+            State::$response = ['headers' => [
+                'x-publishpress-signature' => base64_encode(str_repeat("\0", 64)),
+                'x-publishpress-signature-key-id' => 'publishpress-2026',
+            ]];
+            try {
+                $this->download('https://pkg.publishpress.com/v1/packages/download/new-plugin/1.0.0');
+                $this->fail('Expected the Sodium exception to reject the package.');
+            } catch (RuntimeException $error) {
+                $this->assertSame('The downloaded package signature is invalid.', $error->getMessage());
+                $this->assertSame(State::$verificationError, $error->getPrevious());
+                $this->assertFileDoesNotExist(State::$temporaryFile);
+            }
+        }
+
+        public function testUnexpectedVerificationErrorsAlsoDeleteTheTemporaryZip(): void
+        {
+            $verifier = $this->getMockBuilder(PackageSignatureVerifier::class)
+                ->disableOriginalConstructor()->onlyMethods(['verify'])->getMock();
+            $verifier->method('verify')->willThrowException(new \Error('Unexpected verification failure'));
+            $property = new ReflectionProperty($this->adapter, 'packageSignatureVerifier');
+            $property->setAccessible(true);
+            $property->setValue($this->adapter, $verifier);
+            try {
+                $this->download('https://pkg.publishpress.com/v1/packages/download/new-plugin/1.0.0');
+                $this->fail('Expected the verification error to propagate.');
+            } catch (\Error $error) {
+                $this->assertSame('Unexpected verification failure', $error->getMessage());
+                $this->assertFileDoesNotExist(State::$temporaryFile);
+            }
         }
 
         public function testVerifiedPackageIsReturnedAndTamperedPackageIsDeleted(): void
