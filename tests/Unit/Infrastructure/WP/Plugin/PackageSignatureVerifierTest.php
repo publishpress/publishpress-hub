@@ -10,6 +10,40 @@ use RuntimeException;
 
 class PackageSignatureVerifierTest extends Unit
 {
+    public function testRequiresSignaturesForAllPackageServerRepositoriesWithoutEnrollment(): void
+    {
+        $verifier = new PackageSignatureVerifier([]);
+        foreach ([
+            'https://pkg.publishpress.com/v1/packages/download/new-plugin/1.0.0',
+            'https://pkg-staging.publishpress.com/v1/packages/download/another-plugin/1.0.0',
+            'https://pkg.metaslider.com/v1/packages/download/metaslider-pro/1.0.0',
+            'https://pkg-staging.metaslider.com/v1/packages/download/new-plugin/1.0.0',
+            'https://pkg.publishpress.com/redirected.zip',
+            'https://PKG.PUBLISHPRESS.COM/redirected.zip',
+            'https://packages.example.org/v1/packages/download/new-plugin/1.0.0',
+        ] as $url) {
+            $this->assertTrue($verifier->requiresSignature($url), $url);
+            try {
+                $verifier->verify($url, __FILE__, []);
+                $this->fail('Expected missing headers to fail: ' . $url);
+            } catch (RuntimeException $error) {
+                $this->assertSame('The package signature headers are missing or invalid.', $error->getMessage());
+            }
+        }
+    }
+
+    public function testUnrelatedUrlsAreNotClassifiedByQueryOrLookalikeHost(): void
+    {
+        $verifier = new PackageSignatureVerifier([]);
+        foreach ([
+            'https://downloads.wordpress.org/plugin/example.zip',
+            'https://downloads.wordpress.org/plugin/example.zip?source=/v1/packages/download/plugin/1.0.0',
+            'https://pkg.publishpress.com.example.org/plugin.zip',
+        ] as $url) {
+            $this->assertFalse($verifier->requiresSignature($url));
+        }
+    }
+
     public function testVerifiesMatchingPackageBytes(): void
     {
         if (!function_exists('sodium_crypto_sign_keypair')) {
@@ -24,8 +58,7 @@ class PackageSignatureVerifierTest extends Unit
         file_put_contents($file, $contents);
 
         $verifier = new PackageSignatureVerifier(
-            ['publishpress-2026' => base64_encode($publicKey)],
-            ['publishpress-authors-pro']
+            ['publishpress-2026' => base64_encode($publicKey)]
         );
         $verifier->verify(
             'https://pkg.publishpress.com/v1/packages/download/publishpress-authors-pro/4.0.0',
@@ -44,7 +77,7 @@ class PackageSignatureVerifierTest extends Unit
     {
         $file = tempnam(sys_get_temp_dir(), 'hub-signature-');
         file_put_contents($file, 'package');
-        $verifier = new PackageSignatureVerifier([], ['publishpress-authors-pro']);
+        $verifier = new PackageSignatureVerifier([]);
 
         try {
             $verifier->verify(
@@ -60,9 +93,9 @@ class PackageSignatureVerifierTest extends Unit
         }
     }
 
-    public function testLeavesUnenrolledDownloadsUnchanged(): void
+    public function testLeavesWordPressOrgDownloadsUnchanged(): void
     {
-        $verifier = new PackageSignatureVerifier([], ['publishpress-authors-pro']);
+        $verifier = new PackageSignatureVerifier([]);
         $verifier->verify('https://downloads.wordpress.org/plugin/example.zip', __FILE__, []);
 
         $this->assertTrue(true);
@@ -80,7 +113,7 @@ class PackageSignatureVerifierTest extends Unit
         $file = tempnam(sys_get_temp_dir(), 'hub-signature-');
         file_put_contents($file, 'changed bytes');
         $url = 'https://pkg.publishpress.com/v1/packages/download/plugin-pro/1.0.0';
-        $verifier = new PackageSignatureVerifier(['test-key' => base64_encode($key)], ['plugin-pro']);
+        $verifier = new PackageSignatureVerifier(['test-key' => base64_encode($key)]);
 
         try {
             foreach (['test-key', 'unknown-key'] as $keyId) {

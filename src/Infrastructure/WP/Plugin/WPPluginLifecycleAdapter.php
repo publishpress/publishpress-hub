@@ -36,14 +36,12 @@ class WPPluginLifecycleAdapter
     public function __construct(
         WPFileSystemAdapter $fileSystemAdapter,
         array $allowedDownloadDomains,
-        array $packageSignaturePublicKeys = [],
-        array $signedPackageRepositories = []
+        array $packageSignaturePublicKeys = PackageSignatureVerifier::PUBLIC_KEYS
     ) {
         $this->fileSystemAdapter = $fileSystemAdapter;
         $this->allowedDownloadDomains = $allowedDownloadDomains;
         $this->packageSignatureVerifier = new PackageSignatureVerifier(
-            $packageSignaturePublicKeys,
-            $signedPackageRepositories
+            $packageSignaturePublicKeys
         );
     }
 
@@ -589,8 +587,11 @@ class WPPluginLifecycleAdapter
         }
 
         try {
+            $verificationUrl = $this->packageSignatureVerifier->requiresSignature($downloadUrl)
+                ? $downloadUrl
+                : $this->getFinalResponseUrl($response, $downloadUrl);
             $this->packageSignatureVerifier->verify(
-                $this->getFinalResponseUrl($response, $downloadUrl),
+                $verificationUrl,
                 $tmpFile,
                 $headers
             );
