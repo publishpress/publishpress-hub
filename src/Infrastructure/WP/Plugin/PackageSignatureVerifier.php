@@ -17,22 +17,22 @@ class PackageSignatureVerifier
 
     private array $publicKeys;
 
-    private array $requiredRepositories;
-
-    public function __construct(array $publicKeys, array $requiredRepositories)
+    public function __construct(array $publicKeys)
     {
         $this->publicKeys = $publicKeys;
-        $this->requiredRepositories = array_map('strtolower', $requiredRepositories);
     }
 
     public function requiresSignature(string $downloadUrl): bool
     {
         $path = (string) parse_url($downloadUrl, PHP_URL_PATH); // phpcs:ignore WordPress.WP.AlternativeFunctions.parse_url_parse_url
-        if (!preg_match('#/v1/packages/download/([^/]+)/#', $path, $matches)) {
-            return false;
-        }
+        $host = strtolower((string) parse_url($downloadUrl, PHP_URL_HOST)); // phpcs:ignore WordPress.WP.AlternativeFunctions.parse_url_parse_url
 
-        return in_array(strtolower(rawurldecode($matches[1])), $this->requiredRepositories, true);
+        return in_array($host, [
+            'pkg.publishpress.com',
+            'pkg-staging.publishpress.com',
+            'pkg.metaslider.com',
+            'pkg-staging.metaslider.com',
+        ], true) || strpos(rawurldecode($path), '/v1/packages/download/') === 0;
     }
 
     public function verify(string $downloadUrl, string $file, array $headers): void
