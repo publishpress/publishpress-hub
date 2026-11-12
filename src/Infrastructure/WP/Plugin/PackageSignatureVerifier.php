@@ -65,8 +65,17 @@ class PackageSignatureVerifier
             $publicKey === false || strlen($publicKey) !== SODIUM_CRYPTO_SIGN_PUBLICKEYBYTES
             || $decodedSignature === false || strlen($decodedSignature) !== SODIUM_CRYPTO_SIGN_BYTES
             || $contents === false
-            || !sodium_crypto_sign_verify_detached($decodedSignature, $contents, $publicKey)
         ) {
+            throw new RuntimeException('The downloaded package signature is invalid.');
+        }
+
+        try {
+            $valid = sodium_crypto_sign_verify_detached($decodedSignature, $contents, $publicKey);
+        } catch (\Throwable $error) {
+            throw new RuntimeException('The downloaded package signature is invalid.', 0, $error);
+        }
+
+        if (!$valid) {
             throw new RuntimeException('The downloaded package signature is invalid.');
         }
     }

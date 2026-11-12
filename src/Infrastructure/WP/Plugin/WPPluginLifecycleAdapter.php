@@ -581,12 +581,12 @@ class WPPluginLifecycleAdapter
             throw new RuntimeException(esc_html__('The plugin package download failed', 'publishpress-hub'));
         }
 
-        $headers = [];
-        foreach (['x-publishpress-signature', 'x-publishpress-signature-key-id'] as $name) {
-            $headers[$name] = (string) wp_remote_retrieve_header($response, $name);
-        }
-
         try {
+            $headers = [];
+            foreach (['x-publishpress-signature', 'x-publishpress-signature-key-id'] as $name) {
+                $headers[$name] = (string) wp_remote_retrieve_header($response, $name);
+            }
+
             $verificationUrl = $this->packageSignatureVerifier->requiresSignature($downloadUrl)
                 ? $downloadUrl
                 : $this->getFinalResponseUrl($response, $downloadUrl);
@@ -595,7 +595,7 @@ class WPPluginLifecycleAdapter
                 $tmpFile,
                 $headers
             );
-        } catch (RuntimeException $error) {
+        } catch (\Throwable $error) {
             wp_delete_file($tmpFile);
             throw $error;
         }

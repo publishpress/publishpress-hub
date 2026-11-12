@@ -4,6 +4,8 @@ Hub requires detached Ed25519 signatures for every Package Server download befor
 
 ## Public Keys
 
+Sodium verification exceptions are reported as **The downloaded package signature is invalid.** The original exception remains available as the error's cause for diagnostics. Rejected temporary ZIPs are deleted even if verification throws an unexpected error, before any plugin files are changed.
+
 `PackageSignatureVerifier::PUBLIC_KEYS` pins `publishpress-2026` and `metaslider-2026`. Values are raw 32-byte Ed25519 public keys encoded as base64, not PEM wrappers. No private key ships in Hub.
 
 For controlled key rotation, `PUBLISHPRESS_HUB_PACKAGE_SIGNATURE_PUBLIC_KEYS` can provide a replacement map in WordPress configuration. Include every trusted key still used by downloadable packages. Normal installations need no key setting.
