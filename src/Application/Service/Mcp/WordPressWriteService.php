@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\Mcp;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 class WordPressWriteService
 {

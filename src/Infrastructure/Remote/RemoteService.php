@@ -14,10 +14,10 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Remote;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
 use WP_Error;
+
+\defined('ABSPATH') || exit;
 
 class RemoteService implements RemoteServiceInterface
 {

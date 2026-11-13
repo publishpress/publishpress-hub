@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\DTO\Plugin\PluginFamilyDto;
 use PublishPress\Hub\Application\Service\License\Contract\LicenseManagementServiceInterface;
 use PublishPress\Hub\Application\Service\License\LicenseStatusStorageService;
@@ -26,6 +24,8 @@ use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\ProPluginInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use WP_REST_Request;
+
+\defined('ABSPATH') || exit;
 
 class ListPluginsUseCase implements UseCaseInterface
 {

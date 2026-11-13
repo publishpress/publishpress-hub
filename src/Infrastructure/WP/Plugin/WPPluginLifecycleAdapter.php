@@ -14,12 +14,12 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WP\Plugin;
 
-defined('ABSPATH') || exit;
-
 use InvalidArgumentException;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;
 use RuntimeException;
+
+\defined('ABSPATH') || exit;
 
 class WPPluginLifecycleAdapter
 {

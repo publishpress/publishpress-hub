@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\Mcp;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
+
+\defined('ABSPATH') || exit;
 
 class WordPressAbilitiesService implements BootableInterface
 {

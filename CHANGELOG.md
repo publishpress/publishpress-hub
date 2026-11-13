@@ -2,6 +2,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [1.2.0] - [Unreleased]
 
+- Fixed: Standardize direct-access guards and configure both coding-standard scans while preserving Composer's pre-WordPress bootstrap.
+
 - Changed: Require PHP 8.2 while retaining the WordPress 6.7 minimum and an older-PHP-compatible bootstrap, #305.
 
 - Fixed: Show a readable package signature error when Sodium rejects malformed signatures and delete temporary ZIPs on every verification exception.

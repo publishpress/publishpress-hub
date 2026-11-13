@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WP\Plugin;
 
-defined('ABSPATH') || exit;
-
 use RuntimeException;
+
+\defined('ABSPATH') || exit;
 
 class PackageSignatureVerifier
 {

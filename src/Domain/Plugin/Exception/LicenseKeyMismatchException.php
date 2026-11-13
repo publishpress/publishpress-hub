@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Exception;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Domain\Exception\ExceptionCode;
+
+\defined('ABSPATH') || exit;
 
 class LicenseKeyMismatchException extends LicenseException
 {

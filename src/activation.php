@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Service\RewriteRulesService;
 use PublishPress\Hub\Application\Service\VersionService;
 use PublishPress\Hub\Infrastructure\WP\Options\WPOptionsAdapter;
+
+\defined('ABSPATH') || exit;
 
 if (! defined('PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT')) {
     define('PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT', 'publishpress_hub_activation_redirect');

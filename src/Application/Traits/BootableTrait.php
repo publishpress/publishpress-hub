@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Traits;
 
-defined('ABSPATH') || exit;
-
 use RuntimeException;
+
+\defined('ABSPATH') || exit;
 
 trait BootableTrait
 {
