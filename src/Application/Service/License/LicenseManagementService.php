@@ -14,12 +14,12 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\License;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Service\License\Contract\LicenseManagementServiceInterface;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseActivationException;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseApiServiceInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
+
+\defined('ABSPATH') || exit;
 
 class LicenseManagementService implements LicenseManagementServiceInterface
 {

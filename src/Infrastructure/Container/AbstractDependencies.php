@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 /**
  * Container dependency identifiers.

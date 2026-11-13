@@ -14,10 +14,10 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
+
+\defined('ABSPATH') || exit;
 
 class AdminNoticeVisibilityService implements BootableInterface
 {

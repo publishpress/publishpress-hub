@@ -14,12 +14,12 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\Access;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Contract\AccessInterface;
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
+
+\defined('ABSPATH') || exit;
 
 class HubAccessService implements AccessInterface, BootableInterface
 {

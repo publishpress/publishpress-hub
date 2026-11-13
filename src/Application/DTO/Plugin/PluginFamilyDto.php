@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\DTO\Plugin;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Contract\DtoInterface;
+
+\defined('ABSPATH') || exit;
 
 class PluginFamilyDto implements DtoInterface
 {

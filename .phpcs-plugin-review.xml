@@ -8,6 +8,9 @@
     <arg name="basepath" value="."/>
     <arg value="ps"/>
 
+    <file>src/</file>
+    <file>publishpress-hub.php</file>
+
     <rule ref="vendor/publishpress/publishpress-phpcs-standards/standards/plugin-check-rulesets/plugin-review.xml"/>
 
     <exclude-pattern>/dev-workspace-cache/*</exclude-pattern>

@@ -33,6 +33,12 @@ if (! function_exists('esc_html')) {
     }
 }
 
+if (! function_exists('absint')) {
+    function absint($value) {
+        return abs((int) $value);
+    }
+}
+
 if (! function_exists('wp_delete_file')) {
     function wp_delete_file($file) {
         return unlink($file);

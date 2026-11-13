@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\I18n\Contract;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Contract\BootableInterface;
+
+\defined('ABSPATH') || exit;
 
 interface I18nServiceInterface extends BootableInterface
 {

@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Service\ActivationRedirectService;
 use PublishPress\Hub\Application\Service\AdminNoticeVisibilityService;
 use PublishPress\Hub\Application\Service\EddPluginUpdateService;
@@ -93,6 +91,8 @@ use PublishPress\Hub\Infrastructure\License\Handler\LicenseValidationActionHandl
 use PublishPress\Hub\Infrastructure\License\PerPluginLicensePersistenceService;
 use PublishPress\Hub\Rest\PluginsController;
 use PublishPress\Psr\Container\ContainerInterface;
+
+\defined('ABSPATH') || exit;
 
 $assetsDistRelativePath = 'resources/dist/';
 

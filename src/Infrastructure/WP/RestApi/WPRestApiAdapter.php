@@ -14,13 +14,13 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WP\RestApi;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Infrastructure\RestApi\Contract\RestApiAdapterInterface;
 use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use WP_REST_Request;
 use WP_REST_Response;
 use WP_Error;
+
+\defined('ABSPATH') || exit;
 
 class WPRestApiAdapter implements RestApiAdapterInterface
 {

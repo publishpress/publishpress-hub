@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\License\Handler;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Service\License\ScheduledLicenseValidationService;
+
+\defined('ABSPATH') || exit;
 
 class LicenseValidationActionHandler
 {

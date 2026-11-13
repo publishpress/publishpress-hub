@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Service\License\LicenseManagementService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
@@ -26,6 +24,8 @@ use PublishPress\Hub\Domain\Plugin\Exception\PluginNotInstalledException;
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginLifecycleAdapter;
 use WP_REST_Request;
+
+\defined('ABSPATH') || exit;
 
 class UpdatePluginUseCase implements UseCaseInterface
 {

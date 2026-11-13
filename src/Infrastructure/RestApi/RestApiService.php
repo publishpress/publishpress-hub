@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\RestApi;
 
-defined('ABSPATH') || exit;
-
 use Exception;
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
@@ -29,6 +27,8 @@ use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use WP_REST_Request;
 use WP_REST_Response;
 use WP_Error;
+
+\defined('ABSPATH') || exit;
 
 class RestApiService implements RestApiServiceInterface, BootableInterface
 {

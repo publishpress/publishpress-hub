@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginInterface;
@@ -25,6 +23,8 @@ use PublishPress\Hub\Domain\Plugin\Exception\PluginNotFoundException;
 use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginLifecycleAdapter;
 use PublishPress\Hub\Infrastructure\WPOrg\Api\WPOrgPluginApiAdapter;
 use WP_REST_Request;
+
+\defined('ABSPATH') || exit;
 
 class InstallFreePluginUseCase implements UseCaseInterface
 {

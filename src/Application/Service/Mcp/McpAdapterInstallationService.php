@@ -14,11 +14,11 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\Mcp;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginLifecycleAdapter;
 use PublishPress\Hub\Infrastructure\WPOrg\Api\WPOrgPluginApiAdapter;
+
+\defined('ABSPATH') || exit;
 
 class McpAdapterInstallationService
 {
