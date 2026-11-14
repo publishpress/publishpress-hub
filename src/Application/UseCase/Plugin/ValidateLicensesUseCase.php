@@ -14,11 +14,11 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Service\License\ScheduledLicenseValidationService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use WP_REST_Request;
+
+\defined('ABSPATH') || exit;
 
 class ValidateLicensesUseCase implements UseCaseInterface
 {

@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Rest;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
@@ -37,6 +35,8 @@ use PublishPress\Hub\Infrastructure\RestApi\Entity\RestRoute;
 use WP_REST_Server;
 use WP_REST_Request;
 use WP_REST_Response;
+
+\defined('ABSPATH') || exit;
 
 class PluginsController implements BootableInterface
 {

@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Cache;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Infrastructure\Cache\Contract\CacheServiceInterface;
+
+\defined('ABSPATH') || exit;
 
 class CacheService implements CacheServiceInterface
 {

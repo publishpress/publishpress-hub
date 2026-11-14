@@ -17,13 +17,13 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\LanguagePack;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use WP_Error;
 use ZipArchive;
+
+\defined('ABSPATH') || exit;
 
 class LanguagePackSyncService implements BootableInterface
 {
@@ -93,7 +93,7 @@ class LanguagePackSyncService implements BootableInterface
      */
     public function sync(): void
     {
-        $locale = determine_locale();
+        $locale = get_locale();
         if (!LanguagePackPolicy::isEligibleLocale($locale)) {
             $this->storeStatus(
                 'idle',
@@ -199,7 +199,12 @@ class LanguagePackSyncService implements BootableInterface
 
         $moPath = $directory . '/' . LanguagePackPolicy::packFileName($domain, $locale, 'mo');
         $phpPath = $directory . '/' . LanguagePackPolicy::packFileName($domain, $locale, 'l10n.php');
-        if (is_readable($moPath) && !LanguagePackPolicy::needsRelease($installed, $version)) {
+        $poPath = $directory . '/' . LanguagePackPolicy::packFileName($domain, $locale, 'po');
+        $jsonPath = $directory . '/' . LanguagePackPolicy::packFileName($domain, $locale, 'json');
+        if (
+            is_readable($moPath) && is_readable($poPath) && is_readable($jsonPath)
+            && !LanguagePackPolicy::needsRelease($installed, $version)
+        ) {
             if (!is_readable($phpPath)) {
                 $phpError = $this->ensurePhpCatalog($moPath, $directory, $domain, $locale);
                 if ($phpError !== '') {
@@ -230,13 +235,6 @@ class LanguagePackSyncService implements BootableInterface
             ];
         }
 
-        if (!$filesystem->put_contents($markerPath, $version, FS_CHMOD_FILE)) {
-            return [
-                'state' => 'error',
-                'message' => __('Language pack could not be stored. The installed pack was left in place.', 'publishpress-hub'),
-            ];
-        }
-
         return [
             'state' => 'installed',
             'message' => sprintf(
@@ -259,7 +257,7 @@ class LanguagePackSyncService implements BootableInterface
             . '/' . rawurlencode($domain) . '/' . rawurlencode($locale)
             . '/download';
         $url = apply_filters('publishpress_hub_language_pack_download_url', $url, $domain, $locale, $version);
-        if (!is_string($url) || !$this->isAllowedDownloadUrl($url)) {
+        if (!is_string($url) || !LanguagePackPolicy::isAllowedDownloadUrl($url)) {
             return __('Language pack URL was rejected.', 'publishpress-hub');
         }
 
@@ -274,16 +272,17 @@ class LanguagePackSyncService implements BootableInterface
             );
         }
 
-        $error = $this->installZip($temporary, $domain, $locale, $directory);
-        wp_delete_file($temporary);
-
-        return $error;
+        try {
+            return $this->installZip($temporary, $domain, $locale, $directory, $version);
+        } finally {
+            wp_delete_file($temporary);
+        }
     }
 
     /**
      * @return string Error message, or an empty string when the pack files were stored.
      */
-    private function installZip(string $zipPath, string $domain, string $locale, string $directory): string
+    private function installZip(string $zipPath, string $domain, string $locale, string $directory, string $version): string
     {
         $filesystem = $this->filesystem();
         if ($filesystem === null) {
@@ -323,6 +322,11 @@ class LanguagePackSyncService implements BootableInterface
             return __('Language pack is missing a catalog file. The installed pack was left in place.', 'publishpress-hub');
         }
 
+        $json = json_decode($files[$jsonName], true);
+        if (!is_array($json) || !isset($json['locale_data']) || !is_array($json['locale_data'])) {
+            return __('Language pack JSON catalog is invalid. The installed pack was left in place.', 'publishpress-hub');
+        }
+
         if (!wp_mkdir_p($directory)) {
             return __('Language pack directory is not available.', 'publishpress-hub');
         }
@@ -348,27 +352,35 @@ class LanguagePackSyncService implements BootableInterface
         $poTemp = $directory . '/' . $poName . '.new';
         $jsonTemp = $directory . '/' . $jsonName . '.new';
         $phpTemp = $directory . '/' . $phpName . '.new';
+        $markerPath = $directory . '/' . $domain . '-' . $locale . '.release';
+        $markerTemp = $markerPath . '.new';
         if (
             !$filesystem->put_contents($poTemp, $files[$poName], FS_CHMOD_FILE)
             || !$filesystem->put_contents($jsonTemp, $files[$jsonName], FS_CHMOD_FILE)
             || !$filesystem->put_contents($phpTemp, $php, FS_CHMOD_FILE)
+            || !$filesystem->put_contents($markerTemp, $version, FS_CHMOD_FILE)
         ) {
             wp_delete_file($moTemp);
             wp_delete_file($poTemp);
             wp_delete_file($jsonTemp);
             wp_delete_file($phpTemp);
+            wp_delete_file($markerTemp);
             return __('Language pack could not be stored. The installed pack was left in place.', 'publishpress-hub');
         }
 
-        $renamed = $filesystem->move($moTemp, $directory . '/' . $moName, true)
-            && $filesystem->move($poTemp, $directory . '/' . $poName, true)
-            && $filesystem->move($jsonTemp, $directory . '/' . $jsonName, true)
-            && $filesystem->move($phpTemp, $directory . '/' . $phpName, true);
+        $renamed = (new LanguagePackFileReplacement())->replace($filesystem, [
+            $moTemp => $directory . '/' . $moName,
+            $poTemp => $directory . '/' . $poName,
+            $jsonTemp => $directory . '/' . $jsonName,
+            $phpTemp => $directory . '/' . $phpName,
+            $markerTemp => $markerPath,
+        ]);
         if (!$renamed) {
             wp_delete_file($moTemp);
             wp_delete_file($poTemp);
             wp_delete_file($jsonTemp);
             wp_delete_file($phpTemp);
+            wp_delete_file($markerTemp);
             return __('Language pack could not be stored. The installed pack was left in place.', 'publishpress-hub');
         }
 
@@ -446,33 +458,6 @@ class LanguagePackSyncService implements BootableInterface
         }
 
         return rtrim((string) $uploads['basedir'], '/\\') . '/' . LanguagePackPolicy::DIRECTORY;
-    }
-
-    private function isAllowedDownloadUrl(string $url): bool
-    {
-        $parts = wp_parse_url($url);
-        if (!is_array($parts)) {
-            return false;
-        }
-
-        $scheme = $parts['scheme'] ?? '';
-        if ($scheme !== 'https' && $scheme !== 'http') {
-            return false;
-        }
-
-        $host = $parts['host'] ?? '';
-        $allowed = [
-            LanguagePackPolicy::PACKAGE_SERVER_HOST,
-            'publishpress.com',
-            'wordpress.org',
-            'downloads.wordpress.org',
-        ];
-        $home = wp_parse_url(home_url(), PHP_URL_HOST);
-        if (is_string($home) && $home !== '') {
-            $allowed[] = $home;
-        }
-
-        return in_array($host, $allowed, true);
     }
 
     private function storeStatus(string $state, string $message): void

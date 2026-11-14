@@ -14,12 +14,12 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\License;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
+
+\defined('ABSPATH') || exit;
 
 class LicenseExpirationNoticeService
 {

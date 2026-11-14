@@ -14,11 +14,11 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WP\Filesystem;
 
-defined('ABSPATH') || exit;
-
 use InvalidArgumentException;
 use WP_Filesystem_Base;
 use WP_Error;
+
+\defined('ABSPATH') || exit;
 
 class WPFileSystemAdapter
 {

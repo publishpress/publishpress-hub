@@ -3,8 +3,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 [1.2.0] - [Unreleased]
 
 - Added: Download a language pack for the installed plugin version. A plugin registers its text domain, package-server repository, and version. The `.po` stays on disk so it can be imported into Loco. Packs remain after Hub is deactivated (#594).
+- Fixed: Allow the approved staging translation endpoint, repair incomplete packs, validate JSON catalogs, restore catalogs on replacement failure and remove temporary ZIPs on exceptions.
+- Fixed: Standardize direct-access guards and configure both coding-standard scans while preserving Composer's pre-WordPress bootstrap.
+
+- Changed: Require PHP 8.2 while retaining the WordPress 6.7 minimum and an older-PHP-compatible bootstrap, #305.
+
+- Fixed: Show a readable package signature error when Sodium rejects malformed signatures and delete temporary ZIPs on every verification exception.
+
+- Security: Require signatures for every Package Server install and upgrade without repository enrollment, including redirected downloads; retain WordPress.org download behavior.
+
+- Security: Pin the PublishPress and MetaSlider package signing public keys and verify the `X-PublishPress-Signature` download contract, #307, package-server#88.
+
 - Added: Optional PublishPress MCP connection, adapter setup, read/write exposure controls, searchable plugin action tabs, background navigation and saves, client setup guidance, and connection diagnostics (#246).
-- Security: Verify Package Server Ed25519 signatures before installing or upgrading enrolled Pro plugins, #307.
+- Security: Verify Package Server Ed25519 signatures before installing or upgrading Pro plugins, #307.
 
 [1.1.0] - 15 October, 2026
 

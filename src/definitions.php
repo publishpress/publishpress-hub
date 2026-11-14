@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Service\ActivationRedirectService;
 use PublishPress\Hub\Application\Service\AdminNoticeVisibilityService;
 use PublishPress\Hub\Application\Service\EddPluginUpdateService;
@@ -95,6 +93,8 @@ use PublishPress\Hub\Infrastructure\License\PerPluginLicensePersistenceService;
 use PublishPress\Hub\Rest\PluginsController;
 use PublishPress\Psr\Container\ContainerInterface;
 
+\defined('ABSPATH') || exit;
+
 $assetsDistRelativePath = 'resources/dist/';
 
 return [
@@ -142,12 +142,7 @@ return [
     AbstractDependencies::PACKAGE_SIGNATURE_PUBLIC_KEYS =>
         defined('PUBLISHPRESS_HUB_PACKAGE_SIGNATURE_PUBLIC_KEYS')
             ? (array) constant('PUBLISHPRESS_HUB_PACKAGE_SIGNATURE_PUBLIC_KEYS')
-            : [],
-
-    AbstractDependencies::SIGNED_PACKAGE_REPOSITORIES =>
-        defined('PUBLISHPRESS_HUB_SIGNED_PACKAGE_REPOSITORIES')
-            ? (array) constant('PUBLISHPRESS_HUB_SIGNED_PACKAGE_REPOSITORIES')
-            : [],
+            : \PublishPress\Hub\Infrastructure\WP\Plugin\PackageSignatureVerifier::PUBLIC_KEYS,
 
     AbstractDependencies::SITE_URL => home_url(),
 
@@ -514,8 +509,7 @@ return [
         fn(ContainerInterface $container) => new WPPluginLifecycleAdapter(
             $container->get(AbstractDependencies::FILE_SYSTEM_ADAPTER),
             $container->get(AbstractDependencies::ALLOWED_DOWNLOAD_DOMAINS),
-            $container->get(AbstractDependencies::PACKAGE_SIGNATURE_PUBLIC_KEYS),
-            $container->get(AbstractDependencies::SIGNED_PACKAGE_REPOSITORIES)
+            $container->get(AbstractDependencies::PACKAGE_SIGNATURE_PUBLIC_KEYS)
         ),
 
     AbstractDependencies::FILE_SYSTEM_ADAPTER =>

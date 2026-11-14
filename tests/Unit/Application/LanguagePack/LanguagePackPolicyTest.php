@@ -12,6 +12,22 @@ use PublishPress\Hub\Application\Service\LanguagePack\LanguagePackPolicy;
  */
 class LanguagePackPolicyTest extends Unit
 {
+    public function testOnlyApprovedHttpsServersAreAccepted(): void
+    {
+        foreach (['pkg.publishpress.com', 'pkg-staging.publishpress.com'] as $host) {
+            $this->assertTrue(LanguagePackPolicy::isAllowedDownloadUrl('https://' . $host . '/v1/translations/plugin/1.0.0/domain/pt_BR/download'));
+        }
+        foreach ([
+            'http://pkg.publishpress.com/file.zip',
+            'https://pkg.publishpress.com.evil.example/file.zip',
+            'https://evil.example/pkg.publishpress.com/file.zip',
+            'https://user@pkg.publishpress.com/file.zip',
+            'https://pkg.publishpress.com:8443/file.zip',
+            'file:///tmp/file.zip',
+        ] as $url) {
+            $this->assertFalse(LanguagePackPolicy::isAllowedDownloadUrl($url), $url);
+        }
+    }
     public function testEnglishLocalesAreNotEligible(): void
     {
         $this->assertFalse(LanguagePackPolicy::isEligibleLocale(''));

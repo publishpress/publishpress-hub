@@ -14,13 +14,13 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Edd\Subscription;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseServerException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseServerInvalidResponseException;
 use PublishPress\Hub\Infrastructure\Cache\Contract\CacheServiceInterface;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\Contract\VersionCheckServiceInterface;
 use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
+
+\defined('ABSPATH') || exit;
 
 class VersionCheckService implements VersionCheckServiceInterface
 {

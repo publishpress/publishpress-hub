@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Edd\Subscription;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseDisabledException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseExpiredException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseInvalidException;
@@ -34,6 +32,8 @@ use PublishPress\Hub\Infrastructure\Edd\Subscription\Contract\LicenseDeactivatio
 use PublishPress\Hub\Infrastructure\Edd\Subscription\Contract\LicenseInfoServiceInterface;
 use PublishPress\Hub\Infrastructure\Edd\Subscription\Contract\VersionCheckServiceInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseAdapterInterface;
+
+\defined('ABSPATH') || exit;
 
 class EddSubscriptionAdapter implements LicenseAdapterInterface
 {

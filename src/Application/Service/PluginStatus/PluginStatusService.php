@@ -14,14 +14,14 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\PluginStatus;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\ProPluginInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginStatusAdapter;
+
+\defined('ABSPATH') || exit;
 
 /**
  * Application service responsible for managing plugin status across the system.

@@ -14,11 +14,11 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
+
+\defined('ABSPATH') || exit;
 
 class RewriteRulesService implements BootableInterface
 {

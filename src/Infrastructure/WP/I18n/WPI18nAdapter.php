@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WP\I18n;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
@@ -23,6 +21,8 @@ use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\I18n\Contract\I18nServiceInterface;
 use InvalidArgumentException;
 use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;
+
+\defined('ABSPATH') || exit;
 
 /**
  * TODO: Make this class reusable for other plugins, after the free plugin also has the Hub as requirement.

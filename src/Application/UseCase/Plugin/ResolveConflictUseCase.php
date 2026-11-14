@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Plugin;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Application\UseCase\Contract\UseCaseInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
@@ -27,6 +25,8 @@ use PublishPress\Hub\Infrastructure\WP\Plugin\WPPluginLifecycleAdapter;
 use WP_REST_Request;
 use InvalidArgumentException;
 use RuntimeException;
+
+\defined('ABSPATH') || exit;
 
 class ResolveConflictUseCase implements UseCaseInterface
 {

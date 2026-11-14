@@ -14,13 +14,25 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\LanguagePack;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 class LanguagePackPolicy
 {
     public const DIRECTORY = 'publishpress/language-packs';
 
     public const PACKAGE_SERVER_HOST = 'pkg.publishpress.com';
+
+    public static function isAllowedDownloadUrl(string $url): bool
+    {
+        $parts = wp_parse_url($url);
+
+        return is_array($parts)
+            && ($parts['scheme'] ?? '') === 'https'
+            && in_array(strtolower($parts['host'] ?? ''), [self::PACKAGE_SERVER_HOST, 'pkg-staging.publishpress.com'], true)
+            && !isset($parts['user'])
+            && !isset($parts['pass'])
+            && (!isset($parts['port']) || $parts['port'] === 443);
+    }
 
     /**
      * A site locale that should receive a pack.
