@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PublishPress\Hub\Admin\Page;
 
 use PublishPress\Hub\Application\Contract\BootableInterface;
+use PublishPress\Hub\Application\Service\LanguagePack\LanguagePackSyncService;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
@@ -133,6 +134,7 @@ class PluginsDashboardController implements BootableInterface
             'PluginsDashboard/plugins-dashboard-container',
             [
                 'loading_message' => __('Please wait while we load the plugins dashboard...', 'publishpress-hub'),
+                'language_pack_status' => get_option(LanguagePackSyncService::STATUS_OPTION, []),
             ]
         );
     }

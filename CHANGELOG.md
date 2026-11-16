@@ -2,6 +2,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [1.2.0] - [Unreleased]
 
+- Added: Download a language pack for the installed plugin version. A plugin registers its text domain, package-server repository, and version. The `.po` stays on disk so it can be imported into Loco. Packs remain after Hub is deactivated (#594).
+- Fixed: Allow the approved staging translation endpoint, repair incomplete packs, validate JSON catalogs, restore catalogs on replacement failure and remove temporary ZIPs on exceptions.
 - Fixed: Standardize direct-access guards and configure both coding-standard scans while preserving Composer's pre-WordPress bootstrap.
 
 - Changed: Require PHP 8.2 while retaining the WordPress 6.7 minimum and an older-PHP-compatible bootstrap, #305.

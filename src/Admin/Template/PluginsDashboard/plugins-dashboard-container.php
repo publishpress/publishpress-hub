@@ -12,6 +12,7 @@
  * @var array<string, mixed> $context {
  *     Template context data.
  *     @type string $loading_message The loading message to display.
+ *     @type array<string, mixed> $language_pack_status Download status for the current pack.
  * }
  */
 
@@ -19,7 +20,15 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
+$status = $context['language_pack_status'] ?? [];
+$message = is_array($status) && isset($status['message']) && is_string($status['message'])
+    ? $status['message']
+    : __('Language pack has not been checked yet.', 'publishpress-hub');
+
 ?>
+<p class="publishpress-hub-language-pack-status">
+    <?php echo esc_html($message); ?>
+</p>
 <div id="publishpress-hub-plugins-dashboard-container">
     <div class="publishpress-hub-admin-page-loading">
         <p>

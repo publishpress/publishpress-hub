@@ -209,6 +209,8 @@ abstract class AbstractDependencies
 
     public const STATISTICS_SERVICE = 'publishpress-hub.application.service.statistics';
 
+    public const LANGUAGE_PACK_SYNC_SERVICE = 'publishpress-hub.application.service.language-pack-sync';
+
     public const PLUGINS_DASHBOARD_CONTROLLER = 'publishpress-hub.presentation.plugins-dashboard.controller';
 
     public const SETTINGS_PAGE_CONTROLLER = 'publishpress-hub.presentation.settings-page.controller';

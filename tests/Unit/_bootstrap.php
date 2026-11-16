@@ -15,6 +15,12 @@ Autoloader::register('PublishPress\\Hub\\', __DIR__ . '/../../src/');
 
 class CustomException extends Exception {}
 
+if (! function_exists('wp_parse_url')) {
+    function wp_parse_url($url, $component = -1) {
+        return parse_url($url, $component);
+    }
+}
+
 if (! function_exists('__')) {
     function __($text, $domain = 'publishpress-hub') {
         return $text;
@@ -42,5 +48,11 @@ if (! function_exists('absint')) {
 if (! function_exists('wp_delete_file')) {
     function wp_delete_file($file) {
         return unlink($file);
+    }
+}
+
+if (! function_exists('absint')) {
+    function absint($value) {
+        return abs((int) $value);
     }
 }
