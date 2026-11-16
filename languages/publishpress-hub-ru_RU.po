@@ -2,26 +2,24 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Hub 1.0.4-beta.2\n"
+"Project-Id-Version: PublishPress Hub 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
-"PO-Revision-Date: 2026-10-01 10:24+0000\n"
+"POT-Creation-Date: 2026-11-16T12:00:34+00:00\n"
+"PO-Revision-Date: 2026-11-16 12:44+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
-">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
-">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1: 2);\n"
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "Language: ru_RU\n"
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
 
 #: publishpress-hub.php:4
 #: src/Admin/Page/WelcomePageController.php:261
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:121, fuzzy
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:123, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
@@ -32,11 +30,12 @@ msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
 msgstr ""
-"Централизованный центр управления для всех плагинов PublishPress - "
-"устанавливайте, обновляйте и управляйте лицензиями из одной панели "
+"Централизованный управляющий центр для всех плагинов PublishPress - "
+"устанавливайте, обновляйте и управляйте лицензиями с одной панели "
 "управления."
 
 #: publishpress-hub.php:7
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:64
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
@@ -50,15 +49,27 @@ msgstr "https://publishpress.com"
 msgid "Please wait while we load the components showcase..."
 msgstr "Пожалуйста, подождите, пока мы загружаем демонстрацию компонентов..."
 
+#: src/Admin/Page/McpPageController.php:91
+#: src/Admin/Page/McpPageController.php:92
+#: resources/dist/js/mcp-page.js:588
+#: resources/src/jsx/components/pages/mcp-page.jsx:82
+#: resources/dist/js/mcp-page.js:480, fuzzy
+msgid "AI Connections"
+msgstr "AI Connections"
+
+#: src/Admin/Page/McpPageController.php:113
+msgid "Please wait while we load AI connections..."
+msgstr "Пожалуйста, подождите, пока мы загружаем AI соединения..."
+
 #: src/Admin/Page/PluginsDashboardController.php:136
 msgid "Please wait while we load the plugins dashboard..."
-msgstr "Пожалуйста, подождите, пока мы загружаем панель плагинов..."
+msgstr "Пожалуйста, подождите, пока мы загружаем панель управления плагинами..."
 
 #: src/Admin/Page/SettingsPageController.php:106
 #: src/Admin/Page/SettingsPageController.php:107
-#: resources/dist/js/settings-page.js:473
+#: resources/dist/js/settings-page.js:462
 #: resources/src/jsx/components/pages/settings-page.jsx:81
-#: resources/dist/js/settings-page.js:412
+#: resources/dist/js/settings-page.js:415
 msgid "Settings"
 msgstr "Настройки"
 
@@ -79,41 +90,591 @@ msgstr "Добро пожаловать"
 msgid "Please wait while we load the welcome page..."
 msgstr "Пожалуйста, подождите, пока мы загружаем страницу приветствия..."
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:116
+#: src/Admin/Template/PluginsDashboard/plugins-dashboard-container.php:26
+msgid "Language pack has not been checked yet."
+msgstr "Языковой пакет еще не был проверен."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:100
+msgid "Site locale is English. No language pack is downloaded."
+msgstr "Язык сайта - английский. Языковой пакет не загружен."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:109
+msgid "No language packs are registered."
+msgstr "Языковые пакеты не зарегистрированы."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:181
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:189
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:289
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:331
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:419
+msgid "Language pack directory is not available."
+msgstr "Каталог языкового пакета недоступен."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:222
+#. translators: 1: text domain, 2: locale, 3: plugin version
+#, php-format
+msgid "Language pack for %1$s (%2$s) matches %3$s."
+msgstr "Языковой пакет для %1$s (%2$s) соответствует %3$s."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:242
+#. translators: 1: text domain, 2: locale, 3: plugin version
+#, php-format
+msgid "Language pack for %1$s (%2$s) installed for %3$s."
+msgstr "Языковой пакет для %1$s (%2$s) установлен для %3$s."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:261
+msgid "Language pack URL was rejected."
+msgstr "URL языкового пакета был отклонен."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:269
+#. translators: 1: text domain, 2: locale
+#, php-format
+msgid ""
+"Language pack download failed for %1$s (%2$s). The installed pack was left "
+"in place."
+msgstr ""
+"Не удалось загрузить языковой пакет для %1$s (%2$s). Установленный пакет "
+"оставлен на месте."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:293
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:298
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:311
+msgid "Language pack could not be unpacked."
+msgstr "Языковой пакет не может быть распакован."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:322
+msgid ""
+"Language pack is missing a catalog file. The installed pack was left in "
+"place."
+msgstr ""
+"В языковом пакете отсутствует файл каталога. Установленный пакет оставлен "
+"на месте."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:327
+msgid "Language pack JSON catalog is invalid. The installed pack was left in place."
+msgstr ""
+"JSON каталог языкового пакета недействителен. Установленный пакет оставлен "
+"на месте."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:337
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:368
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:384
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:425
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:430
+msgid "Language pack could not be stored. The installed pack was left in place."
+msgstr ""
+"Языковой пакет не может быть сохранен. Установленный пакет оставлен на "
+"месте."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:342
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:348
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:401
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:406
+msgid ""
+"Language pack PHP catalog could not be built. The installed pack was left "
+"in place."
+msgstr ""
+"PHP каталог языкового пакета не может быть создан. Установленный пакет "
+"оставлен на месте."
+
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
 msgstr "Внимание: Лицензия для %1$s истекла. %2$s"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:118
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:132
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:123
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:137
 msgid "Manage licenses"
 msgstr "Управление лицензиями"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:129
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
 msgstr "Внимание: У %1$d плагина(ов) истекли лицензии: %2$s. %3$s"
 
+#: src/Application/Service/License/LicenseManagementService.php:294
+msgid ""
+"The license server accepted your key, but this site could not save its "
+"active license. Please contact support and mention this message."
+msgstr ""
+"Сервер лицензий принял ваш ключ, но этот сайт не смог сохранить свою "
+"активную лицензию. Пожалуйста, свяжитесь с поддержкой и укажите это "
+"сообщение."
+
+#: src/Application/Service/Mcp/McpConnectionService.php:213
+#. translators: %s: full WordPress site address.
+#, php-format
+msgid ""
+"PublishPress actions for %s. These tools apply only to this site. If "
+"several sites are connected and the requested site is unclear, ask which "
+"site to use before calling a tool. Confirm the target site before changing "
+"site data."
+msgstr ""
+"Действия PublishPress для %s. Эти инструменты применяются только к этому "
+"сайту. Если несколько сайтов подключены и запрашиваемый сайт неясен, "
+"уточните, какой сайт использовать перед вызовом инструмента. Подтвердите "
+"целевой сайт перед изменением данных сайта."
+
+#: src/Application/Service/Mcp/McpConnectionService.php:330
+msgid "WordPress version"
+msgstr "Версия WordPress"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:331
+msgid "MCP Adapter version"
+msgstr "Версия адаптера MCP"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:332
+msgid "Not active"
+msgstr "Неактивно"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:333, fuzzy
+msgid "HTTPS"
+msgstr "HTTPS"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:334
+#: src/Application/Service/Mcp/McpConnectionService.php:337
+msgid "Available"
+msgstr "Доступно"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:334
+msgid "Required"
+msgstr "Обязательно"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:335
+msgid "Application passwords"
+msgstr "Пароли приложений"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:337
+msgid "Unavailable; check WordPress or security plugin settings"
+msgstr "Недоступно; проверьте настройки WordPress или плагина безопасности"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:338
+msgid "Registered actions"
+msgstr "Зарегистрированные действия"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:339
+msgid "Selected actions exposed"
+msgstr "Выбранные действия открыты"
+
+#: src/Application/Service/Mcp/McpSetupService.php:124
+msgid "Changes saved."
+msgstr "Изменения сохранены."
+
+#: src/Application/Service/Mcp/McpSetupService.php:126
+msgid ""
+"Changes saved. Restart your AI app or refresh its PublishPress connection "
+"to update the available actions."
+msgstr ""
+"Изменения сохранены. Перезапустите ваше AI-приложение или обновите его "
+"соединение с PublishPress, чтобы обновить доступные действия."
+
+#: src/Application/Service/Mcp/McpSetupService.php:128
+msgid "Changes saved. Connect your AI app to continue."
+msgstr "Изменения сохранены. Подключите ваше AI-приложение, чтобы продолжить."
+
+#: src/Application/Service/Mcp/McpSetupService.php:129
+msgid "Changes saved. Select at least one available action to continue."
+msgstr ""
+"Изменения сохранены. Выберите хотя бы одно доступное действие, чтобы "
+"продолжить."
+
+#: src/Application/Service/Mcp/McpSetupService.php:199
+msgid "Update WordPress to continue"
+msgstr "Обновите WordPress, чтобы продолжить"
+
+#: src/Application/Service/Mcp/McpSetupService.php:200
+msgid "WordPress 6.9 or newer is required."
+msgstr "Требуется WordPress 6.9 или новее."
+
+#: src/Application/Service/Mcp/McpSetupService.php:202
+msgid "Open WordPress updates"
+msgstr "Открыть обновления WordPress"
+
+#: src/Application/Service/Mcp/McpSetupService.php:207
+msgid "Install the MCP Adapter plugin"
+msgstr "Установите плагин MCP Adapter"
+
+#: src/Application/Service/Mcp/McpSetupService.php:208
+msgid ""
+"Install the official WordPress MCP Adapter plugin to connect your AI "
+"service."
+msgstr ""
+"Установите официальный плагин MCP Adapter для WordPress, чтобы подключить "
+"вашу AI-службу."
+
+#: src/Application/Service/Mcp/McpSetupService.php:211
+#: resources/dist/js/mcp-page.js:637
+#: resources/src/jsx/components/pages/mcp-page.jsx:102
+#: resources/dist/js/mcp-page.js:500
+msgid "Manage plugins"
+msgstr "Управление плагинами"
+
+#: src/Application/Service/Mcp/McpSetupService.php:211
+msgid "Set up MCP Adapter"
+msgstr "Настроить MCP Adapter"
+
+#: src/Application/Service/Mcp/McpSetupService.php:216
+msgid "Use HTTPS to connect your AI"
+msgstr "Используйте HTTPS для подключения вашего AI"
+
+#: src/Application/Service/Mcp/McpSetupService.php:217
+msgid "Both WordPress and site addresses must use HTTPS."
+msgstr "Как WordPress, так и адреса сайта должны использовать HTTPS."
+
+#: src/Application/Service/Mcp/McpSetupService.php:219
+msgid "Open site settings"
+msgstr "Открыть настройки сайта"
+
+#: src/Application/Service/Mcp/McpSetupService.php:224
+msgid "Add a PublishPress plugin with AI actions"
+msgstr "Добавить плагин PublishPress с действиями AI"
+
+#: src/Application/Service/Mcp/McpSetupService.php:225
+msgid ""
+"You don't have any PublishPress plugins installed that support AI actions "
+"yet."
+msgstr ""
+"У вас еще нет установленных плагинов PublishPress, которые поддерживают "
+"действия AI."
+
+#: src/Application/Service/Mcp/McpSetupService.php:227
+msgid "Open PublishPress plugins"
+msgstr "Открыть плагины PublishPress"
+
+#: src/Application/Service/Mcp/McpSetupService.php:232
+msgid "Allow application passwords for your account"
+msgstr "Разрешить пароли приложений для вашей учетной записи"
+
+#: src/Application/Service/Mcp/McpSetupService.php:234
+msgid ""
+"Create an application password in your WordPress profile for assisted or "
+"manual setup."
+msgstr ""
+"Создайте пароль приложения в вашем профиле WordPress для помощи в настройке "
+"или ручной настройки."
+
+#: src/Application/Service/Mcp/McpSetupService.php:235
+msgid ""
+"Application passwords are unavailable for your account. HTTPS or security "
+"plugin settings may need attention."
+msgstr ""
+"Пароли приложений недоступны для вашей учетной записи. Возможно, "
+"потребуется обратить внимание на настройки HTTPS или плагина безопасности."
+
+#: src/Application/Service/Mcp/McpSetupService.php:237
+msgid "Open application passwords"
+msgstr "Открыть пароли приложений"
+
+#: src/Application/Service/Mcp/McpSetupService.php:258
+msgid "PASTE_YOUR_APPLICATION_PASSWORD_HERE"
+msgstr "ВСТАВЬТЕ_ВАШ_ПАРОЛЬ_ПРИЛОЖЕНИЯ_ЗДЕСЬ"
+
+#: src/Application/Service/Mcp/McpSetupService.php:277
+msgid "Ask my AI to help"
+msgstr "Попросите моего AI помочь"
+
+#: src/Application/Service/Mcp/McpSetupService.php:278
+msgid "Recommended. Ask your AI for a setup script to run on your computer."
+msgstr ""
+"Рекомендуется. Попросите вашего AI предоставить скрипт настройки для "
+"выполнения на вашем компьютере."
+
+#: src/Application/Service/Mcp/McpSetupService.php:281
+#. translators: 1: endpoint, 2: username, 3: server identifier, 4: display name, 5: write access state.
+#, php-format
+msgid ""
+"Connect my AI app to PublishPress. Create a setup script and give me the "
+"exact terminal command to run it.\n"
+"\n"
+"1. Ask me to select my AI app and OS (Windows, macOS or Linux). Use "
+"interactive choices if available, otherwise numbered options.\n"
+"2. Create the script using your file tools. Request the specific permission "
+"if needed. If you cannot write locally, attach a downloadable script. Only "
+"fall back to code with save instructions when neither is possible. Use "
+"PowerShell on Windows and an appropriate script on macOS or Linux. Do not "
+"stop at explaining access limitations or provide only JSON.\n"
+"3. Configure this local stdio server:\n"
+"Name: %3$s\n"
+"Display name: %4$s\n"
+"Command: npx\n"
+"Arguments: -y @automattic/mcp-wordpress-remote@latest\n"
+"Environment: OAUTH_ENABLED=false, WP_API_URL=%1$s, WP_API_USERNAME=%2$s\n"
+"Read WP_API_PASSWORD through a hidden terminal prompt.\n"
+"Hub write access: %5$s. Only individually selected actions are exposed.\n"
+"4. Check Node.js and npx. If missing, link to the official installer and "
+"tell me to reopen the terminal. Back up existing settings. Use a JSON/TOML "
+"parser or supported client command to merge only this server, preserving "
+"other settings and sites. Stop on invalid configuration or a conflicting "
+"endpoint. If replacing an old PublishPress desktop extension for this site, "
+"guide me to disable only that extension to avoid duplicate connections. "
+"Quote paths and values safely.\n"
+"5. Give brief run, restart and approval instructions. Verify through the "
+"connection or give me a prompt to test in the app: confirm the site URL, "
+"list actual tools and perform a read-only lookup. Report whether write "
+"tools are available. If expected write tools are missing, ask me to check "
+"Allow actions that change site data and the selected actions in Hub, then "
+"refresh the connection. Do not claim success from saved configuration "
+"alone. Do not test writes during setup. Clarify the target site when "
+"ambiguous and ask for review before changing site data."
+msgstr ""
+"Подключите мое AI-приложение к PublishPress. Создайте скрипт настройки и "
+"дайте мне точную команду терминала для его выполнения.\n"
+"\n"
+"1. Попросите меня выбрать мое AI-приложение и ОС (Windows, macOS или "
+"Linux). Используйте интерактивные варианты, если доступны, в противном "
+"случае нумерованные варианты.\n"
+"2. Создайте скрипт с использованием ваших инструментов файловой системы. "
+"Запросите конкретное разрешение, если это необходимо. Если вы не можете "
+"записывать локально, прикрепите загружаемый скрипт. Переходите к коду с "
+"инструкциями по сохранению только в том случае, если ни один из вариантов "
+"невозможен. Используйте PowerShell на Windows и соответствующий скрипт на "
+"macOS или Linux. Не останавливайтесь на объяснении ограничений доступа и не "
+"предоставляйте только JSON.\n"
+"3. Настройте этот локальный сервер stdio:\n"
+"Имя: %3$s\n"
+"Отображаемое имя: %4$s\n"
+"Команда: npx\n"
+"Аргументы: -y @automattic/mcp-wordpress-remote@latest\n"
+"Среда: OAUTH_ENABLED=false, WP_API_URL=%1$s, WP_API_USERNAME=%2$s\n"
+"Читать WP_API_PASSWORD через скрытый запрос терминала.\n"
+"Доступ на запись в Hub: %5$s. Только индивидуально выбранные действия "
+"открыты.\n"
+"4. Проверьте наличие Node.js и npx. Если отсутствуют, дайте ссылку на "
+"официальный установщик и скажите мне снова открыть терминал. Создайте "
+"резервную копию существующих настроек. Используйте парсер JSON/TOML или "
+"поддерживаемую команду клиента, чтобы объединить только этот сервер, "
+"сохраняя другие настройки и сайты. Остановитесь на недействительной "
+"конфигурации или конфликтующем конечном пункте. Если заменяете старое "
+"расширение PublishPress для рабочего стола для этого сайта, направьте меня "
+"отключить только это расширение, чтобы избежать дублирующих соединений. "
+"Безопасно цитируйте пути и значения.\n"
+"5. Дайте краткие инструкции по запуску, перезапуску и утверждению. "
+"Проверьте через соединение или дайте мне подсказку для тестирования в "
+"приложении: подтвердите URL сайта, перечислите фактические инструменты и "
+"выполните запрос только для чтения. Сообщите, доступны ли инструменты "
+"записи. Если ожидаемые инструменты записи отсутствуют, попросите меня "
+"проверить разрешения на действия, изменяющие данные сайта, и выбранные "
+"действия в Hub, затем обновите соединение. Не утверждайте успех только на "
+"основании сохраненной конфигурации. Не тестируйте записи во время "
+"настройки. Уточните целевой сайт, когда это неясно, и попросите обзор перед "
+"изменением данных сайта.</source>\n"
+"<t i=\"30\">включено"
+
+#: src/Application/Service/Mcp/McpSetupService.php:299
+msgid "enabled"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:299
+msgid "disabled"
+msgstr "выключено"
+
+#: src/Application/Service/Mcp/McpSetupService.php:304
+msgid "Set up manually"
+msgstr "Настроить вручную"
+
+#: src/Application/Service/Mcp/McpSetupService.php:305
+msgid "Copy the configuration into your MCP client."
+msgstr "Скопируйте конфигурацию в ваш клиент MCP."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:65
+msgid "Actions available through PublishPress Hub."
+msgstr "Действия доступны через PublishPress Hub."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:85
+msgid "List WordPress users"
+msgstr "Список пользователей WordPress"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:86
+msgid ""
+"Find users by name or role. The optional primitive capability filter checks "
+"effective access within each candidate page. Visit all total_pages even "
+"when a filtered page is empty. No email addresses or secrets are returned."
+msgstr ""
+"Найдите пользователей по имени или роли. Дополнительный фильтр примитивных "
+"возможностей проверяет эффективный доступ в каждой кандидатной странице. "
+"Посетите все total_pages, даже когда отфильтрованная страница пуста. Адреса "
+"электронной почты или секреты не возвращаются."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:92
+msgid "Get WordPress user capabilities"
+msgstr "Получить возможности пользователей WordPress"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:93
+msgid ""
+"Resolve exactly one user_id or username and return their identity, roles "
+"and effective primitive capabilities. Never guess a user ID. "
+"Object-specific permissions require a separate check for that object."
+msgstr ""
+"Разрешите точно один user_id или имя пользователя и верните их личность, "
+"роли и эффективные примитивные возможности. Никогда не угадывайте ID "
+"пользователя. Разрешения, специфичные для объекта, требуют отдельной "
+"проверки для этого объекта."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:97
+msgid "Find WordPress content"
+msgstr "Найти контент WordPress"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:98
+msgid ""
+"Search readable posts, pages or a REST-enabled custom post type. Returns "
+"actual IDs, titles and permalinks. Use post_type=page for pages. Resolve "
+"ambiguous titles before using a URL. Default status is publish. Private and "
+"draft requests enforce WordPress permissions."
+msgstr ""
+"Искать читаемые посты, страницы или посты с поддержкой REST. Возвращает "
+"фактические ID, заголовки и постоянные ссылки. Используйте post_type=page "
+"для страниц. Уточняйте неоднозначные заголовки перед использованием URL. "
+"Статус по умолчанию - опубликовано. Запросы на частные и черновики "
+"соблюдают разрешения WordPress."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:106
+msgid "List WordPress post types"
+msgstr "Список типов постов WordPress"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:107
+msgid ""
+"List readable REST-enabled post types and the capability names used for "
+"each type. Use these names for content lookups and permission questions."
+msgstr ""
+"Список читаемых типов постов с поддержкой REST и названий возможностей, "
+"используемых для каждого типа. Используйте эти названия для поиска контента "
+"и вопросов разрешений."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:127
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:208
+msgid "WordPress"
+msgstr "WordPress"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:153
+msgid "Create WordPress user"
+msgstr "Создать пользователя WordPress"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:154
+msgid ""
+"Create a new user account with a known username, email and one editable "
+"role. Ask for missing details. WordPress validates role assignment "
+"permissions. MCP rejects administrator and any role granting "
+"administrator-level capabilities. A password is generated privately. By "
+"default WordPress emails the user a password setup link. Never guess an "
+"email or request a password in chat."
+msgstr ""
+"Создайте новую учетную запись пользователя с известным именем пользователя, "
+"адресом электронной почты и одной изменяемой ролью. Запросите недостающие "
+"данные. WordPress проверяет разрешения на назначение ролей. MCP отклоняет "
+"администратора и любую роль, предоставляющую возможности уровня "
+"администратора. Пароль генерируется приватно. По умолчанию WordPress "
+"отправляет пользователю ссылку для настройки пароля по электронной почте. "
+"Никогда не угадывайте адрес электронной почты и не запрашивайте пароль в "
+"чате."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:163
+msgid "Create WordPress content"
+msgstr "Создать контент WordPress"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:164
+msgid ""
+"Create a post, page or REST-enabled custom post type. Use post_type=page "
+"for pages. Defaults to draft. Publish or schedule only when requested. "
+"WordPress checks creation, publishing and author-assignment permissions. "
+"Returns the actual ID and permalink."
+msgstr ""
+"Создайте запись, страницу или пользовательский тип записи с поддержкой "
+"REST. Используйте post_type=page для страниц. По умолчанию черновик. "
+"Публикуйте или планируйте только по запросу. WordPress проверяет разрешения "
+"на создание, публикацию и назначение автора. Возвращает фактический ID и "
+"постоянную ссылку."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:168
+msgid "Update WordPress content"
+msgstr "Обновить контент WordPress"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:169
+msgid ""
+"Edit an existing post, page or REST-enabled custom post by its verified ID. "
+"Find content first if the ID is unknown. Only supplied fields change. "
+"WordPress checks object, publishing and author-assignment permissions. No "
+"deletion, arbitrary metadata or options are supported."
+msgstr ""
+"Отредактируйте существующую запись, страницу или пользовательский пост с "
+"поддержкой REST по его проверенному ID. Сначала найдите контент, если ID "
+"неизвестен. Меняются только предоставленные поля. WordPress проверяет "
+"разрешения на объект, публикацию и назначение автора. Удаление, "
+"произвольные метаданные или параметры не поддерживаются."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:199
+msgid "Use the exact input types shown in discovery."
+msgstr "Используйте точно такие же типы ввода, как показано в обнаружении."
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:28
+#: src/Application/Service/Mcp/WordPressLookupService.php:63
+msgid "You cannot list users."
+msgstr "Вы не можете перечислить пользователей."
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:66
+msgid "Provide either a user ID or an exact username."
+msgstr "Укажите либо ID пользователя, либо точное имя пользователя."
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:71
+msgid "No matching user belongs to this site."
+msgstr "Нет соответствующего пользователя, принадлежащего этому сайту."
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:74
+msgid "You cannot inspect this user."
+msgstr "Вы не можете просмотреть этого пользователя."
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:92
+msgid "Choose a REST-enabled post type."
+msgstr "Выберите тип записи с поддержкой REST."
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:96
+msgid "This post type does not support content lookup."
+msgstr "Этот тип записи не поддерживает поиск контента."
+
+#: src/Application/Service/Mcp/WordPressWriteService.php:28
+msgid ""
+"MCP tools cannot create users with administrator-level access. Use the "
+"WordPress Users screen for this change."
+msgstr ""
+"Инструменты MCP не могут создавать пользователей с доступом уровня "
+"администратора. Используйте экран пользователей WordPress для этого "
+"изменения."
+
+#: src/Application/Service/Mcp/WordPressWriteService.php:71
+msgid "Provide at least one content field to update."
+msgstr "Укажите хотя бы одно поле контента для обновления."
+
+#: src/Application/Service/Mcp/WordPressWriteService.php:86
+msgid "Choose an existing REST-enabled post type."
+msgstr "Выберите существующий тип записи с поддержкой REST."
+
+#: src/Application/Service/Mcp/WordPressWriteService.php:90
+msgid "This post type does not support content writes."
+msgstr "Этот тип записи не поддерживает запись контента."
+
+#: src/Application/Service/Mcp/WordPressWriteService.php:126
+msgid "You cannot perform this operation."
+msgstr "Вы не можете выполнить эту операцию."
+
 #: src/Application/Traits/BootableTrait.php:77
 msgid "Object must be loaded before initializing."
 msgstr "Объект должен быть загружен перед инициализацией."
 
-#: src/Application/UseCase/Plugin/ActivateLicenseUseCase.php:161
-#: resources/dist/js/plugins-dashboard.js:2204
+#: src/Application/UseCase/Plugin/ActivateLicenseUseCase.php:157
+#: resources/dist/js/plugins-dashboard.js:1780
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:123
-#: resources/dist/js/plugins-dashboard.js:1699
+#: resources/dist/js/plugins-dashboard.js:1599
 msgid ""
 "This license key is managed in wp-config.php and cannot be edited from the "
 "Hub."
 msgstr ""
 "Этот лицензионный ключ управляется в wp-config.php и не может быть "
-"отредактирован из Хаба."
+"отредактирован из Центра."
 
 #: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:118
 msgid "No license key found"
-msgstr "Ключ лицензии не найден"
+msgstr "Лицензионный ключ не найден"
 
 #: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:140
 msgid ""
@@ -121,11 +682,11 @@ msgid ""
 "the Hub."
 msgstr ""
 "Этот лицензионный ключ управляется в wp-config.php и не может быть "
-"деактивирован из Хаба."
+"деактивирован из Центра."
 
 #: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:64
 msgid "Invalid conflict resolution request."
-msgstr "Недействительный запрос разрешения конфликта."
+msgstr "Недействительный запрос на разрешение конфликта."
 
 #: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:89
 msgid "The selected plugin is not available for activation."
@@ -145,144 +706,144 @@ msgid ""
 "Please remove it from the Plugins screen."
 msgstr ""
 "Выбранный плагин активен, но другую версию не удалось удалить. Пожалуйста, "
-"удалите ее с экрана Плагинов."
+"удалите ее из экрана плагинов."
 
 #: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:114
 msgid ""
 "The selected plugin is no longer active. Please reactivate it from the "
 "Plugins screen."
 msgstr ""
-"Выбранный плагин больше не активен. Пожалуйста, повторно активируйте его с "
-"экрана Плагинов."
+"Выбранный плагин больше не активен. Пожалуйста, повторно активируйте его из "
+"экрана плагинов."
 
-#: src/Application/UseCase/Plugin/ReuseLicenseForAllPluginsUseCase.php:75
+#: src/Application/UseCase/Plugin/ReuseLicenseForAllPluginsUseCase.php:81
 msgid "No existing license key was found for this plugin."
-msgstr "Для этого плагина не найдено существующего лицензионного ключа."
+msgstr "Не найдено существующего лицензионного ключа для этого плагина."
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:88
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:90
 msgid "Database Tables"
 msgstr "Таблицы базы данных"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:93
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:95
 msgid "PublishPress Plugins"
 msgstr "Плагины PublishPress"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:99
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:101
 msgid "PublishPress Hub Debug Log"
 msgstr "Журнал отладки PublishPress Hub"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:102
-#: resources/dist/js/settings-page.js:439
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:104
+#: resources/dist/js/settings-page.js:431
 #: resources/src/jsx/components/pages/settings-page.jsx:40
-#: resources/dist/js/settings-page.js:371
+#: resources/dist/js/settings-page.js:374
 msgid "Debug Log"
 msgstr "Журнал отладки"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:103
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:105
 msgid "The debug log is empty."
 msgstr "Журнал отладки пуст."
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:124
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:314
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:126
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:316
 msgid "Version"
 msgstr "Версия"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:128
-#: resources/dist/js/settings-page.js:1251
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:130
+#: resources/dist/js/settings-page.js:986
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
-#: resources/dist/js/settings-page.js:994
+#: resources/dist/js/settings-page.js:1001
 msgid "Debug Mode"
 msgstr "Режим отладки"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:130
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:132
 msgid "Enabled"
-msgstr "Включено"
+msgstr "Включен"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:131
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:133
 msgid "Disabled"
-msgstr "Отключено"
+msgstr "Выключен"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:134
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:136
 msgid "Generated At"
 msgstr "Сгенерировано в"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:188
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:190
 msgid "Plugins"
 msgstr "Плагины"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:189
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:191
 msgid "No PublishPress plugins found."
 msgstr "Плагины PublishPress не найдены."
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:213
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:215
 msgid "Tables"
 msgstr "Таблицы"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:214
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:216
 msgid "No database table information was available."
-msgstr "Информация о таблицах базы данных не доступна."
+msgstr "Информация о таблицах базы данных недоступна."
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:238
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:240
 msgid "Size"
 msgstr "Размер"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:240
-msgid "Engine"
-msgstr "Движок"
-
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:242
+msgid "Engine"
+msgstr "Двигатель"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:244
 msgid "Rows"
 msgstr "Строки"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:244
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:246
 msgid "Collation"
 msgstr "Сравнение"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:246
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:248
 msgid "Charset"
 msgstr "Кодировка"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:253
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:255
 msgid "Total Database Size"
 msgstr "Общий размер базы данных"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:308
-#: resources/dist/js/plugins-dashboard.js:1108
-#: resources/dist/js/plugins-dashboard.js:2755
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:68
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:90
-#: resources/dist/js/plugins-dashboard.js:908
-#: resources/dist/js/plugins-dashboard.js:2230
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:310
+#: resources/dist/js/plugins-dashboard.js:1013
+#: resources/dist/js/plugins-dashboard.js:2269
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:72
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:91
+#: resources/dist/js/plugins-dashboard.js:895
+#: resources/dist/js/plugins-dashboard.js:2131
 msgid "Not installed"
-msgstr "Не установлен"
-
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:313
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:322
-#: resources/dist/js/plugins-dashboard.js:1100
-#: resources/dist/js/plugins-dashboard.js:2746
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:58
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:84
-#: resources/dist/js/plugins-dashboard.js:898
-#: resources/dist/js/plugins-dashboard.js:2224
-msgid "Active"
-msgstr "Активный"
-
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:313
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:322
-#: resources/dist/js/plugins-dashboard.js:1104
-#: resources/dist/js/plugins-dashboard.js:2746
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:63
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:84
-#: resources/dist/js/plugins-dashboard.js:903
-#: resources/dist/js/plugins-dashboard.js:2224
-msgid "Inactive"
-msgstr "Неактивный"
+msgstr "Не установлено"
 
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:315
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:324
+#: resources/dist/js/plugins-dashboard.js:1005
+#: resources/dist/js/plugins-dashboard.js:2259
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:62
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:81
+#: resources/dist/js/plugins-dashboard.js:885
+#: resources/dist/js/plugins-dashboard.js:2121
+msgid "Active"
+msgstr "Активно"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:315
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:324
+#: resources/dist/js/plugins-dashboard.js:1009
+#: resources/dist/js/plugins-dashboard.js:2259
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:67
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:81
+#: resources/dist/js/plugins-dashboard.js:890
+#: resources/dist/js/plugins-dashboard.js:2121
+msgid "Inactive"
+msgstr "Неактивно"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:317
 msgid "unknown"
 msgstr "неизвестно"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:321
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:323
 msgid "License"
 msgstr "Лицензия"
 
@@ -303,7 +864,7 @@ msgid ""
 "License activation error. Please try again later or contact support for "
 "help."
 msgstr ""
-"Ошибка сервера лицензий. Пожалуйста, попробуйте снова позже или свяжитесь с "
+"Ошибка активации лицензии. Пожалуйста, попробуйте позже или свяжитесь с "
 "поддержкой для получения помощи."
 
 #: src/Domain/Plugin/Exception/LicenseDeactivationException.php:30
@@ -311,7 +872,7 @@ msgid ""
 "License deactivation error. Please try again later or contact support for "
 "help."
 msgstr ""
-"Ошибка сервера лицензий. Пожалуйста, попробуйте снова позже или свяжитесь с "
+"Ошибка деактивации лицензии. Пожалуйста, попробуйте позже или свяжитесь с "
 "поддержкой для получения помощи."
 
 #: src/Domain/Plugin/Exception/LicenseDisabledException.php:30
@@ -322,7 +883,9 @@ msgstr ""
 
 #: src/Domain/Plugin/Exception/LicenseExpiredException.php:30
 msgid "This license has expired. Please contact support to renew it."
-msgstr "Эта лицензия истекла. Пожалуйста, свяжитесь с поддержкой для её продления."
+msgstr ""
+"Срок действия этой лицензии истек. Пожалуйста, свяжитесь с поддержкой для "
+"её продления."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:30
 msgid ""
@@ -330,65 +893,67 @@ msgid ""
 "authorized for this plugin. Please verify the key and contact PublishPress "
 "support if the problem continues."
 msgstr ""
-"Этот лицензионный ключ не может быть активирован. Он может быть "
-"недействительным, заблокированным или не авторизованным для этого плагина. "
-"Пожалуйста, проверьте ключ и свяжитесь со службой поддержки PublishPress, "
-"если проблема продолжится."
+"Эту лицензию нельзя активировать. Она может быть недействительной, "
+"заблокированной или не авторизованной для этого плагина. Пожалуйста, "
+"проверьте ключ и свяжитесь с поддержкой PublishPress, если проблема "
+"продолжится."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:30
 msgid ""
 "This license cannot be used for this plugin. Please contact support for "
 "help."
 msgstr ""
-"Эта лицензия не может быть активирована. Пожалуйста, свяжитесь с поддержкой "
-"для получения помощи."
+"Эта лицензия не может быть использована для этого плагина. Пожалуйста, "
+"свяжитесь с поддержкой для получения помощи."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:30
 msgid ""
 "This license does not match the plugin you are trying to activate. Please "
 "contact support for assistance."
 msgstr ""
-"Эта лицензия неактивна для этого сайта. Пожалуйста, свяжитесь с поддержкой "
-"для получения помощи."
+"Эта лицензия не соответствует плагину, который вы пытаетесь активировать. "
+"Пожалуйста, свяжитесь с поддержкой для получения помощи."
 
 #: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:30
 msgid ""
 "License key does not match our records. Please contact support for "
 "assistance."
 msgstr ""
-"Эта лицензия в настоящее время отключена. Пожалуйста, свяжитесь с "
+"Ключ лицензии не соответствует нашим записям. Пожалуйста, свяжитесь с "
 "поддержкой для получения помощи."
 
 #: src/Domain/Plugin/Exception/LicenseMissingException.php:30
 msgid "No license key provided. Please enter a valid license key."
 msgstr ""
-"Лицензионный ключ не предоставлен. Пожалуйста, введите действительный "
-"лицензионный ключ."
+"Ключ лицензии не предоставлен. Пожалуйста, введите действительный ключ "
+"лицензии."
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:30
 msgid ""
 "Your site URL is required to activate the license. Please enter a valid "
 "site URL to continue."
 msgstr ""
-"Ваш URL сайта необходим для активации лицензии. Пожалуйста, введите "
+"URL вашего сайта необходим для активации лицензии. Пожалуйста, введите "
 "действительный URL сайта, чтобы продолжить."
 
 #: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:30
 msgid ""
 "License activation limit reached. Please contact support to upgrade or "
 "deactivate on another site."
-msgstr "Эта лицензия истекла. Пожалуйста, свяжитесь с поддержкой для её продления."
+msgstr ""
+"Достигнут лимит активации лицензии. Пожалуйста, свяжитесь с поддержкой для "
+"обновления или деактивации на другом сайте."
 
 #: src/Domain/Plugin/Exception/LicenseNotActivableException.php:30
 msgid "This license cannot be activated. Please contact support for help."
 msgstr ""
-"Эта лицензия не может быть активирована. Пожалуйста, свяжитесь с поддержкой "
-"для получения помощи."
+"Эту лицензию нельзя активировать. Пожалуйста, свяжитесь с поддержкой для "
+"получения помощи."
 
 #: src/Domain/Plugin/Exception/LicenseServerException.php:30
 msgid "License server error. Please try again later or contact support for help."
 msgstr ""
-"Ошибка сервера лицензий. Пожалуйста, попробуйте снова позже или свяжитесь с "
+"Ошибка сервера лицензий. Пожалуйста, попробуйте позже или свяжитесь с "
 "поддержкой для получения помощи."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:30
@@ -396,8 +961,8 @@ msgid ""
 "The license server returned an invalid response. Please try again later or "
 "contact support for help."
 msgstr ""
-"Ошибка сервера лицензий. Пожалуйста, попробуйте снова позже или свяжитесь с "
-"поддержкой для получения помощи."
+"Сервер лицензий вернул недействительный ответ. Пожалуйста, попробуйте позже "
+"или свяжитесь с поддержкой для получения помощи."
 
 #: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:30
 msgid "This license is inactive for this site. Please contact support for help."
@@ -410,8 +975,8 @@ msgid ""
 "Plugin activation failed. Please try again later or contact support for "
 "help."
 msgstr ""
-"Не удалось установить плагин. Пожалуйста, свяжитесь с поддержкой для "
-"получения помощи."
+"Ошибка активации плагина. Пожалуйста, попробуйте позже или свяжитесь с "
+"поддержкой для получения помощи."
 
 #: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:31
 msgid "This action is not possible because the plugin is already installed."
@@ -422,7 +987,7 @@ msgid ""
 "Plugin deactivation failed. Please try again later or contact support for "
 "help."
 msgstr ""
-"Ошибка сервера лицензий. Пожалуйста, попробуйте снова позже или свяжитесь с "
+"Ошибка деактивации плагина. Пожалуйста, попробуйте позже или свяжитесь с "
 "поддержкой для получения помощи."
 
 #: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:31
@@ -435,91 +1000,108 @@ msgstr ""
 msgid ""
 "This action is not possible because both free and pro versions are "
 "installed. Please uninstall one version to continue."
-msgstr "Это действие невозможно, так как плагин уже установлен."
+msgstr ""
+"Это действие невозможно, так как установлены как бесплатная, так и "
+"профессиональная версии. Пожалуйста, удалите одну из версий, чтобы "
+"продолжить."
 
 #: src/Domain/Plugin/Exception/PluginInstallException.php:31
 msgid "Plugin installation failed. Please contact support for help."
 msgstr ""
-"Не удалось установить плагин. Пожалуйста, свяжитесь с поддержкой для "
-"получения помощи."
+"Ошибка установки плагина. Пожалуйста, свяжитесь с поддержкой для получения "
+"помощи."
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:31
 msgid ""
 "This action is not possible because the plugin is not activated. Please "
 "activate the plugin and try again."
-msgstr "Это действие невозможно, так как плагин уже установлен."
+msgstr ""
+"Это действие невозможно, так как плагин не активирован. Пожалуйста, "
+"активируйте плагин и попробуйте снова."
 
 #: src/Domain/Plugin/Exception/PluginNotFoundException.php:31
 msgid ""
 "Plugin not found in our available plugins list. Please contact support for "
 "help."
 msgstr ""
-"Семейство плагинов не найдено. Пожалуйста, свяжитесь с поддержкой для "
-"получения помощи."
+"Плагин не найден в нашем списке доступных плагинов. Пожалуйста, свяжитесь с "
+"поддержкой для получения помощи."
 
 #: src/Domain/Plugin/Exception/PluginNotInstalledException.php:31
 msgid ""
 "This action is not possible because the plugin is not installed. Please "
 "install the plugin and try again."
-msgstr "Это действие невозможно, так как плагин уже установлен."
+msgstr ""
+"Это действие невозможно, так как плагин не установлен. Пожалуйста, "
+"установите плагин и попробуйте снова."
 
 #: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:30
 msgid ""
 "Unknown license server error. Please try again later or contact support for "
 "help."
 msgstr ""
-"Ошибка сервера лицензий. Пожалуйста, попробуйте снова позже или свяжитесь с "
-"поддержкой для получения помощи."
+"Неизвестная ошибка сервера лицензий. Пожалуйста, попробуйте позже или "
+"свяжитесь с поддержкой для получения помощи."
 
 #: src/Domain/Plugin/plugin-families.php:28
+msgid "Sell digital products, programs, and services from your website."
+msgstr "Продавайте цифровые продукты, программы и услуги с вашего сайта."
+
+#: src/Domain/Plugin/plugin-families.php:44
+msgid "Create and manage tags, categories, and taxonomy terms."
+msgstr "Создавайте и управляйте тегами, категориями и терминами таксономии."
+
+#: src/Domain/Plugin/plugin-families.php:60
+msgid ""
+"Organize taxonomy terms into groups and display them in clouds, tabs, and "
+"lists."
+msgstr ""
+"Организуйте термины таксономии в группы и отображайте их в облаках, "
+"вкладках и списках."
+
+#: src/Domain/Plugin/plugin-families.php:76
 msgid "Define tasks that authors must complete before publishing."
 msgstr "Определите задачи, которые авторы должны выполнить перед публикацией."
 
-#: src/Domain/Plugin/plugin-families.php:44
+#: src/Domain/Plugin/plugin-families.php:92
 msgid "Control who can edit and view your content."
 msgstr "Контролируйте, кто может редактировать и просматривать ваш контент."
 
-#: src/Domain/Plugin/plugin-families.php:60
-msgid "Create, manage and display authors for your content."
-msgstr "Создавайте, управляйте и отображайте авторов для вашего контента."
-
-#: src/Domain/Plugin/plugin-families.php:76
-msgid "All the tools you need to improve the block editor."
-msgstr "Все инструменты, которые вам нужны для улучшения блочного редактора."
-
-#: src/Domain/Plugin/plugin-families.php:92
-msgid "Control your admin area and user roles."
-msgstr "Контролируйте свою административную область и роли пользователей."
-
 #: src/Domain/Plugin/plugin-families.php:108
-msgid "Schedule changes to your posts."
-msgstr "Запланируйте изменения в ваших записях."
+msgid "Create, manage and display authors for your content."
+msgstr "Создавайте, управляйте и отображайте авторов вашего контента."
 
 #: src/Domain/Plugin/plugin-families.php:124
+msgid "All the tools you need to improve the block editor."
+msgstr "Все инструменты, необходимые для улучшения блочного редактора."
+
+#: src/Domain/Plugin/plugin-families.php:140
+msgid "Control your admin area and user roles."
+msgstr "Контролируйте свою админ-панель и роли пользователей."
+
+#: src/Domain/Plugin/plugin-families.php:156
+msgid "Schedule changes to your posts."
+msgstr "Запланируйте изменения в ваших постах."
+
+#: src/Domain/Plugin/plugin-families.php:172
 msgid "Organize, schedule, and plan your publishing."
 msgstr "Организуйте, планируйте и управляйте вашей публикацией."
 
-#: src/Domain/Plugin/plugin-families.php:140
-msgid "Approve and schedule new versions to your published posts."
-msgstr "Одобряйте и планируйте новые версии ваших опубликованных записей."
-
-#: src/Domain/Plugin/plugin-families.php:156
-msgid "Organize your posts into issues or series."
-msgstr "Организуйте ваши записи по выпускам или сериям."
-
-#: src/Domain/Plugin/plugin-families.php:172
-msgid "Create custom URLs for your posts and external links."
-msgstr "Создайте пользовательские URL-адреса для ваших сообщений и внешних ссылок."
-
 #: src/Domain/Plugin/plugin-families.php:188
-msgid "Create custom statuses and publishing workflows."
-msgstr "Создавайте пользовательские статусы и рабочие процессы публикации."
+msgid "Approve and schedule new versions to your published posts."
+msgstr "Утверждайте и планируйте новые версии ваших опубликованных постов."
 
-#: src/Infrastructure/AdminMenu/PluginQuickLinks.php:68
-#. Translators: %s is the plugin's registered menu label.
-#, php-format
-msgid "Open %s"
-msgstr "Открыть %s"
+#: src/Domain/Plugin/plugin-families.php:204
+msgid "Organize your posts into issues or series."
+msgstr "Организуйте ваши посты в выпуски или серии."
+
+#: src/Domain/Plugin/plugin-families.php:220
+msgid "Create custom URLs for your posts and external links."
+msgstr "Создайте пользовательские URL для ваших постов и внешних ссылок."
+
+#: src/Domain/Plugin/plugin-families.php:236
+msgid "Create custom statuses and publishing workflows."
+msgstr "Создайте пользовательские статусы и рабочие процессы публикации."
 
 #: src/Infrastructure/Container/DependencyContainer.php:104
 #. translators: %s is the dependency ID.
@@ -531,26 +1113,26 @@ msgstr "Зависимость \"%s\" не найдена в контейнер�
 #. translators: %s is the error message
 #, php-format
 msgid "Error validating license: %s"
-msgstr "Ошибка при проверке лицензии: %s"
+msgstr "Ошибка проверки лицензии: %s"
 
 #: src/Infrastructure/Edd/Subscription/VersionCheckService.php:112
 #. translators: %s is the error message
 #, php-format
 msgid "Error getting license info: %s"
-msgstr "Ошибка при получении информации о лицензии: %s"
+msgstr "Ошибка получения информации о лицензии: %s"
 
 #: src/Infrastructure/Remote/Exception/RemoteAccessDeniedException.php:31
 msgid ""
 "The license server denied this request. This can happen when a license key "
 "or site has been blocked. Please contact PublishPress support for help."
 msgstr ""
-"Сервер лицензий отклонил этот запрос. Это может произойти, если "
-"лицензионный ключ или сайт были заблокированы. Пожалуйста, свяжитесь со "
-"службой поддержки PublishPress для получения помощи."
+"Сервер лицензий отказал в этом запросе. Это может произойти, если ключ "
+"лицензии или сайт были заблокированы. Пожалуйста, свяжитесь с поддержкой "
+"PublishPress для получения помощи."
 
 #: src/Infrastructure/RestApi/RestApiService.php:289
 msgid "Too many requests. Please try again later."
-msgstr "Слишком много запросов. Пожалуйста, попробуйте еще раз позже."
+msgstr "Слишком много запросов. Пожалуйста, попробуйте позже."
 
 #: src/Infrastructure/RestApi/RestApiService.php:360
 msgid "An error occurred while processing your request."
@@ -570,141 +1152,154 @@ msgstr "Путь не может быть пустым"
 msgid "File extension cannot be empty"
 msgstr "Расширение файла не может быть пустым"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:198
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:204
 msgid "Invalid file path: null byte detected"
-msgstr "Неверный путь к файлу: обнаружен нулевой байт"
+msgstr "Недопустимый путь к файлу: обнаружен нулевой байт"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:207
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:213
 msgid "Invalid file path: directory traversal detected"
-msgstr "Неверный путь к файлу: обнаружен переход по директориям"
+msgstr "Недопустимый путь к файлу: обнаружен обход каталога"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:225
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:231
 #. translators: %s is the directory path
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
-msgstr "Неверный путь к файлу: родительская директория не существует: %s"
+msgstr "Недопустимый путь к файлу: родительский каталог не существует: %s"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:235
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:241
 msgid "Invalid file path: unable to resolve path"
-msgstr "Неверный путь к файлу: не удалось разрешить путь"
+msgstr "Недопустимый путь к файлу: невозможно разрешить путь"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:254
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:260
 msgid "Invalid file path: operation not allowed outside permitted directories"
-msgstr "Неверный путь к файлу: операция не разрешена вне разрешенных директорий"
+msgstr ""
+"Недопустимый путь к файлу: операция не разрешена за пределами разрешенных "
+"каталогов"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:58
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:66
 msgid "Download URL failed WordPress validation"
-msgstr "URL для загрузки не прошел валидацию WordPress"
+msgstr "URL для загрузки не прошел проверку WordPress"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:74
-#. translators: %s is the error message
-#, php-format
-msgid "Failed to download plugin: %s"
-msgstr "Не удалось скачать плагин: %s"
-
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:83
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:81
 msgid "Downloaded plugin file does not exist"
-msgstr "Скачанный файл плагина не существует"
+msgstr "Загруженный файл плагина не существует"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:91
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:89
 msgid "Downloaded plugin file is empty"
-msgstr "Скачанный файл плагина пустой"
+msgstr "Загруженный файл плагина пуст"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:101
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:99
 msgid "Cannot read downloaded plugin file"
-msgstr "Не удалось прочитать скачанный файл плагина"
+msgstr "Не удалось прочитать загруженный файл плагина"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:111
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:109
 msgid ""
 "Downloaded file is not a valid ZIP archive. The download URL may be "
 "returning an error page."
 msgstr ""
-"Загруженный файл не является действительным ZIP-архивом. URL для загрузки "
-"может возвращать страницу с ошибкой."
+"Загруженный файл не является допустимым ZIP-архивом. URL для загрузки может "
+"возвращать страницу с ошибкой."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:127
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:125
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to unzip plugin file: %s"
-msgstr "Не удалось распаковать файл плагина: %s"
+msgstr "Не удалось разархивировать файл плагина: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:135
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:133
 msgid "Failed to unzip plugin file"
-msgstr "Не удалось распаковать файл плагина"
+msgstr "Не удалось разархивировать файл плагина"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:157
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:155
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to activate plugin: %s"
 msgstr "Не удалось активировать плагин: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:187
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:185
 msgid "Resolve conflicts for network-active plugins from Network Admin."
 msgstr ""
-"Разрешить конфликты для сетевых активных плагинов из Сетевого "
-"Администратора."
+"Разрешите конфликты для сетевых активных плагинов из Сетевого "
+"администратора."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:207
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:205
 msgid ""
 "Activation recovery failed. Both plugin copies were retained. Please "
 "restore the previous version from the Plugins screen."
 msgstr ""
 "Восстановление активации не удалось. Обе копии плагина были сохранены. "
-"Пожалуйста, восстановите предыдущую версию с экрана Плагинов."
+"Пожалуйста, восстановите предыдущую версию на экране Плагинов."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:220
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:218
 msgid "The other plugin could not be deactivated."
 msgstr "Другой плагин не удалось деактивировать."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:224
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:222
 msgid "The selected plugin did not remain active."
 msgstr "Выбранный плагин не остался активным."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:230
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:228
 msgid ""
 "The selected plugin could not be activated. Neither copy was deleted and "
 "the previous activation settings were restored."
 msgstr ""
-"Выбранный плагин не удалось активировать. Ни одна копия не была удалена, и "
-"предыдущие настройки активации были восстановлены."
+"Выбранный плагин не может быть активирован. Ни одна копия не была удалена, "
+"и предыдущие настройки активации были восстановлены."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:297
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:295
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to delete plugin: %s"
 msgstr "Не удалось удалить плагин: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:347
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:345
 msgid "No update available for this plugin"
 msgstr "Нет доступных обновлений для этого плагина"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:356
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:354
 msgid "Invalid update information for this plugin"
 msgstr "Недействительная информация об обновлении для этого плагина"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:389
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:380
+msgid "Update package not available"
+msgstr "Пакет обновления недоступен"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:403
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to update plugin: %s"
 msgstr "Не удалось обновить плагин: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:397
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:411
 msgid "Plugin update failed"
-msgstr "Обновление плагина не удалось"
+msgstr "Не удалось обновить плагин"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:516
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:530
 msgid "Invalid download URL provided"
-msgstr "Предоставлен неверный URL для загрузки"
+msgstr "Предоставлен недействительный URL для загрузки"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:523
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:537
 msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr "URL для загрузки должен использовать протокол HTTP или HTTPS"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:532
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:546
 #. translators: %s is the hostname
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
-msgstr "URL для загрузки не из разрешенного домена: %s"
+msgstr "URL для загрузки не принадлежит разрешенному домену: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:561
+msgid "Could not create a temporary package file"
+msgstr "Не удалось создать временный файл пакета"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:574
+#, php-format
+msgid "Failed to download plugin: %s"
+msgstr "Не удалось загрузить плагин: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:581
+msgid "The plugin package download failed"
+msgstr "Загрузка пакета плагина не удалась"
 
 #: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:58
 #. translators: %s is the error message
@@ -712,12 +1307,26 @@ msgstr "URL для загрузки не из разрешенного доме�
 msgid "Failed to get plugin information: %s"
 msgstr "Не удалось получить информацию о плагине: %s"
 
-#: resources/dist/js/components-showcase.js:87
-#: resources/dist/js/plugins-dashboard.js:88
-#: resources/dist/js/settings-page.js:87
-#: resources/dist/js/welcome-page.js:87
+#: src/Rest/McpController.php:188
+msgid ""
+"MCP Adapter could not be installed or activated. Use the plugin page or "
+"contact your host."
+msgstr ""
+"MCP Adapter не удалось установить или активировать. Используйте страницу "
+"плагина или свяжитесь с вашим хостом."
+
+#: src/Rest/McpController.php:190
+msgid "MCP Adapter activated."
+msgstr "MCP Adapter активирован."
+
+#: resources/dist/js/components-showcase.js:86
+#: resources/dist/js/mcp-page.js:86
+#: resources/dist/js/plugins-dashboard.js:87
+#: resources/dist/js/settings-page.js:86
+#: resources/dist/js/welcome-page.js:86
 #: resources/src/jsx/components/admin-page/footer.jsx:26
 #: resources/dist/js/components-showcase.js:63
+#: resources/dist/js/mcp-page.js:63
 #: resources/dist/js/plugins-dashboard.js:63
 #: resources/dist/js/settings-page.js:63
 #: resources/dist/js/welcome-page.js:63
@@ -726,12 +1335,14 @@ msgstr "Не удалось получить информацию о плаги�
 msgid "If you like %s please leave us a %s rating. Thank you!"
 msgstr "Если вам нравится %s, пожалуйста, оставьте нам оценку %s. Спасибо!"
 
-#: resources/dist/js/components-showcase.js:98
-#: resources/dist/js/plugins-dashboard.js:99
-#: resources/dist/js/settings-page.js:98
-#: resources/dist/js/welcome-page.js:98
+#: resources/dist/js/components-showcase.js:97
+#: resources/dist/js/mcp-page.js:97
+#: resources/dist/js/plugins-dashboard.js:98
+#: resources/dist/js/settings-page.js:97
+#: resources/dist/js/welcome-page.js:97
 #: resources/src/jsx/components/admin-page/footer.jsx:43
 #: resources/dist/js/components-showcase.js:80
+#: resources/dist/js/mcp-page.js:80
 #: resources/dist/js/plugins-dashboard.js:80
 #: resources/dist/js/settings-page.js:80
 #: resources/dist/js/welcome-page.js:80
@@ -740,24 +1351,28 @@ msgstr "Если вам нравится %s, пожалуйста, оставь�
 msgid "About %s"
 msgstr "О %s"
 
-#: resources/dist/js/components-showcase.js:99
-#: resources/dist/js/plugins-dashboard.js:100
-#: resources/dist/js/settings-page.js:99
-#: resources/dist/js/welcome-page.js:99
+#: resources/dist/js/components-showcase.js:98
+#: resources/dist/js/mcp-page.js:98
+#: resources/dist/js/plugins-dashboard.js:99
+#: resources/dist/js/settings-page.js:98
+#: resources/dist/js/welcome-page.js:98
 #: resources/src/jsx/components/admin-page/footer.jsx:45
 #: resources/dist/js/components-showcase.js:82
+#: resources/dist/js/mcp-page.js:82
 #: resources/dist/js/plugins-dashboard.js:82
 #: resources/dist/js/settings-page.js:82
 #: resources/dist/js/welcome-page.js:82
 msgid "About"
 msgstr "О программе"
 
-#: resources/dist/js/components-showcase.js:104
-#: resources/dist/js/plugins-dashboard.js:105
-#: resources/dist/js/settings-page.js:104
-#: resources/dist/js/welcome-page.js:104
+#: resources/dist/js/components-showcase.js:103
+#: resources/dist/js/mcp-page.js:103
+#: resources/dist/js/plugins-dashboard.js:104
+#: resources/dist/js/settings-page.js:103
+#: resources/dist/js/welcome-page.js:103
 #: resources/src/jsx/components/admin-page/footer.jsx:54
 #: resources/dist/js/components-showcase.js:91
+#: resources/dist/js/mcp-page.js:91
 #: resources/dist/js/plugins-dashboard.js:91
 #: resources/dist/js/settings-page.js:91
 #: resources/dist/js/welcome-page.js:91
@@ -766,30 +1381,34 @@ msgstr "О программе"
 msgid "Documentation for %s"
 msgstr "Документация для %s"
 
-#: resources/dist/js/components-showcase.js:105
-#: resources/dist/js/plugins-dashboard.js:106
-#: resources/dist/js/plugins-dashboard.js:2817
-#: resources/dist/js/settings-page.js:105
-#: resources/dist/js/welcome-page.js:105
-#: resources/dist/js/welcome-page.js:444
+#: resources/dist/js/components-showcase.js:104
+#: resources/dist/js/mcp-page.js:104
+#: resources/dist/js/plugins-dashboard.js:105
+#: resources/dist/js/plugins-dashboard.js:2317
+#: resources/dist/js/settings-page.js:104
+#: resources/dist/js/welcome-page.js:104
+#: resources/dist/js/welcome-page.js:446
 #: resources/src/jsx/components/admin-page/footer.jsx:56
 #: resources/src/jsx/components/pages/welcome-page.jsx:46
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:124
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:120
 #: resources/dist/js/components-showcase.js:93
+#: resources/dist/js/mcp-page.js:93
 #: resources/dist/js/plugins-dashboard.js:93
-#: resources/dist/js/plugins-dashboard.js:2264
+#: resources/dist/js/plugins-dashboard.js:2160
 #: resources/dist/js/settings-page.js:93
 #: resources/dist/js/welcome-page.js:93
-#: resources/dist/js/welcome-page.js:377
+#: resources/dist/js/welcome-page.js:380
 msgid "Documentation"
 msgstr "Документация"
 
-#: resources/dist/js/components-showcase.js:110
-#: resources/dist/js/plugins-dashboard.js:111
-#: resources/dist/js/settings-page.js:110
-#: resources/dist/js/welcome-page.js:110
+#: resources/dist/js/components-showcase.js:109
+#: resources/dist/js/mcp-page.js:109
+#: resources/dist/js/plugins-dashboard.js:110
+#: resources/dist/js/settings-page.js:109
+#: resources/dist/js/welcome-page.js:109
 #: resources/src/jsx/components/admin-page/footer.jsx:65
 #: resources/dist/js/components-showcase.js:102
+#: resources/dist/js/mcp-page.js:102
 #: resources/dist/js/plugins-dashboard.js:102
 #: resources/dist/js/settings-page.js:102
 #: resources/dist/js/welcome-page.js:102
@@ -798,131 +1417,579 @@ msgstr "Документация"
 msgid "Contact the %s team"
 msgstr "Связаться с командой %s"
 
-#: resources/dist/js/components-showcase.js:111
-#: resources/dist/js/plugins-dashboard.js:112
-#: resources/dist/js/settings-page.js:111
-#: resources/dist/js/welcome-page.js:111
+#: resources/dist/js/components-showcase.js:110
+#: resources/dist/js/mcp-page.js:110
+#: resources/dist/js/plugins-dashboard.js:111
+#: resources/dist/js/settings-page.js:110
+#: resources/dist/js/welcome-page.js:110
 #: resources/src/jsx/components/admin-page/footer.jsx:67
 #: resources/dist/js/components-showcase.js:104
+#: resources/dist/js/mcp-page.js:104
 #: resources/dist/js/plugins-dashboard.js:104
 #: resources/dist/js/settings-page.js:104
 #: resources/dist/js/welcome-page.js:104
 msgid "Contact"
-msgstr "Контакт"
+msgstr "Контакты"
 
-#: resources/dist/js/components-showcase.js:188
-#: resources/dist/js/plugins-dashboard.js:190
-#: resources/dist/js/settings-page.js:188
-#: resources/dist/js/welcome-page.js:188
+#: resources/dist/js/components-showcase.js:187
+#: resources/dist/js/mcp-page.js:187
+#: resources/dist/js/plugins-dashboard.js:189
+#: resources/dist/js/settings-page.js:187
+#: resources/dist/js/welcome-page.js:187
 #: resources/src/jsx/components/admin-page/header.jsx:50
 #: resources/dist/js/components-showcase.js:168
+#: resources/dist/js/mcp-page.js:168
 #: resources/dist/js/plugins-dashboard.js:168
 #: resources/dist/js/settings-page.js:168
 #: resources/dist/js/welcome-page.js:168
 msgid "Get Support"
 msgstr "Получить поддержку"
 
-#: resources/dist/js/components-showcase.js:453
+#: resources/dist/js/components-showcase.js:457
 #: resources/src/jsx/components/pages/components-showcase.jsx:26
-#: resources/dist/js/components-showcase.js:386
+#: resources/dist/js/components-showcase.js:389
 msgid "Components Showcase"
-msgstr "Показ компонентов"
+msgstr "Выставка компонентов"
+
+#: resources/dist/js/mcp-page.js:590
+#: resources/src/jsx/components/pages/mcp-page.jsx:83
+#: resources/dist/js/mcp-page.js:481
+msgid "Allow PublishPress to connect with your favorite AI service"
+msgstr "Разрешить PublishPress подключаться к вашему любимому ИИ-сервису"
+
+#: resources/dist/js/mcp-page.js:590
+#: resources/src/jsx/components/pages/mcp-page.jsx:84
+#: resources/dist/js/mcp-page.js:482
+msgid "Use your AI to work with PublishPress plugins on this site."
+msgstr "Используйте ваш ИИ для работы с плагинами PublishPress на этом сайте."
+
+#: resources/dist/js/mcp-page.js:592
+#: resources/src/jsx/components/pages/mcp-page.jsx:85
+#: resources/dist/js/mcp-page.js:483
+msgid "Enable AI connections"
+msgstr "Включить подключения ИИ"
+
+#: resources/dist/js/mcp-page.js:616
+#: resources/src/jsx/components/pages/mcp-page.jsx:94
+#: resources/dist/js/mcp-page.js:492
+msgid "Try again"
+msgstr "Попробуйте снова"
+
+#: resources/dist/js/mcp-page.js:628
+#: resources/src/jsx/components/pages/mcp-page.jsx:99
+#: resources/dist/js/mcp-page.js:497
+msgid "Activate MCP Adapter"
+msgstr "Активировать MCP Adapter"
+
+#: resources/dist/js/mcp-page.js:628
+#: resources/src/jsx/components/pages/mcp-page.jsx:99
+#: resources/dist/js/mcp-page.js:497
+msgid "Install and activate MCP Adapter"
+msgstr "Установить и активировать MCP Adapter"
+
+#: resources/dist/js/mcp-page.js:633
+#: resources/src/jsx/components/pages/mcp-page.jsx:101
+#: resources/dist/js/mcp-page.js:499
+msgid "MCP Adapter plugin page"
+msgstr "Страница плагина MCP Adapter"
+
+#: resources/dist/js/mcp-page.js:645
+#: resources/src/jsx/components/pages/mcp-page.jsx:105
+#: resources/dist/js/mcp-page.js:503
+msgid "Check again"
+msgstr "Проверить снова"
+
+#: resources/dist/js/mcp-page.js:663
+#: resources/src/jsx/components/pages/mcp-page.jsx:112
+#: resources/dist/js/mcp-page.js:510
+msgid "Your AI connection is enabled"
+msgstr "Ваше подключение ИИ включено"
+
+#: resources/dist/js/mcp-page.js:669
+#: resources/src/jsx/components/pages/mcp-page.jsx:113
+#: resources/dist/js/mcp-page.js:511
+msgid "Connect another AI app"
+msgstr "Подключить другое приложение ИИ"
+
+#: resources/dist/js/mcp-page.js:669
+#: resources/src/jsx/components/pages/mcp-page.jsx:115
+#: resources/dist/js/mcp-page.js:513
+msgid ""
+"Manage the actions your AI can use below. To set up another app or "
+"computer, open the connection steps again."
+msgstr ""
+"Управляйте действиями, которые может выполнять ваш ИИ, ниже. Чтобы "
+"настроить другое приложение или компьютер, откройте шаги подключения снова."
+
+#: resources/dist/js/mcp-page.js:672
+#: resources/src/jsx/components/pages/mcp-page.jsx:119
+#: resources/dist/js/mcp-page.js:517
+msgid "Control what your AI can do"
+msgstr "Контролируйте, что может делать ваш ИИ"
+
+#: resources/dist/js/mcp-page.js:676
+#: resources/src/jsx/components/pages/mcp-page.jsx:121
+#: resources/dist/js/mcp-page.js:519
+msgid "Allow AI to read site data"
+msgstr "Разрешить ИИ читать данные сайта"
+
+#: resources/dist/js/mcp-page.js:677
+#: resources/src/jsx/components/pages/mcp-page.jsx:122
+#: resources/dist/js/mcp-page.js:520
+msgid "View content and settings using the actions selected below."
+msgstr "Просматривать контент и настройки, используя действия, выбранные ниже."
+
+#: resources/dist/js/mcp-page.js:685
+#: resources/src/jsx/components/pages/mcp-page.jsx:124
+#: resources/dist/js/mcp-page.js:522
+msgid "Allow AI to change site data"
+msgstr "Разрешить ИИ изменять данные сайта"
+
+#: resources/dist/js/mcp-page.js:686
+#: resources/src/jsx/components/pages/mcp-page.jsx:125
+#: resources/dist/js/mcp-page.js:523
+msgid "Create, update or delete data using the actions selected below."
+msgstr "Создайте, обновите или удалите данные с помощью действий, выбранных ниже."
+
+#: resources/dist/js/mcp-page.js:692
+#: resources/src/jsx/components/pages/mcp-page.jsx:128
+#: resources/dist/js/mcp-page.js:526
+msgid ""
+"You can change these choices at any time. Turn off change access to let "
+"your AI only read site data."
+msgstr ""
+"Вы можете изменить эти выборы в любое время. Отключите доступ к изменению, "
+"чтобы ваш ИИ только читал данные сайта."
+
+#: resources/dist/js/mcp-page.js:701
+#: resources/src/jsx/components/pages/mcp-page.jsx:131
+#: resources/dist/js/mcp-page.js:529
+msgid "Connection diagnostics"
+msgstr "Диагностика подключения"
+
+#: resources/dist/js/mcp-page.js:714
+#: resources/src/jsx/components/pages/mcp-page.jsx:138
+#: resources/dist/js/mcp-page.js:536
+msgid "You have unsaved changes."
+msgstr "У вас есть несохраненные изменения."
+
+#: resources/dist/js/mcp-page.js:719
+#: resources/src/jsx/components/pages/mcp-page.jsx:140
+#: resources/dist/js/mcp-page.js:538
+msgid "Save and continue"
+msgstr "Сохранить и продолжить"
+
+#: resources/dist/js/mcp-page.js:719
+#: resources/src/jsx/components/pages/mcp-page.jsx:140
+#: resources/dist/js/mcp-page.js:538
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: resources/dist/js/mcp-page.js:723
+#: resources/src/jsx/components/pages/mcp-page.jsx:142
+#: resources/dist/js/mcp-page.js:540
+msgid "Refresh status"
+msgstr "Обновить статус"
+
+#: resources/dist/js/mcp-page.js:790
+#: resources/src/jsx/components/pages/mcp/actions.jsx:29
+#: resources/dist/js/mcp-page.js:577
+msgid "Available actions"
+msgstr "Доступные действия"
+
+#: resources/dist/js/mcp-page.js:790
+#: resources/src/jsx/components/pages/mcp/actions.jsx:30
+#: resources/dist/js/mcp-page.js:578
+msgid ""
+"Choose WordPress and plugin actions. Your selections are kept while you "
+"browse. Save changes to apply them."
+msgstr ""
+"Выберите действия WordPress и плагина. Ваши выборы сохраняются, пока вы "
+"просматриваете. Сохраните изменения, чтобы применить их."
+
+#: resources/dist/js/mcp-page.js:813
+#: resources/src/jsx/components/pages/mcp/actions.jsx:44
+#: resources/dist/js/mcp-page.js:592
+msgid "Search actions"
+msgstr "Поиск действий"
+
+#: resources/dist/js/mcp-page.js:818
+#: resources/src/jsx/components/pages/mcp/actions.jsx:45
+#: resources/dist/js/mcp-page.js:593
+msgid "Action type"
+msgstr "Тип действия"
+
+#: resources/dist/js/mcp-page.js:824
+#: resources/src/jsx/components/pages/mcp/actions.jsx:46
+#: resources/dist/js/mcp-page.js:594
+msgid "All actions"
+msgstr "Все действия"
+
+#: resources/dist/js/mcp-page.js:827
+#: resources/dist/js/mcp-page.js:854
+#: resources/src/jsx/components/pages/mcp/actions.jsx:47
+#: resources/src/jsx/components/pages/mcp/actions.jsx:65
+#: resources/dist/js/mcp-page.js:595
+#: resources/dist/js/mcp-page.js:613
+msgid "Read only"
+msgstr "Только чтение"
+
+#: resources/dist/js/mcp-page.js:830
+#: resources/dist/js/mcp-page.js:854
+#: resources/src/jsx/components/pages/mcp/actions.jsx:48
+#: resources/src/jsx/components/pages/mcp/actions.jsx:65
+#: resources/dist/js/mcp-page.js:596
+#: resources/dist/js/mcp-page.js:613
+msgid "Changes site data"
+msgstr "Изменяет данные сайта"
+
+#: resources/dist/js/mcp-page.js:833
+#: resources/dist/js/mcp-page.js:856
+#: resources/src/jsx/components/pages/mcp/actions.jsx:49
+#: resources/src/jsx/components/pages/mcp/actions.jsx:66
+#: resources/dist/js/mcp-page.js:597
+#: resources/dist/js/mcp-page.js:614
+msgid "Potentially destructive"
+msgstr "Потенциально разрушительно"
+
+#: resources/dist/js/mcp-page.js:839
+#: resources/src/jsx/components/pages/mcp/actions.jsx:51
+#: resources/dist/js/mcp-page.js:599
+msgid "Filter"
+msgstr "Фильтр"
+
+#: resources/dist/js/mcp-page.js:841
+#: resources/src/jsx/components/pages/mcp/actions.jsx:54
+#: resources/dist/js/mcp-page.js:602
+msgid "Selected"
+msgstr "Выбрано"
+
+#: resources/dist/js/mcp-page.js:841
+#: resources/src/jsx/components/pages/mcp/actions.jsx:54
+#: resources/dist/js/mcp-page.js:602
+msgid "Action"
+msgstr "Действие"
+
+#: resources/dist/js/mcp-page.js:841
+#: resources/src/jsx/components/pages/mcp/actions.jsx:54
+#: resources/dist/js/mcp-page.js:602
+msgid "Behavior"
+msgstr "Поведение"
+
+#: resources/dist/js/mcp-page.js:843
+#: resources/src/jsx/components/pages/mcp/actions.jsx:56
+#: resources/dist/js/mcp-page.js:604
+msgid "No actions match these filters."
+msgstr "Нет действий, соответствующих этим фильтрам."
+
+#: resources/dist/js/mcp-page.js:848
+#: resources/src/jsx/components/pages/mcp/actions.jsx:59
+#: resources/dist/js/mcp-page.js:607
+#, js-format
+msgid "Select %s"
+msgstr "Выберите %s"
+
+#: resources/dist/js/mcp-page.js:862
+#: resources/src/jsx/components/pages/mcp/actions.jsx:73
+#: resources/dist/js/mcp-page.js:621
+msgid "Actions per page"
+msgstr "Действия на странице"
+
+#: resources/dist/js/mcp-page.js:874
+#: resources/src/jsx/components/pages/mcp/actions.jsx:78
+#: resources/dist/js/mcp-page.js:626
+#, js-format
+msgid "Page %1$d of %2$d - %3$d actions"
+msgstr "Страница %1$d из %2$d - %3$d действий"
+
+#: resources/dist/js/mcp-page.js:880
+#: resources/src/jsx/components/pages/mcp/actions.jsx:79
+#: resources/dist/js/mcp-page.js:627
+msgid "Previous"
+msgstr "Предыдущая"
+
+#: resources/dist/js/mcp-page.js:886
+#: resources/src/jsx/components/pages/mcp/actions.jsx:80
+#: resources/dist/js/mcp-page.js:628
+msgid "Next"
+msgstr "Следующая"
+
+#: resources/dist/js/mcp-page.js:934
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:19
+#: resources/dist/js/mcp-page.js:655
+msgid "Create an application password"
+msgstr "Создать пароль приложения"
+
+#: resources/dist/js/mcp-page.js:942
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:22
+#: resources/dist/js/mcp-page.js:658
+msgid "Connect your AI app"
+msgstr "Подключите ваше приложение ИИ"
+
+#: resources/dist/js/mcp-page.js:946
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:23
+#: resources/dist/js/mcp-page.js:659
+msgid "View the PublishPress AI connection guide"
+msgstr "Просмотреть руководство по подключению PublishPress AI"
+
+#: resources/dist/js/mcp-page.js:948
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:25
+#: resources/dist/js/mcp-page.js:661
+msgid "How would you like to connect?"
+msgstr "Как бы вы хотели подключиться?"
+
+#: resources/dist/js/mcp-page.js:963
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:33
+#: resources/dist/js/mcp-page.js:669
+msgid "Install Node.js LTS if it is not already available."
+msgstr "Установите Node.js LTS, если он еще не доступен."
+
+#: resources/dist/js/mcp-page.js:967
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:33
+#: resources/dist/js/mcp-page.js:669
+msgid "Download Node.js"
+msgstr "Скачать Node.js"
+
+#: resources/dist/js/mcp-page.js:967
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:34
+#: resources/dist/js/mcp-page.js:670
+msgid "Name it PublishPress AI and copy the password."
+msgstr "Назовите его PublishPress AI и скопируйте пароль."
+
+#: resources/dist/js/mcp-page.js:967
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:35
+#: resources/dist/js/mcp-page.js:671
+msgid "Copy the prompt below and paste it into your AI agent."
+msgstr "Скопируйте подсказку ниже и вставьте ее в вашего агента ИИ."
+
+#: resources/dist/js/mcp-page.js:967
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:36
+#: resources/dist/js/mcp-page.js:672
+msgid ""
+"Replace the password placeholder in your local configuration. Merge this "
+"server using the MCP configuration format for your app, keeping any "
+"existing servers. Restart your app and approve the connection."
+msgstr ""
+"Замените плейсхолдер пароля в вашей локальной конфигурации. Объедините этот "
+"сервер, используя формат конфигурации MCP для вашего приложения, сохраняя "
+"любые существующие серверы. Перезапустите ваше приложение и подтвердите "
+"подключение."
+
+#: resources/dist/js/mcp-page.js:969
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:37
+#: resources/dist/js/mcp-page.js:673
+msgid "Enter the password in your app or configuration file, not in the chat."
+msgstr "Введите пароль в вашем приложении или конфигурационном файле, а не в чате."
+
+#: resources/dist/js/mcp-page.js:980
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:41
+#: resources/dist/js/mcp-page.js:677
+msgid "I have connected my AI app"
+msgstr "Я подключил свое приложение ИИ"
+
+#: resources/dist/js/mcp-page.js:982
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:42
+#: resources/dist/js/mcp-page.js:678
+msgid ""
+"Confirm after your AI app verifies this site and performs a read-only "
+"lookup. If you enabled write actions, check that those tools are available "
+"too."
+msgstr ""
+"Подтвердите после того, как ваше приложение ИИ проверит этот сайт и "
+"выполнит поиск только для чтения. Если вы включили действия записи, "
+"убедитесь, что эти инструменты также доступны."
+
+#: resources/dist/js/mcp-page.js:1043
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:37
+#: resources/dist/js/mcp-page.js:719
+msgid "Copied to clipboard."
+msgstr "Скопировано в буфер обмена."
+
+#: resources/dist/js/mcp-page.js:1047
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:41
+#: resources/dist/js/mcp-page.js:723
+msgid "Select and copy the highlighted text."
+msgstr "Выберите и скопируйте выделенный текст."
+
+#: resources/dist/js/mcp-page.js:1058
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:46
+#: resources/dist/js/mcp-page.js:728
+msgid "Your setup prompt"
+msgstr "Ваша подсказка для настройки"
+
+#: resources/dist/js/mcp-page.js:1058
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:46
+#: resources/dist/js/mcp-page.js:728
+msgid "Server configuration"
+msgstr "Конфигурация сервера"
+
+#: resources/dist/js/mcp-page.js:1069
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:49
+#: resources/dist/js/mcp-page.js:731
+msgid "Copied!"
+msgstr "Скопировано!"
+
+#: resources/dist/js/mcp-page.js:1069
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:50
+#: resources/dist/js/mcp-page.js:732
+msgid "Copy setup prompt"
+msgstr "Скопировать запрос на настройку"
+
+#: resources/dist/js/mcp-page.js:1069
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:50
+#: resources/dist/js/mcp-page.js:732
+msgid "Copy configuration"
+msgstr "Скопировать конфигурацию"
+
+#: resources/dist/js/mcp-page.js:1075
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:52
+#: resources/dist/js/mcp-page.js:734
+msgid "Download prompt"
+msgstr "Запрос на загрузку"
+
+#: resources/dist/js/mcp-page.js:1075
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:52
+#: resources/dist/js/mcp-page.js:734
+msgid "Download configuration"
+msgstr "Загрузить конфигурацию"
+
+#: resources/dist/js/mcp-page.js:1124
+#: resources/src/jsx/components/pages/mcp/panel.jsx:19
+#: resources/dist/js/mcp-page.js:759
+msgid "Loading the next step..."
+msgstr "Загрузка следующего шага..."
+
+#: resources/dist/js/mcp-page.js:1263
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:40
+#: resources/dist/js/mcp-page.js:854
+msgid "AI connections could not be loaded."
+msgstr "Подключения ИИ не удалось загрузить."
+
+#: resources/dist/js/mcp-page.js:1275
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:52
+#: resources/dist/js/mcp-page.js:866
+msgid "AI connections could not be loaded. Try again."
+msgstr "Подключения ИИ не удалось загрузить. Попробуйте снова."
+
+#: resources/dist/js/mcp-page.js:1332
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:109
+#: resources/dist/js/mcp-page.js:923
+msgid "Changes could not be saved."
+msgstr "Изменения не удалось сохранить."
+
+#: resources/dist/js/mcp-page.js:1340
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:117
+#: resources/dist/js/mcp-page.js:931
+msgid "Changes could not be saved. Try again."
+msgstr "Изменения не удалось сохранить. Попробуйте снова."
+
+#: resources/dist/js/mcp-page.js:1355
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:132
+#: resources/dist/js/mcp-page.js:946
+msgid "MCP Adapter could not be installed or activated."
+msgstr "Адаптер MCP не удалось установить или активировать."
+
+#: resources/dist/js/mcp-page.js:1360
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:137
+#: resources/dist/js/mcp-page.js:951
+msgid "Use the MCP Adapter plugin page or contact your host."
+msgstr "Используйте страницу плагина адаптера MCP или свяжитесь с вашим хостингом."
 
 #: resources/dist/js/plugins-dashboard.js:487
+#: resources/dist/js/plugins-dashboard.js:500
 #: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
-#: resources/dist/js/plugins-dashboard.js:404
-msgid "Select an option"
-msgstr "Выберите вариант"
-
-#: resources/dist/js/plugins-dashboard.js:493
-#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
-#: resources/dist/js/plugins-dashboard.js:412
-msgid "Options"
-msgstr "Опции"
-
-#: resources/dist/js/plugins-dashboard.js:504
-#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:66
-#: resources/dist/js/plugins-dashboard.js:426
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:64
+#: resources/dist/js/plugins-dashboard.js:407
+#: resources/dist/js/plugins-dashboard.js:427
 msgid "Filter plugins by status"
 msgstr "Фильтровать плагины по статусу"
 
-#: resources/dist/js/plugins-dashboard.js:906
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
-#: resources/dist/js/plugins-dashboard.js:703
+#: resources/dist/js/plugins-dashboard.js:821
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:88
+#: resources/dist/js/plugins-dashboard.js:685
 msgid "N/A"
-msgstr "Не применимо"
+msgstr "Нет данных"
 
-#: resources/dist/js/plugins-dashboard.js:948
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
-#: resources/dist/js/plugins-dashboard.js:750
+#: resources/dist/js/plugins-dashboard.js:861
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:136
+#: resources/dist/js/plugins-dashboard.js:733
 #. translators: %1$s is the plugin name, %2$s is the expiration date
 #, js-format
 msgid "The license for %1$s expired on %2$s"
-msgstr "Лицензия для %1$s истекла %2$s"
+msgstr "Лицензия на %1$s истекла %2$s"
 
-#: resources/dist/js/plugins-dashboard.js:952
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
-#: resources/dist/js/plugins-dashboard.js:757
+#: resources/dist/js/plugins-dashboard.js:865
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:143
+#: resources/dist/js/plugins-dashboard.js:740
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
 #, js-format
 msgid "The licenses for %1$s expired on %2$s"
-msgstr "Лицензии для %1$s истекли %2$s"
+msgstr "Лицензии на %1$s истекли %2$s"
 
-#: resources/dist/js/plugins-dashboard.js:958
-#: resources/dist/js/plugins-dashboard.js:1000
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:157
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:212
-#: resources/dist/js/plugins-dashboard.js:767
-#: resources/dist/js/plugins-dashboard.js:822
+#: resources/dist/js/plugins-dashboard.js:871
+#: resources/dist/js/plugins-dashboard.js:911
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:153
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:208
+#: resources/dist/js/plugins-dashboard.js:750
+#: resources/dist/js/plugins-dashboard.js:805
 msgid "Renew now"
-msgstr "Продлить сейчас"
+msgstr "Обновить сейчас"
 
-#: resources/dist/js/plugins-dashboard.js:990
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:193
-#: resources/dist/js/plugins-dashboard.js:803
+#: resources/dist/js/plugins-dashboard.js:901
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:189
+#: resources/dist/js/plugins-dashboard.js:786
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
 #, js-format
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
 msgstr "Лицензия на %1$s истекает %2$s (%3$d дней осталось)"
 
-#: resources/dist/js/plugins-dashboard.js:994
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:201
-#: resources/dist/js/plugins-dashboard.js:811
+#: resources/dist/js/plugins-dashboard.js:905
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:197
+#: resources/dist/js/plugins-dashboard.js:794
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
 #, js-format
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
 msgstr "Лицензии на %1$s истекают %2$s (%3$d дней осталось)"
 
-#: resources/dist/js/plugins-dashboard.js:997
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:209
-#: resources/dist/js/plugins-dashboard.js:819
+#: resources/dist/js/plugins-dashboard.js:908
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:205
+#: resources/dist/js/plugins-dashboard.js:802
 msgid "Warning:"
 msgstr "Предупреждение:"
 
-#: resources/dist/js/plugins-dashboard.js:1092
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:48
-#: resources/dist/js/plugins-dashboard.js:888
+#: resources/dist/js/plugins-dashboard.js:993
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:47
+#: resources/dist/js/plugins-dashboard.js:870
 msgid "All"
 msgstr "Все"
 
-#: resources/dist/js/plugins-dashboard.js:1096
-#: resources/dist/js/plugins-dashboard.js:3174
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:53
+#: resources/dist/js/plugins-dashboard.js:997
+#: resources/dist/js/plugins-dashboard.js:2641
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:52
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:40
-#: resources/dist/js/plugins-dashboard.js:893
-#: resources/dist/js/plugins-dashboard.js:2604
+#: resources/dist/js/plugins-dashboard.js:875
+#: resources/dist/js/plugins-dashboard.js:2488
 msgid "Unlicensed"
 msgstr "Без лицензии"
 
-#: resources/dist/js/plugins-dashboard.js:1112
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:73
-#: resources/dist/js/plugins-dashboard.js:913
-msgid "Updates available"
-msgstr "Обновления доступны"
+#: resources/dist/js/plugins-dashboard.js:1001
+#: resources/dist/js/plugins-dashboard.js:2645
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:57
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:44
+#: resources/dist/js/plugins-dashboard.js:880
+#: resources/dist/js/plugins-dashboard.js:2492
+msgid "Expired"
+msgstr "Истекла"
 
-#: resources/dist/js/plugins-dashboard.js:1172
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:142
-#: resources/dist/js/plugins-dashboard.js:982
+#: resources/dist/js/plugins-dashboard.js:1017
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:77
+#: resources/dist/js/plugins-dashboard.js:900
+msgid "Updates available"
+msgstr "Доступны обновления"
+
+#: resources/dist/js/plugins-dashboard.js:1075
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:146
+#: resources/dist/js/plugins-dashboard.js:969
 msgid ""
 "To force a refresh, hold Option on Mac or Alt on Windows and then click "
 "Refresh."
@@ -930,242 +1997,126 @@ msgstr ""
 "Чтобы принудительно обновить, удерживайте Option на Mac или Alt на Windows, "
 "а затем нажмите Обновить."
 
-#: resources/dist/js/plugins-dashboard.js:1184
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:152
-#: resources/dist/js/plugins-dashboard.js:992
+#: resources/dist/js/plugins-dashboard.js:1083
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:155
+#: resources/dist/js/plugins-dashboard.js:978
 msgid "Plugins & Features"
-msgstr "Плагины & Функции"
+msgstr "Плагины и функции"
 
-#: resources/dist/js/plugins-dashboard.js:1184
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:153
-#: resources/dist/js/plugins-dashboard.js:993
+#: resources/dist/js/plugins-dashboard.js:1083
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:156
+#: resources/dist/js/plugins-dashboard.js:979
 msgid "Activate, open, and license each product directly from the Hub."
-msgstr ""
-"Активируйте, открывайте и лицензируйте каждый продукт непосредственно из "
-"Хаба."
+msgstr "Активируйте, открывайте и лицензируйте каждый продукт напрямую из Центра."
 
-#: resources/dist/js/plugins-dashboard.js:1192
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:157
-#: resources/dist/js/plugins-dashboard.js:997
+#: resources/dist/js/plugins-dashboard.js:1091
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:160
+#: resources/dist/js/plugins-dashboard.js:983
 msgid "Force Refresh"
 msgstr "Принудительное обновление"
 
-#: resources/dist/js/plugins-dashboard.js:1192
-#: resources/dist/js/settings-page.js:1100
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:157
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:307
-#: resources/dist/js/plugins-dashboard.js:997
-#: resources/dist/js/settings-page.js:868
+#: resources/dist/js/plugins-dashboard.js:1091
+#: resources/dist/js/settings-page.js:874
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:160
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:308
+#: resources/dist/js/plugins-dashboard.js:983
 msgid "Refresh"
 msgstr "Обновить"
 
-#: resources/dist/js/plugins-dashboard.js:1309
-#: resources/src/jsx/components/pages/suite-license.jsx:30
-#: resources/dist/js/plugins-dashboard.js:1048
-#, js-format
-msgid "Checking %s…"
-msgstr "Проверка %s…"
-
-#: resources/dist/js/plugins-dashboard.js:1326
-#: resources/src/jsx/components/pages/suite-license.jsx:38
-#: resources/dist/js/plugins-dashboard.js:1056
-msgid "The license could not be activated for this product."
-msgstr "Лицензия не могла быть активирована для этого продукта."
-
-#: resources/dist/js/plugins-dashboard.js:1331
-#: resources/src/jsx/components/pages/suite-license.jsx:40
-#: resources/dist/js/plugins-dashboard.js:1058
-msgid "License activated."
-msgstr "Лицензия активирована."
-
-#: resources/dist/js/plugins-dashboard.js:1342
-#: resources/src/jsx/components/pages/suite-license.jsx:42
-#: resources/dist/js/plugins-dashboard.js:1060
-msgid "Activation failed. Please try again."
-msgstr "Активация не удалась. Пожалуйста, попробуйте снова."
-
-#: resources/dist/js/plugins-dashboard.js:1362
-#: resources/src/jsx/components/pages/suite-license.jsx:46
-#: resources/dist/js/plugins-dashboard.js:1064
-msgid "License checks complete. Review the results below."
-msgstr "Проверка лицензий завершена. Просмотрите результаты ниже."
-
-#: resources/dist/js/plugins-dashboard.js:1371
-#: resources/src/jsx/components/pages/suite-license.jsx:49
-#: resources/dist/js/plugins-dashboard.js:1067
-msgid ""
-"License checks complete, but the dashboard could not refresh. Reload this "
-"page to see the latest status."
-msgstr ""
-"Проверка лицензий завершена, но панель仪表ов не смогла обновиться. "
-"Перезагрузите эту страницу, чтобы увидеть последний статус."
-
-#: resources/dist/js/plugins-dashboard.js:1398
-#: resources/src/jsx/components/pages/suite-license.jsx:60
-#: resources/dist/js/plugins-dashboard.js:1078
-msgid "PublishPress Bundle / Suite"
-msgstr "Пакет / Набор PublishPress"
-
-#: resources/dist/js/plugins-dashboard.js:1398
-#: resources/src/jsx/components/pages/suite-license.jsx:61
-#: resources/dist/js/plugins-dashboard.js:1079
-msgid "Connect your included Pro plugins with one license key."
-msgstr "Подключите ваши включенные Pro плагины с помощью одного ключа лицензии."
-
-#: resources/dist/js/plugins-dashboard.js:1406
-#: resources/src/jsx/components/pages/suite-license.jsx:64
-#: resources/dist/js/plugins-dashboard.js:1082
-msgid "Close license setup"
-msgstr "Закрыть настройку лицензии"
-
-#: resources/dist/js/plugins-dashboard.js:1406
-#: resources/src/jsx/components/pages/suite-license.jsx:64
-#: resources/dist/js/plugins-dashboard.js:1082
-msgid "Activate Suite License"
-msgstr "Активировать лицензию набора"
-
-#: resources/dist/js/plugins-dashboard.js:1410
-#: resources/dist/js/plugins-dashboard.js:2035
-#: resources/dist/js/plugins-dashboard.js:2185
-#: resources/src/jsx/components/pages/suite-license.jsx:67
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:71
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:97
-#: resources/dist/js/plugins-dashboard.js:1085
-#: resources/dist/js/plugins-dashboard.js:1540
-#: resources/dist/js/plugins-dashboard.js:1673
-msgid "License key"
-msgstr "Ключ лицензии"
-
-#: resources/dist/js/plugins-dashboard.js:1418
-#: resources/src/jsx/components/pages/suite-license.jsx:70
-#: resources/dist/js/plugins-dashboard.js:1088
-msgid "Select products included in your subscription"
-msgstr "Выберите продукты, включенные в вашу подписку"
-
-#: resources/dist/js/plugins-dashboard.js:1418
-#: resources/src/jsx/components/pages/suite-license.jsx:71
-#: resources/dist/js/plugins-dashboard.js:1089
-msgid ""
-"This replaces the saved license key for each selected product after "
-"successful activation. Keys managed in wp-config.php cannot be changed "
-"here. No plugins will be installed or activated."
-msgstr ""
-"Это заменяет сохранённый ключ лицензии для каждого выбранного продукта "
-"после успешной активации. Ключи, управляемые в wp-config.php, не могут быть "
-"изменены здесь. Никакие плагины не будут установлены или активированы."
-
-#: resources/dist/js/plugins-dashboard.js:1438
-#: resources/src/jsx/components/pages/suite-license.jsx:77
-#: resources/dist/js/plugins-dashboard.js:1095
-msgid "Activate license for selected products"
-msgstr "Активировать лицензию для выбранных продуктов"
-
-#: resources/dist/js/plugins-dashboard.js:1445
-#: resources/src/jsx/components/pages/suite-license.jsx:81
-#: resources/dist/js/plugins-dashboard.js:1099
-msgid "Success"
-msgstr "Успех"
-
-#: resources/dist/js/plugins-dashboard.js:1445
-#: resources/src/jsx/components/pages/suite-license.jsx:81
-#: resources/dist/js/plugins-dashboard.js:1099
-msgid "Failed"
-msgstr "Не удалось"
-
-#: resources/dist/js/plugins-dashboard.js:1490
+#: resources/dist/js/plugins-dashboard.js:1138
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:20
-#: resources/dist/js/plugins-dashboard.js:1124
+#: resources/dist/js/plugins-dashboard.js:1024
 msgid "Install"
 msgstr "Установить"
 
-#: resources/dist/js/plugins-dashboard.js:1491
+#: resources/dist/js/plugins-dashboard.js:1139
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
-#: resources/dist/js/plugins-dashboard.js:1125
+#: resources/dist/js/plugins-dashboard.js:1025
 msgid "Installing..."
 msgstr "Установка..."
 
-#: resources/dist/js/plugins-dashboard.js:1496
-#: resources/dist/js/plugins-dashboard.js:2588
-#: resources/dist/js/plugins-dashboard.js:2613
+#: resources/dist/js/plugins-dashboard.js:1144
+#: resources/dist/js/plugins-dashboard.js:2116
+#: resources/dist/js/plugins-dashboard.js:2137
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:26
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
-#: resources/dist/js/plugins-dashboard.js:1130
-#: resources/dist/js/plugins-dashboard.js:2110
-#: resources/dist/js/plugins-dashboard.js:2133
+#: resources/dist/js/plugins-dashboard.js:1030
+#: resources/dist/js/plugins-dashboard.js:2010
+#: resources/dist/js/plugins-dashboard.js:2033
 msgid "Upgrade to Pro"
-msgstr "Обновить до Pro"
+msgstr "Перейти на Pro"
 
-#: resources/dist/js/plugins-dashboard.js:1497
+#: resources/dist/js/plugins-dashboard.js:1145
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
-#: resources/dist/js/plugins-dashboard.js:1131
+#: resources/dist/js/plugins-dashboard.js:1031
 msgid "Upgrading to Pro..."
 msgstr "Обновление до Pro..."
 
-#: resources/dist/js/plugins-dashboard.js:1502
+#: resources/dist/js/plugins-dashboard.js:1150
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:32
-#: resources/dist/js/plugins-dashboard.js:1136
+#: resources/dist/js/plugins-dashboard.js:1036
 msgid "Manage License"
-msgstr "Управлять лицензией"
+msgstr "Управление лицензией"
 
-#: resources/dist/js/plugins-dashboard.js:1503
+#: resources/dist/js/plugins-dashboard.js:1151
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
-#: resources/dist/js/plugins-dashboard.js:1137
+#: resources/dist/js/plugins-dashboard.js:1037
 msgid "Managing License..."
 msgstr "Управление лицензией..."
 
-#: resources/dist/js/plugins-dashboard.js:1508
+#: resources/dist/js/plugins-dashboard.js:1156
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:38
-#: resources/dist/js/plugins-dashboard.js:1142
+#: resources/dist/js/plugins-dashboard.js:1042
 msgid "Activate License"
 msgstr "Активировать лицензию"
 
-#: resources/dist/js/plugins-dashboard.js:1509
+#: resources/dist/js/plugins-dashboard.js:1157
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
-#: resources/dist/js/plugins-dashboard.js:1143
+#: resources/dist/js/plugins-dashboard.js:1043
 msgid "Activating License..."
 msgstr "Активация лицензии..."
 
-#: resources/dist/js/plugins-dashboard.js:1515
+#: resources/dist/js/plugins-dashboard.js:1163
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
-#: resources/dist/js/plugins-dashboard.js:1149
+#: resources/dist/js/plugins-dashboard.js:1049
 msgid "Resolve Conflict"
 msgstr "Разрешить конфликт"
 
-#: resources/dist/js/plugins-dashboard.js:1516
+#: resources/dist/js/plugins-dashboard.js:1164
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
-#: resources/dist/js/plugins-dashboard.js:1150
+#: resources/dist/js/plugins-dashboard.js:1050
 msgid "Resolving Conflict..."
 msgstr "Разрешение конфликта..."
 
-#: resources/dist/js/plugins-dashboard.js:1521
+#: resources/dist/js/plugins-dashboard.js:1169
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
-#: resources/dist/js/plugins-dashboard.js:1155
+#: resources/dist/js/plugins-dashboard.js:1055
 msgid "Update"
 msgstr "Обновить"
 
-#: resources/dist/js/plugins-dashboard.js:1522
+#: resources/dist/js/plugins-dashboard.js:1170
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
-#: resources/dist/js/plugins-dashboard.js:1156
+#: resources/dist/js/plugins-dashboard.js:1056
 msgid "Updating..."
 msgstr "Обновление..."
 
-#: resources/dist/js/plugins-dashboard.js:1614
+#: resources/dist/js/plugins-dashboard.js:1257
 #: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:16
-#: resources/dist/js/plugins-dashboard.js:1238
+#: resources/dist/js/plugins-dashboard.js:1138
 msgid ""
 "Deactivating PublishPress Statuses stops registering its custom post "
 "statuses. Content using those statuses may become unavailable, and parts of "
 "your site may stop working until the plugin is active again."
 msgstr ""
 "Деактивация статусов PublishPress прекращает регистрацию его "
-"пользовательских статусов постов. Контент, использующий эти статусы, может "
-"стать недоступным, и некоторые части вашего сайта могут перестать работать, "
-"пока плагин снова не станет активным."
+"пользовательских статусов записей. Контент с использованием этих статусов "
+"может стать недоступным, и части вашего сайта могут перестать работать, "
+"пока плагин снова не будет активен."
 
-#: resources/dist/js/plugins-dashboard.js:1616
+#: resources/dist/js/plugins-dashboard.js:1259
 #: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:18
-#: resources/dist/js/plugins-dashboard.js:1240
+#: resources/dist/js/plugins-dashboard.js:1140
 msgid ""
 "Deactivating this plugin disables its features and may affect content or "
 "workflows that depend on it."
@@ -1173,9 +2124,9 @@ msgstr ""
 "Деактивация этого плагина отключает его функции и может повлиять на контент "
 "или рабочие процессы, которые зависят от него."
 
-#: resources/dist/js/plugins-dashboard.js:1627
+#: resources/dist/js/plugins-dashboard.js:1268
 #: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:25
-#: resources/dist/js/plugins-dashboard.js:1247
+#: resources/dist/js/plugins-dashboard.js:1147
 msgid ""
 "Uninstalling deletes the plugin files and may also delete its saved "
 "settings or data. Its features will no longer be available. Back up your "
@@ -1185,23 +2136,23 @@ msgstr ""
 "сохраненные настройки или данные. Его функции больше не будут доступны. "
 "Сделайте резервную копию вашего сайта перед продолжением."
 
-#: resources/dist/js/plugins-dashboard.js:1627
+#: resources/dist/js/plugins-dashboard.js:1268
 #: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:26
-#: resources/dist/js/plugins-dashboard.js:1248
+#: resources/dist/js/plugins-dashboard.js:1148
 msgid ""
 "Without PublishPress Statuses, its custom post statuses are no longer "
 "registered. Content using those statuses may become unavailable, and parts "
 "of your site may stop working until the plugin is installed and active "
 "again."
 msgstr ""
-"Без статусов PublishPress его пользовательские статусы постов больше не "
-"регистрируются. Контент, использующий эти статусы, может стать недоступным, "
-"и некоторые части вашего сайта могут перестать работать, пока плагин снова "
-"не будет установлен и активен."
+"Без статусов PublishPress его пользовательские статусы записей больше не "
+"регистрируются. Контент с использованием этих статусов может стать "
+"недоступным, и части вашего сайта могут перестать работать, пока плагин "
+"снова не будет установлен и активен."
 
-#: resources/dist/js/plugins-dashboard.js:1627
+#: resources/dist/js/plugins-dashboard.js:1268
 #: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:29
-#: resources/dist/js/plugins-dashboard.js:1251
+#: resources/dist/js/plugins-dashboard.js:1151
 msgid ""
 "Resolving this conflict can deactivate the plugin while switching versions. "
 "If the version you keep cannot be activated, the plugin may remain "
@@ -1212,42 +2163,42 @@ msgstr ""
 "может остаться отключенным. Проверьте, что он активен после разрешения "
 "конфликта."
 
-#: resources/dist/js/plugins-dashboard.js:1831
+#: resources/dist/js/plugins-dashboard.js:1459
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:33
-#: resources/dist/js/plugins-dashboard.js:1383
+#: resources/dist/js/plugins-dashboard.js:1283
 msgid "Confirmation"
 msgstr "Подтверждение"
 
-#: resources/dist/js/plugins-dashboard.js:1837
+#: resources/dist/js/plugins-dashboard.js:1465
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:41
-#: resources/dist/js/plugins-dashboard.js:1391
+#: resources/dist/js/plugins-dashboard.js:1291
 msgid "Are you sure you want to continue?"
 msgstr "Вы уверены, что хотите продолжить?"
 
-#: resources/dist/js/plugins-dashboard.js:1849
+#: resources/dist/js/plugins-dashboard.js:1475
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:54
-#: resources/dist/js/plugins-dashboard.js:1404
+#: resources/dist/js/plugins-dashboard.js:1304
 msgid "Continue"
 msgstr "Продолжить"
 
-#: resources/dist/js/plugins-dashboard.js:1857
-#: resources/dist/js/plugins-dashboard.js:2543
+#: resources/dist/js/plugins-dashboard.js:1481
+#: resources/dist/js/plugins-dashboard.js:2070
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:57
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:103
-#: resources/dist/js/plugins-dashboard.js:1407
-#: resources/dist/js/plugins-dashboard.js:2075
+#: resources/dist/js/plugins-dashboard.js:1307
+#: resources/dist/js/plugins-dashboard.js:1975
 msgid "Cancel"
 msgstr "Отмена"
 
-#: resources/dist/js/plugins-dashboard.js:1903
+#: resources/dist/js/plugins-dashboard.js:1528
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29
-#: resources/dist/js/plugins-dashboard.js:1444
+#: resources/dist/js/plugins-dashboard.js:1344
 msgid "Install Plugin"
 msgstr "Установить плагин"
 
-#: resources/dist/js/plugins-dashboard.js:1908
+#: resources/dist/js/plugins-dashboard.js:1531
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
-#: resources/dist/js/plugins-dashboard.js:1449
+#: resources/dist/js/plugins-dashboard.js:1349
 msgid ""
 "Select how you would like to install this plugin. You can install the Pro "
 "version if you have a license, or the Free version to get started."
@@ -1255,1100 +2206,1107 @@ msgstr ""
 "Выберите, как вы хотите установить этот плагин. Вы можете установить "
 "Pro-версию, если у вас есть лицензия, или бесплатную версию, чтобы начать."
 
-#: resources/dist/js/plugins-dashboard.js:1913
-#: resources/dist/js/plugins-dashboard.js:3457
+#: resources/dist/js/plugins-dashboard.js:1536
+#: resources/dist/js/plugins-dashboard.js:2925
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:116
-#: resources/dist/js/plugins-dashboard.js:1452
-#: resources/dist/js/plugins-dashboard.js:2891
+#: resources/dist/js/plugins-dashboard.js:1352
+#: resources/dist/js/plugins-dashboard.js:2775
 msgid "Free Details"
 msgstr "Бесплатные детали"
 
-#: resources/dist/js/plugins-dashboard.js:1916
-#: resources/dist/js/plugins-dashboard.js:3464
+#: resources/dist/js/plugins-dashboard.js:1541
+#: resources/dist/js/plugins-dashboard.js:2932
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:124
-#: resources/dist/js/plugins-dashboard.js:1454
-#: resources/dist/js/plugins-dashboard.js:2899
+#: resources/dist/js/plugins-dashboard.js:1354
+#: resources/dist/js/plugins-dashboard.js:2783
 msgid "Pro Details"
 msgstr "Детали Pro"
 
-#: resources/dist/js/plugins-dashboard.js:1919
-#: resources/dist/js/plugins-dashboard.js:3472
+#: resources/dist/js/plugins-dashboard.js:1546
+#: resources/dist/js/plugins-dashboard.js:2940
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:133
-#: resources/dist/js/plugins-dashboard.js:1456
-#: resources/dist/js/plugins-dashboard.js:2908
+#: resources/dist/js/plugins-dashboard.js:1356
+#: resources/dist/js/plugins-dashboard.js:2792
 msgid "Changelogs"
 msgstr "Журналы изменений"
 
-#: resources/dist/js/plugins-dashboard.js:1925
+#: resources/dist/js/plugins-dashboard.js:1550
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44
-#: resources/dist/js/plugins-dashboard.js:1459
+#: resources/dist/js/plugins-dashboard.js:1359
 msgid "I have a license, install the Pro version"
-msgstr "У меня есть лицензия, установить Pro версию"
+msgstr "У меня есть лицензия, установить Pro-версию"
 
-#: resources/dist/js/plugins-dashboard.js:1931
+#: resources/dist/js/plugins-dashboard.js:1554
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47
-#: resources/dist/js/plugins-dashboard.js:1462
+#: resources/dist/js/plugins-dashboard.js:1362
 msgid "I don't have a license, install the Free version"
-msgstr "У меня нет лицензии, установить Бесплатную версию"
+msgstr "У меня нет лицензии, установить бесплатную версию"
 
-#: resources/dist/js/plugins-dashboard.js:2021
+#: resources/dist/js/plugins-dashboard.js:1628
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:56
-#: resources/dist/js/plugins-dashboard.js:1525
+#: resources/dist/js/plugins-dashboard.js:1425
 msgid "Enter your license key"
 msgstr "Введите ваш лицензионный ключ"
 
-#: resources/dist/js/plugins-dashboard.js:2026
-#: resources/dist/js/plugins-dashboard.js:2176
+#: resources/dist/js/plugins-dashboard.js:1631
+#: resources/dist/js/plugins-dashboard.js:1756
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:61
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
-#: resources/dist/js/plugins-dashboard.js:1530
-#: resources/dist/js/plugins-dashboard.js:1663
+#: resources/dist/js/plugins-dashboard.js:1430
+#: resources/dist/js/plugins-dashboard.js:1563
 msgid ""
 "Enter your license key to activate the Pro version of this plugin. You can "
 "find your license key in your PublishPress account dashboard."
 msgstr ""
 "Введите ваш лицензионный ключ для активации Pro-версии этого плагина. Вы "
-"можете найти ваш лицензионный ключ в панели управления вашей учетной записи "
-"PublishPress."
+"можете найти свой лицензионный ключ в панели управления вашей учетной "
+"записи PublishPress."
 
-#: resources/dist/js/plugins-dashboard.js:2033
-#: resources/dist/js/plugins-dashboard.js:2183
+#: resources/dist/js/plugins-dashboard.js:1638
+#: resources/dist/js/plugins-dashboard.js:1763
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:65
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:91
-#: resources/dist/js/plugins-dashboard.js:1534
-#: resources/dist/js/plugins-dashboard.js:1667
+#: resources/dist/js/plugins-dashboard.js:1434
+#: resources/dist/js/plugins-dashboard.js:1567
 msgid "Go to the dashboard to get your license key"
-msgstr "Перейдите на панель управления, чтобы получить ваш ключ лицензии"
+msgstr "Перейдите в панель управления, чтобы получить свой лицензионный ключ"
 
-#: resources/dist/js/plugins-dashboard.js:2037
-#: resources/dist/js/plugins-dashboard.js:2187
+#: resources/dist/js/plugins-dashboard.js:1640
+#: resources/dist/js/plugins-dashboard.js:1765
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:71
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:97
+#: resources/dist/js/plugins-dashboard.js:1440
+#: resources/dist/js/plugins-dashboard.js:1573
+msgid "License key"
+msgstr "Лицензионный ключ"
+
+#: resources/dist/js/plugins-dashboard.js:1642
+#: resources/dist/js/plugins-dashboard.js:1767
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:73
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:99
-#: resources/dist/js/plugins-dashboard.js:1542
-#: resources/dist/js/plugins-dashboard.js:1675
+#: resources/dist/js/plugins-dashboard.js:1442
+#: resources/dist/js/plugins-dashboard.js:1575
 msgid "Enter your license key here"
 msgstr "Введите ваш лицензионный ключ здесь"
 
-#: resources/dist/js/plugins-dashboard.js:2045
-#: resources/dist/js/plugins-dashboard.js:2195
-#: resources/dist/js/plugins-dashboard.js:2223
+#: resources/dist/js/plugins-dashboard.js:1648
+#: resources/dist/js/plugins-dashboard.js:1773
+#: resources/dist/js/plugins-dashboard.js:1797
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:81
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:152
-#: resources/dist/js/plugins-dashboard.js:1550
-#: resources/dist/js/plugins-dashboard.js:1682
-#: resources/dist/js/plugins-dashboard.js:1728
+#: resources/dist/js/plugins-dashboard.js:1450
+#: resources/dist/js/plugins-dashboard.js:1582
+#: resources/dist/js/plugins-dashboard.js:1628
 msgid "Use this license key for all PublishPress plugins"
 msgstr "Используйте этот лицензионный ключ для всех плагинов PublishPress"
 
-#: resources/dist/js/plugins-dashboard.js:2059
+#: resources/dist/js/plugins-dashboard.js:1658
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:95
-#: resources/dist/js/plugins-dashboard.js:1564
+#: resources/dist/js/plugins-dashboard.js:1464
 msgid "Use existing license key"
-msgstr "Использовать существующий ключ лицензии"
+msgstr "Использовать существующий лицензионный ключ"
 
-#: resources/dist/js/plugins-dashboard.js:2064
+#: resources/dist/js/plugins-dashboard.js:1663
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:100
-#: resources/dist/js/plugins-dashboard.js:1569
+#: resources/dist/js/plugins-dashboard.js:1469
 msgid "Activate and install the plugin"
 msgstr "Активировать и установить плагин"
 
-#: resources/dist/js/plugins-dashboard.js:2171
+#: resources/dist/js/plugins-dashboard.js:1753
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:80
-#: resources/dist/js/plugins-dashboard.js:1656
+#: resources/dist/js/plugins-dashboard.js:1556
 msgid "Manage your license"
-msgstr "Управление вашей лицензией"
+msgstr "Управлять вашей лицензией"
 
-#: resources/dist/js/plugins-dashboard.js:2200
+#: resources/dist/js/plugins-dashboard.js:1776
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:116
-#: resources/dist/js/plugins-dashboard.js:1692
+#: resources/dist/js/plugins-dashboard.js:1592
 msgid "Your license key is: "
 msgstr "Ваш лицензионный ключ: "
 
-#: resources/dist/js/plugins-dashboard.js:2202
+#: resources/dist/js/plugins-dashboard.js:1778
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:118
-#: resources/dist/js/plugins-dashboard.js:1694
+#: resources/dist/js/plugins-dashboard.js:1594
 msgid "(hidden)"
 msgstr "(скрыто)"
 
-#: resources/dist/js/plugins-dashboard.js:2211
+#: resources/dist/js/plugins-dashboard.js:1787
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:137
-#: resources/dist/js/plugins-dashboard.js:1713
+#: resources/dist/js/plugins-dashboard.js:1613
 msgid "Activate the license key for this site"
 msgstr "Активировать лицензионный ключ для этого сайта"
 
-#: resources/dist/js/plugins-dashboard.js:2216
+#: resources/dist/js/plugins-dashboard.js:1792
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:144
-#: resources/dist/js/plugins-dashboard.js:1720
+#: resources/dist/js/plugins-dashboard.js:1620
 msgid "Edit the license key"
 msgstr "Редактировать лицензионный ключ"
 
-#: resources/dist/js/plugins-dashboard.js:2230
+#: resources/dist/js/plugins-dashboard.js:1802
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:155
-#: resources/dist/js/plugins-dashboard.js:1731
+#: resources/dist/js/plugins-dashboard.js:1631
 msgid "Deactivate the license key for this site"
 msgstr "Деактивировать лицензионный ключ для этого сайта"
 
-#: resources/dist/js/plugins-dashboard.js:2358
-#: resources/dist/js/plugins-dashboard.js:2369
+#: resources/dist/js/plugins-dashboard.js:1924
+#: resources/dist/js/plugins-dashboard.js:1931
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:109
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:121
-#: resources/dist/js/plugins-dashboard.js:1849
-#: resources/dist/js/plugins-dashboard.js:1861
+#: resources/dist/js/plugins-dashboard.js:1749
+#: resources/dist/js/plugins-dashboard.js:1761
 #, js-format
 msgid "Install %s"
 msgstr "Установить %s"
 
-#: resources/dist/js/plugins-dashboard.js:2379
-#: resources/dist/js/plugins-dashboard.js:2412
+#: resources/dist/js/plugins-dashboard.js:1937
+#: resources/dist/js/plugins-dashboard.js:1962
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:136
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:179
-#: resources/dist/js/plugins-dashboard.js:1876
-#: resources/dist/js/plugins-dashboard.js:1919
+#: resources/dist/js/plugins-dashboard.js:1776
+#: resources/dist/js/plugins-dashboard.js:1819
 #, js-format
 msgid "Upgrade %s"
 msgstr "Обновить %s"
 
-#: resources/dist/js/plugins-dashboard.js:2389
-#: resources/dist/js/plugins-dashboard.js:2749
-#: resources/dist/js/plugins-dashboard.js:3048
+#: resources/dist/js/plugins-dashboard.js:1943
+#: resources/dist/js/plugins-dashboard.js:2262
+#: resources/dist/js/plugins-dashboard.js:2526
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:151
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:86
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
-#: resources/dist/js/plugins-dashboard.js:1891
-#: resources/dist/js/plugins-dashboard.js:2226
-#: resources/dist/js/plugins-dashboard.js:2472
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:84
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:198
+#: resources/dist/js/plugins-dashboard.js:1791
+#: resources/dist/js/plugins-dashboard.js:2124
+#: resources/dist/js/plugins-dashboard.js:2364
 #. translators: %s is the plugin name.
 #, js-format
 msgid "Deactivate %s"
 msgstr "Деактивировать %s"
 
-#: resources/dist/js/plugins-dashboard.js:2390
+#: resources/dist/js/plugins-dashboard.js:1944
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:152
-#: resources/dist/js/plugins-dashboard.js:1892
+#: resources/dist/js/plugins-dashboard.js:1792
 #, js-format
 msgid "Are you sure you want to deactivate %s?"
 msgstr "Вы уверены, что хотите деактивировать %s?"
 
-#: resources/dist/js/plugins-dashboard.js:2391
+#: resources/dist/js/plugins-dashboard.js:1945
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:153
-#: resources/dist/js/plugins-dashboard.js:1893
+#: resources/dist/js/plugins-dashboard.js:1793
 msgid "Deactivate plugin"
 msgstr "Деактивировать плагин"
 
-#: resources/dist/js/plugins-dashboard.js:2400
+#: resources/dist/js/plugins-dashboard.js:1952
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:165
-#: resources/dist/js/plugins-dashboard.js:1905
+#: resources/dist/js/plugins-dashboard.js:1805
 #, js-format
 msgid "Uninstall %s"
 msgstr "Удалить %s"
 
-#: resources/dist/js/plugins-dashboard.js:2401
+#: resources/dist/js/plugins-dashboard.js:1953
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:166
-#: resources/dist/js/plugins-dashboard.js:1906
+#: resources/dist/js/plugins-dashboard.js:1806
 #, js-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "Вы уверены, что хотите удалить %s?"
 
-#: resources/dist/js/plugins-dashboard.js:2402
+#: resources/dist/js/plugins-dashboard.js:1954
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:167
-#: resources/dist/js/plugins-dashboard.js:1907
+#: resources/dist/js/plugins-dashboard.js:1807
 msgid "Uninstall plugin"
 msgstr "Удалить плагин"
 
-#: resources/dist/js/plugins-dashboard.js:2422
+#: resources/dist/js/plugins-dashboard.js:1968
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:190
-#: resources/dist/js/plugins-dashboard.js:1930
+#: resources/dist/js/plugins-dashboard.js:1830
 #, js-format
 msgid "Resolve Conflict for %s"
 msgstr "Разрешить конфликт для %s"
 
-#: resources/dist/js/plugins-dashboard.js:2434
+#: resources/dist/js/plugins-dashboard.js:1976
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:203
-#: resources/dist/js/plugins-dashboard.js:1943
+#: resources/dist/js/plugins-dashboard.js:1843
 #, js-format
 msgid "Manage %s License"
-msgstr "Управление лицензией %s"
+msgstr "Управлять лицензией %s"
 
-#: resources/dist/js/plugins-dashboard.js:2448
+#: resources/dist/js/plugins-dashboard.js:1984
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:218
-#: resources/dist/js/plugins-dashboard.js:1958
+#: resources/dist/js/plugins-dashboard.js:1858
 #, js-format
 msgid "Activate %s License"
 msgstr "Активировать лицензию %s"
 
-#: resources/dist/js/plugins-dashboard.js:2449
+#: resources/dist/js/plugins-dashboard.js:1985
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:219
-#: resources/dist/js/plugins-dashboard.js:1959
+#: resources/dist/js/plugins-dashboard.js:1859
 msgid "Activate the license key"
 msgstr "Активировать ключ лицензии"
 
-#: resources/dist/js/plugins-dashboard.js:2508
+#: resources/dist/js/plugins-dashboard.js:2043
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:35
-#: resources/dist/js/plugins-dashboard.js:2007
+#: resources/dist/js/plugins-dashboard.js:1907
 msgid "Resolve Plugin Conflict"
 msgstr "Разрешить конфликт плагина"
 
-#: resources/dist/js/plugins-dashboard.js:2515
+#: resources/dist/js/plugins-dashboard.js:2048
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:52
-#: resources/dist/js/plugins-dashboard.js:2024
+#: resources/dist/js/plugins-dashboard.js:1924
 #, js-format
 msgid "Free version: %s (%s)"
 msgstr "Бесплатная версия: %s (%s)"
 
-#: resources/dist/js/plugins-dashboard.js:2515
+#: resources/dist/js/plugins-dashboard.js:2048
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:59
-#: resources/dist/js/plugins-dashboard.js:2031
+#: resources/dist/js/plugins-dashboard.js:1931
 #, js-format
 msgid "Pro version: %s (%s)"
-msgstr "Pro версия: %s (%s)"
+msgstr "Профессиональная версия: %s (%s)"
 
-#: resources/dist/js/plugins-dashboard.js:2528
+#: resources/dist/js/plugins-dashboard.js:2059
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:84
-#: resources/dist/js/plugins-dashboard.js:2056
+#: resources/dist/js/plugins-dashboard.js:1956
 msgid "Keep the Pro version (Recommended)"
-msgstr "Сохранить Pro версию (Рекомендуется)"
+msgstr "Сохранить профессиональную версию (Рекомендуется)"
 
-#: resources/dist/js/plugins-dashboard.js:2536
+#: resources/dist/js/plugins-dashboard.js:2065
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:94
-#: resources/dist/js/plugins-dashboard.js:2066
+#: resources/dist/js/plugins-dashboard.js:1966
 msgid "Keep the Free version"
-msgstr "Сохранить Бесплатную версию"
+msgstr "Сохранить бесплатную версию"
 
-#: resources/dist/js/plugins-dashboard.js:2593
+#: resources/dist/js/plugins-dashboard.js:2119
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
-#: resources/dist/js/plugins-dashboard.js:2115
+#: resources/dist/js/plugins-dashboard.js:2015
 msgid ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
 "advanced features, priority support, and exclusive benefits designed to "
 "help you get the most out of your workflow."
 msgstr ""
-"Разблокируйте полный потенциал этого плагина с Pro-версией. Наслаждайтесь "
-"расширенными функциями, приоритетной поддержкой и эксклюзивными "
-"преимуществами, созданными для того, чтобы помочь вам максимально "
-"эффективно использовать ваш рабочий процесс."
+"Разблокируйте весь потенциал этого плагина с профессиональной версией. "
+"Наслаждайтесь расширенными функциями, приоритетной поддержкой и "
+"эксклюзивными преимуществами, предназначенными для того, чтобы помочь вам "
+"максимально использовать ваш рабочий процесс."
 
-#: resources/dist/js/plugins-dashboard.js:2598
+#: resources/dist/js/plugins-dashboard.js:2124
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
-#: resources/dist/js/plugins-dashboard.js:2122
+#: resources/dist/js/plugins-dashboard.js:2022
 msgid "Discover all Pro features"
-msgstr "Узнайте все функции Pro"
+msgstr "Откройте все функции Pro"
 
-#: resources/dist/js/plugins-dashboard.js:2601
+#: resources/dist/js/plugins-dashboard.js:2129
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
-#: resources/dist/js/plugins-dashboard.js:2126
+#: resources/dist/js/plugins-dashboard.js:2026
 msgid "Changelog"
 msgstr "Журнал изменений"
 
-#: resources/dist/js/plugins-dashboard.js:2607
+#: resources/dist/js/plugins-dashboard.js:2133
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
-#: resources/dist/js/plugins-dashboard.js:2130
+#: resources/dist/js/plugins-dashboard.js:2030
 msgid "Already have a license? Install Pro now"
 msgstr "Уже есть лицензия? Установите Pro сейчас"
 
-#: resources/dist/js/plugins-dashboard.js:2737
-#: resources/dist/js/plugins-dashboard.js:3038
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:78
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:192
-#: resources/dist/js/plugins-dashboard.js:2218
-#: resources/dist/js/plugins-dashboard.js:2463
+#: resources/dist/js/plugins-dashboard.js:2252
+#: resources/dist/js/plugins-dashboard.js:2518
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:75
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:189
+#: resources/dist/js/plugins-dashboard.js:2115
+#: resources/dist/js/plugins-dashboard.js:2355
 #, js-format
 msgid "Remove %s from favorites"
-msgstr "Убрать %s из избранного"
+msgstr "Удалить %s из избранного"
 
-#: resources/dist/js/plugins-dashboard.js:2737
-#: resources/dist/js/plugins-dashboard.js:3038
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:78
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:192
-#: resources/dist/js/plugins-dashboard.js:2218
-#: resources/dist/js/plugins-dashboard.js:2463
+#: resources/dist/js/plugins-dashboard.js:2252
+#: resources/dist/js/plugins-dashboard.js:2518
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:75
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:189
+#: resources/dist/js/plugins-dashboard.js:2115
+#: resources/dist/js/plugins-dashboard.js:2355
 #, js-format
 msgid "Add %s to favorites"
 msgstr "Добавить %s в избранное"
 
-#: resources/dist/js/plugins-dashboard.js:2749
-#: resources/dist/js/plugins-dashboard.js:3048
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:86
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:202
-#: resources/dist/js/plugins-dashboard.js:2226
-#: resources/dist/js/plugins-dashboard.js:2473
+#: resources/dist/js/plugins-dashboard.js:2262
+#: resources/dist/js/plugins-dashboard.js:2526
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:84
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:199
+#: resources/dist/js/plugins-dashboard.js:2124
+#: resources/dist/js/plugins-dashboard.js:2365
 #, js-format
 msgid "Activate %s"
 msgstr "Активировать %s"
 
-#: resources/dist/js/plugins-dashboard.js:2759
-#: resources/dist/js/plugins-dashboard.js:3075
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:95
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:238
-#: resources/dist/js/plugins-dashboard.js:2235
-#: resources/dist/js/plugins-dashboard.js:2509
-#, js-format
-msgid "%s shortcuts"
-msgstr "%s ярлыки"
-
-#: resources/dist/js/plugins-dashboard.js:2769
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:99
-#: resources/dist/js/plugins-dashboard.js:2239
+#: resources/dist/js/plugins-dashboard.js:2275
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:97
+#: resources/dist/js/plugins-dashboard.js:2137
 #, js-format
 msgid "More actions for %s"
 msgstr "Больше действий для %s"
 
-#: resources/dist/js/plugins-dashboard.js:2770
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:99
-#: resources/dist/js/plugins-dashboard.js:2239
+#: resources/dist/js/plugins-dashboard.js:2276
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:97
+#: resources/dist/js/plugins-dashboard.js:2137
 msgid "More"
 msgstr "Больше"
 
-#: resources/dist/js/plugins-dashboard.js:2790
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:110
-#: resources/dist/js/plugins-dashboard.js:2250
+#: resources/dist/js/plugins-dashboard.js:2295
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:108
+#: resources/dist/js/plugins-dashboard.js:2148
 msgid "Conflicting installations"
 msgstr "Конфликтующие установки"
 
-#: resources/dist/js/plugins-dashboard.js:2796
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:112
-#: resources/dist/js/plugins-dashboard.js:2252
+#: resources/dist/js/plugins-dashboard.js:2301
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:110
+#: resources/dist/js/plugins-dashboard.js:2150
 msgid "Activating…"
 msgstr "Активируется…"
 
-#: resources/dist/js/plugins-dashboard.js:2800
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:113
-#: resources/dist/js/plugins-dashboard.js:2253
+#: resources/dist/js/plugins-dashboard.js:2305
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:111
+#: resources/dist/js/plugins-dashboard.js:2151
 msgid "Deactivating…"
 msgstr "Деактивируется…"
 
-#: resources/dist/js/plugins-dashboard.js:2981
-#: resources/dist/js/plugins-dashboard.js:3479
-#: resources/dist/js/plugins-dashboard.js:3493
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:144
+#: resources/dist/js/plugins-dashboard.js:2461
+#: resources/dist/js/plugins-dashboard.js:2947
+#: resources/dist/js/plugins-dashboard.js:2959
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:141
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:148
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:164
-#: resources/dist/js/plugins-dashboard.js:2415
-#: resources/dist/js/plugins-dashboard.js:2923
-#: resources/dist/js/plugins-dashboard.js:2939
+#: resources/dist/js/plugins-dashboard.js:2307
+#: resources/dist/js/plugins-dashboard.js:2807
+#: resources/dist/js/plugins-dashboard.js:2823
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: resources/dist/js/plugins-dashboard.js:2982
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:145
-#: resources/dist/js/plugins-dashboard.js:2416
+#: resources/dist/js/plugins-dashboard.js:2462
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:142
+#: resources/dist/js/plugins-dashboard.js:2308
 msgid "New version available"
 msgstr "Доступна новая версия"
 
-#: resources/dist/js/plugins-dashboard.js:2998
-#: resources/dist/js/plugins-dashboard.js:3499
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:164
+#: resources/dist/js/plugins-dashboard.js:2478
+#: resources/dist/js/plugins-dashboard.js:2965
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:161
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:171
-#: resources/dist/js/plugins-dashboard.js:2435
-#: resources/dist/js/plugins-dashboard.js:2946
+#: resources/dist/js/plugins-dashboard.js:2327
+#: resources/dist/js/plugins-dashboard.js:2830
 #. translators: %s is the installed version number
 #, js-format
 msgid "Installed version: %s"
 msgstr "Установленная версия: %s"
 
-#: resources/dist/js/plugins-dashboard.js:3070
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:231
-#: resources/dist/js/plugins-dashboard.js:2502
+#: resources/dist/js/plugins-dashboard.js:2548
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:228
+#: resources/dist/js/plugins-dashboard.js:2394
 #, js-format
 msgid "Update available: %s → %s"
 msgstr "Доступно обновление: %s → %s"
 
-#: resources/dist/js/plugins-dashboard.js:3155
+#: resources/dist/js/plugins-dashboard.js:2622
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:23
-#: resources/dist/js/plugins-dashboard.js:2587
+#: resources/dist/js/plugins-dashboard.js:2471
 msgid "Installing"
 msgstr "Установка"
 
-#: resources/dist/js/plugins-dashboard.js:3162
+#: resources/dist/js/plugins-dashboard.js:2629
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:28
-#: resources/dist/js/plugins-dashboard.js:2592
+#: resources/dist/js/plugins-dashboard.js:2476
 msgid "Not Installed"
 msgstr "Не установлено"
 
-#: resources/dist/js/plugins-dashboard.js:3166
+#: resources/dist/js/plugins-dashboard.js:2633
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:32
-#: resources/dist/js/plugins-dashboard.js:2596
+#: resources/dist/js/plugins-dashboard.js:2480
 msgid "Free"
 msgstr "Бесплатно"
 
-#: resources/dist/js/plugins-dashboard.js:3170
+#: resources/dist/js/plugins-dashboard.js:2637
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:36
-#: resources/dist/js/plugins-dashboard.js:2600
+#: resources/dist/js/plugins-dashboard.js:2484
 msgid "Licensed"
-msgstr "Лицензировано"
+msgstr "Лицензионный"
 
-#: resources/dist/js/plugins-dashboard.js:3178
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:44
-#: resources/dist/js/plugins-dashboard.js:2608
-msgid "Expired"
-msgstr "Истек срок действия"
-
-#: resources/dist/js/plugins-dashboard.js:3182
+#: resources/dist/js/plugins-dashboard.js:2649
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:48
-#: resources/dist/js/plugins-dashboard.js:2612
+#: resources/dist/js/plugins-dashboard.js:2496
 msgid "Uninstalling"
 msgstr "Удаление"
 
-#: resources/dist/js/plugins-dashboard.js:3189
+#: resources/dist/js/plugins-dashboard.js:2656
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:53
-#: resources/dist/js/plugins-dashboard.js:2617
+#: resources/dist/js/plugins-dashboard.js:2501
 msgid "Upgrading"
 msgstr "Обновление"
 
-#: resources/dist/js/plugins-dashboard.js:3196
+#: resources/dist/js/plugins-dashboard.js:2663
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:58
-#: resources/dist/js/plugins-dashboard.js:2622
+#: resources/dist/js/plugins-dashboard.js:2506
 msgid "Deactivating"
 msgstr "Деактивация"
 
-#: resources/dist/js/plugins-dashboard.js:3203
+#: resources/dist/js/plugins-dashboard.js:2670
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:63
-#: resources/dist/js/plugins-dashboard.js:2627
+#: resources/dist/js/plugins-dashboard.js:2511
 msgid "Activating"
-msgstr "Активация"
+msgstr "Активирование"
 
-#: resources/dist/js/plugins-dashboard.js:3210
+#: resources/dist/js/plugins-dashboard.js:2677
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:68
-#: resources/dist/js/plugins-dashboard.js:2632
+#: resources/dist/js/plugins-dashboard.js:2516
 msgid "Conflicting Installations"
 msgstr "Конфликтующие установки"
 
-#: resources/dist/js/plugins-dashboard.js:3214
-#: resources/dist/js/plugins-dashboard.js:3298
+#: resources/dist/js/plugins-dashboard.js:2681
+#: resources/dist/js/plugins-dashboard.js:2766
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:72
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:173
-#: resources/dist/js/plugins-dashboard.js:2636
-#: resources/dist/js/plugins-dashboard.js:2737
+#: resources/dist/js/plugins-dashboard.js:2520
+#: resources/dist/js/plugins-dashboard.js:2621
 msgid "Update Available"
 msgstr "Доступно обновление"
 
-#: resources/dist/js/plugins-dashboard.js:3306
+#: resources/dist/js/plugins-dashboard.js:2774
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:184
-#: resources/dist/js/plugins-dashboard.js:2748
+#: resources/dist/js/plugins-dashboard.js:2632
 msgid "Expires"
 msgstr "Истекает"
 
-#: resources/dist/js/plugins-dashboard.js:3401
-#: resources/dist/js/plugins-dashboard.js:3412
+#: resources/dist/js/plugins-dashboard.js:2875
+#: resources/dist/js/plugins-dashboard.js:2886
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:74
-#: resources/dist/js/plugins-dashboard.js:2830
-#: resources/dist/js/plugins-dashboard.js:2849
+#: resources/dist/js/plugins-dashboard.js:2714
+#: resources/dist/js/plugins-dashboard.js:2733
 msgid "Renew"
 msgstr "Продлить"
 
-#: resources/dist/js/plugins-dashboard.js:3421
+#: resources/dist/js/plugins-dashboard.js:2895
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:84
-#: resources/dist/js/plugins-dashboard.js:2859
+#: resources/dist/js/plugins-dashboard.js:2743
 msgid "Deactivate"
 msgstr "Деактивировать"
 
-#: resources/dist/js/plugins-dashboard.js:3432
+#: resources/dist/js/plugins-dashboard.js:2904
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:93
-#: resources/dist/js/plugins-dashboard.js:2868
+#: resources/dist/js/plugins-dashboard.js:2752
 msgid "Activate"
 msgstr "Активировать"
 
-#: resources/dist/js/plugins-dashboard.js:3443
+#: resources/dist/js/plugins-dashboard.js:2913
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:103
-#: resources/dist/js/plugins-dashboard.js:2878
+#: resources/dist/js/plugins-dashboard.js:2762
 msgid "Uninstall"
 msgstr "Удалить"
 
-#: resources/dist/js/plugins-dashboard.js:3480
-#: resources/dist/js/plugins-dashboard.js:3494
+#: resources/dist/js/plugins-dashboard.js:2948
+#: resources/dist/js/plugins-dashboard.js:2960
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:149
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
-#: resources/dist/js/plugins-dashboard.js:2924
-#: resources/dist/js/plugins-dashboard.js:2940
+#: resources/dist/js/plugins-dashboard.js:2808
+#: resources/dist/js/plugins-dashboard.js:2824
 msgid "latest"
 msgstr "последний"
 
-#: resources/dist/js/plugins-dashboard.js:3484
+#: resources/dist/js/plugins-dashboard.js:2952
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:154
-#: resources/dist/js/plugins-dashboard.js:2929
+#: resources/dist/js/plugins-dashboard.js:2813
 #, js-format
 msgid "Update to %s"
-msgstr "Обновить до %s"
+msgstr "Обновление до %s"
 
-#: resources/dist/js/plugins-dashboard.js:4041
+#: resources/dist/js/plugins-dashboard.js:3365
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
-#: resources/dist/js/plugins-dashboard.js:3326
+#: resources/dist/js/plugins-dashboard.js:3210
 msgid "This plugin is not installed."
 msgstr "Этот плагин не установлен."
 
-#: resources/dist/js/plugins-dashboard.js:4043
+#: resources/dist/js/plugins-dashboard.js:3367
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40
-#: resources/dist/js/plugins-dashboard.js:3329
+#: resources/dist/js/plugins-dashboard.js:3213
 msgid "This plugin is active."
 msgstr "Этот плагин активен."
 
-#: resources/dist/js/plugins-dashboard.js:4043
+#: resources/dist/js/plugins-dashboard.js:3367
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41
-#: resources/dist/js/plugins-dashboard.js:3330
+#: resources/dist/js/plugins-dashboard.js:3214
 msgid "This plugin is not active."
 msgstr "Этот плагин не активен."
 
-#: resources/dist/js/plugins-dashboard.js:4272
-#: resources/src/jsx/components/plugins-list/index.jsx:166
-#: resources/dist/js/plugins-dashboard.js:3549
+#: resources/dist/js/plugins-dashboard.js:3586
+#: resources/src/jsx/components/plugins-list/index.jsx:170
+#: resources/dist/js/plugins-dashboard.js:3437
 msgid "Editorial process"
 msgstr "Редакционный процесс"
 
-#: resources/dist/js/plugins-dashboard.js:4275
-#: resources/src/jsx/components/plugins-list/index.jsx:167
-#: resources/dist/js/plugins-dashboard.js:3550
+#: resources/dist/js/plugins-dashboard.js:3589
+#: resources/src/jsx/components/plugins-list/index.jsx:171
+#: resources/dist/js/plugins-dashboard.js:3438
 msgid "Additional publishing tools"
 msgstr "Дополнительные инструменты публикации"
 
-#: resources/dist/js/plugins-dashboard.js:4283
-#: resources/src/jsx/components/plugins-list/index.jsx:171
-#: resources/dist/js/plugins-dashboard.js:3554
+#: resources/dist/js/plugins-dashboard.js:3595
+#: resources/src/jsx/components/plugins-list/index.jsx:175
+#: resources/dist/js/plugins-dashboard.js:3442
 msgid "Other plugins"
 msgstr "Другие плагины"
 
-#: resources/dist/js/plugins-dashboard.js:4296
-#: resources/src/jsx/components/plugins-list/index.jsx:177
-#: resources/dist/js/plugins-dashboard.js:3560
+#: resources/dist/js/plugins-dashboard.js:3604
+#: resources/src/jsx/components/plugins-list/index.jsx:181
+#: resources/dist/js/plugins-dashboard.js:3448
 msgid "Plugin layout"
 msgstr "Макет плагина"
 
-#: resources/dist/js/plugins-dashboard.js:4310
-#: resources/src/jsx/components/plugins-list/index.jsx:181
-#: resources/dist/js/plugins-dashboard.js:3564
+#: resources/dist/js/plugins-dashboard.js:3615
+#: resources/src/jsx/components/plugins-list/index.jsx:185
+#: resources/dist/js/plugins-dashboard.js:3452
 msgid "Cards"
-msgstr "Карточки"
+msgstr "Карты"
 
-#: resources/dist/js/plugins-dashboard.js:4310
-#: resources/src/jsx/components/plugins-list/index.jsx:181
-#: resources/dist/js/plugins-dashboard.js:3564
+#: resources/dist/js/plugins-dashboard.js:3615
+#: resources/src/jsx/components/plugins-list/index.jsx:185
+#: resources/dist/js/plugins-dashboard.js:3452
 msgid "List"
 msgstr "Список"
 
-#: resources/dist/js/plugins-dashboard.js:4312
-#: resources/src/jsx/components/plugins-list/index.jsx:184
-#: resources/dist/js/plugins-dashboard.js:3567
+#: resources/dist/js/plugins-dashboard.js:3616
+#: resources/src/jsx/components/plugins-list/index.jsx:188
+#: resources/dist/js/plugins-dashboard.js:3455
 msgid "Group by purpose"
 msgstr "Группировать по назначению"
 
-#: resources/dist/js/plugins-dashboard.js:4320
-#: resources/src/jsx/components/plugins-list/index.jsx:186
-#: resources/dist/js/plugins-dashboard.js:3569
+#: resources/dist/js/plugins-dashboard.js:3622
+#: resources/src/jsx/components/plugins-list/index.jsx:190
+#: resources/dist/js/plugins-dashboard.js:3457
 msgid "Favorites only"
-msgstr "Только избранное"
+msgstr "Только избранные"
 
-#: resources/dist/js/plugins-dashboard.js:4342
-#: resources/src/jsx/components/plugins-list/index.jsx:200
-#: resources/dist/js/plugins-dashboard.js:3583
+#: resources/dist/js/plugins-dashboard.js:3640
+#: resources/src/jsx/components/plugins-list/index.jsx:204
+#: resources/dist/js/plugins-dashboard.js:3471
 msgid "No plugins found."
 msgstr "Плагины не найдены."
 
-#: resources/dist/js/plugins-dashboard.js:4346
-#: resources/src/jsx/components/plugins-list/index.jsx:206
-#: resources/dist/js/plugins-dashboard.js:3589
+#: resources/dist/js/plugins-dashboard.js:3644
+#: resources/src/jsx/components/plugins-list/index.jsx:210
+#: resources/dist/js/plugins-dashboard.js:3477
 msgid "Loading plugins..."
 msgstr "Загрузка плагинов..."
 
-#: resources/dist/js/plugins-dashboard.js:4955
+#: resources/dist/js/plugins-dashboard.js:4075
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:225
-#: resources/dist/js/plugins-dashboard.js:4017
+#: resources/dist/js/plugins-dashboard.js:3902
 msgid "Failed to fetch plugins"
 msgstr "Не удалось получить плагины"
 
-#: resources/dist/js/plugins-dashboard.js:5015
-#: resources/dist/js/plugins-dashboard.js:5110
+#: resources/dist/js/plugins-dashboard.js:4110
+#: resources/dist/js/plugins-dashboard.js:4170
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:259
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:319
-#: resources/dist/js/plugins-dashboard.js:4051
-#: resources/dist/js/plugins-dashboard.js:4111
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:320
+#: resources/dist/js/plugins-dashboard.js:3936
+#: resources/dist/js/plugins-dashboard.js:3997
 #, js-format
 msgid "%s installed successfully"
 msgstr "%s успешно установлен"
 
-#: resources/dist/js/plugins-dashboard.js:5043
-#: resources/dist/js/plugins-dashboard.js:5139
+#: resources/dist/js/plugins-dashboard.js:4128
+#: resources/dist/js/plugins-dashboard.js:4191
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:276
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:338
-#: resources/dist/js/plugins-dashboard.js:4068
-#: resources/dist/js/plugins-dashboard.js:4130
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:339
+#: resources/dist/js/plugins-dashboard.js:3953
+#: resources/dist/js/plugins-dashboard.js:4016
 #, js-format
 msgid "%s installation failed"
 msgstr "%s установка не удалась"
 
-#: resources/dist/js/plugins-dashboard.js:5197
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:374
-#: resources/dist/js/plugins-dashboard.js:4166
+#: resources/dist/js/plugins-dashboard.js:4224
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:375
+#: resources/dist/js/plugins-dashboard.js:4052
 #, js-format
 msgid "%s uninstalled successfully"
-msgstr "%s успешно удалён"
+msgstr "%s успешно удален"
 
-#: resources/dist/js/plugins-dashboard.js:5222
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:390
-#: resources/dist/js/plugins-dashboard.js:4182
+#: resources/dist/js/plugins-dashboard.js:4241
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:391
+#: resources/dist/js/plugins-dashboard.js:4068
 #, js-format
 msgid "%s uninstall failed"
 msgstr "%s удаление не удалось"
 
-#: resources/dist/js/plugins-dashboard.js:5291
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:426
-#: resources/dist/js/plugins-dashboard.js:4218
+#: resources/dist/js/plugins-dashboard.js:4279
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:427
+#: resources/dist/js/plugins-dashboard.js:4104
 #, js-format
 msgid "%s activated successfully"
 msgstr "%s успешно активирован"
 
-#: resources/dist/js/plugins-dashboard.js:5318
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:443
-#: resources/dist/js/plugins-dashboard.js:4235
+#: resources/dist/js/plugins-dashboard.js:4298
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:444
+#: resources/dist/js/plugins-dashboard.js:4121
 #, js-format
 msgid "%s activation failed"
 msgstr "%s активация не удалась"
 
-#: resources/dist/js/plugins-dashboard.js:5386
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:478
-#: resources/dist/js/plugins-dashboard.js:4270
+#: resources/dist/js/plugins-dashboard.js:4337
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:479
+#: resources/dist/js/plugins-dashboard.js:4156
 #, js-format
 msgid "%s deactivated successfully"
 msgstr "%s успешно деактивирован"
 
-#: resources/dist/js/plugins-dashboard.js:5413
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:494
-#: resources/dist/js/plugins-dashboard.js:4286
+#: resources/dist/js/plugins-dashboard.js:4355
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:495
+#: resources/dist/js/plugins-dashboard.js:4172
 #, js-format
 msgid "%s deactivation failed"
-msgstr "Не удалось деактивировать %s"
+msgstr "%s деактивация не удалась"
 
-#: resources/dist/js/plugins-dashboard.js:5485
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:537
-#: resources/dist/js/plugins-dashboard.js:4329
+#: resources/dist/js/plugins-dashboard.js:4400
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:539
+#: resources/dist/js/plugins-dashboard.js:4216
 #, js-format
 msgid "%s upgraded successfully"
-msgstr "%s успешно обновлён"
+msgstr "%s успешно обновлен"
 
-#: resources/dist/js/plugins-dashboard.js:5514
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:556
-#: resources/dist/js/plugins-dashboard.js:4348
+#: resources/dist/js/plugins-dashboard.js:4421
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:558
+#: resources/dist/js/plugins-dashboard.js:4235
 #, js-format
 msgid "%s upgrade to Pro failed"
-msgstr "Не удалось обновить %s до Pro"
+msgstr "%s обновление до Pro не удалось"
 
-#: resources/dist/js/plugins-dashboard.js:5599
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:608
-#: resources/dist/js/plugins-dashboard.js:4400
+#: resources/dist/js/plugins-dashboard.js:4475
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:610
+#: resources/dist/js/plugins-dashboard.js:4287
 #, js-format
 msgid "Conflict resolved successfully for %s"
-msgstr "Конфликт успешно разрешён для %s"
+msgstr "Конфликт успешно разрешен для %s"
 
-#: resources/dist/js/plugins-dashboard.js:5626
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:625
-#: resources/dist/js/plugins-dashboard.js:4417
+#: resources/dist/js/plugins-dashboard.js:4494
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:627
+#: resources/dist/js/plugins-dashboard.js:4304
 #, js-format
 msgid "Failed to resolve conflict for %s"
 msgstr "Не удалось разрешить конфликт для %s"
 
-#: resources/dist/js/plugins-dashboard.js:5680
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:657
-#: resources/dist/js/plugins-dashboard.js:4449
+#: resources/dist/js/plugins-dashboard.js:4525
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:659
+#: resources/dist/js/plugins-dashboard.js:4336
 #, js-format
 msgid "%s license deactivated successfully"
 msgstr "%s лицензия успешно деактивирована"
 
-#: resources/dist/js/plugins-dashboard.js:5705
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:673
-#: resources/dist/js/plugins-dashboard.js:4465
+#: resources/dist/js/plugins-dashboard.js:4542
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:675
+#: resources/dist/js/plugins-dashboard.js:4352
 #, js-format
 msgid "%s license deactivation failed"
-msgstr "Не удалось деактивировать лицензию %s"
+msgstr "%s деактивация лицензии не удалась"
 
-#: resources/dist/js/plugins-dashboard.js:5767
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:709
-#: resources/dist/js/plugins-dashboard.js:4501
+#: resources/dist/js/plugins-dashboard.js:4554
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:693
+#: resources/dist/js/plugins-dashboard.js:4370
+#, js-format
+msgid ""
+"The license key could not be activated for these plugins: %s. Review their "
+"licenses and retry from each plugin’s license controls."
+msgstr ""
+"Ключ лицензии не может быть активирован для этих плагинов: %s. Проверьте их "
+"лицензии и повторите попытку через управление лицензиями каждого плагина."
+
+#: resources/dist/js/plugins-dashboard.js:4588
+#: resources/dist/js/plugins-dashboard.js:4644
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:723
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:775
+#: resources/dist/js/plugins-dashboard.js:4400
+#: resources/dist/js/plugins-dashboard.js:4452
 msgid "License activated successfully for all PublishPress plugins"
 msgstr "Лицензия успешно активирована для всех плагинов PublishPress"
 
-#: resources/dist/js/plugins-dashboard.js:5767
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:710
-#: resources/dist/js/plugins-dashboard.js:4502
+#: resources/dist/js/plugins-dashboard.js:4588
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:724
+#: resources/dist/js/plugins-dashboard.js:4401
 #, js-format
 msgid "%s license activated successfully"
 msgstr "%s лицензия успешно активирована"
 
-#: resources/dist/js/plugins-dashboard.js:5796
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:726
-#: resources/dist/js/plugins-dashboard.js:4518
+#: resources/dist/js/plugins-dashboard.js:4608
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:740
+#: resources/dist/js/plugins-dashboard.js:4417
 #, js-format
 msgid "%s license activation failed"
-msgstr "Не удалось активировать лицензию %s"
+msgstr "%s активация лицензии не удалась"
 
-#: resources/dist/js/plugins-dashboard.js:5855
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:758
-#: resources/dist/js/plugins-dashboard.js:4550
-msgid "License reused successfully for all PublishPress plugins"
-msgstr "Лицензия успешно повторно использована для всех плагинов PublishPress"
-
-#: resources/dist/js/plugins-dashboard.js:5882
+#: resources/dist/js/plugins-dashboard.js:4644
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:774
-#: resources/dist/js/plugins-dashboard.js:4566
+#: resources/dist/js/plugins-dashboard.js:4451
+msgid "License checks complete. Some plugins could not be activated."
+msgstr "Проверка лицензий завершена. Некоторые плагины не могут быть активированы."
+
+#: resources/dist/js/plugins-dashboard.js:4663
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:791
+#: resources/dist/js/plugins-dashboard.js:4468
 #, js-format
 msgid "%s license reuse failed"
 msgstr "%s повторное использование лицензии не удалось"
 
-#: resources/dist/js/plugins-dashboard.js:5950
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
-#: resources/dist/js/plugins-dashboard.js:4605
+#: resources/dist/js/plugins-dashboard.js:4700
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:830
+#: resources/dist/js/plugins-dashboard.js:4507
 msgid ""
 "The plugin was updated successfully, but the dashboard could not refresh. "
 "Reloading this page..."
 msgstr ""
-"Плагин успешно обновлён, но панель управления не смогла обновиться. "
-"Перезагружаю эту страницу..."
+"Плагин успешно обновлен, но панель не может обновиться. Перезагрузка этой "
+"страницы..."
 
-#: resources/dist/js/plugins-dashboard.js:5976
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:836
-#: resources/dist/js/plugins-dashboard.js:4628
+#: resources/dist/js/plugins-dashboard.js:4718
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:853
+#: resources/dist/js/plugins-dashboard.js:4530
 #, js-format
 msgid "%s updated successfully"
-msgstr "%s успешно обновлён"
+msgstr "%s успешно обновлен"
 
-#: resources/dist/js/plugins-dashboard.js:6004
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:853
-#: resources/dist/js/plugins-dashboard.js:4645
+#: resources/dist/js/plugins-dashboard.js:4736
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:870
+#: resources/dist/js/plugins-dashboard.js:4547
 #, js-format
 msgid "%s update failed"
-msgstr "Не удалось обновить %s"
+msgstr "%s обновление не удалось"
 
-#: resources/dist/js/plugins-dashboard.js:6078
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:915
-#: resources/dist/js/plugins-dashboard.js:4707
+#: resources/dist/js/plugins-dashboard.js:4797
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:932
+#: resources/dist/js/plugins-dashboard.js:4609
 msgid "Too many requests. Please wait a few seconds and try again."
 msgstr ""
 "Слишком много запросов. Пожалуйста, подождите несколько секунд и попробуйте "
 "снова."
 
-#: resources/dist/js/plugins-dashboard.js:6086
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:925
-#: resources/dist/js/plugins-dashboard.js:4717
-#, fuzzy
+#: resources/dist/js/plugins-dashboard.js:4804
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:942
+#: resources/dist/js/plugins-dashboard.js:4619
+#, fuzzy, js-format
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
 
-#: resources/dist/js/settings-page.js:433
+#: resources/dist/js/settings-page.js:425
 #: resources/src/jsx/components/pages/settings-page.jsx:32
-#: resources/dist/js/settings-page.js:363
+#: resources/dist/js/settings-page.js:366
 msgid "Diagnostics"
 msgstr "Диагностика"
 
-#: resources/dist/js/settings-page.js:574
+#: resources/dist/js/settings-page.js:508
 #: resources/src/jsx/components/pages/settings-page.jsx:136
-#: resources/dist/js/settings-page.js:467
+#: resources/dist/js/settings-page.js:470
 msgid "Site health report copied to clipboard."
 msgstr "Отчет о состоянии сайта скопирован в буфер обмена."
 
-#: resources/dist/js/settings-page.js:583
+#: resources/dist/js/settings-page.js:513
 #: resources/src/jsx/components/pages/settings-page.jsx:141
-#: resources/dist/js/settings-page.js:472
+#: resources/dist/js/settings-page.js:475
 msgid "Failed to copy the site health report. Please try again."
 msgstr ""
 "Не удалось скопировать отчет о состоянии сайта. Пожалуйста, попробуйте "
 "снова."
 
-#: resources/dist/js/settings-page.js:624
+#: resources/dist/js/settings-page.js:537
 #: resources/src/jsx/components/pages/settings-page.jsx:167
-#: resources/dist/js/settings-page.js:498
+#: resources/dist/js/settings-page.js:501
 msgid "Site health report downloaded."
 msgstr "Отчет о состоянии сайта загружен."
 
-#: resources/dist/js/settings-page.js:633
+#: resources/dist/js/settings-page.js:542
 #: resources/src/jsx/components/pages/settings-page.jsx:172
-#: resources/dist/js/settings-page.js:503
+#: resources/dist/js/settings-page.js:506
 msgid "Failed to download the site health report. Please try again."
 msgstr "Не удалось загрузить отчет о состоянии сайта. Пожалуйста, попробуйте снова."
 
-#: resources/dist/js/settings-page.js:675
-#: resources/src/jsx/components/pages/settings-page.jsx:213
-#: resources/dist/js/settings-page.js:544
+#: resources/dist/js/settings-page.js:572
+#: resources/src/jsx/components/pages/settings-page.jsx:214
+#: resources/dist/js/settings-page.js:548
 msgid "Copy Site Health Report"
 msgstr "Скопировать отчет о состоянии сайта"
 
-#: resources/dist/js/settings-page.js:679
-#: resources/src/jsx/components/pages/settings-page.jsx:221
-#: resources/dist/js/settings-page.js:552
+#: resources/dist/js/settings-page.js:577
+#: resources/src/jsx/components/pages/settings-page.jsx:223
+#: resources/dist/js/settings-page.js:557
 msgid "Download Site Health Report"
 msgstr "Скачать отчет о состоянии сайта"
 
-#: resources/dist/js/settings-page.js:870
+#: resources/dist/js/settings-page.js:708
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:108
-#: resources/dist/js/settings-page.js:669
+#: resources/dist/js/settings-page.js:674
 msgid "Failed to load the debug log. Please try again."
-msgstr "Не удалось загрузить журнал отладки. Пожалуйста, попробуйте еще раз."
+msgstr "Не удалось загрузить журнал отладки. Пожалуйста, попробуйте снова."
 
-#: resources/dist/js/settings-page.js:949
+#: resources/dist/js/settings-page.js:775
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:182
-#: resources/dist/js/settings-page.js:743
+#: resources/dist/js/settings-page.js:748
 msgid "Debug log cleared successfully."
 msgstr "Журнал отладки успешно очищен."
 
-#: resources/dist/js/settings-page.js:958
+#: resources/dist/js/settings-page.js:780
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
-#: resources/dist/js/settings-page.js:748
+#: resources/dist/js/settings-page.js:753
 msgid "Failed to clear the debug log. Please try again."
-msgstr "Не удалось очистить журнал отладки. Пожалуйста, попробуйте еще раз."
+msgstr "Не удалось очистить журнал отладки. Пожалуйста, попробуйте снова."
 
-#: resources/dist/js/settings-page.js:1017
+#: resources/dist/js/settings-page.js:812
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222
-#: resources/dist/js/settings-page.js:783
+#: resources/dist/js/settings-page.js:788
 msgid "Log copied to clipboard."
 msgstr "Журнал скопирован в буфер обмена."
 
-#: resources/dist/js/settings-page.js:1026
+#: resources/dist/js/settings-page.js:817
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
-#: resources/dist/js/settings-page.js:788
+#: resources/dist/js/settings-page.js:793
 msgid "Failed to copy log to clipboard."
 msgstr "Не удалось скопировать журнал в буфер обмена."
 
-#: resources/dist/js/settings-page.js:1051
+#: resources/dist/js/settings-page.js:833
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:250
-#: resources/dist/js/settings-page.js:811
+#: resources/dist/js/settings-page.js:816
 msgid "Debug log view"
 msgstr "Просмотр журнала отладки"
 
-#: resources/dist/js/settings-page.js:1059
+#: resources/dist/js/settings-page.js:839
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:258
-#: resources/dist/js/settings-page.js:819
+#: resources/dist/js/settings-page.js:824
 msgid "Requests"
 msgstr "Запросы"
 
-#: resources/dist/js/settings-page.js:1066
+#: resources/dist/js/settings-page.js:844
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:266
-#: resources/dist/js/settings-page.js:827
+#: resources/dist/js/settings-page.js:832
 msgid "Full Log"
 msgstr "Полный журнал"
 
-#: resources/dist/js/settings-page.js:1079
+#: resources/dist/js/settings-page.js:853
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
-#: resources/dist/js/settings-page.js:839
+#: resources/dist/js/settings-page.js:844
 msgid "Auto-refresh is on — click to stop"
 msgstr "Автообновление включено — нажмите, чтобы остановить"
 
-#: resources/dist/js/settings-page.js:1079
+#: resources/dist/js/settings-page.js:853
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:279
-#: resources/dist/js/settings-page.js:840
+#: resources/dist/js/settings-page.js:845
 msgid "Enable auto-refresh"
 msgstr "Включить автообновление"
 
-#: resources/dist/js/settings-page.js:1083
+#: resources/dist/js/settings-page.js:857
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:284
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:285
-#: resources/dist/js/settings-page.js:845
-#: resources/dist/js/settings-page.js:846
+#: resources/dist/js/settings-page.js:850
+#: resources/dist/js/settings-page.js:851
 msgid "Auto-refresh"
 msgstr "Автообновление"
 
-#: resources/dist/js/settings-page.js:1087
+#: resources/dist/js/settings-page.js:861
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:293
-#: resources/dist/js/settings-page.js:854
+#: resources/dist/js/settings-page.js:859
 msgid "Auto-refresh interval"
 msgstr "Интервал автообновления"
 
-#: resources/dist/js/settings-page.js:1104
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:315
-#: resources/dist/js/settings-page.js:876
+#: resources/dist/js/settings-page.js:878
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:316
+#: resources/dist/js/settings-page.js:882
 msgid "Copy to Clipboard"
 msgstr "Скопировать в буфер обмена"
 
-#: resources/dist/js/settings-page.js:1110
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:325
-#: resources/dist/js/settings-page.js:886
+#: resources/dist/js/settings-page.js:885
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:327
+#: resources/dist/js/settings-page.js:893
 msgid "Clear Log"
 msgstr "Очистить журнал"
 
-#: resources/dist/js/settings-page.js:1116
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:333
-#: resources/dist/js/settings-page.js:894
+#: resources/dist/js/settings-page.js:891
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:335
+#: resources/dist/js/settings-page.js:901
 msgid "Loading log..."
 msgstr "Загрузка журнала..."
 
-#: resources/dist/js/settings-page.js:1120
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:339
-#: resources/dist/js/settings-page.js:900
+#: resources/dist/js/settings-page.js:895
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:341
+#: resources/dist/js/settings-page.js:907
 msgid ""
 "The debug log is empty. Perform some actions (e.g. activate a license) and "
 "refresh to see entries."
 msgstr ""
 "Журнал отладки пуст. Выполните некоторые действия (например, активируйте "
-"лицензию) и обновите страницу, чтобы увидеть записи."
+"лицензию) и обновите, чтобы увидеть записи."
 
-#: resources/dist/js/settings-page.js:1127
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:353
-#: resources/dist/js/settings-page.js:914
+#: resources/dist/js/settings-page.js:902
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:355
+#: resources/dist/js/settings-page.js:921
 msgid "Debug log contents"
 msgstr "Содержимое журнала отладки"
 
-#: resources/dist/js/settings-page.js:1212
+#: resources/dist/js/settings-page.js:962
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
-#: resources/dist/js/settings-page.js:963
+#: resources/dist/js/settings-page.js:970
 msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
 msgstr "Режим отладки включен. Теперь доступна вкладка \"Журнал отладки\"."
 
-#: resources/dist/js/settings-page.js:1212
+#: resources/dist/js/settings-page.js:962
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
-#: resources/dist/js/settings-page.js:964
+#: resources/dist/js/settings-page.js:971
 msgid "Debug mode disabled."
 msgstr "Режим отладки отключен."
 
-#: resources/dist/js/settings-page.js:1224
+#: resources/dist/js/settings-page.js:970
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:50
-#: resources/dist/js/settings-page.js:973
+#: resources/dist/js/settings-page.js:980
 msgid "Failed to save the setting. Please try again."
 msgstr "Не удалось сохранить настройку. Пожалуйста, попробуйте снова."
 
-#: resources/dist/js/settings-page.js:1253
+#: resources/dist/js/settings-page.js:988
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
-#: resources/dist/js/settings-page.js:998
+#: resources/dist/js/settings-page.js:1005
 msgid ""
 "When enabled, all HTTP requests and responses to remote services (license "
 "activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
 "the Debug Log tab to inspect the captured data."
 msgstr ""
-"При включении все HTTP-запросы и ответы к удалённым службам (активация "
-"лицензии, загрузка плагинов и т. д.) записываются в специальный файл "
+"При включении все HTTP-запросы и ответы на удаленные сервисы (активация "
+"лицензии, загрузка плагинов и т.д.) записываются в специальный файл "
 "журнала. Используйте вкладку Журнал отладки для просмотра захваченных "
 "данных."
 
-#: resources/dist/js/settings-page.js:1254
+#: resources/dist/js/settings-page.js:989
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
-#: resources/dist/js/settings-page.js:1005
+#: resources/dist/js/settings-page.js:1012
 msgid "Enable Debug Mode"
 msgstr "Включить режим отладки"
 
-#: resources/dist/js/settings-page.js:1261
+#: resources/dist/js/settings-page.js:996
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
-#: resources/dist/js/settings-page.js:1014
+#: resources/dist/js/settings-page.js:1021
 msgid ""
 "Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
 "data."
 msgstr ""
-"Запись отладки активна. Переключитесь на вкладку \"Журнал отладки\", чтобы "
+"Журнал отладки активен. Переключитесь на вкладку \"Журнал отладки\", чтобы "
 "просмотреть захваченные данные."
 
-#: resources/dist/js/settings-page.js:1352
+#: resources/dist/js/settings-page.js:1078
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
-#: resources/dist/js/settings-page.js:1096, fuzzy
+#: resources/dist/js/settings-page.js:1103, fuzzy
 msgid "ERR"
 msgstr "ERR"
 
-#: resources/dist/js/settings-page.js:1383
+#: resources/dist/js/settings-page.js:1107
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:108
-#: resources/dist/js/settings-page.js:1134
+#: resources/dist/js/settings-page.js:1141
 msgid "Request"
 msgstr "Запрос"
 
-#: resources/dist/js/settings-page.js:1389
+#: resources/dist/js/settings-page.js:1113
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:115
-#: resources/dist/js/settings-page.js:1141
+#: resources/dist/js/settings-page.js:1148
 msgid "Response"
 msgstr "Ответ"
 
-#: resources/dist/js/settings-page.js:1393
+#: resources/dist/js/settings-page.js:1117
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:121
-#: resources/dist/js/settings-page.js:1147
+#: resources/dist/js/settings-page.js:1154
 msgid "No response recorded for this request."
-msgstr "Для этого запроса нет записанной реакции."
+msgstr "Ответ для этого запроса не записан."
 
-#: resources/dist/js/settings-page.js:1410
+#: resources/dist/js/settings-page.js:1135
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:146
-#: resources/dist/js/settings-page.js:1172
+#: resources/dist/js/settings-page.js:1179
 msgid "No requests found in the log."
 msgstr "В журнале не найдено запросов."
 
-#: resources/dist/js/settings-page.js:1416
+#: resources/dist/js/settings-page.js:1141
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#: resources/dist/js/settings-page.js:1181
+#: resources/dist/js/settings-page.js:1188
 msgid "1 request recorded"
-msgstr "Записан 1 запрос"
+msgstr "1 запрос записан"
 
-#: resources/dist/js/settings-page.js:1416
+#: resources/dist/js/settings-page.js:1141
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:157
-#: resources/dist/js/settings-page.js:1183
+#: resources/dist/js/settings-page.js:1190
 #, js-format
 msgid "%d requests recorded"
 msgstr "%d запросов записано"
 
-#: resources/dist/js/welcome-page.js:427
+#: resources/dist/js/welcome-page.js:429
 #: resources/src/jsx/components/pages/welcome-page.jsx:37
-#: resources/dist/js/welcome-page.js:368
+#: resources/dist/js/welcome-page.js:371
 msgid "Welcome to PublishPress Hub"
 msgstr "Добро пожаловать в PublishPress Hub"
 
-#: resources/dist/js/welcome-page.js:427
+#: resources/dist/js/welcome-page.js:429
 #: resources/src/jsx/components/pages/welcome-page.jsx:38
-#: resources/dist/js/welcome-page.js:369
+#: resources/dist/js/welcome-page.js:372
 msgid "Your publishing tools, in one place."
 msgstr "Ваши инструменты публикации в одном месте."
 
-#: resources/dist/js/welcome-page.js:429
+#: resources/dist/js/welcome-page.js:431
 #: resources/src/jsx/components/pages/welcome-page.jsx:39
-#: resources/dist/js/welcome-page.js:370
+#: resources/dist/js/welcome-page.js:373
 msgid ""
 "Manage your plugins, build your editorial workflow, and find the help you "
 "need to get started."
 msgstr ""
-"Управляйте своими плагинами, стройте свой редакционный процесс и находите "
-"помощь, необходимую для начала работы."
+"Управляйте своими плагинами, создавайте свой редакционный рабочий процесс и "
+"находите необходимую помощь, чтобы начать."
 
-#: resources/dist/js/welcome-page.js:434
+#: resources/dist/js/welcome-page.js:436
 #: resources/src/jsx/components/pages/welcome-page.jsx:41
-#: resources/dist/js/welcome-page.js:372
+#: resources/dist/js/welcome-page.js:375
 msgid "View Plugins Dashboard"
 msgstr "Просмотреть панель плагинов"
 
-#: resources/dist/js/welcome-page.js:436
+#: resources/dist/js/welcome-page.js:438
 #: resources/src/jsx/components/pages/welcome-page.jsx:43
-#: resources/dist/js/welcome-page.js:374
+#: resources/dist/js/welcome-page.js:377
 msgid "Help and account"
 msgstr "Помощь и аккаунт"
 
-#: resources/dist/js/welcome-page.js:444
+#: resources/dist/js/welcome-page.js:446
 #: resources/src/jsx/components/pages/welcome-page.jsx:46
-#: resources/dist/js/welcome-page.js:377
+#: resources/dist/js/welcome-page.js:380
 msgid "Setup guides and answers for every plugin."
 msgstr "Руководства по настройке и ответы для каждого плагина."
 
-#: resources/dist/js/welcome-page.js:454
+#: resources/dist/js/welcome-page.js:456
 #: resources/src/jsx/components/pages/welcome-page.jsx:51
-#: resources/dist/js/welcome-page.js:382
+#: resources/dist/js/welcome-page.js:385
 msgid "Get support"
 msgstr "Получить поддержку"
 
-#: resources/dist/js/welcome-page.js:454
+#: resources/dist/js/welcome-page.js:456
 #: resources/src/jsx/components/pages/welcome-page.jsx:51
-#: resources/dist/js/welcome-page.js:382
+#: resources/dist/js/welcome-page.js:385
 msgid "Get help from the PublishPress team."
 msgstr "Получите помощь от команды PublishPress."
 
-#: resources/dist/js/welcome-page.js:464
+#: resources/dist/js/welcome-page.js:466
 #: resources/src/jsx/components/pages/welcome-page.jsx:56
-#: resources/dist/js/welcome-page.js:387
+#: resources/dist/js/welcome-page.js:390
 msgid "Account and licenses"
 msgstr "Аккаунт и лицензии"
 
-#: resources/dist/js/welcome-page.js:464
+#: resources/dist/js/welcome-page.js:466
 #: resources/src/jsx/components/pages/welcome-page.jsx:56
-#: resources/dist/js/welcome-page.js:387
+#: resources/dist/js/welcome-page.js:390
 msgid "Find your license keys and manage your subscription."
 msgstr "Найдите свои ключи лицензий и управляйте своей подпиской."
 
-#: resources/dist/js/welcome-page.js:476
+#: resources/dist/js/welcome-page.js:478
 #: resources/src/jsx/components/pages/welcome-page.jsx:65
-#: resources/dist/js/welcome-page.js:396
+#: resources/dist/js/welcome-page.js:399
 msgid "What you can do with PublishPress Hub"
 msgstr "Что вы можете сделать с PublishPress Hub"
 
-#: resources/dist/js/welcome-page.js:478
+#: resources/dist/js/welcome-page.js:480
 #: resources/src/jsx/components/pages/welcome-page.jsx:68
-#: resources/dist/js/welcome-page.js:399
+#: resources/dist/js/welcome-page.js:402
 msgid ""
 "PublishPress Hub has everything you need to install, update, and manage "
 "your PublishPress plugins. We're here to help you build a publishing system "
@@ -2356,121 +3314,121 @@ msgid ""
 msgstr ""
 "PublishPress Hub имеет всё, что вам нужно для установки, обновления и "
 "управления вашими плагинами PublishPress. Мы здесь, чтобы помочь вам "
-"создать издательскую систему, которая идеально подходит вашей команде."
+"создать издательскую систему, которая идеально подходит для вашей команды."
 
-#: resources/dist/js/welcome-page.js:489
+#: resources/dist/js/welcome-page.js:491
 #: resources/src/jsx/components/pages/welcome-page.jsx:77
-#: resources/dist/js/welcome-page.js:408
+#: resources/dist/js/welcome-page.js:411
 msgid "Centralized Dashboard"
 msgstr "Централизованная панель управления"
 
-#: resources/dist/js/welcome-page.js:491
+#: resources/dist/js/welcome-page.js:493
 #: resources/src/jsx/components/pages/welcome-page.jsx:80
-#: resources/dist/js/welcome-page.js:411
+#: resources/dist/js/welcome-page.js:414
 msgid ""
 "View all your PublishPress plugins with their licenses, versions, and key "
 "details."
 msgstr ""
-"Держите все ваши плагины PublishPress в актуальном состоянии с обновлениями "
-"в один клик."
+"Просмотреть все ваши плагины PublishPress с их лицензиями, версиями и "
+"ключевыми деталями."
 
-#: resources/dist/js/welcome-page.js:500
+#: resources/dist/js/welcome-page.js:502
 #: resources/src/jsx/components/pages/welcome-page.jsx:89
-#: resources/dist/js/welcome-page.js:420
+#: resources/dist/js/welcome-page.js:423
 msgid "One-Click Installation"
 msgstr "Установка в один клик"
 
-#: resources/dist/js/welcome-page.js:502
+#: resources/dist/js/welcome-page.js:504
 #: resources/src/jsx/components/pages/welcome-page.jsx:92
-#: resources/dist/js/welcome-page.js:423
+#: resources/dist/js/welcome-page.js:426
 msgid ""
 "Install free PublishPress plugins directly from the Hub without visiting "
 "WordPress.org."
 msgstr ""
-"Устанавливайте бесплатные плагины PublishPress прямо из Hub без посещения "
+"Устанавливайте бесплатные плагины PublishPress прямо из Hub, не посещая "
 "WordPress.org."
 
-#: resources/dist/js/welcome-page.js:511
+#: resources/dist/js/welcome-page.js:513
 #: resources/src/jsx/components/pages/welcome-page.jsx:101
-#: resources/dist/js/welcome-page.js:432
+#: resources/dist/js/welcome-page.js:435
 msgid "License Management"
 msgstr "Управление лицензиями"
 
-#: resources/dist/js/welcome-page.js:513
+#: resources/dist/js/welcome-page.js:515
 #: resources/src/jsx/components/pages/welcome-page.jsx:104
-#: resources/dist/js/welcome-page.js:435
+#: resources/dist/js/welcome-page.js:438
 msgid ""
 "Connect your PublishPress licenses to easily install and activate Pro "
 "versions."
 msgstr ""
-"Подключите ваши лицензии PublishPress, чтобы легко устанавливать и "
+"Подключите свои лицензии PublishPress, чтобы легко устанавливать и "
 "активировать Pro-версии."
 
-#: resources/dist/js/welcome-page.js:522
+#: resources/dist/js/welcome-page.js:524
 #: resources/src/jsx/components/pages/welcome-page.jsx:113
-#: resources/dist/js/welcome-page.js:444
+#: resources/dist/js/welcome-page.js:447
 msgid "Easy Updates"
 msgstr "Легкие обновления"
 
-#: resources/dist/js/welcome-page.js:524
+#: resources/dist/js/welcome-page.js:526
 #: resources/src/jsx/components/pages/welcome-page.jsx:116
-#: resources/dist/js/welcome-page.js:447
+#: resources/dist/js/welcome-page.js:450
 msgid "Keep all your PublishPress plugins up to date with one-click updates."
 msgstr ""
-"Держите все ваши плагины PublishPress в актуальном состоянии с обновлениями "
+"Держите все свои плагины PublishPress в актуальном состоянии с обновлениями "
 "в один клик."
 
-#: resources/dist/js/welcome-page.js:533
-#: resources/src/jsx/components/pages/welcome-page.jsx:125
-#: resources/dist/js/welcome-page.js:456
-msgid "Status Monitoring"
-msgstr "Мониторинг статуса"
-
 #: resources/dist/js/welcome-page.js:535
-#: resources/src/jsx/components/pages/welcome-page.jsx:128
+#: resources/src/jsx/components/pages/welcome-page.jsx:125
 #: resources/dist/js/welcome-page.js:459
+msgid "Status Monitoring"
+msgstr "Мониторинг состояния"
+
+#: resources/dist/js/welcome-page.js:537
+#: resources/src/jsx/components/pages/welcome-page.jsx:128
+#: resources/dist/js/welcome-page.js:462
 msgid ""
 "Monitor plugin activation status, detect conflicts, and ensure "
 "compatibility."
 msgstr ""
-"Мониторьте статус активации плагина, выявляйте конфликты и обеспечивайте "
-"совместимость."
+"Отслеживайте статус активации плагина, обнаруживайте конфликты и "
+"обеспечивайте совместимость."
 
-#: resources/dist/js/welcome-page.js:544
+#: resources/dist/js/welcome-page.js:546
 #: resources/src/jsx/components/pages/welcome-page.jsx:137
-#: resources/dist/js/welcome-page.js:468
+#: resources/dist/js/welcome-page.js:471
 msgid "Get Started"
 msgstr "Начать"
 
-#: resources/dist/js/welcome-page.js:547
+#: resources/dist/js/welcome-page.js:549
 #: resources/src/jsx/components/pages/welcome-page.jsx:140
-#: resources/dist/js/welcome-page.js:471
+#: resources/dist/js/welcome-page.js:474
 #, js-format
 msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
 msgstr ""
-"Готовы к исследованию? Посетите %s, чтобы увидеть все доступные плагины "
+"Готовы исследовать? Посетите %s, чтобы увидеть все доступные плагины "
 "PublishPress."
 
-#: resources/dist/js/welcome-page.js:547
+#: resources/dist/js/welcome-page.js:549
 #: resources/src/jsx/components/pages/welcome-page.jsx:141
-#: resources/dist/js/welcome-page.js:472
+#: resources/dist/js/welcome-page.js:475
 msgid "Plugins Dashboard"
 msgstr "Панель плагинов"
 
-#: resources/dist/js/welcome-page.js:551
+#: resources/dist/js/welcome-page.js:553
 #: resources/src/jsx/components/pages/welcome-page.jsx:151
-#: resources/dist/js/welcome-page.js:482
+#: resources/dist/js/welcome-page.js:485
 msgid "Already know what you're doing? Great! You can "
 msgstr "Уже знаете, что делаете? Отлично! Вы можете "
 
-#: resources/dist/js/welcome-page.js:553
+#: resources/dist/js/welcome-page.js:555
 #: resources/src/jsx/components/pages/welcome-page.jsx:153
-#: resources/dist/js/welcome-page.js:484
+#: resources/dist/js/welcome-page.js:487
 msgid "dismiss this page"
 msgstr "закрыть эту страницу"
 
-#: resources/dist/js/welcome-page.js:553
+#: resources/dist/js/welcome-page.js:555
 #: resources/src/jsx/components/pages/welcome-page.jsx:155
-#: resources/dist/js/welcome-page.js:486, fuzzy
+#: resources/dist/js/welcome-page.js:489, fuzzy
 msgid "."
 msgstr "."
