@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container\Contracts;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Psr\Container\ContainerInterface;
+
+\defined('ABSPATH') || exit;
 
 interface DependencyContainerInterface extends ContainerInterface
 {

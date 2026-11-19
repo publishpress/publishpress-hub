@@ -15,6 +15,7 @@ function load(relativePath, window, apiFetch = () => {}) {
             if (!(slot in states)) states[slot] = typeof initial === 'function' ? initial() : initial;
             return [states[slot], value => { states[slot] = typeof value === 'function' ? value(states[slot]) : value; }];
         },
+        memo: component => component,
         useCallback: callback => callback,
         useRef: initial => ({ current: initial }),
         useEffect: () => {},
@@ -30,8 +31,11 @@ function load(relativePath, window, apiFetch = () => {}) {
             if (name === '@wordpress/element') return hooks;
             if (name === '@wordpress/components') return { CheckboxControl: 'Checkbox', TextControl: 'Text', ToggleControl: 'Toggle', Spinner: 'Spinner' };
             if (name === '@wordpress/api-fetch') return { __esModule: true, default: apiFetch };
-            if (name === '@publishpress-hub/i18n') return { __: text => text, sprintf: (text, name) => text.replace('%s', name) };
+            if (name === '@publishpress-hub/i18n') return { __: text => text, _n: (single, plural, count) => count === 1 ? single : plural, sprintf: (text, ...values) => { let index = 0; return text.replace(/%(?:(\d+)\$)?[sd]/g, (match, position) => String(values[position ? Number(position) - 1 : index++])); } };
             if (name.endsWith('/buttons/button')) return { Button: 'Button' };
+            if (name.endsWith('/message/message')) return { Message: 'Message' };
+            if (name === '../../modal') return { Modal: 'Modal' };
+            if (name === './license-key-control') return { LicenseKeyControl: 'LicenseKey' };
             if (name === './action-button') return { ActionButton: 'ActionButton' };
             throw Error(name);
         },
@@ -43,7 +47,7 @@ async function main() {
     const stored = new Map();
     const window = {
         ppHubPluginsDashboardConfig: { preferencesKey: '1:7' },
-        location: { hash: '#suite-license' },
+        location: { hash: '' },
         localStorage: { getItem: key => stored.get(key), setItem: (key, value) => stored.set(key, value) },
     };
     const preferences = load('resources/src/jsx/components/plugins-list/hooks/use-dashboard-preferences.js', window);
@@ -65,29 +69,19 @@ async function main() {
     window.localStorage.getItem = () => { throw Error('Storage disabled'); };
     assert.equal(preferences.exports.readPreferences().layout, 'list');
 
-    const requests = [];
-    let refreshed = 0;
-    const suite = load('resources/src/jsx/components/pages/suite-license.jsx', window, async request => {
-        requests.push(request);
-        if (request.path.includes('statuses')) throw Error('Product not covered');
-        return { success: true, licensed: true };
-    });
-    const render = () => suite.render(module => module.SuiteLicense({
-        plugins: [{ slug: 'statuses', name: 'Statuses' }, { slug: 'planner', name: 'Planner' }],
-        onRefresh: async () => { refreshed++; }, isLoading: false,
-    }));
-    let tree = render();
-    flatten(tree).find(node => node.type === 'Text').props.onChange('test-key');
-    flatten(tree).filter(node => node.type === 'Checkbox').forEach(node => node.props.onChange(true));
-    tree = render();
-    await flatten(tree).find(node => node.type === 'form').props.onSubmit({ preventDefault() {} });
-    assert.equal(requests.length, 2, 'A failure must not prevent checking another selected product');
-    assert.ok(requests.every(request => request.path.endsWith('/activate-license') && request.data.applyToAll === false));
-    assert.equal(refreshed, 1);
-    tree = render();
-    assert.equal(flatten(tree).find(node => node.type === 'Text').props.value, '', 'Do not retain the entered key after completion');
-    const output = JSON.stringify(tree);
-    assert.ok(output.includes('Product not covered') && output.includes('License activated.'));
+    const licenseModal = load('resources/src/jsx/components/plugins-list/components/modal-license-input.jsx', window);
+    let submitted;
+    const licenseProps = {
+        showApplyToAll: true,
+        onActivate: (key, applyToAll) => { submitted = { key, applyToAll }; },
+    };
+    let licenseTree = licenseModal.render(module => module.ModalLicenseInput(licenseProps));
+    flatten(licenseTree).find(node => node.type === 'LicenseKey').props.onChange('fixture-license');
+    flatten(licenseTree).find(node => node.type === 'Checkbox').props.onChange(true);
+    licenseTree = licenseModal.render(module => module.ModalLicenseInput(licenseProps));
+    flatten(licenseTree).find(node => node.type === 'Button' && node.props.variant === 'primary').props.onClick();
+    assert.deepEqual(submitted, { key: 'fixture-license', applyToAll: true },
+        'The per-plugin license dialog retains activation for all plugins');
 
     const cards = load('resources/src/jsx/components/plugins-list/components/plugin-card.jsx', window);
     let deactivated = false;
@@ -105,13 +99,17 @@ async function main() {
     flatten(card).find(node => node.type === 'Toggle').props.onChange(false);
     assert.equal(deactivated, true, 'Card deactivation uses the existing confirmation handler');
     card = cards.exports.PluginCard({ ...cardProps, progressStates: { isUpdating: true } });
-    assert.equal(flatten(card).find(node => node.type === 'Toggle').props.disabled, true);
+    const busyToggle = flatten(card).find(node => node.type === 'Toggle');
+    assert.equal(busyToggle.props['aria-disabled'], true);
+    deactivated = false;
+    busyToggle.props.onChange(false);
+    assert.equal(deactivated, false, 'A focusable busy toggle must not trigger deactivation');
     assert.ok(flatten(card).filter(node => node.type === 'ActionButton').every(node => node.props.disabled));
     card = cards.exports.PluginCard({ ...cardProps, pluginFamily: { ...cardProps.pluginFamily, hasConflictingInstallations: true } });
     assert.equal(flatten(card).some(node => node.type === 'Toggle'), false);
     assert.equal(flatten(card).some(node => node.props?.href?.startsWith('/wp-admin/')), false);
     console.log('Passed: card deactivation handler, busy controls, and conflict controls.');
-    console.log('Passed: preference persistence, user isolation, unavailable storage, partial license failure, individual validation, and key clearing.');
+    console.log('Passed: preference persistence, user isolation, and unavailable storage.');
 }
 
 main().catch(error => { console.error(error); process.exitCode = 1; });

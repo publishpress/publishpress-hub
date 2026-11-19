@@ -9,11 +9,6 @@
  */
 
 /**
- * External dependencies
- */
-import filter from 'lodash/filter';
-
-/**
  * WordPress dependencies
  */
 import { NoticeList } from '@wordpress/components';
@@ -25,14 +20,12 @@ export default function NoticesList() {
         (select) => select('core/notices').getNotices(),
         []
     );
-    const dismissibleNotices = filter(notices, {
-        isDismissible: true,
-        type: 'default',
-    });
-    const nonDismissibleNotices = filter(notices, {
-        isDismissible: false,
-        type: 'default',
-    });
+    const dismissibleNotices = notices.filter(
+        (notice) => notice.isDismissible && notice.type === 'default'
+    );
+    const nonDismissibleNotices = notices.filter(
+        (notice) => !notice.isDismissible && notice.type === 'default'
+    );
 
     return (
         <>

@@ -39,7 +39,7 @@ const ModalUpgradeComponent = ({
                 <Button variant='link' href={proDetailsUrl}>
                     {__('Discover all Pro features', 'publishpress-hub')}
                 </Button>
-                <span>|</span>
+                <span aria-hidden="true">|</span>
                 <Button variant='link' href={changelogUrl}>
                     {__('Changelog', 'publishpress-hub')}
                 </Button>

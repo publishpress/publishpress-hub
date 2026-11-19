@@ -14,10 +14,10 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WP\Asset;
 
-defined('ABSPATH') || exit;
-
 use InvalidArgumentException;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
+
+\defined('ABSPATH') || exit;
 
 class WPAssetAdapter implements AssetServiceInterface
 {

@@ -2,15 +2,15 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Hub 1.0.4-beta.2\n"
+"Project-Id-Version: PublishPress Hub 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
-"PO-Revision-Date: 2026-10-01 10:25+0000\n"
+"POT-Creation-Date: 2026-11-16T12:00:34+00:00\n"
+"PO-Revision-Date: 2026-11-16 12:47+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Language: yor\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: publishpress-hub.php:4
 #: src/Admin/Page/WelcomePageController.php:261
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:121, fuzzy
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:123, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
@@ -29,10 +29,11 @@ msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
 msgstr ""
-"Ibi iṣakoso ti aarin fun gbogbo awọn afikun PublishPress - fi sori ẹrọ, ṣe "
-"imudojuiwọn, ati ṣakoso awọn iwe-aṣẹ lati inu iboju iṣakoso kan."
+"Ile-iṣẹ iṣakoso ti aarin fun gbogbo awọn afikun PublishPress - fi sori ẹrọ, "
+"ṣe imudojuiwọn, ati ṣakoso awọn iwe-aṣẹ lati inu dashboard kan."
 
 #: publishpress-hub.php:7
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:64
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
@@ -44,17 +45,29 @@ msgstr "https://publishpress.com"
 
 #: src/Admin/Page/ComponentsShowcaseController.php:120
 msgid "Please wait while we load the components showcase..."
-msgstr "Jọwọ duro nigba ti a ba n gbe awọn eroja..."
+msgstr "Jọwọ duro nigba ti a ba n gbe awọn ẹya ẹrọ..."
+
+#: src/Admin/Page/McpPageController.php:91
+#: src/Admin/Page/McpPageController.php:92
+#: resources/dist/js/mcp-page.js:588
+#: resources/src/jsx/components/pages/mcp-page.jsx:82
+#: resources/dist/js/mcp-page.js:480, fuzzy
+msgid "AI Connections"
+msgstr "AI Connections"
+
+#: src/Admin/Page/McpPageController.php:113
+msgid "Please wait while we load AI connections..."
+msgstr "Jọwọ duro nigbati a ba n gbe awọn asopọ AI..."
 
 #: src/Admin/Page/PluginsDashboardController.php:136
 msgid "Please wait while we load the plugins dashboard..."
-msgstr "Jọwọ duro nigba ti a ba n gbe ibi iṣakoso awọn afikun..."
+msgstr "Jọwọ duro nigba ti a ba n gbe dashboard awọn afikun..."
 
 #: src/Admin/Page/SettingsPageController.php:106
 #: src/Admin/Page/SettingsPageController.php:107
-#: resources/dist/js/settings-page.js:473
+#: resources/dist/js/settings-page.js:462
 #: resources/src/jsx/components/pages/settings-page.jsx:81
-#: resources/dist/js/settings-page.js:412
+#: resources/dist/js/settings-page.js:415
 msgid "Settings"
 msgstr "Awọn eto"
 
@@ -64,215 +77,747 @@ msgstr "Jọwọ duro nigba ti a ba n gbe oju-iwe awọn eto..."
 
 #: src/Admin/Page/WelcomePageController.php:145
 msgid "You do not have sufficient permissions to access this page."
-msgstr "Iwọ ko ni aṣẹ to peye lati wọle si oju-iwe yii."
+msgstr "O ko ni awọn igbanilaaye to to lati wọle si oju-iwe yii."
 
 #: src/Admin/Page/WelcomePageController.php:182
 #: src/Admin/Page/WelcomePageController.php:183
 msgid "Welcome"
-msgstr "Kaabo"
+msgstr "Kaabọ"
 
 #: src/Admin/Page/WelcomePageController.php:205
 msgid "Please wait while we load the welcome page..."
 msgstr "Jọwọ duro nigba ti a ba n gbe oju-iwe kaabọ..."
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:116
+#: src/Admin/Template/PluginsDashboard/plugins-dashboard-container.php:26
+msgid "Language pack has not been checked yet."
+msgstr "Pack ede ko ti ṣayẹwo sibẹsibẹ."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:100
+msgid "Site locale is English. No language pack is downloaded."
+msgstr "Ipo aaye jẹ Gẹẹsi. Ko si paká ede ti a gba lati ayelujara."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:109
+msgid "No language packs are registered."
+msgstr "Ko si awọn paká ede ti a forukọsilẹ."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:181
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:189
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:289
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:331
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:419
+msgid "Language pack directory is not available."
+msgstr "Ibi ipamọ paká ede ko wa."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:222
+#. translators: 1: text domain, 2: locale, 3: plugin version
+#, php-format
+msgid "Language pack for %1$s (%2$s) matches %3$s."
+msgstr "Paká ede fun %1$s (%2$s) baamu %3$s."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:242
+#. translators: 1: text domain, 2: locale, 3: plugin version
+#, php-format
+msgid "Language pack for %1$s (%2$s) installed for %3$s."
+msgstr "Paká ede fun %1$s (%2$s) ti fi sori ẹrọ fun %3$s."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:261
+msgid "Language pack URL was rejected."
+msgstr "URL paká ede ni a kọ."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:269
+#. translators: 1: text domain, 2: locale
+#, php-format
+msgid ""
+"Language pack download failed for %1$s (%2$s). The installed pack was left "
+"in place."
+msgstr ""
+"Ikuna lati gba paká ede silẹ fun %1$s (%2$s). Paká ti a fi sori ẹrọ ni a fi "
+"silẹ ni ipo rẹ."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:293
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:298
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:311
+msgid "Language pack could not be unpacked."
+msgstr "Paká ede ko le ni ipamọ."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:322
+msgid ""
+"Language pack is missing a catalog file. The installed pack was left in "
+"place."
+msgstr "Paká ede ko ni faili katalogi. Paká ti a fi sori ẹrọ ni a fi silẹ ni ipo rẹ."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:327
+msgid "Language pack JSON catalog is invalid. The installed pack was left in place."
+msgstr "Katalogi JSON paká ede ko tọ. Paká ti a fi sori ẹrọ ni a fi silẹ ni ipo rẹ."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:337
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:368
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:384
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:425
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:430
+msgid "Language pack could not be stored. The installed pack was left in place."
+msgstr "Paká ede ko le ni ipamọ. Paká ti a fi sori ẹrọ ni a fi silẹ ni ipo rẹ."
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:342
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:348
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:401
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:406
+msgid ""
+"Language pack PHP catalog could not be built. The installed pack was left "
+"in place."
+msgstr ""
+"Katalogi PHP paká ede ko le kọ. Paká ti a fi sori ẹrọ ni a fi silẹ ni ipo "
+"rẹ."
+
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
-msgstr "Ikilo: Iwe-aṣẹ fun %1$s ti pari. %2$s"
+msgstr "Ikilọ: Iwe-aṣẹ fun %1$s ti pari. %2$s"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:118
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:132
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:123
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:137
 msgid "Manage licenses"
 msgstr "Ṣakoso awọn iwe-aṣẹ"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:129
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
-msgstr "Ikilo: %1$d afikun ti ni awọn iwe-aṣẹ ti o ti pari: %2$s. %3$s"
+msgstr "Ikilọ: %1$d afikun(n) ni awọn iwe-aṣẹ ti pari: %2$s. %3$s"
+
+#: src/Application/Service/License/LicenseManagementService.php:294
+msgid ""
+"The license server accepted your key, but this site could not save its "
+"active license. Please contact support and mention this message."
+msgstr ""
+"Olupin iwe-aṣẹ gba bọtini rẹ, ṣugbọn aaye yii ko le fipamọ iwe-aṣẹ ti o "
+"ṣiṣẹ. Jọwọ kan si atilẹyin ati pe eyi ni ifiranṣẹ."
+
+#: src/Application/Service/Mcp/McpConnectionService.php:213
+#. translators: %s: full WordPress site address.
+#, php-format
+msgid ""
+"PublishPress actions for %s. These tools apply only to this site. If "
+"several sites are connected and the requested site is unclear, ask which "
+"site to use before calling a tool. Confirm the target site before changing "
+"site data."
+msgstr ""
+"Iṣe PublishPress fun %s. Awọn irinṣẹ wọnyi kan si aaye yii nikan. Ti "
+"ọpọlọpọ awọn aaye ba ti so pọ ati pe aaye ti a beere ko ye, beere iru aaye "
+"lati lo ṣaaju ki o to pe irinṣẹ kan. Jẹrisi aaye ti o nlo ṣaaju ki o to "
+"yipada data aaye."
+
+#: src/Application/Service/Mcp/McpConnectionService.php:330
+msgid "WordPress version"
+msgstr "Version WordPress"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:331
+msgid "MCP Adapter version"
+msgstr "Version MCP Adapter"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:332
+msgid "Not active"
+msgstr "Ko ṣiṣẹ"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:333, fuzzy
+msgid "HTTPS"
+msgstr "HTTPS"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:334
+#: src/Application/Service/Mcp/McpConnectionService.php:337
+msgid "Available"
+msgstr "Wa"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:334
+msgid "Required"
+msgstr "Ti beere"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:335
+msgid "Application passwords"
+msgstr "Awọn ọrọ igbaniwọle ohun elo"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:337
+msgid "Unavailable; check WordPress or security plugin settings"
+msgstr "Ko si; ṣayẹwo awọn eto WordPress tabi awọn afikun aabo"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:338
+msgid "Registered actions"
+msgstr "Awọn iṣe ti a forukọsilẹ"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:339
+msgid "Selected actions exposed"
+msgstr "Àwọn iṣe ti a yan ti han"
+
+#: src/Application/Service/Mcp/McpSetupService.php:124
+msgid "Changes saved."
+msgstr "Àwọn ayipada ti fipamọ."
+
+#: src/Application/Service/Mcp/McpSetupService.php:126
+msgid ""
+"Changes saved. Restart your AI app or refresh its PublishPress connection "
+"to update the available actions."
+msgstr ""
+"Àwọn ayipada ti fipamọ. Tun bẹrẹ ohun elo AI rẹ tabi tun mu asopọ "
+"PublishPress rẹ lati ṣe imudojuiwọn awọn iṣe ti o wa."
+
+#: src/Application/Service/Mcp/McpSetupService.php:128
+msgid "Changes saved. Connect your AI app to continue."
+msgstr "Àwọn ayipada ti fipamọ. So ohun elo AI rẹ pọ lati tẹsiwaju."
+
+#: src/Application/Service/Mcp/McpSetupService.php:129
+msgid "Changes saved. Select at least one available action to continue."
+msgstr "Àwọn ayipada ti fipamọ. Yan o kere ju iṣe kan ti o wa lati tẹsiwaju."
+
+#: src/Application/Service/Mcp/McpSetupService.php:199
+msgid "Update WordPress to continue"
+msgstr "Imudojuiwọn WordPress lati tẹsiwaju"
+
+#: src/Application/Service/Mcp/McpSetupService.php:200
+msgid "WordPress 6.9 or newer is required."
+msgstr "WordPress 6.9 tabi tuntun jẹ dandan."
+
+#: src/Application/Service/Mcp/McpSetupService.php:202
+msgid "Open WordPress updates"
+msgstr "Ṣii awọn imudojuiwọn WordPress"
+
+#: src/Application/Service/Mcp/McpSetupService.php:207
+msgid "Install the MCP Adapter plugin"
+msgstr "Fi sori ẹrọ afikun MCP Adapter"
+
+#: src/Application/Service/Mcp/McpSetupService.php:208
+msgid ""
+"Install the official WordPress MCP Adapter plugin to connect your AI "
+"service."
+msgstr "Fi sori ẹrọ afikun MCP Adapter osise fun WordPress lati so iṣẹ AI rẹ pọ."
+
+#: src/Application/Service/Mcp/McpSetupService.php:211
+#: resources/dist/js/mcp-page.js:637
+#: resources/src/jsx/components/pages/mcp-page.jsx:102
+#: resources/dist/js/mcp-page.js:500
+msgid "Manage plugins"
+msgstr "Ṣakoso awọn afikun"
+
+#: src/Application/Service/Mcp/McpSetupService.php:211
+msgid "Set up MCP Adapter"
+msgstr "Ṣeto MCP Adapter"
+
+#: src/Application/Service/Mcp/McpSetupService.php:216
+msgid "Use HTTPS to connect your AI"
+msgstr "Lo HTTPS lati so AI rẹ pọ"
+
+#: src/Application/Service/Mcp/McpSetupService.php:217
+msgid "Both WordPress and site addresses must use HTTPS."
+msgstr "Mejeeji WordPress ati awọn adirẹsi aaye gbọdọ lo HTTPS."
+
+#: src/Application/Service/Mcp/McpSetupService.php:219
+msgid "Open site settings"
+msgstr "Ṣii awọn eto aaye"
+
+#: src/Application/Service/Mcp/McpSetupService.php:224
+msgid "Add a PublishPress plugin with AI actions"
+msgstr "Fi afikun PublishPress kun pẹlu awọn iṣe AI"
+
+#: src/Application/Service/Mcp/McpSetupService.php:225
+msgid ""
+"You don't have any PublishPress plugins installed that support AI actions "
+"yet."
+msgstr ""
+"O ko ni eyikeyi awọn afikun PublishPress ti a fi sori ẹrọ ti o ṣe atilẹyin "
+"awọn iṣe AI sibẹsibẹ."
+
+#: src/Application/Service/Mcp/McpSetupService.php:227
+msgid "Open PublishPress plugins"
+msgstr "Ṣii awọn afikun PublishPress"
+
+#: src/Application/Service/Mcp/McpSetupService.php:232
+msgid "Allow application passwords for your account"
+msgstr "Gba awọn ọrọ igbaniwọle ohun elo fun iroyin rẹ"
+
+#: src/Application/Service/Mcp/McpSetupService.php:234
+msgid ""
+"Create an application password in your WordPress profile for assisted or "
+"manual setup."
+msgstr ""
+"Ṣẹda ọrọ igbaniwọle ohun elo kan ninu profaili WordPress rẹ fun iṣeto "
+"iranlọwọ tabi ọwọ."
+
+#: src/Application/Service/Mcp/McpSetupService.php:235
+msgid ""
+"Application passwords are unavailable for your account. HTTPS or security "
+"plugin settings may need attention."
+msgstr ""
+"Awọn ọrọ igbaniwọle ohun elo ko wa fun iroyin rẹ. HTTPS tabi awọn eto "
+"afikun aabo le nilo akiyesi."
+
+#: src/Application/Service/Mcp/McpSetupService.php:237
+msgid "Open application passwords"
+msgstr "Ṣii awọn ọrọ igbaniwọle ohun elo"
+
+#: src/Application/Service/Mcp/McpSetupService.php:258, fuzzy
+msgid "PASTE_YOUR_APPLICATION_PASSWORD_HERE"
+msgstr "PASTE_YOUR_APPLICATION_PASSWORD_HERE"
+
+#: src/Application/Service/Mcp/McpSetupService.php:277
+msgid "Ask my AI to help"
+msgstr "Beere lọwọ AI mi lati ṣe iranlọwọ"
+
+#: src/Application/Service/Mcp/McpSetupService.php:278
+msgid "Recommended. Ask your AI for a setup script to run on your computer."
+msgstr ""
+"Ti a ṣe iṣeduro. Beere lọwọ AI rẹ fun iwe afọwọkọ iṣeto lati ṣiṣẹ lori "
+"kọmputa rẹ."
+
+#: src/Application/Service/Mcp/McpSetupService.php:281
+#. translators: 1: endpoint, 2: username, 3: server identifier, 4: display name, 5: write access state.
+#, php-format
+msgid ""
+"Connect my AI app to PublishPress. Create a setup script and give me the "
+"exact terminal command to run it.\n"
+"\n"
+"1. Ask me to select my AI app and OS (Windows, macOS or Linux). Use "
+"interactive choices if available, otherwise numbered options.\n"
+"2. Create the script using your file tools. Request the specific permission "
+"if needed. If you cannot write locally, attach a downloadable script. Only "
+"fall back to code with save instructions when neither is possible. Use "
+"PowerShell on Windows and an appropriate script on macOS or Linux. Do not "
+"stop at explaining access limitations or provide only JSON.\n"
+"3. Configure this local stdio server:\n"
+"Name: %3$s\n"
+"Display name: %4$s\n"
+"Command: npx\n"
+"Arguments: -y @automattic/mcp-wordpress-remote@latest\n"
+"Environment: OAUTH_ENABLED=false, WP_API_URL=%1$s, WP_API_USERNAME=%2$s\n"
+"Read WP_API_PASSWORD through a hidden terminal prompt.\n"
+"Hub write access: %5$s. Only individually selected actions are exposed.\n"
+"4. Check Node.js and npx. If missing, link to the official installer and "
+"tell me to reopen the terminal. Back up existing settings. Use a JSON/TOML "
+"parser or supported client command to merge only this server, preserving "
+"other settings and sites. Stop on invalid configuration or a conflicting "
+"endpoint. If replacing an old PublishPress desktop extension for this site, "
+"guide me to disable only that extension to avoid duplicate connections. "
+"Quote paths and values safely.\n"
+"5. Give brief run, restart and approval instructions. Verify through the "
+"connection or give me a prompt to test in the app: confirm the site URL, "
+"list actual tools and perform a read-only lookup. Report whether write "
+"tools are available. If expected write tools are missing, ask me to check "
+"Allow actions that change site data and the selected actions in Hub, then "
+"refresh the connection. Do not claim success from saved configuration "
+"alone. Do not test writes during setup. Clarify the target site when "
+"ambiguous and ask for review before changing site data."
+msgstr ""
+"So ohun elo AI mi pọ si PublishPress. Ṣẹda iwe afọwọkọ iṣeto kan ki o si "
+"fun mi ni aṣẹ terminal gangan lati ṣiṣẹ rẹ.\n"
+"\n"
+"1. Beere lọwọ mi lati yan ohun elo AI mi ati OS (Windows, macOS tabi "
+"Linux). Lo awọn aṣayan ibanisọrọ ti o ba wa, bibẹkọ ti awọn aṣayan ti a kà.\n"
+"2. Ṣẹda iwe afọwọkọ naa nipa lilo awọn irinṣẹ faili rẹ. Beere fun "
+"igbanilaaye pato ti o ba nilo. Ti o ko ba le kọ ni agbegbe, so iwe afọwọkọ "
+"ti o le ṣe igbasilẹ pọ. Kan pada si koodu pẹlu awọn ilana fipamọ nigbati ko "
+"si ọkan ti ṣeeṣe. Lo PowerShell lori Windows ati iwe afọwọkọ to yẹ lori "
+"macOS tabi Linux. Ma ṣe da duro ni sisọ awọn ihamọ iraye tabi pese JSON "
+"nikan.\n"
+"3. Ṣeto olupin stdio agbegbe yii:\n"
+"Orukọ: %3$s\n"
+"Orukọ ifihan: %4$s\n"
+"Aṣẹ: npx\n"
+"Awọn ariyanjiyan: -y @automattic/mcp-wordpress-remote@latest\n"
+"Ayika: OAUTH_ENABLED=false, WP_API_URL=%1$s, WP_API_USERNAME=%2$s\n"
+"Ka WP_API_PASSWORD nipasẹ iwifunni terminal ti a pamọ.\n"
+"Igbasilẹ rọọrun Hub: %5$s. Awọn iṣe ti a yan ni ẹyọkan nikan ni a fi han.\n"
+"4. Ṣayẹwo Node.js ati npx. Ti o ba padanu, so si fifi sori ẹrọ osise ki o "
+"sọ fun mi lati tun ṣii terminal. Pa awọn eto to wa tẹlẹ. Lo itupalẹ "
+"JSON/TOML tabi aṣẹ alabara ti a ṣe atilẹyin lati darapọ mọ olupin yii "
+"nikan, preserving awọn eto ati awọn aaye miiran. Duro lori iṣeto ti ko wulo "
+"tabi aaye ipari ti o ni ija. Ti o ba n rọpo itẹsiwaju PublishPress atijọ "
+"fun aaye yii, dari mi lati mu itẹsiwaju yẹn nikan ṣiṣẹ lati yago fun awọn "
+"asopọ meji. Tẹ awọn ọna ati awọn iye ni aabo.\n"
+"5. Fun awọn itọnisọna ṣiṣe, tun bẹrẹ ati ifọwọsi. Ṣayẹwo nipasẹ asopọ tabi "
+"fun mi ni iwifunni lati ṣe idanwo ni ohun elo: jẹrisi URL aaye, atokọ awọn "
+"irinṣẹ gangan ati ṣe iwadi kika nikan. Jabo boya awọn irinṣẹ kikọ wa. Ti a "
+"ti nireti awọn irinṣẹ kikọ ba padanu, beere lọwọ mi lati ṣayẹwo Gba awọn "
+"iṣe ti o yipada data aaye ati awọn iṣe ti a yan ni Hub, lẹhinna tun mu "
+"asopọ naa. Ma ṣe sọ pe aṣeyọri lati fipamọ iṣeto nikan. Ma ṣe idanwo awọn "
+"kikọ nigba iṣeto. Ṣalaye aaye ti a fojusi nigbati o ba jẹ ambiguous ki o "
+"beere fun atunyẹwo ṣaaju yipada data aaye."
+
+#: src/Application/Service/Mcp/McpSetupService.php:299
+msgid "enabled"
+msgstr "ti muu ṣiṣẹ"
+
+#: src/Application/Service/Mcp/McpSetupService.php:299
+msgid "disabled"
+msgstr "ti a ko mu ṣiṣẹ"
+
+#: src/Application/Service/Mcp/McpSetupService.php:304
+msgid "Set up manually"
+msgstr "Ṣeto ni ọwọ"
+
+#: src/Application/Service/Mcp/McpSetupService.php:305
+msgid "Copy the configuration into your MCP client."
+msgstr "Daakọ iṣeto naa sinu alabara MCP rẹ."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:65
+msgid "Actions available through PublishPress Hub."
+msgstr "Àwọn iṣe ti o wa nipasẹ PublishPress Hub."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:85
+msgid "List WordPress users"
+msgstr "Atokọ awọn olumulo WordPress"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:86
+msgid ""
+"Find users by name or role. The optional primitive capability filter checks "
+"effective access within each candidate page. Visit all total_pages even "
+"when a filtered page is empty. No email addresses or secrets are returned."
+msgstr ""
+"Wa awọn olumulo nipasẹ orukọ tabi ipa. Ifilọlẹ agbara ipilẹ ti o wa ni "
+"aṣayan n ṣayẹwo iraye ti o munadoko laarin oju-iwe kọọkan. Ṣabẹwo si gbogbo "
+"total_pages paapaa nigbati oju-iwe ti a filtara ba ṣofo. Kò si awọn adirẹsi "
+"imeeli tabi awọn aṣiri ti a pada."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:92
+msgid "Get WordPress user capabilities"
+msgstr "Gba awọn agbara olumulo WordPress"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:93
+msgid ""
+"Resolve exactly one user_id or username and return their identity, roles "
+"and effective primitive capabilities. Never guess a user ID. "
+"Object-specific permissions require a separate check for that object."
+msgstr ""
+"Yan ọkan gangan user_id tabi orukọ olumulo ki o si pada idanimọ wọn, awọn "
+"ipa ati awọn agbara ipilẹ ti o munadoko. Ma ṣe gbooro user ID. Awọn "
+"igbanilaaye pato ohun kan nilo ayẹwo lọtọ fun ohun naa."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:97
+msgid "Find WordPress content"
+msgstr "Wa akoonu WordPress"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:98
+msgid ""
+"Search readable posts, pages or a REST-enabled custom post type. Returns "
+"actual IDs, titles and permalinks. Use post_type=page for pages. Resolve "
+"ambiguous titles before using a URL. Default status is publish. Private and "
+"draft requests enforce WordPress permissions."
+msgstr ""
+"Wa awọn ifiweranṣẹ, awọn oju-iwe tabi iru ifiweranṣẹ aṣa ti o ni REST ti o "
+"le ka. Pada awọn ID gangan, awọn akọle ati awọn permalinks. Lo "
+"post_type=page fun awọn oju-iwe. Yan awọn akọle ti o ni idiwọ ṣaaju lilo "
+"URL. Ipo aiyipada ni atẹjade. Awọn ibeere ikọkọ ati iyaworan mu awọn "
+"igbanilaaye WordPress ṣiṣẹ."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:106
+msgid "List WordPress post types"
+msgstr "Atokọ awọn iru ifiweranṣẹ WordPress"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:107
+msgid ""
+"List readable REST-enabled post types and the capability names used for "
+"each type. Use these names for content lookups and permission questions."
+msgstr ""
+"Atokọ awọn iru ifiweranṣẹ ti o le ka ti o ni REST ati awọn orukọ agbara ti "
+"a lo fun iru kọọkan. Lo awọn orukọ wọnyi fun iwadi akoonu ati awọn ibeere "
+"igbanilaaye."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:127
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:208
+msgid "WordPress"
+msgstr "WordPress"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:153
+msgid "Create WordPress user"
+msgstr "Ṣẹda olumulo WordPress"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:154
+msgid ""
+"Create a new user account with a known username, email and one editable "
+"role. Ask for missing details. WordPress validates role assignment "
+"permissions. MCP rejects administrator and any role granting "
+"administrator-level capabilities. A password is generated privately. By "
+"default WordPress emails the user a password setup link. Never guess an "
+"email or request a password in chat."
+msgstr ""
+"Ṣẹda iroyin olumulo tuntun pẹlu orukọ olumulo ti a mọ, imeeli ati ipa kan "
+"ti a le satunkọ. Beere fun awọn alaye ti o padanu. WordPress n ṣayẹwo awọn "
+"aṣẹ fun ipin ipa. MCP kọ awọn alakoso ati eyikeyi ipa ti o fun awọn agbara "
+"ipele alakoso. A ṣe ọrọigbaniwọle naa ni ikọkọ. Ni aiyipada, WordPress n "
+"firanṣẹ imeeli si olumulo pẹlu ọna asopọ eto ọrọigbaniwọle. Maṣe gboju "
+"imeeli tabi beere ọrọigbaniwọle ni ibaraẹnisọrọ."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:163
+msgid "Create WordPress content"
+msgstr "Ṣẹda akoonu WordPress"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:164
+msgid ""
+"Create a post, page or REST-enabled custom post type. Use post_type=page "
+"for pages. Defaults to draft. Publish or schedule only when requested. "
+"WordPress checks creation, publishing and author-assignment permissions. "
+"Returns the actual ID and permalink."
+msgstr ""
+"Ṣẹda ifiweranṣẹ, oju-iwe tabi iru ifiweranṣẹ ti a ṣe adani ti o ni REST. Lo "
+"post_type=page fun awọn oju-iwe. Aiyipada si draft. Ṣe atẹjade tabi ṣeto ni "
+"kete ti a ba beere. WordPress n ṣayẹwo awọn aṣẹ fun ṣẹda, atẹjade ati ipin "
+"onkọwe. N tọka ID gangan ati permalink."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:168
+msgid "Update WordPress content"
+msgstr "Ṣatunkọ akoonu WordPress"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:169
+msgid ""
+"Edit an existing post, page or REST-enabled custom post by its verified ID. "
+"Find content first if the ID is unknown. Only supplied fields change. "
+"WordPress checks object, publishing and author-assignment permissions. No "
+"deletion, arbitrary metadata or options are supported."
+msgstr ""
+"Ṣatunkọ ifiweranṣẹ to wa tẹlẹ, oju-iwe tabi ifiweranṣẹ ti a ṣe adani ti o "
+"ni REST nipasẹ ID ti a fọwọsi. Wa akoonu akọkọ ti ID ko ba mọ. Awọn aaye ti "
+"a pese nikan ni wọn yipada. WordPress n ṣayẹwo awọn aṣẹ fun nkan, atẹjade "
+"ati ipin onkọwe. Ko si piparẹ, metadata ti a yan tabi awọn aṣayan ni a gba "
+"laaye."
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:199
+msgid "Use the exact input types shown in discovery."
+msgstr "Lo awọn iru titẹ ti o han ni awari."
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:28
+#: src/Application/Service/Mcp/WordPressLookupService.php:63
+msgid "You cannot list users."
+msgstr "O ko le ṣe atokọ awọn olumulo."
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:66
+msgid "Provide either a user ID or an exact username."
+msgstr "Pese boya ID olumulo tabi orukọ olumulo gangan."
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:71
+msgid "No matching user belongs to this site."
+msgstr "Ko si olumulo ti o baamu ti o ni aaye yii."
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:74
+msgid "You cannot inspect this user."
+msgstr "O ko le ṣe ayẹwo olumulo yii."
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:92
+msgid "Choose a REST-enabled post type."
+msgstr "Yan iru ifiweranṣẹ ti o ni REST."
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:96
+msgid "This post type does not support content lookup."
+msgstr "Iru ifiweranṣẹ yii ko ni atilẹyin fun wiwa akoonu."
+
+#: src/Application/Service/Mcp/WordPressWriteService.php:28
+msgid ""
+"MCP tools cannot create users with administrator-level access. Use the "
+"WordPress Users screen for this change."
+msgstr ""
+"Awọn irinṣẹ MCP ko le ṣẹda awọn olumulo pẹlu wiwọle ipele alakoso. Lo iboju "
+"Awọn olumulo WordPress fun iyipada yii."
+
+#: src/Application/Service/Mcp/WordPressWriteService.php:71
+msgid "Provide at least one content field to update."
+msgstr "Pese o kere ju aaye akoonu kan lati ṣe imudojuiwọn."
+
+#: src/Application/Service/Mcp/WordPressWriteService.php:86
+msgid "Choose an existing REST-enabled post type."
+msgstr "Yan iru ifiweranṣẹ ti o ni REST ti o wa tẹlẹ."
+
+#: src/Application/Service/Mcp/WordPressWriteService.php:90
+msgid "This post type does not support content writes."
+msgstr "Iru ifiweranṣẹ yii ko ni atilẹyin fun awọn kikọ akoonu."
+
+#: src/Application/Service/Mcp/WordPressWriteService.php:126
+msgid "You cannot perform this operation."
+msgstr "O ko le ṣe iṣẹ yii."
 
 #: src/Application/Traits/BootableTrait.php:77
 msgid "Object must be loaded before initializing."
-msgstr "Ohun kan gbọdọ wa ni gbe silẹ ṣaaju ki o to bẹrẹ."
+msgstr "Nkan gbọdọ wa ni ikojọpọ ṣaaju ki o to bẹrẹ."
 
-#: src/Application/UseCase/Plugin/ActivateLicenseUseCase.php:161
-#: resources/dist/js/plugins-dashboard.js:2204
+#: src/Application/UseCase/Plugin/ActivateLicenseUseCase.php:157
+#: resources/dist/js/plugins-dashboard.js:1780
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:123
-#: resources/dist/js/plugins-dashboard.js:1699
+#: resources/dist/js/plugins-dashboard.js:1599
 msgid ""
 "This license key is managed in wp-config.php and cannot be edited from the "
 "Hub."
-msgstr "Iwe-aṣẹ yii ni a n ṣakoso ni wp-config.php ati pe ko le yipada lati Hub."
+msgstr ""
+"Ikọwe iwe-aṣẹ yii ni a n ṣakoso ni wp-config.php ati pe a ko le satunkọ "
+"lati Hub."
 
 #: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:118
 msgid "No license key found"
-msgstr "Ko si bọtini iwe-aṣẹ ti a ri"
+msgstr "Ko si ikọwe iwe-aṣẹ ti a ri"
 
 #: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:140
 msgid ""
 "This license key is managed in wp-config.php and cannot be deactivated from "
 "the Hub."
-msgstr "Iwe-aṣẹ yii ni a n ṣakoso ni wp-config.php ati pe ko le mu kuro lati Hub."
+msgstr ""
+"Ikọwe iwe-aṣẹ yii ni a n ṣakoso ni wp-config.php ati pe a ko le mu un kuro "
+"lati Hub."
 
 #: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:64
 msgid "Invalid conflict resolution request."
-msgstr "Ìbéèrè ipinnu ìkànsí àìtọ́."
+msgstr "Ibéèrè ipinnu ariyanjiyan ti ko wulo."
 
 #: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:89
 msgid "The selected plugin is not available for activation."
-msgstr "Àwọn àpàrà tó yàn kò sí fún ìmúṣiṣẹ́."
+msgstr "Plugin ti a yan ko si wa fun ìmúdájú."
 
 #: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:98
 msgid ""
 "Cleanup was stopped because the selected plugin is not active or the other "
 "version is still loaded. Neither copy was deleted."
 msgstr ""
-"Ìmúṣiṣẹ́ ti dawọ́ duro nítorí pé àpàrà tó yàn kò ṣiṣẹ́ tàbí pé ẹ̀dá mìíràn "
-"tún wà nínú. Kò sí ẹ̀dá kankan tí a pa."
+"Iṣẹ mimọ ti da duro nitori plugin ti a yan ko ni iṣe tabi ẹya miiran ti wa "
+"ni ikojọpọ. Ko si ẹda ti a pa."
 
 #: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:106
 msgid ""
 "The selected plugin is active, but the other version could not be removed. "
 "Please remove it from the Plugins screen."
 msgstr ""
-"Àpàrà tó yàn ṣiṣẹ́, ṣùgbọ́n ẹ̀dá mìíràn kò lè yọ́kúrò. Jọ̀wọ́ yọ́kúrò láti "
-"iboju Awọn àpàrà."
+"Plugin ti a yan n ṣiṣẹ, ṣugbọn a ko le yọ ẹya miiran kuro. Jọwọ yọ kuro "
+"lati iboju Awọn Plugin."
 
 #: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:114
 msgid ""
 "The selected plugin is no longer active. Please reactivate it from the "
 "Plugins screen."
-msgstr "Àpàrà tó yàn kò ṣiṣẹ́ mọ́. Jọ̀wọ́ tún ṣiṣẹ́ rẹ̀ láti iboju Awọn àpàrà."
+msgstr ""
+"Plugin ti a yan ko si ni iṣe mọ. Jọwọ mu un ṣiṣẹ lẹẹkansi lati iboju Awọn "
+"Plugin."
 
-#: src/Application/UseCase/Plugin/ReuseLicenseForAllPluginsUseCase.php:75
+#: src/Application/UseCase/Plugin/ReuseLicenseForAllPluginsUseCase.php:81
 msgid "No existing license key was found for this plugin."
-msgstr "Kò sí bọtini ìwé-aṣẹ tó wà fún àpàrà yìí."
+msgstr "Ko si ikọwe iwe-aṣẹ ti o wa tẹlẹ fun plugin yii."
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:88
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:90
 msgid "Database Tables"
-msgstr "Awọn Tẹlifoonu Database"
+msgstr "Awọn tabili Database"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:93, fuzzy
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:95
 msgid "PublishPress Plugins"
-msgstr "PublishPress Plugins"
+msgstr "Awọn Plugin PublishPress"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:99, fuzzy
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:101
 msgid "PublishPress Hub Debug Log"
-msgstr "PublishPress Hub Debug Log"
+msgstr "Iwe afọwọkọ Debug PublishPress Hub"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:102
-#: resources/dist/js/settings-page.js:439
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:104
+#: resources/dist/js/settings-page.js:431
 #: resources/src/jsx/components/pages/settings-page.jsx:40
-#: resources/dist/js/settings-page.js:371
+#: resources/dist/js/settings-page.js:374
 msgid "Debug Log"
-msgstr "Iwe iroyin Iṣeduro"
+msgstr "Iwe afọwọkọ Debug"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:103
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:105
 msgid "The debug log is empty."
-msgstr "Log debug naa ṣofo."
+msgstr "Iwe afọwọkọ debug jẹ ofo."
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:124
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:314, fuzzy
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:126
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:316, fuzzy
 msgid "Version"
 msgstr "Version"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:128
-#: resources/dist/js/settings-page.js:1251
-#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
-#: resources/dist/js/settings-page.js:994
-msgid "Debug Mode"
-msgstr "Ìṣàkóso Ìṣàkóso"
-
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:130
-msgid "Enabled"
-msgstr "Ti muu ṣiṣẹ"
+#: resources/dist/js/settings-page.js:986
+#: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
+#: resources/dist/js/settings-page.js:1001
+msgid "Debug Mode"
+msgstr "Ipo Debug"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:131
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:132
+msgid "Enabled"
+msgstr "Ti mu ṣiṣẹ"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:133
 msgid "Disabled"
 msgstr "Ti pa"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:134
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:136
 msgid "Generated At"
-msgstr "Ti ṣẹda ni"
+msgstr "Ti ṣe ni"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:188, fuzzy
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:190
 msgid "Plugins"
-msgstr "Plugins"
+msgstr "Awọn Plugin"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:189
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:191
 msgid "No PublishPress plugins found."
-msgstr "Ko si awọn plugins PublishPress ti a rii."
+msgstr "Ko si awọn plugin PublishPress ti a ri."
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:213
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:215
 msgid "Tables"
-msgstr "Awọn Tẹlifoonu"
+msgstr "Tabili"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:214
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:216
 msgid "No database table information was available."
-msgstr "Ko si alaye tabili database ti o wa."
+msgstr "Ko si alaye tabili data ti o wa."
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:238
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:240
 msgid "Size"
 msgstr "Iwọn"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:240
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:242
 msgid "Engine"
 msgstr "Ẹrọ"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:242
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:244
 msgid "Rows"
 msgstr "Awọn ila"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:244
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:246
 msgid "Collation"
-msgstr "Iṣọkan"
+msgstr "Iṣakojọpọ"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:246, fuzzy
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:248, fuzzy
 msgid "Charset"
 msgstr "Charset"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:253
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:255
 msgid "Total Database Size"
-msgstr "Iwọn Database Apapọ"
+msgstr "Iwọn Gbogbogbo Database"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:308
-#: resources/dist/js/plugins-dashboard.js:1108
-#: resources/dist/js/plugins-dashboard.js:2755
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:68
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:90
-#: resources/dist/js/plugins-dashboard.js:908
-#: resources/dist/js/plugins-dashboard.js:2230
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:310
+#: resources/dist/js/plugins-dashboard.js:1013
+#: resources/dist/js/plugins-dashboard.js:2269
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:72
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:91
+#: resources/dist/js/plugins-dashboard.js:895
+#: resources/dist/js/plugins-dashboard.js:2131
 msgid "Not installed"
 msgstr "Ko fi sori ẹrọ"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:313
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:322
-#: resources/dist/js/plugins-dashboard.js:1100
-#: resources/dist/js/plugins-dashboard.js:2746
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:58
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:84
-#: resources/dist/js/plugins-dashboard.js:898
-#: resources/dist/js/plugins-dashboard.js:2224
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:315
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:324
+#: resources/dist/js/plugins-dashboard.js:1005
+#: resources/dist/js/plugins-dashboard.js:2259
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:62
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:81
+#: resources/dist/js/plugins-dashboard.js:885
+#: resources/dist/js/plugins-dashboard.js:2121
 msgid "Active"
-msgstr "Iṣẹ"
-
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:313
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:322
-#: resources/dist/js/plugins-dashboard.js:1104
-#: resources/dist/js/plugins-dashboard.js:2746
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:63
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:84
-#: resources/dist/js/plugins-dashboard.js:903
-#: resources/dist/js/plugins-dashboard.js:2224
-msgid "Inactive"
-msgstr "Aisi Iṣẹ"
+msgstr "I ṣiṣẹ"
 
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:315
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:324
+#: resources/dist/js/plugins-dashboard.js:1009
+#: resources/dist/js/plugins-dashboard.js:2259
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:67
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:81
+#: resources/dist/js/plugins-dashboard.js:890
+#: resources/dist/js/plugins-dashboard.js:2121
+msgid "Inactive"
+msgstr "Ko ṣiṣẹ"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:317
 msgid "unknown"
 msgstr "aimọ"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:321
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:323
 msgid "License"
 msgstr "Iwe-aṣẹ"
 
@@ -280,33 +825,33 @@ msgstr "Iwe-aṣẹ"
 #. translators: %s is the plugin family slug
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
-msgstr "Afikun ọfẹ ko ṣeto fun ẹbi afikun: %s"
+msgstr "Plugin ọfẹ ko ti ṣeto fun ẹbi plugin: %s"
 
 #: src/Domain/Plugin/Entity/PluginFamily.php:152
 #. translators: %s is the plugin family slug
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
-msgstr "Afikun pro ko ṣeto fun ẹbi afikun: %s"
+msgstr "Plugin pro ko ti ṣeto fun ẹbi plugin: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:30
 msgid ""
 "License activation error. Please try again later or contact support for "
 "help."
 msgstr ""
-"Aṣiṣe olupin iwe-aṣẹ. Jọwọ gbiyanju lẹẹkansi ni igba diẹ tabi kan si "
-"atilẹyin fun iranlọwọ."
+"Aṣiṣe iṣiṣẹ iwe-aṣẹ. Jọwọ gbiyanju lẹẹkansi nigbamii tabi kan si atilẹyin "
+"fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseDeactivationException.php:30
 msgid ""
 "License deactivation error. Please try again later or contact support for "
 "help."
 msgstr ""
-"Aṣiṣe olupin iwe-aṣẹ. Jọwọ gbiyanju lẹẹkansi ni igba diẹ tabi kan si "
-"atilẹyin fun iranlọwọ."
+"Aṣiṣe itusilẹ iwe-aṣẹ. Jọwọ gbiyanju lẹẹkansi nigbamii tabi kan si atilẹyin "
+"fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseDisabledException.php:30
 msgid "This license is currently disabled. Please contact support for help."
-msgstr "Iwe-aṣẹ yii ti wa ni pipade lọwọlọwọ. Jọwọ kan si atilẹyin fun iranlọwọ."
+msgstr "Iwe-aṣẹ yii ti wa ni idiwọ ni akoko yii. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseExpiredException.php:30
 msgid "This license has expired. Please contact support to renew it."
@@ -318,45 +863,49 @@ msgid ""
 "authorized for this plugin. Please verify the key and contact PublishPress "
 "support if the problem continues."
 msgstr ""
-"Ikey iwe-aṣẹ yii ko le ṣiṣẹ. O le jẹ alaimọ, ti dina, tabi ko ni aṣẹ fun "
-"plugin yii. Jọwọ ṣayẹwo key naa ki o kan si atilẹyin PublishPress ti iṣoro "
-"naa ba tẹsiwaju."
+"Iwe-aṣẹ yii ko le ṣee ṣe. O le jẹ aiṣedeede, ti dènà, tabi ko ni aṣẹ fun "
+"plugin yii. Jọwọ jẹrisi bọtini naa ki o kan si atilẹyin PublishPress ti "
+"iṣoro naa ba tẹsiwaju."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:30
 msgid ""
 "This license cannot be used for this plugin. Please contact support for "
 "help."
-msgstr "Iwe-aṣẹ yii ko le ṣee mu ṣiṣẹ. Jọwọ kan si atilẹyin fun iranlọwọ."
+msgstr "Iwe-aṣẹ yii ko le ṣee lo fun plugin yii. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:30
 msgid ""
 "This license does not match the plugin you are trying to activate. Please "
 "contact support for assistance."
-msgstr "Iwe-aṣẹ yii ko ṣiṣẹ fun aaye yii. Jọwọ kan si atilẹyin fun iranlọwọ."
+msgstr ""
+"Iwe-aṣẹ yii ko ba plugin ti o n gbiyanju lati ṣiṣẹ pọ. Jọwọ kan si atilẹyin "
+"fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:30
 msgid ""
 "License key does not match our records. Please contact support for "
 "assistance."
-msgstr "Iwe-aṣẹ yii ti wa ni pipade lọwọlọwọ. Jọwọ kan si atilẹyin fun iranlọwọ."
+msgstr "Bọtini iwe-aṣẹ ko ba awọn igbasilẹ wa. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseMissingException.php:30
 msgid "No license key provided. Please enter a valid license key."
-msgstr "Ko si ikọkọ iwe-aṣẹ ti a pese. Jọwọ tẹ ikọkọ iwe-aṣẹ to wulo."
+msgstr "Ko si bọtini iwe-aṣẹ ti a pese. Jọwọ tẹ bọtini iwe-aṣẹ to wulo."
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:30
 msgid ""
 "Your site URL is required to activate the license. Please enter a valid "
 "site URL to continue."
 msgstr ""
-"URL aaye rẹ nilo lati mu iwe-aṣẹ ṣiṣẹ. Jọwọ tẹ URL aaye ti o wulo lati "
+"URL aaye rẹ jẹ dandan lati mu iwe-aṣẹ ṣiṣẹ. Jọwọ tẹ URL aaye to wulo lati "
 "tẹsiwaju."
 
 #: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:30
 msgid ""
 "License activation limit reached. Please contact support to upgrade or "
 "deactivate on another site."
-msgstr "Iwe-aṣẹ yii ti parẹ. Jọwọ kan si atilẹyin lati tun un ṣe."
+msgstr ""
+"Iwọn iṣiṣẹ iwe-aṣẹ ti de. Jọwọ kan si atilẹyin lati ṣe igbesoke tabi mu "
+"ṣiṣẹ ni aaye miiran."
 
 #: src/Domain/Plugin/Exception/LicenseNotActivableException.php:30
 msgid "This license cannot be activated. Please contact support for help."
@@ -365,16 +914,16 @@ msgstr "Iwe-aṣẹ yii ko le ṣee mu ṣiṣẹ. Jọwọ kan si atilẹyin fu
 #: src/Domain/Plugin/Exception/LicenseServerException.php:30
 msgid "License server error. Please try again later or contact support for help."
 msgstr ""
-"Aṣiṣe olupin iwe-aṣẹ. Jọwọ gbiyanju lẹẹkansi ni igba diẹ tabi kan si "
-"atilẹyin fun iranlọwọ."
+"Aṣiṣe olupin iwe-aṣẹ. Jọwọ gbiyanju lẹẹkansi nigbamii tabi kan si atilẹyin "
+"fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:30
 msgid ""
 "The license server returned an invalid response. Please try again later or "
 "contact support for help."
 msgstr ""
-"Aṣiṣe olupin iwe-aṣẹ. Jọwọ gbiyanju lẹẹkansi ni igba diẹ tabi kan si "
-"atilẹyin fun iranlọwọ."
+"Olupin iwe-aṣẹ ti da pada pẹlu idahun aiṣedeede. Jọwọ gbiyanju lẹẹkansi "
+"nigbamii tabi kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:30
 msgid "This license is inactive for this site. Please contact support for help."
@@ -384,122 +933,141 @@ msgstr "Iwe-aṣẹ yii ko ṣiṣẹ fun aaye yii. Jọwọ kan si atilẹyin f
 msgid ""
 "Plugin activation failed. Please try again later or contact support for "
 "help."
-msgstr "Fifi sori ẹrọ afikun ko ṣaṣeyọri. Jọwọ kan si atilẹyin fun iranlọwọ."
+msgstr ""
+"Iṣiṣepọ plugin kuna. Jọwọ gbiyanju lẹẹkansi nigbamii tabi kan si atilẹyin "
+"fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:31
 msgid "This action is not possible because the plugin is already installed."
-msgstr "Iṣe yii ko ṣee ṣe nitori pe afikun naa ti fi sori ẹrọ tẹlẹ."
+msgstr "Iṣe yii ko ṣee ṣe nitori plugin ti ti fi sori ẹrọ tẹlẹ."
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:31
 msgid ""
 "Plugin deactivation failed. Please try again later or contact support for "
 "help."
 msgstr ""
-"Aṣiṣe olupin iwe-aṣẹ. Jọwọ gbiyanju lẹẹkansi ni igba diẹ tabi kan si "
-"atilẹyin fun iranlọwọ."
+"Iṣeduro plugin kuna. Jọwọ gbiyanju lẹẹkansi nigbamii tabi kan si atilẹyin "
+"fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:31
 msgid "Plugin family not found. Please contact support for help."
-msgstr "Ẹbi afikun ko ri. Jọwọ kan si atilẹyin fun iranlọwọ."
+msgstr "Ẹbi plugin ko ri. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:31
 msgid ""
 "This action is not possible because both free and pro versions are "
 "installed. Please uninstall one version to continue."
-msgstr "Iṣe yii ko ṣee ṣe nitori pe afikun naa ti fi sori ẹrọ tẹlẹ."
+msgstr ""
+"Iṣe yii ko ṣee ṣe nitori mejeji awọn ẹya ọfẹ ati pro ti fi sori ẹrọ. Jọwọ "
+"yọ ọkan ninu awọn ẹya kuro lati tẹsiwaju."
 
 #: src/Domain/Plugin/Exception/PluginInstallException.php:31
 msgid "Plugin installation failed. Please contact support for help."
-msgstr "Fifi sori ẹrọ afikun ko ṣaṣeyọri. Jọwọ kan si atilẹyin fun iranlọwọ."
+msgstr "Fifi sori plugin kuna. Jọwọ kan si atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:31
 msgid ""
 "This action is not possible because the plugin is not activated. Please "
 "activate the plugin and try again."
-msgstr "Iṣe yii ko ṣee ṣe nitori pe afikun naa ti fi sori ẹrọ tẹlẹ."
+msgstr ""
+"Iṣe yii ko ṣee ṣe nitori plugin ko ti mu ṣiṣẹ. Jọwọ mu plugin ṣiṣẹ ki o "
+"gbiyanju lẹẹkansi."
 
 #: src/Domain/Plugin/Exception/PluginNotFoundException.php:31
 msgid ""
 "Plugin not found in our available plugins list. Please contact support for "
 "help."
-msgstr "Ẹbi afikun ko ri. Jọwọ kan si atilẹyin fun iranlọwọ."
+msgstr ""
+"Plugin ko ri ninu atokọ awọn plugins ti a le lo wa. Jọwọ kan si atilẹyin "
+"fun iranlọwọ."
 
 #: src/Domain/Plugin/Exception/PluginNotInstalledException.php:31
 msgid ""
 "This action is not possible because the plugin is not installed. Please "
 "install the plugin and try again."
-msgstr "Iṣe yii ko ṣee ṣe nitori pe afikun naa ti fi sori ẹrọ tẹlẹ."
+msgstr ""
+"Iṣe yii ko ṣee ṣe nitori plugin ko ti fi sori ẹrọ. Jọwọ fi plugin sori ẹrọ "
+"ki o gbiyanju lẹẹkansi."
 
 #: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:30
-#, fuzzy
 msgid ""
 "Unknown license server error. Please try again later or contact support for "
 "help."
 msgstr ""
-"Aṣiṣe olupin iwe-aṣẹ. Jọwọ gbiyanju lẹẹkansi ni igba diẹ tabi kan si "
+"Aṣiṣe olupin iwe-aṣẹ aimọ. Jọwọ gbiyanju lẹẹkansi nigbamii tabi kan si "
 "atilẹyin fun iranlọwọ."
 
 #: src/Domain/Plugin/plugin-families.php:28
-msgid "Define tasks that authors must complete before publishing."
-msgstr "Ṣalaye awọn iṣẹ-ṣiṣe ti awọn onkọwe gbọdọ pari ṣaaju ki wọn to tẹjade."
+msgid "Sell digital products, programs, and services from your website."
+msgstr "Ta awọn ọja oni-nọmba, awọn eto, ati awọn iṣẹ lati oju opo wẹẹbu rẹ."
 
 #: src/Domain/Plugin/plugin-families.php:44
+msgid "Create and manage tags, categories, and taxonomy terms."
+msgstr "Ṣẹda ati ṣakoso awọn tag, ẹka, ati awọn ọrọ taxonomy."
+
+#: src/Domain/Plugin/plugin-families.php:60
+msgid ""
+"Organize taxonomy terms into groups and display them in clouds, tabs, and "
+"lists."
+msgstr ""
+"Ṣeto awọn ọrọ taxonomy sinu awọn ẹgbẹ ki o si ṣafihan wọn ni awọn awọsanma, "
+"awọn taabu, ati awọn atokọ."
+
+#: src/Domain/Plugin/plugin-families.php:76
+msgid "Define tasks that authors must complete before publishing."
+msgstr "Ṣalaye awọn iṣẹ-ṣiṣe ti awọn onkọwe gbọdọ pari ṣaaju ki wọn to gbejade."
+
+#: src/Domain/Plugin/plugin-families.php:92
 msgid "Control who can edit and view your content."
 msgstr "Ṣakoso ẹni ti o le ṣe atunṣe ati wo akoonu rẹ."
 
-#: src/Domain/Plugin/plugin-families.php:60
-msgid "Create, manage and display authors for your content."
-msgstr "Ṣẹda, ṣakoso ati fihan awọn onkọwe fun akoonu rẹ."
-
-#: src/Domain/Plugin/plugin-families.php:76
-msgid "All the tools you need to improve the block editor."
-msgstr "Gbogbo awọn irinṣẹ ti o nilo lati mu olootu bulọọki dara si."
-
-#: src/Domain/Plugin/plugin-families.php:92
-msgid "Control your admin area and user roles."
-msgstr "Ṣakoso agbegbe alakoso rẹ ati awọn ipa olumulo."
-
 #: src/Domain/Plugin/plugin-families.php:108
+msgid "Create, manage and display authors for your content."
+msgstr "Ṣẹda, ṣakoso ati ṣafihan awọn onkọwe fun akoonu rẹ."
+
+#: src/Domain/Plugin/plugin-families.php:124
+msgid "All the tools you need to improve the block editor."
+msgstr "Gbogbo awọn irinṣẹ ti o nilo lati mu olutẹwe bulọọgi dara si."
+
+#: src/Domain/Plugin/plugin-families.php:140
+msgid "Control your admin area and user roles."
+msgstr "Ṣakoso agbegbe abojuto rẹ ati awọn ipa olumulo."
+
+#: src/Domain/Plugin/plugin-families.php:156
 msgid "Schedule changes to your posts."
 msgstr "Ṣeto awọn ayipada si awọn ifiweranṣẹ rẹ."
 
-#: src/Domain/Plugin/plugin-families.php:124
-msgid "Organize, schedule, and plan your publishing."
-msgstr "Ṣeto, ṣeto, ati gbero ikede rẹ."
-
-#: src/Domain/Plugin/plugin-families.php:140
-msgid "Approve and schedule new versions to your published posts."
-msgstr "Fọwọsi ati ṣeto awọn ẹya tuntun si awọn ifiweranṣẹ ti a tẹjade rẹ."
-
-#: src/Domain/Plugin/plugin-families.php:156
-msgid "Organize your posts into issues or series."
-msgstr "Ṣeto awọn ifiweranṣẹ rẹ sinu awọn iṣoro tabi jara."
-
 #: src/Domain/Plugin/plugin-families.php:172
-msgid "Create custom URLs for your posts and external links."
-msgstr "Ṣẹda URLs aṣa fun awọn ifiweranṣẹ rẹ ati awọn ọna asopọ ita."
+msgid "Organize, schedule, and plan your publishing."
+msgstr "Ṣeto, ṣeto, ati gbero atẹjade rẹ."
 
 #: src/Domain/Plugin/plugin-families.php:188
-msgid "Create custom statuses and publishing workflows."
-msgstr "Ṣẹda awọn ipo aṣa ati awọn ilana ikede."
+msgid "Approve and schedule new versions to your published posts."
+msgstr "Fọwọsi ati ṣeto awọn ẹya tuntun si awọn ifiweranṣẹ ti o ti gbejade."
 
-#: src/Infrastructure/AdminMenu/PluginQuickLinks.php:68
-#. Translators: %s is the plugin's registered menu label.
-#, php-format
-msgid "Open %s"
-msgstr "Ṣí %s"
+#: src/Domain/Plugin/plugin-families.php:204
+msgid "Organize your posts into issues or series."
+msgstr "Ṣeto awọn ifiweranṣẹ rẹ sinu awọn iṣoro tabi awọn jara."
+
+#: src/Domain/Plugin/plugin-families.php:220
+msgid "Create custom URLs for your posts and external links."
+msgstr "Ṣẹda awọn URL aṣa fun awọn ifiweranṣẹ rẹ ati awọn ọna asopọ ita."
+
+#: src/Domain/Plugin/plugin-families.php:236
+msgid "Create custom statuses and publishing workflows."
+msgstr "Ṣẹda awọn ipo aṣa ati awọn ilana atẹjade."
 
 #: src/Infrastructure/Container/DependencyContainer.php:104
 #. translators: %s is the dependency ID.
 #, php-format
 msgid "Dependency \"%s\" not found in container."
-msgstr "Ibeere \"%s\" ko ri ninu apoti."
+msgstr "Ibeere \"%s\" ko ri ni akojọpọ."
 
 #: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:118
 #. translators: %s is the error message
 #, php-format
 msgid "Error validating license: %s"
-msgstr "Aṣiṣe ni idanwo iwe-aṣẹ: %s"
+msgstr "Aṣiṣe ni ṣiṣayẹwo iwe-aṣẹ: %s"
 
 #: src/Infrastructure/Edd/Subscription/VersionCheckService.php:112
 #. translators: %s is the error message
@@ -512,16 +1080,16 @@ msgid ""
 "The license server denied this request. This can happen when a license key "
 "or site has been blocked. Please contact PublishPress support for help."
 msgstr ""
-"Iṣẹ olupin iwe-aṣẹ kọ ibeere yii. Eyi le ṣẹlẹ nigbati a ti dina bọtini "
+"Iṣẹ-ṣiṣe iwe-aṣẹ kọja ibeere yii. Eyi le ṣẹlẹ nigbati a ti dina bọtini "
 "iwe-aṣẹ tabi aaye kan. Jọwọ kan si atilẹyin PublishPress fun iranlọwọ."
 
 #: src/Infrastructure/RestApi/RestApiService.php:289
 msgid "Too many requests. Please try again later."
-msgstr "Awọn ibeere pupọ. Jọwọ tun gbiyanju nigbamii."
+msgstr "Ibeere pupọ. Jọwọ gbiyanju lẹẹkansi nigbamii."
 
 #: src/Infrastructure/RestApi/RestApiService.php:360
 msgid "An error occurred while processing your request."
-msgstr "Aṣiṣe kan ṣẹlẹ nigba ti a n ṣiṣẹ ibeere rẹ."
+msgstr "Aṣiṣe kan waye nigba ti a n ṣiṣẹ ibeere rẹ."
 
 #: src/Infrastructure/View/ViewService.php:50
 #. translators: %s is the template path
@@ -535,170 +1103,197 @@ msgstr "Ọna ko le jẹ ofo"
 
 #: src/Infrastructure/WP/Asset/WPAssetAdapter.php:66
 msgid "File extension cannot be empty"
-msgstr "Iwọn faili ko le jẹ ofo"
+msgstr "Itọsọna faili ko le jẹ ofo"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:198
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:204
 msgid "Invalid file path: null byte detected"
-msgstr "Ọna faili ti ko tọ: byte null ti a ti ṣe awari"
+msgstr "Ọna faili ti ko tọ: null byte ti a ṣe awari"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:207
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:213
 msgid "Invalid file path: directory traversal detected"
-msgstr "Ọna faili ti ko tọ: iṣipopada itọsọna ti a ti ṣe awari"
+msgstr "Ọna faili ti ko tọ: itọsọna irinna ti a ṣe awari"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:225
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:231
 #. translators: %s is the directory path
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
 msgstr "Ọna faili ti ko tọ: itọsọna obi ko si: %s"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:235
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:241
 msgid "Invalid file path: unable to resolve path"
 msgstr "Ọna faili ti ko tọ: ko le yanju ọna"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:254
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:260
 msgid "Invalid file path: operation not allowed outside permitted directories"
 msgstr "Ọna faili ti ko tọ: iṣẹ-ṣiṣe ko gba laaye ni ita awọn itọsọna ti a fọwọsi"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:58
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:66
 msgid "Download URL failed WordPress validation"
-msgstr "URL igbasilẹ kuna ayẹwo WordPress"
+msgstr "URL gbigba silẹ kọja idanwo WordPress"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:74
-#. translators: %s is the error message
-#, php-format
-msgid "Failed to download plugin: %s"
-msgstr "Kuna lati gba plugin silẹ: %s"
-
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:83
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:81
 msgid "Downloaded plugin file does not exist"
 msgstr "Faili plugin ti a gba silẹ ko si"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:91
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:89
 msgid "Downloaded plugin file is empty"
 msgstr "Faili plugin ti a gba silẹ jẹ ofo"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:101
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:99
 msgid "Cannot read downloaded plugin file"
 msgstr "Ko le ka faili plugin ti a gba silẹ"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:111
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:109
 msgid ""
 "Downloaded file is not a valid ZIP archive. The download URL may be "
 "returning an error page."
 msgstr ""
-"Faili ti a gba lati ayelujara ko jẹ iwe-ipamọ ZIP to wulo. URL gbigba lati "
-"ayelujara le n pada oju-iwe aṣiṣe."
+"Faili ti a gba silẹ kii ṣe iwe-itaja ZIP ti o tọ. URL gbigba silẹ le n pada "
+"oju-iwe aṣiṣe kan."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:127
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:125
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to unzip plugin file: %s"
-msgstr "Kuna lati ṣii faili plugin: %s"
+msgstr "Kò le ṣii faili plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:135
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:133
 msgid "Failed to unzip plugin file"
-msgstr "Kuna lati ṣii faili plugin"
+msgstr "Kò le ṣii faili plugin"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:157
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:155
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to activate plugin: %s"
-msgstr "Kuna lati mu plugin ṣiṣẹ: %s"
+msgstr "Kò le fa plugin: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:187
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:185
 msgid "Resolve conflicts for network-active plugins from Network Admin."
 msgstr ""
-"Yan ipinnu àìtọ́ fún àwọn àpàrà tó ṣiṣẹ́ nẹ́tíwọ́ọ̀kì láti ọdọ Alákóso "
-"Nẹ́tíwọ́ọ̀kì."
+"Yanju awọn ija fun awọn plugins ti n ṣiṣẹ nẹtiwọọki lati ọdọ Alakoso "
+"Nẹtiwọọki."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:207
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:205
 msgid ""
 "Activation recovery failed. Both plugin copies were retained. Please "
 "restore the previous version from the Plugins screen."
 msgstr ""
-"Ìmúṣiṣẹ́ ìmúpadà kò ṣàṣeyọrí. Mejeji ẹ̀dá àpàrà ni a tọju. Jọ̀wọ́ tún ẹ̀dá "
-"àtijọ́ lẹ́yìn láti iboju Awọn àpàrà."
+"Igbasilẹ imudojuiwọn kuna. Mejeeji awọn ẹda plugin ni a pa. Jọwọ mu ẹya ti "
+"tẹlẹ pada lati iboju Plugins."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:220
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:218
 msgid "The other plugin could not be deactivated."
-msgstr "Kò lè yọ́kúrò nínú àpàrà mìíràn."
+msgstr "Plugin miiran ko le wa ni mu kuro."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:224
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:222
 msgid "The selected plugin did not remain active."
-msgstr "Àpàrà tó yàn kò tẹ̀síwájú mọ́."
+msgstr "Plugin ti a yan ko ni duro ni iṣẹ."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:230
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:228
 msgid ""
 "The selected plugin could not be activated. Neither copy was deleted and "
 "the previous activation settings were restored."
 msgstr ""
-"Kò lè mú àpàrà tó yàn ṣiṣẹ́. Kò sí ẹ̀dá kankan tí a pa, àti pé àwọn àtọka "
-"ìmúṣiṣẹ́ àtijọ́ ni a tún ṣe."
+"Ko le mu ẹrọ amugbooro ti a yan ṣiṣẹ. Kò si ẹda ti a pa ati pe a ti pada si "
+"awọn eto mu ṣiṣẹ ti tẹlẹ."
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:297
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:295
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to delete plugin: %s"
-msgstr "Kuna lati pa plugin: %s"
+msgstr "Kò le pa ẹrọ amugbooro: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:347
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:345
 msgid "No update available for this plugin"
-msgstr "Ko si imudojuiwọn ti o wa fun afikun yii"
+msgstr "Ko si imudojuiwọn ti o wa fun ẹrọ amugbooro yii"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:356
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:354
 msgid "Invalid update information for this plugin"
-msgstr "Alaye imudojuiwọn ti ko tọ fun afikun yii"
+msgstr "Alaye imudojuiwọn ti ko tọ fun ẹrọ amugbooro yii"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:389
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:380
+msgid "Update package not available"
+msgstr "Kò si àpótí imudojuiwọn ti o wa"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:403
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to update plugin: %s"
-msgstr "Iṣe imudojuiwọn afikun kuna: %s"
+msgstr "Kò le ṣe imudojuiwọn ẹrọ amugbooro: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:397
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:411
 msgid "Plugin update failed"
-msgstr "Imudojuiwọn afikun kuna"
+msgstr "Imudojuiwọn ẹrọ amugbooro kuna"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:516
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:530
 msgid "Invalid download URL provided"
-msgstr "URL igbasilẹ ti ko tọ ti pese"
+msgstr "URL gbigba ti ko tọ ni a pese"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:523
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:537
 msgid "Download URL must use HTTP or HTTPS protocol"
-msgstr "URL igbasilẹ gbọdọ lo ilana HTTP tabi HTTPS"
+msgstr "URL gbigba gbọdọ lo ilana HTTP tabi HTTPS"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:532
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:546
 #. translators: %s is the hostname
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
-msgstr "URL igbasilẹ ko wa lati agbegbe ti a fọwọsi: %s"
+msgstr "URL gbigba ko wa lati agbegbe ti a gba laaye: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:561
+msgid "Could not create a temporary package file"
+msgstr "Kò le ṣẹda faili àpótí igba diẹ"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:574
+#, php-format
+msgid "Failed to download plugin: %s"
+msgstr "Kò le gba ẹrọ amugbooro: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:581
+msgid "The plugin package download failed"
+msgstr "Gbigba àpótí ẹrọ amugbooro kuna"
 
 #: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:58
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to get plugin information: %s"
-msgstr "Gbigba alaye afikun kuna: %s"
+msgstr "Kò le gba alaye ẹrọ amugbooro: %s"
 
-#: resources/dist/js/components-showcase.js:87
-#: resources/dist/js/plugins-dashboard.js:88
-#: resources/dist/js/settings-page.js:87
-#: resources/dist/js/welcome-page.js:87
+#: src/Rest/McpController.php:188
+msgid ""
+"MCP Adapter could not be installed or activated. Use the plugin page or "
+"contact your host."
+msgstr ""
+"MCP Adapter kò le fi sori ẹrọ tabi mu ṣiṣẹ. Lo oju-iwe ẹrọ amugbooro tabi "
+"kan si olugbaisese rẹ."
+
+#: src/Rest/McpController.php:190
+msgid "MCP Adapter activated."
+msgstr "MCP Adapter ti mu ṣiṣẹ."
+
+#: resources/dist/js/components-showcase.js:86
+#: resources/dist/js/mcp-page.js:86
+#: resources/dist/js/plugins-dashboard.js:87
+#: resources/dist/js/settings-page.js:86
+#: resources/dist/js/welcome-page.js:86
 #: resources/src/jsx/components/admin-page/footer.jsx:26
 #: resources/dist/js/components-showcase.js:63
+#: resources/dist/js/mcp-page.js:63
 #: resources/dist/js/plugins-dashboard.js:63
 #: resources/dist/js/settings-page.js:63
 #: resources/dist/js/welcome-page.js:63
 #. translators: %s is the plugin name, %s is the rating
 #, js-format
 msgid "If you like %s please leave us a %s rating. Thank you!"
-msgstr "Ti o ba fẹ %s jọwọ fi wa silẹ %s iṣiro. O ṣeun!"
+msgstr "Ti o ba feran %s jọwọ fi itọkasi %s silẹ fun wa. O ṣeun!"
 
-#: resources/dist/js/components-showcase.js:98
-#: resources/dist/js/plugins-dashboard.js:99
-#: resources/dist/js/settings-page.js:98
-#: resources/dist/js/welcome-page.js:98
+#: resources/dist/js/components-showcase.js:97
+#: resources/dist/js/mcp-page.js:97
+#: resources/dist/js/plugins-dashboard.js:98
+#: resources/dist/js/settings-page.js:97
+#: resources/dist/js/welcome-page.js:97
 #: resources/src/jsx/components/admin-page/footer.jsx:43
 #: resources/dist/js/components-showcase.js:80
+#: resources/dist/js/mcp-page.js:80
 #: resources/dist/js/plugins-dashboard.js:80
 #: resources/dist/js/settings-page.js:80
 #: resources/dist/js/welcome-page.js:80
@@ -707,56 +1302,64 @@ msgstr "Ti o ba fẹ %s jọwọ fi wa silẹ %s iṣiro. O ṣeun!"
 msgid "About %s"
 msgstr "Nipa %s"
 
-#: resources/dist/js/components-showcase.js:99
-#: resources/dist/js/plugins-dashboard.js:100
-#: resources/dist/js/settings-page.js:99
-#: resources/dist/js/welcome-page.js:99
+#: resources/dist/js/components-showcase.js:98
+#: resources/dist/js/mcp-page.js:98
+#: resources/dist/js/plugins-dashboard.js:99
+#: resources/dist/js/settings-page.js:98
+#: resources/dist/js/welcome-page.js:98
 #: resources/src/jsx/components/admin-page/footer.jsx:45
 #: resources/dist/js/components-showcase.js:82
+#: resources/dist/js/mcp-page.js:82
 #: resources/dist/js/plugins-dashboard.js:82
 #: resources/dist/js/settings-page.js:82
 #: resources/dist/js/welcome-page.js:82
 msgid "About"
 msgstr "Nipa"
 
-#: resources/dist/js/components-showcase.js:104
-#: resources/dist/js/plugins-dashboard.js:105
-#: resources/dist/js/settings-page.js:104
-#: resources/dist/js/welcome-page.js:104
+#: resources/dist/js/components-showcase.js:103
+#: resources/dist/js/mcp-page.js:103
+#: resources/dist/js/plugins-dashboard.js:104
+#: resources/dist/js/settings-page.js:103
+#: resources/dist/js/welcome-page.js:103
 #: resources/src/jsx/components/admin-page/footer.jsx:54
 #: resources/dist/js/components-showcase.js:91
+#: resources/dist/js/mcp-page.js:91
 #: resources/dist/js/plugins-dashboard.js:91
 #: resources/dist/js/settings-page.js:91
 #: resources/dist/js/welcome-page.js:91
 #. translators: %s is the plugin name
 #, js-format
 msgid "Documentation for %s"
-msgstr "Iwe afọwọkọ fun %s"
+msgstr "Iwe aṣẹ fun %s"
 
-#: resources/dist/js/components-showcase.js:105
-#: resources/dist/js/plugins-dashboard.js:106
-#: resources/dist/js/plugins-dashboard.js:2817
-#: resources/dist/js/settings-page.js:105
-#: resources/dist/js/welcome-page.js:105
-#: resources/dist/js/welcome-page.js:444
+#: resources/dist/js/components-showcase.js:104
+#: resources/dist/js/mcp-page.js:104
+#: resources/dist/js/plugins-dashboard.js:105
+#: resources/dist/js/plugins-dashboard.js:2317
+#: resources/dist/js/settings-page.js:104
+#: resources/dist/js/welcome-page.js:104
+#: resources/dist/js/welcome-page.js:446
 #: resources/src/jsx/components/admin-page/footer.jsx:56
 #: resources/src/jsx/components/pages/welcome-page.jsx:46
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:124
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:120
 #: resources/dist/js/components-showcase.js:93
+#: resources/dist/js/mcp-page.js:93
 #: resources/dist/js/plugins-dashboard.js:93
-#: resources/dist/js/plugins-dashboard.js:2264
+#: resources/dist/js/plugins-dashboard.js:2160
 #: resources/dist/js/settings-page.js:93
 #: resources/dist/js/welcome-page.js:93
-#: resources/dist/js/welcome-page.js:377
+#: resources/dist/js/welcome-page.js:380
 msgid "Documentation"
-msgstr "Iwe afọwọkọ"
+msgstr "Iwe aṣẹ"
 
-#: resources/dist/js/components-showcase.js:110
-#: resources/dist/js/plugins-dashboard.js:111
-#: resources/dist/js/settings-page.js:110
-#: resources/dist/js/welcome-page.js:110
+#: resources/dist/js/components-showcase.js:109
+#: resources/dist/js/mcp-page.js:109
+#: resources/dist/js/plugins-dashboard.js:110
+#: resources/dist/js/settings-page.js:109
+#: resources/dist/js/welcome-page.js:109
 #: resources/src/jsx/components/admin-page/footer.jsx:65
 #: resources/dist/js/components-showcase.js:102
+#: resources/dist/js/mcp-page.js:102
 #: resources/dist/js/plugins-dashboard.js:102
 #: resources/dist/js/settings-page.js:102
 #: resources/dist/js/welcome-page.js:102
@@ -765,1672 +1368,2006 @@ msgstr "Iwe afọwọkọ"
 msgid "Contact the %s team"
 msgstr "Kan si ẹgbẹ %s"
 
-#: resources/dist/js/components-showcase.js:111
-#: resources/dist/js/plugins-dashboard.js:112
-#: resources/dist/js/settings-page.js:111
-#: resources/dist/js/welcome-page.js:111
+#: resources/dist/js/components-showcase.js:110
+#: resources/dist/js/mcp-page.js:110
+#: resources/dist/js/plugins-dashboard.js:111
+#: resources/dist/js/settings-page.js:110
+#: resources/dist/js/welcome-page.js:110
 #: resources/src/jsx/components/admin-page/footer.jsx:67
 #: resources/dist/js/components-showcase.js:104
+#: resources/dist/js/mcp-page.js:104
 #: resources/dist/js/plugins-dashboard.js:104
 #: resources/dist/js/settings-page.js:104
 #: resources/dist/js/welcome-page.js:104
 msgid "Contact"
 msgstr "Kan si"
 
-#: resources/dist/js/components-showcase.js:188
-#: resources/dist/js/plugins-dashboard.js:190
-#: resources/dist/js/settings-page.js:188
-#: resources/dist/js/welcome-page.js:188
+#: resources/dist/js/components-showcase.js:187
+#: resources/dist/js/mcp-page.js:187
+#: resources/dist/js/plugins-dashboard.js:189
+#: resources/dist/js/settings-page.js:187
+#: resources/dist/js/welcome-page.js:187
 #: resources/src/jsx/components/admin-page/header.jsx:50
 #: resources/dist/js/components-showcase.js:168
+#: resources/dist/js/mcp-page.js:168
 #: resources/dist/js/plugins-dashboard.js:168
 #: resources/dist/js/settings-page.js:168
 #: resources/dist/js/welcome-page.js:168
 msgid "Get Support"
 msgstr "Gba Atilẹyin"
 
-#: resources/dist/js/components-showcase.js:453
+#: resources/dist/js/components-showcase.js:457
 #: resources/src/jsx/components/pages/components-showcase.jsx:26
-#: resources/dist/js/components-showcase.js:386
+#: resources/dist/js/components-showcase.js:389
 msgid "Components Showcase"
-msgstr "Ifihan awọn Ẹyà"
+msgstr "Ifihan Awọn ẹya"
+
+#: resources/dist/js/mcp-page.js:590
+#: resources/src/jsx/components/pages/mcp-page.jsx:83
+#: resources/dist/js/mcp-page.js:481
+msgid "Allow PublishPress to connect with your favorite AI service"
+msgstr "Jẹ ki PublishPress sopọ pẹlu iṣẹ AI ti o fẹran"
+
+#: resources/dist/js/mcp-page.js:590
+#: resources/src/jsx/components/pages/mcp-page.jsx:84
+#: resources/dist/js/mcp-page.js:482
+msgid "Use your AI to work with PublishPress plugins on this site."
+msgstr "Lo AI rẹ lati ṣiṣẹ pẹlu awọn ẹrọ amugbooro PublishPress lori aaye yii."
+
+#: resources/dist/js/mcp-page.js:592
+#: resources/src/jsx/components/pages/mcp-page.jsx:85
+#: resources/dist/js/mcp-page.js:483
+msgid "Enable AI connections"
+msgstr "Mú awọn asopọ AI ṣiṣẹ"
+
+#: resources/dist/js/mcp-page.js:616
+#: resources/src/jsx/components/pages/mcp-page.jsx:94
+#: resources/dist/js/mcp-page.js:492
+msgid "Try again"
+msgstr "Gbiyanju lẹẹkansi"
+
+#: resources/dist/js/mcp-page.js:628
+#: resources/src/jsx/components/pages/mcp-page.jsx:99
+#: resources/dist/js/mcp-page.js:497
+msgid "Activate MCP Adapter"
+msgstr "Mu MCP Adapter ṣiṣẹ"
+
+#: resources/dist/js/mcp-page.js:628
+#: resources/src/jsx/components/pages/mcp-page.jsx:99
+#: resources/dist/js/mcp-page.js:497
+msgid "Install and activate MCP Adapter"
+msgstr "Fi sori ẹrọ ki o mu MCP Adapter ṣiṣẹ"
+
+#: resources/dist/js/mcp-page.js:633
+#: resources/src/jsx/components/pages/mcp-page.jsx:101
+#: resources/dist/js/mcp-page.js:499
+msgid "MCP Adapter plugin page"
+msgstr "Oju-iwe ẹrọ amugbooro MCP Adapter"
+
+#: resources/dist/js/mcp-page.js:645
+#: resources/src/jsx/components/pages/mcp-page.jsx:105
+#: resources/dist/js/mcp-page.js:503
+msgid "Check again"
+msgstr "Ṣayẹwo lẹẹkansi"
+
+#: resources/dist/js/mcp-page.js:663
+#: resources/src/jsx/components/pages/mcp-page.jsx:112
+#: resources/dist/js/mcp-page.js:510
+msgid "Your AI connection is enabled"
+msgstr "Asopọ AI rẹ ti wa ni mu ṣiṣẹ"
+
+#: resources/dist/js/mcp-page.js:669
+#: resources/src/jsx/components/pages/mcp-page.jsx:113
+#: resources/dist/js/mcp-page.js:511
+msgid "Connect another AI app"
+msgstr "Sopọ app AI miiran"
+
+#: resources/dist/js/mcp-page.js:669
+#: resources/src/jsx/components/pages/mcp-page.jsx:115
+#: resources/dist/js/mcp-page.js:513
+msgid ""
+"Manage the actions your AI can use below. To set up another app or "
+"computer, open the connection steps again."
+msgstr ""
+"Ṣakoso awọn iṣe ti AI rẹ le lo ni isalẹ. Lati ṣeto app miiran tabi kọmputa, "
+"ṣii awọn igbesẹ asopọ lẹẹkansi."
+
+#: resources/dist/js/mcp-page.js:672
+#: resources/src/jsx/components/pages/mcp-page.jsx:119
+#: resources/dist/js/mcp-page.js:517
+msgid "Control what your AI can do"
+msgstr "Ṣakoso ohun ti AI rẹ le ṣe"
+
+#: resources/dist/js/mcp-page.js:676
+#: resources/src/jsx/components/pages/mcp-page.jsx:121
+#: resources/dist/js/mcp-page.js:519
+msgid "Allow AI to read site data"
+msgstr "Jẹ ki AI ka awọn data aaye"
+
+#: resources/dist/js/mcp-page.js:677
+#: resources/src/jsx/components/pages/mcp-page.jsx:122
+#: resources/dist/js/mcp-page.js:520
+msgid "View content and settings using the actions selected below."
+msgstr "Wo akoonu ati awọn eto nipa lilo awọn iṣe ti a yan ni isalẹ."
+
+#: resources/dist/js/mcp-page.js:685
+#: resources/src/jsx/components/pages/mcp-page.jsx:124
+#: resources/dist/js/mcp-page.js:522
+msgid "Allow AI to change site data"
+msgstr "Jẹ ki AI yipada awọn data aaye"
+
+#: resources/dist/js/mcp-page.js:686
+#: resources/src/jsx/components/pages/mcp-page.jsx:125
+#: resources/dist/js/mcp-page.js:523
+msgid "Create, update or delete data using the actions selected below."
+msgstr "Ṣẹda, ṣe imudojuiwọn tabi pa data nipa lilo awọn iṣẹ ti a yan ni isalẹ."
+
+#: resources/dist/js/mcp-page.js:692
+#: resources/src/jsx/components/pages/mcp-page.jsx:128
+#: resources/dist/js/mcp-page.js:526
+msgid ""
+"You can change these choices at any time. Turn off change access to let "
+"your AI only read site data."
+msgstr ""
+"O le yi awọn aṣayan wọnyi pada ni eyikeyi akoko. Pa ẹrọ iraye si iyipada "
+"lati jẹ ki AI rẹ ka data aaye nikan."
+
+#: resources/dist/js/mcp-page.js:701
+#: resources/src/jsx/components/pages/mcp-page.jsx:131
+#: resources/dist/js/mcp-page.js:529
+msgid "Connection diagnostics"
+msgstr "Iwadi asopọ"
+
+#: resources/dist/js/mcp-page.js:714
+#: resources/src/jsx/components/pages/mcp-page.jsx:138
+#: resources/dist/js/mcp-page.js:536
+msgid "You have unsaved changes."
+msgstr "O ni awọn ayipada ti a ko fipamọ."
+
+#: resources/dist/js/mcp-page.js:719
+#: resources/src/jsx/components/pages/mcp-page.jsx:140
+#: resources/dist/js/mcp-page.js:538
+msgid "Save and continue"
+msgstr "Fipamọ ki o tẹsiwaju"
+
+#: resources/dist/js/mcp-page.js:719
+#: resources/src/jsx/components/pages/mcp-page.jsx:140
+#: resources/dist/js/mcp-page.js:538
+msgid "Save Changes"
+msgstr "Fipamọ Ayipada"
+
+#: resources/dist/js/mcp-page.js:723
+#: resources/src/jsx/components/pages/mcp-page.jsx:142
+#: resources/dist/js/mcp-page.js:540
+msgid "Refresh status"
+msgstr "Tun ṣe ipo"
+
+#: resources/dist/js/mcp-page.js:790
+#: resources/src/jsx/components/pages/mcp/actions.jsx:29
+#: resources/dist/js/mcp-page.js:577
+msgid "Available actions"
+msgstr "Awọn iṣẹ ti o wa"
+
+#: resources/dist/js/mcp-page.js:790
+#: resources/src/jsx/components/pages/mcp/actions.jsx:30
+#: resources/dist/js/mcp-page.js:578
+msgid ""
+"Choose WordPress and plugin actions. Your selections are kept while you "
+"browse. Save changes to apply them."
+msgstr ""
+"Yan awọn iṣe WordPress ati plugin. Awọn yiyan rẹ ni a tọju nigba ti o "
+"nṣawari. Fipamọ awọn ayipada lati lo wọn."
+
+#: resources/dist/js/mcp-page.js:813
+#: resources/src/jsx/components/pages/mcp/actions.jsx:44
+#: resources/dist/js/mcp-page.js:592
+msgid "Search actions"
+msgstr "Wa awọn iṣe"
+
+#: resources/dist/js/mcp-page.js:818
+#: resources/src/jsx/components/pages/mcp/actions.jsx:45
+#: resources/dist/js/mcp-page.js:593
+msgid "Action type"
+msgstr "Iru iṣe"
+
+#: resources/dist/js/mcp-page.js:824
+#: resources/src/jsx/components/pages/mcp/actions.jsx:46
+#: resources/dist/js/mcp-page.js:594
+msgid "All actions"
+msgstr "Gbogbo awọn iṣe"
+
+#: resources/dist/js/mcp-page.js:827
+#: resources/dist/js/mcp-page.js:854
+#: resources/src/jsx/components/pages/mcp/actions.jsx:47
+#: resources/src/jsx/components/pages/mcp/actions.jsx:65
+#: resources/dist/js/mcp-page.js:595
+#: resources/dist/js/mcp-page.js:613
+msgid "Read only"
+msgstr "Ka nikan"
+
+#: resources/dist/js/mcp-page.js:830
+#: resources/dist/js/mcp-page.js:854
+#: resources/src/jsx/components/pages/mcp/actions.jsx:48
+#: resources/src/jsx/components/pages/mcp/actions.jsx:65
+#: resources/dist/js/mcp-page.js:596
+#: resources/dist/js/mcp-page.js:613
+msgid "Changes site data"
+msgstr "Ayipada data aaye"
+
+#: resources/dist/js/mcp-page.js:833
+#: resources/dist/js/mcp-page.js:856
+#: resources/src/jsx/components/pages/mcp/actions.jsx:49
+#: resources/src/jsx/components/pages/mcp/actions.jsx:66
+#: resources/dist/js/mcp-page.js:597
+#: resources/dist/js/mcp-page.js:614
+msgid "Potentially destructive"
+msgstr "Iṣẹlẹ ti o le jẹ iparun"
+
+#: resources/dist/js/mcp-page.js:839
+#: resources/src/jsx/components/pages/mcp/actions.jsx:51
+#: resources/dist/js/mcp-page.js:599
+msgid "Filter"
+msgstr "Fọldà"
+
+#: resources/dist/js/mcp-page.js:841
+#: resources/src/jsx/components/pages/mcp/actions.jsx:54
+#: resources/dist/js/mcp-page.js:602
+msgid "Selected"
+msgstr "Ti a yan"
+
+#: resources/dist/js/mcp-page.js:841
+#: resources/src/jsx/components/pages/mcp/actions.jsx:54
+#: resources/dist/js/mcp-page.js:602
+msgid "Action"
+msgstr "Iṣe"
+
+#: resources/dist/js/mcp-page.js:841
+#: resources/src/jsx/components/pages/mcp/actions.jsx:54
+#: resources/dist/js/mcp-page.js:602
+msgid "Behavior"
+msgstr "Iwa"
+
+#: resources/dist/js/mcp-page.js:843
+#: resources/src/jsx/components/pages/mcp/actions.jsx:56
+#: resources/dist/js/mcp-page.js:604
+msgid "No actions match these filters."
+msgstr "Ko si awọn iṣe ti o ba awọn fọldà wọnyi mu."
+
+#: resources/dist/js/mcp-page.js:848
+#: resources/src/jsx/components/pages/mcp/actions.jsx:59
+#: resources/dist/js/mcp-page.js:607
+#, js-format
+msgid "Select %s"
+msgstr "Yan %s"
+
+#: resources/dist/js/mcp-page.js:862
+#: resources/src/jsx/components/pages/mcp/actions.jsx:73
+#: resources/dist/js/mcp-page.js:621
+msgid "Actions per page"
+msgstr "Awọn iṣe fun oju-iwe kọọkan"
+
+#: resources/dist/js/mcp-page.js:874
+#: resources/src/jsx/components/pages/mcp/actions.jsx:78
+#: resources/dist/js/mcp-page.js:626
+#, js-format
+msgid "Page %1$d of %2$d - %3$d actions"
+msgstr "Oju-iwe %1$d ti %2$d - %3$d awọn iṣe"
+
+#: resources/dist/js/mcp-page.js:880
+#: resources/src/jsx/components/pages/mcp/actions.jsx:79
+#: resources/dist/js/mcp-page.js:627
+msgid "Previous"
+msgstr "Ti iṣaaju"
+
+#: resources/dist/js/mcp-page.js:886
+#: resources/src/jsx/components/pages/mcp/actions.jsx:80
+#: resources/dist/js/mcp-page.js:628
+msgid "Next"
+msgstr "Ti nbọ"
+
+#: resources/dist/js/mcp-page.js:934
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:19
+#: resources/dist/js/mcp-page.js:655
+msgid "Create an application password"
+msgstr "Ṣẹda ọrọ igbaniwọle ohun elo kan"
+
+#: resources/dist/js/mcp-page.js:942
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:22
+#: resources/dist/js/mcp-page.js:658
+msgid "Connect your AI app"
+msgstr "So ohun elo AI rẹ pọ"
+
+#: resources/dist/js/mcp-page.js:946
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:23
+#: resources/dist/js/mcp-page.js:659
+msgid "View the PublishPress AI connection guide"
+msgstr "Wo itọsọna asopọ PublishPress AI"
+
+#: resources/dist/js/mcp-page.js:948
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:25
+#: resources/dist/js/mcp-page.js:661
+msgid "How would you like to connect?"
+msgstr "Bawo ni o ṣe fẹ lati so pọ?"
+
+#: resources/dist/js/mcp-page.js:963
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:33
+#: resources/dist/js/mcp-page.js:669
+msgid "Install Node.js LTS if it is not already available."
+msgstr "Fi Node.js LTS sori ti ko ba si tẹlẹ."
+
+#: resources/dist/js/mcp-page.js:967
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:33
+#: resources/dist/js/mcp-page.js:669
+msgid "Download Node.js"
+msgstr "Gba Node.js"
+
+#: resources/dist/js/mcp-page.js:967
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:34
+#: resources/dist/js/mcp-page.js:670
+msgid "Name it PublishPress AI and copy the password."
+msgstr "Pe ni PublishPress AI ki o si daakọ ọrọ igbaniwọle naa."
+
+#: resources/dist/js/mcp-page.js:967
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:35
+#: resources/dist/js/mcp-page.js:671
+msgid "Copy the prompt below and paste it into your AI agent."
+msgstr "Daakọ iwifunni ni isalẹ ki o lẹẹmọ si agent AI rẹ."
+
+#: resources/dist/js/mcp-page.js:967
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:36
+#: resources/dist/js/mcp-page.js:672
+msgid ""
+"Replace the password placeholder in your local configuration. Merge this "
+"server using the MCP configuration format for your app, keeping any "
+"existing servers. Restart your app and approve the connection."
+msgstr ""
+"Rọpo aaye ọrọ igbaniwọle ni iṣeto agbegbe rẹ. Darapọ mọ server yii pẹlu ọna "
+"kika iṣeto MCP fun ohun elo rẹ, fipamọ eyikeyi awọn server ti o wa. Tun "
+"bẹrẹ ohun elo rẹ ki o si fọwọsi asopọ naa."
+
+#: resources/dist/js/mcp-page.js:969
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:37
+#: resources/dist/js/mcp-page.js:673
+msgid "Enter the password in your app or configuration file, not in the chat."
+msgstr "Tẹ ọrọ igbaniwọle sinu ohun elo rẹ tabi faili iṣeto, kii ṣe ni ibaraẹnisọrọ."
+
+#: resources/dist/js/mcp-page.js:980
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:41
+#: resources/dist/js/mcp-page.js:677
+msgid "I have connected my AI app"
+msgstr "Mo ti so ohun elo AI mi pọ"
+
+#: resources/dist/js/mcp-page.js:982
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:42
+#: resources/dist/js/mcp-page.js:678
+msgid ""
+"Confirm after your AI app verifies this site and performs a read-only "
+"lookup. If you enabled write actions, check that those tools are available "
+"too."
+msgstr ""
+"Jẹrisi lẹhin ti ohun elo AI rẹ ba jẹrisi aaye yii ki o si ṣe iwadi kika "
+"nikan. Ti o ba ti mu awọn iṣe kikọ ṣiṣẹ, ṣayẹwo pe awọn irinṣẹ wọnyẹn tun "
+"wa."
+
+#: resources/dist/js/mcp-page.js:1043
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:37
+#: resources/dist/js/mcp-page.js:719
+msgid "Copied to clipboard."
+msgstr "Ti daakọ si panẹli afọwọṣe."
+
+#: resources/dist/js/mcp-page.js:1047
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:41
+#: resources/dist/js/mcp-page.js:723
+msgid "Select and copy the highlighted text."
+msgstr "Yan ati daakọ ọrọ ti a tẹsiwaju."
+
+#: resources/dist/js/mcp-page.js:1058
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:46
+#: resources/dist/js/mcp-page.js:728
+msgid "Your setup prompt"
+msgstr "Iwifunni eto rẹ"
+
+#: resources/dist/js/mcp-page.js:1058
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:46
+#: resources/dist/js/mcp-page.js:728
+msgid "Server configuration"
+msgstr "Iṣeto olupin"
+
+#: resources/dist/js/mcp-page.js:1069
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:49
+#: resources/dist/js/mcp-page.js:731
+msgid "Copied!"
+msgstr "Ti daakọ!"
+
+#: resources/dist/js/mcp-page.js:1069
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:50
+#: resources/dist/js/mcp-page.js:732
+msgid "Copy setup prompt"
+msgstr "Daakọ iwifunni eto"
+
+#: resources/dist/js/mcp-page.js:1069
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:50
+#: resources/dist/js/mcp-page.js:732
+msgid "Copy configuration"
+msgstr "Daakọ iṣeto"
+
+#: resources/dist/js/mcp-page.js:1075
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:52
+#: resources/dist/js/mcp-page.js:734
+msgid "Download prompt"
+msgstr "Iwifunni igbasilẹ"
+
+#: resources/dist/js/mcp-page.js:1075
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:52
+#: resources/dist/js/mcp-page.js:734
+msgid "Download configuration"
+msgstr "Gbigba iṣeto"
+
+#: resources/dist/js/mcp-page.js:1124
+#: resources/src/jsx/components/pages/mcp/panel.jsx:19
+#: resources/dist/js/mcp-page.js:759
+msgid "Loading the next step..."
+msgstr "N ṣe ikojọpọ igbesẹ ti n bọ..."
+
+#: resources/dist/js/mcp-page.js:1263
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:40
+#: resources/dist/js/mcp-page.js:854
+msgid "AI connections could not be loaded."
+msgstr "Ko le gba awọn asopọ AI."
+
+#: resources/dist/js/mcp-page.js:1275
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:52
+#: resources/dist/js/mcp-page.js:866
+msgid "AI connections could not be loaded. Try again."
+msgstr "Ko le gba awọn asopọ AI. Gbiyanju lẹẹkansi."
+
+#: resources/dist/js/mcp-page.js:1332
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:109
+#: resources/dist/js/mcp-page.js:923
+msgid "Changes could not be saved."
+msgstr "Ko le fipamọ awọn ayipada."
+
+#: resources/dist/js/mcp-page.js:1340
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:117
+#: resources/dist/js/mcp-page.js:931
+msgid "Changes could not be saved. Try again."
+msgstr "Ko le fipamọ awọn ayipada. Gbiyanju lẹẹkansi."
+
+#: resources/dist/js/mcp-page.js:1355
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:132
+#: resources/dist/js/mcp-page.js:946
+msgid "MCP Adapter could not be installed or activated."
+msgstr "Ko le fi sori ẹrọ tabi mu ṣiṣẹ MCP Adapter."
+
+#: resources/dist/js/mcp-page.js:1360
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:137
+#: resources/dist/js/mcp-page.js:951
+msgid "Use the MCP Adapter plugin page or contact your host."
+msgstr "Lo oju-iwe plugin MCP Adapter tabi kan si alejo rẹ."
 
 #: resources/dist/js/plugins-dashboard.js:487
+#: resources/dist/js/plugins-dashboard.js:500
 #: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
-#: resources/dist/js/plugins-dashboard.js:404
-msgid "Select an option"
-msgstr "Yan aṣayan kan"
-
-#: resources/dist/js/plugins-dashboard.js:493
-#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
-#: resources/dist/js/plugins-dashboard.js:412
-msgid "Options"
-msgstr "Aṣayan"
-
-#: resources/dist/js/plugins-dashboard.js:504
-#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:66
-#: resources/dist/js/plugins-dashboard.js:426
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:64
+#: resources/dist/js/plugins-dashboard.js:407
+#: resources/dist/js/plugins-dashboard.js:427
 msgid "Filter plugins by status"
-msgstr "Ṣe àlẹmọ àwọn plugins nípa ipo"
+msgstr "Ṣe àlẹmọ awọn plugins nipasẹ ipo"
 
-#: resources/dist/js/plugins-dashboard.js:906
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
-#: resources/dist/js/plugins-dashboard.js:703, fuzzy
+#: resources/dist/js/plugins-dashboard.js:821
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:88
+#: resources/dist/js/plugins-dashboard.js:685, fuzzy
 msgid "N/A"
 msgstr "N/A"
 
-#: resources/dist/js/plugins-dashboard.js:948
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
-#: resources/dist/js/plugins-dashboard.js:750
+#: resources/dist/js/plugins-dashboard.js:861
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:136
+#: resources/dist/js/plugins-dashboard.js:733
 #. translators: %1$s is the plugin name, %2$s is the expiration date
 #, js-format
 msgid "The license for %1$s expired on %2$s"
-msgstr "Iwe-aṣẹ fun %1$s parẹ ni %2$s"
+msgstr "Iwe-aṣẹ fun %1$s ti pari ni %2$s"
 
-#: resources/dist/js/plugins-dashboard.js:952
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
-#: resources/dist/js/plugins-dashboard.js:757
+#: resources/dist/js/plugins-dashboard.js:865
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:143
+#: resources/dist/js/plugins-dashboard.js:740
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
 #, js-format
 msgid "The licenses for %1$s expired on %2$s"
-msgstr "Awọn iwe-aṣẹ fun %1$s parẹ ni %2$s"
+msgstr "Awọn iwe-aṣẹ fun %1$s ti pari ni %2$s"
 
-#: resources/dist/js/plugins-dashboard.js:958
-#: resources/dist/js/plugins-dashboard.js:1000
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:157
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:212
-#: resources/dist/js/plugins-dashboard.js:767
-#: resources/dist/js/plugins-dashboard.js:822
+#: resources/dist/js/plugins-dashboard.js:871
+#: resources/dist/js/plugins-dashboard.js:911
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:153
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:208
+#: resources/dist/js/plugins-dashboard.js:750
+#: resources/dist/js/plugins-dashboard.js:805
 msgid "Renew now"
 msgstr "Tunṣe bayi"
 
-#: resources/dist/js/plugins-dashboard.js:990
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:193
-#: resources/dist/js/plugins-dashboard.js:803
+#: resources/dist/js/plugins-dashboard.js:901
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:189
+#: resources/dist/js/plugins-dashboard.js:786
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
 #, js-format
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
-msgstr "Iwe-aṣẹ fun %1$s pari ni %2$s (%3$d ọjọ to ku)"
+msgstr "Iwe-aṣẹ fun %1$s yoo pari ni %2$s (%3$d ọjọ to ku)"
 
-#: resources/dist/js/plugins-dashboard.js:994
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:201
-#: resources/dist/js/plugins-dashboard.js:811
+#: resources/dist/js/plugins-dashboard.js:905
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:197
+#: resources/dist/js/plugins-dashboard.js:794
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
 #, js-format
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
-msgstr "Iwe-aṣẹ fun %1$s pari ni %2$s (%3$d ọjọ to ku)"
+msgstr "Awọn iwe-aṣẹ fun %1$s yoo pari ni %2$s (%3$d ọjọ to ku)"
 
-#: resources/dist/js/plugins-dashboard.js:997
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:209
-#: resources/dist/js/plugins-dashboard.js:819
+#: resources/dist/js/plugins-dashboard.js:908
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:205
+#: resources/dist/js/plugins-dashboard.js:802
 msgid "Warning:"
 msgstr "Ikilọ:"
 
-#: resources/dist/js/plugins-dashboard.js:1092
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:48
-#: resources/dist/js/plugins-dashboard.js:888
+#: resources/dist/js/plugins-dashboard.js:993
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:47
+#: resources/dist/js/plugins-dashboard.js:870
 msgid "All"
 msgstr "Gbogbo"
 
-#: resources/dist/js/plugins-dashboard.js:1096
-#: resources/dist/js/plugins-dashboard.js:3174
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:53
+#: resources/dist/js/plugins-dashboard.js:997
+#: resources/dist/js/plugins-dashboard.js:2641
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:52
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:40
-#: resources/dist/js/plugins-dashboard.js:893
-#: resources/dist/js/plugins-dashboard.js:2604
+#: resources/dist/js/plugins-dashboard.js:875
+#: resources/dist/js/plugins-dashboard.js:2488
 msgid "Unlicensed"
-msgstr "Akọsilẹ ti ko ni iwe-aṣẹ"
+msgstr "Ko ni iwe-aṣẹ"
 
-#: resources/dist/js/plugins-dashboard.js:1112
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:73
-#: resources/dist/js/plugins-dashboard.js:913
+#: resources/dist/js/plugins-dashboard.js:1001
+#: resources/dist/js/plugins-dashboard.js:2645
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:57
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:44
+#: resources/dist/js/plugins-dashboard.js:880
+#: resources/dist/js/plugins-dashboard.js:2492
+msgid "Expired"
+msgstr "Ti pari"
+
+#: resources/dist/js/plugins-dashboard.js:1017
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:77
+#: resources/dist/js/plugins-dashboard.js:900
 msgid "Updates available"
 msgstr "Awọn imudojuiwọn wa"
 
-#: resources/dist/js/plugins-dashboard.js:1172
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:142
-#: resources/dist/js/plugins-dashboard.js:982
+#: resources/dist/js/plugins-dashboard.js:1075
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:146
+#: resources/dist/js/plugins-dashboard.js:969
 msgid ""
 "To force a refresh, hold Option on Mac or Alt on Windows and then click "
 "Refresh."
 msgstr ""
-"Láti fi agbara mú àtúnṣe, tẹ̀ ẹyọ́kòó Option lórí Mac tàbí Alt lórí Windows "
-"kí o sì tẹ Refresh."
+"Lati fi agbara mu imudojuiwọn, di Ọptọn lori Mac tabi Alt lori Windows ki o "
+"si tẹ Imudojuiwọn."
 
-#: resources/dist/js/plugins-dashboard.js:1184
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:152
-#: resources/dist/js/plugins-dashboard.js:992
+#: resources/dist/js/plugins-dashboard.js:1083
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:155
+#: resources/dist/js/plugins-dashboard.js:978
 msgid "Plugins & Features"
-msgstr "Àwọn àpàrà & Àwọn ànfààní"
+msgstr "Awọn Plugins & Awọn ẹya"
 
-#: resources/dist/js/plugins-dashboard.js:1184
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:153
-#: resources/dist/js/plugins-dashboard.js:993
+#: resources/dist/js/plugins-dashboard.js:1083
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:156
+#: resources/dist/js/plugins-dashboard.js:979
 msgid "Activate, open, and license each product directly from the Hub."
-msgstr "Mú, ṣí, àti ìwé-aṣẹ kọọkan ọja taara láti ọdọ Hub."
+msgstr "Mu ṣiṣẹ, ṣii, ati iwe-aṣẹ ọja kọọkan taara lati Hub."
 
-#: resources/dist/js/plugins-dashboard.js:1192
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:157
-#: resources/dist/js/plugins-dashboard.js:997
+#: resources/dist/js/plugins-dashboard.js:1091
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:160
+#: resources/dist/js/plugins-dashboard.js:983
 msgid "Force Refresh"
-msgstr "Pa Imudojuiwọn Mọ"
+msgstr "Fi agbara mu Imudojuiwọn"
 
-#: resources/dist/js/plugins-dashboard.js:1192
-#: resources/dist/js/settings-page.js:1100
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:157
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:307
-#: resources/dist/js/plugins-dashboard.js:997
-#: resources/dist/js/settings-page.js:868
+#: resources/dist/js/plugins-dashboard.js:1091
+#: resources/dist/js/settings-page.js:874
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:160
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:308
+#: resources/dist/js/plugins-dashboard.js:983
 msgid "Refresh"
-msgstr "Mọ"
+msgstr "Imudojuiwọn"
 
-#: resources/dist/js/plugins-dashboard.js:1309
-#: resources/src/jsx/components/pages/suite-license.jsx:30
-#: resources/dist/js/plugins-dashboard.js:1048
-#, js-format
-msgid "Checking %s…"
-msgstr "Nǹkan %s ń ṣàyẹ̀wò…"
-
-#: resources/dist/js/plugins-dashboard.js:1326
-#: resources/src/jsx/components/pages/suite-license.jsx:38
-#: resources/dist/js/plugins-dashboard.js:1056
-msgid "The license could not be activated for this product."
-msgstr "Kò lè mú ìwé-aṣẹ ṣiṣẹ́ fún ọja yìí."
-
-#: resources/dist/js/plugins-dashboard.js:1331
-#: resources/src/jsx/components/pages/suite-license.jsx:40
-#: resources/dist/js/plugins-dashboard.js:1058
-msgid "License activated."
-msgstr "Ìwé-aṣẹ ti ṣiṣẹ́."
-
-#: resources/dist/js/plugins-dashboard.js:1342
-#: resources/src/jsx/components/pages/suite-license.jsx:42
-#: resources/dist/js/plugins-dashboard.js:1060
-msgid "Activation failed. Please try again."
-msgstr "Ìmúṣiṣẹ́ kò ṣàṣeyọrí. Jọ̀wọ́ tún gbìmọ̀ lẹ́ẹ̀kan si."
-
-#: resources/dist/js/plugins-dashboard.js:1362
-#: resources/src/jsx/components/pages/suite-license.jsx:46
-#: resources/dist/js/plugins-dashboard.js:1064
-msgid "License checks complete. Review the results below."
-msgstr "Àwọn ìṣàyẹ̀wò ìwé-aṣẹ ti parí. Ṣayẹwo àwọn abajade ní isalẹ."
-
-#: resources/dist/js/plugins-dashboard.js:1371
-#: resources/src/jsx/components/pages/suite-license.jsx:49
-#: resources/dist/js/plugins-dashboard.js:1067
-msgid ""
-"License checks complete, but the dashboard could not refresh. Reload this "
-"page to see the latest status."
-msgstr ""
-"Àwọn ìṣàyẹ̀wò ìwé-aṣẹ ti parí, ṣùgbọ́n dashboard kò lè tún ṣe. Tun ikanni "
-"yìí ṣe láti rí ipo tuntun."
-
-#: resources/dist/js/plugins-dashboard.js:1398
-#: resources/src/jsx/components/pages/suite-license.jsx:60
-#: resources/dist/js/plugins-dashboard.js:1078, fuzzy
-msgid "PublishPress Bundle / Suite"
-msgstr "PublishPress Bundle / Suite"
-
-#: resources/dist/js/plugins-dashboard.js:1398
-#: resources/src/jsx/components/pages/suite-license.jsx:61
-#: resources/dist/js/plugins-dashboard.js:1079
-msgid "Connect your included Pro plugins with one license key."
-msgstr "So pọ awọn afikun Pro ti a fi kun pẹlu bọtini iwe-aṣẹ kan."
-
-#: resources/dist/js/plugins-dashboard.js:1406
-#: resources/src/jsx/components/pages/suite-license.jsx:64
-#: resources/dist/js/plugins-dashboard.js:1082
-msgid "Close license setup"
-msgstr "Pa eto iwe-aṣẹ mọ"
-
-#: resources/dist/js/plugins-dashboard.js:1406
-#: resources/src/jsx/components/pages/suite-license.jsx:64
-#: resources/dist/js/plugins-dashboard.js:1082
-msgid "Activate Suite License"
-msgstr "Mu Iwe-aṣẹ Suite ṣiṣẹ"
-
-#: resources/dist/js/plugins-dashboard.js:1410
-#: resources/dist/js/plugins-dashboard.js:2035
-#: resources/dist/js/plugins-dashboard.js:2185
-#: resources/src/jsx/components/pages/suite-license.jsx:67
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:71
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:97
-#: resources/dist/js/plugins-dashboard.js:1085
-#: resources/dist/js/plugins-dashboard.js:1540
-#: resources/dist/js/plugins-dashboard.js:1673
-msgid "License key"
-msgstr "Bọtini iwe-ẹ̀rí"
-
-#: resources/dist/js/plugins-dashboard.js:1418
-#: resources/src/jsx/components/pages/suite-license.jsx:70
-#: resources/dist/js/plugins-dashboard.js:1088
-msgid "Select products included in your subscription"
-msgstr "Yan awọn ọja ti a fi kun ninu ìforúkọsílẹ rẹ"
-
-#: resources/dist/js/plugins-dashboard.js:1418
-#: resources/src/jsx/components/pages/suite-license.jsx:71
-#: resources/dist/js/plugins-dashboard.js:1089
-msgid ""
-"This replaces the saved license key for each selected product after "
-"successful activation. Keys managed in wp-config.php cannot be changed "
-"here. No plugins will be installed or activated."
-msgstr ""
-"Eyi rọpo bọtini iwe-aṣẹ ti a fipamọ fun ọkọọkan ọja ti a yan lẹhin iṣẹ-ṣiṣe "
-"ti o ni aṣeyọri. Awọn bọtini ti a ṣe iṣakoso ninu wp-config.php ko le "
-"yipada nibi. Kò sí awọn afikun ti a yoo fi sori ẹrọ tabi mu ṣiṣẹ."
-
-#: resources/dist/js/plugins-dashboard.js:1438
-#: resources/src/jsx/components/pages/suite-license.jsx:77
-#: resources/dist/js/plugins-dashboard.js:1095
-msgid "Activate license for selected products"
-msgstr "Mu iwe-aṣẹ ṣiṣẹ fun awọn ọja ti a yan"
-
-#: resources/dist/js/plugins-dashboard.js:1445
-#: resources/src/jsx/components/pages/suite-license.jsx:81
-#: resources/dist/js/plugins-dashboard.js:1099
-msgid "Success"
-msgstr "Aseyori"
-
-#: resources/dist/js/plugins-dashboard.js:1445
-#: resources/src/jsx/components/pages/suite-license.jsx:81
-#: resources/dist/js/plugins-dashboard.js:1099
-msgid "Failed"
-msgstr "Kò ṣe aṣeyọri"
-
-#: resources/dist/js/plugins-dashboard.js:1490
+#: resources/dist/js/plugins-dashboard.js:1138
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:20
-#: resources/dist/js/plugins-dashboard.js:1124
+#: resources/dist/js/plugins-dashboard.js:1024
 msgid "Install"
 msgstr "Fi sori ẹrọ"
 
-#: resources/dist/js/plugins-dashboard.js:1491
+#: resources/dist/js/plugins-dashboard.js:1139
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
-#: resources/dist/js/plugins-dashboard.js:1125
+#: resources/dist/js/plugins-dashboard.js:1025
 msgid "Installing..."
-msgstr "Nṣiṣẹ fifi sori ẹrọ..."
+msgstr "N fi sori ẹrọ..."
 
-#: resources/dist/js/plugins-dashboard.js:1496
-#: resources/dist/js/plugins-dashboard.js:2588
-#: resources/dist/js/plugins-dashboard.js:2613
+#: resources/dist/js/plugins-dashboard.js:1144
+#: resources/dist/js/plugins-dashboard.js:2116
+#: resources/dist/js/plugins-dashboard.js:2137
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:26
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
-#: resources/dist/js/plugins-dashboard.js:1130
-#: resources/dist/js/plugins-dashboard.js:2110
-#: resources/dist/js/plugins-dashboard.js:2133
+#: resources/dist/js/plugins-dashboard.js:1030
+#: resources/dist/js/plugins-dashboard.js:2010
+#: resources/dist/js/plugins-dashboard.js:2033
 msgid "Upgrade to Pro"
-msgstr "Ṣe igbesoke si Pro"
+msgstr "Gba Pro"
 
-#: resources/dist/js/plugins-dashboard.js:1497
+#: resources/dist/js/plugins-dashboard.js:1145
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
-#: resources/dist/js/plugins-dashboard.js:1131
+#: resources/dist/js/plugins-dashboard.js:1031
 msgid "Upgrading to Pro..."
-msgstr "Nṣiṣẹ igbesoke si Pro..."
+msgstr "N mu Pro ṣiṣẹ..."
 
-#: resources/dist/js/plugins-dashboard.js:1502
+#: resources/dist/js/plugins-dashboard.js:1150
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:32
-#: resources/dist/js/plugins-dashboard.js:1136
+#: resources/dist/js/plugins-dashboard.js:1036
 msgid "Manage License"
 msgstr "Ṣakoso Iwe-aṣẹ"
 
-#: resources/dist/js/plugins-dashboard.js:1503
+#: resources/dist/js/plugins-dashboard.js:1151
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
-#: resources/dist/js/plugins-dashboard.js:1137
+#: resources/dist/js/plugins-dashboard.js:1037
 msgid "Managing License..."
-msgstr "Nṣiṣẹ iṣakoso iwe-aṣẹ..."
+msgstr "N ṣakoso Iwe-aṣẹ..."
 
-#: resources/dist/js/plugins-dashboard.js:1508
+#: resources/dist/js/plugins-dashboard.js:1156
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:38
-#: resources/dist/js/plugins-dashboard.js:1142
+#: resources/dist/js/plugins-dashboard.js:1042
 msgid "Activate License"
 msgstr "Mu Iwe-aṣẹ ṣiṣẹ"
 
-#: resources/dist/js/plugins-dashboard.js:1509
+#: resources/dist/js/plugins-dashboard.js:1157
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
-#: resources/dist/js/plugins-dashboard.js:1143
+#: resources/dist/js/plugins-dashboard.js:1043
 msgid "Activating License..."
-msgstr "Nṣiṣẹ mimu iwe-aṣẹ ṣiṣẹ..."
+msgstr "N mu Iwe-aṣẹ ṣiṣẹ..."
 
-#: resources/dist/js/plugins-dashboard.js:1515
+#: resources/dist/js/plugins-dashboard.js:1163
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
-#: resources/dist/js/plugins-dashboard.js:1149
+#: resources/dist/js/plugins-dashboard.js:1049
 msgid "Resolve Conflict"
-msgstr "Yanju Ija"
+msgstr "Yan Ija"
 
-#: resources/dist/js/plugins-dashboard.js:1516
+#: resources/dist/js/plugins-dashboard.js:1164
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
-#: resources/dist/js/plugins-dashboard.js:1150
+#: resources/dist/js/plugins-dashboard.js:1050
 msgid "Resolving Conflict..."
-msgstr "Nṣiṣẹ yanjú ija..."
+msgstr "N yan Ija..."
 
-#: resources/dist/js/plugins-dashboard.js:1521
+#: resources/dist/js/plugins-dashboard.js:1169
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
-#: resources/dist/js/plugins-dashboard.js:1155
+#: resources/dist/js/plugins-dashboard.js:1055
 msgid "Update"
 msgstr "Imudojuiwọn"
 
-#: resources/dist/js/plugins-dashboard.js:1522
+#: resources/dist/js/plugins-dashboard.js:1170
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
-#: resources/dist/js/plugins-dashboard.js:1156
+#: resources/dist/js/plugins-dashboard.js:1056
 msgid "Updating..."
 msgstr "Nṣiṣẹ imudojuiwọn..."
 
-#: resources/dist/js/plugins-dashboard.js:1614
+#: resources/dist/js/plugins-dashboard.js:1257
 #: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:16
-#: resources/dist/js/plugins-dashboard.js:1238
+#: resources/dist/js/plugins-dashboard.js:1138
 msgid ""
 "Deactivating PublishPress Statuses stops registering its custom post "
 "statuses. Content using those statuses may become unavailable, and parts of "
 "your site may stop working until the plugin is active again."
 msgstr ""
-"Ipa PublishPress Statuses n dawọ awọn ipo ifiweranṣẹ aṣa rẹ duro. Akopọ ti "
-"nlo awọn ipo wọnyẹn le di aiṣe-ṣiṣe, ati pe awọn apakan ti aaye rẹ le dawọ "
-"ṣiṣẹ titi di igba ti afikun naa ba tun ṣiṣẹ."
+"Ipa PublishPress Statuses ti wa ni idilọwọ ni iforukọsilẹ awọn ipo "
+"ifiweranṣẹ adani rẹ. Awọn akoonu ti nlo awọn ipo wọnyẹn le di ailopin, ati "
+"awọn apakan ti aaye rẹ le da iṣẹ duro titi ti afikun naa yoo fi wa ni iṣẹ "
+"lẹẹkansi."
 
-#: resources/dist/js/plugins-dashboard.js:1616
+#: resources/dist/js/plugins-dashboard.js:1259
 #: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:18
-#: resources/dist/js/plugins-dashboard.js:1240
+#: resources/dist/js/plugins-dashboard.js:1140
 msgid ""
 "Deactivating this plugin disables its features and may affect content or "
 "workflows that depend on it."
 msgstr ""
-"Ipa afikun yii n pa awọn ẹya rẹ duro ati pe o le ni ipa lori akoonu tabi "
-"awọn ṣiṣiṣẹ ti o da lori rẹ."
+"Ipa afikun yii n ṣe idiwọ awọn ẹya rẹ ati pe o le ni ipa lori akoonu tabi "
+"awọn ilana ti o da lori rẹ."
 
-#: resources/dist/js/plugins-dashboard.js:1627
+#: resources/dist/js/plugins-dashboard.js:1268
 #: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:25
-#: resources/dist/js/plugins-dashboard.js:1247
+#: resources/dist/js/plugins-dashboard.js:1147
 msgid ""
 "Uninstalling deletes the plugin files and may also delete its saved "
 "settings or data. Its features will no longer be available. Back up your "
 "site before continuing."
 msgstr ""
-"Yankọ awọn faili afikun naa n pa awọn faili afikun ati pe o le tun pa awọn "
-"eto tabi data ti a fipamọ rẹ. Awọn ẹya rẹ ko ni wa mọ. Ṣe afẹyinti aaye rẹ "
-"ṣaaju ki o to tẹsiwaju."
+"Yọkuro yoo pa awọn faili afikun ati pe o le tun pa awọn eto tabi data rẹ ti "
+"a fipamọ. Awọn ẹya rẹ ko ni wa mọ."
 
-#: resources/dist/js/plugins-dashboard.js:1627
+#: resources/dist/js/plugins-dashboard.js:1268
 #: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:26
-#: resources/dist/js/plugins-dashboard.js:1248
+#: resources/dist/js/plugins-dashboard.js:1148
 msgid ""
 "Without PublishPress Statuses, its custom post statuses are no longer "
 "registered. Content using those statuses may become unavailable, and parts "
 "of your site may stop working until the plugin is installed and active "
 "again."
 msgstr ""
-"Laisi PublishPress Statuses, awọn ipo ifiweranṣẹ aṣa rẹ ko ti forukọsilẹ "
-"mọ. Akopọ ti nlo awọn ipo wọnyẹn le di aiṣe-ṣiṣe, ati pe awọn apakan ti "
-"aaye rẹ le dawọ ṣiṣẹ titi di igba ti a fi sori ẹrọ ati pe afikun naa tun "
-"ṣiṣẹ."
+"Laisi PublishPress Statuses, awọn ipo ifiweranṣẹ adani rẹ ko si ni "
+"iforukọsilẹ mọ. Awọn akoonu ti nlo awọn ipo wọnyẹn le di ailopin, ati awọn "
+"apakan ti aaye rẹ le da iṣẹ duro titi ti afikun naa yoo fi fi sori ẹrọ ati "
+"ṣiṣẹ lẹẹkansi."
 
-#: resources/dist/js/plugins-dashboard.js:1627
+#: resources/dist/js/plugins-dashboard.js:1268
 #: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:29
-#: resources/dist/js/plugins-dashboard.js:1251
+#: resources/dist/js/plugins-dashboard.js:1151
 msgid ""
 "Resolving this conflict can deactivate the plugin while switching versions. "
 "If the version you keep cannot be activated, the plugin may remain "
 "disabled. Check that it is active after resolving the conflict."
 msgstr ""
-"Yiyọ iṣoro yii le mu afikun naa ṣiṣẹ nigba ti o n yipada awọn ẹya. Ti ẹya "
-"ti o pa mọ ko le mu ṣiṣẹ, afikun naa le wa ni pa. Ṣayẹwo pe o wa ni ṣiṣẹ "
-"lẹhin ti o yanju iṣoro naa."
+"Yanju ija yii le pa afikun naa nigba ti o ba n yi awọn ẹya pada. Ti ẹya ti "
+"o n pa ko le ṣiṣẹ, afikun naa le wa ni idinamọ. Ṣayẹwo pe o wa ni iṣẹ lẹhin "
+"ti o ba ti yanju ija naa."
 
-#: resources/dist/js/plugins-dashboard.js:1831
+#: resources/dist/js/plugins-dashboard.js:1459
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:33
-#: resources/dist/js/plugins-dashboard.js:1383
+#: resources/dist/js/plugins-dashboard.js:1283
 msgid "Confirmation"
 msgstr "Ijẹrisi"
 
-#: resources/dist/js/plugins-dashboard.js:1837
+#: resources/dist/js/plugins-dashboard.js:1465
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:41
-#: resources/dist/js/plugins-dashboard.js:1391
+#: resources/dist/js/plugins-dashboard.js:1291
 msgid "Are you sure you want to continue?"
-msgstr "Ṣe o da duro pe o fẹ lati tẹsiwaju?"
+msgstr "Ṣe o dajudaju pe o fẹ lati tẹsiwaju?"
 
-#: resources/dist/js/plugins-dashboard.js:1849
+#: resources/dist/js/plugins-dashboard.js:1475
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:54
-#: resources/dist/js/plugins-dashboard.js:1404
+#: resources/dist/js/plugins-dashboard.js:1304
 msgid "Continue"
 msgstr "Tẹsiwaju"
 
-#: resources/dist/js/plugins-dashboard.js:1857
-#: resources/dist/js/plugins-dashboard.js:2543
+#: resources/dist/js/plugins-dashboard.js:1481
+#: resources/dist/js/plugins-dashboard.js:2070
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:57
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:103
-#: resources/dist/js/plugins-dashboard.js:1407
-#: resources/dist/js/plugins-dashboard.js:2075
+#: resources/dist/js/plugins-dashboard.js:1307
+#: resources/dist/js/plugins-dashboard.js:1975
 msgid "Cancel"
 msgstr "Fagilee"
 
-#: resources/dist/js/plugins-dashboard.js:1903
+#: resources/dist/js/plugins-dashboard.js:1528
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29
-#: resources/dist/js/plugins-dashboard.js:1444
+#: resources/dist/js/plugins-dashboard.js:1344
 msgid "Install Plugin"
-msgstr "Fi Plugin sori"
+msgstr "Fi sori ẹrọ afikun"
 
-#: resources/dist/js/plugins-dashboard.js:1908
+#: resources/dist/js/plugins-dashboard.js:1531
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
-#: resources/dist/js/plugins-dashboard.js:1449
+#: resources/dist/js/plugins-dashboard.js:1349
 msgid ""
 "Select how you would like to install this plugin. You can install the Pro "
 "version if you have a license, or the Free version to get started."
 msgstr ""
 "Yan bi o ṣe fẹ lati fi sori ẹrọ afikun yii. O le fi ẹya Pro sori ẹrọ ti o "
-"ba ni iwe-aṣẹ, tabi ẹya Ọfẹ lati bẹrẹ."
+"ba ni iwe-aṣẹ, tabi ẹya Free lati bẹrẹ."
 
-#: resources/dist/js/plugins-dashboard.js:1913
-#: resources/dist/js/plugins-dashboard.js:3457
+#: resources/dist/js/plugins-dashboard.js:1536
+#: resources/dist/js/plugins-dashboard.js:2925
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:116
-#: resources/dist/js/plugins-dashboard.js:1452
-#: resources/dist/js/plugins-dashboard.js:2891
+#: resources/dist/js/plugins-dashboard.js:1352
+#: resources/dist/js/plugins-dashboard.js:2775
 msgid "Free Details"
 msgstr "Alaye Free"
 
-#: resources/dist/js/plugins-dashboard.js:1916
-#: resources/dist/js/plugins-dashboard.js:3464
+#: resources/dist/js/plugins-dashboard.js:1541
+#: resources/dist/js/plugins-dashboard.js:2932
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:124
-#: resources/dist/js/plugins-dashboard.js:1454
-#: resources/dist/js/plugins-dashboard.js:2899
+#: resources/dist/js/plugins-dashboard.js:1354
+#: resources/dist/js/plugins-dashboard.js:2783
 msgid "Pro Details"
 msgstr "Alaye Pro"
 
-#: resources/dist/js/plugins-dashboard.js:1919
-#: resources/dist/js/plugins-dashboard.js:3472
+#: resources/dist/js/plugins-dashboard.js:1546
+#: resources/dist/js/plugins-dashboard.js:2940
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:133
-#: resources/dist/js/plugins-dashboard.js:1456
-#: resources/dist/js/plugins-dashboard.js:2908
+#: resources/dist/js/plugins-dashboard.js:1356
+#: resources/dist/js/plugins-dashboard.js:2792, fuzzy
 msgid "Changelogs"
-msgstr "Awọn ayipada"
+msgstr "Changelogs"
 
-#: resources/dist/js/plugins-dashboard.js:1925
+#: resources/dist/js/plugins-dashboard.js:1550
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44
-#: resources/dist/js/plugins-dashboard.js:1459
+#: resources/dist/js/plugins-dashboard.js:1359
 msgid "I have a license, install the Pro version"
-msgstr "Mo ni iwe-aṣẹ, fi ẹya Pro sori"
+msgstr "Mo ni iwe-aṣẹ, fi ẹya Pro sori ẹrọ"
 
-#: resources/dist/js/plugins-dashboard.js:1931
+#: resources/dist/js/plugins-dashboard.js:1554
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47
-#: resources/dist/js/plugins-dashboard.js:1462
+#: resources/dist/js/plugins-dashboard.js:1362
 msgid "I don't have a license, install the Free version"
-msgstr "Nko ni iwe-aṣẹ, fi ẹya Free sori"
+msgstr "Nko ni iwe-aṣẹ, fi ẹya Free sori ẹrọ"
 
-#: resources/dist/js/plugins-dashboard.js:2021
+#: resources/dist/js/plugins-dashboard.js:1628
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:56
-#: resources/dist/js/plugins-dashboard.js:1525
+#: resources/dist/js/plugins-dashboard.js:1425
 msgid "Enter your license key"
 msgstr "Tẹ iwe-aṣẹ rẹ"
 
-#: resources/dist/js/plugins-dashboard.js:2026
-#: resources/dist/js/plugins-dashboard.js:2176
+#: resources/dist/js/plugins-dashboard.js:1631
+#: resources/dist/js/plugins-dashboard.js:1756
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:61
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
-#: resources/dist/js/plugins-dashboard.js:1530
-#: resources/dist/js/plugins-dashboard.js:1663
+#: resources/dist/js/plugins-dashboard.js:1430
+#: resources/dist/js/plugins-dashboard.js:1563
 msgid ""
 "Enter your license key to activate the Pro version of this plugin. You can "
 "find your license key in your PublishPress account dashboard."
 msgstr ""
-"Tẹ bọtini iwe-aṣẹ rẹ lati mu ẹya Pro ti afikun yii ṣiṣẹ. O le wa bọtini "
-"iwe-aṣẹ rẹ ninu iboju iṣakoso akọọlẹ PublishPress rẹ."
+"Tẹ iwe-aṣẹ rẹ lati mu ẹya Pro ti afikun yii ṣiṣẹ. O le rii iwe-aṣẹ rẹ ni "
+"dashboard akọọlẹ PublishPress rẹ."
 
-#: resources/dist/js/plugins-dashboard.js:2033
-#: resources/dist/js/plugins-dashboard.js:2183
+#: resources/dist/js/plugins-dashboard.js:1638
+#: resources/dist/js/plugins-dashboard.js:1763
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:65
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:91
-#: resources/dist/js/plugins-dashboard.js:1534
-#: resources/dist/js/plugins-dashboard.js:1667
+#: resources/dist/js/plugins-dashboard.js:1434
+#: resources/dist/js/plugins-dashboard.js:1567
 msgid "Go to the dashboard to get your license key"
-msgstr "Lọ si dashboard lati gba bọtini iwe-aṣẹ rẹ"
+msgstr "Lọ si dashboard lati gba iwe-aṣẹ rẹ"
 
-#: resources/dist/js/plugins-dashboard.js:2037
-#: resources/dist/js/plugins-dashboard.js:2187
+#: resources/dist/js/plugins-dashboard.js:1640
+#: resources/dist/js/plugins-dashboard.js:1765
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:71
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:97
+#: resources/dist/js/plugins-dashboard.js:1440
+#: resources/dist/js/plugins-dashboard.js:1573
+msgid "License key"
+msgstr "Iwe-aṣẹ"
+
+#: resources/dist/js/plugins-dashboard.js:1642
+#: resources/dist/js/plugins-dashboard.js:1767
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:73
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:99
-#: resources/dist/js/plugins-dashboard.js:1542
-#: resources/dist/js/plugins-dashboard.js:1675
+#: resources/dist/js/plugins-dashboard.js:1442
+#: resources/dist/js/plugins-dashboard.js:1575
 msgid "Enter your license key here"
 msgstr "Tẹ iwe-aṣẹ rẹ nibi"
 
-#: resources/dist/js/plugins-dashboard.js:2045
-#: resources/dist/js/plugins-dashboard.js:2195
-#: resources/dist/js/plugins-dashboard.js:2223
+#: resources/dist/js/plugins-dashboard.js:1648
+#: resources/dist/js/plugins-dashboard.js:1773
+#: resources/dist/js/plugins-dashboard.js:1797
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:81
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:152
-#: resources/dist/js/plugins-dashboard.js:1550
-#: resources/dist/js/plugins-dashboard.js:1682
-#: resources/dist/js/plugins-dashboard.js:1728
+#: resources/dist/js/plugins-dashboard.js:1450
+#: resources/dist/js/plugins-dashboard.js:1582
+#: resources/dist/js/plugins-dashboard.js:1628
 msgid "Use this license key for all PublishPress plugins"
-msgstr "Lo bọtini iwe-aṣẹ yii fun gbogbo awọn plugin PublishPress"
+msgstr "Lo iwe-aṣẹ yii fun gbogbo awọn afikun PublishPress"
 
-#: resources/dist/js/plugins-dashboard.js:2059
+#: resources/dist/js/plugins-dashboard.js:1658
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:95
-#: resources/dist/js/plugins-dashboard.js:1564
+#: resources/dist/js/plugins-dashboard.js:1464
 msgid "Use existing license key"
-msgstr "Lo bọtini iwe-aṣẹ ti o wa tẹlẹ"
+msgstr "Lo iwe-aṣẹ ti o wa tẹlẹ"
 
-#: resources/dist/js/plugins-dashboard.js:2064
+#: resources/dist/js/plugins-dashboard.js:1663
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:100
-#: resources/dist/js/plugins-dashboard.js:1569
+#: resources/dist/js/plugins-dashboard.js:1469
 msgid "Activate and install the plugin"
-msgstr "Mu ṣiṣẹ ati fi plugin naa sori"
+msgstr "Mu ki o si fi afikun naa sori ẹrọ"
 
-#: resources/dist/js/plugins-dashboard.js:2171
+#: resources/dist/js/plugins-dashboard.js:1753
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:80
-#: resources/dist/js/plugins-dashboard.js:1656
+#: resources/dist/js/plugins-dashboard.js:1556
 msgid "Manage your license"
 msgstr "Ṣakoso iwe-aṣẹ rẹ"
 
-#: resources/dist/js/plugins-dashboard.js:2200
+#: resources/dist/js/plugins-dashboard.js:1776
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:116
-#: resources/dist/js/plugins-dashboard.js:1692
+#: resources/dist/js/plugins-dashboard.js:1592
 msgid "Your license key is: "
 msgstr "Iwe-aṣẹ rẹ ni: "
 
-#: resources/dist/js/plugins-dashboard.js:2202
+#: resources/dist/js/plugins-dashboard.js:1778
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:118
-#: resources/dist/js/plugins-dashboard.js:1694
+#: resources/dist/js/plugins-dashboard.js:1594
 msgid "(hidden)"
-msgstr "(pamọ)"
+msgstr "(tẹnumọ)"
 
-#: resources/dist/js/plugins-dashboard.js:2211
+#: resources/dist/js/plugins-dashboard.js:1787
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:137
-#: resources/dist/js/plugins-dashboard.js:1713
+#: resources/dist/js/plugins-dashboard.js:1613
 msgid "Activate the license key for this site"
-msgstr "Mu iwe-aṣẹ ṣiṣẹ fun aaye yii"
+msgstr "Mu iwe-aṣẹ naa ṣiṣẹ fun aaye yii"
 
-#: resources/dist/js/plugins-dashboard.js:2216
+#: resources/dist/js/plugins-dashboard.js:1792
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:144
-#: resources/dist/js/plugins-dashboard.js:1720
+#: resources/dist/js/plugins-dashboard.js:1620
 msgid "Edit the license key"
-msgstr "Ṣatunkọ iwe-aṣẹ"
+msgstr "Ṣatunkọ iwe-aṣẹ naa"
 
-#: resources/dist/js/plugins-dashboard.js:2230
+#: resources/dist/js/plugins-dashboard.js:1802
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:155
-#: resources/dist/js/plugins-dashboard.js:1731
+#: resources/dist/js/plugins-dashboard.js:1631
 msgid "Deactivate the license key for this site"
-msgstr "Dena iwe-aṣẹ fun aaye yii"
+msgstr "Pa iwe-aṣẹ naa mọ fun aaye yii"
 
-#: resources/dist/js/plugins-dashboard.js:2358
-#: resources/dist/js/plugins-dashboard.js:2369
+#: resources/dist/js/plugins-dashboard.js:1924
+#: resources/dist/js/plugins-dashboard.js:1931
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:109
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:121
-#: resources/dist/js/plugins-dashboard.js:1849
-#: resources/dist/js/plugins-dashboard.js:1861
+#: resources/dist/js/plugins-dashboard.js:1749
+#: resources/dist/js/plugins-dashboard.js:1761
 #, js-format
 msgid "Install %s"
 msgstr "Fi %s sori ẹrọ"
 
-#: resources/dist/js/plugins-dashboard.js:2379
-#: resources/dist/js/plugins-dashboard.js:2412
+#: resources/dist/js/plugins-dashboard.js:1937
+#: resources/dist/js/plugins-dashboard.js:1962
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:136
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:179
-#: resources/dist/js/plugins-dashboard.js:1876
-#: resources/dist/js/plugins-dashboard.js:1919
+#: resources/dist/js/plugins-dashboard.js:1776
+#: resources/dist/js/plugins-dashboard.js:1819
 #, js-format
 msgid "Upgrade %s"
-msgstr "Gba %s"
+msgstr "Gbe %s si ilọsiwaju"
 
-#: resources/dist/js/plugins-dashboard.js:2389
-#: resources/dist/js/plugins-dashboard.js:2749
-#: resources/dist/js/plugins-dashboard.js:3048
+#: resources/dist/js/plugins-dashboard.js:1943
+#: resources/dist/js/plugins-dashboard.js:2262
+#: resources/dist/js/plugins-dashboard.js:2526
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:151
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:86
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
-#: resources/dist/js/plugins-dashboard.js:1891
-#: resources/dist/js/plugins-dashboard.js:2226
-#: resources/dist/js/plugins-dashboard.js:2472
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:84
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:198
+#: resources/dist/js/plugins-dashboard.js:1791
+#: resources/dist/js/plugins-dashboard.js:2124
+#: resources/dist/js/plugins-dashboard.js:2364
 #. translators: %s is the plugin name.
 #, js-format
 msgid "Deactivate %s"
-msgstr "Mu %s ṣiṣẹ"
+msgstr "Pa %s mọ"
 
-#: resources/dist/js/plugins-dashboard.js:2390
+#: resources/dist/js/plugins-dashboard.js:1944
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:152
-#: resources/dist/js/plugins-dashboard.js:1892
+#: resources/dist/js/plugins-dashboard.js:1792
 #, js-format
 msgid "Are you sure you want to deactivate %s?"
-msgstr "Ṣe o dajudaju pe o fẹ mu %s ṣiṣẹ?"
+msgstr "Ṣe o dajudaju pe o fẹ lati pa %s mọ?"
 
-#: resources/dist/js/plugins-dashboard.js:2391
+#: resources/dist/js/plugins-dashboard.js:1945
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:153
-#: resources/dist/js/plugins-dashboard.js:1893
+#: resources/dist/js/plugins-dashboard.js:1793
 msgid "Deactivate plugin"
-msgstr "Mu afikun naa ṣiṣẹ"
+msgstr "Pa afikun naa mọ"
 
-#: resources/dist/js/plugins-dashboard.js:2400
+#: resources/dist/js/plugins-dashboard.js:1952
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:165
-#: resources/dist/js/plugins-dashboard.js:1905
+#: resources/dist/js/plugins-dashboard.js:1805
 #, js-format
 msgid "Uninstall %s"
-msgstr "Yọ %s kuro"
+msgstr "Yọkuro %s"
 
-#: resources/dist/js/plugins-dashboard.js:2401
+#: resources/dist/js/plugins-dashboard.js:1953
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:166
-#: resources/dist/js/plugins-dashboard.js:1906
+#: resources/dist/js/plugins-dashboard.js:1806
 #, js-format
 msgid "Are you sure you want to uninstall %s?"
-msgstr "Ṣe o daada pe o fẹ yọ %s kuro?"
+msgstr "Ṣe o dajudaju pe o fẹ lati yọ %s kuro?"
 
-#: resources/dist/js/plugins-dashboard.js:2402
+#: resources/dist/js/plugins-dashboard.js:1954
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:167
-#: resources/dist/js/plugins-dashboard.js:1907
+#: resources/dist/js/plugins-dashboard.js:1807
 msgid "Uninstall plugin"
-msgstr "Yọ plugin"
+msgstr "Yọkuro afikun"
 
-#: resources/dist/js/plugins-dashboard.js:2422
+#: resources/dist/js/plugins-dashboard.js:1968
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:190
-#: resources/dist/js/plugins-dashboard.js:1930
+#: resources/dist/js/plugins-dashboard.js:1830
 #, js-format
 msgid "Resolve Conflict for %s"
-msgstr "Yanju Ija fun %s"
+msgstr "Yan Ija fun %s"
 
-#: resources/dist/js/plugins-dashboard.js:2434
+#: resources/dist/js/plugins-dashboard.js:1976
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:203
-#: resources/dist/js/plugins-dashboard.js:1943
+#: resources/dist/js/plugins-dashboard.js:1843
 #, js-format
 msgid "Manage %s License"
-msgstr "Ṣakoso Iwe-aṣẹ %s"
+msgstr "Ṣakoso iwe-ẹri %s"
 
-#: resources/dist/js/plugins-dashboard.js:2448
+#: resources/dist/js/plugins-dashboard.js:1984
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:218
-#: resources/dist/js/plugins-dashboard.js:1958
+#: resources/dist/js/plugins-dashboard.js:1858
 #, js-format
 msgid "Activate %s License"
-msgstr "Muu Iwe-aṣẹ %s ṣiṣẹ"
+msgstr "Mu iwe-ẹri %s ṣiṣẹ"
 
-#: resources/dist/js/plugins-dashboard.js:2449
+#: resources/dist/js/plugins-dashboard.js:1985
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:219
-#: resources/dist/js/plugins-dashboard.js:1959
+#: resources/dist/js/plugins-dashboard.js:1859
 msgid "Activate the license key"
-msgstr "Mú bọtini iwe-ẹ̀rí ṣiṣẹ́"
+msgstr "Mu ki akọsilẹ iwe-ẹri ṣiṣẹ"
 
-#: resources/dist/js/plugins-dashboard.js:2508
+#: resources/dist/js/plugins-dashboard.js:2043
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:35
-#: resources/dist/js/plugins-dashboard.js:2007
+#: resources/dist/js/plugins-dashboard.js:1907
 msgid "Resolve Plugin Conflict"
-msgstr "Yanju Ija Plugin"
+msgstr "Yan Ija Plugin"
 
-#: resources/dist/js/plugins-dashboard.js:2515
+#: resources/dist/js/plugins-dashboard.js:2048
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:52
-#: resources/dist/js/plugins-dashboard.js:2024
+#: resources/dist/js/plugins-dashboard.js:1924
 #, js-format
 msgid "Free version: %s (%s)"
-msgstr "Ẹya ọfẹ: %s (%s)"
+msgstr "Version ọfẹ: %s (%s)"
 
-#: resources/dist/js/plugins-dashboard.js:2515
+#: resources/dist/js/plugins-dashboard.js:2048
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:59
-#: resources/dist/js/plugins-dashboard.js:2031
+#: resources/dist/js/plugins-dashboard.js:1931
 #, js-format
 msgid "Pro version: %s (%s)"
-msgstr "Ẹya Pro: %s (%s)"
+msgstr "Version Pro: %s (%s)"
 
-#: resources/dist/js/plugins-dashboard.js:2528
+#: resources/dist/js/plugins-dashboard.js:2059
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:84
-#: resources/dist/js/plugins-dashboard.js:2056
+#: resources/dist/js/plugins-dashboard.js:1956
 msgid "Keep the Pro version (Recommended)"
-msgstr "Pa ẹya Pro (Ti a ṣeduro)"
+msgstr "Tọju version Pro (Ti a ṣe iṣeduro)"
 
-#: resources/dist/js/plugins-dashboard.js:2536
+#: resources/dist/js/plugins-dashboard.js:2065
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:94
-#: resources/dist/js/plugins-dashboard.js:2066
+#: resources/dist/js/plugins-dashboard.js:1966
 msgid "Keep the Free version"
-msgstr "Pa ẹya Ọfẹ"
+msgstr "Tọju version ọfẹ"
 
-#: resources/dist/js/plugins-dashboard.js:2593
+#: resources/dist/js/plugins-dashboard.js:2119
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
-#: resources/dist/js/plugins-dashboard.js:2115
+#: resources/dist/js/plugins-dashboard.js:2015
 msgid ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
 "advanced features, priority support, and exclusive benefits designed to "
 "help you get the most out of your workflow."
 msgstr ""
-"Tu agbara kikun ti afikun yii pẹlu ẹya Pro. Gbadun awọn ẹya to ileri, "
+"Ṣii agbara kikun ti plugin yii pẹlu version Pro. Gbadun awọn ẹya ilọsiwaju, "
 "atilẹyin pataki, ati awọn anfani alailẹgbẹ ti a ṣe apẹrẹ lati ṣe iranlọwọ "
-"fun ọ lati gba pupọ julọ lati inu iṣẹ rẹ."
+"fun ọ lati ni oye julọ ninu iṣẹ-ṣiṣe rẹ."
 
-#: resources/dist/js/plugins-dashboard.js:2598
+#: resources/dist/js/plugins-dashboard.js:2124
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
-#: resources/dist/js/plugins-dashboard.js:2122
+#: resources/dist/js/plugins-dashboard.js:2022
 msgid "Discover all Pro features"
 msgstr "Ṣawari gbogbo awọn ẹya Pro"
 
-#: resources/dist/js/plugins-dashboard.js:2601
+#: resources/dist/js/plugins-dashboard.js:2129
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
-#: resources/dist/js/plugins-dashboard.js:2126
+#: resources/dist/js/plugins-dashboard.js:2026, fuzzy
 msgid "Changelog"
-msgstr "Ayipada iwe"
+msgstr "Changelog"
 
-#: resources/dist/js/plugins-dashboard.js:2607
+#: resources/dist/js/plugins-dashboard.js:2133
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
-#: resources/dist/js/plugins-dashboard.js:2130
+#: resources/dist/js/plugins-dashboard.js:2030
 msgid "Already have a license? Install Pro now"
-msgstr "Ṣe o ti ni iwe-aṣẹ tẹlẹ? Fi Pro sori bayi"
+msgstr "Njẹ o ti ni iwe-ẹri kan? Fi Pro sori bayi"
 
-#: resources/dist/js/plugins-dashboard.js:2737
-#: resources/dist/js/plugins-dashboard.js:3038
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:78
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:192
-#: resources/dist/js/plugins-dashboard.js:2218
-#: resources/dist/js/plugins-dashboard.js:2463
+#: resources/dist/js/plugins-dashboard.js:2252
+#: resources/dist/js/plugins-dashboard.js:2518
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:75
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:189
+#: resources/dist/js/plugins-dashboard.js:2115
+#: resources/dist/js/plugins-dashboard.js:2355
 #, js-format
 msgid "Remove %s from favorites"
-msgstr "Yọ %s kuro ninu awọn ayanfẹ"
+msgstr "Yọ %s kuro ninu ayanfẹ"
 
-#: resources/dist/js/plugins-dashboard.js:2737
-#: resources/dist/js/plugins-dashboard.js:3038
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:78
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:192
-#: resources/dist/js/plugins-dashboard.js:2218
-#: resources/dist/js/plugins-dashboard.js:2463
+#: resources/dist/js/plugins-dashboard.js:2252
+#: resources/dist/js/plugins-dashboard.js:2518
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:75
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:189
+#: resources/dist/js/plugins-dashboard.js:2115
+#: resources/dist/js/plugins-dashboard.js:2355
 #, js-format
 msgid "Add %s to favorites"
-msgstr "Fikun %s si awọn ayanfẹ"
+msgstr "Fi %s kun ayanfẹ"
 
-#: resources/dist/js/plugins-dashboard.js:2749
-#: resources/dist/js/plugins-dashboard.js:3048
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:86
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:202
-#: resources/dist/js/plugins-dashboard.js:2226
-#: resources/dist/js/plugins-dashboard.js:2473
+#: resources/dist/js/plugins-dashboard.js:2262
+#: resources/dist/js/plugins-dashboard.js:2526
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:84
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:199
+#: resources/dist/js/plugins-dashboard.js:2124
+#: resources/dist/js/plugins-dashboard.js:2365
 #, js-format
 msgid "Activate %s"
 msgstr "Mu %s ṣiṣẹ"
 
-#: resources/dist/js/plugins-dashboard.js:2759
-#: resources/dist/js/plugins-dashboard.js:3075
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:95
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:238
-#: resources/dist/js/plugins-dashboard.js:2235
-#: resources/dist/js/plugins-dashboard.js:2509
-#, js-format
-msgid "%s shortcuts"
-msgstr "%s irọrun"
-
-#: resources/dist/js/plugins-dashboard.js:2769
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:99
-#: resources/dist/js/plugins-dashboard.js:2239
+#: resources/dist/js/plugins-dashboard.js:2275
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:97
+#: resources/dist/js/plugins-dashboard.js:2137
 #, js-format
 msgid "More actions for %s"
-msgstr "Awọn iṣe diẹ sii fun %s"
+msgstr "Igbese diẹ sii fun %s"
 
-#: resources/dist/js/plugins-dashboard.js:2770
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:99
-#: resources/dist/js/plugins-dashboard.js:2239
+#: resources/dist/js/plugins-dashboard.js:2276
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:97
+#: resources/dist/js/plugins-dashboard.js:2137
 msgid "More"
 msgstr "Diẹ sii"
 
-#: resources/dist/js/plugins-dashboard.js:2790
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:110
-#: resources/dist/js/plugins-dashboard.js:2250
+#: resources/dist/js/plugins-dashboard.js:2295
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:108
+#: resources/dist/js/plugins-dashboard.js:2148
 msgid "Conflicting installations"
-msgstr "Fifi sori ẹrọ ti o ni idije"
+msgstr "Fifi sori ti o ni ija"
 
-#: resources/dist/js/plugins-dashboard.js:2796
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:112
-#: resources/dist/js/plugins-dashboard.js:2252
+#: resources/dist/js/plugins-dashboard.js:2301
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:110
+#: resources/dist/js/plugins-dashboard.js:2150
 msgid "Activating…"
 msgstr "Nṣiṣẹ…"
 
-#: resources/dist/js/plugins-dashboard.js:2800
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:113
-#: resources/dist/js/plugins-dashboard.js:2253
+#: resources/dist/js/plugins-dashboard.js:2305
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:111
+#: resources/dist/js/plugins-dashboard.js:2151
 msgid "Deactivating…"
-msgstr "Nṣiṣẹ jade…"
+msgstr "Nṣiṣẹ pipa…"
 
-#: resources/dist/js/plugins-dashboard.js:2981
-#: resources/dist/js/plugins-dashboard.js:3479
-#: resources/dist/js/plugins-dashboard.js:3493
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:144
+#: resources/dist/js/plugins-dashboard.js:2461
+#: resources/dist/js/plugins-dashboard.js:2947
+#: resources/dist/js/plugins-dashboard.js:2959
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:141
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:148
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:164
-#: resources/dist/js/plugins-dashboard.js:2415
-#: resources/dist/js/plugins-dashboard.js:2923
-#: resources/dist/js/plugins-dashboard.js:2939
+#: resources/dist/js/plugins-dashboard.js:2307
+#: resources/dist/js/plugins-dashboard.js:2807
+#: resources/dist/js/plugins-dashboard.js:2823
 msgid "Unknown"
-msgstr "Aimọ"
+msgstr "A ko mọ"
 
-#: resources/dist/js/plugins-dashboard.js:2982
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:145
-#: resources/dist/js/plugins-dashboard.js:2416
+#: resources/dist/js/plugins-dashboard.js:2462
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:142
+#: resources/dist/js/plugins-dashboard.js:2308
 msgid "New version available"
-msgstr "Ẹya tuntun wa"
+msgstr "Version tuntun wa"
 
-#: resources/dist/js/plugins-dashboard.js:2998
-#: resources/dist/js/plugins-dashboard.js:3499
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:164
+#: resources/dist/js/plugins-dashboard.js:2478
+#: resources/dist/js/plugins-dashboard.js:2965
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:161
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:171
-#: resources/dist/js/plugins-dashboard.js:2435
-#: resources/dist/js/plugins-dashboard.js:2946
+#: resources/dist/js/plugins-dashboard.js:2327
+#: resources/dist/js/plugins-dashboard.js:2830
 #. translators: %s is the installed version number
 #, js-format
 msgid "Installed version: %s"
-msgstr "Version ti a fi sori ẹrọ: %s"
+msgstr "Version ti a fi sori: %s"
 
-#: resources/dist/js/plugins-dashboard.js:3070
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:231
-#: resources/dist/js/plugins-dashboard.js:2502
+#: resources/dist/js/plugins-dashboard.js:2548
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:228
+#: resources/dist/js/plugins-dashboard.js:2394
 #, js-format
 msgid "Update available: %s → %s"
 msgstr "Imudojuiwọn wa: %s → %s"
 
-#: resources/dist/js/plugins-dashboard.js:3155
+#: resources/dist/js/plugins-dashboard.js:2622
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:23
-#: resources/dist/js/plugins-dashboard.js:2587
+#: resources/dist/js/plugins-dashboard.js:2471
 msgid "Installing"
 msgstr "Nṣiṣẹ"
 
-#: resources/dist/js/plugins-dashboard.js:3162
+#: resources/dist/js/plugins-dashboard.js:2629
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:28
-#: resources/dist/js/plugins-dashboard.js:2592
+#: resources/dist/js/plugins-dashboard.js:2476
 msgid "Not Installed"
-msgstr "Ko ti fi sori ẹrọ"
+msgstr "A ko fi sori"
 
-#: resources/dist/js/plugins-dashboard.js:3166
+#: resources/dist/js/plugins-dashboard.js:2633
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:32
-#: resources/dist/js/plugins-dashboard.js:2596
+#: resources/dist/js/plugins-dashboard.js:2480
 msgid "Free"
 msgstr "Ọfẹ"
 
-#: resources/dist/js/plugins-dashboard.js:3170
+#: resources/dist/js/plugins-dashboard.js:2637
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:36
-#: resources/dist/js/plugins-dashboard.js:2600
+#: resources/dist/js/plugins-dashboard.js:2484
 msgid "Licensed"
-msgstr "Ti a fun ni iwe-aṣẹ"
+msgstr "Iwe-ẹri"
 
-#: resources/dist/js/plugins-dashboard.js:3178
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:44
-#: resources/dist/js/plugins-dashboard.js:2608
-msgid "Expired"
-msgstr "Ti pari"
-
-#: resources/dist/js/plugins-dashboard.js:3182
+#: resources/dist/js/plugins-dashboard.js:2649
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:48
-#: resources/dist/js/plugins-dashboard.js:2612
+#: resources/dist/js/plugins-dashboard.js:2496
 msgid "Uninstalling"
-msgstr "Nṣiṣẹ piparẹ"
+msgstr "Nṣiṣẹ pipa"
 
-#: resources/dist/js/plugins-dashboard.js:3189
+#: resources/dist/js/plugins-dashboard.js:2656
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:53
-#: resources/dist/js/plugins-dashboard.js:2617
+#: resources/dist/js/plugins-dashboard.js:2501
 msgid "Upgrading"
-msgstr "Nṣiṣẹ imudojuiwọn"
+msgstr "Nlọ si oke"
 
-#: resources/dist/js/plugins-dashboard.js:3196
+#: resources/dist/js/plugins-dashboard.js:2663
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:58
-#: resources/dist/js/plugins-dashboard.js:2622
+#: resources/dist/js/plugins-dashboard.js:2506
 msgid "Deactivating"
-msgstr "Nṣiṣẹ idinamọ"
+msgstr "Nṣiṣẹ pipa"
 
-#: resources/dist/js/plugins-dashboard.js:3203
+#: resources/dist/js/plugins-dashboard.js:2670
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:63
-#: resources/dist/js/plugins-dashboard.js:2627
+#: resources/dist/js/plugins-dashboard.js:2511
 msgid "Activating"
-msgstr "Nṣiṣẹ ṣiṣẹ"
+msgstr "Nṣiṣẹ"
 
-#: resources/dist/js/plugins-dashboard.js:3210
+#: resources/dist/js/plugins-dashboard.js:2677
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:68
-#: resources/dist/js/plugins-dashboard.js:2632
+#: resources/dist/js/plugins-dashboard.js:2516
 msgid "Conflicting Installations"
-msgstr "Fifi sori ẹrọ ti o ni ija"
+msgstr "Fifi sori ti o ni ija"
 
-#: resources/dist/js/plugins-dashboard.js:3214
-#: resources/dist/js/plugins-dashboard.js:3298
+#: resources/dist/js/plugins-dashboard.js:2681
+#: resources/dist/js/plugins-dashboard.js:2766
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:72
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:173
-#: resources/dist/js/plugins-dashboard.js:2636
-#: resources/dist/js/plugins-dashboard.js:2737
+#: resources/dist/js/plugins-dashboard.js:2520
+#: resources/dist/js/plugins-dashboard.js:2621
 msgid "Update Available"
-msgstr "Imudojuiwọn Wa"
+msgstr "Imudojuiwọn wa"
 
-#: resources/dist/js/plugins-dashboard.js:3306
+#: resources/dist/js/plugins-dashboard.js:2774
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:184
-#: resources/dist/js/plugins-dashboard.js:2748
+#: resources/dist/js/plugins-dashboard.js:2632
 msgid "Expires"
 msgstr "Pari"
 
-#: resources/dist/js/plugins-dashboard.js:3401
-#: resources/dist/js/plugins-dashboard.js:3412
+#: resources/dist/js/plugins-dashboard.js:2875
+#: resources/dist/js/plugins-dashboard.js:2886
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:74
-#: resources/dist/js/plugins-dashboard.js:2830
-#: resources/dist/js/plugins-dashboard.js:2849
+#: resources/dist/js/plugins-dashboard.js:2714
+#: resources/dist/js/plugins-dashboard.js:2733
 msgid "Renew"
 msgstr "Tunṣe"
 
-#: resources/dist/js/plugins-dashboard.js:3421
+#: resources/dist/js/plugins-dashboard.js:2895
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:84
-#: resources/dist/js/plugins-dashboard.js:2859
+#: resources/dist/js/plugins-dashboard.js:2743
 msgid "Deactivate"
-msgstr "Pa a ṣiṣẹ"
+msgstr "Pa"
 
-#: resources/dist/js/plugins-dashboard.js:3432
+#: resources/dist/js/plugins-dashboard.js:2904
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:93
-#: resources/dist/js/plugins-dashboard.js:2868
+#: resources/dist/js/plugins-dashboard.js:2752
 msgid "Activate"
-msgstr "Mú a ṣiṣẹ"
+msgstr "Mu ṣiṣẹ"
 
-#: resources/dist/js/plugins-dashboard.js:3443
+#: resources/dist/js/plugins-dashboard.js:2913
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:103
-#: resources/dist/js/plugins-dashboard.js:2878
+#: resources/dist/js/plugins-dashboard.js:2762
 msgid "Uninstall"
 msgstr "Yọ kuro"
 
-#: resources/dist/js/plugins-dashboard.js:3480
-#: resources/dist/js/plugins-dashboard.js:3494
+#: resources/dist/js/plugins-dashboard.js:2948
+#: resources/dist/js/plugins-dashboard.js:2960
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:149
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
-#: resources/dist/js/plugins-dashboard.js:2924
-#: resources/dist/js/plugins-dashboard.js:2940
+#: resources/dist/js/plugins-dashboard.js:2808
+#: resources/dist/js/plugins-dashboard.js:2824
 msgid "latest"
 msgstr "tuntun"
 
-#: resources/dist/js/plugins-dashboard.js:3484
+#: resources/dist/js/plugins-dashboard.js:2952
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:154
-#: resources/dist/js/plugins-dashboard.js:2929
+#: resources/dist/js/plugins-dashboard.js:2813
 #, js-format
 msgid "Update to %s"
 msgstr "Imudojuiwọn si %s"
 
-#: resources/dist/js/plugins-dashboard.js:4041
+#: resources/dist/js/plugins-dashboard.js:3365
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
-#: resources/dist/js/plugins-dashboard.js:3326
+#: resources/dist/js/plugins-dashboard.js:3210
 msgid "This plugin is not installed."
-msgstr "Ko si awọn afikun ti o ti fi sori ẹrọ."
+msgstr "A ko fi plugin yi sori."
 
-#: resources/dist/js/plugins-dashboard.js:4043
+#: resources/dist/js/plugins-dashboard.js:3367
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40
-#: resources/dist/js/plugins-dashboard.js:3329
+#: resources/dist/js/plugins-dashboard.js:3213
 msgid "This plugin is active."
-msgstr "Eyi jẹ afikun ti o n ṣiṣẹ."
+msgstr "Plugin yi ti n ṣiṣẹ."
 
-#: resources/dist/js/plugins-dashboard.js:4043
+#: resources/dist/js/plugins-dashboard.js:3367
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41
-#: resources/dist/js/plugins-dashboard.js:3330
+#: resources/dist/js/plugins-dashboard.js:3214
 msgid "This plugin is not active."
-msgstr "Eyi jẹ afikun ti ko n ṣiṣẹ."
+msgstr "Plugin yi ko ni iṣẹ."
 
-#: resources/dist/js/plugins-dashboard.js:4272
-#: resources/src/jsx/components/plugins-list/index.jsx:166
-#: resources/dist/js/plugins-dashboard.js:3549
+#: resources/dist/js/plugins-dashboard.js:3586
+#: resources/src/jsx/components/plugins-list/index.jsx:170
+#: resources/dist/js/plugins-dashboard.js:3437
 msgid "Editorial process"
-msgstr "Ilana akọsilẹ"
+msgstr "Ilana akọwe"
 
-#: resources/dist/js/plugins-dashboard.js:4275
-#: resources/src/jsx/components/plugins-list/index.jsx:167
-#: resources/dist/js/plugins-dashboard.js:3550
+#: resources/dist/js/plugins-dashboard.js:3589
+#: resources/src/jsx/components/plugins-list/index.jsx:171
+#: resources/dist/js/plugins-dashboard.js:3438
 msgid "Additional publishing tools"
 msgstr "Awọn irinṣẹ atẹjade afikun"
 
-#: resources/dist/js/plugins-dashboard.js:4283
-#: resources/src/jsx/components/plugins-list/index.jsx:171
-#: resources/dist/js/plugins-dashboard.js:3554
+#: resources/dist/js/plugins-dashboard.js:3595
+#: resources/src/jsx/components/plugins-list/index.jsx:175
+#: resources/dist/js/plugins-dashboard.js:3442
 msgid "Other plugins"
 msgstr "Awọn plugin miiran"
 
-#: resources/dist/js/plugins-dashboard.js:4296
-#: resources/src/jsx/components/plugins-list/index.jsx:177
-#: resources/dist/js/plugins-dashboard.js:3560
+#: resources/dist/js/plugins-dashboard.js:3604
+#: resources/src/jsx/components/plugins-list/index.jsx:181
+#: resources/dist/js/plugins-dashboard.js:3448
 msgid "Plugin layout"
-msgstr "Ilana plugin"
+msgstr "Ẹya plugin"
 
-#: resources/dist/js/plugins-dashboard.js:4310
-#: resources/src/jsx/components/plugins-list/index.jsx:181
-#: resources/dist/js/plugins-dashboard.js:3564
+#: resources/dist/js/plugins-dashboard.js:3615
+#: resources/src/jsx/components/plugins-list/index.jsx:185
+#: resources/dist/js/plugins-dashboard.js:3452
 msgid "Cards"
-msgstr "Kaadi"
+msgstr "Kárìí"
 
-#: resources/dist/js/plugins-dashboard.js:4310
-#: resources/src/jsx/components/plugins-list/index.jsx:181
-#: resources/dist/js/plugins-dashboard.js:3564
+#: resources/dist/js/plugins-dashboard.js:3615
+#: resources/src/jsx/components/plugins-list/index.jsx:185
+#: resources/dist/js/plugins-dashboard.js:3452
 msgid "List"
-msgstr "Akojọ"
+msgstr "Atokọ"
 
-#: resources/dist/js/plugins-dashboard.js:4312
-#: resources/src/jsx/components/plugins-list/index.jsx:184
-#: resources/dist/js/plugins-dashboard.js:3567
+#: resources/dist/js/plugins-dashboard.js:3616
+#: resources/src/jsx/components/plugins-list/index.jsx:188
+#: resources/dist/js/plugins-dashboard.js:3455
 msgid "Group by purpose"
-msgstr "Ṣe ẹgbẹ nipasẹ idi"
+msgstr "Ẹgbẹ nipasẹ ọgbọn"
 
-#: resources/dist/js/plugins-dashboard.js:4320
-#: resources/src/jsx/components/plugins-list/index.jsx:186
-#: resources/dist/js/plugins-dashboard.js:3569
+#: resources/dist/js/plugins-dashboard.js:3622
+#: resources/src/jsx/components/plugins-list/index.jsx:190
+#: resources/dist/js/plugins-dashboard.js:3457
 msgid "Favorites only"
 msgstr "Awọn ayanfẹ nikan"
 
-#: resources/dist/js/plugins-dashboard.js:4342
-#: resources/src/jsx/components/plugins-list/index.jsx:200
-#: resources/dist/js/plugins-dashboard.js:3583
+#: resources/dist/js/plugins-dashboard.js:3640
+#: resources/src/jsx/components/plugins-list/index.jsx:204
+#: resources/dist/js/plugins-dashboard.js:3471
 msgid "No plugins found."
-msgstr "Ko si awọn afikun ti a ri."
+msgstr "A ko ri awọn plugin."
 
-#: resources/dist/js/plugins-dashboard.js:4346
-#: resources/src/jsx/components/plugins-list/index.jsx:206
-#: resources/dist/js/plugins-dashboard.js:3589
+#: resources/dist/js/plugins-dashboard.js:3644
+#: resources/src/jsx/components/plugins-list/index.jsx:210
+#: resources/dist/js/plugins-dashboard.js:3477, fuzzy
 msgid "Loading plugins..."
-msgstr "Nṣiṣẹ awọn afikun..."
+msgstr "Loading plugins..."
 
-#: resources/dist/js/plugins-dashboard.js:4955
+#: resources/dist/js/plugins-dashboard.js:4075
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:225
-#: resources/dist/js/plugins-dashboard.js:4017
+#: resources/dist/js/plugins-dashboard.js:3902
 msgid "Failed to fetch plugins"
-msgstr "Kọlu lati gba awọn afikun"
+msgstr "Iṣẹlẹ lati gba awọn plugin"
 
-#: resources/dist/js/plugins-dashboard.js:5015
-#: resources/dist/js/plugins-dashboard.js:5110
+#: resources/dist/js/plugins-dashboard.js:4110
+#: resources/dist/js/plugins-dashboard.js:4170
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:259
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:319
-#: resources/dist/js/plugins-dashboard.js:4051
-#: resources/dist/js/plugins-dashboard.js:4111
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:320
+#: resources/dist/js/plugins-dashboard.js:3936
+#: resources/dist/js/plugins-dashboard.js:3997
 #, js-format
 msgid "%s installed successfully"
 msgstr "%s ti fi sori ẹrọ ni aṣeyọri"
 
-#: resources/dist/js/plugins-dashboard.js:5043
-#: resources/dist/js/plugins-dashboard.js:5139
+#: resources/dist/js/plugins-dashboard.js:4128
+#: resources/dist/js/plugins-dashboard.js:4191
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:276
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:338
-#: resources/dist/js/plugins-dashboard.js:4068
-#: resources/dist/js/plugins-dashboard.js:4130
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:339
+#: resources/dist/js/plugins-dashboard.js:3953
+#: resources/dist/js/plugins-dashboard.js:4016
 #, js-format
 msgid "%s installation failed"
-msgstr "%s fifi sori ẹrọ kuna"
+msgstr "%s fi sori ẹrọ kuna"
 
-#: resources/dist/js/plugins-dashboard.js:5197
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:374
-#: resources/dist/js/plugins-dashboard.js:4166
+#: resources/dist/js/plugins-dashboard.js:4224
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:375
+#: resources/dist/js/plugins-dashboard.js:4052
 #, js-format
 msgid "%s uninstalled successfully"
 msgstr "%s ti yọ kuro ni aṣeyọri"
 
-#: resources/dist/js/plugins-dashboard.js:5222
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:390
-#: resources/dist/js/plugins-dashboard.js:4182
+#: resources/dist/js/plugins-dashboard.js:4241
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:391
+#: resources/dist/js/plugins-dashboard.js:4068
 #, js-format
 msgid "%s uninstall failed"
-msgstr "%s yọ kuro kuna"
+msgstr "%s yọ kuro ni kuna"
 
-#: resources/dist/js/plugins-dashboard.js:5291
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:426
-#: resources/dist/js/plugins-dashboard.js:4218
+#: resources/dist/js/plugins-dashboard.js:4279
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:427
+#: resources/dist/js/plugins-dashboard.js:4104
 #, js-format
 msgid "%s activated successfully"
 msgstr "%s ti mu ṣiṣẹ ni aṣeyọri"
 
-#: resources/dist/js/plugins-dashboard.js:5318
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:443
-#: resources/dist/js/plugins-dashboard.js:4235
+#: resources/dist/js/plugins-dashboard.js:4298
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:444
+#: resources/dist/js/plugins-dashboard.js:4121
 #, js-format
 msgid "%s activation failed"
 msgstr "%s mu ṣiṣẹ kuna"
 
-#: resources/dist/js/plugins-dashboard.js:5386
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:478
-#: resources/dist/js/plugins-dashboard.js:4270
+#: resources/dist/js/plugins-dashboard.js:4337
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:479
+#: resources/dist/js/plugins-dashboard.js:4156
 #, js-format
 msgid "%s deactivated successfully"
-msgstr "%s ti wa ni pipa ni aṣeyọri"
+msgstr "%s ti da duro ni aṣeyọri"
 
-#: resources/dist/js/plugins-dashboard.js:5413
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:494
-#: resources/dist/js/plugins-dashboard.js:4286
+#: resources/dist/js/plugins-dashboard.js:4355
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:495
+#: resources/dist/js/plugins-dashboard.js:4172
 #, js-format
 msgid "%s deactivation failed"
-msgstr "%s pipa ko ni aṣeyọri"
+msgstr "%s da duro kuna"
 
-#: resources/dist/js/plugins-dashboard.js:5485
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:537
-#: resources/dist/js/plugins-dashboard.js:4329
+#: resources/dist/js/plugins-dashboard.js:4400
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:539
+#: resources/dist/js/plugins-dashboard.js:4216
 #, js-format
 msgid "%s upgraded successfully"
-msgstr "%s ti ni ilọsiwaju ni aṣeyọri"
+msgstr "%s ti ṣe imudojuiwọn ni aṣeyọri"
 
-#: resources/dist/js/plugins-dashboard.js:5514
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:556
-#: resources/dist/js/plugins-dashboard.js:4348
+#: resources/dist/js/plugins-dashboard.js:4421
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:558
+#: resources/dist/js/plugins-dashboard.js:4235
 #, js-format
 msgid "%s upgrade to Pro failed"
-msgstr "%s ilọsiwaju si Pro ko ni aṣeyọri"
+msgstr "%s imudojuiwọn si Pro kuna"
 
-#: resources/dist/js/plugins-dashboard.js:5599
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:608
-#: resources/dist/js/plugins-dashboard.js:4400
+#: resources/dist/js/plugins-dashboard.js:4475
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:610
+#: resources/dist/js/plugins-dashboard.js:4287
 #, js-format
 msgid "Conflict resolved successfully for %s"
 msgstr "Ija ti yanju ni aṣeyọri fun %s"
 
-#: resources/dist/js/plugins-dashboard.js:5626
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:625
-#: resources/dist/js/plugins-dashboard.js:4417
+#: resources/dist/js/plugins-dashboard.js:4494
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:627
+#: resources/dist/js/plugins-dashboard.js:4304
 #, js-format
 msgid "Failed to resolve conflict for %s"
-msgstr "Kò le yanju ija fun %s"
+msgstr "Ija lati yanju fun %s kuna"
 
-#: resources/dist/js/plugins-dashboard.js:5680
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:657
-#: resources/dist/js/plugins-dashboard.js:4449
+#: resources/dist/js/plugins-dashboard.js:4525
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:659
+#: resources/dist/js/plugins-dashboard.js:4336
 #, js-format
 msgid "%s license deactivated successfully"
-msgstr "%s iwe-aṣẹ ti wa ni pipa ni aṣeyọri"
+msgstr "%s iwe-aṣẹ ti da duro ni aṣeyọri"
 
-#: resources/dist/js/plugins-dashboard.js:5705
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:673
-#: resources/dist/js/plugins-dashboard.js:4465
+#: resources/dist/js/plugins-dashboard.js:4542
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:675
+#: resources/dist/js/plugins-dashboard.js:4352
 #, js-format
 msgid "%s license deactivation failed"
-msgstr "%s pipa iwe-aṣẹ ko ni aṣeyọri"
+msgstr "%s iwe-aṣẹ da duro kuna"
 
-#: resources/dist/js/plugins-dashboard.js:5767
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:709
-#: resources/dist/js/plugins-dashboard.js:4501
+#: resources/dist/js/plugins-dashboard.js:4554
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:693
+#: resources/dist/js/plugins-dashboard.js:4370
+#, js-format
+msgid ""
+"The license key could not be activated for these plugins: %s. Review their "
+"licenses and retry from each plugin’s license controls."
+msgstr ""
+"Ko le mu bọtini iwe-aṣẹ ṣiṣẹ fun awọn plugin wọnyi: %s. Ṣayẹwo awọn iwe-aṣẹ "
+"wọn ki o tun gbiyanju lati iṣakoso iwe-aṣẹ kọọkan."
+
+#: resources/dist/js/plugins-dashboard.js:4588
+#: resources/dist/js/plugins-dashboard.js:4644
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:723
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:775
+#: resources/dist/js/plugins-dashboard.js:4400
+#: resources/dist/js/plugins-dashboard.js:4452
 msgid "License activated successfully for all PublishPress plugins"
-msgstr "Iwe-aṣẹ ti ṣiṣẹ ni aṣeyọri fun gbogbo awọn plugin PublishPress"
+msgstr "Iwe-aṣẹ ti mu ṣiṣẹ ni aṣeyọri fun gbogbo awọn plugin PublishPress"
 
-#: resources/dist/js/plugins-dashboard.js:5767
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:710
-#: resources/dist/js/plugins-dashboard.js:4502
+#: resources/dist/js/plugins-dashboard.js:4588
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:724
+#: resources/dist/js/plugins-dashboard.js:4401
 #, js-format
 msgid "%s license activated successfully"
-msgstr "%s iwe-aṣẹ ti wa ni mu ṣiṣẹ ni aṣeyọri"
+msgstr "%s iwe-aṣẹ ti mu ṣiṣẹ ni aṣeyọri"
 
-#: resources/dist/js/plugins-dashboard.js:5796
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:726
-#: resources/dist/js/plugins-dashboard.js:4518
+#: resources/dist/js/plugins-dashboard.js:4608
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:740
+#: resources/dist/js/plugins-dashboard.js:4417
 #, js-format
 msgid "%s license activation failed"
-msgstr "%s mu iwe-aṣẹ ṣiṣẹ ko ni aṣeyọri"
+msgstr "%s iwe-aṣẹ mu ṣiṣẹ kuna"
 
-#: resources/dist/js/plugins-dashboard.js:5855
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:758
-#: resources/dist/js/plugins-dashboard.js:4550
-msgid "License reused successfully for all PublishPress plugins"
-msgstr "Aṣẹ ti wa ni tun lo ni aṣeyọri fun gbogbo awọn afikun PublishPress"
-
-#: resources/dist/js/plugins-dashboard.js:5882
+#: resources/dist/js/plugins-dashboard.js:4644
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:774
-#: resources/dist/js/plugins-dashboard.js:4566
+#: resources/dist/js/plugins-dashboard.js:4451
+msgid "License checks complete. Some plugins could not be activated."
+msgstr "Iṣayẹwo iwe-aṣẹ ti pari. Diẹ ninu awọn plugin ko le mu ṣiṣẹ."
+
+#: resources/dist/js/plugins-dashboard.js:4663
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:791
+#: resources/dist/js/plugins-dashboard.js:4468
 #, js-format
 msgid "%s license reuse failed"
-msgstr "%s tun lo aṣẹ kuna"
+msgstr "%s iwe-aṣẹ tunlo kuna"
 
-#: resources/dist/js/plugins-dashboard.js:5950
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
-#: resources/dist/js/plugins-dashboard.js:4605
+#: resources/dist/js/plugins-dashboard.js:4700
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:830
+#: resources/dist/js/plugins-dashboard.js:4507
 msgid ""
 "The plugin was updated successfully, but the dashboard could not refresh. "
 "Reloading this page..."
 msgstr ""
-"A ti ṣe imudojuiwọn afikun naa ni aṣeyọri, ṣugbọn dashboard ko le tun ṣe "
-"imudojuiwọn. Nṣiṣẹ oju-iwe yii lẹẹkansi..."
+"Plugin naa ti ṣe imudojuiwọn ni aṣeyọri, ṣugbọn dashboard ko le tun ṣe "
+"imudojuiwọn. Nṣiṣẹ oju-iwe yii..."
 
-#: resources/dist/js/plugins-dashboard.js:5976
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:836
-#: resources/dist/js/plugins-dashboard.js:4628
+#: resources/dist/js/plugins-dashboard.js:4718
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:853
+#: resources/dist/js/plugins-dashboard.js:4530
 #, js-format
 msgid "%s updated successfully"
-msgstr "%s ti ni imudojuiwọn ni aṣeyọri"
+msgstr "%s ti ṣe imudojuiwọn ni aṣeyọri"
 
-#: resources/dist/js/plugins-dashboard.js:6004
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:853
-#: resources/dist/js/plugins-dashboard.js:4645
+#: resources/dist/js/plugins-dashboard.js:4736
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:870
+#: resources/dist/js/plugins-dashboard.js:4547
 #, js-format
 msgid "%s update failed"
-msgstr "%s imudojuiwọn ko ni aṣeyọri"
+msgstr "%s imudojuiwọn kuna"
 
-#: resources/dist/js/plugins-dashboard.js:6078
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:915
-#: resources/dist/js/plugins-dashboard.js:4707
+#: resources/dist/js/plugins-dashboard.js:4797
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:932
+#: resources/dist/js/plugins-dashboard.js:4609
 msgid "Too many requests. Please wait a few seconds and try again."
-msgstr ""
-"Ọpọlọpọ awọn ìbéèrè. Jọwọ duro fun diẹ ẹ sii ju iṣẹju-aaya kan lọ ki o tun "
-"gbiyanju."
+msgstr "Ibeere pupọ. Jọwọ duro fun diẹ iṣẹju-aaya ki o tun gbiyanju."
 
-#: resources/dist/js/plugins-dashboard.js:6086
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:925
-#: resources/dist/js/plugins-dashboard.js:4717
-#, fuzzy
+#: resources/dist/js/plugins-dashboard.js:4804
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:942
+#: resources/dist/js/plugins-dashboard.js:4619
+#, fuzzy, js-format
 msgid "Cloudflare Ray ID: %s"
 msgstr "Cloudflare Ray ID: %s"
 
-#: resources/dist/js/settings-page.js:433
+#: resources/dist/js/settings-page.js:425
 #: resources/src/jsx/components/pages/settings-page.jsx:32
-#: resources/dist/js/settings-page.js:363
+#: resources/dist/js/settings-page.js:366, fuzzy
 msgid "Diagnostics"
-msgstr "Iṣeduro"
+msgstr "Diagnostics"
 
-#: resources/dist/js/settings-page.js:574
+#: resources/dist/js/settings-page.js:508
 #: resources/src/jsx/components/pages/settings-page.jsx:136
-#: resources/dist/js/settings-page.js:467
+#: resources/dist/js/settings-page.js:470
 msgid "Site health report copied to clipboard."
 msgstr "Iroyin ilera aaye ti daakọ si clipboard."
 
-#: resources/dist/js/settings-page.js:583
+#: resources/dist/js/settings-page.js:513
 #: resources/src/jsx/components/pages/settings-page.jsx:141
-#: resources/dist/js/settings-page.js:472
+#: resources/dist/js/settings-page.js:475
 msgid "Failed to copy the site health report. Please try again."
-msgstr "Kikọ iroyin ilera aaye kuna. Jọwọ gbiyanju lẹẹkansi."
+msgstr "Kò ṣàṣeyọrí lati daakọ iroyin ilera aaye. Jọwọ gbiyanju lẹẹkansi."
 
-#: resources/dist/js/settings-page.js:624
+#: resources/dist/js/settings-page.js:537
 #: resources/src/jsx/components/pages/settings-page.jsx:167
-#: resources/dist/js/settings-page.js:498
+#: resources/dist/js/settings-page.js:501
 msgid "Site health report downloaded."
 msgstr "Iroyin ilera aaye ti gba lati ayelujara."
 
-#: resources/dist/js/settings-page.js:633
+#: resources/dist/js/settings-page.js:542
 #: resources/src/jsx/components/pages/settings-page.jsx:172
-#: resources/dist/js/settings-page.js:503
+#: resources/dist/js/settings-page.js:506
 msgid "Failed to download the site health report. Please try again."
-msgstr "Kikọ iroyin ilera aaye kuna. Jọwọ gbiyanju lẹẹkansi."
+msgstr "Kò ṣàṣeyọrí lati gba iroyin ilera aaye. Jọwọ gbiyanju lẹẹkansi."
 
-#: resources/dist/js/settings-page.js:675
-#: resources/src/jsx/components/pages/settings-page.jsx:213
-#: resources/dist/js/settings-page.js:544
+#: resources/dist/js/settings-page.js:572
+#: resources/src/jsx/components/pages/settings-page.jsx:214
+#: resources/dist/js/settings-page.js:548
 msgid "Copy Site Health Report"
 msgstr "Daakọ Iroyin Ilera Aaye"
 
-#: resources/dist/js/settings-page.js:679
-#: resources/src/jsx/components/pages/settings-page.jsx:221
-#: resources/dist/js/settings-page.js:552
+#: resources/dist/js/settings-page.js:577
+#: resources/src/jsx/components/pages/settings-page.jsx:223
+#: resources/dist/js/settings-page.js:557
 msgid "Download Site Health Report"
 msgstr "Gba Iroyin Ilera Aaye"
 
-#: resources/dist/js/settings-page.js:870
+#: resources/dist/js/settings-page.js:708
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:108
-#: resources/dist/js/settings-page.js:669
+#: resources/dist/js/settings-page.js:674
 msgid "Failed to load the debug log. Please try again."
-msgstr "Ko le gbe iwe iroyin iṣeduro. Jọwọ gbiyanju lẹẹkansi."
+msgstr "Kò ṣàṣeyọrí lati gbe log debug. Jọwọ gbiyanju lẹẹkansi."
 
-#: resources/dist/js/settings-page.js:949
+#: resources/dist/js/settings-page.js:775
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:182
-#: resources/dist/js/settings-page.js:743
-msgid "Debug log cleared successfully."
-msgstr "Iwe iroyin iṣeduro ti pa mọ ni aṣeyọri."
-
-#: resources/dist/js/settings-page.js:958
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
 #: resources/dist/js/settings-page.js:748
+msgid "Debug log cleared successfully."
+msgstr "Log debug ti ṣìmọ́rẹ́ daradara."
+
+#: resources/dist/js/settings-page.js:780
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
+#: resources/dist/js/settings-page.js:753
 msgid "Failed to clear the debug log. Please try again."
-msgstr "Ko le pa iwe iroyin iṣeduro mọ. Jọwọ gbiyanju lẹẹkansi."
+msgstr "Kò ṣàṣeyọrí lati sọ log debug di mimọ. Jọwọ gbiyanju lẹẹkansi."
 
-#: resources/dist/js/settings-page.js:1017
+#: resources/dist/js/settings-page.js:812
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222
-#: resources/dist/js/settings-page.js:783
-msgid "Log copied to clipboard."
-msgstr "Iwe iroyin ti daakọ si akopọ."
-
-#: resources/dist/js/settings-page.js:1026
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
 #: resources/dist/js/settings-page.js:788
+msgid "Log copied to clipboard."
+msgstr "Log ti daakọ si clipboard."
+
+#: resources/dist/js/settings-page.js:817
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
+#: resources/dist/js/settings-page.js:793
 msgid "Failed to copy log to clipboard."
-msgstr "Ko le daakọ iwe iroyin si akopọ."
+msgstr "Kò ṣàṣeyọrí lati daakọ log si clipboard."
 
-#: resources/dist/js/settings-page.js:1051
+#: resources/dist/js/settings-page.js:833
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:250
-#: resources/dist/js/settings-page.js:811
+#: resources/dist/js/settings-page.js:816
 msgid "Debug log view"
-msgstr "Wiwo ìwé ìtàn ìṣòro"
+msgstr "Iwoye log debug"
 
-#: resources/dist/js/settings-page.js:1059
+#: resources/dist/js/settings-page.js:839
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:258
-#: resources/dist/js/settings-page.js:819
+#: resources/dist/js/settings-page.js:824
 msgid "Requests"
 msgstr "Awọn ìbéèrè"
 
-#: resources/dist/js/settings-page.js:1066
+#: resources/dist/js/settings-page.js:844
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:266
-#: resources/dist/js/settings-page.js:827
+#: resources/dist/js/settings-page.js:832
 msgid "Full Log"
-msgstr "Ìkànsí kikun"
+msgstr "Log kikun"
 
-#: resources/dist/js/settings-page.js:1079
+#: resources/dist/js/settings-page.js:853
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
-#: resources/dist/js/settings-page.js:839
+#: resources/dist/js/settings-page.js:844
 msgid "Auto-refresh is on — click to stop"
-msgstr "Àtúnṣe aifọwọyi wa lori — tẹ lati dawọ"
+msgstr "Atunṣe aifọwọyi wa — tẹ lati da duro"
 
-#: resources/dist/js/settings-page.js:1079
+#: resources/dist/js/settings-page.js:853
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:279
-#: resources/dist/js/settings-page.js:840
+#: resources/dist/js/settings-page.js:845
 msgid "Enable auto-refresh"
-msgstr "Mú àtúnṣe aifọwọyi ṣiṣẹ"
+msgstr "Mú atunṣe aifọwọyi ṣiṣẹ"
 
-#: resources/dist/js/settings-page.js:1083
+#: resources/dist/js/settings-page.js:857
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:284
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:285
-#: resources/dist/js/settings-page.js:845
-#: resources/dist/js/settings-page.js:846
+#: resources/dist/js/settings-page.js:850
+#: resources/dist/js/settings-page.js:851
 msgid "Auto-refresh"
-msgstr "Àtúnṣe aifọwọyi"
+msgstr "Atunṣe aifọwọyi"
 
-#: resources/dist/js/settings-page.js:1087
+#: resources/dist/js/settings-page.js:861
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:293
-#: resources/dist/js/settings-page.js:854
+#: resources/dist/js/settings-page.js:859
 msgid "Auto-refresh interval"
-msgstr "Àkókò àtúnṣe aifọwọyi"
+msgstr "Àkókò atunṣe aifọwọyi"
 
-#: resources/dist/js/settings-page.js:1104
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:315
-#: resources/dist/js/settings-page.js:876
+#: resources/dist/js/settings-page.js:878
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:316
+#: resources/dist/js/settings-page.js:882
 msgid "Copy to Clipboard"
-msgstr "Daakọ sí Àkọọlẹ"
+msgstr "Daakọ si Clipboard"
 
-#: resources/dist/js/settings-page.js:1110
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:325
-#: resources/dist/js/settings-page.js:886
+#: resources/dist/js/settings-page.js:885
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:327
+#: resources/dist/js/settings-page.js:893
 msgid "Clear Log"
-msgstr "Kó ìkànsí rẹ kuro"
+msgstr "Sọ Log di mimọ"
 
-#: resources/dist/js/settings-page.js:1116
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:333
-#: resources/dist/js/settings-page.js:894
+#: resources/dist/js/settings-page.js:891
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:335
+#: resources/dist/js/settings-page.js:901
 msgid "Loading log..."
-msgstr "Nṣiṣẹ ìkànsí..."
+msgstr "Nṣiṣẹ log..."
 
-#: resources/dist/js/settings-page.js:1120
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:339
-#: resources/dist/js/settings-page.js:900
+#: resources/dist/js/settings-page.js:895
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:341
+#: resources/dist/js/settings-page.js:907
 msgid ""
 "The debug log is empty. Perform some actions (e.g. activate a license) and "
 "refresh to see entries."
 msgstr ""
-"Iwe ajako itupalẹ jẹ ofo. Ṣe diẹ ninu awọn iṣe (gẹgẹbi mu iwe-aṣẹ ṣiṣẹ) ki "
-"o si tun igbesoke lati wo awọn ẹsẹ."
+"Log debug ti ṣofo. Ṣe diẹ ninu awọn iṣe (gẹgẹ bi ṣiṣi iwe-aṣẹ) ki o si tun "
+"ṣe lati wo awọn akopọ."
 
-#: resources/dist/js/settings-page.js:1127
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:353
-#: resources/dist/js/settings-page.js:914
+#: resources/dist/js/settings-page.js:902
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:355
+#: resources/dist/js/settings-page.js:921
 msgid "Debug log contents"
-msgstr "Awọn akoonu ìkànsí ìṣàkóso"
+msgstr "Akopọ log debug"
 
-#: resources/dist/js/settings-page.js:1212
+#: resources/dist/js/settings-page.js:962
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
-#: resources/dist/js/settings-page.js:963
+#: resources/dist/js/settings-page.js:970
 msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
-msgstr "Ìṣàkóso ìṣàkóso ti wa ni múná. Àtẹ \"Ìkànsí Ìṣàkóso\" ti wa ni bayi."
+msgstr "Ipo debug ti ṣiṣẹ. A ti ṣafikun taabu “Log Debug” bayi."
 
-#: resources/dist/js/settings-page.js:1212
+#: resources/dist/js/settings-page.js:962
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
-#: resources/dist/js/settings-page.js:964
+#: resources/dist/js/settings-page.js:971
 msgid "Debug mode disabled."
-msgstr "Ìṣàkóso ìṣàkóso ti wa ni pipa."
+msgstr "Ipo debug ti pa."
 
-#: resources/dist/js/settings-page.js:1224
+#: resources/dist/js/settings-page.js:970
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:50
-#: resources/dist/js/settings-page.js:973
+#: resources/dist/js/settings-page.js:980
 msgid "Failed to save the setting. Please try again."
-msgstr "Kó ìtọ́sọ́nà naa pamọ́. Jọwọ tún gbìmọ̀."
+msgstr "Kò ṣàṣeyọrí lati fipamọ eto naa. Jọwọ gbiyanju lẹẹkansi."
 
-#: resources/dist/js/settings-page.js:1253
+#: resources/dist/js/settings-page.js:988
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
-#: resources/dist/js/settings-page.js:998
+#: resources/dist/js/settings-page.js:1005
 msgid ""
 "When enabled, all HTTP requests and responses to remote services (license "
 "activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
 "the Debug Log tab to inspect the captured data."
 msgstr ""
-"Nigbati a ba mu ṣiṣẹ, gbogbo awọn ibeere HTTP ati awọn idahun si awọn iṣẹ "
-"latọna jijin (mimu iwe-aṣẹ ṣiṣẹ, gbigba awọn afikun, ati bẹbẹ lọ) ni a ṣe "
-"igbasilẹ si faili ajako pataki kan. Lo taabu Iwe ajako Itupalẹ lati ṣayẹwo "
-"data ti a mu."
+"Nigbati o ba ṣiṣẹ, gbogbo awọn ìbéèrè HTTP ati awọn idahun si awọn iṣẹ "
+"latọna (ṣiṣii iwe-aṣẹ, gbigba awọn afikun, ati bẹbẹ lọ) ni a n ṣe log si "
+"faili log pataki kan. Lo taabu Log Debug lati ṣayẹwo data ti a mu."
 
-#: resources/dist/js/settings-page.js:1254
+#: resources/dist/js/settings-page.js:989
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
-#: resources/dist/js/settings-page.js:1005
+#: resources/dist/js/settings-page.js:1012
 msgid "Enable Debug Mode"
-msgstr "Mú Ìṣàkóso Ìṣàkóso ṣiṣẹ"
+msgstr "Mú Ipo Debug ṣiṣẹ"
 
-#: resources/dist/js/settings-page.js:1261
+#: resources/dist/js/settings-page.js:996
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
-#: resources/dist/js/settings-page.js:1014
+#: resources/dist/js/settings-page.js:1021
 msgid ""
 "Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
 "data."
-msgstr ""
-"Iwe ajako itupalẹ wa ni iṣe. Yipada si taabu \"Iwe ajako Itupalẹ\" lati wo "
-"data ti a mu."
+msgstr "Logging debug wa ni ṣiṣẹ. Yipada si taabu “Log Debug” lati wo data ti a mu."
 
-#: resources/dist/js/settings-page.js:1352
+#: resources/dist/js/settings-page.js:1078
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
-#: resources/dist/js/settings-page.js:1096, fuzzy
+#: resources/dist/js/settings-page.js:1103, fuzzy
 msgid "ERR"
 msgstr "ERR"
 
-#: resources/dist/js/settings-page.js:1383
+#: resources/dist/js/settings-page.js:1107
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:108
-#: resources/dist/js/settings-page.js:1134
+#: resources/dist/js/settings-page.js:1141
 msgid "Request"
 msgstr "Ìbéèrè"
 
-#: resources/dist/js/settings-page.js:1389
+#: resources/dist/js/settings-page.js:1113
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:115
-#: resources/dist/js/settings-page.js:1141
+#: resources/dist/js/settings-page.js:1148
 msgid "Response"
 msgstr "Idahun"
 
-#: resources/dist/js/settings-page.js:1393
+#: resources/dist/js/settings-page.js:1117
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:121
-#: resources/dist/js/settings-page.js:1147
+#: resources/dist/js/settings-page.js:1154
 msgid "No response recorded for this request."
-msgstr "Ko si idahun ti a ṣe akọsilẹ fun ibeere yii."
+msgstr "Ko si idahun ti a ṣe igbasilẹ fun ìbéèrè yii."
 
-#: resources/dist/js/settings-page.js:1410
+#: resources/dist/js/settings-page.js:1135
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:146
-#: resources/dist/js/settings-page.js:1172
+#: resources/dist/js/settings-page.js:1179
 msgid "No requests found in the log."
-msgstr "Ko si awọn ibeere ti a ri ninu iwe akọọlẹ."
+msgstr "Ko si awọn ìbéèrè ti a ri ninu log."
 
-#: resources/dist/js/settings-page.js:1416
+#: resources/dist/js/settings-page.js:1141
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#: resources/dist/js/settings-page.js:1181
+#: resources/dist/js/settings-page.js:1188
 msgid "1 request recorded"
-msgstr "Ibeere 1 ti a ṣe akọsilẹ"
+msgstr "1 ìbéèrè ti a ṣe igbasilẹ"
 
-#: resources/dist/js/settings-page.js:1416
+#: resources/dist/js/settings-page.js:1141
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:157
-#: resources/dist/js/settings-page.js:1183
+#: resources/dist/js/settings-page.js:1190
 #, js-format
 msgid "%d requests recorded"
-msgstr "%d awọn ibeere ti a ṣe akọsilẹ"
+msgstr "%d ìbéèrè ti a ṣe igbasilẹ"
 
-#: resources/dist/js/welcome-page.js:427
+#: resources/dist/js/welcome-page.js:429
 #: resources/src/jsx/components/pages/welcome-page.jsx:37
-#: resources/dist/js/welcome-page.js:368
+#: resources/dist/js/welcome-page.js:371
 msgid "Welcome to PublishPress Hub"
 msgstr "Kaabo si PublishPress Hub"
 
-#: resources/dist/js/welcome-page.js:427
-#: resources/src/jsx/components/pages/welcome-page.jsx:38
-#: resources/dist/js/welcome-page.js:369
-msgid "Your publishing tools, in one place."
-msgstr "Awọn irinṣẹ titẹjade rẹ, ni ibi kan."
-
 #: resources/dist/js/welcome-page.js:429
+#: resources/src/jsx/components/pages/welcome-page.jsx:38
+#: resources/dist/js/welcome-page.js:372
+msgid "Your publishing tools, in one place."
+msgstr "Awọn irinṣẹ atẹjade rẹ, ni ibi kan."
+
+#: resources/dist/js/welcome-page.js:431
 #: resources/src/jsx/components/pages/welcome-page.jsx:39
-#: resources/dist/js/welcome-page.js:370
+#: resources/dist/js/welcome-page.js:373
 msgid ""
 "Manage your plugins, build your editorial workflow, and find the help you "
 "need to get started."
 msgstr ""
-"Ṣakoso awọn afikun rẹ, kọ iṣẹ-ṣiṣe rẹ, ki o si wa iranlọwọ ti o nilo lati "
-"bẹrẹ."
-
-#: resources/dist/js/welcome-page.js:434
-#: resources/src/jsx/components/pages/welcome-page.jsx:41
-#: resources/dist/js/welcome-page.js:372
-msgid "View Plugins Dashboard"
-msgstr "Wo Dasibodu Amugbooro"
+"Ṣakoso awọn afikun rẹ, kọ ilana iṣẹ redio rẹ, ki o si wa iranlọwọ ti o nilo "
+"lati bẹrẹ."
 
 #: resources/dist/js/welcome-page.js:436
+#: resources/src/jsx/components/pages/welcome-page.jsx:41
+#: resources/dist/js/welcome-page.js:375
+msgid "View Plugins Dashboard"
+msgstr "Wo Dashboard Awọn afikun"
+
+#: resources/dist/js/welcome-page.js:438
 #: resources/src/jsx/components/pages/welcome-page.jsx:43
-#: resources/dist/js/welcome-page.js:374
-msgid "Help and account"
-msgstr "Iranlọwọ ati akọọlẹ"
-
-#: resources/dist/js/welcome-page.js:444
-#: resources/src/jsx/components/pages/welcome-page.jsx:46
 #: resources/dist/js/welcome-page.js:377
-msgid "Setup guides and answers for every plugin."
-msgstr "Awọn itọnisọna fifi sori ẹrọ ati awọn idahun fun gbogbo afikun."
+msgid "Help and account"
+msgstr "Iranlọwọ ati iroyin"
 
-#: resources/dist/js/welcome-page.js:454
+#: resources/dist/js/welcome-page.js:446
+#: resources/src/jsx/components/pages/welcome-page.jsx:46
+#: resources/dist/js/welcome-page.js:380
+msgid "Setup guides and answers for every plugin."
+msgstr "Iwe afọwọkọ ati awọn idahun fun gbogbo afikun."
+
+#: resources/dist/js/welcome-page.js:456
 #: resources/src/jsx/components/pages/welcome-page.jsx:51
-#: resources/dist/js/welcome-page.js:382
+#: resources/dist/js/welcome-page.js:385
 msgid "Get support"
 msgstr "Gba atilẹyin"
 
-#: resources/dist/js/welcome-page.js:454
+#: resources/dist/js/welcome-page.js:456
 #: resources/src/jsx/components/pages/welcome-page.jsx:51
-#: resources/dist/js/welcome-page.js:382
+#: resources/dist/js/welcome-page.js:385
 msgid "Get help from the PublishPress team."
 msgstr "Gba iranlọwọ lati ẹgbẹ PublishPress."
 
-#: resources/dist/js/welcome-page.js:464
+#: resources/dist/js/welcome-page.js:466
 #: resources/src/jsx/components/pages/welcome-page.jsx:56
-#: resources/dist/js/welcome-page.js:387
+#: resources/dist/js/welcome-page.js:390
 msgid "Account and licenses"
-msgstr "Akọọlẹ ati awọn aṣẹ"
+msgstr "Iroyin ati awọn iwe-aṣẹ"
 
-#: resources/dist/js/welcome-page.js:464
+#: resources/dist/js/welcome-page.js:466
 #: resources/src/jsx/components/pages/welcome-page.jsx:56
-#: resources/dist/js/welcome-page.js:387
+#: resources/dist/js/welcome-page.js:390
 msgid "Find your license keys and manage your subscription."
-msgstr "Wa awọn bọtini aṣẹ rẹ ki o si ṣakoso ẹgbẹ rẹ."
-
-#: resources/dist/js/welcome-page.js:476
-#: resources/src/jsx/components/pages/welcome-page.jsx:65
-#: resources/dist/js/welcome-page.js:396
-msgid "What you can do with PublishPress Hub"
-msgstr "Kini o le ṣe pẹlu PublishPress Hub"
+msgstr "Wa awọn bọtini iwe-aṣẹ rẹ ki o si ṣakoso abo rẹ."
 
 #: resources/dist/js/welcome-page.js:478
-#: resources/src/jsx/components/pages/welcome-page.jsx:68
+#: resources/src/jsx/components/pages/welcome-page.jsx:65
 #: resources/dist/js/welcome-page.js:399
+msgid "What you can do with PublishPress Hub"
+msgstr "Ohun ti o le ṣe pẹlu PublishPress Hub"
+
+#: resources/dist/js/welcome-page.js:480
+#: resources/src/jsx/components/pages/welcome-page.jsx:68
+#: resources/dist/js/welcome-page.js:402
 msgid ""
 "PublishPress Hub has everything you need to install, update, and manage "
 "your PublishPress plugins. We're here to help you build a publishing system "
 "that works perfectly for your team."
 msgstr ""
-"Ibi isopọ PublishPress ni gbogbo ohun ti o nilo lati fi sori ẹrọ, ṣe "
-"imudojuiwọn, ati ṣakoso awọn afikun PublishPress rẹ. A wa nibi lati ṣe "
-"iranlọwọ fun ọ lati kọ eto atẹjade ti o ṣiṣẹ ni pipe fun ẹgbẹ rẹ."
-
-#: resources/dist/js/welcome-page.js:489
-#: resources/src/jsx/components/pages/welcome-page.jsx:77
-#: resources/dist/js/welcome-page.js:408
-msgid "Centralized Dashboard"
-msgstr "Iboju Aarin"
+"PublishPress Hub ni gbogbo ohun ti o nilo lati fi sori ẹrọ, ṣe imudojuiwọn, "
+"ati ṣakoso awọn afikun PublishPress rẹ. A wa nibi lati ran ọ lọwọ lati kọ "
+"eto atẹjade ti o ṣiṣẹ ni pipe fun ẹgbẹ rẹ."
 
 #: resources/dist/js/welcome-page.js:491
-#: resources/src/jsx/components/pages/welcome-page.jsx:80
+#: resources/src/jsx/components/pages/welcome-page.jsx:77
 #: resources/dist/js/welcome-page.js:411
-#, fuzzy
+msgid "Centralized Dashboard"
+msgstr "Dashboard Aringbungbun"
+
+#: resources/dist/js/welcome-page.js:493
+#: resources/src/jsx/components/pages/welcome-page.jsx:80
+#: resources/dist/js/welcome-page.js:414
 msgid ""
 "View all your PublishPress plugins with their licenses, versions, and key "
 "details."
 msgstr ""
-"Pa gbogbo awọn afikun PublishPress rẹ ni imudojuiwọn pẹlu imudojuiwọn pẹlu "
-"ikan kan."
-
-#: resources/dist/js/welcome-page.js:500
-#: resources/src/jsx/components/pages/welcome-page.jsx:89
-#: resources/dist/js/welcome-page.js:420
-msgid "One-Click Installation"
-msgstr "Fifi sori ẹrọ Pẹlu Ikan"
+"Wo gbogbo awọn afikun PublishPress rẹ pẹlu awọn iwe-aṣẹ wọn, awọn ẹya, ati "
+"awọn alaye pataki."
 
 #: resources/dist/js/welcome-page.js:502
-#: resources/src/jsx/components/pages/welcome-page.jsx:92
+#: resources/src/jsx/components/pages/welcome-page.jsx:89
 #: resources/dist/js/welcome-page.js:423
+msgid "One-Click Installation"
+msgstr "Fifi sori ẹrọ Ni Ikan"
+
+#: resources/dist/js/welcome-page.js:504
+#: resources/src/jsx/components/pages/welcome-page.jsx:92
+#: resources/dist/js/welcome-page.js:426
 msgid ""
 "Install free PublishPress plugins directly from the Hub without visiting "
 "WordPress.org."
 msgstr ""
-"Fi sori ẹrọ awọn afikun PublishPress ọfẹ taara lati Ibi isopọ laisi ibẹwo "
-"si WordPress.org."
+"Fi awọn afikun PublishPress ọfẹ sori ẹrọ taara lati Hub laisi lilọ si "
+"WordPress.org."
 
-#: resources/dist/js/welcome-page.js:511
+#: resources/dist/js/welcome-page.js:513
 #: resources/src/jsx/components/pages/welcome-page.jsx:101
-#: resources/dist/js/welcome-page.js:432
+#: resources/dist/js/welcome-page.js:435
 msgid "License Management"
 msgstr "Iṣakoso Iwe-aṣẹ"
 
-#: resources/dist/js/welcome-page.js:513
+#: resources/dist/js/welcome-page.js:515
 #: resources/src/jsx/components/pages/welcome-page.jsx:104
-#: resources/dist/js/welcome-page.js:435
+#: resources/dist/js/welcome-page.js:438
 msgid ""
 "Connect your PublishPress licenses to easily install and activate Pro "
 "versions."
 msgstr ""
 "So awọn iwe-aṣẹ PublishPress rẹ pọ lati fi sori ẹrọ ati mu awọn ẹya Pro "
-"ṣiṣẹ ni rọọrun."
+"ṣiṣẹ ni irọrun."
 
-#: resources/dist/js/welcome-page.js:522
+#: resources/dist/js/welcome-page.js:524
 #: resources/src/jsx/components/pages/welcome-page.jsx:113
-#: resources/dist/js/welcome-page.js:444
+#: resources/dist/js/welcome-page.js:447
 msgid "Easy Updates"
 msgstr "Imudojuiwọn Rọrun"
 
-#: resources/dist/js/welcome-page.js:524
+#: resources/dist/js/welcome-page.js:526
 #: resources/src/jsx/components/pages/welcome-page.jsx:116
-#: resources/dist/js/welcome-page.js:447
+#: resources/dist/js/welcome-page.js:450
 msgid "Keep all your PublishPress plugins up to date with one-click updates."
 msgstr ""
-"Pa gbogbo awọn afikun PublishPress rẹ ni imudojuiwọn pẹlu imudojuiwọn pẹlu "
-"ikan kan."
+"Pa gbogbo awọn afikun PublishPress rẹ ni imudojuiwọn pẹlu imudojuiwọn "
+"kan-ni-kikọ."
 
-#: resources/dist/js/welcome-page.js:533
+#: resources/dist/js/welcome-page.js:535
 #: resources/src/jsx/components/pages/welcome-page.jsx:125
-#: resources/dist/js/welcome-page.js:456
+#: resources/dist/js/welcome-page.js:459
 msgid "Status Monitoring"
 msgstr "Iṣakoso Ipo"
 
-#: resources/dist/js/welcome-page.js:535
+#: resources/dist/js/welcome-page.js:537
 #: resources/src/jsx/components/pages/welcome-page.jsx:128
-#: resources/dist/js/welcome-page.js:459
+#: resources/dist/js/welcome-page.js:462
 msgid ""
 "Monitor plugin activation status, detect conflicts, and ensure "
 "compatibility."
 msgstr ""
-"Ṣakoso ipo mimu awọn afikun ṣiṣẹ, wa awọn ija, ki o si rii daju pe o ni "
+"Ṣakoso ipo ṣiṣi awọn afikun, ṣe awari awọn aiṣedeede, ki o si rii daju "
 "ibamu."
 
-#: resources/dist/js/welcome-page.js:544
+#: resources/dist/js/welcome-page.js:546
 #: resources/src/jsx/components/pages/welcome-page.jsx:137
-#: resources/dist/js/welcome-page.js:468
+#: resources/dist/js/welcome-page.js:471
 msgid "Get Started"
 msgstr "Bẹrẹ"
 
-#: resources/dist/js/welcome-page.js:547
+#: resources/dist/js/welcome-page.js:549
 #: resources/src/jsx/components/pages/welcome-page.jsx:140
-#: resources/dist/js/welcome-page.js:471
+#: resources/dist/js/welcome-page.js:474
 #, js-format
 msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
 msgstr ""
-"Ṣe o ti ṣetan lati ṣawari? Ṣabẹwo si %s lati wo gbogbo awọn amugbooro "
-"PublishPress ti o wa."
+"Ṣetan lati ṣawari? Ṣabẹwo si %s lati wo gbogbo awọn afikun PublishPress ti "
+"o wa."
 
-#: resources/dist/js/welcome-page.js:547
+#: resources/dist/js/welcome-page.js:549
 #: resources/src/jsx/components/pages/welcome-page.jsx:141
-#: resources/dist/js/welcome-page.js:472
+#: resources/dist/js/welcome-page.js:475
 msgid "Plugins Dashboard"
-msgstr "Iboju Plugins"
+msgstr "Dashboard Awọn afikun"
 
-#: resources/dist/js/welcome-page.js:551
+#: resources/dist/js/welcome-page.js:553
 #: resources/src/jsx/components/pages/welcome-page.jsx:151
-#: resources/dist/js/welcome-page.js:482
+#: resources/dist/js/welcome-page.js:485
 msgid "Already know what you're doing? Great! You can "
 msgstr "Ṣe o ti mọ ohun ti o n ṣe? O tayọ! O le "
 
-#: resources/dist/js/welcome-page.js:553
+#: resources/dist/js/welcome-page.js:555
 #: resources/src/jsx/components/pages/welcome-page.jsx:153
-#: resources/dist/js/welcome-page.js:484
+#: resources/dist/js/welcome-page.js:487
 msgid "dismiss this page"
-msgstr "pa oju iwe yii"
+msgstr "foju kọ oju-iwe yii"
 
-#: resources/dist/js/welcome-page.js:553
+#: resources/dist/js/welcome-page.js:555
 #: resources/src/jsx/components/pages/welcome-page.jsx:155
-#: resources/dist/js/welcome-page.js:486, fuzzy
+#: resources/dist/js/welcome-page.js:489, fuzzy
 msgid "."
 msgstr "."

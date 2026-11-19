@@ -14,10 +14,10 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\License;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
+
+\defined('ABSPATH') || exit;
 
 class CanonicalLicensePersistenceService implements LicensePersistenceInterface
 {

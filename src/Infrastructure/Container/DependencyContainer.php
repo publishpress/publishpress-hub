@@ -14,12 +14,12 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container;
 
-defined('ABSPATH') || exit;
-
 use Closure;
 use PublishPress\Hub\Infrastructure\Container\Contracts\DependencyContainerInterface;
 use PublishPress\Hub\Infrastructure\Container\Exception\NotFoundException;
 use RuntimeException;
+
+\defined('ABSPATH') || exit;
 
 /**
  * PHP Dependency Injection Container PSR-11.

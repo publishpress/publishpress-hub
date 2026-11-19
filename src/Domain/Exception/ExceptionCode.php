@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Exception;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 /**
  * Exception codes registry.

@@ -14,12 +14,12 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WP\Plugin;
 
-defined('ABSPATH') || exit;
-
 use InvalidArgumentException;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\WP\Filesystem\WPFileSystemAdapter;
 use RuntimeException;
+
+\defined('ABSPATH') || exit;
 
 class WPPluginLifecycleAdapter
 {
@@ -27,14 +27,22 @@ class WPPluginLifecycleAdapter
 
     private array $allowedDownloadDomains;
 
+    private PackageSignatureVerifier $packageSignatureVerifier;
+
     /**
      * @param WPFileSystemAdapter $fileSystemAdapter The file system adapter.
      * @since 1.0.0
      */
-    public function __construct(WPFileSystemAdapter $fileSystemAdapter, array $allowedDownloadDomains)
-    {
+    public function __construct(
+        WPFileSystemAdapter $fileSystemAdapter,
+        array $allowedDownloadDomains,
+        array $packageSignaturePublicKeys = PackageSignatureVerifier::PUBLIC_KEYS
+    ) {
         $this->fileSystemAdapter = $fileSystemAdapter;
         $this->allowedDownloadDomains = $allowedDownloadDomains;
+        $this->packageSignatureVerifier = new PackageSignatureVerifier(
+            $packageSignaturePublicKeys
+        );
     }
 
     /**
@@ -65,17 +73,7 @@ class WPPluginLifecycleAdapter
             require_once ABSPATH . 'wp-admin/includes/file.php';
         }
 
-        $tmpFile = download_url($downloadUrl);
-
-        if (is_wp_error($tmpFile)) {
-            throw new RuntimeException(
-                sprintf(
-                    // translators: %s is the error message
-                    esc_html__('Failed to download plugin: %s', 'publishpress-hub'),
-                    esc_html($tmpFile->get_error_message())
-                )
-            );
-        }
+        $tmpFile = $this->downloadPackage($downloadUrl);
 
         // Validate the downloaded file is a valid ZIP archive
         if (!file_exists($tmpFile)) {
@@ -377,10 +375,26 @@ class WPPluginLifecycleAdapter
 
         $upgrader = new \Plugin_Upgrader($skin);
 
-        // The upgrade method can accept either a string (single plugin) or array (multiple plugins)
-        // For a single plugin, pass as string to match WordPress core expectations
-        // The plugin path should be in the format 'plugin-folder/plugin-file.php'
-        $result = $upgrader->upgrade($pluginPath);
+        $packageUrl = (string) ($updateInfo->update->package ?? '');
+        if ($packageUrl === '') {
+            throw new RuntimeException(esc_html__('Update package not available', 'publishpress-hub'));
+        }
+
+        $this->validateDownloadUrl($packageUrl);
+        $verifiedPackage = $this->downloadPackage($packageUrl);
+        $preDownload = static function ($reply, $package) use ($verifiedPackage, $packageUrl) {
+            return $package === $packageUrl ? $verifiedPackage : $reply;
+        };
+        add_filter('upgrader_pre_download', $preDownload, 10, 2);
+
+        try {
+            $result = $upgrader->upgrade($pluginPath);
+        } finally {
+            remove_filter('upgrader_pre_download', $preDownload, 10);
+            if (file_exists($verifiedPackage)) {
+                wp_delete_file($verifiedPackage);
+            }
+        }
 
         if (is_wp_error($result)) {
             throw new RuntimeException(
@@ -534,5 +548,74 @@ class WPPluginLifecycleAdapter
                 )
             );
         }
+    }
+
+    private function downloadPackage(string $downloadUrl): string
+    {
+        if (!function_exists('wp_tempnam')) {
+            require_once ABSPATH . 'wp-admin/includes/file.php';
+        }
+
+        $tmpFile = wp_tempnam($downloadUrl);
+        if (!$tmpFile) {
+            throw new RuntimeException(esc_html__('Could not create a temporary package file', 'publishpress-hub'));
+        }
+
+        $response = wp_safe_remote_get($downloadUrl, [
+            'timeout' => 300, // phpcs:ignore WordPressVIPMinimum.Performance.RemoteRequestTimeout.timeout_timeout -- Plugin ZIP downloads can be large.
+            'redirection' => 5,
+            'stream' => true,
+            'filename' => $tmpFile,
+        ]);
+
+        if (is_wp_error($response)) {
+            wp_delete_file($tmpFile);
+            throw new RuntimeException(sprintf(
+                esc_html__('Failed to download plugin: %s', 'publishpress-hub'),
+                esc_html($response->get_error_message())
+            ));
+        }
+
+        if (wp_remote_retrieve_response_code($response) !== 200) {
+            wp_delete_file($tmpFile);
+            throw new RuntimeException(esc_html__('The plugin package download failed', 'publishpress-hub'));
+        }
+
+        try {
+            $headers = [];
+            foreach (['x-publishpress-signature', 'x-publishpress-signature-key-id'] as $name) {
+                $headers[$name] = (string) wp_remote_retrieve_header($response, $name);
+            }
+
+            $verificationUrl = $this->packageSignatureVerifier->requiresSignature($downloadUrl)
+                ? $downloadUrl
+                : $this->getFinalResponseUrl($response, $downloadUrl);
+            $this->packageSignatureVerifier->verify(
+                $verificationUrl,
+                $tmpFile,
+                $headers
+            );
+        } catch (\Throwable $error) {
+            wp_delete_file($tmpFile);
+            throw $error;
+        }
+
+        return $tmpFile;
+    }
+
+    private function getFinalResponseUrl(array $response, string $fallback): string
+    {
+        if (
+            !isset($response['http_response'])
+            || !is_object($response['http_response'])
+            || !method_exists($response['http_response'], 'get_response_object')
+        ) {
+            return $fallback;
+        }
+
+        $responseObject = $response['http_response']->get_response_object();
+        return is_object($responseObject) && !empty($responseObject->url)
+            ? (string) $responseObject->url
+            : $fallback;
     }
 }

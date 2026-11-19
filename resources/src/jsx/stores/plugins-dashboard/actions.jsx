@@ -690,7 +690,7 @@ function* reportSharedLicenseFailures(data) {
     const failed = (data.licenseResults || []).filter(result => !result.success);
     if (failed.length) {
         yield createNotice(
-            sprintf(__('The license key could not be activated for these plugins: %s. Review their licenses or retry using Activate Bundle License.', 'publishpress-hub'), failed.map(result => result.slug).join(', ')),
+            sprintf(__('The license key could not be activated for these plugins: %s. Review their licenses and retry from each plugin’s license controls.', 'publishpress-hub'), failed.map(result => result.slug).join(', ')),
             'warning'
         );
     }

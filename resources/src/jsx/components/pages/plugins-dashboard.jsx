@@ -17,7 +17,6 @@ import { AdminPageLayout } from '../admin-page';
 import FilterButtonsBar from '../filter/filter-buttons-bar';
 import { store } from '../../stores/plugins-dashboard';
 import { PluginsList } from '../plugins-list';
-import { SuiteLicense } from './suite-license';
 import NoticesList from '../notices/NoticesList';
 import SnackbarList from '../notices/SnackbarList';
 import { Button } from '../buttons/button';
@@ -151,7 +150,6 @@ const PluginsDashboardComponent = () => {
         <AdminPageLayout logoUrl={logoUrl}>
             <div className="pp-hub-plugins-dashboard">
                 <NoticesList />
-                <SuiteLicense plugins={allPlugins} onRefresh={fetchPlugins} isLoading={isLoading} />
                 <div className="pp-hub-dashboard-heading">
                     <div>
                         <h1>{__('Plugins & Features', 'publishpress-hub')}</h1>

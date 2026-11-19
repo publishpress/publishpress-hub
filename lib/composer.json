@@ -10,7 +10,7 @@
         "autoloader-suffix": "PublishPressHub"
     },
     "require": {
-        "php": ">=7.4",
+        "php": ">=8.2",
         "ext-json": "*",
         "publishpress/psr-container": "^2.0",
         "woocommerce/action-scheduler": "^3.7",

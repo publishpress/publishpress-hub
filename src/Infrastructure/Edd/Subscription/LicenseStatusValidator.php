@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Edd\Subscription;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseDisabledException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseExpiredException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseInvalidException;
@@ -28,6 +26,8 @@ use PublishPress\Hub\Domain\Plugin\Exception\LicenseNoActivationsLeftException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseNotActivableException;
 use PublishPress\Hub\Domain\Plugin\Exception\LicenseSiteInactiveException;
 use PublishPress\Hub\Domain\Plugin\Exception\UnknownLicenseServerException;
+
+\defined('ABSPATH') || exit;
 
 class LicenseStatusValidator
 {

@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\License;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyRepositoryInterface;
+
+\defined('ABSPATH') || exit;
 
 class WpConfigLicenseReaderService
 {

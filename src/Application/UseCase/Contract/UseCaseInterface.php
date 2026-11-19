@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\UseCase\Contract;
 
-defined('ABSPATH') || exit;
-
 use WP_REST_Request;
+
+\defined('ABSPATH') || exit;
 
 interface UseCaseInterface
 {

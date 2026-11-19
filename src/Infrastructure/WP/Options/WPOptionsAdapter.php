@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WP\Options;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
+
+\defined('ABSPATH') || exit;
 
 class WPOptionsAdapter implements WPOptionsAdapterInterface
 {

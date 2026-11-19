@@ -9,11 +9,6 @@
  */
 
 /**
- * External dependencies
- */
-import filter from 'lodash/filter';
-
-/**
  * WordPress dependencies
  */
 import { SnackbarList as WpSnackbarList } from '@wordpress/components';
@@ -25,9 +20,7 @@ export const SnackbarList = () => {
         (select) => select('core/notices').getNotices(),
         []
     );
-    const snackbarNotices = filter(notices, {
-        type: 'snackbar',
-    });
+    const snackbarNotices = notices.filter((notice) => notice.type === 'snackbar');
 
     return (
         <WpSnackbarList
