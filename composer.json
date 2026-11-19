@@ -49,6 +49,9 @@
         },
         "process-timeout": 0
     },
+    "scripts": {
+        "test:unit": "@php vendor/bin/codecept run Unit"
+    },
     "prefer-stable": true,
     "minimum-stability": "stable",
     "require": {
