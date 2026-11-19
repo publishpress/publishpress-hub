@@ -1,6 +1,6 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[1.2.0] - 16 November, 2026
+[1.2.0] - 19 November, 2026
 
 - Added: PublishPress MCP connection, adapter setup, read/write exposure controls, searchable plugin action tabs, background navigation and saves, client setup guidance, and connection diagnostics (#246).
 - Added: Download a language pack for the installed plugin version. A plugin registers its text domain, package-server repository, and version. The `.po` stays on disk so it can be imported into Loco. Packs remain after Hub is deactivated (#594).
