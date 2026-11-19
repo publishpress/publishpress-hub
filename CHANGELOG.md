@@ -2,6 +2,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [1.2.0] - 19 November, 2026
 
+- Fixed: Define the Composer unit-test command used by the release workflow.
 - Added: PublishPress MCP connection, adapter setup, read/write exposure controls, searchable plugin action tabs, background navigation and saves, client setup guidance, and connection diagnostics (#246).
 - Added: Download a language pack for the installed plugin version. A plugin registers its text domain, package-server repository, and version. The `.po` stays on disk so it can be imported into Loco. Packs remain after Hub is deactivated (#594).
 - Fixed: Allow the approved staging translation endpoint, repair incomplete packs, validate JSON catalogs, restore catalogs on replacement failure and remove temporary ZIPs on exceptions.
