@@ -2306,6 +2306,10 @@ button.publishpress-hub-filter-button:hover {
 }
 
 .pp-hub-badge.uninstalling {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding-block: 5px;
     background-color: var(--pp-hub-badge-bg-uninstalling);
     color: var(--pp-hub-badge-text-uninstalling);
 }
