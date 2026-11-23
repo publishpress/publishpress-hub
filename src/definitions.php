@@ -193,7 +193,8 @@ return [
 
     AbstractDependencies::ADMIN_MENU_SERVICE =>
         fn(ContainerInterface $container) => new AdminMenuService(
-            $container->get(AbstractDependencies::ASSET_SERVICE)
+            $container->get(AbstractDependencies::ASSET_SERVICE),
+            $container->get(AbstractDependencies::LIST_PLUGINS_USE_CASE)
         ),
 
     AbstractDependencies::ADMIN_VIEW_SERVICE =>

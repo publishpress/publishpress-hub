@@ -17,6 +17,7 @@ namespace PublishPress\Hub\Infrastructure\AdminMenu;
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
+use PublishPress\Hub\Application\UseCase\Plugin\ListPluginsUseCase;
 use PublishPress\Hub\Infrastructure\AdminMenu\Contract\AdminMenuServiceInterface;
 use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
@@ -34,6 +35,8 @@ class AdminMenuService implements AdminMenuServiceInterface, BootableInterface
 
     private AssetServiceInterface $assetService;
 
+    private ListPluginsUseCase $listPlugins;
+
     /**
      * @var array<string, array>
      */
@@ -48,12 +51,15 @@ class AdminMenuService implements AdminMenuServiceInterface, BootableInterface
 
     /**
      * @param AssetServiceInterface $assetService The asset service.
+     * @param ListPluginsUseCase $listPlugins The plugins dashboard use case.
      * @since 1.0.0
      */
     public function __construct(
-        AssetServiceInterface $assetService
+        AssetServiceInterface $assetService,
+        ListPluginsUseCase $listPlugins
     ) {
         $this->assetService = $assetService;
+        $this->listPlugins = $listPlugins;
 
         $this->menuPages = [];
         $this->submenuPages = [];
@@ -178,6 +184,60 @@ class AdminMenuService implements AdminMenuServiceInterface, BootableInterface
                 $submenuPage['position']
             );
         }
+
+        $this->appendPluginUpdateBadge();
+    }
+
+    /**
+     * Appends the badge to the sidebar label after WordPress registers the page hooks.
+     */
+    private function appendPluginUpdateBadge(): void
+    {
+        global $menu;
+
+        $badge = $this->getPluginUpdateBadge();
+
+        if ($badge === '') {
+            return;
+        }
+
+        foreach ($menu as $position => $item) {
+            if ($item[2] === self::MENU_SLUG) {
+                $menu[$position][0] .= $badge;
+                return;
+            }
+        }
+    }
+
+    /**
+     * Builds the update badge for users who can update plugins.
+     */
+    private function getPluginUpdateBadge(): string
+    {
+        if (!HubAccessService::canUpdatePlugins()) {
+            return '';
+        }
+
+        $count = $this->listPlugins->countAvailableUpdates();
+
+        if ($count === 0) {
+            return '';
+        }
+
+        $formattedCount = number_format_i18n($count);
+        $description = sprintf(
+            /* translators: %s: Number of available PublishPress plugin updates. */
+            _n('%s plugin update available', '%s plugin updates available', $count, 'publishpress-hub'),
+            $formattedCount
+        );
+
+        return sprintf(
+            ' <span class="update-plugins count-%1$d"><span aria-hidden="true">%2$s</span>'
+            . '<span class="screen-reader-text">%3$s</span></span>',
+            $count,
+            esc_html($formattedCount),
+            esc_html($description)
+        );
     }
 
     /**

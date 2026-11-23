@@ -29,6 +29,8 @@ use WP_REST_Request;
 
 class ListPluginsUseCase implements UseCaseInterface
 {
+    private const PRO_UPDATE_VERSIONS_TRANSIENT = 'publishpress_hub_pro_update_versions';
+
     private const UPDATE_INFO_EMPTY = [
         'hasUpdate' => false,
         'availableVersion' => null,
@@ -80,6 +82,7 @@ class ListPluginsUseCase implements UseCaseInterface
         $updates = get_plugin_updates();
 
         $plugins = [];
+        $proUpdateVersions = [];
 
         /** @var PluginFamilyInterface $family */
         foreach ($families as $family) {
@@ -116,6 +119,14 @@ class ListPluginsUseCase implements UseCaseInterface
 
             // Check for plugin updates
             $updateInfo = $this->getPluginUpdateInfo($family, $updates, $request);
+            if (
+                $updateInfo['hasUpdate']
+                && $family->getInstalledPlugin() === $proPlugin
+                && !isset($updates[$proPlugin->getPath()])
+            ) {
+                $proUpdateVersions[$proPlugin->getPath()] = $updateInfo['availableVersion'];
+            }
+
             $dto->setHasUpdate($updateInfo['hasUpdate'])
                 ->setAvailableVersion($updateInfo['availableVersion']);
 
@@ -144,10 +155,42 @@ class ListPluginsUseCase implements UseCaseInterface
             $plugins[] = $pluginData;
         }
 
+        set_transient(self::PRO_UPDATE_VERSIONS_TRANSIENT, $proUpdateVersions, 12 * HOUR_IN_SECONDS);
+
         return [
             'success' => true,
             'plugins' => $plugins,
         ];
+    }
+
+    /**
+     * Counts plugin families with a known update without refreshing the license server.
+     */
+    public function countAvailableUpdates(): int
+    {
+        $wordpressUpdates = get_site_transient('update_plugins');
+        $proUpdateVersions = get_transient(self::PRO_UPDATE_VERSIONS_TRANSIENT);
+        $count = 0;
+
+        foreach ($this->pluginStatusService->getAllPluginFamiliesWithUpdatedStatus() as $family) {
+            $plugin = $family->getInstalledPlugin();
+
+            if ($plugin === null) {
+                continue;
+            }
+
+            $path = $plugin->getPath();
+            $proUpdateVersion = $proUpdateVersions[$path] ?? null;
+
+            if (
+                isset($wordpressUpdates->response[$path])
+                || $this->isNewerVersion($proUpdateVersion, $plugin->getVersion())
+            ) {
+                $count++;
+            }
+        }
+
+        return $count;
     }
 
     /**
