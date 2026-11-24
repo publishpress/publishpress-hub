@@ -14,10 +14,10 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WP\Remote;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Infrastructure\Remote\Contract\RemoteServiceInterface;
 use WP_Error;
+
+\defined('ABSPATH') || exit;
 
 class WPRemoteAdapter implements RemoteServiceInterface
 {
@@ -40,7 +40,13 @@ class WPRemoteAdapter implements RemoteServiceInterface
             return wp_remote_request($url, $args);
         }
 
-        $cacheKey = 'request_' . md5($url . serialize($args));
+        $encodedRequest = wp_json_encode([$url, $args], JSON_PRESERVE_ZERO_FRACTION);
+
+        if ($encodedRequest === false) {
+            return wp_remote_request($url, $args);
+        }
+
+        $cacheKey = 'request_' . md5($encodedRequest);
         $found = false;
         $cachedResponse = wp_cache_get($cacheKey, self::CACHE_GROUP, false, $found);
 
