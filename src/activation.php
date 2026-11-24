@@ -33,6 +33,19 @@ function registerActivationHook($pluginFile)
     });
 }
 
+function registerDeactivationHook($pluginFile)
+{
+    register_deactivation_hook($pluginFile, __NAMESPACE__ . '\cleanupDeactivationRewriteRules');
+}
+
+function cleanupDeactivationRewriteRules(): void
+{
+    delete_option(RewriteRulesService::FLUSH_OPTION_KEY);
+
+    // Regenerate the rules on the next request, after Hub has been deactivated.
+    delete_option('rewrite_rules');
+}
+
 function registerAutoloader()
 {
     // Load the autoloader for activation hook (runs before plugins_loaded)

@@ -42,3 +42,4 @@ require_once __DIR__ . '/src/include.php';
 require_once __DIR__ . '/src/activation.php';
 
 \PublishPress\Hub\registerActivationHook(__FILE__);
+\PublishPress\Hub\registerDeactivationHook(__FILE__);
