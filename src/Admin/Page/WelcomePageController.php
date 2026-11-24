@@ -255,7 +255,11 @@ class WelcomePageController implements BootableInterface
             'ppHubWelcomePageConfig',
             [
                 'logoUrl' => $this->assetService->getPluginAssetUrl('images/publishpress-logo.png'),
-                'welcomeImageUrl' => $this->assetService->getPluginAssetUrl('images/welcome.png'),
+                'welcomeImageUrl' => add_query_arg(
+                    'ver',
+                    '2',
+                    $this->assetService->getPluginAssetUrl('images/welcome.png')
+                ),
                 'dismissUrl' => $dismissUrl,
                 'pluginSlug' => 'publishpress-hub',
                 'pluginName' => __('PublishPress Hub', 'publishpress-hub'),
