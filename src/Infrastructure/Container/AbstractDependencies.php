@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 /**
  * Container dependency identifiers.
@@ -58,6 +58,8 @@ abstract class AbstractDependencies
     public const EDD_SUBSCRIPTION_API_URL = 'publishpress-hub.constants.edd-subscription-api-url';
 
     public const ALLOWED_DOWNLOAD_DOMAINS = 'publishpress-hub.constants.allowed-download-domains';
+
+    public const PACKAGE_SIGNATURE_PUBLIC_KEYS = 'publishpress-hub.constants.package-signature-public-keys';
 
     public const SITE_URL = 'publishpress-hub.constants.site-url';
 
@@ -149,6 +151,16 @@ abstract class AbstractDependencies
     // Application Services
     public const HUB_BOOTSTRAP_SERVICE = 'publishpress-hub.application.hub.bootstrap.service';
 
+    public const MCP_CONNECTION_SERVICE = 'publishpress-hub.application.mcp.connection.service';
+
+    public const WORDPRESS_ABILITIES_SERVICE = 'publishpress-hub.application.mcp.wordpress-abilities.service';
+
+    public const WORDPRESS_LOOKUP_SERVICE = 'publishpress-hub.application.mcp.wordpress-lookup.service';
+
+    public const WORDPRESS_WRITE_SERVICE = 'publishpress-hub.application.mcp.wordpress-write.service';
+
+    public const MCP_ADAPTER_INSTALLATION_SERVICE = 'publishpress-hub.application.mcp.adapter-installation.service';
+
     public const VERSION_SERVICE = 'publishpress-hub.application.version.service';
 
     public const PLUGIN_FAMILY_REPOSITORY = 'publishpress-hub.domain.plugin-family.repository';
@@ -197,9 +209,17 @@ abstract class AbstractDependencies
 
     public const STATISTICS_SERVICE = 'publishpress-hub.application.service.statistics';
 
+    public const LANGUAGE_PACK_SYNC_SERVICE = 'publishpress-hub.application.service.language-pack-sync';
+
     public const PLUGINS_DASHBOARD_CONTROLLER = 'publishpress-hub.presentation.plugins-dashboard.controller';
 
     public const SETTINGS_PAGE_CONTROLLER = 'publishpress-hub.presentation.settings-page.controller';
+
+    public const MCP_SETUP_SERVICE = 'publishpress-hub.application.mcp.setup.service';
+
+    public const REST_API_MCP_CONTROLLER = 'publishpress-hub.presentation.rest-api.mcp.controller';
+
+    public const MCP_PAGE_CONTROLLER = 'publishpress-hub.presentation.mcp-page.controller';
 
     public const DEV_COMPONENTS_SHOWCASE_CONTROLLER = 'publishpress-hub.presentation.dev-components-showcase.controller';
 

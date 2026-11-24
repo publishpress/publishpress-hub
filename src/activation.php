@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Service\RewriteRulesService;
 use PublishPress\Hub\Application\Service\VersionService;
 use PublishPress\Hub\Infrastructure\WP\Options\WPOptionsAdapter;
+
+\defined('ABSPATH') || exit;
 
 if (! defined('PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT')) {
     define('PUBLISHPRESS_HUB_ACTIVATION_REDIRECT_TRANSIENT', 'publishpress_hub_activation_redirect');
@@ -35,10 +35,15 @@ function registerActivationHook($pluginFile)
 
 function registerDeactivationHook($pluginFile)
 {
-    register_deactivation_hook($pluginFile, function () {
-        delete_option(RewriteRulesService::FLUSH_OPTION_KEY);
-        flush_rewrite_rules();
-    });
+    register_deactivation_hook($pluginFile, __NAMESPACE__ . '\cleanupDeactivationRewriteRules');
+}
+
+function cleanupDeactivationRewriteRules(): void
+{
+    delete_option(RewriteRulesService::FLUSH_OPTION_KEY);
+
+    // Regenerate the rules on the next request, after Hub has been deactivated.
+    delete_option('rewrite_rules');
 }
 
 function registerAutoloader()

@@ -14,11 +14,11 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\WP\Filesystem;
 
-defined('ABSPATH') || exit;
-
 use InvalidArgumentException;
 use WP_Filesystem_Base;
 use WP_Error;
+
+\defined('ABSPATH') || exit;
 
 class WPFileSystemAdapter
 {
@@ -164,6 +164,12 @@ class WPFileSystemAdapter
             WP_CONTENT_DIR . '/upgrade',        // /wp-content/upgrade (temp updates)
             get_temp_dir(),                     // System temp directory
         ];
+
+        // A symlinked checkout resolves outside WP_PLUGIN_DIR. Hub still has to
+        // read its own files, including languages/{domain}-{locale}.json.
+        if (defined('PUBLISHPRESS_HUB_PATH') && is_string(PUBLISHPRESS_HUB_PATH) && PUBLISHPRESS_HUB_PATH !== '') {
+            $paths[] = PUBLISHPRESS_HUB_PATH;
+        }
 
         // Normalize paths using realpath to resolve symlinks and get canonical paths
         $normalizedPaths = [];

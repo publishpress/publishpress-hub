@@ -14,12 +14,12 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\Statistics;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\Statistics\Contract\StatisticsServiceInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
+
+\defined('ABSPATH') || exit;
 
 class StatisticsService implements StatisticsServiceInterface, BootableInterface
 {

@@ -2,15 +2,15 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Hub 1.0.4\n"
+"Project-Id-Version: PublishPress Hub 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-02T15:44:37+00:00\n"
-"PO-Revision-Date: 2026-10-01 10:27+0000\n"
+"POT-Creation-Date: 2026-11-16T12:00:34+00:00\n"
+"PO-Revision-Date: 2026-11-16 13:37+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-hub\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: publishpress-hub.php:4
 #: src/Admin/Page/WelcomePageController.php:261
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:121, fuzzy
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:123, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Hub"
 msgstr "PublishPress Hub"
@@ -29,10 +29,11 @@ msgid ""
 "Centralized management hub for all PublishPress plugins - install, update, "
 "and manage licenses from one dashboard."
 msgstr ""
-"ସମସ୍ତ PublishPress ପ୍ଲଗଇନମାନଙ୍କର କେନ୍ଦ୍ରୀୟ ପରିଚାଳନା କେନ୍ଦ୍ର - ଏକ "
-"ଡ୍ୟାଶବୋର୍ଡରୁ ସ୍ଥାପନ, ଅଦ୍ୟତନ, ଏବଂ ଲାଇସେନ୍ସଗୁଡିକୁ ପରିଚାଳନା କରନ୍ତୁ।"
+"Centralized management hub for all PublishPress plugins - install, update, "
+"and manage licenses from one dashboard."
 
 #: publishpress-hub.php:7
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:64
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
@@ -44,27 +45,39 @@ msgstr "https://publishpress.com"
 
 #: src/Admin/Page/ComponentsShowcaseController.php:120
 msgid "Please wait while we load the components showcase..."
-msgstr "ଦୟାକରି ଆମେ କମ୍ପୋନେଣ୍ଟ୍‌ସ୍ ଶୋକେସ୍ ଲୋଡ୍ କରୁଛୁ ଯାଁଁ ଥାଆଁ...."
+msgstr "ଦୟାକରି ଆମେ ଉପାଦାନ ବିସ୍ତାର ଲୋଡ୍ କରୁଛୁ..."
+
+#: src/Admin/Page/McpPageController.php:91
+#: src/Admin/Page/McpPageController.php:92
+#: resources/dist/js/mcp-page.js:588
+#: resources/src/jsx/components/pages/mcp-page.jsx:82
+#: resources/dist/js/mcp-page.js:480, fuzzy
+msgid "AI Connections"
+msgstr "AI Connections"
+
+#: src/Admin/Page/McpPageController.php:113
+msgid "Please wait while we load AI connections..."
+msgstr "ଦୟାକରି ଆମେ AI ସଂଯୋଗ ଲୋଡ୍ କରୁଛୁ..."
 
 #: src/Admin/Page/PluginsDashboardController.php:136
 msgid "Please wait while we load the plugins dashboard..."
-msgstr "ଦୟାକରି ଆମେ ପ୍ଲଗଇନ୍‌ସ୍ ଡ୍ୟାସ୍‌ବୋର୍ଡ୍‌ ଲୋଡ୍ କରୁଛୁ ଯାଁଁ ଥାଆଁ...."
+msgstr "ଦୟାକରି ଆମେ ପ୍ଲଗୀନ ଡ୍ୟାସବୋର୍ଡ ଲୋଡ୍ କରୁଛୁ..."
 
 #: src/Admin/Page/SettingsPageController.php:106
 #: src/Admin/Page/SettingsPageController.php:107
-#: resources/dist/js/settings-page.js:473
+#: resources/dist/js/settings-page.js:462
 #: resources/src/jsx/components/pages/settings-page.jsx:81
-#: resources/dist/js/settings-page.js:412
+#: resources/dist/js/settings-page.js:415
 msgid "Settings"
 msgstr "ସେଟିଂସ୍"
 
 #: src/Admin/Page/SettingsPageController.php:128
 msgid "Please wait while we load the settings page..."
-msgstr "ଦୟାକରି ଆମେ ସେଟିଂସ୍ ପୃଷ୍ଠା ଲୋଡ୍ କରୁଛୁ ଯାଁଁ ଥାଆଁ...."
+msgstr "ଦୟାକରି ଆମେ ସେଟିଂସ୍ ପୃଷ୍ଠା ଲୋଡ୍ କରୁଛୁ..."
 
 #: src/Admin/Page/WelcomePageController.php:145
 msgid "You do not have sufficient permissions to access this page."
-msgstr "ଆପଣଙ୍କର ଏହି ପୃଷ୍ଠାକୁ ଆକ୍ସେସ୍ କରିବା ପାଇଁ ପ୍ରାପ୍ତି ଯୋଗ୍ୟତା ନାହିଁ।"
+msgstr "ଆପଣଙ୍କର ଏହି ପୃଷ୍ଠାକୁ ପ୍ରବେଶ କରିବାକୁ ପର୍ୟାପ୍ତ ଅଧିକାର ନାହିଁ।"
 
 #: src/Admin/Page/WelcomePageController.php:182
 #: src/Admin/Page/WelcomePageController.php:183
@@ -73,39 +86,513 @@ msgstr "ସ୍ୱାଗତ"
 
 #: src/Admin/Page/WelcomePageController.php:205
 msgid "Please wait while we load the welcome page..."
-msgstr "ଦୟାକରି ଆମେ ସ୍ୱାଗତ ପୃଷ୍ଠା ଲୋଡ୍ କରୁଛୁ ଯାଁଁ ଥାଆଁ...."
+msgstr "ଦୟାକରି ଆମେ ସ୍ୱାଗତ ପୃଷ୍ଠା ଲୋଡ୍ କରୁଛୁ..."
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:116
+#: src/Admin/Template/PluginsDashboard/plugins-dashboard-container.php:26
+msgid "Language pack has not been checked yet."
+msgstr "ଭାଷା ପ୍ୟାକ୍ ଏପର୍ଯ୍ୟନ୍ତ ଯାଞ୍ଚ କରାଯାଇନି।"
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:100
+msgid "Site locale is English. No language pack is downloaded."
+msgstr "ସାଇଟ୍ ଲୋକେଲ୍ ଇଂରାଜୀ। କିଛି ଭାଷା ପ୍ୟାକ୍ ଡାଉନଲୋଡ୍ ହୋଇନି।"
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:109
+msgid "No language packs are registered."
+msgstr "କୌଣସି ଭାଷା ପ୍ୟାକ୍ ରେଜିଷ୍ଟର୍ ହୋଇନି।"
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:181
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:189
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:289
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:331
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:419
+msgid "Language pack directory is not available."
+msgstr "ଭାଷା ପ୍ୟାକ୍ ଡିରେକ୍ଟୋରୀ ଉପଲବ୍ଧ ନୁହେଁ।"
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:222
+#. translators: 1: text domain, 2: locale, 3: plugin version
+#, php-format
+msgid "Language pack for %1$s (%2$s) matches %3$s."
+msgstr "ଭାଷା ପ୍ୟାକ୍ %1$s (%2$s) %3$s ସହିତ ମିଳିଛି।"
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:242
+#. translators: 1: text domain, 2: locale, 3: plugin version
+#, php-format
+msgid "Language pack for %1$s (%2$s) installed for %3$s."
+msgstr "ଭାଷା ପ୍ୟାକ୍ %1$s (%2$s) %3$s ପାଇଁ ଇନ୍‌ସଟଲ୍ କରାଯାଇଛି।"
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:261
+msgid "Language pack URL was rejected."
+msgstr "ଭାଷା ପ୍ୟାକ୍ URL ଅସ୍ୱୀକୃତ ହୋଇଛି।"
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:269
+#. translators: 1: text domain, 2: locale
+#, php-format
+msgid ""
+"Language pack download failed for %1$s (%2$s). The installed pack was left "
+"in place."
+msgstr ""
+"ଭାଷା ପ୍ୟାକ୍ ଡାଉନଲୋଡ୍ %1$s (%2$s) ପାଇଁ ବିଫଳ ହୋଇଛି। ଇନ୍‌ସଟଲ୍ କରାଯାଇଥିବା "
+"ପ୍ୟାକ୍ ସ୍ଥାନେ ରହିଛି।"
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:293
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:298
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:311
+msgid "Language pack could not be unpacked."
+msgstr "ଭାଷା ପ୍ୟାକ୍ ଅନପ୍ୟାକ୍ କରାଯାଇନି।"
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:322
+msgid ""
+"Language pack is missing a catalog file. The installed pack was left in "
+"place."
+msgstr ""
+"ଭାଷା ପ୍ୟାକ୍ କ୍ୟାଟାଲଗ୍ ଫାଇଲ୍ ହାରାଇଗଲା। ଇନ୍‌ସଟଲ୍ କରାଯାଇଥିବା ପ୍ୟାକ୍ ସ୍ଥାନେ "
+"ରହିଛି।"
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:327
+msgid "Language pack JSON catalog is invalid. The installed pack was left in place."
+msgstr "ଭାଷା ପ୍ୟାକ୍ JSON କ୍ୟାଟାଲଗ୍ ଅବୈଧ। ଇନ୍‌ସଟଲ୍ କରାଯାଇଥିବା ପ୍ୟାକ୍ ସ୍ଥାନେ ରହିଛି।"
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:337
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:368
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:384
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:425
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:430
+msgid "Language pack could not be stored. The installed pack was left in place."
+msgstr ""
+"ଭାଷା ପ୍ୟାକ୍ ସଂରକ୍ଷିତ କରାଯାଇପାରିଲା ନାହିଁ। ଇନ୍‌ସଟଲ୍ କରାଯାଇଥିବା ପ୍ୟାକ୍ ସ୍ଥାନେ "
+"ରହିଛି।"
+
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:342
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:348
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:401
+#: src/Application/Service/LanguagePack/LanguagePackSyncService.php:406
+msgid ""
+"Language pack PHP catalog could not be built. The installed pack was left "
+"in place."
+msgstr ""
+"ଭାଷା ପ୍ୟାକ୍ PHP କ୍ୟାଟାଲଗ୍ ବିଲ୍ଡ୍ କରାଯାଇପାରିଲା ନାହିଁ। ଇନ୍‌ସଟଲ୍ କରାଯାଇଥିବା "
+"ପ୍ୟାକ୍ ସ୍ଥାନେ ରହିଛି।"
+
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:121
 #. translators: %1$s is the plugin name, %2$s is the link to plugins dashboard
 #, php-format
 msgid "Warning: The license for %1$s has expired. %2$s"
-msgstr "ସତର୍କତା: %1$s ପାଇଁ ଲାଇସେନ୍ସ ମାତ୍ରା ସମ୍ପାତି ହୋଇଛି। %2$s"
+msgstr "ସତର୍କତା: %1$s ପାଇଁ ଲାଇସେନ୍ସ ମ୍ୟାଦ ହୋଇଛି। %2$s"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:118
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:132
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:123
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:137
 msgid "Manage licenses"
-msgstr "ଲାଇସେନ୍ସ ମ୍ୟାନେଜ୍‌ମେଣ୍ଟ"
+msgstr "ଲାଇସେନ୍ସ୍ ବ୍ୟବସ୍ଥାପନା"
 
-#: src/Application/Service/License/LicenseExpirationNoticeService.php:129
+#: src/Application/Service/License/LicenseExpirationNoticeService.php:134
 #. translators: %1$d is the number of plugins, %2$s is the list of plugin names, %3$s is the link to plugins dashboard
 #, php-format
 msgid "Warning: %1$d plugin(s) have expired licenses: %2$s. %3$s"
-msgstr "ସତର୍କତା: %1$d ପ୍ଲଗଇନ୍‌ଗୁଡିକର ଲାଇସେନ୍ସ ସମ୍ପାତି ହୋଇଛି: %2$s। %3$s"
+msgstr "ସତର୍କତା: %1$d ପ୍ଲଗୀନ୍‌ଗୁଡିକର ଲାଇସେନ୍ସ ମ୍ୟାଦ ହୋଇଛି: %2$s। %3$s"
+
+#: src/Application/Service/License/LicenseManagementService.php:294
+msgid ""
+"The license server accepted your key, but this site could not save its "
+"active license. Please contact support and mention this message."
+msgstr ""
+"ଲାଇସେନ୍ସ ସର୍ଭର୍ ଆପଣଙ୍କର କୀକୁ ଗ୍ରହଣ କରିଛି, କିନ୍ତୁ ଏହି ସାଇଟ୍ ତାଙ୍କର ସକ୍ରିୟ "
+"ଲାଇସେନ୍ସ ସଂରକ୍ଷଣ କରିପାରିଲା ନାହିଁ। ଦୟାକରି ସହାୟତାକୁ ସମ୍ପର୍କ କରନ୍ତୁ ଏବଂ ଏହି "
+"ସନ୍ଦେଶକୁ ଉଲ୍ଲେଖ କରନ୍ତୁ।"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:213
+#. translators: %s: full WordPress site address.
+#, php-format
+msgid ""
+"PublishPress actions for %s. These tools apply only to this site. If "
+"several sites are connected and the requested site is unclear, ask which "
+"site to use before calling a tool. Confirm the target site before changing "
+"site data."
+msgstr ""
+"PublishPress %s ପାଇଁ କାର୍ଯ୍ୟ। ଏହି ଟୁଲ୍‌ଗୁଡିକ ଏକାଧିକ ସାଇଟ୍‌ଗୁଡିକୁ ଯୋଡ଼ାଯିବା "
+"ସମୟରେ ଏହି ସାଇଟ୍‌କୁ ସମ୍ପୃକ୍ତ ହୁଏ। ଯଦି କିଛି ସାଇଟ୍‌ଗୁଡିକୁ ଯୋଡ଼ାଯାଇଛି ଏବଂ "
+"ଆବଶ୍ୟକତା ହୁଏ, ତେବେ କୌଣସି ସାଇଟ୍‌ ବ୍ୟବହାର କରିବା ପୂର୍ବରୁ ପଚାରନ୍ତୁ। ସାଇଟ୍ ତଥ୍ୟ "
+"ବଦଳାଇବା ପୂର୍ବରୁ ଲକ୍ଷ୍ୟ ସାଇଟ୍ ବିଷୟରେ ସୁନିଶ୍ଚିତ କରନ୍ତୁ।"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:330
+msgid "WordPress version"
+msgstr "WordPress ସଂସ୍କରଣ"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:331
+msgid "MCP Adapter version"
+msgstr "MCP ଏଡାପ୍ଟର ସଂସ୍କରଣ"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:332
+msgid "Not active"
+msgstr "କ୍ରିୟାଶୀଲ ନୁହେଁ"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:333, fuzzy
+msgid "HTTPS"
+msgstr "HTTPS"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:334
+#: src/Application/Service/Mcp/McpConnectionService.php:337
+msgid "Available"
+msgstr "ଉପଲବ୍ଧ"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:334
+msgid "Required"
+msgstr "ଆବଶ୍ୟକ"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:335
+msgid "Application passwords"
+msgstr "ଆବେଦନ ପାସ୍‌ୱାର୍ଡ୍‌ସ୍"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:337
+msgid "Unavailable; check WordPress or security plugin settings"
+msgstr "ଉପଲବ୍ଧ ନୁହେଁ; WordPress କିମ୍ବା ସୁରକ୍ଷା ପ୍ଲଗୀନ୍ ସେଟିଂସ୍ ଯାଞ୍ଚ କରନ୍ତୁ"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:338
+msgid "Registered actions"
+msgstr "ରେଜିଷ୍ଟର୍ କରାଯାଇଥିବା କାର୍ଯ୍ୟଗୁଡିକ"
+
+#: src/Application/Service/Mcp/McpConnectionService.php:339
+msgid "Selected actions exposed"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:124
+msgid "Changes saved."
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:126
+msgid ""
+"Changes saved. Restart your AI app or refresh its PublishPress connection "
+"to update the available actions."
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:128
+msgid "Changes saved. Connect your AI app to continue."
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:129
+msgid "Changes saved. Select at least one available action to continue."
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:199
+msgid "Update WordPress to continue"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:200
+msgid "WordPress 6.9 or newer is required."
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:202
+msgid "Open WordPress updates"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:207
+msgid "Install the MCP Adapter plugin"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:208
+msgid ""
+"Install the official WordPress MCP Adapter plugin to connect your AI "
+"service."
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:211
+#: resources/dist/js/mcp-page.js:637
+#: resources/src/jsx/components/pages/mcp-page.jsx:102
+#: resources/dist/js/mcp-page.js:500
+msgid "Manage plugins"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:211
+msgid "Set up MCP Adapter"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:216
+msgid "Use HTTPS to connect your AI"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:217
+msgid "Both WordPress and site addresses must use HTTPS."
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:219
+msgid "Open site settings"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:224
+msgid "Add a PublishPress plugin with AI actions"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:225
+msgid ""
+"You don't have any PublishPress plugins installed that support AI actions "
+"yet."
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:227
+msgid "Open PublishPress plugins"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:232
+msgid "Allow application passwords for your account"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:234
+msgid ""
+"Create an application password in your WordPress profile for assisted or "
+"manual setup."
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:235
+msgid ""
+"Application passwords are unavailable for your account. HTTPS or security "
+"plugin settings may need attention."
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:237
+msgid "Open application passwords"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:258
+msgid "PASTE_YOUR_APPLICATION_PASSWORD_HERE"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:277
+msgid "Ask my AI to help"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:278
+msgid "Recommended. Ask your AI for a setup script to run on your computer."
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:281
+#. translators: 1: endpoint, 2: username, 3: server identifier, 4: display name, 5: write access state.
+#, php-format
+msgid ""
+"Connect my AI app to PublishPress. Create a setup script and give me the "
+"exact terminal command to run it.\n"
+"\n"
+"1. Ask me to select my AI app and OS (Windows, macOS or Linux). Use "
+"interactive choices if available, otherwise numbered options.\n"
+"2. Create the script using your file tools. Request the specific permission "
+"if needed. If you cannot write locally, attach a downloadable script. Only "
+"fall back to code with save instructions when neither is possible. Use "
+"PowerShell on Windows and an appropriate script on macOS or Linux. Do not "
+"stop at explaining access limitations or provide only JSON.\n"
+"3. Configure this local stdio server:\n"
+"Name: %3$s\n"
+"Display name: %4$s\n"
+"Command: npx\n"
+"Arguments: -y @automattic/mcp-wordpress-remote@latest\n"
+"Environment: OAUTH_ENABLED=false, WP_API_URL=%1$s, WP_API_USERNAME=%2$s\n"
+"Read WP_API_PASSWORD through a hidden terminal prompt.\n"
+"Hub write access: %5$s. Only individually selected actions are exposed.\n"
+"4. Check Node.js and npx. If missing, link to the official installer and "
+"tell me to reopen the terminal. Back up existing settings. Use a JSON/TOML "
+"parser or supported client command to merge only this server, preserving "
+"other settings and sites. Stop on invalid configuration or a conflicting "
+"endpoint. If replacing an old PublishPress desktop extension for this site, "
+"guide me to disable only that extension to avoid duplicate connections. "
+"Quote paths and values safely.\n"
+"5. Give brief run, restart and approval instructions. Verify through the "
+"connection or give me a prompt to test in the app: confirm the site URL, "
+"list actual tools and perform a read-only lookup. Report whether write "
+"tools are available. If expected write tools are missing, ask me to check "
+"Allow actions that change site data and the selected actions in Hub, then "
+"refresh the connection. Do not claim success from saved configuration "
+"alone. Do not test writes during setup. Clarify the target site when "
+"ambiguous and ask for review before changing site data."
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:299
+msgid "enabled"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:299
+msgid "disabled"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:304
+msgid "Set up manually"
+msgstr ""
+
+#: src/Application/Service/Mcp/McpSetupService.php:305
+msgid "Copy the configuration into your MCP client."
+msgstr ""
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:65
+msgid "Actions available through PublishPress Hub."
+msgstr ""
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:85
+msgid "List WordPress users"
+msgstr ""
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:86
+msgid ""
+"Find users by name or role. The optional primitive capability filter checks "
+"effective access within each candidate page. Visit all total_pages even "
+"when a filtered page is empty. No email addresses or secrets are returned."
+msgstr ""
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:92
+msgid "Get WordPress user capabilities"
+msgstr ""
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:93
+msgid ""
+"Resolve exactly one user_id or username and return their identity, roles "
+"and effective primitive capabilities. Never guess a user ID. "
+"Object-specific permissions require a separate check for that object."
+msgstr ""
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:97
+msgid "Find WordPress content"
+msgstr ""
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:98
+msgid ""
+"Search readable posts, pages or a REST-enabled custom post type. Returns "
+"actual IDs, titles and permalinks. Use post_type=page for pages. Resolve "
+"ambiguous titles before using a URL. Default status is publish. Private and "
+"draft requests enforce WordPress permissions."
+msgstr ""
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:106
+msgid "List WordPress post types"
+msgstr ""
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:107
+msgid ""
+"List readable REST-enabled post types and the capability names used for "
+"each type. Use these names for content lookups and permission questions."
+msgstr ""
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:127
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:208
+msgid "WordPress"
+msgstr ""
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:153
+msgid "Create WordPress user"
+msgstr "WordPress ଉପଯୋଗକର୍ତ୍ତା ସୃଷ୍ଟି କରନ୍ତୁ"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:154
+msgid ""
+"Create a new user account with a known username, email and one editable "
+"role. Ask for missing details. WordPress validates role assignment "
+"permissions. MCP rejects administrator and any role granting "
+"administrator-level capabilities. A password is generated privately. By "
+"default WordPress emails the user a password setup link. Never guess an "
+"email or request a password in chat."
+msgstr ""
+"ଜଣାଶୁଣା ଉପଯୋଗକର୍ତ୍ତା ନାମ, ଇମେଲ ଓ ଗୋଟିଏ ସମ୍ପାଦନୀୟ ଭୂମିକା ସହିତ ନୂତନ "
+"ଉପଯୋଗକର୍ତ୍ତା ଖାତା ସୃଷ୍ଟି କରନ୍ତୁ। ଅଣପୂର୍ଣ୍ଣ ବିବରଣୀ ପାଇଁ ପ୍ରଶ୍ନ କରନ୍ତୁ। "
+"WordPress ଭୂମିକା ନିଯୁକ୍ତି ଅଧିକାରଗୁଡିକୁ ସାଂଗଠନ କରେ। MCP ପ୍ରଶାସକ ଓ କୌଣସି "
+"ଭୂମିକା ଯାହା ପ୍ରଶାସକ-ସ୍ତରର ସାମର୍ଥ୍ୟ ଦେଇଥାଏ, ସେଗୁଡିକୁ ଅସ୍ୱୀକୃତ କରେ। ଗୋଟିଏ "
+"ପାସୱର୍ଡ ଗୋପନୀୟ ଭାବେ ଉତ୍ପାଦିତ ହୁଏ। ଡିଫଲ୍ଟ ଭାବରେ WordPress ଉପଯୋଗକର୍ତ୍ତାକୁ "
+"ପାସୱର୍ଡ ସେଟଅପ୍ ଲିଙ୍କ ଇମେଲ କରେ। କେବଳ ଇମେଲ ଅନୁମାନ କରନ୍ତୁ ନାହିଁ ଓ ଚାଟ୍ ରେ "
+"ପାସୱର୍ଡ ଚାହାଣୀ କରନ୍ତୁ।"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:163
+msgid "Create WordPress content"
+msgstr "WordPress ବିଷୟବସ୍ତୁ ସୃଷ୍ଟି କରନ୍ତୁ"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:164
+msgid ""
+"Create a post, page or REST-enabled custom post type. Use post_type=page "
+"for pages. Defaults to draft. Publish or schedule only when requested. "
+"WordPress checks creation, publishing and author-assignment permissions. "
+"Returns the actual ID and permalink."
+msgstr ""
+"ଗୋଟିଏ ପୋଷ୍ଟ, ପୃଷ୍ଠା କିମ୍ବା REST-ସକ୍ରିୟ କଷ୍ଟମ୍ ପୋଷ୍ଟ ପ୍ରକାର ସୃଷ୍ଟି କରନ୍ତୁ। "
+"ପୃଷ୍ଠା ପାଇଁ post_type=page ବ୍ୟବହାର କରନ୍ତୁ। ଡିଫଲ୍ଟ ଭାବରେ ଖସଡାକୁ ପ୍ରଦାନ "
+"କରାଯାଏ। କେବଳ ଅନୁରୋଧ କରାଯାଇଥିଲେ ପ୍ରକାଶ କରନ୍ତୁ କିମ୍ବା ସମୟ ସୂଚୀକରଣ କରନ୍ତୁ। "
+"WordPress ସୃଷ୍ଟି, ପ୍ରକାଶ ଓ ଲେଖକ-ନିଯୁକ୍ତି ଅଧିକାରଗୁଡିକୁ ଚେକ୍ କରେ। ବାସ୍ତବ ଆଇଡି "
+"ଓ ପର୍ମାଲିଙ୍କ ପ୍ରତ୍ୟାବର୍ତ୍ତନ କରେ।"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:168
+msgid "Update WordPress content"
+msgstr "WordPress ବିଷୟବସ୍ତୁ ଅଦ୍ୟତନ କରନ୍ତୁ"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:169
+msgid ""
+"Edit an existing post, page or REST-enabled custom post by its verified ID. "
+"Find content first if the ID is unknown. Only supplied fields change. "
+"WordPress checks object, publishing and author-assignment permissions. No "
+"deletion, arbitrary metadata or options are supported."
+msgstr ""
+"ଗୋଟିଏ ଅବସ୍ଥାପିତ ପୋଷ୍ଟ, ପୃଷ୍ଠା କିମ୍ବା REST-ସକ୍ରିୟ କଷ୍ଟମ୍ ପୋଷ୍ଟକୁ ତାହାର "
+"ପ୍ରମାଣିତ ID ଦ୍ୱାରା ସମ୍ପାଦନ କରନ୍ତୁ। ID ଅଜଣା ଥିଲେ ସର୍ବପ୍ରଥମେ ବିଷୟବସ୍ତୁ "
+"ଖୋଜନ୍ତୁ। କେବଳ ଦିଆଯାଇଥିବା ଫିଲ୍ଡଗୁଡିକୁ ବଦଳାଯିବ। WordPress ଅବଜେକ୍ଟ, ପ୍ରକାଶ ଓ "
+"ଲେଖକ-ନିଯୁକ୍ତି ଅଧିକାରଗୁଡିକୁ ଚେକ୍ କରେ। କୌଣସି ମିଟାଡାଟା କିମ୍ବା ବିକଳ୍ପ ଅସ୍ୱୀକୃତ "
+"ହେଉଛି।"
+
+#: src/Application/Service/Mcp/WordPressAbilitiesService.php:199
+msgid "Use the exact input types shown in discovery."
+msgstr "ଆବିଷ୍କାରରେ ଦିଆଯାଇଥିବା ସଠିକ୍ ଇନପୁଟ୍ ପ୍ରକାରଗୁଡିକୁ ବ୍ୟବହାର କରନ୍ତୁ।"
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:28
+#: src/Application/Service/Mcp/WordPressLookupService.php:63
+msgid "You cannot list users."
+msgstr "ଆପଣ ଉପଯୋଗକର୍ତ୍ତାଙ୍କୁ ତାଲିକାବଦ୍ଧ କରିପାରିବେ ନାହିଁ।"
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:66
+msgid "Provide either a user ID or an exact username."
+msgstr "ଗୋଟିଏ ଉପଯୋଗକର୍ତ୍ତା ID କିମ୍ବା ସଠିକ୍ ଉପଯୋଗକର୍ତ୍ତା ନାମ ପ୍ରଦାନ କରନ୍ତୁ।"
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:71
+msgid "No matching user belongs to this site."
+msgstr "ଏହି ସାଇଟ୍‌ରେ କୌଣସି ମେଳରେ ଉପଯୋଗକର୍ତ୍ତା ନାହିଁ।"
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:74
+msgid "You cannot inspect this user."
+msgstr "ଆପଣ ଏହି ଉପଯୋଗକର୍ତ୍ତାକୁ ନିରୀକ୍ଷଣ କରିପାରିବେ ନାହିଁ।"
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:92
+msgid "Choose a REST-enabled post type."
+msgstr "ଗୋଟିଏ REST-ସକ୍ରିୟ ପୋଷ୍ଟ ପ୍ରକାର ବାଛନ୍ତୁ।"
+
+#: src/Application/Service/Mcp/WordPressLookupService.php:96
+msgid "This post type does not support content lookup."
+msgstr "ଏହି ପୋଷ୍ଟ ପ୍ରକାର ବିଷୟବସ୍ତୁ ଖୋଜାକୁ ସମର୍ଥନ ନକରେ।"
+
+#: src/Application/Service/Mcp/WordPressWriteService.php:28
+msgid ""
+"MCP tools cannot create users with administrator-level access. Use the "
+"WordPress Users screen for this change."
+msgstr ""
+"MCP ଟୁଲ୍‌ଗୁଡିକ ପ୍ରଶାସକ-ସ୍ତରର ପ୍ରବେଶ ସହିତ ଉପଯୋଗକର୍ତ୍ତା ସୃଷ୍ଟି କରିପାରିବେ "
+"ନାହିଁ। ଏହି ପରିବର୍ତ୍ତନ ପାଇଁ WordPress Users ସ୍କ୍ରିନ୍ ବ୍ୟବହାର କରନ୍ତୁ।"
+
+#: src/Application/Service/Mcp/WordPressWriteService.php:71
+msgid "Provide at least one content field to update."
+msgstr "ଅଦ୍ୟତନ ପାଇଁ କମ୍ ଦେଖା ଅନୁସ୍ଥାନ କରନ୍ତୁ।"
+
+#: src/Application/Service/Mcp/WordPressWriteService.php:86
+msgid "Choose an existing REST-enabled post type."
+msgstr "ଗୋଟିଏ ଅବସ୍ଥାପିତ REST-ସକ୍ରିୟ ପୋଷ୍ଟ ପ୍ରକାର ବାଛନ୍ତୁ।"
+
+#: src/Application/Service/Mcp/WordPressWriteService.php:90
+msgid "This post type does not support content writes."
+msgstr "ଏହି ପୋଷ୍ଟ ପ୍ରକାର ବିଷୟବସ୍ତୁ ଲେଖାକୁ ସମର୍ଥନ ନକରେ।"
+
+#: src/Application/Service/Mcp/WordPressWriteService.php:126
+msgid "You cannot perform this operation."
+msgstr "ଆପଣ ଏହି କାର୍ଯ୍ୟକଳାପ କରିପାରିବେ ନାହିଁ।"
 
 #: src/Application/Traits/BootableTrait.php:77
 msgid "Object must be loaded before initializing."
-msgstr "ଆବଶ୍ୟକ ଅବସ୍ଥାରେ ଲୋଡ୍ କରାଯିବା ଉଚିତ।"
+msgstr "ଆରମ୍ଭ କରିବା ପୂର୍ବରୁ ଅବଜେକ୍ଟକୁ ଲୋଡ୍ କରିବା ଆବଶ୍ୟକ।"
 
-#: src/Application/UseCase/Plugin/ActivateLicenseUseCase.php:161
-#: resources/dist/js/plugins-dashboard.js:2204
+#: src/Application/UseCase/Plugin/ActivateLicenseUseCase.php:157
+#: resources/dist/js/plugins-dashboard.js:1780
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:123
-#: resources/dist/js/plugins-dashboard.js:1699
+#: resources/dist/js/plugins-dashboard.js:1599
 msgid ""
 "This license key is managed in wp-config.php and cannot be edited from the "
 "Hub."
 msgstr ""
-"ଏହି ଲାଇସେନ୍ସ କୀ wp-config.phpରେ ଚାଲାଯାଉଛି ଏବଂ ଏହାକୁ ହବ୍ରୁ ଶୋଧନା କରାଯାଇପାରିବ "
-"ନାହିଁ।"
+"ଏହି ଲାଇସେନ୍ସ କୀ wp-config.php ରେ ପରିଚାଳିତ ହୁଏ ଏବଂ Hub ରୁ ସମ୍ପାଦିତ ହେବାକୁ "
+"ସମର୍ଥନ ନକରେ।"
 
 #: src/Application/UseCase/Plugin/DeactivateLicenseUseCase.php:118
 msgid "No license key found"
@@ -116,211 +603,211 @@ msgid ""
 "This license key is managed in wp-config.php and cannot be deactivated from "
 "the Hub."
 msgstr ""
-"ଏହି ଲାଇସେନ୍ସ କୀ wp-config.phpରେ ଚାଲାଯାଉଛି ଏବଂ ଏହାକୁ ହବ୍ରୁ ବନ୍ଦ କରାଯାଇପାରିବ "
-"ନାହିଁ।"
+"ଏହି ଲାଇସେନ୍ସ କୀ wp-config.php ରେ ପରିଚାଳିତ ହୁଏ ଏବଂ Hub ରୁ ଅକ୍ରିୟ କରାଯିବାକୁ "
+"ସମର୍ଥନ ନକରେ।"
 
 #: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:64
 msgid "Invalid conflict resolution request."
-msgstr "ତ୍ରୁଟିପୂର୍ଣ୍ଣ ପ୍ରତିକ୍ରିୟା ସମାଧାନ ଅନୁରୋଧ।"
+msgstr "অବৈধ ସଂଘର୍ଷ ସମାଧାନ ଅନୁରୋଧ।"
 
 #: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:89
 msgid "The selected plugin is not available for activation."
-msgstr "ଚୟିତ ପ୍ଲଗିନ୍ ସକ୍ରିୟ କରିବା ପାଇଁ ଉପଲବ୍ଧ ନୁହେଁ।"
+msgstr "ଚୟିତ ପ୍ଲଗିନ୍ ସକ୍ରିୟତା ପାଇଁ ଉପଲବ୍ଧ ନୁହେଁ।"
 
 #: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:98
 msgid ""
 "Cleanup was stopped because the selected plugin is not active or the other "
 "version is still loaded. Neither copy was deleted."
 msgstr ""
-"ଚୟିତ ପ୍ଲଗିନ୍ ସକ୍ରିୟ ନହେବା କିମ୍ବା ଅନ୍ୟତମ ଆବୃତ୍ତି ଏବେ ମଧ୍ୟ ଲୋଡ୍ ହୋଇଛି, ତେଣୁ "
-"ସଫା କାର୍ଯ୍ୟ ବନ୍ଦ ହୋଇଗଲା। କୌଣସି ପ୍ରତିକୃତି ମିଟିଯାଇନି।"
+"ଚୟିତ ପ୍ଲଗିନ୍ ସକ୍ରିୟ ନଥିଲେ ଅଥବା ଅନ୍ୟ ଆବୃତ୍ତି ଏବେ ସମ୍ପୂର୍ଣ୍ଣ ହୋଇନଥିବାରୁ ସଫା "
+"କରାଯିବା ଥମ୍ବି ହୋଇଯାଇଛି। କୌଣସି କପି ବିଲୋପ କରାଯାଇନି।"
 
 #: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:106
 msgid ""
 "The selected plugin is active, but the other version could not be removed. "
 "Please remove it from the Plugins screen."
 msgstr ""
-"ଚୟିତ ପ୍ଲଗିନ୍ ସକ୍ରିୟ ଅଛି, କିନ୍ତୁ ଅନ୍ୟତମ ଆବୃତ୍ତି ହଟାଇବାକୁ ସମ୍ଭବ ହୋଇପାରିନି। "
-"ଦୟାକରି Plugins ସ୍କ୍ରିନ୍ରୁ ଏହାକୁ ହଟାନ୍ତୁ।"
+"ଚୟିତ ପ୍ଲଗିନ୍ ସକ୍ରିୟ, କିନ୍ତୁ ଅନ୍ୟ ଆବୃତ୍ତିକୁ ହଟାଇବାକୁ ସମର୍ଥନ ନକରେ। ଦୟାକରି "
+"Plugins ସ୍କ୍ରିନ୍ ରୁ ଏହାକୁ ହଟାନ୍ତୁ।"
 
 #: src/Application/UseCase/Plugin/ResolveConflictUseCase.php:114
 msgid ""
 "The selected plugin is no longer active. Please reactivate it from the "
 "Plugins screen."
 msgstr ""
-"ଚୟିତ ପ୍ଲଗିନ୍ ଏବେ ସକ୍ରିୟ ନୁହେଁ। ଦୟାକରି Plugins ସ୍କ୍ରିନ୍ରୁ ଏହାକୁ ପୁନଃସକ୍ରିୟ "
-"କରନ୍ତୁ।"
+"ଚୟିତ ପ୍ଲଗିନ୍ ଆହୁରି ସକ୍ରିୟ ନୁହେଁ। ଦୟାକରି Plugins ସ୍କ୍ରିନ୍ ରୁ ଏହାକୁ ପୁନଃ "
+"ସକ୍ରିୟ କରନ୍ତୁ।"
 
-#: src/Application/UseCase/Plugin/ReuseLicenseForAllPluginsUseCase.php:75
+#: src/Application/UseCase/Plugin/ReuseLicenseForAllPluginsUseCase.php:81
 msgid "No existing license key was found for this plugin."
-msgstr "ଏହି ପ୍ଲଗିନ୍ ପାଇଁ କୌଣସି ମାନ୍ୟତା କୀ ମିଳିଲା ନାହିଁ।"
+msgstr "ଏହି ପ୍ଲଗିନ୍ ପାଇଁ କୌଣସି ଅବସ୍ଥାପିତ ଲାଇସେନ୍ସ କୀ ମିଳିଲା ନାହିଁ।"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:88
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:90
 msgid "Database Tables"
-msgstr "ଡାଟାବେସ୍ ଟେବୁଲସ୍"
+msgstr "ଡାଟାବେସ୍ ଟେବୁଲ୍‌ଗୁଡିକ"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:93, fuzzy
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:95
 msgid "PublishPress Plugins"
-msgstr "PublishPress Plugins"
+msgstr "PublishPress ପ୍ଲଗିନ୍‌ଗୁଡିକ"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:99, fuzzy
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:101
 msgid "PublishPress Hub Debug Log"
-msgstr "PublishPress Hub Debug Log"
+msgstr "PublishPress Hub ଡିବଗ୍ ଲଗ୍"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:102
-#: resources/dist/js/settings-page.js:439
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:104
+#: resources/dist/js/settings-page.js:431
 #: resources/src/jsx/components/pages/settings-page.jsx:40
-#: resources/dist/js/settings-page.js:371
+#: resources/dist/js/settings-page.js:374
 msgid "Debug Log"
 msgstr "ଡିବଗ୍ ଲଗ୍"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:103
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:105
 msgid "The debug log is empty."
-msgstr "ଡିବଗ୍ ଲଗ୍ ଖାଲି।"
+msgstr "ଡିବଗ୍ ଲଗ୍ ଖାଳି।"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:124
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:314
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:126
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:316
 msgid "Version"
 msgstr "ସଂସ୍କରଣ"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:128
-#: resources/dist/js/settings-page.js:1251
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:130
+#: resources/dist/js/settings-page.js:986
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:71
-#: resources/dist/js/settings-page.js:994
+#: resources/dist/js/settings-page.js:1001
 msgid "Debug Mode"
 msgstr "ଡିବଗ୍ ମୋଡ୍"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:130
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:132
 msgid "Enabled"
 msgstr "ସକ୍ରିୟ"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:131
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:133
 msgid "Disabled"
-msgstr "ନिष୍କ୍ରିୟ"
+msgstr "ଅସକ୍ରିୟ"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:134
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:136
 msgid "Generated At"
-msgstr "ତିଆରି ହେବା ତାରିଖ"
+msgstr "ଉତ୍ପାଦିତ ତାରିଖ"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:188, fuzzy
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:190
 msgid "Plugins"
-msgstr "Plugins"
+msgstr "ପ୍ଲଗିନ୍‌ଗୁଡିକ"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:189
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:191
 msgid "No PublishPress plugins found."
-msgstr "କୌଣସି PublishPress plugins ମିଳିଲା ନାହିଁ।"
+msgstr "କୌଣସି PublishPress ପ୍ଲଗିନ୍ ମିଳିଲା ନାହିଁ।"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:213
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:215
 msgid "Tables"
-msgstr "ଟେବୁଲସ୍"
+msgstr "ଟେବଲ୍‌ଗୁଡିକ"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:214
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:216
 msgid "No database table information was available."
-msgstr "କୌଣସି ଡାଟାବେସ୍ ଟେବୁଲ୍ ସୂଚନା ଉପଲବ୍ଧ ନଥିଲା।"
+msgstr "କୌଣସି ଡାଟାବେସ୍ ଟେବଲ୍ ସୂଚନା ଉପଲବ୍ଧ ନଥିଲା।"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:238
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:240
 msgid "Size"
 msgstr "ଆକାର"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:240
-msgid "Engine"
-msgstr "ଏଞ୍ଜିନ୍"
-
 #: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:242
+msgid "Engine"
+msgstr "ଇଞ୍ଜିନ୍"
+
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:244
 msgid "Rows"
 msgstr "ରୋ"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:244
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:246
 msgid "Collation"
 msgstr "କୋଲେସନ୍"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:246
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:248
 msgid "Charset"
-msgstr "କାର୍ଯ୍ୟକ୍ଷେତ୍ର"
+msgstr "ଚର୍ସେଟ୍"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:253
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:255
 msgid "Total Database Size"
 msgstr "ମୋଟ ଡାଟାବେସ୍ ଆକାର"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:308
-#: resources/dist/js/plugins-dashboard.js:1108
-#: resources/dist/js/plugins-dashboard.js:2755
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:68
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:90
-#: resources/dist/js/plugins-dashboard.js:908
-#: resources/dist/js/plugins-dashboard.js:2230
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:310
+#: resources/dist/js/plugins-dashboard.js:1013
+#: resources/dist/js/plugins-dashboard.js:2269
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:72
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:91
+#: resources/dist/js/plugins-dashboard.js:895
+#: resources/dist/js/plugins-dashboard.js:2131
 msgid "Not installed"
-msgstr "ଇନ୍ସ୍ଟଲ୍ ହୋଇନି"
+msgstr "ସଂସ୍ଥାପିତ ନୁହେଁ"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:313
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:322
-#: resources/dist/js/plugins-dashboard.js:1100
-#: resources/dist/js/plugins-dashboard.js:2746
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:58
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:84
-#: resources/dist/js/plugins-dashboard.js:898
-#: resources/dist/js/plugins-dashboard.js:2224
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:315
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:324
+#: resources/dist/js/plugins-dashboard.js:1005
+#: resources/dist/js/plugins-dashboard.js:2259
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:62
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:81
+#: resources/dist/js/plugins-dashboard.js:885
+#: resources/dist/js/plugins-dashboard.js:2121
 msgid "Active"
-msgstr "କ୍ରିୟାଶୀଳ"
+msgstr "ସକ୍ରିୟ"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:313
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:322
-#: resources/dist/js/plugins-dashboard.js:1104
-#: resources/dist/js/plugins-dashboard.js:2746
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:63
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:84
-#: resources/dist/js/plugins-dashboard.js:903
-#: resources/dist/js/plugins-dashboard.js:2224
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:315
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:324
+#: resources/dist/js/plugins-dashboard.js:1009
+#: resources/dist/js/plugins-dashboard.js:2259
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:67
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:81
+#: resources/dist/js/plugins-dashboard.js:890
+#: resources/dist/js/plugins-dashboard.js:2121
 msgid "Inactive"
 msgstr "ନିଷ୍କ୍ରିୟ"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:315
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:317
 msgid "unknown"
-msgstr "未知"
+msgstr "ଅଜଣା"
 
-#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:321, fuzzy
+#: src/Application/UseCase/Settings/GetSiteHealthReportUseCase.php:323
 msgid "License"
-msgstr "License"
+msgstr "ଲାଇସେନ୍ସ"
 
 #: src/Domain/Plugin/Entity/PluginFamily.php:130
 #. translators: %s is the plugin family slug
 #, php-format
 msgid "Free plugin not set for plugin family: %s"
-msgstr "ମାଗଣା ପ୍ଲଗଇନ୍ ପରିବାର ପାଇଁ ସୋଯା ପ୍ଲଗଇନ୍ ସେଟ୍‌ ହୋଇନି: %s"
+msgstr "ପ୍ରଣାଳୀ ପରିବାର ପାଇଁ ମାଗଣା ପ୍ଲଗିନ୍ ସେଟ୍ ହୋଇନାହିଁ: %s"
 
 #: src/Domain/Plugin/Entity/PluginFamily.php:152
 #. translators: %s is the plugin family slug
 #, php-format
 msgid "Pro plugin not set for plugin family: %s"
-msgstr "ପ୍ରୋ ପ୍ଲଗଇନ୍ ପରିବାର ପାଇଁ ସୋଯା ପ୍ଲଗଇନ୍ ସେଟ୍‌ ହୋଇନି: %s"
+msgstr "ପ୍ରଣାଳୀ ପରିବାର ପାଇଁ ପ୍ରୋ ପ୍ଲଗିନ୍ ସେଟ୍ ହୋଇନାହିଁ: %s"
 
 #: src/Domain/Plugin/Exception/LicenseActivationException.php:30
 msgid ""
 "License activation error. Please try again later or contact support for "
 "help."
 msgstr ""
-"ଲାଇସେନ୍ସ କ୍ରିୟାନ୍ବୟ ତ୍ରୁଟି। କୃପୟା ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ ପାଇଁ "
-"ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+"ଲାଇସେନ୍ସ ସକ୍ରିୟକରଣ ତ୍ରୁଟି। କୃପୟା ପୁନର୍ପ୍ରୟାସ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ ପାଇଁ "
+"ସମର୍ଥନ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/LicenseDeactivationException.php:30
 msgid ""
 "License deactivation error. Please try again later or contact support for "
 "help."
 msgstr ""
-"ଲାଇସେନ୍ସ ଅକ୍ରିୟ କରିବା ତ୍ରୁଟି। କୃପୟା ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ ପାଇଁ "
-"ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+"ଲାଇସେନ୍ସ ନିଷ୍କ୍ରିୟକରଣ ତ୍ରୁଟି। କୃପୟା ପୁନର୍ପ୍ରୟାସ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ ପାଇଁ "
+"ସମର୍ଥନ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/LicenseDisabledException.php:30
 msgid "This license is currently disabled. Please contact support for help."
 msgstr ""
-"ଏହି ଲାଇସେନ୍ସ ବର୍ତ୍ତମାନ ବିକ୍ରିତ ହୋଇଛି। କୃପୟା ସହୟୋଗ ପାଇଁ ସମର୍ଥନ ସହିତ ସଂଯୋଗ "
+"ଏହି ଲାଇସେନ୍ସ ବର୍ତ୍ତମାନ ନିଷ୍କ୍ରିୟ। କୃପୟା ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ ସଂଯୋଗ "
 "କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/LicenseExpiredException.php:30
 msgid "This license has expired. Please contact support to renew it."
 msgstr ""
-"ଏହି ଲାଇସେନ୍ସ ମିୟାଦ ଶେଷ ହୋଇଛି। କୃପୟା ଏହା ପୁନର୍ନବୀକରଣ ପାଇଁ ସହୟୋଗ ସହିତ ସଂଯୋଗ "
-"କରନ୍ତୁ।"
+"ଏହି ଲାଇସେନ୍ସର ମାୟାଦ ସମାପ୍ତ ହୋଇଗଲା। ଦୟାକରି ଏହା ପୁନଃନବୀକରଣ ପାଇଁ ସମର୍ଥନ ସହିତ "
+"ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/LicenseInvalidException.php:30
 msgid ""
@@ -328,59 +815,64 @@ msgid ""
 "authorized for this plugin. Please verify the key and contact PublishPress "
 "support if the problem continues."
 msgstr ""
-"このライセンスキーはアクティブ化できませんでした。無効、ブロックされているか、このプラグインのために認可されていない可能性があります。キーを確認し、問題"
-"が続く場合はPublishPressサポートに連絡してください。"
+"ଏହି ଲାଇସେନ୍ସ କୀ ସକ୍ରିୟ କରାଯିବାକୁ ସମ୍ଭବ ହୋଇପାରିଲା ନାହିଁ। ଏହା ଅଅବୈଧ, ବ୍ଲକ୍ "
+"କିମ୍ବା ଏହି ପ୍ଲଗିନ୍ ପାଇଁ ପ୍ରାଧିକୃତ ନୁହେଁ। କୀ ଯାଞ୍ଚ କରନ୍ତୁ ଏବଂ ସମସ୍ୟା "
+"ଚାଲିଥିଲେ PublishPress ସମର୍ଥନ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemIdException.php:30
 msgid ""
 "This license cannot be used for this plugin. Please contact support for "
 "help."
 msgstr ""
-"ଏହି ଲାଇସେନ୍ସ ଏହି ପ୍ଲଗଇନ ପାଇଁ ବ୍ୟବହୃତ ହେବାର ଅନୁମତି ନାହିଁ। ସାହାଯ୍ୟ ପାଇଁ "
-"ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+"ଏହି ଲାଇସେନ୍ସ ଏହି ପ୍ଲଗିନ୍ ପାଇଁ ବ୍ୟବହାର କରାଯିବ ନାହିଁ। ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ "
+"ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/LicenseInvalidItemNameException.php:30
 msgid ""
 "This license does not match the plugin you are trying to activate. Please "
 "contact support for assistance."
 msgstr ""
-"ଏହି ଲାଇସେନ୍ସ ତାଳିକାରେ ଅନ୍ୟ ଏକ ପ୍ଲଗଇନ ଯାହାକୁ ଆପଣ କ୍ରିୟାନ୍ବୟ କରିବାକୁ "
-"ଚାହାଁଛନ୍ତି, ସହିତ ମେଳ ନହେଁ। ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+"ଏହି ଲାଇସେନ୍ସ ଏହି ପ୍ଲଗିନ୍ ସକ୍ରିୟ କରିବାକୁ ମେଳ ଖାଉଛି। ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ "
+"ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/LicenseKeyMismatchException.php:30
 msgid ""
 "License key does not match our records. Please contact support for "
 "assistance."
-msgstr "ଲାଇସେନ୍ସ କୀ ଆମର ରେକର୍ଡସହିତ ମେଳ ନହେଁ। ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+msgstr ""
+"ଲାଇସେନ୍ସ କୀ ଆମର ରେକର୍ଡସ୍ ସହିତ ମେଳ ଖାଉଛି ନାହିଁ। ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ "
+"ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/LicenseMissingException.php:30
 msgid "No license key provided. Please enter a valid license key."
-msgstr "କୌଣସି ଲାଇସେନ୍ସ କୀ ଦିଆଯାଇନି। କୃପୟା ଏକ ମାନ୍ୟ ଲାଇସେନ୍ସ କୀ ପ୍ରବେଶ କରନ୍ତୁ।"
+msgstr "କୌଣସି ଲାଇସେନ୍ସ କୀ ଦିଆଯାଇନଥିଲା। ଦୟାକରି ଏକ ବୈଧ ଲାଇସେନ୍ସ କୀ ଦିଅ।"
 
 #: src/Domain/Plugin/Exception/LicenseMissingUrlException.php:30
 msgid ""
 "Your site URL is required to activate the license. Please enter a valid "
 "site URL to continue."
 msgstr ""
-"ଲାଇସେନ୍ସ କ୍ରିୟାନ୍ବୟ କରିବା ପାଇଁ ଆପଣଙ୍କର ସାଇଟ୍ URL ଆବଶ୍ୟକ। ଆଗକୁ ଯିବା ପାଇଁ ଏକ "
-"ବୌଲିଡ୍ ସାଇଟ୍ URL ଦିଅନ୍ତୁ।"
+"ଲାଇସେନ୍ସ ସକ୍ରିୟ କରିବା ପାଇଁ ଆପଣଙ୍କର ସାଇଟ୍ URL ଆବଶ୍ୟକ। ଅଗ୍ରଗତି ପାଇଁ ଏକ ବୈଧ "
+"ସାଇଟ୍ URL ଦିଅ।"
 
 #: src/Domain/Plugin/Exception/LicenseNoActivationsLeftException.php:30
 msgid ""
 "License activation limit reached. Please contact support to upgrade or "
 "deactivate on another site."
 msgstr ""
-"ଲାଇସେନ୍ସ କ୍ରିୟାନ୍ବୟ ସୀମା ପହଞ୍ଚିଛି। ଅନ୍ୟ ସାଇଟ୍ରେ ଅପଗ୍ରେଡ୍ କରିବା କିମ୍ବା "
-"ଅକ୍ରିୟ କରିବା ପାଇଁ ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+"ଲାଇସେନ୍ସ ସକ୍ରିୟକରଣ ସୀମା ପ୍ରାପ୍ତ ହୋଇଛି। ଅନ୍ୟ ସାଇଟ୍‌ରେ ସ୍ଥାନାନ୍ତର କିମ୍ବା "
+"ନିଷ୍କ୍ରିୟ କରିବା ପାଇଁ ସମର୍ଥନ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/LicenseNotActivableException.php:30
 msgid "This license cannot be activated. Please contact support for help."
-msgstr "ଏହି ଲାଇସେନ୍ସ ଚାଲୁ କରାଯିବ ନାହିଁ। କୃପୟା ସହୟୋଗ ପାଇଁ ସହୟୋଗ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
+msgstr ""
+"ଏହି ଲାଇସେନ୍ସ ସକ୍ରିୟ କରାଯିବାକୁ ସମ୍ଭବ ନୁହେଁ। ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ ସଂଯୋଗ "
+"କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/LicenseServerException.php:30
 msgid "License server error. Please try again later or contact support for help."
 msgstr ""
-"ଲାଇସେନ୍ସ ସର୍ଭର ତ୍ରୁଟି। କୃପୟା ପुनର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ କିମ୍ବା ସହୟୋଗ ପାଇଁ ସହୟୋଗ "
+"ଲାଇସେନ୍ସ ସର୍ଭର ତ୍ରୁଟି। କୃପୟା ପୁନର୍ପ୍ରୟାସ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ "
 "ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/LicenseServerInvalidResponseException.php:30
@@ -388,13 +880,13 @@ msgid ""
 "The license server returned an invalid response. Please try again later or "
 "contact support for help."
 msgstr ""
-"ଲାଇସେନ୍ସ ସର୍ଭର ଏକ ଅବୈଧ ପ୍ରତିକ୍ରିୟା ଫେରାଇଛି। କୃପୟା ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ କିମ୍ବା "
-"ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+"ଲାଇସେନ୍ସ ସର୍ଭର ଗୋଟିଏ ଅବୈଧ ପ୍ରତିକ୍ରିୟା ଫେରାଇଛି। କୃପୟା ପୁନର୍ପ୍ରୟାସ କରନ୍ତୁ "
+"କିମ୍ବା ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/LicenseSiteInactiveException.php:30
 msgid "This license is inactive for this site. Please contact support for help."
 msgstr ""
-"ଏହି ଲାଇସେନ୍ସ ଏହି ସାଇଟ୍ ପାଇଁ ଅକ୍ଷିପ୍ତ। କୃପୟା ସହୟୋଗ ପାଇଁ ସହୟୋଗ ସହିତ ସଂଯୋଗ "
+"ଏହି ଲାଇସେନ୍ସ ଏହି ସାଇଟ୍‌ ପାଇଁ ନିଷ୍କ୍ରିୟ। ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ ସଂଯୋଗ "
 "କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/PluginActivationException.php:31
@@ -402,158 +894,171 @@ msgid ""
 "Plugin activation failed. Please try again later or contact support for "
 "help."
 msgstr ""
-"ପ୍ଲଗଇନ୍ କ୍ରିୟାନ୍ବୟ ବିଫଳ ହୋଇଛି। କୃପୟା ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ ପାଇଁ "
-"ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+"ପ୍ଲଗିନ୍ ସକ୍ରିୟକରଣ ବିଫଳ ହୋଇଛି। କୃପୟା ପୁନର୍ପ୍ରୟାସ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ ପାଇଁ "
+"ସମର୍ଥନ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/PluginAlreadyInstalledException.php:31
 msgid "This action is not possible because the plugin is already installed."
-msgstr "ଏହି କାର୍ଯ୍ୟ ସମ୍ଭବ ନୁହେଁ କାରଣ ପ୍ଲଗିନ୍ ପ୍ରଥମରୁ ଇନ୍ସ୍ଟଲ୍ ହୋଇଛି।"
+msgstr "ଏହି କାର୍ଯ୍ୟ ସମ୍ଭବ ନୁହେଁ କାରଣ ପ୍ଲଗିନ୍ ପୂର୍ବରୁ ନିଷ୍ପତ୍ତି ହୋଇଛି।"
 
 #: src/Domain/Plugin/Exception/PluginDeactivationException.php:31
 msgid ""
 "Plugin deactivation failed. Please try again later or contact support for "
 "help."
 msgstr ""
-"ପ୍ଲଗଇନ୍ ଅକ୍ରିୟ କରିବା ବିଫଳ ହୋଇଛି। କୃପୟା ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ "
-"ପାଇଁ ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+"ପ୍ଲଗିନ୍ ନିଷ୍କ୍ରିୟକରଣ ବିଫଳ ହୋଇଛି। କୃପୟା ପୁନର୍ପ୍ରୟାସ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ "
+"ପାଇଁ ସମର୍ଥନ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/PluginFamilyNotFoundException.php:31
 msgid "Plugin family not found. Please contact support for help."
-msgstr "ପ୍ଲଗିନ୍ ପରିବାର ମିଳୁନି। କୃପୟା ସହୟୋଗ ପାଇଁ ସହୟୋଗ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
+msgstr "ପ୍ଲଗିନ୍ ପରିବାର ମିଳିଲା ନାହିଁ। ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/PluginFreeProConflictException.php:31
 msgid ""
 "This action is not possible because both free and pro versions are "
 "installed. Please uninstall one version to continue."
 msgstr ""
-"ଏହି କାର୍ଯ୍ୟ ସମ୍ଭବ ନୁହେଁ କାରଣ ଦୁଇଟି ମୁକ୍ତ ଏବଂ ପ୍ରୋ ସଂସ୍କରଣ ଥିବାରୁ। ଆଗକୁ ଯିବା "
-"ପାଇଁ ଗୋଟିଏ ସଂସ୍କରଣ ଅନଇନସ୍ଟଲ୍ କରନ୍ତୁ।"
+"ଏହି କାର୍ଯ୍ୟ ସମ୍ଭବ ନୁହେଁ କାରଣ ମାଗଣା ଏବଂ ପ୍ରୋ ଦୁହିଁ ସଂସ୍କରଣ ନିଷ୍ପତ୍ତି ହୋଇଛି। "
+"ଅଗ୍ରଗତି ପାଇଁ ଏକ ସଂସ୍କରଣକୁ ଅନସ୍ଥାପନ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/PluginInstallException.php:31
 msgid "Plugin installation failed. Please contact support for help."
-msgstr "ପ୍ଲଗିନ୍ ଇନ୍ସ୍ଟଲେସନ୍ ବିଫଳ ହେଲା। କୃପୟା ସହୟୋଗ ପାଇଁ ସହୟୋଗ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
+msgstr "ପ୍ଲଗିନ୍ ସଂସ୍ଥାପନ ବିଫଳ ହୋଇଛି। ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/PluginNotActivatedException.php:31
 msgid ""
 "This action is not possible because the plugin is not activated. Please "
 "activate the plugin and try again."
 msgstr ""
-"ଏହି କାର୍ଯ୍ୟ ସମ୍ଭବ ନୁହେଁ କାରଣ ପ୍ଲଗଇନ୍ କ୍ରିୟାନ୍ବୟ ହୋଇନି। କୃପୟା ପ୍ଲଗଇନ୍ "
-"କ୍ରିୟାନ୍ବୟ କରନ୍ତୁ ଏବଂ ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ।"
+"ଏହି କାର୍ଯ୍ୟ ସମ୍ଭବ ନୁହେଁ କାରଣ ପ୍ଲଗିନ୍ ସକ୍ରିୟ ନୁହେଁ। ଦୟାକରି ପ୍ଲଗିନ୍ ସକ୍ରିୟ "
+"କରନ୍ତୁ ଏବଂ ପୁନର୍ପ୍ରୟାସ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/PluginNotFoundException.php:31
 msgid ""
 "Plugin not found in our available plugins list. Please contact support for "
 "help."
 msgstr ""
-"ଆମର ଉପଲବ୍ଧ ପ୍ଲଗଇନ୍ ତାଳିକାରେ ପ୍ଲଗଇନ୍ ମିଳିଲା ନାହିଁ। ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ "
-"ସଂପର୍କ କରନ୍ତୁ।"
+"ଆମର ଉପଲବ୍ଧ ପ୍ଲଗିନ୍ ତାଲିକାରେ ପ୍ଲଗିନ୍ ମିଳିଲା ନାହିଁ। ସାହାଯ୍ୟ ପାଇଁ ସମର୍ଥନ ସହିତ "
+"ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/PluginNotInstalledException.php:31
 msgid ""
 "This action is not possible because the plugin is not installed. Please "
 "install the plugin and try again."
 msgstr ""
-"ଏହି କାର୍ଯ୍ୟ ସମ୍ଭବ ନୁହେଁ କାରଣ ପ୍ଲଗଇନ୍ ଥିବା ନାହିଁ। ପ୍ଲଗଇନ୍ ସ୍ଥାପନ କରନ୍ତୁ ଏବଂ "
-"ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ।"
+"ଏହି କାର୍ଯ୍ୟ ସମ୍ଭବ ନୁହେଁ କାରଣ ପ୍ଲଗିନ୍ ସଂସ୍ଥାପିତ ନୁହେଁ। ପ୍ଲଗିନ୍ ସଂସ୍ଥାପନ "
+"କରନ୍ତୁ ଏବଂ ପୁନର୍ପ୍ରୟାସ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/Exception/UnknownLicenseServerException.php:30
 msgid ""
 "Unknown license server error. Please try again later or contact support for "
 "help."
 msgstr ""
-"ଅଜଣା ଲାଇସେନ୍ସ ସର୍ଭର ତ୍ରୁଟି। କୃପୟା ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ ପାଇଁ "
-"ସମର୍ଥନ ସହିତ ସଂପର୍କ କରନ୍ତୁ।"
+"ଅଜଣା ଲାଇସେନ୍ସ ସର୍ଭର ତ୍ରୁଟି। କୃପୟା ପୁନର୍ପ୍ରୟାସ କରନ୍ତୁ କିମ୍ବା ସାହାଯ୍ୟ ପାଇଁ "
+"ସମର୍ଥନ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/plugin-families.php:28
-msgid "Define tasks that authors must complete before publishing."
+msgid "Sell digital products, programs, and services from your website."
 msgstr ""
-"ଲେଖକମାନେ ପ୍ରକାଶିତ କରିବା ପୂର୍ବରୁ ସମ୍ପୂର୍ଣ୍ଣ କରିବାକୁ ହେବା ଦାୟିତ୍ବଗୁଡିକୁ "
-"ନିର୍ଦ୍ଧାରଣ କରନ୍ତୁ।"
+"ଆପଣଙ୍କର ୱେବସାଇଟରୁ ଡିଜିଟାଲ୍ ପ୍ରୋଡକ୍ଟ, ପ୍ରୋଗ୍ରାମ, ଏବଂ ସେବାଗୁଡିକୁ ବିକ୍ରୟ "
+"କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/plugin-families.php:44
-msgid "Control who can edit and view your content."
-msgstr "କେଉଁଠାରୁ ଆପଣଙ୍କର ସାମଗ୍ରୀକୁ ସମ୍ପାଦନା କରିବା ଓ ଦେଖିବା ପାଇଁ ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ।"
+msgid "Create and manage tags, categories, and taxonomy terms."
+msgstr "ଟ୍ୟାଗ, ଶ୍ରେଣୀ, ଏବଂ taxonomy ଶର୍ତ୍ତଗୁଡିକୁ ସୃଷ୍ଟି କରନ୍ତୁ ଏବଂ ପରିଚାଳନା କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/plugin-families.php:60
-msgid "Create, manage and display authors for your content."
+msgid ""
+"Organize taxonomy terms into groups and display them in clouds, tabs, and "
+"lists."
 msgstr ""
-"ଆପଣଙ୍କର ସାମଗ୍ରୀ ପାଇଁ ଲେଖକମାନେ ସୃଷ୍ଟି କରନ୍ତୁ, ପରିଚାଳନା କରନ୍ତୁ ଏବଂ ପ୍ରଦର୍ଶନ "
-"କରନ୍ତୁ।"
+"taxonomy ଶର୍ତ୍ତଗୁଡିକୁ ଗ୍ରୁପ୍‌ଗୁଡିକୁ ବ୍ୟବସ୍ଥାପନା କରନ୍ତୁ ଏବଂ ସେଗୁଡିକୁ "
+"କ୍ଲାଉଡ୍, ଟ୍ୟାବ୍ ଏବଂ ତାଲିକାରେ ଦେଖାନ୍ତୁ।"
 
 #: src/Domain/Plugin/plugin-families.php:76
-msgid "All the tools you need to improve the block editor."
-msgstr "ବ୍ଲକ୍ ଏଡିଟରକୁ ଉନ୍ନତ କରିବାକୁ ଆପଣଙ୍କର ଆବଶ୍ୟକ ସମସ୍ତ ଉପକରଣ।"
+msgid "Define tasks that authors must complete before publishing."
+msgstr ""
+"ଲେଖକମାନେ ପ୍ରକାଶିତ କରିବାପୂର୍ବରୁ ସମ୍ପୂର୍ଣ୍ଣ କରିବାକୁ ଯାହାବୋଲି କାର୍ଯ୍ୟଗୁଡିକୁ "
+"ସଂଜ୍ଞା କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/plugin-families.php:92
-msgid "Control your admin area and user roles."
-msgstr "ଆପଣଙ୍କର ଏଡମିନ୍ ଅଞ୍ଚଳ ଓ ୟୁଜର୍ ଭୂମିକାକୁ ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ।"
+msgid "Control who can edit and view your content."
+msgstr ""
+"କେଉଁଠାରେ ଆପଣଙ୍କର ସାମଗ୍ରୀ ସମ୍ପାଦନ କରିବା ଏବଂ ଦେଖିବାକୁ କିଏ ଅଧିକାର ରଖେ ତାହା "
+"ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/plugin-families.php:108
-msgid "Schedule changes to your posts."
-msgstr "ଆପଣଙ୍କର ପୋଷ୍ଟ୍‌ଗୁଡିକୁ ପରିବର୍ତ୍ତନ କରିବା ପାଇଁ ସୂଚୀବଦ୍ଧ କରନ୍ତୁ।"
+msgid "Create, manage and display authors for your content."
+msgstr "ଆପଣଙ୍କର ସାମଗ୍ରୀ ପାଇଁ ଲେଖକମାନେ ସୃଷ୍ଟି କରନ୍ତୁ, ପରିଚାଳନା କରନ୍ତୁ ଏବଂ ଦେଖାନ୍ତୁ।"
 
 #: src/Domain/Plugin/plugin-families.php:124
-msgid "Organize, schedule, and plan your publishing."
-msgstr "ଆପଣଙ୍କର ପ୍ରକାଶନକୁ ଗଠନ କରନ୍ତୁ, ସୂଚୀବଦ୍ଧ କରନ୍ତୁ, ଏବଂ ଯୋଜନା କରନ୍ତୁ।"
+msgid "All the tools you need to improve the block editor."
+msgstr "ବ୍ଲକ୍ ସମ୍ପାଦକକୁ ସୁଧାରିବାକୁ ଆପଣଙ୍କୁ ଆବଶ୍ୟକ ସମସ୍ତ ଓଜାର।"
 
 #: src/Domain/Plugin/plugin-families.php:140
-msgid "Approve and schedule new versions to your published posts."
-msgstr ""
-"ଆପଣଙ୍କର ପ୍ରକାଶିତ ପୋଷ୍ଟ୍‌ଗୁଡିକୁ ନୂତନ ସଂସ୍କରଣ ମନ୍ଜୁର କରନ୍ତୁ ଏବଂ ସୂଚୀବଦ୍ଧ "
-"କରନ୍ତୁ।"
+msgid "Control your admin area and user roles."
+msgstr "ଆପଣଙ୍କର ଏଡମିନ୍ କ୍ଷେତ୍ର ଏବଂ ବ୍ୟବହାରକାରୀ ଭୂମିକାଗୁଡିକୁ ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/plugin-families.php:156
-msgid "Organize your posts into issues or series."
-msgstr "ଆପଣଙ୍କର ପୋଷ୍ଟ୍‌ଗୁଡିକୁ ମାସିକ କିମ୍ବା ଧାରାରେ ସଂଗଠିତ କରନ୍ତୁ।"
+msgid "Schedule changes to your posts."
+msgstr "ଆପଣଙ୍କର ପୋଷ୍ଟଗୁଡିକୁ ପରିବର୍ତ୍ତନଗୁଡିକୁ ସୂଚୀବଦ୍ଧ କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/plugin-families.php:172
-msgid "Create custom URLs for your posts and external links."
-msgstr "ଆପଣଙ୍କର ପୋଷ୍ଟଗୁଡିକ ଓ ବାହ୍ୟ ଲିଙ୍କ୍‌ଗୁଡିକ ପାଇଁ କଷ୍ଟମ୍ URL ତିଆରି କରନ୍ତୁ।"
+msgid "Organize, schedule, and plan your publishing."
+msgstr "ଆପଣଙ୍କର ପ୍ରକାଶନକୁ ବ୍ୟବସ୍ଥାପନା, ସୂଚୀବଦ୍ଧ କରନ୍ତୁ, ଏବଂ ଯୋଜନା କରନ୍ତୁ।"
 
 #: src/Domain/Plugin/plugin-families.php:188
-msgid "Create custom statuses and publishing workflows."
-msgstr "କଷ୍ଟମ୍ ସ୍ଥିତି ଏବଂ ପ୍ରକାଶନ କାର୍ଯ୍ୟ ପ୍ରବାହ ସୃଷ୍ଟି କରନ୍ତୁ।"
+msgid "Approve and schedule new versions to your published posts."
+msgstr ""
+"ଆପଣଙ୍କର ପ୍ରକାଶିତ ପୋଷ୍ଟଗୁଡିକୁ ନୂତନ ସଂସ୍କରଣଗୁଡିକୁ ଅନୁମୋଦନ କରନ୍ତୁ ଏବଂ ସୂଚୀବଦ୍ଧ "
+"କରନ୍ତୁ।"
 
-#: src/Infrastructure/AdminMenu/PluginQuickLinks.php:68
-#. Translators: %s is the plugin's registered menu label.
-#, php-format
-msgid "Open %s"
-msgstr "%s ଖୋଲନ୍ତୁ"
+#: src/Domain/Plugin/plugin-families.php:204
+msgid "Organize your posts into issues or series."
+msgstr "ଆପଣଙ୍କର ପୋଷ୍ଟଗୁଡିକୁ ମାସିକ କିମ୍ବା ଶ୍ରେଣୀରେ ବ୍ୟବସ୍ଥାପନା କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/plugin-families.php:220
+msgid "Create custom URLs for your posts and external links."
+msgstr "ଆପଣଙ୍କର ପୋଷ୍ଟଗୁଡିକୁ ଏବଂ ବାହ୍ୟ ଲିଙ୍କଗୁଡିକୁ କଷ୍ଟମ୍ URL ସୃଷ୍ଟି କରନ୍ତୁ।"
+
+#: src/Domain/Plugin/plugin-families.php:236
+msgid "Create custom statuses and publishing workflows."
+msgstr "କଷ୍ଟମ୍ ସ୍ଥିତିଗୁଡିକୁ ଏବଂ ପ୍ରକାଶନ ଓର୍କଫ୍ଲୋଗୁଡିକୁ ସୃଷ୍ଟି କରନ୍ତୁ।"
 
 #: src/Infrastructure/Container/DependencyContainer.php:104
 #. translators: %s is the dependency ID.
 #, php-format
 msgid "Dependency \"%s\" not found in container."
-msgstr "ଆବଶ୍ୟକତା \"%s\" କଣ୍ଟେନରରେ ମିଳିଲା ନାହିଁ।"
+msgstr "ଆବଶ୍ୟକତା \"%s\" ବସ୍ତୁ ମାନେ ପ୍ରାପ୍ତ ହୋଇନି।"
 
 #: src/Infrastructure/Edd/Subscription/LicenseInfoService.php:118
 #. translators: %s is the error message
 #, php-format
 msgid "Error validating license: %s"
-msgstr "ଲାଇସେନ୍ ମୂଲ୍ୟାଙ୍କନରେ ତ୍ରୁଟି: %s"
+msgstr "ଲାଇସେନ୍ସକୁ ମାନ୍ୟତା ଦେବାରେ ତ୍ରୁଟି: %s"
 
 #: src/Infrastructure/Edd/Subscription/VersionCheckService.php:112
 #. translators: %s is the error message
 #, php-format
 msgid "Error getting license info: %s"
-msgstr "ଲାଇସେନ୍ ସୂଚନା ପାଇଁ ତ୍ରୁଟି: %s"
+msgstr "ଲାଇସେନ୍ସ ତଥ୍ୟ ପ୍ରାପ୍ତ କରିବାରେ ତ୍ରୁଟି: %s"
 
 #: src/Infrastructure/Remote/Exception/RemoteAccessDeniedException.php:31
 msgid ""
 "The license server denied this request. This can happen when a license key "
 "or site has been blocked. Please contact PublishPress support for help."
 msgstr ""
-"ライセンスサーバーはこのリクエストを拒否しました。ライセンスキーまたはサイトがブロックされている場合に発生することがあります。ヘルプが必要な場合はPub"
-"lishPressサポートに連絡してください。"
+"ଲାଇସେନ୍ସ ସର୍ଭର ଏହି ଅନୁରୋଧକୁ ଅସ୍ୱୀକୃତ କରିଛି। ଏହା ଘଟିପାରେ ଯେତେବେଳେ ଏକ "
+"ଲାଇସେନ୍ସ କୀ କିମ୍ବା ସାଇଟ୍ ଅବରୋଧିତ କରାଯାଇଛି। ଦୟାକରି ସାହାଯ୍ୟ ପାଇଁ PublishPress "
+"ସମର୍ଥନକୁ ସମ୍ପର୍କ କରନ୍ତୁ।"
 
 #: src/Infrastructure/RestApi/RestApiService.php:289
 msgid "Too many requests. Please try again later."
-msgstr "ଅତିରିକ୍ତ ଅନୁରୋଧ। ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ।"
+msgstr "ଅନେକ ଅନୁରୋଧ। ଦୟାକରି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।"
 
 #: src/Infrastructure/RestApi/RestApiService.php:360
 msgid "An error occurred while processing your request."
-msgstr "ଆପଣଙ୍କର ଅନୁରୋଧ ପ୍ରକ୍ରିୟା କରିବା ସମୟରେ ଏକ ତ୍ରୁଟି ଘଟିଗଲା।"
+msgstr "ଆପଣଙ୍କର ଅନୁରୋଧ ପ୍ରକ୍ରିୟା କରିବା ସମୟରେ ଏକ ତ୍ରୁଟି ଘଟିଛି।"
 
 #: src/Infrastructure/View/ViewService.php:50
 #. translators: %s is the template path
@@ -567,170 +1072,199 @@ msgstr "ପଥ ଖାଲି ହୋଇପାରେ ନାହିଁ"
 
 #: src/Infrastructure/WP/Asset/WPAssetAdapter.php:66
 msgid "File extension cannot be empty"
-msgstr "ଫାଇଲ ଏକ୍ସଟେନ୍ସନ୍ ଖାଲି ହୋଇପାରେ ନାହିଁ"
+msgstr "ଫାଇଲ୍ ବିସ୍ତାରଣ ଖାଲି ହୋଇପାରେ ନାହିଁ"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:198
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:204
 msgid "Invalid file path: null byte detected"
-msgstr "ଅବୈଧ ଫାଇଲ ପଥ: ନଲ୍ ବାଇଟ୍ ଚିହ୍ନିତ"
+msgstr "ଅବୈଧ ଫାଇଲ୍ ପଥ: ନଲ୍ ବାଇଟ୍ ଚିହ୍ନିତ ହୋଇଛି"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:207
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:213
 msgid "Invalid file path: directory traversal detected"
-msgstr "ଅବୈଧ ଫାଇଲ ପଥ: ଡିରେକ୍ଟୋରୀ ଟ୍ରାଭର୍ସାଲ୍ ଚିହ୍ନିତ"
+msgstr "ଅବୈଧ ଫାଇଲ୍ ପଥ: ଡିରେକ୍ଟୋରୀ ପର୍ବାର୍ତ୍ତନ ଚିହ୍ନିତ ହୋଇଛି"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:225
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:231
 #. translators: %s is the directory path
 #, php-format
 msgid "Invalid file path: parent directory does not exist: %s"
-msgstr "ଅବୈଧ ଫାଇଲ ପଥ: ପେରେଣ୍ଟ ଡିରେକ୍ଟୋରୀ ଅସ୍ତିତ୍ୱରେ ନାହିଁ: %s"
+msgstr "ଅବୈଧ ଫାଇଲ୍ ପଥ: ପ୍ରାଥମିକ ଡିରେକ୍ଟୋରୀ ଅସ୍ତିତ୍ୱରେ ନାହିଁ: %s"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:235
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:241
 msgid "Invalid file path: unable to resolve path"
-msgstr "ଅବୈଧ ଫାଇଲ ପଥ: ପଥ ନିରାକରଣ କରିବାକୁ ଅସମର୍ଥ"
+msgstr "ଅବୈଧ ଫାଇଲ୍ ପଥ: ପଥକୁ ସମାଧାନ କରିବାରେ ଅସମର୍ଥ"
 
-#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:254
+#: src/Infrastructure/WP/Filesystem/WPFileSystemAdapter.php:260
 msgid "Invalid file path: operation not allowed outside permitted directories"
-msgstr "ଅବୈଧ ଫାଇଲ ପଥ: ଅନୁମତି ଦିଆଯାଇଥିବା ଡିରେକ୍ଟୋରୀ ବାହାରେ କାର୍ଯ୍ୟ ସମ୍ଭବ ନୁହେଁ"
+msgstr ""
+"ଅବୈଧ ଫାଇଲ୍ ପଥ: ଅନୁମତି ଦିଆଯାଇଥିବା ଡିରେକ୍ଟୋରୀ ଗୁଡିକ ବାହାରେ କାର୍ଯ୍ୟ ଅନୁମତି "
+"ନାହିଁ"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:58
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:66
 msgid "Download URL failed WordPress validation"
-msgstr "ଡାଉନଲୋଡ୍ URL WordPress ମାନ୍ୟତାରେ ବିଫଳ"
+msgstr "ଡାଉନଲୋଡ୍ URL ଫେଲ୍ଡ WordPress ମାନ୍ୟତା"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:74
-#. translators: %s is the error message
-#, php-format
-msgid "Failed to download plugin: %s"
-msgstr "ପ୍ଲଗିନ୍ ଡାଉନଲୋଡ୍ କରିବାରେ ବିଫଳ: %s"
-
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:83
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:81
 msgid "Downloaded plugin file does not exist"
-msgstr "ଡାଉନଲୋଡ୍ କରାଯାଇଥିବା ପ୍ଲଗିନ୍ ଫାଇଲ୍ ଅସ୍ତିତ୍ୱରେ ନାହିଁ"
+msgstr "ଡାଉନଲୋଡ୍ ହୋଇଥିବା ପ୍ଲଗିନ୍ ଫାଇଲ୍ ଅସ୍ତିତ୍ୱରେ ନାହିଁ"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:91
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:89
 msgid "Downloaded plugin file is empty"
-msgstr "ଡାଉନଲୋଡ୍ କରାଯାଇଥିବା ପ୍ଲଗିନ୍ ଫାଇଲ୍ ଖାଲି"
+msgstr "ଡାଉନଲୋଡ୍ ହୋଇଥିବା ପ୍ଲଗିନ୍ ଫାଇଲ୍ ଖାଲି ଅଟି"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:101
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:99
 msgid "Cannot read downloaded plugin file"
-msgstr "ଡାଉନଲୋଡ୍ କରାଯାଇଥିବା ପ୍ଲଗିନ୍ ଫାଇଲ୍ ପଢ଼ିବାକୁ ସମର୍ଥ ନୁହେଁ"
+msgstr "ଡାଉନଲୋଡ୍ ହୋଇଥିବା ପ୍ଲଗିନ୍ ଫାଇଲ୍ ପଢିବାକୁ ସମର୍ଥ ନୁହେଁ"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:111
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:109
 msgid ""
 "Downloaded file is not a valid ZIP archive. The download URL may be "
 "returning an error page."
 msgstr ""
-"ଡାଉନଲୋଡ୍ କରାଯାଇଥିବା ଫାଇଲ୍ ଏକ ମୌଜୁଦ ଜିପ୍ ଆର୍କାଇଭ୍ ନୁହେଁ। ଡାଉନଲୋଡ୍ URL ଏକ "
-"ତ୍ରୁଟି ପୃଷ୍ଠା ଫେରାଇପାରେ।"
+"ଡାଉନଲୋଡ୍ ହୋଇଥିବା ଫାଇଲ୍ ଏକ ବୈଧ ZIP ଆର୍କାଇଭ୍ ନୁହେଁ। ଡାଉନଲୋଡ୍ URL ଏକ ତ୍ରୁଟି "
+"ପ୍ରଦାନ କରୁଥିବା ପୃଷ୍ଠାକୁ ଫେରାଇ ଦେଖାଯାଇପାରେ।"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:127
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:125
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to unzip plugin file: %s"
-msgstr "ପ୍ଲଗିନ୍ ଫାଇଲ୍ ଅଜିର କରିବାରେ ବିଫଳ: %s"
+msgstr "ପ୍ଲଗିନ୍ ଫାଇଲ୍ କୁ ଅନଜିପ୍ କରିବାରେ ବିଫଳ: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:135
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:133
 msgid "Failed to unzip plugin file"
-msgstr "ପ୍ଲଗିନ୍ ଫାଇଲ୍ ଅଜିର କରିବାରେ ବିଫଳ"
+msgstr "ପ୍ଲଗିନ୍ ଫାଇଲ୍ କୁ ଅନଜିପ୍ କରିବାରେ ବିଫଳ"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:157
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:155
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to activate plugin: %s"
-msgstr "ପ୍ଲଗିନ୍ କ୍ଷେତ୍ର କରିବାରେ ବିଫଳ: %s"
+msgstr "ପ୍ଲଗିନ୍ କ୍ରିୟାନ୍ବୟନରେ ବିଫଳ: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:187
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:185
 msgid "Resolve conflicts for network-active plugins from Network Admin."
 msgstr ""
-"ଜାଳକ-ସକ୍ରିୟ ପ୍ଲଗିନ୍‌ଗୁଡିକ ପାଇଁ ସଂଘଟନ ବ୍ୟବସ୍ଥାପନାରୁ ତ୍ରୁଟିଗୁଡ଼ିକୁ ସମାଧାନ "
+"ନେଟୱର୍କ୍ ଏକ୍ଟିଭ୍ ପ୍ଲଗିନ୍‌ଗୁଡିକୁ ନେଟୱର୍କ୍ ଏଡମିନ୍‌ରୁ କନ୍ଫ୍ଲିକ୍ଟଗୁଡିକୁ ସମାଧାନ "
 "କରନ୍ତୁ।"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:207
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:205
 msgid ""
 "Activation recovery failed. Both plugin copies were retained. Please "
 "restore the previous version from the Plugins screen."
 msgstr ""
-"ସକ୍ରିୟତା ପୁନଃପ୍ରାପ୍ତି ବିଫଳ ହେଲା। ଦୁହେଁ ପ୍ଲଗିନ୍ ପ୍ରତିକୃତି ରଖାଗଲା। ପୂର୍ବତନ "
-"ଆବୃତ୍ତିକୁ Plugins ସ୍କ୍ରିନ୍ରୁ ପୁନଃସ୍ଥାପନ କରନ୍ତୁ।"
+"କ୍ରିୟାନ୍ବୟନ ପୁନର୍ବହାର ବିଫଳ। ଦୁଇଟି ପ୍ଲଗିନ୍ ପ୍ରତିକୃତି ରଖାଯାଇଛି। ଦୟାକରି "
+"ପ୍ଲଗିନ୍ ତାଲିକାରୁ ପୂର୍ବତନ ସଂସ୍କରଣକୁ ପୁନର୍ସ୍ଥାପନ କରନ୍ତୁ।"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:220
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:218
 msgid "The other plugin could not be deactivated."
-msgstr "ଅନ୍ୟ ପ୍ଲଗିନ୍ ଅକ୍ରିୟ କରାଯିବାକୁ ସମ୍ଭବ ହୋଇପାରିନି।"
+msgstr "ଅନ୍ୟ ପ୍ଲଗିନ୍ ଅକ୍ରିୟ କରାଯିବାକୁ ସମର୍ଥ ହୋଇନି।"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:224
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:222
 msgid "The selected plugin did not remain active."
-msgstr "ଚୟିତ ପ୍ଲଗିନ୍ ସକ୍ରିୟ ରହିବାକୁ ବ୍ୟତୀତ ହେଲା।"
+msgstr "ଚୟନିତ ପ୍ଲଗିନ୍ ସକ୍ରିୟ ରହିବାକୁ ଚାଲିଥିଲା ନାହିଁ।"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:230
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:228
 msgid ""
 "The selected plugin could not be activated. Neither copy was deleted and "
 "the previous activation settings were restored."
 msgstr ""
-"ଚୟିତ ପ୍ଲଗିନ୍ ସକ୍ରିୟ କରାଯିବାକୁ ସମ୍ଭବ ହୋଇପାରିନି। କୌଣସି ପ୍ରତିକୃତି ମିଟିଯାଇନି "
-"ଏବଂ ପୂର୍ବତନ ସକ୍ରିୟତା ସେଟିଂସ୍ ପୁନଃସ୍ଥାପିତ ହେଲା।"
+"ଚୟିତ ପ୍ଲଗଇନ୍ ସକ୍ରିୟ କରାଯାଇ ପାରିଲା ନାହିଁ। କୌଣସି ପ୍ରତିଫଳ ମିସ୍ତ ହୋଇନି ଏବଂ "
+"ପୂର୍ବ ଏକ୍ଟିଭେସନ୍ ସେଟିଂସ୍ ପୁନର୍ସ୍ଥାପିତ ହୋଇଛି।"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:297
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:295
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to delete plugin: %s"
-msgstr "ପ୍ଲଗିନ୍ ମିଟାଇବାରେ ବିଫଳ: %s"
+msgstr "ପ୍ଲଗଇନ୍ ମିସ୍ତ କରିବାରେ ବିଫଳ: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:347
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:345
 msgid "No update available for this plugin"
-msgstr "ଏହି ପ୍ଲଗିନ ପାଇଁ କୋଣସି ଅଦ୍ୟତନ ଉପଲବ୍ଧ ନୁହେଁ"
+msgstr "ଏହି ପ୍ଲଗଇନ୍ ପାଇଁ କୌଣସି ଅନୁସ୍ଥାନ ଉପଲବ୍ଧ ନାହିଁ"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:356
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:354
 msgid "Invalid update information for this plugin"
-msgstr "ଏହି ପ୍ଲଗିନ ପାଇଁ ବ୍ୟବହୃତ ଅଦ୍ୟତନ ସୂଚନା ଅବୈଧ"
+msgstr "ଏହି ପ୍ଲଗଇନ୍ ପାଇଁ ଅବୈଧ ଅନୁସ୍ଥାନ ସୂଚନା"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:389
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:380
+msgid "Update package not available"
+msgstr "ଅନୁସ୍ଥାନ ପ୍ୟାକେଜ୍ ଉପଲବ୍ଧ ନାହିଁ"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:403
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to update plugin: %s"
-msgstr "ପ୍ଲଗିନ ଅଦ୍ୟତନରେ ବିଫଳ: %s"
+msgstr "ପ୍ଲଗଇନ୍ ଅନୁସ୍ଥାନ କରିବାରେ ବିଫଳ: %s"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:397
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:411
 msgid "Plugin update failed"
-msgstr "ପ୍ଲଗିନ ଅଦ୍ୟତନ ବିଫଳ ହୋଇଛି"
+msgstr "ପ୍ଲଗଇନ୍ ଅନୁସ୍ଥାନ ବିଫଳ"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:516
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:530
 msgid "Invalid download URL provided"
-msgstr "ଅବୈଧ ଡାଉନଲୋଡ୍ URL ଦିଆଯାଇଛି"
+msgstr "ଦିଆଯାଇଥିବା ଡାଉନଲୋଡ୍ URL ଅବୈଧ"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:523
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:537
 msgid "Download URL must use HTTP or HTTPS protocol"
 msgstr "ଡାଉନଲୋଡ୍ URL କୁ HTTP କିମ୍ବା HTTPS ପ୍ରୋଟୋକଲ୍ ବ୍ୟବହାର କରିବାକୁ ହେବ"
 
-#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:532
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:546
 #. translators: %s is the hostname
 #, php-format
 msgid "Download URL is not from an allowed domain: %s"
-msgstr "ଡାଉନଲୋଡ୍ URL ଅନୁମତି ଦିଆଯାଇଥିବା ଡୋମେନ୍ ରୁ ନୁହେଁ: %s"
+msgstr "ଡାଉନଲୋଡ୍ URL ଏକ ଅନୁମତିତ ଡୋମେନରୁ ନୁହେଁ: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:561
+msgid "Could not create a temporary package file"
+msgstr "ଏକ ଅସ୍ଥାୟୀ ପ୍ୟାକେଜ୍ ଫାଇଲ୍ ସୃଷ୍ଟି କରିବାକୁ ବିଫଳ"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:574
+#, php-format
+msgid "Failed to download plugin: %s"
+msgstr "ପ୍ଲଗଇନ୍ ଡାଉନଲୋଡ୍ କରିବାରେ ବିଫଳ: %s"
+
+#: src/Infrastructure/WP/Plugin/WPPluginLifecycleAdapter.php:581
+msgid "The plugin package download failed"
+msgstr "ପ୍ଲଗଇନ୍ ପ୍ୟାକେଜ୍ ଡାଉନଲୋଡ୍ ବିଫଳ"
 
 #: src/Infrastructure/WPOrg/Api/WPOrgPluginApiAdapter.php:58
 #. translators: %s is the error message
 #, php-format
 msgid "Failed to get plugin information: %s"
-msgstr "ପ୍ଲଗିନ ସୂଚନା ପ୍ରାପ୍ତିରେ ବିଫଳ: %s"
+msgstr "ପ୍ଲଗଇନ୍ ସୂଚନା ପ୍ରାପ୍ତ କରିବାରେ ବିଫଳ: %s"
 
-#: resources/dist/js/components-showcase.js:87
-#: resources/dist/js/plugins-dashboard.js:88
-#: resources/dist/js/settings-page.js:87
-#: resources/dist/js/welcome-page.js:87
+#: src/Rest/McpController.php:188
+msgid ""
+"MCP Adapter could not be installed or activated. Use the plugin page or "
+"contact your host."
+msgstr ""
+"MCP ଏଡାପ୍ଟରକୁ ସ୍ଥାପନ କରାଯାଇ ପାରିଲା ନାହିଁ କିମ୍ବା ସକ୍ରିୟ କରାଯାଇ ପାରିଲା ନାହିଁ। "
+"ପ୍ଲଗଇନ୍ ପୃଷ୍ଠା ବ୍ୟବହାର କରନ୍ତୁ କିମ୍ବା ଆପଣଙ୍କର ହୋଷ୍ଟ୍ ସହିତ ସମ୍ପର୍କ କରନ୍ତୁ।"
+
+#: src/Rest/McpController.php:190
+msgid "MCP Adapter activated."
+msgstr "MCP ଏଡାପ୍ଟର ସକ୍ରିୟ ହୋଇଛି।"
+
+#: resources/dist/js/components-showcase.js:86
+#: resources/dist/js/mcp-page.js:86
+#: resources/dist/js/plugins-dashboard.js:87
+#: resources/dist/js/settings-page.js:86
+#: resources/dist/js/welcome-page.js:86
 #: resources/src/jsx/components/admin-page/footer.jsx:26
 #: resources/dist/js/components-showcase.js:63
+#: resources/dist/js/mcp-page.js:63
 #: resources/dist/js/plugins-dashboard.js:63
 #: resources/dist/js/settings-page.js:63
 #: resources/dist/js/welcome-page.js:63
 #. translators: %s is the plugin name, %s is the rating
 #, js-format
 msgid "If you like %s please leave us a %s rating. Thank you!"
-msgstr "ଯଦି ଆପଣ %s ପସନ୍ଦ କରନ୍ତି, ଦୟାକରି ଆମକୁ %s ରେଟିଂ ଛାଡ଼ନ୍ତୁ। ଧନ୍ୟବାଦ!"
+msgstr "ଯଦି ଆପଣ %s ପସନ୍ଦ କରନ୍ତି ତେବେ ଆମକୁ %s ରେଟିଂ ଦିଅନ୍ତୁ। ଧନ୍ୟବାଦ!"
 
-#: resources/dist/js/components-showcase.js:98
-#: resources/dist/js/plugins-dashboard.js:99
-#: resources/dist/js/settings-page.js:98
-#: resources/dist/js/welcome-page.js:98
+#: resources/dist/js/components-showcase.js:97
+#: resources/dist/js/mcp-page.js:97
+#: resources/dist/js/plugins-dashboard.js:98
+#: resources/dist/js/settings-page.js:97
+#: resources/dist/js/welcome-page.js:97
 #: resources/src/jsx/components/admin-page/footer.jsx:43
 #: resources/dist/js/components-showcase.js:80
+#: resources/dist/js/mcp-page.js:80
 #: resources/dist/js/plugins-dashboard.js:80
 #: resources/dist/js/settings-page.js:80
 #: resources/dist/js/welcome-page.js:80
@@ -739,1733 +1273,2085 @@ msgstr "ଯଦି ଆପଣ %s ପସନ୍ଦ କରନ୍ତି, ଦୟାକ�
 msgid "About %s"
 msgstr "%s ବିଷୟରେ"
 
-#: resources/dist/js/components-showcase.js:99
-#: resources/dist/js/plugins-dashboard.js:100
-#: resources/dist/js/settings-page.js:99
-#: resources/dist/js/welcome-page.js:99
+#: resources/dist/js/components-showcase.js:98
+#: resources/dist/js/mcp-page.js:98
+#: resources/dist/js/plugins-dashboard.js:99
+#: resources/dist/js/settings-page.js:98
+#: resources/dist/js/welcome-page.js:98
 #: resources/src/jsx/components/admin-page/footer.jsx:45
 #: resources/dist/js/components-showcase.js:82
+#: resources/dist/js/mcp-page.js:82
 #: resources/dist/js/plugins-dashboard.js:82
 #: resources/dist/js/settings-page.js:82
 #: resources/dist/js/welcome-page.js:82
 msgid "About"
 msgstr "ବିଷୟରେ"
 
-#: resources/dist/js/components-showcase.js:104
-#: resources/dist/js/plugins-dashboard.js:105
-#: resources/dist/js/settings-page.js:104
-#: resources/dist/js/welcome-page.js:104
+#: resources/dist/js/components-showcase.js:103
+#: resources/dist/js/mcp-page.js:103
+#: resources/dist/js/plugins-dashboard.js:104
+#: resources/dist/js/settings-page.js:103
+#: resources/dist/js/welcome-page.js:103
 #: resources/src/jsx/components/admin-page/footer.jsx:54
 #: resources/dist/js/components-showcase.js:91
+#: resources/dist/js/mcp-page.js:91
 #: resources/dist/js/plugins-dashboard.js:91
 #: resources/dist/js/settings-page.js:91
 #: resources/dist/js/welcome-page.js:91
 #. translators: %s is the plugin name
 #, js-format
 msgid "Documentation for %s"
-msgstr "%s ପାଇଁ ଡକ୍ୟୁମେଣ୍ଟେସନ୍"
+msgstr "%s ପାଇଁ ଡୋକ୍ୟୁମେଣ୍ଟେସନ୍"
 
-#: resources/dist/js/components-showcase.js:105
-#: resources/dist/js/plugins-dashboard.js:106
-#: resources/dist/js/plugins-dashboard.js:2817
-#: resources/dist/js/settings-page.js:105
-#: resources/dist/js/welcome-page.js:105
-#: resources/dist/js/welcome-page.js:444
+#: resources/dist/js/components-showcase.js:104
+#: resources/dist/js/mcp-page.js:104
+#: resources/dist/js/plugins-dashboard.js:105
+#: resources/dist/js/plugins-dashboard.js:2317
+#: resources/dist/js/settings-page.js:104
+#: resources/dist/js/welcome-page.js:104
+#: resources/dist/js/welcome-page.js:446
 #: resources/src/jsx/components/admin-page/footer.jsx:56
 #: resources/src/jsx/components/pages/welcome-page.jsx:46
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:124
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:120
 #: resources/dist/js/components-showcase.js:93
+#: resources/dist/js/mcp-page.js:93
 #: resources/dist/js/plugins-dashboard.js:93
-#: resources/dist/js/plugins-dashboard.js:2264
+#: resources/dist/js/plugins-dashboard.js:2160
 #: resources/dist/js/settings-page.js:93
 #: resources/dist/js/welcome-page.js:93
-#: resources/dist/js/welcome-page.js:377
+#: resources/dist/js/welcome-page.js:380
 msgid "Documentation"
-msgstr "ଡକ୍ୟୁମେଣ୍ଟେସନ୍"
+msgstr "ଡୋକ୍ୟୁମେଣ୍ଟେସନ୍"
 
-#: resources/dist/js/components-showcase.js:110
-#: resources/dist/js/plugins-dashboard.js:111
-#: resources/dist/js/settings-page.js:110
-#: resources/dist/js/welcome-page.js:110
+#: resources/dist/js/components-showcase.js:109
+#: resources/dist/js/mcp-page.js:109
+#: resources/dist/js/plugins-dashboard.js:110
+#: resources/dist/js/settings-page.js:109
+#: resources/dist/js/welcome-page.js:109
 #: resources/src/jsx/components/admin-page/footer.jsx:65
 #: resources/dist/js/components-showcase.js:102
+#: resources/dist/js/mcp-page.js:102
 #: resources/dist/js/plugins-dashboard.js:102
 #: resources/dist/js/settings-page.js:102
 #: resources/dist/js/welcome-page.js:102
 #. translators: %s is the plugin name
 #, js-format
 msgid "Contact the %s team"
-msgstr "%s ଟିମ୍ ସହିତ ସଂପର୍କ କରନ୍ତୁ"
+msgstr "%s ଦଳ ସହିତ ସମ୍ପର୍କ କରନ୍ତୁ"
 
-#: resources/dist/js/components-showcase.js:111
-#: resources/dist/js/plugins-dashboard.js:112
-#: resources/dist/js/settings-page.js:111
-#: resources/dist/js/welcome-page.js:111
+#: resources/dist/js/components-showcase.js:110
+#: resources/dist/js/mcp-page.js:110
+#: resources/dist/js/plugins-dashboard.js:111
+#: resources/dist/js/settings-page.js:110
+#: resources/dist/js/welcome-page.js:110
 #: resources/src/jsx/components/admin-page/footer.jsx:67
 #: resources/dist/js/components-showcase.js:104
+#: resources/dist/js/mcp-page.js:104
 #: resources/dist/js/plugins-dashboard.js:104
 #: resources/dist/js/settings-page.js:104
 #: resources/dist/js/welcome-page.js:104
 msgid "Contact"
-msgstr "ସଂପର୍କ"
+msgstr "ସମ୍ପର୍କ"
 
-#: resources/dist/js/components-showcase.js:188
-#: resources/dist/js/plugins-dashboard.js:190
-#: resources/dist/js/settings-page.js:188
-#: resources/dist/js/welcome-page.js:188
+#: resources/dist/js/components-showcase.js:187
+#: resources/dist/js/mcp-page.js:187
+#: resources/dist/js/plugins-dashboard.js:189
+#: resources/dist/js/settings-page.js:187
+#: resources/dist/js/welcome-page.js:187
 #: resources/src/jsx/components/admin-page/header.jsx:50
 #: resources/dist/js/components-showcase.js:168
+#: resources/dist/js/mcp-page.js:168
 #: resources/dist/js/plugins-dashboard.js:168
 #: resources/dist/js/settings-page.js:168
 #: resources/dist/js/welcome-page.js:168
 msgid "Get Support"
-msgstr "ସହଯୋଗ ପାଇଁ ପ୍ରାପ୍ତ କରନ୍ତୁ"
+msgstr "ସହାୟତା ପାଆନ୍ତୁ"
 
-#: resources/dist/js/components-showcase.js:453
+#: resources/dist/js/components-showcase.js:457
 #: resources/src/jsx/components/pages/components-showcase.jsx:26
-#: resources/dist/js/components-showcase.js:386
+#: resources/dist/js/components-showcase.js:389
 msgid "Components Showcase"
-msgstr "କମ୍ପୋନେଣ୍ଟ ଦର୍ଶନ"
+msgstr "ଉପକରଣ ପ୍ରଦର୍ଶନ"
+
+#: resources/dist/js/mcp-page.js:590
+#: resources/src/jsx/components/pages/mcp-page.jsx:83
+#: resources/dist/js/mcp-page.js:481
+msgid "Allow PublishPress to connect with your favorite AI service"
+msgstr "PublishPress କୁ ଆପଣଙ୍କର ପସନ୍ଦର AI ସେବା ସହିତ ସଂଯୋଗ କରିବାକୁ ଅନୁମତି ଦିଅନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:590
+#: resources/src/jsx/components/pages/mcp-page.jsx:84
+#: resources/dist/js/mcp-page.js:482
+msgid "Use your AI to work with PublishPress plugins on this site."
+msgstr ""
+"ଏହି ସାଇଟରେ PublishPress ପ୍ଲଗଇନ୍ ସହିତ କାମ କରିବା ପାଇଁ ଆପଣଙ୍କର AI ବ୍ୟବହାର "
+"କରନ୍ତୁ।"
+
+#: resources/dist/js/mcp-page.js:592
+#: resources/src/jsx/components/pages/mcp-page.jsx:85
+#: resources/dist/js/mcp-page.js:483
+msgid "Enable AI connections"
+msgstr "AI ସଂଯୋଗ ସକ୍ରିୟ କରନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:616
+#: resources/src/jsx/components/pages/mcp-page.jsx:94
+#: resources/dist/js/mcp-page.js:492
+msgid "Try again"
+msgstr "ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:628
+#: resources/src/jsx/components/pages/mcp-page.jsx:99
+#: resources/dist/js/mcp-page.js:497
+msgid "Activate MCP Adapter"
+msgstr "MCP ଏଡାପ୍ଟରକୁ ସକ୍ରିୟ କରନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:628
+#: resources/src/jsx/components/pages/mcp-page.jsx:99
+#: resources/dist/js/mcp-page.js:497
+msgid "Install and activate MCP Adapter"
+msgstr "MCP ଏଡାପ୍ଟରକୁ ସ୍ଥାପନ କରନ୍ତୁ ଏବଂ ସକ୍ରିୟ କରନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:633
+#: resources/src/jsx/components/pages/mcp-page.jsx:101
+#: resources/dist/js/mcp-page.js:499
+msgid "MCP Adapter plugin page"
+msgstr "MCP ଏଡାପ୍ଟର ପ୍ଲଗଇନ୍ ପୃଷ୍ଠା"
+
+#: resources/dist/js/mcp-page.js:645
+#: resources/src/jsx/components/pages/mcp-page.jsx:105
+#: resources/dist/js/mcp-page.js:503
+msgid "Check again"
+msgstr "পুনର୍ ବାର ଯାଞ୍ଚ କରନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:663
+#: resources/src/jsx/components/pages/mcp-page.jsx:112
+#: resources/dist/js/mcp-page.js:510
+msgid "Your AI connection is enabled"
+msgstr "ଆପଣଙ୍କର AI ସଂଯୋଗ ସକ୍ରିୟ ହୋଇଛି"
+
+#: resources/dist/js/mcp-page.js:669
+#: resources/src/jsx/components/pages/mcp-page.jsx:113
+#: resources/dist/js/mcp-page.js:511
+msgid "Connect another AI app"
+msgstr "ଅନ୍ୟ AI ଆପ୍ ବନ୍ଧନ କରନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:669
+#: resources/src/jsx/components/pages/mcp-page.jsx:115
+#: resources/dist/js/mcp-page.js:513
+msgid ""
+"Manage the actions your AI can use below. To set up another app or "
+"computer, open the connection steps again."
+msgstr ""
+"ଆପଣଙ୍କର AI କେଉଁ କାର୍ଯ୍ୟଗୁଡିକ ବ୍ୟବହାର କରିପାରିବ ସେଗୁଡିକୁ ନିମ୍ନରେ ବ୍ୟବସ୍ଥାପନ "
+"କରନ୍ତୁ। ଅନ୍ୟ ଆପ୍ କିମ୍ବା କମ୍ପ୍ୟୁଟର୍ ସେଟ୍ ଅପ୍ କରିବାକୁ, ସଂଯୋଗ ପଦ୍ଧତିଗୁଡିକୁ "
+"ପୁନର୍ବାର ଖୋଲନ୍ତୁ।"
+
+#: resources/dist/js/mcp-page.js:672
+#: resources/src/jsx/components/pages/mcp-page.jsx:119
+#: resources/dist/js/mcp-page.js:517
+msgid "Control what your AI can do"
+msgstr "ଆପଣଙ୍କର AI କାର୍ଯ୍ୟ କଣ କରିପାରିବ ବାବଦରେ ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:676
+#: resources/src/jsx/components/pages/mcp-page.jsx:121
+#: resources/dist/js/mcp-page.js:519
+msgid "Allow AI to read site data"
+msgstr "AI କୁ ସାଇଟ୍ ତଥ୍ୟ ପଢିବାକୁ ଅନୁମତି ଦିଅନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:677
+#: resources/src/jsx/components/pages/mcp-page.jsx:122
+#: resources/dist/js/mcp-page.js:520
+msgid "View content and settings using the actions selected below."
+msgstr "ନିମ୍ନରେ ଚୟିତ କରାଯିବା କାର୍ଯ୍ୟଗୁଡିକ ବ୍ୟବହାର କରି ସାମଗ୍ରୀ ଏବଂ ସେଟିଂସ୍ ଦେଖନ୍ତୁ।"
+
+#: resources/dist/js/mcp-page.js:685
+#: resources/src/jsx/components/pages/mcp-page.jsx:124
+#: resources/dist/js/mcp-page.js:522
+msgid "Allow AI to change site data"
+msgstr "AI କୁ ସାଇଟ୍ ତଥ୍ୟ ବଦଳାଇବାକୁ ଅନୁମତି ଦିଅନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:686
+#: resources/src/jsx/components/pages/mcp-page.jsx:125
+#: resources/dist/js/mcp-page.js:523
+msgid "Create, update or delete data using the actions selected below."
+msgstr ""
+"ନିମ୍ନରେ ଚୟନ କରାଯାଇଥିବା କ୍ରିୟା ବ୍ୟବହାର କରି ତଥ୍ୟ ସୃଷ୍ଟି, ଅଦ୍ୟତନ କିମ୍ବା "
+"ମିଟାନ୍ତୁ।"
+
+#: resources/dist/js/mcp-page.js:692
+#: resources/src/jsx/components/pages/mcp-page.jsx:128
+#: resources/dist/js/mcp-page.js:526
+msgid ""
+"You can change these choices at any time. Turn off change access to let "
+"your AI only read site data."
+msgstr ""
+"ଆପଣ ସମୟରେ ଏହି ଚୟନଗୁଡିକୁ ବଦଳାଇ ପାରିବେ। ଆପଣଙ୍କର AI କେବଳ ସାଇଟ୍ ତଥ୍ୟ ପଢ଼ିବାକୁ "
+"ବଦଳାଇ ଆକ୍ସେସ୍ ବନ୍ଦ କରନ୍ତୁ।"
+
+#: resources/dist/js/mcp-page.js:701
+#: resources/src/jsx/components/pages/mcp-page.jsx:131
+#: resources/dist/js/mcp-page.js:529
+msgid "Connection diagnostics"
+msgstr "ସଂଯୋଗ ନିର୍ଣ୍ଣୟ"
+
+#: resources/dist/js/mcp-page.js:714
+#: resources/src/jsx/components/pages/mcp-page.jsx:138
+#: resources/dist/js/mcp-page.js:536
+msgid "You have unsaved changes."
+msgstr "ଆପଣଙ୍କର ଅସୁରକ୍ଷିତ ପରିବର୍ତ୍ତନ ଅଛି।"
+
+#: resources/dist/js/mcp-page.js:719
+#: resources/src/jsx/components/pages/mcp-page.jsx:140
+#: resources/dist/js/mcp-page.js:538
+msgid "Save and continue"
+msgstr "ସଂରକ୍ଷଣ କରନ୍ତୁ ଏବଂ ଆଗକୁ ବଢ଼ନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:719
+#: resources/src/jsx/components/pages/mcp-page.jsx:140
+#: resources/dist/js/mcp-page.js:538
+msgid "Save Changes"
+msgstr "ପରିବର୍ତ୍ତନ ସଂରକ୍ଷଣ କରନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:723
+#: resources/src/jsx/components/pages/mcp-page.jsx:142
+#: resources/dist/js/mcp-page.js:540
+msgid "Refresh status"
+msgstr "ସ୍ଥିତି ପୁନର୍ଜୀବନ କରନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:790
+#: resources/src/jsx/components/pages/mcp/actions.jsx:29
+#: resources/dist/js/mcp-page.js:577
+msgid "Available actions"
+msgstr "ଲଭ୍ୟ କ୍ରିୟା"
+
+#: resources/dist/js/mcp-page.js:790
+#: resources/src/jsx/components/pages/mcp/actions.jsx:30
+#: resources/dist/js/mcp-page.js:578
+msgid ""
+"Choose WordPress and plugin actions. Your selections are kept while you "
+"browse. Save changes to apply them."
+msgstr ""
+"WordPress ଏବଂ ପ୍ଲଗଇନ୍ କ୍ରିୟା ଚୟନ କରନ୍ତୁ। ଆପଣଙ୍କର ଚୟନଗୁଡିକୁ ଆପଣ ବ୍ରାଉଜ୍ "
+"କରିବା ସମୟରେ ରଖାଯିବ। ସେଗୁଡିକୁ ବ୍ୟବହାର କରିବାକୁ ପରିବର୍ତ୍ତନ ସଂରକ୍ଷଣ କରନ୍ତୁ।"
+
+#: resources/dist/js/mcp-page.js:813
+#: resources/src/jsx/components/pages/mcp/actions.jsx:44
+#: resources/dist/js/mcp-page.js:592
+msgid "Search actions"
+msgstr "କ୍ରିୟା ଖୋଜନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:818
+#: resources/src/jsx/components/pages/mcp/actions.jsx:45
+#: resources/dist/js/mcp-page.js:593
+msgid "Action type"
+msgstr "କ୍ରିୟା ପ୍ରକାର"
+
+#: resources/dist/js/mcp-page.js:824
+#: resources/src/jsx/components/pages/mcp/actions.jsx:46
+#: resources/dist/js/mcp-page.js:594
+msgid "All actions"
+msgstr "ସମସ୍ତ କ୍ରିୟା"
+
+#: resources/dist/js/mcp-page.js:827
+#: resources/dist/js/mcp-page.js:854
+#: resources/src/jsx/components/pages/mcp/actions.jsx:47
+#: resources/src/jsx/components/pages/mcp/actions.jsx:65
+#: resources/dist/js/mcp-page.js:595
+#: resources/dist/js/mcp-page.js:613
+msgid "Read only"
+msgstr "କେବଳ ପଢ଼ନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:830
+#: resources/dist/js/mcp-page.js:854
+#: resources/src/jsx/components/pages/mcp/actions.jsx:48
+#: resources/src/jsx/components/pages/mcp/actions.jsx:65
+#: resources/dist/js/mcp-page.js:596
+#: resources/dist/js/mcp-page.js:613
+msgid "Changes site data"
+msgstr "ସାଇଟ୍ ତଥ୍ୟ ପରିବର୍ତ୍ତନ କରେ"
+
+#: resources/dist/js/mcp-page.js:833
+#: resources/dist/js/mcp-page.js:856
+#: resources/src/jsx/components/pages/mcp/actions.jsx:49
+#: resources/src/jsx/components/pages/mcp/actions.jsx:66
+#: resources/dist/js/mcp-page.js:597
+#: resources/dist/js/mcp-page.js:614
+msgid "Potentially destructive"
+msgstr "ସମ୍ଭାବ୍ୟ ନଷ୍ଟକାରୀ"
+
+#: resources/dist/js/mcp-page.js:839
+#: resources/src/jsx/components/pages/mcp/actions.jsx:51
+#: resources/dist/js/mcp-page.js:599
+msgid "Filter"
+msgstr "ଫିଲ୍ଟର"
+
+#: resources/dist/js/mcp-page.js:841
+#: resources/src/jsx/components/pages/mcp/actions.jsx:54
+#: resources/dist/js/mcp-page.js:602
+msgid "Selected"
+msgstr "ଚୟନିତ"
+
+#: resources/dist/js/mcp-page.js:841
+#: resources/src/jsx/components/pages/mcp/actions.jsx:54
+#: resources/dist/js/mcp-page.js:602
+msgid "Action"
+msgstr "କ୍ରିୟା"
+
+#: resources/dist/js/mcp-page.js:841
+#: resources/src/jsx/components/pages/mcp/actions.jsx:54
+#: resources/dist/js/mcp-page.js:602
+msgid "Behavior"
+msgstr "ବ୍ୟବହାର"
+
+#: resources/dist/js/mcp-page.js:843
+#: resources/src/jsx/components/pages/mcp/actions.jsx:56
+#: resources/dist/js/mcp-page.js:604
+msgid "No actions match these filters."
+msgstr "ଏହି ଫିଲ୍ଟରଗୁଡିକୁ ମେଳ କରୁଥିବା କୌଣସି କ୍ରିୟା ନାହିଁ।"
+
+#: resources/dist/js/mcp-page.js:848
+#: resources/src/jsx/components/pages/mcp/actions.jsx:59
+#: resources/dist/js/mcp-page.js:607
+#, js-format
+msgid "Select %s"
+msgstr "ଚୟନ କରନ୍ତୁ %s"
+
+#: resources/dist/js/mcp-page.js:862
+#: resources/src/jsx/components/pages/mcp/actions.jsx:73
+#: resources/dist/js/mcp-page.js:621
+msgid "Actions per page"
+msgstr "ପୃଷ୍ଠା ପ୍ରତି କ୍ରିୟା"
+
+#: resources/dist/js/mcp-page.js:874
+#: resources/src/jsx/components/pages/mcp/actions.jsx:78
+#: resources/dist/js/mcp-page.js:626
+#, js-format
+msgid "Page %1$d of %2$d - %3$d actions"
+msgstr "ପୃଷ୍ଠା %1$d ରୁ %2$d - %3$d କ୍ରିୟା"
+
+#: resources/dist/js/mcp-page.js:880
+#: resources/src/jsx/components/pages/mcp/actions.jsx:79
+#: resources/dist/js/mcp-page.js:627
+msgid "Previous"
+msgstr "ପୂର୍ବରୁ"
+
+#: resources/dist/js/mcp-page.js:886
+#: resources/src/jsx/components/pages/mcp/actions.jsx:80
+#: resources/dist/js/mcp-page.js:628
+msgid "Next"
+msgstr "ପରବର୍ତ୍ତୀ"
+
+#: resources/dist/js/mcp-page.js:934
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:19
+#: resources/dist/js/mcp-page.js:655
+msgid "Create an application password"
+msgstr "ଏକ ଆବେଦନ ପାସୱାର୍ଡ୍ ସୃଷ୍ଟି କରନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:942
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:22
+#: resources/dist/js/mcp-page.js:658
+msgid "Connect your AI app"
+msgstr "ଆପଣଙ୍କର AI ଆବେଦନ ସଂଯୋଗ କରନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:946
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:23
+#: resources/dist/js/mcp-page.js:659
+msgid "View the PublishPress AI connection guide"
+msgstr "PublishPress AI ସଂଯୋଗ ଗାଇଡ୍ ଦେଖନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:948
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:25
+#: resources/dist/js/mcp-page.js:661
+msgid "How would you like to connect?"
+msgstr "ଆପଣ କେମିତି ସଂଯୋଗ କରିବାକୁ ଚାହାଁନ୍ତି?"
+
+#: resources/dist/js/mcp-page.js:963
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:33
+#: resources/dist/js/mcp-page.js:669
+msgid "Install Node.js LTS if it is not already available."
+msgstr "ଯଦି ଏହା ପୂର୍ବରୁ ଉପଲବ୍ଧ ନୁହେଁ ତେବେ Node.js LTS ଇନ୍ଷ୍ଟଲ୍ କରନ୍ତୁ।"
+
+#: resources/dist/js/mcp-page.js:967
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:33
+#: resources/dist/js/mcp-page.js:669
+msgid "Download Node.js"
+msgstr "Node.js ଡାଉନଲୋଡ୍ କରନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:967
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:34
+#: resources/dist/js/mcp-page.js:670
+msgid "Name it PublishPress AI and copy the password."
+msgstr "ଏହାକୁ PublishPress AI ନାମ ଦିଅନ୍ତୁ ଏବଂ ପାସୱାର୍ଡ୍ କପି କରନ୍ତୁ।"
+
+#: resources/dist/js/mcp-page.js:967
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:35
+#: resources/dist/js/mcp-page.js:671
+msgid "Copy the prompt below and paste it into your AI agent."
+msgstr ""
+"ନିମ୍ନରେ ଦିଆଯାଇଥିବା ପ୍ରମ୍ପ୍ଟକୁ କପି କରନ୍ତୁ ଏବଂ ଏହାକୁ ଆପଣଙ୍କର AI ଏଜେଣ୍ଟରେ "
+"ପେଷ୍ଟ୍ କରନ୍ତୁ।"
+
+#: resources/dist/js/mcp-page.js:967
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:36
+#: resources/dist/js/mcp-page.js:672
+msgid ""
+"Replace the password placeholder in your local configuration. Merge this "
+"server using the MCP configuration format for your app, keeping any "
+"existing servers. Restart your app and approve the connection."
+msgstr ""
+"ଆପଣଙ୍କର ସ୍ଥାନୀୟ କନଫିଗରେସନ୍‌ରେ ପାସୱାର୍ଡ୍ ପ୍ଲେସହୋଲ୍ଡର୍ ବଦଳାନ୍ତୁ। ଆପଣଙ୍କର "
+"ଆବେଦନ ପାଇଁ MCP କନଫିଗରେସନ୍ ଫର୍ମାଟ୍ ବ୍ୟବହାର କରି ଏହି ସର୍ଭର୍‌କୁ ମର୍ଜ୍ କରନ୍ତୁ, "
+"କୌଣସି ମୌଜୁଦ ସର୍ଭର୍‌କୁ ରଖିବା। ଆପଣଙ୍କର ଆବେଦନ ପୁନରାମ୍ବ କରନ୍ତୁ ଏବଂ ସଂଯୋଗକୁ "
+"ଅନୁମୋଦନ କରନ୍ତୁ।"
+
+#: resources/dist/js/mcp-page.js:969
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:37
+#: resources/dist/js/mcp-page.js:673
+msgid "Enter the password in your app or configuration file, not in the chat."
+msgstr "ଆପଣଙ୍କର ଆବେଦନ କିମ୍ବା କନଫିଗରେସନ୍ ଫାଇଲରେ ପାସୱାର୍ଡ୍ ଦାଖଲ କରନ୍ତୁ, ଚାଟ୍‌ରେ ନୁହେଁ।"
+
+#: resources/dist/js/mcp-page.js:980
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:41
+#: resources/dist/js/mcp-page.js:677
+msgid "I have connected my AI app"
+msgstr "ମୁଁ ମୋର AI ଆବେଦନ ସଂଯୋଗ କରିଛି"
+
+#: resources/dist/js/mcp-page.js:982
+#: resources/src/jsx/components/pages/mcp/client-setup.jsx:42
+#: resources/dist/js/mcp-page.js:678
+msgid ""
+"Confirm after your AI app verifies this site and performs a read-only "
+"lookup. If you enabled write actions, check that those tools are available "
+"too."
+msgstr ""
+"ଆପଣଙ୍କର AI ଆବେଦନ ଏହି ସାଇଟ୍‌କୁ ସଂଖ୍ୟା କରିବା ଏବଂ ପଢ଼ିବାକୁ ଗଣନା କରିବା ପରେ "
+"ନିଶ୍ଚୟ କରନ୍ତୁ। ଯଦି ଆପଣ ଲେଖା କ୍ରିୟାକୁ ସକ୍ରିୟ କରିଛନ୍ତି, ତେବେ ସେହି ଟୁଲ୍‌ଗୁଡିକୁ "
+"ମଧ୍ୟ ଉପଲବ୍ଧ ଅଛି କି ନାହିଁ ଯାଞ୍ଚ କରନ୍ତୁ।"
+
+#: resources/dist/js/mcp-page.js:1043
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:37
+#: resources/dist/js/mcp-page.js:719
+msgid "Copied to clipboard."
+msgstr "କ୍ଲିପ୍‌ବୋର୍ଡ୍‌କୁ କପି କରାଯାଇଛି।"
+
+#: resources/dist/js/mcp-page.js:1047
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:41
+#: resources/dist/js/mcp-page.js:723
+msgid "Select and copy the highlighted text."
+msgstr "ହାଇଲାଇଟ୍ କରାଯାଇଥିବା ଟେକ୍ସଟ୍‌କୁ ଚୟନ କରନ୍ତୁ ଏବଂ କପି କରନ୍ତୁ।"
+
+#: resources/dist/js/mcp-page.js:1058
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:46
+#: resources/dist/js/mcp-page.js:728
+msgid "Your setup prompt"
+msgstr "ଆପଣଙ୍କର ସେଟ୍‌ଅପ୍ ପ୍ରମ୍ପ୍ଟ"
+
+#: resources/dist/js/mcp-page.js:1058
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:46
+#: resources/dist/js/mcp-page.js:728
+msgid "Server configuration"
+msgstr "ସର୍ଭର କନଫିଗରେସନ୍"
+
+#: resources/dist/js/mcp-page.js:1069
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:49
+#: resources/dist/js/mcp-page.js:731
+msgid "Copied!"
+msgstr "କପି ହୋଇଗଲା!"
+
+#: resources/dist/js/mcp-page.js:1069
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:50
+#: resources/dist/js/mcp-page.js:732
+msgid "Copy setup prompt"
+msgstr "ସେଟଅପ୍ ପ୍ରମ୍ପ୍ଟ କପି କରନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:1069
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:50
+#: resources/dist/js/mcp-page.js:732
+msgid "Copy configuration"
+msgstr "କନଫିଗରେସନ୍ କପି କରନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:1075
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:52
+#: resources/dist/js/mcp-page.js:734
+msgid "Download prompt"
+msgstr "ଡାଉନଲୋଡ୍ ପ୍ରମ୍ପ୍ଟ"
+
+#: resources/dist/js/mcp-page.js:1075
+#: resources/src/jsx/components/pages/mcp/configuration.jsx:52
+#: resources/dist/js/mcp-page.js:734
+msgid "Download configuration"
+msgstr "କନଫିଗରେସନ୍ ଡାଉନଲୋଡ୍ କରନ୍ତୁ"
+
+#: resources/dist/js/mcp-page.js:1124
+#: resources/src/jsx/components/pages/mcp/panel.jsx:19
+#: resources/dist/js/mcp-page.js:759
+msgid "Loading the next step..."
+msgstr "ପରବର୍ତ୍ତୀ ପଦକ୍ଷେପ ଲୋଡ୍ ହେଉଛି..."
+
+#: resources/dist/js/mcp-page.js:1263
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:40
+#: resources/dist/js/mcp-page.js:854
+msgid "AI connections could not be loaded."
+msgstr "AI ସଂଯୋଗଗୁଡିକ ଲୋଡ୍ କରାଯାଇପାରିବା ନାହିଁ।"
+
+#: resources/dist/js/mcp-page.js:1275
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:52
+#: resources/dist/js/mcp-page.js:866
+msgid "AI connections could not be loaded. Try again."
+msgstr "AI ସଂଯୋଗଗୁଡିକ ଲୋଡ୍ କରାଯାଇପାରିବା ନାହିଁ। ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।"
+
+#: resources/dist/js/mcp-page.js:1332
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:109
+#: resources/dist/js/mcp-page.js:923
+msgid "Changes could not be saved."
+msgstr "ପରିବର୍ତ୍ତନଗୁଡିକ ସଂରକ୍ଷିତ କରାଯାଇପାରିଲା ନାହିଁ।"
+
+#: resources/dist/js/mcp-page.js:1340
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:117
+#: resources/dist/js/mcp-page.js:931
+msgid "Changes could not be saved. Try again."
+msgstr "ପରିବର୍ତ୍ତନଗୁଡିକ ସଂରକ୍ଷିତ କରାଯାଇପାରିଲା ନାହିଁ। ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।"
+
+#: resources/dist/js/mcp-page.js:1355
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:132
+#: resources/dist/js/mcp-page.js:946
+msgid "MCP Adapter could not be installed or activated."
+msgstr "MCP ଆଡାପ୍ଟର୍ ସ୍ଥାପିତ କରାଯାଇପାରିଲା ନାହିଁ କିମ୍ବା ସକ୍ରିୟ କରାଯାଇପାରିଲା ନାହିଁ।"
+
+#: resources/dist/js/mcp-page.js:1360
+#: resources/src/jsx/components/pages/mcp/use-mcp-connection.js:137
+#: resources/dist/js/mcp-page.js:951
+msgid "Use the MCP Adapter plugin page or contact your host."
+msgstr ""
+"MCP ଆଡାପ୍ଟର୍ ପ୍ଲଗିନ୍ ପୃଷ୍ଠା ବ୍ୟବହାର କରନ୍ତୁ କିମ୍ବା ଆପଣଙ୍କର ହୋଷ୍ଟକୁ ସମ୍ପର୍କ "
+"କରନ୍ତୁ।"
 
 #: resources/dist/js/plugins-dashboard.js:487
+#: resources/dist/js/plugins-dashboard.js:500
 #: resources/src/jsx/components/filter/filter-buttons-bar.jsx:44
-#: resources/dist/js/plugins-dashboard.js:404
-msgid "Select an option"
-msgstr "ଏକ ବିକଳ୍ପ ବାଛନ୍ତୁ"
-
-#: resources/dist/js/plugins-dashboard.js:493
-#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:52
-#: resources/dist/js/plugins-dashboard.js:412
-msgid "Options"
-msgstr "ବିକଳ୍ପ"
-
-#: resources/dist/js/plugins-dashboard.js:504
-#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:66
-#: resources/dist/js/plugins-dashboard.js:426
+#: resources/src/jsx/components/filter/filter-buttons-bar.jsx:64
+#: resources/dist/js/plugins-dashboard.js:407
+#: resources/dist/js/plugins-dashboard.js:427
 msgid "Filter plugins by status"
-msgstr "ସ୍ଥିତି ଦ୍ୱାରା ପ୍ଲଗଇନ୍‌ଗୁଡିକୁ ଫିଲ୍ଟର କରନ୍ତୁ"
+msgstr "ସ୍ଥିତି ଦ୍ୱାରା ପ୍ଲଗିନ୍ ଫିଲ୍ଟର୍ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:906
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:93
-#: resources/dist/js/plugins-dashboard.js:703
+#: resources/dist/js/plugins-dashboard.js:821
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:88
+#: resources/dist/js/plugins-dashboard.js:685, fuzzy
 msgid "N/A"
-msgstr "ନାହିଁ"
+msgstr "N/A"
 
-#: resources/dist/js/plugins-dashboard.js:948
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:140
-#: resources/dist/js/plugins-dashboard.js:750
+#: resources/dist/js/plugins-dashboard.js:861
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:136
+#: resources/dist/js/plugins-dashboard.js:733
 #. translators: %1$s is the plugin name, %2$s is the expiration date
 #, js-format
 msgid "The license for %1$s expired on %2$s"
-msgstr "%1$s ପାଇଁ ଲାଇସେନ୍ %2$s ତାରିଖରେ ମୌତ୍ତିବାର୍ତ୍ତା ହୋଇଛି"
+msgstr "%1$s ପାଇଁ ଲାଇସେନ୍ସ %2$s ତରିଖରେ ମୋତିଯାଇଛି"
 
-#: resources/dist/js/plugins-dashboard.js:952
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:147
-#: resources/dist/js/plugins-dashboard.js:757
+#: resources/dist/js/plugins-dashboard.js:865
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:143
+#: resources/dist/js/plugins-dashboard.js:740
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date
 #, js-format
 msgid "The licenses for %1$s expired on %2$s"
-msgstr "%1$s ପାଇଁ ଲାଇସେନ୍ଗୁଡିକ %2$s ତାରିଖରେ ମୌତ୍ତିବାର୍ତ୍ତା ହୋଇଛି"
+msgstr "%1$s ପାଇଁ ଲାଇସେନ୍ସଗୁଡିକ %2$s ତରିଖରେ ମୋତିଯାଇଛି"
 
-#: resources/dist/js/plugins-dashboard.js:958
-#: resources/dist/js/plugins-dashboard.js:1000
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:157
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:212
-#: resources/dist/js/plugins-dashboard.js:767
-#: resources/dist/js/plugins-dashboard.js:822
+#: resources/dist/js/plugins-dashboard.js:871
+#: resources/dist/js/plugins-dashboard.js:911
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:153
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:208
+#: resources/dist/js/plugins-dashboard.js:750
+#: resources/dist/js/plugins-dashboard.js:805
 msgid "Renew now"
-msgstr "ବର୍ତ୍ତମାନ ପୁନର୍ନବୀକରଣ କରନ୍ତୁ"
+msgstr "ବିପରୀତ ହେବା ସମୟରେ"
 
-#: resources/dist/js/plugins-dashboard.js:990
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:193
-#: resources/dist/js/plugins-dashboard.js:803
+#: resources/dist/js/plugins-dashboard.js:901
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:189
+#: resources/dist/js/plugins-dashboard.js:786
 #. translators: %1$s is the plugin name, %2$s is the expiration date, %3$d is the number of days
 #, js-format
 msgid "The license for %1$s expires on %2$s (%3$d days remaining)"
-msgstr "%1$s ର ଲାଇସେନ୍ସ %2$s ତାରିଖରେ ସମାପ୍ତ ହେବ (%3$d ଦିନ ବାକି ଅଛି)"
+msgstr "%1$s ପାଇଁ ଲାଇସେନ୍ସ %2$s ତରିଖରେ ବିପରୀତ ହେବାକୁ %3$d ଦିନ ବାକୀ ଅଛି"
 
-#: resources/dist/js/plugins-dashboard.js:994
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:201
-#: resources/dist/js/plugins-dashboard.js:811
+#: resources/dist/js/plugins-dashboard.js:905
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:197
+#: resources/dist/js/plugins-dashboard.js:794
 #. translators: %1$s is the list of plugin names, %2$s is the expiration date, %3$d is the number of days
 #, js-format
 msgid "The licenses for %1$s expire on %2$s (%3$d days remaining)"
-msgstr "%1$s ର ଲାଇସେନ୍ସଗୁଡିକ %2$s ତାରିଖରେ ସମାପ୍ତ ହେବ (%3$d ଦିନ ବାକି ଅଛି)"
+msgstr "%1$s ପାଇଁ ଲାଇସେନ୍ସଗୁଡିକ %2$s ତରିଖରେ ବିପରୀତ ହେବାକୁ %3$d ଦିନ ବାକୀ ଅଛି"
 
-#: resources/dist/js/plugins-dashboard.js:997
-#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:209
-#: resources/dist/js/plugins-dashboard.js:819
+#: resources/dist/js/plugins-dashboard.js:908
+#: resources/src/jsx/components/pages/hooks/use-license-expiration-warning.jsx:205
+#: resources/dist/js/plugins-dashboard.js:802
 msgid "Warning:"
 msgstr "ସତର୍କତା:"
 
-#: resources/dist/js/plugins-dashboard.js:1092
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:48
-#: resources/dist/js/plugins-dashboard.js:888
+#: resources/dist/js/plugins-dashboard.js:993
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:47
+#: resources/dist/js/plugins-dashboard.js:870
 msgid "All"
-msgstr "ସମସ୍ତ"
+msgstr "ସବୁ"
 
-#: resources/dist/js/plugins-dashboard.js:1096
-#: resources/dist/js/plugins-dashboard.js:3174
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:53
+#: resources/dist/js/plugins-dashboard.js:997
+#: resources/dist/js/plugins-dashboard.js:2641
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:52
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:40
-#: resources/dist/js/plugins-dashboard.js:893
-#: resources/dist/js/plugins-dashboard.js:2604
+#: resources/dist/js/plugins-dashboard.js:875
+#: resources/dist/js/plugins-dashboard.js:2488
 msgid "Unlicensed"
-msgstr "ଲାଇସେନ୍ସ ନାହିଁ"
+msgstr "ଅଲାଇସେନ୍ସିତ"
 
-#: resources/dist/js/plugins-dashboard.js:1112
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:73
-#: resources/dist/js/plugins-dashboard.js:913
+#: resources/dist/js/plugins-dashboard.js:1001
+#: resources/dist/js/plugins-dashboard.js:2645
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:57
+#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:44
+#: resources/dist/js/plugins-dashboard.js:880
+#: resources/dist/js/plugins-dashboard.js:2492
+msgid "Expired"
+msgstr "ମୋତିଯାଇଛି"
+
+#: resources/dist/js/plugins-dashboard.js:1017
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:77
+#: resources/dist/js/plugins-dashboard.js:900
 msgid "Updates available"
-msgstr "ଅଦ୍ୟତନ ଉପଲବ୍ଧ"
+msgstr "ଅଦ୍ୟତନଗୁଡିକ ଉପଲବ୍ଧ"
 
-#: resources/dist/js/plugins-dashboard.js:1172
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:142
-#: resources/dist/js/plugins-dashboard.js:982
+#: resources/dist/js/plugins-dashboard.js:1075
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:146
+#: resources/dist/js/plugins-dashboard.js:969
 msgid ""
 "To force a refresh, hold Option on Mac or Alt on Windows and then click "
 "Refresh."
 msgstr ""
-"ଏକ ରିଫ୍ରେଶ୍‌କୁ ବାଧ୍ୟ କରିବା ପାଇଁ, ମ୍ୟାକ୍‌ରେ ଅପ୍ସନ୍ କି ବା ୱିଣ୍ଡୋଜ୍‌ରେ ଅଲ୍ଟ୍ "
-"କି ଧରନ୍ତୁ ଏବଂ ପରେ ରିଫ୍ରେଶ୍‌ରେ କ୍ଲିକ୍ କରନ୍ତୁ।"
+"ଏକ ନବୀକରଣ ବାଧ୍ୟ କରିବାକୁ, ମ୍ୟାକ୍‌ରେ ଓପ୍ସନ୍ କିମ୍ବା ୱିଣ୍ଡୋସରେ ଆଲ୍ଟ୍ ଧରନ୍ତୁ ଏବଂ "
+"ପରେ ରିଫ୍ରେଶ୍ କ୍ଲିକ୍ କରନ୍ତୁ।"
 
-#: resources/dist/js/plugins-dashboard.js:1184
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:152
-#: resources/dist/js/plugins-dashboard.js:992, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1083
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:155
+#: resources/dist/js/plugins-dashboard.js:978
 msgid "Plugins & Features"
-msgstr "Plugins & Features"
+msgstr "ପ୍ଲଗିନ୍ & ବିଶେଷତା"
 
-#: resources/dist/js/plugins-dashboard.js:1184
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:153
-#: resources/dist/js/plugins-dashboard.js:993
+#: resources/dist/js/plugins-dashboard.js:1083
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:156
+#: resources/dist/js/plugins-dashboard.js:979
 msgid "Activate, open, and license each product directly from the Hub."
-msgstr "Hubରୁ ପ୍ରତ୍ୟେକ ଉତ୍ପାଦକୁ ସିଧାସଳଖ ସକ୍ରିୟ, ଖୋଲନ୍ତୁ, ଏବଂ ଲାଇସେନ୍ସ କରନ୍ତୁ।"
+msgstr "ହବ୍‌ରୁ ପ୍ରତ୍ୟେକ ଉତ୍ପାଦକୁ ସକ୍ରିୟ, ଖୋଲିବା, ଏବଂ ଲାଇସେନ୍ସ କରନ୍ତୁ।"
 
-#: resources/dist/js/plugins-dashboard.js:1192
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:157
-#: resources/dist/js/plugins-dashboard.js:997
+#: resources/dist/js/plugins-dashboard.js:1091
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:160
+#: resources/dist/js/plugins-dashboard.js:983
 msgid "Force Refresh"
-msgstr "ବଳପୂର୍ବକ ପୁନଃତାଜା କରନ୍ତୁ"
+msgstr "ବାଧ୍ୟକର ନବୀକରଣ"
 
-#: resources/dist/js/plugins-dashboard.js:1192
-#: resources/dist/js/settings-page.js:1100
-#: resources/src/jsx/components/pages/plugins-dashboard.jsx:157
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:307
-#: resources/dist/js/plugins-dashboard.js:997
-#: resources/dist/js/settings-page.js:868
+#: resources/dist/js/plugins-dashboard.js:1091
+#: resources/dist/js/settings-page.js:874
+#: resources/src/jsx/components/pages/plugins-dashboard.jsx:160
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:308
+#: resources/dist/js/plugins-dashboard.js:983
 msgid "Refresh"
-msgstr "ପୁନଃତାଜା କରନ୍ତୁ"
+msgstr "ନବୀକରଣ"
 
-#: resources/dist/js/plugins-dashboard.js:1309
-#: resources/src/jsx/components/pages/suite-license.jsx:30
-#: resources/dist/js/plugins-dashboard.js:1048
-#, js-format
-msgid "Checking %s…"
-msgstr "%s ଯାଞ୍ଚ କରାଯାଉଛି…"
-
-#: resources/dist/js/plugins-dashboard.js:1326
-#: resources/src/jsx/components/pages/suite-license.jsx:38
-#: resources/dist/js/plugins-dashboard.js:1056
-msgid "The license could not be activated for this product."
-msgstr "ଏହି ଉତ୍ପାଦ ପାଇଁ ଲାଇସେନ୍ସ ସକ୍ରିୟ କରିବାକୁ ସମ୍ଭବ ହୋଇପାରିନି।"
-
-#: resources/dist/js/plugins-dashboard.js:1331
-#: resources/src/jsx/components/pages/suite-license.jsx:40
-#: resources/dist/js/plugins-dashboard.js:1058
-msgid "License activated."
-msgstr "ଲାଇସେନ୍ସ ସକ୍ରିୟ କରାଗଲା।"
-
-#: resources/dist/js/plugins-dashboard.js:1342
-#: resources/src/jsx/components/pages/suite-license.jsx:42
-#: resources/dist/js/plugins-dashboard.js:1060
-msgid "Activation failed. Please try again."
-msgstr "ସକ୍ରିୟତା ବିଫଳ ହେଲା। ଦୟାକରି ପुनରାବୃତ୍ତ କରନ୍ତୁ।"
-
-#: resources/dist/js/plugins-dashboard.js:1362
-#: resources/src/jsx/components/pages/suite-license.jsx:46
-#: resources/dist/js/plugins-dashboard.js:1064
-msgid "License checks complete. Review the results below."
-msgstr "ଲାଇସେନ୍ସ ଯାଞ୍ଚ ସମ୍ପୂର୍ଣ୍ଣ। ନିମ୍ନରେ ଫଳାଫଳ ଦେଖନ୍ତୁ।"
-
-#: resources/dist/js/plugins-dashboard.js:1371
-#: resources/src/jsx/components/pages/suite-license.jsx:49
-#: resources/dist/js/plugins-dashboard.js:1067
-msgid ""
-"License checks complete, but the dashboard could not refresh. Reload this "
-"page to see the latest status."
-msgstr ""
-"ଲାଇସେନ୍ସ ଯାଞ୍ଚ ସମ୍ପୂର୍ଣ୍ଣ, କିନ୍ତୁ ଡ୍ୟାସ୍ବୋର୍ଡ ରିଫ୍ରେଶ୍ କରିବାକୁ ସମ୍ଭବ "
-"ହୋଇପାରିନି। ଏହି ପୃଷ୍ଠାକୁ ପୁନର୍ଲୋଡ୍ କରନ୍ତୁ ନୂତନ ସ୍ଥିତି ଦେଖିବାକୁ।"
-
-#: resources/dist/js/plugins-dashboard.js:1398
-#: resources/src/jsx/components/pages/suite-license.jsx:60
-#: resources/dist/js/plugins-dashboard.js:1078, fuzzy
-msgid "PublishPress Bundle / Suite"
-msgstr "PublishPress Bundle / Suite"
-
-#: resources/dist/js/plugins-dashboard.js:1398
-#: resources/src/jsx/components/pages/suite-license.jsx:61
-#: resources/dist/js/plugins-dashboard.js:1079, fuzzy
-msgid "Connect your included Pro plugins with one license key."
-msgstr "Connect your included Pro plugins with one license key."
-
-#: resources/dist/js/plugins-dashboard.js:1406
-#: resources/src/jsx/components/pages/suite-license.jsx:64
-#: resources/dist/js/plugins-dashboard.js:1082, fuzzy
-msgid "Close license setup"
-msgstr "Close license setup"
-
-#: resources/dist/js/plugins-dashboard.js:1406
-#: resources/src/jsx/components/pages/suite-license.jsx:64
-#: resources/dist/js/plugins-dashboard.js:1082, fuzzy
-msgid "Activate Suite License"
-msgstr "Activate Suite License"
-
-#: resources/dist/js/plugins-dashboard.js:1410
-#: resources/dist/js/plugins-dashboard.js:2035
-#: resources/dist/js/plugins-dashboard.js:2185
-#: resources/src/jsx/components/pages/suite-license.jsx:67
-#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:71
-#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:97
-#: resources/dist/js/plugins-dashboard.js:1085
-#: resources/dist/js/plugins-dashboard.js:1540
-#: resources/dist/js/plugins-dashboard.js:1673
-msgid "License key"
-msgstr "ଲାଇସେନ୍ସ କୀ"
-
-#: resources/dist/js/plugins-dashboard.js:1418
-#: resources/src/jsx/components/pages/suite-license.jsx:70
-#: resources/dist/js/plugins-dashboard.js:1088, fuzzy
-msgid "Select products included in your subscription"
-msgstr "Select products included in your subscription"
-
-#: resources/dist/js/plugins-dashboard.js:1418
-#: resources/src/jsx/components/pages/suite-license.jsx:71
-#: resources/dist/js/plugins-dashboard.js:1089
-msgid ""
-"This replaces the saved license key for each selected product after "
-"successful activation. Keys managed in wp-config.php cannot be changed "
-"here. No plugins will be installed or activated."
-msgstr ""
-"This replaces the saved license key for each selected product after "
-"successful activation. Keys managed in wp-config.php cannot be changed "
-"here. No plugins will be installed or activated."
-
-#: resources/dist/js/plugins-dashboard.js:1438
-#: resources/src/jsx/components/pages/suite-license.jsx:77
-#: resources/dist/js/plugins-dashboard.js:1095, fuzzy
-msgid "Activate license for selected products"
-msgstr "Activate license for selected products"
-
-#: resources/dist/js/plugins-dashboard.js:1445
-#: resources/src/jsx/components/pages/suite-license.jsx:81
-#: resources/dist/js/plugins-dashboard.js:1099, fuzzy
-msgid "Success"
-msgstr "Success"
-
-#: resources/dist/js/plugins-dashboard.js:1445
-#: resources/src/jsx/components/pages/suite-license.jsx:81
-#: resources/dist/js/plugins-dashboard.js:1099, fuzzy
-msgid "Failed"
-msgstr "Failed"
-
-#: resources/dist/js/plugins-dashboard.js:1490
+#: resources/dist/js/plugins-dashboard.js:1138
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:20
-#: resources/dist/js/plugins-dashboard.js:1124
+#: resources/dist/js/plugins-dashboard.js:1024
 msgid "Install"
-msgstr "ଇନ୍‌ସ୍ଟଲ୍‌ କରନ୍ତୁ"
+msgstr "ସ୍ଥାପନ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:1491
+#: resources/dist/js/plugins-dashboard.js:1139
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:21
-#: resources/dist/js/plugins-dashboard.js:1125
+#: resources/dist/js/plugins-dashboard.js:1025
 msgid "Installing..."
-msgstr "ଇନ୍‌ସ୍ଟଲ୍‌ କରୁଛି..."
+msgstr "ସ୍ଥାପନ ହେଉଛି..."
 
-#: resources/dist/js/plugins-dashboard.js:1496
-#: resources/dist/js/plugins-dashboard.js:2588
-#: resources/dist/js/plugins-dashboard.js:2613
+#: resources/dist/js/plugins-dashboard.js:1144
+#: resources/dist/js/plugins-dashboard.js:2116
+#: resources/dist/js/plugins-dashboard.js:2137
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:26
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:28
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:51
-#: resources/dist/js/plugins-dashboard.js:1130
-#: resources/dist/js/plugins-dashboard.js:2110
-#: resources/dist/js/plugins-dashboard.js:2133
+#: resources/dist/js/plugins-dashboard.js:1030
+#: resources/dist/js/plugins-dashboard.js:2010
+#: resources/dist/js/plugins-dashboard.js:2033
 msgid "Upgrade to Pro"
-msgstr "Pro କୁ ଅପଗ୍ରେଡ୍‌ କରନ୍ତୁ"
+msgstr "ପ୍ରୋରେ ଅପ୍ଗ୍ରେଡ୍ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:1497
+#: resources/dist/js/plugins-dashboard.js:1145
 #: resources/src/jsx/components/plugins-list/components/action-button.jsx:27
-#: resources/dist/js/plugins-dashboard.js:1131
+#: resources/dist/js/plugins-dashboard.js:1031
 msgid "Upgrading to Pro..."
-msgstr "Pro କୁ ଅପଗ୍ରେଡ୍‌ କରୁଛି..."
+msgstr "ପ୍ରୋରେ ଅପ୍ଗ୍ରେଡିଂ ହେଉଛି..."
 
-#: resources/dist/js/plugins-dashboard.js:1502
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:32
-#: resources/dist/js/plugins-dashboard.js:1136
-msgid "Manage License"
-msgstr "ଲାଇସେନ୍‌ ମ୍ୟାନେଜ୍‌ କରନ୍ତୁ"
-
-#: resources/dist/js/plugins-dashboard.js:1503
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
-#: resources/dist/js/plugins-dashboard.js:1137
-msgid "Managing License..."
-msgstr "ଲାଇସେନ୍‌ ମ୍ୟାନେଜ୍‌ କରୁଛି..."
-
-#: resources/dist/js/plugins-dashboard.js:1508
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:38
-#: resources/dist/js/plugins-dashboard.js:1142
-msgid "Activate License"
-msgstr "ଲାଇସେନ୍‌ ସକ୍ରିୟ କରନ୍ତୁ"
-
-#: resources/dist/js/plugins-dashboard.js:1509
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
-#: resources/dist/js/plugins-dashboard.js:1143
-msgid "Activating License..."
-msgstr "ଲାଇସେନ୍‌ ସକ୍ରିୟ କରୁଛି..."
-
-#: resources/dist/js/plugins-dashboard.js:1515
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
-#: resources/dist/js/plugins-dashboard.js:1149
-msgid "Resolve Conflict"
-msgstr "ସଂକ୍ରାନ୍ତି ନିରାକରଣ କରନ୍ତୁ"
-
-#: resources/dist/js/plugins-dashboard.js:1516
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
 #: resources/dist/js/plugins-dashboard.js:1150
-msgid "Resolving Conflict..."
-msgstr "ସଂକ୍ରାନ୍ତି ନିରାକରଣ କରୁଛି..."
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:32
+#: resources/dist/js/plugins-dashboard.js:1036
+msgid "Manage License"
+msgstr "ଲାଇସେନ୍ସ ପରିଚାଳନା"
 
-#: resources/dist/js/plugins-dashboard.js:1521
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
-#: resources/dist/js/plugins-dashboard.js:1155
-msgid "Update"
-msgstr "ଅପଡେଟ୍‌ କରନ୍ତୁ"
+#: resources/dist/js/plugins-dashboard.js:1151
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:33
+#: resources/dist/js/plugins-dashboard.js:1037
+msgid "Managing License..."
+msgstr "ଲାଇସେନ୍ସ ପରିଚାଳନା ହେଉଛି..."
 
-#: resources/dist/js/plugins-dashboard.js:1522
-#: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
 #: resources/dist/js/plugins-dashboard.js:1156
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:38
+#: resources/dist/js/plugins-dashboard.js:1042
+msgid "Activate License"
+msgstr "ଲାଇସେନ୍ସ ସକ୍ରିୟ କରନ୍ତୁ"
+
+#: resources/dist/js/plugins-dashboard.js:1157
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:39
+#: resources/dist/js/plugins-dashboard.js:1043
+msgid "Activating License..."
+msgstr "ଲାଇସେନ୍ସ ସକ୍ରିୟ କରାଯାଇଛି..."
+
+#: resources/dist/js/plugins-dashboard.js:1163
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:45
+#: resources/dist/js/plugins-dashboard.js:1049
+msgid "Resolve Conflict"
+msgstr "ବିରୋଧ ମିଳାଇବେ"
+
+#: resources/dist/js/plugins-dashboard.js:1164
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:46
+#: resources/dist/js/plugins-dashboard.js:1050
+msgid "Resolving Conflict..."
+msgstr "ବିରୋଧ ମିଳାଇଁ ହେଉଛି..."
+
+#: resources/dist/js/plugins-dashboard.js:1169
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:51
+#: resources/dist/js/plugins-dashboard.js:1055
+msgid "Update"
+msgstr "ସଂଶୋଧନ"
+
+#: resources/dist/js/plugins-dashboard.js:1170
+#: resources/src/jsx/components/plugins-list/components/action-button.jsx:52
+#: resources/dist/js/plugins-dashboard.js:1056
 msgid "Updating..."
-msgstr "ଅପଡେଟ୍‌ କରୁଛି..."
+msgstr "ସଂଶୋଧନ ହେଉଛି..."
 
-#: resources/dist/js/plugins-dashboard.js:1614
+#: resources/dist/js/plugins-dashboard.js:1257
 #: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:16
-#: resources/dist/js/plugins-dashboard.js:1238
+#: resources/dist/js/plugins-dashboard.js:1138
 msgid ""
 "Deactivating PublishPress Statuses stops registering its custom post "
 "statuses. Content using those statuses may become unavailable, and parts of "
 "your site may stop working until the plugin is active again."
 msgstr ""
-"Deactivating PublishPress Statuses stops registering its custom post "
-"statuses. Content using those statuses may become unavailable, and parts of "
-"your site may stop working until the plugin is active again."
+"PublishPress Statuses କୁ ଅକ୍ଷେପ କରିବା କାରଣରେ ଏହାର କଷ୍ଟମ ପୋଷ୍ଟ ସ୍ଥିତିଗୁଡିକୁ "
+"ନନ୍ଦନୀକରଣ ହେବ ନାହିଁ। ସେହି ସ୍ଥିତିଗୁଡିକୁ ବ୍ୟବହାର କରୁଥିବା ବିଷୟବସ୍ତୁ ଅକ୍ଷେପ "
+"ହୋଇପାରେ, ଏବଂ ଆପଣଙ୍କର ସାଇଟର ଅଂଶଗୁଡିକ ଚାଲିବା ଅବସ୍ଥାରେ ରହିପାରେ ଯାଁଁ ପଲଗିନ୍ "
+"ପୁନଃ ସକ୍ରିୟ ହୁଏ।"
 
-#: resources/dist/js/plugins-dashboard.js:1616
+#: resources/dist/js/plugins-dashboard.js:1259
 #: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:18
-#: resources/dist/js/plugins-dashboard.js:1240
+#: resources/dist/js/plugins-dashboard.js:1140
 msgid ""
 "Deactivating this plugin disables its features and may affect content or "
 "workflows that depend on it."
 msgstr ""
-"Deactivating this plugin disables its features and may affect content or "
-"workflows that depend on it."
+"ଏହି ପଲଗିନ୍ କୁ ଅକ୍ଷେପ କରିବା ଏହାର ବିଶେଷତାଗୁଡିକୁ ବନ୍ଦ କରେ ଏବଂ ଏହାର ଉପରେ ନିର୍ଭର "
+"କରୁଥିବା ବିଷୟବସ୍ତୁ କିମ୍ବା କାର୍ଯ୍ୟପ୍ରବାହକୁ ପ୍ରଭାବିତ କରିପାରେ।"
 
-#: resources/dist/js/plugins-dashboard.js:1627
+#: resources/dist/js/plugins-dashboard.js:1268
 #: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:25
-#: resources/dist/js/plugins-dashboard.js:1247
+#: resources/dist/js/plugins-dashboard.js:1147
 msgid ""
 "Uninstalling deletes the plugin files and may also delete its saved "
 "settings or data. Its features will no longer be available. Back up your "
 "site before continuing."
 msgstr ""
-"Uninstalling deletes the plugin files and may also delete its saved "
-"settings or data. Its features will no longer be available. Back up your "
-"site before continuing."
+"ଅନଇସ୍ଟଲ କରିବା ସହିତ ପଲଗିନ୍ ଫାଇଲଗୁଡିକୁ ମିଶାଇ ଦେଉଛି ଏବଂ ଏହାର ସଂରକ୍ଷିତ ସେଟିଂସ୍ "
+"କିମ୍ବା ତଥ୍ୟଗୁଡିକୁ ମିଶାଇ ଦେଉଛି। ଏହାର ବିଶେଷତାଗୁଡିକୁ ଆହୁରି ଉପଲବ୍ଧ ହେବ ନାହିଁ। "
+"ଆଗକୁ ଯିବା ପୂର୍ବରୁ ଆପଣଙ୍କର ସାଇଟକୁ ବ୍ୟାକଅପ କରନ୍ତୁ।"
 
-#: resources/dist/js/plugins-dashboard.js:1627
+#: resources/dist/js/plugins-dashboard.js:1268
 #: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:26
-#: resources/dist/js/plugins-dashboard.js:1248
+#: resources/dist/js/plugins-dashboard.js:1148
 msgid ""
 "Without PublishPress Statuses, its custom post statuses are no longer "
 "registered. Content using those statuses may become unavailable, and parts "
 "of your site may stop working until the plugin is installed and active "
 "again."
 msgstr ""
-"Without PublishPress Statuses, its custom post statuses are no longer "
-"registered. Content using those statuses may become unavailable, and parts "
-"of your site may stop working until the plugin is installed and active "
-"again."
+"PublishPress Statuses ବିନା, ଏହାର କଷ୍ଟମ ପୋଷ୍ଟ ସ୍ଥିତିଗୁଡିକୁ ଅନଵଦାନ କରାଯିବ "
+"ନାହିଁ। ସେହି ସ୍ଥିତିଗୁଡିକୁ ବ୍ୟବହାର କରୁଥିବା ବିଷୟବସ୍ତୁ ଅକ୍ଷେପ ହୋଇପାରେ, ଏବଂ "
+"ଆପଣଙ୍କର ସାଇଟର ଅଂଶଗୁଡିକ ଚାଲିବା ଅବସ୍ଥାରେ ରହିପାରେ ଯାଁଁ ପଲଗିନ୍ ସଂସ୍ଥାପିତ ଓ "
+"ସକ୍ରିୟ ହୁଏ।"
 
-#: resources/dist/js/plugins-dashboard.js:1627
+#: resources/dist/js/plugins-dashboard.js:1268
 #: resources/src/jsx/components/plugins-list/components/deactivation-warning.jsx:29
-#: resources/dist/js/plugins-dashboard.js:1251
+#: resources/dist/js/plugins-dashboard.js:1151
 msgid ""
 "Resolving this conflict can deactivate the plugin while switching versions. "
 "If the version you keep cannot be activated, the plugin may remain "
 "disabled. Check that it is active after resolving the conflict."
 msgstr ""
-"Resolving this conflict can deactivate the plugin while switching versions. "
-"If the version you keep cannot be activated, the plugin may remain "
-"disabled. Check that it is active after resolving the conflict."
+"ଏହି ବିରୋଧକୁ ସମାଧାନ କରିବାରେ ପଲଗିନ୍ କୁ ଅକ୍ଷେପ କରିବା ଦରକାର ହୋଇପାରେ। ଯଦି ଆପଣ "
+"ରଖିଥିବା ଭୂମିକା କ୍ରିୟାଶୀଳ କରିବାକୁ ଅସମର୍ଥ, ତେବେ ପଲଗିନ୍ ସକ୍ରିୟ ହେବାରେ ଅସମର୍ଥ "
+"ରହିପାରେ। ବିରୋଧକୁ ସମାଧାନ କରିବା ପରେ ଏହାକୁ ସକ୍ରିୟ ହୋଇଛି କି ନାହିଁ ବିଶେଷ ଦେଖନ୍ତୁ।"
 
-#: resources/dist/js/plugins-dashboard.js:1831
+#: resources/dist/js/plugins-dashboard.js:1459
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:33
-#: resources/dist/js/plugins-dashboard.js:1383
+#: resources/dist/js/plugins-dashboard.js:1283
 msgid "Confirmation"
-msgstr "ନିଶ୍ଚୟନ"
+msgstr "ନିଶ୍ଚୟତା"
 
-#: resources/dist/js/plugins-dashboard.js:1837
+#: resources/dist/js/plugins-dashboard.js:1465
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:41
-#: resources/dist/js/plugins-dashboard.js:1391
+#: resources/dist/js/plugins-dashboard.js:1291
 msgid "Are you sure you want to continue?"
-msgstr "ଆପଣ ଆଗକୁ ଚାଲିବାକୁ ନିଶ୍ଚିତ କି?"
+msgstr "କିଆ ଆପଣ ନିଶ୍ଚିତ ଯେ ଆପଣ ଆଗକୁ ବଢିବାକୁ ଚାହାଁନ୍ତି?"
 
-#: resources/dist/js/plugins-dashboard.js:1849
+#: resources/dist/js/plugins-dashboard.js:1475
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:54
-#: resources/dist/js/plugins-dashboard.js:1404, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1304
 msgid "Continue"
-msgstr "Continue"
+msgstr "ଆଗକୁ ବଢିବା"
 
-#: resources/dist/js/plugins-dashboard.js:1857
-#: resources/dist/js/plugins-dashboard.js:2543
+#: resources/dist/js/plugins-dashboard.js:1481
+#: resources/dist/js/plugins-dashboard.js:2070
 #: resources/src/jsx/components/plugins-list/components/modal-confirmation.jsx:57
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:103
-#: resources/dist/js/plugins-dashboard.js:1407
-#: resources/dist/js/plugins-dashboard.js:2075, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1307
+#: resources/dist/js/plugins-dashboard.js:1975
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "ବାତିଲ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:1903
+#: resources/dist/js/plugins-dashboard.js:1528
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:29
-#: resources/dist/js/plugins-dashboard.js:1444, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1344
 msgid "Install Plugin"
-msgstr "Install Plugin"
+msgstr "ପଲଗିନ୍ ସଂସ୍ଥାପନ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:1908
+#: resources/dist/js/plugins-dashboard.js:1531
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:34
-#: resources/dist/js/plugins-dashboard.js:1449
+#: resources/dist/js/plugins-dashboard.js:1349
 msgid ""
 "Select how you would like to install this plugin. You can install the Pro "
 "version if you have a license, or the Free version to get started."
 msgstr ""
-"ଆପଣ କିପରି ଏହି ପ୍ଲଗଇନ୍ ଇନ୍ସ୍ଟଲ୍ କରିବାକୁ ଚାହାଁତି, ତାହା ଚୟନ କରନ୍ତୁ। ଯଦି "
-"ଆପଣଙ୍କର ଲାଇସେନ୍ସ ଅଛି ତେବେ Pro ସଂସ୍କରଣ ଇନ୍ସ୍ଟଲ୍ କରନ୍ତୁ, କିମ୍ବା ଆରମ୍ଭ କରିବାକୁ "
-"ମୁକ୍ତ ସଂସ୍କରଣ ଇନ୍ସ୍ଟଲ୍ କରନ୍ତୁ।"
+"ଆପଣ କିପରି ଏହି ପଲଗିନ୍ ସଂସ୍ଥାପନ କରିବାକୁ ଚାହାଁନ୍ତି ବାଛନ୍ତୁ। ଯଦି ଆପଣଙ୍କ "
+"ଲାଇସେନ୍ସ ଅଛି, ତେବେ ପ୍ରୋ ସଂସ୍କରଣ ସଂସ୍ଥାପନ କରିପାରିବେ, କିମ୍ବା ଆରମ୍ଭ କରିବାକୁ "
+"ମାଗଣା ସଂସ୍କରଣ ସଂସ୍ଥାପନ କରିପାରିବେ।"
 
-#: resources/dist/js/plugins-dashboard.js:1913
-#: resources/dist/js/plugins-dashboard.js:3457
+#: resources/dist/js/plugins-dashboard.js:1536
+#: resources/dist/js/plugins-dashboard.js:2925
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:37
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:116
-#: resources/dist/js/plugins-dashboard.js:1452
-#: resources/dist/js/plugins-dashboard.js:2891, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1352
+#: resources/dist/js/plugins-dashboard.js:2775
 msgid "Free Details"
-msgstr "Free Details"
+msgstr "ମାଗଣା ବିବରଣୀ"
 
-#: resources/dist/js/plugins-dashboard.js:1916
-#: resources/dist/js/plugins-dashboard.js:3464
+#: resources/dist/js/plugins-dashboard.js:1541
+#: resources/dist/js/plugins-dashboard.js:2932
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:39
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:124
-#: resources/dist/js/plugins-dashboard.js:1454
-#: resources/dist/js/plugins-dashboard.js:2899, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1354
+#: resources/dist/js/plugins-dashboard.js:2783
 msgid "Pro Details"
-msgstr "Pro Details"
+msgstr "ପ୍ରୋ ବିବରଣୀ"
 
-#: resources/dist/js/plugins-dashboard.js:1919
-#: resources/dist/js/plugins-dashboard.js:3472
+#: resources/dist/js/plugins-dashboard.js:1546
+#: resources/dist/js/plugins-dashboard.js:2940
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:41
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:133
-#: resources/dist/js/plugins-dashboard.js:1456
-#: resources/dist/js/plugins-dashboard.js:2908, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1356
+#: resources/dist/js/plugins-dashboard.js:2792
 msgid "Changelogs"
-msgstr "Changelogs"
+msgstr "ଚେଞ୍ଜଲଗ୍"
 
-#: resources/dist/js/plugins-dashboard.js:1925
+#: resources/dist/js/plugins-dashboard.js:1550
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:44
-#: resources/dist/js/plugins-dashboard.js:1459, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1359
 msgid "I have a license, install the Pro version"
-msgstr "I have a license, install the Pro version"
+msgstr "ମୋର ଏକ ଲାଇସେନ୍ସ ଅଛି, ପ୍ରୋ ସଂସ୍କରଣ ସଂସ୍ଥାପନ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:1931
+#: resources/dist/js/plugins-dashboard.js:1554
 #: resources/src/jsx/components/plugins-list/components/modal-installation-type.jsx:47
-#: resources/dist/js/plugins-dashboard.js:1462, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1362
 msgid "I don't have a license, install the Free version"
-msgstr "I don't have a license, install the Free version"
+msgstr "ମୋରେ ଲାଇସେନ୍ସ ନାହିଁ, ମାଗଣା ସଂସ୍କରଣ ସଂସ୍ଥାପନ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2021
+#: resources/dist/js/plugins-dashboard.js:1628
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:56
-#: resources/dist/js/plugins-dashboard.js:1525, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1425
 msgid "Enter your license key"
-msgstr "Enter your license key"
+msgstr "ଆପଣଙ୍କର ଲାଇସେନ୍ସ କୀ ଦାଖଲ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2026
-#: resources/dist/js/plugins-dashboard.js:2176
+#: resources/dist/js/plugins-dashboard.js:1631
+#: resources/dist/js/plugins-dashboard.js:1756
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:61
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:87
-#: resources/dist/js/plugins-dashboard.js:1530
-#: resources/dist/js/plugins-dashboard.js:1663
+#: resources/dist/js/plugins-dashboard.js:1430
+#: resources/dist/js/plugins-dashboard.js:1563
 msgid ""
 "Enter your license key to activate the Pro version of this plugin. You can "
 "find your license key in your PublishPress account dashboard."
 msgstr ""
-"Pro ସଂସ୍କରଣ ସକ୍ରିୟ କରିବା ପାଇଁ ଆପଣଙ୍କର ଲାଇସେନ୍ସ କୀ ପ୍ରବେଶ କରନ୍ତୁ। ଆପଣ "
-"ଆପଣଙ୍କର PublishPress ଆକାଉଣ୍ଟ ଡ୍ୟାଶବୋର୍ଡରେ ଆପଣଙ୍କର ଲାଇସେନ୍ସ କୀ ମିଳାଇପାରିବେ।"
+"ଏହି ପଲଗିନ୍ର ପ୍ରୋ ସଂସ୍କରଣ ସକ୍ରିୟ କରିବାକୁ ଆପଣଙ୍କର ଲାଇସେନ୍ସ କୀ ଦାଖଲ କରନ୍ତୁ। "
+"ଆପଣଙ୍କର ଲାଇସେନ୍ସ କୀ ଆପଣଙ୍କର PublishPress ଖାତା ଡ୍ୟାସ୍‌ବୋର୍ଡରେ ମିଳିବ।"
 
-#: resources/dist/js/plugins-dashboard.js:2033
-#: resources/dist/js/plugins-dashboard.js:2183
+#: resources/dist/js/plugins-dashboard.js:1638
+#: resources/dist/js/plugins-dashboard.js:1763
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:65
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:91
-#: resources/dist/js/plugins-dashboard.js:1534
-#: resources/dist/js/plugins-dashboard.js:1667, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1434
+#: resources/dist/js/plugins-dashboard.js:1567
 msgid "Go to the dashboard to get your license key"
-msgstr "Go to the dashboard to get your license key"
+msgstr "ଆପଣଙ୍କର ଲାଇସେନ୍ସ କୀ ପାଇବାକୁ ଡ୍ୟାସ୍‌ବୋର୍ଡକୁ ଯାଆନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2037
-#: resources/dist/js/plugins-dashboard.js:2187
+#: resources/dist/js/plugins-dashboard.js:1640
+#: resources/dist/js/plugins-dashboard.js:1765
+#: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:71
+#: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:97
+#: resources/dist/js/plugins-dashboard.js:1440
+#: resources/dist/js/plugins-dashboard.js:1573
+msgid "License key"
+msgstr "ଲାଇସେନ୍ସ କୀ"
+
+#: resources/dist/js/plugins-dashboard.js:1642
+#: resources/dist/js/plugins-dashboard.js:1767
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:73
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:99
-#: resources/dist/js/plugins-dashboard.js:1542
-#: resources/dist/js/plugins-dashboard.js:1675, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1442
+#: resources/dist/js/plugins-dashboard.js:1575
 msgid "Enter your license key here"
-msgstr "Enter your license key here"
+msgstr "ଏଠାରେ ଆପଣଙ୍କର ଲାଇସେନ୍ସ କୀ ଦାଖଲ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2045
-#: resources/dist/js/plugins-dashboard.js:2195
-#: resources/dist/js/plugins-dashboard.js:2223
+#: resources/dist/js/plugins-dashboard.js:1648
+#: resources/dist/js/plugins-dashboard.js:1773
+#: resources/dist/js/plugins-dashboard.js:1797
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:81
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:106
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:152
-#: resources/dist/js/plugins-dashboard.js:1550
-#: resources/dist/js/plugins-dashboard.js:1682
-#: resources/dist/js/plugins-dashboard.js:1728
+#: resources/dist/js/plugins-dashboard.js:1450
+#: resources/dist/js/plugins-dashboard.js:1582
+#: resources/dist/js/plugins-dashboard.js:1628
 msgid "Use this license key for all PublishPress plugins"
-msgstr "すべてのPublishPressプラグインにこのライセンスキーを使用してください"
+msgstr "ସମସ୍ତ PublishPress ପଲଗିନ୍ଗୁଡିକୁ ଏହି ଲାଇସେନ୍ସ କୀ ବ୍ୟବହାର କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2059
+#: resources/dist/js/plugins-dashboard.js:1658
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:95
-#: resources/dist/js/plugins-dashboard.js:1564, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1464
 msgid "Use existing license key"
-msgstr "Use existing license key"
+msgstr "ବର୍ତ୍ତମାନର ଲାଇସେନ୍ସ କୀ ବ୍ୟବହାର କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2064
+#: resources/dist/js/plugins-dashboard.js:1663
 #: resources/src/jsx/components/plugins-list/components/modal-license-input.jsx:100
-#: resources/dist/js/plugins-dashboard.js:1569, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1469
 msgid "Activate and install the plugin"
-msgstr "Activate and install the plugin"
+msgstr "ପଲଗିନ୍ କୁ ସକ୍ରିୟ କରନ୍ତୁ ଏବଂ ସଂସ୍ଥାପନ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2171
+#: resources/dist/js/plugins-dashboard.js:1753
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:80
-#: resources/dist/js/plugins-dashboard.js:1656, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1556
 msgid "Manage your license"
-msgstr "Manage your license"
+msgstr "ଆପଣଙ୍କର ଲାଇସେନ୍ସ ପ୍ରବନ୍ଧନ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2200
+#: resources/dist/js/plugins-dashboard.js:1776
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:116
-#: resources/dist/js/plugins-dashboard.js:1692, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1592
 msgid "Your license key is: "
-msgstr "Your license key is: "
+msgstr "ଆପଣଙ୍କର ଲାଇସେନ୍ସ କୀ ହେଉଛି: "
 
-#: resources/dist/js/plugins-dashboard.js:2202
+#: resources/dist/js/plugins-dashboard.js:1778
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:118
-#: resources/dist/js/plugins-dashboard.js:1694, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1594
 msgid "(hidden)"
-msgstr "(hidden)"
+msgstr "(ଲୁକାଇଛି)"
 
-#: resources/dist/js/plugins-dashboard.js:2211
+#: resources/dist/js/plugins-dashboard.js:1787
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:137
-#: resources/dist/js/plugins-dashboard.js:1713, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1613
 msgid "Activate the license key for this site"
-msgstr "Activate the license key for this site"
+msgstr "ଏହି ସାଇଟ ପାଇଁ ଲାଇସେନ୍ସ କୀ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2216
+#: resources/dist/js/plugins-dashboard.js:1792
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:144
-#: resources/dist/js/plugins-dashboard.js:1720, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1620
 msgid "Edit the license key"
-msgstr "Edit the license key"
+msgstr "ଲାଇସେନ୍ସ କୀ ସମ୍ପାଦନ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2230
+#: resources/dist/js/plugins-dashboard.js:1802
 #: resources/src/jsx/components/plugins-list/components/modal-license-management.jsx:155
-#: resources/dist/js/plugins-dashboard.js:1731, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1631
 msgid "Deactivate the license key for this site"
-msgstr "Deactivate the license key for this site"
+msgstr "ଏହି ସାଇଟ ପାଇଁ ଲାଇସେନ୍ସ କୀ ଅକ୍ଷେପ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2358
-#: resources/dist/js/plugins-dashboard.js:2369
+#: resources/dist/js/plugins-dashboard.js:1924
+#: resources/dist/js/plugins-dashboard.js:1931
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:109
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:121
-#: resources/dist/js/plugins-dashboard.js:1849
-#: resources/dist/js/plugins-dashboard.js:1861
+#: resources/dist/js/plugins-dashboard.js:1749
+#: resources/dist/js/plugins-dashboard.js:1761
 #, js-format
 msgid "Install %s"
-msgstr "%s ଇନ୍‌ଷ୍ଟଲ୍ କରନ୍ତୁ"
+msgstr "%s ସଂସ୍ଥାପନ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2379
-#: resources/dist/js/plugins-dashboard.js:2412
+#: resources/dist/js/plugins-dashboard.js:1937
+#: resources/dist/js/plugins-dashboard.js:1962
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:136
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:179
-#: resources/dist/js/plugins-dashboard.js:1876
-#: resources/dist/js/plugins-dashboard.js:1919
-#, fuzzy, js-format
+#: resources/dist/js/plugins-dashboard.js:1776
+#: resources/dist/js/plugins-dashboard.js:1819
+#, js-format
 msgid "Upgrade %s"
-msgstr "Upgrade %s"
+msgstr "%s ଅଦ୍ୟତନ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2389
-#: resources/dist/js/plugins-dashboard.js:2749
-#: resources/dist/js/plugins-dashboard.js:3048
+#: resources/dist/js/plugins-dashboard.js:1943
+#: resources/dist/js/plugins-dashboard.js:2262
+#: resources/dist/js/plugins-dashboard.js:2526
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:151
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:86
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:201
-#: resources/dist/js/plugins-dashboard.js:1891
-#: resources/dist/js/plugins-dashboard.js:2226
-#: resources/dist/js/plugins-dashboard.js:2472
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:84
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:198
+#: resources/dist/js/plugins-dashboard.js:1791
+#: resources/dist/js/plugins-dashboard.js:2124
+#: resources/dist/js/plugins-dashboard.js:2364
 #. translators: %s is the plugin name.
-#, fuzzy, js-format
+#, js-format
 msgid "Deactivate %s"
-msgstr "Deactivate %s"
+msgstr "%s କୁ ଅକ୍ଷେପ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2390
+#: resources/dist/js/plugins-dashboard.js:1944
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:152
-#: resources/dist/js/plugins-dashboard.js:1892
-#, fuzzy, js-format
+#: resources/dist/js/plugins-dashboard.js:1792
+#, js-format
 msgid "Are you sure you want to deactivate %s?"
-msgstr "Are you sure you want to deactivate %s?"
+msgstr "କିଆ ଆପଣ ନିଶ୍ଚିତ ଯେ %s କୁ ଅକ୍ଷେପ କରିବାକୁ ଚାହାଁନ୍ତି?"
 
-#: resources/dist/js/plugins-dashboard.js:2391
+#: resources/dist/js/plugins-dashboard.js:1945
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:153
-#: resources/dist/js/plugins-dashboard.js:1893, fuzzy
+#: resources/dist/js/plugins-dashboard.js:1793
 msgid "Deactivate plugin"
-msgstr "Deactivate plugin"
+msgstr "ପଲଗିନ୍ କୁ ଅକ୍ଷେପ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2400
+#: resources/dist/js/plugins-dashboard.js:1952
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:165
-#: resources/dist/js/plugins-dashboard.js:1905
+#: resources/dist/js/plugins-dashboard.js:1805
 #, js-format
 msgid "Uninstall %s"
-msgstr "%s ଅନଇନ୍‌ଷ୍ଟଲ୍ କରନ୍ତୁ"
+msgstr "%s ଅନଇସ୍ଟଲ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2401
+#: resources/dist/js/plugins-dashboard.js:1953
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:166
-#: resources/dist/js/plugins-dashboard.js:1906
+#: resources/dist/js/plugins-dashboard.js:1806
 #, js-format
 msgid "Are you sure you want to uninstall %s?"
-msgstr "%s କୁ ଅନଇନ୍‌ଷ୍ଟଲ୍ କରିବାକୁ ଆପଣ ନିଶ୍ଚିତ କି?"
+msgstr "କିଆ ଆପଣ ନିଶ୍ଚିତ ଯେ %s କୁ ଅନଇସ୍ଟଲ କରିବାକୁ ଚାହାଁନ୍ତି?"
 
-#: resources/dist/js/plugins-dashboard.js:2402
+#: resources/dist/js/plugins-dashboard.js:1954
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:167
-#: resources/dist/js/plugins-dashboard.js:1907
+#: resources/dist/js/plugins-dashboard.js:1807
 msgid "Uninstall plugin"
-msgstr "ପ୍ଲଗଇନ୍ ବିଲୋପ କରନ୍ତୁ"
+msgstr "ପଲଗିନ୍ କୁ ଅନଇସ୍ଟଲ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2422
+#: resources/dist/js/plugins-dashboard.js:1968
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:190
-#: resources/dist/js/plugins-dashboard.js:1930
+#: resources/dist/js/plugins-dashboard.js:1830
 #, js-format
 msgid "Resolve Conflict for %s"
-msgstr "%s ପାଇଁ ଘଟଣା ନିରାକରଣ କରନ୍ତୁ"
+msgstr "%s ସହିତ ଦ୍ରୁତ ସମାଧାନ"
 
-#: resources/dist/js/plugins-dashboard.js:2434
+#: resources/dist/js/plugins-dashboard.js:1976
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:203
-#: resources/dist/js/plugins-dashboard.js:1943
+#: resources/dist/js/plugins-dashboard.js:1843
 #, js-format
 msgid "Manage %s License"
-msgstr "%s ଲାଇସେନ୍‌ସ୍ ମ୍ୟାନେଜ୍ କରନ୍ତୁ"
+msgstr "%s ଲାଇସେନ୍ସ ପରିଚାଳନା"
 
-#: resources/dist/js/plugins-dashboard.js:2448
+#: resources/dist/js/plugins-dashboard.js:1984
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:218
-#: resources/dist/js/plugins-dashboard.js:1958
+#: resources/dist/js/plugins-dashboard.js:1858
 #, js-format
 msgid "Activate %s License"
-msgstr "%s ଲାଇସେନ୍‌ସ୍ ସକ୍ରିୟ କରନ୍ତୁ"
+msgstr "%s ଲାଇସେନ୍ସ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2449
+#: resources/dist/js/plugins-dashboard.js:1985
 #: resources/src/jsx/components/plugins-list/components/modal-renderer.jsx:219
-#: resources/dist/js/plugins-dashboard.js:1959
+#: resources/dist/js/plugins-dashboard.js:1859
 msgid "Activate the license key"
 msgstr "ଲାଇସେନ୍ସ କୀ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2508
+#: resources/dist/js/plugins-dashboard.js:2043
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:35
-#: resources/dist/js/plugins-dashboard.js:2007
+#: resources/dist/js/plugins-dashboard.js:1907
 msgid "Resolve Plugin Conflict"
-msgstr "ପ୍ଲଗିନ ଘଟଣା ନିରାକରଣ କରନ୍ତୁ"
+msgstr "ପ୍ଲଗିନ୍ ଦ୍ରୁତ ସମାଧାନ"
 
-#: resources/dist/js/plugins-dashboard.js:2515
+#: resources/dist/js/plugins-dashboard.js:2048
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:52
-#: resources/dist/js/plugins-dashboard.js:2024
+#: resources/dist/js/plugins-dashboard.js:1924
 #, js-format
 msgid "Free version: %s (%s)"
 msgstr "ମାଗଣା ସଂସ୍କରଣ: %s (%s)"
 
-#: resources/dist/js/plugins-dashboard.js:2515
+#: resources/dist/js/plugins-dashboard.js:2048
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:59
-#: resources/dist/js/plugins-dashboard.js:2031
+#: resources/dist/js/plugins-dashboard.js:1931
 #, js-format
 msgid "Pro version: %s (%s)"
 msgstr "ପ୍ରୋ ସଂସ୍କରଣ: %s (%s)"
 
-#: resources/dist/js/plugins-dashboard.js:2528
+#: resources/dist/js/plugins-dashboard.js:2059
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:84
-#: resources/dist/js/plugins-dashboard.js:2056
+#: resources/dist/js/plugins-dashboard.js:1956
 msgid "Keep the Pro version (Recommended)"
-msgstr "ପ୍ରୋ ସଂସ୍କରଣ ରଖନ୍ତୁ (ସୁପର୍ଶିତ)"
+msgstr "ପ୍ରୋ ସଂସ୍କରଣ ରଖନ୍ତୁ (ସୁପାରିଶିତ)"
 
-#: resources/dist/js/plugins-dashboard.js:2536
+#: resources/dist/js/plugins-dashboard.js:2065
 #: resources/src/jsx/components/plugins-list/components/modal-resolve-conflict.jsx:94
-#: resources/dist/js/plugins-dashboard.js:2066
+#: resources/dist/js/plugins-dashboard.js:1966
 msgid "Keep the Free version"
 msgstr "ମାଗଣା ସଂସ୍କରଣ ରଖନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2593
+#: resources/dist/js/plugins-dashboard.js:2119
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:33
-#: resources/dist/js/plugins-dashboard.js:2115
+#: resources/dist/js/plugins-dashboard.js:2015
 msgid ""
 "Unlock the full potential of this plugin with the Pro version. Enjoy "
 "advanced features, priority support, and exclusive benefits designed to "
 "help you get the most out of your workflow."
 msgstr ""
-"Pro ସଂସ୍କରଣ ସହିତ ଏହି ପ୍ଲଗଇନ୍ର ସମ୍ପୂର୍ଣ୍ଣ ସମ୍ଭାବନାକୁ ଅନଲକ୍ କରନ୍ତୁ। ଉନ୍ନତ "
-"ବିଶେଷତା, ପ୍ରାଥମିକତା ସମର୍ଥନ, ଏବଂ ଆପଣଙ୍କର କାମକାଜରୁ ସର୍ବାଧିକ ଲାଭ ଉଠିବାକୁ "
-"ନିର୍ମିତ ବିଶେଷ କଳା ଉପକାର ଉପଭୋଗ କରନ୍ତୁ।"
+"ପ୍ଲଗିନ୍‌ର ସମ୍ପୂର୍ଣ୍ଣ ସମ୍ଭାବନାକୁ ପ୍ରୋ ସଂସ୍କରଣ ସହିତ ଅନଲକ୍ କରନ୍ତୁ। ଉନ୍ନତ "
+"ବିଶେଷତା, ପ୍ରାଥମିକ ସମର୍ଥନ, ଏବଂ ଆପଣଙ୍କର କାର୍ଯ୍ୟପ୍ରବାହରୁ ଅଧିକ ଲାଭ ଗ୍ରହଣ "
+"କରିବାକୁ ଡିଜାଇନ୍ କରାଯାଇଥିବା ବିଶେଷ ଲାଭ।"
 
-#: resources/dist/js/plugins-dashboard.js:2598
+#: resources/dist/js/plugins-dashboard.js:2124
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:40
-#: resources/dist/js/plugins-dashboard.js:2122
+#: resources/dist/js/plugins-dashboard.js:2022
 msgid "Discover all Pro features"
-msgstr "ସମସ୍ତ ପ୍ରୋ ବୈଶିଷ୍ଟ୍ୟ ଖୋଜନ୍ତୁ"
+msgstr "ସମସ୍ତ ପ୍ରୋ ବିଶେଷତା ଖୋଜନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2601
+#: resources/dist/js/plugins-dashboard.js:2129
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:44
-#: resources/dist/js/plugins-dashboard.js:2126
+#: resources/dist/js/plugins-dashboard.js:2026
 msgid "Changelog"
 msgstr "ଚେଞ୍ଜଲଗ୍"
 
-#: resources/dist/js/plugins-dashboard.js:2607
+#: resources/dist/js/plugins-dashboard.js:2133
 #: resources/src/jsx/components/plugins-list/components/modal-upgrade.jsx:48
-#: resources/dist/js/plugins-dashboard.js:2130
+#: resources/dist/js/plugins-dashboard.js:2030
 msgid "Already have a license? Install Pro now"
-msgstr "ଏବେ ଏକ ଲାଇସେନ୍ସ ଅଛି? ଏବେ ପ୍ରୋ ଇନ୍ସ୍ଟଲ୍ କରନ୍ତୁ"
+msgstr "ଆପଣଙ୍କର ପାଖରେ ଏକ ଲାଇସେନ୍ସ ଅଛି? ଏବେ ପ୍ରୋ ଇନ୍‌ଷ୍ଟଲ୍ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2737
-#: resources/dist/js/plugins-dashboard.js:3038
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:78
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:192
-#: resources/dist/js/plugins-dashboard.js:2218
-#: resources/dist/js/plugins-dashboard.js:2463
+#: resources/dist/js/plugins-dashboard.js:2252
+#: resources/dist/js/plugins-dashboard.js:2518
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:75
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:189
+#: resources/dist/js/plugins-dashboard.js:2115
+#: resources/dist/js/plugins-dashboard.js:2355
 #, js-format
 msgid "Remove %s from favorites"
-msgstr "ପ୍ରିୟ ତାଲିକାରୁ %s କୁ ହଟାନ୍ତୁ"
+msgstr "%s କୁ ପ୍ରିୟ ବସ୍ତୁ ରୁ ହଟାନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2737
-#: resources/dist/js/plugins-dashboard.js:3038
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:78
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:192
-#: resources/dist/js/plugins-dashboard.js:2218
-#: resources/dist/js/plugins-dashboard.js:2463
+#: resources/dist/js/plugins-dashboard.js:2252
+#: resources/dist/js/plugins-dashboard.js:2518
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:75
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:189
+#: resources/dist/js/plugins-dashboard.js:2115
+#: resources/dist/js/plugins-dashboard.js:2355
 #, js-format
 msgid "Add %s to favorites"
-msgstr "ପ୍ରିୟ ତାଲିକାରେ %s କୁ ଯୋଡନ୍ତୁ"
+msgstr "%s କୁ ପ୍ରିୟ ବସ୍ତୁ ଯୋଗ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:2749
-#: resources/dist/js/plugins-dashboard.js:3048
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:86
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:202
-#: resources/dist/js/plugins-dashboard.js:2226
-#: resources/dist/js/plugins-dashboard.js:2473
+#: resources/dist/js/plugins-dashboard.js:2262
+#: resources/dist/js/plugins-dashboard.js:2526
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:84
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:199
+#: resources/dist/js/plugins-dashboard.js:2124
+#: resources/dist/js/plugins-dashboard.js:2365
 #, js-format
 msgid "Activate %s"
-msgstr "%s କୁ ସଚଳ କରନ୍ତୁ"
+msgstr "ସକ୍ରିୟ କରନ୍ତୁ %s"
 
-#: resources/dist/js/plugins-dashboard.js:2759
-#: resources/dist/js/plugins-dashboard.js:3075
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:95
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:238
-#: resources/dist/js/plugins-dashboard.js:2235
-#: resources/dist/js/plugins-dashboard.js:2509
-#, js-format
-msgid "%s shortcuts"
-msgstr "%s ସଂକେତ"
-
-#: resources/dist/js/plugins-dashboard.js:2769
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:99
-#: resources/dist/js/plugins-dashboard.js:2239
+#: resources/dist/js/plugins-dashboard.js:2275
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:97
+#: resources/dist/js/plugins-dashboard.js:2137
 #, js-format
 msgid "More actions for %s"
 msgstr "%s ପାଇଁ ଅଧିକ କାର୍ଯ୍ୟ"
 
-#: resources/dist/js/plugins-dashboard.js:2770
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:99
-#: resources/dist/js/plugins-dashboard.js:2239
+#: resources/dist/js/plugins-dashboard.js:2276
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:97
+#: resources/dist/js/plugins-dashboard.js:2137
 msgid "More"
 msgstr "ଅଧିକ"
 
-#: resources/dist/js/plugins-dashboard.js:2790
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:110
-#: resources/dist/js/plugins-dashboard.js:2250
+#: resources/dist/js/plugins-dashboard.js:2295
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:108
+#: resources/dist/js/plugins-dashboard.js:2148
 msgid "Conflicting installations"
-msgstr "ସଂଘଟିତ ସଂସ୍ଥାପନା"
+msgstr "ଦ୍ରୁତ ସମସ୍ୟାଗୁଡିକ"
 
-#: resources/dist/js/plugins-dashboard.js:2796
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:112
-#: resources/dist/js/plugins-dashboard.js:2252
+#: resources/dist/js/plugins-dashboard.js:2301
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:110
+#: resources/dist/js/plugins-dashboard.js:2150
 msgid "Activating…"
-msgstr "ସଚଳ କରାଯାଉଛି…"
+msgstr "ସକ୍ରିୟ କରାଯାଉଛି…"
 
-#: resources/dist/js/plugins-dashboard.js:2800
-#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:113
-#: resources/dist/js/plugins-dashboard.js:2253
+#: resources/dist/js/plugins-dashboard.js:2305
+#: resources/src/jsx/components/plugins-list/components/plugin-card.jsx:111
+#: resources/dist/js/plugins-dashboard.js:2151
 msgid "Deactivating…"
-msgstr "ବିସ୍ତାର କରାଯାଉଛି…"
+msgstr "ନିଷ୍କ୍ରିୟ କରାଯାଉଛି…"
 
-#: resources/dist/js/plugins-dashboard.js:2981
-#: resources/dist/js/plugins-dashboard.js:3479
-#: resources/dist/js/plugins-dashboard.js:3493
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:144
+#: resources/dist/js/plugins-dashboard.js:2461
+#: resources/dist/js/plugins-dashboard.js:2947
+#: resources/dist/js/plugins-dashboard.js:2959
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:141
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:148
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:164
-#: resources/dist/js/plugins-dashboard.js:2415
-#: resources/dist/js/plugins-dashboard.js:2923
-#: resources/dist/js/plugins-dashboard.js:2939
+#: resources/dist/js/plugins-dashboard.js:2307
+#: resources/dist/js/plugins-dashboard.js:2807
+#: resources/dist/js/plugins-dashboard.js:2823
 msgid "Unknown"
-msgstr "ଅଜଣା"
+msgstr "ଅଜ୍ଞାତ"
 
-#: resources/dist/js/plugins-dashboard.js:2982
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:145
-#: resources/dist/js/plugins-dashboard.js:2416
+#: resources/dist/js/plugins-dashboard.js:2462
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:142
+#: resources/dist/js/plugins-dashboard.js:2308
 msgid "New version available"
 msgstr "ନୂତନ ସଂସ୍କରଣ ଉପଲବ୍ଧ"
 
-#: resources/dist/js/plugins-dashboard.js:2998
-#: resources/dist/js/plugins-dashboard.js:3499
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:164
+#: resources/dist/js/plugins-dashboard.js:2478
+#: resources/dist/js/plugins-dashboard.js:2965
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:161
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:171
-#: resources/dist/js/plugins-dashboard.js:2435
-#: resources/dist/js/plugins-dashboard.js:2946
+#: resources/dist/js/plugins-dashboard.js:2327
+#: resources/dist/js/plugins-dashboard.js:2830
 #. translators: %s is the installed version number
 #, js-format
 msgid "Installed version: %s"
-msgstr "ସଂସ୍ଥାପିତ ସଂସ୍କରଣ: %s"
+msgstr "ଇନ୍‌ଷ୍ଟଲ୍ କରାଯାଇଛି ସଂସ୍କରଣ: %s"
 
-#: resources/dist/js/plugins-dashboard.js:3070
-#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:231
-#: resources/dist/js/plugins-dashboard.js:2502
+#: resources/dist/js/plugins-dashboard.js:2548
+#: resources/src/jsx/components/plugins-list/components/plugin-item.jsx:228
+#: resources/dist/js/plugins-dashboard.js:2394
 #, js-format
 msgid "Update available: %s → %s"
 msgstr "ଅପଡେଟ୍ ଉପଲବ୍ଧ: %s → %s"
 
-#: resources/dist/js/plugins-dashboard.js:3155
+#: resources/dist/js/plugins-dashboard.js:2622
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:23
-#: resources/dist/js/plugins-dashboard.js:2587
+#: resources/dist/js/plugins-dashboard.js:2471
 msgid "Installing"
-msgstr "ଇନ୍ସ୍ଟଲ୍ କରାଯାଉଛି"
+msgstr "ଇନ୍‌ଷ୍ଟଲ୍ କରାଯାଉଛି"
 
-#: resources/dist/js/plugins-dashboard.js:3162
+#: resources/dist/js/plugins-dashboard.js:2629
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:28
-#: resources/dist/js/plugins-dashboard.js:2592
+#: resources/dist/js/plugins-dashboard.js:2476
 msgid "Not Installed"
-msgstr "ଇନ୍ସ୍ଟଲ୍ ହୋଇନି"
+msgstr "ଇନ୍‌ଷ୍ଟଲ୍ ହୋଇନି"
 
-#: resources/dist/js/plugins-dashboard.js:3166
+#: resources/dist/js/plugins-dashboard.js:2633
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:32
-#: resources/dist/js/plugins-dashboard.js:2596
+#: resources/dist/js/plugins-dashboard.js:2480
 msgid "Free"
 msgstr "ମାଗଣା"
 
-#: resources/dist/js/plugins-dashboard.js:3170
+#: resources/dist/js/plugins-dashboard.js:2637
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:36
-#: resources/dist/js/plugins-dashboard.js:2600
+#: resources/dist/js/plugins-dashboard.js:2484
 msgid "Licensed"
-msgstr "ଲାଇସେନ୍ସ ମିଳିଥିବା"
+msgstr "ଲାଇସେନ୍ସ୍ ମିଳିଛି"
 
-#: resources/dist/js/plugins-dashboard.js:3178
-#: resources/src/jsx/components/plugins-list/components/status-flag.jsx:44
-#: resources/dist/js/plugins-dashboard.js:2608
-msgid "Expired"
-msgstr "ମିଆଦ ଶେଷ"
-
-#: resources/dist/js/plugins-dashboard.js:3182
+#: resources/dist/js/plugins-dashboard.js:2649
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:48
-#: resources/dist/js/plugins-dashboard.js:2612
+#: resources/dist/js/plugins-dashboard.js:2496
 msgid "Uninstalling"
-msgstr "ଅନଇନ୍ସ୍ଟଲ୍ କରାଯାଉଛି"
+msgstr "ଅନଇନ୍‌ଷ୍ଟଲ୍ କରାଯାଉଛି"
 
-#: resources/dist/js/plugins-dashboard.js:3189
+#: resources/dist/js/plugins-dashboard.js:2656
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:53
-#: resources/dist/js/plugins-dashboard.js:2617
+#: resources/dist/js/plugins-dashboard.js:2501
 msgid "Upgrading"
-msgstr "ଉପଗ୍ରେଡ୍ ହେଉଛି"
+msgstr "ଅପଗ୍ରେଡ୍ କରାଯାଉଛି"
 
-#: resources/dist/js/plugins-dashboard.js:3196
+#: resources/dist/js/plugins-dashboard.js:2663
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:58
-#: resources/dist/js/plugins-dashboard.js:2622
+#: resources/dist/js/plugins-dashboard.js:2506
 msgid "Deactivating"
 msgstr "ନିଷ୍କ୍ରିୟ କରାଯାଉଛି"
 
-#: resources/dist/js/plugins-dashboard.js:3203
+#: resources/dist/js/plugins-dashboard.js:2670
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:63
-#: resources/dist/js/plugins-dashboard.js:2627
+#: resources/dist/js/plugins-dashboard.js:2511
 msgid "Activating"
 msgstr "ସକ୍ରିୟ କରାଯାଉଛି"
 
-#: resources/dist/js/plugins-dashboard.js:3210
+#: resources/dist/js/plugins-dashboard.js:2677
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:68
-#: resources/dist/js/plugins-dashboard.js:2632
+#: resources/dist/js/plugins-dashboard.js:2516
 msgid "Conflicting Installations"
-msgstr "ସଂକ୍ରାନ୍ତ ଇନ୍ସ୍ଟଲେସନ୍‌ଗୁଡିକ"
+msgstr "ଦ୍ରୁତ ସମସ୍ୟାଗୁଡିକ"
 
-#: resources/dist/js/plugins-dashboard.js:3214
-#: resources/dist/js/plugins-dashboard.js:3298
+#: resources/dist/js/plugins-dashboard.js:2681
+#: resources/dist/js/plugins-dashboard.js:2766
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:72
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:173
-#: resources/dist/js/plugins-dashboard.js:2636
-#: resources/dist/js/plugins-dashboard.js:2737
+#: resources/dist/js/plugins-dashboard.js:2520
+#: resources/dist/js/plugins-dashboard.js:2621
 msgid "Update Available"
-msgstr "ଅଦ୍ୟତନ ଉପଲବ୍ଧ"
+msgstr "ଅପଡେଟ୍ ଉପଲବ୍ଧ"
 
-#: resources/dist/js/plugins-dashboard.js:3306
+#: resources/dist/js/plugins-dashboard.js:2774
 #: resources/src/jsx/components/plugins-list/components/status-flag.jsx:184
-#: resources/dist/js/plugins-dashboard.js:2748
+#: resources/dist/js/plugins-dashboard.js:2632
 msgid "Expires"
-msgstr "ବିସ୍ମୃତ"
+msgstr "ମୂଲ୍ୟବାହି"
 
-#: resources/dist/js/plugins-dashboard.js:3401
-#: resources/dist/js/plugins-dashboard.js:3412
+#: resources/dist/js/plugins-dashboard.js:2875
+#: resources/dist/js/plugins-dashboard.js:2886
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:55
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:74
-#: resources/dist/js/plugins-dashboard.js:2830
-#: resources/dist/js/plugins-dashboard.js:2849
+#: resources/dist/js/plugins-dashboard.js:2714
+#: resources/dist/js/plugins-dashboard.js:2733
 msgid "Renew"
-msgstr "ପୁନର୍ନବୀକରଣ କରନ୍ତୁ"
+msgstr "نوଟନ୍ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:3421
+#: resources/dist/js/plugins-dashboard.js:2895
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:84
-#: resources/dist/js/plugins-dashboard.js:2859
+#: resources/dist/js/plugins-dashboard.js:2743
 msgid "Deactivate"
 msgstr "ନିଷ୍କ୍ରିୟ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:3432
+#: resources/dist/js/plugins-dashboard.js:2904
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:93
-#: resources/dist/js/plugins-dashboard.js:2868
+#: resources/dist/js/plugins-dashboard.js:2752
 msgid "Activate"
 msgstr "ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:3443
+#: resources/dist/js/plugins-dashboard.js:2913
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:103
-#: resources/dist/js/plugins-dashboard.js:2878
+#: resources/dist/js/plugins-dashboard.js:2762
 msgid "Uninstall"
-msgstr "ଅନଇନ୍ସ୍ଟଲ୍ କରନ୍ତୁ"
+msgstr "ଅନଇନ୍‌ଷ୍ଟଲ୍ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:3480
-#: resources/dist/js/plugins-dashboard.js:3494
+#: resources/dist/js/plugins-dashboard.js:2948
+#: resources/dist/js/plugins-dashboard.js:2960
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:149
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:165
-#: resources/dist/js/plugins-dashboard.js:2924
-#: resources/dist/js/plugins-dashboard.js:2940
+#: resources/dist/js/plugins-dashboard.js:2808
+#: resources/dist/js/plugins-dashboard.js:2824
 msgid "latest"
-msgstr "ସବୁଠୁ ନୂତନ"
+msgstr "ସର୍ବଶେଷ"
 
-#: resources/dist/js/plugins-dashboard.js:3484
+#: resources/dist/js/plugins-dashboard.js:2952
 #: resources/src/jsx/components/plugins-list/hooks/use-action-buttons.jsx:154
-#: resources/dist/js/plugins-dashboard.js:2929
+#: resources/dist/js/plugins-dashboard.js:2813
 #, js-format
 msgid "Update to %s"
-msgstr "%s ପରିବର୍ତ୍ତନ କରନ୍ତୁ"
+msgstr "%s ଅପଡେଟ୍ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:4041
+#: resources/dist/js/plugins-dashboard.js:3365
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:37
-#: resources/dist/js/plugins-dashboard.js:3326
+#: resources/dist/js/plugins-dashboard.js:3210
 msgid "This plugin is not installed."
-msgstr "ଏହି ପ୍ଲଗଇନ୍ ଇନସ୍ଟଲ୍ ହୋଇନି।"
+msgstr "ଏହି ପ୍ଲଗଇନ୍ ଇନ୍ସ୍ଟଲ୍ ହୋଇନି।"
 
-#: resources/dist/js/plugins-dashboard.js:4043
+#: resources/dist/js/plugins-dashboard.js:3367
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:40
-#: resources/dist/js/plugins-dashboard.js:3329
+#: resources/dist/js/plugins-dashboard.js:3213
 msgid "This plugin is active."
-msgstr "ଏହି ପ୍ଲଗଇନ୍ ସକ୍ରିୟ।"
+msgstr "ଏହି ପ୍ଲଗଇନ୍ ସକ୍ରିୟ ଅଛି।"
 
-#: resources/dist/js/plugins-dashboard.js:4043
+#: resources/dist/js/plugins-dashboard.js:3367
 #: resources/src/jsx/components/plugins-list/hooks/use-plugin-status.jsx:41
-#: resources/dist/js/plugins-dashboard.js:3330
+#: resources/dist/js/plugins-dashboard.js:3214
 msgid "This plugin is not active."
 msgstr "ଏହି ପ୍ଲଗଇନ୍ ସକ୍ରିୟ ନୁହେଁ।"
 
-#: resources/dist/js/plugins-dashboard.js:4272
-#: resources/src/jsx/components/plugins-list/index.jsx:166
-#: resources/dist/js/plugins-dashboard.js:3549
+#: resources/dist/js/plugins-dashboard.js:3586
+#: resources/src/jsx/components/plugins-list/index.jsx:170
+#: resources/dist/js/plugins-dashboard.js:3437
 msgid "Editorial process"
-msgstr "ସମାଧାନ ପ୍ରକ୍ରିୟା"
+msgstr "ସାମ୍ପାଦକୀୟ ପ୍ରକ୍ରିୟା"
 
-#: resources/dist/js/plugins-dashboard.js:4275
-#: resources/src/jsx/components/plugins-list/index.jsx:167
-#: resources/dist/js/plugins-dashboard.js:3550
-msgid "Additional publishing tools"
-msgstr "ଅତିରିକ୍ତ ପ୍ରକାଶନ ଟୁଲ୍‌ସ"
-
-#: resources/dist/js/plugins-dashboard.js:4283
+#: resources/dist/js/plugins-dashboard.js:3589
 #: resources/src/jsx/components/plugins-list/index.jsx:171
-#: resources/dist/js/plugins-dashboard.js:3554
+#: resources/dist/js/plugins-dashboard.js:3438
+msgid "Additional publishing tools"
+msgstr "ଅତିରିକ୍ତ ପ୍ରକାଶନ ଉପକରଣ"
+
+#: resources/dist/js/plugins-dashboard.js:3595
+#: resources/src/jsx/components/plugins-list/index.jsx:175
+#: resources/dist/js/plugins-dashboard.js:3442
 msgid "Other plugins"
-msgstr "ଅନ୍ୟ ପ୍ଲଗଇନ୍‌ସ"
+msgstr "ଅନ୍ୟ ପ୍ଲଗଇନ୍"
 
-#: resources/dist/js/plugins-dashboard.js:4296
-#: resources/src/jsx/components/plugins-list/index.jsx:177
-#: resources/dist/js/plugins-dashboard.js:3560
+#: resources/dist/js/plugins-dashboard.js:3604
+#: resources/src/jsx/components/plugins-list/index.jsx:181
+#: resources/dist/js/plugins-dashboard.js:3448
 msgid "Plugin layout"
-msgstr "ପ୍ଲଗଇନ୍ ରେଖାଚିତ୍ର"
+msgstr "ପ୍ଲଗଇନ୍ ଲେଆଉଟ୍"
 
-#: resources/dist/js/plugins-dashboard.js:4310
-#: resources/src/jsx/components/plugins-list/index.jsx:181
-#: resources/dist/js/plugins-dashboard.js:3564
+#: resources/dist/js/plugins-dashboard.js:3615
+#: resources/src/jsx/components/plugins-list/index.jsx:185
+#: resources/dist/js/plugins-dashboard.js:3452
 msgid "Cards"
-msgstr "କାର୍ଡ"
+msgstr "କାର୍ଡ୍‌ସ"
 
-#: resources/dist/js/plugins-dashboard.js:4310
-#: resources/src/jsx/components/plugins-list/index.jsx:181
-#: resources/dist/js/plugins-dashboard.js:3564
+#: resources/dist/js/plugins-dashboard.js:3615
+#: resources/src/jsx/components/plugins-list/index.jsx:185
+#: resources/dist/js/plugins-dashboard.js:3452
 msgid "List"
 msgstr "ତାଲିକା"
 
-#: resources/dist/js/plugins-dashboard.js:4312
-#: resources/src/jsx/components/plugins-list/index.jsx:184
-#: resources/dist/js/plugins-dashboard.js:3567
+#: resources/dist/js/plugins-dashboard.js:3616
+#: resources/src/jsx/components/plugins-list/index.jsx:188
+#: resources/dist/js/plugins-dashboard.js:3455
 msgid "Group by purpose"
-msgstr "ଲକ୍ଷ୍ୟ ଅନୁସାରେ ଗୋଷ୍ଠୀବଦ୍ଧ କରନ୍ତୁ"
+msgstr "ଉଦ୍ଦେଶ୍ୟ ଅନୁସାରେ ଗୋଷ୍ଠୀବଦ୍ଧ କରନ୍ତୁ"
 
-#: resources/dist/js/plugins-dashboard.js:4320
-#: resources/src/jsx/components/plugins-list/index.jsx:186
-#: resources/dist/js/plugins-dashboard.js:3569
+#: resources/dist/js/plugins-dashboard.js:3622
+#: resources/src/jsx/components/plugins-list/index.jsx:190
+#: resources/dist/js/plugins-dashboard.js:3457
 msgid "Favorites only"
-msgstr "ମାତ୍ର ପ୍ରିୟ"
+msgstr "କେବଳ ପସନ୍ଦସାଧନ"
 
-#: resources/dist/js/plugins-dashboard.js:4342
-#: resources/src/jsx/components/plugins-list/index.jsx:200
-#: resources/dist/js/plugins-dashboard.js:3583
+#: resources/dist/js/plugins-dashboard.js:3640
+#: resources/src/jsx/components/plugins-list/index.jsx:204
+#: resources/dist/js/plugins-dashboard.js:3471
 msgid "No plugins found."
-msgstr "କୋଣସି ପ୍ଲଗଇନ୍ ମିଳିଲା ନାହିଁ।"
+msgstr "କୌଣସି ପ୍ଲଗଇନ୍ ମିଳିଲା ନାହିଁ।"
 
-#: resources/dist/js/plugins-dashboard.js:4346
-#: resources/src/jsx/components/plugins-list/index.jsx:206
-#: resources/dist/js/plugins-dashboard.js:3589
+#: resources/dist/js/plugins-dashboard.js:3644
+#: resources/src/jsx/components/plugins-list/index.jsx:210
+#: resources/dist/js/plugins-dashboard.js:3477
 msgid "Loading plugins..."
 msgstr "ପ୍ଲଗଇନ୍ ଲୋଡ୍ ହେଉଛି..."
 
-#: resources/dist/js/plugins-dashboard.js:4955
+#: resources/dist/js/plugins-dashboard.js:4075
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:225
-#: resources/dist/js/plugins-dashboard.js:4017
+#: resources/dist/js/plugins-dashboard.js:3902
 msgid "Failed to fetch plugins"
-msgstr "ପ୍ଲଗଇନ୍ ନେବାରେ ବିଫଳ"
+msgstr "ପ୍ଲଗଇନ୍ ଆଣିବାରେ ବିଫଳ"
 
-#: resources/dist/js/plugins-dashboard.js:5015
-#: resources/dist/js/plugins-dashboard.js:5110
+#: resources/dist/js/plugins-dashboard.js:4110
+#: resources/dist/js/plugins-dashboard.js:4170
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:259
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:319
-#: resources/dist/js/plugins-dashboard.js:4051
-#: resources/dist/js/plugins-dashboard.js:4111
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:320
+#: resources/dist/js/plugins-dashboard.js:3936
+#: resources/dist/js/plugins-dashboard.js:3997
 #, js-format
 msgid "%s installed successfully"
-msgstr "%s ସଫଳତାର ସହିତ ଇନସ୍ଟଲ୍ ହୋଇଛି"
+msgstr "%s ସଫଳତାର ସହ ଇନ୍ସ୍ଟଲ୍ ହେଲା"
 
-#: resources/dist/js/plugins-dashboard.js:5043
-#: resources/dist/js/plugins-dashboard.js:5139
+#: resources/dist/js/plugins-dashboard.js:4128
+#: resources/dist/js/plugins-dashboard.js:4191
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:276
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:338
-#: resources/dist/js/plugins-dashboard.js:4068
-#: resources/dist/js/plugins-dashboard.js:4130
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:339
+#: resources/dist/js/plugins-dashboard.js:3953
+#: resources/dist/js/plugins-dashboard.js:4016
 #, js-format
 msgid "%s installation failed"
-msgstr "%s ଇନସ୍ଟଲେସନ୍ ବିଫଳ"
+msgstr "%s ଇନ୍ସ୍ଟଲେସନ୍ ବିଫଳ"
 
-#: resources/dist/js/plugins-dashboard.js:5197
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:374
-#: resources/dist/js/plugins-dashboard.js:4166
+#: resources/dist/js/plugins-dashboard.js:4224
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:375
+#: resources/dist/js/plugins-dashboard.js:4052
 #, js-format
 msgid "%s uninstalled successfully"
-msgstr "%s ସଫଳତାର ସହିତ ଅନଇନ୍ସ୍ଟଲ୍ ହୋଇଛି"
+msgstr "%s ସଫଳତାର ସହ ଅନଇନ୍ସ୍ଟଲ୍ ହେଲା"
 
-#: resources/dist/js/plugins-dashboard.js:5222
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:390
-#: resources/dist/js/plugins-dashboard.js:4182
+#: resources/dist/js/plugins-dashboard.js:4241
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:391
+#: resources/dist/js/plugins-dashboard.js:4068
 #, js-format
 msgid "%s uninstall failed"
 msgstr "%s ଅନଇନ୍ସ୍ଟଲେସନ୍ ବିଫଳ"
 
-#: resources/dist/js/plugins-dashboard.js:5291
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:426
-#: resources/dist/js/plugins-dashboard.js:4218
+#: resources/dist/js/plugins-dashboard.js:4279
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:427
+#: resources/dist/js/plugins-dashboard.js:4104
 #, js-format
 msgid "%s activated successfully"
-msgstr "%s ସଫଳତାର ସହିତ ସକ୍ରିୟ ହୋଇଛି"
+msgstr "%s ସଫଳତାର ସହ ସକ୍ରିୟ ହେଲା"
 
-#: resources/dist/js/plugins-dashboard.js:5318
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:443
-#: resources/dist/js/plugins-dashboard.js:4235
+#: resources/dist/js/plugins-dashboard.js:4298
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:444
+#: resources/dist/js/plugins-dashboard.js:4121
 #, js-format
 msgid "%s activation failed"
-msgstr "%s ସକ୍ରିୟତା ବିଫଳ ହେଲା"
+msgstr "%s ସକ୍ରିୟତା ବିଫଳ"
 
-#: resources/dist/js/plugins-dashboard.js:5386
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:478
-#: resources/dist/js/plugins-dashboard.js:4270
+#: resources/dist/js/plugins-dashboard.js:4337
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:479
+#: resources/dist/js/plugins-dashboard.js:4156
 #, js-format
 msgid "%s deactivated successfully"
-msgstr "%s ସକ୍ରିୟତା ସଫଳ ହେଲା"
+msgstr "%s ସଫଳତାର ସହ ଅସକ୍ରିୟ ହେଲା"
 
-#: resources/dist/js/plugins-dashboard.js:5413
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:494
-#: resources/dist/js/plugins-dashboard.js:4286
+#: resources/dist/js/plugins-dashboard.js:4355
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:495
+#: resources/dist/js/plugins-dashboard.js:4172
 #, js-format
 msgid "%s deactivation failed"
-msgstr "%s ସକ୍ରିୟତା ବିଫଳ ହେଲା"
+msgstr "%s ଅସକ୍ରିୟତା ବିଫଳ"
 
-#: resources/dist/js/plugins-dashboard.js:5485
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:537
-#: resources/dist/js/plugins-dashboard.js:4329
+#: resources/dist/js/plugins-dashboard.js:4400
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:539
+#: resources/dist/js/plugins-dashboard.js:4216
 #, js-format
 msgid "%s upgraded successfully"
-msgstr "%s ସଫଳତାର ସହିତ ଅପଗ୍ରେଡ୍ ହୋଇଛି"
+msgstr "%s ସଫଳତାର ସହ ଅପଗ୍ରେଡ୍ ହେଲା"
 
-#: resources/dist/js/plugins-dashboard.js:5514
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:556
-#: resources/dist/js/plugins-dashboard.js:4348
+#: resources/dist/js/plugins-dashboard.js:4421
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:558
+#: resources/dist/js/plugins-dashboard.js:4235
 #, js-format
 msgid "%s upgrade to Pro failed"
-msgstr "%s ପ୍ରୋକୁ ଅପଗ୍ରେଡ୍ ବିଫଳ ହେଲା"
+msgstr "%s ପ୍ରୋକୁ ଅପଗ୍ରେଡ୍ ବିଫଳ"
 
-#: resources/dist/js/plugins-dashboard.js:5599
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:608
-#: resources/dist/js/plugins-dashboard.js:4400
+#: resources/dist/js/plugins-dashboard.js:4475
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:610
+#: resources/dist/js/plugins-dashboard.js:4287
 #, js-format
 msgid "Conflict resolved successfully for %s"
-msgstr "%s ପାଇଁ ବିବାଦ ସମାଧାନ ସଫଳ ହେଲା"
+msgstr "%s ପାଇଁ ଝଗଡା ସଫଳତାର ସହ ସମାଧାନ ହେଲା"
 
-#: resources/dist/js/plugins-dashboard.js:5626
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:625
-#: resources/dist/js/plugins-dashboard.js:4417
+#: resources/dist/js/plugins-dashboard.js:4494
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:627
+#: resources/dist/js/plugins-dashboard.js:4304
 #, js-format
 msgid "Failed to resolve conflict for %s"
-msgstr "%s ପାଇଁ ବିବାଦ ସମାଧାନ ବିଫଳ ହେଲା"
+msgstr "%s ପାଇଁ ଝଗଡା ସମାଧାନ କରିବାରେ ବିଫଳ"
 
-#: resources/dist/js/plugins-dashboard.js:5680
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:657
-#: resources/dist/js/plugins-dashboard.js:4449
+#: resources/dist/js/plugins-dashboard.js:4525
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:659
+#: resources/dist/js/plugins-dashboard.js:4336
 #, js-format
 msgid "%s license deactivated successfully"
-msgstr "%s ଲାଇସେନ୍ସ ସକ୍ରିୟତା ସଫଳ ହେଲା"
+msgstr "%s ଲାଇସେନ୍ସ ସଫଳତାର ସହ ଅସକ୍ରିୟ ହେଲା"
 
-#: resources/dist/js/plugins-dashboard.js:5705
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:673
-#: resources/dist/js/plugins-dashboard.js:4465
+#: resources/dist/js/plugins-dashboard.js:4542
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:675
+#: resources/dist/js/plugins-dashboard.js:4352
 #, js-format
 msgid "%s license deactivation failed"
-msgstr "%s ଲାଇସେନ୍ସ ସକ୍ରିୟତା ବିଫଳ ହେଲା"
+msgstr "%s ଲାଇସେନ୍ସ ଅସକ୍ରିୟତା ବିଫଳ"
 
-#: resources/dist/js/plugins-dashboard.js:5767
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:709
-#: resources/dist/js/plugins-dashboard.js:4501
+#: resources/dist/js/plugins-dashboard.js:4554
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:693
+#: resources/dist/js/plugins-dashboard.js:4370
+#, js-format
+msgid ""
+"The license key could not be activated for these plugins: %s. Review their "
+"licenses and retry from each plugin’s license controls."
+msgstr ""
+"ଏହି ପ୍ଲଗଇନ୍‌ଗୁଡିକ ପାଇଁ ଲାଇସେନ୍ସ କୀ ସକ୍ରିୟ ହୋଇପାରିଲା ନାହିଁ: %s। ତାଙ୍କର "
+"ଲାଇସେନ୍ସ ସମୀକ୍ଷା କରନ୍ତୁ ଏବଂ ପ୍ଲଗଇନ୍‌ର ଲାଇସେନ୍ସ ନିୟନ୍ତ୍ରଣରୁ ପୁନର୍ବାର ଚେଷ୍ଟା "
+"କରନ୍ତୁ।"
+
+#: resources/dist/js/plugins-dashboard.js:4588
+#: resources/dist/js/plugins-dashboard.js:4644
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:723
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:775
+#: resources/dist/js/plugins-dashboard.js:4400
+#: resources/dist/js/plugins-dashboard.js:4452
 msgid "License activated successfully for all PublishPress plugins"
-msgstr "すべてのPublishPressプラグインのライセンスが正常にアクティブ化されました"
+msgstr "ସମସ୍ତ PublishPress ପ୍ଲଗଇନ୍‌ମାନେ ପାଇଁ ଲାଇସେନ୍ସ ସଫଳତାର ସହ ସକ୍ରିୟ ହେଲା"
 
-#: resources/dist/js/plugins-dashboard.js:5767
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:710
-#: resources/dist/js/plugins-dashboard.js:4502
+#: resources/dist/js/plugins-dashboard.js:4588
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:724
+#: resources/dist/js/plugins-dashboard.js:4401
 #, js-format
 msgid "%s license activated successfully"
-msgstr "%s ଲାଇସେନ୍ସ ସକ୍ରିୟ କରାଯାଇଛି"
+msgstr "%s ଲାଇସେନ୍ସ ସଫଳତାର ସହ ସକ୍ରିୟ ହେଲା"
 
-#: resources/dist/js/plugins-dashboard.js:5796
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:726
-#: resources/dist/js/plugins-dashboard.js:4518
+#: resources/dist/js/plugins-dashboard.js:4608
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:740
+#: resources/dist/js/plugins-dashboard.js:4417
 #, js-format
 msgid "%s license activation failed"
-msgstr "%s ଲାଇସେନ୍ସ ସକ୍ରିୟତା ବିଫଳ ହେଲା"
+msgstr "%s ଲାଇସେନ୍ସ ସକ୍ରିୟତା ବିଫଳ"
 
-#: resources/dist/js/plugins-dashboard.js:5855
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:758
-#: resources/dist/js/plugins-dashboard.js:4550
-msgid "License reused successfully for all PublishPress plugins"
-msgstr ""
-"ସମସ୍ତ PublishPress ପ୍ଲଗଇନ୍‌ଗୁଡିକ ପାଇଁ ଲାଇସେନ୍ସ ସଫଳତାର ସହିତ ପୁନର୍ବ୍ୟବହାର "
-"କରାଗଲା"
-
-#: resources/dist/js/plugins-dashboard.js:5882
+#: resources/dist/js/plugins-dashboard.js:4644
 #: resources/src/jsx/stores/plugins-dashboard/actions.jsx:774
-#: resources/dist/js/plugins-dashboard.js:4566
+#: resources/dist/js/plugins-dashboard.js:4451
+msgid "License checks complete. Some plugins could not be activated."
+msgstr "ଲାଇସେନ୍ସ ପରୀକ୍ଷା ସମ୍ପୂର୍ଣ୍ଣ। କିଛି ପ୍ଲଗଇନ୍ ସକ୍ରିୟ କରିବାରେ ବିଫଳ ହେଲା।"
+
+#: resources/dist/js/plugins-dashboard.js:4663
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:791
+#: resources/dist/js/plugins-dashboard.js:4468
 #, js-format
 msgid "%s license reuse failed"
-msgstr "%s ଲାଇସେନ୍ସ ପୁନର୍ବ୍ୟବହାର ବିଫଳ ହେଲା"
+msgstr "%s ଲାଇସେନ୍ସ ପୁନଃ ବ୍ୟବହାର ବିଫଳ"
 
-#: resources/dist/js/plugins-dashboard.js:5950
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:813
-#: resources/dist/js/plugins-dashboard.js:4605
+#: resources/dist/js/plugins-dashboard.js:4700
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:830
+#: resources/dist/js/plugins-dashboard.js:4507
 msgid ""
 "The plugin was updated successfully, but the dashboard could not refresh. "
 "Reloading this page..."
 msgstr ""
-"ପ୍ଲଗଇନ୍‌ଟି ସଫଳତାର ସହିତ ଅଧୁନା କରାଗଲା, କିନ୍ତୁ ଡାଶବୋର୍ଡ୍ ନବୀକରଣ କରିପାରିଲାନି। "
-"ଏହି ପୃଷ୍ଠାକୁ ପୁନର୍ଲୋଡ୍ କରାଯାଉଛି..."
+"ପ୍ଲଗଇନ୍ ସଫଳତାର ସହ ଅପଡେଟ୍ ହେଲା, କିନ୍ତୁ ଡ୍ୟାଶବୋର୍ଡ ରିଫ୍ରେଶ୍ ହୋଇପାରିଲା ନାହିଁ। "
+"ଏହି ପୃଷ୍ଠାକୁ ରିଲୋଡ୍ କରୁଛି..."
 
-#: resources/dist/js/plugins-dashboard.js:5976
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:836
-#: resources/dist/js/plugins-dashboard.js:4628
+#: resources/dist/js/plugins-dashboard.js:4718
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:853
+#: resources/dist/js/plugins-dashboard.js:4530
 #, js-format
 msgid "%s updated successfully"
-msgstr "%s ଅପଡେଟ୍ ସଫଳ ହେଲା"
+msgstr "%s ସଫଳତାର ସହ ଅପଡେଟ୍ ହେଲା"
 
-#: resources/dist/js/plugins-dashboard.js:6004
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:853
-#: resources/dist/js/plugins-dashboard.js:4645
+#: resources/dist/js/plugins-dashboard.js:4736
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:870
+#: resources/dist/js/plugins-dashboard.js:4547
 #, js-format
 msgid "%s update failed"
-msgstr "%s ଅପଡେଟ୍ ବିଫଳ ହେଲା"
+msgstr "%s ଅପଡେଟ୍ ବିଫଳ"
 
-#: resources/dist/js/plugins-dashboard.js:6078
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:915
-#: resources/dist/js/plugins-dashboard.js:4707
+#: resources/dist/js/plugins-dashboard.js:4797
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:932
+#: resources/dist/js/plugins-dashboard.js:4609
 msgid "Too many requests. Please wait a few seconds and try again."
-msgstr ""
-"ଅତିରିକ୍ତ ଅନୁରୋଧ। କୃପୟା କିଛି ସେକେଣ୍ଡ ଅପେକ୍ଷା କରନ୍ତୁ ଏବଂ ପୁନର୍ବାର ଚେଷ୍ଟା "
-"କରନ୍ତୁ।"
+msgstr "ଅତି ଅଧିକ ଅନୁରୋଧ। କୌଣସି କିଛି ସେକେଣ୍ଡ୍ ଅପେକ୍ଷା କରନ୍ତୁ ଏବଂ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।"
 
-#: resources/dist/js/plugins-dashboard.js:6086
-#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:925
-#: resources/dist/js/plugins-dashboard.js:4717
-#, js-format
+#: resources/dist/js/plugins-dashboard.js:4804
+#: resources/src/jsx/stores/plugins-dashboard/actions.jsx:942
+#: resources/dist/js/plugins-dashboard.js:4619
+#, fuzzy, js-format
 msgid "Cloudflare Ray ID: %s"
-msgstr "କ୍ଲାଉଡଫ୍ଲାର ରେ ଆଇଡି: %s"
+msgstr "Cloudflare Ray ID: %s"
 
-#: resources/dist/js/settings-page.js:433
+#: resources/dist/js/settings-page.js:425
 #: resources/src/jsx/components/pages/settings-page.jsx:32
-#: resources/dist/js/settings-page.js:363
+#: resources/dist/js/settings-page.js:366
 msgid "Diagnostics"
-msgstr "ଡାୟାଗ୍ନୋଷ୍ଟିକ୍ସ"
+msgstr "ଡିଆଗ୍ନୋଷ୍ଟିକ୍ସ"
 
-#: resources/dist/js/settings-page.js:574
+#: resources/dist/js/settings-page.js:508
 #: resources/src/jsx/components/pages/settings-page.jsx:136
-#: resources/dist/js/settings-page.js:467
+#: resources/dist/js/settings-page.js:470
 msgid "Site health report copied to clipboard."
-msgstr "サイトヘルスレポートがクリップボードにコピーされました。"
+msgstr "ସାଇଟ୍ ହେଲ୍ଥ୍ ରିପୋର୍ଟ୍ କ୍ଲିପ୍‌ବୋର୍ଡ୍‌କୁ କପି କରାଗଲା।"
 
-#: resources/dist/js/settings-page.js:583
+#: resources/dist/js/settings-page.js:513
 #: resources/src/jsx/components/pages/settings-page.jsx:141
-#: resources/dist/js/settings-page.js:472
+#: resources/dist/js/settings-page.js:475
 msgid "Failed to copy the site health report. Please try again."
-msgstr "サイトヘルスレポートのコピーに失敗しました。もう一度試してください。"
+msgstr "ସାଇଟ୍ ହେଲ୍ଥ୍ ରିପୋର୍ଟ୍ କପି କରିବାରେ ବିଫଳ। କୃପୟା ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ।"
 
-#: resources/dist/js/settings-page.js:624
+#: resources/dist/js/settings-page.js:537
 #: resources/src/jsx/components/pages/settings-page.jsx:167
-#: resources/dist/js/settings-page.js:498
+#: resources/dist/js/settings-page.js:501
 msgid "Site health report downloaded."
-msgstr "サイトヘルスレポートがダウンロードされました。"
+msgstr "ସାଇଟ୍ ହେଲ୍ଥ୍ ରିପୋର୍ଟ୍ ଡାଉନଲୋଡ୍ ହୋଇଗଲା।"
 
-#: resources/dist/js/settings-page.js:633
+#: resources/dist/js/settings-page.js:542
 #: resources/src/jsx/components/pages/settings-page.jsx:172
-#: resources/dist/js/settings-page.js:503
+#: resources/dist/js/settings-page.js:506
 msgid "Failed to download the site health report. Please try again."
-msgstr "サイトヘルスレポートのダウンロードに失敗しました。もう一度試してください。"
+msgstr "ସାଇଟ୍ ହେଲ୍ଥ୍ ରିପୋର୍ଟ୍ ଡାଉନଲୋଡ୍ କରିବାରେ ବିଫଳ। କୃପୟା ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ।"
 
-#: resources/dist/js/settings-page.js:675
-#: resources/src/jsx/components/pages/settings-page.jsx:213
-#: resources/dist/js/settings-page.js:544
+#: resources/dist/js/settings-page.js:572
+#: resources/src/jsx/components/pages/settings-page.jsx:214
+#: resources/dist/js/settings-page.js:548
 msgid "Copy Site Health Report"
-msgstr "サイトヘルスレポートをコピー"
+msgstr "ସାଇଟ୍ ହେଲ୍ଥ୍ ରିପୋର୍ଟ୍ କପି କରନ୍ତୁ"
 
-#: resources/dist/js/settings-page.js:679
-#: resources/src/jsx/components/pages/settings-page.jsx:221
-#: resources/dist/js/settings-page.js:552
+#: resources/dist/js/settings-page.js:577
+#: resources/src/jsx/components/pages/settings-page.jsx:223
+#: resources/dist/js/settings-page.js:557
 msgid "Download Site Health Report"
-msgstr "サイトヘルスレポートをダウンロード"
+msgstr "ସାଇଟ୍ ହେଲ୍ଥ୍ ରିପୋର୍ଟ୍ ଡାଉନଲୋଡ୍ କରନ୍ତୁ"
 
-#: resources/dist/js/settings-page.js:870
+#: resources/dist/js/settings-page.js:708
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:108
-#: resources/dist/js/settings-page.js:669
+#: resources/dist/js/settings-page.js:674
 msgid "Failed to load the debug log. Please try again."
-msgstr "ଡିବଗ୍ ଲଗ୍ ଲୋଡ୍ କରିବାରେ ବିଫଳ ହେଲା। ଦୟାକରି ପୁଣିଥରେ ଚେଷ୍ଟା କରନ୍ତୁ।"
+msgstr "ଡିବଗ୍ ଲଗ୍ ଲୋଡ୍ କରିବାରେ ବିଫଳ। କୃପୟା ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ।"
 
-#: resources/dist/js/settings-page.js:949
+#: resources/dist/js/settings-page.js:775
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:182
-#: resources/dist/js/settings-page.js:743
-msgid "Debug log cleared successfully."
-msgstr "ଡିବଗ୍ ଲଗ୍ ସফଳତାର ସହିତ ପଢ଼ିଗଲା।"
-
-#: resources/dist/js/settings-page.js:958
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
 #: resources/dist/js/settings-page.js:748
+msgid "Debug log cleared successfully."
+msgstr "ଡିବଗ୍ ଲଗ୍ ସଫଳତାର ସହିତ ସଫା କରାଗଲା।"
+
+#: resources/dist/js/settings-page.js:780
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:187
+#: resources/dist/js/settings-page.js:753
 msgid "Failed to clear the debug log. Please try again."
-msgstr "ଡିବଗ୍ ଲଗ୍ କ୍ଲିୟାର୍ କରିବାରେ ବିଫଳ ହେଲା। ଦୟାକରି ପୁଣିଥରେ ଚେଷ୍ଟା କରନ୍ତୁ।"
+msgstr "ଡିବଗ୍ ଲଗ୍ ସଫା କରିବାରେ ବିଫଳ। କୃପୟା ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ।"
 
-#: resources/dist/js/settings-page.js:1017
+#: resources/dist/js/settings-page.js:812
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:222
-#: resources/dist/js/settings-page.js:783
-msgid "Log copied to clipboard."
-msgstr "ଲଗ୍ କ୍ଲିପ୍ ବୋର୍ଡ୍ ମଧ୍ୟରେ କପି ହୋଇଛି।"
-
-#: resources/dist/js/settings-page.js:1026
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
 #: resources/dist/js/settings-page.js:788
-msgid "Failed to copy log to clipboard."
-msgstr "ଲଗ୍ କ୍ଲିପ୍ ବୋର୍ଡ୍ ମଧ୍ୟରେ କପି କରିବାରେ ବିଫଳ ହେଲା।"
+msgid "Log copied to clipboard."
+msgstr "ଲଗ୍ କ୍ଲିପ୍‌ବୋର୍ଡ୍‌କୁ କପି କରାଗଲା।"
 
-#: resources/dist/js/settings-page.js:1051
+#: resources/dist/js/settings-page.js:817
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:227
+#: resources/dist/js/settings-page.js:793
+msgid "Failed to copy log to clipboard."
+msgstr "ଲଗ୍ କ୍ଲିପ୍‌ବୋର୍ଡ୍‌କୁ କପି କରିବାରେ ବିଫଳ।"
+
+#: resources/dist/js/settings-page.js:833
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:250
-#: resources/dist/js/settings-page.js:811
+#: resources/dist/js/settings-page.js:816
 msgid "Debug log view"
 msgstr "ଡିବଗ୍ ଲଗ୍ ଦୃଶ୍ୟ"
 
-#: resources/dist/js/settings-page.js:1059
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:258
-#: resources/dist/js/settings-page.js:819
-msgid "Requests"
-msgstr "ଆବେଦନ"
-
-#: resources/dist/js/settings-page.js:1066
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:266
-#: resources/dist/js/settings-page.js:827
-msgid "Full Log"
-msgstr "ସମ୍ପୂର୍ଣ ଲଗ"
-
-#: resources/dist/js/settings-page.js:1079
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
 #: resources/dist/js/settings-page.js:839
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:258
+#: resources/dist/js/settings-page.js:824
+msgid "Requests"
+msgstr "ବିନନ୍ତୀଗୁଡିକ"
+
+#: resources/dist/js/settings-page.js:844
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:266
+#: resources/dist/js/settings-page.js:832
+msgid "Full Log"
+msgstr "ସମ୍ପୂର୍ଣ୍ଣ ଲଗ୍"
+
+#: resources/dist/js/settings-page.js:853
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:278
+#: resources/dist/js/settings-page.js:844
 msgid "Auto-refresh is on — click to stop"
-msgstr "ଆପ୍ଟୋ-ରିଫ୍ରେଶ ଚାଲୁ ଅଛି — ବନ୍ଦ କରିବାକୁ କ୍ଲିକ୍ କରନ୍ତୁ"
+msgstr "ଆପ୍ଟୋ-ରିଫ୍ରେଶ୍ ଚାଲୁ — ବନ୍ଦ କରିବାକୁ କ୍ଲିକ୍ କରନ୍ତୁ"
 
-#: resources/dist/js/settings-page.js:1079
+#: resources/dist/js/settings-page.js:853
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:279
-#: resources/dist/js/settings-page.js:840
+#: resources/dist/js/settings-page.js:845
 msgid "Enable auto-refresh"
-msgstr "ଆପ୍ଟୋ-ରିଫ୍ରେଶ ସକ୍ରିୟ କରନ୍ତୁ"
+msgstr "ଆପ୍ଟୋ-ରିଫ୍ରେଶ୍ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: resources/dist/js/settings-page.js:1083
+#: resources/dist/js/settings-page.js:857
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:284
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:285
-#: resources/dist/js/settings-page.js:845
-#: resources/dist/js/settings-page.js:846
+#: resources/dist/js/settings-page.js:850
+#: resources/dist/js/settings-page.js:851
 msgid "Auto-refresh"
-msgstr "ଆପ୍ଟୋ-ରିଫ୍ରେଶ"
+msgstr "ଆପ୍ଟୋ-ରିଫ୍ରେଶ୍"
 
-#: resources/dist/js/settings-page.js:1087
+#: resources/dist/js/settings-page.js:861
 #: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:293
-#: resources/dist/js/settings-page.js:854
+#: resources/dist/js/settings-page.js:859
 msgid "Auto-refresh interval"
-msgstr "ଆପ୍ଟୋ-ରିଫ୍ରେଶ ଅନ୍ତରାଳ"
+msgstr "ଆପ୍ଟୋ-ରିଫ୍ରେଶ୍ ଇଣ୍ଟରଭାଲ୍"
 
-#: resources/dist/js/settings-page.js:1104
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:315
-#: resources/dist/js/settings-page.js:876
+#: resources/dist/js/settings-page.js:878
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:316
+#: resources/dist/js/settings-page.js:882
 msgid "Copy to Clipboard"
-msgstr "କ୍ଲିପ୍‌ବୋର୍ଡକୁ କପି କରନ୍ତୁ"
+msgstr "କ୍ଲିପ୍‌ବୋର୍ଡ୍‌କୁ କପି କରନ୍ତୁ"
 
-#: resources/dist/js/settings-page.js:1110
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:325
-#: resources/dist/js/settings-page.js:886
+#: resources/dist/js/settings-page.js:885
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:327
+#: resources/dist/js/settings-page.js:893
 msgid "Clear Log"
-msgstr "ଲଗ୍ ଖାଲି କରନ୍ତୁ"
+msgstr "ଲଗ୍ ସଫା କରନ୍ତୁ"
 
-#: resources/dist/js/settings-page.js:1116
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:333
-#: resources/dist/js/settings-page.js:894
+#: resources/dist/js/settings-page.js:891
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:335
+#: resources/dist/js/settings-page.js:901
 msgid "Loading log..."
 msgstr "ଲଗ୍ ଲୋଡ୍ ହେଉଛି..."
 
-#: resources/dist/js/settings-page.js:1120
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:339
-#: resources/dist/js/settings-page.js:900
+#: resources/dist/js/settings-page.js:895
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:341
+#: resources/dist/js/settings-page.js:907
 msgid ""
 "The debug log is empty. Perform some actions (e.g. activate a license) and "
 "refresh to see entries."
 msgstr ""
-"ଡିବଗ୍ ଲଗ୍ ଖାଲି। କିଛି କାର୍ଯ୍ୟ କରନ୍ତୁ (ଯଥା: ଏକ ଲାଇସେନ୍ସ କ୍ରିୟାନ୍ବୟ କରନ୍ତୁ) "
-"ଏବଂ ଏଣ୍ଟ୍ରୀଗୁଡିକୁ ଦେଖିବା ପାଇଁ ପୁନର୍ଚ୍ଛାଦନ କରନ୍ତୁ।"
+"ଡିବଗ୍ ଲଗ୍ ଖାଲି। କିଛି କାର୍ଯ୍ୟ କରନ୍ତୁ (ଉଦାହରଣ ସ୍ୱରୁପ, ଏକ ଲାଇସେନ୍ସ ସକ୍ରିୟ "
+"କରନ୍ତୁ) ଏବଂ ଦେଖିବାକୁ ରିଫ୍ରେଶ୍ କରନ୍ତୁ।"
 
-#: resources/dist/js/settings-page.js:1127
-#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:353
-#: resources/dist/js/settings-page.js:914
+#: resources/dist/js/settings-page.js:902
+#: resources/src/jsx/components/pages/settings/DebugLogTab.jsx:355
+#: resources/dist/js/settings-page.js:921
 msgid "Debug log contents"
-msgstr "ଡିବଗ୍ ଲଗ୍ ସାମଗ୍ରୀ"
+msgstr "ଡିବଗ୍ ଲଗ୍ ବିଷୟବସ୍ତୁ"
 
-#: resources/dist/js/settings-page.js:1212
+#: resources/dist/js/settings-page.js:962
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:40
-#: resources/dist/js/settings-page.js:963
+#: resources/dist/js/settings-page.js:970
 msgid "Debug mode enabled. A \"Debug Log\" tab is now available."
-msgstr "ଡିବଗ୍ ମୋଡ୍ ସକ୍ରିୟ ହୋଇଛି। ଏକ \"ଡିବଗ୍ ଲଗ୍&quote; ଟ୍ୟାବ୍ ବିକଳ୍ପ ଅଛି।"
+msgstr "ଡିବଗ୍ ମୋଡ୍ ସକ୍ରିୟ। ଏବେ \"ଡିବଗ୍ ଲଗ୍&quote; ଟ୍ୟାବ୍ ଉପଲବ୍ଧ।"
 
-#: resources/dist/js/settings-page.js:1212
+#: resources/dist/js/settings-page.js:962
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:41
-#: resources/dist/js/settings-page.js:964
+#: resources/dist/js/settings-page.js:971
 msgid "Debug mode disabled."
-msgstr "ଡିବଗ୍ ମୋଡ୍ ବନ୍ଦ କରାଯାଇଛି।"
+msgstr "ଡିବଗ୍ ମୋଡ୍ ବନ୍ଦ।"
 
-#: resources/dist/js/settings-page.js:1224
+#: resources/dist/js/settings-page.js:970
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:50
-#: resources/dist/js/settings-page.js:973
+#: resources/dist/js/settings-page.js:980
 msgid "Failed to save the setting. Please try again."
-msgstr "ସେଟିଂ ରଖିବାରେ ବିଫଳ। ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ।"
+msgstr "ସେଟିଂ ସଂରକ୍ଷଣ କରିବାରେ ବିଫଳ। କୃପୟା ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ।"
 
-#: resources/dist/js/settings-page.js:1253
+#: resources/dist/js/settings-page.js:988
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:75
-#: resources/dist/js/settings-page.js:998
+#: resources/dist/js/settings-page.js:1005
 msgid ""
 "When enabled, all HTTP requests and responses to remote services (license "
 "activation, plugin downloads, etc.) are logged to a dedicated log file. Use "
 "the Debug Log tab to inspect the captured data."
 msgstr ""
-"ସକ୍ରିୟ ହେଲେ, ସମସ୍ତ HTTP ଅନୁରୋଧ ଏବଂ ଦ୍ୱାରା ଦେଖାଯାଉଥିବା ପ୍ରତିକ୍ରିୟା (ଲାଇସେନ୍ସ "
-"କ୍ରିୟାନ୍ବୟ, ପ୍ଲଗଇନ୍ ଡାଉନଲୋଡ୍, ଇତ୍ୟାଦି) ଏକ ବିଶେଷ ଲଗ୍ ଫାଇଲ୍କୁ ଲଗ୍ କରାଯିବ। ଧରା "
-"ଡିବଗ୍ ଲଗ୍ ଟାବ୍ ବ୍ୟବହାର କରନ୍ତୁ ଧରା ତଥ୍ୟ ଯାଞ୍ଚ କରିବା ପାଇଁ।"
+"ସକ୍ରିୟ ହେଲେ, ସମସ୍ତ HTTP ବିନନ୍ତୀ ଓ ଉତ୍ତରଗୁଡିକୁ ଦୂରସେବାଗୁଡିକୁ (ଲାଇସେନ୍ସ "
+"ସକ୍ରିୟକରଣ, ପ୍ଲଗିନ୍ ଡାଉନଲୋଡ୍, ଇତ୍ୟାଦି) ଏକ ବିଶେଷ ଲଗ୍ ଫାଇଲ୍‌କୁ ଲଗ୍ କରାଯାଏ। "
+"ଧରାଯାଇଥିବା ତଥ୍ୟ ଦେଖିବାକୁ \"ଡିବଗ୍ ଲଗ୍&quote; ଟ୍ୟାବ୍ ବ୍ୟବହାର କରନ୍ତୁ।"
 
-#: resources/dist/js/settings-page.js:1254
+#: resources/dist/js/settings-page.js:989
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:82
-#: resources/dist/js/settings-page.js:1005
+#: resources/dist/js/settings-page.js:1012
 msgid "Enable Debug Mode"
 msgstr "ଡିବଗ୍ ମୋଡ୍ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: resources/dist/js/settings-page.js:1261
+#: resources/dist/js/settings-page.js:996
 #: resources/src/jsx/components/pages/settings/DiagnosticsTab.jsx:91
-#: resources/dist/js/settings-page.js:1014
+#: resources/dist/js/settings-page.js:1021
 msgid ""
 "Debug logging is active. Switch to the \"Debug Log\" tab to view captured "
 "data."
 msgstr ""
-"ଡିବଗ୍ ଲଗିଂ ସକ୍ରିୟ ଅଛି। ଧରାଯାଇଥିବା ତଥ୍ୟ ଦେଖିବାକୁ \"ଡିବଗ୍ ଲଗ\" ଟ୍ୟାବକୁ ସ୍ୱିଚ୍ "
-"କରନ୍ତୁ।"
+"ଡିବଗ୍ ଲଗିଂ ସକ୍ରିୟ। ଧରାଯାଇଥିବା ତଥ୍ୟ ଦେଖିବାକୁ \"ଡିବଗ୍ ଲଗ୍&quote; ଟ୍ୟାବ୍‌କୁ "
+"ସ୍ୱିଚ୍ କରନ୍ତୁ।"
 
-#: resources/dist/js/settings-page.js:1352
+#: resources/dist/js/settings-page.js:1078
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:70
-#: resources/dist/js/settings-page.js:1096, fuzzy
+#: resources/dist/js/settings-page.js:1103, fuzzy
 msgid "ERR"
 msgstr "ERR"
 
-#: resources/dist/js/settings-page.js:1383
+#: resources/dist/js/settings-page.js:1107
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:108
-#: resources/dist/js/settings-page.js:1134
-msgid "Request"
-msgstr "ଆବେଦନ"
-
-#: resources/dist/js/settings-page.js:1389
-#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:115
 #: resources/dist/js/settings-page.js:1141
+msgid "Request"
+msgstr "ବିନନ୍ତୀ"
+
+#: resources/dist/js/settings-page.js:1113
+#: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:115
+#: resources/dist/js/settings-page.js:1148
 msgid "Response"
 msgstr "ଉତ୍ତର"
 
-#: resources/dist/js/settings-page.js:1393
+#: resources/dist/js/settings-page.js:1117
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:121
-#: resources/dist/js/settings-page.js:1147
+#: resources/dist/js/settings-page.js:1154
 msgid "No response recorded for this request."
-msgstr "ଏହି ଅନୁରୋଧ ପାଇଁ କୌଣସି ଉତ୍ତର ରେକର୍ଡ୍ ହୋଇନି।"
+msgstr "ଆ ପାଇଁ କ hand ସମ୍ପୂର୍ଣ୍ଣ ଉତ୍ତର ରେକର୍ଡ୍ ହୋଇନି।"
 
-#: resources/dist/js/settings-page.js:1410
+#: resources/dist/js/settings-page.js:1135
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:146
-#: resources/dist/js/settings-page.js:1172
+#: resources/dist/js/settings-page.js:1179
 msgid "No requests found in the log."
-msgstr "ଲଗ୍‌ରେ କୌଣସି ଅନୁରୋଧ ମିଳିଲା ନାହିଁ।"
+msgstr "ଲଗ୍‌ରେ କୌଣସି ବିନନ୍ତୀ ମିଳିଲା ନାହିଁ।"
 
-#: resources/dist/js/settings-page.js:1416
+#: resources/dist/js/settings-page.js:1141
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:155
-#: resources/dist/js/settings-page.js:1181
+#: resources/dist/js/settings-page.js:1188
 msgid "1 request recorded"
-msgstr "1 ଅନୁରୋଧ ରେକର୍ଡ୍ ହୋଇଛି"
+msgstr "1 ବିନନ୍ତୀ ରେକର୍ଡ୍ ହୋଇଛି"
 
-#: resources/dist/js/settings-page.js:1416
+#: resources/dist/js/settings-page.js:1141
 #: resources/src/jsx/components/pages/settings/RequestsLogView.jsx:157
-#: resources/dist/js/settings-page.js:1183
+#: resources/dist/js/settings-page.js:1190
 #, js-format
 msgid "%d requests recorded"
-msgstr "%d ଅନୁରୋଧ ରେକର୍ଡ୍ ହୋଇଛି"
-
-#: resources/dist/js/welcome-page.js:427
-#: resources/src/jsx/components/pages/welcome-page.jsx:37
-#: resources/dist/js/welcome-page.js:368
-msgid "Welcome to PublishPress Hub"
-msgstr "PublishPress Hub କୁ ସ୍ୱାଗତ"
-
-#: resources/dist/js/welcome-page.js:427
-#: resources/src/jsx/components/pages/welcome-page.jsx:38
-#: resources/dist/js/welcome-page.js:369
-msgid "Your publishing tools, in one place."
-msgstr "ଆପଣଙ୍କର ପ୍ରକାଶନ ଉପକରଣ, ଗୋଟିଏ ସ୍ଥାନରେ।"
+msgstr "%d ବିନନ୍ତୀ ରେକର୍ଡ୍ ହୋଇଛି"
 
 #: resources/dist/js/welcome-page.js:429
+#: resources/src/jsx/components/pages/welcome-page.jsx:37
+#: resources/dist/js/welcome-page.js:371
+msgid "Welcome to PublishPress Hub"
+msgstr "PublishPress Hubକୁ ସ୍ୱାଗତ"
+
+#: resources/dist/js/welcome-page.js:429
+#: resources/src/jsx/components/pages/welcome-page.jsx:38
+#: resources/dist/js/welcome-page.js:372
+msgid "Your publishing tools, in one place."
+msgstr "ଆପଣଙ୍କର ପ୍ରକାଶନ ସାଧନଗୁଡିକ, ଏକ ସ୍ଥାନରେ।"
+
+#: resources/dist/js/welcome-page.js:431
 #: resources/src/jsx/components/pages/welcome-page.jsx:39
-#: resources/dist/js/welcome-page.js:370
+#: resources/dist/js/welcome-page.js:373
 msgid ""
 "Manage your plugins, build your editorial workflow, and find the help you "
 "need to get started."
 msgstr ""
-"ଆପଣଙ୍କର ପ୍ଲଗଇନ୍‌ଗୁଡିକୁ ପରିଚାଳନା କରନ୍ତୁ, ଆପଣଙ୍କର ଏଡିଟୋରିଆଲ୍ ଓର୍କଫ୍ଲୋ କରନ୍ତୁ, "
-"ଏବଂ ଆରମ୍ଭ କରିବାକୁ ଆବଶ୍ୟକ ସାହାଯ୍ୟ ମିଳାନ୍ତୁ।"
+"ଆପଣଙ୍କର ପ୍ଲଗଇନ୍‌ଗୁଡିକୁ ପରିଚାଳନା କରନ୍ତୁ, ଆପଣଙ୍କର ସାମ୍ପାଦକ ଯାତ୍ରା ତିଆରି "
+"କରନ୍ତୁ, ଏବଂ ଆରମ୍ଭ କରିବା ପାଇଁ ଆବଶ୍ୟକ ସହାୟତା ମିଳାନ୍ତୁ।"
 
-#: resources/dist/js/welcome-page.js:434
+#: resources/dist/js/welcome-page.js:436
 #: resources/src/jsx/components/pages/welcome-page.jsx:41
-#: resources/dist/js/welcome-page.js:372
+#: resources/dist/js/welcome-page.js:375
 msgid "View Plugins Dashboard"
 msgstr "Plugins Dashboard ଦେଖନ୍ତୁ"
 
-#: resources/dist/js/welcome-page.js:436
+#: resources/dist/js/welcome-page.js:438
 #: resources/src/jsx/components/pages/welcome-page.jsx:43
-#: resources/dist/js/welcome-page.js:374
-msgid "Help and account"
-msgstr "ସାହାଯ୍ୟ ଏବଂ ଖାତା"
-
-#: resources/dist/js/welcome-page.js:444
-#: resources/src/jsx/components/pages/welcome-page.jsx:46
 #: resources/dist/js/welcome-page.js:377
+msgid "Help and account"
+msgstr "ସହାୟତା ଏବଂ ଖାତା"
+
+#: resources/dist/js/welcome-page.js:446
+#: resources/src/jsx/components/pages/welcome-page.jsx:46
+#: resources/dist/js/welcome-page.js:380
 msgid "Setup guides and answers for every plugin."
-msgstr "ପ୍ଲଗଇନ୍ ପାଇଁ ସେଟଅପ୍ ଗାଇଡ୍‌ଗୁଡିକ ଏବଂ ଉତ୍ତର।"
+msgstr "ପ୍ଲଗଇନ୍‌ଗୁଡିକ ପାଇଁ ସେଟଅପ୍ ମାର୍ଗଦର୍ଶନ ଏବଂ ଉତ୍ତରଗୁଡିକ।"
 
-#: resources/dist/js/welcome-page.js:454
+#: resources/dist/js/welcome-page.js:456
 #: resources/src/jsx/components/pages/welcome-page.jsx:51
-#: resources/dist/js/welcome-page.js:382
+#: resources/dist/js/welcome-page.js:385
 msgid "Get support"
-msgstr "ସାହାଯ୍ୟ ଗ୍ରହଣ କରନ୍ତୁ"
+msgstr "ସହାୟତା ମିଳାନ୍ତୁ"
 
-#: resources/dist/js/welcome-page.js:454
+#: resources/dist/js/welcome-page.js:456
 #: resources/src/jsx/components/pages/welcome-page.jsx:51
-#: resources/dist/js/welcome-page.js:382
+#: resources/dist/js/welcome-page.js:385
 msgid "Get help from the PublishPress team."
-msgstr "PublishPress ଦଳରୁ ସାହାଯ୍ୟ ଗ୍ରହଣ କରନ୍ତୁ।"
+msgstr "PublishPress ଦଳରୁ ସହାୟତା ମିଳାନ୍ତୁ।"
 
-#: resources/dist/js/welcome-page.js:464
+#: resources/dist/js/welcome-page.js:466
 #: resources/src/jsx/components/pages/welcome-page.jsx:56
-#: resources/dist/js/welcome-page.js:387
+#: resources/dist/js/welcome-page.js:390
 msgid "Account and licenses"
 msgstr "ଖାତା ଏବଂ ଲାଇସେନ୍ସ"
 
-#: resources/dist/js/welcome-page.js:464
+#: resources/dist/js/welcome-page.js:466
 #: resources/src/jsx/components/pages/welcome-page.jsx:56
-#: resources/dist/js/welcome-page.js:387
+#: resources/dist/js/welcome-page.js:390
 msgid "Find your license keys and manage your subscription."
-msgstr ""
-"ଆପଣଙ୍କର ଲାଇସେନ୍ସ କୀ‌ଗୁଡିକୁ ଖୋଜନ୍ତୁ ଏବଂ ଆପଣଙ୍କର ସବ୍ସ୍କ୍ରିପ୍ସନ୍ ପରିଚାଳନା "
-"କରନ୍ତୁ।"
+msgstr "ଆପଣଙ୍କର ଲାଇସେନ୍ସ କୀ ଖୋଜନ୍ତୁ ଏବଂ ଆପଣଙ୍କର ସବ୍ସ୍କ୍ରିପ୍ସନ୍ ପରିଚାଳନା କରନ୍ତୁ।"
 
-#: resources/dist/js/welcome-page.js:476
+#: resources/dist/js/welcome-page.js:478
 #: resources/src/jsx/components/pages/welcome-page.jsx:65
-#: resources/dist/js/welcome-page.js:396
+#: resources/dist/js/welcome-page.js:399
 msgid "What you can do with PublishPress Hub"
 msgstr "PublishPress Hub ସହିତ ଆପଣ କଣ କରିପାରିବେ"
 
-#: resources/dist/js/welcome-page.js:478
+#: resources/dist/js/welcome-page.js:480
 #: resources/src/jsx/components/pages/welcome-page.jsx:68
-#: resources/dist/js/welcome-page.js:399
+#: resources/dist/js/welcome-page.js:402
 msgid ""
 "PublishPress Hub has everything you need to install, update, and manage "
 "your PublishPress plugins. We're here to help you build a publishing system "
 "that works perfectly for your team."
 msgstr ""
-"PublishPress Hub ଆପଣଙ୍କର PublishPress ପ୍ଲଗଇନ୍ ଇନ୍ସ୍ଟଲ୍, ଅପଡେଟ୍, ଏବଂ "
-"ପରିଚାଳନା ପାଇଁ ଆପଣଙ୍କୁ ଆବଶ୍ୟକ ସମସ୍ତ କିଛି ରହିଛି। ଆମେ ଏଠାରେ ଆପଣଙ୍କୁ ଏକ ପ୍ରକାଶନ "
-"ସିଷ୍ଟମ୍ ତିଆରି କରିବାରେ ସାହାଯ୍ୟ କରିବାକୁ ଅଛୁ।"
-
-#: resources/dist/js/welcome-page.js:489
-#: resources/src/jsx/components/pages/welcome-page.jsx:77
-#: resources/dist/js/welcome-page.js:408
-msgid "Centralized Dashboard"
-msgstr "କେନ୍ଦ୍ରୀୟ ଡ୍ୟାଶବୋର୍ଡ"
+"PublishPress Hub ଆପଣଙ୍କର PublishPress ପ୍ଲଗଇନ୍‌ଗୁଡିକୁ ସଂସ୍ଥାପନ, ଅପଡେଟ୍ "
+"କରିବା, ଏବଂ ପରିଚାଳନା କରିବାକୁ ଆବଶ୍ୟକ ସବୁ କିଛି ରହିଛି। ଆମେ ଆପଣଙ୍କୁ ଏକ ପ୍ରକାଶନ "
+"ବ୍ୟବସ୍ଥା ତିଆରି କରିବାରେ ସାହାଯ୍ୟ କରିବାକୁ ଏଠାରେ ଅଛୁ।"
 
 #: resources/dist/js/welcome-page.js:491
-#: resources/src/jsx/components/pages/welcome-page.jsx:80
+#: resources/src/jsx/components/pages/welcome-page.jsx:77
 #: resources/dist/js/welcome-page.js:411
+msgid "Centralized Dashboard"
+msgstr "କେନ୍ଦ୍ରୀୟ ଡାଶବୋର୍ଡ"
+
+#: resources/dist/js/welcome-page.js:493
+#: resources/src/jsx/components/pages/welcome-page.jsx:80
+#: resources/dist/js/welcome-page.js:414
 msgid ""
 "View all your PublishPress plugins with their licenses, versions, and key "
 "details."
 msgstr ""
-"ଆପଣଙ୍କର ସମସ୍ତ PublishPress ପ୍ଲଗଇନ୍, ତାଙ୍କର ଲାଇସେନ୍ସ, ସଂସ୍କରଣ, ଏବଂ କି ତଥ୍ୟ "
-"ଦେଖନ୍ତୁ।"
-
-#: resources/dist/js/welcome-page.js:500
-#: resources/src/jsx/components/pages/welcome-page.jsx:89
-#: resources/dist/js/welcome-page.js:420
-msgid "One-Click Installation"
-msgstr "ଏକ-କ୍ଲିକ୍ ସ୍ଥାପନ"
+"ଆପଣଙ୍କର PublishPress ପ୍ଲଗଇନ୍‌ଗୁଡିକୁ ତାଙ୍କର ଲାଇସେନ୍ସ, ସଂସ୍କରଣ, ଏବଂ କୀ ବିବରଣୀ "
+"ସହିତ ଦେଖନ୍ତୁ।"
 
 #: resources/dist/js/welcome-page.js:502
-#: resources/src/jsx/components/pages/welcome-page.jsx:92
+#: resources/src/jsx/components/pages/welcome-page.jsx:89
 #: resources/dist/js/welcome-page.js:423
+msgid "One-Click Installation"
+msgstr "ଏକ-କ୍ଲିକ୍ ସଂସ୍ଥାପନ"
+
+#: resources/dist/js/welcome-page.js:504
+#: resources/src/jsx/components/pages/welcome-page.jsx:92
+#: resources/dist/js/welcome-page.js:426
 msgid ""
 "Install free PublishPress plugins directly from the Hub without visiting "
 "WordPress.org."
 msgstr ""
-"WordPress.orgକୁ ଯାଇନାହିଁ, Hubରୁ ସିଧାସିଧି ମୁକ୍ତ PublishPress ପ୍ଲଗଇନ୍ "
-"ଇନ୍ସ୍ଟଲ୍ କରନ୍ତୁ।"
+"WordPress.orgକୁ ଯାଇବା ବିନା Hubରୁ ସିଧାସଳଖ ମାଗଣା PublishPress ପ୍ଲଗଇନ୍‌ଗୁଡିକୁ "
+"ସଂସ୍ଥାପନ କରନ୍ତୁ।"
 
-#: resources/dist/js/welcome-page.js:511
+#: resources/dist/js/welcome-page.js:513
 #: resources/src/jsx/components/pages/welcome-page.jsx:101
-#: resources/dist/js/welcome-page.js:432
+#: resources/dist/js/welcome-page.js:435
 msgid "License Management"
 msgstr "ଲାଇସେନ୍ସ ପରିଚାଳନା"
 
-#: resources/dist/js/welcome-page.js:513
+#: resources/dist/js/welcome-page.js:515
 #: resources/src/jsx/components/pages/welcome-page.jsx:104
-#: resources/dist/js/welcome-page.js:435
+#: resources/dist/js/welcome-page.js:438
 msgid ""
 "Connect your PublishPress licenses to easily install and activate Pro "
 "versions."
 msgstr ""
-"Pro ସଂସ୍କରଣଗୁଡିକୁ ସହଜରେ ଇନ୍ସ୍ଟଲ୍ ଏବଂ ସକ୍ରିୟ କରିବାକୁ ଆପଣଙ୍କର PublishPress "
-"ଲାଇସେନ୍ସ ସଂଯୋଗ କରନ୍ତୁ।"
-
-#: resources/dist/js/welcome-page.js:522
-#: resources/src/jsx/components/pages/welcome-page.jsx:113
-#: resources/dist/js/welcome-page.js:444
-msgid "Easy Updates"
-msgstr "ସହଜ ଅଦ୍ୟତନ"
+"Pro ସଂସ୍କରଣଗୁଡିକୁ ସହଜରେ ସଂସ୍ଥାପନ ଏବଂ ସକ୍ରିୟ କରିବାକୁ ଆପଣଙ୍କର PublishPress "
+"ଲାଇସେନ୍ସକୁ ସଂଯୋଗ କରନ୍ତୁ।"
 
 #: resources/dist/js/welcome-page.js:524
-#: resources/src/jsx/components/pages/welcome-page.jsx:116
+#: resources/src/jsx/components/pages/welcome-page.jsx:113
 #: resources/dist/js/welcome-page.js:447
-msgid "Keep all your PublishPress plugins up to date with one-click updates."
-msgstr ""
-"ଏକ-କ୍ଲିକ୍ ଅଦ୍ୟତନ ସହିତ ଆପଣଙ୍କର ସମସ୍ତ PublishPress ପ୍ଲଗଇନ୍‌ଗୁଡିକୁ ଅଦ୍ୟତନ "
-"ରଖନ୍ତୁ।"
+msgid "Easy Updates"
+msgstr "ସହଜ ଅପଡେଟ୍‌ଗୁଡିକ"
 
-#: resources/dist/js/welcome-page.js:533
-#: resources/src/jsx/components/pages/welcome-page.jsx:125
-#: resources/dist/js/welcome-page.js:456
-msgid "Status Monitoring"
-msgstr "ସ୍ଥିତି ସମୀକ୍ଷା"
+#: resources/dist/js/welcome-page.js:526
+#: resources/src/jsx/components/pages/welcome-page.jsx:116
+#: resources/dist/js/welcome-page.js:450
+msgid "Keep all your PublishPress plugins up to date with one-click updates."
+msgstr "ଏକ-କ୍ଲିକ୍ ଅପଡେଟ୍‌ଗୁଡିକ ସହିତ ସମସ୍ତ PublishPress ପ୍ଲଗଇନ୍‌ଗୁଡିକୁ ଅପଡେଟ୍ ରଖନ୍ତୁ।"
 
 #: resources/dist/js/welcome-page.js:535
-#: resources/src/jsx/components/pages/welcome-page.jsx:128
+#: resources/src/jsx/components/pages/welcome-page.jsx:125
 #: resources/dist/js/welcome-page.js:459
+msgid "Status Monitoring"
+msgstr "ସ୍ଥିତି ପରୀକ୍ଷଣ"
+
+#: resources/dist/js/welcome-page.js:537
+#: resources/src/jsx/components/pages/welcome-page.jsx:128
+#: resources/dist/js/welcome-page.js:462
 msgid ""
 "Monitor plugin activation status, detect conflicts, and ensure "
 "compatibility."
 msgstr ""
-"ପ୍ଲଗଇନ୍ ସକ୍ରିୟତା ସ୍ଥିତିକୁ ନିରୀକ୍ଷଣ କରନ୍ତୁ, ବିବାଦ ଚିହ୍ନଟ କରନ୍ତୁ, ଏବଂ "
-"ସମାନ୍ୟତା ସୁନିଶ୍ଚିତ କରନ୍ତୁ।"
+"ପ୍ଲଗଇନ୍ ସକ୍ରିୟତା ସ୍ଥିତିକୁ ନିରୀକ୍ଷଣ କରନ୍ତୁ, ବିପରୀତତା ଚିହ୍ନଟ କରନ୍ତୁ, ଏବଂ "
+"ସମ୍ବନ୍ଧିତତାକୁ ସुनିଶ୍ଚିତ କରନ୍ତୁ।"
 
-#: resources/dist/js/welcome-page.js:544
+#: resources/dist/js/welcome-page.js:546
 #: resources/src/jsx/components/pages/welcome-page.jsx:137
-#: resources/dist/js/welcome-page.js:468
+#: resources/dist/js/welcome-page.js:471
 msgid "Get Started"
 msgstr "ଆରମ୍ଭ କରନ୍ତୁ"
 
-#: resources/dist/js/welcome-page.js:547
+#: resources/dist/js/welcome-page.js:549
 #: resources/src/jsx/components/pages/welcome-page.jsx:140
-#: resources/dist/js/welcome-page.js:471
+#: resources/dist/js/welcome-page.js:474
 #, js-format
 msgid "Ready to explore? Visit the %s to see all available PublishPress plugins."
 msgstr ""
-"ଅନ୍ୱେଷଣ କରିବା ପାଇଁ ପ୍ରସ୍ତୁତ? ସମସ୍ତ ଉପଲବ୍ଧ PublishPress ପ୍ଲଗଇନ ଦେଖିବାକୁ %s "
-"କୁ ଯାଆନ୍ତୁ।"
+"ଆପଣ ଅନୁସନ୍ଧାନ କରିବାକୁ ପ୍ରସ୍ତୁତ କି? ସମସ୍ତ ଉପଲବ୍ଧ PublishPress ପ୍ଲଗଇନ୍‌ଗୁଡିକୁ "
+"ଦେଖିବା ପାଇଁ %sକୁ ଯାଆନ୍ତୁ।"
 
-#: resources/dist/js/welcome-page.js:547
+#: resources/dist/js/welcome-page.js:549
 #: resources/src/jsx/components/pages/welcome-page.jsx:141
-#: resources/dist/js/welcome-page.js:472, fuzzy
+#: resources/dist/js/welcome-page.js:475, fuzzy
 msgid "Plugins Dashboard"
 msgstr "Plugins Dashboard"
 
-#: resources/dist/js/welcome-page.js:551
-#: resources/src/jsx/components/pages/welcome-page.jsx:151
-#: resources/dist/js/welcome-page.js:482
-msgid "Already know what you're doing? Great! You can "
-msgstr "ଆପଣ ଯାହା କରୁଛନ୍ତି ସେଥିରେ ଆଗରୁ ଜାଣିଛନ୍ତି କି? ଶ୍ରେଷ୍ଠ! ଆପଣ "
-
 #: resources/dist/js/welcome-page.js:553
+#: resources/src/jsx/components/pages/welcome-page.jsx:151
+#: resources/dist/js/welcome-page.js:485
+msgid "Already know what you're doing? Great! You can "
+msgstr "ଆପଣ ଯାହା କରୁଛନ୍ତି ସେଥିରେ ଅଗ୍ରଗତ? ଶ୍ରେଷ୍ଠ! ଆପଣ "
+
+#: resources/dist/js/welcome-page.js:555
 #: resources/src/jsx/components/pages/welcome-page.jsx:153
-#: resources/dist/js/welcome-page.js:484
+#: resources/dist/js/welcome-page.js:487
 msgid "dismiss this page"
 msgstr "ଏହି ପୃଷ୍ଠାକୁ ବନ୍ଦ କରିପାରିବେ"
 
-#: resources/dist/js/welcome-page.js:553
+#: resources/dist/js/welcome-page.js:555
 #: resources/src/jsx/components/pages/welcome-page.jsx:155
-#: resources/dist/js/welcome-page.js:486, fuzzy
+#: resources/dist/js/welcome-page.js:489
 msgid "."
-msgstr "."
+msgstr "।"

@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Logger\Contract;
 
-defined('ABSPATH') || exit;
-
 use Throwable;
+
+\defined('ABSPATH') || exit;
 
 interface LoggerInterface
 {

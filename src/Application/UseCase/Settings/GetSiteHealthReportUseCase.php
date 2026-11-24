@@ -22,6 +22,8 @@ use PublishPress\Hub\Infrastructure\Debug\DebugLogService;
 use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
 use WP_REST_Request;
 
+\defined('ABSPATH') || exit;
+
 class GetSiteHealthReportUseCase implements UseCaseInterface
 {
     private const DEBUG_MODE_OPTION = 'publishpress_hub_debug_mode';

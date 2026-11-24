@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Admin\Page;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\Access\HubAccessService;
 use PublishPress\Hub\Application\Traits\BootableTrait;
@@ -24,6 +22,8 @@ use PublishPress\Hub\Infrastructure\Asset\Contract\AssetServiceInterface;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\View\Contract\ViewServiceInterface;
 use PublishPress\Hub\Infrastructure\WP\Options\Contract\WPOptionsAdapterInterface;
+
+\defined('ABSPATH') || exit;
 
 class WelcomePageController implements BootableInterface
 {
@@ -255,7 +255,11 @@ class WelcomePageController implements BootableInterface
             'ppHubWelcomePageConfig',
             [
                 'logoUrl' => $this->assetService->getPluginAssetUrl('images/publishpress-logo.png'),
-                'welcomeImageUrl' => $this->assetService->getPluginAssetUrl('images/welcome.png'),
+                'welcomeImageUrl' => add_query_arg(
+                    'ver',
+                    '2',
+                    $this->assetService->getPluginAssetUrl('images/welcome.png')
+                ),
                 'dismissUrl' => $dismissUrl,
                 'pluginSlug' => 'publishpress-hub',
                 'pluginName' => __('PublishPress Hub', 'publishpress-hub'),

@@ -14,14 +14,14 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\License;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Service\License\Contract\LicenseManagementServiceInterface;
 use PublishPress\Hub\Application\Service\PluginStatus\PluginStatusService;
 use PublishPress\Hub\Domain\Plugin\Contract\ProPluginInterface;
 use PublishPress\Hub\Infrastructure\License\Contract\LicensePersistenceInterface;
 use PublishPress\Hub\Infrastructure\Logger\Contract\LoggerInterface;
 use PublishPress\Hub\Infrastructure\Logger\Logger;
+
+\defined('ABSPATH') || exit;
 
 class ScheduledLicenseValidationService
 {
@@ -107,20 +107,21 @@ class ScheduledLicenseValidationService
     }
 
     /**
-     * Validate all licenses.
+     * Validate all installed licenses, or an explicitly supplied set of families.
      *
      * This method makes one API request per license key (bulk checking not supported yet).
      *
+     * @param \PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface[]|null $families Limit immediate validation to affected families.
      * @since 1.0.0
      */
-    public function validateAllLicenses(): void
+    public function validateAllLicenses(?array $families = null): void
     {
         $this->logger->log('Starting scheduled license validation');
 
         try {
             // Retrieve all plugin families with their current installation/activation status
             // This ensures we only validate licenses for plugins that are actually installed
-            $families = $this->pluginStatusService->getAllPluginFamiliesWithUpdatedStatus();
+            $families = $families ?? $this->pluginStatusService->getAllPluginFamiliesWithUpdatedStatus();
 
             $validatedCount = 0;
             $errorCount = 0;

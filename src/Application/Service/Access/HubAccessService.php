@@ -14,18 +14,20 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service\Access;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Contract\AccessInterface;
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Traits\BootableTrait;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
+
+\defined('ABSPATH') || exit;
 
 class HubAccessService implements AccessInterface, BootableInterface
 {
     use BootableTrait;
 
     public const CAPABILITY = 'manage_publishpress_hub';
+
+    public const MCP_CAPABILITY = 'manage_options';
 
     public const READ_CAPABILITY = 'read';
 
@@ -87,6 +89,19 @@ class HubAccessService implements AccessInterface, BootableInterface
     public static function canManageHub(): bool
     {
         return current_user_can(self::CAPABILITY);
+    }
+
+    /**
+     * Check access to MCP administration and the MCP connection.
+     *
+     * MCP requires administrator-level access independently of Hub viewer access.
+     *
+     * @return bool
+     * @since 1.2.0
+     */
+    public static function canManageMcp(): bool
+    {
+        return current_user_can(self::MCP_CAPABILITY);
     }
 
     /**

@@ -67,9 +67,9 @@ const DiagnosticsTabComponent = () => {
             )}
 
             <div className="pp-hub-diagnostics-tab__section">
-                <h3 className="pp-hub-diagnostics-tab__section-title">
+                <h2 className="pp-hub-diagnostics-tab__section-title">
                     {__('Debug Mode', 'publishpress-hub')}
-                </h3>
+                </h2>
 
                 <p className="pp-hub-diagnostics-tab__description">
                     {__(

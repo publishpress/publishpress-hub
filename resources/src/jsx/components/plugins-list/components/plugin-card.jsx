@@ -67,7 +67,7 @@ export const PluginCard = ({
             <div className="pp-hub-plugin-card__header">
                 <img className="pp-hub-plugin-card__icon" src={iconSrc} alt="" />
                 <div className="pp-hub-plugin-card__identity">
-                    <h3>{displayName.replace(/^PublishPress\s+/, '')}</h3>
+                    <h2>{displayName.replace(/^PublishPress\s+/, '')}</h2>
                     <p>{pluginFamily.description}</p>
                 </div>
                 <div className="pp-hub-plugin-card__controls">
@@ -79,9 +79,13 @@ export const PluginCard = ({
                     {pluginFamily.hasAnyVersionInstalled && !conflict && (
                         <div className={`pp-hub-plugin-card__activation${active ? ' is-active' : ''}`}>
                             <span>{active ? __('Active', 'publishpress-hub') : __('Inactive', 'publishpress-hub')}</span>
-                            <ToggleControl checked={active} disabled={busy}
+                            {/* aria-disabled instead of disabled keeps keyboard focus on the toggle while busy (WCAG 2.4.3). */}
+                            <ToggleControl checked={active} aria-disabled={busy || undefined}
                                 aria-label={sprintf(active ? __('Deactivate %s', 'publishpress-hub') : __('Activate %s', 'publishpress-hub'), displayName)}
-                                onChange={value => value ? onActivate(pluginFamily) : onDeactivate(pluginFamily)} />
+                                onChange={value => {
+                                    if (busy) return;
+                                    value ? onActivate(pluginFamily) : onDeactivate(pluginFamily);
+                                }} />
                         </div>
                     )}
                     {!pluginFamily.hasAnyVersionInstalled && <span className="pp-hub-plugin-card__state">{__('Not installed', 'publishpress-hub')}</span>}

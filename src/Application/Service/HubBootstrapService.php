@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Application\Service;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Application\Contract\AccessInterface;
 use PublishPress\Hub\Application\Contract\BootableInterface;
 use PublishPress\Hub\Application\Service\License\WpConfigLicenseSyncService;
@@ -27,6 +25,8 @@ use PublishPress\Hub\Domain\Plugin\Entity\ProPlugin;
 use PublishPress\Hub\Infrastructure\Debug\DebugLogService;
 use PublishPress\Hub\Infrastructure\Hooks\AbstractHooks;
 use PublishPress\Hub\Infrastructure\Remote\HttpDebugger;
+
+\defined('ABSPATH') || exit;
 
 class HubBootstrapService implements BootableInterface
 {

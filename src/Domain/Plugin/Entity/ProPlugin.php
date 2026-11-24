@@ -14,11 +14,11 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Domain\Plugin\Entity;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Domain\Plugin\Contract\PluginFamilyInterface;
 use PublishPress\Hub\Domain\Plugin\Contract\ProPluginInterface;
 use PublishPress\Hub\Domain\Plugin\ValueObject\PluginState;
+
+\defined('ABSPATH') || exit;
 
 /**
  * Pro plugin entity.

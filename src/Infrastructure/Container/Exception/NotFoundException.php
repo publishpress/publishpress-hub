@@ -14,11 +14,11 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\Container\Exception;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Domain\Exception\ExceptionCode;
 use PublishPress\Hub\Infrastructure\Exception\Base\InfrastructureException;
 use PublishPress\Psr\Container\NotFoundExceptionInterface;
+
+\defined('ABSPATH') || exit;
 
 class NotFoundException extends InfrastructureException implements NotFoundExceptionInterface
 {

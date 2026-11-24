@@ -265,7 +265,7 @@ class LoggerTest extends Unit
         $result = $logger->log('Base message', $exception);
 
         $this->assertTrue($result);
-        $this->assertStringStartsWith('Base message - Caught Exception: Test exception in ' . __FILE__ . ':' . $line, $this->logOutput);
+        $this->assertStringStartsWith('Base message - Caught Exception: Test exception in ' . str_replace('\\', '\\\\', __FILE__) . ':' . $line, $this->logOutput);
     }
 
     /**
@@ -305,7 +305,7 @@ class LoggerTest extends Unit
         $result = $logger->logWithTrace('Error occurred', $exception);
 
         $this->assertTrue($result);
-        $this->assertStringContainsString(__FILE__ . ':' . $line . ' Trace: ', $this->logOutput);
+        $this->assertStringContainsString(str_replace('\\', '\\\\', __FILE__) . ':' . $line . ' Trace: ', $this->logOutput);
         $this->assertStringStartsWith('Error occurred - Caught RuntimeException: Runtime error in ', $this->logOutput);
         $this->assertStringContainsString(' | ', $this->logOutput);
     }
@@ -347,6 +347,19 @@ class LoggerTest extends Unit
 
         $this->assertTrue($result);
         $this->assertStringContainsString('Test message with \\0000null\\0002\\0004 chars', $this->logOutput);
+    }
+
+    /**
+     * @covers ::log
+     */
+    public function testLogEscapesWindowsPathBackslashes(): void
+    {
+        $logger = new Logger([
+            'error_log_function' => [$this, '_customErrorLogFunction'],
+        ]);
+
+        $this->assertTrue($logger->log('Windows path C:\plugins\hub\file.php'));
+        $this->assertSame('Windows path C:\\\\plugins\\\\hub\\\\file.php', $this->logOutput);
     }
 
     /**
@@ -462,7 +475,7 @@ class LoggerTest extends Unit
             $this->assertTrue($result);
             $this->assertStringContainsString('Trace:', $this->logOutput);
             $this->assertStringContainsString(' | ', $this->logOutput);
-            $this->assertStringContainsString(__FILE__, $this->logOutput);
+            $this->assertStringContainsString(str_replace('\\', '\\\\', __FILE__), $this->logOutput);
         }
     }
 
@@ -600,7 +613,7 @@ class LoggerTest extends Unit
         $this->assertTrue($result);
         $this->assertStringStartsWith('[PREFIX] Base message', $this->logOutput);
         $this->assertStringContainsString('RuntimeException:', $this->logOutput);
-        $this->assertStringContainsString(__FILE__, $this->logOutput);
+        $this->assertStringContainsString(str_replace('\\', '\\\\', __FILE__), $this->logOutput);
         $this->assertStringContainsString(' >> ', $this->logOutput);
     }
 

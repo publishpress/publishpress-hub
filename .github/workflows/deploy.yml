@@ -16,7 +16,10 @@ jobs:
 
   deploy-publishpress-com:
     permissions:
-      contents: read
+      contents: write
     uses: publishpress/github-workflows/.github/workflows/deploy-pro.yml@v3
     needs: [code-check, run-unit-tests]
+    with:
+      sign_package: true
+      package_signing_key_id: publishpress-2026
     secrets: inherit

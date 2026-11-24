@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace PublishPress\Hub\Infrastructure\License\Contract;
 
-defined('ABSPATH') || exit;
-
 use PublishPress\Hub\Infrastructure\License\Contract\LicenseApiServiceInterface;
+
+\defined('ABSPATH') || exit;
 
 interface LicenseAdapterInterface extends LicenseApiServiceInterface
 {

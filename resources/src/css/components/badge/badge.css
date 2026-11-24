@@ -58,6 +58,10 @@
 }
 
 .pp-hub-badge.uninstalling {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding-block: 5px;
     background-color: var(--pp-hub-badge-bg-uninstalling);
     color: var(--pp-hub-badge-text-uninstalling);
 }
@@ -106,14 +110,14 @@
 
 
 .pp-hub-badge.update-available {
-    background-color: rgba(147, 51, 234, 0.85);
+    background-color: #9333ea;
     color: #ffffff;
     cursor: help;
     font-weight: 700;
 }
 
 .pp-hub-plugins-list-item:hover .pp-hub-badge.update-available {
-    background-color: rgba(147, 51, 234, 0.95);
+    background-color: #7e22ce;
 }
 
 .pp-hub-badge-icon .dashicons {
