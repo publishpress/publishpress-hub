@@ -131,7 +131,11 @@ class McpPageController implements BootableInterface
         $this->assetService->localizeScript('publishpress-hub-mcp', 'ppHubMcpConfig', [
             'apiNonce' => wp_create_nonce('wp_rest'),
             'logoUrl' => $this->assetService->getPluginAssetUrl('images/publishpress-logo.png'),
-            'welcomeImageUrl' => $this->assetService->getPluginAssetUrl('images/welcome.png'),
+            'welcomeImageUrl' => add_query_arg(
+                'ver',
+                '2',
+                $this->assetService->getPluginAssetUrl('images/welcome.png')
+            ),
         ]);
     }
 }
