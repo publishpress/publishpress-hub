@@ -13,22 +13,22 @@ The EDD Software Licensing install on publishpress.com. It is the source of trut
 _Avoid_: license API, EDD server, store
 
 **License Worker**:
-The licensing module of the PublishPress Package Server Worker, served on license.publishpress.com. It is the only licensing endpoint that the Hub calls.
-_Avoid_: proxy, gateway, license cache
+The licensing module of the PublishPress Package Server Worker, served on license.publishpress.com. It is the only licensing endpoint that the Hub calls. Preferred form: a reverse proxy to the License Server.
+_Avoid_: gateway, license cache
 
 **License Mirror**:
-The copy of license records that the License Worker keeps, with license keys and site URLs stored only as hashes.
+An optional D1 copy of license records (hashed keys and site URLs). Build it only if the License Worker reverse proxy cannot reach the License Server without a managed challenge.
 _Avoid_: cache, replica
 
 **Site Hash**:
-The keyed hash of a normalized site URL. The License Server and the License Worker compute it with the same normalization rules.
+The keyed hash of a normalized site URL. Used if a License Mirror exists. The License Server and the License Worker compute it with the same normalization rules.
 _Avoid_: site ID, URL hash
 
 **License Read**:
-A licensing request that does not change state (`check_license`, `get_version`). The License Worker answers it from the License Mirror.
+A licensing request that does not change state (`check_license`, `get_version`).
 
 **License Write**:
-A licensing request that changes state (`activate_license`, `deactivate_license`). The License Worker forwards it to the License Server.
+A licensing request that changes state (`activate_license`, `deactivate_license`).
 
 ### Packages
 
@@ -43,33 +43,30 @@ _Avoid_: download key, package key
 ### Statistics
 
 **Hub Statistics**:
-Daily counts of License Reads and License Writes for each Site Hash, item, action, and Hub version.
+Counts of License Reads and License Writes tagged with Hub version (today on the License Server; may move later if a mirror ships).
 _Avoid_: telemetry, usage logs
 
 **Download Statistics**:
 Counts of package downloads from the Package Server, for each package and version.
 
 **Ramble Dashboard**:
-The reporting site on rambleventuresdashboard.com. It pulls Hub Statistics and Download Statistics from the Package Server Worker.
+The reporting site on rambleventuresdashboard.com.
 _Avoid_: stats site, overview
 
 ## Relationships
 
 - The **License Worker** supports only EDD. Package Server deployments that use Simba, such as MetaSlider, do not enable it.
-- The **License Mirror** is a separate D1 database from the **Package Server** data.
-- The **License Server** keeps the **License Mirror** up to date.
-- The **License Worker** answers each **License Read** from the **License Mirror**. It computes the answer from mirrored license data, with the same rules as the **License Server**.
-- A license in the **License Mirror** has zero or more activations. Each activation is one **Site Hash**.
+- Preferred path: the **License Worker** reverse-proxies every Hub licensing request to the **License Server**.
+- The **License Server** remains the source of truth. A **License Mirror** is not part of the preferred path.
 - The **License Server** keeps the customer account page: download links, site activation, and site deactivation.
-- The **License Worker** and the **License Server** both issue **Download Tokens**. The **Package Server** checks a **Download Token** without a call to the **License Server**.
-- The **License Worker** forwards each **License Write** to the **License Server**, then writes the result into the **License Mirror**.
-- The **License Worker** records **Hub Statistics**. The **License Server** records them only for old Hub versions, until they are deprecated.
+- Package downloads stay on the **Package Server**.
 
 ## Example dialogue
 
-> **Dev:** "After a customer activates a site, can the next `check_license` return 'inactive'?"
-> **Domain expert:** "No. The **License Worker** writes the result of the **License Write** into the **License Mirror** before it answers the Hub."
+> **Dev:** "Does the Hub call publishpress.com for `check_license`?"
+> **Domain expert:** "No. After cutover the Hub calls the **License Worker**. The Worker forwards the request to the **License Server**, unless we have fallen back to a **License Mirror** because the proxy back hop was challenged."
 
 ## Flagged ambiguities
 
-- "cache" was used for the **License Mirror**. Resolved: the mirror is not a cache with a TTL. The **License Server** pushes records to it.
+- "proxy" once meant the rejected AWS API Gateway design. Resolved: the preferred Cloudflare path is the **License Worker** reverse proxy; AWS stays rejected.
+- "cache" / **License Mirror**: deferred optional path only; not a TTL cache in front of EDD on the preferred path.
